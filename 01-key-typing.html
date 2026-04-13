@@ -260,7 +260,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">第1回：キータイピング</h1>
-  <p class="subtitle">基礎体力をつけよう</p>
+  <p class="subtitle">すべての基礎力</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -270,12 +270,11 @@ rkskmt
 </div>
 </div>
 
-  <p class="date">2026年4月13日</p>
 </section>
 <section id="キータイピングを速めよう" class="slide level2">
 <h2>キータイピングを速めよう</h2>
-<p>2025年現在、入力の基本的なインタフェースはいまだキーボードである。</p>
-<p>キーボードを打つスピードは<strong>生涯の生産性</strong>に直結するため、速いに越したことはない。</p>
+<p>入力の主流なインタフェースはいまだキーボードである。 音声入力もあるが、特に日本語においては漢字変換や URLなど音声だけで必要な入力を賄うことは不可能です。</p>
+<p>よって、PCを生涯使うであろう我々にとってキーボードを打つスピードは<strong>生涯の生産性</strong>に直結するため、速いに越したことはない。</p>
 </section>
 <section id="日本語タイピング速度の目安" class="slide level2">
 <h2>日本語タイピング速度の目安</h2>
@@ -442,7 +441,7 @@ rkskmt
 <section id="タイピング上達のコツ" class="slide level2 scrollable">
 <h2>タイピング上達のコツ</h2>
 <ol type="1">
-<li><strong>ブラインドタッチを意識する</strong>
+<li><strong>タッチタイピングを意識する</strong>
 <ul>
 <li>画面を見ながら打ち、手元は見ないようにする</li>
 </ul></li>
@@ -462,7 +461,8 @@ rkskmt
 </section>
 <section id="速度計測" class="slide level2">
 <h2>速度計測</h2>
-<p>「<strong>寿司打ち</strong>」で検索して <strong>お手軽3000円コース</strong> をやってみよう。</p>
+<p>「<strong>寿司打</strong>」で検索して <strong>お手軽3000円コース</strong> をやってみよう。</p>
+<p><a href="https://sushida.net/play.html?soundless">寿司打</a></p>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -478,29 +478,31 @@ rkskmt
 </div>
 </div>
 </section>
-<section id="演習atcoderでプログラムを動かしてみよう" class="slide level2">
+<section id="演習atcoderでプログラムを動かしてみよう" class="slide level2 scrollable">
 <h2>演習：AtCoderでプログラムを動かしてみよう</h2>
 <p>「<strong>AtCoder ABC 400 tasks</strong>」で検索して A 問題を解いてみよう。</p>
-<p>アカウントがない人はまず作ろう。</p>
-<div id="07863198" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="01-key-typing_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="374" height="374"></p>
-</figure>
-</div>
-</div>
-</div>
+<ol type="1">
+<li><a href="https://atcoder.jp/contests/abc400/tasks/abc400_a">AtCoder Beginner Contest 400 A問題</a> にアクセス</li>
+<li>アカウントを作る</li>
+<li>問題を解く</li>
+<li>右上の「提出」ボタンを押す</li>
+<li>ジャッジ結果が <strong>AC（Accepted）</strong> になれば正解！
+<ul>
+<li><strong>WA（Wrong Answer）</strong> ：出力が違う</li>
+<li><strong>RE（Runtime Error）</strong> ：実行中にエラー</li>
+<li><strong>TLE（Time Limit Exceeded）</strong> ：時間超過</li>
+</ul></li>
+</ol>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>解答例（Python）</strong></p>
+<p><strong>ABC400の解答例（Python）</strong></p>
 </div>
 <div class="callout-content">
-<div id="80c055bc" class="cell" data-execution_count="2">
+<div id="0b6dc10f" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>A <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
@@ -511,6 +513,26 @@ rkskmt
 </div>
 </div>
 </div>
+</section>
+<section id="参考atcoderでよく使う入力パターン" class="slide level2">
+<h2>（参考）AtCoderでよく使う入力パターン</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># 入力をそのまま文字列として取得</span></span>
+<span id="cb2-2"><a></a>s <span class="op">=</span> <span class="bu">input</span>()</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="co"># 入力をintとして取得</span></span>
+<span id="cb2-5"><a></a>i <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb2-6"><a></a></span>
+<span id="cb2-7"><a></a><span class="co"># スペース区切りの文字列（[foo bar baz]）をリストとして取得する場合</span></span>
+<span id="cb2-8"><a></a>ss <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> <span class="bu">input</span>().split()]</span>
+<span id="cb2-9"><a></a></span>
+<span id="cb2-10"><a></a><span class="co"># スペース区切りの2文字を別の変数としたい場合</span></span>
+<span id="cb2-11"><a></a>A, B <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> <span class="bu">input</span>().split()]</span>
+<span id="cb2-12"><a></a></span>
+<span id="cb2-13"><a></a><span class="co"># 「Aを1 2 3 4からなる数列とする」のような場合</span></span>
+<span id="cb2-14"><a></a>As <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>().split()]</span>
+<span id="cb2-15"><a></a></span>
+<span id="cb2-16"><a></a><span class="co"># intでA Bという数字が与えられるパターン</span></span>
+<span id="cb2-17"><a></a>A, B <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>().split()]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
