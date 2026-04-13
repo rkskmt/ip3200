@@ -4,7 +4,119 @@
     "href": "index.html#情報処理-2025年度",
     "title": "高専3年 情報処理",
     "section": "情報処理 2025年度",
-    "text": "情報処理 2025年度\nhttps://rkskmt.github.io/ip3200/\n\n第1回：キータイピング\n第2回：ショートカット"
+    "text": "情報処理 2025年度\nhttps://rkskmt.github.io/ip3200/\n\n第1回：キータイピング\n第2回：ショートカット\n第3回：list\n第4回：コレクションまとめ"
+  },
+  {
+    "objectID": "03-list.html#list-とは",
+    "href": "03-list.html#list-とは",
+    "title": "第3回：リストの基礎知識",
+    "section": "list とは",
+    "text": "list とは\n\n最もよく使われるコレクション型（他言語では配列・アレイとも呼ばれる）\nデータは追加順に並ぶ\n変数名は要素の名詞の複数形にすることが多い（例：foods、scores）"
+  },
+  {
+    "objectID": "03-list.html#宣言",
+    "href": "03-list.html#宣言",
+    "title": "第3回：リストの基礎知識",
+    "section": "宣言",
+    "text": "宣言\n[] でカンマ区切りでデータを入力するとリストになる。\n\n順序が保持される\n重複してもよい\n\nscores = [85, 90, 92, 78, 92, 88]\nprint(scores)  # [85, 90, 92, 78, 92, 88]\n\n\n\n\n\n\nお作法\n\n\nカンマ , の後はスペースを空ける。"
+  },
+  {
+    "objectID": "03-list.html#アクセスインデックス",
+    "href": "03-list.html#アクセスインデックス",
+    "title": "第3回：リストの基礎知識",
+    "section": "アクセス（インデックス）",
+    "text": "アクセス（インデックス）\n要素にアクセスするにはインデックス（数字）を使う。\n\nインデックスはゼロ始まり\n後ろにいくにつれて 1 ずつ増加\n\nscores = [85, 90, 92, 78, 92, 88]\nprint(scores[0])  # 85\nprint(scores[4])  # 92"
+  },
+  {
+    "objectID": "03-list.html#マイナスインデックス",
+    "href": "03-list.html#マイナスインデックス",
+    "title": "第3回：リストの基礎知識",
+    "section": "マイナスインデックス",
+    "text": "マイナスインデックス\nインデックスをマイナスにすると末尾からアクセスできる。\n\n-1 が末尾（-0 ではない）\n\nprint(scores[-1])  # 88（末尾）\nprint(scores[-5])  # 90（末尾から5番目）"
+  },
+  {
+    "objectID": "03-list.html#要素の追加append",
+    "href": "03-list.html#要素の追加append",
+    "title": "第3回：リストの基礎知識",
+    "section": "要素の追加（append）",
+    "text": "要素の追加（append）\nappend メソッドで末尾に要素を追加できる。\nscores = [85, 90, 92, 78, 92, 88]\nscores.append(95)\nprint(scores)  # [85, 90, 92, 78, 92, 88, 95]"
+  },
+  {
+    "objectID": "03-list.html#走査全要素へのアクセス",
+    "href": "03-list.html#走査全要素へのアクセス",
+    "title": "第3回：リストの基礎知識",
+    "section": "走査（全要素へのアクセス）",
+    "text": "走査（全要素へのアクセス）\nリストの全要素にアクセスすることを走査という。for 文で簡単に書ける。\nfor score in scores:\n    print(f\"{score}点\")\n85点\n90点\n92点\n78点\n92点\n88点"
+  },
+  {
+    "objectID": "03-list.html#演習問題",
+    "href": "03-list.html#演習問題",
+    "title": "第3回：リストの基礎知識",
+    "section": "演習問題",
+    "text": "演習問題\n以下のリスト student_scores を使って取り組もう。\nstudent_scores = [85, 90, 92, 78, 92, 88]\n\nappend を使って 100点 の学生を追加しよう\n90点以上の学生の点数だけを表示するプログラムを書こう\n\nヒント：for 文の中で if 文を使う\n\n平均点を表示しよう"
+  },
+  {
+    "objectID": "03-list.html#その他-list-で知っておきたい基礎知識",
+    "href": "03-list.html#その他-list-で知っておきたい基礎知識",
+    "title": "第3回：リストの基礎知識",
+    "section": "その他 list で知っておきたい基礎知識",
+    "text": "その他 list で知っておきたい基礎知識\nよく使われる、もしくは注意するべき list の知識を挙げる。\n\n範囲外のインデックスはエラー\n初期化\nリストの長さと range による走査\nスライス（部分集合の取得）\n２次元配列\nN 次元配列\nlist 同士の結合\n【参考】異なる型の混在"
+  },
+  {
+    "objectID": "03-list.html#範囲外のインデックスはエラー",
+    "href": "03-list.html#範囲外のインデックスはエラー",
+    "title": "第3回：リストの基礎知識",
+    "section": "１. 範囲外のインデックスはエラー",
+    "text": "１. 範囲外のインデックスはエラー\n以下のインデックスは指定できない（エラーになる）。\n\n要素数（list の長さ）以上\nマイナス要素数＋1 以下\n\ntest = [0, 1, 2, 3]\nprint(len(test))  # 4\nprint(test[4])    # IndexError\nprint(test[-5])   # IndexError\n\n\n\n\n\n\nIndexError: list index out of range\n\n\nlen(test) は 4 なので有効なインデックスは -4 ～ 3 まで。 test[4] や test[-5] はその範囲外なのでエラー。"
+  },
+  {
+    "objectID": "03-list.html#初期化",
+    "href": "03-list.html#初期化",
+    "title": "第3回：リストの基礎知識",
+    "section": "２. 初期化",
+    "text": "２. 初期化\n空のリストを作る方法は２種類。どちらでも同じ結果。\nempty1 = []\nempty2 = list()\n\nprint(empty1)  # []\nprint(empty2)  # []"
+  },
+  {
+    "objectID": "03-list.html#リストの長さと-range-による走査",
+    "href": "03-list.html#リストの長さと-range-による走査",
+    "title": "第3回：リストの基礎知識",
+    "section": "３. リストの長さと range による走査",
+    "text": "３. リストの長さと range による走査\n\nlen(list) でリストの要素数を取得できる\nrange(N) は 0, 1, 2, ..., N-1 を返す（list ではなく range 型）\n\nlist(range(N)) で list に変換可能\n\nrange(len(list)) と組み合わせて走査するパターンをよく使う\n\nstudent_scores = [85, 90, 92, 78, 92, 88]\n\nprint(len(student_scores))                  # 6\nprint(list(range(len(student_scores))))     # [0, 1, 2, 3, 4, 5]\n\nfor i in range(len(student_scores)):\n    print(f\"出席番号{i+1}は、{student_scores[i]}点です。\")\n出席番号1は、85点です。\n出席番号2は、90点です。\n..."
+  },
+  {
+    "objectID": "03-list.html#スライス部分集合の取得",
+    "href": "03-list.html#スライス部分集合の取得",
+    "title": "第3回：リストの基礎知識",
+    "section": "４. スライス（部分集合の取得）",
+    "text": "４. スライス（部分集合の取得）\nリストの一部を切り取って別のリストにできる。\nlist[切り取る先頭インデックス : 切り取る末尾インデックス+1]\norg_test = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\nsliced_list = org_test[2:5]\nprint(sliced_list)  # [2, 3, 4]\n\n\n\n\n\n\nポイント\n\n\n末尾インデックスは「取りたい最後の要素のインデックス＋1」を指定する。 org_test[2:5] → インデックス 2, 3, 4 の要素を取得。"
+  },
+  {
+    "objectID": "03-list.html#次元配列",
+    "href": "03-list.html#次元配列",
+    "title": "第3回：リストの基礎知識",
+    "section": "５. ２次元配列",
+    "text": "５. ２次元配列\nlist の要素として list を入れると２次元配列になる。\nアクセスは list[行][列] の形式。\nlist_of_list = [[1, 2, 3], [4, 5, 6]]\nprint(list_of_list)        # [[1, 2, 3], [4, 5, 6]]\nprint(list_of_list[0][1])  # 2\n       列0  列1  列2\n行0 →  [1,   2,   3]\n行1 →  [4,   5,   6]\nlist_of_list[0][1] → 行0・列1 → 2"
+  },
+  {
+    "objectID": "03-list.html#n-次元配列",
+    "href": "03-list.html#n-次元配列",
+    "title": "第3回：リストの基礎知識",
+    "section": "６. N 次元配列",
+    "text": "６. N 次元配列\n２次元以上の多次元化も可能。\nN_dimensional_list = [[[1, 2, 3], [4, 5, 6]],\n                      [[7, 8, 9], [10, 11, 12]]]\n\nprint(N_dimensional_list[1][1][2])  # 12\n\n[1] → 2番目のブロック [[7,8,9],[10,11,12]]\n[1] → その中の2番目 [10,11,12]\n[2] → その中の3番目 → 12"
+  },
+  {
+    "objectID": "03-list.html#list-同士の結合",
+    "href": "03-list.html#list-同士の結合",
+    "title": "第3回：リストの基礎知識",
+    "section": "７. list 同士の結合",
+    "text": "７. list 同士の結合\n+ 演算子でリスト同士を結合できる。\nlist1 = [\"banana\", \"apple\"]\nlist2 = [\"orange\", \"peach\"]\n\nprint(list1 + list2)  # ['banana', 'apple', 'orange', 'peach']\n\n# += 演算も可能\nlist1 += list2\nprint(list1)          # ['banana', 'apple', 'orange', 'peach']\n\n\n\n\n\n\n重複はそのまま追加される\n\n\n同じ要素があっても重複して追加される（重複排除はされない）。\nlist3 = [\"banana\", \"grape\"]\nprint(list1 + list3)\n# ['banana', 'apple', 'orange', 'peach', 'banana', 'grape']"
+  },
+  {
+    "objectID": "03-list.html#参考異なる型の混在",
+    "href": "03-list.html#参考異なる型の混在",
+    "title": "第3回：リストの基礎知識",
+    "section": "８. 【参考】異なる型の混在",
+    "text": "８. 【参考】異なる型の混在\nPython の list は数値・文字列など異なる型を混在させることができる。\nprint([10, \"text\", 10.5])        # [10, 'text', 10.5]\nprint([10, [1, 2, 3], \"text\"])   # [10, [1, 2, 3], 'text']\n\ntest = [10, [1, 2, 3], \"text\"]\nprint(test[2])     # text\nprint(test[1][2])  # 3\n\n\n\n\n\n\n実際には使わない\n\n\n管理しにくいため実務では使わない。 ただし多次元配列はこの仕組みを応用している。"
   },
   {
     "objectID": "01-key-typing.html#キータイピングを速めよう",
@@ -138,5 +250,166 @@
     "title": "第2回：ショートカット",
     "section": "演習②：カット＆ペースト",
     "text": "演習②：カット＆ペースト\n課題：下のバラバラのパーツを正しい順序に ショートカットだけで 並べ替えよう。\n初期状態：\nprint(res)\nres = -1 if 400 % A !=0 else 400 // A\nA = int(input())\nゴール：\nA = int(input())\nres = -1 if 400 % A !=0 else 400 // A\nprint(res)"
+  },
+  {
+    "objectID": "04-collections.html#コレクションcollectionsとは",
+    "href": "04-collections.html#コレクションcollectionsとは",
+    "title": "第4回：コレクション",
+    "section": "コレクション（Collections）とは",
+    "text": "コレクション（Collections）とは\n\n英単語の意味：集めること・収集\nPythonでの意味：複数のデータを塊として管理するためのデータ型\n\nコンテナとも呼ばれる\nContain（内に含む）＋ er（やつ）\n\n\n今回演習する３つ：\n\n\n\n型\n特徴\n\n\n\n\nlist\n最もよく使う。順番あり・変更可\n\n\ndict\nキーで管理。名前でアクセス可\n\n\ntuple\n要素固定。変更不可"
+  },
+  {
+    "objectID": "04-collections.html#section-1",
+    "href": "04-collections.html#section-1",
+    "title": "第4回：コレクション",
+    "section": "",
+    "text": "もしコレクション型がなかったら\n大量のデータを1つずつ変数で管理することになる…"
+  },
+  {
+    "objectID": "04-collections.html#クラスの定期テスト成績を処理したい",
+    "href": "04-collections.html#クラスの定期テスト成績を処理したい",
+    "title": "第4回：コレクション",
+    "section": "クラスの定期テスト成績を処理したい",
+    "text": "クラスの定期テスト成績を処理したい\nデータの特徴：1クラスあたり30数＋のレコード。学生番号・名前・各教科の成績で構成。成績の判定や平均点などを出したい。\n\n\n\n生徒番号\n名前\n国語\n数学\n英語\n\n\n\n\n1\n佐藤 太郎\n85\n90\n85\n\n\n2\n鈴木 花子\n90\n85\n80\n\n\n3\n高橋 一郎\n78\n95\n92\n\n\n4\n田中 次郎\n92\n70\n68\n\n\n5\n伊藤 三郎\n88\n88\n90\n\n\n6\n渡辺 四郎\n78\n82\n80\n\n\n7\n山本 五郎\n92\n88\n91\n\n\n8\n中村 六子\n70\n75\n72\n\n\n9\n小林 七子\n88\n90\n85\n\n\n10\n加藤 八郎\n80\n85\n83\n\n\n…\n…\n…\n…\n…"
+  },
+  {
+    "objectID": "04-collections.html#悪い例コレクション型なし",
+    "href": "04-collections.html#悪い例コレクション型なし",
+    "title": "第4回：コレクション",
+    "section": "（悪い例）コレクション型なし",
+    "text": "（悪い例）コレクション型なし\n変数を1つずつ作るとどうなるか？\nR06_0001 = 85  # 令和6年度 学生番号1番\nR06_0002 = 90\nR06_0003 = 78\nR06_0004 = 92\nR06_0005 = 88\n\n# 合格者の判定\nif R06_0001 &gt;= 90:\n    print(\"学生R06_0001はSです\")\nif R06_0002 &gt;= 90:\n    print(\"学生R06_0002はSです\")\n\n# 以下、R06_0003以降も同様にしていく？？？（非効率すぎる）\n\n\n\n\n\n\nコレクション型を使えば…\n\n\nfor 文で一気に処理できる。学生が30人いても同じコードで対応可能。"
+  },
+  {
+    "objectID": "04-collections.html#collection１-listリスト型",
+    "href": "04-collections.html#collection１-listリスト型",
+    "title": "第4回：コレクション",
+    "section": "【Collection１】 list（リスト型）",
+    "text": "【Collection１】 list（リスト型）"
+  },
+  {
+    "objectID": "04-collections.html#list-の初期化",
+    "href": "04-collections.html#list-の初期化",
+    "title": "第4回：コレクション",
+    "section": "list の初期化",
+    "text": "list の初期化\n# カッコ [] でカンマ区切りで入力するとリストになる\nscores = [85, 90, 78, 92, 88]\n\n# 空のリスト（初期化）を作りたいときは以下のどちらか\nempty1 = []\nempty2 = list()\n\n# print文で表示可能\nprint(scores)   # [85, 90, 78, 92, 88]\nprint(empty1)   # []\nprint(empty2)   # []\n\n# ちなみに型はlist\nprint(type(scores))  # &lt;class 'list'&gt;"
+  },
+  {
+    "objectID": "04-collections.html#インデックスによるアクセス",
+    "href": "04-collections.html#インデックスによるアクセス",
+    "title": "第4回：コレクション",
+    "section": "インデックスによるアクセス",
+    "text": "インデックスによるアクセス\n# インデックス（添え字）を使ってアクセスする\n# インデックスは先頭が0（ゼロ）で1ずつ増加\n\nprint(scores[0])   # 85\nprint(scores[2])   # 78\n\n# リストの長さ以上のインデックスを指定するとエラー\nprint(scores[5])   # IndexError: list index out of range\n# ← 長さは5だが、ゼロ始まりなので4が末尾\n\n# マイナスを指定すると末尾からのアクセスになる\n# ただし、リストの末尾は -0 ではなく -1\nprint(scores[-1])  # 88\nprint(scores[-5])  # 85\n\n# リストの長さ+1のマイナスを指定するとエラー\nprint(scores[-6])  # IndexError: list index out of range"
+  },
+  {
+    "objectID": "04-collections.html#要素の追加appendと結合",
+    "href": "04-collections.html#要素の追加appendと結合",
+    "title": "第4回：コレクション",
+    "section": "要素の追加（append）と結合",
+    "text": "要素の追加（append）と結合\n# 要素の追加は .append を使う（末尾に追加）\nscores.append(95)\nprint(scores)  # [85, 90, 78, 92, 88, 95]\n\n# 【注意】このような書き方はできない\nscore2 = scores.append(95)  # エラーにはならないが…\nprint(score2)  # None ← リストではない！\n\n# リスト同士を接続（concat）することも可能\nother_scores1 = [20, 30]\nother_scores2 = [40, 50]\nother_scores = other_scores1 + other_scores2\nprint(other_scores)  # [20, 30, 40, 50]\n\nscores += other_scores\nprint(scores)  # [85, 90, 78, 92, 88, 95, 20, 30, 40, 50]"
+  },
+  {
+    "objectID": "04-collections.html#すべての要素へのアクセス走査",
+    "href": "04-collections.html#すべての要素へのアクセス走査",
+    "title": "第4回：コレクション",
+    "section": "すべての要素へのアクセス（走査）",
+    "text": "すべての要素へのアクセス（走査）\n# ① まず基本：要素を直接取り出す\nfor score in scores:\n    print(f\"{score}点\")\n\n# ② range を使って index（添え字）の並びを先に作る\nfor i in range(len(scores)):\n    print(f\"学生{i + 1}は{scores[i]}点\")\n\n# ③ enumerate を使うと index と要素を同時に取れる\nfor i, score in enumerate(scores):\n    print(f\"学生{i + 1}は{score}点\")\n\n\n\n\n\n\nどれを使う？\n\n\n\n要素だけ必要 → ①\n番号も必要 → ③（enumerate が一番スッキリ）\nスライスなど index 操作が必要 → ②"
+  },
+  {
+    "objectID": "04-collections.html#演習問題list",
+    "href": "04-collections.html#演習問題list",
+    "title": "第4回：コレクション",
+    "section": "演習問題（list）",
+    "text": "演習問題（list）\nstudent_scores = [85, 90, 92, 78, 92, 88]\n\nappend を使って 100点 の学生を追加しよう\n90点以上の学生の「学生番号」と「点数」を表示するプログラムを書こう\n\nヒント：for 文の中で if 文を使う\n\n平均点を表示しよう"
+  },
+  {
+    "objectID": "04-collections.html#collection２-dict辞書型",
+    "href": "04-collections.html#collection２-dict辞書型",
+    "title": "第4回：コレクション",
+    "section": "【Collection２】 dict（辞書型）",
+    "text": "【Collection２】 dict（辞書型）"
+  },
+  {
+    "objectID": "04-collections.html#dict-の初期化",
+    "href": "04-collections.html#dict-の初期化",
+    "title": "第4回：コレクション",
+    "section": "dict の初期化",
+    "text": "dict の初期化\n# {\"キー1\": 値1, \"キー2\": 値2, ...} のように初期化\n# 変数名は「キー→値」を表す「◎2×」で書かれることが多い（テーブルとも呼ばれる）\nname2score = {\"Yamada\": 95, \"Suzuki\": 75}\n\n# print で表示可能\nprint(name2score)        # {'Yamada': 95, 'Suzuki': 75}\nprint(type(name2score))  # &lt;class 'dict'&gt;\n\n# 空の dict の初期化\ndict_test1 = {}\ndict_test2 = dict()"
+  },
+  {
+    "objectID": "04-collections.html#要素の追加アクセス方法",
+    "href": "04-collections.html#要素の追加アクセス方法",
+    "title": "第4回：コレクション",
+    "section": "要素の追加・アクセス方法",
+    "text": "要素の追加・アクセス方法\n# リストの [0] のようなインデックスの代わりに [\"キー\"] でアクセス\nprint(name2score[\"Yamada\"])  # 95\n\n# 存在しないキーを指定するとエラー\nprint(name2score[\"Takahashi\"])  # KeyError: 'Takahashi'\n\n# 新しいキーを指定して代入すると追加\nname2score[\"Takahashi\"] = 80\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}\n\n# すでに存在するキーを指定すると、値が更新される\nname2score[\"Suzuki\"] = 70\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 70, 'Takahashi': 80}"
+  },
+  {
+    "objectID": "04-collections.html#for-文での使い方dict",
+    "href": "04-collections.html#for-文での使い方dict",
+    "title": "第4回：コレクション",
+    "section": "for 文での使い方（dict）",
+    "text": "for 文での使い方（dict）\n# for 文では以下の3種類のメソッドを活用する\n\n# すべてのキーを列挙 .keys()\nprint(name2score.keys())    # dict_keys(['Yamada', 'Suzuki', 'Takahashi'])\n\n# すべての値を列挙 .values()\nprint(name2score.values())  # dict_values([95, 70, 80])\n\n# すべての「キーと値」の組を列挙 .items()\nprint(name2score.items())   # dict_items([('Yamada', 95), ...])\n\n# .keys() を使ったパターン\nfor key in name2score.keys():\n    print(f\"{key}さんが居ます\")\n\n# .items() を使ったパターン（最もよく使う）\nfor key, value in name2score.items():\n    print(f\"{key}さんは{value}点です\")"
+  },
+  {
+    "objectID": "04-collections.html#演習問題dict",
+    "href": "04-collections.html#演習問題dict",
+    "title": "第4回：コレクション",
+    "section": "演習問題（dict）",
+    "text": "演習問題（dict）\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\n\ndict に100点を取った “Tanaka” さんを追加しよう\nTakahashi さんの点数を 92点 に訂正しよう\n90点以上の学生の「名前」と「点数」を表示するプログラムを書こう\n\nヒント：items() を使って value を判定\n\n\n解答例\nname2score[\"Tanaka\"] = 100\nname2score[\"Takahashi\"] = 92\nfor key, value in name2score.items():\n    if value &gt;= 90:\n        print(f\"{key}さんは{value}点です\")"
+  },
+  {
+    "objectID": "04-collections.html#collection３-tupleタプル",
+    "href": "04-collections.html#collection３-tupleタプル",
+    "title": "第4回：コレクション",
+    "section": "【Collection３】 tuple（タプル）",
+    "text": "【Collection３】 tuple（タプル）"
+  },
+  {
+    "objectID": "04-collections.html#tuple-の初期化アクセス",
+    "href": "04-collections.html#tuple-の初期化アクセス",
+    "title": "第4回：コレクション",
+    "section": "tuple の初期化・アクセス",
+    "text": "tuple の初期化・アクセス\n# () にカンマ区切りになったデータを tuple という\n\n# 英語・数学・理科の点数がそれぞれ 90, 85, 72 点であることを示す tuple\nscore = (90, 85, 72)\nprint(score)          # (90, 85, 72)\nprint(type(score))    # &lt;class 'tuple'&gt;\n\n# アクセス方法はリストと同じで、インデックスを指定する\nprint(score[0])   # 90\n\n# マイナスで末尾からも指定可能\nprint(score[-1])  # 72\n\n# 範囲外を指定するとエラー\nprint(score[3])   # IndexError: tuple index out of range"
+  },
+  {
+    "objectID": "04-collections.html#tuple-と-list-の違い制限",
+    "href": "04-collections.html#tuple-と-list-の違い制限",
+    "title": "第4回：コレクション",
+    "section": "tuple と list の違い・制限",
+    "text": "tuple と list の違い・制限\n# 値の変更はエラー（list との大きな違い）\nscore[0] = 100  # TypeError: 'tuple' object does not support item assignment\n\n# 値を追加できない（list との大きな違い）\nscore.append(100)  # error\n\n# どうしても追加したい場合は、list へ一度変換すれば可能\nscore_list = list(score)\nprint(type(score_list))   # &lt;class 'list'&gt;\nscore_list.append(100)\nscore = tuple(score_list)\nprint(score_list)         # [90, 85, 72, 100]\n\n\n\n\n\n\nなぜ tuple を使う？\n\n\n変更させたくないデータを保護できる。list よりメモリ効率もよい。"
+  },
+  {
+    "objectID": "04-collections.html#よくある-tuple-の使われ方関数の戻り値",
+    "href": "04-collections.html#よくある-tuple-の使われ方関数の戻り値",
+    "title": "第4回：コレクション",
+    "section": "よくある tuple の使われ方（関数の戻り値）",
+    "text": "よくある tuple の使われ方（関数の戻り値）\n# リストの最小値と最大値を返す関数\ndef get_min_max_value(data):\n    min = data[0]\n    max = data[0]\n    for datum in data:\n        if min &gt; datum:\n            min = datum\n        if max &lt; datum:\n            max = datum\n    return (min, max)  # ← tuple で複数の値を返す\n\nscores = [85, 90, 78, 92, 88]\nanswer = get_min_max_value(scores)\nprint(answer)  # (78, 92)\n\n# 以下のように分けて受けることも可能\nmin, max = get_min_max_value(scores)"
+  },
+  {
+    "objectID": "04-collections.html#実は-dict-で出てきていた-tuple",
+    "href": "04-collections.html#実は-dict-で出てきていた-tuple",
+    "title": "第4回：コレクション",
+    "section": "実は dict で出てきていた tuple",
+    "text": "実は dict で出てきていた tuple\n\nitems() はタプルの list を返している。だから key, value という2変数に代入できる。\nprint(name2score.items())\n# dict_items([('Yamada', 95), ('Suzuki', 70), ('Takahashi', 80)])\n#             ^^^^^^^^^^^^^^^ ← これが tuple！\n\nfor key, value in name2score.items():  # tuple を2変数に展開\n    print(f\"{key}さんは{value}点です\")"
+  },
+  {
+    "objectID": "04-collections.html#演習問題tuple",
+    "href": "04-collections.html#演習問題tuple",
+    "title": "第4回：コレクション",
+    "section": "演習問題（tuple）",
+    "text": "演習問題（tuple）\n# tanaka さん：英語60点、数学95点 → tuple で表現\ntanaka = (60, 95)\n\ntanaka の各点数を変数 english, math に分けて受け取ろう\ntanaka の点数の合計を表示しよう\n「90点以上の科目数」を表示しよう"
+  },
+  {
+    "objectID": "04-collections.html#まとめ",
+    "href": "04-collections.html#まとめ",
+    "title": "第4回：コレクション",
+    "section": "まとめ",
+    "text": "まとめ\nコレクションは複数のデータをまとめて管理するための型。\n\n\n\n型\n宣言\nアクセス\n追加・変更\n主な用途\n\n\n\n\nlist\n[1, 2, 3]\n[i]\n○\n順番あり・汎用\n\n\ndict\n{\"k\": v}\n[\"key\"]\n○\n名前でアクセス\n\n\ntuple\n(1, 2, 3)\n[i]\n✗\n座標・戻り値"
+  },
+  {
+    "objectID": "04-collections.html#発展その他のコレクション型",
+    "href": "04-collections.html#発展その他のコレクション型",
+    "title": "第4回：コレクション",
+    "section": "発展：その他のコレクション型",
+    "text": "発展：その他のコレクション型\n現場でも競技プログラミングでもよく使われる。各自で調べよう。\n\ndeque — 先端への挿入・削除が高速（double ended queue）\ndefaultdict — キーが存在しない場合にデフォルト値を返す dict\nheapq — 最小値の取り出しに強い（heap木で管理）\nset — 重複が許されない。和集合などの論理演算も可能\n\nA = set(['a', 'b', 'c'])\nB = set(['b', 'c', 'd'])\nprint(A | B)  # {'a', 'b', 'c', 'd'}  ← 和集合\nprint(A & B)  # {'b', 'c'}            ← 積集合\nprint(A ^ B)  # {'a', 'd'}            ← 対称差\nprint(A - B)  # {'a'}                 ← 差集合\n数値データには numpy の ndarray がよく使われる（後日扱う）。"
   }
 ]
