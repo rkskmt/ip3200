@@ -1,0 +1,15 @@
+project:
+  type: website
+  render:
+    - "*.qmd"
+
+website:
+  title: "高専3年 情報処理"
+  navbar:
+    left:
+      - href: index.qmd
+        text: "Home"
+      - href: 01-key-typing.qmd
+        text: "第1回"
+      - href: 02-shortcuts.qmd
+        text: "第2回"

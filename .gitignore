@@ -1,0 +1,15 @@
+# Quarto
+.quarto/
+_site/
+site_libs/
+*_files/
+*.quarto_ipynb
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.cursor/
+*.swp

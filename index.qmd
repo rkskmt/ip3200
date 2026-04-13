@@ -1,0 +1,9 @@
+---
+title: "高専3年 情報処理"
+format: html
+listing:
+  contents: "*.qmd"
+  type: table
+  sort: "title"
+  fields: [title]
+---
