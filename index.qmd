@@ -1,9 +1,4 @@
----
-title: "高専3年 情報処理"
-format: html
-listing:
-  contents: "*.qmd"
-  type: table
-  sort: "title"
-  fields: [title]
----
+## 情報処理 2025年度
+
+- [第1回：キータイピング](01-key-typing.qmd)
+- [第2回：ショートカット](02-shortcuts.qmd)

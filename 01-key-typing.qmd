@@ -123,3 +123,43 @@ subtitle: "基礎体力をつけよう"
 
 **140 KPM 以上** を目指そう！
 :::
+
+
+## 演習：AtCoderでプログラムを動かしてみよう
+
+「**AtCoder ABC 400 tasks**」で検索して A 問題を解いてみよう。
+
+アカウントがない人はまず作ろう。
+
+```{python}
+#| echo: false
+#| fig-align: center
+import qrcode
+import matplotlib.pyplot as plt
+import numpy as np
+
+url = "https://atcoder.jp/contests/abc400/tasks/abc400_a"
+qr = qrcode.QRCode(box_size=10, border=4)
+qr.add_data(url)
+qr.make(fit=True)
+img = qr.make_image(fill_color="black", back_color="white")
+plt.figure(figsize=(4, 4))
+plt.imshow(np.array(img), cmap="gray")
+plt.axis("off")
+plt.tight_layout()
+plt.show()
+```
+
+::: {.callout-tip}
+## 解答例（Python）
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答を見る"
+A = int(input())
+res = -1 if 400 % A != 0 else 400 // A
+print(res)
+```
+:::
