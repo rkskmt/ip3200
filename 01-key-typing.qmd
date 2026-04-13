@@ -1,13 +1,15 @@
 ---
 title: "第1回：キータイピング"
-subtitle: "基礎体力をつけよう"
+subtitle: "すべての基礎力"
 ---
 
 ## キータイピングを速めよう
 
-2025年現在、入力の基本的なインタフェースはいまだキーボードである。
 
-キーボードを打つスピードは**生涯の生産性**に直結するため、速いに越したことはない。
+入力の主流なインタフェースはいまだキーボードである。
+音声入力もあるが、特に日本語においては漢字変換や URLなど音声だけで必要な入力を賄うことは不可能です。
+
+よって、PCを生涯使うであろう我々にとってキーボードを打つスピードは**生涯の生産性**に直結するため、速いに越したことはない。
 
 
 ## 日本語タイピング速度の目安
@@ -99,7 +101,7 @@ subtitle: "基礎体力をつけよう"
 
 ## タイピング上達のコツ
 
-1. **ブラインドタッチを意識する**
+1. **タッチタイピングを意識する**
    - 画面を見ながら打ち、手元は見ないようにする
 
 2. **ミスタイプを恐れず打ち続ける**
@@ -114,7 +116,9 @@ subtitle: "基礎体力をつけよう"
 
 ## 速度計測
 
-「**寿司打ち**」で検索して **お手軽3000円コース** をやってみよう。
+「**寿司打**」で検索して **お手軽3000円コース** をやってみよう。
+
+[寿司打](https://sushida.net/play.html?soundless)
 
 ::: {.callout-note}
 ## KPMの計算方法
@@ -129,29 +133,17 @@ subtitle: "基礎体力をつけよう"
 
 「**AtCoder ABC 400 tasks**」で検索して A 問題を解いてみよう。
 
-アカウントがない人はまず作ろう。
-
-```{python}
-#| echo: false
-#| fig-align: center
-import qrcode
-import matplotlib.pyplot as plt
-import numpy as np
-
-url = "https://atcoder.jp/contests/abc400/tasks/abc400_a"
-qr = qrcode.QRCode(box_size=10, border=4)
-qr.add_data(url)
-qr.make(fit=True)
-img = qr.make_image(fill_color="black", back_color="white")
-plt.figure(figsize=(4, 4))
-plt.imshow(np.array(img), cmap="gray")
-plt.axis("off")
-plt.tight_layout()
-plt.show()
-```
+1. [AtCoder Beginner Contest 400 A問題](https://atcoder.jp/contests/abc400/tasks/abc400_a) にアクセス
+2. アカウントを作る
+3. 問題を解く
+4. 右上の「提出」ボタンを押す
+5. ジャッジ結果が **AC（Accepted）** になれば正解！
+   - **WA（Wrong Answer）** ：出力が違う
+   - **RE（Runtime Error）** ：実行中にエラー
+   - **TLE（Time Limit Exceeded）** ：時間超過
 
 ::: {.callout-tip}
-## 解答例（Python）
+## ABC400の解答例（Python）
 
 ```{python}
 #| echo: true
@@ -163,3 +155,30 @@ res = -1 if 400 % A != 0 else 400 // A
 print(res)
 ```
 :::
+
+
+
+## （参考）AtCoderでよく使う入力パターン
+
+
+```python
+# 入力をそのまま文字列として取得
+s = input()
+
+# 入力をintとして取得
+i = int(input())
+
+# スペース区切りの文字列（[foo bar baz]）をリストとして取得する場合
+ss = [s for s in input().split()]
+
+# スペース区切りの2文字を別の変数としたい場合
+A, B = [s for s in input().split()]
+
+# 「Aを1 2 3 4からなる数列とする」のような場合
+As = [int(x) for x in input().split()]
+
+# intでA Bという数字が与えられるパターン
+A, B = [int(x) for x in input().split()]
+```
+
+
