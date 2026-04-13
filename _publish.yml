@@ -1,0 +1,4 @@
+- source: project
+  gh-pages:
+    - id: "ip3200"
+      branch: gh-pages
