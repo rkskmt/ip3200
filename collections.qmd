@@ -286,6 +286,34 @@ print(name2score)  # {'Yamada': 95, 'Suzuki': 70, 'Takahashi': 80}
 ```
 
 
+## キーの存在確認（`in` 演算子）
+
+`in` 演算子でキーや値の存在を確認できる。存在しないキーを指定する前に使うと `KeyError` を防げる。
+
+```python
+name2score = {"Yamada": 95, "Suzuki": 75}
+
+# キーが存在するか確認
+if "Yamada" in name2score:
+    print(name2score["Yamada"])  # 95
+
+# 存在しないキーも安全にアクセスできる
+if "Tanaka" in name2score:
+    print(name2score["Tanaka"])
+else:
+    print("Tanaka は登録されていません")
+
+# not in で「存在しない」を確認
+if "Sato" not in name2score:
+    print("Sato は未登録")
+
+# list でも同様に使える
+scores = [85, 90, 78]
+if 90 in scores:
+    print("90点の学生がいる")  # 90点がいる
+```
+
+
 ## for 文での使い方（dict）
 
 ```python
@@ -320,6 +348,7 @@ name2score = {"Yamada": 95, "Suzuki": 75, "Takahashi": 80}
 2. **Takahashi** さんの点数を **92点** に訂正しよう
 3. **90点以上**の学生の「名前」と「点数」を表示するプログラムを書こう
    - ヒント：`items()` を使って value を判定
+4. `"Yamada"` が dict に存在するか `in` を使って確認し、存在すれば点数を表示しよう
 
 ```{python}
 #| echo: true
@@ -331,6 +360,8 @@ name2score["Takahashi"] = 92
 for key, value in name2score.items():
     if value >= 90:
         print(f"{key}さんは{value}点です")
+if "Yamada" in name2score:
+    print(f"Yamadaさんの点数は{name2score['Yamada']}点です")
 ```
 
 
