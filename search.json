@@ -14,32 +14,39 @@
     "text": "変数とは\n一方で、このように書くとエラーになります。なぜでしょうか。\na # NameError: name 'a' is not defined\n\n1 や \"1\" はリテラル（直接記述できる値）\na は値ではなく変数として認識される\n変数は値ではない — 値が書かれている場所を指す URL のようなもの（= アドレス）\nprint(変数) が値を表示するのは、ブラウザで URL を開くとページが表示されるのと同じ"
   },
   {
+    "objectID": "variables.html#代入の-if条件式",
+    "href": "variables.html#代入の-if条件式",
+    "title": "変数と代入",
+    "section": "代入の if（条件式）",
+    "text": "代入の if（条件式）\nif を使って代入する値を1行で切り替えられる。\nscore = 75\nresult = \"合格\" if score &gt;= 60 else \"不合格\"\nprint(result)  # 合格\nif-else で書くと以下と同じ意味：\nif score &gt;= 60:\n    result = \"合格\"\nelse:\n    result = \"不合格\"\n\n\n\n\n\n\nいつ使う？\n\n\n代入する値を条件で切り替えるだけの場面で使うとスッキリ書ける。 複雑な処理が必要なときは通常の if-else のほうが読みやすい。"
+  },
+  {
     "objectID": "variables.html#変数の命名規則",
     "href": "variables.html#変数の命名規則",
     "title": "変数と代入",
     "section": "変数の命名規則",
-    "text": "変数の命名規則\n変数として認識される識別子のルールです。例外はありません。\n\n文字（a-z, A-Z）またはアンダースコア（_）で始まる\n2文字目以降が文字、数字（0-9）、アンダースコアであること\n予約語（if / for / while など）ではないこと\n\na01    # 変数\n_aa_aa # 変数\n1a     # ダメ。最初が数字\ncontinue # ダメ。予約語"
+    "text": "変数の命名規則\n変数として認識される単語のルールは以下のとおりです。\n例外はありません。覚えましょう\n\n文字（a-z, A-Z）またはアンダースコア（_）で始まる\n\nつまり数字始まりはダメ（NG例： 3200scores ）\n終わるのはOK（例：scores_of_3200）\n\n2文字目以降が文字、数字（0-9）、アンダースコアであること\n予約語（if / for / while など）ではないこと\n\na01    # 変数\n_aa_aa # 変数\n1a     # ダメ。最初が数字\ncontinue # ダメ。予約語"
   },
   {
     "objectID": "variables.html#代入",
     "href": "variables.html#代入",
     "title": "変数と代入",
     "section": "代入",
-    "text": "代入\n左辺に変数、右辺にリテラルを書いて = で結ぶと、「代入」が行われます。\na11 = 11\ntest_2 = \"test2\"\n\n\n\n\n\n\n箱ではなく「看板」\n\n\na11 = 11 は「a11 という箱に 11 が入る」ではありません。\na11 は 11 が格納された住所を指す看板になる、というイメージです。\nprint(a11) はその看板が指す先の値を表示してくれます。"
+    "text": "代入\n左辺に変数、右辺にリテラルを書いて = で結ぶと、「代入」が行われます。\na11 = 11\ntest_2 = \"test2\"\n\n\n\n\n\n\n箱ではなく「看板」\n\n\na11 = 11 は「a11 という箱に 11 が入る」ではありません。\na11 は 11 が格納された住所を指す看板になる、というイメージです。\nprint(a11) はその看板が指す先の値を表示することを実装した関数なのです"
   },
   {
     "objectID": "variables.html#変数-変数-の代入",
     "href": "variables.html#変数-変数-の代入",
     "title": "変数と代入",
     "section": "変数 = 変数 の代入",
-    "text": "変数 = 変数 の代入\n変数同士を代入すると、左辺の看板が右辺の看板が指す先に書き換わります。\na11 = 11\na12 = 12\na11 = a12\nprint(a12) # 12\na11 = 13\nprint(a11) # 当然13\nprint(a12) # 11?13?\nこの結果は直感的ですか？"
+    "text": "変数 = 変数 の代入\n変数同士を代入すると、左辺の看板が右辺の看板が指す先に書き換わります。\na11 = 11\na12 = 12\na11 = a12\nprint(a12) # 12\na11 = 13\nprint(a11) # 当然13\nprint(a12) # 11?13?\nこの結果は直感的に理解できますか？"
   },
   {
     "objectID": "variables.html#リストの代入罠",
     "href": "variables.html#リストの代入罠",
     "title": "変数と代入",
     "section": "リストの代入（罠）",
-    "text": "リストの代入（罠）\n代入するものが数値ではなく、リストの場合はどうでしょう。\nodd1 = [1, 3]\nodd2 = [5, 7]\nodd1 = odd2 # odd1はodd2のアドレスを指すように指示\nprint(odd2) # [5, 7]\nodd1[0] = 9 # odd2ではなくodd1を変更\nprint(odd2) # [9, 7]。 なぜodd2が変わっているの？\nなぜ odd2 が変わっているのでしょうか？"
+    "text": "リストの代入（罠）\n代入するものが数値ではなく、リストの場合はどうでしょう。\nodd1 = [1, 3]\nodd2 = [5, 7]\nodd1 = odd2 # odd1はodd2のアドレスを指すように指示\nprint(odd2) # [5, 7]\nodd1[0] = 9 # odd2ではなくodd1を変更\nprint(odd2) # [9, 7]。 なぜodd2が変わっているの？\nなぜ odd2 が変わっているのでしょうか？\n\n\n\n\n\n\n第2回 演習③ の謎、解けますか？\n\n\n第2回ショートカット演習③ で normalize(scores) を呼んだ後、山田が「合格」かつ「不合格者0人」に見えた理由が、この「リストの代入（罠）」で説明できます。\nnormalize() はリストの中身を同じアドレスのまま書き換えるため、ブロック②を実行した時点で scores 自体が補正済みになっています。ブロック③④は補正後のスコアを見ているため、55点の山田が消えていたのです。"
   },
   {
     "objectID": "variables.html#id-で住所を確認数値",
@@ -60,7 +67,14 @@
     "href": "variables.html#ミュータブル-イミュータブル",
     "title": "変数と代入",
     "section": "ミュータブル / イミュータブル",
-    "text": "ミュータブル / イミュータブル\nアドレスを使いまわす型（ミュータブル）と、必ず新しく作る型（イミュータブル）があります。\nまず int / float / str の3つだけ覚えておけば十分です。\n\n\n\n\n\n\n\n分類\n型\n\n\n\n\nイミュータブル\nint / float / complex / bool / str / tuple / frozenset / bytes / None\n\n\nミュータブル\nlist dict set など\n\n\n\n\n\n\n\n\n\n覚え方\n\n\n「変更可能か」ではなく、「アドレスを使いまわすか、新しく作るか」 で理解するほうが直感的です。\n\nミュータブル（mutable）：代入時にアドレスを共有する → list など\nイミュータブル（immutable）：代入のたびに新しいアドレスが生まれる → int など"
+    "text": "ミュータブル / イミュータブル\nPythonには、 - アドレスを使いまわす型（ミュータブル）\nと\n\n必ず新しく作る型（イミュータブル）があります。\n\nイミュータブル型としては、 int / float / str の3つだけ覚えておけば、まずはOKです。\n\n\n\n\n\n\n\n分類\n型\n\n\n\n\nイミュータブル\nint / float / complex / bool / str / tuple / frozenset / bytes / None\n\n\nミュータブル\nlist dict set など\n\n\n\n\n\n\n\n\n\n覚え方\n\n\n「変更可能か」ではなく、「アドレスを使いまわすか、新しく作るか」 で理解するほうが直感的です。\n\nミュータブル（mutable）：代入時にアドレスを共有する → list など\nイミュータブル（immutable）：代入のたびに新しいアドレスが生まれる → int など"
+  },
+  {
+    "objectID": "variables.html#ミュータブルの罠を回避するコピー",
+    "href": "variables.html#ミュータブルの罠を回避するコピー",
+    "title": "変数と代入",
+    "section": "ミュータブルの罠を回避する：コピー",
+    "text": "ミュータブルの罠を回避する：コピー\n= で代入するとアドレスを共有してしまう。別のアドレスに複製したいときは .copy() を使う。\nodd1 = [1, 3]\n\n# NG: 同じアドレスを共有 → 両方が変わる\nodd2 = odd1\nodd2[0] = 9\nprint(odd1)  # [9, 3] ← 意図せず変わってしまう\n\n# OK: .copy() で別アドレスの複製を作る\nodd3 = odd1.copy()\nodd3[0] = 99\nprint(odd1)  # [9, 3] ← 変わらない\nprint(odd3)  # [99, 3]\n\n# スライス [:] でも同じ結果\nodd4 = odd1[:]\nprint(id(odd1) == id(odd4))  # False（別アドレス）\n\n\n\n\n\n\n.copy() vs [:]\n\n\nどちらも同じ結果。.copy() のほうが意図が明確で読みやすい。"
   },
   {
     "objectID": "variables.html#演習",
@@ -70,18 +84,25 @@
     "text": "演習\n\ndict がミュータブルであることを id() を使って確認しましょう\nlist と同じようにアクセスできる str がミュータブルかイミュータブルかを確認してください。\n上記の例で odd1[0] のアドレスを確認して、どうなっているか見てみましょう（list はミュータブルですが、list の要素は int なのでイミュータブルのはず）"
   },
   {
+    "objectID": "variables.html#次回予告",
+    "href": "variables.html#次回予告",
+    "title": "変数と代入",
+    "section": "次回予告",
+    "text": "次回予告\n第5回：list 応用 — スライス・多次元配列・結合など、list をより活用するテクニックを学ぶ。"
+  },
+  {
     "objectID": "list.html#list-とは",
     "href": "list.html#list-とは",
     "title": "リストの基礎知識",
     "section": "list とは",
-    "text": "list とは\n\n最もよく使われるコレクション型（他言語では配列・アレイとも呼ばれる）\nデータは追加順に並ぶ\n変数名は要素の名詞の複数形にすることが多い（例：foods、scores）"
+    "text": "list とは\n\n最もよく使われるコレクション型（コンテナ）\n\n他言語では配列・アレイとも呼ばれる\n\nデータは追加順に並ぶ\n変数名は要素の名詞の複数形にすることが多い（例：foods、scores）"
   },
   {
     "objectID": "list.html#宣言",
     "href": "list.html#宣言",
     "title": "リストの基礎知識",
     "section": "宣言",
-    "text": "宣言\n[] でカンマ区切りでデータを入力するとリストになる。\n\n順序が保持される\n重複してもよい\n\nscores = [85, 90, 92, 78, 92, 88]\nprint(scores)  # [85, 90, 92, 78, 92, 88]\n\n\n\n\n\n\nお作法\n\n\nカンマ , の後はスペースを空ける。"
+    "text": "宣言\n[] でカンマ区切りでデータを入力するとリストになる。\n\n順序が保持される\n重複してもよい\n\nscores = [85, 90, 92, 78, 92, 88]\nprint(scores)  # [85, 90, 92, 78, 92, 88]\n\n\n\n\n\n\nお作法\n\n\nカンマ , の後は必ずスペースを空けるのが綺麗に書くコツ。"
   },
   {
     "objectID": "list.html#アクセスインデックス",
@@ -102,7 +123,7 @@
     "href": "list.html#要素の追加append",
     "title": "リストの基礎知識",
     "section": "要素の追加（append）",
-    "text": "要素の追加（append）\nappend メソッドで末尾に要素を追加できる。\nscores = [85, 90, 92, 78, 92, 88]\nscores.append(95)\nprint(scores)  # [85, 90, 92, 78, 92, 88, 95]"
+    "text": "要素の追加（append）\nappend メソッドで末尾に要素を追加できる。\nscores = [85, 90, 92, 78, 92, 88]\nscores.append(95)\nprint(scores)  # [85, 90, 92, 78, 92, 88, 95]\n\n\n\n\n\n\n戻り値は None\n\n\nappend は末尾に追加するだけで、新しいリストを返さない。\nresult = scores.append(95)\nprint(result)  # None ← リストではない！\nresult = scores.append(95) のように書くと result が None になってしまう。"
   },
   {
     "objectID": "list.html#走査全要素へのアクセス",
@@ -116,14 +137,14 @@
     "href": "list.html#演習問題",
     "title": "リストの基礎知識",
     "section": "演習問題",
-    "text": "演習問題\n以下のリスト student_scores を使って取り組もう。\nstudent_scores = [85, 90, 92, 78, 92, 88]\n\nappend を使って 100点 の学生を追加しよう\n90点以上の学生の点数だけを表示するプログラムを書こう\n\nヒント：for 文の中で if 文を使う\n\n平均点を表示しよう"
+    "text": "演習問題\n以下のリスト student_scores を使って取り組もう。\nstudent_scores = [85, 90, 92, 78, 92, 88]\n\nappend を使って 100点 の学生を追加しよう\n90点以上の学生の「学生番号」と「点数」を表示するプログラムを書こう\n\nヒント：for 文の中で if 文を使う\n\n平均点を表示しよう\n\n\n\n解答を見る\nstudent_scores.append(100)\nfor i, score in enumerate(student_scores):\n    if score &gt;= 90:\n        print(f\"学生{i + 1}は{score}点です\")\nprint(sum(student_scores) / len(student_scores))"
   },
   {
     "objectID": "list.html#その他-list-で知っておきたい基礎知識",
     "href": "list.html#その他-list-で知っておきたい基礎知識",
     "title": "リストの基礎知識",
     "section": "その他 list で知っておきたい基礎知識",
-    "text": "その他 list で知っておきたい基礎知識\nよく使われる、もしくは注意するべき list の知識を挙げる。\n\n範囲外のインデックスはエラー\n初期化\nリストの長さと range による走査\nスライス（部分集合の取得）\n２次元配列\nN 次元配列\nlist 同士の結合\n【参考】異なる型の混在"
+    "text": "その他 list で知っておきたい基礎知識\nよく使われる、もしくは注意するべき list の知識を挙げる。\n\n範囲外のインデックスはエラー\n初期化\nリストの長さと range による走査\nスライス（部分集合の取得）\n２次元配列\nN 次元配列\nlist 同士の結合\nソート\nリスト内包表記\n【参考】異なる型の混在"
   },
   {
     "objectID": "list.html#範囲外のインデックスはエラー",
@@ -175,11 +196,46 @@
     "text": "７. list 同士の結合\n+ 演算子でリスト同士を結合できる。\nlist1 = [\"banana\", \"apple\"]\nlist2 = [\"orange\", \"peach\"]\n\nprint(list1 + list2)  # ['banana', 'apple', 'orange', 'peach']\n\n# += 演算も可能\nlist1 += list2\nprint(list1)          # ['banana', 'apple', 'orange', 'peach']\n\n\n\n\n\n\n重複はそのまま追加される\n\n\n同じ要素があっても重複して追加される（重複排除はされない）。\nlist3 = [\"banana\", \"grape\"]\nprint(list1 + list3)\n# ['banana', 'apple', 'orange', 'peach', 'banana', 'grape']"
   },
   {
+    "objectID": "list.html#ソート",
+    "href": "list.html#ソート",
+    "title": "リストの基礎知識",
+    "section": "８. ソート",
+    "text": "８. ソート\nsort() と sorted() でリストを並び替えられる。\nscores = [85, 90, 92, 78, 92, 88]\n\n# sort()：元のリストを直接変更（ミュータブル！）\nscores.sort()\nprint(scores)  # [78, 85, 88, 90, 92, 92]\n\n# sorted()：新しいリストを返す（元は変わらない）\noriginal = [85, 90, 92, 78]\nresult = sorted(original)\nprint(original)  # [85, 90, 92, 78] ← 変わらない\nprint(result)    # [78, 85, 90, 92]\n\n# 降順は reverse=True\nscores.sort(reverse=True)\nprint(scores)  # [92, 92, 90, 88, 85, 78]\n\n\n\n\n\n\nsort vs sorted の使い分け\n\n\n\n元のリストを壊してよい → sort()（速い）\n元のリストを保持したい → sorted()（安全）\n\nsort() が in-place で変更する点は、第4回で学んだミュータブルの性質そのもの。"
+  },
+  {
+    "objectID": "list.html#リスト内包表記",
+    "href": "list.html#リスト内包表記",
+    "title": "リストの基礎知識",
+    "section": "９. リスト内包表記",
+    "text": "９. リスト内包表記\nfor 文を1行に圧縮してリストを作る書き方\n例えば、[0, 1, 4, 9, 16]のリストを作りたい時、\nsquares = []\nfor x in range(5):\n    squares.append(x * x)\nprint(squares)  # [0, 1, 4, 9, 16]\nと書けるけど、長いので以下のように一撃でも書ける。それがリスト内包表記\n# 基本形：[式 for 変数 in イテラブル]\nsquares = [x ** 2 for x in range(5)]\nprint(squares)  # [0, 1, 4, 9, 16]"
+  },
+  {
+    "objectID": "list.html#リスト内包表記条件式付き",
+    "href": "list.html#リスト内包表記条件式付き",
+    "title": "リストの基礎知識",
+    "section": "９. リスト内包表記（条件式付き）",
+    "text": "９. リスト内包表記（条件式付き）\n例えば、0-99の整数うち３の倍数以外のリストを作る場合、以下のようにfor文に条件を書くことになる。\n\nnot_divisible_by_3s = []\nfor x in range(100):\n    if x % 3 == 0:\n        continue\n    not_divisible_by_3s.append(x)\nprint(not_divisible_by_3s)\nこれをリスト内包表記だとこう書ける。短い\n# 条件付き：[式 for 変数 in イテラブル if 条件]\nnot_divisible_by_3s = [x for x in range(100) if x % 3 != 0]\nprint(not_divisible_by_3s)\n\n\n\n\n\n\nノート\n\n\nリスト内包表記はAtCoderでよく使う（次スライド）"
+  },
+  {
+    "objectID": "list.html#リスト内包表記の使いどころ",
+    "href": "list.html#リスト内包表記の使いどころ",
+    "title": "リストの基礎知識",
+    "section": "リスト内包表記の使いどころ",
+    "text": "リスト内包表記の使いどころ\n第1回 AtCoder の参考コードに出てきた謎の構文：\nAs = [int(x) for x in input().split()]\nこれはリスト内包表記だった。input().split() で [\"1\", \"2\", \"3\"] という文字列のリストを作り、 各要素を int(x) で整数に変換しながら新しいリストを作っている。\nfor 文で書くと以下と同じ意味：\ninput_str = input().split() # split(\" \")と同じ。つまり、空白区切りで分けてlist化\nAs = []\nfor x in input_str:\n    As.append(int(x))"
+  },
+  {
     "objectID": "list.html#参考異なる型の混在",
     "href": "list.html#参考異なる型の混在",
     "title": "リストの基礎知識",
-    "section": "８. 【参考】異なる型の混在",
-    "text": "８. 【参考】異なる型の混在\nPython の list は数値・文字列など異なる型を混在させることができる。\nprint([10, \"text\", 10.5])        # [10, 'text', 10.5]\nprint([10, [1, 2, 3], \"text\"])   # [10, [1, 2, 3], 'text']\n\ntest = [10, [1, 2, 3], \"text\"]\nprint(test[2])     # text\nprint(test[1][2])  # 3\n\n\n\n\n\n\n実際には使わない\n\n\n管理しにくいため実務では使わない。 ただし多次元配列はこの仕組みを応用している。"
+    "section": "１０. 【参考】異なる型の混在",
+    "text": "１０. 【参考】異なる型の混在\nPython の list は数値・文字列など異なる型を混在させることができる。\nprint([10, \"text\", 10.5])        # [10, 'text', 10.5]\nprint([10, [1, 2, 3], \"text\"])   # [10, [1, 2, 3], 'text']\n\ntest = [10, [1, 2, 3], \"text\"]\nprint(test[2])     # text\nprint(test[1][2])  # 3\n\n\n\n\n\n\n実際には使わない\n\n\n管理しにくいため実務では使わない。 ただし多次元配列はこの仕組みを応用している。"
+  },
+  {
+    "objectID": "list.html#まとめ",
+    "href": "list.html#まとめ",
+    "title": "リストの基礎知識",
+    "section": "まとめ",
+    "text": "まとめ\n以上が list の応用テクニック。第4回で学んだミュータブル性と組み合わせると、スライスや多次元配列の動作がより深く理解できる。"
   },
   {
     "objectID": "index.html#情報処理-2025年度",
@@ -294,6 +350,13 @@
     "text": "要素の追加・アクセス方法\n# リストの [0] のようなインデックスの代わりに [\"キー\"] でアクセス\nprint(name2score[\"Yamada\"])  # 95\n\n# 存在しないキーを指定するとエラー\nprint(name2score[\"Takahashi\"])  # KeyError: 'Takahashi'\n\n# 新しいキーを指定して代入すると追加\nname2score[\"Takahashi\"] = 80\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}\n\n# すでに存在するキーを指定すると、値が更新される\nname2score[\"Suzuki\"] = 70\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 70, 'Takahashi': 80}"
   },
   {
+    "objectID": "collections.html#キーの存在確認in-演算子",
+    "href": "collections.html#キーの存在確認in-演算子",
+    "title": "コレクション",
+    "section": "キーの存在確認（in 演算子）",
+    "text": "キーの存在確認（in 演算子）\nin 演算子でキーや値の存在を確認できる。存在しないキーを指定する前に使うと KeyError を防げる。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75}\n\n# キーが存在するか確認\nif \"Yamada\" in name2score:\n    print(name2score[\"Yamada\"])  # 95\n\n# 存在しないキーも安全にアクセスできる\nif \"Tanaka\" in name2score:\n    print(name2score[\"Tanaka\"])\nelse:\n    print(\"Tanaka は登録されていません\")\n\n# not in で「存在しない」を確認\nif \"Sato\" not in name2score:\n    print(\"Sato は未登録\")\n\n# list でも同様に使える\nscores = [85, 90, 78]\nif 90 in scores:\n    print(\"90点の学生がいる\")  # 90点がいる"
+  },
+  {
     "objectID": "collections.html#for-文での使い方dict",
     "href": "collections.html#for-文での使い方dict",
     "title": "コレクション",
@@ -305,7 +368,7 @@
     "href": "collections.html#演習問題dict",
     "title": "コレクション",
     "section": "演習問題（dict）",
-    "text": "演習問題（dict）\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\n\ndict に100点を取った “Tanaka” さんを追加しよう\nTakahashi さんの点数を 92点 に訂正しよう\n90点以上の学生の「名前」と「点数」を表示するプログラムを書こう\n\nヒント：items() を使って value を判定\n\n\n\n\n解答を見る\nname2score[\"Tanaka\"] = 100\nname2score[\"Takahashi\"] = 92\nfor key, value in name2score.items():\n    if value &gt;= 90:\n        print(f\"{key}さんは{value}点です\")"
+    "text": "演習問題（dict）\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\n\ndict に100点を取った “Tanaka” さんを追加しよう\nTakahashi さんの点数を 92点 に訂正しよう\n90点以上の学生の「名前」と「点数」を表示するプログラムを書こう\n\nヒント：items() を使って value を判定\n\n\"Yamada\" が dict に存在するか in を使って確認し、存在すれば点数を表示しよう\n\n\n\n解答を見る\nname2score[\"Tanaka\"] = 100\nname2score[\"Takahashi\"] = 92\nfor key, value in name2score.items():\n    if value &gt;= 90:\n        print(f\"{key}さんは{value}点です\")\nif \"Yamada\" in name2score:\n    print(f\"Yamadaさんの点数は{name2score['Yamada']}点です\")"
   },
   {
     "objectID": "collections.html#collection３-tupleタプル",
@@ -369,6 +432,13 @@
     "title": "コレクション",
     "section": "発展：その他のコレクション型",
     "text": "発展：その他のコレクション型\n現場でも競技プログラミングでもよく使われる。各自で調べよう。\n\ndeque — 先端への挿入・削除が高速（double ended queue）\ndefaultdict — キーが存在しない場合にデフォルト値を返す dict\nheapq — 最小値の取り出しに強い（heap木で管理）\nset — 重複が許されない。和集合などの論理演算も可能\n\nA = set(['a', 'b', 'c'])\nB = set(['b', 'c', 'd'])\nprint(A | B)  # {'a', 'b', 'c', 'd'}  ← 和集合\nprint(A & B)  # {'b', 'c'}            ← 積集合\nprint(A ^ B)  # {'a', 'd'}            ← 対称差\nprint(A - B)  # {'a'}                 ← 差集合\n数値データには numpy の ndarray がよく使われる（後日扱う）。"
+  },
+  {
+    "objectID": "collections.html#次回予告",
+    "href": "collections.html#次回予告",
+    "title": "コレクション",
+    "section": "次回予告",
+    "text": "次回予告\n第4回：変数と代入 — list の代入でなぜ元データが書き換わってしまうのか、メモリモデルで解明する。第2回の演習③の謎もここで解決する。"
   },
   {
     "objectID": "key-typing.html#キータイピングを速めよう",
@@ -515,6 +585,13 @@
     "href": "shortcuts.html#演習③コメントアウトでバグを追い詰める",
     "title": "ショートカット",
     "section": "演習③：コメントアウトでバグを追い詰める",
-    "text": "演習③：コメントアウトでバグを追い詰める\n課題：このプログラムを実行すると結果がおかしい。コメントアウトを使ってどのブロックが原因か突き止めよう。\nコード（VS Codeに貼り付けて実行）：\nscores = [85, 92, 78, 55, 65]\nnames = [\"田中\", \"鈴木\", \"佐藤\", \"山田\", \"高橋\"]\n\ndef normalize(data, threshold=60):\n    for i in range(len(data)):\n        if data[i] &lt; threshold:\n            data[i] = threshold\n    return data\n\n# ブロック①：受験者一覧\nprint(\"=== 受験者一覧 ===\")\nfor i in range(len(names)):\n    print(names[i], \":\", scores[i], \"点\")\n\n# ブロック②：補正後の平均点\nprint(\"=== 補正後の平均点 ===\")\ncorrected = normalize(scores)\naverage = sum(corrected) / len(corrected)\nprint(\"平均：\", round(average, 1), \"点\")\n\n# ブロック③：合否判定\nprint(\"=== 合否判定 ===\")\nfor i in range(len(names)):\n    if scores[i] &gt;= 60:\n        print(names[i], \"：合格\")\n    else:\n        print(names[i], \"：不合格\")\n\n# ブロック④：不合格者集計\nprint(\"=== 集計 ===\")\nfailed = [s for s in scores if s &lt; 60]\nprint(\"不合格者数：\", len(failed), \"人\")\nprint(\"合格者数：\", len(scores) - len(failed), \"人\")\nおかしい点：①で山田は55点と表示されるのに、③では山田が合格、④では不合格者0人になっている。\n手順：\n\nまず全体を実行して、おかしい箇所を確認する\n怪しいブロックを 複数行まとめてCtrl+/ でコメントアウトして再実行\nどのブロックをコメントアウトしたら結果が正しくなるかを確認する\n原因のブロックのどの行がバグか特定する"
+    "text": "演習③：コメントアウトでバグを追い詰める\n課題：このプログラムを実行すると結果がおかしい。コメントアウトを使ってどのブロックが原因か突き止めよう。\nコード（VS Codeに貼り付けて実行）：\nscores = [85, 92, 78, 55, 65]\nnames = [\"田中\", \"鈴木\", \"佐藤\", \"山田\", \"高橋\"]\n\ndef normalize(data, threshold=60):\n    for i in range(len(data)):\n        if data[i] &lt; threshold:\n            data[i] = threshold\n    return data\n\n# ブロック①：受験者一覧\nprint(\"=== 受験者一覧 ===\")\nfor i in range(len(names)):\n    print(names[i], \":\", scores[i], \"点\")\n\n# ブロック②：補正後の平均点\nprint(\"=== 補正後の平均点 ===\")\ncorrected = normalize(scores)\naverage = sum(corrected) / len(corrected)\nprint(\"平均：\", round(average, 1), \"点\")\n\n# ブロック③：合否判定\nprint(\"=== 合否判定 ===\")\nfor i in range(len(names)):\n    if scores[i] &gt;= 60:\n        print(names[i], \"：合格\")\n    else:\n        print(names[i], \"：不合格\")\n\n# ブロック④：不合格者集計\nprint(\"=== 集計 ===\")\nfailed = [s for s in scores if s &lt; 60]\nprint(\"不合格者数：\", len(failed), \"人\")\nprint(\"合格者数：\", len(scores) - len(failed), \"人\")\nおかしい点：①で山田は55点と表示されるのに、③では山田が合格、④では不合格者0人になっている。\n手順：\n\nまず全体を実行して、おかしい箇所を確認する\n怪しいブロックを 複数行まとめてCtrl+/ でコメントアウトして再実行\nどのブロックをコメントアウトしたら結果が正しくなるかを確認する\n原因のブロックのどの行がバグか特定する\n\n\n\n\n\n\n\nなぜこうなるの？\n\n\nnormalize() がリストを中で書き換えていることが原因です。 なぜそうなるのかのメカニズムは、第4回「変数と代入」で詳しく解説します。"
+  },
+  {
+    "objectID": "shortcuts.html#次回予告",
+    "href": "shortcuts.html#次回予告",
+    "title": "ショートカット",
+    "section": "次回予告",
+    "text": "次回予告\n第3回：コレクション型 — list / dict / tuple でデータをまとめて管理する方法を学ぶ。"
   }
 ]
