@@ -5,7 +5,8 @@ subtitle: "速習から応用まで"
 
 ## list とは
 
-- 最もよく使われる**コレクション型**（他言語では配列・アレイとも呼ばれる）
+- 最もよく使われる**コレクション型（コンテナ）**
+  - 他言語では**配列・アレイ**とも呼ばれる
 - データは**追加順**に並ぶ
 - 変数名は要素の名詞の**複数形**にすることが多い（例：`foods`、`scores`）
 
@@ -25,7 +26,7 @@ print(scores)  # [85, 90, 92, 78, 92, 88]
 ::: {.callout-tip}
 ## お作法
 
-カンマ `,` の後はスペースを空ける。
+カンマ `,` の後は**必ずスペースを空ける**のが綺麗に書くコツ。
 :::
 
 
@@ -320,23 +321,57 @@ print(scores)  # [92, 92, 90, 88, 85, 78]
 
 ## ９. リスト内包表記
 
-`for` 文を1行に圧縮してリストを作る書き方。Python でよく見かける。
+`for` 文を1行に圧縮してリストを作る書き方
+
+例えば、[0, 1, 4, 9, 16]のリストを作りたい時、
+
+```python
+squares = []
+for x in range(5):
+    squares.append(x * x)
+print(squares)  # [0, 1, 4, 9, 16]
+```
+
+と書けるけど、長いので以下のように一撃でも書ける。それがリスト内包表記
 
 ```python
 # 基本形：[式 for 変数 in イテラブル]
 squares = [x ** 2 for x in range(5)]
 print(squares)  # [0, 1, 4, 9, 16]
-
-# 条件付き：[式 for 変数 in イテラブル if 条件]
-scores = [85, 90, 92, 78, 92, 88]
-high_scores = [s for s in scores if s >= 90]
-print(high_scores)  # [90, 92, 92]
 ```
 
+## ９. リスト内包表記（条件式付き）
+
+例えば、0-99の整数うち３の倍数以外のリストを作る場合、以下のようにfor文に条件を書くことになる。
+
+```python
+
+not_divisible_by_3s = []
+for x in range(100):
+    if x % 3 == 0:
+        continue
+    not_divisible_by_3s.append(x)
+print(not_divisible_by_3s)
+```
+
+これをリスト内包表記だとこう書ける。短い
+
+
+```python
+# 条件付き：[式 for 変数 in イテラブル if 条件]
+not_divisible_by_3s = [x for x in range(100) if x % 3 != 0]
+print(not_divisible_by_3s)
+```
+
+
 ::: {.callout-note}
-## 第1回の謎が解けた
+リスト内包表記はAtCoderでよく使う（次スライド）
+:::
+
+## リスト内包表記の使いどころ
 
 第1回 AtCoder の参考コードに出てきた謎の構文：
+
 
 ```python
 As = [int(x) for x in input().split()]
@@ -344,7 +379,17 @@ As = [int(x) for x in input().split()]
 
 これはリスト内包表記だった。`input().split()` で `["1", "2", "3"]` という文字列のリストを作り、
 各要素を `int(x)` で整数に変換しながら新しいリストを作っている。
-:::
+
+`for` 文で書くと以下と同じ意味：
+
+```python
+input_str = input().split() # split(" ")と同じ。つまり、空白区切りで分けてlist化
+As = []
+for x in input_str:
+    As.append(int(x))
+```
+
+
 
 
 ## １０. 【参考】異なる型の混在
