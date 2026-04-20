@@ -2,6 +2,8 @@ project:
   type: website
   render:
     - "*.qmd"
+  resources:
+    - "imgs/**"
 
 website:
   title: "高専3年 情報処理"
@@ -9,7 +11,13 @@ website:
     left:
       - href: index.qmd
         text: "Home"
-      - href: 01-key-typing.qmd
+      - href: key-typing.qmd
         text: "第1回"
-      - href: 02-shortcuts.qmd
+      - href: shortcuts.qmd
         text: "第2回"
+      - href: variables.qmd
+        text: "第3回"
+      - href: list.qmd
+        text: "第4回"
+      - href: collections.qmd
+        text: "第5回"

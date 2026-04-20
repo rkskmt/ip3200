@@ -1,11 +1,14 @@
-## 情報処理 2025年度 
+## 情報処理 2025年度
 
 [https://rkskmt.github.io/ip3200/](https://rkskmt.github.io/ip3200/)
 
 
 
-- [第1回：キータイピング](01-key-typing.qmd)
-- [第2回：ショートカット](02-shortcuts.qmd)
+- [第1回：キータイピング](key-typing.qmd)
+- [第2回：ショートカット](shortcuts.qmd)
+- [第3回：変数と代入](variables.qmd)
+- [第4回：list](list.qmd)
+- [第5回：コレクションまとめ](collections.qmd)
 
 
 ![](imgs/qrcode_rkskmt.github.io.png){fig-align="center" width=300}

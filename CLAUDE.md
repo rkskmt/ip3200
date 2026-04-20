@@ -21,11 +21,12 @@ Quarto-based website for "高専3年 情報処理" (3rd-year KOSEN Information P
 ## Conventions
 
 - Content is written in **Japanese**
-- `##` がスライドの区切り（`---` は使わない）
-- `_metadata.yaml` が全 `.qmd` に `clean-revealjs` を適用する
-- **`index.qmd` には `format: html` を書かない。** Quarto は `_metadata.yaml` の `format` とファイルの `format` を上書きではなく**マージ**するため、両方のフォーマットでレンダーされ `rename` エラーになる。`index.qmd` は `ai` プロジェクトと同様、フロントマターなしのシンプルなリンクリストにする。
-- **`index.qmd` に `listing:` も使わない。** 同じ理由で `format: html` が必要になり衝突する。
-- `_quarto.yml` の `render: ["*.qmd"]` で `.md` ファイル（CLAUDE.md等）がレンダリングされないようにしている
+- `##` delimits slides (do not use `---`)
+- `_metadata.yaml` applies `clean-revealjs` to all `.qmd` files
+- **Do not add `format: html` to `index.qmd`.** Quarto **merges** (not overwrites) `format` from `_metadata.yaml` and the file, causing it to render in both formats and trigger a `rename` error. Keep `index.qmd` as a simple link list with no frontmatter, as in the `ai` project.
+- **Do not use `listing:` in `index.qmd` either.** Same reason — it requires `format: html`, which conflicts.
+- `render: ["*.qmd"]` in `_quarto.yml` prevents `.md` files (e.g. CLAUDE.md) from being rendered
+- **When adding a new `.qmd`, always update both `index.qmd` and `_quarto.yml`.** `index.qmd` is the link list; `_quarto.yml` is the navbar. Missing either one leaves them out of sync.
 - Use Quarto callouts for key concepts
 
 ## Build

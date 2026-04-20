@@ -1,0 +1,436 @@
+---
+title: "第4回：コレクション"
+subtitle: "list / dict / tuple"
+---
+
+
+
+## コレクション（Collections）とは
+
+::: {.fig-cite src="imgs/Numismatic_items_or_specimens_on_display_at_an_exhibition_in_Ballygunge,_Kolkata.jpg" height="90%"}
+
+::: {.content-box .pos-br}
+- 複数のデータを塊として管理するためのデータ型
+  - **コンテナ**とも呼ばれる
+
+| 型 | 特徴 |
+|---|---|
+| `list` | 最もよく使う。順番あり・変更可 |
+| `dict` | キーで管理。名前でアクセス可 |
+| `tuple` | 要素固定。変更不可 |
+:::
+
+::: {.cite}
+CC-BY-SA 4.0: <https://en.wikipedia.org/wiki/Collecting#/media/File:Numismatic_items_or_specimens_on_display_at_an_exhibition_in_Ballygunge,_Kolkata.jpg>
+:::
+:::
+
+
+## 一般的にはコンテナとも呼ばれる
+
+::: {.fig-cite src="imgs/container.jpg" height="90%"}
+
+::: {.content-box .pos-br}
+- **英単語の意味**：集めること・収集
+  - Contain（内に含む）＋ er（やつ）
+
+:::
+
+:::
+
+
+
+
+## {background-image="imgs/04-chaos.png" background-size="cover"}
+
+::: {style="background: rgba(0,0,0,0.55); color: white; padding: 20px; border-radius: 8px; display: inline-block; margin-top: 200px;"}
+**もしコレクション型がなかったら**
+
+大量のデータを1つずつ変数で管理することになる…
+:::
+
+
+## クラスの定期テスト成績を処理したい
+
+**データの特徴**：1クラスあたり30数＋のレコード。学生番号・名前・各教科の成績で構成。成績の判定や平均点などを出したい。
+
+| 生徒番号 | 名前 | 国語 | 数学 | 英語 |
+|---|---|---|---|---|
+| 1 | 佐藤 太郎 | 85 | 90 | 85 |
+| 2 | 鈴木 花子 | 90 | 85 | 80 |
+| 3 | 高橋 一郎 | 78 | 95 | 92 |
+| 4 | 田中 次郎 | 92 | 70 | 68 |
+| 5 | 伊藤 三郎 | 88 | 88 | 90 |
+| 6 | 渡辺 四郎 | 78 | 82 | 80 |
+| 7 | 山本 五郎 | 92 | 88 | 91 |
+| 8 | 中村 六子 | 70 | 75 | 72 |
+| 9 | 小林 七子 | 88 | 90 | 85 |
+| 10 | 加藤 八郎 | 80 | 85 | 83 |
+| … | … | … | … | … |
+
+
+
+## （悪い例）コレクション型なし
+
+変数を1つずつ作るとどうなるか？
+
+```python
+R06_0001 = 85  # 令和6年度 学生番号1番
+R06_0002 = 90
+R06_0003 = 78
+R06_0004 = 92
+R06_0005 = 88
+
+# 合格者の判定
+if R06_0001 >= 90:
+    print("学生R06_0001はSです")
+if R06_0002 >= 90:
+    print("学生R06_0002はSです")
+
+# 以下、R06_0003以降も同様にしていく？？？（非効率すぎる）
+```
+
+::: {.callout-note}
+## コレクション型を使えば…
+
+`for` 文で一気に処理できる。学生が30人いても同じコードで対応可能。
+:::
+
+
+## 【Collection１】 list（リスト型）
+
+![](imgs/list.jpg)
+
+
+## list の初期化
+
+```python
+# カッコ [] でカンマ区切りで入力するとリストになる
+scores = [85, 90, 78, 92, 88]
+
+# 空のリスト（初期化）を作りたいときは以下のどちらか
+empty1 = []
+empty2 = list()
+
+# print文で表示可能
+print(scores)   # [85, 90, 78, 92, 88]
+print(empty1)   # []
+print(empty2)   # []
+
+# ちなみに型はlist
+print(type(scores))  # <class 'list'>
+```
+
+
+## インデックスによるアクセス
+
+```python
+# インデックス（添え字）を使ってアクセスする
+# インデックスは先頭が0（ゼロ）で1ずつ増加
+
+print(scores[0])   # 85
+print(scores[2])   # 78
+
+# リストの長さ以上のインデックスを指定するとエラー
+print(scores[5])   # IndexError: list index out of range
+# ← 長さは5だが、ゼロ始まりなので4が末尾
+
+# マイナスを指定すると末尾からのアクセスになる
+# ただし、リストの末尾は -0 ではなく -1
+print(scores[-1])  # 88
+print(scores[-5])  # 85
+
+# リストの長さ+1のマイナスを指定するとエラー
+print(scores[-6])  # IndexError: list index out of range
+```
+
+
+## 要素の追加（append）と結合
+
+```python
+# 要素の追加は .append を使う（末尾に追加）
+scores.append(95)
+print(scores)  # [85, 90, 78, 92, 88, 95]
+
+# 【注意】このような書き方はできない
+score2 = scores.append(95)  # エラーにはならないが…
+print(score2)  # None ← リストではない！
+
+# リスト同士を接続（concat）することも可能
+other_scores1 = [20, 30]
+other_scores2 = [40, 50]
+other_scores = other_scores1 + other_scores2
+print(other_scores)  # [20, 30, 40, 50]
+
+scores += other_scores
+print(scores)  # [85, 90, 78, 92, 88, 95, 20, 30, 40, 50]
+```
+
+
+## すべての要素へのアクセス（走査）
+
+```python
+# ① まず基本：要素を直接取り出す
+for score in scores:
+    print(f"{score}点")
+
+# ② range を使って index（添え字）の並びを先に作る
+for i in range(len(scores)):
+    print(f"学生{i + 1}は{scores[i]}点")
+
+# ③ enumerate を使うと index と要素を同時に取れる
+for i, score in enumerate(scores):
+    print(f"学生{i + 1}は{score}点")
+```
+
+::: {.callout-tip}
+## どれを使う？
+
+- 要素だけ必要 → ①
+- 番号も必要 → ③（`enumerate` が一番スッキリ）
+- スライスなど index 操作が必要 → ②
+:::
+
+
+## 演習問題（list）
+
+```python
+student_scores = [85, 90, 92, 78, 92, 88]
+```
+
+1. `append` を使って **100点** の学生を追加しよう
+2. **90点以上**の学生の「学生番号」と「点数」を表示するプログラムを書こう
+   - ヒント：`for` 文の中で `if` 文を使う
+3. **平均点**を表示しよう
+
+
+## 【Collection２】 dict（辞書型）
+
+![](imgs/Focus_definition_(Unsplash).jpg)
+
+
+::: {.cite}
+CC0: <https://en.wikipedia.org/wiki/Fictionary#/media/File:Focus_definition_(Unsplash).jpg>
+:::
+
+## dict の初期化
+
+```python
+# {"キー1": 値1, "キー2": 値2, ...} のように初期化
+# 変数名は「キー→値」を表す「◎2×」で書かれることが多い（テーブルとも呼ばれる）
+name2score = {"Yamada": 95, "Suzuki": 75}
+
+# print で表示可能
+print(name2score)        # {'Yamada': 95, 'Suzuki': 75}
+print(type(name2score))  # <class 'dict'>
+
+# 空の dict の初期化
+dict_test1 = {}
+dict_test2 = dict()
+```
+
+
+## 要素の追加・アクセス方法
+
+```python
+# リストの [0] のようなインデックスの代わりに ["キー"] でアクセス
+print(name2score["Yamada"])  # 95
+
+# 存在しないキーを指定するとエラー
+print(name2score["Takahashi"])  # KeyError: 'Takahashi'
+
+# 新しいキーを指定して代入すると追加
+name2score["Takahashi"] = 80
+print(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}
+
+# すでに存在するキーを指定すると、値が更新される
+name2score["Suzuki"] = 70
+print(name2score)  # {'Yamada': 95, 'Suzuki': 70, 'Takahashi': 80}
+```
+
+
+## for 文での使い方（dict）
+
+```python
+# for 文では以下の3種類のメソッドを活用する
+
+# すべてのキーを列挙 .keys()
+print(name2score.keys())    # dict_keys(['Yamada', 'Suzuki', 'Takahashi'])
+
+# すべての値を列挙 .values()
+print(name2score.values())  # dict_values([95, 70, 80])
+
+# すべての「キーと値」の組を列挙 .items()
+print(name2score.items())   # dict_items([('Yamada', 95), ...])
+
+# .keys() を使ったパターン
+for key in name2score.keys():
+    print(f"{key}さんが居ます")
+
+# .items() を使ったパターン（最もよく使う）
+for key, value in name2score.items():
+    print(f"{key}さんは{value}点です")
+```
+
+
+## 演習問題（dict）
+
+```python
+name2score = {"Yamada": 95, "Suzuki": 75, "Takahashi": 80}
+```
+
+1. `dict` に100点を取った **"Tanaka"** さんを追加しよう
+2. **Takahashi** さんの点数を **92点** に訂正しよう
+3. **90点以上**の学生の「名前」と「点数」を表示するプログラムを書こう
+   - ヒント：`items()` を使って value を判定
+
+### 解答例
+
+```python
+name2score["Tanaka"] = 100
+name2score["Takahashi"] = 92
+for key, value in name2score.items():
+    if value >= 90:
+        print(f"{key}さんは{value}点です")
+```
+
+
+## 【Collection３】 tuple（タプル）
+
+
+::: {.fig-cite src="imgs/3D_Spherical.svg.jpg" height="90%"}
+
+
+::: {.cite}
+PD: <https://en.wikipedia.org/wiki/Coordinate_system#/media/File:3D_Spherical.svg>
+:::
+
+:::
+
+
+## tuple の初期化・アクセス
+
+```python
+# () にカンマ区切りになったデータを tuple という
+
+# 英語・数学・理科の点数がそれぞれ 90, 85, 72 点であることを示す tuple
+score = (90, 85, 72)
+print(score)          # (90, 85, 72)
+print(type(score))    # <class 'tuple'>
+
+# アクセス方法はリストと同じで、インデックスを指定する
+print(score[0])   # 90
+
+# マイナスで末尾からも指定可能
+print(score[-1])  # 72
+
+# 範囲外を指定するとエラー
+print(score[3])   # IndexError: tuple index out of range
+```
+
+
+## tuple と list の違い・制限
+
+```python
+# 値の変更はエラー（list との大きな違い）
+score[0] = 100  # TypeError: 'tuple' object does not support item assignment
+
+# 値を追加できない（list との大きな違い）
+score.append(100)  # error
+
+# どうしても追加したい場合は、list へ一度変換すれば可能
+score_list = list(score)
+print(type(score_list))   # <class 'list'>
+score_list.append(100)
+score = tuple(score_list)
+print(score_list)         # [90, 85, 72, 100]
+```
+
+::: {.callout-tip}
+## なぜ tuple を使う？
+
+変更させたくないデータを保護できる。list よりメモリ効率もよい。
+:::
+
+
+## よくある tuple の使われ方（関数の戻り値）
+
+```python
+# リストの最小値と最大値を返す関数
+def get_min_max_value(data):
+    min = data[0]
+    max = data[0]
+    for datum in data:
+        if min > datum:
+            min = datum
+        if max < datum:
+            max = datum
+    return (min, max)  # ← tuple で複数の値を返す
+
+scores = [85, 90, 78, 92, 88]
+answer = get_min_max_value(scores)
+print(answer)  # (78, 92)
+
+# 以下のように分けて受けることも可能
+min, max = get_min_max_value(scores)
+```
+
+
+## 実は dict で出てきていた tuple
+
+![](imgs/04-tuple.png)
+
+`items()` はタプルの list を返している。だから `key, value` という2変数に代入できる。
+
+```python
+print(name2score.items())
+# dict_items([('Yamada', 95), ('Suzuki', 70), ('Takahashi', 80)])
+#             ^^^^^^^^^^^^^^^ ← これが tuple！
+
+for key, value in name2score.items():  # tuple を2変数に展開
+    print(f"{key}さんは{value}点です")
+```
+
+
+## 演習問題（tuple）
+
+```python
+# tanaka さん：英語60点、数学95点 → tuple で表現
+tanaka = (60, 95)
+```
+
+1. `tanaka` の各点数を変数 `english`, `math` に分けて受け取ろう
+2. `tanaka` の点数の合計を表示しよう
+3. 「90点以上の科目数」を表示しよう
+
+
+## まとめ
+
+コレクションは複数のデータをまとめて管理するための型。
+
+| 型 | 宣言 | アクセス | 追加・変更 | 主な用途 |
+|---|---|---|---|---|
+| `list` | `[1, 2, 3]` | `[i]` | ○ | 順番あり・汎用 |
+| `dict` | `{"k": v}` | `["key"]` | ○ | 名前でアクセス |
+| `tuple` | `(1, 2, 3)` | `[i]` | ✗ | 座標・戻り値 |
+
+
+## 発展：その他のコレクション型
+
+現場でも競技プログラミングでもよく使われる。各自で調べよう。
+
+- **`deque`** — 先端への挿入・削除が高速（double ended queue）
+- **`defaultdict`** — キーが存在しない場合にデフォルト値を返す `dict`
+- **`heapq`** — 最小値の取り出しに強い（heap木で管理）
+- **`set`** — 重複が許されない。和集合などの論理演算も可能
+
+```python
+A = set(['a', 'b', 'c'])
+B = set(['b', 'c', 'd'])
+print(A | B)  # {'a', 'b', 'c', 'd'}  ← 和集合
+print(A & B)  # {'b', 'c'}            ← 積集合
+print(A ^ B)  # {'a', 'd'}            ← 対称差
+print(A - B)  # {'a'}                 ← 差集合
+```
+
+数値データには **numpy の ndarray** がよく使われる（後日扱う）。
