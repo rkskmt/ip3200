@@ -15,9 +15,9 @@ website:
         text: "第1回"
       - href: shortcuts.qmd
         text: "第2回"
-      - href: variables.qmd
-        text: "第3回"
-      - href: list.qmd
-        text: "第4回"
       - href: collections.qmd
+        text: "第3回"
+      - href: variables.qmd
+        text: "第4回"
+      - href: list.qmd
         text: "第5回"

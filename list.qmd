@@ -65,6 +65,19 @@ scores.append(95)
 print(scores)  # [85, 90, 92, 78, 92, 88, 95]
 ```
 
+::: {.callout-warning}
+## 戻り値は None
+
+`append` は末尾に追加するだけで、**新しいリストを返さない**。
+
+```python
+result = scores.append(95)
+print(result)  # None ← リストではない！
+```
+
+`result = scores.append(95)` のように書くと `result` が `None` になってしまう。
+:::
+
 
 ## 走査（全要素へのアクセス）
 
@@ -94,9 +107,21 @@ student_scores = [85, 90, 92, 78, 92, 88]
 ```
 
 1. `append` を使って **100点** の学生を追加しよう
-2. **90点以上**の学生の点数だけを表示するプログラムを書こう
+2. **90点以上**の学生の「学生番号」と「点数」を表示するプログラムを書こう
    - ヒント：`for` 文の中で `if` 文を使う
 3. **平均点**を表示しよう
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答を見る"
+student_scores.append(100)
+for i, score in enumerate(student_scores):
+    if score >= 90:
+        print(f"学生{i + 1}は{score}点です")
+print(sum(student_scores) / len(student_scores))
+```
 
 
 ## その他 list で知っておきたい基礎知識
@@ -176,7 +201,7 @@ for i in range(len(student_scores)):
 
 リストの一部を切り取って別のリストにできる。
 
-```python
+```text
 list[切り取る先頭インデックス : 切り取る末尾インデックス+1]
 ```
 
@@ -278,3 +303,8 @@ print(test[1][2])  # 3
 管理しにくいため実務では使わない。
 ただし**多次元配列**はこの仕組みを応用している。
 :::
+
+
+## まとめ
+
+以上が list の応用テクニック。第4回で学んだミュータブル性と組み合わせると、スライスや多次元配列の動作がより深く理解できる。
