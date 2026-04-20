@@ -210,11 +210,11 @@
     "text": "一般的にはコンテナとも呼ばれる\n\n\n\n英単語の意味：集めること・収集\n\nContain（内に含む）＋ er（やつ）"
   },
   {
-    "objectID": "collections.html#section",
-    "href": "collections.html#section",
+    "objectID": "collections.html#もしコレクション型がなかったら",
+    "href": "collections.html#もしコレクション型がなかったら",
     "title": "コレクション",
-    "section": "",
-    "text": "もしコレクション型がなかったら\n大量のデータを1つずつ変数で管理することになる…"
+    "section": "もしコレクション型がなかったら",
+    "text": "もしコレクション型がなかったら\n\n\n大量のデータを1つずつ変数で管理することになる…"
   },
   {
     "objectID": "collections.html#クラスの定期テスト成績を処理したい",
