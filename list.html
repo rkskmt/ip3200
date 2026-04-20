@@ -330,7 +330,10 @@ rkskmt
 <section id="list-とは" class="slide level2">
 <h2>list とは</h2>
 <ul>
-<li>最もよく使われる<strong>コレクション型</strong>（他言語では配列・アレイとも呼ばれる）</li>
+<li>最もよく使われる<strong>コレクション型（コンテナ）</strong>
+<ul>
+<li>他言語では<strong>配列・アレイ</strong>とも呼ばれる</li>
+</ul></li>
 <li>データは<strong>追加順</strong>に並ぶ</li>
 <li>変数名は要素の名詞の<strong>複数形</strong>にすることが多い（例：<code>foods</code>、<code>scores</code>）</li>
 </ul>
@@ -353,7 +356,7 @@ rkskmt
 <p><strong>お作法</strong></p>
 </div>
 <div class="callout-content">
-<p>カンマ <code>,</code> の後はスペースを空ける。</p>
+<p>カンマ <code>,</code> の後は<strong>必ずスペースを空ける</strong>のが綺麗に書くコツ。</p>
 </div>
 </div>
 </div>
@@ -384,12 +387,28 @@ rkskmt
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>]</span>
 <span id="cb4-2"><a></a>scores.append(<span class="dv">95</span>)</span>
 <span id="cb4-3"><a></a><span class="bu">print</span>(scores)  <span class="co"># [85, 90, 92, 78, 92, 88, 95]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>戻り値は None</strong></p>
+</div>
+<div class="callout-content">
+<p><code>append</code> は末尾に追加するだけで、<strong>新しいリストを返さない</strong>。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>result <span class="op">=</span> scores.append(<span class="dv">95</span>)</span>
+<span id="cb5-2"><a></a><span class="bu">print</span>(result)  <span class="co"># None ← リストではない！</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>result = scores.append(95)</code> のように書くと <code>result</code> が <code>None</code> になってしまう。</p>
+</div>
+</div>
+</div>
 </section>
 <section id="走査全要素へのアクセス" class="slide level2">
 <h2>走査（全要素へのアクセス）</h2>
 <p>リストの全要素にアクセスすることを<strong>走査</strong>という。<code>for</code> 文で簡単に書ける。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="cf">for</span> score <span class="kw">in</span> scores:</span>
-<span id="cb5-2"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>score<span class="sc">}</span><span class="ss">点"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="cf">for</span> score <span class="kw">in</span> scores:</span>
+<span id="cb6-2"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>score<span class="sc">}</span><span class="ss">点"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <pre><code>85点
 90点
 92点
@@ -400,15 +419,25 @@ rkskmt
 <section id="演習問題" class="slide level2 scrollable">
 <h2>演習問題</h2>
 <p>以下のリスト <code>student_scores</code> を使って取り組もう。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>student_scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>student_scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ol type="1">
 <li><code>append</code> を使って <strong>100点</strong> の学生を追加しよう</li>
-<li><strong>90点以上</strong>の学生の点数だけを表示するプログラムを書こう
+<li><strong>90点以上</strong>の学生の「学生番号」と「点数」を表示するプログラムを書こう
 <ul>
 <li>ヒント：<code>for</code> 文の中で <code>if</code> 文を使う</li>
 </ul></li>
 <li><strong>平均点</strong>を表示しよう</li>
 </ol>
+<div id="3d822a1c" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>解答を見る</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>student_scores.append(<span class="dv">100</span>)</span>
+<span id="cb9-2"><a></a><span class="cf">for</span> i, score <span class="kw">in</span> <span class="bu">enumerate</span>(student_scores):</span>
+<span id="cb9-3"><a></a>    <span class="cf">if</span> score <span class="op">&gt;=</span> <span class="dv">90</span>:</span>
+<span id="cb9-4"><a></a>        <span class="bu">print</span>(<span class="ss">f"学生</span><span class="sc">{</span>i <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">は</span><span class="sc">{</span>score<span class="sc">}</span><span class="ss">点です"</span>)</span>
+<span id="cb9-5"><a></a><span class="bu">print</span>(<span class="bu">sum</span>(student_scores) <span class="op">/</span> <span class="bu">len</span>(student_scores))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 </section>
 <section id="その他-list-で知っておきたい基礎知識" class="slide level2 scrollable">
 <h2>その他 list で知っておきたい基礎知識</h2>
@@ -421,6 +450,8 @@ rkskmt
 <li>２次元配列</li>
 <li>N 次元配列</li>
 <li>list 同士の結合</li>
+<li>ソート</li>
+<li>リスト内包表記</li>
 <li>【参考】異なる型の混在</li>
 </ol>
 </section>
@@ -431,10 +462,10 @@ rkskmt
 <li><strong>要素数（list の長さ）以上</strong></li>
 <li><strong>マイナス要素数＋1 以下</strong></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>test <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb8-2"><a></a><span class="bu">print</span>(<span class="bu">len</span>(test))  <span class="co"># 4</span></span>
-<span id="cb8-3"><a></a><span class="bu">print</span>(test[<span class="dv">4</span>])    <span class="co"># IndexError</span></span>
-<span id="cb8-4"><a></a><span class="bu">print</span>(test[<span class="op">-</span><span class="dv">5</span>])   <span class="co"># IndexError</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>test <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb10-2"><a></a><span class="bu">print</span>(<span class="bu">len</span>(test))  <span class="co"># 4</span></span>
+<span id="cb10-3"><a></a><span class="bu">print</span>(test[<span class="dv">4</span>])    <span class="co"># IndexError</span></span>
+<span id="cb10-4"><a></a><span class="bu">print</span>(test[<span class="op">-</span><span class="dv">5</span>])   <span class="co"># IndexError</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -452,11 +483,11 @@ rkskmt
 <section id="初期化" class="slide level2">
 <h2>２. 初期化</h2>
 <p>空のリストを作る方法は２種類。どちらでも同じ結果。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>empty1 <span class="op">=</span> []</span>
-<span id="cb9-2"><a></a>empty2 <span class="op">=</span> <span class="bu">list</span>()</span>
-<span id="cb9-3"><a></a></span>
-<span id="cb9-4"><a></a><span class="bu">print</span>(empty1)  <span class="co"># []</span></span>
-<span id="cb9-5"><a></a><span class="bu">print</span>(empty2)  <span class="co"># []</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>empty1 <span class="op">=</span> []</span>
+<span id="cb11-2"><a></a>empty2 <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb11-3"><a></a></span>
+<span id="cb11-4"><a></a><span class="bu">print</span>(empty1)  <span class="co"># []</span></span>
+<span id="cb11-5"><a></a><span class="bu">print</span>(empty2)  <span class="co"># []</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="リストの長さと-range-による走査" class="slide level2">
 <h2>３. リストの長さと <code>range</code> による走査</h2>
@@ -468,13 +499,13 @@ rkskmt
 </ul></li>
 <li><code>range(len(list))</code> と組み合わせて走査するパターンをよく使う</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>student_scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>]</span>
-<span id="cb10-2"><a></a></span>
-<span id="cb10-3"><a></a><span class="bu">print</span>(<span class="bu">len</span>(student_scores))                  <span class="co"># 6</span></span>
-<span id="cb10-4"><a></a><span class="bu">print</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="bu">len</span>(student_scores))))     <span class="co"># [0, 1, 2, 3, 4, 5]</span></span>
-<span id="cb10-5"><a></a></span>
-<span id="cb10-6"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(student_scores)):</span>
-<span id="cb10-7"><a></a>    <span class="bu">print</span>(<span class="ss">f"出席番号</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">は、</span><span class="sc">{</span>student_scores[i]<span class="sc">}</span><span class="ss">点です。"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>student_scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>]</span>
+<span id="cb12-2"><a></a></span>
+<span id="cb12-3"><a></a><span class="bu">print</span>(<span class="bu">len</span>(student_scores))                  <span class="co"># 6</span></span>
+<span id="cb12-4"><a></a><span class="bu">print</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="bu">len</span>(student_scores))))     <span class="co"># [0, 1, 2, 3, 4, 5]</span></span>
+<span id="cb12-5"><a></a></span>
+<span id="cb12-6"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(student_scores)):</span>
+<span id="cb12-7"><a></a>    <span class="bu">print</span>(<span class="ss">f"出席番号</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">は、</span><span class="sc">{</span>student_scores[i]<span class="sc">}</span><span class="ss">点です。"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <pre><code>出席番号1は、85点です。
 出席番号2は、90点です。
 ...</code></pre>
@@ -482,10 +513,10 @@ rkskmt
 <section id="スライス部分集合の取得" class="slide level2">
 <h2>４. スライス（部分集合の取得）</h2>
 <p>リストの一部を切り取って別のリストにできる。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="bu">list</span>[切り取る先頭インデックス : 切り取る末尾インデックス<span class="op">+</span><span class="dv">1</span>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>org_test <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
-<span id="cb13-2"><a></a>sliced_list <span class="op">=</span> org_test[<span class="dv">2</span>:<span class="dv">5</span>]</span>
-<span id="cb13-3"><a></a><span class="bu">print</span>(sliced_list)  <span class="co"># [2, 3, 4]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a></a>list[切り取る先頭インデックス : 切り取る末尾インデックス+1]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>org_test <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
+<span id="cb15-2"><a></a>sliced_list <span class="op">=</span> org_test[<span class="dv">2</span>:<span class="dv">5</span>]</span>
+<span id="cb15-3"><a></a><span class="bu">print</span>(sliced_list)  <span class="co"># [2, 3, 4]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -504,9 +535,9 @@ rkskmt
 <h2>５. ２次元配列</h2>
 <p>list の要素として list を入れると<strong>２次元配列</strong>になる。</p>
 <p>アクセスは <code>list[行][列]</code> の形式。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>list_of_list <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]]</span>
-<span id="cb14-2"><a></a><span class="bu">print</span>(list_of_list)        <span class="co"># [[1, 2, 3], [4, 5, 6]]</span></span>
-<span id="cb14-3"><a></a><span class="bu">print</span>(list_of_list[<span class="dv">0</span>][<span class="dv">1</span>])  <span class="co"># 2</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>list_of_list <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]]</span>
+<span id="cb16-2"><a></a><span class="bu">print</span>(list_of_list)        <span class="co"># [[1, 2, 3], [4, 5, 6]]</span></span>
+<span id="cb16-3"><a></a><span class="bu">print</span>(list_of_list[<span class="dv">0</span>][<span class="dv">1</span>])  <span class="co"># 2</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <pre><code>       列0  列1  列2
 行0 →  [1,   2,   3]
 行1 →  [4,   5,   6]</code></pre>
@@ -515,10 +546,10 @@ rkskmt
 <section id="n-次元配列" class="slide level2">
 <h2>６. N 次元配列</h2>
 <p>２次元以上の多次元化も可能。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>N_dimensional_list <span class="op">=</span> [[[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]],</span>
-<span id="cb16-2"><a></a>                      [[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]]]</span>
-<span id="cb16-3"><a></a></span>
-<span id="cb16-4"><a></a><span class="bu">print</span>(N_dimensional_list[<span class="dv">1</span>][<span class="dv">1</span>][<span class="dv">2</span>])  <span class="co"># 12</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>N_dimensional_list <span class="op">=</span> [[[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]],</span>
+<span id="cb18-2"><a></a>                      [[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]]]</span>
+<span id="cb18-3"><a></a></span>
+<span id="cb18-4"><a></a><span class="bu">print</span>(N_dimensional_list[<span class="dv">1</span>][<span class="dv">1</span>][<span class="dv">2</span>])  <span class="co"># 12</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><code>[1]</code> → 2番目のブロック <code>[[7,8,9],[10,11,12]]</code></li>
 <li><code>[1]</code> → その中の2番目 <code>[10,11,12]</code></li>
@@ -528,14 +559,14 @@ rkskmt
 <section id="list-同士の結合" class="slide level2">
 <h2>７. list 同士の結合</h2>
 <p><code>+</code> 演算子でリスト同士を結合できる。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>list1 <span class="op">=</span> [<span class="st">"banana"</span>, <span class="st">"apple"</span>]</span>
-<span id="cb17-2"><a></a>list2 <span class="op">=</span> [<span class="st">"orange"</span>, <span class="st">"peach"</span>]</span>
-<span id="cb17-3"><a></a></span>
-<span id="cb17-4"><a></a><span class="bu">print</span>(list1 <span class="op">+</span> list2)  <span class="co"># ['banana', 'apple', 'orange', 'peach']</span></span>
-<span id="cb17-5"><a></a></span>
-<span id="cb17-6"><a></a><span class="co"># += 演算も可能</span></span>
-<span id="cb17-7"><a></a>list1 <span class="op">+=</span> list2</span>
-<span id="cb17-8"><a></a><span class="bu">print</span>(list1)          <span class="co"># ['banana', 'apple', 'orange', 'peach']</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>list1 <span class="op">=</span> [<span class="st">"banana"</span>, <span class="st">"apple"</span>]</span>
+<span id="cb19-2"><a></a>list2 <span class="op">=</span> [<span class="st">"orange"</span>, <span class="st">"peach"</span>]</span>
+<span id="cb19-3"><a></a></span>
+<span id="cb19-4"><a></a><span class="bu">print</span>(list1 <span class="op">+</span> list2)  <span class="co"># ['banana', 'apple', 'orange', 'peach']</span></span>
+<span id="cb19-5"><a></a></span>
+<span id="cb19-6"><a></a><span class="co"># += 演算も可能</span></span>
+<span id="cb19-7"><a></a>list1 <span class="op">+=</span> list2</span>
+<span id="cb19-8"><a></a><span class="bu">print</span>(list1)          <span class="co"># ['banana', 'apple', 'orange', 'peach']</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -546,22 +577,110 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>同じ要素があっても重複して追加される（重複排除はされない）。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>list3 <span class="op">=</span> [<span class="st">"banana"</span>, <span class="st">"grape"</span>]</span>
-<span id="cb18-2"><a></a><span class="bu">print</span>(list1 <span class="op">+</span> list3)</span>
-<span id="cb18-3"><a></a><span class="co"># ['banana', 'apple', 'orange', 'peach', 'banana', 'grape']</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>list3 <span class="op">=</span> [<span class="st">"banana"</span>, <span class="st">"grape"</span>]</span>
+<span id="cb20-2"><a></a><span class="bu">print</span>(list1 <span class="op">+</span> list3)</span>
+<span id="cb20-3"><a></a><span class="co"># ['banana', 'apple', 'orange', 'peach', 'banana', 'grape']</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </section>
+<section id="ソート" class="slide level2">
+<h2>８. ソート</h2>
+<p><code>sort()</code> と <code>sorted()</code> でリストを並び替えられる。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>]</span>
+<span id="cb21-2"><a></a></span>
+<span id="cb21-3"><a></a><span class="co"># sort()：元のリストを直接変更（ミュータブル！）</span></span>
+<span id="cb21-4"><a></a>scores.sort()</span>
+<span id="cb21-5"><a></a><span class="bu">print</span>(scores)  <span class="co"># [78, 85, 88, 90, 92, 92]</span></span>
+<span id="cb21-6"><a></a></span>
+<span id="cb21-7"><a></a><span class="co"># sorted()：新しいリストを返す（元は変わらない）</span></span>
+<span id="cb21-8"><a></a>original <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>]</span>
+<span id="cb21-9"><a></a>result <span class="op">=</span> <span class="bu">sorted</span>(original)</span>
+<span id="cb21-10"><a></a><span class="bu">print</span>(original)  <span class="co"># [85, 90, 92, 78] ← 変わらない</span></span>
+<span id="cb21-11"><a></a><span class="bu">print</span>(result)    <span class="co"># [78, 85, 90, 92]</span></span>
+<span id="cb21-12"><a></a></span>
+<span id="cb21-13"><a></a><span class="co"># 降順は reverse=True</span></span>
+<span id="cb21-14"><a></a>scores.sort(reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb21-15"><a></a><span class="bu">print</span>(scores)  <span class="co"># [92, 92, 90, 88, 85, 78]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>sort vs sorted の使い分け</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>元のリストを壊してよい → <code>sort()</code>（速い）</li>
+<li>元のリストを保持したい → <code>sorted()</code>（安全）</li>
+</ul>
+<p><code>sort()</code> が in-place で変更する点は、第4回で学んだミュータブルの性質そのもの。</p>
+</div>
+</div>
+</div>
+</section>
+<section id="リスト内包表記" class="slide level2">
+<h2>９. リスト内包表記</h2>
+<p><code>for</code> 文を1行に圧縮してリストを作る書き方</p>
+<p>例えば、[0, 1, 4, 9, 16]のリストを作りたい時、</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>squares <span class="op">=</span> []</span>
+<span id="cb22-2"><a></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb22-3"><a></a>    squares.append(x <span class="op">*</span> x)</span>
+<span id="cb22-4"><a></a><span class="bu">print</span>(squares)  <span class="co"># [0, 1, 4, 9, 16]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>と書けるけど、長いので以下のように一撃でも書ける。それがリスト内包表記</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="co"># 基本形：[式 for 変数 in イテラブル]</span></span>
+<span id="cb23-2"><a></a>squares <span class="op">=</span> [x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)]</span>
+<span id="cb23-3"><a></a><span class="bu">print</span>(squares)  <span class="co"># [0, 1, 4, 9, 16]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="リスト内包表記条件式付き" class="slide level2">
+<h2>９. リスト内包表記（条件式付き）</h2>
+<p>例えば、0-99の整数うち３の倍数以外のリストを作る場合、以下のようにfor文に条件を書くことになる。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a></span>
+<span id="cb24-2"><a></a>not_divisible_by_3s <span class="op">=</span> []</span>
+<span id="cb24-3"><a></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
+<span id="cb24-4"><a></a>    <span class="cf">if</span> x <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb24-5"><a></a>        <span class="cf">continue</span></span>
+<span id="cb24-6"><a></a>    not_divisible_by_3s.append(x)</span>
+<span id="cb24-7"><a></a><span class="bu">print</span>(not_divisible_by_3s)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>これをリスト内包表記だとこう書ける。短い</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="co"># 条件付き：[式 for 変数 in イテラブル if 条件]</span></span>
+<span id="cb25-2"><a></a>not_divisible_by_3s <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>) <span class="cf">if</span> x <span class="op">%</span> <span class="dv">3</span> <span class="op">!=</span> <span class="dv">0</span>]</span>
+<span id="cb25-3"><a></a><span class="bu">print</span>(not_divisible_by_3s)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>ノート</strong></p>
+</div>
+<div class="callout-content">
+<p>リスト内包表記はAtCoderでよく使う（次スライド）</p>
+</div>
+</div>
+</div>
+</section>
+<section id="リスト内包表記の使いどころ" class="slide level2">
+<h2>リスト内包表記の使いどころ</h2>
+<p>第1回 AtCoder の参考コードに出てきた謎の構文：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a>As <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>().split()]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>これはリスト内包表記だった。<code>input().split()</code> で <code>["1", "2", "3"]</code> という文字列のリストを作り、 各要素を <code>int(x)</code> で整数に変換しながら新しいリストを作っている。</p>
+<p><code>for</code> 文で書くと以下と同じ意味：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a>input_str <span class="op">=</span> <span class="bu">input</span>().split() <span class="co"># split(" ")と同じ。つまり、空白区切りで分けてlist化</span></span>
+<span id="cb27-2"><a></a>As <span class="op">=</span> []</span>
+<span id="cb27-3"><a></a><span class="cf">for</span> x <span class="kw">in</span> input_str:</span>
+<span id="cb27-4"><a></a>    As.append(<span class="bu">int</span>(x))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
 <section id="参考異なる型の混在" class="slide level2">
-<h2>８. 【参考】異なる型の混在</h2>
+<h2>１０. 【参考】異なる型の混在</h2>
 <p>Python の list は数値・文字列など<strong>異なる型を混在</strong>させることができる。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="bu">print</span>([<span class="dv">10</span>, <span class="st">"text"</span>, <span class="fl">10.5</span>])        <span class="co"># [10, 'text', 10.5]</span></span>
-<span id="cb19-2"><a></a><span class="bu">print</span>([<span class="dv">10</span>, [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">"text"</span>])   <span class="co"># [10, [1, 2, 3], 'text']</span></span>
-<span id="cb19-3"><a></a></span>
-<span id="cb19-4"><a></a>test <span class="op">=</span> [<span class="dv">10</span>, [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">"text"</span>]</span>
-<span id="cb19-5"><a></a><span class="bu">print</span>(test[<span class="dv">2</span>])     <span class="co"># text</span></span>
-<span id="cb19-6"><a></a><span class="bu">print</span>(test[<span class="dv">1</span>][<span class="dv">2</span>])  <span class="co"># 3</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="bu">print</span>([<span class="dv">10</span>, <span class="st">"text"</span>, <span class="fl">10.5</span>])        <span class="co"># [10, 'text', 10.5]</span></span>
+<span id="cb28-2"><a></a><span class="bu">print</span>([<span class="dv">10</span>, [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">"text"</span>])   <span class="co"># [10, [1, 2, 3], 'text']</span></span>
+<span id="cb28-3"><a></a></span>
+<span id="cb28-4"><a></a>test <span class="op">=</span> [<span class="dv">10</span>, [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">"text"</span>]</span>
+<span id="cb28-5"><a></a><span class="bu">print</span>(test[<span class="dv">2</span>])     <span class="co"># text</span></span>
+<span id="cb28-6"><a></a><span class="bu">print</span>(test[<span class="dv">1</span>][<span class="dv">2</span>])  <span class="co"># 3</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -575,6 +694,10 @@ rkskmt
 </div>
 </div>
 </div>
+</section>
+<section id="まとめ" class="slide level2">
+<h2>まとめ</h2>
+<p>以上が list の応用テクニック。第4回で学んだミュータブル性と組み合わせると、スライスや多次元配列の動作がより深く理解できる。</p>
 
 
 </section>

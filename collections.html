@@ -632,7 +632,7 @@ rkskmt
 </ul></li>
 <li><strong>平均点</strong>を表示しよう</li>
 </ol>
-<div id="34a13ba8" class="cell" data-execution_count="1">
+<div id="a1d29dbf" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>student_scores.append(<span class="dv">100</span>)</span>
@@ -680,30 +680,54 @@ rkskmt
 <span id="cb9-12"><a></a>name2score[<span class="st">"Suzuki"</span>] <span class="op">=</span> <span class="dv">70</span></span>
 <span id="cb9-13"><a></a><span class="bu">print</span>(name2score)  <span class="co"># {'Yamada': 95, 'Suzuki': 70, 'Takahashi': 80}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
+<section id="キーの存在確認in-演算子" class="slide level2">
+<h2>キーの存在確認（<code>in</code> 演算子）</h2>
+<p><code>in</code> 演算子でキーや値の存在を確認できる。存在しないキーを指定する前に使うと <code>KeyError</code> を防げる。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>}</span>
+<span id="cb10-2"><a></a></span>
+<span id="cb10-3"><a></a><span class="co"># キーが存在するか確認</span></span>
+<span id="cb10-4"><a></a><span class="cf">if</span> <span class="st">"Yamada"</span> <span class="kw">in</span> name2score:</span>
+<span id="cb10-5"><a></a>    <span class="bu">print</span>(name2score[<span class="st">"Yamada"</span>])  <span class="co"># 95</span></span>
+<span id="cb10-6"><a></a></span>
+<span id="cb10-7"><a></a><span class="co"># 存在しないキーも安全にアクセスできる</span></span>
+<span id="cb10-8"><a></a><span class="cf">if</span> <span class="st">"Tanaka"</span> <span class="kw">in</span> name2score:</span>
+<span id="cb10-9"><a></a>    <span class="bu">print</span>(name2score[<span class="st">"Tanaka"</span>])</span>
+<span id="cb10-10"><a></a><span class="cf">else</span>:</span>
+<span id="cb10-11"><a></a>    <span class="bu">print</span>(<span class="st">"Tanaka は登録されていません"</span>)</span>
+<span id="cb10-12"><a></a></span>
+<span id="cb10-13"><a></a><span class="co"># not in で「存在しない」を確認</span></span>
+<span id="cb10-14"><a></a><span class="cf">if</span> <span class="st">"Sato"</span> <span class="kw">not</span> <span class="kw">in</span> name2score:</span>
+<span id="cb10-15"><a></a>    <span class="bu">print</span>(<span class="st">"Sato は未登録"</span>)</span>
+<span id="cb10-16"><a></a></span>
+<span id="cb10-17"><a></a><span class="co"># list でも同様に使える</span></span>
+<span id="cb10-18"><a></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">78</span>]</span>
+<span id="cb10-19"><a></a><span class="cf">if</span> <span class="dv">90</span> <span class="kw">in</span> scores:</span>
+<span id="cb10-20"><a></a>    <span class="bu">print</span>(<span class="st">"90点の学生がいる"</span>)  <span class="co"># 90点がいる</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
 <section id="for-文での使い方dict" class="slide level2">
 <h2>for 文での使い方（dict）</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># for 文では以下の3種類のメソッドを活用する</span></span>
-<span id="cb10-2"><a></a></span>
-<span id="cb10-3"><a></a><span class="co"># すべてのキーを列挙 .keys()</span></span>
-<span id="cb10-4"><a></a><span class="bu">print</span>(name2score.keys())    <span class="co"># dict_keys(['Yamada', 'Suzuki', 'Takahashi'])</span></span>
-<span id="cb10-5"><a></a></span>
-<span id="cb10-6"><a></a><span class="co"># すべての値を列挙 .values()</span></span>
-<span id="cb10-7"><a></a><span class="bu">print</span>(name2score.values())  <span class="co"># dict_values([95, 70, 80])</span></span>
-<span id="cb10-8"><a></a></span>
-<span id="cb10-9"><a></a><span class="co"># すべての「キーと値」の組を列挙 .items()</span></span>
-<span id="cb10-10"><a></a><span class="bu">print</span>(name2score.items())   <span class="co"># dict_items([('Yamada', 95), ...])</span></span>
-<span id="cb10-11"><a></a></span>
-<span id="cb10-12"><a></a><span class="co"># .keys() を使ったパターン</span></span>
-<span id="cb10-13"><a></a><span class="cf">for</span> key <span class="kw">in</span> name2score.keys():</span>
-<span id="cb10-14"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">さんが居ます"</span>)</span>
-<span id="cb10-15"><a></a></span>
-<span id="cb10-16"><a></a><span class="co"># .items() を使ったパターン（最もよく使う）</span></span>
-<span id="cb10-17"><a></a><span class="cf">for</span> key, value <span class="kw">in</span> name2score.items():</span>
-<span id="cb10-18"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">さんは</span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">点です"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># for 文では以下の3種類のメソッドを活用する</span></span>
+<span id="cb11-2"><a></a></span>
+<span id="cb11-3"><a></a><span class="co"># すべてのキーを列挙 .keys()</span></span>
+<span id="cb11-4"><a></a><span class="bu">print</span>(name2score.keys())    <span class="co"># dict_keys(['Yamada', 'Suzuki', 'Takahashi'])</span></span>
+<span id="cb11-5"><a></a></span>
+<span id="cb11-6"><a></a><span class="co"># すべての値を列挙 .values()</span></span>
+<span id="cb11-7"><a></a><span class="bu">print</span>(name2score.values())  <span class="co"># dict_values([95, 70, 80])</span></span>
+<span id="cb11-8"><a></a></span>
+<span id="cb11-9"><a></a><span class="co"># すべての「キーと値」の組を列挙 .items()</span></span>
+<span id="cb11-10"><a></a><span class="bu">print</span>(name2score.items())   <span class="co"># dict_items([('Yamada', 95), ...])</span></span>
+<span id="cb11-11"><a></a></span>
+<span id="cb11-12"><a></a><span class="co"># .keys() を使ったパターン</span></span>
+<span id="cb11-13"><a></a><span class="cf">for</span> key <span class="kw">in</span> name2score.keys():</span>
+<span id="cb11-14"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">さんが居ます"</span>)</span>
+<span id="cb11-15"><a></a></span>
+<span id="cb11-16"><a></a><span class="co"># .items() を使ったパターン（最もよく使う）</span></span>
+<span id="cb11-17"><a></a><span class="cf">for</span> key, value <span class="kw">in</span> name2score.items():</span>
+<span id="cb11-18"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">さんは</span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">点です"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="演習問題dict" class="slide level2 scrollable">
 <h2>演習問題（dict）</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>, <span class="st">"Takahashi"</span>: <span class="dv">80</span>}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>, <span class="st">"Takahashi"</span>: <span class="dv">80</span>}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ol type="1">
 <li><code>dict</code> に100点を取った <strong>“Tanaka”</strong> さんを追加しよう</li>
 <li><strong>Takahashi</strong> さんの点数を <strong>92点</strong> に訂正しよう</li>
@@ -711,15 +735,18 @@ rkskmt
 <ul>
 <li>ヒント：<code>items()</code> を使って value を判定</li>
 </ul></li>
+<li><code>"Yamada"</code> が dict に存在するか <code>in</code> を使って確認し、存在すれば点数を表示しよう</li>
 </ol>
-<div id="cd2c9b9d" class="cell" data-execution_count="2">
+<div id="fa97ab4a" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>name2score[<span class="st">"Tanaka"</span>] <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb12-2"><a></a>name2score[<span class="st">"Takahashi"</span>] <span class="op">=</span> <span class="dv">92</span></span>
-<span id="cb12-3"><a></a><span class="cf">for</span> key, value <span class="kw">in</span> name2score.items():</span>
-<span id="cb12-4"><a></a>    <span class="cf">if</span> value <span class="op">&gt;=</span> <span class="dv">90</span>:</span>
-<span id="cb12-5"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">さんは</span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">点です"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>name2score[<span class="st">"Tanaka"</span>] <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb13-2"><a></a>name2score[<span class="st">"Takahashi"</span>] <span class="op">=</span> <span class="dv">92</span></span>
+<span id="cb13-3"><a></a><span class="cf">for</span> key, value <span class="kw">in</span> name2score.items():</span>
+<span id="cb13-4"><a></a>    <span class="cf">if</span> value <span class="op">&gt;=</span> <span class="dv">90</span>:</span>
+<span id="cb13-5"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">さんは</span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">点です"</span>)</span>
+<span id="cb13-6"><a></a><span class="cf">if</span> <span class="st">"Yamada"</span> <span class="kw">in</span> name2score:</span>
+<span id="cb13-7"><a></a>    <span class="bu">print</span>(<span class="ss">f"Yamadaさんの点数は</span><span class="sc">{</span>name2score[<span class="st">'Yamada'</span>]<span class="sc">}</span><span class="ss">点です"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -750,36 +777,36 @@ rkskmt
 </section>
 <section id="tuple-の初期化アクセス" class="slide level2">
 <h2>tuple の初期化・アクセス</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># () にカンマ区切りになったデータを tuple という</span></span>
-<span id="cb13-2"><a></a></span>
-<span id="cb13-3"><a></a><span class="co"># 英語・数学・理科の点数がそれぞれ 90, 85, 72 点であることを示す tuple</span></span>
-<span id="cb13-4"><a></a>score <span class="op">=</span> (<span class="dv">90</span>, <span class="dv">85</span>, <span class="dv">72</span>)</span>
-<span id="cb13-5"><a></a><span class="bu">print</span>(score)          <span class="co"># (90, 85, 72)</span></span>
-<span id="cb13-6"><a></a><span class="bu">print</span>(<span class="bu">type</span>(score))    <span class="co"># &lt;class 'tuple'&gt;</span></span>
-<span id="cb13-7"><a></a></span>
-<span id="cb13-8"><a></a><span class="co"># アクセス方法はリストと同じで、インデックスを指定する</span></span>
-<span id="cb13-9"><a></a><span class="bu">print</span>(score[<span class="dv">0</span>])   <span class="co"># 90</span></span>
-<span id="cb13-10"><a></a></span>
-<span id="cb13-11"><a></a><span class="co"># マイナスで末尾からも指定可能</span></span>
-<span id="cb13-12"><a></a><span class="bu">print</span>(score[<span class="op">-</span><span class="dv">1</span>])  <span class="co"># 72</span></span>
-<span id="cb13-13"><a></a></span>
-<span id="cb13-14"><a></a><span class="co"># 範囲外を指定するとエラー</span></span>
-<span id="cb13-15"><a></a><span class="bu">print</span>(score[<span class="dv">3</span>])   <span class="co"># IndexError: tuple index out of range</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co"># () にカンマ区切りになったデータを tuple という</span></span>
+<span id="cb14-2"><a></a></span>
+<span id="cb14-3"><a></a><span class="co"># 英語・数学・理科の点数がそれぞれ 90, 85, 72 点であることを示す tuple</span></span>
+<span id="cb14-4"><a></a>score <span class="op">=</span> (<span class="dv">90</span>, <span class="dv">85</span>, <span class="dv">72</span>)</span>
+<span id="cb14-5"><a></a><span class="bu">print</span>(score)          <span class="co"># (90, 85, 72)</span></span>
+<span id="cb14-6"><a></a><span class="bu">print</span>(<span class="bu">type</span>(score))    <span class="co"># &lt;class 'tuple'&gt;</span></span>
+<span id="cb14-7"><a></a></span>
+<span id="cb14-8"><a></a><span class="co"># アクセス方法はリストと同じで、インデックスを指定する</span></span>
+<span id="cb14-9"><a></a><span class="bu">print</span>(score[<span class="dv">0</span>])   <span class="co"># 90</span></span>
+<span id="cb14-10"><a></a></span>
+<span id="cb14-11"><a></a><span class="co"># マイナスで末尾からも指定可能</span></span>
+<span id="cb14-12"><a></a><span class="bu">print</span>(score[<span class="op">-</span><span class="dv">1</span>])  <span class="co"># 72</span></span>
+<span id="cb14-13"><a></a></span>
+<span id="cb14-14"><a></a><span class="co"># 範囲外を指定するとエラー</span></span>
+<span id="cb14-15"><a></a><span class="bu">print</span>(score[<span class="dv">3</span>])   <span class="co"># IndexError: tuple index out of range</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="tuple-と-list-の違い制限" class="slide level2">
 <h2>tuple と list の違い・制限</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co"># 値の変更はエラー（list との大きな違い）</span></span>
-<span id="cb14-2"><a></a>score[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">100</span>  <span class="co"># TypeError: 'tuple' object does not support item assignment</span></span>
-<span id="cb14-3"><a></a></span>
-<span id="cb14-4"><a></a><span class="co"># 値を追加できない（list との大きな違い）</span></span>
-<span id="cb14-5"><a></a>score.append(<span class="dv">100</span>)  <span class="co"># error</span></span>
-<span id="cb14-6"><a></a></span>
-<span id="cb14-7"><a></a><span class="co"># どうしても追加したい場合は、list へ一度変換すれば可能</span></span>
-<span id="cb14-8"><a></a>score_list <span class="op">=</span> <span class="bu">list</span>(score)</span>
-<span id="cb14-9"><a></a><span class="bu">print</span>(<span class="bu">type</span>(score_list))   <span class="co"># &lt;class 'list'&gt;</span></span>
-<span id="cb14-10"><a></a>score_list.append(<span class="dv">100</span>)</span>
-<span id="cb14-11"><a></a>score <span class="op">=</span> <span class="bu">tuple</span>(score_list)</span>
-<span id="cb14-12"><a></a><span class="bu">print</span>(score_list)         <span class="co"># [90, 85, 72, 100]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co"># 値の変更はエラー（list との大きな違い）</span></span>
+<span id="cb15-2"><a></a>score[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">100</span>  <span class="co"># TypeError: 'tuple' object does not support item assignment</span></span>
+<span id="cb15-3"><a></a></span>
+<span id="cb15-4"><a></a><span class="co"># 値を追加できない（list との大きな違い）</span></span>
+<span id="cb15-5"><a></a>score.append(<span class="dv">100</span>)  <span class="co"># error</span></span>
+<span id="cb15-6"><a></a></span>
+<span id="cb15-7"><a></a><span class="co"># どうしても追加したい場合は、list へ一度変換すれば可能</span></span>
+<span id="cb15-8"><a></a>score_list <span class="op">=</span> <span class="bu">list</span>(score)</span>
+<span id="cb15-9"><a></a><span class="bu">print</span>(<span class="bu">type</span>(score_list))   <span class="co"># &lt;class 'list'&gt;</span></span>
+<span id="cb15-10"><a></a>score_list.append(<span class="dv">100</span>)</span>
+<span id="cb15-11"><a></a>score <span class="op">=</span> <span class="bu">tuple</span>(score_list)</span>
+<span id="cb15-12"><a></a><span class="bu">print</span>(score_list)         <span class="co"># [90, 85, 72, 100]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -796,53 +823,53 @@ rkskmt
 </section>
 <section id="よくある-tuple-の使われ方関数の戻り値" class="slide level2">
 <h2>よくある tuple の使われ方（関数の戻り値）</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co"># リストの最小値と最大値を返す関数</span></span>
-<span id="cb15-2"><a></a><span class="kw">def</span> get_min_max_value(data):</span>
-<span id="cb15-3"><a></a>    min_val <span class="op">=</span> data[<span class="dv">0</span>]</span>
-<span id="cb15-4"><a></a>    max_val <span class="op">=</span> data[<span class="dv">0</span>]</span>
-<span id="cb15-5"><a></a>    <span class="cf">for</span> datum <span class="kw">in</span> data:</span>
-<span id="cb15-6"><a></a>        <span class="cf">if</span> min_val <span class="op">&gt;</span> datum:</span>
-<span id="cb15-7"><a></a>            min_val <span class="op">=</span> datum</span>
-<span id="cb15-8"><a></a>        <span class="cf">if</span> max_val <span class="op">&lt;</span> datum:</span>
-<span id="cb15-9"><a></a>            max_val <span class="op">=</span> datum</span>
-<span id="cb15-10"><a></a>    <span class="cf">return</span> (min_val, max_val)  <span class="co"># ← tuple で複数の値を返す</span></span>
-<span id="cb15-11"><a></a></span>
-<span id="cb15-12"><a></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>]</span>
-<span id="cb15-13"><a></a>answer <span class="op">=</span> get_min_max_value(scores)</span>
-<span id="cb15-14"><a></a><span class="bu">print</span>(answer)  <span class="co"># (78, 92)</span></span>
-<span id="cb15-15"><a></a></span>
-<span id="cb15-16"><a></a><span class="co"># 以下のように分けて受けることも可能</span></span>
-<span id="cb15-17"><a></a>min_val, max_val <span class="op">=</span> get_min_max_value(scores)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="co"># リストの最小値と最大値を返す関数</span></span>
+<span id="cb16-2"><a></a><span class="kw">def</span> get_min_max_value(data):</span>
+<span id="cb16-3"><a></a>    min_val <span class="op">=</span> data[<span class="dv">0</span>]</span>
+<span id="cb16-4"><a></a>    max_val <span class="op">=</span> data[<span class="dv">0</span>]</span>
+<span id="cb16-5"><a></a>    <span class="cf">for</span> datum <span class="kw">in</span> data:</span>
+<span id="cb16-6"><a></a>        <span class="cf">if</span> min_val <span class="op">&gt;</span> datum:</span>
+<span id="cb16-7"><a></a>            min_val <span class="op">=</span> datum</span>
+<span id="cb16-8"><a></a>        <span class="cf">if</span> max_val <span class="op">&lt;</span> datum:</span>
+<span id="cb16-9"><a></a>            max_val <span class="op">=</span> datum</span>
+<span id="cb16-10"><a></a>    <span class="cf">return</span> (min_val, max_val)  <span class="co"># ← tuple で複数の値を返す</span></span>
+<span id="cb16-11"><a></a></span>
+<span id="cb16-12"><a></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>]</span>
+<span id="cb16-13"><a></a>answer <span class="op">=</span> get_min_max_value(scores)</span>
+<span id="cb16-14"><a></a><span class="bu">print</span>(answer)  <span class="co"># (78, 92)</span></span>
+<span id="cb16-15"><a></a></span>
+<span id="cb16-16"><a></a><span class="co"># 以下のように分けて受けることも可能</span></span>
+<span id="cb16-17"><a></a>min_val, max_val <span class="op">=</span> get_min_max_value(scores)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="実は-dict-で出てきていた-tuple" class="slide level2">
 <h2>実は dict で出てきていた tuple</h2>
 <p><code>items()</code> はタプルの list を返している。だから <code>key, value</code> という2変数に代入できる。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="bu">print</span>(name2score.items())</span>
-<span id="cb16-2"><a></a><span class="co"># dict_items([('Yamada', 95), ('Suzuki', 70), ('Takahashi', 80)])</span></span>
-<span id="cb16-3"><a></a><span class="co">#             ^^^^^^^^^^^^^^^ ← これが tuple！</span></span>
-<span id="cb16-4"><a></a></span>
-<span id="cb16-5"><a></a><span class="cf">for</span> key, value <span class="kw">in</span> name2score.items():  <span class="co"># tuple を2変数に展開</span></span>
-<span id="cb16-6"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">さんは</span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">点です"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="bu">print</span>(name2score.items())</span>
+<span id="cb17-2"><a></a><span class="co"># dict_items([('Yamada', 95), ('Suzuki', 70), ('Takahashi', 80)])</span></span>
+<span id="cb17-3"><a></a><span class="co">#             ^^^^^^^^^^^^^^^ ← これが tuple！</span></span>
+<span id="cb17-4"><a></a></span>
+<span id="cb17-5"><a></a><span class="cf">for</span> key, value <span class="kw">in</span> name2score.items():  <span class="co"># tuple を2変数に展開</span></span>
+<span id="cb17-6"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">さんは</span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">点です"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="演習問題tuple" class="slide level2 scrollable">
 <h2>演習問題（tuple）</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co"># tanaka さん：英語60点、数学95点 → tuple で表現</span></span>
-<span id="cb17-2"><a></a>tanaka <span class="op">=</span> (<span class="dv">60</span>, <span class="dv">95</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="co"># tanaka さん：英語60点、数学95点 → tuple で表現</span></span>
+<span id="cb18-2"><a></a>tanaka <span class="op">=</span> (<span class="dv">60</span>, <span class="dv">95</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ol type="1">
 <li><code>tanaka</code> の各点数を変数 <code>english</code>, <code>math</code> に分けて受け取ろう</li>
 <li><code>tanaka</code> の点数の合計を表示しよう</li>
 <li>「90点以上の科目数」を表示しよう</li>
 </ol>
-<div id="b6636963" class="cell" data-execution_count="3">
+<div id="661188c6" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>english, math <span class="op">=</span> tanaka</span>
-<span id="cb18-2"><a></a><span class="bu">print</span>(english <span class="op">+</span> math)</span>
-<span id="cb18-3"><a></a>count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb18-4"><a></a><span class="cf">for</span> score <span class="kw">in</span> tanaka:</span>
-<span id="cb18-5"><a></a>    <span class="cf">if</span> score <span class="op">&gt;=</span> <span class="dv">90</span>:</span>
-<span id="cb18-6"><a></a>        count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb18-7"><a></a><span class="bu">print</span>(count)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>english, math <span class="op">=</span> tanaka</span>
+<span id="cb19-2"><a></a><span class="bu">print</span>(english <span class="op">+</span> math)</span>
+<span id="cb19-3"><a></a>count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb19-4"><a></a><span class="cf">for</span> score <span class="kw">in</span> tanaka:</span>
+<span id="cb19-5"><a></a>    <span class="cf">if</span> score <span class="op">&gt;=</span> <span class="dv">90</span>:</span>
+<span id="cb19-6"><a></a>        count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb19-7"><a></a><span class="bu">print</span>(count)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -893,13 +920,17 @@ rkskmt
 <li><strong><code>heapq</code></strong> — 最小値の取り出しに強い（heap木で管理）</li>
 <li><strong><code>set</code></strong> — 重複が許されない。和集合などの論理演算も可能</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>A <span class="op">=</span> <span class="bu">set</span>([<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>])</span>
-<span id="cb19-2"><a></a>B <span class="op">=</span> <span class="bu">set</span>([<span class="st">'b'</span>, <span class="st">'c'</span>, <span class="st">'d'</span>])</span>
-<span id="cb19-3"><a></a><span class="bu">print</span>(A <span class="op">|</span> B)  <span class="co"># {'a', 'b', 'c', 'd'}  ← 和集合</span></span>
-<span id="cb19-4"><a></a><span class="bu">print</span>(A <span class="op">&amp;</span> B)  <span class="co"># {'b', 'c'}            ← 積集合</span></span>
-<span id="cb19-5"><a></a><span class="bu">print</span>(A <span class="op">^</span> B)  <span class="co"># {'a', 'd'}            ← 対称差</span></span>
-<span id="cb19-6"><a></a><span class="bu">print</span>(A <span class="op">-</span> B)  <span class="co"># {'a'}                 ← 差集合</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>A <span class="op">=</span> <span class="bu">set</span>([<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>])</span>
+<span id="cb20-2"><a></a>B <span class="op">=</span> <span class="bu">set</span>([<span class="st">'b'</span>, <span class="st">'c'</span>, <span class="st">'d'</span>])</span>
+<span id="cb20-3"><a></a><span class="bu">print</span>(A <span class="op">|</span> B)  <span class="co"># {'a', 'b', 'c', 'd'}  ← 和集合</span></span>
+<span id="cb20-4"><a></a><span class="bu">print</span>(A <span class="op">&amp;</span> B)  <span class="co"># {'b', 'c'}            ← 積集合</span></span>
+<span id="cb20-5"><a></a><span class="bu">print</span>(A <span class="op">^</span> B)  <span class="co"># {'a', 'd'}            ← 対称差</span></span>
+<span id="cb20-6"><a></a><span class="bu">print</span>(A <span class="op">-</span> B)  <span class="co"># {'a'}                 ← 差集合</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p>数値データには <strong>numpy の ndarray</strong> がよく使われる（後日扱う）。</p>
+</section>
+<section id="次回予告" class="slide level2">
+<h2>次回予告</h2>
+<p><strong>第4回：変数と代入</strong> — <code>list</code> の代入でなぜ元データが書き換わってしまうのか、メモリモデルで解明する。第2回の演習③の謎もここで解決する。</p>
 
 
 </section>
