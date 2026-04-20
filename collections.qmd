@@ -1,5 +1,5 @@
 ---
-title: "第4回：コレクション"
+title: "コレクション"
 subtitle: "list / dict / tuple"
 ---
 
@@ -9,20 +9,30 @@ subtitle: "list / dict / tuple"
 
 ::: {.fig-cite src="imgs/Numismatic_items_or_specimens_on_display_at_an_exhibition_in_Ballygunge,_Kolkata.jpg" height="90%"}
 
-::: {.content-box .pos-br}
+::: {.content-box .pos-br style="max-width: 80%;"}
 - 複数のデータを塊として管理するためのデータ型
   - **コンテナ**とも呼ばれる
+:::
+
+
+::: {.cite}
+CC-BY-SA 4.0: <https://en.wikipedia.org/wiki/Collecting#/media/File:Numismatic_items_or_specimens_on_display_at_an_exhibition_in_Ballygunge,_Kolkata.jpg>
+:::
+:::
+
+## よく使われるCollections
+
+この３種類は基本中の基本
+
 
 | 型 | 特徴 |
 |---|---|
 | `list` | 最もよく使う。順番あり・変更可 |
 | `dict` | キーで管理。名前でアクセス可 |
 | `tuple` | 要素固定。変更不可 |
-:::
 
-::: {.cite}
-CC-BY-SA 4.0: <https://en.wikipedia.org/wiki/Collecting#/media/File:Numismatic_items_or_specimens_on_display_at_an_exhibition_in_Ballygunge,_Kolkata.jpg>
-:::
+:::{.callout}
+**他にもあるが、この三種だけは使い方も含め絶対に知っておくこと**
 :::
 
 
@@ -30,7 +40,7 @@ CC-BY-SA 4.0: <https://en.wikipedia.org/wiki/Collecting#/media/File:Numismatic_i
 
 ::: {.fig-cite src="imgs/container.jpg" height="90%"}
 
-::: {.content-box .pos-br}
+::: {.content-box .pos-br style="max-width: 80%;"}
 - **英単語の意味**：集めること・収集
   - Contain（内に含む）＋ er（やつ）
 
@@ -41,12 +51,16 @@ CC-BY-SA 4.0: <https://en.wikipedia.org/wiki/Collecting#/media/File:Numismatic_i
 
 
 
-## {background-image="imgs/04-chaos.png" background-size="cover"}
+## もしコレクション型がなかったら
 
-::: {style="background: rgba(0,0,0,0.55); color: white; padding: 20px; border-radius: 8px; display: inline-block; margin-top: 200px;"}
-**もしコレクション型がなかったら**
+
+::: {.fig-cite src="imgs/mess.jpg" height="90%"}
+
+::: {.content-box}
 
 大量のデータを1つずつ変数で管理することになる…
+:::
+
 :::
 
 
@@ -99,7 +113,18 @@ if R06_0002 >= 90:
 
 ## 【Collection１】 list（リスト型）
 
-![](imgs/list.jpg)
+
+
+::: {.fig-cite src="imgs/list.jpg" height="90%"}
+
+::: {.content-box .pos-br}
+- 最もよく使われるコンテナ
+- データは追加順に並んでいる
+- 他言語では配列やアレイと呼ばれる　
+- 変数名は、要素の名詞の複数形をつけることが多い（foodsなど）
+:::
+
+:::
 
 
 ## list の初期化
@@ -203,6 +228,18 @@ student_scores = [85, 90, 92, 78, 92, 88]
    - ヒント：`for` 文の中で `if` 文を使う
 3. **平均点**を表示しよう
 
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答を見る"
+student_scores.append(100)
+for i, score in enumerate(student_scores):
+    if score >= 90:
+        print(f"学生{i + 1}は{score}点です")
+print(sum(student_scores) / len(student_scores))
+```
+
 
 ## 【Collection２】 dict（辞書型）
 
@@ -284,9 +321,11 @@ name2score = {"Yamada": 95, "Suzuki": 75, "Takahashi": 80}
 3. **90点以上**の学生の「名前」と「点数」を表示するプログラムを書こう
    - ヒント：`items()` を使って value を判定
 
-### 解答例
-
-```python
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答を見る"
 name2score["Tanaka"] = 100
 name2score["Takahashi"] = 92
 for key, value in name2score.items():
@@ -295,17 +334,33 @@ for key, value in name2score.items():
 ```
 
 
-## 【Collection３】 tuple（タプル）
 
+
+## 【Collection３】 tuple（タプル）
 
 ::: {.fig-cite src="imgs/3D_Spherical.svg.jpg" height="90%"}
 
+::: {.content-box .pos-br}
+- 要素が固定のリスト
+- **（）** で書かれる
+
+:::
 
 ::: {.cite}
 PD: <https://en.wikipedia.org/wiki/Coordinate_system#/media/File:3D_Spherical.svg>
 :::
 
 :::
+
+## tuple の使いどころ
+
+
+- 座標値など、要素数が決まっているときに使う
+  - リストよりメモリ効率がよい
+
+- 値の変更ができない（イミュータブル）
+
+- 関数の戻り値を複数にしたい場合でも使われる
 
 
 ## tuple の初期化・アクセス
@@ -358,27 +413,26 @@ print(score_list)         # [90, 85, 72, 100]
 ```python
 # リストの最小値と最大値を返す関数
 def get_min_max_value(data):
-    min = data[0]
-    max = data[0]
+    min_val = data[0]
+    max_val = data[0]
     for datum in data:
-        if min > datum:
-            min = datum
-        if max < datum:
-            max = datum
-    return (min, max)  # ← tuple で複数の値を返す
+        if min_val > datum:
+            min_val = datum
+        if max_val < datum:
+            max_val = datum
+    return (min_val, max_val)  # ← tuple で複数の値を返す
 
 scores = [85, 90, 78, 92, 88]
 answer = get_min_max_value(scores)
 print(answer)  # (78, 92)
 
 # 以下のように分けて受けることも可能
-min, max = get_min_max_value(scores)
+min_val, max_val = get_min_max_value(scores)
 ```
 
 
 ## 実は dict で出てきていた tuple
 
-![](imgs/04-tuple.png)
 
 `items()` はタプルの list を返している。だから `key, value` という2変数に代入できる。
 
@@ -402,6 +456,20 @@ tanaka = (60, 95)
 1. `tanaka` の各点数を変数 `english`, `math` に分けて受け取ろう
 2. `tanaka` の点数の合計を表示しよう
 3. 「90点以上の科目数」を表示しよう
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答を見る"
+english, math = tanaka
+print(english + math)
+count = 0
+for score in tanaka:
+    if score >= 90:
+        count += 1
+print(count)
+```
 
 
 ## まとめ
