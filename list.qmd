@@ -135,7 +135,9 @@ print(sum(student_scores) / len(student_scores))
 5. ２次元配列
 6. N 次元配列
 7. list 同士の結合
-8. 【参考】異なる型の混在
+8. ソート
+9. リスト内包表記
+10. 【参考】異なる型の混在
 
 
 ## １. 範囲外のインデックスはエラー
@@ -284,7 +286,68 @@ print(list1 + list3)
 :::
 
 
-## ８. 【参考】異なる型の混在
+## ８. ソート
+
+`sort()` と `sorted()` でリストを並び替えられる。
+
+```python
+scores = [85, 90, 92, 78, 92, 88]
+
+# sort()：元のリストを直接変更（ミュータブル！）
+scores.sort()
+print(scores)  # [78, 85, 88, 90, 92, 92]
+
+# sorted()：新しいリストを返す（元は変わらない）
+original = [85, 90, 92, 78]
+result = sorted(original)
+print(original)  # [85, 90, 92, 78] ← 変わらない
+print(result)    # [78, 85, 90, 92]
+
+# 降順は reverse=True
+scores.sort(reverse=True)
+print(scores)  # [92, 92, 90, 88, 85, 78]
+```
+
+::: {.callout-tip}
+## sort vs sorted の使い分け
+
+- 元のリストを壊してよい → `sort()`（速い）
+- 元のリストを保持したい → `sorted()`（安全）
+
+`sort()` が in-place で変更する点は、第4回で学んだミュータブルの性質そのもの。
+:::
+
+
+## ９. リスト内包表記
+
+`for` 文を1行に圧縮してリストを作る書き方。Python でよく見かける。
+
+```python
+# 基本形：[式 for 変数 in イテラブル]
+squares = [x ** 2 for x in range(5)]
+print(squares)  # [0, 1, 4, 9, 16]
+
+# 条件付き：[式 for 変数 in イテラブル if 条件]
+scores = [85, 90, 92, 78, 92, 88]
+high_scores = [s for s in scores if s >= 90]
+print(high_scores)  # [90, 92, 92]
+```
+
+::: {.callout-note}
+## 第1回の謎が解けた
+
+第1回 AtCoder の参考コードに出てきた謎の構文：
+
+```python
+As = [int(x) for x in input().split()]
+```
+
+これはリスト内包表記だった。`input().split()` で `["1", "2", "3"]` という文字列のリストを作り、
+各要素を `int(x)` で整数に変換しながら新しいリストを作っている。
+:::
+
+
+## １０. 【参考】異なる型の混在
 
 Python の list は数値・文字列など**異なる型を混在**させることができる。
 
