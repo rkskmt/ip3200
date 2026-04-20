@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="rkskmt">
-  <title>高専3年 情報処理 – 第2回：ショートカット</title>
+  <title>高専3年 情報処理 – ショートカット</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -28,6 +28,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -185,6 +251,62 @@
   .fig-medium img {
     max-height: 400px !important;
   }
+  .reveal table td:first-child {
+    font-weight: bold;
+  }
+  .reveal .cite {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    font-size: 0.4em;
+    background: rgba(0,0,0,0.4);
+    color: rgba(255,255,255,0.9);
+    padding: 2px 6px;
+    border-radius: 3px;
+    z-index: 2;
+  }
+  .reveal .cite p {
+    margin: 0;
+    line-height: 1.4;
+  }
+  .reveal .cite a {
+    color: rgba(255,255,255,0.9);
+  }
+  .reveal .content-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    max-width: 60%;
+    box-sizing: border-box;
+    width: max-content;
+  }
+  .reveal .content-box.pos-br {
+    position: absolute;
+    bottom: 60px;
+    right: 60px;
+    top: auto;
+    left: auto;
+    transform: none;
+    text-align: left;
+  }
+  .reveal .content-box.pos-cl {
+    position: absolute;
+    top: 50%;
+    left: 60px;
+    transform: translateY(-50%);
+    text-align: left;
+  }
+  .reveal .fig-cite {
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
   </style>
 </head>
 <body class="quarto-light">
@@ -193,7 +315,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">第2回：ショートカット</h1>
+  <h1 class="title">ショートカット</h1>
   <p class="subtitle">知っているようで知らない</p>
 
 <div class="quarto-title-authors">
@@ -250,46 +372,46 @@ rkskmt
 <thead>
 <tr class="header">
 <th></th>
-<th>第1キー</th>
-<th>第2キー</th>
+<th>Windows</th>
+<th>Mac</th>
 <th>余談</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>文字を範囲選択</td>
-<td>Shift</td>
-<td>矢印</td>
+<td>Shift + 矢印</td>
+<td>Shift + 矢印</td>
 <td>上下も使える</td>
 </tr>
 <tr class="even">
 <td>すべて選択</td>
-<td>Ctrl</td>
-<td>A</td>
+<td>Ctrl + A</td>
+<td>Cmd + A</td>
 <td>allのa</td>
 </tr>
 <tr class="odd">
 <td>コピー</td>
-<td>Ctrl</td>
-<td>C</td>
+<td>Ctrl + C</td>
+<td>Cmd + C</td>
 <td>copyのc</td>
 </tr>
 <tr class="even">
 <td>カット（切り取り）</td>
-<td>Ctrl</td>
-<td>X</td>
+<td>Ctrl + X</td>
+<td>Cmd + X</td>
 <td>由来不明</td>
 </tr>
 <tr class="odd">
 <td>ペースト</td>
-<td>Ctrl</td>
-<td>V</td>
+<td>Ctrl + V</td>
+<td>Cmd + V</td>
 <td>v の形が挿入場所を表している</td>
 </tr>
 <tr class="even">
 <td>Undo（やり直し）</td>
-<td>Ctrl</td>
-<td>Z</td>
+<td>Ctrl + Z</td>
+<td>Cmd + Z</td>
 <td>諸説あり</td>
 </tr>
 </tbody>
@@ -331,16 +453,14 @@ rkskmt
 <p>Function（機能）キーを使えるようになろう。</p>
 <table class="caption-top">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
 <th></th>
-<th>第1キー</th>
-<th>第2キー</th>
+<th>ショートカット</th>
 <th>余談</th>
 </tr>
 </thead>
@@ -349,28 +469,37 @@ rkskmt
 <td>全画面化</td>
 <td>F11</td>
 <td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td>かな→半角（ローマ字入力中）</td>
 <td>F10</td>
 <td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td>ウインドウを閉じる</td>
-<td>Alt</td>
-<td>F4</td>
+<td>Alt + F4</td>
 <td></td>
 </tr>
 <tr class="even">
 <td>ビルド・コンパイル</td>
 <td>F5</td>
-<td></td>
-<td>古来からの習わし。VS Codeなど現代のIDEでもよく使われる</td>
+<td>古来からの習わし。詳しくは「VS Codeのショートカット」へ</td>
 </tr>
 </tbody>
 </table>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Mac（参考）</strong></p>
+</div>
+<div class="callout-content">
+<p>全画面化=Ctrl+Cmd+F、かな→半角=英数キー、ウィンドウを閉じる=Cmd+W</p>
+</div>
+</div>
+</div>
 </section>
 <section id="応用ショートカットwindowsキー" class="slide level2">
 <h2>応用ショートカット：Windowsキー</h2>
@@ -379,43 +508,46 @@ rkskmt
 <thead>
 <tr class="header">
 <th></th>
-<th>第1キー</th>
-<th>第2キー</th>
-<th>第3キー</th>
+<th>ショートカット</th>
 <th>余談</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>コピーバッファを開く</td>
-<td>Win</td>
-<td>V</td>
-<td></td>
+<td>Win + V</td>
 <td>非常に便利</td>
 </tr>
 <tr class="even">
 <td>スクリーンショット</td>
-<td>Win</td>
-<td>Shift</td>
-<td>S</td>
+<td>Win + Shift + S</td>
 <td>スクリーンショットのs</td>
 </tr>
 <tr class="odd">
 <td>デスクトップを表示</td>
-<td>Win</td>
-<td>D</td>
-<td></td>
+<td>Win + D</td>
 <td>デスクトップのd</td>
 </tr>
 <tr class="even">
 <td>別ウインドウに切り替え</td>
-<td>Win</td>
-<td>Tab</td>
-<td></td>
-<td>Alt+Tabも同じような機能</td>
+<td>Win + Tab</td>
+<td>Alt + Tabも同じような機能</td>
 </tr>
 </tbody>
 </table>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Mac（参考）</strong></p>
+</div>
+<div class="callout-content">
+<p>スクリーンショット=Cmd+Shift+4、ウィンドウ切り替え=Cmd+Tab。クリップボード履歴・デスクトップ表示は標準機能なし。</p>
+</div>
+</div>
+</div>
 </section>
 <section id="その他の便利なショートカット" class="slide level2">
 <h2>その他の便利なショートカット</h2>
@@ -430,78 +562,196 @@ rkskmt
 <thead>
 <tr class="header">
 <th></th>
-<th>第1キー</th>
-<th>第2キー</th>
+<th>Windows</th>
+<th>Mac</th>
 <th>余談</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>検索</td>
-<td>Ctrl</td>
-<td>F</td>
+<td>Ctrl + F</td>
+<td>Cmd + F</td>
 <td></td>
 </tr>
 <tr class="even">
 <td>Redo（リドゥ）</td>
-<td>Ctrl</td>
-<td>Y</td>
-<td>Undoの逆。Ctrl+Shift+Zのこともある</td>
+<td>Ctrl + Y</td>
+<td>Cmd + Shift + Z</td>
+<td>Undoの逆</td>
 </tr>
 <tr class="odd">
 <td>新しく始める</td>
-<td>Ctrl</td>
-<td>N</td>
+<td>Ctrl + N</td>
+<td>Cmd + N</td>
 <td>Newのn</td>
 </tr>
 <tr class="even">
 <td>次の場所にフォーカスを進める</td>
 <td>Tab</td>
-<td></td>
+<td>Tab</td>
 <td>ブラウザのフォーム入力などで便利</td>
 </tr>
 <tr class="odd">
 <td>前の場所にフォーカスを戻す</td>
-<td>Shift</td>
-<td>Tab</td>
+<td>Shift + Tab</td>
+<td>Shift + Tab</td>
 <td>同上</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="演習①ショートカットタイムアタック" class="slide level2">
-<h2>演習①：ショートカットタイムアタック</h2>
-<p><strong>課題</strong>：以下の文章を <strong>マウスを使わずに</strong> できるだけ速く加工しよう。</p>
-<p><strong>制限時間</strong>：3分</p>
-<p><strong>元文</strong>：</p>
-<pre><code>これはたいへんつかれるぶんしょうです</code></pre>
+<section id="vs-codeのショートカット" class="slide level2">
+<h2>VS Codeのショートカット</h2>
+<p>エディタ上で役立つショートカット。コードを書くときに活用しよう。</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Windows</th>
+<th>Mac</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>実行</td>
+<td>Ctrl + F5</td>
+<td></td>
+<td>デバッグなしで実行（F5はデバッグ付き）</td>
+</tr>
+<tr class="even">
+<td>行をコピー</td>
+<td>Ctrl + C</td>
+<td>Cmd + C</td>
+<td><strong>選択なしで押すと行ごとコピー</strong></td>
+</tr>
+<tr class="odd">
+<td>行を切り取り</td>
+<td>Ctrl + X</td>
+<td>Cmd + X</td>
+<td><strong>選択なしで押すと行ごと切り取り</strong></td>
+</tr>
+<tr class="even">
+<td>行を上下に移動</td>
+<td>Alt + ↑ / ↓</td>
+<td>Option + ↑ / ↓</td>
+<td>行の順序を入れ替えるのに便利</td>
+</tr>
+<tr class="odd">
+<td>コメントアウト</td>
+<td>Ctrl + /</td>
+<td>Cmd + /</td>
+<td>もう一度押すと解除</td>
+</tr>
+<tr class="even">
+<td>字下げ（インデント）</td>
+<td>Ctrl + ] / Ctrl + [</td>
+<td>Cmd + ] / Cmd + [</td>
+<td>]で増やす、[で戻す</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="演習①vs-codeで日本語入力" class="slide level2 scrollable">
+<h2>演習①：VS Codeで日本語入力</h2>
+<p><strong>前提</strong>：日本語入力モード（IMEオン）で開始すること。</p>
+<p><strong>課題</strong>：VS Codeを開き、以下のコメントをそのまま入力しよう。</p>
+<p><strong>ゴール（これを入力する）</strong>：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Alt（オルタナティブ）キーで行を移動できる</span></span>
+<span id="cb2-2"><a></a><span class="co"># Ctrl+/でコメントアウト、F5で実行</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>手順の例：<code>Alt（オルタナティブ）</code> の入力</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li><code>alt</code> と打つ → <strong>F10</strong>（半角英数に変換）→ <code>Alt</code> → Enter で確定</li>
+<li><code>（</code> を入力</li>
+<li><code>おるたなてぃぶ</code> と打つ → <strong>F7</strong>（カタカナに変換）→ <code>オルタナティブ</code> → Enter で確定</li>
+<li><code>）</code> を入力</li>
+</ol>
+<p>漢字（<code>移動</code>、<code>実行</code> など）は <strong>スペース</strong> で変換する。</p>
+</div>
+</div>
+</div>
+</section>
+<section id="演習②カットペースト字下げ" class="slide level2">
+<h2>演習②：カット＆ペースト＋字下げ</h2>
+<p><strong>課題</strong>：順序と字下げが崩れたコードを <strong>ショートカットだけで</strong> 直そう。</p>
+<p><strong>初期状態</strong>：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>score <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb3-2"><a></a>    <span class="cf">if</span> score <span class="op">&gt;=</span> <span class="dv">60</span>:</span>
+<span id="cb3-3"><a></a><span class="bu">print</span>(<span class="st">"不合格"</span>)</span>
+<span id="cb3-4"><a></a>        <span class="bu">print</span>(<span class="st">"合格"</span>)</span>
+<span id="cb3-5"><a></a>    <span class="cf">else</span>:</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>ゴール</strong>：</p>
-<pre><code>これは大変疲れる文章です。</code></pre>
-<p><strong>やること</strong>：</p>
-<ul>
-<li>「たいへん」→「大変」に変換</li>
-<li>「つかれる」→「疲れる」に変換</li>
-<li>「ぶんしょう」→「文章」に変換</li>
-<li>末尾に「。」を追加</li>
-</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>score <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb4-2"><a></a><span class="cf">if</span> score <span class="op">&gt;=</span> <span class="dv">60</span>:</span>
+<span id="cb4-3"><a></a>    <span class="bu">print</span>(<span class="st">"合格"</span>)</span>
+<span id="cb4-4"><a></a><span class="cf">else</span>:</span>
+<span id="cb4-5"><a></a>    <span class="bu">print</span>(<span class="st">"不合格"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>ヒント</strong>：</p>
 <ul>
-<li>Shift＋矢印で範囲選択</li>
-<li>Backspace／Deleteで修正</li>
-<li>右クリック禁止（Ctrl系で完結する）</li>
+<li>行の移動は <strong>Alt + ↑↓</strong> または <strong>Ctrl+X → Ctrl+V</strong></li>
+<li>字下げは <strong>Ctrl + ]</strong>、戻すは <strong>Ctrl + [</strong></li>
 </ul>
 </section>
-<section id="演習②カットペースト" class="slide level2">
-<h2>演習②：カット＆ペースト</h2>
-<p><strong>課題</strong>：下のバラバラのパーツを正しい順序に <strong>ショートカットだけで</strong> 並べ替えよう。</p>
-<p><strong>初期状態</strong>：</p>
-<pre><code>print(res)
-res = -1 if 400 % A !=0 else 400 // A
-A = int(input())</code></pre>
-<p><strong>ゴール</strong>：</p>
-<pre><code>A = int(input())
-res = -1 if 400 % A !=0 else 400 // A
-print(res)</code></pre>
+<section id="演習③コメントアウトでバグを追い詰める" class="slide level2 scrollable">
+<h2>演習③：コメントアウトでバグを追い詰める</h2>
+<p><strong>課題</strong>：このプログラムを実行すると結果がおかしい。コメントアウトを使ってどのブロックが原因か突き止めよう。</p>
+<p><strong>コード（VS Codeに貼り付けて実行）</strong>：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">55</span>, <span class="dv">65</span>]</span>
+<span id="cb5-2"><a></a>names <span class="op">=</span> [<span class="st">"田中"</span>, <span class="st">"鈴木"</span>, <span class="st">"佐藤"</span>, <span class="st">"山田"</span>, <span class="st">"高橋"</span>]</span>
+<span id="cb5-3"><a></a></span>
+<span id="cb5-4"><a></a><span class="kw">def</span> normalize(data, threshold<span class="op">=</span><span class="dv">60</span>):</span>
+<span id="cb5-5"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(data)):</span>
+<span id="cb5-6"><a></a>        <span class="cf">if</span> data[i] <span class="op">&lt;</span> threshold:</span>
+<span id="cb5-7"><a></a>            data[i] <span class="op">=</span> threshold</span>
+<span id="cb5-8"><a></a>    <span class="cf">return</span> data</span>
+<span id="cb5-9"><a></a></span>
+<span id="cb5-10"><a></a><span class="co"># ブロック①：受験者一覧</span></span>
+<span id="cb5-11"><a></a><span class="bu">print</span>(<span class="st">"=== 受験者一覧 ==="</span>)</span>
+<span id="cb5-12"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(names)):</span>
+<span id="cb5-13"><a></a>    <span class="bu">print</span>(names[i], <span class="st">":"</span>, scores[i], <span class="st">"点"</span>)</span>
+<span id="cb5-14"><a></a></span>
+<span id="cb5-15"><a></a><span class="co"># ブロック②：補正後の平均点</span></span>
+<span id="cb5-16"><a></a><span class="bu">print</span>(<span class="st">"=== 補正後の平均点 ==="</span>)</span>
+<span id="cb5-17"><a></a>corrected <span class="op">=</span> normalize(scores)</span>
+<span id="cb5-18"><a></a>average <span class="op">=</span> <span class="bu">sum</span>(corrected) <span class="op">/</span> <span class="bu">len</span>(corrected)</span>
+<span id="cb5-19"><a></a><span class="bu">print</span>(<span class="st">"平均："</span>, <span class="bu">round</span>(average, <span class="dv">1</span>), <span class="st">"点"</span>)</span>
+<span id="cb5-20"><a></a></span>
+<span id="cb5-21"><a></a><span class="co"># ブロック③：合否判定</span></span>
+<span id="cb5-22"><a></a><span class="bu">print</span>(<span class="st">"=== 合否判定 ==="</span>)</span>
+<span id="cb5-23"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(names)):</span>
+<span id="cb5-24"><a></a>    <span class="cf">if</span> scores[i] <span class="op">&gt;=</span> <span class="dv">60</span>:</span>
+<span id="cb5-25"><a></a>        <span class="bu">print</span>(names[i], <span class="st">"：合格"</span>)</span>
+<span id="cb5-26"><a></a>    <span class="cf">else</span>:</span>
+<span id="cb5-27"><a></a>        <span class="bu">print</span>(names[i], <span class="st">"：不合格"</span>)</span>
+<span id="cb5-28"><a></a></span>
+<span id="cb5-29"><a></a><span class="co"># ブロック④：不合格者集計</span></span>
+<span id="cb5-30"><a></a><span class="bu">print</span>(<span class="st">"=== 集計 ==="</span>)</span>
+<span id="cb5-31"><a></a>failed <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> scores <span class="cf">if</span> s <span class="op">&lt;</span> <span class="dv">60</span>]</span>
+<span id="cb5-32"><a></a><span class="bu">print</span>(<span class="st">"不合格者数："</span>, <span class="bu">len</span>(failed), <span class="st">"人"</span>)</span>
+<span id="cb5-33"><a></a><span class="bu">print</span>(<span class="st">"合格者数："</span>, <span class="bu">len</span>(scores) <span class="op">-</span> <span class="bu">len</span>(failed), <span class="st">"人"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>おかしい点</strong>：①で山田は55点と表示されるのに、③では山田が合格、④では不合格者0人になっている。</p>
+<p><strong>手順</strong>：</p>
+<ol type="1">
+<li>まず全体を実行して、おかしい箇所を確認する</li>
+<li>怪しいブロックを <strong>複数行まとめてCtrl+/</strong> でコメントアウトして再実行</li>
+<li>どのブロックをコメントアウトしたら結果が正しくなるかを確認する</li>
+<li>原因のブロックのどの行がバグか特定する</li>
+</ol>
 
 
 </section>

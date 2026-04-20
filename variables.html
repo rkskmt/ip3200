@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="rkskmt">
-  <title>高専3年 情報処理</title>
+  <title>高専3年 情報処理 – 変数と代入</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -28,6 +28,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -248,21 +314,200 @@
   <div class="reveal">
     <div class="slides">
 
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">変数と代入</h1>
 
-<section id="情報処理-2025年度" class="slide level2">
-<h2>情報処理 2025年度</h2>
-<p><a href="https://rkskmt.github.io/ip3200/">https://rkskmt.github.io/ip3200/</a></p>
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+rkskmt 
+</div>
+</div>
+</div>
+
+</section>
+<section id="リテラル値" class="slide level2">
+<h2>リテラル（値）</h2>
+<p>速習を終えたところで、敢えて変数と代入をおさらいしましょう。</p>
+<p>Pythonでは<strong>値</strong>を直接コードに書くことができます。</p>
 <ul>
-<li><a href="./key-typing.html">第1回：キータイピング</a></li>
-<li><a href="./shortcuts.html">第2回：ショートカット</a></li>
-<li><a href="./collections.html">第3回：コレクションまとめ</a></li>
-<li><a href="./variables.html">第4回：変数と代入</a></li>
-<li><a href="./list.html">第5回：list改めて</a></li>
+<li>値はそれだけで評価できる（エラーにならない）</li>
+<li>変数や関数なしで、その行に書くだけで意味を持つ</li>
 </ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="dv">1</span></span>
+<span id="cb1-2"><a></a><span class="co">"1"</span></span>
+<span id="cb1-3"><a></a>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb1-4"><a></a><span class="va">True</span></span>
+<span id="cb1-5"><a></a><span class="fl">1.0</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>メモリ上での記述</strong></p>
+</div>
+<div class="callout-content">
+<p>上記の値はその行が実行された時に、<strong>メモリ上に値として記述</strong>されます（<code>000001001</code> のようにメモリ上のスペースを使って記録される）。これらを<strong>リテラル</strong>と呼び、直接コード中に記述できる値の表現方法です。</p>
+</div>
+</div>
+</div>
+</section>
+<section id="変数とは" class="slide level2">
+<h2>変数とは</h2>
+<p>一方で、このように書くとエラーになります。なぜでしょうか。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>a <span class="co"># NameError: name 'a' is not defined</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>1</code> や <code>"1"</code> は<strong>リテラル（直接記述できる値）</strong></li>
+<li><code>a</code> は値ではなく<strong>変数</strong>として認識される</li>
+<li><strong>変数は値ではない</strong> — 値が書かれている場所を指す <strong>URL のようなもの（= アドレス）</strong></li>
+<li><code>print(変数)</code> が値を表示するのは、ブラウザで URL を開くとページが表示されるのと同じ</li>
+</ul>
+</section>
+<section id="変数の命名規則" class="slide level2">
+<h2>変数の命名規則</h2>
+<p>変数として認識される識別子のルールです。例外はありません。</p>
+<ul>
+<li>文字（a-z, A-Z）またはアンダースコア（_）で<strong>始まる</strong></li>
+<li>2文字目以降が文字、数字（0-9）、アンダースコアであること</li>
+<li>予約語（<strong><code>if</code> / <code>for</code> / <code>while</code></strong> など）ではないこと</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>a01    <span class="co"># 変数</span></span>
+<span id="cb3-2"><a></a>_aa_aa <span class="co"># 変数</span></span>
+<span id="cb3-3"><a></a><span class="dv">1</span><span class="er">a</span>     <span class="co"># ダメ。最初が数字</span></span>
+<span id="cb3-4"><a></a><span class="cf">continue</span> <span class="co"># ダメ。予約語</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="代入" class="slide level2">
+<h2>代入</h2>
+<p>左辺に変数、右辺にリテラルを書いて <code>=</code> で結ぶと、「<strong>代入</strong>」が行われます。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>a11 <span class="op">=</span> <span class="dv">11</span></span>
+<span id="cb4-2"><a></a>test_2 <span class="op">=</span> <span class="st">"test2"</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>箱ではなく「看板」</strong></p>
+</div>
+<div class="callout-content">
+<p><code>a11 = 11</code> は「<code>a11</code> という箱に <code>11</code> が入る」ではありません。</p>
+<p><strong><code>a11</code> は <code>11</code> が格納された住所を指す看板になる</strong>、というイメージです。</p>
+<p><code>print(a11)</code> はその看板が指す先の値を表示してくれます。</p>
+</div>
+</div>
+</div>
+</section>
+<section id="変数-変数-の代入" class="slide level2">
+<h2>変数 = 変数 の代入</h2>
+<p>変数同士を代入すると、左辺の看板が右辺の看板が指す先に書き換わります。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>a11 <span class="op">=</span> <span class="dv">11</span></span>
+<span id="cb5-2"><a></a>a12 <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb5-3"><a></a>a11 <span class="op">=</span> a12</span>
+<span id="cb5-4"><a></a><span class="bu">print</span>(a12) <span class="co"># 12</span></span>
+<span id="cb5-5"><a></a>a11 <span class="op">=</span> <span class="dv">13</span></span>
+<span id="cb5-6"><a></a><span class="bu">print</span>(a11) <span class="co"># 当然13</span></span>
+<span id="cb5-7"><a></a><span class="bu">print</span>(a12) <span class="co"># 11?13?</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>この結果は直感的ですか？</p>
+</section>
+<section id="リストの代入罠" class="slide level2">
+<h2>リストの代入（罠）</h2>
+<p>代入するものが数値ではなく、リストの場合はどうでしょう。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>odd1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>]</span>
+<span id="cb6-2"><a></a>odd2 <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">7</span>]</span>
+<span id="cb6-3"><a></a>odd1 <span class="op">=</span> odd2 <span class="co"># odd1はodd2のアドレスを指すように指示</span></span>
+<span id="cb6-4"><a></a><span class="bu">print</span>(odd2) <span class="co"># [5, 7]</span></span>
+<span id="cb6-5"><a></a>odd1[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">9</span> <span class="co"># odd2ではなくodd1を変更</span></span>
+<span id="cb6-6"><a></a><span class="bu">print</span>(odd2) <span class="co"># [9, 7]。 なぜodd2が変わっているの？</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>なぜ <code>odd2</code> が変わっているのでしょうか？</p>
+</section>
+<section id="id-で住所を確認数値" class="slide level2">
+<h2><code>id()</code> で住所を確認（数値）</h2>
+<p><code>id()</code> 関数で変数が指しているアドレスを調べられます。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>a11 <span class="op">=</span> <span class="dv">11</span></span>
+<span id="cb7-2"><a></a>a12 <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb7-3"><a></a><span class="bu">print</span>(<span class="bu">id</span>(a11)) <span class="co"># 2083050422832</span></span>
+<span id="cb7-4"><a></a><span class="bu">print</span>(<span class="bu">id</span>(a12)) <span class="co"># 2083050422864</span></span>
+<span id="cb7-5"><a></a>a11 <span class="op">=</span> a12</span>
+<span id="cb7-6"><a></a><span class="bu">print</span>(<span class="bu">id</span>(a11)) <span class="co"># 2083050422864。a12と同じ場所</span></span>
+<span id="cb7-7"><a></a>a11 <span class="op">=</span> <span class="dv">13</span></span>
+<span id="cb7-8"><a></a><span class="bu">print</span>(<span class="bu">id</span>(a11)) <span class="co"># 2083050422896。違う場所を指している。</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>数値が代入されるたびに <strong>アドレスが変わっている</strong></li>
+<li>数値は必ず<strong>新しいアドレスに新しい値</strong>として書き込まれる</li>
+</ul>
+</section>
+<section id="id-で住所を確認リスト" class="slide level2">
+<h2><code>id()</code> で住所を確認（リスト）</h2>
+<p>リストでは、要素に代入してもアドレスが変わりません。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>odd1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>]</span>
+<span id="cb8-2"><a></a>odd2 <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">7</span>]</span>
+<span id="cb8-3"><a></a><span class="bu">print</span>(<span class="bu">id</span>(odd1)) <span class="co"># 2738928019264</span></span>
+<span id="cb8-4"><a></a><span class="bu">print</span>(<span class="bu">id</span>(odd2)) <span class="co"># 2738927989120</span></span>
+<span id="cb8-5"><a></a>odd1 <span class="op">=</span> odd2</span>
+<span id="cb8-6"><a></a><span class="bu">print</span>(<span class="bu">id</span>(odd1)) <span class="co"># 2738927989120</span></span>
+<span id="cb8-7"><a></a><span class="bu">print</span>(<span class="bu">id</span>(odd2)) <span class="co"># 2738927989120</span></span>
+<span id="cb8-8"><a></a>odd1[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">9</span>    <span class="co"># odd2ではなくodd1を変更</span></span>
+<span id="cb8-9"><a></a><span class="bu">print</span>(odd1)    <span class="co"># [9, 7]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>odd1 = odd2</code> 後、両者が<strong>同じアドレスを指している</strong></li>
+<li>だから <code>odd1[0] = 9</code> が <code>odd2</code> にも影響する</li>
+</ul>
+</section>
+<section id="ミュータブル-イミュータブル" class="slide level2">
+<h2>ミュータブル / イミュータブル</h2>
+<p>アドレスを<strong>使いまわす</strong>型（ミュータブル）と、<strong>必ず新しく作る</strong>型（イミュータブル）があります。</p>
+<p>まず <strong><code>int</code> / <code>float</code> / <code>str</code></strong> の3つだけ覚えておけば十分です。</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>分類</th>
+<th>型</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>イミュータブル</td>
+<td><strong><code>int</code> / <code>float</code> / <code>complex</code> / <code>bool</code> / <code>str</code> / <code>tuple</code> / <code>frozenset</code> / <code>bytes</code> / <code>None</code></strong></td>
+</tr>
+<tr class="even">
+<td>ミュータブル</td>
+<td><code>list</code> <code>dict</code> <code>set</code> など</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>覚え方</strong></p>
+</div>
+<div class="callout-content">
+<p>「変更可能か」ではなく、<strong>「アドレスを使いまわすか、新しく作るか」</strong> で理解するほうが直感的です。</p>
+<ul>
+<li><strong>ミュータブル（mutable）</strong>：代入時にアドレスを共有する → <code>list</code> など</li>
+<li><strong>イミュータブル（immutable）</strong>：代入のたびに新しいアドレスが生まれる → <code>int</code> など</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="演習" class="slide level2 scrollable">
+<h2>演習</h2>
+<ol type="1">
+<li><code>dict</code> がミュータブルであることを <code>id()</code> を使って確認しましょう</li>
+<li><code>list</code> と同じようにアクセスできる <code>str</code> がミュータブルかイミュータブルかを確認してください。</li>
+<li>上記の例で <code>odd1[0]</code> のアドレスを確認して、どうなっているか見てみましょう（<code>list</code> はミュータブルですが、<code>list</code> の要素は <code>int</code> なのでイミュータブルのはず）</li>
+</ol>
 
 
-
-<img data-src="imgs/qrcode_rkskmt.github.io.png" class="quarto-figure quarto-figure-center r-stretch" width="300"></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
