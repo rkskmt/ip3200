@@ -71,4 +71,7 @@ format:
         .fig-medium img {
           max-height: 400px !important;
         }
+        .reveal table td:first-child {
+          font-weight: bold;
+        }
         </style>
