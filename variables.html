@@ -307,7 +307,84 @@
     background-repeat: no-repeat;
     background-position: center;
   }
+  #home-btn {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 100;
+    background: #5dade2;
+    color: white;
+    padding: 4px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  .reveal > .footer {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    height: auto !important;
+    overflow: visible !important;
+    box-sizing: border-box;
+  }
+  #slide-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  #slide-nav button {
+    background: #5dade2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 14px;
+    font-size: 1rem;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  #slide-nav button:active {
+    background: #3498db;
+  }
+  #nav-counter {
+    font-size: 0.9rem;
+    min-width: 56px;
+    text-align: center;
+  }
+  .reveal .slide-number {
+    display: none !important;
+  }
   </style>
+  <script>
+  window.addEventListener('load', function() {
+    if (typeof Reveal === 'undefined') return;
+    function initNav() {
+      var home = document.createElement('a');
+      home.id = 'home-btn';
+      home.href = './index.html';
+      home.textContent = 'Home';
+      document.body.appendChild(home);
+      var footer = document.querySelector('.reveal > .footer');
+      if (!footer) return;
+      var nav = document.createElement('span');
+      nav.id = 'slide-nav';
+      nav.innerHTML = '<button id="nav-prev">&#9664;</button><span id="nav-counter"></span><button id="nav-next">&#9654;</button>';
+      footer.appendChild(nav);
+      document.getElementById('nav-prev').addEventListener('click', function() { Reveal.prev(); });
+      document.getElementById('nav-next').addEventListener('click', function() { Reveal.next(); });
+      updateCounter();
+      Reveal.addEventListener('slidechanged', updateCounter);
+      Reveal.addEventListener('fragmentshown', updateCounter);
+      Reveal.addEventListener('fragmenthidden', updateCounter);
+    }
+    function updateCounter() {
+      var el = document.getElementById('nav-counter');
+      if (el) el.textContent = (Reveal.getSlidePastCount() + 1) + ' / ' + Reveal.getTotalSlides();
+    }
+    if (Reveal.isReady()) { initNav(); } else { Reveal.addEventListener('ready', initNav); }
+  });
+  </script>
 </head>
 <body class="quarto-light">
 <script src="mathjax-config.js"></script>
@@ -588,16 +665,21 @@ rkskmt
 <li>上記の例で <code>odd1[0]</code> のアドレスを確認して、どうなっているか見てみましょう（<code>list</code> はミュータブルですが、<code>list</code> の要素は <code>int</code> なのでイミュータブルのはず）</li>
 </ol>
 </section>
-<section id="次回予告" class="slide level2">
-<h2>次回予告</h2>
-<p><strong>第5回：list 応用</strong> — スライス・多次元配列・結合など、list をより活用するテクニックを学ぶ。</p>
+<section id="まとめ" class="slide level2">
+<h2>まとめ</h2>
+<ul>
+<li>変数は値そのものではなく、<strong>値が置かれたアドレスを指す看板</strong></li>
+<li><code>int</code> / <code>float</code> / <code>str</code> は<strong>イミュータブル</strong> — 代入のたびに新しいアドレスが生まれる</li>
+<li><code>list</code> / <code>dict</code> は<strong>ミュータブル</strong> — 代入するとアドレスを共有するため意図せぬ書き換えに注意</li>
+<li>独立したコピーが必要なときは <strong><code>.copy()</code></strong> を使う</li>
+</ul>
 
 
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p><a href="./index.html">トップに戻る</a></p>
+
 </div>
 </div></div>
 
