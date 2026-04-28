@@ -191,16 +191,22 @@ format:
             nav.id = 'slide-nav';
             nav.innerHTML = '<button id="nav-prev">&#9664;</button><span id="nav-counter"></span><button id="nav-next">&#9654;</button>';
             footer.appendChild(nav);
-            document.getElementById('nav-prev').addEventListener('click', function() { Reveal.prev(); });
-            document.getElementById('nav-next').addEventListener('click', function() { Reveal.next(); });
+            function addNavHandler(el, fn) {
+              el.addEventListener('touchstart', function(e) { e.stopPropagation(); fn(); }, { passive: true });
+              el.addEventListener('click', fn);
+            }
+            addNavHandler(document.getElementById('nav-prev'), function() { Reveal.prev(); });
+            addNavHandler(document.getElementById('nav-next'), function() { Reveal.next(); });
             updateCounter();
-            Reveal.addEventListener('slidechanged', updateCounter);
-            Reveal.addEventListener('fragmentshown', updateCounter);
-            Reveal.addEventListener('fragmenthidden', updateCounter);
+            var mo = new MutationObserver(updateCounter);
+            mo.observe(document.querySelector('.reveal .slides'), { subtree: true, attributeFilter: ['class'] });
           }
           function updateCounter() {
             var el = document.getElementById('nav-counter');
-            if (el) el.textContent = (Reveal.getSlidePastCount() + 1) + ' / ' + Reveal.getTotalSlides();
+            if (!el) return;
+            var slides = Array.from(document.querySelectorAll('.reveal .slides section:not(.stack)'));
+            var idx = slides.findIndex(function(s) { return s.classList.contains('present'); });
+el.textContent = (idx + 1) + ' / ' + slides.length;
           }
           if (Reveal.isReady()) { initNav(); } else { Reveal.addEventListener('ready', initNav); }
         });
