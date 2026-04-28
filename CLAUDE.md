@@ -56,6 +56,12 @@ quarto publish gh-pages --no-prompt --id ip3200
 - SSH 認証が必要（`~/.ssh/id_rsa` が GitHub に登録済みであること）
 - `.gitignore` に `_site/` と `.quarto/` を含めること（ビルド成果物はコミットしない）
 
+## フッターカスタムナビ
+
+`_metadata.yaml` の `<script>` を変更する場合は **[footer-nav.md](footer-nav.md)** を参照。
+
+---
+
 ## よくある失敗
 
 ### `quarto render` で rename エラーが出る
