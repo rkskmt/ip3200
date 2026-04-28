@@ -1,11 +1,11 @@
 ---
-title: "コレクション"
-subtitle: "list / dict / tuple"
+title: "速習 コレクション"
+subtitle: "`list` / `dict` / `tuple`"
 ---
 
 
 
-## コレクション（Collections）とは
+## コレクション（Collection）とは
 
 ::: {.fig-cite src="imgs/Numismatic_items_or_specimens_on_display_at_an_exhibition_in_Ballygunge,_Kolkata.jpg" height="90%"}
 
@@ -20,9 +20,9 @@ CC-BY-SA 4.0: <https://en.wikipedia.org/wiki/Collecting#/media/File:Numismatic_i
 :::
 :::
 
-## よく使われるCollections
+## よく使われるCollection型
 
-この３種類は基本中の基本
+この３種類だけは絶対に知っておく必要あり
 
 
 | 型 | 特徴 |
@@ -111,7 +111,7 @@ if R06_0002 >= 90:
 :::
 
 
-## 【Collection１】 list（リスト型）
+## 【Collection１】 `list`（リスト型）
 
 
 
@@ -127,38 +127,47 @@ if R06_0002 >= 90:
 :::
 
 
-## list の初期化
+## `list` の初期化
+
+- まずは、右辺で **`list`型ですよ** と宣言しないと始まらない
+- ケースにより色々あるが `[]` が一般的
+
 
 ```python
-# カッコ [] でカンマ区切りで入力するとリストになる
-scores = [85, 90, 78, 92, 88]
 
 # 空のリスト（初期化）を作りたいときは以下のどちらか
 empty1 = []
 empty2 = list()
 
-# print文で表示可能
+# カンマ区切りで初期値付きの初期化
+scores = [85, 90, 78, 92, 88]
+
+# print文で全体を表示
 print(scores)   # [85, 90, 78, 92, 88]
 print(empty1)   # []
 print(empty2)   # []
 
-# ちなみに型はlist
-print(type(scores))  # <class 'list'>
+# rangeから変換して初期化
+odd_numbers = list(range(1, 11, 2)) #odd_numbers
+
 ```
 
 
-## インデックスによるアクセス
+## アクセス方法
+
+- `[]` に数字（インデックス or 添字）でアクセス
+    - `[1]`、`[500]`
+- インデックスは先頭が `0`（ゼロ）
+    - なので、思ったより１つ少ない数でアクセス
+        - ５番目の要素にアクセスしたい → `[4]`
 
 ```python
-# インデックス（添え字）を使ってアクセスする
-# インデックスは先頭が0（ゼロ）で1ずつ増加
-
 print(scores[0])   # 85
 print(scores[2])   # 78
 
 # リストの長さ以上のインデックスを指定するとエラー
-print(scores[5])   # IndexError: list index out of range
-# ← 長さは5だが、ゼロ始まりなので4が末尾
+#print(scores[5])   # IndexError: list index out of range
+# ↑ 長さは5だが、ゼロ始まりなので4が末尾
 
 # マイナスを指定すると末尾からのアクセスになる
 # ただし、リストの末尾は -0 ではなく -1
@@ -187,6 +196,7 @@ other_scores2 = [40, 50]
 other_scores = other_scores1 + other_scores2
 print(other_scores)  # [20, 30, 40, 50]
 
+# これでも可
 scores += other_scores
 print(scores)  # [85, 90, 78, 92, 88, 95, 20, 30, 40, 50]
 ```
@@ -194,16 +204,18 @@ print(scores)  # [85, 90, 78, 92, 88, 95, 20, 30, 40, 50]
 
 ## すべての要素へのアクセス（走査）
 
+- 基本的に`for in`で使われる
+
 ```python
-# ① まず基本：要素を直接取り出す
+# ① 基本系
 for score in scores:
     print(f"{score}点")
 
-# ② range を使って index（添え字）の並びを先に作る
+# ② これも稀に使う
 for i in range(len(scores)):
     print(f"学生{i + 1}は{scores[i]}点")
 
-# ③ enumerate を使うと index と要素を同時に取れる
+# ③ enumerate で ↑を同時に実現
 for i, score in enumerate(scores):
     print(f"学生{i + 1}は{score}点")
 ```
@@ -217,7 +229,7 @@ for i, score in enumerate(scores):
 :::
 
 
-## 演習問題（list）
+## 演習問題（`list`）
 
 ```python
 student_scores = [85, 90, 92, 78, 92, 88]
@@ -241,7 +253,7 @@ print(sum(student_scores) / len(student_scores))
 ```
 
 
-## 【Collection２】 dict（辞書型）
+## 【Collection２】 `dict`（辞書型）
 
 ![](imgs/Focus_definition_(Unsplash).jpg)
 
@@ -250,11 +262,16 @@ print(sum(student_scores) / len(student_scores))
 CC0: <https://en.wikipedia.org/wiki/Fictionary#/media/File:Focus_definition_(Unsplash).jpg>
 :::
 
-## dict の初期化
+## `dict` の初期化
+
+- `{}` に `キー: 値` のペアをカンマ区切りで書いて初期化
+- 変数名は `name2score` のような「`x2y`」形式が慣例
+    - `2` は「→（to）」の意味
+        - 「A2B」は「A to B」で「AからBへ変換」
+
 
 ```python
 # {"キー1": 値1, "キー2": 値2, ...} のように初期化
-# 変数名は「キー→値」を表す「◎2×」で書かれることが多い（テーブルとも呼ばれる）
 name2score = {"Yamada": 95, "Suzuki": 75}
 
 # print で表示可能
@@ -269,18 +286,21 @@ dict_test2 = dict()
 
 ## 要素の追加・アクセス方法
 
+- `["キー"]` でアクセス（list の `[0]` に相当）
+- 存在しないキーへの代入 → **追加**、存在するキーへの代入 → **上書き**
+
 ```python
-# リストの [0] のようなインデックスの代わりに ["キー"] でアクセス
+# ["キー"] でアクセス
 print(name2score["Yamada"])  # 95
 
 # 存在しないキーを指定するとエラー
 print(name2score["Takahashi"])  # KeyError: 'Takahashi'
 
-# 新しいキーを指定して代入すると追加
+# 存在しないキーに代入すると追加
 name2score["Takahashi"] = 80
 print(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}
 
-# すでに存在するキーを指定すると、値が更新される
+# 存在するキーに代入すると上書き
 name2score["Suzuki"] = 70
 print(name2score)  # {'Yamada': 95, 'Suzuki': 70, 'Takahashi': 80}
 ```
@@ -306,39 +326,35 @@ else:
 # not in で「存在しない」を確認
 if "Sato" not in name2score:
     print("Sato は未登録")
-
-# list でも同様に使える
-scores = [85, 90, 78]
-if 90 in scores:
-    print("90点の学生がいる")  # 90点がいる
 ```
 
 
-## for 文での使い方（dict）
+## `for` 文での使い方（`dict`）
+
+- `.keys()` / `.values()` / `.items()` の3種類を使い分ける
+- 実務では `.items()` が最頻出
 
 ```python
-# for 文では以下の3種類のメソッドを活用する
-
-# すべてのキーを列挙 .keys()
+# すべてのキーを列挙
 print(name2score.keys())    # dict_keys(['Yamada', 'Suzuki', 'Takahashi'])
 
-# すべての値を列挙 .values()
+# すべての値を列挙
 print(name2score.values())  # dict_values([95, 70, 80])
 
-# すべての「キーと値」の組を列挙 .items()
+# キーと値の組を列挙
 print(name2score.items())   # dict_items([('Yamada', 95), ...])
 
-# .keys() を使ったパターン
+# キーだけ使うパターン
 for key in name2score.keys():
     print(f"{key}さんが居ます")
 
-# .items() を使ったパターン（最もよく使う）
+# キーと値を同時に使うパターン（最もよく使う）
 for key, value in name2score.items():
     print(f"{key}さんは{value}点です")
 ```
 
 
-## 演習問題（dict）
+## 演習問題（`dict`）
 
 ```python
 name2score = {"Yamada": 95, "Suzuki": 75, "Takahashi": 80}
@@ -348,7 +364,7 @@ name2score = {"Yamada": 95, "Suzuki": 75, "Takahashi": 80}
 2. **Takahashi** さんの点数を **92点** に訂正しよう
 3. **90点以上**の学生の「名前」と「点数」を表示するプログラムを書こう
    - ヒント：`items()` を使って value を判定
-4. `"Yamada"` が dict に存在するか `in` を使って確認し、存在すれば点数を表示しよう
+4. `"Yamada"` が `dict` に存在するか `in` を使って確認し、存在すれば点数を表示しよう
 
 ```{python}
 #| echo: true
@@ -367,11 +383,15 @@ if "Yamada" in name2score:
 
 
 
-## 【Collection３】 tuple（タプル）
+## 【Collection３】 `tuple`（タプル）
 
 ::: {.fig-cite src="imgs/3D_Spherical.svg.jpg" height="90%"}
 
 ::: {.content-box .pos-br}
+- **組**のこと。
+    - 5つ組み等
+- 数学用語からきている
+    - 例： 3-tuple、n-tuple
 - 要素が固定のリスト
 - **（）** で書かれる
 
@@ -383,39 +403,57 @@ PD: <https://en.wikipedia.org/wiki/Coordinate_system#/media/File:3D_Spherical.sv
 
 :::
 
-## tuple の使いどころ
+## 数学用語からきている
+
+- `tuple`は、**組**のこと
+- よく似た概念に**集合**（`set`）がある
 
 
-- 座標値など、要素数が決まっているときに使う
-  - リストよりメモリ効率がよい
+| 性質 | `tuple`（組） | `set`（集合） |
+|------|------|------|
+| 順序 | **あり**<br>$(a,b) \neq (b,a)$ | **なし**<br>$\{a,b\} = \{b,a\}$ |
+| 重複 | **区別する**<br>$(1,1,2) \neq (1,2)$ | **区別しない**<br>$\{1,1,2\} = \{1,2\}$ |
+| 定義 | デカルト積（n個の集合の直積） | 要素の集まり |
+| 用途 | 座標・関数の引数・関係 | 包含・和・積 |
 
-- 値の変更ができない（イミュータブル）
+::: {.callout-tip}
+## Pythonでの`tuple`と`set`
 
-- 関数の戻り値を複数にしたい場合でも使われる
+- `tuple` → 順序あり・重複あり・変更不可
+- `set` → 順序なし・重複なし（数学の集合に近い）
+:::
 
 
-## tuple の初期化・アクセス
+## `tuple` の使いどころ
+
+- 要素数が固定のデータを表すのに使う
+    - 座標 `(x, y)`、RGB `(r, g, b)` など
+    - `list` より**メモリ効率がよい**
+- 値の変更ができない（**イミュータブル**）
+    - 意図せぬ書き換えを防げる
+- 関数から複数の値を返すときによく使う
+
+
+## `tuple` の初期化・アクセス
+
+- `()` にカンマ区切りで値を書いて初期化
+     - 空の初期化もありうるが大抵は意味がない
+- アクセス方法は `list` と同じ（インデックス指定）
 
 ```python
-# () にカンマ区切りになったデータを tuple という
-
-# 英語・数学・理科の点数がそれぞれ 90, 85, 72 点であることを示す tuple
+# 英語・数学・理科の点数を tuple で表現
 score = (90, 85, 72)
 print(score)          # (90, 85, 72)
 print(type(score))    # <class 'tuple'>
 
-# アクセス方法はリストと同じで、インデックスを指定する
+# アクセスは list と同じ
 print(score[0])   # 90
-
-# マイナスで末尾からも指定可能
-print(score[-1])  # 72
-
-# 範囲外を指定するとエラー
+print(score[-1])  # 72（末尾からもOK）
 print(score[3])   # IndexError: tuple index out of range
 ```
 
 
-## tuple と list の違い・制限
+## `tuple` と `list` の違い・制限
 
 ```python
 # 値の変更はエラー（list との大きな違い）
@@ -433,13 +471,13 @@ print(score_list)         # [90, 85, 72, 100]
 ```
 
 ::: {.callout-tip}
-## なぜ tuple を使う？
+## なぜ `tuple` を使う？
 
-変更させたくないデータを保護できる。list よりメモリ効率もよい。
+変更させたくないデータを保護できる。`list` よりメモリ効率もよい。
 :::
 
 
-## よくある tuple の使われ方（関数の戻り値）
+## よくある `tuple` の使われ方（関数の戻り値）
 
 ```python
 # リストの最小値と最大値を返す関数
@@ -462,10 +500,10 @@ min_val, max_val = get_min_max_value(scores)
 ```
 
 
-## 実は dict で出てきていた tuple
+## 実は `dict` で出てきていた `tuple`
 
 
-`items()` はタプルの list を返している。だから `key, value` という2変数に代入できる。
+`items()` はタプルの `list` を返している。だから `key, value` という2変数に代入できる。
 
 ```python
 print(name2score.items())
@@ -477,7 +515,7 @@ for key, value in name2score.items():  # tuple を2変数に展開
 ```
 
 
-## 演習問題（tuple）
+## 演習問題（`tuple`）
 
 ```python
 # tanaka さん：英語60点、数学95点 → tuple で表現
@@ -532,9 +570,4 @@ print(A ^ B)  # {'a', 'd'}            ← 対称差
 print(A - B)  # {'a'}                 ← 差集合
 ```
 
-数値データには **numpy の ndarray** がよく使われる（後日扱う）。
-
-
-## 次回予告
-
-**第4回：変数と代入** — `list` の代入でなぜ元データが書き換わってしまうのか、メモリモデルで解明する。第2回の演習③の謎もここで解決する。
+数値データには `numpy` の `ndarray` がよく使われる（後日扱う）。
