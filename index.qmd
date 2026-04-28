@@ -6,9 +6,9 @@
 
 - [第1回：キータイピング](key-typing.qmd)
 - [第2回：ショートカット](shortcuts.qmd)
-- [第3回：コレクションまとめ](collections.qmd)
-- [第4回：変数と代入](variables.qmd)
-- [第5回：list改めて](list.qmd)
+- [第3回：速習：コレクション](collections.qmd)
+- [第4回：list改めて](list.qmd)
+- [第5回：変数と代入](variables.qmd)
 
 
 ![](imgs/qrcode_rkskmt.github.io.png){fig-align="center" width=300}
