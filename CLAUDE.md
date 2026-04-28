@@ -18,6 +18,11 @@ Quarto-based website for "情報処理" (Information Processing). Written in Jap
 - `imgs/` — image assets
 - `_extensions/` — Quarto extensions
 
+## Language
+
+- Content is written in **Japanese**
+- Code comments, commit messages, and Claude's reasoning should be in **English**
+
 ## Conventions
 
 - Content is written in **Japanese**
