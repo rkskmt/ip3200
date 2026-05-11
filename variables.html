@@ -251,8 +251,21 @@
   .fig-medium img {
     max-height: 400px !important;
   }
-  .reveal table td:first-child {
+  table {
+    width: 100%;
+    border-bottom: none !important;
+  }
+  table tbody {
+    border-bottom: none !important;
+  }
+  table tr:last-child,
+  table tr:last-child td {
+    border-bottom: none !important;
+  }
+  table th:first-child,
+  table td:first-child {
     font-weight: bold;
+    border-right: 2px solid #aaa;
   }
   .reveal .cite {
     position: absolute;
@@ -334,9 +347,9 @@
     gap: 8px;
   }
   #slide-nav button {
-    background: #5dade2;
-    color: white;
-    border: none;
+    background: transparent;
+    color: #5dade2;
+    border: 1px solid #5dade2;
     border-radius: 4px;
     padding: 4px 14px;
     font-size: 1rem;
@@ -345,7 +358,7 @@
     -webkit-tap-highlight-color: transparent;
   }
   #slide-nav button:active {
-    background: #3498db;
+    background: rgba(93, 173, 226, 0.2);
   }
   #nav-counter {
     font-size: 0.9rem;
@@ -371,16 +384,23 @@
       nav.id = 'slide-nav';
       nav.innerHTML = '<button id="nav-prev">&#9664;</button><span id="nav-counter"></span><button id="nav-next">&#9654;</button>';
       footer.appendChild(nav);
-      document.getElementById('nav-prev').addEventListener('click', function() { Reveal.prev(); });
-      document.getElementById('nav-next').addEventListener('click', function() { Reveal.next(); });
+      function addNavHandler(el, fn) {
+        var touched = false;
+        el.addEventListener('touchstart', function(e) { e.stopPropagation(); touched = true; fn(); }, { passive: true });
+        el.addEventListener('click', function() { if (touched) { touched = false; return; } fn(); });
+      }
+      addNavHandler(document.getElementById('nav-prev'), function() { Reveal.prev(); });
+      addNavHandler(document.getElementById('nav-next'), function() { Reveal.next(); });
       updateCounter();
-      Reveal.addEventListener('slidechanged', updateCounter);
-      Reveal.addEventListener('fragmentshown', updateCounter);
-      Reveal.addEventListener('fragmenthidden', updateCounter);
+      var mo = new MutationObserver(updateCounter);
+      mo.observe(document.querySelector('.reveal .slides'), { subtree: true, attributeFilter: ['class'] });
     }
     function updateCounter() {
       var el = document.getElementById('nav-counter');
-      if (el) el.textContent = (Reveal.getSlidePastCount() + 1) + ' / ' + Reveal.getTotalSlides();
+      if (!el) return;
+      var slides = Array.from(document.querySelectorAll('.reveal .slides section:not(.stack)'));
+      var idx = slides.findIndex(function(s) { return s.classList.contains('present'); });
+      el.textContent = (idx + 1) + ' / ' + slides.length;
     }
     if (Reveal.isReady()) { initNav(); } else { Reveal.addEventListener('ready', initNav); }
   });

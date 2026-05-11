@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="rkskmt">
-  <title>高専3年 情報処理 – リストの基礎知識</title>
+  <title>高専3年 情報処理 – リストをあらためて</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -251,8 +251,21 @@
   .fig-medium img {
     max-height: 400px !important;
   }
-  .reveal table td:first-child {
+  table {
+    width: 100%;
+    border-bottom: none !important;
+  }
+  table tbody {
+    border-bottom: none !important;
+  }
+  table tr:last-child,
+  table tr:last-child td {
+    border-bottom: none !important;
+  }
+  table th:first-child,
+  table td:first-child {
     font-weight: bold;
+    border-right: 2px solid #aaa;
   }
   .reveal .cite {
     position: absolute;
@@ -334,9 +347,9 @@
     gap: 8px;
   }
   #slide-nav button {
-    background: #5dade2;
-    color: white;
-    border: none;
+    background: transparent;
+    color: #5dade2;
+    border: 1px solid #5dade2;
     border-radius: 4px;
     padding: 4px 14px;
     font-size: 1rem;
@@ -345,7 +358,7 @@
     -webkit-tap-highlight-color: transparent;
   }
   #slide-nav button:active {
-    background: #3498db;
+    background: rgba(93, 173, 226, 0.2);
   }
   #nav-counter {
     font-size: 0.9rem;
@@ -371,16 +384,23 @@
       nav.id = 'slide-nav';
       nav.innerHTML = '<button id="nav-prev">&#9664;</button><span id="nav-counter"></span><button id="nav-next">&#9654;</button>';
       footer.appendChild(nav);
-      document.getElementById('nav-prev').addEventListener('click', function() { Reveal.prev(); });
-      document.getElementById('nav-next').addEventListener('click', function() { Reveal.next(); });
+      function addNavHandler(el, fn) {
+        var touched = false;
+        el.addEventListener('touchstart', function(e) { e.stopPropagation(); touched = true; fn(); }, { passive: true });
+        el.addEventListener('click', function() { if (touched) { touched = false; return; } fn(); });
+      }
+      addNavHandler(document.getElementById('nav-prev'), function() { Reveal.prev(); });
+      addNavHandler(document.getElementById('nav-next'), function() { Reveal.next(); });
       updateCounter();
-      Reveal.addEventListener('slidechanged', updateCounter);
-      Reveal.addEventListener('fragmentshown', updateCounter);
-      Reveal.addEventListener('fragmenthidden', updateCounter);
+      var mo = new MutationObserver(updateCounter);
+      mo.observe(document.querySelector('.reveal .slides'), { subtree: true, attributeFilter: ['class'] });
     }
     function updateCounter() {
       var el = document.getElementById('nav-counter');
-      if (el) el.textContent = (Reveal.getSlidePastCount() + 1) + ' / ' + Reveal.getTotalSlides();
+      if (!el) return;
+      var slides = Array.from(document.querySelectorAll('.reveal .slides section:not(.stack)'));
+      var idx = slides.findIndex(function(s) { return s.classList.contains('present'); });
+      el.textContent = (idx + 1) + ' / ' + slides.length;
     }
     if (Reveal.isReady()) { initNav(); } else { Reveal.addEventListener('ready', initNav); }
   });
@@ -392,8 +412,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">リストの基礎知識</h1>
-  <p class="subtitle">速習から応用まで</p>
+  <h1 class="title">リストをあらためて</h1>
+  <p class="subtitle">必修事項のみ</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -530,7 +550,7 @@ rkskmt
 </ul></li>
 <li><strong>平均点</strong>を表示しよう</li>
 </ol>
-<div id="b95f507d" class="cell" data-execution_count="1">
+<div id="32338212" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>student_scores.append(<span class="dv">100</span>)</span>
@@ -806,6 +826,92 @@ rkskmt
 <li>リスト内包表記 <code>[式 for x in ...]</code> で <code>for</code>+<code>append</code> を1行に圧縮できる</li>
 <li><code>list</code> はミュータブル — コピーが必要なときは <code>.copy()</code> を使う</li>
 </ul>
+</section>
+<section id="演習問題-1" class="slide level2 scrollable">
+<h2>演習問題</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>, <span class="dv">65</span>, <span class="dv">100</span>, <span class="dv">73</span>, <span class="dv">80</span>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>上記のリストをコピーして、以下の操作を実装せよ</p>
+<ol type="1">
+<li><code>range(len(...))</code> を使って、<strong>出席番号（1始まり）と点数</strong>を表示</li>
+<li><strong>スライス</strong>を使って、上位5名分（先頭5つ）と下位5名分（末尾5つ）をそれぞれ別のリストに分けて表示</li>
+<li><code>sorted</code> を使って、<strong>元のリストを変えずに</strong>降順に並び替えた新しいリストを作り、<strong>上位3名の点数</strong>を表示</li>
+</ol>
+<div id="53cf7b2a" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>解答例を見る</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="co"># 1</span></span>
+<span id="cb32-2"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(scores)):</span>
+<span id="cb32-3"><a></a>    <span class="bu">print</span>(<span class="ss">f"出席番号</span><span class="sc">{</span>i <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">は</span><span class="sc">{</span>scores[i]<span class="sc">}</span><span class="ss">点"</span>)</span>
+<span id="cb32-4"><a></a></span>
+<span id="cb32-5"><a></a><span class="co"># 2</span></span>
+<span id="cb32-6"><a></a>top5 <span class="op">=</span> scores[:<span class="dv">5</span>]</span>
+<span id="cb32-7"><a></a>bottom5 <span class="op">=</span> scores[<span class="op">-</span><span class="dv">5</span>:]</span>
+<span id="cb32-8"><a></a><span class="bu">print</span>(top5)</span>
+<span id="cb32-9"><a></a><span class="bu">print</span>(bottom5)</span>
+<span id="cb32-10"><a></a></span>
+<span id="cb32-11"><a></a><span class="co"># 3</span></span>
+<span id="cb32-12"><a></a>ranked <span class="op">=</span> <span class="bu">sorted</span>(scores, reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb32-13"><a></a><span class="bu">print</span>(ranked[:<span class="dv">3</span>])</span>
+<span id="cb32-14"><a></a><span class="bu">print</span>(scores)  <span class="co"># 元のリストは変わっていない</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="演習問題リスト内包表記" class="slide level2 scrollable">
+<h2>演習問題（リスト内包表記）</h2>
+<p>以下の操作を実装せよ</p>
+<ol type="1">
+<li><code>range(1, 11)</code> を使って、<strong>1から10までの平方数</strong>のリストを作ろう（<code>[1, 4, 9, ..., 100]</code>）</li>
+<li><code>scores</code> から、<strong>80点以上の点数だけ</strong>を取り出した新しいリストを作ろう</li>
+<li>標準入力で受け取った空白区切りの整数列を、<strong>list of int</strong> に変換しよう（AtCoder 頻出パターン）</li>
+</ol>
+<div id="647548ee" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>解答例を見る</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a><span class="co"># 1</span></span>
+<span id="cb33-2"><a></a>squares <span class="op">=</span> [x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)]</span>
+<span id="cb33-3"><a></a><span class="bu">print</span>(squares)</span>
+<span id="cb33-4"><a></a></span>
+<span id="cb33-5"><a></a><span class="co"># 2</span></span>
+<span id="cb33-6"><a></a>passed <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> scores <span class="cf">if</span> s <span class="op">&gt;=</span> <span class="dv">80</span>]</span>
+<span id="cb33-7"><a></a><span class="bu">print</span>(passed)</span>
+<span id="cb33-8"><a></a></span>
+<span id="cb33-9"><a></a><span class="co"># 3</span></span>
+<span id="cb33-10"><a></a>As <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>().split()]</span>
+<span id="cb33-11"><a></a><span class="bu">print</span>(As)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="演習問題２次元配列" class="slide level2 scrollable">
+<h2>演習問題（２次元配列）</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a><span class="co"># 行：学生（0: A さん, 1: B さん, 2: C さん）</span></span>
+<span id="cb34-2"><a></a><span class="co"># 列：科目（0: 国語, 1: 数学, 2: 英語）</span></span>
+<span id="cb34-3"><a></a>table <span class="op">=</span> [</span>
+<span id="cb34-4"><a></a>    [<span class="dv">80</span>, <span class="dv">90</span>, <span class="dv">70</span>],</span>
+<span id="cb34-5"><a></a>    [<span class="dv">60</span>, <span class="dv">85</span>, <span class="dv">95</span>],</span>
+<span id="cb34-6"><a></a>    [<span class="dv">75</span>, <span class="dv">70</span>, <span class="dv">80</span>],</span>
+<span id="cb34-7"><a></a>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>上記の学生の国語・数学・英語の点数をもつ２次元配列をコピーして、以下の操作を実装せよ。</p>
+<ol type="1">
+<li><strong>B さんの数学</strong>の点数を表示しよう</li>
+<li><strong>C さんの3科目合計</strong>を表示しよう</li>
+<li><strong>各学生の平均点</strong>を <code>for</code> 文で順に表示しよう</li>
+</ol>
+<div id="a33daa2c" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>解答例を見る</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a><span class="co"># 1</span></span>
+<span id="cb35-2"><a></a><span class="bu">print</span>(table[<span class="dv">1</span>][<span class="dv">1</span>])  <span class="co"># 85</span></span>
+<span id="cb35-3"><a></a></span>
+<span id="cb35-4"><a></a><span class="co"># 2</span></span>
+<span id="cb35-5"><a></a><span class="bu">print</span>(<span class="bu">sum</span>(table[<span class="dv">2</span>]))  <span class="co"># 225</span></span>
+<span id="cb35-6"><a></a></span>
+<span id="cb35-7"><a></a><span class="co"># 3</span></span>
+<span id="cb35-8"><a></a>names <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
+<span id="cb35-9"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(table)):</span>
+<span id="cb35-10"><a></a>    avg <span class="op">=</span> <span class="bu">sum</span>(table[i]) <span class="op">/</span> <span class="bu">len</span>(table[i])</span>
+<span id="cb35-11"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>names[i]<span class="sc">}</span><span class="ss">さんの平均点：</span><span class="sc">{</span>avg<span class="sc">:.1f}</span><span class="ss">点"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 
 
 </section>

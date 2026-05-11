@@ -93,163 +93,184 @@
   {
     "objectID": "list.html#list-とは",
     "href": "list.html#list-とは",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "list とは",
     "text": "list とは\n\n最もよく使われるコレクション型（コンテナ）\n\n他言語では配列・アレイとも呼ばれる\n\nデータは追加順に並ぶ\n変数名は要素の名詞の複数形にすることが多い（例：foods、scores）"
   },
   {
     "objectID": "list.html#宣言",
     "href": "list.html#宣言",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "宣言",
     "text": "宣言\n[] でカンマ区切りでデータを入力するとリストになる。\n\n順序が保持される\n重複してもよい\n\nscores = [85, 90, 92, 78, 92, 88]\nprint(scores)  # [85, 90, 92, 78, 92, 88]\n\n\n\n\n\n\nお作法\n\n\nカンマ , の後は必ずスペースを空けるのが綺麗に書くコツ。"
   },
   {
     "objectID": "list.html#アクセスインデックス",
     "href": "list.html#アクセスインデックス",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "アクセス（インデックス）",
     "text": "アクセス（インデックス）\n要素にアクセスするにはインデックス（数字）を使う。\n\nインデックスはゼロ始まり\n後ろにいくにつれて 1 ずつ増加\n\nscores = [85, 90, 92, 78, 92, 88]\nprint(scores[0])  # 85\nprint(scores[4])  # 92"
   },
   {
     "objectID": "list.html#マイナスインデックス",
     "href": "list.html#マイナスインデックス",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "マイナスインデックス",
     "text": "マイナスインデックス\nインデックスをマイナスにすると末尾からアクセスできる。\n\n-1 が末尾（-0 ではない）\n\nprint(scores[-1])  # 88（末尾）\nprint(scores[-5])  # 90（末尾から5番目）"
   },
   {
     "objectID": "list.html#要素の追加append",
     "href": "list.html#要素の追加append",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "要素の追加（append）",
     "text": "要素の追加（append）\nappend メソッドで末尾に要素を追加できる。\nscores = [85, 90, 92, 78, 92, 88]\nscores.append(95)\nprint(scores)  # [85, 90, 92, 78, 92, 88, 95]\n\n\n\n\n\n\n戻り値は None\n\n\nappend は末尾に追加するだけで、新しいリストを返さない。\nresult = scores.append(95)\nprint(result)  # None ← リストではない！\nresult = scores.append(95) のように書くと result が None になってしまう。"
   },
   {
     "objectID": "list.html#走査全要素へのアクセス",
     "href": "list.html#走査全要素へのアクセス",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "走査（全要素へのアクセス）",
     "text": "走査（全要素へのアクセス）\nリストの全要素にアクセスすることを走査という。for 文で簡単に書ける。\nfor score in scores:\n    print(f\"{score}点\")\n85点\n90点\n92点\n78点\n92点\n88点"
   },
   {
     "objectID": "list.html#要素の存在確認in-演算子",
     "href": "list.html#要素の存在確認in-演算子",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "要素の存在確認（in 演算子）",
     "text": "要素の存在確認（in 演算子）\nin 演算子でリストに特定の値が含まれているか確認できる。\nscores = [85, 90, 78]\n\nif 90 in scores:\n    print(\"90点の学生がいる\")  # 90点がいる\n\nif 100 not in scores:\n    print(\"満点はいない\")  # 満点はいない\n\n\n\n\n\n\nin vs インデックス検索\n\n\n「含まれているか知りたいだけ」なら in が最もシンプル。 位置（インデックス）も必要なときは .index() を使う。\nprint(scores.index(90))  # 1"
   },
   {
     "objectID": "list.html#演習問題",
     "href": "list.html#演習問題",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "演習問題",
     "text": "演習問題\n以下のリスト student_scores を使って取り組もう。\nstudent_scores = [85, 90, 92, 78, 92, 88]\n\nappend を使って 100点 の学生を追加しよう\n90点以上の学生の「学生番号」と「点数」を表示するプログラムを書こう\n\nヒント：for 文の中で if 文を使う\n\n平均点を表示しよう\n\n\n\n解答を見る\nstudent_scores.append(100)\nfor i, score in enumerate(student_scores):\n    if score &gt;= 90:\n        print(f\"学生{i + 1}は{score}点です\")\nprint(sum(student_scores) / len(student_scores))"
   },
   {
     "objectID": "list.html#その他-list-で知っておきたい基礎知識",
     "href": "list.html#その他-list-で知っておきたい基礎知識",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "その他 list で知っておきたい基礎知識",
     "text": "その他 list で知っておきたい基礎知識\nよく使われる、もしくは注意するべき list の知識を挙げる。\n\n範囲外のインデックスはエラー\n初期化\nリストの長さと range による走査\nスライス（部分集合の取得）\n２次元配列\nN 次元配列\nlist 同士の結合\nソート\nリスト内包表記\n【参考】異なる型の混在"
   },
   {
     "objectID": "list.html#範囲外のインデックスはエラー",
     "href": "list.html#範囲外のインデックスはエラー",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "１. 範囲外のインデックスはエラー",
     "text": "１. 範囲外のインデックスはエラー\n以下のインデックスは指定できない（エラーになる）。\n\n要素数（list の長さ）以上\nマイナス要素数＋1 以下\n\ntest = [0, 1, 2, 3]\nprint(len(test))  # 4\nprint(test[4])    # IndexError\nprint(test[-5])   # IndexError\n\n\n\n\n\n\nIndexError: list index out of range\n\n\nlen(test) は 4 なので有効なインデックスは -4 ～ 3 まで。 test[4] や test[-5] はその範囲外なのでエラー。"
   },
   {
     "objectID": "list.html#初期化",
     "href": "list.html#初期化",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "２. 初期化",
     "text": "２. 初期化\n空のリストを作る方法は２種類。どちらでも同じ結果。\nempty1 = []\nempty2 = list()\n\nprint(empty1)  # []\nprint(empty2)  # []"
   },
   {
     "objectID": "list.html#リストの長さと-range-による走査",
     "href": "list.html#リストの長さと-range-による走査",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "３. リストの長さと range による走査",
     "text": "３. リストの長さと range による走査\n\nlen(list) でリストの要素数を取得できる\nrange(N) は 0, 1, 2, ..., N-1 を返す（list ではなく range 型）\n\nlist(range(N)) で list に変換可能\n\nrange(len(list)) と組み合わせて走査するパターンをよく使う\n\nstudent_scores = [85, 90, 92, 78, 92, 88]\n\nprint(len(student_scores))                  # 6\nprint(list(range(len(student_scores))))     # [0, 1, 2, 3, 4, 5]\n\nfor i in range(len(student_scores)):\n    print(f\"出席番号{i+1}は、{student_scores[i]}点です。\")\n出席番号1は、85点です。\n出席番号2は、90点です。\n..."
   },
   {
     "objectID": "list.html#スライス部分集合の取得",
     "href": "list.html#スライス部分集合の取得",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "４. スライス（部分集合の取得）",
     "text": "４. スライス（部分集合の取得）\nリストの一部を切り取って別のリストにできる。\nlist[切り取る先頭インデックス : 切り取る末尾インデックス+1]\norg_test = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\nsliced_list = org_test[2:5]\nprint(sliced_list)  # [2, 3, 4]\n\n\n\n\n\n\nポイント\n\n\n末尾インデックスは「取りたい最後の要素のインデックス＋1」を指定する。 org_test[2:5] → インデックス 2, 3, 4 の要素を取得。"
   },
   {
     "objectID": "list.html#次元配列",
     "href": "list.html#次元配列",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "５. ２次元配列",
     "text": "５. ２次元配列\nlist の要素として list を入れると２次元配列になる。\nアクセスは list[行][列] の形式。\nlist_of_list = [[1, 2, 3], [4, 5, 6]]\nprint(list_of_list)        # [[1, 2, 3], [4, 5, 6]]\nprint(list_of_list[0][1])  # 2\n       列0  列1  列2\n行0 →  [1,   2,   3]\n行1 →  [4,   5,   6]\nlist_of_list[0][1] → 行0・列1 → 2"
   },
   {
     "objectID": "list.html#n-次元配列",
     "href": "list.html#n-次元配列",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "６. N 次元配列",
     "text": "６. N 次元配列\n２次元以上の多次元化も可能。\nN_dimensional_list = [[[1, 2, 3], [4, 5, 6]],\n                      [[7, 8, 9], [10, 11, 12]]]\n\nprint(N_dimensional_list[1][1][2])  # 12\n\n[1] → 2番目のブロック [[7,8,9],[10,11,12]]\n[1] → その中の2番目 [10,11,12]\n[2] → その中の3番目 → 12"
   },
   {
     "objectID": "list.html#list-同士の結合",
     "href": "list.html#list-同士の結合",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "７. list 同士の結合",
     "text": "７. list 同士の結合\n+ 演算子でリスト同士を結合できる。\nlist1 = [\"banana\", \"apple\"]\nlist2 = [\"orange\", \"peach\"]\n\nprint(list1 + list2)  # ['banana', 'apple', 'orange', 'peach']\n\n# += 演算も可能\nlist1 += list2\nprint(list1)          # ['banana', 'apple', 'orange', 'peach']\n\n\n\n\n\n\n重複はそのまま追加される\n\n\n同じ要素があっても重複して追加される（重複排除はされない）。\nlist3 = [\"banana\", \"grape\"]\nprint(list1 + list3)\n# ['banana', 'apple', 'orange', 'peach', 'banana', 'grape']"
   },
   {
     "objectID": "list.html#ソート",
     "href": "list.html#ソート",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "８. ソート",
     "text": "８. ソート\nsort() と sorted() でリストを並び替えられる。\nscores = [85, 90, 92, 78, 92, 88]\n\n# sort()：元のリストを直接変更（ミュータブル！）\nscores.sort()\nprint(scores)  # [78, 85, 88, 90, 92, 92]\n\n# sorted()：新しいリストを返す（元は変わらない）\noriginal = [85, 90, 92, 78]\nresult = sorted(original)\nprint(original)  # [85, 90, 92, 78] ← 変わらない\nprint(result)    # [78, 85, 90, 92]\n\n# 降順は reverse=True\nscores.sort(reverse=True)\nprint(scores)  # [92, 92, 90, 88, 85, 78]\n\n\n\n\n\n\nsort vs sorted の使い分け\n\n\n\n元のリストを壊してよい → sort()（速い）\n元のリストを保持したい → sorted()（安全）\n\nsort() が in-place で変更する点は、第4回で学んだミュータブルの性質そのもの。"
   },
   {
     "objectID": "list.html#リスト内包表記",
     "href": "list.html#リスト内包表記",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "９. リスト内包表記",
     "text": "９. リスト内包表記\nfor 文を1行に圧縮してリストを作る書き方\n例えば、[0, 1, 4, 9, 16]のリストを作りたい時、\nsquares = []\nfor x in range(5):\n    squares.append(x * x)\nprint(squares)  # [0, 1, 4, 9, 16]\nと書けるけど、長いので以下のように一撃でも書ける。それがリスト内包表記\n# 基本形：[式 for 変数 in イテラブル]\nsquares = [x ** 2 for x in range(5)]\nprint(squares)  # [0, 1, 4, 9, 16]"
   },
   {
     "objectID": "list.html#リスト内包表記条件式付き",
     "href": "list.html#リスト内包表記条件式付き",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "９. リスト内包表記（条件式付き）",
     "text": "９. リスト内包表記（条件式付き）\n例えば、0-99の整数うち３の倍数以外のリストを作る場合、以下のようにfor文に条件を書くことになる。\n\nnot_divisible_by_3s = []\nfor x in range(100):\n    if x % 3 == 0:\n        continue\n    not_divisible_by_3s.append(x)\nprint(not_divisible_by_3s)\nこれをリスト内包表記だとこう書ける。短い\n# 条件付き：[式 for 変数 in イテラブル if 条件]\nnot_divisible_by_3s = [x for x in range(100) if x % 3 != 0]\nprint(not_divisible_by_3s)\n\n\n\n\n\n\nノート\n\n\nリスト内包表記はAtCoderでよく使う（次スライド）"
   },
   {
     "objectID": "list.html#リスト内包表記の使いどころ",
     "href": "list.html#リスト内包表記の使いどころ",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "リスト内包表記の使いどころ",
     "text": "リスト内包表記の使いどころ\n第1回 AtCoder の参考コードに出てきた謎の構文：\nAs = [int(x) for x in input().split()]\nこれはリスト内包表記だった。input().split() で [\"1\", \"2\", \"3\"] という文字列のリストを作り、 各要素を int(x) で整数に変換しながら新しいリストを作っている。\nfor 文で書くと以下と同じ意味：\ninput_str = input().split() # split(\" \")と同じ。つまり、空白区切りで分けてlist化\nAs = []\nfor x in input_str:\n    As.append(int(x))"
   },
   {
     "objectID": "list.html#参考異なる型の混在",
     "href": "list.html#参考異なる型の混在",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "１０. 【参考】異なる型の混在",
     "text": "１０. 【参考】異なる型の混在\nPython の list は数値・文字列など異なる型を混在させることができる。\nprint([10, \"text\", 10.5])        # [10, 'text', 10.5]\nprint([10, [1, 2, 3], \"text\"])   # [10, [1, 2, 3], 'text']\n\ntest = [10, [1, 2, 3], \"text\"]\nprint(test[2])     # text\nprint(test[1][2])  # 3\n\n\n\n\n\n\n実際には使わない\n\n\n管理しにくいため実務では使わない。 ただし多次元配列はこの仕組みを応用している。"
   },
   {
     "objectID": "list.html#まとめ",
     "href": "list.html#まとめ",
-    "title": "リストの基礎知識",
+    "title": "リストをあらためて",
     "section": "まとめ",
     "text": "まとめ\n\nインデックスはゼロ始まり、マイナスで末尾からアクセスできる\nappend で末尾追加、in で存在確認、sort / sorted で並び替え\nスライス [i:j]・多次元配列・+ 結合など、組み合わせ次第で幅広く使える\nリスト内包表記 [式 for x in ...] で for+append を1行に圧縮できる\nlist はミュータブル — コピーが必要なときは .copy() を使う"
+  },
+  {
+    "objectID": "list.html#演習問題-1",
+    "href": "list.html#演習問題-1",
+    "title": "リストをあらためて",
+    "section": "演習問題",
+    "text": "演習問題\nscores = [85, 90, 92, 78, 92, 88, 65, 100, 73, 80]\n上記のリストをコピーして、以下の操作を実装せよ\n\nrange(len(...)) を使って、出席番号（1始まり）と点数を表示\nスライスを使って、上位5名分（先頭5つ）と下位5名分（末尾5つ）をそれぞれ別のリストに分けて表示\nsorted を使って、元のリストを変えずに降順に並び替えた新しいリストを作り、上位3名の点数を表示\n\n\n\n解答例を見る\n# 1\nfor i in range(len(scores)):\n    print(f\"出席番号{i + 1}は{scores[i]}点\")\n\n# 2\ntop5 = scores[:5]\nbottom5 = scores[-5:]\nprint(top5)\nprint(bottom5)\n\n# 3\nranked = sorted(scores, reverse=True)\nprint(ranked[:3])\nprint(scores)  # 元のリストは変わっていない"
+  },
+  {
+    "objectID": "list.html#演習問題リスト内包表記",
+    "href": "list.html#演習問題リスト内包表記",
+    "title": "リストをあらためて",
+    "section": "演習問題（リスト内包表記）",
+    "text": "演習問題（リスト内包表記）\n以下の操作を実装せよ\n\nrange(1, 11) を使って、1から10までの平方数のリストを作ろう（[1, 4, 9, ..., 100]）\nscores から、80点以上の点数だけを取り出した新しいリストを作ろう\n標準入力で受け取った空白区切りの整数列を、list of int に変換しよう（AtCoder 頻出パターン）\n\n\n\n解答例を見る\n# 1\nsquares = [x ** 2 for x in range(1, 11)]\nprint(squares)\n\n# 2\npassed = [s for s in scores if s &gt;= 80]\nprint(passed)\n\n# 3\nAs = [int(x) for x in input().split()]\nprint(As)"
+  },
+  {
+    "objectID": "list.html#演習問題２次元配列",
+    "href": "list.html#演習問題２次元配列",
+    "title": "リストをあらためて",
+    "section": "演習問題（２次元配列）",
+    "text": "演習問題（２次元配列）\n# 行：学生（0: A さん, 1: B さん, 2: C さん）\n# 列：科目（0: 国語, 1: 数学, 2: 英語）\ntable = [\n    [80, 90, 70],\n    [60, 85, 95],\n    [75, 70, 80],\n]\n上記の学生の国語・数学・英語の点数をもつ２次元配列をコピーして、以下の操作を実装せよ。\n\nB さんの数学の点数を表示しよう\nC さんの3科目合計を表示しよう\n各学生の平均点を for 文で順に表示しよう\n\n\n\n解答例を見る\n# 1\nprint(table[1][1])  # 85\n\n# 2\nprint(sum(table[2]))  # 225\n\n# 3\nnames = [\"A\", \"B\", \"C\"]\nfor i in range(len(table)):\n    avg = sum(table[i]) / len(table[i])\n    print(f\"{names[i]}さんの平均点：{avg:.1f}点\")"
   },
   {
     "objectID": "index.html#情報処理-2025年度",
     "href": "index.html#情報処理-2025年度",
     "title": "高専3年 情報処理",
     "section": "情報処理 2025年度",
-    "text": "情報処理 2025年度\nhttps://rkskmt.github.io/ip3200/\n\n第1回：キータイピング\n第2回：ショートカット\n第3回：速習：コレクション\n第4回：list改めて\n第5回：変数と代入"
+    "text": "情報処理 2025年度\nhttps://rkskmt.github.io/ip3200/\n\nキータイピング\nショートカット\n速習：コレクション\nlist改めて\ndict改めて\n変数と代入"
   },
   {
     "objectID": "collections.html#コレクションcollectionとは",
@@ -305,7 +326,7 @@
     "href": "collections.html#list-の初期化",
     "title": "速習 コレクション",
     "section": "list の初期化",
-    "text": "list の初期化\n\nまずは、右辺で list型ですよ と宣言しないと始まらない\nケースにより色々あるが [] が一般的\n\n\n# 空のリスト（初期化）を作りたいときは以下のどちらか\nempty1 = []\nempty2 = list()\n\n# カンマ区切りで初期値付きの初期化\nscores = [85, 90, 78, 92, 88]\n\n# print文で全体を表示\nprint(scores)   # [85, 90, 78, 92, 88]\nprint(empty1)   # []\nprint(empty2)   # []\n\n# rangeから変換して初期化\nodd_numbers = list(range(1, 11, 2)) #odd_numbers"
+    "text": "list の初期化\n\nまずは、右辺で list型ですよ と宣言しないと始まらない\nケースにより色々あるが [] が一般的\n\n\n# 空のリスト（初期化）を作りたいときは以下のどちらか\nempty1 = []\nempty2 = list()\n\n# カンマ区切りで初期値付きの初期化\nscores = [85, 90, 78, 92, 88]\n\n# print文で全体を表示\nprint(scores)   # [85, 90, 78, 92, 88]\nprint(empty1)   # []\nprint(empty2)   # []\n\n# rangeから変換して初期化\nodd_numbers = list(range(1, 11, 2))  # [1, 3, 5, 7, 9]"
   },
   {
     "objectID": "collections.html#アクセス方法",
@@ -410,28 +431,28 @@
     "href": "collections.html#tuple-と-list-の違い制限",
     "title": "速習 コレクション",
     "section": "tuple と list の違い・制限",
-    "text": "tuple と list の違い・制限\n# 値の変更はエラー（list との大きな違い）\nscore[0] = 100  # TypeError: 'tuple' object does not support item assignment\n\n# 値を追加できない（list との大きな違い）\nscore.append(100)  # error\n\n# どうしても追加したい場合は、list へ一度変換すれば可能\nscore_list = list(score)\nprint(type(score_list))   # &lt;class 'list'&gt;\nscore_list.append(100)\nscore = tuple(score_list)\nprint(score_list)         # [90, 85, 72, 100]\n\n\n\n\n\n\nなぜ tuple を使う？\n\n\n変更させたくないデータを保護できる。list よりメモリ効率もよい。"
+    "text": "tuple と list の違い・制限\n# 値の変更はエラー（listでは可能。タプルでは付加）\nscore[0] = 100  # TypeError: 'tuple' object does not support item assignment\n\n# 値を追加できない（同じく）\nscore.append(100)  # error\n\n# どうしても追加したい場合は、list へ一度変換すれば可能\n# しかし、普通は使わない\nscore_list = list(score)\nprint(type(score_list))   # &lt;class 'list'&gt;\nscore_list.append(100)\nscore = tuple(score_list)\nprint(score_list)         # [90, 85, 72, 100]\n\n\n\n\n\n\nなぜ tuple を使う？\n\n\n変更させたくないデータを保護できる。list よりメモリ効率もよい。"
   },
   {
     "objectID": "collections.html#よくある-tuple-の使われ方関数の戻り値",
     "href": "collections.html#よくある-tuple-の使われ方関数の戻り値",
     "title": "速習 コレクション",
     "section": "よくある tuple の使われ方（関数の戻り値）",
-    "text": "よくある tuple の使われ方（関数の戻り値）\n# リストの最小値と最大値を返す関数\ndef get_min_max_value(data):\n    min_val = data[0]\n    max_val = data[0]\n    for datum in data:\n        if min_val &gt; datum:\n            min_val = datum\n        if max_val &lt; datum:\n            max_val = datum\n    return (min_val, max_val)  # ← tuple で複数の値を返す\n\nscores = [85, 90, 78, 92, 88]\nanswer = get_min_max_value(scores)\nprint(answer)  # (78, 92)\n\n# 以下のように分けて受けることも可能\nmin_val, max_val = get_min_max_value(scores)"
+    "text": "よくある tuple の使われ方（関数の戻り値）\n# リストの最小値と最大値を返す関数\ndef get_min_max_value(data):\n    return (min(data), max(data))  # ← tuple で複数の値を返す\n\nscores = [85, 90, 78, 92, 88]\nanswer = get_min_max_value(scores)\nprint(answer)  # (78, 92)\n\n# 以下のように分けて受けることも可能\nmin_val, max_val = get_min_max_value(scores)\n\n\n\n\n\n\nアンパック（unpacking）\n\n\ntupleなどのイテラブルなクラスの各要素を複数の変数に一度に代入することをアンパックという。\npoint = (3, 7)\nx, y = point      # x=3, y=7\n変数の数と要素数が一致しないとエラーになる。\n\n\n\n\n\n\n\n\n\nイテラブル（iterable）とは\n\n\nイテレーション（iteration）は「コンテナから要素を1つずつ順番に取り出す操作」のこと。どの言語でも for 文の基本動作はこれ。イテラブルとは、イテレーションができるもの＝順番に要素を取り出せるもの。\n\n\n\n型\nイテラブル？\n\n\n\n\nlist\n○\n\n\ntuple\n○\n\n\nstr\n○（1文字ずつ）\n\n\nrange\n○\n\n\ndict\n○（キーが順に出る）\n\n\nint / float\n✗\n\n\n\nアンパックも for 文も、イテラブルであれば同じように使える。"
   },
   {
     "objectID": "collections.html#実は-dict-で出てきていた-tuple",
     "href": "collections.html#実は-dict-で出てきていた-tuple",
     "title": "速習 コレクション",
     "section": "実は dict で出てきていた tuple",
-    "text": "実は dict で出てきていた tuple\nitems() はタプルの list を返している。だから key, value という2変数に代入できる。\nprint(name2score.items())\n# dict_items([('Yamada', 95), ('Suzuki', 70), ('Takahashi', 80)])\n#             ^^^^^^^^^^^^^^^ ← これが tuple！\n\nfor key, value in name2score.items():  # tuple を2変数に展開\n    print(f\"{key}さんは{value}点です\")"
+    "text": "実は dict で出てきていた tuple\ndictのメソッド .items() はタプルの list を返している。だから key, value という2変数に代入できる。\nprint(name2score.items())\n# dict_items([('Yamada', 95), ('Suzuki', 70), ('Takahashi', 80)])\n#             ^^^^^^^^^^^^^^^ ← これが tuple！\n\nfor key, value in name2score.items():  # tuple を2変数に展開\n    print(f\"{key}さんは{value}点です\")"
   },
   {
     "objectID": "collections.html#演習問題tuple",
     "href": "collections.html#演習問題tuple",
     "title": "速習 コレクション",
     "section": "演習問題（tuple）",
-    "text": "演習問題（tuple）\n# tanaka さん：英語60点、数学95点 → tuple で表現\ntanaka = (60, 95)\n\ntanaka の各点数を変数 english, math に分けて受け取ろう\ntanaka の点数の合計を表示しよう\n「90点以上の科目数」を表示しよう\n\n\n\n解答を見る\nenglish, math = tanaka\nprint(english + math)\ncount = 0\nfor score in tanaka:\n    if score &gt;= 90:\n        count += 1\nprint(count)"
+    "text": "演習問題（tuple）\ndef get_min_max(scores):\n    return min(scores), max(scores)  # カッコなしでも tuple になる！\n\nscores = [85, 90, 78, 92, 88]\n\n関数を引数scoresでコールして、戻り値を変数 result で受け取る\ntype(result) と値を print する\nlow, high の2変数でアンパックして「最低: ○点, 最高: ○点」と表示\nresult[0] = 100 と改ざんを試してみよう\n\n\n\n解答を見る\nresult = get_min_max(scores)\nprint(type(result), result)       # &lt;class 'tuple'&gt; (78, 92)\n\nlow, high = get_min_max(scores)\nprint(f\"最低: {low}点, 最高: {high}点\")\n\nresult[0] = 100  # TypeError: 'tuple' object does not support item assignment"
   },
   {
     "objectID": "collections.html#まとめ",
@@ -445,7 +466,133 @@
     "href": "collections.html#発展その他のコレクション型",
     "title": "速習 コレクション",
     "section": "発展：その他のコレクション型",
-    "text": "発展：その他のコレクション型\n現場でも競技プログラミングでもよく使われる。各自で調べよう。\n\ndeque — 先端への挿入・削除が高速（double ended queue）\ndefaultdict — キーが存在しない場合にデフォルト値を返す dict\nheapq — 最小値の取り出しに強い（heap木で管理）\nset — 重複が許されない。和集合などの論理演算も可能\n\nA = set(['a', 'b', 'c'])\nB = set(['b', 'c', 'd'])\nprint(A | B)  # {'a', 'b', 'c', 'd'}  ← 和集合\nprint(A & B)  # {'b', 'c'}            ← 積集合\nprint(A ^ B)  # {'a', 'd'}            ← 対称差\nprint(A - B)  # {'a'}                 ← 差集合\n数値データには numpy の ndarray がよく使われる（後日扱う）。"
+    "text": "発展：その他のコレクション型\n現場でも競技プログラミングでもよく使われる。各自で調べよう。\n\ndeque — 先端への挿入・削除が高速（double ended queue）\ndefaultdict — キーが存在しない場合にデフォルト値を返す dict\nheapq — 最小値の取り出しに強い（heap木で管理）\nset — 重複が許されない。和集合などの論理演算も可能\n\nA = {'a', 'b', 'c'}\nB = {'b', 'c', 'd'}\nprint(A | B)  # {'a', 'b', 'c', 'd'}  ← 和集合\nprint(A & B)  # {'b', 'c'}            ← 積集合\nprint(A ^ B)  # {'a', 'd'}            ← 対称差\nprint(A - B)  # {'a'}                 ← 差集合\n数値データには numpy の ndarray がよく使われる（後日扱う）。"
+  },
+  {
+    "objectID": "dict.html#dict-とは",
+    "href": "dict.html#dict-とは",
+    "title": "辞書をあらためて",
+    "section": "dict とは",
+    "text": "dict とは\n\nキーと値のペアで管理するコレクション型（コンテナ）\n\n他言語ではハッシュマップ・連想配列・マップとも呼ばれる\n\nデータはキーで管理する（list のような番号ではない）\n変数名は 「x2y」 形式にすることが多い（例：name2score）"
+  },
+  {
+    "objectID": "dict.html#宣言",
+    "href": "dict.html#宣言",
+    "title": "辞書をあらためて",
+    "section": "宣言",
+    "text": "宣言\n{} で キー: 値 をカンマ区切りで入力すると辞書になる。\n\nキーは重複不可\n値は何でもよい\n\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}\n\n\n\n\n\n\nお作法\n\n\n: の前は詰めて、: と , の後には必ずスペースを空けるのが綺麗に書くコツ。"
+  },
+  {
+    "objectID": "dict.html#アクセスキー",
+    "href": "dict.html#アクセスキー",
+    "title": "辞書をあらためて",
+    "section": "アクセス（キー）",
+    "text": "アクセス（キー）\n要素にアクセスするにはキーを使う（list の [0] に相当）。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\nprint(name2score[\"Yamada\"])     # 95\nprint(name2score[\"Takahashi\"])  # 80"
+  },
+  {
+    "objectID": "dict.html#要素の追加上書き",
+    "href": "dict.html#要素の追加上書き",
+    "title": "辞書をあらためて",
+    "section": "要素の追加・上書き",
+    "text": "要素の追加・上書き\ndict[キー] = 値 で追加・上書きできる。\n\n存在しないキー → 追加\n存在するキー → 上書き\n\nname2score = {\"Yamada\": 95, \"Suzuki\": 75}\n\n# 追加\nname2score[\"Takahashi\"] = 80\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}\n\n# 上書き\nname2score[\"Suzuki\"] = 70\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 70, 'Takahashi': 80}\n\n\n\n\n\n\ntypo に注意\n\n\n追加と上書きが同じ書き方なので、typo でキーを間違えると新しいキーが勝手に追加される。\nname2score[\"Suzki\"] = 60  # 上書きのつもりが新規追加！"
+  },
+  {
+    "objectID": "dict.html#走査全要素へのアクセス",
+    "href": "dict.html#走査全要素へのアクセス",
+    "title": "辞書をあらためて",
+    "section": "走査（全要素へのアクセス）",
+    "text": "走査（全要素へのアクセス）\ndict には3種類の走査方法がある。for 文で書ける。\n# キーだけ\nfor key in name2score.keys():\n    print(key)\n\n# 値だけ\nfor value in name2score.values():\n    print(value)\n\n# キーと値を同時に（最頻出）\nfor key, value in name2score.items():\n    print(f\"{key}さんは{value}点です\")\nYamadaさんは95点です\nSuzukiさんは70点です\nTakahashiさんは80点です\n\n\n\n\n\n\nどれを使う？\n\n\n\n両方必要 → .items()（実務ではこれが一番多い）\nキーだけ → .keys()（for key in name2score: でも同じ）\n値だけ → .values()"
+  },
+  {
+    "objectID": "dict.html#演習問題",
+    "href": "dict.html#演習問題",
+    "title": "辞書をあらためて",
+    "section": "演習問題",
+    "text": "演習問題\n以下の辞書 name2score を使って取り組もう。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\n\n100点を取った “Tanaka” さんを追加しよう\nTakahashi さんの点数を 92点 に訂正しよう\n90点以上の学生の「名前」と「点数」を表示するプログラムを書こう\n\nヒント：items() で回して if 文で判定\n\n\"Yamada\" が辞書にあるか in で確認し、存在すれば点数を表示しよう\n\n\n\n解答を見る\nname2score[\"Tanaka\"] = 100\nname2score[\"Takahashi\"] = 92\nfor key, value in name2score.items():\n    if value &gt;= 90:\n        print(f\"{key}さんは{value}点です\")\nif \"Yamada\" in name2score:\n    print(f\"Yamadaさんの点数は{name2score['Yamada']}点です\")"
+  },
+  {
+    "objectID": "dict.html#その他-dict-で知っておきたい基礎知識",
+    "href": "dict.html#その他-dict-で知っておきたい基礎知識",
+    "title": "辞書をあらためて",
+    "section": "その他 dict で知っておきたい基礎知識",
+    "text": "その他 dict で知っておきたい基礎知識\nよく使われる、もしくは注意するべき dict の知識を挙げる。\n\nin 演算子で存在確認\n.get() で安全にアクセス\n要素の削除（del / pop）\n長さ（len）\nネストした dict\ndict と list の組み合わせ\n辞書内包表記"
+  },
+  {
+    "objectID": "dict.html#in-演算子で存在確認",
+    "href": "dict.html#in-演算子で存在確認",
+    "title": "辞書をあらためて",
+    "section": "in 演算子で存在確認",
+    "text": "in 演算子で存在確認\nin 演算子でキーが存在するか確認できる。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75}\n\nif \"Yamada\" in name2score:\n    print(\"Yamada さんは登録済み\")\n\nif \"Tanaka\" not in name2score:\n    print(\"Tanaka さんは未登録\")\n\n\n\n\n\n\nin はキーを見る（値ではない）\n\n\nif 95 in name2score:            # False\nif 95 in name2score.values():   # True ← 値を見たいときはこう"
+  },
+  {
+    "objectID": "dict.html#get-で安全にアクセス",
+    "href": "dict.html#get-で安全にアクセス",
+    "title": "辞書をあらためて",
+    "section": ".get() で安全にアクセス",
+    "text": ".get() で安全にアクセス\ndict[キー] は存在しないキーで落ちるが、.get(キー) は存在しなければ None を返すので落ちない。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75}\n\nprint(name2score.get(\"Yamada\"))    # 95\nprint(name2score.get(\"Tanaka\"))    # None ← エラーにならない\n第2引数でデフォルト値を指定できる。\nprint(name2score.get(\"Tanaka\", 0))   # 0 ← 未登録なら 0 点扱い\nprint(name2score.get(\"Yamada\", 0))   # 95\n\n\n\n\n\n\nin でガード vs .get()\n\n\n\n「ない場合は処理を分けたい」 → if key in dict: でガード\n「ない場合のデフォルト値が決まっている」 → .get(key, default) がスッキリ"
+  },
+  {
+    "objectID": "dict.html#要素の削除del-pop",
+    "href": "dict.html#要素の削除del-pop",
+    "title": "辞書をあらためて",
+    "section": "要素の削除（del / pop）",
+    "text": "要素の削除（del / pop）\n要素を削除するには del 文か .pop() メソッドを使う。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\n\n# del：削除するだけ\ndel name2score[\"Suzuki\"]\nprint(name2score)  # {'Yamada': 95, 'Takahashi': 80}\n\n# pop：削除して値を取り出す\nscore = name2score.pop(\"Yamada\")\nprint(score)        # 95\nprint(name2score)   # {'Takahashi': 80}"
+  },
+  {
+    "objectID": "dict.html#長さlen",
+    "href": "dict.html#長さlen",
+    "title": "辞書をあらためて",
+    "section": "長さ（len）",
+    "text": "長さ（len）\nlen(dict) で登録されているキーの数が取れる。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\nprint(len(name2score))  # 3"
+  },
+  {
+    "objectID": "dict.html#ネストした-dict",
+    "href": "dict.html#ネストした-dict",
+    "title": "辞書をあらためて",
+    "section": "ネストした dict",
+    "text": "ネストした dict\n値の中にさらに dict を入れると入れ子（ネスト）になる。 学生ごとに複数教科の点数など、複数の属性を持つデータを表現できる。\nstudents = {\n    \"Yamada\":    {\"国語\": 80, \"数学\": 90, \"英語\": 70},\n    \"Suzuki\":    {\"国語\": 60, \"数学\": 85, \"英語\": 95},\n    \"Takahashi\": {\"国語\": 75, \"数学\": 70, \"英語\": 80},\n}\n\n# Yamada さんの数学\nprint(students[\"Yamada\"][\"数学\"])  # 90\n\n# 全員の英語\nfor name, scores in students.items():\n    print(f\"{name}さんの英語：{scores['英語']}点\")"
+  },
+  {
+    "objectID": "dict.html#dict-と-list-の組み合わせ",
+    "href": "dict.html#dict-と-list-の組み合わせ",
+    "title": "辞書をあらためて",
+    "section": "dict と list の組み合わせ",
+    "text": "dict と list の組み合わせ\nlist の中に dict を入れる形は、表形式のデータを表すときの定番。 （JSON や DB の1レコードのイメージ）\nstudents = [\n    {\"name\": \"Yamada\",    \"score\": 95},\n    {\"name\": \"Suzuki\",    \"score\": 75},\n    {\"name\": \"Takahashi\", \"score\": 80},\n]\n\nfor s in students:\n    print(f\"{s['name']}さんは{s['score']}点\")\n\n\n\n\n\n\nネスト dict vs list of dict\n\n\n\n名前から直接引きたい → ネスト dict（students[\"Yamada\"]）\n順序が意味を持つ・全員を順に処理 → list of dict（students[0]）\n\n両方とも実務でよく使う。"
+  },
+  {
+    "objectID": "dict.html#辞書内包表記",
+    "href": "dict.html#辞書内包表記",
+    "title": "辞書をあらためて",
+    "section": "辞書内包表記",
+    "text": "辞書内包表記\nリスト内包表記の dict 版。{キー: 値 for ... in ...} の形。\n# 数 → その2乗 の dict を作る\nsquares = {x: x ** 2 for x in range(5)}\nprint(squares)  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}\n条件付きも書ける。\n# 80点以上だけ取り出す\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\npassed = {k: v for k, v in name2score.items() if v &gt;= 80}\nprint(passed)  # {'Yamada': 95, 'Takahashi': 80}\nキーと値を入れ替えるのも一行で書ける。\nscore2name = {v: k for k, v in name2score.items()}\nprint(score2name)  # {95: 'Yamada', 75: 'Suzuki', 80: 'Takahashi'}"
+  },
+  {
+    "objectID": "dict.html#まとめ",
+    "href": "dict.html#まとめ",
+    "title": "辞書をあらためて",
+    "section": "まとめ",
+    "text": "まとめ\n\ndict はキーと値のペアで管理するコレクション（他言語ではハッシュマップ）\nアクセスは dict[キー]、ない場合は KeyError → in または .get() でガード\n走査は .items() が最頻出、.keys() / .values() も使い分ける\nネスト dict や list of dict で表形式のデータを表現できる\n辞書内包表記 {k: v for ...} で for ＋ 追加を1行に圧縮できる"
+  },
+  {
+    "objectID": "dict.html#演習問題-1",
+    "href": "dict.html#演習問題-1",
+    "title": "辞書をあらためて",
+    "section": "演習問題",
+    "text": "演習問題\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80, \"Tanaka\": 60}\n上記の dict をコピーして、以下の操作を実装せよ\n\n.get() を使って “Sato” さんの点数を取り出す（存在しなければ 0 を返す）\nTanaka さんを del で削除\n.values() と sum / len を使って、全員の 平均点 を表示\n\n\n\n解答例を見る\n# 1\nprint(name2score.get(\"Sato\", 0))  # 0\n\n# 2\ndel name2score[\"Tanaka\"]\nprint(name2score)\n\n# 3\nprint(sum(name2score.values()) / len(name2score))"
+  },
+  {
+    "objectID": "dict.html#演習問題辞書内包表記",
+    "href": "dict.html#演習問題辞書内包表記",
+    "title": "辞書をあらためて",
+    "section": "演習問題（辞書内包表記）",
+    "text": "演習問題（辞書内包表記）\n以下の操作を実装せよ\n\nrange(1, 6) を使って、{1: 1, 2: 4, 3: 9, 4: 16, 5: 25} という「数 → 2乗」の dict を作ろう\nname2score から、80点以上の学生だけ を取り出した新しい dict を作ろう\nname2score の キーと値を入れ替えた dict（score2name）を作ろう\n\n\n\n\n\n\n\nLUT（Look-Up Table）\n\n\n問題１のように 「入力 → 計算結果」を事前に dict に入れて引けるようにしたもの を LUT（Look-Up Table、参照テーブル） と呼ぶ。毎回計算する代わりに lut[x] で引けるため、重い計算を事前計算してキャッシュする用途でよく使われる。\n古典的な例として、ゲーム機や組み込み機器では sin / cos の値を角度ごとに事前計算した LUT がよく使われる（毎フレームの三角関数計算は重いため）。\n\n\n\n\n\n解答例を見る\n# 1\nsquares = {x: x ** 2 for x in range(1, 6)}\nprint(squares)\n\n# 2\npassed = {k: v for k, v in name2score.items() if v &gt;= 80}\nprint(passed)\n\n# 3\nscore2name = {v: k for k, v in name2score.items()}\nprint(score2name)"
+  },
+  {
+    "objectID": "dict.html#演習問題list-of-dict",
+    "href": "dict.html#演習問題list-of-dict",
+    "title": "辞書をあらためて",
+    "section": "演習問題（list of dict）",
+    "text": "演習問題（list of dict）\n# 要素：学生（0: A さん, 1: B さん, 2: C さん）\n# キー：科目（\"国語\", \"数学\", \"英語\"）\nstudents = [\n    {\"name\": \"A\", \"国語\": 80, \"数学\": 90, \"英語\": 70},\n    {\"name\": \"B\", \"国語\": 60, \"数学\": 85, \"英語\": 95},\n    {\"name\": \"C\", \"国語\": 75, \"数学\": 70, \"英語\": 80},\n]\n上記の学生の国語・数学・英語の点数をもつ list of dict をコピーして、以下の操作を実装せよ。\n\nB さんの数学の点数を表示しよう\nC さんの3科目合計を表示しよう\n各学生の平均点を for 文で順に表示しよう\n\n\n\n解答例を見る\n# 1\nprint(students[1][\"数学\"])  # 85\n\n# 2\nprint(students[2][\"国語\"] + students[2][\"数学\"] + students[2][\"英語\"])  # 225\n\n# 3\nfor s in students:\n    avg = (s[\"国語\"] + s[\"数学\"] + s[\"英語\"]) / 3\n    print(f\"{s['name']}さんの平均点：{avg:.1f}点\")"
   },
   {
     "objectID": "key-typing.html#キータイピングを速めよう",
