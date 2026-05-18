@@ -6,7 +6,7 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="rkskmt">
@@ -302,6 +302,60 @@
   .reveal .slide-number {
     display: none !important;
   }
+  pre.shell code > span > a:first-child::before {
+    content: "$" !important;
+    color: #888 !important;
+    user-select: none !important;
+  }
+  .code-copy-outer-scaffold {
+    position: relative !important;
+    margin-top: 0.3em !important;
+  }
+  .code-copy-outer-scaffold:has(pre.python)::before,
+  .code-copy-outer-scaffold:has(pre.shell)::before {
+    position: absolute;
+    top: 2px;
+    right: 30px;
+    font-size: 10px;
+    color: #bbb;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .code-copy-outer-scaffold:has(pre.python)::before {
+    content: "Python";
+  }
+  .code-copy-outer-scaffold:has(pre.shell)::before {
+    content: "Shell";
+  }
+  .reveal .hl {
+    color: rgba(255,255,255,1);
+    font-weight: bold;
+    font-family: monospace;
+    text-shadow:
+      -3px  0   0 #0099cc,
+      -3px -1px 0 #0099cc,
+      -2px -2px 0 #0099cc,
+      -1px -3px 0 #0099cc,
+       0   -3px 0 #0099cc,
+       1px -3px 0 #0099cc,
+       2px -2px 0 #0099cc,
+       3px -1px 0 #0099cc,
+       3px  0   0 #0099cc,
+       3px  1px 0 #0099cc,
+       2px  2px 0 #0099cc,
+       1px  3px 0 #0099cc,
+       0    3px 0 #0099cc,
+      -1px  3px 0 #0099cc,
+      -2px  2px 0 #0099cc,
+      -3px  1px 0 #0099cc;
+  }
+  .reveal :not(pre) > code {
+    color: #005cc5;
+    font-weight: bold;
+    font-size: inherit;
+    font-family: monospace, serif;
+    text-shadow: none;
+  }
   </style>
   <script>
   window.addEventListener('load', function() {
@@ -350,12 +404,14 @@
 <h2>情報処理 2025年度</h2>
 <p><a href="https://rkskmt.github.io/ip3200/">https://rkskmt.github.io/ip3200/</a></p>
 <ul>
-<li><a href="./key-typing.html">キータイピング</a></li>
-<li><a href="./shortcuts.html">ショートカット</a></li>
-<li><a href="./collections.html">速習：コレクション</a></li>
-<li><a href="./list.html">listあらためて</a></li>
-<li><a href="./dict.html">dictあらためて</a></li>
-<li><a href="./variables.html">変数と代入</a></li>
+<li><p><a href="./key-typing.html">キータイピング</a></p></li>
+<li><p><a href="./shortcuts.html">ショートカット</a></p></li>
+<li><p><a href="./collections.html">速習：コレクション</a></p></li>
+<li><p><a href="./list.html">listあらためて</a></p></li>
+<li><p><a href="./dict.html">dictあらためて</a></p></li>
+<li><p><a href="./variables.html">変数と代入</a></p></li>
+<li><p><a href="./numpy.html">numpy</a></p></li>
+<li><p><a href="./vector_matrix.html">ベクトルと行列</a></p></li>
 </ul>
 
 

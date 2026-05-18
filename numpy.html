@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="rkskmt">
-  <title>情報処理 – キータイピング</title>
+  <title>情報処理 – NumPy入門</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -466,8 +466,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">キータイピング</h1>
-  <p class="subtitle">すべての基礎力</p>
+  <h1 class="title">NumPy入門</h1>
+  <p class="subtitle">配列操作・演算・速度比較</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -478,277 +478,269 @@ rkskmt
 </div>
 
 </section>
-<section id="キータイピングを速めよう" class="slide level2">
-<h2>キータイピングを速めよう</h2>
-<p>入力の主流なインタフェースはいまだキーボードである。 音声入力もあるが、特に日本語においては漢字変換や URLなど音声だけで必要な入力を賄うことは不可能です。</p>
-<p>よって、PCを生涯使うであろう我々にとってキーボードを打つスピードは<strong>生涯の生産性</strong>に直結するため、速いに越したことはない。</p>
-</section>
-<section id="日本語タイピング速度の目安" class="slide level2">
-<h2>日本語タイピング速度の目安</h2>
-<p>タイピングの速さを測る指標は主に2つある。</p>
+<section id="numpyとは" class="slide level2">
+<h2>NumPyとは</h2>
 <ul>
-<li><strong>WPM（Words Per Minute）</strong>：1分間に打てる <strong>単語数</strong></li>
-<li><strong>KPM（Keys Per Minute）</strong>：1分間に打てる <strong>キーの打鍵数</strong></li>
+<li>NumPyは数値計算のデファクトスタンダード
+<ul>
+<li>普通、数値計算やデータ処理にlistは使わない</li>
+</ul></li>
+<li>内部的にはC言語で実装されている
+<ul>
+<li>通常のリストに比べて非常に高速</li>
+</ul></li>
 </ul>
-<h3 id="wpm">WPM</h3>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>レベル</th>
-<th>WPM</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>初心者</td>
-<td>20–30</td>
-</tr>
-<tr class="even">
-<td>中級者</td>
-<td>40–60（一般的なオフィスワーカー）</td>
-</tr>
-<tr class="odd">
-<td>上級者</td>
-<td>70–90</td>
-</tr>
-</tbody>
-</table>
-<h3 id="kpm">KPM</h3>
-<p>日本語のKPM平均値は、ローマ字入力で <strong>100〜150 KPM</strong> が日常利用者の範囲とされている。</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>レベル</th>
-<th>KPM</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>初心者</td>
-<td>40–60</td>
-</tr>
-<tr class="even">
-<td>中級者</td>
-<td>80–120</td>
-</tr>
-<tr class="odd">
-<td>上級者</td>
-<td>140–180</td>
-</tr>
-<tr class="even">
-<td>トップ層</td>
-<td>250以上</td>
-</tr>
-</tbody>
-</table>
-<p>ちなみに、英語は1単語あたり約5キーだが、日本語は1単語あたり平均5〜7文字で、1文字あたり2キー必要。同じWPMでも日本語のほうがキー入力数が多い。</p>
 </section>
-<section id="つまりどれくらい差がつくのか" class="slide level2">
-<h2>つまり、どれくらい差がつくのか</h2>
-<p>初心者と上級者の間では <strong>3倍以上</strong> の速度差がある。</p>
+<section id="インストールと使用" class="slide level2">
+<h2>インストールと使用</h2>
+<p>ターミナルからインストール</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>pip install numpy</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>冒頭でimportして使用（ただしnpというエイリアス指定が一般的）</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>例：1000文字のレポートを書く場合</strong></p>
+<p><strong>inportの <code>as</code> とは？</strong></p>
 </div>
 <div class="callout-content">
+<p><code>import numpy as np</code> の <code>as np</code> は<strong>別名（エイリアス）</strong>をつける構文</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy         <span class="co"># 使用時にnumpy.array(...) と書く</span></span>
+<span id="cb3-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np   <span class="co"># np.array(...) でよいので短い</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li><strong>90 WPM</strong> → 約 <strong>11分</strong></li>
-<li><strong>20 WPM</strong> → 約 <strong>50分</strong></li>
-</ul>
-<p>生涯に何文字書くかを考えると、取り返しがつかない時間を損する可能性すらある。</p>
-</div>
-</div>
-</div>
-<p>しかし、いまは遅くても <strong>慣れれば誰でも速くなる</strong>。</p>
-<p>練習をして基礎体力をつけよう。</p>
-</section>
-<section id="ホームポジションを身につけよう" class="slide level2">
-<h2>ホームポジションを身につけよう</h2>
-<p>キーボードには「ホームポジション」と呼ばれる基本の手の置き方がある。</p>
-<h3 id="ホームポジションとは">ホームポジションとは</h3>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>手</th>
-<th>人差し指</th>
-<th>中指</th>
-<th>薬指</th>
-<th>小指</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>左手</td>
-<td>F</td>
-<td>D</td>
-<td>S</td>
-<td>A</td>
-</tr>
-<tr class="even">
-<td>右手</td>
-<td>J</td>
-<td>K</td>
-<td>L</td>
-<td>；</td>
-</tr>
-</tbody>
-</table>
+<li><strong>注</strong>：<code>np</code> の部分は何でもよく別の名前も使用可能
 <ul>
-<li>親指：<strong>スペースキー</strong></li>
-<li><strong>F</strong> と <strong>J</strong> には小さな突起がある → 人差し指の目印</li>
+<li>ただし、Numpyは <code>np</code> が非常に一般的</li>
+</ul></li>
 </ul>
-<p>目をつぶっても打てるよう、指のポジション感覚を鍛えよう。</p>
+</div>
+</div>
+</div>
 </section>
-<section id="小さい文字の打ち方と練習" class="slide level2">
-<h2>小さい文字の打ち方と練習</h2>
-<p>小さい文字（拗音・促音）だけを単体で打ちたいときは、最初に <strong>X</strong> か <strong>L</strong> を入力する。</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>打ちたい文字</th>
-<th>入力方法</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>小さい「ゃ」</td>
-<td><code>xya</code> または <code>lya</code></td>
-</tr>
-<tr class="even">
-<td>小さい「ょ」</td>
-<td><code>xyo</code> または <code>lyo</code></td>
-</tr>
-<tr class="odd">
-<td>小さい「っ」</td>
-<td><code>xtu</code> または <code>ltu</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="練習してみよう">練習してみよう</h3>
-<p>以下の文には拗音・促音がたくさん含まれている。タイピングしてみよう。</p>
+<section id="numpy配列ndarray" class="slide level2">
+<h2>NumPy配列（ndarray）</h2>
+<ul>
+<li>数値のリストっぽいものをnpに渡すとndarrayになる</li>
+<li><code>ndarray</code> は <code>list</code> によく似たNumPy用の配列型
+<ul>
+<li>先頭の <code>nd</code> は多次元配列（<strong>N</strong>-<strong>D</strong>imensional <strong>Array</strong>）の略</li>
+</ul></li>
+<li>NumPyはndarrayを効率よく処理するためのライブラリ</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]) <span class="co"># 1-4のndarray</span></span>
+<span id="cb4-4"><a></a></span>
+<span id="cb4-5"><a></a><span class="co"># 以下でarrを数値計算（例：平均・分散 etc.）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>サンプル文</strong></p>
+<p><strong>ノート</strong></p>
 </div>
 <div class="callout-content">
-<p>にゃんこが　すーぱーで　ちっっっちゃな　きゃべつを　ひょいっと　くわえて　ぴょんぴょん　はねている。</p>
-<p>ちゅうしゃじょうの　よこで　うっかり　すべって　こけちゃった。</p>
+<p><code>np.ndarray()</code> ではなく <code>np.array()</code> と書くことに注意</p>
 </div>
 </div>
 </div>
 </section>
-<section id="タイピング上達のコツ" class="slide level2 scrollable">
-<h2>タイピング上達のコツ</h2>
-<ol type="1">
-<li><strong>タッチタイピングを意識する</strong>
-<ul>
-<li>画面を見ながら打ち、手元は見ないようにする</li>
-</ul></li>
-<li><strong>ミスタイプを恐れず打ち続ける</strong>
-<ul>
-<li>ゆっくりでもよいので、正しい指で正しい位置を覚える</li>
-</ul></li>
-<li><strong>リズムよく打つ</strong>
-<ul>
-<li>一定のテンポで打つ練習をすると、速度と正確さが上がる</li>
-</ul></li>
-<li><strong>毎日3〜5分でOK、継続が鍵</strong>
-<ul>
-<li>短時間でも毎日継続することで、体に定着する</li>
-</ul></li>
-</ol>
+<section id="基本的な初期化" class="slide level2">
+<h2>基本的な初期化</h2>
+<p>リストを <code>np.array()</code> に渡すと、NumPy配列になります。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a><span class="bu">list</span> <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb5-4"><a></a>arr <span class="op">=</span> np.array(<span class="bu">list</span>)</span>
+<span id="cb5-5"><a></a></span>
+<span id="cb5-6"><a></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])    <span class="co"># 同じ</span></span>
+<span id="cb5-7"><a></a>arr <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>))     <span class="co"># 同じ。実際には後述のarangeがよく使われる</span></span>
+<span id="cb5-8"><a></a></span>
+<span id="cb5-9"><a></a><span class="bu">list</span> <span class="op">+=</span> <span class="bu">list</span></span>
+<span id="cb5-10"><a></a>arr <span class="op">=</span> np.array(<span class="bu">list</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="速度計測" class="slide level2">
-<h2>速度計測</h2>
-<p>「<strong>寿司打</strong>」で検索して <strong>お手軽3000円コース</strong> をやってみよう。</p>
-<p><a href="https://sushida.net/play.html?soundless">寿司打</a></p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>KPMの計算方法</strong></p>
-</div>
-<div class="callout-content">
-<p>「平均キータイプ数」× 60 = KPM</p>
-<p><strong>140 KPM 以上</strong> を目指そう！</p>
-</div>
-</div>
-</div>
-</section>
-<section id="演習atcoderでプログラムを動かしてみよう" class="slide level2 scrollable">
-<h2>演習：AtCoderでプログラムを動かしてみよう</h2>
-<p>「<strong>AtCoder ABC 400 tasks</strong>」で検索して A 問題を解いてみよう。</p>
-<ol type="1">
-<li><a href="https://atcoder.jp/contests/abc400/tasks/abc400_a">AtCoder Beginner Contest 400 A問題</a> にアクセス</li>
-<li>アカウントを作る</li>
-<li>問題を解く</li>
-<li>右上の「提出」ボタンを押す</li>
-<li>ジャッジ結果が <strong>AC（Accepted）</strong> になれば正解！
+<section id="初期化ヘルパー関数" class="slide level2">
+<h2>初期化（ヘルパー関数）</h2>
 <ul>
-<li><strong>WA（Wrong Answer）</strong> ：出力が違う</li>
-<li><strong>RE（Runtime Error）</strong> ：実行中にエラー</li>
-<li><strong>TLE（Time Limit Exceeded）</strong> ：時間超過</li>
+<li>下記のよく使う数列は、ヘルパー関数で一撃生成</li>
+<li>特に<code>random</code> 系は強力
+<ul>
+<li>テスト用データを作るときに非常によく使われる</li>
 </ul></li>
-</ol>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>ABC400の解答例（Python）</strong></p>
-</div>
-<div class="callout-content">
-<div id="ccf02ce0" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>解答を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>A <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
-<span id="cb1-2"><a></a>res <span class="op">=</span> <span class="op">-</span><span class="dv">1</span> <span class="cf">if</span> <span class="dv">400</span> <span class="op">%</span> A <span class="op">!=</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">400</span> <span class="op">//</span> A</span>
-<span id="cb1-3"><a></a><span class="bu">print</span>(res)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="参考atcoderでよく使う入力パターン" class="slide level2">
-<h2>（参考）AtCoderでよく使う入力パターン</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># 入力をそのまま文字列として取得</span></span>
-<span id="cb2-2"><a></a>s <span class="op">=</span> <span class="bu">input</span>()</span>
-<span id="cb2-3"><a></a></span>
-<span id="cb2-4"><a></a><span class="co"># 入力をintとして取得</span></span>
-<span id="cb2-5"><a></a>i <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
-<span id="cb2-6"><a></a></span>
-<span id="cb2-7"><a></a><span class="co"># スペース区切りの文字列（[foo bar baz]）をリストとして取得する場合</span></span>
-<span id="cb2-8"><a></a>ss <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> <span class="bu">input</span>().split()]</span>
-<span id="cb2-9"><a></a></span>
-<span id="cb2-10"><a></a><span class="co"># スペース区切りの2文字を別の変数としたい場合</span></span>
-<span id="cb2-11"><a></a>A, B <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> <span class="bu">input</span>().split()]</span>
-<span id="cb2-12"><a></a></span>
-<span id="cb2-13"><a></a><span class="co"># 「Aを1 2 3 4からなる数列とする」のような場合</span></span>
-<span id="cb2-14"><a></a>As <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>().split()]</span>
-<span id="cb2-15"><a></a></span>
-<span id="cb2-16"><a></a><span class="co"># intでA Bという数字が与えられるパターン</span></span>
-<span id="cb2-17"><a></a>A, B <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>().split()]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="まとめ" class="slide level2">
-<h2>まとめ</h2>
-<ul>
-<li>キータイピング速度は<strong>生涯の生産性</strong>に直結する — 早めに投資する価値がある</li>
-<li>まず<strong>ホームポジション</strong>を身につけることが上達の近道</li>
-<li>目標は KPM 300（WPM 60）— 毎日少しずつ練習を続けよう</li>
-<li>AtCoder の入力パターン（<code>input()</code> / <code>int()</code> / <code>split()</code>）は今後も頻出</li>
 </ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-2"><a></a></span>
+<span id="cb6-3"><a></a>np.zeros(<span class="dv">3</span>)          <span class="co"># 0.0が3つの要素で初期化。 [0. 0. 0. ] </span></span>
+<span id="cb6-4"><a></a>np.ones(<span class="dv">5</span>)           <span class="co"># 1.0が5つの要素で初期化。 [1. 1. 1. 1. 1.]</span></span>
+<span id="cb6-5"><a></a>np.full(<span class="dv">4</span>, <span class="dv">7</span>)        <span class="co"># 7が4つの要素で初期化。 [7 7 7 7]</span></span>
+<span id="cb6-6"><a></a></span>
+<span id="cb6-7"><a></a><span class="co"># arrangeではなくarange（"a range" = ある範囲）</span></span>
+<span id="cb6-8"><a></a>np.arange(<span class="dv">4</span>)         <span class="co"># [0 1 2 3]</span></span>
+<span id="cb6-9"><a></a>np.arange(<span class="dv">1</span>, <span class="dv">5</span>)      <span class="co"># [1 2 3 4]</span></span>
+<span id="cb6-10"><a></a>np.arange(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">2</span>)  <span class="co"># [1 3 5 7 9]</span></span>
+<span id="cb6-11"><a></a></span>
+<span id="cb6-12"><a></a>np.random.rand(<span class="dv">3</span>)           <span class="co"># [0.0, 1.0) の一様乱数 3要素</span></span>
+<span id="cb6-13"><a></a>np.random.randint(<span class="dv">10</span>)       <span class="co"># 0〜9のランダムな整数</span></span>
+<span id="cb6-14"><a></a>np.random.randint(<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">3</span>)  <span class="co"># 1〜6のランダムな整数 3要素</span></span>
+<span id="cb6-15"><a></a>np.random.shuffle(arr)      <span class="co"># 配列をランダムに並べ替え（破壊的）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="要素へのアクセス" class="slide level2">
+<h2>要素へのアクセス</h2>
+<ul>
+<li>アクセス方法はlistと同じ</li>
+<li>スライスにも対応</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
+<span id="cb7-4"><a></a></span>
+<span id="cb7-5"><a></a><span class="bu">print</span>(arr[<span class="dv">0</span>])    <span class="co"># 先頭の要素（1）</span></span>
+<span id="cb7-6"><a></a><span class="bu">print</span>(arr[<span class="dv">1</span>])    <span class="co"># 2番目の要素（2）</span></span>
+<span id="cb7-7"><a></a><span class="bu">print</span>(arr[<span class="op">-</span><span class="dv">1</span>])   <span class="co"># 最後の要素（4）</span></span>
+<span id="cb7-8"><a></a>arr[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">10</span>      <span class="co"># 1番目の要素を10に変更</span></span>
+<span id="cb7-9"><a></a></span>
+<span id="cb7-10"><a></a><span class="co"># スライス</span></span>
+<span id="cb7-11"><a></a><span class="bu">print</span>(arr[<span class="dv">1</span>:<span class="dv">3</span>])  <span class="co"># 2番目から3番目まで（[2, 3]）</span></span>
+<span id="cb7-12"><a></a><span class="bu">print</span>(arr[:<span class="dv">2</span>])   <span class="co"># 先頭から2番目まで（[1, 2]）</span></span>
+<span id="cb7-13"><a></a><span class="bu">print</span>(arr[<span class="dv">2</span>:])   <span class="co"># 3番目から最後まで（[3, 4]）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="型" class="slide level2">
+<h2>型</h2>
+<ul>
+<li>ndarray全体は <code>numpy.ndarray</code></li>
+<li>各要素は代入時のリテラルによって決まる
+<ul>
+<li>intなら <code>numpy.int64</code></li>
+<li>floatなら <code>numpy.float64</code></li>
+</ul></li>
+<li>異なる型の混在はできない</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-2"><a></a></span>
+<span id="cb8-3"><a></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
+<span id="cb8-4"><a></a><span class="bu">print</span>(<span class="bu">type</span>(arr))    <span class="co"># &lt;class 'numpy.ndarray'&gt;</span></span>
+<span id="cb8-5"><a></a><span class="bu">print</span>(<span class="bu">type</span>(arr[<span class="dv">0</span>])) <span class="co"># &lt;class 'numpy.int64'&gt;</span></span>
+<span id="cb8-6"><a></a></span>
+<span id="cb8-7"><a></a>arr2 <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>, <span class="fl">4.0</span>])</span>
+<span id="cb8-8"><a></a><span class="bu">print</span>(<span class="bu">type</span>(arr2))    <span class="co"># &lt;class 'numpy.ndarray'&gt;</span></span>
+<span id="cb8-9"><a></a><span class="bu">print</span>(<span class="bu">type</span>(arr2[<span class="dv">0</span>])) <span class="co"># &lt;class 'numpy.float64'&gt;</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="強力な演算" class="slide level2">
+<h2>強力な演算</h2>
+<ul>
+<li>Listと違い、各要素に対する演算が可能
+<ul>
+<li>for文が不要なため非常に高速</li>
+</ul></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a></a></span>
+<span id="cb9-3"><a></a>my_array <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb9-4"><a></a>my_array <span class="op">*</span> <span class="dv">2</span>  <span class="co"># array([2, 4, 6])  ← 要素ごとの計算</span></span>
+<span id="cb9-5"><a></a></span>
+<span id="cb9-6"><a></a><span class="co"># listに * 2 を使うと...</span></span>
+<span id="cb9-7"><a></a><span class="bu">print</span>(my_list <span class="op">*</span> <span class="dv">2</span>)  <span class="co"># [1, 2, 3, 1, 2, 3]  ← 演算ではなく、２つのリストのconcat</span></span>
+<span id="cb9-8"><a></a></span>
+<span id="cb9-9"><a></a><span class="co"># listで同じことをするにはfor文や内包表記が必要</span></span>
+<span id="cb9-10"><a></a>my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb9-11"><a></a>[x <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> my_list]   </span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="その他長さやアクセス方法" class="slide level2">
+<h2>その他（長さやアクセス方法）</h2>
+<ul>
+<li>listと同じくlenもある
+<ul>
+<li>ただし、sizeを使うことが多い</li>
+</ul></li>
+<li>for文はlistと同じように記述可能</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-2"><a></a></span>
+<span id="cb10-3"><a></a>arr <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
+<span id="cb10-4"><a></a></span>
+<span id="cb10-5"><a></a><span class="bu">print</span>(<span class="bu">len</span>(arr))  <span class="co"># 長さ（listと同じ）</span></span>
+<span id="cb10-6"><a></a><span class="bu">print</span>(arr.size)  <span class="co"># 普通はこちらを使う</span></span>
+<span id="cb10-7"><a></a></span>
+<span id="cb10-8"><a></a><span class="co"># for文もlistと同じように使える</span></span>
+<span id="cb10-9"><a></a><span class="cf">for</span> v <span class="kw">in</span> arr:</span>
+<span id="cb10-10"><a></a>    <span class="bu">print</span>(v)</span>
+<span id="cb10-11"><a></a></span>
+<span id="cb10-12"><a></a><span class="co"># 差分（数値微分）</span></span>
+<span id="cb10-13"><a></a>arr <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>]) <span class="co"># 時系列の信号を想定</span></span>
+<span id="cb10-14"><a></a>diff <span class="op">=</span> np.zeros(<span class="bu">len</span>(arr) <span class="op">-</span> <span class="dv">1</span>) <span class="co"># 結果格納用のndarray</span></span>
+<span id="cb10-15"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(arr) <span class="op">-</span> <span class="dv">1</span>): </span>
+<span id="cb10-16"><a></a>    diff[i] <span class="op">=</span> arr[i<span class="op">+</span><span class="dv">1</span>] <span class="op">-</span> arr[i] <span class="co"># 微分</span></span>
+<span id="cb10-17"><a></a><span class="bu">print</span>(diff)  <span class="co"># [ 2.  3. -2. -2.  3.] </span></span>
+<span id="cb10-18"><a></a></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="多次元array" class="slide level2">
+<h2>多次元Array</h2>
+<ul>
+<li>ndarrayは多次元（N-Dimensional）で力を発揮
+<ul>
+<li>特に行列演算が強力</li>
+</ul></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-2"><a></a></span>
+<span id="cb11-3"><a></a><span class="co"># 2次元配列（行列）</span></span>
+<span id="cb11-4"><a></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
+<span id="cb11-5"><a></a></span>
+<span id="cb11-6"><a></a>B <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">0</span>],</span>
+<span id="cb11-7"><a></a>              [<span class="dv">0</span>, <span class="dv">5</span>]])</span>
+<span id="cb11-8"><a></a></span>
+<span id="cb11-9"><a></a><span class="co"># 要素へのアクセス</span></span>
+<span id="cb11-10"><a></a><span class="bu">print</span>(A[<span class="dv">0</span>, <span class="dv">1</span>])  <span class="co"># 1行目2列目</span></span>
+<span id="cb11-11"><a></a><span class="bu">print</span>(A[<span class="dv">1</span>, :])  <span class="co"># 2行目全体</span></span>
+<span id="cb11-12"><a></a><span class="bu">print</span>(A[:, <span class="dv">0</span>])  <span class="co"># 1列目全体</span></span>
+<span id="cb11-13"><a></a></span>
+<span id="cb11-14"><a></a><span class="co"># 転置</span></span>
+<span id="cb11-15"><a></a><span class="bu">print</span>(A.T)</span>
+<span id="cb11-16"><a></a><span class="bu">print</span>(B.T)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="その他演算等" class="slide level2">
+<h2>その他演算等</h2>
+<ul>
+<li>統計処理の組み込み関数も多数提供されている</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a></a></span>
+<span id="cb12-3"><a></a>scores <span class="op">=</span> np.array([<span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">75</span>, <span class="dv">88</span>, <span class="dv">92</span>, <span class="dv">82</span>, <span class="dv">79</span>, <span class="dv">87</span>])</span>
+<span id="cb12-4"><a></a></span>
+<span id="cb12-5"><a></a><span class="bu">print</span>(np.<span class="bu">max</span>(scores))    <span class="co"># 最大値</span></span>
+<span id="cb12-6"><a></a><span class="bu">print</span>(np.<span class="bu">min</span>(scores))    <span class="co"># 最小値</span></span>
+<span id="cb12-7"><a></a><span class="bu">print</span>(np.mean(scores))   <span class="co"># 平均値</span></span>
+<span id="cb12-8"><a></a><span class="bu">print</span>(np.median(scores)) <span class="co"># 中央値</span></span>
+<span id="cb12-9"><a></a><span class="bu">print</span>(np.var(scores))    <span class="co"># 分散</span></span>
+<span id="cb12-10"><a></a><span class="bu">print</span>(np.std(scores))    <span class="co"># 標準偏差</span></span>
+<span id="cb12-11"><a></a></span>
+<span id="cb12-12"><a></a><span class="co"># 3人の生徒の英語・数学・国語の成績</span></span>
+<span id="cb12-13"><a></a><span class="co"># 多次元の処理はaxisを指定する</span></span>
+<span id="cb12-14"><a></a>data <span class="op">=</span> np.array([[<span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">90</span>], [<span class="dv">75</span>, <span class="dv">88</span>, <span class="dv">92</span>], [<span class="dv">82</span>, <span class="dv">79</span>, <span class="dv">87</span>]])</span>
+<span id="cb12-15"><a></a><span class="bu">print</span>(np.mean(data, axis<span class="op">=</span><span class="dv">0</span>))  <span class="co"># 列ごと（各科目の平均）</span></span>
+<span id="cb12-16"><a></a><span class="bu">print</span>(np.mean(data, axis<span class="op">=</span><span class="dv">1</span>))  <span class="co"># 行ごと（各生徒の平均）</span></span>
+<span id="cb12-17"><a></a></span>
+<span id="cb12-18"><a></a><span class="co"># 条件を満たすデータの抽出</span></span>
+<span id="cb12-19"><a></a><span class="bu">print</span>(scores <span class="op">&gt;=</span> <span class="dv">85</span>)           <span class="co"># True/False</span></span>
+<span id="cb12-20"><a></a><span class="bu">print</span>(scores[scores <span class="op">&gt;=</span> <span class="dv">85</span>])   <span class="co"># 85点以上のデータ</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="演習1" class="slide level2">
+<h2>演習1</h2>
+<p>（１） 「1から10までの連続した整数」から成る<code>ndarray</code>を表示</p>
+<p>（２） その各要素を2倍にした新しい<code>ndarray</code>を作って表示</p>
+<p>（３） そのnumpy配列の各要素をランダムに並べ替えた新しい<code>ndarray</code>を表示</p>
+<p>（４） 100以上400以下のランダムな数字を１つ表示</p>
+<p>（５） 0以上1未満のランダムな数字を１つ表示</p>
+</section>
+<section id="演習2" class="slide level2">
+<h2>演習2</h2>
+<p>（１）<code>li = [10, 20, 30]</code> に対してfor文ですべての要素の型を確認するコードを書け</p>
+<p>（２）<code>li</code> をNumPyの配列 <code>arr</code> に変換し、要素の型を表示</p>
+<p>（３）同じく<code>li = [0.1, 0.2, 0.3]</code> の要素の型を表示</p>
+<p>（４）<code>li</code> をNumPyの配列 <code>arr2</code> に変換し、要素の型を表示</p>
 
 
 </section>
