@@ -12,12 +12,18 @@ website:
       - href: index.qmd
         text: "Home"
       - href: key-typing.qmd
-        text: "第1回"
+        text: "キータイピング"
       - href: shortcuts.qmd
-        text: "第2回"
+        text: "ショートカット"
       - href: collections.qmd
-        text: "第3回"
-      - href: variables.qmd
-        text: "第4回"
+        text: "速習：コレクション"
       - href: list.qmd
-        text: "第5回"
+        text: "listあらためて"
+      - href: dict.qmd
+        text: "dictあらためて"
+      - href: variables.qmd
+        text: "変数と代入"
+      - href: numpy.qmd
+        text: "NumPy入門"
+      - href: vector_matrix.qmd
+        text: "ベクトルと行列"
