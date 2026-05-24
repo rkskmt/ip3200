@@ -2,6 +2,7 @@ author: "rkskmt"
 lang: ja
 format:
   clean-revealjs:
+    highlight-style: github
     scrollable: true
     footer: " "
     theme:
@@ -71,8 +72,21 @@ format:
         .fig-medium img {
           max-height: 400px !important;
         }
-        .reveal table td:first-child {
+        table {
+          width: 100%;
+          border-bottom: none !important;
+        }
+        table tbody {
+          border-bottom: none !important;
+        }
+        table tr:last-child,
+        table tr:last-child td {
+          border-bottom: none !important;
+        }
+        table th:first-child,
+        table td:first-child {
           font-weight: bold;
+          border-right: 2px solid #aaa;
         }
         .reveal .cite {
           position: absolute;
@@ -154,9 +168,9 @@ format:
           gap: 8px;
         }
         #slide-nav button {
-          background: #5dade2;
-          color: white;
-          border: none;
+          background: transparent;
+          color: #5dade2;
+          border: 1px solid #5dade2;
           border-radius: 4px;
           padding: 4px 14px;
           font-size: 1rem;
@@ -165,7 +179,7 @@ format:
           -webkit-tap-highlight-color: transparent;
         }
         #slide-nav button:active {
-          background: #3498db;
+          background: rgba(93, 173, 226, 0.2);
         }
         #nav-counter {
           font-size: 0.9rem;
@@ -174,6 +188,90 @@ format:
         }
         .reveal .slide-number {
           display: none !important;
+        }
+        pre.shell code > span > a:first-child::before {
+          content: "$" !important;
+          color: #888 !important;
+          user-select: none !important;
+        }
+        .code-copy-outer-scaffold {
+          position: relative !important;
+          margin-top: 0.3em !important;
+        }
+        .code-copy-outer-scaffold:has(pre.python)::before,
+        .code-copy-outer-scaffold:has(pre.shell)::before {
+          position: absolute;
+          top: 2px;
+          right: 30px;
+          font-size: 10px;
+          color: #bbb;
+          pointer-events: none;
+          z-index: 2;
+        }
+        .code-copy-outer-scaffold:has(pre.python)::before {
+          content: "Python";
+        }
+        .code-copy-outer-scaffold:has(pre.shell)::before {
+          content: "Shell";
+        }
+        .reveal .hl {
+          color: rgba(255,255,255,1);
+          font-weight: bold;
+          font-family: monospace;
+          text-shadow:
+            -3px  0   0 #0099cc,
+            -3px -1px 0 #0099cc,
+            -2px -2px 0 #0099cc,
+            -1px -3px 0 #0099cc,
+             0   -3px 0 #0099cc,
+             1px -3px 0 #0099cc,
+             2px -2px 0 #0099cc,
+             3px -1px 0 #0099cc,
+             3px  0   0 #0099cc,
+             3px  1px 0 #0099cc,
+             2px  2px 0 #0099cc,
+             1px  3px 0 #0099cc,
+             0    3px 0 #0099cc,
+            -1px  3px 0 #0099cc,
+            -2px  2px 0 #0099cc,
+            -3px  1px 0 #0099cc;
+        }
+        .break-slide h2 { border: none !important; }
+        .break-slide p { margin: 0 !important; }
+        .break-slide .break-title {
+          font-size: 1.5em;
+          font-weight: bold;
+          color: #333;
+          border-bottom: 0.5px solid #333;
+          padding-bottom: 0.1em;
+        }
+        .reveal ul li::marker {
+          color: #0099cc;
+          font-size: 1.3em;
+        }
+        .reveal ul ul li::before, .reveal ol ul li::before {
+          font-weight: 500;
+          color: #0099cc;
+        }
+        .reveal ul ul ul {
+          list-style: none;
+        }
+        .reveal ul ul ul li::before {
+          content: "‣";
+        }
+        .reveal strong {
+          padding: 0 0.1em;
+        }
+        .reveal .fw-colon {
+          font-weight: 300;
+        }
+        .reveal :not(pre) > code {
+          color: #005cc5;
+          font-weight: bold;
+          font-size: 1.1em;
+          padding: 0 0.15em;
+          font-family: monospace, serif;
+          text-shadow: none;
         }
         </style>
         <script>
@@ -192,8 +290,9 @@ format:
             nav.innerHTML = '<button id="nav-prev">&#9664;</button><span id="nav-counter"></span><button id="nav-next">&#9654;</button>';
             footer.appendChild(nav);
             function addNavHandler(el, fn) {
-              el.addEventListener('touchstart', function(e) { e.stopPropagation(); fn(); }, { passive: true });
-              el.addEventListener('click', fn);
+              var touched = false;
+              el.addEventListener('touchstart', function(e) { e.stopPropagation(); touched = true; fn(); }, { passive: true });
+              el.addEventListener('click', function() { if (touched) { touched = false; return; } fn(); });
             }
             addNavHandler(document.getElementById('nav-prev'), function() { Reveal.prev(); });
             addNavHandler(document.getElementById('nav-next'), function() { Reveal.next(); });
@@ -206,10 +305,12 @@ format:
             if (!el) return;
             var slides = Array.from(document.querySelectorAll('.reveal .slides section:not(.stack)'));
             var idx = slides.findIndex(function(s) { return s.classList.contains('present'); });
-el.textContent = (idx + 1) + ' / ' + slides.length;
+            el.textContent = (idx + 1) + ' / ' + slides.length;
           }
           if (Reveal.isReady()) { initNav(); } else { Reveal.addEventListener('ready', initNav); }
         });
         </script>
 filters:
+  - hl.lua
+  - fw-colon.lua
   - cite-image.lua
