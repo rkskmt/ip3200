@@ -537,7 +537,7 @@ rkskmt
 </ul></li>
 </ul>
 <div style="width: 30%; margin: 0 auto;">
-<div id="0f577b7d" class="cell" data-execution_count="1">
+<div id="b2fd37c7" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -567,7 +567,7 @@ rkskmt
 <section id="section-1" class="slide level2 center break-slide" data-background-color="white">
 <h2></h2>
 <div class="break-title">
-<p>Numpyでベクトルを表現・演算</p>
+<p>NumPyでベクトルを表現・演算</p>
 </div>
 </section>
 <section id="ベクトルの表現" class="slide level2">
@@ -611,7 +611,7 @@ rkskmt
 <span id="cb2-6"><a></a><span class="bu">print</span>(a <span class="op">+</span> b)   <span class="co"># [3 4]</span></span>
 <span id="cb2-7"><a></a><span class="bu">print</span>(a <span class="op">-</span> b)   <span class="co"># [-1  2]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="a560e443" class="cell" data-execution_count="2">
+<div id="f6aa6481" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -643,7 +643,7 @@ rkskmt
 <span id="cb3-4"><a></a></span>
 <span id="cb3-5"><a></a><span class="bu">print</span>(a <span class="op">*</span> <span class="dv">2</span>)   <span class="co"># [2 4]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="3899d06a" class="cell" data-execution_count="3">
+<div id="2ad39e33" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -666,7 +666,7 @@ rkskmt
 \]</span></p>
 </section>
 <section id="重要-numpyにおける内積の演算子" class="slide level2">
-<h2>【重要】 Numpyにおける内積の演算子</h2>
+<h2>【重要】 NumPyにおける内積の演算子</h2>
 <ul>
 <li>２つの<code>ndarray</code> を <code>@</code> という二項演算子に入力
 <ul>
@@ -822,7 +822,7 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 10 \\ 4 &amp; 5 &amp; 6 &amp; 11 \\ 
 =
 \begin{pmatrix} 19 &amp; 22 \\ 43 &amp; 50 \end{pmatrix}
 \]</span></p>
-<div id="d0ea25d9" class="cell" data-execution_count="4">
+<div id="57b96d01" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -835,11 +835,11 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 10 \\ 4 &amp; 5 &amp; 6 &amp; 11 \\ 
 <section id="section-3" class="slide level2 center break-slide" data-background-color="white">
 <h2></h2>
 <div class="break-title">
-<p>Numpyで行列を表現・演算</p>
+<p>NumPyで行列を表現・演算</p>
 </div>
 </section>
 <section id="numpyでの行列" class="slide level2">
-<h2>Numpyでの行列</h2>
+<h2>NumPyでの行列</h2>
 <ul>
 <li>ndarrayで作成可能だが、<strong>行ごとに宣言</strong>する点に注意
 <ul>
@@ -881,7 +881,7 @@ A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}
 </div>
 </section>
 <section id="numpyでの行列の演算" class="slide level2">
-<h2>Numpyでの行列の演算</h2>
+<h2>NumPyでの行列の演算</h2>
 <ul>
 <li>ベクトルの内積と同じく <code>@</code> を使用</li>
 </ul>
@@ -930,7 +930,7 @@ A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}
 <ul>
 <li>元の数と掛けたら１になる<strong>逆数</strong>のようなもの</li>
 </ul></li>
-<li>Numpyでは<code>np.linalg.inv()</code> という便利関数で逆行列が求まる
+<li>NumPyでは<code>np.linalg.inv()</code> という便利関数で逆行列が求まる
 <ul>
 <li><strong>linalg</strong> = <strong>lin</strong>ear <strong>alg</strong>ebra（線形代数）の略</li>
 </ul></li>
@@ -1091,7 +1091,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 \begin{cases} x + y = 4 \\ x - y = 2 \end{cases}
 \]</span></p>
 <p>（４）<span class="math inline">\(\mathbf{a} = \begin{pmatrix} 6 \\ 8 \end{pmatrix}\)</span> のノルムと単位ベクトルを求めよ。</p>
-<div id="6b48443f" class="cell" data-execution_count="5">
+<div id="3f594287" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1181,7 +1181,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 <span id="cb12-6"><a></a><span class="bu">print</span>(a_hat)                  <span class="co"># [0.6 0.8]</span></span>
 <span id="cb12-7"><a></a><span class="bu">print</span>(np.linalg.norm(a_hat))  <span class="co"># 1.0</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="650b1214" class="cell" data-execution_count="6">
+<div id="bfb2b01d" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1251,7 +1251,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <li><span class="math inline">\(|\mathbf{b}|\cos\theta\)</span> <span class="fw-colon">：</span><span class="math inline">\(\mathbf{b}\)</span> を <span class="math inline">\(\mathbf{a}\)</span> の方向に<strong>射影</strong>した長さ</li>
 <li>内積 = 「<span class="math inline">\(\mathbf{b}\)</span>の<span class="math inline">\(\mathbf{a}\)</span>方向に対する成分」× 「<span class="math inline">\(\mathbf{a}\)</span>の長さ<span class="math inline">\(|\mathbf{a}|\)</span>」</li>
 </ul>
-<div id="886e31b3" class="cell" data-execution_count="7">
+<div id="829ace04" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1270,7 +1270,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <li>つまり、射影の長さがゼロ → 「<span class="math inline">\(\mathbf{a}\)</span> 方向の成分がない」</li>
 </ul></li>
 </ul>
-<div id="6fa14133" class="cell" data-execution_count="8">
+<div id="94b87baa" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
