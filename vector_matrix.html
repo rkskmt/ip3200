@@ -237,6 +237,9 @@
   .cell-output pre {
     font-size: 2.0rem;
   }
+  .reveal pre code {
+    font-size: 1.8rem !important;
+  }
   .reveal details pre code {
     font-size: 1.5rem;
   }
@@ -393,6 +396,18 @@
   .code-copy-outer-scaffold:has(pre.shell)::before {
     content: "Shell";
   }
+  a[href]::after {
+    content: "";
+    display: inline-block;
+    width: 0.6em;
+    height: 0.6em;
+    margin-left: 0.3em;
+    vertical-align: middle;
+    opacity: 0.5;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M290.4 19.8C295.4 7.8 307.1 0 320 0h160c17.7 0 32 14.3 32 32v160c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9L400 157.3 246.6 310.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L354.7 112l-57.3-57.4c-9.2-9.2-11.9-22.9-6.9-34.9zM0 176c0-44.2 35.8-80 80-80h80c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-8.8 0-16 7.2-16 16v256c0 8.8 7.2 16 16 16h256c8.8 0 16-7.2 16-16v-80c0-17.7 14.3-32 32-32s32 14.3 32 32v80c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176z'/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M290.4 19.8C295.4 7.8 307.1 0 320 0h160c17.7 0 32 14.3 32 32v160c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9L400 157.3 246.6 310.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L354.7 112l-57.3-57.4c-9.2-9.2-11.9-22.9-6.9-34.9zM0 176c0-44.2 35.8-80 80-80h80c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-8.8 0-16 7.2-16 16v256c0 8.8 7.2 16 16 16h256c8.8 0 16-7.2 16-16v-80c0-17.7 14.3-32 32-32s32 14.3 32 32v80c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176z'/%3E%3C/svg%3E") no-repeat center / contain;
+  }
   .reveal .hl {
     color: rgba(255,255,255,1);
     font-weight: bold;
@@ -537,7 +552,7 @@ rkskmt
 </ul></li>
 </ul>
 <div style="width: 30%; margin: 0 auto;">
-<div id="b2fd37c7" class="cell" data-execution_count="1">
+<div id="0cb410f9" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -611,7 +626,7 @@ rkskmt
 <span id="cb2-6"><a></a><span class="bu">print</span>(a <span class="op">+</span> b)   <span class="co"># [3 4]</span></span>
 <span id="cb2-7"><a></a><span class="bu">print</span>(a <span class="op">-</span> b)   <span class="co"># [-1  2]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="f6aa6481" class="cell" data-execution_count="2">
+<div id="75783a58" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -643,7 +658,7 @@ rkskmt
 <span id="cb3-4"><a></a></span>
 <span id="cb3-5"><a></a><span class="bu">print</span>(a <span class="op">*</span> <span class="dv">2</span>)   <span class="co"># [2 4]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="2ad39e33" class="cell" data-execution_count="3">
+<div id="20a58901" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -681,7 +696,7 @@ rkskmt
 <span id="cb4-6"><a></a><span class="co"># 内積</span></span>
 <span id="cb4-7"><a></a><span class="bu">print</span>(a <span class="op">@</span> b)  <span class="co"># 11 </span></span>
 <span id="cb4-8"><a></a></span>
-<span id="cb4-9"><a></a><span class="co"># 普通に* だとスカラーにならずベクトルになってしまう</span></span>
+<span id="cb4-9"><a></a><span class="co">#  * 演算子だと内積にならない</span></span>
 <span id="cb4-10"><a></a><span class="bu">print</span>(a <span class="op">*</span> b)  <span class="co"># [1*3, 2*4] → [3 8]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-caution callout-titled callout-style-default">
 <div class="callout-body">
@@ -822,7 +837,7 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 10 \\ 4 &amp; 5 &amp; 6 &amp; 11 \\ 
 =
 \begin{pmatrix} 19 &amp; 22 \\ 43 &amp; 50 \end{pmatrix}
 \]</span></p>
-<div id="57b96d01" class="cell" data-execution_count="4">
+<div id="1edc17da" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1091,7 +1106,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 \begin{cases} x + y = 4 \\ x - y = 2 \end{cases}
 \]</span></p>
 <p>（４）<span class="math inline">\(\mathbf{a} = \begin{pmatrix} 6 \\ 8 \end{pmatrix}\)</span> のノルムと単位ベクトルを求めよ。</p>
-<div id="3f594287" class="cell" data-execution_count="5">
+<div id="2165a687" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1181,7 +1196,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 <span id="cb12-6"><a></a><span class="bu">print</span>(a_hat)                  <span class="co"># [0.6 0.8]</span></span>
 <span id="cb12-7"><a></a><span class="bu">print</span>(np.linalg.norm(a_hat))  <span class="co"># 1.0</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="bfb2b01d" class="cell" data-execution_count="6">
+<div id="239eb61c" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1251,7 +1266,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <li><span class="math inline">\(|\mathbf{b}|\cos\theta\)</span> <span class="fw-colon">：</span><span class="math inline">\(\mathbf{b}\)</span> を <span class="math inline">\(\mathbf{a}\)</span> の方向に<strong>射影</strong>した長さ</li>
 <li>内積 = 「<span class="math inline">\(\mathbf{b}\)</span>の<span class="math inline">\(\mathbf{a}\)</span>方向に対する成分」× 「<span class="math inline">\(\mathbf{a}\)</span>の長さ<span class="math inline">\(|\mathbf{a}|\)</span>」</li>
 </ul>
-<div id="829ace04" class="cell" data-execution_count="7">
+<div id="8916ff41" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1270,7 +1285,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <li>つまり、射影の長さがゼロ → 「<span class="math inline">\(\mathbf{a}\)</span> 方向の成分がない」</li>
 </ul></li>
 </ul>
-<div id="94b87baa" class="cell" data-execution_count="8">
+<div id="ee9eb92e" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>

@@ -60,7 +60,7 @@
     "href": "vector_matrix.html#重要-numpyにおける内積の演算子",
     "title": "ベクトルと行列",
     "section": "【重要】 NumPyにおける内積の演算子",
-    "text": "【重要】 NumPyにおける内積の演算子\n\n２つのndarray を @ という二項演算子に入力\n\n普通なら*とするところを@に変える\n\n\nimport numpy as np\n\na = np.array([1, 2])\nb = np.array([3, 4])\n\n# 内積\nprint(a @ b)  # 11 \n\n# 普通に* だとスカラーにならずベクトルになってしまう\nprint(a * b)  # [1*3, 2*4] → [3 8]\n\n\n\n\n\n\n注意\n\n\n\n* で演算してもエラーにはならないので危険"
+    "text": "【重要】 NumPyにおける内積の演算子\n\n２つのndarray を @ という二項演算子に入力\n\n普通なら*とするところを@に変える\n\n\nimport numpy as np\n\na = np.array([1, 2])\nb = np.array([3, 4])\n\n# 内積\nprint(a @ b)  # 11 \n\n#  * 演算子だと内積にならない\nprint(a * b)  # [1*3, 2*4] → [3 8]\n\n\n\n\n\n\n注意\n\n\n\n* で演算してもエラーにはならないので危険"
   },
   {
     "objectID": "vector_matrix.html#section-2",
