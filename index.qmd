@@ -23,7 +23,7 @@
 <details open>
 <summary>Pythonデータ処理基礎</summary>
 
-- [numpy](numpy.qmd)
+- [NumPy入門](numpy.qmd)
 - [ベクトルと行列](vector_matrix.qmd)
 
 </details>
