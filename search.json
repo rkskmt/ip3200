@@ -1,10 +1,17 @@
 [
   {
+    "objectID": "vector_matrix.html#section",
+    "href": "vector_matrix.html#section",
+    "title": "ベクトルと行列",
+    "section": "",
+    "text": "ベクトルのおさらい"
+  },
+  {
     "objectID": "vector_matrix.html#ベクトルベクターvectorとは",
     "href": "vector_matrix.html#ベクトルベクターvectorとは",
     "title": "ベクトルと行列",
     "section": "ベクトル（ベクター・Vector）とは",
-    "text": "ベクトル（ベクター・Vector）とは\n\n「大きさ」と「方向」をもつ量\n\n速度・力など\n位置は無関係\n大きさのみは スカラー（Scalar）"
+    "text": "ベクトル（ベクター・Vector）とは\n\n「大きさ」と「方向」の組み合わせ\n\n速度・力など\n位置は無関係\n大きさのみ は スカラー（Scalar）"
   },
   {
     "objectID": "vector_matrix.html#表記方法",
@@ -14,60 +21,95 @@
     "text": "表記方法\n\n表記は成分を縦に並べて書くことが多い\nこれを単に小文字太文字の\\({\\mathbf{a}}\\)として記号表記する\n\n高校での\\(\\vec{\\mathbf{a}}\\) から矢印を省略した形\n\n\n高校での表記 \\[\n\\vec{\\mathbf{a}} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}\n\\]\n大学・論文・技術文章の主流 \\[\n\\mathbf{a} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}\n\\]"
   },
   {
-    "objectID": "vector_matrix.html#numpyでベクトルを表現",
-    "href": "vector_matrix.html#numpyでベクトルを表現",
+    "objectID": "vector_matrix.html#section-1",
+    "href": "vector_matrix.html#section-1",
     "title": "ベクトルと行列",
-    "section": "Numpyでベクトルを表現",
-    "text": "Numpyでベクトルを表現\n\nNumPyでは配列（1次元配列）がベクトルを表現\n\nimport numpy as np\n\na = np.array([3, 4]) \nprint(a) # [3, 4]と横表記だが気にしない"
+    "section": "",
+    "text": "Numpyでベクトルを表現・演算"
+  },
+  {
+    "objectID": "vector_matrix.html#ベクトルの表現",
+    "href": "vector_matrix.html#ベクトルの表現",
+    "title": "ベクトルと行列",
+    "section": "ベクトルの表現",
+    "text": "ベクトルの表現\n\nNumPyでは配列（1次元配列）でベクトルを表現\n\n1次元でもndarrayの扱い\n\n1D array\n\n縦ベクトルでないが問題ない\n\n\nimport numpy as np\n\na = np.array([3, 4]) \nprint(a) # [3, 4]と横表記だが気にしない\nprint(type(a)) # &lt;class 'numpy.ndarray'&gt;"
   },
   {
     "objectID": "vector_matrix.html#ベクトルの足し算",
     "href": "vector_matrix.html#ベクトルの足し算",
     "title": "ベクトルと行列",
     "section": "ベクトルの足し算",
-    "text": "ベクトルの足し算\n\n\n\n足し算は成分ごとに行う\n\n引き算も同様\n\n\n\\[\n\\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix} + \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}\n\\]\nimport numpy as np\n\na = np.array([1, 3])\nb = np.array([2, 1])\n\nprint(a + b)   # [3 4]\nprint(a - b)   # [-1  2]"
+    "text": "ベクトルの足し算\n\n\n\n足し算は成分ごとに行う\n入力：「ベクトルとベクトル」\n出力：「ベクトル」\n\n引き算も同様\n\n\n\\[\n\\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix} + \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}\n\\]\nimport numpy as np\n\na = np.array([1, 3])\nb = np.array([2, 1])\n\nprint(a + b)   # [3 4]\nprint(a - b)   # [-1  2]"
   },
   {
     "objectID": "vector_matrix.html#ベクトルの掛け算-1スカラー倍",
     "href": "vector_matrix.html#ベクトルの掛け算-1スカラー倍",
     "title": "ベクトルと行列",
     "section": "ベクトルの掛け算 1（スカラー倍）",
-    "text": "ベクトルの掛け算 1（スカラー倍）\n\n\n\n掛け算は全成分それぞれ にスカラー値を掛ける\n\n割り算も同じ\n\n\n\\[\n\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} \\times 2 = \\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix}\n\\]\nimport numpy as np\n\na = np.array([1, 2])\n\nprint(a * 2)   # [2 4]"
+    "text": "ベクトルの掛け算 1（スカラー倍）\n\n\n\n掛け算は全成分それぞれ にスカラー値を掛ける\n入力：「ベクトルとスカラー」\n出力：「ベクトル」\n\n割り算も同じ\n\n\n\\[\n\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} \\times 2 = \\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix}\n\\]\nimport numpy as np\n\na = np.array([1, 2])\n\nprint(a * 2)   # [2 4]"
   },
   {
     "objectID": "vector_matrix.html#ベクトルの掛け算-2内積",
     "href": "vector_matrix.html#ベクトルの掛け算-2内積",
     "title": "ベクトルと行列",
     "section": "ベクトルの掛け算 2（内積）",
-    "text": "ベクトルの掛け算 2（内積）\n\n内積（inner product、dot product）は、対応成分同士をかけて足す\n\nつまり、入力はベクトル２つ・出力はスカラー\n\n\n\\[\n\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} \\cdot \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} = 1 \\times 3 + 2 \\times 4 = 11\n\\]"
+    "text": "ベクトルの掛け算 2（内積）\n\n内積（inner product、dot product）は、対応成分同士をかけて足す\n入力：「ベクトルとベクトル」\n出力：「スカラー」\n\n\\[\n\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} \\cdot \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} = 1 \\times 3 + 2 \\times 4 = 11\n\\]"
   },
   {
-    "objectID": "vector_matrix.html#numpyで内積",
-    "href": "vector_matrix.html#numpyで内積",
+    "objectID": "vector_matrix.html#重要-numpyにおける内積の演算子",
+    "href": "vector_matrix.html#重要-numpyにおける内積の演算子",
     "title": "ベクトルと行列",
-    "section": "Numpyで内積",
-    "text": "Numpyで内積\n\nndarrayを @ で掛ける\n\n戻り値は当然ベクトルではなく数値（スカラー）\n\n\n\n\n\n\n\n\n注意\n\n\n\n* ではない\nもし * で演算してもエラーにはならない\n\n\n\n\nimport numpy as np\n\na = np.array([1, 2])\nb = np.array([3, 4])\n\n# 内積\nprint(a @ b)  # 11 \n\n# 普通に* だとスカラーにならずベクトルになってしまう\nprint(a * b)  # [1*3, 2*4] → [3, 8]"
+    "section": "【重要】 Numpyにおける内積の演算子",
+    "text": "【重要】 Numpyにおける内積の演算子\n\n２つのndarray を @ という二項演算子に入力\n\n普通なら*とするところを@に変える\n\n\nimport numpy as np\n\na = np.array([1, 2])\nb = np.array([3, 4])\n\n# 内積\nprint(a @ b)  # 11 \n\n# 普通に* だとスカラーにならずベクトルになってしまう\nprint(a * b)  # [1*3, 2*4] → [3 8]\n\n\n\n\n\n\n注意\n\n\n\n* で演算してもエラーにはならないので危険"
+  },
+  {
+    "objectID": "vector_matrix.html#section-2",
+    "href": "vector_matrix.html#section-2",
+    "title": "ベクトルと行列",
+    "section": "",
+    "text": "行列"
   },
   {
     "objectID": "vector_matrix.html#行列",
     "href": "vector_matrix.html#行列",
     "title": "ベクトルと行列",
     "section": "行列",
-    "text": "行列\n\nベクトルを横方向に並べたもの\nNumpyでもN次元配列として表現できる\n\nndarray\n\n\n\\[\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\]\nimport numpy as np\n\nA = np.array([[1, 2],\n              [3, 4]])\n\n# アクセス方法\nprint(A[0, 1])   # 1行目2列目 → 2\nprint(A[1, :])   # 2行目全体  → [3 4]\nprint(A[:, 0])   # 1列目全体  → [1 3]"
+    "text": "行列\n\nベクトルを横方向に並べたもの\n\n\\[\n\\vec{\\vphantom{b}a} = \\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix}, \\quad\n\\vec{b} = \\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\]\n\n\\(3 \\times 4\\) 行列の例\n\n\\[\n\\vec{\\vphantom{b}a} = \\begin{pmatrix} 1 \\\\ 4 \\\\ 7 \\end{pmatrix}, \\quad\n\\vec{b} = \\begin{pmatrix} 2 \\\\ 5 \\\\ 8 \\end{pmatrix}, \\quad\n\\vec{c} = \\begin{pmatrix} 3 \\\\ 6 \\\\ 9 \\end{pmatrix}, \\quad\n\\vec{d} = \\begin{pmatrix} 10 \\\\ 11 \\\\ 12 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA = \\begin{pmatrix} 1 & 2 & 3 & 10 \\\\ 4 & 5 & 6 & 11 \\\\ 7 & 8 & 9 & 12 \\end{pmatrix}\n\\]"
   },
   {
-    "objectID": "vector_matrix.html#行列同士の掛け算",
-    "href": "vector_matrix.html#行列同士の掛け算",
+    "objectID": "vector_matrix.html#行列とベクトルの積",
+    "href": "vector_matrix.html#行列とベクトルの積",
     "title": "ベクトルと行列",
-    "section": "行列同士の掛け算",
-    "text": "行列同士の掛け算\n\n行列同士の掛け算は「行×列」の内積を並べたもの\n\n\\[\n\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}\n=\n\\begin{pmatrix} 1 \\cdot 5 + 2 \\cdot 7 & 1 \\cdot 6 + 2 \\cdot 8 \\\\ 3 \\cdot 5 + 4 \\cdot 7 & 3 \\cdot 6 + 4 \\cdot 8 \\end{pmatrix}\n=\n\\begin{pmatrix} 19 & 22 \\\\ 43 & 50 \\end{pmatrix}\n\\]"
+    "section": "行列とベクトルの積",
+    "text": "行列とベクトルの積\n\n行列の列数とベクトルの次元が同じ場合、掛け算することが可能\n\nそれぞれの行とベクトルの内積を縦に並べる\n\n\n\n\\[\n\\begin{pmatrix} \\cssId{mm-a}{1} & \\cssId{mm-b}{2} \\\\ \\cssId{mm-c}{3} & \\cssId{mm-d}{4} \\end{pmatrix}\n\\begin{pmatrix} \\cssId{mm-x1}{5} \\\\ \\cssId{mm-x2}{6} \\end{pmatrix}\n=\n\\begin{pmatrix} \\cssId{mm-r1}{17} \\\\ \\cssId{mm-r2}{39} \\end{pmatrix}\n\\]\n\n\n\n\n\n▶ 再生"
   },
   {
-    "objectID": "vector_matrix.html#numpyで行列の掛け算",
-    "href": "vector_matrix.html#numpyで行列の掛け算",
+    "objectID": "vector_matrix.html#行列と行列の積",
+    "href": "vector_matrix.html#行列と行列の積",
     "title": "ベクトルと行列",
-    "section": "Numpyで行列の掛け算",
-    "text": "Numpyで行列の掛け算\n\nベクトルの内積と同じく @ を使用\n\nimport numpy as np\n\nA = np.array([[1, 2], [3, 4]])\nB = np.array([[5, 6], [7, 8]])\n\nprint(A @ B)\n# [[19 22]\n#  [43 50]]"
+    "section": "行列と行列の積",
+    "text": "行列と行列の積\n\n行列同士の掛け算は「行×列」の内積を並べる\n\n\\[\n\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}\n=\n\\begin{pmatrix} 1 \\cdot 5 + 2 \\cdot 7 & 1 \\cdot 6 + 2 \\cdot 8 \\\\ 3 \\cdot 5 + 4 \\cdot 7 & 3 \\cdot 6 + 4 \\cdot 8 \\end{pmatrix}\n=\n\\begin{pmatrix} 19 & 22 \\\\ 43 & 50 \\end{pmatrix}\n\\]"
+  },
+  {
+    "objectID": "vector_matrix.html#section-3",
+    "href": "vector_matrix.html#section-3",
+    "title": "ベクトルと行列",
+    "section": "",
+    "text": "Numpyで行列を表現・演算"
+  },
+  {
+    "objectID": "vector_matrix.html#numpyでの行列",
+    "href": "vector_matrix.html#numpyでの行列",
+    "title": "ベクトルと行列",
+    "section": "Numpyでの行列",
+    "text": "Numpyでの行列\n\nndarrayで作成可能だが、行ごとに宣言する点に注意\n\n縦ベクトルの並びではないので少し気持ち悪い（仕様）\n「行」ごとに宣言 して縦にスタックしていく\n以下の場合でも[[1 3][2 4]]ではなく[[1 2][3 4]]\n\n\n\\[\n\\vec{\\vphantom{b}a} = \\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix}, \\quad\n\\vec{b} = \\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\]\nimport numpy as np\n\nA = np.array([[1, 2],\n              [3, 4]])\n\n# アクセス方法\nprint(A[0, 1])   # 1行目2列目 → 2\nprint(A[1, :])   # 2行目全体  → [3 4]\nprint(A[:, 0])   # 1列目全体  → [1 3]\n\n\n\n\n\n\nノート\n\n\n\n行優先（row-major）ではなく列優先（column-major）の実装もありうる（OpenGLなど）\nただ、現在の言語では行優先が大半"
+  },
+  {
+    "objectID": "vector_matrix.html#numpyでの行列の演算",
+    "href": "vector_matrix.html#numpyでの行列の演算",
+    "title": "ベクトルと行列",
+    "section": "Numpyでの行列の演算",
+    "text": "Numpyでの行列の演算\n\nベクトルの内積と同じく @ を使用\n\nimport numpy as np\n\n# A: Matrix b:Vector \nA = np.array([[1, 2], [3, 4]])\nb = np.array([5, 6])\n\nprint(A @ b)  # [17 39]\n\n\n# A:Matrix B:Matrix\nA = np.array([[1, 2], [3, 4]])\nB = np.array([[5, 6], [7, 8]])\n\nprint(A @ B)  # [[19 22] [43 50]]"
   },
   {
     "objectID": "vector_matrix.html#もし-を使用するとどうなってしまうのか",
@@ -81,7 +123,14 @@
     "href": "vector_matrix.html#逆行列",
     "title": "ベクトルと行列",
     "section": "逆行列",
-    "text": "逆行列\n\n逆行列：行列 \\(A\\) に対して \\(A A^{-1} = I\\)（単位行列）を満たす \\(A^{-1}\\)\n\n掛けたら1になる逆数のようなもの\n\nNumpyではnp.linalg.inv() という便利関数で逆行列が求まる\n\nlinalg = linear algebra（線形代数）の略\n\n\n\\[\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA^{-1} = \\begin{pmatrix} -2 & 1 \\\\ 1.5 & -0.5 \\end{pmatrix}\n\\]\nimport numpy as np\n\nA = np.array([[1, 2], [3, 4]])\nA_inv = np.linalg.inv(A)\nprint(A_inv) # [[-2.   1. ][ 1.5 -0.5]]\nprint(A @ A_inv) # [[1. 0.][0. 1.]]  ← 単位行列"
+    "text": "逆行列\n\n逆行列：行列 \\(A\\) に対して \\(A A^{-1} = I\\)（単位行列）を満たす \\(A^{-1}\\)\n\n元の数と掛けたら１になる逆数のようなもの\n\nNumpyではnp.linalg.inv() という便利関数で逆行列が求まる\n\nlinalg = linear algebra（線形代数）の略\n\n\n\\[\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA^{-1} = \\begin{pmatrix} -2 & 1 \\\\ 1.5 & -0.5 \\end{pmatrix}\n\\]\nimport numpy as np\n\nA = np.array([[1, 2], [3, 4]])\nA_inv = np.linalg.inv(A)\nprint(A_inv) # [[-2.   1. ][ 1.5 -0.5]]\nprint(A @ A_inv) # [[1. 0.][0. 1.]]  ← 単位行列"
+  },
+  {
+    "objectID": "vector_matrix.html#section-4",
+    "href": "vector_matrix.html#section-4",
+    "title": "ベクトルと行列",
+    "section": "",
+    "text": "@ 演算子で方程式を解こう"
   },
   {
     "objectID": "vector_matrix.html#行列で連立方程式を表現",
@@ -95,7 +144,7 @@
     "href": "vector_matrix.html#numpyで-amathbfx-mathbfb-の連立方程式を解く",
     "title": "ベクトルと行列",
     "section": "NumPyで \\(A\\mathbf{x} = \\mathbf{b}\\) の連立方程式を解く",
-    "text": "NumPyで \\(A\\mathbf{x} = \\mathbf{b}\\) の連立方程式を解く\n\n\\(A\\mathbf{x} = \\mathbf{b}\\) の両辺に左から \\(A^{-1}\\) を掛ける\n\n\\[\n\\begin{aligned}\nA \\mathbf{x} &= \\mathbf{b} \\\\\nA^{-1} A \\mathbf{x} &= A^{-1} \\mathbf{b} \\\\\n\\mathbf{x} &= A^{-1} \\mathbf{b}\n\\end{aligned}\n\\]\n\n\\(A^{-1} \\mathbf{b}\\) が解\n\nimport numpy as np\n\nA = np.array([[1, -1],\n              [1,  1]])\nb = np.array([1, 3])\n\nx = np.linalg.inv(A) @ b\nprint(x)  # [2. 1.] ← x=2, y=1\n\n\n\n\n\n\n実は連立方程式用の関数が存在\n\n\n\\(Ax = b\\) は np.linalg.solve(A, b) で解が返る"
+    "text": "NumPyで \\(A\\mathbf{x} = \\mathbf{b}\\) の連立方程式を解く\n\n\\(A\\mathbf{x} = \\mathbf{b}\\) の両辺に左から \\(A^{-1}\\) を掛ける\n\n\\[\n\\begin{aligned}\nA \\mathbf{x} &= \\mathbf{b} \\\\\nA^{-1} A \\mathbf{x} &= A^{-1} \\mathbf{b} \\\\\n\\mathbf{x} &= A^{-1} \\mathbf{b}\n\\end{aligned}\n\\]\n\n\\(A^{-1} \\mathbf{b}\\) が解\n\nimport numpy as np\n\nA = np.array([[1, -1],\n              [1,  1]])\nb = np.array([1, 3])\n\nx = np.linalg.inv(A) @ b\nprint(x)  # [2. 1.] ← x=2, y=1\n\n\n\n\n\n\n実は連立方程式用の関数が存在\n\n\n\\(Ax = b\\) の解は np.linalg.solve(A, b)"
   },
   {
     "objectID": "vector_matrix.html#まとめ",
@@ -110,6 +159,13 @@
     "title": "ベクトルと行列",
     "section": "演習",
     "text": "演習\n（１）以下の2つのベクトルの内積を求め、直交しているか判定せよ。\n\\[\n\\mathbf{a} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}, \\quad\n\\mathbf{b} = \\begin{pmatrix} -1 \\\\ 2 \\end{pmatrix}\n\\]\n（２）以下の行列の掛け算を手計算で求め、NumPyで確認せよ。\n\\[\n\\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}\n\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\n\\]\n（３）以下の連立方程式を np.linalg.solve() で解け。\n\\[\n\\begin{cases} x + y = 4 \\\\ x - y = 2 \\end{cases}\n\\]\n（４）\\(\\mathbf{a} = \\begin{pmatrix} 6 \\\\ 8 \\end{pmatrix}\\) のノルムと単位ベクトルを求めよ。\n\n\n解答例を見る\nimport numpy as np\n\n# (1)\na = np.array([2, 1])\nb = np.array([-1, 2])\nprint(a @ b)  # 0 → 直交している\n\n# (2)\nA = np.array([[2, 0], [0, 3]])\nv = np.array([1, 1])\nprint(A @ v)  # [2 3]\n\n# (3)\nA = np.array([[1, 1], [1, -1]])\nb = np.array([4, 2])\nx = np.linalg.solve(A, b)\nprint(x)  # [3. 1.] → x=3, y=1\n\n# (4)\na = np.array([6, 8])\nprint(np.linalg.norm(a))       # 10.0\nprint(a / np.linalg.norm(a))   # [0.6 0.8]"
+  },
+  {
+    "objectID": "vector_matrix.html#section-5",
+    "href": "vector_matrix.html#section-5",
+    "title": "ベクトルと行列",
+    "section": "",
+    "text": "その他"
   },
   {
     "objectID": "vector_matrix.html#ベクトルの大きさノルム",
@@ -133,25 +189,25 @@
     "text": "行列の転置\n\n行と列を入れ替える操作を転置（\\(A^T\\)）と呼ぶ\n\nベクトルの転置も実は同じ操作\n\nNumPyでは .T で一発\n\n\\[\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA^T = \\begin{pmatrix} 1 & 3 \\\\ 2 & 4 \\end{pmatrix}\n\\]\nimport numpy as np\n\nA = np.array([[1, 2], [3, 4]])\nprint(A.T)\n# [[1 3]\n#  [2 4]]"
   },
   {
-    "objectID": "vector_matrix.html#参考ベクトルの転置",
-    "href": "vector_matrix.html#参考ベクトルの転置",
+    "objectID": "vector_matrix.html#ベクトルの転置",
+    "href": "vector_matrix.html#ベクトルの転置",
     "title": "ベクトルと行列",
-    "section": "（参考）ベクトルの転置",
-    "text": "（参考）ベクトルの転置\n\n行と列を入れ替える操作を転置（Transpose）と呼ぶ\n\nベクトルでは縦を横に倒す操作となる\n\n\n\\[\n\\mathbf{a} = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\n\\mathbf{a}^T = \\begin{pmatrix} 1 & 2 \\end{pmatrix}\n\\]\n\n転置を使うと、内積は \\(\\mathbf{a}^T \\mathbf{b}\\) と書ける\n\nこれなら内積の演算を行列と同じ計算方法で扱える\n\n行 と 列 の要素同士の積の和\n\n\n\n\\[\n\\mathbf{a}^T \\mathbf{b} = \\begin{pmatrix} 1 & 2 \\end{pmatrix} \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} = 1 \\times 3 + 2 \\times 4 = 11\n\\]"
+    "section": "ベクトルの転置",
+    "text": "ベクトルの転置\n\n行と列を入れ替える操作を転置（Transpose）と呼ぶ\n\nベクトルでは縦を横に倒す操作となる\n\n\n\\[\n\\mathbf{a} = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\n\\mathbf{a}^T = \\begin{pmatrix} 1 & 2 \\end{pmatrix}\n\\]\n\n転置を使うと、内積は \\(\\mathbf{a}^T \\mathbf{b}\\) と書ける\n\nこれなら内積の演算を行列と同じ計算方法で扱える\n\n行 と 列 の要素同士の積の和\n\n\n\n\\[\n\\mathbf{a}^T \\mathbf{b} = \\begin{pmatrix} 1 & 2 \\end{pmatrix} \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} = 1 \\times 3 + 2 \\times 4 = 11\n\\]"
   },
   {
-    "objectID": "vector_matrix.html#参考図でみる内積",
-    "href": "vector_matrix.html#参考図でみる内積",
+    "objectID": "vector_matrix.html#図でみる内積",
+    "href": "vector_matrix.html#図でみる内積",
     "title": "ベクトルと行列",
-    "section": "（参考）図でみる内積",
-    "text": "（参考）図でみる内積\n\n教科書での内積の定義\n\n\\[\n\\mathbf{a} \\cdot \\mathbf{b} = |\\mathbf{a}||\\mathbf{b}|\\cos\\theta\n\\]\n\n\\(|\\mathbf{b}|\\cos\\theta\\) ：\\(\\mathbf{b}\\) を \\(\\mathbf{a}\\) の方向に射影した長さ\n内積 = 「\\(\\mathbf{b}\\)の\\(\\mathbf{a}\\)方向に対する成分」× 「\\(\\mathbf{a}\\)の長さ\\(|\\mathbf{a}|\\)」"
+    "section": "図でみる内積",
+    "text": "図でみる内積\n\n教科書での内積の定義\n\n\\[\n\\mathbf{a} \\cdot \\mathbf{b} = |\\mathbf{a}||\\mathbf{b}|\\cos\\theta\n\\]\n\n\\(|\\mathbf{b}|\\cos\\theta\\) ：\\(\\mathbf{b}\\) を \\(\\mathbf{a}\\) の方向に射影した長さ\n内積 = 「\\(\\mathbf{b}\\)の\\(\\mathbf{a}\\)方向に対する成分」× 「\\(\\mathbf{a}\\)の長さ\\(|\\mathbf{a}|\\)」"
   },
   {
-    "objectID": "vector_matrix.html#参考内積と直交",
-    "href": "vector_matrix.html#参考内積と直交",
+    "objectID": "vector_matrix.html#内積と直交",
+    "href": "vector_matrix.html#内積と直交",
     "title": "ベクトルと行列",
-    "section": "（参考）内積と直交",
-    "text": "（参考）内積と直交\n\n2つのベクトルが直交（90°）しているとき内積は 0\n\n\\(\\cos 90° = 0\\)\nつまり、射影の長さがゼロ → 「\\(\\mathbf{a}\\) 方向の成分がない」\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n覚えること\n\n\n内積 = 0 ⟺ 直交（垂直）"
+    "section": "内積と直交",
+    "text": "内積と直交\n\n2つのベクトルが直交（90°）しているとき内積は 0\n\n\\(\\cos 90° = 0\\)\nつまり、射影の長さがゼロ → 「\\(\\mathbf{a}\\) 方向の成分がない」\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n覚えること\n\n\n内積 = 0 ⟺ 直交（垂直）"
   },
   {
     "objectID": "vector_matrix.html#参考ベクトルの掛け算-3外積",
@@ -417,7 +473,7 @@
     "href": "index.html#情報処理-2025年度",
     "title": "高専3年 情報処理",
     "section": "情報処理 2025年度",
-    "text": "情報処理 2025年度\nhttps://rkskmt.github.io/ip3200/\n\nキータイピング\nショートカット\n速習：コレクション\nlistあらためて\ndictあらためて\n変数と代入\nnumpy\nベクトルと行列"
+    "text": "情報処理 2025年度\nhttps://rkskmt.github.io/ip3200/\n\n\nPCの使い方アップデート\n\n\nキータイピング\nショートカット\n\n\n\n\n速習Python基礎\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\n\n\nPythonデータ処理基礎\n\n\nnumpy\nベクトルと行列"
   },
   {
     "objectID": "collections.html#コレクションcollectionとは",
@@ -550,7 +606,7 @@
     "href": "collections.html#collection３-tupleタプル",
     "title": "速習 コレクション",
     "section": "【Collection３】 tuple（タプル）",
-    "text": "【Collection３】 tuple（タプル）\n\n\n\n組のこと。\n\n5つ組み等\n\n数学用語からきている\n\n例： 3tuple、ntuple\n\n要素が固定のリスト\n（） で書かれる\n\n\n\nPD: https://en.wikipedia.org/wiki/Coordinate_system#/media/File:3D_Spherical.svg"
+    "text": "【Collection３】 tuple（タプル）\n\n\n\n組のこと。\n\n5つ組み等\n\n数学用語からきている\n\n例： 3-tuple、n-tuple\n\n要素が固定のリスト\n（） で書かれる\n\n\n\nPD: https://en.wikipedia.org/wiki/Coordinate_system#/media/File:3D_Spherical.svg"
   },
   {
     "objectID": "collections.html#数学用語からきている",

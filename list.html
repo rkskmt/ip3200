@@ -415,10 +415,40 @@
       -2px  2px 0 #0099cc,
       -3px  1px 0 #0099cc;
   }
+  .break-slide h2 { border: none !important; }
+  .break-slide p { margin: 0 !important; }
+  .break-slide .break-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 0.5px solid #333;
+    padding-bottom: 0.1em;
+  }
+  .reveal ul li::marker {
+    color: #0099cc;
+    font-size: 1.3em;
+  }
+  .reveal ul ul li::before, .reveal ol ul li::before {
+    font-weight: 500;
+    color: #0099cc;
+  }
+  .reveal ul ul ul {
+    list-style: none;
+  }
+  .reveal ul ul ul li::before {
+    content: "‣";
+  }
+  .reveal strong {
+    padding: 0 0.1em;
+  }
+  .reveal .fw-colon {
+    font-weight: 300;
+  }
   .reveal :not(pre) > code {
     color: #005cc5;
     font-weight: bold;
-    font-size: inherit;
+    font-size: 1.1em;
+    padding: 0 0.15em;
     font-family: monospace, serif;
     text-shadow: none;
   }
@@ -808,10 +838,10 @@ rkskmt
 </section>
 <section id="リスト内包表記の使いどころ" class="slide level2">
 <h2>リスト内包表記の使いどころ</h2>
-<p>第1回 AtCoder の参考コードに出てきた謎の構文：</p>
+<p>第1回 AtCoder の参考コードに出てきた謎の構文<span class="fw-colon">：</span></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a>As <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>().split()]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p>これはリスト内包表記だった。<code>input().split()</code> で <code>["1", "2", "3"]</code> という文字列のリストを作り、 各要素を <code>int(x)</code> で整数に変換しながら新しいリストを作っている。</p>
-<p><code>for</code> 文で書くと以下と同じ意味：</p>
+<p><code>for</code> 文で書くと以下と同じ意味<span class="fw-colon">：</span></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a>input_str <span class="op">=</span> <span class="bu">input</span>().split() <span class="co"># split(" ")と同じ。つまり、空白区切りで分けてlist化</span></span>
 <span id="cb26-2"><a></a>As <span class="op">=</span> []</span>
 <span id="cb26-3"><a></a><span class="cf">for</span> x <span class="kw">in</span> input_str:</span>
@@ -859,7 +889,7 @@ rkskmt
 <li><strong>スライス</strong>を使って、上位5名分（先頭5つ）と下位5名分（末尾5つ）をそれぞれ別のリストに分けて表示</li>
 <li><code>sorted</code> を使って、<strong>元のリストを変えずに</strong>降順に並び替えた新しいリストを作り、<strong>上位3名の点数</strong>を表示</li>
 </ol>
-<div id="54ea8982" class="cell" data-execution_count="1">
+<div id="70dff942" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="co"># 1</span></span>
@@ -887,7 +917,7 @@ rkskmt
 <li><code>scores</code> から、<strong>80点以上の点数だけ</strong>を取り出した新しいリストを作ろう</li>
 <li>標準入力で受け取った空白区切りの整数列を、<strong>list of int</strong> に変換しよう（AtCoder 頻出パターン）</li>
 </ol>
-<div id="68dcf128" class="cell" data-execution_count="2">
+<div id="0cb18233" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="co"># 1</span></span>
@@ -919,7 +949,7 @@ rkskmt
 <li><strong>C さんの3科目合計</strong>を表示しよう</li>
 <li><strong>各学生の平均点</strong>を <code>for</code> 文で順に表示しよう</li>
 </ol>
-<div id="761e4942" class="cell" data-execution_count="3">
+<div id="eddb8efe" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="co"># 1</span></span>
