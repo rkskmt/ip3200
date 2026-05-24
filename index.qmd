@@ -2,15 +2,38 @@
 
 [https://rkskmt.github.io/ip3200/](https://rkskmt.github.io/ip3200/)
 
+<details>
+<summary>PCの使い方アップデート</summary>
 
+- [キータイピング](key-typing.qmd)
+- [ショートカット](shortcuts.qmd)
 
-- [第1回：キータイピング](key-typing.qmd)
-- [第2回：ショートカット](shortcuts.qmd)
-- [第3回：速習：コレクション](collections.qmd)
-- [第4回：list改めて](list.qmd)
-- [第5回：変数と代入](variables.qmd)
+</details>
 
+<details>
+<summary>速習Python基礎</summary>
+
+- [変数と代入](variables.qmd)
+- [速習：コレクション](collections.qmd)
+- [listあらためて](list.qmd)
+- [dictあらためて](dict.qmd)
+
+</details>
+
+<details open>
+<summary>Pythonデータ処理基礎</summary>
+
+- [numpy](numpy.qmd)
+- [ベクトルと行列](vector_matrix.qmd)
+
+</details>
 
 ![](imgs/qrcode_rkskmt.github.io.png){fig-align="center" width=300}
 
-
+<script>
+document.querySelectorAll("details").forEach(d => {
+  const n = d.querySelectorAll("li").length;
+  const s = d.querySelector("summary");
+  s.textContent += `（${n}）`;
+});
+</script>

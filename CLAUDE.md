@@ -17,64 +17,53 @@ Quarto-based website for "高専3年 情報処理" (3rd-year KOSEN Information P
 - `*.qmd` — lecture content files
 - `imgs/` — image assets
 - `_extensions/` — Quarto extensions
+- `doc/` — authoring guides and reference docs
 
 ## Language
 
 - Content is written in **Japanese**
 - Code comments, commit messages, and Claude's reasoning should be in **English**
 
+## Teaching Philosophy
+
+Use Python as the vehicle, but frame concepts as broadly as possible. Where a concept is universal (e.g., iteration, container, method), note that it exists across languages. Prefer language-agnostic expressions alongside Python-specific ones.
+
+## Matplotlib Japanese Text
+
+- **Do not use `rcParams['font.family']`** for Japanese — it never works reliably.
+- Always use `import japanize_matplotlib` instead.
+
 ## Conventions
 
 - Content is written in **Japanese**
 - `##` delimits slides (do not use `---`)
 - `_metadata.yaml` applies `clean-revealjs` to all `.qmd` files
-- **Do not add `format: html` to `index.qmd`.** Quarto **merges** (not overwrites) `format` from `_metadata.yaml` and the file, causing it to render in both formats and trigger a `rename` error. Keep `index.qmd` as a simple link list with no frontmatter, as in the `ai` project.
+- **Do not add frontmatter to `index.qmd`.**  Quarto **merges** (not overwrites) `format` from `_metadata.yaml` and the file, so adding `format: html` causes it to render in both formats and trigger a `rename` error. Raw HTML (e.g. `<details>/<summary>`) is fine — it needs no frontmatter.
 - **Do not use `listing:` in `index.qmd` either.** Same reason — it requires `format: html`, which conflicts.
 - `render: ["*.qmd"]` in `_quarto.yml` prevents `.md` files (e.g. CLAUDE.md) from being rendered
 - **When adding a new `.qmd`, always update both `index.qmd` and `_quarto.yml`.** `index.qmd` is the link list; `_quarto.yml` is the navbar. Missing either one leaves them out of sync.
+- **Never add numbers to slide section headers or `index.qmd` link text.** Numbered slides (e.g. `## １. ...`) and numbered links (e.g. `第N回`) break on reorder — every insert or swap requires renaming every entry after it. Use plain titles only (e.g. `## \`in\` 演算子で存在確認`, `[dict改めて](dict.qmd)`). Same rule applies to `_quarto.yml` navbar `text:` labels.
 - Use Quarto callouts for key concepts
+- Slide text should use **bullet points**, not prose sentences
+- **Highlight marker (`==text==`):** `hl.lua` filter turns `==text==` into a highlighted span (white text + cyan outline). For text with spaces use `[a b]{.hl}`.
+- **MathJax `\vec{}` height fix:** `\vec{a}` and `\vec{b}` render at different heights because `b` has an ascender. Use `\vec{\vphantom{b}a}` to match the arrow height of shorter letters to `b`.
 
 ## Build
 
 ```bash
-quarto preview   # local dev server
-quarto render    # build to _site/
+quarto preview --port 4321   # local dev server (fixed port)
+quarto render                # build to _site/
 ```
 
-- `_metadata.yaml` を変更した場合は `rm -rf _site` してから `quarto preview` を再起動する（古いキャッシュで壊れることがある）
+## Style or functionality changes
 
-## GitHub Pages へのデプロイ
+Most tasks are content editing — the conventions above are all you need.
 
-```bash
-quarto publish gh-pages --no-prompt --id ip3200
-```
+When changing CSS, theme, or `_metadata.yaml`: read **[doc/troubleshooting.md](doc/troubleshooting.md)** first. It covers the Pandoc vs revealjs CSS distinction (critical — easy to confuse), the no-`.reveal`-prefix rule, and cache-clearing steps.
 
-- 初回セットアップ時に `_publish.yml` が必要（内容は以下）:
+## Reference Docs
 
-```yaml
-- source: project
-  gh-pages:
-    - id: "ip3200"
-      branch: gh-pages
-```
-
-- SSH 認証が必要（`~/.ssh/id_rsa` が GitHub に登録済みであること）
-- `.gitignore` に `_site/` と `.quarto/` を含めること（ビルド成果物はコミットしない）
-
-## フッターカスタムナビ
-
-`_metadata.yaml` の `<script>` を変更する場合は **[footer-nav.md](footer-nav.md)** を参照。
-
----
-
-## よくある失敗
-
-### `quarto render` で rename エラーが出る
-
-```
-ERROR: NotFound: No such file or directory (os error 2): rename '.../index.html' -> '.../_site/index.html'
-```
-
-**原因**: `index.qmd` に `format: html` や `listing:` を書いていると、`_metadata.yaml` の `clean-revealjs` とマージされ、両フォーマットで同じ `index.html` を出力しようとして衝突する。
-
-**対処**: `index.qmd` のフロントマターを削除し、シンプルなリンクリストにする（`ai` プロジェクトの `index.qmd` を参照）。
+- **[doc/slide-notation.md](doc/slide-notation.md)** — image/citation overlay notation (`.fig-cite`, `.content-box`, etc.)
+- **[doc/deploy.md](doc/deploy.md)** — GitHub Pages deploy instructions
+- **[doc/troubleshooting.md](doc/troubleshooting.md)** — CSS/style changes: Pandoc vs revealjs, selector rules, cache issues
+- **[footer-nav.md](footer-nav.md)** — footer navigation script notes
