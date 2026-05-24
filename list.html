@@ -237,6 +237,9 @@
   .cell-output pre {
     font-size: 2.0rem;
   }
+  .reveal pre code {
+    font-size: 1.8rem !important;
+  }
   .reveal details pre code {
     font-size: 1.5rem;
   }
@@ -392,6 +395,18 @@
   }
   .code-copy-outer-scaffold:has(pre.shell)::before {
     content: "Shell";
+  }
+  a[href]::after {
+    content: "";
+    display: inline-block;
+    width: 0.6em;
+    height: 0.6em;
+    margin-left: 0.3em;
+    vertical-align: middle;
+    opacity: 0.5;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M290.4 19.8C295.4 7.8 307.1 0 320 0h160c17.7 0 32 14.3 32 32v160c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9L400 157.3 246.6 310.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L354.7 112l-57.3-57.4c-9.2-9.2-11.9-22.9-6.9-34.9zM0 176c0-44.2 35.8-80 80-80h80c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-8.8 0-16 7.2-16 16v256c0 8.8 7.2 16 16 16h256c8.8 0 16-7.2 16-16v-80c0-17.7 14.3-32 32-32s32 14.3 32 32v80c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176z'/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M290.4 19.8C295.4 7.8 307.1 0 320 0h160c17.7 0 32 14.3 32 32v160c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9L400 157.3 246.6 310.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L354.7 112l-57.3-57.4c-9.2-9.2-11.9-22.9-6.9-34.9zM0 176c0-44.2 35.8-80 80-80h80c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-8.8 0-16 7.2-16 16v256c0 8.8 7.2 16 16 16h256c8.8 0 16-7.2 16-16v-80c0-17.7 14.3-32 32-32s32 14.3 32 32v80c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176z'/%3E%3C/svg%3E") no-repeat center / contain;
   }
   .reveal .hl {
     color: rgba(255,255,255,1);
@@ -889,7 +904,7 @@ rkskmt
 <li><strong>スライス</strong>を使って、上位5名分（先頭5つ）と下位5名分（末尾5つ）をそれぞれ別のリストに分けて表示</li>
 <li><code>sorted</code> を使って、<strong>元のリストを変えずに</strong>降順に並び替えた新しいリストを作り、<strong>上位3名の点数</strong>を表示</li>
 </ol>
-<div id="21234da9" class="cell" data-execution_count="1">
+<div id="fa343fff" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="co"># 1</span></span>
@@ -917,7 +932,7 @@ rkskmt
 <li><code>scores</code> から、<strong>80点以上の点数だけ</strong>を取り出した新しいリストを作ろう</li>
 <li>標準入力で受け取った空白区切りの整数列を、<strong>list of int</strong> に変換しよう（AtCoder 頻出パターン）</li>
 </ol>
-<div id="84c6adda" class="cell" data-execution_count="2">
+<div id="310d0bb7" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="co"># 1</span></span>
@@ -949,7 +964,7 @@ rkskmt
 <li><strong>C さんの3科目合計</strong>を表示しよう</li>
 <li><strong>各学生の平均点</strong>を <code>for</code> 文で順に表示しよう</li>
 </ol>
-<div id="d22db5ad" class="cell" data-execution_count="3">
+<div id="6e3b9ecb" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="co"># 1</span></span>
