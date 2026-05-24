@@ -25,7 +25,7 @@
     "href": "vector_matrix.html#section-1",
     "title": "ベクトルと行列",
     "section": "",
-    "text": "Numpyでベクトルを表現・演算"
+    "text": "NumPyでベクトルを表現・演算"
   },
   {
     "objectID": "vector_matrix.html#ベクトルの表現",
@@ -59,8 +59,8 @@
     "objectID": "vector_matrix.html#重要-numpyにおける内積の演算子",
     "href": "vector_matrix.html#重要-numpyにおける内積の演算子",
     "title": "ベクトルと行列",
-    "section": "【重要】 Numpyにおける内積の演算子",
-    "text": "【重要】 Numpyにおける内積の演算子\n\n２つのndarray を @ という二項演算子に入力\n\n普通なら*とするところを@に変える\n\n\nimport numpy as np\n\na = np.array([1, 2])\nb = np.array([3, 4])\n\n# 内積\nprint(a @ b)  # 11 \n\n# 普通に* だとスカラーにならずベクトルになってしまう\nprint(a * b)  # [1*3, 2*4] → [3 8]\n\n\n\n\n\n\n注意\n\n\n\n* で演算してもエラーにはならないので危険"
+    "section": "【重要】 NumPyにおける内積の演算子",
+    "text": "【重要】 NumPyにおける内積の演算子\n\n２つのndarray を @ という二項演算子に入力\n\n普通なら*とするところを@に変える\n\n\nimport numpy as np\n\na = np.array([1, 2])\nb = np.array([3, 4])\n\n# 内積\nprint(a @ b)  # 11 \n\n# 普通に* だとスカラーにならずベクトルになってしまう\nprint(a * b)  # [1*3, 2*4] → [3 8]\n\n\n\n\n\n\n注意\n\n\n\n* で演算してもエラーにはならないので危険"
   },
   {
     "objectID": "vector_matrix.html#section-2",
@@ -95,21 +95,21 @@
     "href": "vector_matrix.html#section-3",
     "title": "ベクトルと行列",
     "section": "",
-    "text": "Numpyで行列を表現・演算"
+    "text": "NumPyで行列を表現・演算"
   },
   {
     "objectID": "vector_matrix.html#numpyでの行列",
     "href": "vector_matrix.html#numpyでの行列",
     "title": "ベクトルと行列",
-    "section": "Numpyでの行列",
-    "text": "Numpyでの行列\n\nndarrayで作成可能だが、行ごとに宣言する点に注意\n\n縦ベクトルの並びではないので少し気持ち悪い（仕様）\n「行」ごとに宣言 して縦にスタックしていく\n以下の場合でも[[1 3][2 4]]ではなく[[1 2][3 4]]\n\n\n\\[\n\\vec{\\vphantom{b}a} = \\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix}, \\quad\n\\vec{b} = \\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\]\nimport numpy as np\n\nA = np.array([[1, 2],\n              [3, 4]])\n\n# アクセス方法\nprint(A[0, 1])   # 1行目2列目 → 2\nprint(A[1, :])   # 2行目全体  → [3 4]\nprint(A[:, 0])   # 1列目全体  → [1 3]\n\n\n\n\n\n\nノート\n\n\n\n行優先（row-major）ではなく列優先（column-major）の実装もありうる（OpenGLなど）\nただ、現在の言語では行優先が大半"
+    "section": "NumPyでの行列",
+    "text": "NumPyでの行列\n\nndarrayで作成可能だが、行ごとに宣言する点に注意\n\n縦ベクトルの並びではないので少し気持ち悪い（仕様）\n「行」ごとに宣言 して縦にスタックしていく\n以下の場合でも[[1 3][2 4]]ではなく[[1 2][3 4]]\n\n\n\\[\n\\vec{\\vphantom{b}a} = \\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix}, \\quad\n\\vec{b} = \\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\]\nimport numpy as np\n\nA = np.array([[1, 2],\n              [3, 4]])\n\n# アクセス方法\nprint(A[0, 1])   # 1行目2列目 → 2\nprint(A[1, :])   # 2行目全体  → [3 4]\nprint(A[:, 0])   # 1列目全体  → [1 3]\n\n\n\n\n\n\nノート\n\n\n\n行優先（row-major）ではなく列優先（column-major）の実装もありうる（OpenGLなど）\nただ、現在の言語では行優先が大半"
   },
   {
     "objectID": "vector_matrix.html#numpyでの行列の演算",
     "href": "vector_matrix.html#numpyでの行列の演算",
     "title": "ベクトルと行列",
-    "section": "Numpyでの行列の演算",
-    "text": "Numpyでの行列の演算\n\nベクトルの内積と同じく @ を使用\n\nimport numpy as np\n\n# A: Matrix b:Vector \nA = np.array([[1, 2], [3, 4]])\nb = np.array([5, 6])\n\nprint(A @ b)  # [17 39]\n\n\n# A:Matrix B:Matrix\nA = np.array([[1, 2], [3, 4]])\nB = np.array([[5, 6], [7, 8]])\n\nprint(A @ B)  # [[19 22] [43 50]]"
+    "section": "NumPyでの行列の演算",
+    "text": "NumPyでの行列の演算\n\nベクトルの内積と同じく @ を使用\n\nimport numpy as np\n\n# A: Matrix b:Vector \nA = np.array([[1, 2], [3, 4]])\nb = np.array([5, 6])\n\nprint(A @ b)  # [17 39]\n\n\n# A:Matrix B:Matrix\nA = np.array([[1, 2], [3, 4]])\nB = np.array([[5, 6], [7, 8]])\n\nprint(A @ B)  # [[19 22] [43 50]]"
   },
   {
     "objectID": "vector_matrix.html#もし-を使用するとどうなってしまうのか",
@@ -123,7 +123,7 @@
     "href": "vector_matrix.html#逆行列",
     "title": "ベクトルと行列",
     "section": "逆行列",
-    "text": "逆行列\n\n逆行列：行列 \\(A\\) に対して \\(A A^{-1} = I\\)（単位行列）を満たす \\(A^{-1}\\)\n\n元の数と掛けたら１になる逆数のようなもの\n\nNumpyではnp.linalg.inv() という便利関数で逆行列が求まる\n\nlinalg = linear algebra（線形代数）の略\n\n\n\\[\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA^{-1} = \\begin{pmatrix} -2 & 1 \\\\ 1.5 & -0.5 \\end{pmatrix}\n\\]\nimport numpy as np\n\nA = np.array([[1, 2], [3, 4]])\nA_inv = np.linalg.inv(A)\nprint(A_inv) # [[-2.   1. ][ 1.5 -0.5]]\nprint(A @ A_inv) # [[1. 0.][0. 1.]]  ← 単位行列"
+    "text": "逆行列\n\n逆行列：行列 \\(A\\) に対して \\(A A^{-1} = I\\)（単位行列）を満たす \\(A^{-1}\\)\n\n元の数と掛けたら１になる逆数のようなもの\n\nNumPyではnp.linalg.inv() という便利関数で逆行列が求まる\n\nlinalg = linear algebra（線形代数）の略\n\n\n\\[\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA^{-1} = \\begin{pmatrix} -2 & 1 \\\\ 1.5 & -0.5 \\end{pmatrix}\n\\]\nimport numpy as np\n\nA = np.array([[1, 2], [3, 4]])\nA_inv = np.linalg.inv(A)\nprint(A_inv) # [[-2.   1. ][ 1.5 -0.5]]\nprint(A @ A_inv) # [[1. 0.][0. 1.]]  ← 単位行列"
   },
   {
     "objectID": "vector_matrix.html#section-4",
@@ -473,7 +473,7 @@
     "href": "index.html#情報処理-2025年度",
     "title": "高専3年 情報処理",
     "section": "情報処理 2025年度",
-    "text": "情報処理 2025年度\nhttps://rkskmt.github.io/ip3200/\n\n\nPCの使い方アップデート\n\n\nキータイピング\nショートカット\n\n\n\n\n速習Python基礎\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\n\n\nPythonデータ処理基礎\n\n\nnumpy\nベクトルと行列"
+    "text": "情報処理 2025年度\nhttps://rkskmt.github.io/ip3200/\n\n\nPCの使い方アップデート\n\n\nキータイピング\nショートカット\n\n\n\n\n速習Python基礎\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\n\n\nPythonデータ処理基礎\n\n\nNumPy入門\nベクトルと行列"
   },
   {
     "objectID": "collections.html#コレクションcollectionとは",
@@ -865,7 +865,7 @@
     "href": "numpy.html#インストールと使用",
     "title": "NumPy入門",
     "section": "インストールと使用",
-    "text": "インストールと使用\nターミナルからインストール\npip install numpy\n冒頭でimportして使用（ただしnpというエイリアス指定が一般的）\nimport numpy as np\n\n\n\n\n\n\ninportの as とは？\n\n\nimport numpy as np の as np は別名（エイリアス）をつける構文\nimport numpy         # 使用時にnumpy.array(...) と書く\nimport numpy as np   # np.array(...) でよいので短い\n\n注：np の部分は何でもよく別の名前も使用可能\n\nただし、Numpyは np が非常に一般的"
+    "text": "インストールと使用\nターミナルからインストール\npip install numpy\n冒頭でimportして使用（ただしnpというエイリアス指定が一般的）\nimport numpy as np\n\n\n\n\n\n\ninportの as とは？\n\n\nimport numpy as np の as np は別名（エイリアス）をつける構文\nimport numpy         # 使用時にnumpy.array(...) と書く\nimport numpy as np   # np.array(...) でよいので短い\n\n注：np の部分は何でもよく別の名前も使用可能\n\nただし、NumPyは np が非常に一般的"
   },
   {
     "objectID": "numpy.html#numpy配列ndarray",
