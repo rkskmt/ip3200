@@ -1,0 +1,965 @@
+---
+title: "ベクトルと行列"
+subtitle: "NumPyで線形代数"
+include-in-header:
+  - text: |
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+include-before-body:
+  - text: |
+      <script>
+        if (window.MathJax) {
+          window.MathJax.loader = window.MathJax.loader || {};
+          window.MathJax.loader.load = (window.MathJax.loader.load || []).concat(['[tex]/html']);
+          window.MathJax.loader.source = Object.assign(window.MathJax.loader.source || {}, {
+            '[tex]/html': 'https://cdn.jsdelivr.net/npm/mathjax@4/input/tex/extensions/html.js'
+          });
+          window.MathJax.tex = window.MathJax.tex || {};
+          window.MathJax.tex.packages = {'[+]': ['html']};
+        }
+      </script>
+---
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+ベクトルのおさらい
+:::
+
+## ベクトル（ベクター・Vector）とは
+
+- 「**大きさ**」と「**方向**」の組み合わせ
+   - **速度・力**など
+   - **位置**は**無関係**
+   - **大きさのみ** は **スカラー（Scalar）**
+
+::: {style="width: 30%; margin: 0 auto;"}
+```{python}
+#| echo: false
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(figsize=(3, 3))
+ax.quiver(0, 0, 3, 4, angles='xy', scale_units='xy', scale=1, color='black')
+ax.set_xlim(-0.5, 5)
+ax.set_ylim(-0.5, 5)
+ax.set_aspect('equal')
+ax.set_xticks(range(6))
+ax.set_yticks(range(6))
+ax.grid(True, linestyle='--', alpha=0.5)
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.annotate(r'$\vec{\mathbf{a}} = \binom{3}{4}$', xy=(3, 4), xytext=(3.3, 2.5), fontsize=12)
+plt.tight_layout()
+plt.show()
+```
+:::
+
+## 表記方法
+
+- 表記は成分を縦に並べて書くことが多い
+- これを単に小文字太文字の${\mathbf{a}}$として記号表記する
+   - 高校での$\vec{\mathbf{a}}$ から矢印を省略した形
+
+**高校での表記**
+$$
+\vec{\mathbf{a}} = \begin{pmatrix} 3 \\ 4 \end{pmatrix}
+$$
+
+**大学・論文・技術文章の主流**
+$$
+\mathbf{a} = \begin{pmatrix} 3 \\ 4 \end{pmatrix}
+$$
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+Numpyでベクトルを表現・演算
+:::
+
+
+## ベクトルの表現
+
+
+- NumPyでは配列（1次元配列）でベクトルを表現
+   - 1次元でも`ndarray`の扱い
+      - 1D array
+   - 縦ベクトルでないが問題ない
+
+```python
+import numpy as np
+
+a = np.array([3, 4]) 
+print(a) # [3, 4]と横表記だが気にしない
+print(type(a)) # <class 'numpy.ndarray'>
+```
+
+
+
+
+## ベクトルの足し算
+
+:::: {.columns}
+::: {.column width="50%"}
+
+- 足し算は**成分ごと**に行う
+- 入力：「==ベクトル==と==ベクトル==」
+- 出力：「==ベクトル==」
+   - 引き算も同様
+
+$$
+\begin{pmatrix} 1 \\ 3 \end{pmatrix} + \begin{pmatrix} 2 \\ 1 \end{pmatrix} = \begin{pmatrix} 3 \\ 4 \end{pmatrix}
+$$
+
+```python
+import numpy as np
+
+a = np.array([1, 3])
+b = np.array([2, 1])
+
+print(a + b)   # [3 4]
+print(a - b)   # [-1  2]
+```
+
+
+:::
+::: {.column width="50%"}
+
+```{python}
+#| echo: false
+#| fig-align: center
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig, ax = plt.subplots(figsize=(2.8, 2.8))
+ax.quiver(0, 0, 1, 3, angles='xy', scale_units='xy', scale=1,
+          color='#2266CC', width=0.02, zorder=3)
+ax.quiver(0, 0, 2, 1, angles='xy', scale_units='xy', scale=1,
+          color='#CC6622', width=0.02, zorder=3)
+ax.quiver(0, 0, 3, 4, angles='xy', scale_units='xy', scale=1,
+          color='#CC4444', width=0.025, zorder=3)
+ax.plot([1, 3], [3, 4], '--', color='#CC6622', alpha=0.4, linewidth=1)
+ax.plot([2, 3], [1, 4], '--', color='#2266CC', alpha=0.4, linewidth=1)
+ax.text(0.2, 2.0, r'$\mathbf{a}$', fontsize=12, color='#2266CC')
+ax.text(1.3, 0.3, r'$\mathbf{b}$', fontsize=12, color='#CC6622')
+ax.text(3.1, 3.2, r'$\mathbf{a}+\mathbf{b}$', fontsize=12, color='#CC4444')
+ax.set_xlim(-0.5, 4.5)
+ax.set_ylim(-0.5, 5)
+ax.set_xticks(range(5))
+ax.set_yticks(range(6))
+ax.set_aspect('equal')
+ax.grid(True, linestyle='--', alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+:::
+::::
+
+
+## ベクトルの掛け算 1（スカラー倍）
+
+
+:::: {.columns}
+::: {.column width="50%"}
+
+- 掛け算は**全成分それぞれ** に**スカラー値**を掛ける
+- 入力：「==ベクトル==と==スカラー==」
+- 出力：「==ベクトル==」
+   - 割り算も同じ
+
+
+$$
+\begin{pmatrix} 1 \\ 2 \end{pmatrix} \times 2 = \begin{pmatrix} 2 \\ 4 \end{pmatrix}
+$$
+
+```python
+import numpy as np
+
+a = np.array([1, 2])
+
+print(a * 2)   # [2 4]
+```
+
+
+:::
+::: {.column width="50%"}
+
+```{python}
+#| echo: false
+#| fig-align: center
+import matplotlib.pyplot as plt
+import numpy as np
+import japanize_matplotlib
+
+
+fig, ax = plt.subplots(figsize=(2.8, 2.8))
+ax.quiver(0, 0, 2, 4, angles='xy', scale_units='xy', scale=1,
+          color='#CC4444', width=0.025, zorder=2)
+ax.quiver(0, 0, 1, 2, angles='xy', scale_units='xy', scale=1,
+          color='#2266CC', width=0.02, zorder=3)
+ax.text(1.3, 0.8, r'$\mathbf{a}$', fontsize=12, color='#2266CC')
+ax.text(2.5, 2.5, r'$\mathbf{2a} $', fontsize=12, color='#CC4444')
+ax.set_xlim(-0.5, 3.5)
+ax.set_ylim(-0.5, 5)
+ax.set_xticks(range(4))
+ax.set_yticks(range(6))
+ax.set_aspect('equal')
+ax.grid(True, linestyle='--', alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+:::
+::::
+
+## ベクトルの掛け算 2（内積）
+
+- **内積**（inner product、dot product）は、対応成分同士をかけて足す
+- 入力：「==ベクトル==と==ベクトル==」
+- 出力：「==スカラー==」
+
+
+$$
+\begin{pmatrix} 1 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 3 \\ 4 \end{pmatrix} = 1 \times 3 + 2 \times 4 = 11
+$$
+
+
+## 【重要】 Numpyにおける内積の演算子
+
+- ２つの`ndarray` を `@` という二項演算子に入力
+   - 普通なら`*`とするところを`@`に変える
+
+
+```python
+import numpy as np
+
+a = np.array([1, 2])
+b = np.array([3, 4])
+
+# 内積
+print(a @ b)  # 11 
+
+# 普通に* だとスカラーにならずベクトルになってしまう
+print(a * b)  # [1*3, 2*4] → [3 8]
+```
+::: {.callout-caution}
+-  `*` で演算しても**エラーにはならないので危険**
+:::
+
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+行列
+:::
+
+
+## 行列
+
+- ベクトルを横方向に並べたもの
+
+$$
+\vec{\vphantom{b}a} = \begin{pmatrix} 1 \\ 3 \end{pmatrix}, \quad
+\vec{b} = \begin{pmatrix} 2 \\ 4 \end{pmatrix}
+\quad \Rightarrow \quad
+A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}
+$$
+
+- $3 \times 4$ 行列の例
+
+$$
+\vec{\vphantom{b}a} = \begin{pmatrix} 1 \\ 4 \\ 7 \end{pmatrix}, \quad
+\vec{b} = \begin{pmatrix} 2 \\ 5 \\ 8 \end{pmatrix}, \quad
+\vec{c} = \begin{pmatrix} 3 \\ 6 \\ 9 \end{pmatrix}, \quad
+\vec{d} = \begin{pmatrix} 10 \\ 11 \\ 12 \end{pmatrix}
+\quad \Rightarrow \quad
+A = \begin{pmatrix} 1 & 2 & 3 & 10 \\ 4 & 5 & 6 & 11 \\ 7 & 8 & 9 & 12 \end{pmatrix}
+$$
+
+
+## 行列とベクトルの積
+
+- 行列の列数とベクトルの次元が同じ場合、掛け算することが可能
+   - それぞれの**行**と**ベクトル**の**内積**を**縦に並べる**
+
+<style>#mm-r1, #mm-r2 { opacity: 0; }</style>
+
+$$
+\begin{pmatrix} \cssId{mm-a}{1} & \cssId{mm-b}{2} \\ \cssId{mm-c}{3} & \cssId{mm-d}{4} \end{pmatrix}
+\begin{pmatrix} \cssId{mm-x1}{5} \\ \cssId{mm-x2}{6} \end{pmatrix}
+=
+\begin{pmatrix} \cssId{mm-r1}{17} \\ \cssId{mm-r2}{39} \end{pmatrix}
+$$
+
+<div id="mm-step" style="text-align:center; font-size:1.5rem; min-height:2em;"></div>
+
+<div style="text-align:center;">
+<button onclick="mmPlay()" style="background:#5dade2; color:white; border:none; border-radius:6px; padding:8px 28px; font-size:1.2rem; cursor:pointer;">▶ 再生</button>
+</div>
+
+<script>
+(function() {
+  var ids = ['#mm-a','#mm-b','#mm-c','#mm-d','#mm-x1','#mm-x2'];
+  var res = ['#mm-r1','#mm-r2'];
+  var animStep = 0;
+  var B = '#2266CC', R = '#CC4444';
+
+  function resetAnim() {
+    animStep = 0;
+    gsap.killTweensOf(ids.concat(res).join(','));
+    gsap.set(ids, {clearProps: 'color'});
+    gsap.set(res, {opacity: 0});
+    var s = document.getElementById('mm-step');
+    if (s) s.innerHTML = '';
+  }
+
+  window.mmPlay = function() {
+    var step = document.getElementById('mm-step');
+
+    if (animStep === 0) {
+      resetAnim();
+      var tl = gsap.timeline();
+      tl.to(['#mm-a','#mm-b'], {color: B, duration: 0.4})
+        .to(['#mm-x1','#mm-x2'], {color: R, duration: 0.4}, '<')
+        .call(function() {
+          step.innerHTML =
+            '<span style="color:'+B+'">1</span>×<span style="color:'+R+'">5</span>' +
+            ' + <span style="color:'+B+'">2</span>×<span style="color:'+R+'">6</span>' +
+            ' = 17';
+        }, null, '+=0.3')
+        .to('#mm-r1', {opacity: 1, duration: 0.5});
+      animStep = 1;
+
+    } else if (animStep === 1) {
+      var tl = gsap.timeline();
+      tl.to(['#mm-a','#mm-b'], {color: '', duration: 0.3})
+        .to(['#mm-c','#mm-d'], {color: B, duration: 0.4})
+        .call(function() {
+          step.innerHTML +=
+            '<br><span style="color:'+B+'">3</span>×<span style="color:'+R+'">5</span>' +
+            ' + <span style="color:'+B+'">4</span>×<span style="color:'+R+'">6</span>' +
+            ' = 39';
+        }, null, '+=0.3')
+        .to('#mm-r2', {opacity: 1, duration: 0.5})
+        .to(['#mm-c','#mm-d','#mm-x1','#mm-x2'], {color: '', duration: 0.3}, '+=0.3');
+      animStep = 2;
+
+    } else {
+      resetAnim();
+    }
+  };
+
+  if (typeof Reveal !== 'undefined') {
+    Reveal.on('slidechanged', resetAnim);
+  }
+})();
+</script>
+
+
+
+
+## 行列と行列の積
+
+- 行列同士の掛け算は==「行×列」==の内積を並べる
+
+$$
+\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}
+\begin{pmatrix} 5 & 6 \\ 7 & 8 \end{pmatrix}
+=
+\begin{pmatrix} 1 \cdot 5 + 2 \cdot 7 & 1 \cdot 6 + 2 \cdot 8 \\ 3 \cdot 5 + 4 \cdot 7 & 3 \cdot 6 + 4 \cdot 8 \end{pmatrix}
+=
+\begin{pmatrix} 19 & 22 \\ 43 & 50 \end{pmatrix}
+$$
+
+
+```{python}
+#| echo: false
+#| fig-align: center
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+
+import japanize_matplotlib
+
+fig, ax = plt.subplots(figsize=(5, 2.5))
+ax.set_xlim(-0.8, 7.5)
+ax.set_ylim(-0.8, 2.8)
+ax.set_aspect('equal')
+ax.axis('off')
+
+c_row = '#2266CC'
+c_col = '#CC4444'
+
+A = [[1, 2], [3, 4]]
+B = [[5, 6], [7, 8]]
+
+ax0, ay0 = 0, 2
+for i in range(2):
+    for j in range(2):
+        cx, cy = ax0 + j * 0.9, ay0 - i * 1.0
+        if i == 0:
+            rect = patches.FancyBboxPatch(
+                (cx - 0.35, cy - 0.3), 0.7, 0.6,
+                boxstyle="round,pad=0.05", fc=c_row, alpha=0.25, ec='none')
+            ax.add_patch(rect)
+        ax.text(cx, cy, str(A[i][j]), fontsize=16, ha='center', va='center')
+
+bx0, by0 = 2.4, 2
+for i in range(2):
+    for j in range(2):
+        cx, cy = bx0 + j * 0.9, by0 - i * 1.0
+        if j == 0:
+            rect = patches.FancyBboxPatch(
+                (cx - 0.35, cy - 0.3), 0.7, 0.6,
+                boxstyle="round,pad=0.05", fc=c_col, alpha=0.25, ec='none')
+            ax.add_patch(rect)
+        ax.text(cx, cy, str(B[i][j]), fontsize=16, ha='center', va='center')
+
+ax.text(4.5, 1.5, r'$\rightarrow$', fontsize=18, ha='center', va='center')
+
+rx, ry = 5.5, 1.5
+ax.text(rx, ry, '19', fontsize=20, ha='center', va='center', fontweight='bold',
+        color='#333333',
+        bbox=dict(boxstyle='round,pad=0.35', fc='#EEDDFF', ec='#9966CC', lw=1.5))
+ax.text(rx, ry - 0.7, r'$1 \times 5 + 2 \times 7$', fontsize=11,
+        ha='center', va='center', color='#666666')
+
+ax.annotate('', xy=(ax0 + 0.45, ay0 + 0.5), xytext=(ax0 + 0.45, ay0 + 0.75),
+            arrowprops=dict(arrowstyle='->', color=c_row, lw=1.5))
+ax.text(ax0 + 0.45, ay0 + 0.9, '1行目', fontsize=10, ha='center', va='bottom',
+        color=c_row)
+
+ax.annotate('', xy=(bx0, by0 + 0.5), xytext=(bx0, by0 + 0.75),
+            arrowprops=dict(arrowstyle='->', color=c_col, lw=1.5))
+ax.text(bx0, by0 + 0.9, '1列目', fontsize=10, ha='center', va='bottom',
+        color=c_col)
+
+plt.tight_layout()
+plt.show()
+```
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+Numpyで行列を表現・演算
+:::
+
+## Numpyでの行列
+
+- ndarrayで作成可能だが、**行ごとに宣言**する点に注意
+   - 縦ベクトルの並びではないので少し気持ち悪い（仕様）
+   - **「行」ごとに宣言** して縦にスタックしていく
+   - 以下の場合でも**[[1 3][2 4]]ではなく[[1 2][3 4]]**
+
+$$
+\vec{\vphantom{b}a} = \begin{pmatrix} 1 \\ 3 \end{pmatrix}, \quad
+\vec{b} = \begin{pmatrix} 2 \\ 4 \end{pmatrix}
+\quad \Rightarrow \quad
+A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}
+$$
+
+
+```python
+import numpy as np
+
+A = np.array([[1, 2],
+              [3, 4]])
+
+# アクセス方法
+print(A[0, 1])   # 1行目2列目 → 2
+print(A[1, :])   # 2行目全体  → [3 4]
+print(A[:, 0])   # 1列目全体  → [1 3]
+```
+
+::: {.callout-note}
+- 行優先（row-major）ではなく列優先（column-major）の実装もありうる（OpenGLなど）
+- ただ、現在の言語では行優先が大半
+:::
+
+
+## Numpyでの行列の演算
+
+- ベクトルの内積と同じく `@` を使用
+
+```python
+import numpy as np
+
+# A: Matrix b:Vector 
+A = np.array([[1, 2], [3, 4]])
+b = np.array([5, 6])
+
+print(A @ b)  # [17 39]
+
+
+# A:Matrix B:Matrix
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6], [7, 8]])
+
+print(A @ B)  # [[19 22] [43 50]]
+```
+
+
+
+## もし `*` を使用するとどうなってしまうのか
+
+- `@` : 積（行列積）
+- `*` : **要素ごと**の掛け算
+   - Hadamard積（ハダマール積）
+   - 画像処理等である要素をマスクするときに使用される
+
+
+
+```python
+import numpy as np
+
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6], [7, 8]])
+
+print(A * B)
+# [[ 5 12]
+#  [21 32]]  ← 同じ位置同士をかけただけ
+
+print(A @ B)
+# [[19 22]
+#  [43 50]]  ← 行列積
+```
+
+
+## 逆行列
+
+- **逆行列**：行列 $A$ に対して $A A^{-1} = I$（単位行列）を満たす $A^{-1}$ 
+    - 元の数と掛けたら１になる**逆数**のようなもの
+- Numpyでは`np.linalg.inv()` という便利関数で逆行列が求まる
+  - **linalg** = **lin**ear **alg**ebra（線形代数）の略
+
+$$
+A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}
+\quad \Rightarrow \quad
+A^{-1} = \begin{pmatrix} -2 & 1 \\ 1.5 & -0.5 \end{pmatrix}
+$$
+
+```python
+import numpy as np
+
+A = np.array([[1, 2], [3, 4]])
+A_inv = np.linalg.inv(A)
+print(A_inv) # [[-2.   1. ][ 1.5 -0.5]]
+print(A @ A_inv) # [[1. 0.][0. 1.]]  ← 単位行列
+
+```
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+`@` 演算子で方程式を解こう
+:::
+
+
+## 行列で連立方程式を表現
+
+以下の連立方程式は
+
+$$
+\begin{cases}
+x - y = 1 \\
+x + y = 3
+\end{cases}
+$$
+
+行列で以下のように表現可能
+
+$$
+\underbrace{\begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix}}_{A}
+\underbrace{\begin{pmatrix} x \\ y \end{pmatrix}}_{\mathbf{x}}
+=
+\underbrace{\begin{pmatrix} 1 \\ 3 \end{pmatrix}}_{\mathbf{b}}
+$$
+
+- これは $A\mathbf{x} = \mathbf{b}$ の形である
+
+## NumPyで $A\mathbf{x} = \mathbf{b}$ の連立方程式を解く
+
+- $A\mathbf{x} = \mathbf{b}$ の両辺に左から $A^{-1}$ を掛ける
+
+$$
+\begin{aligned}
+A \mathbf{x} &= \mathbf{b} \\
+A^{-1} A \mathbf{x} &= A^{-1} \mathbf{b} \\
+\mathbf{x} &= A^{-1} \mathbf{b}
+\end{aligned}
+$$
+
+- $A^{-1} \mathbf{b}$ が解
+
+```python
+import numpy as np
+
+A = np.array([[1, -1],
+              [1,  1]])
+b = np.array([1, 3])
+
+x = np.linalg.inv(A) @ b
+print(x)  # [2. 1.] ← x=2, y=1
+```
+
+::: {.callout-tip}
+## 実は連立方程式用の関数が存在
+
+$Ax = b$ の解は `np.linalg.solve(A, b)` 
+:::
+
+
+## まとめ
+
+| 概念 | 数式 | NumPy |
+|------|------|-------|
+| ベクトル | $\mathbf{a}$ | `np.array([1, 2])` |
+| 内積 | $\mathbf{a} \cdot \mathbf{b}$ | `a @ b` |
+| 行列積 | $AB$ | `A @ B` |
+| 転置 | $A^T$ | `A.T` |
+| 直交 | $\mathbf{a} \cdot \mathbf{b} = 0$ | `a @ b == 0` |
+| 逆行列 | $A^{-1}$ | `np.linalg.inv(A)` |
+| 連立方程式 | $Ax = b$ | `np.linalg.solve(A, b)` |
+| ノルム | $\|\mathbf{a}\|$ | `np.linalg.norm(a)` |
+| 単位ベクトル | $\hat{\mathbf{a}} = \mathbf{a} / \|\mathbf{a}\|$ | `a / np.linalg.norm(a)` |
+
+
+## 演習
+
+（１）以下の2つのベクトルの内積を求め、直交しているか判定せよ。
+
+$$
+\mathbf{a} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}, \quad
+\mathbf{b} = \begin{pmatrix} -1 \\ 2 \end{pmatrix}
+$$
+
+（２）以下の行列の掛け算を手計算で求め、NumPyで確認せよ。
+
+$$
+\begin{pmatrix} 2 & 0 \\ 0 & 3 \end{pmatrix}
+\begin{pmatrix} 1 \\ 1 \end{pmatrix}
+$$
+
+（３）以下の連立方程式を `np.linalg.solve()` で解け。
+
+$$
+\begin{cases} x + y = 4 \\ x - y = 2 \end{cases}
+$$
+
+（４）$\mathbf{a} = \begin{pmatrix} 6 \\ 8 \end{pmatrix}$ のノルムと単位ベクトルを求めよ。
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+import numpy as np
+
+# (1)
+a = np.array([2, 1])
+b = np.array([-1, 2])
+print(a @ b)  # 0 → 直交している
+
+# (2)
+A = np.array([[2, 0], [0, 3]])
+v = np.array([1, 1])
+print(A @ v)  # [2 3]
+
+# (3)
+A = np.array([[1, 1], [1, -1]])
+b = np.array([4, 2])
+x = np.linalg.solve(A, b)
+print(x)  # [3. 1.] → x=3, y=1
+
+# (4)
+a = np.array([6, 8])
+print(np.linalg.norm(a))       # 10.0
+print(a / np.linalg.norm(a))   # [0.6 0.8]
+```
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+その他
+:::
+
+## ベクトルの大きさ（ノルム）
+
+- ベクトルの大きさを**ノルム**（norm、L2ノルム）と呼ぶ
+   - $|\mathbf{a}|$ や $\|\mathbf{a}\|$ と書く
+
+$$
+\mathbf{a} = \begin{pmatrix} 3 \\ 4 \end{pmatrix} \qquad
+\|\mathbf{a}\| = \sqrt{3^2 + 4^2} = 5
+$$
+
+```python
+import numpy as np
+
+a = np.array([3, 4])
+print(np.linalg.norm(a))  # 5.0
+```
+
+::: {.callout-tip}
+## 他にも色々あるノルム
+- **L1ノルム**（マンハッタン距離）：$\sum |a_i|$
+- **L2ノルム**（ユークリッド距離）：$\sqrt{\sum a_i^2}$ ← 最もよく使う
+- **フロベニウスノルム**：行列版のL2ノルム
+:::
+
+
+## 単位ベクトル
+
+- ノルムが1のベクトルを**単位ベクトル**と呼ぶ
+- 元のベクトルをノルムで割ると単位ベクトルになる
+   - **正規化**という
+
+
+$$
+\hat{\mathbf{a}} = \frac{\mathbf{a}}{\|\mathbf{a}\|}
+$$
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```python
+import numpy as np
+
+a = np.array([3, 4])
+norm = np.sqrt(a[0]**2 + a[1]**2)
+a_hat = a / norm
+print(a_hat)                  # [0.6 0.8]
+print(np.linalg.norm(a_hat))  # 1.0
+```
+
+:::
+::: {.column width="50%"}
+
+```{python}
+#| echo: false
+#| fig-align: center
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig, ax = plt.subplots(figsize=(2.8, 2.8))
+
+a = np.array([3, 4])
+a_hat = a / np.linalg.norm(a)
+
+ax.quiver(0, 0, a[0], a[1], angles='xy', scale_units='xy', scale=1,
+          color='#AAAAAA', width=0.018, zorder=2)
+ax.quiver(0, 0, a_hat[0], a_hat[1], angles='xy', scale_units='xy', scale=1,
+          color='#CC4444', width=0.025, zorder=3)
+
+circle = plt.Circle((0, 0), 1, fill=False, linestyle='--', color='#999999', linewidth=1)
+ax.add_patch(circle)
+
+ax.text(a[0] + 0.3, a[1] - 0.5, r'$\mathbf{a}$', fontsize=13, color='#AAAAAA')
+ax.text(a_hat[0] + 0.3, a_hat[1] - 0.4, r'$\hat{\mathbf{a}}$', fontsize=13, color='#CC4444')
+
+ax.set_xlim(-1.5, 4.5)
+ax.set_ylim(-1.5, 5)
+ax.set_aspect('equal')
+ax.grid(True, linestyle='--', alpha=0.5)
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+plt.tight_layout()
+plt.show()
+```
+
+:::
+::::
+
+
+## 行列の転置
+
+
+- 行と列を入れ替える操作を**転置**（$A^T$）と呼ぶ
+   - ベクトルの転置も実は同じ操作
+- NumPyでは `.T` で一発
+
+$$
+A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}
+\quad \Rightarrow \quad
+A^T = \begin{pmatrix} 1 & 3 \\ 2 & 4 \end{pmatrix}
+$$
+
+```python
+import numpy as np
+
+A = np.array([[1, 2], [3, 4]])
+print(A.T)
+# [[1 3]
+#  [2 4]]
+```
+
+## ベクトルの転置
+
+- 行と列を入れ替える操作を**転置**（**T**ranspose）と呼ぶ
+  - ベクトルでは縦を横に倒す操作となる
+
+$$
+\mathbf{a} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}
+\quad \Rightarrow \quad
+\mathbf{a}^T = \begin{pmatrix} 1 & 2 \end{pmatrix}
+$$
+
+- 転置を使うと、内積は $\mathbf{a}^T \mathbf{b}$ と書ける
+   - これなら内積の演算を行列と同じ計算方法で扱える
+      - **行** と **列** の要素同士の積の和 
+
+$$
+\mathbf{a}^T \mathbf{b} = \begin{pmatrix} 1 & 2 \end{pmatrix} \begin{pmatrix} 3 \\ 4 \end{pmatrix} = 1 \times 3 + 2 \times 4 = 11
+$$
+
+
+## 図でみる内積
+
+- 教科書での内積の定義
+
+$$
+\mathbf{a} \cdot \mathbf{b} = |\mathbf{a}||\mathbf{b}|\cos\theta
+$$
+
+- $|\mathbf{b}|\cos\theta$ ：$\mathbf{b}$ を $\mathbf{a}$ の方向に**射影**した長さ
+- 内積 = 「$\mathbf{b}$の$\mathbf{a}$方向に対する成分」× 「$\mathbf{a}$の長さ$|\mathbf{a}|$」
+
+```{python}
+#| echo: false
+#| fig-align: center
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig, ax = plt.subplots(figsize=(4.5, 3.5))
+
+a = np.array([4, 1])
+b = np.array([2, 3])
+
+proj_scalar = (a @ b) / (a @ a)
+proj = proj_scalar * a
+
+ax.quiver(0, 0, a[0], a[1], angles='xy', scale_units='xy', scale=1,
+          color='black', width=0.015, zorder=3)
+ax.quiver(0, 0, b[0], b[1], angles='xy', scale_units='xy', scale=1,
+          color='#555555', width=0.015, zorder=3)
+
+ax.annotate('', xy=(proj[0], proj[1]), xytext=(0, 0),
+            arrowprops=dict(arrowstyle='->', color='#CC4444', lw=2.5))
+
+ax.plot([b[0], proj[0]], [b[1], proj[1]], 'k--', linewidth=1, alpha=0.5)
+
+perp = b - proj
+perp_u = perp / np.linalg.norm(perp)
+a_u = a / np.linalg.norm(a)
+s = 0.25
+p1 = proj + s * perp_u
+p2 = p1 + s * a_u
+p3 = proj + s * a_u
+ax.plot([p1[0], p2[0], p3[0]], [p1[1], p2[1], p3[1]], 'k-', linewidth=1)
+
+angle_a = np.arctan2(a[1], a[0])
+angle_b = np.arctan2(b[1], b[0])
+theta_arc = np.linspace(angle_a, angle_b, 30)
+r = 0.8
+ax.plot(r * np.cos(theta_arc), r * np.sin(theta_arc), 'k-', linewidth=1)
+mid = (angle_a + angle_b) / 2
+ax.text(r * 1.4 * np.cos(mid), r * 1.4 * np.sin(mid),
+        r'$\theta$', fontsize=14, ha='center', va='center')
+
+ax.text(a[0] + 0.15, a[1] - 0.25, r'$\mathbf{a}$', fontsize=14)
+ax.text(b[0] - 0.45, b[1] + 0.1, r'$\mathbf{b}$', fontsize=14)
+ax.text(proj[0] / 2 - 0.1, proj[1] / 2 - 0.55,
+        r'$|\mathbf{b}|\cos\theta$', fontsize=12, color='#CC4444')
+
+ax.set_xlim(-0.5, 5)
+ax.set_ylim(-1, 4)
+ax.set_aspect('equal')
+ax.grid(True, linestyle='--', alpha=0.5)
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+plt.tight_layout()
+plt.show()
+```
+
+
+## 内積と直交
+
+- 2つのベクトルが**直交**（90°）しているとき内積は **0**
+   - $\cos 90° = 0$
+   - つまり、射影の長さがゼロ → 「$\mathbf{a}$ 方向の成分がない」
+
+```{python}
+#| echo: false
+#| fig-align: center
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig, ax = plt.subplots(figsize=(3.5, 3.5))
+
+a = np.array([3, 1])
+b = np.array([-1, 3])
+
+ax.quiver(0, 0, a[0], a[1], angles='xy', scale_units='xy', scale=1,
+          color='black', width=0.018, zorder=3)
+ax.quiver(0, 0, b[0], b[1], angles='xy', scale_units='xy', scale=1,
+          color='#555555', width=0.018, zorder=3)
+
+angle_a = np.arctan2(a[1], a[0])
+angle_b = np.arctan2(b[1], b[0])
+s = 0.45
+ua = np.array([np.cos(angle_a), np.sin(angle_a)])
+ub = np.array([np.cos(angle_b), np.sin(angle_b)])
+sq = np.array([s * ua, s * (ua + ub), s * ub])
+ax.plot(sq[:, 0], sq[:, 1], 'k-', linewidth=1)
+
+ax.text(a[0] + 0.15, a[1] - 0.3, r'$\mathbf{a}$', fontsize=14)
+ax.text(b[0] - 0.5, b[1] + 0.1, r'$\mathbf{b}$', fontsize=14)
+ax.text(1.5, -0.7, r'$\mathbf{a} \cdot \mathbf{b} = 0$',
+        fontsize=13, ha='center', color='#CC4444')
+
+ax.set_xlim(-2, 4)
+ax.set_ylim(-1.2, 4)
+ax.set_aspect('equal')
+ax.grid(True, linestyle='--', alpha=0.5)
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+plt.tight_layout()
+plt.show()
+```
+
+::: {.callout-note}
+## 覚えること
+
+内積 = 0 ⟺ 直交（垂直）
+:::
+
+
+## （参考）ベクトルの掛け算 3（外積）
+
+- **外積**（cross product）は3次元ベクトル同士から**新しいベクトル**を作る
+   - 内積：ベクトル → **スカラー**
+   - 外積：ベクトル → **ベクトル**
+- 結果は元の2つのベクトルに**直交**する方向を向く
+
+$$
+\mathbf{a} \times \mathbf{b} =
+\begin{pmatrix} a_2 b_3 - a_3 b_2 \\ a_3 b_1 - a_1 b_3 \\ a_1 b_2 - a_2 b_1 \end{pmatrix}
+$$
+
+- $|\mathbf{a} \times \mathbf{b}| = |\mathbf{a}||\mathbf{b}|\sin\theta$（2つのベクトルが張る**平行四辺形の面積**）
+
+```python
+import numpy as np
+
+a = np.array([1, 0, 0])
+b = np.array([0, 1, 0])
+
+print(np.cross(a, b))  # [0 0 1] ← a, b 両方に垂直
+```
+
+- **どこで使われるか**
+   - **3Dグラフィックス** — ポリゴンの法線ベクトル（面の向き）の計算
+   - **物理シミュレーション** — トルク（回転力）、ローレンツ力
+   - **ロボティクス** — 関節の回転軸の計算
