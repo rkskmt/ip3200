@@ -148,7 +148,7 @@ print(empty1)   # []
 print(empty2)   # []
 
 # rangeから変換して初期化
-odd_numbers = list(range(1, 11, 2)) #odd_numbers
+odd_numbers = list(range(1, 11, 2))  # [1, 3, 5, 7, 9]
 
 ```
 
@@ -456,13 +456,14 @@ print(score[3])   # IndexError: tuple index out of range
 ## `tuple` と `list` の違い・制限
 
 ```python
-# 値の変更はエラー（list との大きな違い）
+# 値の変更はエラー（listでは可能。タプルでは付加）
 score[0] = 100  # TypeError: 'tuple' object does not support item assignment
 
-# 値を追加できない（list との大きな違い）
+# 値を追加できない（同じく）
 score.append(100)  # error
 
 # どうしても追加したい場合は、list へ一度変換すれば可能
+# しかし、普通は使わない
 score_list = list(score)
 print(type(score_list))   # <class 'list'>
 score_list.append(100)
@@ -482,14 +483,7 @@ print(score_list)         # [90, 85, 72, 100]
 ```python
 # リストの最小値と最大値を返す関数
 def get_min_max_value(data):
-    min_val = data[0]
-    max_val = data[0]
-    for datum in data:
-        if min_val > datum:
-            min_val = datum
-        if max_val < datum:
-            max_val = datum
-    return (min_val, max_val)  # ← tuple で複数の値を返す
+    return (min(data), max(data))  # ← tuple で複数の値を返す
 
 scores = [85, 90, 78, 92, 88]
 answer = get_min_max_value(scores)
@@ -499,11 +493,41 @@ print(answer)  # (78, 92)
 min_val, max_val = get_min_max_value(scores)
 ```
 
+::: {.callout-tip}
+## アンパック（unpacking）
+
+`tuple`などの`イテラブル`なクラスの各要素を複数の変数に一度に代入することを**アンパック**という。
+
+```python
+point = (3, 7)
+x, y = point      # x=3, y=7
+```
+
+変数の数と要素数が一致しないとエラーになる。
+:::
+
+::: {.callout-note}
+## イテラブル（iterable）とは
+
+イテレーション（iteration）は「コンテナから要素を1つずつ順番に取り出す操作」のこと。どの言語でも `for` 文の基本動作はこれ。イテラブルとは、イテレーションができるもの＝順番に要素を取り出せるもの。
+
+| 型 | イテラブル？ |
+|---|---|
+| `list` | ○ |
+| `tuple` | ○ |
+| `str` | ○（1文字ずつ） |
+| `range` | ○ |
+| `dict` | ○（キーが順に出る） |
+| `int` / `float` | ✗ |
+
+アンパックも `for` 文も、イテラブルであれば同じように使える。
+:::
+
 
 ## 実は `dict` で出てきていた `tuple`
 
 
-`items()` はタプルの `list` を返している。だから `key, value` という2変数に代入できる。
+`dict`のメソッド `.items()` はタプルの `list` を返している。だから `key, value` という2変数に代入できる。
 
 ```python
 print(name2score.items())
@@ -518,26 +542,29 @@ for key, value in name2score.items():  # tuple を2変数に展開
 ## 演習問題（`tuple`）
 
 ```python
-# tanaka さん：英語60点、数学95点 → tuple で表現
-tanaka = (60, 95)
+def get_min_max(scores):
+    return min(scores), max(scores)  # カッコなしでも tuple になる！
+
+scores = [85, 90, 78, 92, 88]
 ```
 
-1. `tanaka` の各点数を変数 `english`, `math` に分けて受け取ろう
-2. `tanaka` の点数の合計を表示しよう
-3. 「90点以上の科目数」を表示しよう
+1. 関数を引数scoresでコールして、戻り値を変数 `result` で受け取る
+2. `type(result)` と値を `print` する
+3. `low, high` の2変数でアンパックして「最低: ○点, 最高: ○点」と表示
+4. `result[0] = 100` と改ざんを試してみよう
 
 ```{python}
 #| echo: true
 #| eval: false
 #| code-fold: true
 #| code-summary: "解答を見る"
-english, math = tanaka
-print(english + math)
-count = 0
-for score in tanaka:
-    if score >= 90:
-        count += 1
-print(count)
+result = get_min_max(scores)
+print(type(result), result)       # <class 'tuple'> (78, 92)
+
+low, high = get_min_max(scores)
+print(f"最低: {low}点, 最高: {high}点")
+
+result[0] = 100  # TypeError: 'tuple' object does not support item assignment
 ```
 
 
@@ -546,7 +573,7 @@ print(count)
 コレクションは複数のデータをまとめて管理するための型。
 
 | 型 | 宣言 | アクセス | 追加・変更 | 主な用途 |
-|---|---|---|---|---|
+|:---:|:---:|:---:|:---:|:---:|
 | `list` | `[1, 2, 3]` | `[i]` | ○ | 順番あり・汎用 |
 | `dict` | `{"k": v}` | `["key"]` | ○ | 名前でアクセス |
 | `tuple` | `(1, 2, 3)` | `[i]` | ✗ | 座標・戻り値 |
@@ -562,8 +589,8 @@ print(count)
 - **`set`** — 重複が許されない。和集合などの論理演算も可能
 
 ```python
-A = set(['a', 'b', 'c'])
-B = set(['b', 'c', 'd'])
+A = {'a', 'b', 'c'}
+B = {'b', 'c', 'd'}
 print(A | B)  # {'a', 'b', 'c', 'd'}  ← 和集合
 print(A & B)  # {'b', 'c'}            ← 積集合
 print(A ^ B)  # {'a', 'd'}            ← 対称差

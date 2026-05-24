@@ -1,0 +1,387 @@
+---
+title: "辞書をあらためて"
+subtitle: "必修事項のみ"
+---
+
+## 復習（dict とは）
+
+::: {.fig-cite src="imgs/Focus_definition_(Unsplash).jpg" height="90%"}
+
+::: {.content-box .pos-br style="font-size: 0.85em;"}
+- キーと値のペアで管理する**コレクション型**
+- データは**キー**で管理する（list のような番号ではない）
+- 変数名は **「x2y」** 形式にすることが多い（例：name2score）
+:::
+
+::: {.cite}
+CC0: <https://en.wikipedia.org/wiki/Fictionary#/media/File:Focus_definition_(Unsplash).jpg>
+:::
+
+:::
+
+
+## 宣言
+
+`{}` で `キー: 値` をカンマ区切りで入力すると辞書になる。
+
+- キーは重複不可
+- 値は何でもよい
+
+```python
+name2score = {"Yamada": 95, "Suzuki": 75, "Takahashi": 80}
+print(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}
+```
+
+::: {.callout-tip}
+## お作法
+
+`:` の前は詰めて、`:` と `,` の後には**必ずスペースを空ける**のが綺麗に書くコツ。
+:::
+
+
+## アクセス（キー）
+
+要素にアクセスするには**キー**を使う（list の `[0]` に相当）。
+
+```python
+name2score = {"Yamada": 95, "Suzuki": 75, "Takahashi": 80}
+print(name2score["Yamada"])     # 95
+print(name2score["Takahashi"])  # 80
+```
+
+
+## 要素の追加・上書き
+
+`dict[キー] = 値` で追加・上書きできる。
+
+- 存在しないキー → **追加**
+- 存在するキー → **上書き**
+
+```python
+name2score = {"Yamada": 95, "Suzuki": 75}
+
+# 追加
+name2score["Takahashi"] = 80
+print(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}
+
+# 上書き
+name2score["Suzuki"] = 70
+print(name2score)  # {'Yamada': 95, 'Suzuki': 70, 'Takahashi': 80}
+```
+
+::: {.callout-warning}
+## typo に注意
+
+追加と上書きが同じ書き方なので、**typo でキーを間違えると新しいキーが勝手に追加**される。
+
+```python
+name2score["Suzki"] = 60  # 上書きのつもりが新規追加！
+```
+:::
+
+
+## 走査（全要素へのアクセス）
+
+dict には3種類の走査方法がある。`for` 文で書ける。
+
+```python
+# キーだけ
+for key in name2score.keys():
+    print(key)
+
+# 値だけ
+for value in name2score.values():
+    print(value)
+
+# キーと値を同時に（最頻出）
+for key, value in name2score.items():
+    print(f"{key}さんは{value}点です")
+```
+
+```
+Yamadaさんは95点です
+Suzukiさんは70点です
+Takahashiさんは80点です
+```
+
+::: {.callout-tip}
+## どれを使う？
+
+- 両方必要 → `.items()`（実務ではこれが一番多い）
+- キーだけ → `.keys()`（`for key in name2score:` でも同じ）
+- 値だけ → `.values()`
+:::
+
+
+## その他 dict で知っておきたい基礎知識
+
+::: {.fig-cite src="imgs/vocab_builder.jpg" height="90%"}
+
+::: {.content-box .pos-br}
+- `in` 演算子で存在確認
+- `.get()` で安全にアクセス
+- 要素の削除と長さ（`del` / `pop` / `len`）
+- ネストした dict
+- dict と list の組み合わせ
+- 辞書内包表記
+:::
+
+:::
+
+
+## `in` 演算子で存在確認
+
+`in` 演算子で**キー**が存在するか確認できる。
+
+```python
+name2score = {"Yamada": 95, "Suzuki": 75}
+
+if "Yamada" in name2score:
+    print("Yamada さんは登録済み")
+
+if "Tanaka" not in name2score:
+    print("Tanaka さんは未登録")
+```
+
+::: {.callout-tip}
+## `in` はキーを見る（値ではない）
+
+```python
+if 95 in name2score:            # False
+if 95 in name2score.values():   # True ← 値を見たいときはこう
+```
+:::
+
+
+## `.get()` で安全にアクセス
+
+`dict[キー]` は存在しないキーで落ちるが、`.get(キー)` は**存在しなければ `None` を返す**ので落ちない。
+
+```python
+name2score = {"Yamada": 95, "Suzuki": 75}
+
+print(name2score.get("Yamada"))    # 95
+print(name2score.get("Tanaka"))    # None ← エラーにならない
+```
+
+第2引数で**デフォルト値**を指定できる。
+
+```python
+print(name2score.get("Tanaka"))      # None ← 第2引数なし
+print(name2score.get("Tanaka", 0))   # 0    ← 第2引数あり（未登録なら 0 点扱い）
+print(name2score.get("Yamada", 0))   # 95   ← 登録済みならその値
+```
+
+::: {.callout-tip}
+## `in` でガード vs `.get()`
+
+- 「ない場合は処理を分けたい」 → `if key in dict:` でガード
+- 「ない場合のデフォルト値が決まっている」 → `.get(key, default)` がスッキリ
+:::
+
+
+## 要素の削除と長さ（`del` / `pop` / `len`）
+
+`del` または `.pop()` で削除、`len()` でキーの数を確認できる。
+
+```python
+name2score = {"Yamada": 95, "Suzuki": 75, "Takahashi": 80}
+print(len(name2score))  # 3
+
+# del：削除するだけ
+del name2score["Suzuki"]
+print(name2score)       # {'Yamada': 95, 'Takahashi': 80}
+print(len(name2score))  # 2
+
+# pop：削除して値を取り出す
+score = name2score.pop("Yamada")
+print(score)        # 95
+print(name2score)   # {'Takahashi': 80}
+```
+
+
+## ネストした dict
+
+値の中にさらに dict を入れると**入れ子（ネスト）**になる。
+学生ごとに複数教科の点数など、複数の属性を持つデータを表現できる。
+
+```python
+students = {
+    "Yamada":    {"国語": 80, "数学": 90, "英語": 70},
+    "Suzuki":    {"国語": 60, "数学": 85, "英語": 95},
+    "Takahashi": {"国語": 75, "数学": 70, "英語": 80},
+}
+
+# Yamada さんの数学
+print(students["Yamada"]["数学"])  # 90
+
+# 全員の英語
+for name, scores in students.items():
+    print(f"{name}さんの英語：{scores['英語']}点")
+```
+
+
+## dict と list の組み合わせ
+
+**list の中に dict** を入れる形は、表形式のデータを表すときの定番。
+（JSON や DB の1レコードのイメージ）
+
+```python
+students = [
+    {"name": "Yamada",    "score": 95},
+    {"name": "Suzuki",    "score": 75},
+    {"name": "Takahashi", "score": 80},
+]
+
+for s in students:
+    print(f"{s['name']}さんは{s['score']}点")
+```
+
+::: {.callout-tip}
+## ネスト dict vs list of dict
+
+- 名前から直接引きたい → **ネスト dict**（`students["Yamada"]`）
+- 順序が意味を持つ・全員を順に処理 → **list of dict**（`students[0]`）
+
+両方とも実務でよく使う。
+:::
+
+
+## 辞書内包表記
+
+リスト内包表記の dict 版。`{キー: 値 for ... in ...}` の形。
+
+```python
+# 数 → その2乗 の dict を作る
+squares = {x: x ** 2 for x in range(5)}
+print(squares)  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+```
+
+条件付きも書ける。
+
+```python
+# 80点以上だけ取り出す
+name2score = {"Yamada": 95, "Suzuki": 75, "Takahashi": 80}
+passed = {k: v for k, v in name2score.items() if v >= 80}
+print(passed)  # {'Yamada': 95, 'Takahashi': 80}
+```
+
+キーと値を入れ替えるのも一行で書ける。
+
+```python
+score2name = {v: k for k, v in name2score.items()}
+print(score2name)  # {95: 'Yamada', 75: 'Suzuki', 80: 'Takahashi'}
+```
+
+
+## まとめ
+
+- dict は**キーと値のペア**で管理するコレクション（他言語ではハッシュマップ）
+- アクセスは `dict[キー]`、ない場合は `KeyError` → `in` または `.get()` でガード
+- 走査は `.items()` が最頻出、`.keys()` / `.values()` も使い分ける
+- ネスト dict や list of dict で**表形式のデータ**を表現できる
+- 辞書内包表記 `{k: v for ...}` で `for` ＋ 追加を1行に圧縮できる
+
+
+## 演習問題
+
+
+```python
+name2score = {"Yamada": 95, "Suzuki": 75, "Takahashi": 80, "Tanaka": 60}
+```
+
+上記の dict をコピーして、以下の操作を実装せよ
+
+
+1. `.get()` を使って **"Sato"** さんの点数を取り出す（存在しなければ `0` を返す）
+2. **Tanaka** さんを `del` で削除
+3. `.values()` と `sum` / `len` を使って、全員の **平均点** を表示
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+# 1
+print(name2score.get("Sato", 0))  # 0
+
+# 2
+del name2score["Tanaka"]
+print(name2score)
+
+# 3
+print(sum(name2score.values()) / len(name2score))
+```
+
+
+## 演習問題（辞書内包表記）
+
+以下の操作を実装せよ
+
+1. `range(1, 6)` を使って、`{1: 1, 2: 4, 3: 9, 4: 16, 5: 25}` という「数 → 2乗」の dict を作ろう
+2. `name2score` から、**80点以上の学生だけ** を取り出した新しい dict を作ろう
+3. `name2score` の **キーと値を入れ替えた** dict（`score2name`）を作ろう
+
+::: {.callout-note}
+## LUT（Look-Up Table）
+
+問題１のように **「入力 → 計算結果」を事前に dict に入れて引けるようにしたもの** を **LUT（Look-Up Table、参照テーブル）** と呼ぶ。毎回計算する代わりに `lut[x]` で引けるため、重い計算を**事前計算してキャッシュする**用途でよく使われる。
+
+古典的な例として、ゲーム機や組み込み機器では `sin` / `cos` の値を角度ごとに事前計算した LUT がよく使われる（毎フレームの三角関数計算は重いため）。
+:::
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+# 1
+squares = {x: x ** 2 for x in range(1, 6)}
+print(squares)
+
+# 2
+passed = {k: v for k, v in name2score.items() if v >= 80}
+print(passed)
+
+# 3
+score2name = {v: k for k, v in name2score.items()}
+print(score2name)
+```
+
+
+## 演習問題（list of dict）
+
+
+```python
+# 要素：学生（0: A さん, 1: B さん, 2: C さん）
+# キー：科目（"国語", "数学", "英語"）
+students = [
+    {"name": "A", "国語": 80, "数学": 90, "英語": 70},
+    {"name": "B", "国語": 60, "数学": 85, "英語": 95},
+    {"name": "C", "国語": 75, "数学": 70, "英語": 80},
+]
+```
+
+上記の学生の国語・数学・英語の点数をもつ list of dict をコピーして、以下の操作を実装せよ。
+
+
+1. **B さんの数学**の点数を表示しよう
+2. **C さんの3科目合計**を表示しよう
+3. **各学生の平均点**を `for` 文で順に表示しよう
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+# 1
+print(students[1]["数学"])  # 85
+
+# 2
+print(students[2]["国語"] + students[2]["数学"] + students[2]["英語"])  # 225
+
+# 3
+for s in students:
+    avg = (s["国語"] + s["数学"] + s["英語"]) / 3
+    print(f"{s['name']}さんの平均点：{avg:.1f}点")
+```

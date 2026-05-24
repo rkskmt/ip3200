@@ -1,15 +1,21 @@
 ---
-title: "リストの基礎知識"
-subtitle: "速習から応用まで"
+title: "リストをあらためて"
+subtitle: "少しだけ詳しく"
 ---
 
-## list とは
+## 復習(listとは)
 
-- 最もよく使われる**コレクション型（コンテナ）**
-  - 他言語では**配列・アレイ**とも呼ばれる
-- データは**追加順**に並ぶ
-- 変数名は要素の名詞の**複数形**にすることが多い（例：`foods`、`scores`）
 
+::: {.fig-cite src="imgs/list.jpg" height="90%"}
+
+::: {.content-box .pos-br}
+- 最もよく使われるコンテナ
+- データは追加順に並んでいる
+- 他言語では配列やアレイと呼ばれる　
+- 変数名は、要素の名詞の複数形をつけることが多い（foodsなど）
+:::
+
+:::
 
 ## 宣言
 
@@ -125,49 +131,24 @@ print(scores.index(90))  # 1
 :::
 
 
-## 演習問題
+## listを処理する便利なアレコレ
 
-以下のリスト `student_scores` を使って取り組もう。
+::: {.fig-cite src="imgs/processed_list.jpg" height="90%"}
 
-```python
-student_scores = [85, 90, 92, 78, 92, 88]
-```
+::: {.content-box .pos-br}
+- スライス（部分集合の取得）
+- ２次元配列
+- N 次元配列　
+- list 同士の結合
+- sortとsorted
+- 内包表記
+:::
 
-1. `append` を使って **100点** の学生を追加しよう
-2. **90点以上**の学生の「学生番号」と「点数」を表示するプログラムを書こう
-   - ヒント：`for` 文の中で `if` 文を使う
-3. **平均点**を表示しよう
-
-```{python}
-#| echo: true
-#| eval: false
-#| code-fold: true
-#| code-summary: "解答を見る"
-student_scores.append(100)
-for i, score in enumerate(student_scores):
-    if score >= 90:
-        print(f"学生{i + 1}は{score}点です")
-print(sum(student_scores) / len(student_scores))
-```
+:::
 
 
-## その他 list で知っておきたい基礎知識
 
-よく使われる、もしくは注意するべき list の知識を挙げる。
-
-1. 範囲外のインデックスはエラー
-2. 初期化
-3. リストの長さと `range` による走査
-4. スライス（部分集合の取得）
-5. ２次元配列
-6. N 次元配列
-7. list 同士の結合
-8. ソート
-9. リスト内包表記
-10. 【参考】異なる型の混在
-
-
-## １. 範囲外のインデックスはエラー
+## 範囲外のインデックスはエラー
 
 以下のインデックスは指定できない（エラーになる）。
 
@@ -189,20 +170,8 @@ print(test[-5])   # IndexError
 :::
 
 
-## ２. 初期化
 
-空のリストを作る方法は２種類。どちらでも同じ結果。
-
-```python
-empty1 = []
-empty2 = list()
-
-print(empty1)  # []
-print(empty2)  # []
-```
-
-
-## ３. リストの長さと `range` による走査
+## リストの長さと `range` による走査
 
 - `len(list)` でリストの**要素数**を取得できる
 - `range(N)` は `0, 1, 2, ..., N-1` を返す（list ではなく range 型）
@@ -226,7 +195,7 @@ for i in range(len(student_scores)):
 ```
 
 
-## ４. スライス（部分集合の取得）
+## スライス（部分集合の取得）
 
 リストの一部を切り取って別のリストにできる。
 
@@ -248,7 +217,7 @@ print(sliced_list)  # [2, 3, 4]
 :::
 
 
-## ５. ２次元配列
+## ２次元配列
 
 list の要素として list を入れると**２次元配列**になる。
 
@@ -269,7 +238,7 @@ print(list_of_list[0][1])  # 2
 `list_of_list[0][1]` → 行0・列1 → `2`
 
 
-## ６. N 次元配列
+## N 次元配列
 
 ２次元以上の多次元化も可能。
 
@@ -285,7 +254,7 @@ print(N_dimensional_list[1][1][2])  # 12
 - `[2]` → その中の3番目 → `12`
 
 
-## ７. list 同士の結合
+## list 同士の結合
 
 `+` 演算子でリスト同士を結合できる。
 
@@ -313,7 +282,7 @@ print(list1 + list3)
 :::
 
 
-## ８. ソート
+## ソート
 
 `sort()` と `sorted()` でリストを並び替えられる。
 
@@ -345,7 +314,7 @@ print(scores)  # [92, 92, 90, 88, 85, 78]
 :::
 
 
-## ９. リスト内包表記
+## リスト内包表記
 
 `for` 文を1行に圧縮してリストを作る書き方
 
@@ -366,7 +335,7 @@ squares = [x ** 2 for x in range(5)]
 print(squares)  # [0, 1, 4, 9, 16]
 ```
 
-## ９. リスト内包表記（条件式付き）
+## リスト内包表記（条件式付き）
 
 例えば、0-99の整数うち３の倍数以外のリストを作る場合、以下のようにfor文に条件を書くことになる。
 
@@ -418,7 +387,7 @@ for x in input_str:
 
 
 
-## １０. 【参考】異なる型の混在
+## 【参考】異なる型の混在
 
 Python の list は数値・文字列など**異なる型を混在**させることができる。
 
@@ -446,3 +415,105 @@ print(test[1][2])  # 3
 - スライス `[i:j]`・多次元配列・`+` 結合など、組み合わせ次第で幅広く使える
 - リスト内包表記 `[式 for x in ...]` で `for`+`append` を1行に圧縮できる
 - `list` はミュータブル — コピーが必要なときは `.copy()` を使う
+
+
+## 演習問題
+
+
+```python
+scores = [85, 90, 92, 78, 92, 88, 65, 100, 73, 80]
+```
+
+上記のリストをコピーして、以下の操作を実装せよ
+
+
+1. `range(len(...))` を使って、**出席番号（1始まり）と点数**を表示
+2. **スライス**を使って、上位5名分（先頭5つ）と下位5名分（末尾5つ）をそれぞれ別のリストに分けて表示
+3. `sorted` を使って、**元のリストを変えずに**降順に並び替えた新しいリストを作り、**上位3名の点数**を表示
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+# 1
+for i in range(len(scores)):
+    print(f"出席番号{i + 1}は{scores[i]}点")
+
+# 2
+top5 = scores[:5]
+bottom5 = scores[-5:]
+print(top5)
+print(bottom5)
+
+# 3
+ranked = sorted(scores, reverse=True)
+print(ranked[:3])
+print(scores)  # 元のリストは変わっていない
+```
+
+
+## 演習問題（リスト内包表記）
+
+以下の操作を実装せよ
+
+1. `range(1, 11)` を使って、**1から10までの平方数**のリストを作ろう（`[1, 4, 9, ..., 100]`）
+2. `scores` から、**80点以上の点数だけ**を取り出した新しいリストを作ろう
+3. 標準入力で受け取った空白区切りの整数列を、**list of int** に変換しよう（AtCoder 頻出パターン）
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+# 1
+squares = [x ** 2 for x in range(1, 11)]
+print(squares)
+
+# 2
+passed = [s for s in scores if s >= 80]
+print(passed)
+
+# 3
+As = [int(x) for x in input().split()]
+print(As)
+```
+
+
+## 演習問題（２次元配列）
+
+
+```python
+# 行：学生（0: A さん, 1: B さん, 2: C さん）
+# 列：科目（0: 国語, 1: 数学, 2: 英語）
+table = [
+    [80, 90, 70],
+    [60, 85, 95],
+    [75, 70, 80],
+]
+```
+
+上記の学生の国語・数学・英語の点数をもつ２次元配列をコピーして、以下の操作を実装せよ。
+
+
+1. **B さんの数学**の点数を表示しよう
+2. **C さんの3科目合計**を表示しよう
+3. **各学生の平均点**を `for` 文で順に表示しよう
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+# 1
+print(table[1][1])  # 85
+
+# 2
+print(sum(table[2]))  # 225
+
+# 3
+names = ["A", "B", "C"]
+for i in range(len(table)):
+    avg = sum(table[i]) / len(table[i])
+    print(f"{names[i]}さんの平均点：{avg:.1f}点")
+```
