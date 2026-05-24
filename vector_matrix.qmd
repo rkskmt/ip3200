@@ -74,7 +74,7 @@ $$
 ## {background-color="white" .center .break-slide}
 
 ::: {.break-title}
-Numpyでベクトルを表現・演算
+NumPyでベクトルを表現・演算
 :::
 
 
@@ -225,7 +225,7 @@ $$
 $$
 
 
-## 【重要】 Numpyにおける内積の演算子
+## 【重要】 NumPyにおける内積の演算子
 
 - ２つの`ndarray` を `@` という二項演算子に入力
    - 普通なら`*`とするところを`@`に変える
@@ -442,10 +442,10 @@ plt.show()
 ## {background-color="white" .center .break-slide}
 
 ::: {.break-title}
-Numpyで行列を表現・演算
+NumPyで行列を表現・演算
 :::
 
-## Numpyでの行列
+## NumPyでの行列
 
 - ndarrayで作成可能だが、**行ごとに宣言**する点に注意
    - 縦ベクトルの並びではないので少し気持ち悪い（仕様）
@@ -478,7 +478,7 @@ print(A[:, 0])   # 1列目全体  → [1 3]
 :::
 
 
-## Numpyでの行列の演算
+## NumPyでの行列の演算
 
 - ベクトルの内積と同じく `@` を使用
 
@@ -530,7 +530,7 @@ print(A @ B)
 
 - **逆行列**：行列 $A$ に対して $A A^{-1} = I$（単位行列）を満たす $A^{-1}$ 
     - 元の数と掛けたら１になる**逆数**のようなもの
-- Numpyでは`np.linalg.inv()` という便利関数で逆行列が求まる
+- NumPyでは`np.linalg.inv()` という便利関数で逆行列が求まる
   - **linalg** = **lin**ear **alg**ebra（線形代数）の略
 
 $$
