@@ -415,10 +415,40 @@
       -2px  2px 0 #0099cc,
       -3px  1px 0 #0099cc;
   }
+  .break-slide h2 { border: none !important; }
+  .break-slide p { margin: 0 !important; }
+  .break-slide .break-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 0.5px solid #333;
+    padding-bottom: 0.1em;
+  }
+  .reveal ul li::marker {
+    color: #0099cc;
+    font-size: 1.3em;
+  }
+  .reveal ul ul li::before, .reveal ol ul li::before {
+    font-weight: 500;
+    color: #0099cc;
+  }
+  .reveal ul ul ul {
+    list-style: none;
+  }
+  .reveal ul ul ul li::before {
+    content: "‣";
+  }
+  .reveal strong {
+    padding: 0 0.1em;
+  }
+  .reveal .fw-colon {
+    font-weight: 300;
+  }
   .reveal :not(pre) > code {
     color: #005cc5;
     font-weight: bold;
-    font-size: inherit;
+    font-size: 1.1em;
+    padding: 0 0.15em;
     font-family: monospace, serif;
     text-shadow: none;
   }
@@ -510,7 +540,7 @@ rkskmt
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy         <span class="co"># 使用時にnumpy.array(...) と書く</span></span>
 <span id="cb3-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np   <span class="co"># np.array(...) でよいので短い</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li><strong>注</strong>：<code>np</code> の部分は何でもよく別の名前も使用可能
+<li><strong>注</strong><span class="fw-colon">：</span><code>np</code> の部分は何でもよく別の名前も使用可能
 <ul>
 <li>ただし、Numpyは <code>np</code> が非常に一般的</li>
 </ul></li>

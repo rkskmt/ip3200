@@ -415,10 +415,40 @@
       -2px  2px 0 #0099cc,
       -3px  1px 0 #0099cc;
   }
+  .break-slide h2 { border: none !important; }
+  .break-slide p { margin: 0 !important; }
+  .break-slide .break-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 0.5px solid #333;
+    padding-bottom: 0.1em;
+  }
+  .reveal ul li::marker {
+    color: #0099cc;
+    font-size: 1.3em;
+  }
+  .reveal ul ul li::before, .reveal ol ul li::before {
+    font-weight: 500;
+    color: #0099cc;
+  }
+  .reveal ul ul ul {
+    list-style: none;
+  }
+  .reveal ul ul ul li::before {
+    content: "‣";
+  }
+  .reveal strong {
+    padding: 0 0.1em;
+  }
+  .reveal .fw-colon {
+    font-weight: 300;
+  }
   .reveal :not(pre) > code {
     color: #005cc5;
     font-weight: bold;
-    font-size: inherit;
+    font-size: 1.1em;
+    padding: 0 0.15em;
     font-family: monospace, serif;
     text-shadow: none;
   }
@@ -487,8 +517,8 @@ rkskmt
 <h2>日本語タイピング速度の目安</h2>
 <p>タイピングの速さを測る指標は主に2つある。</p>
 <ul>
-<li><strong>WPM（Words Per Minute）</strong>：1分間に打てる <strong>単語数</strong></li>
-<li><strong>KPM（Keys Per Minute）</strong>：1分間に打てる <strong>キーの打鍵数</strong></li>
+<li><strong>WPM（Words Per Minute）</strong><span class="fw-colon">：</span>1分間に打てる <strong>単語数</strong></li>
+<li><strong>KPM（Keys Per Minute）</strong><span class="fw-colon">：</span>1分間に打てる <strong>キーの打鍵数</strong></li>
 </ul>
 <h3 id="wpm">WPM</h3>
 <table class="caption-top">
@@ -552,7 +582,7 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>例：1000文字のレポートを書く場合</strong></p>
+<p><strong>例<span class="fw-colon">：</span>1000文字のレポートを書く場合</strong></p>
 </div>
 <div class="callout-content">
 <ul>
@@ -598,7 +628,7 @@ rkskmt
 </tbody>
 </table>
 <ul>
-<li>親指：<strong>スペースキー</strong></li>
+<li>親指<span class="fw-colon">：</span><strong>スペースキー</strong></li>
 <li><strong>F</strong> と <strong>J</strong> には小さな突起がある → 人差し指の目印</li>
 </ul>
 <p>目をつぶっても打てるよう、指のポジション感覚を鍛えよう。</p>
@@ -686,7 +716,7 @@ rkskmt
 </div>
 </section>
 <section id="演習atcoderでプログラムを動かしてみよう" class="slide level2 scrollable">
-<h2>演習：AtCoderでプログラムを動かしてみよう</h2>
+<h2>演習<span class="fw-colon">：</span>AtCoderでプログラムを動かしてみよう</h2>
 <p>「<strong>AtCoder ABC 400 tasks</strong>」で検索して A 問題を解いてみよう。</p>
 <ol type="1">
 <li><a href="https://atcoder.jp/contests/abc400/tasks/abc400_a">AtCoder Beginner Contest 400 A問題</a> にアクセス</li>
@@ -695,9 +725,9 @@ rkskmt
 <li>右上の「提出」ボタンを押す</li>
 <li>ジャッジ結果が <strong>AC（Accepted）</strong> になれば正解！
 <ul>
-<li><strong>WA（Wrong Answer）</strong> ：出力が違う</li>
-<li><strong>RE（Runtime Error）</strong> ：実行中にエラー</li>
-<li><strong>TLE（Time Limit Exceeded）</strong> ：時間超過</li>
+<li><strong>WA（Wrong Answer）</strong> <span class="fw-colon">：</span>出力が違う</li>
+<li><strong>RE（Runtime Error）</strong> <span class="fw-colon">：</span>実行中にエラー</li>
+<li><strong>TLE（Time Limit Exceeded）</strong> <span class="fw-colon">：</span>時間超過</li>
 </ul></li>
 </ol>
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -709,7 +739,7 @@ rkskmt
 <p><strong>ABC400の解答例（Python）</strong></p>
 </div>
 <div class="callout-content">
-<div id="e1c0499a" class="cell" data-execution_count="1">
+<div id="4ef15138" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>A <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>

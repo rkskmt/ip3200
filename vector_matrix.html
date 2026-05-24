@@ -415,10 +415,40 @@
       -2px  2px 0 #0099cc,
       -3px  1px 0 #0099cc;
   }
+  .break-slide h2 { border: none !important; }
+  .break-slide p { margin: 0 !important; }
+  .break-slide .break-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 0.5px solid #333;
+    padding-bottom: 0.1em;
+  }
+  .reveal ul li::marker {
+    color: #0099cc;
+    font-size: 1.3em;
+  }
+  .reveal ul ul li::before, .reveal ol ul li::before {
+    font-weight: 500;
+    color: #0099cc;
+  }
+  .reveal ul ul ul {
+    list-style: none;
+  }
+  .reveal ul ul ul li::before {
+    content: "‣";
+  }
+  .reveal strong {
+    padding: 0 0.1em;
+  }
+  .reveal .fw-colon {
+    font-weight: 300;
+  }
   .reveal :not(pre) > code {
     color: #005cc5;
     font-weight: bold;
-    font-size: inherit;
+    font-size: 1.1em;
+    padding: 0 0.15em;
     font-family: monospace, serif;
     text-shadow: none;
   }
@@ -459,9 +489,21 @@
     if (Reveal.isReady()) { initNav(); } else { Reveal.addEventListener('ready', initNav); }
   });
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
 <body class="quarto-light">
 <script src="mathjax-config.js"></script>
+<script>
+  if (window.MathJax) {
+    window.MathJax.loader = window.MathJax.loader || {};
+    window.MathJax.loader.load = (window.MathJax.loader.load || []).concat(['[tex]/html']);
+    window.MathJax.loader.source = Object.assign(window.MathJax.loader.source || {}, {
+      '[tex]/html': 'https://cdn.jsdelivr.net/npm/mathjax@4/input/tex/extensions/html.js'
+    });
+    window.MathJax.tex = window.MathJax.tex || {};
+    window.MathJax.tex.packages = {'[+]': ['html']};
+  }
+</script>
   <div class="reveal">
     <div class="slides">
 
@@ -478,18 +520,24 @@ rkskmt
 </div>
 
 </section>
+<section id="section" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>ベクトルのおさらい</p>
+</div>
+</section>
 <section id="ベクトルベクターvectorとは" class="slide level2">
 <h2>ベクトル（ベクター・Vector）とは</h2>
 <ul>
-<li>「<strong>大きさ</strong>」と「<strong>方向</strong>」をもつ<strong>量</strong>
+<li>「<strong>大きさ</strong>」と「<strong>方向</strong>」の組み合わせ
 <ul>
 <li><strong>速度・力</strong>など</li>
 <li><strong>位置</strong>は<strong>無関係</strong></li>
-<li>大きさのみは <strong>スカラー（Scalar）</strong></li>
+<li><strong>大きさのみ</strong> は <strong>スカラー（Scalar）</strong></li>
 </ul></li>
 </ul>
 <div style="width: 30%; margin: 0 auto;">
-<div id="32f7d2dc" class="cell" data-execution_count="1">
+<div id="0f577b7d" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -516,22 +564,38 @@ rkskmt
 \mathbf{a} = \begin{pmatrix} 3 \\ 4 \end{pmatrix}
 \]</span></p>
 </section>
-<section id="numpyでベクトルを表現" class="slide level2">
-<h2>Numpyでベクトルを表現</h2>
+<section id="section-1" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>Numpyでベクトルを表現・演算</p>
+</div>
+</section>
+<section id="ベクトルの表現" class="slide level2">
+<h2>ベクトルの表現</h2>
 <ul>
-<li>NumPyでは配列（1次元配列）がベクトルを表現</li>
+<li>NumPyでは配列（1次元配列）でベクトルを表現
+<ul>
+<li>1次元でも<code>ndarray</code>の扱い
+<ul>
+<li>1D array</li>
+</ul></li>
+<li>縦ベクトルでないが問題ない</li>
+</ul></li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a></a></span>
 <span id="cb1-3"><a></a>a <span class="op">=</span> np.array([<span class="dv">3</span>, <span class="dv">4</span>]) </span>
-<span id="cb1-4"><a></a><span class="bu">print</span>(a) <span class="co"># [3, 4]と横表記だが気にしない</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-4"><a></a><span class="bu">print</span>(a) <span class="co"># [3, 4]と横表記だが気にしない</span></span>
+<span id="cb1-5"><a></a><span class="bu">print</span>(<span class="bu">type</span>(a)) <span class="co"># &lt;class 'numpy.ndarray'&gt;</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="ベクトルの足し算" class="slide level2">
 <h2>ベクトルの足し算</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>足し算は<strong>成分ごと</strong>に行う
+<li>足し算は<strong>成分ごと</strong>に行う</li>
+<li>入力<span class="fw-colon">：</span>「<span class="hl">ベクトル</span>と<span class="hl">ベクトル</span>」</li>
+<li>出力<span class="fw-colon">：</span>「<span class="hl">ベクトル</span>」
 <ul>
 <li>引き算も同様</li>
 </ul></li>
@@ -547,7 +611,7 @@ rkskmt
 <span id="cb2-6"><a></a><span class="bu">print</span>(a <span class="op">+</span> b)   <span class="co"># [3 4]</span></span>
 <span id="cb2-7"><a></a><span class="bu">print</span>(a <span class="op">-</span> b)   <span class="co"># [-1  2]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="5124ee46" class="cell" data-execution_count="2">
+<div id="a560e443" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -563,7 +627,9 @@ rkskmt
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>掛け算は<strong>全成分それぞれ</strong> にスカラー値を掛ける
+<li>掛け算は<strong>全成分それぞれ</strong> に<strong>スカラー値</strong>を掛ける</li>
+<li>入力<span class="fw-colon">：</span>「<span class="hl">ベクトル</span>と<span class="hl">スカラー</span>」</li>
+<li>出力<span class="fw-colon">：</span>「<span class="hl">ベクトル</span>」
 <ul>
 <li>割り算も同じ</li>
 </ul></li>
@@ -577,7 +643,7 @@ rkskmt
 <span id="cb3-4"><a></a></span>
 <span id="cb3-5"><a></a><span class="bu">print</span>(a <span class="op">*</span> <span class="dv">2</span>)   <span class="co"># [2 4]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="f8dee443" class="cell" data-execution_count="3">
+<div id="3899d06a" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -591,23 +657,32 @@ rkskmt
 <section id="ベクトルの掛け算-2内積" class="slide level2">
 <h2>ベクトルの掛け算 2（内積）</h2>
 <ul>
-<li><strong>内積</strong>（inner product、dot product）は、対応成分同士をかけて足す
-<ul>
-<li>つまり、<strong>入力はベクトル２つ</strong>・<strong>出力はスカラー</strong></li>
-</ul></li>
+<li><strong>内積</strong>（inner product、dot product）は、対応成分同士をかけて足す</li>
+<li>入力<span class="fw-colon">：</span>「<span class="hl">ベクトル</span>と<span class="hl">ベクトル</span>」</li>
+<li>出力<span class="fw-colon">：</span>「<span class="hl">スカラー</span>」</li>
 </ul>
 <p><span class="math display">\[
 \begin{pmatrix} 1 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 3 \\ 4 \end{pmatrix} = 1 \times 3 + 2 \times 4 = 11
 \]</span></p>
 </section>
-<section id="numpyで内積" class="slide level2">
-<h2>Numpyで内積</h2>
+<section id="重要-numpyにおける内積の演算子" class="slide level2">
+<h2>【重要】 Numpyにおける内積の演算子</h2>
 <ul>
-<li><code>ndarray</code>を <code>@</code> で掛ける
+<li>２つの<code>ndarray</code> を <code>@</code> という二項演算子に入力
 <ul>
-<li>戻り値は当然ベクトルではなく<strong>数値（スカラー）</strong></li>
+<li>普通なら<code>*</code>とするところを<code>@</code>に変える</li>
 </ul></li>
 </ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a>a <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb4-4"><a></a>b <span class="op">=</span> np.array([<span class="dv">3</span>, <span class="dv">4</span>])</span>
+<span id="cb4-5"><a></a></span>
+<span id="cb4-6"><a></a><span class="co"># 内積</span></span>
+<span id="cb4-7"><a></a><span class="bu">print</span>(a <span class="op">@</span> b)  <span class="co"># 11 </span></span>
+<span id="cb4-8"><a></a></span>
+<span id="cb4-9"><a></a><span class="co"># 普通に* だとスカラーにならずベクトルになってしまう</span></span>
+<span id="cb4-10"><a></a><span class="bu">print</span>(a <span class="op">*</span> b)  <span class="co"># [1*3, 2*4] → [3 8]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-caution callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -618,33 +693,165 @@ rkskmt
 </div>
 <div class="callout-content">
 <ul>
-<li><code>*</code> ではない</li>
-<li>もし <code>*</code> で演算しても<strong>エラーにはならない</strong></li>
+<li><code>*</code> で演算しても<strong>エラーにはならないので危険</strong></li>
 </ul>
 </div>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a>a <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>])</span>
-<span id="cb4-4"><a></a>b <span class="op">=</span> np.array([<span class="dv">3</span>, <span class="dv">4</span>])</span>
-<span id="cb4-5"><a></a></span>
-<span id="cb4-6"><a></a><span class="co"># 内積</span></span>
-<span id="cb4-7"><a></a><span class="bu">print</span>(a <span class="op">@</span> b)  <span class="co"># 11 </span></span>
-<span id="cb4-8"><a></a></span>
-<span id="cb4-9"><a></a><span class="co"># 普通に* だとスカラーにならずベクトルになってしまう</span></span>
-<span id="cb4-10"><a></a><span class="bu">print</span>(a <span class="op">*</span> b)  <span class="co"># [1*3, 2*4] → [3, 8] </span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="section-2" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>行列</p>
+</div>
 </section>
 <section id="行列" class="slide level2">
 <h2>行列</h2>
 <ul>
 <li>ベクトルを横方向に並べたもの</li>
-<li>NumpyでもN次元配列として表現できる
+</ul>
+<p><span class="math display">\[
+\vec{\vphantom{b}a} = \begin{pmatrix} 1 \\ 3 \end{pmatrix}, \quad
+\vec{b} = \begin{pmatrix} 2 \\ 4 \end{pmatrix}
+\quad \Rightarrow \quad
+A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}
+\]</span></p>
 <ul>
-<li>ndarray</li>
+<li><span class="math inline">\(3 \times 4\)</span> 行列の例</li>
+</ul>
+<p><span class="math display">\[
+\vec{\vphantom{b}a} = \begin{pmatrix} 1 \\ 4 \\ 7 \end{pmatrix}, \quad
+\vec{b} = \begin{pmatrix} 2 \\ 5 \\ 8 \end{pmatrix}, \quad
+\vec{c} = \begin{pmatrix} 3 \\ 6 \\ 9 \end{pmatrix}, \quad
+\vec{d} = \begin{pmatrix} 10 \\ 11 \\ 12 \end{pmatrix}
+\quad \Rightarrow \quad
+A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 10 \\ 4 &amp; 5 &amp; 6 &amp; 11 \\ 7 &amp; 8 &amp; 9 &amp; 12 \end{pmatrix}
+\]</span></p>
+</section>
+<section id="行列とベクトルの積" class="slide level2">
+<h2>行列とベクトルの積</h2>
+<ul>
+<li>行列の列数とベクトルの次元が同じ場合、掛け算することが可能
+<ul>
+<li>それぞれの<strong>行</strong>と<strong>ベクトル</strong>の<strong>内積</strong>を<strong>縦に並べる</strong></li>
+</ul></li>
+</ul>
+<style>#mm-r1, #mm-r2 { opacity: 0; }</style>
+<p><span class="math display">\[
+\begin{pmatrix} \cssId{mm-a}{1} &amp; \cssId{mm-b}{2} \\ \cssId{mm-c}{3} &amp; \cssId{mm-d}{4} \end{pmatrix}
+\begin{pmatrix} \cssId{mm-x1}{5} \\ \cssId{mm-x2}{6} \end{pmatrix}
+=
+\begin{pmatrix} \cssId{mm-r1}{17} \\ \cssId{mm-r2}{39} \end{pmatrix}
+\]</span></p>
+<div id="mm-step" style="text-align:center; font-size:1.5rem; min-height:2em;">
+
+</div>
+<div style="text-align:center;">
+<button onclick="mmPlay()" style="background:#5dade2; color:white; border:none; border-radius:6px; padding:8px 28px; font-size:1.2rem; cursor:pointer;">
+▶ 再生
+</button>
+</div>
+<script>
+(function() {
+  var ids = ['#mm-a','#mm-b','#mm-c','#mm-d','#mm-x1','#mm-x2'];
+  var res = ['#mm-r1','#mm-r2'];
+  var animStep = 0;
+  var B = '#2266CC', R = '#CC4444';
+
+  function resetAnim() {
+    animStep = 0;
+    gsap.killTweensOf(ids.concat(res).join(','));
+    gsap.set(ids, {clearProps: 'color'});
+    gsap.set(res, {opacity: 0});
+    var s = document.getElementById('mm-step');
+    if (s) s.innerHTML = '';
+  }
+
+  window.mmPlay = function() {
+    var step = document.getElementById('mm-step');
+
+    if (animStep === 0) {
+      resetAnim();
+      var tl = gsap.timeline();
+      tl.to(['#mm-a','#mm-b'], {color: B, duration: 0.4})
+        .to(['#mm-x1','#mm-x2'], {color: R, duration: 0.4}, '<')
+        .call(function() {
+          step.innerHTML =
+            '<span style="color:'+B+'">1</span>×<span style="color:'+R+'">5</span>' +
+            ' + <span style="color:'+B+'">2</span>×<span style="color:'+R+'">6</span>' +
+            ' = 17';
+        }, null, '+=0.3')
+        .to('#mm-r1', {opacity: 1, duration: 0.5});
+      animStep = 1;
+
+    } else if (animStep === 1) {
+      var tl = gsap.timeline();
+      tl.to(['#mm-a','#mm-b'], {color: '', duration: 0.3})
+        .to(['#mm-c','#mm-d'], {color: B, duration: 0.4})
+        .call(function() {
+          step.innerHTML +=
+            '<br><span style="color:'+B+'">3</span>×<span style="color:'+R+'">5</span>' +
+            ' + <span style="color:'+B+'">4</span>×<span style="color:'+R+'">6</span>' +
+            ' = 39';
+        }, null, '+=0.3')
+        .to('#mm-r2', {opacity: 1, duration: 0.5})
+        .to(['#mm-c','#mm-d','#mm-x1','#mm-x2'], {color: '', duration: 0.3}, '+=0.3');
+      animStep = 2;
+
+    } else {
+      resetAnim();
+    }
+  };
+
+  if (typeof Reveal !== 'undefined') {
+    Reveal.on('slidechanged', resetAnim);
+  }
+})();
+</script>
+</section>
+<section id="行列と行列の積" class="slide level2">
+<h2>行列と行列の積</h2>
+<ul>
+<li>行列同士の掛け算は<span class="hl">「行×列」</span>の内積を並べる</li>
+</ul>
+<p><span class="math display">\[
+\begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}
+\begin{pmatrix} 5 &amp; 6 \\ 7 &amp; 8 \end{pmatrix}
+=
+\begin{pmatrix} 1 \cdot 5 + 2 \cdot 7 &amp; 1 \cdot 6 + 2 \cdot 8 \\ 3 \cdot 5 + 4 \cdot 7 &amp; 3 \cdot 6 + 4 \cdot 8 \end{pmatrix}
+=
+\begin{pmatrix} 19 &amp; 22 \\ 43 &amp; 50 \end{pmatrix}
+\]</span></p>
+<div id="d0ea25d9" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="vector_matrix_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="470" height="233"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-3" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>Numpyで行列を表現・演算</p>
+</div>
+</section>
+<section id="numpyでの行列" class="slide level2">
+<h2>Numpyでの行列</h2>
+<ul>
+<li>ndarrayで作成可能だが、<strong>行ごとに宣言</strong>する点に注意
+<ul>
+<li>縦ベクトルの並びではないので少し気持ち悪い（仕様）</li>
+<li><strong>「行」ごとに宣言</strong> して縦にスタックしていく</li>
+<li>以下の場合でも<strong>[[1 3][2 4]]ではなく[[1 2][3 4]]</strong></li>
 </ul></li>
 </ul>
 <p><span class="math display">\[
+\vec{\vphantom{b}a} = \begin{pmatrix} 1 \\ 3 \end{pmatrix}, \quad
+\vec{b} = \begin{pmatrix} 2 \\ 4 \end{pmatrix}
+\quad \Rightarrow \quad
 A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}
 \]</span></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -656,43 +863,42 @@ A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}
 <span id="cb5-7"><a></a><span class="bu">print</span>(A[<span class="dv">0</span>, <span class="dv">1</span>])   <span class="co"># 1行目2列目 → 2</span></span>
 <span id="cb5-8"><a></a><span class="bu">print</span>(A[<span class="dv">1</span>, :])   <span class="co"># 2行目全体  → [3 4]</span></span>
 <span id="cb5-9"><a></a><span class="bu">print</span>(A[:, <span class="dv">0</span>])   <span class="co"># 1列目全体  → [1 3]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="行列同士の掛け算" class="slide level2">
-<h2>行列同士の掛け算</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>ノート</strong></p>
+</div>
+<div class="callout-content">
 <ul>
-<li>行列同士の掛け算は<span class="hl">「行×列」</span>の内積を並べたもの</li>
+<li>行優先（row-major）ではなく列優先（column-major）の実装もありうる（OpenGLなど）</li>
+<li>ただ、現在の言語では行優先が大半</li>
 </ul>
-<p><span class="math display">\[
-\begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}
-\begin{pmatrix} 5 &amp; 6 \\ 7 &amp; 8 \end{pmatrix}
-=
-\begin{pmatrix} 1 \cdot 5 + 2 \cdot 7 &amp; 1 \cdot 6 + 2 \cdot 8 \\ 3 \cdot 5 + 4 \cdot 7 &amp; 3 \cdot 6 + 4 \cdot 8 \end{pmatrix}
-=
-\begin{pmatrix} 19 &amp; 22 \\ 43 &amp; 50 \end{pmatrix}
-\]</span></p>
-<div id="8ec251de" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="vector_matrix_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="470" height="233"></p>
-</figure>
 </div>
 </div>
 </div>
 </section>
-<section id="numpyで行列の掛け算" class="slide level2">
-<h2>Numpyで行列の掛け算</h2>
+<section id="numpyでの行列の演算" class="slide level2">
+<h2>Numpyでの行列の演算</h2>
 <ul>
 <li>ベクトルの内積と同じく <code>@</code> を使用</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
-<span id="cb6-4"><a></a>B <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>]])</span>
-<span id="cb6-5"><a></a></span>
-<span id="cb6-6"><a></a><span class="bu">print</span>(A <span class="op">@</span> B)</span>
-<span id="cb6-7"><a></a><span class="co"># [[19 22]</span></span>
-<span id="cb6-8"><a></a><span class="co">#  [43 50]]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-3"><a></a><span class="co"># A: Matrix b:Vector </span></span>
+<span id="cb6-4"><a></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
+<span id="cb6-5"><a></a>b <span class="op">=</span> np.array([<span class="dv">5</span>, <span class="dv">6</span>])</span>
+<span id="cb6-6"><a></a></span>
+<span id="cb6-7"><a></a><span class="bu">print</span>(A <span class="op">@</span> b)  <span class="co"># [17 39]</span></span>
+<span id="cb6-8"><a></a></span>
+<span id="cb6-9"><a></a></span>
+<span id="cb6-10"><a></a><span class="co"># A:Matrix B:Matrix</span></span>
+<span id="cb6-11"><a></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
+<span id="cb6-12"><a></a>B <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>]])</span>
+<span id="cb6-13"><a></a></span>
+<span id="cb6-14"><a></a><span class="bu">print</span>(A <span class="op">@</span> B)  <span class="co"># [[19 22] [43 50]]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="もし-を使用するとどうなってしまうのか" class="slide level2">
 <h2>もし <code>*</code> を使用するとどうなってしまうのか</h2>
@@ -720,9 +926,9 @@ A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}
 <section id="逆行列" class="slide level2">
 <h2>逆行列</h2>
 <ul>
-<li><strong>逆行列</strong>：行列 <span class="math inline">\(A\)</span> に対して <span class="math inline">\(A A^{-1} = I\)</span>（単位行列）を満たす <span class="math inline">\(A^{-1}\)</span>
+<li><strong>逆行列</strong><span class="fw-colon">：</span>行列 <span class="math inline">\(A\)</span> に対して <span class="math inline">\(A A^{-1} = I\)</span>（単位行列）を満たす <span class="math inline">\(A^{-1}\)</span>
 <ul>
-<li>掛けたら1になる<strong>逆数</strong>のようなもの</li>
+<li>元の数と掛けたら１になる<strong>逆数</strong>のようなもの</li>
 </ul></li>
 <li>Numpyでは<code>np.linalg.inv()</code> という便利関数で逆行列が求まる
 <ul>
@@ -740,6 +946,12 @@ A^{-1} = \begin{pmatrix} -2 &amp; 1 \\ 1.5 &amp; -0.5 \end{pmatrix}
 <span id="cb8-4"><a></a>A_inv <span class="op">=</span> np.linalg.inv(A)</span>
 <span id="cb8-5"><a></a><span class="bu">print</span>(A_inv) <span class="co"># [[-2.   1. ][ 1.5 -0.5]]</span></span>
 <span id="cb8-6"><a></a><span class="bu">print</span>(A <span class="op">@</span> A_inv) <span class="co"># [[1. 0.][0. 1.]]  ← 単位行列</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="section-4" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p><code>@</code> 演算子で方程式を解こう</p>
+</div>
 </section>
 <section id="行列で連立方程式を表現" class="slide level2">
 <h2>行列で連立方程式を表現</h2>
@@ -793,7 +1005,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 <p><strong>実は連立方程式用の関数が存在</strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math inline">\(Ax = b\)</span> は <code>np.linalg.solve(A, b)</code> で解が返る</p>
+<p><span class="math inline">\(Ax = b\)</span> の解は <code>np.linalg.solve(A, b)</code></p>
 </div>
 </div>
 </div>
@@ -879,7 +1091,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 \begin{cases} x + y = 4 \\ x - y = 2 \end{cases}
 \]</span></p>
 <p>（４）<span class="math inline">\(\mathbf{a} = \begin{pmatrix} 6 \\ 8 \end{pmatrix}\)</span> のノルムと単位ベクトルを求めよ。</p>
-<div id="01358714" class="cell" data-execution_count="5">
+<div id="6b48443f" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -905,6 +1117,12 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 <span id="cb10-21"><a></a><span class="bu">print</span>(np.linalg.norm(a))       <span class="co"># 10.0</span></span>
 <span id="cb10-22"><a></a><span class="bu">print</span>(a <span class="op">/</span> np.linalg.norm(a))   <span class="co"># [0.6 0.8]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+</div>
+</section>
+<section id="section-5" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>その他</p>
 </div>
 </section>
 <section id="ベクトルの大きさノルム" class="slide level2">
@@ -933,9 +1151,9 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 </div>
 <div class="callout-content">
 <ul>
-<li><strong>L1ノルム</strong>（マンハッタン距離）：<span class="math inline">\(\sum |a_i|\)</span></li>
-<li><strong>L2ノルム</strong>（ユークリッド距離）：<span class="math inline">\(\sqrt{\sum a_i^2}\)</span> ← 最もよく使う</li>
-<li><strong>フロベニウスノルム</strong>：行列版のL2ノルム</li>
+<li><strong>L1ノルム</strong>（マンハッタン距離）<span class="fw-colon">：</span><span class="math inline">\(\sum |a_i|\)</span></li>
+<li><strong>L2ノルム</strong>（ユークリッド距離）<span class="fw-colon">：</span><span class="math inline">\(\sqrt{\sum a_i^2}\)</span> ← 最もよく使う</li>
+<li><strong>フロベニウスノルム</strong><span class="fw-colon">：</span>行列版のL2ノルム</li>
 </ul>
 </div>
 </div>
@@ -963,7 +1181,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 <span id="cb12-6"><a></a><span class="bu">print</span>(a_hat)                  <span class="co"># [0.6 0.8]</span></span>
 <span id="cb12-7"><a></a><span class="bu">print</span>(np.linalg.norm(a_hat))  <span class="co"># 1.0</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="750e75f1" class="cell" data-execution_count="6">
+<div id="650b1214" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -995,8 +1213,8 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <span id="cb13-5"><a></a><span class="co"># [[1 3]</span></span>
 <span id="cb13-6"><a></a><span class="co">#  [2 4]]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="参考ベクトルの転置" class="slide level2">
-<h2>（参考）ベクトルの転置</h2>
+<section id="ベクトルの転置" class="slide level2">
+<h2>ベクトルの転置</h2>
 <ul>
 <li>行と列を入れ替える操作を<strong>転置</strong>（<strong>T</strong>ranspose）と呼ぶ
 <ul>
@@ -1021,8 +1239,8 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 \mathbf{a}^T \mathbf{b} = \begin{pmatrix} 1 &amp; 2 \end{pmatrix} \begin{pmatrix} 3 \\ 4 \end{pmatrix} = 1 \times 3 + 2 \times 4 = 11
 \]</span></p>
 </section>
-<section id="参考図でみる内積" class="slide level2">
-<h2>（参考）図でみる内積</h2>
+<section id="図でみる内積" class="slide level2">
+<h2>図でみる内積</h2>
 <ul>
 <li>教科書での内積の定義</li>
 </ul>
@@ -1030,10 +1248,10 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 \mathbf{a} \cdot \mathbf{b} = |\mathbf{a}||\mathbf{b}|\cos\theta
 \]</span></p>
 <ul>
-<li><span class="math inline">\(|\mathbf{b}|\cos\theta\)</span> ：<span class="math inline">\(\mathbf{b}\)</span> を <span class="math inline">\(\mathbf{a}\)</span> の方向に<strong>射影</strong>した長さ</li>
+<li><span class="math inline">\(|\mathbf{b}|\cos\theta\)</span> <span class="fw-colon">：</span><span class="math inline">\(\mathbf{b}\)</span> を <span class="math inline">\(\mathbf{a}\)</span> の方向に<strong>射影</strong>した長さ</li>
 <li>内積 = 「<span class="math inline">\(\mathbf{b}\)</span>の<span class="math inline">\(\mathbf{a}\)</span>方向に対する成分」× 「<span class="math inline">\(\mathbf{a}\)</span>の長さ<span class="math inline">\(|\mathbf{a}|\)</span>」</li>
 </ul>
-<div id="d5a4117e" class="cell" data-execution_count="7">
+<div id="886e31b3" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1043,8 +1261,8 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 </div>
 </div>
 </section>
-<section id="参考内積と直交" class="slide level2">
-<h2>（参考）内積と直交</h2>
+<section id="内積と直交" class="slide level2">
+<h2>内積と直交</h2>
 <ul>
 <li>2つのベクトルが<strong>直交</strong>（90°）しているとき内積は <strong>0</strong>
 <ul>
@@ -1052,7 +1270,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <li>つまり、射影の長さがゼロ → 「<span class="math inline">\(\mathbf{a}\)</span> 方向の成分がない」</li>
 </ul></li>
 </ul>
-<div id="d83ca1c8" class="cell" data-execution_count="8">
+<div id="6fa14133" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1080,8 +1298,8 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <ul>
 <li><strong>外積</strong>（cross product）は3次元ベクトル同士から<strong>新しいベクトル</strong>を作る
 <ul>
-<li>内積：ベクトル → <strong>スカラー</strong></li>
-<li>外積：ベクトル → <strong>ベクトル</strong></li>
+<li>内積<span class="fw-colon">：</span>ベクトル → <strong>スカラー</strong></li>
+<li>外積<span class="fw-colon">：</span>ベクトル → <strong>ベクトル</strong></li>
 </ul></li>
 <li>結果は元の2つのベクトルに<strong>直交</strong>する方向を向く</li>
 </ul>

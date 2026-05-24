@@ -349,10 +349,40 @@
       -2px  2px 0 #0099cc,
       -3px  1px 0 #0099cc;
   }
+  .break-slide h2 { border: none !important; }
+  .break-slide p { margin: 0 !important; }
+  .break-slide .break-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 0.5px solid #333;
+    padding-bottom: 0.1em;
+  }
+  .reveal ul li::marker {
+    color: #0099cc;
+    font-size: 1.3em;
+  }
+  .reveal ul ul li::before, .reveal ol ul li::before {
+    font-weight: 500;
+    color: #0099cc;
+  }
+  .reveal ul ul ul {
+    list-style: none;
+  }
+  .reveal ul ul ul li::before {
+    content: "‣";
+  }
+  .reveal strong {
+    padding: 0 0.1em;
+  }
+  .reveal .fw-colon {
+    font-weight: 300;
+  }
   .reveal :not(pre) > code {
     color: #005cc5;
     font-weight: bold;
-    font-size: inherit;
+    font-size: 1.1em;
+    padding: 0 0.15em;
     font-family: monospace, serif;
     text-shadow: none;
   }
@@ -403,20 +433,46 @@
 <section id="情報処理-2025年度" class="slide level2">
 <h2>情報処理 2025年度</h2>
 <p><a href="https://rkskmt.github.io/ip3200/">https://rkskmt.github.io/ip3200/</a></p>
+<details>
+<summary>
+PCの使い方アップデート
+</summary>
 <ul>
-<li><p><a href="./key-typing.html">キータイピング</a></p></li>
-<li><p><a href="./shortcuts.html">ショートカット</a></p></li>
-<li><p><a href="./collections.html">速習：コレクション</a></p></li>
-<li><p><a href="./list.html">listあらためて</a></p></li>
-<li><p><a href="./dict.html">dictあらためて</a></p></li>
-<li><p><a href="./variables.html">変数と代入</a></p></li>
-<li><p><a href="./numpy.html">numpy</a></p></li>
-<li><p><a href="./vector_matrix.html">ベクトルと行列</a></p></li>
+<li><a href="./key-typing.html">キータイピング</a></li>
+<li><a href="./shortcuts.html">ショートカット</a></li>
 </ul>
+</details>
+<details>
+<summary>
+速習Python基礎
+</summary>
+<ul>
+<li><a href="./variables.html">変数と代入</a></li>
+<li><a href="./collections.html">速習<span class="fw-colon">：</span>コレクション</a></li>
+<li><a href="./list.html">listあらためて</a></li>
+<li><a href="./dict.html">dictあらためて</a></li>
+</ul>
+</details>
+<details open="">
+<summary>
+Pythonデータ処理基礎
+</summary>
+<ul>
+<li><a href="./numpy.html">numpy</a></li>
+<li><a href="./vector_matrix.html">ベクトルと行列</a></li>
+</ul>
+</details>
+
+<img data-src="imgs/qrcode_rkskmt.github.io.png" class="quarto-figure quarto-figure-center r-stretch" width="300"><script>
+document.querySelectorAll("details").forEach(d => {
+  const n = d.querySelectorAll("li").length;
+  const s = d.querySelector("summary");
+  s.textContent += `（${n}）`;
+});
+</script>
 
 
-
-<img data-src="imgs/qrcode_rkskmt.github.io.png" class="quarto-figure quarto-figure-center r-stretch" width="300"></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

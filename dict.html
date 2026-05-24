@@ -415,10 +415,40 @@
       -2px  2px 0 #0099cc,
       -3px  1px 0 #0099cc;
   }
+  .break-slide h2 { border: none !important; }
+  .break-slide p { margin: 0 !important; }
+  .break-slide .break-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 0.5px solid #333;
+    padding-bottom: 0.1em;
+  }
+  .reveal ul li::marker {
+    color: #0099cc;
+    font-size: 1.3em;
+  }
+  .reveal ul ul li::before, .reveal ol ul li::before {
+    font-weight: 500;
+    color: #0099cc;
+  }
+  .reveal ul ul ul {
+    list-style: none;
+  }
+  .reveal ul ul ul li::before {
+    content: "‣";
+  }
+  .reveal strong {
+    padding: 0 0.1em;
+  }
+  .reveal .fw-colon {
+    font-weight: 300;
+  }
   .reveal :not(pre) > code {
     color: #005cc5;
     font-weight: bold;
-    font-size: inherit;
+    font-size: 1.1em;
+    padding: 0 0.15em;
     font-family: monospace, serif;
     text-shadow: none;
   }
@@ -485,7 +515,7 @@ rkskmt
 <ul>
 <li>キーと値のペアで管理する<strong>コレクション型</strong></li>
 <li>データは<strong>キー</strong>で管理する（list のような番号ではない）</li>
-<li>変数名は <strong>「x2y」</strong> 形式にすることが多い（例：name2score）</li>
+<li>変数名は <strong>「x2y」</strong> 形式にすることが多い（例<span class="fw-colon">：</span>name2score）</li>
 </ul>
 </div>
 <div class="cite">
@@ -752,7 +782,7 @@ Takahashiさんは80点です</code></pre>
 <li><strong>Tanaka</strong> さんを <code>del</code> で削除</li>
 <li><code>.values()</code> と <code>sum</code> / <code>len</code> を使って、全員の <strong>平均点</strong> を表示</li>
 </ol>
-<div id="4b14358e" class="cell" data-execution_count="1">
+<div id="358d8662" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="co"># 1</span></span>
@@ -789,7 +819,7 @@ Takahashiさんは80点です</code></pre>
 </div>
 </div>
 </div>
-<div id="f6b792ab" class="cell" data-execution_count="2">
+<div id="169a130c" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="co"># 1</span></span>
@@ -821,7 +851,7 @@ Takahashiさんは80点です</code></pre>
 <li><strong>C さんの3科目合計</strong>を表示しよう</li>
 <li><strong>各学生の平均点</strong>を <code>for</code> 文で順に表示しよう</li>
 </ol>
-<div id="f0e81215" class="cell" data-execution_count="3">
+<div id="f3b5d1a1" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="co"># 1</span></span>

@@ -415,10 +415,40 @@
       -2px  2px 0 #0099cc,
       -3px  1px 0 #0099cc;
   }
+  .break-slide h2 { border: none !important; }
+  .break-slide p { margin: 0 !important; }
+  .break-slide .break-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 0.5px solid #333;
+    padding-bottom: 0.1em;
+  }
+  .reveal ul li::marker {
+    color: #0099cc;
+    font-size: 1.3em;
+  }
+  .reveal ul ul li::before, .reveal ol ul li::before {
+    font-weight: 500;
+    color: #0099cc;
+  }
+  .reveal ul ul ul {
+    list-style: none;
+  }
+  .reveal ul ul ul li::before {
+    content: "‣";
+  }
+  .reveal strong {
+    padding: 0 0.1em;
+  }
+  .reveal .fw-colon {
+    font-weight: 300;
+  }
   .reveal :not(pre) > code {
     color: #005cc5;
     font-weight: bold;
-    font-size: inherit;
+    font-size: 1.1em;
+    padding: 0 0.15em;
     font-family: monospace, serif;
     text-shadow: none;
   }
@@ -521,8 +551,8 @@ rkskmt
 <ul>
 <li>文字（a-z, A-Z）またはアンダースコア（_）で<strong>始まる</strong>
 <ul>
-<li>つまり数字始まりはダメ（NG例： 3200scores ）</li>
-<li>終わるのはOK（例：scores_of_3200）</li>
+<li>つまり数字始まりはダメ（NG例<span class="fw-colon">：</span> 3200scores ）</li>
+<li>終わるのはOK（例<span class="fw-colon">：</span>scores_of_3200）</li>
 </ul></li>
 <li>2文字目以降が文字、数字（0-9）、アンダースコアであること</li>
 <li>予約語（<strong><code>if</code> / <code>for</code> / <code>while</code></strong> など）ではないこと</li>
@@ -578,7 +608,7 @@ rkskmt
 <span id="cb5-7"><a></a><span class="bu">print</span>(a11) <span class="co"># 当然13</span></span>
 <span id="cb5-8"><a></a><span class="bu">print</span>(a12) <span class="co"># ??? （同じアドレスを指しているはずだが？）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li>結果： <strong>12</strong></li>
+<li>結果<span class="fw-colon">：</span> <strong>12</strong></li>
 <li>数値（<code>int</code>）は、宣言する度 <strong>新しいアドレス</strong> にリテラルを作る</li>
 <li>つまり、5行目の時点でa11は別のアドレスが書かれている</li>
 <li>よって、3行目で共有したアドレスはa12しか持たなくなる</li>
@@ -593,7 +623,7 @@ rkskmt
 <span id="cb6-4"><a></a>odd1[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">9</span></span>
 <span id="cb6-5"><a></a><span class="bu">print</span>(odd2) <span class="co"># ???</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li>結果： <strong>[9, 7]</strong></li>
+<li>結果<span class="fw-colon">：</span> <strong>[9, 7]</strong></li>
 <li><code>odd1[0] = 9</code> は <code>odd1</code> を変えただけなのに、<code>odd2</code> まで変化
 <ul>
 <li>つまり、3行目で共有したアドレスはずっと共有したまま</li>
@@ -672,7 +702,7 @@ rkskmt
 </table>
 </section>
 <section id="実例関数がリストを書き換えてしまう" class="slide level2">
-<h2>実例：関数がリストを書き換えてしまう</h2>
+<h2>実例<span class="fw-colon">：</span>関数がリストを書き換えてしまう</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="kw">def</span> double_all(data):</span>
 <span id="cb9-2"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(data)):</span>
 <span id="cb9-3"><a></a>        data[i] <span class="op">=</span> data[i] <span class="op">*</span> <span class="dv">2</span></span>
@@ -688,7 +718,7 @@ rkskmt
 </ul>
 </section>
 <section id="ミュータブルの罠を回避するコピー" class="slide level2">
-<h2>ミュータブルの罠を回避する：コピー</h2>
+<h2>ミュータブルの罠を回避する<span class="fw-colon">：</span>コピー</h2>
 <ul>
 <li>リストを<strong>別のアドレスに新たに複製</strong>したいときは <code>.copy()</code> を使う。
 <ul>
