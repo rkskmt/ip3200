@@ -11,11 +11,29 @@ Quarto で作成した授業スライド。
 - Python 3.10+
 - NumPy, Matplotlib, japanize-matplotlib
 
-### Python パッケージのインストール
+### Python 環境（conda 推奨）
+
+`environment.yml` から `IP3200` という名前の conda 環境を再現できる。
+
+```bash
+conda env create -f environment.yml   # IP3200 環境を作成
+conda activate IP3200
+```
+
+conda を使わない場合は pip でも可：
 
 ```bash
 pip install numpy matplotlib japanize-matplotlib
 ```
+
+### VSCode で環境を自動有効化
+
+conda の名前付き環境はフォルダに紐付かないため、このフォルダを開いても自動では有効化されない。一度だけ次の操作をすると、以後このワークスペースで開く統合ターミナルが自動で `IP3200` に切り替わる。
+
+1. `Ctrl+Shift+P` → **Python: Select Interpreter**
+2. `IP3200` を選ぶ
+
+新しいターミナルのプロンプトが `(IP3200)` になっていれば成功（設定は VSCode 側に保存され、リポジトリには含まれない。PC ごとに 1 回ずつ必要）。
 
 ### ローカルプレビュー
 
@@ -41,7 +59,8 @@ index.qmd         トップページ（リンク一覧）
 *.qmd             各回のスライド
 imgs/             画像ファイル
 doc/              執筆ガイド・トラブルシュート
-hl.lua            -text- ハイライト用 Lua フィルタ
+hl.lua            ==text== ハイライト用 Lua フィルタ
+fw-colon.lua      全角コロン「：」の表示調整 Lua フィルタ
 cite-image.lua    画像引用表示用 Lua フィルタ
 _extensions/      Quarto 拡張（clean-revealjs テーマ等）
 ```
@@ -71,18 +90,18 @@ _extensions/      Quarto 拡張（clean-revealjs テーマ等）
 NumPy では `@` が内積の演算子
 ```
 
-### ハイライトマーカー（`-text-`）
+### ハイライトマーカー（`==text==`）
 
-`hl.lua` フィルタにより、`-text-` と書くと縁取り付きのハイライト表示になる。  
+`hl.lua` フィルタにより、`==text==` と書くと縁取り付きのハイライト表示になる。  
 バッククォートのインラインコードとは別のスタイル（白文字＋シアン縁取り）。
 
 ```markdown
-NumPy では -@- が内積の演算子
+NumPy では ==@== が内積の演算子
 ```
 
 **制約:**
 
-- 中身に記号（`.` `@` `*` `()` 等）を含む必要がある。英数字のみの単語（`-hello-`）はマッチしない（ハイフン付き単語との誤爆防止）
+- 中身に空白は含められない（`==` と `==` の間に空白があるとマッチしない）
 - スペースを含む場合は `[a @ b]{.hl}` と書く
 
 ### Matplotlib で日本語
