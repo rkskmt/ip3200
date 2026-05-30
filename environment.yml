@@ -1,0 +1,16 @@
+name: IP3200
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.10
+  - jupyter
+  - nbformat
+  - nbclient
+  - ipykernel
+  - numpy
+  - matplotlib
+  - requests
+  - pip
+  - pip:
+      - japanize-matplotlib
