@@ -27,3 +27,7 @@ website:
         text: "NumPy入門"
       - href: vector_matrix.qmd
         text: "ベクトルと行列"
+      - href: visualize.qmd
+        text: "データの可視化"
+      - href: api.qmd
+        text: "APIでデータ取得"

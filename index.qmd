@@ -25,6 +25,14 @@
 
 - [NumPy入門](numpy.qmd)
 - [ベクトルと行列](vector_matrix.qmd)
+- [データの可視化](visualize.qmd)
+
+</details>
+
+<details open>
+<summary>Web/APIで実データを扱う</summary>
+
+- [APIでデータ取得](api.qmd)
 
 </details>
 
