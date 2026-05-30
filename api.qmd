@@ -1,0 +1,524 @@
+---
+title: "APIでデータ取得"
+subtitle: "Webから材料を仕入れる"
+---
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+道具から材料へ
+:::
+
+## ここまでで揃った「道具」
+
+- **データを置く** — 変数、コレクション（list / dict / tuple）
+- **データを計算する** — NumPy（ベクトル・行列・統計）
+- **データを見る** — matplotlib（散布図、折れ線、subplot）
+
+::: {.callout-tip}
+## ここからは「材料」
+- 道具だけでは何もできない
+- **入力データ**（材料）を仕入れる必要がある
+- 一番手っ取り早い仕入れ先は **Web**
+:::
+
+## 本授業の最終目標
+
+- なにかのデータ群を処理して
+- **役に立つ、もしくは興味深い** 出力やサービスのモックを作る
+- 今回はその第一歩として **Webからデータを取ってくる** ことをやる
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+Webへアクセス（requests）
+:::
+
+
+## requests ライブラリ
+
+- PythonでWebにアクセスする **定番ライブラリ**
+- 標準ライブラリではないので pip でインストール
+
+```shell
+pip install requests
+```
+
+- コード冒頭でいつもどおり import
+
+```python
+import requests
+```
+
+
+## 一番シンプルな使い方
+
+- `requests.get(url)` で **指定URLにアクセス**
+- 戻り値の `response` を print すると **状態コード** が見える
+
+```python
+import requests
+
+response = requests.get('https://www.metro-cit.ac.jp/')
+print(response)   # <Response [200]>
+```
+
+::: {.callout-note}
+## 200 とは？
+- HTTPの応答コードで **「正常に取得できた」** の意味
+- とりあえず **「200か否か」** だけ判断できればOK
+:::
+
+
+## HTTPステータスコード（よく見るもの）
+
+| コード | 意味 | 説明 | 対処法 |
+|---|---|---|---|
+| **200** | OK | 正常にデータを取得できた | そのまま処理を続行 |
+| 404 | Not Found | URLや記事が存在しない | URL・記事名を確認 |
+| 500 | Internal Server Error | サーバ側でエラー | 時間をおいて再試行 |
+| 501 | Not Implemented | 機能が未対応 | パラメータを確認 |
+
+- 全部覚える必要なし
+- **200番台 = 成功、400番台 = リクエスト側のミス、500番台 = サーバ側のミス** くらいの感覚
+
+
+## response の中身
+
+- 取得した内容は **プロパティ** で取り出せる
+
+| プロパティ | 型 | 説明 |
+|---|---|---|
+| `.text` | `str` | 本文を文字列で取得 |
+| `.json()` | `dict` | 本文がJSONなら dict として取得 |
+| `.headers` | dict風 | ヘッダーを辞書風に取得 |
+
+
+## .text で本文を取得
+
+- HTMLがそのまま str で返ってくる
+
+```python
+import requests
+
+response = requests.get('https://www.metro-cit.ac.jp/')
+print(response.text)    # HTMLの中身
+```
+
+
+## .headers でメタデータを取得
+
+- ヘッダーは **本文と別についてくる情報**
+- 応答時刻、サーバ情報、本文のバイト長、コンテンツ種別 など
+
+```python
+import requests
+
+response = requests.get('https://www.metro-cit.ac.jp/')
+print(response.headers)
+```
+
+::: {.callout-note}
+## 例：ヘッダーの中身
+- 全部覚える必要なし
+- 「本文の他にもこういう情報をやり取りしてるんだな」くらいでOK
+
+```text
+{
+  "Date": "Mon, 30 Jun 2025 05:00:33 GMT",
+  "Server": "Apache",
+  "Content-Length": "73439",
+  "Content-Type": "text/html",
+  ...
+}
+```
+:::
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+Wikipedia の統計APIに触れる
+:::
+
+
+## Wikipedia Pageviews API
+
+- Wikipedia財団が公開している **ページビュー統計** のAPI
+- まずは「2025/6/27 にアクセス数が多かった記事ランキング」を取ってみる
+
+```python
+import requests
+
+url = "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia/all-access/2025/06/27"
+headers = {'User-Agent': 'metro-cit.ac.jp/lesson'}
+
+response = requests.get(url, headers=headers)
+data = response.json()
+print(data, type(data))
+```
+
+
+## ヘッダーを送る理由
+
+- Wikipedia の API は **User-Agent がないと応答を返さない**
+- 本来はChromeなどブラウザ名を入れる場所
+- 今回は教育目的を示す架空のもの `metro-cit.ac.jp/lesson` を使う
+
+::: {.callout-warning}
+## ヘッダーなしだと
+- アクセス拒否でデータが取れない
+- 「公開API」でもヘッダー必須なケースは多い
+- API使用前にドキュメントで **必須ヘッダーを確認** する習慣を
+:::
+
+
+## なぜ `.dict()` ではなく `.json()` なのか
+
+- `.json()` はAPIが返すデータを **dict として受け取る** メソッド
+- では JSON とは？
+
+
+## JSON とは
+
+- **JavaScript Object Notation** の略
+- 「ある文法に従って書かれた **ただのテキスト**」
+- CSVも仲間（カンマ区切りの構造化テキスト）
+- **Webの世界ではデファクトスタンダード**
+- まず名前を覚える
+
+```python
+print(response.text)   # 中身は生のJSONテキスト
+```
+
+```text
+{"items":[{"project":"ja.wikipedia","access":"all-access",
+           "year":"2025","month":"06", ...}]}
+```
+
+- `.json()` は **このテキストを dict に変換** するメソッド
+
+
+## （余談）手動で JSON → dict
+
+- 標準ライブラリ `json` で同じことができる
+- pip 不要
+
+```python
+import requests
+import json
+
+response = requests.get(url, headers=headers)
+res_dict = json.loads(response.text)
+print(type(res_dict), res_dict)
+# <class 'dict'> {'items': [{'project': 'ja.wikipedia', ...
+```
+
+::: {.callout-tip}
+## 普段は `.json()` でOK
+- `requests` が内部でやってくれているだけ
+- 「中で何をしているか」を知っておくと **エラー時に強い**
+:::
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+APIとエンドポイントの構造
+:::
+
+
+## API と エンドポイント
+
+- **API**（**A**pplication **P**rograming **I**nterface）
+   - データ取得などのために公開された「窓口」
+- **エンドポイント**
+   - API の中の、具体的な処理を呼ぶ **個別のURL**
+- 例
+   - `https://wikimedia.org/api/` 配下が API
+   - `/metrics/pageviews/top/...` がエンドポイントのひとつ
+
+
+## URLにパラメータが埋め込まれている
+
+- エンドポイントの一部に **値を直接埋め込む** タイプ
+- 今回のAPIだと…
+
+```text
+https://wikimedia.org/api/rest_v1/metrics/pageviews/top/
+    {プロジェクト} / {アクセス方法} / {日付}
+```
+
+| パラメータ | 例の値 | 意味 | 他の選択肢 |
+|---|---|---|---|
+| プロジェクト | ja.wikipedia | 日本語Wikipedia | en.wikipedia, commons.wikimedia など |
+| アクセス方法 | all-access | 全アクセス | desktop, mobile-app, mobile-web |
+| 日付 | 2025/06/27 | 指定日 | YYYY/MM/DD の任意の日付 |
+
+::: {.callout-note}
+## 覚える必要はない
+- API ごとにURL構造はバラバラ
+- 使うときに **公式ドキュメントを見る** のが正解
+:::
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+個別ページのアクセス推移を取る
+:::
+
+
+## 別のエンドポイント：per-article
+
+- 特定の記事の、任意の期間のアクセス数（日単位 / 月単位）を返す
+
+```text
+https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/
+    {project} / {access} / {agent} / {article} / {granularity} / {start} / {end}
+```
+
+| パラメータ | 必須 | 選択肢 |
+|---|---|---|
+| **project** | ✓ | ja.wikipedia など |
+| **access** | ✓ | all-access / desktop / mobile-app / mobile-web |
+| **agent** | ✓ | all-agents / **user** / spider / automated |
+| **article** | ✓ | 任意の記事名（スペースは `_`） |
+| **granularity** | ✓ | daily / monthly |
+| **start** | ✓ | YYYYMMDD |
+| **end** | ✓ | YYYYMMDD |
+
+
+## 産技高専のページビューを取得する
+
+- 過去1年分の日別アクセス数を取り、最大・最小・平均・分散を出す
+
+```python
+import requests
+import numpy as np
+
+url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
+       "ja.wikipedia/all-access/user/"
+       "東京都立産業技術高等専門学校/daily/20240401/20250328")
+headers = {'User-Agent': 'metro-cit.ac.jp/lesson'}
+
+response = requests.get(url, headers=headers)
+data = response.json()
+
+# data['items'] は list of dict
+views = np.array([item['views']     for item in data['items']])
+dates = np.array([item['timestamp'] for item in data['items']])
+
+max_i = np.argmax(views)
+min_i = np.argmin(views)
+
+print(f"最大: {views[max_i]}回  {dates[max_i]}")
+print(f"最小: {views[min_i]}回  {dates[min_i]}")
+print(f"平均: {np.mean(views):.1f}回")
+print(f"分散: {np.var(views):.1f}")
+```
+
+
+## 過去の章が一気に効いてくる
+
+- `data['items']` は **list of dict**（[dict章](dict.qmd) でやった形）
+- 内包表記でフィールド抽出（[list章](list.qmd)）
+- `np.array()` で `ndarray` 化（[numpy章](numpy.qmd)）
+- `np.mean / np.var` で統計量
+- `np.argmax / argmin` は **インデックス** を返す（値ではない点に注意）
+
+::: {.callout-tip}
+## 値もインデックスも両方欲しいとき
+- `max_i = np.argmax(views)` で index を得てから
+- `views[max_i]` で値、`dates[max_i]` で対応する日付
+- **同じ index で並ぶ配列同士をリンクさせる** のはNumPy/データ処理の頻出パターン
+:::
+
+
+## まずは可視化する
+
+- 数値だけでは見落とすので **まず描く** — [可視化章](visualize.qmd) の大原則
+- 同じURL/ヘッダーで取得したあと `plt.plot(views)` するだけ
+
+```{python}
+#| echo: false
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+days = 365
+views = np.random.poisson(lam=15, size=days)
+views[170] = 1200          # 1日だけ突出（イメージ）
+
+fig, ax = plt.subplots(figsize=(6, 3))
+ax.plot(views, color="#2266CC", linewidth=1)
+ax.set_title("Page View Trend (sample image)")
+ax.set_xlabel("days")
+ax.set_ylabel("Views")
+ax.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "コードを見る"
+import requests
+import matplotlib.pyplot as plt
+import numpy as np
+
+url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
+       "ja.wikipedia/all-access/user/"
+       "東京都立産業技術高等専門学校/daily/20240401/20250328")
+headers = {'User-Agent': 'metro-cit.ac.jp/lesson'}
+response = requests.get(url, headers=headers)
+data = response.json()
+
+views = np.array([item['views'] for item in data['items']])
+
+plt.plot(views)
+plt.title('Page View Trend')
+plt.xlabel('days')
+plt.ylabel('Views')
+plt.show()
+
+print(f"Max:  {np.max(views)}")
+print(f"Min:  {np.min(views)}")
+print(f"Mean: {np.mean(views):.1f}")
+print(f"Var:  {np.var(views):.1f}")
+```
+
+::: {.callout-note}
+## 1日だけ突出している
+- ほぼ平坦な中、**1日だけ大きな山**
+- なにかニュース・受験イベントなどで参照が増えた可能性
+- **数値だけ見ていると気づけない** ← アンスコムの教訓と同じ
+:::
+
+
+## まとめ
+
+| やりたいこと | コード |
+|---|---|
+| アクセス | `requests.get(url, headers=...)` |
+| 状態確認 | `response.status_code`（200 = OK） |
+| 本文(str) | `response.text` |
+| JSON → dict | `response.json()` |
+| ヘッダー | `response.headers` |
+| User-Agent | `headers={'User-Agent': '...'}` |
+| 値の集計 | `np.array([d['views'] for d in items])` → `mean/var/argmax` |
+
+- Web から取った dict は今まで通り `for` / `items()` / `np.array()` で処理できる
+- 最初の一手は **常に可視化**
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+演習
+:::
+
+
+## 演習1：desktop と mobile-web の比較
+
+- 同じ期間（2024/04/01 – 2025/03/28）で **API を2回呼ぶ**
+- `access` を `desktop` と `mobile-web` に切り替える
+- それぞれの **最大・最小・平均・分散** を print する
+
+::: {.callout-tip}
+## ヒント
+- 取得結果を `views_desktop` と `views_mobile_web` に分けて入れる
+- 同じ `headers` を使い回せる
+- 関数化すると重複が消えてスッキリ
+:::
+
+
+## 演習2：1枚のグラフに2本の折れ線
+
+- `views_desktop` と `views_mobile_web` を **同じグラフに重ねる**
+- `plt.plot()` を 2回呼ぶだけ
+- グラフの **タイトルに max / min / mean** を入れる
+- 日本語タイトルは **文字化けする** ので英数字で
+
+::: {.callout-warning}
+## やってはいけない
+- 軸を揃えず2枚並べる → 比較しづらい
+- 軸の範囲を片方だけ狭める → 印象操作（[可視化章](visualize.qmd) の「y軸の罠」参照）
+:::
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+import requests
+import matplotlib.pyplot as plt
+import numpy as np
+
+headers = {'User-Agent': 'metro-cit.ac.jp/lesson'}
+article = "東京都立産業技術高等専門学校"
+base = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
+        f"ja.wikipedia/{{access}}/user/{article}/daily/20240401/20250328")
+
+def fetch_views(access):
+    url = base.format(access=access)
+    data = requests.get(url, headers=headers).json()
+    return np.array([item['views'] for item in data['items']])
+
+views_desktop    = fetch_views("desktop")
+views_mobile_web = fetch_views("mobile-web")
+
+plt.plot(views_desktop,    label="desktop")
+plt.plot(views_mobile_web, label="mobile-web")
+plt.legend()
+
+title = (f"max={max(views_desktop.max(), views_mobile_web.max())}  "
+         f"min={min(views_desktop.min(), views_mobile_web.min())}  "
+         f"mean={(views_desktop.mean() + views_mobile_web.mean()) / 2:.1f}")
+plt.title(title)
+plt.xlabel("days"); plt.ylabel("Views")
+plt.show()
+```
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+付録
+:::
+
+
+## 実際のブラウザのUser-Agent
+
+- 普段ブラウザでWebを見るときも **裏でヘッダーが飛んでいる**
+- サーバはこの値を見て **PC / スマホ / OS / ブラウザ** を判別している
+- レスポンシブやリダイレクトの分岐に使われる
+
+| ブラウザ | User-Agent |
+|---|---|
+| Chrome (Windows) | `Mozilla/5.0 (Windows NT 10.0; Win64; x64) ... Chrome/119.0.0.0 Safari/537.36` |
+| Chrome (Mac) | `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) ... Chrome/119.0.0.0 Safari/537.36` |
+| iOS Safari (iPhone) | `Mozilla/5.0 (iPhone; CPU iPhone OS 17_1 like Mac OS X) ... Mobile/15E148 Safari/604.1` |
+| iOS Safari (iPad) | `Mozilla/5.0 (iPad; CPU OS 17_1 like Mac OS X) ... Mobile/15E148 Safari/604.` |
+
+
+## ここまでの流れ
+
+- **道具→材料** へ：今回は Web から材料を仕入れる
+- `requests` で **アクセス**、`.text / .json() / .headers` で **取り出す**
+- **API / エンドポイント / パラメータ** の概念
+- Wikipedia Pageviews API で **実データを取得**
+- NumPy で **集計**、matplotlib で **可視化**
+- 大原則 *Always plot your data first.* を **API由来のデータ** にも適用
+
+
+## 参考リンク
+
+- [requests Documentation](https://requests.readthedocs.io/)
+- [Wikimedia REST API](https://wikimedia.org/api/rest_v1/)
+- [Pageviews API ドキュメント](https://www.mediawiki.org/wiki/Wikimedia_REST_API)
+- [HTTPステータスコード一覧 (MDN)](https://developer.mozilla.org/ja/docs/Web/HTTP/Status)

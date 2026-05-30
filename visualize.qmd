@@ -1,0 +1,668 @@
+---
+title: "データの可視化"
+subtitle: "matplotlibで「見える化」する"
+---
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+情報可視化とは
+:::
+
+## 情報可視化とは？
+
+- データや情報がもつ **関係性** や **特徴** を、視覚的に見て理解できるようにすること
+   - 見えないものを **「見える」化**
+   - 人間の **視覚・直感・経験** で共通に扱えるようにする
+
+::: {.callout-tip}
+## なぜ「見る」のか
+- 数字の表を眺めても気づけないパターン（外れ値、相関、周期性、クラスタ）が、図にすると一瞬で分かる
+- **視覚は最強の前処理**
+:::
+
+
+## 古典的な実例：ジョン・スノウのコレラ地図
+
+- 1854年、ロンドンでコレラが大流行
+- 医師 **John Snow** が、感染者の家と井戸の位置を **地図にプロット**
+- **Broad Street の井戸** の周囲に感染者が集中していることを発見
+   - 「水が感染源」という仮説を視覚で立証
+- **疫学** という分野の出発点とされる
+
+::: {.callout-note}
+## ここでのポイント
+- **表データを地図に重ねた** だけ
+- 可視化の本質は「データに **適切な空間（軸）** を与えること」
+:::
+
+
+## 現代の可視化実例
+
+| ジャンル | サンプル | URL |
+|---|---|---|
+| 人口動態 | Population Pyramids of the World | <https://www.populationpyramid.net/world/2024/> |
+| 未来予測ゲーム | INED "Tomorrow's Population" | <https://www.ined.fr/en/everything_about_population/population-games/tomorrow-population/> |
+| 気候変動 | #ShowYourStripes | <https://showyourstripes.info/> |
+| 統計バブル | Gapminder "Wealth & Health of Nations" | <https://www.gapminder.org/tools/> |
+| ネットワーク | Force-Directed Graph | <https://observablehq.com/@d3/force-directed-graph> |
+| 地理 + 時系列 | NYC CitiBike | <https://users.flatironinstitute.org/~kmclennan/> |
+| 3D点群 | Cesium "3D Tiles Point" | <https://sandcastle.cesium.com/> |
+
+::: {.callout-tip}
+## 自分の興味で1つ開いてみよう
+- 動的なものほど **データ量と表現力の関係** がよく分かる
+:::
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+データを扱う際の大原則
+:::
+
+## "Always plot your data first."
+
+> **あらゆるデータは、まず最初に「見て」みる**
+
+- 平均や分散などの **統計量だけでは騙される**
+- 図にしてはじめて気づける構造がある
+- データ分析の最初の一手は **常にプロット**
+
+
+## 例：アンスコムの四重奏
+
+- **F. J. Anscombe（1973）** が示した4つのデータセット
+- $x$ の平均・分散、$y$ の平均・分散、$x,y$ の相関係数、回帰直線
+- これらが **4つともほぼ完全に一致** する
+- でも、図にすると **まったく違うデータ**
+
+```{python}
+#| echo: false
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+
+x1 = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])
+y1 = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68])
+y2 = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74])
+y3 = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73])
+x4 = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])
+y4 = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89])
+
+fig, axes = plt.subplots(2, 2, figsize=(6, 5))
+for ax, (x, y, t) in zip(axes.ravel(), [(x1, y1, "I"), (x1, y2, "II"), (x1, y3, "III"), (x4, y4, "IV")]):
+    ax.scatter(x, y, color="#2266CC")
+    m, b = np.polyfit(x, y, 1)
+    xs = np.linspace(2, 20, 50)
+    ax.plot(xs, m * xs + b, color="#CC4444", linewidth=1)
+    ax.set_xlim(2, 20)
+    ax.set_ylim(2, 14)
+    ax.set_title(f"dataset {t}", fontsize=10)
+    ax.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+::: {.callout-warning}
+## 教訓
+- **数値だけ見て分かった気にならない**
+- 平均や分散はデータの一面でしかない
+:::
+
+- ここから4つのデータを **1つずつ** 見ていく
+
+
+## アンスコムの四重奏 ①：素直なデータ
+
+- ばらつきはあるが **ゆるやかに直線的に増える**
+- 線形回帰の前提（直線関係 + 均一なばらつき）が成立
+- 「想定どおり」の典型データ
+
+```{python}
+#| echo: false
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])
+y = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68])
+
+fig, ax = plt.subplots(figsize=(4, 3))
+ax.scatter(x, y, color="#2266CC")
+m, b = np.polyfit(x, y, 1)
+xs = np.linspace(2, 20, 50)
+ax.plot(xs, m * xs + b, color="#CC4444", linewidth=1)
+ax.set_xlim(2, 20); ax.set_ylim(2, 14)
+ax.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "コードを見る"
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])
+y = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96,
+              7.24, 4.26, 10.84, 4.82, 5.68])
+
+plt.scatter(x, y)
+m, b = np.polyfit(x, y, 1)        # 1次回帰
+plt.plot(x, m * x + b, color="red")
+plt.show()
+```
+
+::: {.callout-tip}
+## 教訓
+- 回帰直線が **データの要約として正しく機能**
+- 4つの中で線形モデルが成立する **唯一の例**
+:::
+
+
+## アンスコムの四重奏 ②：実は曲線
+
+- `y` が **滑らかな曲線**（2次関数的）を描いている
+- 直線を当てはめても本質を捉えられない
+- 統計量だけ見ていると「直線で説明できた」と思い込みやすい
+
+```{python}
+#| echo: false
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])
+y = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74])
+
+fig, ax = plt.subplots(figsize=(4, 3))
+ax.scatter(x, y, color="#2266CC")
+m, b = np.polyfit(x, y, 1)
+xs = np.linspace(2, 20, 50)
+ax.plot(xs, m * xs + b, color="#CC4444", linewidth=1)
+ax.set_xlim(2, 20); ax.set_ylim(2, 14)
+ax.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "コードを見る"
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])
+y = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10,
+              6.13, 3.10, 9.13, 7.26, 4.74])
+
+plt.scatter(x, y)
+m, b = np.polyfit(x, y, 1)
+plt.plot(x, m * x + b, color="red")
+plt.show()
+```
+
+::: {.callout-warning}
+## 教訓
+- そもそも **直線で表現すべきでない** データ
+- 多項式回帰や対数変換などモデルを変える必要あり
+- 統計量だけだと **モデル選択ミス** に気づけない
+:::
+
+
+## アンスコムの四重奏 ③：外れ値が1個
+
+- ほぼ **完全な直線** に並んでいる
+- たった1点だけ大きく外れている
+- その1点に **回帰直線が引っ張られている**
+
+```{python}
+#| echo: false
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])
+y = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73])
+
+fig, ax = plt.subplots(figsize=(4, 3))
+ax.scatter(x, y, color="#2266CC")
+m, b = np.polyfit(x, y, 1)
+xs = np.linspace(2, 20, 50)
+ax.plot(xs, m * xs + b, color="#CC4444", linewidth=1)
+ax.set_xlim(2, 20); ax.set_ylim(2, 14)
+ax.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "コードを見る"
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])
+y = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84,
+              6.08, 5.39, 8.15, 6.42, 5.73])
+
+plt.scatter(x, y)
+m, b = np.polyfit(x, y, 1)
+plt.plot(x, m * x + b, color="red")
+plt.show()
+```
+
+::: {.callout-warning}
+## 教訓
+- **外れ値（outlier）** に統計量が支配される
+- 入力ミスとして除外するか、本物の現象として尊重するか
+- **図を見ないと判断できない**
+:::
+
+
+## アンスコムの四重奏 ④：x が動かない
+
+- `x` の値が **ほぼすべて 8**
+- 1点だけ `x=19` にあり、その1点が「直線がある」ように見せている
+- 同じ条件で測定しすぎていて、`x` が振れていない
+
+```{python}
+#| echo: false
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])
+y = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89])
+
+fig, ax = plt.subplots(figsize=(4, 3))
+ax.scatter(x, y, color="#2266CC")
+m, b = np.polyfit(x, y, 1)
+xs = np.linspace(2, 20, 50)
+ax.plot(xs, m * xs + b, color="#CC4444", linewidth=1)
+ax.set_xlim(2, 20); ax.set_ylim(2, 14)
+ax.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "コードを見る"
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])
+y = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04,
+              5.25, 12.50, 5.56, 7.91, 6.89])
+
+plt.scatter(x, y)
+m, b = np.polyfit(x, y, 1)
+plt.plot(x, m * x + b, color="red")
+plt.show()
+```
+
+::: {.callout-warning}
+## 教訓
+- **サンプリングが偏っている**
+- 1点だけで「相関がある」と言っているのと同じ
+- **実験計画（データの取り方）そのもの** を疑うべきケース
+:::
+
+
+## 4つを並べると…
+
+| データ | 見た目 | 何が問題か |
+|---|---|---|
+| ① 素直 | 緩やかな散布 + 直線 | 問題なし — 線形回帰がうまく機能 |
+| ② 曲線 | 2次関数的 | モデル選択が間違っている |
+| ③ 外れ値 | 直線 + 1個ハズレ | 外れ値が統計量を支配 |
+| ④ x偏り | 1点除いて全部同じ x | サンプリングが偏っている |
+
+- **統計量は4つとも同じ**
+- 図にしないと **絶対に気づけない**
+
+
+## 探索的データ解析（EDA）
+
+- **John Wilder Tukey** が1977年の著書 *Exploratory Data Analysis* で提唱
+   - 「まずデータを **見て** から仮説を立てる」
+   - 統計学の前段として現在も基本中の基本
+- 箱ひげ図・幹葉図など、Tukeyが広めた可視化手法は多数
+
+::: {.callout-note}
+## Tukey という人
+**"bit"**（**bi**nary digi**t** の短縮形）や **"software"** という用語の普及にも関わった、計算機文化の偉人。
+:::
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+matplotlibでグラフを描く
+:::
+
+
+## matplotlib とは
+
+- Pythonにおけるグラフ描画の **デファクトスタンダード**
+- 内部はC実装で高速、NumPyの `ndarray` と相性が良い
+- 派生ライブラリ（seaborn、pandas plotting、Plotly）も多くが matplotlib をベースにしている
+
+ターミナルからインストール：
+
+```shell
+pip install matplotlib
+```
+
+冒頭で import（慣習的に `plt` というエイリアス）：
+
+```python
+import matplotlib.pyplot as plt
+```
+
+
+## まずはドキュメントを眺める（重要）
+
+- 公式の **Plot types** ページに、描けるグラフの一覧がある
+- <https://matplotlib.org/stable/plot_types/index.html>
+
+::: {.callout-tip}
+## 上達のコツ
+- まず **何ができるかを頭に入れる**
+- やりたい図ができたら、似たギャラリーを探してコードを真似る
+- **自前でゼロから書かない** のが鉄則
+:::
+
+
+## 1. 点のプロット
+
+- 一番基本の `plt.plot(x, y, 'o')` — 'o' は **マーカー** を表す
+- `x` も `y` も **`ndarray`** や **`list`** でOK
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.arange(4)       # [0 1 2 3]
+y = [10, 20, 5, 30]
+
+plt.plot(x, y, 'o')    # 'o' で点だけプロット
+plt.show()
+```
+
+
+## 2. 線のグラフ
+
+- 第3引数を **省略すると折れ線**
+- `'o-'` だと **点＋線**
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.arange(10)      # [0 ... 9]
+y = x + 5
+
+plt.plot(x, y)         # 折れ線
+plt.show()
+```
+
+
+## 3. 表示範囲の指定（xlim / ylim）
+
+- `plt.xlim(a, b)` / `plt.ylim(a, b)` で軸の範囲を固定
+- 3次元プロットでは `zlim` も使える
+- 何も指定しないと **データの範囲＋少し余白** が自動で選ばれる
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.arange(10)
+y = x + 5
+
+plt.xlim(0, 10)        # x軸: 0〜10
+plt.ylim(0, 15)        # y軸: 0〜15（あえて0から見せる）
+plt.plot(x, y, 'o-')
+plt.show()
+```
+
+::: {.callout-warning}
+## y軸の罠
+- 範囲をデータに合わせると **小さな変化が大きく見える** ことがある
+- 比較するグラフは **y軸を揃える** か **0から見せる** のが原則
+:::
+
+
+## 4. ラベル・グリッド・タイトル・凡例
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.arange(10, 200)
+
+y1 = x ** (1/2)
+plt.plot(x, y1, 'o-', label="sqrt(x)")     # 凡例ラベル
+
+y2 = x ** (1/3)
+plt.plot(x, y2, 'o-', label="cbrt(x)")
+
+plt.legend()                                # 凡例を表示
+plt.title("1/2 vs 1/3 power")               # タイトル
+plt.xlabel("x value")                       # x軸ラベル
+plt.ylabel("y value")                       # y軸ラベル
+plt.grid(True)                              # グリッド線
+plt.show()
+```
+
+::: {.callout-tip}
+## 装飾の優先順位
+- **軸ラベル**（何の量か）
+- **凡例**（どの線が何か）
+- **タイトル**（何のグラフか）
+- この3つが揃っていない図は **資料に載せてはいけない**
+:::
+
+
+## 5. 複数のグラフを並べる（subplot）
+
+- `plt.subplot(行数, 列数, 場所番号)` で碁盤の目状に並べる
+- 場所番号は **1始まり、左上から右へ**
+- 例：`plt.subplot(2, 2, 3)` は2×2の3番目（左下）
+
+```text
+1 | 2
+--+--
+3 | 4
+```
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.arange(5)
+y = x ** 2
+
+plt.subplot(1, 2, 1)        # 1行2列の左
+plt.plot(x, y, '-')
+
+plt.subplot(1, 2, 2)        # 1行2列の右
+plt.bar(x, y)
+
+plt.tight_layout()          # 余白を自動調整
+plt.show()
+```
+
+
+## 6. 二次元データの散布図
+
+- 大量の `(x, y)` を点で打つ → 分布や相関が見える
+- `alpha` で **透明度** を指定すると重なりが分かりやすい
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 0〜1 の一様乱数を 200点
+x = np.random.rand(200)
+y = np.random.rand(200)
+
+plt.scatter(x, y, alpha=0.7)
+plt.xlabel("X (0-1)")
+plt.ylabel("Y (0-1)")
+plt.title("2D scatter: uniform random")
+plt.axis("equal")           # 縦横を同じスケールに
+plt.show()
+```
+
+::: {.callout-tip}
+## 重なりが多いとき
+- `alpha=0.3` などで透過 → 密度が見える
+- 点数が万を超えるなら **ヒートマップ** や **hexbin** を検討
+:::
+
+
+## 7. 三次元データの散布図
+
+- 3D は `add_subplot(projection="3d")` で軸オブジェクトを作る
+- `plt.◯◯` ではなく **`ax.◯◯`** で操作する点に注意
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.random.rand(300)
+y = np.random.rand(300)
+z = np.random.rand(300)
+
+fig = plt.figure()
+ax = fig.add_subplot(projection="3d")
+ax.scatter(x, y, z, alpha=0.6)
+
+ax.set_xlabel("X")
+ax.set_ylabel("Y")
+ax.set_zlabel("Z")
+plt.show()
+```
+
+::: {.callout-note}
+## 3Dは多用しない
+- 紙やスライドだと **奥行きが伝わらない** ことが多い
+- インタラクティブに回せない場面では **2Dの分割表示** のほうが伝わる
+:::
+
+
+## まとめ
+
+| 操作 | コード |
+|------|------|
+| 点だけ | `plt.plot(x, y, 'o')` |
+| 折れ線 | `plt.plot(x, y)` |
+| 棒グラフ | `plt.bar(x, y)` |
+| 散布図 | `plt.scatter(x, y)` |
+| 軸の範囲 | `plt.xlim(a, b)` / `plt.ylim(a, b)` |
+| 軸ラベル | `plt.xlabel("...")` / `plt.ylabel("...")` |
+| タイトル | `plt.title("...")` |
+| 凡例 | `plt.legend()`（要 `label=...`） |
+| グリッド | `plt.grid(True)` |
+| 並べる | `plt.subplot(行, 列, 番号)` |
+| 3D散布 | `ax = fig.add_subplot(projection="3d")` |
+
+
+## 演習1：二次関数を描く
+
+- $y = x^2 - 2x + 3$ を **定義域 $-2 \leq x \leq 5$** で描こう
+- 手順
+  1. `np.arange` または `np.linspace` で `x` を作る（線が滑らかになるように細かく）
+  2. `y` を計算
+  3. プロット — 折れ線でもOK
+  4. **Y軸は0から見えるように** `ylim` を設定
+  5. タイトルとラベルもつける
+
+::: {.callout-tip}
+## 平方完成で検算
+- $y = (x - 1)^2 + 2$ なので **頂点は $(1, 2)$**
+- グラフが合っているか確認しよう
+:::
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-2, 5, 200)
+y = x ** 2 - 2 * x + 3
+
+plt.plot(x, y)
+plt.scatter([1], [2], color="red", zorder=3)   # 頂点
+plt.xlim(-2, 5)
+plt.ylim(0, 20)                                 # 0から見せる
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title("y = x^2 - 2x + 3")
+plt.grid(True)
+plt.show()
+```
+
+
+## 演習2：アンスコムの四重奏を自分で
+
+- [本ページ冒頭のアンスコムの四重奏](#例アンスコムの四重奏) を再現してみよう
+- 手順
+  1. 4つのデータセットを `np.array` で用意（値は本ページのコードから流用してOK）
+  2. `plt.subplot(2, 2, i)` で2×2に並べる
+  3. それぞれ `scatter` でプロット
+  4. `np.polyfit(x, y, 1)` で1次回帰直線を求め、`plot` で重ねる
+  5. すべてのサブプロットで `xlim` / `ylim` を **揃える**
+
+::: {.callout-note}
+## なぜ軸を揃える？
+- 4つのプロットを **公平に比較** するため
+- 違うスケールで並べると印象操作になる
+:::
+
+
+## 演習3：好きな画像を表示
+
+- matplotlib は **画像も描画できる**
+- 公式チュートリアルを参考に試そう
+- <https://matplotlib.org/stable/tutorials/images.html>
+
+```python
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+img = mpimg.imread("path/to/your.png")
+plt.imshow(img)
+plt.axis("off")        # 軸を消す
+plt.show()
+```
+
+
+## ここまでの流れ
+
+- **可視化の歴史**：ジョン・スノウのコレラ地図 → 現代のインタラクティブ可視化
+- **大原則**：*Always plot your data first.* — アンスコムの四重奏が示す数値の限界
+- **matplotlib**：最小構造（plot/scatter/bar） → 修飾（ラベル/タイトル/凡例/グリッド） → 応用（subplot, 2D/3D散布）
+
+## 参考リンク
+
+- [Matplotlib "Pyplot Tutorial"](https://matplotlib.org/stable/tutorials/introductory/pyplot.html)
+- [Matplotlib "Plot types"](https://matplotlib.org/stable/plot_types/index.html)
+- *Python Data Science Handbook* — Chapter 3 Visualizations
+- [Anscombe's quartet (Wikipedia)](https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%82%B9%E3%82%B3%E3%83%A0%E3%81%AE%E5%9B%9B%E9%87%8D%E5%A5%8F)
