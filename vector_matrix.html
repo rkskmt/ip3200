@@ -552,11 +552,11 @@ rkskmt
 </ul></li>
 </ul>
 <div style="width: 30%; margin: 0 auto;">
-<div id="0cb410f9" class="cell" data-execution_count="1">
+<div id="e23942a6" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="vector_matrix_files/figure-revealjs/cell-2-output-1.png" width="273" height="278"></p>
+<p><img data-src="vector_matrix_files/figure-revealjs/cell-2-output-1.png" width="271" height="276"></p>
 </figure>
 </div>
 </div>
@@ -626,11 +626,11 @@ rkskmt
 <span id="cb2-6"><a></a><span class="bu">print</span>(a <span class="op">+</span> b)   <span class="co"># [3 4]</span></span>
 <span id="cb2-7"><a></a><span class="bu">print</span>(a <span class="op">-</span> b)   <span class="co"># [-1  2]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="75783a58" class="cell" data-execution_count="2">
+<div id="6d6ba72d" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="vector_matrix_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="230" height="259"></p>
+<p><img data-src="vector_matrix_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="229" height="258"></p>
 </figure>
 </div>
 </div>
@@ -658,7 +658,7 @@ rkskmt
 <span id="cb3-4"><a></a></span>
 <span id="cb3-5"><a></a><span class="bu">print</span>(a <span class="op">*</span> <span class="dv">2</span>)   <span class="co"># [2 4]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="20a58901" class="cell" data-execution_count="3">
+<div id="d654b63b" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -837,7 +837,7 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 10 \\ 4 &amp; 5 &amp; 6 &amp; 11 \\ 
 =
 \begin{pmatrix} 19 &amp; 22 \\ 43 &amp; 50 \end{pmatrix}
 \]</span></p>
-<div id="1edc17da" class="cell" data-execution_count="4">
+<div id="2a583fb7" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1101,12 +1101,12 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 \begin{pmatrix} 2 &amp; 0 \\ 0 &amp; 3 \end{pmatrix}
 \begin{pmatrix} 1 \\ 1 \end{pmatrix}
 \]</span></p>
-<p>（３）以下の連立方程式を <code>np.linalg.solve()</code> で解け。</p>
+<p>（３）以下の連立方程式を <code>np.linalg.solve()</code> で解け。また、<code>np.linalg.solve()</code>を使わずに逆行列でもとき、結果を比較せよ</p>
 <p><span class="math display">\[
 \begin{cases} x + y = 4 \\ x - y = 2 \end{cases}
 \]</span></p>
 <p>（４）<span class="math inline">\(\mathbf{a} = \begin{pmatrix} 6 \\ 8 \end{pmatrix}\)</span> のノルムと単位ベクトルを求めよ。</p>
-<div id="2165a687" class="cell" data-execution_count="5">
+<div id="aa4efefe" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1124,13 +1124,20 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 <span id="cb10-13"><a></a><span class="co"># (3)</span></span>
 <span id="cb10-14"><a></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>]])</span>
 <span id="cb10-15"><a></a>b <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">2</span>])</span>
-<span id="cb10-16"><a></a>x <span class="op">=</span> np.linalg.solve(A, b)</span>
-<span id="cb10-17"><a></a><span class="bu">print</span>(x)  <span class="co"># [3. 1.] → x=3, y=1</span></span>
+<span id="cb10-16"><a></a>x1 <span class="op">=</span> np.linalg.solve(A, b)</span>
+<span id="cb10-17"><a></a><span class="bu">print</span>(x1)  <span class="co"># [3. 1.] → x=3, y=1</span></span>
 <span id="cb10-18"><a></a></span>
-<span id="cb10-19"><a></a><span class="co"># (4)</span></span>
-<span id="cb10-20"><a></a>a <span class="op">=</span> np.array([<span class="dv">6</span>, <span class="dv">8</span>])</span>
-<span id="cb10-21"><a></a><span class="bu">print</span>(np.linalg.norm(a))       <span class="co"># 10.0</span></span>
-<span id="cb10-22"><a></a><span class="bu">print</span>(a <span class="op">/</span> np.linalg.norm(a))   <span class="co"># [0.6 0.8]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-19"><a></a><span class="co"># 逆行列で解く</span></span>
+<span id="cb10-20"><a></a>x2 <span class="op">=</span> np.linalg.inv(A) <span class="op">@</span> b</span>
+<span id="cb10-21"><a></a><span class="bu">print</span>(x2)  <span class="co"># [3. 1.]</span></span>
+<span id="cb10-22"><a></a></span>
+<span id="cb10-23"><a></a><span class="co"># 比較</span></span>
+<span id="cb10-24"><a></a><span class="bu">print</span>(np.allclose(x1, x2))  <span class="co"># True</span></span>
+<span id="cb10-25"><a></a></span>
+<span id="cb10-26"><a></a><span class="co"># (4)</span></span>
+<span id="cb10-27"><a></a>a <span class="op">=</span> np.array([<span class="dv">6</span>, <span class="dv">8</span>])</span>
+<span id="cb10-28"><a></a><span class="bu">print</span>(np.linalg.norm(a))       <span class="co"># 10.0</span></span>
+<span id="cb10-29"><a></a><span class="bu">print</span>(a <span class="op">/</span> np.linalg.norm(a))   <span class="co"># [0.6 0.8]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -1196,7 +1203,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 <span id="cb12-6"><a></a><span class="bu">print</span>(a_hat)                  <span class="co"># [0.6 0.8]</span></span>
 <span id="cb12-7"><a></a><span class="bu">print</span>(np.linalg.norm(a_hat))  <span class="co"># 1.0</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="239eb61c" class="cell" data-execution_count="6">
+<div id="f764a755" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1266,7 +1273,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <li><span class="math inline">\(|\mathbf{b}|\cos\theta\)</span> <span class="fw-colon">：</span><span class="math inline">\(\mathbf{b}\)</span> を <span class="math inline">\(\mathbf{a}\)</span> の方向に<strong>射影</strong>した長さ</li>
 <li>内積 = 「<span class="math inline">\(\mathbf{b}\)</span>の<span class="math inline">\(\mathbf{a}\)</span>方向に対する成分」× 「<span class="math inline">\(\mathbf{a}\)</span>の長さ<span class="math inline">\(|\mathbf{a}|\)</span>」</li>
 </ul>
-<div id="8916ff41" class="cell" data-execution_count="7">
+<div id="796a9bf5" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1285,7 +1292,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <li>つまり、射影の長さがゼロ → 「<span class="math inline">\(\mathbf{a}\)</span> 方向の成分がない」</li>
 </ul></li>
 </ul>
-<div id="ee9eb92e" class="cell" data-execution_count="8">
+<div id="b5f94c06" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1308,8 +1315,8 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 </div>
 </div>
 </section>
-<section id="参考ベクトルの掛け算-3外積" class="slide level2">
-<h2>（参考）ベクトルの掛け算 3（外積）</h2>
+<section id="ベクトルの掛け算-3外積" class="slide level2">
+<h2>ベクトルの掛け算 3（外積）</h2>
 <ul>
 <li><strong>外積</strong>（cross product）は3次元ベクトル同士から<strong>新しいベクトル</strong>を作る
 <ul>
@@ -1317,6 +1324,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <li>外積<span class="fw-colon">：</span>ベクトル → <strong>ベクトル</strong></li>
 </ul></li>
 <li>結果は元の2つのベクトルに<strong>直交</strong>する方向を向く</li>
+<li>NumPyでは<code>np.cross(a, b)</code></li>
 </ul>
 <p><span class="math display">\[
 \mathbf{a} \times \mathbf{b} =
@@ -1331,14 +1339,86 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <span id="cb14-4"><a></a>b <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>])</span>
 <span id="cb14-5"><a></a></span>
 <span id="cb14-6"><a></a><span class="bu">print</span>(np.cross(a, b))  <span class="co"># [0 0 1] ← a, b 両方に垂直</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="応用例多角形に対する内外判定" class="slide level2">
+<h2>応用例<span class="fw-colon">：</span>多角形に対する内外判定</h2>
+<div id="7f7f4083" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="vector_matrix_files/figure-revealjs/cell-10-output-1.png" class="quarto-figure quarto-figure-center" width="779" height="342"></p>
+</figure>
+</div>
+</div>
+</div>
 <ul>
-<li><strong>どこで使われるか</strong>
+<li>三角形ABCと点Pがある</li>
+<li>各辺について「辺のベクトル」と「辺の始点→Pのベクトル」の外積を計算</li>
+<li><span class="hl">全ての外積が同符号</span> なら内側、そうでなければ外側</li>
+</ul>
+</section>
+<section id="内外判定の実装例" class="slide level2">
+<h2>内外判定の実装例</h2>
+<p><span class="math display">\[
+c_1 = (\overrightarrow{AB}) \times (\overrightarrow{AP}), \quad
+c_2 = (\overrightarrow{BC}) \times (\overrightarrow{BP}), \quad
+c_3 = (\overrightarrow{CA}) \times (\overrightarrow{CP})
+\]</span></p>
+<p><span class="math inline">\(c_1, c_2, c_3\)</span> が全て同符号 → 内側</p>
+<div id="e3b8f6c1" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-2"><a></a></span>
+<span id="cb15-3"><a></a><span class="kw">def</span> cross_2d(v1, v2):</span>
+<span id="cb15-4"><a></a>    <span class="co">"""2Dベクトルの外積（z成分のみ）"""</span></span>
+<span id="cb15-5"><a></a>    <span class="cf">return</span> v1[<span class="dv">0</span>] <span class="op">*</span> v2[<span class="dv">1</span>] <span class="op">-</span> v1[<span class="dv">1</span>] <span class="op">*</span> v2[<span class="dv">0</span>]</span>
+<span id="cb15-6"><a></a></span>
+<span id="cb15-7"><a></a><span class="kw">def</span> is_inside_triangle(A, B, C, P):</span>
+<span id="cb15-8"><a></a>    <span class="co">"""点Pが三角形ABCの内側にあるか判定"""</span></span>
+<span id="cb15-9"><a></a>    <span class="co"># 各辺と点Pへのベクトルの外積</span></span>
+<span id="cb15-10"><a></a>    c1 <span class="op">=</span> cross_2d(B <span class="op">-</span> A, P <span class="op">-</span> A)  <span class="co"># 辺AB</span></span>
+<span id="cb15-11"><a></a>    c2 <span class="op">=</span> cross_2d(C <span class="op">-</span> B, P <span class="op">-</span> B)  <span class="co"># 辺BC</span></span>
+<span id="cb15-12"><a></a>    c3 <span class="op">=</span> cross_2d(A <span class="op">-</span> C, P <span class="op">-</span> C)  <span class="co"># 辺CA</span></span>
+<span id="cb15-13"><a></a></span>
+<span id="cb15-14"><a></a>    <span class="co"># 全て同符号なら内側</span></span>
+<span id="cb15-15"><a></a>    <span class="cf">return</span> (c1 <span class="op">&gt;=</span> <span class="dv">0</span> <span class="kw">and</span> c2 <span class="op">&gt;=</span> <span class="dv">0</span> <span class="kw">and</span> c3 <span class="op">&gt;=</span> <span class="dv">0</span>) <span class="kw">or</span> (c1 <span class="op">&lt;=</span> <span class="dv">0</span> <span class="kw">and</span> c2 <span class="op">&lt;=</span> <span class="dv">0</span> <span class="kw">and</span> c3 <span class="op">&lt;=</span> <span class="dv">0</span>)</span>
+<span id="cb15-16"><a></a></span>
+<span id="cb15-17"><a></a><span class="co"># テスト</span></span>
+<span id="cb15-18"><a></a>A <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">0</span>])</span>
+<span id="cb15-19"><a></a>B <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">0</span>])</span>
+<span id="cb15-20"><a></a>C <span class="op">=</span> np.array([<span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb15-21"><a></a></span>
+<span id="cb15-22"><a></a>P_in <span class="op">=</span> np.array([<span class="dv">2</span>, <span class="dv">1</span>])</span>
+<span id="cb15-23"><a></a>P_out <span class="op">=</span> np.array([<span class="fl">3.5</span>, <span class="fl">2.5</span>])</span>
+<span id="cb15-24"><a></a></span>
+<span id="cb15-25"><a></a><span class="bu">print</span>(is_inside_triangle(A, B, C, P_in))   <span class="co"># True</span></span>
+<span id="cb15-26"><a></a><span class="bu">print</span>(is_inside_triangle(A, B, C, P_out))  <span class="co"># False</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="その他外積の応用例" class="slide level2">
+<h2>その他外積の応用例</h2>
 <ul>
-<li><strong>3Dグラフィックス</strong> — ポリゴンの法線ベクトル（面の向き）の計算</li>
-<li><strong>物理シミュレーション</strong> — トルク（回転力）、ローレンツ力</li>
-<li><strong>ロボティクス</strong> — 関節の回転軸の計算</li>
+<li>ポリゴンの表裏判定（バックフェースカリング）
+<ul>
+<li>三角形の頂点 P0→P1→P2 から2辺を作り外積 → <strong>法線ベクトル</strong></li>
+<li>法線がカメラを向いていれば<strong>表</strong>、逆なら<strong>裏</strong>（描画しない）</li>
 </ul></li>
 </ul>
+<div style="width: 40%; margin: 0 auto;">
+<div id="c48bbe72" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="vector_matrix_files/figure-revealjs/cell-12-output-1.png" width="350" height="334"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb16-2"><a></a></span>
+<span id="cb16-3"><a></a>P0, P1, P2 <span class="op">=</span> np.array([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>]), np.array([<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>]), np.array([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>])</span>
+<span id="cb16-4"><a></a>normal <span class="op">=</span> np.cross(P1 <span class="op">-</span> P0, P2 <span class="op">-</span> P0)</span>
+<span id="cb16-5"><a></a><span class="bu">print</span>(normal)  <span class="co"># [0 0 1] ← +Z方向 = 手前向き</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
