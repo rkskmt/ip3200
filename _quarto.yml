@@ -4,6 +4,8 @@ project:
     - "*.qmd"
   resources:
     - "imgs/**"
+    - "data/**"
+    - "iframes/**"
 
 website:
   title: "情報処理"

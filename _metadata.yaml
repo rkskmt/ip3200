@@ -329,3 +329,4 @@ filters:
   - hl.lua
   - fw-colon.lua
   - cite-image.lua
+  - plotly-iframe.lua

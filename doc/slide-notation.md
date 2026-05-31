@@ -122,7 +122,41 @@
 
 ---
 
-## 6. その他の CSS クラス
+## 6. Plotly iframe 埋め込み（`.plotly-iframe`）
+
+revealjs で Plotly の地図などを埋め込むと、スライド遷移時にレイアウトが崩れる問題がある。
+これを回避するため、Plotly を別 HTML に書き出して iframe で埋め込む。
+
+### 基本
+
+```markdown
+::: {.plotly-iframe src="iframes/cholera_map.html"}
+:::
+```
+
+### サイズ指定
+
+```markdown
+::: {.plotly-iframe src="iframes/map.html" width="800" height="400"}
+:::
+```
+
+- `width` — iframe の幅（デフォルト: 900）
+- `height` — iframe の高さ（デフォルト: 520）
+- 自動で中央寄せされる
+
+### Python 側の書き出し
+
+```python
+fig.write_html("iframes/map.html", include_plotlyjs="cdn")
+```
+
+- `iframes/` フォルダに出力
+- `_quarto.yml` の `resources: ["iframes/**"]` で `_site` にコピーされる
+
+---
+
+## 7. その他の CSS クラス
 
 | クラス | 効果 |
 |---|---|
@@ -137,9 +171,11 @@
 ```
 プロジェクト/
 ├── cite-image.lua      # Lua フィルター（.fig-cite / .bg-cover → style 展開）
+├── plotly-iframe.lua   # Lua フィルター（.plotly-iframe → iframe 展開）
 ├── _metadata.yaml      # CSS 定義 + フィルター登録
-├── _quarto.yml         # resources: ["imgs/**"] でimgsを_siteへコピー
-└── imgs/               # 画像置き場
+├── _quarto.yml         # resources: ["imgs/**", "iframes/**"] で_siteへコピー
+├── imgs/               # 画像置き場
+└── iframes/            # Plotly 等の埋め込み用 HTML
 ```
 
 > **注意**: CSS `background-image` に使う画像は `<img>` タグ経由でないと Quarto が自動コピーしない。
