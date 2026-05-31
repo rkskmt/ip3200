@@ -1,479 +1,801 @@
 [
   {
-    "objectID": "vector_matrix.html#section",
-    "href": "vector_matrix.html#section",
-    "title": "ベクトルと行列",
+    "objectID": "visualize.html#section",
+    "href": "visualize.html#section",
+    "title": "データの可視化",
     "section": "",
-    "text": "ベクトルのおさらい"
+    "text": "情報可視化とは"
   },
   {
-    "objectID": "vector_matrix.html#ベクトルベクターvectorとは",
-    "href": "vector_matrix.html#ベクトルベクターvectorとは",
-    "title": "ベクトルと行列",
-    "section": "ベクトル（ベクター・Vector）とは",
-    "text": "ベクトル（ベクター・Vector）とは\n\n「大きさ」と「方向」の組み合わせ\n\n速度・力など\n位置は無関係\n大きさのみ は スカラー（Scalar）"
+    "objectID": "visualize.html#情報可視化とは",
+    "href": "visualize.html#情報可視化とは",
+    "title": "データの可視化",
+    "section": "情報可視化とは？",
+    "text": "情報可視化とは？\n\nデータや情報がもつ 関係性 や 特徴 を、視覚的に見て理解できるようにすること\n\n見えないものを 「見える」化\n人間の 視覚・直感・経験 で共通に扱えるようにする\n\n\n\n\n\n\n\n\nなぜ「見る」のか\n\n\n\n数字の表を眺めても気づけないパターン（外れ値、相関、周期性、クラスタ）が、図にすると一瞬で分かる\n視覚は最強の前処理"
   },
   {
-    "objectID": "vector_matrix.html#表記方法",
-    "href": "vector_matrix.html#表記方法",
-    "title": "ベクトルと行列",
-    "section": "表記方法",
-    "text": "表記方法\n\n表記は成分を縦に並べて書くことが多い\nこれを単に小文字太文字の\\({\\mathbf{a}}\\)として記号表記する\n\n高校での\\(\\vec{\\mathbf{a}}\\) から矢印を省略した形\n\n\n高校での表記 \\[\n\\vec{\\mathbf{a}} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}\n\\]\n大学・論文・技術文章の主流 \\[\n\\mathbf{a} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}\n\\]"
+    "objectID": "visualize.html#古典ジョンスノウのコレラ地図",
+    "href": "visualize.html#古典ジョンスノウのコレラ地図",
+    "title": "データの可視化",
+    "section": "古典：ジョン・スノウのコレラ地図",
+    "text": "古典：ジョン・スノウのコレラ地図\n\n1854年、ロンドンで原因不明の病気が大流行\n\n医師 John Snow が原因調査をおこなう\n感染データを地図にプロットしたところBroad Street の井戸 の周囲に感染者が集中していることを発見\n「水が感染源」という仮説を視覚で立証\n疫学 という分野の出発点とされる\n\n\n\n\n\n\n\n\n可視化の本質\n\n\n「データに 適切な空間（軸） を与えること」"
   },
   {
-    "objectID": "vector_matrix.html#section-1",
-    "href": "vector_matrix.html#section-1",
-    "title": "ベクトルと行列",
+    "objectID": "visualize.html#現代の可視化実例",
+    "href": "visualize.html#現代の可視化実例",
+    "title": "データの可視化",
+    "section": "現代の可視化実例",
+    "text": "現代の可視化実例\n\n\n\nジャンル\nサンプル\n\n\n\n\n人口動態\nPopulation Pyramids of the World\n\n\n未来予測ゲーム\nINED “Tomorrow’s Population”\n\n\n気候変動\n#ShowYourStripes\n\n\n統計バブル\nGapminder “Wealth & Health of Nations”\n\n\nネットワーク\nForce-Directed Graph\n\n\n地理 + 時系列\nNYC CitiBike\n\n\n3D点群\nCesium “3D Tiles Point”\n\n\n\n\n\n\n\n\n\n自分の興味で1つ開いてみる\n\n\n\n動的なものほど データ量と表現力の関係 がよく分かる"
+  },
+  {
+    "objectID": "visualize.html#section-1",
+    "href": "visualize.html#section-1",
+    "title": "データの可視化",
     "section": "",
-    "text": "NumPyでベクトルを表現・演算"
+    "text": "データを扱う際の大原則"
   },
   {
-    "objectID": "vector_matrix.html#ベクトルの表現",
-    "href": "vector_matrix.html#ベクトルの表現",
-    "title": "ベクトルと行列",
-    "section": "ベクトルの表現",
-    "text": "ベクトルの表現\n\nNumPyでは配列（1次元配列）でベクトルを表現\n\n1次元でもndarrayの扱い\n\n1D array\n\n縦ベクトルでないが問題ない\n\n\nimport numpy as np\n\na = np.array([3, 4]) \nprint(a) # [3, 4]と横表記だが気にしない\nprint(type(a)) # &lt;class 'numpy.ndarray'&gt;"
+    "objectID": "visualize.html#always-plot-your-data-first.",
+    "href": "visualize.html#always-plot-your-data-first.",
+    "title": "データの可視化",
+    "section": "“Always plot your data first.”",
+    "text": "“Always plot your data first.”\n\nあらゆるデータは、まず最初に「見て」みる\n\n\n平均や分散などの 統計量だけでは騙される\n図にしてはじめて気づける構造がある\nデータ分析の最初の一手は 常にプロット"
   },
   {
-    "objectID": "vector_matrix.html#ベクトルの足し算",
-    "href": "vector_matrix.html#ベクトルの足し算",
-    "title": "ベクトルと行列",
-    "section": "ベクトルの足し算",
-    "text": "ベクトルの足し算\n\n\n\n足し算は成分ごとに行う\n入力：「ベクトルとベクトル」\n出力：「ベクトル」\n\n引き算も同様\n\n\n\\[\n\\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix} + \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}\n\\]\nimport numpy as np\n\na = np.array([1, 3])\nb = np.array([2, 1])\n\nprint(a + b)   # [3 4]\nprint(a - b)   # [-1  2]"
+    "objectID": "visualize.html#例アンスコムの四重奏",
+    "href": "visualize.html#例アンスコムの四重奏",
+    "title": "データの可視化",
+    "section": "例：アンスコムの四重奏",
+    "text": "例：アンスコムの四重奏\n\nF. J. Anscombe（1973） が示した4つのデータセット\n以下の統計量が 4つともほぼ完全に一致 する\nでも、図にすると完全に異なるデータ\n\n\n\n\n統計量\n値\n\n\n\n\n\\(x\\) の平均\n9 （完全に一致）\n\n\n\\(x\\) の標本分散\n11 （完全に一致）\n\n\n\\(y\\) の平均\n7.50 （小数第2位まで一致）\n\n\n\\(y\\) の標本分散\n4.122 or 4.127 （小数第3位まで一致）\n\n\n\\(x\\) と \\(y\\) の相関係数\n0.816 （小数第3位まで一致）\n\n\n回帰直線\n\\(y = 3.00 + 0.500x\\) （小数第2〜3位まで一致）"
   },
   {
-    "objectID": "vector_matrix.html#ベクトルの掛け算-1スカラー倍",
-    "href": "vector_matrix.html#ベクトルの掛け算-1スカラー倍",
-    "title": "ベクトルと行列",
-    "section": "ベクトルの掛け算 1（スカラー倍）",
-    "text": "ベクトルの掛け算 1（スカラー倍）\n\n\n\n掛け算は全成分それぞれ にスカラー値を掛ける\n入力：「ベクトルとスカラー」\n出力：「ベクトル」\n\n割り算も同じ\n\n\n\\[\n\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} \\times 2 = \\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix}\n\\]\nimport numpy as np\n\na = np.array([1, 2])\n\nprint(a * 2)   # [2 4]"
+    "objectID": "visualize.html#アンスコムの四重奏-①普通のデータ",
+    "href": "visualize.html#アンスコムの四重奏-①普通のデータ",
+    "title": "データの可視化",
+    "section": "アンスコムの四重奏 ①：普通のデータ",
+    "text": "アンスコムの四重奏 ①：普通のデータ\n\nばらつきはあるが ゆるやかに直線的に増える\n線形回帰の前提（直線関係 + 均一なばらつき）が成立\n典型的な普通のデータ\n\n\n\n\n\n\n\n\n\n\n\n\nコードを見る\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nx = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])\ny = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96,\n              7.24, 4.26, 10.84, 4.82, 5.68])\n\nplt.scatter(x, y)\nm, b = np.polyfit(x, y, 1)        # 1次回帰\nplt.plot(x, m * x + b, color=\"red\")\nplt.show()\n\n\n\n\n\n\n\n\n教訓\n\n\n\n回帰直線が データの要約として正しく機能\n4つの中で線形モデルが成立する 唯一の例"
   },
   {
-    "objectID": "vector_matrix.html#ベクトルの掛け算-2内積",
-    "href": "vector_matrix.html#ベクトルの掛け算-2内積",
-    "title": "ベクトルと行列",
-    "section": "ベクトルの掛け算 2（内積）",
-    "text": "ベクトルの掛け算 2（内積）\n\n内積（inner product、dot product）は、対応成分同士をかけて足す\n入力：「ベクトルとベクトル」\n出力：「スカラー」\n\n\\[\n\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} \\cdot \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} = 1 \\times 3 + 2 \\times 4 = 11\n\\]"
+    "objectID": "visualize.html#アンスコムの四重奏-②曲線にフィッティング",
+    "href": "visualize.html#アンスコムの四重奏-②曲線にフィッティング",
+    "title": "データの可視化",
+    "section": "アンスコムの四重奏 ②：曲線にフィッティング",
+    "text": "アンスコムの四重奏 ②：曲線にフィッティング\n\ny が 滑らかな曲線（2次関数的）を描いている\n直線を当てはめても本質を捉えられない\n統計量だけ見ていると「直線で説明できた」と思い込みやすい\n\n\n\n\n\n\n\n\n\n\n\n\nコードを見る\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nx = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])\ny = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10,\n              6.13, 3.10, 9.13, 7.26, 4.74])\n\nplt.scatter(x, y)\nm, b = np.polyfit(x, y, 1)\nplt.plot(x, m * x + b, color=\"red\")\nplt.show()\n\n\n\n\n\n\n\n\n教訓\n\n\n\nそもそも 直線で表現すべきでない データ\n多項式回帰や対数変換などモデルを変える必要あり\n統計量だけだと モデル選択ミス に気づけない"
   },
   {
-    "objectID": "vector_matrix.html#重要-numpyにおける内積の演算子",
-    "href": "vector_matrix.html#重要-numpyにおける内積の演算子",
-    "title": "ベクトルと行列",
-    "section": "【重要】 NumPyにおける内積の演算子",
-    "text": "【重要】 NumPyにおける内積の演算子\n\n２つのndarray を @ という二項演算子に入力\n\n普通なら*とするところを@に変える\n\n\nimport numpy as np\n\na = np.array([1, 2])\nb = np.array([3, 4])\n\n# 内積\nprint(a @ b)  # 11 \n\n#  * 演算子だと内積にならない\nprint(a * b)  # [1*3, 2*4] → [3 8]\n\n\n\n\n\n\n注意\n\n\n\n* で演算してもエラーにはならないので危険"
+    "objectID": "visualize.html#アンスコムの四重奏-③1つだけ外れ値",
+    "href": "visualize.html#アンスコムの四重奏-③1つだけ外れ値",
+    "title": "データの可視化",
+    "section": "アンスコムの四重奏 ③：1つだけ外れ値",
+    "text": "アンスコムの四重奏 ③：1つだけ外れ値\n\nほぼ 完全な直線 に並んでいる\nたった1点だけ大きく外れている\nその1点に 回帰直線が引っ張られている\n\n\n\n\n\n\n\n\n\n\n\n\nコードを見る\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nx = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])\ny = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84,\n              6.08, 5.39, 8.15, 6.42, 5.73])\n\nplt.scatter(x, y)\nm, b = np.polyfit(x, y, 1)\nplt.plot(x, m * x + b, color=\"red\")\nplt.show()\n\n\n\n\n\n\n\n\n教訓\n\n\n\n外れ値（outlier） に統計量が支配される\n入力ミスとして除外するか、本物の現象として尊重するか\n図を見ないと判断できない"
   },
   {
-    "objectID": "vector_matrix.html#section-2",
-    "href": "vector_matrix.html#section-2",
-    "title": "ベクトルと行列",
+    "objectID": "visualize.html#アンスコムの四重奏-④-共通した値を共有したデータ",
+    "href": "visualize.html#アンスコムの四重奏-④-共通した値を共有したデータ",
+    "title": "データの可視化",
+    "section": "アンスコムの四重奏 ④： 共通した値を共有したデータ",
+    "text": "アンスコムの四重奏 ④： 共通した値を共有したデータ\n\nx の値が ほぼすべて 8\n1点だけ x=19 にあり、その1点が「直線がある」ように見せている\n同じ条件で測定しすぎていて、x が振れていない\n\n\n\n\n\n\n\n\n\n\n\n\nコードを見る\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nx = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])\ny = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04,\n              5.25, 12.50, 5.56, 7.91, 6.89])\n\nplt.scatter(x, y)\nm, b = np.polyfit(x, y, 1)\nplt.plot(x, m * x + b, color=\"red\")\nplt.show()\n\n\n\n\n\n\n\n\n教訓\n\n\n\nサンプリングが偏っている\n1点だけで「相関がある」と言っているのと同じ\n実験計画（データの取り方）そのもの を疑うべきケース"
+  },
+  {
+    "objectID": "visualize.html#つを並べると",
+    "href": "visualize.html#つを並べると",
+    "title": "データの可視化",
+    "section": "4つを並べると…",
+    "text": "4つを並べると…\n\n\n\nデータ\n見た目\n何が問題か\n\n\n\n\n① 素直\n緩やかな散布 + 直線\n問題なし — 線形回帰がうまく機能\n\n\n② 曲線\n2次関数的\nモデル選択が間違っている\n\n\n③ 外れ値\n直線 + 1個ハズレ\n外れ値が統計量を支配\n\n\n④ x偏り\n1点除いて全部同じ x\nサンプリングが偏っている\n\n\n\n\n統計量は4つとも同じ\n図にしないと 絶対に気づけない\n\n\n\n\n\n\n\nだからデータ処理=まず視覚化\n\n\n見ればわかる。見なければ見逃す。"
+  },
+  {
+    "objectID": "visualize.html#探索的データ解析eda",
+    "href": "visualize.html#探索的データ解析eda",
+    "title": "データの可視化",
+    "section": "探索的データ解析（EDA）",
+    "text": "探索的データ解析（EDA）\n\nJohn Wilder Tukey が1977年の著書 Exploratory Data Analysis で提唱\n\n「まずデータを 見て から仮説を立てる」\n統計学の前段として現在も基本中の基本\n\n箱ひげ図・幹葉図など、Tukeyが広めた可視化手法は多数\n\n\n\n\n\n\n\nTukey という人\n\n\n“bit”（binary digit の短縮形）や “software” という用語の普及にも関わった、計算機文化の偉人。"
+  },
+  {
+    "objectID": "visualize.html#グラフの種類",
+    "href": "visualize.html#グラフの種類",
+    "title": "データの可視化",
+    "section": "グラフの種類",
+    "text": "グラフの種類\n\nまずは簡単なグラフやプロットでよい\n目的に応じて使い分ける\n\n\n\n\n種類\n用途\n\n\n\n\n散布図\n2変量の相関\n\n\n折れ線\n時系列・連続データ\n\n\n棒グラフ\nカテゴリ比較\n\n\nヒストグラム\n分布把握\n\n\n3D散布図\n3変量関係"
+  },
+  {
+    "objectID": "visualize.html#section-2",
+    "href": "visualize.html#section-2",
+    "title": "データの可視化",
     "section": "",
-    "text": "行列"
+    "text": "matplotlibでグラフを描く"
   },
   {
-    "objectID": "vector_matrix.html#行列",
-    "href": "vector_matrix.html#行列",
-    "title": "ベクトルと行列",
-    "section": "行列",
-    "text": "行列\n\nベクトルを横方向に並べたもの\n\n\\[\n\\vec{\\vphantom{b}a} = \\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix}, \\quad\n\\vec{b} = \\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\]\n\n\\(3 \\times 4\\) 行列の例\n\n\\[\n\\vec{\\vphantom{b}a} = \\begin{pmatrix} 1 \\\\ 4 \\\\ 7 \\end{pmatrix}, \\quad\n\\vec{b} = \\begin{pmatrix} 2 \\\\ 5 \\\\ 8 \\end{pmatrix}, \\quad\n\\vec{c} = \\begin{pmatrix} 3 \\\\ 6 \\\\ 9 \\end{pmatrix}, \\quad\n\\vec{d} = \\begin{pmatrix} 10 \\\\ 11 \\\\ 12 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA = \\begin{pmatrix} 1 & 2 & 3 & 10 \\\\ 4 & 5 & 6 & 11 \\\\ 7 & 8 & 9 & 12 \\end{pmatrix}\n\\]"
+    "objectID": "visualize.html#matplotlib-とは",
+    "href": "visualize.html#matplotlib-とは",
+    "title": "データの可視化",
+    "section": "matplotlib とは",
+    "text": "matplotlib とは\n\nPythonにおけるグラフ描画の デファクトスタンダード\n\nマットプロットリブと読む\n\n内部はC実装で高速、NumPyの ndarray と相性が良い\n\n派生ライブラリ（seaborn、pandas plotting、Plotly）も多くが matplotlib をベースにしている\n\n\nターミナルからインストール：\npip install matplotlib\n冒頭で import（plt としてインポートするのが一般的）：\nimport matplotlib.pyplot as plt"
   },
   {
-    "objectID": "vector_matrix.html#行列とベクトルの積",
-    "href": "vector_matrix.html#行列とベクトルの積",
-    "title": "ベクトルと行列",
-    "section": "行列とベクトルの積",
-    "text": "行列とベクトルの積\n\n行列の列数とベクトルの次元が同じ場合、掛け算することが可能\n\nそれぞれの行とベクトルの内積を縦に並べる\n\n\n\n\\[\n\\begin{pmatrix} \\cssId{mm-a}{1} & \\cssId{mm-b}{2} \\\\ \\cssId{mm-c}{3} & \\cssId{mm-d}{4} \\end{pmatrix}\n\\begin{pmatrix} \\cssId{mm-x1}{5} \\\\ \\cssId{mm-x2}{6} \\end{pmatrix}\n=\n\\begin{pmatrix} \\cssId{mm-r1}{17} \\\\ \\cssId{mm-r2}{39} \\end{pmatrix}\n\\]\n\n\n\n\n\n▶ 再生"
+    "objectID": "visualize.html#まずはドキュメントを眺める重要",
+    "href": "visualize.html#まずはドキュメントを眺める重要",
+    "title": "データの可視化",
+    "section": "まずはドキュメントを眺める（重要）",
+    "text": "まずはドキュメントを眺める（重要）\n\n公式の Plot types ページに、描けるグラフの一覧がある\nhttps://matplotlib.org/stable/plot_types/index.html\n\n\n\n\n\n\n\n上達のコツ\n\n\n\nまず 何ができるかを頭に入れる\nやりたい図ができたら、似たギャラリーを探してコードを真似る\n自前でゼロから書かない のが鉄則"
   },
   {
-    "objectID": "vector_matrix.html#行列と行列の積",
-    "href": "vector_matrix.html#行列と行列の積",
-    "title": "ベクトルと行列",
-    "section": "行列と行列の積",
-    "text": "行列と行列の積\n\n行列同士の掛け算は「行×列」の内積を並べる\n\n\\[\n\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}\n=\n\\begin{pmatrix} 1 \\cdot 5 + 2 \\cdot 7 & 1 \\cdot 6 + 2 \\cdot 8 \\\\ 3 \\cdot 5 + 4 \\cdot 7 & 3 \\cdot 6 + 4 \\cdot 8 \\end{pmatrix}\n=\n\\begin{pmatrix} 19 & 22 \\\\ 43 & 50 \\end{pmatrix}\n\\]"
+    "objectID": "visualize.html#点のプロット",
+    "href": "visualize.html#点のプロット",
+    "title": "データの可視化",
+    "section": "1. 点のプロット",
+    "text": "1. 点のプロット\n\n一番基本の plt.plot(x, y, 'o') — ‘o’ は マーカー を表す\nx も y も ndarray や list でOK\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nx = np.arange(4)       # [0 1 2 3]\ny = [10, 20, 5, 30]\n\nplt.plot(x, y, 'o')    # 'o' で点だけプロット\nplt.show()"
   },
   {
-    "objectID": "vector_matrix.html#section-3",
-    "href": "vector_matrix.html#section-3",
-    "title": "ベクトルと行列",
-    "section": "",
-    "text": "NumPyで行列を表現・演算"
+    "objectID": "visualize.html#線のグラフ",
+    "href": "visualize.html#線のグラフ",
+    "title": "データの可視化",
+    "section": "2. 線のグラフ",
+    "text": "2. 線のグラフ\n\n第3引数を 省略すると折れ線\n'o-' だと 点＋線\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nx = np.arange(10)      # [0 ... 9]\ny = x + 5\n\nplt.plot(x, y)         # 折れ線\nplt.show()"
   },
   {
-    "objectID": "vector_matrix.html#numpyでの行列",
-    "href": "vector_matrix.html#numpyでの行列",
-    "title": "ベクトルと行列",
-    "section": "NumPyでの行列",
-    "text": "NumPyでの行列\n\nndarrayで作成可能だが、行ごとに宣言する点に注意\n\n縦ベクトルの並びではないので少し気持ち悪い（仕様）\n「行」ごとに宣言 して縦にスタックしていく\n以下の場合でも[[1 3][2 4]]ではなく[[1 2][3 4]]\n\n\n\\[\n\\vec{\\vphantom{b}a} = \\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix}, \\quad\n\\vec{b} = \\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\]\nimport numpy as np\n\nA = np.array([[1, 2],\n              [3, 4]])\n\n# アクセス方法\nprint(A[0, 1])   # 1行目2列目 → 2\nprint(A[1, :])   # 2行目全体  → [3 4]\nprint(A[:, 0])   # 1列目全体  → [1 3]\n\n\n\n\n\n\nノート\n\n\n\n行優先（row-major）ではなく列優先（column-major）の実装もありうる（OpenGLなど）\nただ、現在の言語では行優先が大半"
+    "objectID": "visualize.html#表示範囲の指定xlim-ylim",
+    "href": "visualize.html#表示範囲の指定xlim-ylim",
+    "title": "データの可視化",
+    "section": "3. 表示範囲の指定（xlim / ylim）",
+    "text": "3. 表示範囲の指定（xlim / ylim）\n\nplt.xlim(a, b) / plt.ylim(a, b) で軸の範囲を固定\n3次元プロットでは zlim も使える\n何も指定しないと データの範囲＋少し余白 が自動で選ばれる\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nx = np.arange(10)\ny = x + 5\n\nplt.xlim(0, 10)        # x軸: 0〜10\nplt.ylim(0, 15)        # y軸: 0〜15（あえて0から見せる）\nplt.plot(x, y, 'o-')\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ny軸の罠\n\n\n\n範囲をデータに合わせると 小さな変化が大きく見える ことがある\n比較するグラフは y軸を揃える か 0から見せる のが原則"
   },
   {
-    "objectID": "vector_matrix.html#numpyでの行列の演算",
-    "href": "vector_matrix.html#numpyでの行列の演算",
-    "title": "ベクトルと行列",
-    "section": "NumPyでの行列の演算",
-    "text": "NumPyでの行列の演算\n\nベクトルの内積と同じく @ を使用\n\nimport numpy as np\n\n# A: Matrix b:Vector \nA = np.array([[1, 2], [3, 4]])\nb = np.array([5, 6])\n\nprint(A @ b)  # [17 39]\n\n\n# A:Matrix B:Matrix\nA = np.array([[1, 2], [3, 4]])\nB = np.array([[5, 6], [7, 8]])\n\nprint(A @ B)  # [[19 22] [43 50]]"
+    "objectID": "visualize.html#ラベルグリッドタイトル凡例",
+    "href": "visualize.html#ラベルグリッドタイトル凡例",
+    "title": "データの可視化",
+    "section": "4. ラベル・グリッド・タイトル・凡例",
+    "text": "4. ラベル・グリッド・タイトル・凡例\n\nplt.xlabel() / plt.ylabel() で 軸ラベル\nplt.title() で グラフタイトル\nplt.legend() で 凡例（plot() に label= を指定しておく）\nplt.grid(True) で グリッド線\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nx = np.arange(10, 200)\n\ny1 = x ** (1/2)\nplt.plot(x, y1, 'o-', label=\"sqrt(x)\")     # 凡例ラベル\n\ny2 = x ** (1/3)\nplt.plot(x, y2, 'o-', label=\"cbrt(x)\")\n\nplt.legend()                                # 凡例を表示\nplt.title(\"1/2 vs 1/3 power\")               # タイトル\nplt.xlabel(\"x value\")                       # x軸ラベル\nplt.ylabel(\"y value\")                       # y軸ラベル\nplt.grid(True)                              # グリッド線\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n装飾の優先順位\n\n\n\n軸ラベル（何の量か）\n凡例（どの線が何か）\nタイトル（何のグラフか）\nこの3つが揃っていない図は 資料に載せてはいけない"
   },
   {
-    "objectID": "vector_matrix.html#もし-を使用するとどうなってしまうのか",
-    "href": "vector_matrix.html#もし-を使用するとどうなってしまうのか",
-    "title": "ベクトルと行列",
-    "section": "もし * を使用するとどうなってしまうのか",
-    "text": "もし * を使用するとどうなってしまうのか\n\n@ : 積（行列積）\n* : 要素ごとの掛け算\n\nHadamard積（ハダマール積）\n画像処理等である要素をマスクするときに使用される\n\n\nimport numpy as np\n\nA = np.array([[1, 2], [3, 4]])\nB = np.array([[5, 6], [7, 8]])\n\nprint(A * B)\n# [[ 5 12]\n#  [21 32]]  ← 同じ位置同士をかけただけ\n\nprint(A @ B)\n# [[19 22]\n#  [43 50]]  ← 行列積"
+    "objectID": "visualize.html#複数のグラフを並べるsubplot",
+    "href": "visualize.html#複数のグラフを並べるsubplot",
+    "title": "データの可視化",
+    "section": "5. 複数のグラフを並べる（subplot）",
+    "text": "5. 複数のグラフを並べる（subplot）\n\nplt.subplot(行数, 列数, 場所番号) で碁盤の目状に並べる\n場所番号は 1始まり、左上から右へ\n例：plt.subplot(2, 2, 3) は2×2の3番目（左下）\n\n\n1 │ 2 ─┼─ 3 │ 4\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nx = np.arange(5)\ny = x ** 2\n\nplt.subplot(1, 2, 1)        # 1行2列の左\nplt.plot(x, y, '-')\n\nplt.subplot(1, 2, 2)        # 1行2列の右\nplt.bar(x, y)\n\nplt.tight_layout()          # 余白を自動調整\nplt.show()"
   },
   {
-    "objectID": "vector_matrix.html#逆行列",
-    "href": "vector_matrix.html#逆行列",
-    "title": "ベクトルと行列",
-    "section": "逆行列",
-    "text": "逆行列\n\n逆行列：行列 \\(A\\) に対して \\(A A^{-1} = I\\)（単位行列）を満たす \\(A^{-1}\\)\n\n元の数と掛けたら１になる逆数のようなもの\n\nNumPyではnp.linalg.inv() という便利関数で逆行列が求まる\n\nlinalg = linear algebra（線形代数）の略\n\n\n\\[\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA^{-1} = \\begin{pmatrix} -2 & 1 \\\\ 1.5 & -0.5 \\end{pmatrix}\n\\]\nimport numpy as np\n\nA = np.array([[1, 2], [3, 4]])\nA_inv = np.linalg.inv(A)\nprint(A_inv) # [[-2.   1. ][ 1.5 -0.5]]\nprint(A @ A_inv) # [[1. 0.][0. 1.]]  ← 単位行列"
+    "objectID": "visualize.html#二次元データの散布図",
+    "href": "visualize.html#二次元データの散布図",
+    "title": "データの可視化",
+    "section": "6. 二次元データの散布図",
+    "text": "6. 二次元データの散布図\n\n大量の (x, y) を点で打つ → 分布や相関が見える\nalpha で 透明度 を指定すると重なりが分かりやすい\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# 0〜1 の一様乱数を 200点\nx = np.random.rand(200)\ny = np.random.rand(200)\n\nplt.scatter(x, y, alpha=0.7)\nplt.xlabel(\"X (0-1)\")\nplt.ylabel(\"Y (0-1)\")\nplt.title(\"2D scatter: uniform random\")\nplt.axis(\"equal\")           # 縦横を同じスケールに\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n重なりが多いとき\n\n\n\nalpha=0.3 などで透過 → 密度が見える\n点数が万を超えるなら ヒートマップ や hexbin を検討"
   },
   {
-    "objectID": "vector_matrix.html#section-4",
-    "href": "vector_matrix.html#section-4",
-    "title": "ベクトルと行列",
-    "section": "",
-    "text": "@ 演算子で方程式を解こう"
+    "objectID": "visualize.html#三次元データの散布図",
+    "href": "visualize.html#三次元データの散布図",
+    "title": "データの可視化",
+    "section": "7. 三次元データの散布図",
+    "text": "7. 三次元データの散布図\n\n3D は add_subplot(projection=\"3d\") で軸オブジェクトを作る\nplt.◯◯ ではなく ax.◯◯ で操作する\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nx = np.random.rand(300)\ny = np.random.rand(300)\nz = np.random.rand(300)\n\nfig = plt.figure()\nax = fig.add_subplot(projection=\"3d\")\nax.scatter(x, y, z, alpha=0.6)\n\nax.set_xlabel(\"X\")\nax.set_ylabel(\"Y\")\nax.set_zlabel(\"Z\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nなぜ 3D だけ ax. を使う？\n\n\n\nplt.scatter() などは 2D専用のショートカット\n3D軸を作るには projection=\"3d\" の指定が必要で、plt.subplot() では対応できない\n3D では ax.scatter(), ax.set_zlabel() など 軸オブジェクト経由 で操作する\n\n\n\n\n\n\n\n\n\n\nplt. と ax. の対応\n\n\n\n\n\n2D（plt.）\n3D（ax.）\n\n\n\n\nplt.scatter(x, y)\nax.scatter(x, y, z)\n\n\nplt.xlabel(\"X\")\nax.set_xlabel(\"X\")\n\n\nplt.xlim(0, 10)\nax.set_xlim(0, 10)\n\n\nplt.title(\"...\")\nax.set_title(\"...\")\n\n\n\n\n\n\n\n\n\n\n\n\n3Dは多用しない\n\n\n\n紙やスライドだと 奥行きが伝わらない ことが多い\nインタラクティブに回せない場面では 2Dの分割表示 のほうが伝わる"
   },
   {
-    "objectID": "vector_matrix.html#行列で連立方程式を表現",
-    "href": "vector_matrix.html#行列で連立方程式を表現",
-    "title": "ベクトルと行列",
-    "section": "行列で連立方程式を表現",
-    "text": "行列で連立方程式を表現\n以下の連立方程式は\n\\[\n\\begin{cases}\nx - y = 1 \\\\\nx + y = 3\n\\end{cases}\n\\]\n行列で以下のように表現可能\n\\[\n\\underbrace{\\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix}}_{A}\n\\underbrace{\\begin{pmatrix} x \\\\ y \\end{pmatrix}}_{\\mathbf{x}}\n=\n\\underbrace{\\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix}}_{\\mathbf{b}}\n\\]\n\nこれは \\(A\\mathbf{x} = \\mathbf{b}\\) の形である"
+    "objectID": "visualize.html#plt早見表",
+    "href": "visualize.html#plt早見表",
+    "title": "データの可視化",
+    "section": "plt早見表",
+    "text": "plt早見表\n\n\n\n操作\nコード\n\n\n\n\n点だけ\nplt.plot(x, y, 'o')\n\n\n折れ線\nplt.plot(x, y)\n\n\n棒グラフ\nplt.bar(x, y)\n\n\n散布図\nplt.scatter(x, y)\n\n\n軸の範囲\nplt.xlim(a, b) / plt.ylim(a, b)\n\n\n軸ラベル\nplt.xlabel(\"...\") / plt.ylabel(\"...\")\n\n\nタイトル\nplt.title(\"...\")\n\n\n凡例\nplt.legend()（要 label=...）\n\n\nグリッド\nplt.grid(True)\n\n\n並べる\nplt.subplot(行, 列, 番号)\n\n\n3D散布\nax = fig.add_subplot(projection=\"3d\")"
   },
   {
-    "objectID": "vector_matrix.html#numpyで-amathbfx-mathbfb-の連立方程式を解く",
-    "href": "vector_matrix.html#numpyで-amathbfx-mathbfb-の連立方程式を解く",
-    "title": "ベクトルと行列",
-    "section": "NumPyで \\(A\\mathbf{x} = \\mathbf{b}\\) の連立方程式を解く",
-    "text": "NumPyで \\(A\\mathbf{x} = \\mathbf{b}\\) の連立方程式を解く\n\n\\(A\\mathbf{x} = \\mathbf{b}\\) の両辺に左から \\(A^{-1}\\) を掛ける\n\n\\[\n\\begin{aligned}\nA \\mathbf{x} &= \\mathbf{b} \\\\\nA^{-1} A \\mathbf{x} &= A^{-1} \\mathbf{b} \\\\\n\\mathbf{x} &= A^{-1} \\mathbf{b}\n\\end{aligned}\n\\]\n\n\\(A^{-1} \\mathbf{b}\\) が解\n\nimport numpy as np\n\nA = np.array([[1, -1],\n              [1,  1]])\nb = np.array([1, 3])\n\nx = np.linalg.inv(A) @ b\nprint(x)  # [2. 1.] ← x=2, y=1\n\n\n\n\n\n\n実は連立方程式用の関数が存在\n\n\n\\(Ax = b\\) の解は np.linalg.solve(A, b)"
+    "objectID": "visualize.html#演習1二次関数を描く",
+    "href": "visualize.html#演習1二次関数を描く",
+    "title": "データの可視化",
+    "section": "演習1：二次関数を描く",
+    "text": "演習1：二次関数を描く\n\n\\(y = x^2 - 2x + 3\\) を 定義域 \\(-2 \\leq x \\leq 5\\) で描け\n手順\n\nnp.arange または np.linspace で x を作る（線が滑らかになるように細かく）\ny を計算\nプロット — 折れ線でもOK\nY軸は0から見えるように ylim を設定\nタイトルとラベルもつける\n\n\n\n\n\n\n\n\n平方完成で検算\n\n\n\n\\(y = (x - 1)^2 + 2\\) なので 頂点は \\((1, 2)\\)\nグラフが合っているか確認\n\n\n\n\n\n\n解答例を見る\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nx = np.linspace(-2, 5, 200)\ny = x ** 2 - 2 * x + 3\n\nplt.plot(x, y)\nplt.scatter([1], [2], color=\"red\", zorder=3)   # 頂点\nplt.xlim(-2, 5)\nplt.ylim(0, 20)                                 # 0から見せる\nplt.xlabel(\"x\")\nplt.ylabel(\"y\")\nplt.title(\"y = x^2 - 2x + 3\")\nplt.grid(True)\nplt.show()"
   },
   {
-    "objectID": "vector_matrix.html#まとめ",
-    "href": "vector_matrix.html#まとめ",
-    "title": "ベクトルと行列",
+    "objectID": "visualize.html#演習2アンスコムの四重奏を再現",
+    "href": "visualize.html#演習2アンスコムの四重奏を再現",
+    "title": "データの可視化",
+    "section": "演習2：アンスコムの四重奏を再現",
+    "text": "演習2：アンスコムの四重奏を再現\n\n手順\n\n下のデータをコピペして使う\nplt.subplot(2, 2, i) で2×2に並べる\nそれぞれ scatter でプロット\nnp.polyfit(x, y, 1) で1次回帰直線を求め、plot で重ねる\nすべてのサブプロットで xlim / ylim を 揃える\n\n\nimport numpy as np\n\n# データセット I, II, III（x は共通）\nx1 = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])\ny1 = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68])\ny2 = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74])\ny3 = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73])\n\n# データセット IV（x が異なる）\nx4 = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])\ny4 = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89])\n\n\n\n\n\n\nなぜ軸を揃える？\n\n\n\n4つのプロットを 公平に比較 するため\n違うスケールで並べると印象操作になる"
+  },
+  {
+    "objectID": "visualize.html#演習3好きな画像を表示",
+    "href": "visualize.html#演習3好きな画像を表示",
+    "title": "データの可視化",
+    "section": "演習3：好きな画像を表示",
+    "text": "演習3：好きな画像を表示\n\nmatplotlib は 画像も描画できる\n公式チュートリアルを参考\nhttps://matplotlib.org/stable/tutorials/images.html\n\nimport matplotlib.pyplot as plt\nimport matplotlib.image as mpimg\n\nimg = mpimg.imread(\"path/to/your.png\")\nplt.imshow(img)\nplt.axis(\"off\")        # 軸を消す\nplt.show()"
+  },
+  {
+    "objectID": "visualize.html#まとめ",
+    "href": "visualize.html#まとめ",
+    "title": "データの可視化",
     "section": "まとめ",
-    "text": "まとめ\n\n\n\n\n\n\n\n\n概念\n数式\nNumPy\n\n\n\n\nベクトル\n\\(\\mathbf{a}\\)\nnp.array([1, 2])\n\n\n内積\n\\(\\mathbf{a} \\cdot \\mathbf{b}\\)\na @ b\n\n\n行列積\n\\(AB\\)\nA @ B\n\n\n転置\n\\(A^T\\)\nA.T\n\n\n直交\n\\(\\mathbf{a} \\cdot \\mathbf{b} = 0\\)\na @ b == 0\n\n\n逆行列\n\\(A^{-1}\\)\nnp.linalg.inv(A)\n\n\n連立方程式\n\\(Ax = b\\)\nnp.linalg.solve(A, b)\n\n\nノルム\n\\(\\|\\mathbf{a}\\|\\)\nnp.linalg.norm(a)\n\n\n単位ベクトル\n\\(\\hat{\\mathbf{a}} = \\mathbf{a} / \\|\\mathbf{a}\\|\\)\na / np.linalg.norm(a)"
+    "text": "まとめ\n\n可視化の歴史：\n\nジョン・スノウのコレラ地図\n現代のインタラクティブ可視化\n\n大原則：Always plot your data first.\n\nアンスコムの四重奏が示す数値の限界\n\nmatplotlib：最小構造（plot/scatter/bar）\n\n修飾（ラベル/タイトル/凡例/グリッド）\n応用（subplot, 2D/3D散布）"
   },
   {
-    "objectID": "vector_matrix.html#演習",
-    "href": "vector_matrix.html#演習",
-    "title": "ベクトルと行列",
+    "objectID": "visualize.html#参考リンク",
+    "href": "visualize.html#参考リンク",
+    "title": "データの可視化",
+    "section": "参考リンク",
+    "text": "参考リンク\n\nMatplotlib “Pyplot Tutorial”\nMatplotlib “Plot types”\nPython Data Science Handbook — Chapter 3 Visualizations\nAnscombe’s quartet (Wikipedia)"
+  },
+  {
+    "objectID": "variables.html#リテラル値",
+    "href": "variables.html#リテラル値",
+    "title": "変数と代入",
+    "section": "リテラル（値）",
+    "text": "リテラル（値）\n速習を終えたところで、敢えて変数と代入をおさらいしましょう。\nPythonでは値を直接コードに書くことができます。\n\n値はそれだけで評価できる（エラーにならない）\n変数や関数なしで、その行に書くだけで意味を持つ\n\n1\n\"1\"\n[1, 2, 3]\nTrue\n1.0\n\n\n\n\n\n\nメモリ上での記述\n\n\n上記の値はその行が実行された時に、メモリ上に値として記述されます（000001001 のようにメモリ上のスペースを使って記録される）。これらをリテラルと呼び、直接コード中に記述できる値の表現方法です。"
+  },
+  {
+    "objectID": "variables.html#変数とは",
+    "href": "variables.html#変数とは",
+    "title": "変数と代入",
+    "section": "変数とは",
+    "text": "変数とは\n一方で、このように書くとエラーになります。なぜでしょうか。\na # NameError: name 'a' is not defined\n\n1 や \"1\" はリテラル（直接記述できる値）\na は値ではなく変数として認識される"
+  },
+  {
+    "objectID": "variables.html#変数の命名規則",
+    "href": "variables.html#変数の命名規則",
+    "title": "変数と代入",
+    "section": "変数の命名規則",
+    "text": "変数の命名規則\n変数として認識される単語のルールは以下のとおりです。\n例外はありません。覚えましょう\n\n文字（a-z, A-Z）またはアンダースコア（_）で始まる\n\nつまり数字始まりはダメ（NG例： 3200scores ）\n終わるのはOK（例：scores_of_3200）\n\n2文字目以降が文字、数字（0-9）、アンダースコアであること\n予約語（if / for / while など）ではないこと\n\na01    # OK。変数\n_aa_aa # OK。変数\n1a     # NG。最初が数字\ncontinue # NG。予約語"
+  },
+  {
+    "objectID": "variables.html#代入",
+    "href": "variables.html#代入",
+    "title": "変数と代入",
+    "section": "代入",
+    "text": "代入\n\n変数 = リテラル と記述すると「代入」という操作がおこなわれる\n\n左辺は変数\n右辺はリテラルかオブジェクト\n\n\na = 1234\ntest_2 = \"test2\"\n\n\n\n\n\n\n箱ではなく「看板」\n\n\n\na = 1234 は「a という箱に 1234 が入る」ではない\na は 1234 が格納された住所（アドレス）を指す看板になる\nただし、アクセス時はその看板自体ではなく住所が指す先にあるリテラルやオブジェクトが返る"
+  },
+  {
+    "objectID": "variables.html#変数-変数-の代入",
+    "href": "variables.html#変数-変数-の代入",
+    "title": "変数と代入",
+    "section": "変数 = 変数 の代入",
+    "text": "変数 = 変数 の代入\n\n変数同士の代入は、左辺に右辺のアドレスを代入する\n\nつまり、同じアドレスを指すようになる\n\n\na11 = 11\na12 = 12\na11 = a12 # a11とa12は同じアドレスを指す\nprint(a12) # 12\n\na11 = 13 # 別の値に変更\nprint(a11) # 当然13\nprint(a12) # ??? （同じアドレスを指しているはずだが？）\n\n結果： 12\n数値（int）は、宣言する度 新しいアドレス にリテラルを作る\nつまり、5行目の時点でa11は別のアドレスが書かれている\nよって、3行目で共有したアドレスはa12しか持たなくなる"
+  },
+  {
+    "objectID": "variables.html#リストの代入罠",
+    "href": "variables.html#リストの代入罠",
+    "title": "変数と代入",
+    "section": "リストの代入（罠）",
+    "text": "リストの代入（罠）\n数値でやった操作をリストでやると…\nodd1 = [1, 3]\nodd2 = [5, 7]\nodd1 = odd2\nodd1[0] = 9\nprint(odd2) # ???\n\n結果： [9, 7]\nodd1[0] = 9 は odd1 を変えただけなのに、odd2 まで変化\n\nつまり、3行目で共有したアドレスはずっと共有したまま"
+  },
+  {
+    "objectID": "variables.html#id-で住所を確認数値",
+    "href": "variables.html#id-で住所を確認数値",
+    "title": "変数と代入",
+    "section": "id() で住所を確認（数値）",
+    "text": "id() で住所を確認（数値）\nid() 関数で変数が指しているアドレスを調べられます。\na11 = 11\na12 = 12\nprint(id(a11)) # 2083050422832\nprint(id(a12)) # 2083050422864\na11 = a12\nprint(id(a11)) # 2083050422864。a12と同じ場所\na11 = 13\nprint(id(a11)) # 2083050422896。違う場所を指している。\n\nリテラルが代入されるたびに アドレスが変わっている\nリテラルは必ず新しいアドレスに新しい値として書き込まれる"
+  },
+  {
+    "objectID": "variables.html#id-で住所を確認リスト",
+    "href": "variables.html#id-で住所を確認リスト",
+    "title": "変数と代入",
+    "section": "id() で住所を確認（リスト）",
+    "text": "id() で住所を確認（リスト）\nリストでは、要素に代入してもアドレスが変わりません。\nodd1 = [1, 3]\nodd2 = [5, 7]\nprint(id(odd1)) # 2738928019264\nprint(id(odd2)) # 2738927989120\nodd1 = odd2\nprint(id(odd1)) # 2738927989120\nprint(id(odd2)) # 2738927989120\nodd1[0] = 9    # odd2ではなくodd1を変更\nprint(odd1)    # [9, 7]\n\nodd1 = odd2 後、両者が同じアドレスを指している\nだから odd1[0] = 9 が odd2 にも影響する"
+  },
+  {
+    "objectID": "variables.html#ミュータブル-イミュータブル",
+    "href": "variables.html#ミュータブル-イミュータブル",
+    "title": "変数と代入",
+    "section": "ミュータブル / イミュータブル",
+    "text": "ミュータブル / イミュータブル\nPythonにおいて変数が指せるValueには以下の２種類が存在\n\n代入時に必ず新しいアドレスに新たに作られる型（イミュータブル）\n\nアドレスを意識しなくてもいい楽な型\nint str bool 等\n\n代入時に現状のアドレスの中身を変更する型（ミュータブル）\n\nずっと同じところに居る\nlist、dict 等\n\n\n\n\n\n\n\n\n\n分類\n型\n\n\n\n\nイミュータブル\nint / float / complex / bool / str / tuple / frozenset / bytes / None\n\n\nミュータブル\nlist dict set クラス など"
+  },
+  {
+    "objectID": "variables.html#実例関数がリストを書き換えてしまう",
+    "href": "variables.html#実例関数がリストを書き換えてしまう",
+    "title": "変数と代入",
+    "section": "実例：関数がリストを書き換えてしまう",
+    "text": "実例：関数がリストを書き換えてしまう\ndef double_all(data):\n    for i in range(len(data)):\n        data[i] = data[i] * 2\n    return data\n\nscores = [10, 20, 30]\nresult = double_all(scores)\nprint(result)  # [20, 40, 60]\nprint(scores)  # ???\n\n答えは [20, 40, 60] — scores も書き換わっている\nresult = double_all(scores) は新しいリストを作ったのではなく、同じリストの別名を作っただけ"
+  },
+  {
+    "objectID": "variables.html#ミュータブルの罠を回避するコピー",
+    "href": "variables.html#ミュータブルの罠を回避するコピー",
+    "title": "変数と代入",
+    "section": "ミュータブルの罠を回避する：コピー",
+    "text": "ミュータブルの罠を回避する：コピー\n\nリストを別のアドレスに新たに複製したいときは .copy() を使う。\n\nこの場面を残したいからセーブデータを一旦 別のスロットにするイメージ\n単に = で代入するとダメなケース\n\n\nodd1 = [1, 3]\n\n# NG: 同じアドレスを共有 → 両方が変わる\nodd2 = odd1\nodd2[0] = 9\nprint(odd1)  # [9, 3] ← 意図せず変わってしまう\n\n# OK: .copy() で別アドレスの複製を作る\nodd3 = odd1.copy()\nodd3[0] = 99\nprint(odd1)  # [9, 3] ← 変わらない\nprint(odd3)  # [99, 3]\n\n# （参考）全スライス [:] でも同じ結果\nodd4 = odd1[:]\nprint(id(odd1) == id(odd4))  # False（別アドレス）"
+  },
+  {
+    "objectID": "variables.html#演習",
+    "href": "variables.html#演習",
+    "title": "変数と代入",
     "section": "演習",
-    "text": "演習\n（１）以下の2つのベクトルの内積を求め、直交しているか判定せよ。\n\\[\n\\mathbf{a} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}, \\quad\n\\mathbf{b} = \\begin{pmatrix} -1 \\\\ 2 \\end{pmatrix}\n\\]\n（２）以下の行列の掛け算を手計算で求め、NumPyで確認せよ。\n\\[\n\\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}\n\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\n\\]\n（３）以下の連立方程式を np.linalg.solve() で解け。\n\\[\n\\begin{cases} x + y = 4 \\\\ x - y = 2 \\end{cases}\n\\]\n（４）\\(\\mathbf{a} = \\begin{pmatrix} 6 \\\\ 8 \\end{pmatrix}\\) のノルムと単位ベクトルを求めよ。\n\n\n解答例を見る\nimport numpy as np\n\n# (1)\na = np.array([2, 1])\nb = np.array([-1, 2])\nprint(a @ b)  # 0 → 直交している\n\n# (2)\nA = np.array([[2, 0], [0, 3]])\nv = np.array([1, 1])\nprint(A @ v)  # [2 3]\n\n# (3)\nA = np.array([[1, 1], [1, -1]])\nb = np.array([4, 2])\nx = np.linalg.solve(A, b)\nprint(x)  # [3. 1.] → x=3, y=1\n\n# (4)\na = np.array([6, 8])\nprint(np.linalg.norm(a))       # 10.0\nprint(a / np.linalg.norm(a))   # [0.6 0.8]"
+    "text": "演習\n\ndict がミュータブルであることを id() を使って確認しましょう\nlist と同じようにアクセスできる str がミュータブルかイミュータブルかを確認してください。\n上記の例で odd1[0] のアドレスを確認して、どうなっているか見てみましょう（list はミュータブルですが、list の要素は int なのでイミュータブルのはず）"
   },
   {
-    "objectID": "vector_matrix.html#section-5",
-    "href": "vector_matrix.html#section-5",
-    "title": "ベクトルと行列",
-    "section": "",
-    "text": "その他"
-  },
-  {
-    "objectID": "vector_matrix.html#ベクトルの大きさノルム",
-    "href": "vector_matrix.html#ベクトルの大きさノルム",
-    "title": "ベクトルと行列",
-    "section": "ベクトルの大きさ（ノルム）",
-    "text": "ベクトルの大きさ（ノルム）\n\nベクトルの大きさをノルム（norm、L2ノルム）と呼ぶ\n\n\\(|\\mathbf{a}|\\) や \\(\\|\\mathbf{a}\\|\\) と書く\n\n\n\\[\n\\mathbf{a} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} \\qquad\n\\|\\mathbf{a}\\| = \\sqrt{3^2 + 4^2} = 5\n\\]\nimport numpy as np\n\na = np.array([3, 4])\nprint(np.linalg.norm(a))  # 5.0\n\n\n\n\n\n\n他にも色々あるノルム\n\n\n\nL1ノルム（マンハッタン距離）：\\(\\sum |a_i|\\)\nL2ノルム（ユークリッド距離）：\\(\\sqrt{\\sum a_i^2}\\) ← 最もよく使う\nフロベニウスノルム：行列版のL2ノルム"
-  },
-  {
-    "objectID": "vector_matrix.html#単位ベクトル",
-    "href": "vector_matrix.html#単位ベクトル",
-    "title": "ベクトルと行列",
-    "section": "単位ベクトル",
-    "text": "単位ベクトル\n\nノルムが1のベクトルを単位ベクトルと呼ぶ\n元のベクトルをノルムで割ると単位ベクトルになる\n\n正規化という\n\n\n\\[\n\\hat{\\mathbf{a}} = \\frac{\\mathbf{a}}{\\|\\mathbf{a}\\|}\n\\]\n\n\nimport numpy as np\n\na = np.array([3, 4])\nnorm = np.sqrt(a[0]**2 + a[1]**2)\na_hat = a / norm\nprint(a_hat)                  # [0.6 0.8]\nprint(np.linalg.norm(a_hat))  # 1.0"
-  },
-  {
-    "objectID": "vector_matrix.html#行列の転置",
-    "href": "vector_matrix.html#行列の転置",
-    "title": "ベクトルと行列",
-    "section": "行列の転置",
-    "text": "行列の転置\n\n行と列を入れ替える操作を転置（\\(A^T\\)）と呼ぶ\n\nベクトルの転置も実は同じ操作\n\nNumPyでは .T で一発\n\n\\[\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA^T = \\begin{pmatrix} 1 & 3 \\\\ 2 & 4 \\end{pmatrix}\n\\]\nimport numpy as np\n\nA = np.array([[1, 2], [3, 4]])\nprint(A.T)\n# [[1 3]\n#  [2 4]]"
-  },
-  {
-    "objectID": "vector_matrix.html#ベクトルの転置",
-    "href": "vector_matrix.html#ベクトルの転置",
-    "title": "ベクトルと行列",
-    "section": "ベクトルの転置",
-    "text": "ベクトルの転置\n\n行と列を入れ替える操作を転置（Transpose）と呼ぶ\n\nベクトルでは縦を横に倒す操作となる\n\n\n\\[\n\\mathbf{a} = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\n\\mathbf{a}^T = \\begin{pmatrix} 1 & 2 \\end{pmatrix}\n\\]\n\n転置を使うと、内積は \\(\\mathbf{a}^T \\mathbf{b}\\) と書ける\n\nこれなら内積の演算を行列と同じ計算方法で扱える\n\n行 と 列 の要素同士の積の和\n\n\n\n\\[\n\\mathbf{a}^T \\mathbf{b} = \\begin{pmatrix} 1 & 2 \\end{pmatrix} \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} = 1 \\times 3 + 2 \\times 4 = 11\n\\]"
-  },
-  {
-    "objectID": "vector_matrix.html#図でみる内積",
-    "href": "vector_matrix.html#図でみる内積",
-    "title": "ベクトルと行列",
-    "section": "図でみる内積",
-    "text": "図でみる内積\n\n教科書での内積の定義\n\n\\[\n\\mathbf{a} \\cdot \\mathbf{b} = |\\mathbf{a}||\\mathbf{b}|\\cos\\theta\n\\]\n\n\\(|\\mathbf{b}|\\cos\\theta\\) ：\\(\\mathbf{b}\\) を \\(\\mathbf{a}\\) の方向に射影した長さ\n内積 = 「\\(\\mathbf{b}\\)の\\(\\mathbf{a}\\)方向に対する成分」× 「\\(\\mathbf{a}\\)の長さ\\(|\\mathbf{a}|\\)」"
-  },
-  {
-    "objectID": "vector_matrix.html#内積と直交",
-    "href": "vector_matrix.html#内積と直交",
-    "title": "ベクトルと行列",
-    "section": "内積と直交",
-    "text": "内積と直交\n\n2つのベクトルが直交（90°）しているとき内積は 0\n\n\\(\\cos 90° = 0\\)\nつまり、射影の長さがゼロ → 「\\(\\mathbf{a}\\) 方向の成分がない」\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n覚えること\n\n\n内積 = 0 ⟺ 直交（垂直）"
-  },
-  {
-    "objectID": "vector_matrix.html#参考ベクトルの掛け算-3外積",
-    "href": "vector_matrix.html#参考ベクトルの掛け算-3外積",
-    "title": "ベクトルと行列",
-    "section": "（参考）ベクトルの掛け算 3（外積）",
-    "text": "（参考）ベクトルの掛け算 3（外積）\n\n外積（cross product）は3次元ベクトル同士から新しいベクトルを作る\n\n内積：ベクトル → スカラー\n外積：ベクトル → ベクトル\n\n結果は元の2つのベクトルに直交する方向を向く\n\n\\[\n\\mathbf{a} \\times \\mathbf{b} =\n\\begin{pmatrix} a_2 b_3 - a_3 b_2 \\\\ a_3 b_1 - a_1 b_3 \\\\ a_1 b_2 - a_2 b_1 \\end{pmatrix}\n\\]\n\n\\(|\\mathbf{a} \\times \\mathbf{b}| = |\\mathbf{a}||\\mathbf{b}|\\sin\\theta\\)（2つのベクトルが張る平行四辺形の面積）\n\nimport numpy as np\n\na = np.array([1, 0, 0])\nb = np.array([0, 1, 0])\n\nprint(np.cross(a, b))  # [0 0 1] ← a, b 両方に垂直\n\nどこで使われるか\n\n3Dグラフィックス — ポリゴンの法線ベクトル（面の向き）の計算\n物理シミュレーション — トルク（回転力）、ローレンツ力\nロボティクス — 関節の回転軸の計算"
-  },
-  {
-    "objectID": "shortcuts.html#ショートカットキーを知るべき理由",
-    "href": "shortcuts.html#ショートカットキーを知るべき理由",
-    "title": "ショートカット",
-    "section": "ショートカットキーを知るべき理由",
-    "text": "ショートカットキーを知るべき理由\n最強の知的生産ツールであるPCを効率的に使ってタイパをあげよう。\nマウス操作に対して、ショートカットキーで操作すると作業時間の大幅な短縮につながる。"
-  },
-  {
-    "objectID": "shortcuts.html#例文言を別の場所にコピーしたいとき",
-    "href": "shortcuts.html#例文言を別の場所にコピーしたいとき",
-    "title": "ショートカット",
-    "section": "例：文言を別の場所にコピーしたいとき",
-    "text": "例：文言を別の場所にコピーしたいとき\nマウスの場合（8手順）\n\nキーボードからマウスに持ち替える\nマウスでコピーしたい文字列を選択する\n右クリック\nコピーを選択\nマウスカーソルをペーストしたい場所にもってきてクリックする\n右クリック\nペーストを選択\nキーボードに手を戻す\n\nショートカットの場合（4手順）\n\nShiftキーを押しながら矢印キーで選択範囲を指定する\nCtrl+C キーでコピーバッファに格納\nペーストしたい位置に矢印キーで移動\nCtrl+Vでペースト\n\n手順が半分になり、キーボードから手を離す必要もない。\nスピードが倍化したとして、人生のトータルコピペ数を考えると馬鹿にならない差になる。"
-  },
-  {
-    "objectID": "shortcuts.html#各種キーの名前",
-    "href": "shortcuts.html#各種キーの名前",
-    "title": "ショートカット",
-    "section": "各種キーの名前",
-    "text": "各種キーの名前\n覚えておこう。\n\nCtrl キー（コントロール）\nShift キー（シフト）\nAlt キー（オルタナティブの略なので「オルト」と読む）\nWin キー（Windowsキー）"
-  },
-  {
-    "objectID": "shortcuts.html#基本ショートカット",
-    "href": "shortcuts.html#基本ショートカット",
-    "title": "ショートカット",
-    "section": "基本ショートカット",
-    "text": "基本ショートカット\n以下は、ほぼすべてのアプリケーションで使えるショートカットなので覚えよう。\n\n\n\n\nWindows\nMac\n余談\n\n\n\n\n文字を範囲選択\nShift + 矢印\nShift + 矢印\n上下も使える\n\n\nすべて選択\nCtrl + A\nCmd + A\nallのa\n\n\nコピー\nCtrl + C\nCmd + C\ncopyのc\n\n\nカット（切り取り）\nCtrl + X\nCmd + X\n由来不明\n\n\nペースト\nCtrl + V\nCmd + V\nv の形が挿入場所を表している\n\n\nUndo（やり直し）\nCtrl + Z\nCmd + Z\n諸説あり"
-  },
-  {
-    "objectID": "shortcuts.html#早速実践",
-    "href": "shortcuts.html#早速実践",
-    "title": "ショートカット",
-    "section": "早速実践",
-    "text": "早速実践\nメモ帳を開いて、以下と同じものをショートカットを駆使して打ち込んでみよう。 なるべく速く完成させるにはどうするべき？\n|-|-|-|-|-|-|-|-|-|-|-|-|\n|-|-|-|-|-     -|-|-|-|-|\n|-|-|-|-|-     -|-|-|-|-|\n|-|-|-|-|-|-|-|-|-|-|-|-|\n|-|-|-|-|-|-|-|-|-|-|-|-|\n|-|-|-|-|-     -|-|-|-|-|\n|-|-|-|-|-     -|-|-|-|-|\n|-|-|-|-|-|-|-|-|-|-|-|-|\n\n\n\n\n\n\nヒント\n\n\n\n1段目の縦棒は13本\n2段目の縦棒は10本\n全部で8段\n1行打ったらコピー&ペーストで増やせる"
-  },
-  {
-    "objectID": "shortcuts.html#応用ショートカットファンクションキー",
-    "href": "shortcuts.html#応用ショートカットファンクションキー",
-    "title": "ショートカット",
-    "section": "応用ショートカット：ファンクションキー",
-    "text": "応用ショートカット：ファンクションキー\nプログラマはファンクションキーをよく使う\nFunction（機能）キーを使えるようになろう。\n\n\n\n\n\n\n\n\n\nショートカット\n余談\n\n\n\n\n全画面化\nF11\n\n\n\nかな→半角（ローマ字入力中）\nF10\n\n\n\nウインドウを閉じる\nAlt + F4\n\n\n\nビルド・コンパイル\nF5\n古来からの習わし。詳しくは「VS Codeのショートカット」へ\n\n\n\n\n\n\n\n\n\nMac（参考）\n\n\n全画面化=Ctrl+Cmd+F、かな→半角=英数キー、ウィンドウを閉じる=Cmd+W"
-  },
-  {
-    "objectID": "shortcuts.html#応用ショートカットwindowsキー",
-    "href": "shortcuts.html#応用ショートカットwindowsキー",
-    "title": "ショートカット",
-    "section": "応用ショートカット：Windowsキー",
-    "text": "応用ショートカット：Windowsキー\nWindowsキーも重要。\n\n\n\n\nショートカット\n余談\n\n\n\n\nコピーバッファを開く\nWin + V\n非常に便利\n\n\nスクリーンショット\nWin + Shift + S\nスクリーンショットのs\n\n\nデスクトップを表示\nWin + D\nデスクトップのd\n\n\n別ウインドウに切り替え\nWin + Tab\nAlt + Tabも同じような機能\n\n\n\n\n\n\n\n\n\nMac（参考）\n\n\nスクリーンショット=Cmd+Shift+4、ウィンドウ切り替え=Cmd+Tab。クリップボード履歴・デスクトップ表示は標準機能なし。"
-  },
-  {
-    "objectID": "shortcuts.html#その他の便利なショートカット",
-    "href": "shortcuts.html#その他の便利なショートカット",
-    "title": "ショートカット",
-    "section": "その他の便利なショートカット",
-    "text": "その他の便利なショートカット\nアプリケーションによっては実装されていないこともあるが、大抵は共通で使える。\n\n\n\n\n\n\n\n\n\n\nWindows\nMac\n余談\n\n\n\n\n検索\nCtrl + F\nCmd + F\n\n\n\nRedo（リドゥ）\nCtrl + Y\nCmd + Shift + Z\nUndoの逆\n\n\n新しく始める\nCtrl + N\nCmd + N\nNewのn\n\n\n次の場所にフォーカスを進める\nTab\nTab\nブラウザのフォーム入力などで便利\n\n\n前の場所にフォーカスを戻す\nShift + Tab\nShift + Tab\n同上"
-  },
-  {
-    "objectID": "shortcuts.html#vs-codeのショートカット",
-    "href": "shortcuts.html#vs-codeのショートカット",
-    "title": "ショートカット",
-    "section": "VS Codeのショートカット",
-    "text": "VS Codeのショートカット\nエディタ上で役立つショートカット。コードを書くときに活用しよう。\n\n\n\n\n\n\n\n\n\n\nWindows\nMac\n説明\n\n\n\n\n実行\nCtrl + F5\n\nデバッグなしで実行（F5はデバッグ付き）\n\n\n行をコピー\nCtrl + C\nCmd + C\n選択なしで押すと行ごとコピー\n\n\n行を切り取り\nCtrl + X\nCmd + X\n選択なしで押すと行ごと切り取り\n\n\n行を上下に移動\nAlt + ↑ / ↓\nOption + ↑ / ↓\n行の順序を入れ替えるのに便利\n\n\nコメントアウト\nCtrl + /\nCmd + /\nもう一度押すと解除\n\n\n字下げ（インデント）\nCtrl + ] / Ctrl + [\nCmd + ] / Cmd + [\n]で増やす、[で戻す"
-  },
-  {
-    "objectID": "shortcuts.html#演習①vs-codeで日本語入力",
-    "href": "shortcuts.html#演習①vs-codeで日本語入力",
-    "title": "ショートカット",
-    "section": "演習①：VS Codeで日本語入力",
-    "text": "演習①：VS Codeで日本語入力\n前提：日本語入力モード（IMEオン）で開始すること。\n課題：VS Codeを開き、以下のコメントをそのまま入力しよう。\nゴール（これを入力する）：\n# Alt（オルタナティブ）キーで行を移動できる\n# Ctrl+/でコメントアウト、F5で実行\n\n\n\n\n\n\n手順の例：Alt（オルタナティブ） の入力\n\n\n\nalt と打つ → F10（半角英数に変換）→ Alt → Enter で確定\n（ を入力\nおるたなてぃぶ と打つ → F7（カタカナに変換）→ オルタナティブ → Enter で確定\n） を入力\n\n漢字（移動、実行 など）は スペース で変換する。"
-  },
-  {
-    "objectID": "shortcuts.html#演習②カットペースト字下げ",
-    "href": "shortcuts.html#演習②カットペースト字下げ",
-    "title": "ショートカット",
-    "section": "演習②：カット＆ペースト＋字下げ",
-    "text": "演習②：カット＆ペースト＋字下げ\n課題：順序と字下げが崩れたコードを ショートカットだけで 直そう。\n初期状態：\nscore = int(input())\n    if score &gt;= 60:\nprint(\"不合格\")\n        print(\"合格\")\n    else:\nゴール：\nscore = int(input())\nif score &gt;= 60:\n    print(\"合格\")\nelse:\n    print(\"不合格\")\nヒント：\n\n行の移動は Alt + ↑↓ または Ctrl+X → Ctrl+V\n字下げは Ctrl + ]、戻すは Ctrl + ["
-  },
-  {
-    "objectID": "shortcuts.html#演習③コメントアウトでバグを追い詰める",
-    "href": "shortcuts.html#演習③コメントアウトでバグを追い詰める",
-    "title": "ショートカット",
-    "section": "演習③：コメントアウトでバグを追い詰める",
-    "text": "演習③：コメントアウトでバグを追い詰める\n課題：このプログラムを実行すると結果がおかしい。コメントアウトを使ってどのブロックが原因か突き止めよう。\nコード（VS Codeに貼り付けて実行）：\nscores = [85, 92, 78, 55, 65]\nnames = [\"田中\", \"鈴木\", \"佐藤\", \"山田\", \"高橋\"]\n\ndef normalize(data, threshold=60):\n    for i in range(len(data)):\n        if data[i] &lt; threshold:\n            data[i] = threshold\n    return data\n\n# ブロック①：受験者一覧\nprint(\"=== 受験者一覧 ===\")\nfor i in range(len(names)):\n    print(names[i], \":\", scores[i], \"点\")\n\n# ブロック②：補正後の平均点\nprint(\"=== 補正後の平均点 ===\")\ncorrected = normalize(scores)\naverage = sum(corrected) / len(corrected)\nprint(\"平均：\", round(average, 1), \"点\")\n\n# ブロック③：合否判定\nprint(\"=== 合否判定 ===\")\nfor i in range(len(names)):\n    if scores[i] &gt;= 60:\n        print(names[i], \"：合格\")\n    else:\n        print(names[i], \"：不合格\")\n\n# ブロック④：不合格者集計\nprint(\"=== 集計 ===\")\nfailed = [s for s in scores if s &lt; 60]\nprint(\"不合格者数：\", len(failed), \"人\")\nprint(\"合格者数：\", len(scores) - len(failed), \"人\")\nおかしい点：①で山田は55点と表示されるのに、③では山田が合格、④では不合格者0人になっている。\n手順：\n\nまず全体を実行して、おかしい箇所を確認する\n怪しいブロックを 複数行まとめてCtrl+/ でコメントアウトして再実行\nどのブロックをコメントアウトしたら結果が正しくなるかを確認する\n原因のブロックのどの行がバグか特定する\n\n\n\n\n\n\n\nなぜこうなるの？\n\n\nnormalize() がリストを中で書き換えていることが原因です。 なぜそうなるのかのメカニズムは、変数と代入で詳しく解説します。"
-  },
-  {
-    "objectID": "shortcuts.html#まとめ",
-    "href": "shortcuts.html#まとめ",
-    "title": "ショートカット",
+    "objectID": "variables.html#まとめ",
+    "href": "variables.html#まとめ",
+    "title": "変数と代入",
     "section": "まとめ",
-    "text": "まとめ\n\nショートカットキーは手順を半分にし、生涯の作業時間を大幅に削減できる\nCtrl+C/V/Z/A などの基本ショートカットはほぼ全アプリで共通\nWin+V（クリップボード履歴）・Win+Shift+S（スクリーンショット）も覚えておくと便利\nVS Code では Alt+↑↓（行移動）・Ctrl+/（コメントアウト）・F5（実行）が特に役立つ"
+    "text": "まとめ\n\n変数は値そのものではなく、値が置かれたアドレスを指す看板\nint / str / bool 等はイミュータブル — 代入時に必ず新しいアドレスに作られる\nlist / dict 等はミュータブル — 同じアドレスの中身を変更するため意図せぬ書き換えに注意\n独立したコピーが必要なときは .copy() を使う"
   },
   {
-    "objectID": "list.html#復習listとは",
-    "href": "list.html#復習listとは",
-    "title": "リストをあらためて",
-    "section": "復習(listとは)",
-    "text": "復習(listとは)\n\n\n\n最もよく使われるコンテナ\nデータは追加順に並んでいる\n他言語では配列やアレイと呼ばれる　\n変数名は、要素の名詞の複数形をつけることが多い（foodsなど）"
+    "objectID": "numpy.html#numpyとは",
+    "href": "numpy.html#numpyとは",
+    "title": "NumPy入門",
+    "section": "NumPyとは",
+    "text": "NumPyとは\n\nNumPyは数値計算のデファクトスタンダード\n\n普通、数値計算やデータ処理にlistは使わない\n\n内部的にはC言語で実装されている\n\n通常のリストに比べて非常に高速"
   },
   {
-    "objectID": "list.html#宣言",
-    "href": "list.html#宣言",
-    "title": "リストをあらためて",
+    "objectID": "numpy.html#インストールと使用",
+    "href": "numpy.html#インストールと使用",
+    "title": "NumPy入門",
+    "section": "インストールと使用",
+    "text": "インストールと使用\nターミナルからインストール\npip install numpy\n冒頭でimportして使用（ただしnpというエイリアス指定が一般的）\nimport numpy as np\n\n\n\n\n\n\ninportの as とは？\n\n\nimport numpy as np の as np は別名（エイリアス）をつける構文\nimport numpy         # 使用時にnumpy.array(...) と書く\nimport numpy as np   # np.array(...) でよいので短い\n\n注：np の部分は何でもよく別の名前も使用可能\n\nただし、NumPyは np が非常に一般的"
+  },
+  {
+    "objectID": "numpy.html#numpy配列ndarray",
+    "href": "numpy.html#numpy配列ndarray",
+    "title": "NumPy入門",
+    "section": "NumPy配列（ndarray）",
+    "text": "NumPy配列（ndarray）\n\n数値のリストっぽいものをnpに渡すとndarrayになる\nndarray は list によく似たNumPy用の配列型\n\n先頭の nd は多次元配列（N-Dimensional Array）の略\n\nNumPyはndarrayを効率よく処理するためのライブラリ\n\nimport numpy as np\n\narr = np.array([1, 2, 3, 4]) # 1-4のndarray\n\n# 以下でarrを数値計算（例：平均・分散 etc.）\n\n\n\n\n\n\nノート\n\n\nnp.ndarray() ではなく np.array() と書くことに注意"
+  },
+  {
+    "objectID": "numpy.html#基本的な初期化",
+    "href": "numpy.html#基本的な初期化",
+    "title": "NumPy入門",
+    "section": "基本的な初期化",
+    "text": "基本的な初期化\nリストを np.array() に渡すと、NumPy配列になります。\nimport numpy as np\n\nlist = [1, 2, 3, 4]\narr = np.array(list)\n\narr = np.array([1, 2, 3, 4])    # 同じ\narr = np.array(range(1, 5))     # 同じ。実際には後述のarangeがよく使われる\n\nlist += list\narr = np.array(list)"
+  },
+  {
+    "objectID": "numpy.html#初期化ヘルパー関数",
+    "href": "numpy.html#初期化ヘルパー関数",
+    "title": "NumPy入門",
+    "section": "初期化（ヘルパー関数）",
+    "text": "初期化（ヘルパー関数）\n\n下記のよく使う数列は、ヘルパー関数で一撃生成\n特にrandom 系は強力\n\nテスト用データを作るときに非常によく使われる\n\n\nimport numpy as np\n\nnp.zeros(3)          # 0.0が3つの要素で初期化。 [0. 0. 0. ] \nnp.ones(5)           # 1.0が5つの要素で初期化。 [1. 1. 1. 1. 1.]\nnp.full(4, 7)        # 7が4つの要素で初期化。 [7 7 7 7]\n\n# arrangeではなくarange（\"a range\" = ある範囲）\nnp.arange(4)         # [0 1 2 3]\nnp.arange(1, 5)      # [1 2 3 4]\nnp.arange(1, 10, 2)  # [1 3 5 7 9]\n\nnp.random.rand(3)           # [0.0, 1.0) の一様乱数 3要素\nnp.random.randint(10)       # 0〜9のランダムな整数\nnp.random.randint(1, 7, 3)  # 1〜6のランダムな整数 3要素\nnp.random.shuffle(arr)      # 配列をランダムに並べ替え（破壊的）"
+  },
+  {
+    "objectID": "numpy.html#要素へのアクセス",
+    "href": "numpy.html#要素へのアクセス",
+    "title": "NumPy入門",
+    "section": "要素へのアクセス",
+    "text": "要素へのアクセス\n\nアクセス方法はlistと同じ\nスライスにも対応\n\nimport numpy as np\n\narr = np.array([1, 2, 3, 4])\n\nprint(arr[0])    # 先頭の要素（1）\nprint(arr[1])    # 2番目の要素（2）\nprint(arr[-1])   # 最後の要素（4）\narr[0] = 10      # 1番目の要素を10に変更\n\n# スライス\nprint(arr[1:3])  # 2番目から3番目まで（[2, 3]）\nprint(arr[:2])   # 先頭から2番目まで（[1, 2]）\nprint(arr[2:])   # 3番目から最後まで（[3, 4]）"
+  },
+  {
+    "objectID": "numpy.html#型",
+    "href": "numpy.html#型",
+    "title": "NumPy入門",
+    "section": "型",
+    "text": "型\n\nndarray全体は numpy.ndarray\n各要素は代入時のリテラルによって決まる\n\nintなら numpy.int64\nfloatなら numpy.float64\n\n異なる型の混在はできない\n\nimport numpy as np\n\narr = np.array([1, 2, 3, 4])\nprint(type(arr))    # &lt;class 'numpy.ndarray'&gt;\nprint(type(arr[0])) # &lt;class 'numpy.int64'&gt;\n\narr2 = np.array([1.0, 2.0, 3.0, 4.0])\nprint(type(arr2))    # &lt;class 'numpy.ndarray'&gt;\nprint(type(arr2[0])) # &lt;class 'numpy.float64'&gt;"
+  },
+  {
+    "objectID": "numpy.html#強力な演算",
+    "href": "numpy.html#強力な演算",
+    "title": "NumPy入門",
+    "section": "強力な演算",
+    "text": "強力な演算\n\nListと違い、各要素に対する演算が可能\n\nfor文が不要なため非常に高速\n\n\nimport numpy as np\n\nmy_array = np.array([1, 2, 3])\nmy_array * 2  # array([2, 4, 6])  ← 要素ごとの計算\n\n# listに * 2 を使うと...\nprint(my_list * 2)  # [1, 2, 3, 1, 2, 3]  ← 演算ではなく、２つのリストのconcat\n\n# listで同じことをするにはfor文や内包表記が必要\nmy_list = [1, 2, 3]\n[x * 2 for x in my_list]"
+  },
+  {
+    "objectID": "numpy.html#その他長さやアクセス方法",
+    "href": "numpy.html#その他長さやアクセス方法",
+    "title": "NumPy入門",
+    "section": "その他（長さやアクセス方法）",
+    "text": "その他（長さやアクセス方法）\n\nlistと同じくlenもある\n\nただし、sizeを使うことが多い\n\nfor文はlistと同じように記述可能\n\nimport numpy as np\n\narr = np.array([4, 5, 6])\n\nprint(len(arr))  # 長さ（listと同じ）\nprint(arr.size)  # 普通はこちらを使う\n\n# for文もlistと同じように使える\nfor v in arr:\n    print(v)\n\n# 差分（数値微分）\narr = np.array([0, 2, 5, 3, 1, 4]) # 時系列の信号を想定\ndiff = np.zeros(len(arr) - 1) # 結果格納用のndarray\nfor i in range(len(arr) - 1): \n    diff[i] = arr[i+1] - arr[i] # 微分\nprint(diff)  # [ 2.  3. -2. -2.  3.]"
+  },
+  {
+    "objectID": "numpy.html#多次元array",
+    "href": "numpy.html#多次元array",
+    "title": "NumPy入門",
+    "section": "多次元Array",
+    "text": "多次元Array\n\nndarrayは多次元（N-Dimensional）で力を発揮\n\n特に行列演算が強力\n\n\nimport numpy as np\n\n# 2次元配列（行列）\nA = np.array([[1, 2], [3, 4]])\n\nB = np.array([[5, 0],\n              [0, 5]])\n\n# 要素へのアクセス\nprint(A[0, 1])  # 1行目2列目\nprint(A[1, :])  # 2行目全体\nprint(A[:, 0])  # 1列目全体\n\n# 転置\nprint(A.T)\nprint(B.T)"
+  },
+  {
+    "objectID": "numpy.html#その他演算等",
+    "href": "numpy.html#その他演算等",
+    "title": "NumPy入門",
+    "section": "その他演算等",
+    "text": "その他演算等\n\n統計処理の組み込み関数も多数提供されている\n\nimport numpy as np\n\nscores = np.array([80, 85, 90, 75, 88, 92, 82, 79, 87])\n\nprint(np.max(scores))    # 最大値\nprint(np.min(scores))    # 最小値\nprint(np.mean(scores))   # 平均値\nprint(np.median(scores)) # 中央値\nprint(np.var(scores))    # 分散\nprint(np.std(scores))    # 標準偏差\n\n# 3人の生徒の英語・数学・国語の成績\n# 多次元の処理はaxisを指定する\ndata = np.array([[80, 85, 90], [75, 88, 92], [82, 79, 87]])\nprint(np.mean(data, axis=0))  # 列ごと（各科目の平均）\nprint(np.mean(data, axis=1))  # 行ごと（各生徒の平均）\n\n# 条件を満たすデータの抽出\nprint(scores &gt;= 85)           # True/False\nprint(scores[scores &gt;= 85])   # 85点以上のデータ"
+  },
+  {
+    "objectID": "numpy.html#演習1",
+    "href": "numpy.html#演習1",
+    "title": "NumPy入門",
+    "section": "演習1",
+    "text": "演習1\n（１） 「1から10までの連続した整数」から成るndarrayを表示\n（２） その各要素を2倍にした新しいndarrayを作って表示\n（３） そのnumpy配列の各要素をランダムに並べ替えた新しいndarrayを表示\n（４） 100以上400以下のランダムな数字を１つ表示\n（５） 0以上1未満のランダムな数字を１つ表示"
+  },
+  {
+    "objectID": "numpy.html#演習2",
+    "href": "numpy.html#演習2",
+    "title": "NumPy入門",
+    "section": "演習2",
+    "text": "演習2\n（１）li = [10, 20, 30] に対してfor文ですべての要素の型を確認するコードを書け\n（２）li をNumPyの配列 arr に変換し、要素の型を表示\n（３）同じくli = [0.1, 0.2, 0.3] の要素の型を表示\n（４）li をNumPyの配列 arr2 に変換し、要素の型を表示"
+  },
+  {
+    "objectID": "key-typing.html#キータイピングを速めよう",
+    "href": "key-typing.html#キータイピングを速めよう",
+    "title": "キータイピング",
+    "section": "キータイピングを速めよう",
+    "text": "キータイピングを速めよう\n入力の主流なインタフェースはいまだキーボードである。 音声入力もあるが、特に日本語においては漢字変換や URLなど音声だけで必要な入力を賄うことは不可能です。\nよって、PCを生涯使うであろう我々にとってキーボードを打つスピードは生涯の生産性に直結するため、速いに越したことはない。"
+  },
+  {
+    "objectID": "key-typing.html#日本語タイピング速度の目安",
+    "href": "key-typing.html#日本語タイピング速度の目安",
+    "title": "キータイピング",
+    "section": "日本語タイピング速度の目安",
+    "text": "日本語タイピング速度の目安\nタイピングの速さを測る指標は主に2つある。\n\nWPM（Words Per Minute）：1分間に打てる 単語数\nKPM（Keys Per Minute）：1分間に打てる キーの打鍵数\n\nWPM\n\n\n\nレベル\nWPM\n\n\n\n\n初心者\n20–30\n\n\n中級者\n40–60（一般的なオフィスワーカー）\n\n\n上級者\n70–90\n\n\n\nKPM\n日本語のKPM平均値は、ローマ字入力で 100〜150 KPM が日常利用者の範囲とされている。\n\n\n\nレベル\nKPM\n\n\n\n\n初心者\n40–60\n\n\n中級者\n80–120\n\n\n上級者\n140–180\n\n\nトップ層\n250以上\n\n\n\nちなみに、英語は1単語あたり約5キーだが、日本語は1単語あたり平均5〜7文字で、1文字あたり2キー必要。同じWPMでも日本語のほうがキー入力数が多い。"
+  },
+  {
+    "objectID": "key-typing.html#つまりどれくらい差がつくのか",
+    "href": "key-typing.html#つまりどれくらい差がつくのか",
+    "title": "キータイピング",
+    "section": "つまり、どれくらい差がつくのか",
+    "text": "つまり、どれくらい差がつくのか\n初心者と上級者の間では 3倍以上 の速度差がある。\n\n\n\n\n\n\n例：1000文字のレポートを書く場合\n\n\n\n90 WPM → 約 11分\n20 WPM → 約 50分\n\n生涯に何文字書くかを考えると、取り返しがつかない時間を損する可能性すらある。\n\n\n\nしかし、いまは遅くても 慣れれば誰でも速くなる。\n練習をして基礎体力をつけよう。"
+  },
+  {
+    "objectID": "key-typing.html#ホームポジションを身につけよう",
+    "href": "key-typing.html#ホームポジションを身につけよう",
+    "title": "キータイピング",
+    "section": "ホームポジションを身につけよう",
+    "text": "ホームポジションを身につけよう\nキーボードには「ホームポジション」と呼ばれる基本の手の置き方がある。\nホームポジションとは\n\n\n\n手\n人差し指\n中指\n薬指\n小指\n\n\n\n\n左手\nF\nD\nS\nA\n\n\n右手\nJ\nK\nL\n；\n\n\n\n\n親指：スペースキー\nF と J には小さな突起がある → 人差し指の目印\n\n目をつぶっても打てるよう、指のポジション感覚を鍛えよう。"
+  },
+  {
+    "objectID": "key-typing.html#小さい文字の打ち方と練習",
+    "href": "key-typing.html#小さい文字の打ち方と練習",
+    "title": "キータイピング",
+    "section": "小さい文字の打ち方と練習",
+    "text": "小さい文字の打ち方と練習\n小さい文字（拗音・促音）だけを単体で打ちたいときは、最初に X か L を入力する。\n\n\n\n打ちたい文字\n入力方法\n\n\n\n\n小さい「ゃ」\nxya または lya\n\n\n小さい「ょ」\nxyo または lyo\n\n\n小さい「っ」\nxtu または ltu\n\n\n\n練習してみよう\n以下の文には拗音・促音がたくさん含まれている。タイピングしてみよう。\n\n\n\n\n\n\nサンプル文\n\n\nにゃんこが　すーぱーで　ちっっっちゃな　きゃべつを　ひょいっと　くわえて　ぴょんぴょん　はねている。\nちゅうしゃじょうの　よこで　うっかり　すべって　こけちゃった。"
+  },
+  {
+    "objectID": "key-typing.html#タイピング上達のコツ",
+    "href": "key-typing.html#タイピング上達のコツ",
+    "title": "キータイピング",
+    "section": "タイピング上達のコツ",
+    "text": "タイピング上達のコツ\n\nタッチタイピングを意識する\n\n画面を見ながら打ち、手元は見ないようにする\n\nミスタイプを恐れず打ち続ける\n\nゆっくりでもよいので、正しい指で正しい位置を覚える\n\nリズムよく打つ\n\n一定のテンポで打つ練習をすると、速度と正確さが上がる\n\n毎日3〜5分でOK、継続が鍵\n\n短時間でも毎日継続することで、体に定着する"
+  },
+  {
+    "objectID": "key-typing.html#速度計測",
+    "href": "key-typing.html#速度計測",
+    "title": "キータイピング",
+    "section": "速度計測",
+    "text": "速度計測\n「寿司打」で検索して お手軽3000円コース をやってみよう。\n寿司打\n\n\n\n\n\n\nKPMの計算方法\n\n\n「平均キータイプ数」× 60 = KPM\n140 KPM 以上 を目指そう！"
+  },
+  {
+    "objectID": "key-typing.html#演習atcoderでプログラムを動かしてみよう",
+    "href": "key-typing.html#演習atcoderでプログラムを動かしてみよう",
+    "title": "キータイピング",
+    "section": "演習：AtCoderでプログラムを動かしてみよう",
+    "text": "演習：AtCoderでプログラムを動かしてみよう\n「AtCoder ABC 400 tasks」で検索して A 問題を解いてみよう。\n\nAtCoder Beginner Contest 400 A問題 にアクセス\nアカウントを作る\n問題を解く\n右上の「提出」ボタンを押す\nジャッジ結果が AC（Accepted） になれば正解！\n\nWA（Wrong Answer） ：出力が違う\nRE（Runtime Error） ：実行中にエラー\nTLE（Time Limit Exceeded） ：時間超過\n\n\n\n\n\n\n\n\nABC400の解答例（Python）\n\n\n\n\n解答を見る\nA = int(input())\nres = -1 if 400 % A != 0 else 400 // A\nprint(res)"
+  },
+  {
+    "objectID": "key-typing.html#参考atcoderでよく使う入力パターン",
+    "href": "key-typing.html#参考atcoderでよく使う入力パターン",
+    "title": "キータイピング",
+    "section": "（参考）AtCoderでよく使う入力パターン",
+    "text": "（参考）AtCoderでよく使う入力パターン\n# 入力をそのまま文字列として取得\ns = input()\n\n# 入力をintとして取得\ni = int(input())\n\n# スペース区切りの文字列（[foo bar baz]）をリストとして取得する場合\nss = [s for s in input().split()]\n\n# スペース区切りの2文字を別の変数としたい場合\nA, B = [s for s in input().split()]\n\n# 「Aを1 2 3 4からなる数列とする」のような場合\nAs = [int(x) for x in input().split()]\n\n# intでA Bという数字が与えられるパターン\nA, B = [int(x) for x in input().split()]"
+  },
+  {
+    "objectID": "key-typing.html#まとめ",
+    "href": "key-typing.html#まとめ",
+    "title": "キータイピング",
+    "section": "まとめ",
+    "text": "まとめ\n\nキータイピング速度は生涯の生産性に直結する — 早めに投資する価値がある\nまずホームポジションを身につけることが上達の近道\n目標は KPM 300（WPM 60）— 毎日少しずつ練習を続けよう\nAtCoder の入力パターン（input() / int() / split()）は今後も頻出"
+  },
+  {
+    "objectID": "dict.html#復習dict-とは",
+    "href": "dict.html#復習dict-とは",
+    "title": "辞書をあらためて",
+    "section": "復習（dict とは）",
+    "text": "復習（dict とは）\n\n\n\nキーと値のペアで管理するコレクション型\nデータはキーで管理する（list のような番号ではない）\n変数名は 「x2y」 形式にすることが多い（例：name2score）\n\n\n\nCC0: https://en.wikipedia.org/wiki/Fictionary#/media/File:Focus_definition_(Unsplash).jpg"
+  },
+  {
+    "objectID": "dict.html#宣言",
+    "href": "dict.html#宣言",
+    "title": "辞書をあらためて",
     "section": "宣言",
-    "text": "宣言\n[] でカンマ区切りでデータを入力するとリストになる。\n\n順序が保持される\n重複してもよい\n\nscores = [85, 90, 92, 78, 92, 88]\nprint(scores)  # [85, 90, 92, 78, 92, 88]\n\n\n\n\n\n\nお作法\n\n\nカンマ , の後は必ずスペースを空けるのが綺麗に書くコツ。"
+    "text": "宣言\n{} で キー: 値 をカンマ区切りで入力すると辞書になる。\n\nキーは重複不可\n値は何でもよい\n\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}\n\n\n\n\n\n\nお作法\n\n\n: の前は詰めて、: と , の後には必ずスペースを空けるのが綺麗に書くコツ。"
   },
   {
-    "objectID": "list.html#アクセスインデックス",
-    "href": "list.html#アクセスインデックス",
-    "title": "リストをあらためて",
-    "section": "アクセス（インデックス）",
-    "text": "アクセス（インデックス）\n要素にアクセスするにはインデックス（数字）を使う。\n\nインデックスはゼロ始まり\n後ろにいくにつれて 1 ずつ増加\n\nscores = [85, 90, 92, 78, 92, 88]\nprint(scores[0])  # 85\nprint(scores[4])  # 92"
+    "objectID": "dict.html#アクセスキー",
+    "href": "dict.html#アクセスキー",
+    "title": "辞書をあらためて",
+    "section": "アクセス（キー）",
+    "text": "アクセス（キー）\n要素にアクセスするにはキーを使う（list の [0] に相当）。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\nprint(name2score[\"Yamada\"])     # 95\nprint(name2score[\"Takahashi\"])  # 80"
   },
   {
-    "objectID": "list.html#マイナスインデックス",
-    "href": "list.html#マイナスインデックス",
-    "title": "リストをあらためて",
-    "section": "マイナスインデックス",
-    "text": "マイナスインデックス\nインデックスをマイナスにすると末尾からアクセスできる。\n\n-1 が末尾（-0 ではない）\n\nprint(scores[-1])  # 88（末尾）\nprint(scores[-5])  # 90（末尾から5番目）"
+    "objectID": "dict.html#要素の追加上書き",
+    "href": "dict.html#要素の追加上書き",
+    "title": "辞書をあらためて",
+    "section": "要素の追加・上書き",
+    "text": "要素の追加・上書き\ndict[キー] = 値 で追加・上書きできる。\n\n存在しないキー → 追加\n存在するキー → 上書き\n\nname2score = {\"Yamada\": 95, \"Suzuki\": 75}\n\n# 追加\nname2score[\"Takahashi\"] = 80\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}\n\n# 上書き\nname2score[\"Suzuki\"] = 70\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 70, 'Takahashi': 80}\n\n\n\n\n\n\ntypo に注意\n\n\n追加と上書きが同じ書き方なので、typo でキーを間違えると新しいキーが勝手に追加される。\nname2score[\"Suzki\"] = 60  # 上書きのつもりが新規追加！"
   },
   {
-    "objectID": "list.html#要素の追加append",
-    "href": "list.html#要素の追加append",
-    "title": "リストをあらためて",
-    "section": "要素の追加（append）",
-    "text": "要素の追加（append）\nappend メソッドで末尾に要素を追加できる。\nscores = [85, 90, 92, 78, 92, 88]\nscores.append(95)\nprint(scores)  # [85, 90, 92, 78, 92, 88, 95]\n\n\n\n\n\n\n戻り値は None\n\n\nappend は末尾に追加するだけで、新しいリストを返さない。\nresult = scores.append(95)\nprint(result)  # None ← リストではない！\nresult = scores.append(95) のように書くと result が None になってしまう。"
-  },
-  {
-    "objectID": "list.html#走査全要素へのアクセス",
-    "href": "list.html#走査全要素へのアクセス",
-    "title": "リストをあらためて",
+    "objectID": "dict.html#走査全要素へのアクセス",
+    "href": "dict.html#走査全要素へのアクセス",
+    "title": "辞書をあらためて",
     "section": "走査（全要素へのアクセス）",
-    "text": "走査（全要素へのアクセス）\nリストの全要素にアクセスすることを走査という。for 文で簡単に書ける。\nfor score in scores:\n    print(f\"{score}点\")\n85点\n90点\n92点\n78点\n92点\n88点"
+    "text": "走査（全要素へのアクセス）\ndict には3種類の走査方法がある。for 文で書ける。\n# キーだけ\nfor key in name2score.keys():\n    print(key)\n\n# 値だけ\nfor value in name2score.values():\n    print(value)\n\n# キーと値を同時に（最頻出）\nfor key, value in name2score.items():\n    print(f\"{key}さんは{value}点です\")\nYamadaさんは95点です\nSuzukiさんは70点です\nTakahashiさんは80点です\n\n\n\n\n\n\nどれを使う？\n\n\n\n両方必要 → .items()（実務ではこれが一番多い）\nキーだけ → .keys()（for key in name2score: でも同じ）\n値だけ → .values()"
   },
   {
-    "objectID": "list.html#要素の存在確認in-演算子",
-    "href": "list.html#要素の存在確認in-演算子",
-    "title": "リストをあらためて",
-    "section": "要素の存在確認（in 演算子）",
-    "text": "要素の存在確認（in 演算子）\nin 演算子でリストに特定の値が含まれているか確認できる。\nscores = [85, 90, 78]\n\nif 90 in scores:\n    print(\"90点の学生がいる\")  # 90点がいる\n\nif 100 not in scores:\n    print(\"満点はいない\")  # 満点はいない\n\n\n\n\n\n\nin vs インデックス検索\n\n\n「含まれているか知りたいだけ」なら in が最もシンプル。 位置（インデックス）も必要なときは .index() を使う。\nprint(scores.index(90))  # 1"
+    "objectID": "dict.html#その他-dict-で知っておきたい基礎知識",
+    "href": "dict.html#その他-dict-で知っておきたい基礎知識",
+    "title": "辞書をあらためて",
+    "section": "その他 dict で知っておきたい基礎知識",
+    "text": "その他 dict で知っておきたい基礎知識\n\n\n\nin 演算子で存在確認\n.get() で安全にアクセス\n要素の削除と長さ（del / pop / len）\nネストした dict\ndict と list の組み合わせ\n辞書内包表記"
   },
   {
-    "objectID": "list.html#listを処理する便利なアレコレ",
-    "href": "list.html#listを処理する便利なアレコレ",
-    "title": "リストをあらためて",
-    "section": "listを処理する便利なアレコレ",
-    "text": "listを処理する便利なアレコレ\n\n\n\nスライス（部分集合の取得）\n２次元配列\nN 次元配列　\nlist 同士の結合\nsortとsorted\n内包表記"
+    "objectID": "dict.html#in-演算子で存在確認",
+    "href": "dict.html#in-演算子で存在確認",
+    "title": "辞書をあらためて",
+    "section": "in 演算子で存在確認",
+    "text": "in 演算子で存在確認\nin 演算子でキーが存在するか確認できる。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75}\n\nif \"Yamada\" in name2score:\n    print(\"Yamada さんは登録済み\")\n\nif \"Tanaka\" not in name2score:\n    print(\"Tanaka さんは未登録\")\n\n\n\n\n\n\nin はキーを見る（値ではない）\n\n\nif 95 in name2score:            # False\nif 95 in name2score.values():   # True ← 値を見たいときはこう"
   },
   {
-    "objectID": "list.html#範囲外のインデックスはエラー",
-    "href": "list.html#範囲外のインデックスはエラー",
-    "title": "リストをあらためて",
-    "section": "範囲外のインデックスはエラー",
-    "text": "範囲外のインデックスはエラー\n以下のインデックスは指定できない（エラーになる）。\n\n要素数（list の長さ）以上\nマイナス要素数＋1 以下\n\ntest = [0, 1, 2, 3]\nprint(len(test))  # 4\nprint(test[4])    # IndexError\nprint(test[-5])   # IndexError\n\n\n\n\n\n\nIndexError: list index out of range\n\n\nlen(test) は 4 なので有効なインデックスは -4 ～ 3 まで。 test[4] や test[-5] はその範囲外なのでエラー。"
+    "objectID": "dict.html#get-で安全にアクセス",
+    "href": "dict.html#get-で安全にアクセス",
+    "title": "辞書をあらためて",
+    "section": ".get() で安全にアクセス",
+    "text": ".get() で安全にアクセス\ndict[キー] は存在しないキーで落ちるが、.get(キー) は存在しなければ None を返すので落ちない。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75}\n\nprint(name2score.get(\"Yamada\"))    # 95\nprint(name2score.get(\"Tanaka\"))    # None ← エラーにならない\n第2引数でデフォルト値を指定できる。\nprint(name2score.get(\"Tanaka\"))      # None ← 第2引数なし\nprint(name2score.get(\"Tanaka\", 0))   # 0    ← 第2引数あり（未登録なら 0 点扱い）\nprint(name2score.get(\"Yamada\", 0))   # 95   ← 登録済みならその値\n\n\n\n\n\n\nin でガード vs .get()\n\n\n\n「ない場合は処理を分けたい」 → if key in dict: でガード\n「ない場合のデフォルト値が決まっている」 → .get(key, default) がスッキリ"
   },
   {
-    "objectID": "list.html#リストの長さと-range-による走査",
-    "href": "list.html#リストの長さと-range-による走査",
-    "title": "リストをあらためて",
-    "section": "リストの長さと range による走査",
-    "text": "リストの長さと range による走査\n\nlen(list) でリストの要素数を取得できる\nrange(N) は 0, 1, 2, ..., N-1 を返す（list ではなく range 型）\n\nlist(range(N)) で list に変換可能\n\nrange(len(list)) と組み合わせて走査するパターンをよく使う\n\nstudent_scores = [85, 90, 92, 78, 92, 88]\n\nprint(len(student_scores))                  # 6\nprint(list(range(len(student_scores))))     # [0, 1, 2, 3, 4, 5]\n\nfor i in range(len(student_scores)):\n    print(f\"出席番号{i+1}は、{student_scores[i]}点です。\")\n出席番号1は、85点です。\n出席番号2は、90点です。\n..."
+    "objectID": "dict.html#要素の削除と長さdel-pop-len",
+    "href": "dict.html#要素の削除と長さdel-pop-len",
+    "title": "辞書をあらためて",
+    "section": "要素の削除と長さ（del / pop / len）",
+    "text": "要素の削除と長さ（del / pop / len）\ndel または .pop() で削除、len() でキーの数を確認できる。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\nprint(len(name2score))  # 3\n\n# del：削除するだけ\ndel name2score[\"Suzuki\"]\nprint(name2score)       # {'Yamada': 95, 'Takahashi': 80}\nprint(len(name2score))  # 2\n\n# pop：削除して値を取り出す\nscore = name2score.pop(\"Yamada\")\nprint(score)        # 95\nprint(name2score)   # {'Takahashi': 80}"
   },
   {
-    "objectID": "list.html#スライス部分集合の取得",
-    "href": "list.html#スライス部分集合の取得",
-    "title": "リストをあらためて",
-    "section": "スライス（部分集合の取得）",
-    "text": "スライス（部分集合の取得）\nリストの一部を切り取って別のリストにできる。\nlist[切り取る先頭インデックス : 切り取る末尾インデックス+1]\norg_test = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\nsliced_list = org_test[2:5]\nprint(sliced_list)  # [2, 3, 4]\n\n\n\n\n\n\nポイント\n\n\n末尾インデックスは「取りたい最後の要素のインデックス＋1」を指定する。 org_test[2:5] → インデックス 2, 3, 4 の要素を取得。"
+    "objectID": "dict.html#ネストした-dict",
+    "href": "dict.html#ネストした-dict",
+    "title": "辞書をあらためて",
+    "section": "ネストした dict",
+    "text": "ネストした dict\n値の中にさらに dict を入れると入れ子（ネスト）になる。 学生ごとに複数教科の点数など、複数の属性を持つデータを表現できる。\nstudents = {\n    \"Yamada\":    {\"国語\": 80, \"数学\": 90, \"英語\": 70},\n    \"Suzuki\":    {\"国語\": 60, \"数学\": 85, \"英語\": 95},\n    \"Takahashi\": {\"国語\": 75, \"数学\": 70, \"英語\": 80},\n}\n\n# Yamada さんの数学\nprint(students[\"Yamada\"][\"数学\"])  # 90\n\n# 全員の英語\nfor name, scores in students.items():\n    print(f\"{name}さんの英語：{scores['英語']}点\")"
   },
   {
-    "objectID": "list.html#次元配列",
-    "href": "list.html#次元配列",
-    "title": "リストをあらためて",
-    "section": "２次元配列",
-    "text": "２次元配列\nlist の要素として list を入れると２次元配列になる。\nアクセスは list[行][列] の形式。\nlist_of_list = [[1, 2, 3], [4, 5, 6]]\nprint(list_of_list)        # [[1, 2, 3], [4, 5, 6]]\nprint(list_of_list[0][1])  # 2\n       列0  列1  列2\n行0 →  [1,   2,   3]\n行1 →  [4,   5,   6]\nlist_of_list[0][1] → 行0・列1 → 2"
+    "objectID": "dict.html#dict-と-list-の組み合わせ",
+    "href": "dict.html#dict-と-list-の組み合わせ",
+    "title": "辞書をあらためて",
+    "section": "dict と list の組み合わせ",
+    "text": "dict と list の組み合わせ\nlist の中に dict を入れる形は、表形式のデータを表すときの定番。 （JSON や DB の1レコードのイメージ）\nstudents = [\n    {\"name\": \"Yamada\",    \"score\": 95},\n    {\"name\": \"Suzuki\",    \"score\": 75},\n    {\"name\": \"Takahashi\", \"score\": 80},\n]\n\nfor s in students:\n    print(f\"{s['name']}さんは{s['score']}点\")\n\n\n\n\n\n\nネスト dict vs list of dict\n\n\n\n名前から直接引きたい → ネスト dict（students[\"Yamada\"]）\n順序が意味を持つ・全員を順に処理 → list of dict（students[0]）\n\n両方とも実務でよく使う。"
   },
   {
-    "objectID": "list.html#n-次元配列",
-    "href": "list.html#n-次元配列",
-    "title": "リストをあらためて",
-    "section": "N 次元配列",
-    "text": "N 次元配列\n２次元以上の多次元化も可能。\nN_dimensional_list = [[[1, 2, 3], [4, 5, 6]],\n                      [[7, 8, 9], [10, 11, 12]]]\n\nprint(N_dimensional_list[1][1][2])  # 12\n\n[1] → 2番目のブロック [[7,8,9],[10,11,12]]\n[1] → その中の2番目 [10,11,12]\n[2] → その中の3番目 → 12"
+    "objectID": "dict.html#辞書内包表記",
+    "href": "dict.html#辞書内包表記",
+    "title": "辞書をあらためて",
+    "section": "辞書内包表記",
+    "text": "辞書内包表記\nリスト内包表記の dict 版。{キー: 値 for ... in ...} の形。\n# 数 → その2乗 の dict を作る\nsquares = {x: x ** 2 for x in range(5)}\nprint(squares)  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}\n条件付きも書ける。\n# 80点以上だけ取り出す\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\npassed = {k: v for k, v in name2score.items() if v &gt;= 80}\nprint(passed)  # {'Yamada': 95, 'Takahashi': 80}\nキーと値を入れ替えるのも一行で書ける。\nscore2name = {v: k for k, v in name2score.items()}\nprint(score2name)  # {95: 'Yamada', 75: 'Suzuki', 80: 'Takahashi'}"
   },
   {
-    "objectID": "list.html#list-同士の結合",
-    "href": "list.html#list-同士の結合",
-    "title": "リストをあらためて",
-    "section": "list 同士の結合",
-    "text": "list 同士の結合\n+ 演算子でリスト同士を結合できる。\nlist1 = [\"banana\", \"apple\"]\nlist2 = [\"orange\", \"peach\"]\n\nprint(list1 + list2)  # ['banana', 'apple', 'orange', 'peach']\n\n# += 演算も可能\nlist1 += list2\nprint(list1)          # ['banana', 'apple', 'orange', 'peach']\n\n\n\n\n\n\n重複はそのまま追加される\n\n\n同じ要素があっても重複して追加される（重複排除はされない）。\nlist3 = [\"banana\", \"grape\"]\nprint(list1 + list3)\n# ['banana', 'apple', 'orange', 'peach', 'banana', 'grape']"
-  },
-  {
-    "objectID": "list.html#ソート",
-    "href": "list.html#ソート",
-    "title": "リストをあらためて",
-    "section": "ソート",
-    "text": "ソート\nsort() と sorted() でリストを並び替えられる。\nscores = [85, 90, 92, 78, 92, 88]\n\n# sort()：元のリストを直接変更（ミュータブル！）\nscores.sort()\nprint(scores)  # [78, 85, 88, 90, 92, 92]\n\n# sorted()：新しいリストを返す（元は変わらない）\noriginal = [85, 90, 92, 78]\nresult = sorted(original)\nprint(original)  # [85, 90, 92, 78] ← 変わらない\nprint(result)    # [78, 85, 90, 92]\n\n# 降順は reverse=True\nscores.sort(reverse=True)\nprint(scores)  # [92, 92, 90, 88, 85, 78]\n\n\n\n\n\n\nsort vs sorted の使い分け\n\n\n\n元のリストを壊してよい → sort()（速い）\n元のリストを保持したい → sorted()（安全）\n\nsort() が in-place で変更する点は、第4回で学んだミュータブルの性質そのもの。"
-  },
-  {
-    "objectID": "list.html#リスト内包表記",
-    "href": "list.html#リスト内包表記",
-    "title": "リストをあらためて",
-    "section": "リスト内包表記",
-    "text": "リスト内包表記\nfor 文を1行に圧縮してリストを作る書き方\n例えば、[0, 1, 4, 9, 16]のリストを作りたい時、\nsquares = []\nfor x in range(5):\n    squares.append(x * x)\nprint(squares)  # [0, 1, 4, 9, 16]\nと書けるけど、長いので以下のように一撃でも書ける。それがリスト内包表記\n# 基本形：[式 for 変数 in イテラブル]\nsquares = [x ** 2 for x in range(5)]\nprint(squares)  # [0, 1, 4, 9, 16]"
-  },
-  {
-    "objectID": "list.html#リスト内包表記条件式付き",
-    "href": "list.html#リスト内包表記条件式付き",
-    "title": "リストをあらためて",
-    "section": "リスト内包表記（条件式付き）",
-    "text": "リスト内包表記（条件式付き）\n例えば、0-99の整数うち３の倍数以外のリストを作る場合、以下のようにfor文に条件を書くことになる。\n\nnot_divisible_by_3s = []\nfor x in range(100):\n    if x % 3 == 0:\n        continue\n    not_divisible_by_3s.append(x)\nprint(not_divisible_by_3s)\nこれをリスト内包表記だとこう書ける。短い\n# 条件付き：[式 for 変数 in イテラブル if 条件]\nnot_divisible_by_3s = [x for x in range(100) if x % 3 != 0]\nprint(not_divisible_by_3s)\n\n\n\n\n\n\nノート\n\n\nリスト内包表記はAtCoderでよく使う（次スライド）"
-  },
-  {
-    "objectID": "list.html#リスト内包表記の使いどころ",
-    "href": "list.html#リスト内包表記の使いどころ",
-    "title": "リストをあらためて",
-    "section": "リスト内包表記の使いどころ",
-    "text": "リスト内包表記の使いどころ\n第1回 AtCoder の参考コードに出てきた謎の構文：\nAs = [int(x) for x in input().split()]\nこれはリスト内包表記だった。input().split() で [\"1\", \"2\", \"3\"] という文字列のリストを作り、 各要素を int(x) で整数に変換しながら新しいリストを作っている。\nfor 文で書くと以下と同じ意味：\ninput_str = input().split() # split(\" \")と同じ。つまり、空白区切りで分けてlist化\nAs = []\nfor x in input_str:\n    As.append(int(x))"
-  },
-  {
-    "objectID": "list.html#参考異なる型の混在",
-    "href": "list.html#参考異なる型の混在",
-    "title": "リストをあらためて",
-    "section": "【参考】異なる型の混在",
-    "text": "【参考】異なる型の混在\nPython の list は数値・文字列など異なる型を混在させることができる。\nprint([10, \"text\", 10.5])        # [10, 'text', 10.5]\nprint([10, [1, 2, 3], \"text\"])   # [10, [1, 2, 3], 'text']\n\ntest = [10, [1, 2, 3], \"text\"]\nprint(test[2])     # text\nprint(test[1][2])  # 3\n\n\n\n\n\n\n実際には使わない\n\n\n管理しにくいため実務では使わない。 ただし多次元配列はこの仕組みを応用している。"
-  },
-  {
-    "objectID": "list.html#まとめ",
-    "href": "list.html#まとめ",
-    "title": "リストをあらためて",
+    "objectID": "dict.html#まとめ",
+    "href": "dict.html#まとめ",
+    "title": "辞書をあらためて",
     "section": "まとめ",
-    "text": "まとめ\n\nインデックスはゼロ始まり、マイナスで末尾からアクセスできる\nappend で末尾追加、in で存在確認、sort / sorted で並び替え\nスライス [i:j]・多次元配列・+ 結合など、組み合わせ次第で幅広く使える\nリスト内包表記 [式 for x in ...] で for+append を1行に圧縮できる\nlist はミュータブル — コピーが必要なときは .copy() を使う"
+    "text": "まとめ\n\ndict はキーと値のペアで管理するコレクション（他言語ではハッシュマップ）\nアクセスは dict[キー]、ない場合は KeyError → in または .get() でガード\n走査は .items() が最頻出、.keys() / .values() も使い分ける\nネスト dict や list of dict で表形式のデータを表現できる\n辞書内包表記 {k: v for ...} で for ＋ 追加を1行に圧縮できる"
   },
   {
-    "objectID": "list.html#演習問題",
-    "href": "list.html#演習問題",
-    "title": "リストをあらためて",
+    "objectID": "dict.html#演習問題",
+    "href": "dict.html#演習問題",
+    "title": "辞書をあらためて",
     "section": "演習問題",
-    "text": "演習問題\nscores = [85, 90, 92, 78, 92, 88, 65, 100, 73, 80]\n上記のリストをコピーして、以下の操作を実装せよ\n\nrange(len(...)) を使って、出席番号（1始まり）と点数を表示\nスライスを使って、上位5名分（先頭5つ）と下位5名分（末尾5つ）をそれぞれ別のリストに分けて表示\nsorted を使って、元のリストを変えずに降順に並び替えた新しいリストを作り、上位3名の点数を表示\n\n\n\n解答例を見る\n# 1\nfor i in range(len(scores)):\n    print(f\"出席番号{i + 1}は{scores[i]}点\")\n\n# 2\ntop5 = scores[:5]\nbottom5 = scores[-5:]\nprint(top5)\nprint(bottom5)\n\n# 3\nranked = sorted(scores, reverse=True)\nprint(ranked[:3])\nprint(scores)  # 元のリストは変わっていない"
+    "text": "演習問題\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80, \"Tanaka\": 60}\n上記の dict をコピーして、以下の操作を実装せよ\n\n.get() を使って “Sato” さんの点数を取り出す（存在しなければ 0 を返す）\nTanaka さんを del で削除\n.values() と sum / len を使って、全員の 平均点 を表示\n\n\n\n解答例を見る\n# 1\nprint(name2score.get(\"Sato\", 0))  # 0\n\n# 2\ndel name2score[\"Tanaka\"]\nprint(name2score)\n\n# 3\nprint(sum(name2score.values()) / len(name2score))"
   },
   {
-    "objectID": "list.html#演習問題リスト内包表記",
-    "href": "list.html#演習問題リスト内包表記",
-    "title": "リストをあらためて",
-    "section": "演習問題（リスト内包表記）",
-    "text": "演習問題（リスト内包表記）\n以下の操作を実装せよ\n\nrange(1, 11) を使って、1から10までの平方数のリストを作ろう（[1, 4, 9, ..., 100]）\nscores から、80点以上の点数だけを取り出した新しいリストを作ろう\n標準入力で受け取った空白区切りの整数列を、list of int に変換しよう（AtCoder 頻出パターン）\n\n\n\n解答例を見る\n# 1\nsquares = [x ** 2 for x in range(1, 11)]\nprint(squares)\n\n# 2\npassed = [s for s in scores if s &gt;= 80]\nprint(passed)\n\n# 3\nAs = [int(x) for x in input().split()]\nprint(As)"
+    "objectID": "dict.html#演習問題辞書内包表記",
+    "href": "dict.html#演習問題辞書内包表記",
+    "title": "辞書をあらためて",
+    "section": "演習問題（辞書内包表記）",
+    "text": "演習問題（辞書内包表記）\n以下の操作を実装せよ\n\nrange(1, 6) を使って、{1: 1, 2: 4, 3: 9, 4: 16, 5: 25} という「数 → 2乗」の dict を作ろう\nname2score から、80点以上の学生だけ を取り出した新しい dict を作ろう\nname2score の キーと値を入れ替えた dict（score2name）を作ろう\n\n\n\n\n\n\n\nLUT（Look-Up Table）\n\n\n問題１のように 「入力 → 計算結果」を事前に dict に入れて引けるようにしたもの を LUT（Look-Up Table、参照テーブル） と呼ぶ。毎回計算する代わりに lut[x] で引けるため、重い計算を事前計算してキャッシュする用途でよく使われる。\n古典的な例として、ゲーム機や組み込み機器では sin / cos の値を角度ごとに事前計算した LUT がよく使われる（毎フレームの三角関数計算は重いため）。\n\n\n\n\n\n解答例を見る\n# 1\nsquares = {x: x ** 2 for x in range(1, 6)}\nprint(squares)\n\n# 2\npassed = {k: v for k, v in name2score.items() if v &gt;= 80}\nprint(passed)\n\n# 3\nscore2name = {v: k for k, v in name2score.items()}\nprint(score2name)"
   },
   {
-    "objectID": "list.html#演習問題２次元配列",
-    "href": "list.html#演習問題２次元配列",
-    "title": "リストをあらためて",
-    "section": "演習問題（２次元配列）",
-    "text": "演習問題（２次元配列）\n# 行：学生（0: A さん, 1: B さん, 2: C さん）\n# 列：科目（0: 国語, 1: 数学, 2: 英語）\ntable = [\n    [80, 90, 70],\n    [60, 85, 95],\n    [75, 70, 80],\n]\n上記の学生の国語・数学・英語の点数をもつ２次元配列をコピーして、以下の操作を実装せよ。\n\nB さんの数学の点数を表示しよう\nC さんの3科目合計を表示しよう\n各学生の平均点を for 文で順に表示しよう\n\n\n\n解答例を見る\n# 1\nprint(table[1][1])  # 85\n\n# 2\nprint(sum(table[2]))  # 225\n\n# 3\nnames = [\"A\", \"B\", \"C\"]\nfor i in range(len(table)):\n    avg = sum(table[i]) / len(table[i])\n    print(f\"{names[i]}さんの平均点：{avg:.1f}点\")"
+    "objectID": "dict.html#演習問題list-of-dict",
+    "href": "dict.html#演習問題list-of-dict",
+    "title": "辞書をあらためて",
+    "section": "演習問題（list of dict）",
+    "text": "演習問題（list of dict）\n# 要素：学生（0: A さん, 1: B さん, 2: C さん）\n# キー：科目（\"国語\", \"数学\", \"英語\"）\nstudents = [\n    {\"name\": \"A\", \"国語\": 80, \"数学\": 90, \"英語\": 70},\n    {\"name\": \"B\", \"国語\": 60, \"数学\": 85, \"英語\": 95},\n    {\"name\": \"C\", \"国語\": 75, \"数学\": 70, \"英語\": 80},\n]\n上記の学生の国語・数学・英語の点数をもつ list of dict をコピーして、以下の操作を実装せよ。\n\nB さんの数学の点数を表示しよう\nC さんの3科目合計を表示しよう\n各学生の平均点を for 文で順に表示しよう\n\n\n\n解答例を見る\n# 1\nprint(students[1][\"数学\"])  # 85\n\n# 2\nprint(students[2][\"国語\"] + students[2][\"数学\"] + students[2][\"英語\"])  # 225\n\n# 3\nfor s in students:\n    avg = (s[\"国語\"] + s[\"数学\"] + s[\"英語\"]) / 3\n    print(f\"{s['name']}さんの平均点：{avg:.1f}点\")"
   },
   {
-    "objectID": "index.html#情報処理-2025年度",
-    "href": "index.html#情報処理-2025年度",
-    "title": "高専3年 情報処理",
-    "section": "情報処理 2025年度",
-    "text": "情報処理 2025年度\nhttps://rkskmt.github.io/ip3200/\n\n\nPCの使い方アップデート\n\n\nキータイピング\nショートカット\n\n\n\n\n速習Python基礎\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\n\n\nPythonデータ処理基礎\n\n\nNumPy入門\nベクトルと行列"
+    "objectID": "api.html#section",
+    "href": "api.html#section",
+    "title": "APIでデータ取得",
+    "section": "",
+    "text": "道具から材料へ"
+  },
+  {
+    "objectID": "api.html#ここまでで揃った道具",
+    "href": "api.html#ここまでで揃った道具",
+    "title": "APIでデータ取得",
+    "section": "ここまでで揃った「道具」",
+    "text": "ここまでで揃った「道具」\n\nデータを置く — 変数、コレクション（list / dict / tuple）\nデータを計算する — NumPy（ベクトル・行列・統計）\nデータを見る — matplotlib（散布図、折れ線、subplot）\n\n\n\n\n\n\n\nここからは「材料」\n\n\n\n道具だけでは何もできない\n入力データ（材料）を仕入れる必要がある\n一番手っ取り早い仕入れ先は Web"
+  },
+  {
+    "objectID": "api.html#本授業の最終目標",
+    "href": "api.html#本授業の最終目標",
+    "title": "APIでデータ取得",
+    "section": "本授業の最終目標",
+    "text": "本授業の最終目標\n\nなにかのデータ群を処理して\n役に立つ、もしくは興味深い 出力やサービスのモックを作る\n今回はその第一歩として Webからデータを取ってくる ことをやる"
+  },
+  {
+    "objectID": "api.html#section-1",
+    "href": "api.html#section-1",
+    "title": "APIでデータ取得",
+    "section": "",
+    "text": "Webへアクセス（requests）"
+  },
+  {
+    "objectID": "api.html#requests-ライブラリ",
+    "href": "api.html#requests-ライブラリ",
+    "title": "APIでデータ取得",
+    "section": "requests ライブラリ",
+    "text": "requests ライブラリ\n\nPythonでWebにアクセスする 定番ライブラリ\n標準ライブラリではないので pip でインストール\n\npip install requests\n\nコード冒頭でいつもどおり import\n\nimport requests"
+  },
+  {
+    "objectID": "api.html#一番シンプルな使い方",
+    "href": "api.html#一番シンプルな使い方",
+    "title": "APIでデータ取得",
+    "section": "一番シンプルな使い方",
+    "text": "一番シンプルな使い方\n\nrequests.get(url) で 指定URLにアクセス\n戻り値の response を print すると 状態コード が見える\n\nimport requests\n\nresponse = requests.get('https://www.metro-cit.ac.jp/')\nprint(response)   # &lt;Response [200]&gt;\n\n\n\n\n\n\n200 とは？\n\n\n\nHTTPの応答コードで 「正常に取得できた」 の意味\nとりあえず 「200か否か」 だけ判断できればOK"
+  },
+  {
+    "objectID": "api.html#httpステータスコードよく見るもの",
+    "href": "api.html#httpステータスコードよく見るもの",
+    "title": "APIでデータ取得",
+    "section": "HTTPステータスコード（よく見るもの）",
+    "text": "HTTPステータスコード（よく見るもの）\n\n\n\nコード\n意味\n説明\n対処法\n\n\n\n\n200\nOK\n正常にデータを取得できた\nそのまま処理を続行\n\n\n404\nNot Found\nURLや記事が存在しない\nURL・記事名を確認\n\n\n500\nInternal Server Error\nサーバ側でエラー\n時間をおいて再試行\n\n\n501\nNot Implemented\n機能が未対応\nパラメータを確認\n\n\n\n\n全部覚える必要なし\n200番台 = 成功、400番台 = リクエスト側のミス、500番台 = サーバ側のミス くらいの感覚"
+  },
+  {
+    "objectID": "api.html#response-の中身",
+    "href": "api.html#response-の中身",
+    "title": "APIでデータ取得",
+    "section": "response の中身",
+    "text": "response の中身\n\n取得した内容は プロパティ で取り出せる\n\n\n\n\nプロパティ\n型\n説明\n\n\n\n\n.text\nstr\n本文を文字列で取得\n\n\n.json()\ndict\n本文がJSONなら dict として取得\n\n\n.headers\ndict風\nヘッダーを辞書風に取得"
+  },
+  {
+    "objectID": "api.html#text-で本文を取得",
+    "href": "api.html#text-で本文を取得",
+    "title": "APIでデータ取得",
+    "section": ".text で本文を取得",
+    "text": ".text で本文を取得\n\nHTMLがそのまま str で返ってくる\n\nimport requests\n\nresponse = requests.get('https://www.metro-cit.ac.jp/')\nprint(response.text)    # HTMLの中身"
+  },
+  {
+    "objectID": "api.html#headers-でメタデータを取得",
+    "href": "api.html#headers-でメタデータを取得",
+    "title": "APIでデータ取得",
+    "section": ".headers でメタデータを取得",
+    "text": ".headers でメタデータを取得\n\nヘッダーは 本文と別についてくる情報\n応答時刻、サーバ情報、本文のバイト長、コンテンツ種別 など\n\nimport requests\n\nresponse = requests.get('https://www.metro-cit.ac.jp/')\nprint(response.headers)\n\n\n\n\n\n\n例：ヘッダーの中身\n\n\n\n全部覚える必要なし\n「本文の他にもこういう情報をやり取りしてるんだな」くらいでOK\n\n{\n  \"Date\": \"Mon, 30 Jun 2025 05:00:33 GMT\",\n  \"Server\": \"Apache\",\n  \"Content-Length\": \"73439\",\n  \"Content-Type\": \"text/html\",\n  ...\n}"
+  },
+  {
+    "objectID": "api.html#section-2",
+    "href": "api.html#section-2",
+    "title": "APIでデータ取得",
+    "section": "",
+    "text": "Wikipedia の統計APIに触れる"
+  },
+  {
+    "objectID": "api.html#wikipedia-pageviews-api",
+    "href": "api.html#wikipedia-pageviews-api",
+    "title": "APIでデータ取得",
+    "section": "Wikipedia Pageviews API",
+    "text": "Wikipedia Pageviews API\n\nWikipedia財団が公開している ページビュー統計 のAPI\nまずは「2025/6/27 にアクセス数が多かった記事ランキング」を取ってみる\n\nimport requests\n\nurl = \"https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia/all-access/2025/06/27\"\nheaders = {'User-Agent': 'metro-cit.ac.jp/lesson'}\n\nresponse = requests.get(url, headers=headers)\ndata = response.json()\nprint(data, type(data))"
+  },
+  {
+    "objectID": "api.html#ヘッダーを送る理由",
+    "href": "api.html#ヘッダーを送る理由",
+    "title": "APIでデータ取得",
+    "section": "ヘッダーを送る理由",
+    "text": "ヘッダーを送る理由\n\nWikipedia の API は User-Agent がないと応答を返さない\n本来はChromeなどブラウザ名を入れる場所\n今回は教育目的を示す架空のもの metro-cit.ac.jp/lesson を使う\n\n\n\n\n\n\n\nヘッダーなしだと\n\n\n\nアクセス拒否でデータが取れない\n「公開API」でもヘッダー必須なケースは多い\nAPI使用前にドキュメントで 必須ヘッダーを確認 する習慣を"
+  },
+  {
+    "objectID": "api.html#なぜ-.dict-ではなく-.json-なのか",
+    "href": "api.html#なぜ-.dict-ではなく-.json-なのか",
+    "title": "APIでデータ取得",
+    "section": "なぜ .dict() ではなく .json() なのか",
+    "text": "なぜ .dict() ではなく .json() なのか\n\n.json() はAPIが返すデータを dict として受け取る メソッド\nでは JSON とは？"
+  },
+  {
+    "objectID": "api.html#json-とは",
+    "href": "api.html#json-とは",
+    "title": "APIでデータ取得",
+    "section": "JSON とは",
+    "text": "JSON とは\n\nJavaScript Object Notation の略\n「ある文法に従って書かれた ただのテキスト」\nCSVも仲間（カンマ区切りの構造化テキスト）\nWebの世界ではデファクトスタンダード\nまず名前を覚える\n\nprint(response.text)   # 中身は生のJSONテキスト\n{\"items\":[{\"project\":\"ja.wikipedia\",\"access\":\"all-access\",\n           \"year\":\"2025\",\"month\":\"06\", ...}]}\n\n.json() は このテキストを dict に変換 するメソッド"
+  },
+  {
+    "objectID": "api.html#余談手動で-json-dict",
+    "href": "api.html#余談手動で-json-dict",
+    "title": "APIでデータ取得",
+    "section": "（余談）手動で JSON → dict",
+    "text": "（余談）手動で JSON → dict\n\n標準ライブラリ json で同じことができる\npip 不要\n\nimport requests\nimport json\n\nresponse = requests.get(url, headers=headers)\nres_dict = json.loads(response.text)\nprint(type(res_dict), res_dict)\n# &lt;class 'dict'&gt; {'items': [{'project': 'ja.wikipedia', ...\n\n\n\n\n\n\n普段は .json() でOK\n\n\n\nrequests が内部でやってくれているだけ\n「中で何をしているか」を知っておくと エラー時に強い"
+  },
+  {
+    "objectID": "api.html#section-3",
+    "href": "api.html#section-3",
+    "title": "APIでデータ取得",
+    "section": "",
+    "text": "APIとエンドポイントの構造"
+  },
+  {
+    "objectID": "api.html#api-と-エンドポイント",
+    "href": "api.html#api-と-エンドポイント",
+    "title": "APIでデータ取得",
+    "section": "API と エンドポイント",
+    "text": "API と エンドポイント\n\nAPI（Application Programing Interface）\n\nデータ取得などのために公開された「窓口」\n\nエンドポイント\n\nAPI の中の、具体的な処理を呼ぶ 個別のURL\n\n例\n\nhttps://wikimedia.org/api/ 配下が API\n/metrics/pageviews/top/... がエンドポイントのひとつ"
+  },
+  {
+    "objectID": "api.html#urlにパラメータが埋め込まれている",
+    "href": "api.html#urlにパラメータが埋め込まれている",
+    "title": "APIでデータ取得",
+    "section": "URLにパラメータが埋め込まれている",
+    "text": "URLにパラメータが埋め込まれている\n\nエンドポイントの一部に 値を直接埋め込む タイプ\n今回のAPIだと…\n\nhttps://wikimedia.org/api/rest_v1/metrics/pageviews/top/\n    {プロジェクト} / {アクセス方法} / {日付}\n\n\n\n\n\n\n\n\n\nパラメータ\n例の値\n意味\n他の選択肢\n\n\n\n\nプロジェクト\nja.wikipedia\n日本語Wikipedia\nen.wikipedia, commons.wikimedia など\n\n\nアクセス方法\nall-access\n全アクセス\ndesktop, mobile-app, mobile-web\n\n\n日付\n2025/06/27\n指定日\nYYYY/MM/DD の任意の日付\n\n\n\n\n\n\n\n\n\n覚える必要はない\n\n\n\nAPI ごとにURL構造はバラバラ\n使うときに 公式ドキュメントを見る のが正解"
+  },
+  {
+    "objectID": "api.html#section-4",
+    "href": "api.html#section-4",
+    "title": "APIでデータ取得",
+    "section": "",
+    "text": "個別ページのアクセス推移を取る"
+  },
+  {
+    "objectID": "api.html#別のエンドポイントper-article",
+    "href": "api.html#別のエンドポイントper-article",
+    "title": "APIでデータ取得",
+    "section": "別のエンドポイント：per-article",
+    "text": "別のエンドポイント：per-article\n\n特定の記事の、任意の期間のアクセス数（日単位 / 月単位）を返す\n\nhttps://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\n    {project} / {access} / {agent} / {article} / {granularity} / {start} / {end}\n\n\n\nパラメータ\n必須\n選択肢\n\n\n\n\nproject\n✓\nja.wikipedia など\n\n\naccess\n✓\nall-access / desktop / mobile-app / mobile-web\n\n\nagent\n✓\nall-agents / user / spider / automated\n\n\narticle\n✓\n任意の記事名（スペースは _）\n\n\ngranularity\n✓\ndaily / monthly\n\n\nstart\n✓\nYYYYMMDD\n\n\nend\n✓\nYYYYMMDD"
+  },
+  {
+    "objectID": "api.html#産技高専のページビューを取得する",
+    "href": "api.html#産技高専のページビューを取得する",
+    "title": "APIでデータ取得",
+    "section": "産技高専のページビューを取得する",
+    "text": "産技高専のページビューを取得する\n\n過去1年分の日別アクセス数を取り、最大・最小・平均・分散を出す\n\nimport requests\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia/all-access/user/\"\n       \"東京都立産業技術高等専門学校/daily/20240401/20250328\")\nheaders = {'User-Agent': 'metro-cit.ac.jp/lesson'}\n\nresponse = requests.get(url, headers=headers)\ndata = response.json()\n\n# data['items'] は list of dict\nviews = np.array([item['views']     for item in data['items']])\ndates = np.array([item['timestamp'] for item in data['items']])\n\nmax_i = np.argmax(views)\nmin_i = np.argmin(views)\n\nprint(f\"最大: {views[max_i]}回  {dates[max_i]}\")\nprint(f\"最小: {views[min_i]}回  {dates[min_i]}\")\nprint(f\"平均: {np.mean(views):.1f}回\")\nprint(f\"分散: {np.var(views):.1f}\")"
+  },
+  {
+    "objectID": "api.html#過去の章が一気に効いてくる",
+    "href": "api.html#過去の章が一気に効いてくる",
+    "title": "APIでデータ取得",
+    "section": "過去の章が一気に効いてくる",
+    "text": "過去の章が一気に効いてくる\n\ndata['items'] は list of dict（dict章 でやった形）\n内包表記でフィールド抽出（list章）\nnp.array() で ndarray 化（numpy章）\nnp.mean / np.var で統計量\nnp.argmax / argmin は インデックス を返す（値ではない点に注意）\n\n\n\n\n\n\n\n値もインデックスも両方欲しいとき\n\n\n\nmax_i = np.argmax(views) で index を得てから\nviews[max_i] で値、dates[max_i] で対応する日付\n同じ index で並ぶ配列同士をリンクさせる のはNumPy/データ処理の頻出パターン"
+  },
+  {
+    "objectID": "api.html#まずは可視化する",
+    "href": "api.html#まずは可視化する",
+    "title": "APIでデータ取得",
+    "section": "まずは可視化する",
+    "text": "まずは可視化する\n\n数値だけでは見落とすので まず描く — 可視化章 の大原則\n同じURL/ヘッダーで取得したあと plt.plot(views) するだけ\n\n\n\n\n\n\n\n\n\n\n\n\nコードを見る\nimport requests\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia/all-access/user/\"\n       \"東京都立産業技術高等専門学校/daily/20240401/20250328\")\nheaders = {'User-Agent': 'metro-cit.ac.jp/lesson'}\nresponse = requests.get(url, headers=headers)\ndata = response.json()\n\nviews = np.array([item['views'] for item in data['items']])\n\nplt.plot(views)\nplt.title('Page View Trend')\nplt.xlabel('days')\nplt.ylabel('Views')\nplt.show()\n\nprint(f\"Max:  {np.max(views)}\")\nprint(f\"Min:  {np.min(views)}\")\nprint(f\"Mean: {np.mean(views):.1f}\")\nprint(f\"Var:  {np.var(views):.1f}\")\n\n\n\n\n\n\n\n\n1日だけ突出している\n\n\n\nほぼ平坦な中、1日だけ大きな山\nなにかニュース・受験イベントなどで参照が増えた可能性\n数値だけ見ていると気づけない ← アンスコムの教訓と同じ"
+  },
+  {
+    "objectID": "api.html#まとめ",
+    "href": "api.html#まとめ",
+    "title": "APIでデータ取得",
+    "section": "まとめ",
+    "text": "まとめ\n\n\n\n\n\n\n\nやりたいこと\nコード\n\n\n\n\nアクセス\nrequests.get(url, headers=...)\n\n\n状態確認\nresponse.status_code（200 = OK）\n\n\n本文(str)\nresponse.text\n\n\nJSON → dict\nresponse.json()\n\n\nヘッダー\nresponse.headers\n\n\nUser-Agent\nheaders={'User-Agent': '...'}\n\n\n値の集計\nnp.array([d['views'] for d in items]) → mean/var/argmax\n\n\n\n\nWeb から取った dict は今まで通り for / items() / np.array() で処理できる\n最初の一手は 常に可視化"
+  },
+  {
+    "objectID": "api.html#section-5",
+    "href": "api.html#section-5",
+    "title": "APIでデータ取得",
+    "section": "",
+    "text": "演習"
+  },
+  {
+    "objectID": "api.html#演習1desktop-と-mobile-web-の比較",
+    "href": "api.html#演習1desktop-と-mobile-web-の比較",
+    "title": "APIでデータ取得",
+    "section": "演習1：desktop と mobile-web の比較",
+    "text": "演習1：desktop と mobile-web の比較\n\n同じ期間（2024/04/01 – 2025/03/28）で API を2回呼ぶ\naccess を desktop と mobile-web に切り替える\nそれぞれの 最大・最小・平均・分散 を print する\n\n\n\n\n\n\n\nヒント\n\n\n\n取得結果を views_desktop と views_mobile_web に分けて入れる\n同じ headers を使い回せる\n関数化すると重複が消えてスッキリ"
+  },
+  {
+    "objectID": "api.html#演習21枚のグラフに2本の折れ線",
+    "href": "api.html#演習21枚のグラフに2本の折れ線",
+    "title": "APIでデータ取得",
+    "section": "演習2：1枚のグラフに2本の折れ線",
+    "text": "演習2：1枚のグラフに2本の折れ線\n\nviews_desktop と views_mobile_web を 同じグラフに重ねる\nplt.plot() を 2回呼ぶだけ\nグラフの タイトルに max / min / mean を入れる\n日本語タイトルは 文字化けする ので英数字で\n\n\n\n\n\n\n\nやってはいけない\n\n\n\n軸を揃えず2枚並べる → 比較しづらい\n軸の範囲を片方だけ狭める → 印象操作（可視化章 の「y軸の罠」参照）\n\n\n\n\n\n\n解答例を見る\nimport requests\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nheaders = {'User-Agent': 'metro-cit.ac.jp/lesson'}\narticle = \"東京都立産業技術高等専門学校\"\nbase = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n        f\"ja.wikipedia/{{access}}/user/{article}/daily/20240401/20250328\")\n\ndef fetch_views(access):\n    url = base.format(access=access)\n    data = requests.get(url, headers=headers).json()\n    return np.array([item['views'] for item in data['items']])\n\nviews_desktop    = fetch_views(\"desktop\")\nviews_mobile_web = fetch_views(\"mobile-web\")\n\nplt.plot(views_desktop,    label=\"desktop\")\nplt.plot(views_mobile_web, label=\"mobile-web\")\nplt.legend()\n\ntitle = (f\"max={max(views_desktop.max(), views_mobile_web.max())}  \"\n         f\"min={min(views_desktop.min(), views_mobile_web.min())}  \"\n         f\"mean={(views_desktop.mean() + views_mobile_web.mean()) / 2:.1f}\")\nplt.title(title)\nplt.xlabel(\"days\"); plt.ylabel(\"Views\")\nplt.show()"
+  },
+  {
+    "objectID": "api.html#section-6",
+    "href": "api.html#section-6",
+    "title": "APIでデータ取得",
+    "section": "",
+    "text": "付録"
+  },
+  {
+    "objectID": "api.html#実際のブラウザのuser-agent",
+    "href": "api.html#実際のブラウザのuser-agent",
+    "title": "APIでデータ取得",
+    "section": "実際のブラウザのUser-Agent",
+    "text": "実際のブラウザのUser-Agent\n\n普段ブラウザでWebを見るときも 裏でヘッダーが飛んでいる\nサーバはこの値を見て PC / スマホ / OS / ブラウザ を判別している\nレスポンシブやリダイレクトの分岐に使われる\n\n\n\n\n\n\n\n\nブラウザ\nUser-Agent\n\n\n\n\nChrome (Windows)\nMozilla/5.0 (Windows NT 10.0; Win64; x64) ... Chrome/119.0.0.0 Safari/537.36\n\n\nChrome (Mac)\nMozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) ... Chrome/119.0.0.0 Safari/537.36\n\n\niOS Safari (iPhone)\nMozilla/5.0 (iPhone; CPU iPhone OS 17_1 like Mac OS X) ... Mobile/15E148 Safari/604.1\n\n\niOS Safari (iPad)\nMozilla/5.0 (iPad; CPU OS 17_1 like Mac OS X) ... Mobile/15E148 Safari/604."
+  },
+  {
+    "objectID": "api.html#ここまでの流れ",
+    "href": "api.html#ここまでの流れ",
+    "title": "APIでデータ取得",
+    "section": "ここまでの流れ",
+    "text": "ここまでの流れ\n\n道具→材料 へ：今回は Web から材料を仕入れる\nrequests で アクセス、.text / .json() / .headers で 取り出す\nAPI / エンドポイント / パラメータ の概念\nWikipedia Pageviews API で 実データを取得\nNumPy で 集計、matplotlib で 可視化\n大原則 Always plot your data first. を API由来のデータ にも適用"
+  },
+  {
+    "objectID": "api.html#参考リンク",
+    "href": "api.html#参考リンク",
+    "title": "APIでデータ取得",
+    "section": "参考リンク",
+    "text": "参考リンク\n\nrequests Documentation\nWikimedia REST API\nPageviews API ドキュメント\nHTTPステータスコード一覧 (MDN)"
   },
   {
     "objectID": "collections.html#コレクションcollectionとは",
@@ -672,367 +994,500 @@
     "text": "発展：その他のコレクション型\n現場でも競技プログラミングでもよく使われる。各自で調べよう。\n\ndeque — 先端への挿入・削除が高速（double ended queue）\ndefaultdict — キーが存在しない場合にデフォルト値を返す dict\nheapq — 最小値の取り出しに強い（heap木で管理）\nset — 重複が許されない。和集合などの論理演算も可能\n\nA = {'a', 'b', 'c'}\nB = {'b', 'c', 'd'}\nprint(A | B)  # {'a', 'b', 'c', 'd'}  ← 和集合\nprint(A & B)  # {'b', 'c'}            ← 積集合\nprint(A ^ B)  # {'a', 'd'}            ← 対称差\nprint(A - B)  # {'a'}                 ← 差集合\n数値データには numpy の ndarray がよく使われる（後日扱う）。"
   },
   {
-    "objectID": "dict.html#復習dict-とは",
-    "href": "dict.html#復習dict-とは",
-    "title": "辞書をあらためて",
-    "section": "復習（dict とは）",
-    "text": "復習（dict とは）\n\n\n\nキーと値のペアで管理するコレクション型\nデータはキーで管理する（list のような番号ではない）\n変数名は 「x2y」 形式にすることが多い（例：name2score）\n\n\n\nCC0: https://en.wikipedia.org/wiki/Fictionary#/media/File:Focus_definition_(Unsplash).jpg"
+    "objectID": "index.html#情報処理-2025年度",
+    "href": "index.html#情報処理-2025年度",
+    "title": "高専3年 情報処理",
+    "section": "情報処理 2025年度",
+    "text": "情報処理 2025年度\nhttps://rkskmt.github.io/ip3200/\n\n\nPCの使い方アップデート\n\n\nキータイピング\nショートカット\n\n\n\n\n速習Python基礎\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\n\n\nPythonデータ処理基礎\n\n\nNumPy入門\nベクトルと行列\n\n\n\n\nデータ処理基礎\n\n\nデータの可視化\nAPIでデータ取得"
   },
   {
-    "objectID": "dict.html#宣言",
-    "href": "dict.html#宣言",
-    "title": "辞書をあらためて",
+    "objectID": "list.html#復習listとは",
+    "href": "list.html#復習listとは",
+    "title": "リストをあらためて",
+    "section": "復習(listとは)",
+    "text": "復習(listとは)\n\n\n\n最もよく使われるコンテナ\nデータは追加順に並んでいる\n他言語では配列やアレイと呼ばれる　\n変数名は、要素の名詞の複数形をつけることが多い（foodsなど）"
+  },
+  {
+    "objectID": "list.html#宣言",
+    "href": "list.html#宣言",
+    "title": "リストをあらためて",
     "section": "宣言",
-    "text": "宣言\n{} で キー: 値 をカンマ区切りで入力すると辞書になる。\n\nキーは重複不可\n値は何でもよい\n\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}\n\n\n\n\n\n\nお作法\n\n\n: の前は詰めて、: と , の後には必ずスペースを空けるのが綺麗に書くコツ。"
+    "text": "宣言\n[] でカンマ区切りでデータを入力するとリストになる。\n\n順序が保持される\n重複してもよい\n\nscores = [85, 90, 92, 78, 92, 88]\nprint(scores)  # [85, 90, 92, 78, 92, 88]\n\n\n\n\n\n\nお作法\n\n\nカンマ , の後は必ずスペースを空けるのが綺麗に書くコツ。"
   },
   {
-    "objectID": "dict.html#アクセスキー",
-    "href": "dict.html#アクセスキー",
-    "title": "辞書をあらためて",
-    "section": "アクセス（キー）",
-    "text": "アクセス（キー）\n要素にアクセスするにはキーを使う（list の [0] に相当）。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\nprint(name2score[\"Yamada\"])     # 95\nprint(name2score[\"Takahashi\"])  # 80"
+    "objectID": "list.html#アクセスインデックス",
+    "href": "list.html#アクセスインデックス",
+    "title": "リストをあらためて",
+    "section": "アクセス（インデックス）",
+    "text": "アクセス（インデックス）\n要素にアクセスするにはインデックス（数字）を使う。\n\nインデックスはゼロ始まり\n後ろにいくにつれて 1 ずつ増加\n\nscores = [85, 90, 92, 78, 92, 88]\nprint(scores[0])  # 85\nprint(scores[4])  # 92"
   },
   {
-    "objectID": "dict.html#要素の追加上書き",
-    "href": "dict.html#要素の追加上書き",
-    "title": "辞書をあらためて",
-    "section": "要素の追加・上書き",
-    "text": "要素の追加・上書き\ndict[キー] = 値 で追加・上書きできる。\n\n存在しないキー → 追加\n存在するキー → 上書き\n\nname2score = {\"Yamada\": 95, \"Suzuki\": 75}\n\n# 追加\nname2score[\"Takahashi\"] = 80\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}\n\n# 上書き\nname2score[\"Suzuki\"] = 70\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 70, 'Takahashi': 80}\n\n\n\n\n\n\ntypo に注意\n\n\n追加と上書きが同じ書き方なので、typo でキーを間違えると新しいキーが勝手に追加される。\nname2score[\"Suzki\"] = 60  # 上書きのつもりが新規追加！"
+    "objectID": "list.html#マイナスインデックス",
+    "href": "list.html#マイナスインデックス",
+    "title": "リストをあらためて",
+    "section": "マイナスインデックス",
+    "text": "マイナスインデックス\nインデックスをマイナスにすると末尾からアクセスできる。\n\n-1 が末尾（-0 ではない）\n\nprint(scores[-1])  # 88（末尾）\nprint(scores[-5])  # 90（末尾から5番目）"
   },
   {
-    "objectID": "dict.html#走査全要素へのアクセス",
-    "href": "dict.html#走査全要素へのアクセス",
-    "title": "辞書をあらためて",
+    "objectID": "list.html#要素の追加append",
+    "href": "list.html#要素の追加append",
+    "title": "リストをあらためて",
+    "section": "要素の追加（append）",
+    "text": "要素の追加（append）\nappend メソッドで末尾に要素を追加できる。\nscores = [85, 90, 92, 78, 92, 88]\nscores.append(95)\nprint(scores)  # [85, 90, 92, 78, 92, 88, 95]\n\n\n\n\n\n\n戻り値は None\n\n\nappend は末尾に追加するだけで、新しいリストを返さない。\nresult = scores.append(95)\nprint(result)  # None ← リストではない！\nresult = scores.append(95) のように書くと result が None になってしまう。"
+  },
+  {
+    "objectID": "list.html#走査全要素へのアクセス",
+    "href": "list.html#走査全要素へのアクセス",
+    "title": "リストをあらためて",
     "section": "走査（全要素へのアクセス）",
-    "text": "走査（全要素へのアクセス）\ndict には3種類の走査方法がある。for 文で書ける。\n# キーだけ\nfor key in name2score.keys():\n    print(key)\n\n# 値だけ\nfor value in name2score.values():\n    print(value)\n\n# キーと値を同時に（最頻出）\nfor key, value in name2score.items():\n    print(f\"{key}さんは{value}点です\")\nYamadaさんは95点です\nSuzukiさんは70点です\nTakahashiさんは80点です\n\n\n\n\n\n\nどれを使う？\n\n\n\n両方必要 → .items()（実務ではこれが一番多い）\nキーだけ → .keys()（for key in name2score: でも同じ）\n値だけ → .values()"
+    "text": "走査（全要素へのアクセス）\nリストの全要素にアクセスすることを走査という。for 文で簡単に書ける。\nfor score in scores:\n    print(f\"{score}点\")\n85点\n90点\n92点\n78点\n92点\n88点"
   },
   {
-    "objectID": "dict.html#その他-dict-で知っておきたい基礎知識",
-    "href": "dict.html#その他-dict-で知っておきたい基礎知識",
-    "title": "辞書をあらためて",
-    "section": "その他 dict で知っておきたい基礎知識",
-    "text": "その他 dict で知っておきたい基礎知識\n\n\n\nin 演算子で存在確認\n.get() で安全にアクセス\n要素の削除と長さ（del / pop / len）\nネストした dict\ndict と list の組み合わせ\n辞書内包表記"
+    "objectID": "list.html#要素の存在確認in-演算子",
+    "href": "list.html#要素の存在確認in-演算子",
+    "title": "リストをあらためて",
+    "section": "要素の存在確認（in 演算子）",
+    "text": "要素の存在確認（in 演算子）\nin 演算子でリストに特定の値が含まれているか確認できる。\nscores = [85, 90, 78]\n\nif 90 in scores:\n    print(\"90点の学生がいる\")  # 90点がいる\n\nif 100 not in scores:\n    print(\"満点はいない\")  # 満点はいない\n\n\n\n\n\n\nin vs インデックス検索\n\n\n「含まれているか知りたいだけ」なら in が最もシンプル。 位置（インデックス）も必要なときは .index() を使う。\nprint(scores.index(90))  # 1"
   },
   {
-    "objectID": "dict.html#in-演算子で存在確認",
-    "href": "dict.html#in-演算子で存在確認",
-    "title": "辞書をあらためて",
-    "section": "in 演算子で存在確認",
-    "text": "in 演算子で存在確認\nin 演算子でキーが存在するか確認できる。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75}\n\nif \"Yamada\" in name2score:\n    print(\"Yamada さんは登録済み\")\n\nif \"Tanaka\" not in name2score:\n    print(\"Tanaka さんは未登録\")\n\n\n\n\n\n\nin はキーを見る（値ではない）\n\n\nif 95 in name2score:            # False\nif 95 in name2score.values():   # True ← 値を見たいときはこう"
+    "objectID": "list.html#listを処理する便利なアレコレ",
+    "href": "list.html#listを処理する便利なアレコレ",
+    "title": "リストをあらためて",
+    "section": "listを処理する便利なアレコレ",
+    "text": "listを処理する便利なアレコレ\n\n\n\nスライス（部分集合の取得）\n２次元配列\nN 次元配列　\nlist 同士の結合\nsortとsorted\n内包表記"
   },
   {
-    "objectID": "dict.html#get-で安全にアクセス",
-    "href": "dict.html#get-で安全にアクセス",
-    "title": "辞書をあらためて",
-    "section": ".get() で安全にアクセス",
-    "text": ".get() で安全にアクセス\ndict[キー] は存在しないキーで落ちるが、.get(キー) は存在しなければ None を返すので落ちない。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75}\n\nprint(name2score.get(\"Yamada\"))    # 95\nprint(name2score.get(\"Tanaka\"))    # None ← エラーにならない\n第2引数でデフォルト値を指定できる。\nprint(name2score.get(\"Tanaka\"))      # None ← 第2引数なし\nprint(name2score.get(\"Tanaka\", 0))   # 0    ← 第2引数あり（未登録なら 0 点扱い）\nprint(name2score.get(\"Yamada\", 0))   # 95   ← 登録済みならその値\n\n\n\n\n\n\nin でガード vs .get()\n\n\n\n「ない場合は処理を分けたい」 → if key in dict: でガード\n「ない場合のデフォルト値が決まっている」 → .get(key, default) がスッキリ"
+    "objectID": "list.html#範囲外のインデックスはエラー",
+    "href": "list.html#範囲外のインデックスはエラー",
+    "title": "リストをあらためて",
+    "section": "範囲外のインデックスはエラー",
+    "text": "範囲外のインデックスはエラー\n以下のインデックスは指定できない（エラーになる）。\n\n要素数（list の長さ）以上\nマイナス要素数＋1 以下\n\ntest = [0, 1, 2, 3]\nprint(len(test))  # 4\nprint(test[4])    # IndexError\nprint(test[-5])   # IndexError\n\n\n\n\n\n\nIndexError: list index out of range\n\n\nlen(test) は 4 なので有効なインデックスは -4 ～ 3 まで。 test[4] や test[-5] はその範囲外なのでエラー。"
   },
   {
-    "objectID": "dict.html#要素の削除と長さdel-pop-len",
-    "href": "dict.html#要素の削除と長さdel-pop-len",
-    "title": "辞書をあらためて",
-    "section": "要素の削除と長さ（del / pop / len）",
-    "text": "要素の削除と長さ（del / pop / len）\ndel または .pop() で削除、len() でキーの数を確認できる。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\nprint(len(name2score))  # 3\n\n# del：削除するだけ\ndel name2score[\"Suzuki\"]\nprint(name2score)       # {'Yamada': 95, 'Takahashi': 80}\nprint(len(name2score))  # 2\n\n# pop：削除して値を取り出す\nscore = name2score.pop(\"Yamada\")\nprint(score)        # 95\nprint(name2score)   # {'Takahashi': 80}"
+    "objectID": "list.html#リストの長さと-range-による走査",
+    "href": "list.html#リストの長さと-range-による走査",
+    "title": "リストをあらためて",
+    "section": "リストの長さと range による走査",
+    "text": "リストの長さと range による走査\n\nlen(list) でリストの要素数を取得できる\nrange(N) は 0, 1, 2, ..., N-1 を返す（list ではなく range 型）\n\nlist(range(N)) で list に変換可能\n\nrange(len(list)) と組み合わせて走査するパターンをよく使う\n\nstudent_scores = [85, 90, 92, 78, 92, 88]\n\nprint(len(student_scores))                  # 6\nprint(list(range(len(student_scores))))     # [0, 1, 2, 3, 4, 5]\n\nfor i in range(len(student_scores)):\n    print(f\"出席番号{i+1}は、{student_scores[i]}点です。\")\n出席番号1は、85点です。\n出席番号2は、90点です。\n..."
   },
   {
-    "objectID": "dict.html#ネストした-dict",
-    "href": "dict.html#ネストした-dict",
-    "title": "辞書をあらためて",
-    "section": "ネストした dict",
-    "text": "ネストした dict\n値の中にさらに dict を入れると入れ子（ネスト）になる。 学生ごとに複数教科の点数など、複数の属性を持つデータを表現できる。\nstudents = {\n    \"Yamada\":    {\"国語\": 80, \"数学\": 90, \"英語\": 70},\n    \"Suzuki\":    {\"国語\": 60, \"数学\": 85, \"英語\": 95},\n    \"Takahashi\": {\"国語\": 75, \"数学\": 70, \"英語\": 80},\n}\n\n# Yamada さんの数学\nprint(students[\"Yamada\"][\"数学\"])  # 90\n\n# 全員の英語\nfor name, scores in students.items():\n    print(f\"{name}さんの英語：{scores['英語']}点\")"
+    "objectID": "list.html#スライス部分集合の取得",
+    "href": "list.html#スライス部分集合の取得",
+    "title": "リストをあらためて",
+    "section": "スライス（部分集合の取得）",
+    "text": "スライス（部分集合の取得）\nリストの一部を切り取って別のリストにできる。\nlist[切り取る先頭インデックス : 切り取る末尾インデックス+1]\norg_test = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\nsliced_list = org_test[2:5]\nprint(sliced_list)  # [2, 3, 4]\n\n\n\n\n\n\nポイント\n\n\n末尾インデックスは「取りたい最後の要素のインデックス＋1」を指定する。 org_test[2:5] → インデックス 2, 3, 4 の要素を取得。"
   },
   {
-    "objectID": "dict.html#dict-と-list-の組み合わせ",
-    "href": "dict.html#dict-と-list-の組み合わせ",
-    "title": "辞書をあらためて",
-    "section": "dict と list の組み合わせ",
-    "text": "dict と list の組み合わせ\nlist の中に dict を入れる形は、表形式のデータを表すときの定番。 （JSON や DB の1レコードのイメージ）\nstudents = [\n    {\"name\": \"Yamada\",    \"score\": 95},\n    {\"name\": \"Suzuki\",    \"score\": 75},\n    {\"name\": \"Takahashi\", \"score\": 80},\n]\n\nfor s in students:\n    print(f\"{s['name']}さんは{s['score']}点\")\n\n\n\n\n\n\nネスト dict vs list of dict\n\n\n\n名前から直接引きたい → ネスト dict（students[\"Yamada\"]）\n順序が意味を持つ・全員を順に処理 → list of dict（students[0]）\n\n両方とも実務でよく使う。"
+    "objectID": "list.html#次元配列",
+    "href": "list.html#次元配列",
+    "title": "リストをあらためて",
+    "section": "２次元配列",
+    "text": "２次元配列\nlist の要素として list を入れると２次元配列になる。\nアクセスは list[行][列] の形式。\nlist_of_list = [[1, 2, 3], [4, 5, 6]]\nprint(list_of_list)        # [[1, 2, 3], [4, 5, 6]]\nprint(list_of_list[0][1])  # 2\n       列0  列1  列2\n行0 →  [1,   2,   3]\n行1 →  [4,   5,   6]\nlist_of_list[0][1] → 行0・列1 → 2"
   },
   {
-    "objectID": "dict.html#辞書内包表記",
-    "href": "dict.html#辞書内包表記",
-    "title": "辞書をあらためて",
-    "section": "辞書内包表記",
-    "text": "辞書内包表記\nリスト内包表記の dict 版。{キー: 値 for ... in ...} の形。\n# 数 → その2乗 の dict を作る\nsquares = {x: x ** 2 for x in range(5)}\nprint(squares)  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}\n条件付きも書ける。\n# 80点以上だけ取り出す\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\npassed = {k: v for k, v in name2score.items() if v &gt;= 80}\nprint(passed)  # {'Yamada': 95, 'Takahashi': 80}\nキーと値を入れ替えるのも一行で書ける。\nscore2name = {v: k for k, v in name2score.items()}\nprint(score2name)  # {95: 'Yamada', 75: 'Suzuki', 80: 'Takahashi'}"
+    "objectID": "list.html#n-次元配列",
+    "href": "list.html#n-次元配列",
+    "title": "リストをあらためて",
+    "section": "N 次元配列",
+    "text": "N 次元配列\n２次元以上の多次元化も可能。\nN_dimensional_list = [[[1, 2, 3], [4, 5, 6]],\n                      [[7, 8, 9], [10, 11, 12]]]\n\nprint(N_dimensional_list[1][1][2])  # 12\n\n[1] → 2番目のブロック [[7,8,9],[10,11,12]]\n[1] → その中の2番目 [10,11,12]\n[2] → その中の3番目 → 12"
   },
   {
-    "objectID": "dict.html#まとめ",
-    "href": "dict.html#まとめ",
-    "title": "辞書をあらためて",
+    "objectID": "list.html#list-同士の結合",
+    "href": "list.html#list-同士の結合",
+    "title": "リストをあらためて",
+    "section": "list 同士の結合",
+    "text": "list 同士の結合\n+ 演算子でリスト同士を結合できる。\nlist1 = [\"banana\", \"apple\"]\nlist2 = [\"orange\", \"peach\"]\n\nprint(list1 + list2)  # ['banana', 'apple', 'orange', 'peach']\n\n# += 演算も可能\nlist1 += list2\nprint(list1)          # ['banana', 'apple', 'orange', 'peach']\n\n\n\n\n\n\n重複はそのまま追加される\n\n\n同じ要素があっても重複して追加される（重複排除はされない）。\nlist3 = [\"banana\", \"grape\"]\nprint(list1 + list3)\n# ['banana', 'apple', 'orange', 'peach', 'banana', 'grape']"
+  },
+  {
+    "objectID": "list.html#ソート",
+    "href": "list.html#ソート",
+    "title": "リストをあらためて",
+    "section": "ソート",
+    "text": "ソート\nsort() と sorted() でリストを並び替えられる。\nscores = [85, 90, 92, 78, 92, 88]\n\n# sort()：元のリストを直接変更（ミュータブル！）\nscores.sort()\nprint(scores)  # [78, 85, 88, 90, 92, 92]\n\n# sorted()：新しいリストを返す（元は変わらない）\noriginal = [85, 90, 92, 78]\nresult = sorted(original)\nprint(original)  # [85, 90, 92, 78] ← 変わらない\nprint(result)    # [78, 85, 90, 92]\n\n# 降順は reverse=True\nscores.sort(reverse=True)\nprint(scores)  # [92, 92, 90, 88, 85, 78]\n\n\n\n\n\n\nsort vs sorted の使い分け\n\n\n\n元のリストを壊してよい → sort()（速い）\n元のリストを保持したい → sorted()（安全）\n\nsort() が in-place で変更する点は、第4回で学んだミュータブルの性質そのもの。"
+  },
+  {
+    "objectID": "list.html#リスト内包表記",
+    "href": "list.html#リスト内包表記",
+    "title": "リストをあらためて",
+    "section": "リスト内包表記",
+    "text": "リスト内包表記\nfor 文を1行に圧縮してリストを作る書き方\n例えば、[0, 1, 4, 9, 16]のリストを作りたい時、\nsquares = []\nfor x in range(5):\n    squares.append(x * x)\nprint(squares)  # [0, 1, 4, 9, 16]\nと書けるけど、長いので以下のように一撃でも書ける。それがリスト内包表記\n# 基本形：[式 for 変数 in イテラブル]\nsquares = [x ** 2 for x in range(5)]\nprint(squares)  # [0, 1, 4, 9, 16]"
+  },
+  {
+    "objectID": "list.html#リスト内包表記条件式付き",
+    "href": "list.html#リスト内包表記条件式付き",
+    "title": "リストをあらためて",
+    "section": "リスト内包表記（条件式付き）",
+    "text": "リスト内包表記（条件式付き）\n例えば、0-99の整数うち３の倍数以外のリストを作る場合、以下のようにfor文に条件を書くことになる。\n\nnot_divisible_by_3s = []\nfor x in range(100):\n    if x % 3 == 0:\n        continue\n    not_divisible_by_3s.append(x)\nprint(not_divisible_by_3s)\nこれをリスト内包表記だとこう書ける。短い\n# 条件付き：[式 for 変数 in イテラブル if 条件]\nnot_divisible_by_3s = [x for x in range(100) if x % 3 != 0]\nprint(not_divisible_by_3s)\n\n\n\n\n\n\nノート\n\n\nリスト内包表記はAtCoderでよく使う（次スライド）"
+  },
+  {
+    "objectID": "list.html#リスト内包表記の使いどころ",
+    "href": "list.html#リスト内包表記の使いどころ",
+    "title": "リストをあらためて",
+    "section": "リスト内包表記の使いどころ",
+    "text": "リスト内包表記の使いどころ\n第1回 AtCoder の参考コードに出てきた謎の構文：\nAs = [int(x) for x in input().split()]\nこれはリスト内包表記だった。input().split() で [\"1\", \"2\", \"3\"] という文字列のリストを作り、 各要素を int(x) で整数に変換しながら新しいリストを作っている。\nfor 文で書くと以下と同じ意味：\ninput_str = input().split() # split(\" \")と同じ。つまり、空白区切りで分けてlist化\nAs = []\nfor x in input_str:\n    As.append(int(x))"
+  },
+  {
+    "objectID": "list.html#参考異なる型の混在",
+    "href": "list.html#参考異なる型の混在",
+    "title": "リストをあらためて",
+    "section": "【参考】異なる型の混在",
+    "text": "【参考】異なる型の混在\nPython の list は数値・文字列など異なる型を混在させることができる。\nprint([10, \"text\", 10.5])        # [10, 'text', 10.5]\nprint([10, [1, 2, 3], \"text\"])   # [10, [1, 2, 3], 'text']\n\ntest = [10, [1, 2, 3], \"text\"]\nprint(test[2])     # text\nprint(test[1][2])  # 3\n\n\n\n\n\n\n実際には使わない\n\n\n管理しにくいため実務では使わない。 ただし多次元配列はこの仕組みを応用している。"
+  },
+  {
+    "objectID": "list.html#まとめ",
+    "href": "list.html#まとめ",
+    "title": "リストをあらためて",
     "section": "まとめ",
-    "text": "まとめ\n\ndict はキーと値のペアで管理するコレクション（他言語ではハッシュマップ）\nアクセスは dict[キー]、ない場合は KeyError → in または .get() でガード\n走査は .items() が最頻出、.keys() / .values() も使い分ける\nネスト dict や list of dict で表形式のデータを表現できる\n辞書内包表記 {k: v for ...} で for ＋ 追加を1行に圧縮できる"
+    "text": "まとめ\n\nインデックスはゼロ始まり、マイナスで末尾からアクセスできる\nappend で末尾追加、in で存在確認、sort / sorted で並び替え\nスライス [i:j]・多次元配列・+ 結合など、組み合わせ次第で幅広く使える\nリスト内包表記 [式 for x in ...] で for+append を1行に圧縮できる\nlist はミュータブル — コピーが必要なときは .copy() を使う"
   },
   {
-    "objectID": "dict.html#演習問題",
-    "href": "dict.html#演習問題",
-    "title": "辞書をあらためて",
+    "objectID": "list.html#演習問題",
+    "href": "list.html#演習問題",
+    "title": "リストをあらためて",
     "section": "演習問題",
-    "text": "演習問題\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80, \"Tanaka\": 60}\n上記の dict をコピーして、以下の操作を実装せよ\n\n.get() を使って “Sato” さんの点数を取り出す（存在しなければ 0 を返す）\nTanaka さんを del で削除\n.values() と sum / len を使って、全員の 平均点 を表示\n\n\n\n解答例を見る\n# 1\nprint(name2score.get(\"Sato\", 0))  # 0\n\n# 2\ndel name2score[\"Tanaka\"]\nprint(name2score)\n\n# 3\nprint(sum(name2score.values()) / len(name2score))"
+    "text": "演習問題\nscores = [85, 90, 92, 78, 92, 88, 65, 100, 73, 80]\n上記のリストをコピーして、以下の操作を実装せよ\n\nrange(len(...)) を使って、出席番号（1始まり）と点数を表示\nスライスを使って、上位5名分（先頭5つ）と下位5名分（末尾5つ）をそれぞれ別のリストに分けて表示\nsorted を使って、元のリストを変えずに降順に並び替えた新しいリストを作り、上位3名の点数を表示\n\n\n\n解答例を見る\n# 1\nfor i in range(len(scores)):\n    print(f\"出席番号{i + 1}は{scores[i]}点\")\n\n# 2\ntop5 = scores[:5]\nbottom5 = scores[-5:]\nprint(top5)\nprint(bottom5)\n\n# 3\nranked = sorted(scores, reverse=True)\nprint(ranked[:3])\nprint(scores)  # 元のリストは変わっていない"
   },
   {
-    "objectID": "dict.html#演習問題辞書内包表記",
-    "href": "dict.html#演習問題辞書内包表記",
-    "title": "辞書をあらためて",
-    "section": "演習問題（辞書内包表記）",
-    "text": "演習問題（辞書内包表記）\n以下の操作を実装せよ\n\nrange(1, 6) を使って、{1: 1, 2: 4, 3: 9, 4: 16, 5: 25} という「数 → 2乗」の dict を作ろう\nname2score から、80点以上の学生だけ を取り出した新しい dict を作ろう\nname2score の キーと値を入れ替えた dict（score2name）を作ろう\n\n\n\n\n\n\n\nLUT（Look-Up Table）\n\n\n問題１のように 「入力 → 計算結果」を事前に dict に入れて引けるようにしたもの を LUT（Look-Up Table、参照テーブル） と呼ぶ。毎回計算する代わりに lut[x] で引けるため、重い計算を事前計算してキャッシュする用途でよく使われる。\n古典的な例として、ゲーム機や組み込み機器では sin / cos の値を角度ごとに事前計算した LUT がよく使われる（毎フレームの三角関数計算は重いため）。\n\n\n\n\n\n解答例を見る\n# 1\nsquares = {x: x ** 2 for x in range(1, 6)}\nprint(squares)\n\n# 2\npassed = {k: v for k, v in name2score.items() if v &gt;= 80}\nprint(passed)\n\n# 3\nscore2name = {v: k for k, v in name2score.items()}\nprint(score2name)"
+    "objectID": "list.html#演習問題リスト内包表記",
+    "href": "list.html#演習問題リスト内包表記",
+    "title": "リストをあらためて",
+    "section": "演習問題（リスト内包表記）",
+    "text": "演習問題（リスト内包表記）\n以下の操作を実装せよ\n\nrange(1, 11) を使って、1から10までの平方数のリストを作ろう（[1, 4, 9, ..., 100]）\nscores から、80点以上の点数だけを取り出した新しいリストを作ろう\n標準入力で受け取った空白区切りの整数列を、list of int に変換しよう（AtCoder 頻出パターン）\n\n\n\n解答例を見る\n# 1\nsquares = [x ** 2 for x in range(1, 11)]\nprint(squares)\n\n# 2\npassed = [s for s in scores if s &gt;= 80]\nprint(passed)\n\n# 3\nAs = [int(x) for x in input().split()]\nprint(As)"
   },
   {
-    "objectID": "dict.html#演習問題list-of-dict",
-    "href": "dict.html#演習問題list-of-dict",
-    "title": "辞書をあらためて",
-    "section": "演習問題（list of dict）",
-    "text": "演習問題（list of dict）\n# 要素：学生（0: A さん, 1: B さん, 2: C さん）\n# キー：科目（\"国語\", \"数学\", \"英語\"）\nstudents = [\n    {\"name\": \"A\", \"国語\": 80, \"数学\": 90, \"英語\": 70},\n    {\"name\": \"B\", \"国語\": 60, \"数学\": 85, \"英語\": 95},\n    {\"name\": \"C\", \"国語\": 75, \"数学\": 70, \"英語\": 80},\n]\n上記の学生の国語・数学・英語の点数をもつ list of dict をコピーして、以下の操作を実装せよ。\n\nB さんの数学の点数を表示しよう\nC さんの3科目合計を表示しよう\n各学生の平均点を for 文で順に表示しよう\n\n\n\n解答例を見る\n# 1\nprint(students[1][\"数学\"])  # 85\n\n# 2\nprint(students[2][\"国語\"] + students[2][\"数学\"] + students[2][\"英語\"])  # 225\n\n# 3\nfor s in students:\n    avg = (s[\"国語\"] + s[\"数学\"] + s[\"英語\"]) / 3\n    print(f\"{s['name']}さんの平均点：{avg:.1f}点\")"
+    "objectID": "list.html#演習問題２次元配列",
+    "href": "list.html#演習問題２次元配列",
+    "title": "リストをあらためて",
+    "section": "演習問題（２次元配列）",
+    "text": "演習問題（２次元配列）\n# 行：学生（0: A さん, 1: B さん, 2: C さん）\n# 列：科目（0: 国語, 1: 数学, 2: 英語）\ntable = [\n    [80, 90, 70],\n    [60, 85, 95],\n    [75, 70, 80],\n]\n上記の学生の国語・数学・英語の点数をもつ２次元配列をコピーして、以下の操作を実装せよ。\n\nB さんの数学の点数を表示しよう\nC さんの3科目合計を表示しよう\n各学生の平均点を for 文で順に表示しよう\n\n\n\n解答例を見る\n# 1\nprint(table[1][1])  # 85\n\n# 2\nprint(sum(table[2]))  # 225\n\n# 3\nnames = [\"A\", \"B\", \"C\"]\nfor i in range(len(table)):\n    avg = sum(table[i]) / len(table[i])\n    print(f\"{names[i]}さんの平均点：{avg:.1f}点\")"
   },
   {
-    "objectID": "key-typing.html#キータイピングを速めよう",
-    "href": "key-typing.html#キータイピングを速めよう",
-    "title": "キータイピング",
-    "section": "キータイピングを速めよう",
-    "text": "キータイピングを速めよう\n入力の主流なインタフェースはいまだキーボードである。 音声入力もあるが、特に日本語においては漢字変換や URLなど音声だけで必要な入力を賄うことは不可能です。\nよって、PCを生涯使うであろう我々にとってキーボードを打つスピードは生涯の生産性に直結するため、速いに越したことはない。"
+    "objectID": "shortcuts.html#ショートカットキーを知るべき理由",
+    "href": "shortcuts.html#ショートカットキーを知るべき理由",
+    "title": "ショートカット",
+    "section": "ショートカットキーを知るべき理由",
+    "text": "ショートカットキーを知るべき理由\n最強の知的生産ツールであるPCを効率的に使ってタイパをあげよう。\nマウス操作に対して、ショートカットキーで操作すると作業時間の大幅な短縮につながる。"
   },
   {
-    "objectID": "key-typing.html#日本語タイピング速度の目安",
-    "href": "key-typing.html#日本語タイピング速度の目安",
-    "title": "キータイピング",
-    "section": "日本語タイピング速度の目安",
-    "text": "日本語タイピング速度の目安\nタイピングの速さを測る指標は主に2つある。\n\nWPM（Words Per Minute）：1分間に打てる 単語数\nKPM（Keys Per Minute）：1分間に打てる キーの打鍵数\n\nWPM\n\n\n\nレベル\nWPM\n\n\n\n\n初心者\n20–30\n\n\n中級者\n40–60（一般的なオフィスワーカー）\n\n\n上級者\n70–90\n\n\n\nKPM\n日本語のKPM平均値は、ローマ字入力で 100〜150 KPM が日常利用者の範囲とされている。\n\n\n\nレベル\nKPM\n\n\n\n\n初心者\n40–60\n\n\n中級者\n80–120\n\n\n上級者\n140–180\n\n\nトップ層\n250以上\n\n\n\nちなみに、英語は1単語あたり約5キーだが、日本語は1単語あたり平均5〜7文字で、1文字あたり2キー必要。同じWPMでも日本語のほうがキー入力数が多い。"
+    "objectID": "shortcuts.html#例文言を別の場所にコピーしたいとき",
+    "href": "shortcuts.html#例文言を別の場所にコピーしたいとき",
+    "title": "ショートカット",
+    "section": "例：文言を別の場所にコピーしたいとき",
+    "text": "例：文言を別の場所にコピーしたいとき\nマウスの場合（8手順）\n\nキーボードからマウスに持ち替える\nマウスでコピーしたい文字列を選択する\n右クリック\nコピーを選択\nマウスカーソルをペーストしたい場所にもってきてクリックする\n右クリック\nペーストを選択\nキーボードに手を戻す\n\nショートカットの場合（4手順）\n\nShiftキーを押しながら矢印キーで選択範囲を指定する\nCtrl+C キーでコピーバッファに格納\nペーストしたい位置に矢印キーで移動\nCtrl+Vでペースト\n\n手順が半分になり、キーボードから手を離す必要もない。\nスピードが倍化したとして、人生のトータルコピペ数を考えると馬鹿にならない差になる。"
   },
   {
-    "objectID": "key-typing.html#つまりどれくらい差がつくのか",
-    "href": "key-typing.html#つまりどれくらい差がつくのか",
-    "title": "キータイピング",
-    "section": "つまり、どれくらい差がつくのか",
-    "text": "つまり、どれくらい差がつくのか\n初心者と上級者の間では 3倍以上 の速度差がある。\n\n\n\n\n\n\n例：1000文字のレポートを書く場合\n\n\n\n90 WPM → 約 11分\n20 WPM → 約 50分\n\n生涯に何文字書くかを考えると、取り返しがつかない時間を損する可能性すらある。\n\n\n\nしかし、いまは遅くても 慣れれば誰でも速くなる。\n練習をして基礎体力をつけよう。"
+    "objectID": "shortcuts.html#各種キーの名前",
+    "href": "shortcuts.html#各種キーの名前",
+    "title": "ショートカット",
+    "section": "各種キーの名前",
+    "text": "各種キーの名前\n覚えておこう。\n\nCtrl キー（コントロール）\nShift キー（シフト）\nAlt キー（オルタナティブの略なので「オルト」と読む）\nWin キー（Windowsキー）"
   },
   {
-    "objectID": "key-typing.html#ホームポジションを身につけよう",
-    "href": "key-typing.html#ホームポジションを身につけよう",
-    "title": "キータイピング",
-    "section": "ホームポジションを身につけよう",
-    "text": "ホームポジションを身につけよう\nキーボードには「ホームポジション」と呼ばれる基本の手の置き方がある。\nホームポジションとは\n\n\n\n手\n人差し指\n中指\n薬指\n小指\n\n\n\n\n左手\nF\nD\nS\nA\n\n\n右手\nJ\nK\nL\n；\n\n\n\n\n親指：スペースキー\nF と J には小さな突起がある → 人差し指の目印\n\n目をつぶっても打てるよう、指のポジション感覚を鍛えよう。"
+    "objectID": "shortcuts.html#基本ショートカット",
+    "href": "shortcuts.html#基本ショートカット",
+    "title": "ショートカット",
+    "section": "基本ショートカット",
+    "text": "基本ショートカット\n以下は、ほぼすべてのアプリケーションで使えるショートカットなので覚えよう。\n\n\n\n\nWindows\nMac\n余談\n\n\n\n\n文字を範囲選択\nShift + 矢印\nShift + 矢印\n上下も使える\n\n\nすべて選択\nCtrl + A\nCmd + A\nallのa\n\n\nコピー\nCtrl + C\nCmd + C\ncopyのc\n\n\nカット（切り取り）\nCtrl + X\nCmd + X\n由来不明\n\n\nペースト\nCtrl + V\nCmd + V\nv の形が挿入場所を表している\n\n\nUndo（やり直し）\nCtrl + Z\nCmd + Z\n諸説あり"
   },
   {
-    "objectID": "key-typing.html#小さい文字の打ち方と練習",
-    "href": "key-typing.html#小さい文字の打ち方と練習",
-    "title": "キータイピング",
-    "section": "小さい文字の打ち方と練習",
-    "text": "小さい文字の打ち方と練習\n小さい文字（拗音・促音）だけを単体で打ちたいときは、最初に X か L を入力する。\n\n\n\n打ちたい文字\n入力方法\n\n\n\n\n小さい「ゃ」\nxya または lya\n\n\n小さい「ょ」\nxyo または lyo\n\n\n小さい「っ」\nxtu または ltu\n\n\n\n練習してみよう\n以下の文には拗音・促音がたくさん含まれている。タイピングしてみよう。\n\n\n\n\n\n\nサンプル文\n\n\nにゃんこが　すーぱーで　ちっっっちゃな　きゃべつを　ひょいっと　くわえて　ぴょんぴょん　はねている。\nちゅうしゃじょうの　よこで　うっかり　すべって　こけちゃった。"
+    "objectID": "shortcuts.html#早速実践",
+    "href": "shortcuts.html#早速実践",
+    "title": "ショートカット",
+    "section": "早速実践",
+    "text": "早速実践\nメモ帳を開いて、以下と同じものをショートカットを駆使して打ち込んでみよう。 なるべく速く完成させるにはどうするべき？\n|-|-|-|-|-|-|-|-|-|-|-|-|\n|-|-|-|-|-     -|-|-|-|-|\n|-|-|-|-|-     -|-|-|-|-|\n|-|-|-|-|-|-|-|-|-|-|-|-|\n|-|-|-|-|-|-|-|-|-|-|-|-|\n|-|-|-|-|-     -|-|-|-|-|\n|-|-|-|-|-     -|-|-|-|-|\n|-|-|-|-|-|-|-|-|-|-|-|-|\n\n\n\n\n\n\nヒント\n\n\n\n1段目の縦棒は13本\n2段目の縦棒は10本\n全部で8段\n1行打ったらコピー&ペーストで増やせる"
   },
   {
-    "objectID": "key-typing.html#タイピング上達のコツ",
-    "href": "key-typing.html#タイピング上達のコツ",
-    "title": "キータイピング",
-    "section": "タイピング上達のコツ",
-    "text": "タイピング上達のコツ\n\nタッチタイピングを意識する\n\n画面を見ながら打ち、手元は見ないようにする\n\nミスタイプを恐れず打ち続ける\n\nゆっくりでもよいので、正しい指で正しい位置を覚える\n\nリズムよく打つ\n\n一定のテンポで打つ練習をすると、速度と正確さが上がる\n\n毎日3〜5分でOK、継続が鍵\n\n短時間でも毎日継続することで、体に定着する"
+    "objectID": "shortcuts.html#応用ショートカットファンクションキー",
+    "href": "shortcuts.html#応用ショートカットファンクションキー",
+    "title": "ショートカット",
+    "section": "応用ショートカット：ファンクションキー",
+    "text": "応用ショートカット：ファンクションキー\nプログラマはファンクションキーをよく使う\nFunction（機能）キーを使えるようになろう。\n\n\n\n\n\n\n\n\n\nショートカット\n余談\n\n\n\n\n全画面化\nF11\n\n\n\nかな→半角（ローマ字入力中）\nF10\n\n\n\nウインドウを閉じる\nAlt + F4\n\n\n\nビルド・コンパイル\nF5\n古来からの習わし。詳しくは「VS Codeのショートカット」へ\n\n\n\n\n\n\n\n\n\nMac（参考）\n\n\n全画面化=Ctrl+Cmd+F、かな→半角=英数キー、ウィンドウを閉じる=Cmd+W"
   },
   {
-    "objectID": "key-typing.html#速度計測",
-    "href": "key-typing.html#速度計測",
-    "title": "キータイピング",
-    "section": "速度計測",
-    "text": "速度計測\n「寿司打」で検索して お手軽3000円コース をやってみよう。\n寿司打\n\n\n\n\n\n\nKPMの計算方法\n\n\n「平均キータイプ数」× 60 = KPM\n140 KPM 以上 を目指そう！"
+    "objectID": "shortcuts.html#応用ショートカットwindowsキー",
+    "href": "shortcuts.html#応用ショートカットwindowsキー",
+    "title": "ショートカット",
+    "section": "応用ショートカット：Windowsキー",
+    "text": "応用ショートカット：Windowsキー\nWindowsキーも重要。\n\n\n\n\nショートカット\n余談\n\n\n\n\nコピーバッファを開く\nWin + V\n非常に便利\n\n\nスクリーンショット\nWin + Shift + S\nスクリーンショットのs\n\n\nデスクトップを表示\nWin + D\nデスクトップのd\n\n\n別ウインドウに切り替え\nWin + Tab\nAlt + Tabも同じような機能\n\n\n\n\n\n\n\n\n\nMac（参考）\n\n\nスクリーンショット=Cmd+Shift+4、ウィンドウ切り替え=Cmd+Tab。クリップボード履歴・デスクトップ表示は標準機能なし。"
   },
   {
-    "objectID": "key-typing.html#演習atcoderでプログラムを動かしてみよう",
-    "href": "key-typing.html#演習atcoderでプログラムを動かしてみよう",
-    "title": "キータイピング",
-    "section": "演習：AtCoderでプログラムを動かしてみよう",
-    "text": "演習：AtCoderでプログラムを動かしてみよう\n「AtCoder ABC 400 tasks」で検索して A 問題を解いてみよう。\n\nAtCoder Beginner Contest 400 A問題 にアクセス\nアカウントを作る\n問題を解く\n右上の「提出」ボタンを押す\nジャッジ結果が AC（Accepted） になれば正解！\n\nWA（Wrong Answer） ：出力が違う\nRE（Runtime Error） ：実行中にエラー\nTLE（Time Limit Exceeded） ：時間超過\n\n\n\n\n\n\n\n\nABC400の解答例（Python）\n\n\n\n\n解答を見る\nA = int(input())\nres = -1 if 400 % A != 0 else 400 // A\nprint(res)"
+    "objectID": "shortcuts.html#その他の便利なショートカット",
+    "href": "shortcuts.html#その他の便利なショートカット",
+    "title": "ショートカット",
+    "section": "その他の便利なショートカット",
+    "text": "その他の便利なショートカット\nアプリケーションによっては実装されていないこともあるが、大抵は共通で使える。\n\n\n\n\n\n\n\n\n\n\nWindows\nMac\n余談\n\n\n\n\n検索\nCtrl + F\nCmd + F\n\n\n\nRedo（リドゥ）\nCtrl + Y\nCmd + Shift + Z\nUndoの逆\n\n\n新しく始める\nCtrl + N\nCmd + N\nNewのn\n\n\n次の場所にフォーカスを進める\nTab\nTab\nブラウザのフォーム入力などで便利\n\n\n前の場所にフォーカスを戻す\nShift + Tab\nShift + Tab\n同上"
   },
   {
-    "objectID": "key-typing.html#参考atcoderでよく使う入力パターン",
-    "href": "key-typing.html#参考atcoderでよく使う入力パターン",
-    "title": "キータイピング",
-    "section": "（参考）AtCoderでよく使う入力パターン",
-    "text": "（参考）AtCoderでよく使う入力パターン\n# 入力をそのまま文字列として取得\ns = input()\n\n# 入力をintとして取得\ni = int(input())\n\n# スペース区切りの文字列（[foo bar baz]）をリストとして取得する場合\nss = [s for s in input().split()]\n\n# スペース区切りの2文字を別の変数としたい場合\nA, B = [s for s in input().split()]\n\n# 「Aを1 2 3 4からなる数列とする」のような場合\nAs = [int(x) for x in input().split()]\n\n# intでA Bという数字が与えられるパターン\nA, B = [int(x) for x in input().split()]"
+    "objectID": "shortcuts.html#vs-codeのショートカット",
+    "href": "shortcuts.html#vs-codeのショートカット",
+    "title": "ショートカット",
+    "section": "VS Codeのショートカット",
+    "text": "VS Codeのショートカット\nエディタ上で役立つショートカット。コードを書くときに活用しよう。\n\n\n\n\n\n\n\n\n\n\nWindows\nMac\n説明\n\n\n\n\n実行\nCtrl + F5\n\nデバッグなしで実行（F5はデバッグ付き）\n\n\n行をコピー\nCtrl + C\nCmd + C\n選択なしで押すと行ごとコピー\n\n\n行を切り取り\nCtrl + X\nCmd + X\n選択なしで押すと行ごと切り取り\n\n\n行を上下に移動\nAlt + ↑ / ↓\nOption + ↑ / ↓\n行の順序を入れ替えるのに便利\n\n\nコメントアウト\nCtrl + /\nCmd + /\nもう一度押すと解除\n\n\n字下げ（インデント）\nCtrl + ] / Ctrl + [\nCmd + ] / Cmd + [\n]で増やす、[で戻す"
   },
   {
-    "objectID": "key-typing.html#まとめ",
-    "href": "key-typing.html#まとめ",
-    "title": "キータイピング",
+    "objectID": "shortcuts.html#演習①vs-codeで日本語入力",
+    "href": "shortcuts.html#演習①vs-codeで日本語入力",
+    "title": "ショートカット",
+    "section": "演習①：VS Codeで日本語入力",
+    "text": "演習①：VS Codeで日本語入力\n前提：日本語入力モード（IMEオン）で開始すること。\n課題：VS Codeを開き、以下のコメントをそのまま入力しよう。\nゴール（これを入力する）：\n# Alt（オルタナティブ）キーで行を移動できる\n# Ctrl+/でコメントアウト、F5で実行\n\n\n\n\n\n\n手順の例：Alt（オルタナティブ） の入力\n\n\n\nalt と打つ → F10（半角英数に変換）→ Alt → Enter で確定\n（ を入力\nおるたなてぃぶ と打つ → F7（カタカナに変換）→ オルタナティブ → Enter で確定\n） を入力\n\n漢字（移動、実行 など）は スペース で変換する。"
+  },
+  {
+    "objectID": "shortcuts.html#演習②カットペースト字下げ",
+    "href": "shortcuts.html#演習②カットペースト字下げ",
+    "title": "ショートカット",
+    "section": "演習②：カット＆ペースト＋字下げ",
+    "text": "演習②：カット＆ペースト＋字下げ\n課題：順序と字下げが崩れたコードを ショートカットだけで 直そう。\n初期状態：\nscore = int(input())\n    if score &gt;= 60:\nprint(\"不合格\")\n        print(\"合格\")\n    else:\nゴール：\nscore = int(input())\nif score &gt;= 60:\n    print(\"合格\")\nelse:\n    print(\"不合格\")\nヒント：\n\n行の移動は Alt + ↑↓ または Ctrl+X → Ctrl+V\n字下げは Ctrl + ]、戻すは Ctrl + ["
+  },
+  {
+    "objectID": "shortcuts.html#演習③コメントアウトでバグを追い詰める",
+    "href": "shortcuts.html#演習③コメントアウトでバグを追い詰める",
+    "title": "ショートカット",
+    "section": "演習③：コメントアウトでバグを追い詰める",
+    "text": "演習③：コメントアウトでバグを追い詰める\n課題：このプログラムを実行すると結果がおかしい。コメントアウトを使ってどのブロックが原因か突き止めよう。\nコード（VS Codeに貼り付けて実行）：\nscores = [85, 92, 78, 55, 65]\nnames = [\"田中\", \"鈴木\", \"佐藤\", \"山田\", \"高橋\"]\n\ndef normalize(data, threshold=60):\n    for i in range(len(data)):\n        if data[i] &lt; threshold:\n            data[i] = threshold\n    return data\n\n# ブロック①：受験者一覧\nprint(\"=== 受験者一覧 ===\")\nfor i in range(len(names)):\n    print(names[i], \":\", scores[i], \"点\")\n\n# ブロック②：補正後の平均点\nprint(\"=== 補正後の平均点 ===\")\ncorrected = normalize(scores)\naverage = sum(corrected) / len(corrected)\nprint(\"平均：\", round(average, 1), \"点\")\n\n# ブロック③：合否判定\nprint(\"=== 合否判定 ===\")\nfor i in range(len(names)):\n    if scores[i] &gt;= 60:\n        print(names[i], \"：合格\")\n    else:\n        print(names[i], \"：不合格\")\n\n# ブロック④：不合格者集計\nprint(\"=== 集計 ===\")\nfailed = [s for s in scores if s &lt; 60]\nprint(\"不合格者数：\", len(failed), \"人\")\nprint(\"合格者数：\", len(scores) - len(failed), \"人\")\nおかしい点：①で山田は55点と表示されるのに、③では山田が合格、④では不合格者0人になっている。\n手順：\n\nまず全体を実行して、おかしい箇所を確認する\n怪しいブロックを 複数行まとめてCtrl+/ でコメントアウトして再実行\nどのブロックをコメントアウトしたら結果が正しくなるかを確認する\n原因のブロックのどの行がバグか特定する\n\n\n\n\n\n\n\nなぜこうなるの？\n\n\nnormalize() がリストを中で書き換えていることが原因です。 なぜそうなるのかのメカニズムは、変数と代入で詳しく解説します。"
+  },
+  {
+    "objectID": "shortcuts.html#まとめ",
+    "href": "shortcuts.html#まとめ",
+    "title": "ショートカット",
     "section": "まとめ",
-    "text": "まとめ\n\nキータイピング速度は生涯の生産性に直結する — 早めに投資する価値がある\nまずホームポジションを身につけることが上達の近道\n目標は KPM 300（WPM 60）— 毎日少しずつ練習を続けよう\nAtCoder の入力パターン（input() / int() / split()）は今後も頻出"
+    "text": "まとめ\n\nショートカットキーは手順を半分にし、生涯の作業時間を大幅に削減できる\nCtrl+C/V/Z/A などの基本ショートカットはほぼ全アプリで共通\nWin+V（クリップボード履歴）・Win+Shift+S（スクリーンショット）も覚えておくと便利\nVS Code では Alt+↑↓（行移動）・Ctrl+/（コメントアウト）・F5（実行）が特に役立つ"
   },
   {
-    "objectID": "numpy.html#numpyとは",
-    "href": "numpy.html#numpyとは",
-    "title": "NumPy入門",
-    "section": "NumPyとは",
-    "text": "NumPyとは\n\nNumPyは数値計算のデファクトスタンダード\n\n普通、数値計算やデータ処理にlistは使わない\n\n内部的にはC言語で実装されている\n\n通常のリストに比べて非常に高速"
+    "objectID": "vector_matrix.html#section",
+    "href": "vector_matrix.html#section",
+    "title": "ベクトルと行列",
+    "section": "",
+    "text": "ベクトルのおさらい"
   },
   {
-    "objectID": "numpy.html#インストールと使用",
-    "href": "numpy.html#インストールと使用",
-    "title": "NumPy入門",
-    "section": "インストールと使用",
-    "text": "インストールと使用\nターミナルからインストール\npip install numpy\n冒頭でimportして使用（ただしnpというエイリアス指定が一般的）\nimport numpy as np\n\n\n\n\n\n\ninportの as とは？\n\n\nimport numpy as np の as np は別名（エイリアス）をつける構文\nimport numpy         # 使用時にnumpy.array(...) と書く\nimport numpy as np   # np.array(...) でよいので短い\n\n注：np の部分は何でもよく別の名前も使用可能\n\nただし、NumPyは np が非常に一般的"
+    "objectID": "vector_matrix.html#ベクトルベクターvectorとは",
+    "href": "vector_matrix.html#ベクトルベクターvectorとは",
+    "title": "ベクトルと行列",
+    "section": "ベクトル（ベクター・Vector）とは",
+    "text": "ベクトル（ベクター・Vector）とは\n\n「大きさ」と「方向」の組み合わせ\n\n速度・力など\n位置は無関係\n大きさのみ は スカラー（Scalar）"
   },
   {
-    "objectID": "numpy.html#numpy配列ndarray",
-    "href": "numpy.html#numpy配列ndarray",
-    "title": "NumPy入門",
-    "section": "NumPy配列（ndarray）",
-    "text": "NumPy配列（ndarray）\n\n数値のリストっぽいものをnpに渡すとndarrayになる\nndarray は list によく似たNumPy用の配列型\n\n先頭の nd は多次元配列（N-Dimensional Array）の略\n\nNumPyはndarrayを効率よく処理するためのライブラリ\n\nimport numpy as np\n\narr = np.array([1, 2, 3, 4]) # 1-4のndarray\n\n# 以下でarrを数値計算（例：平均・分散 etc.）\n\n\n\n\n\n\nノート\n\n\nnp.ndarray() ではなく np.array() と書くことに注意"
+    "objectID": "vector_matrix.html#表記方法",
+    "href": "vector_matrix.html#表記方法",
+    "title": "ベクトルと行列",
+    "section": "表記方法",
+    "text": "表記方法\n\n表記は成分を縦に並べて書くことが多い\nこれを単に小文字太文字の\\({\\mathbf{a}}\\)として記号表記する\n\n高校での\\(\\vec{\\mathbf{a}}\\) から矢印を省略した形\n\n\n高校での表記 \\[\n\\vec{\\mathbf{a}} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}\n\\]\n大学・論文・技術文章の主流 \\[\n\\mathbf{a} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}\n\\]"
   },
   {
-    "objectID": "numpy.html#基本的な初期化",
-    "href": "numpy.html#基本的な初期化",
-    "title": "NumPy入門",
-    "section": "基本的な初期化",
-    "text": "基本的な初期化\nリストを np.array() に渡すと、NumPy配列になります。\nimport numpy as np\n\nlist = [1, 2, 3, 4]\narr = np.array(list)\n\narr = np.array([1, 2, 3, 4])    # 同じ\narr = np.array(range(1, 5))     # 同じ。実際には後述のarangeがよく使われる\n\nlist += list\narr = np.array(list)"
+    "objectID": "vector_matrix.html#section-1",
+    "href": "vector_matrix.html#section-1",
+    "title": "ベクトルと行列",
+    "section": "",
+    "text": "NumPyでベクトルを表現・演算"
   },
   {
-    "objectID": "numpy.html#初期化ヘルパー関数",
-    "href": "numpy.html#初期化ヘルパー関数",
-    "title": "NumPy入門",
-    "section": "初期化（ヘルパー関数）",
-    "text": "初期化（ヘルパー関数）\n\n下記のよく使う数列は、ヘルパー関数で一撃生成\n特にrandom 系は強力\n\nテスト用データを作るときに非常によく使われる\n\n\nimport numpy as np\n\nnp.zeros(3)          # 0.0が3つの要素で初期化。 [0. 0. 0. ] \nnp.ones(5)           # 1.0が5つの要素で初期化。 [1. 1. 1. 1. 1.]\nnp.full(4, 7)        # 7が4つの要素で初期化。 [7 7 7 7]\n\n# arrangeではなくarange（\"a range\" = ある範囲）\nnp.arange(4)         # [0 1 2 3]\nnp.arange(1, 5)      # [1 2 3 4]\nnp.arange(1, 10, 2)  # [1 3 5 7 9]\n\nnp.random.rand(3)           # [0.0, 1.0) の一様乱数 3要素\nnp.random.randint(10)       # 0〜9のランダムな整数\nnp.random.randint(1, 7, 3)  # 1〜6のランダムな整数 3要素\nnp.random.shuffle(arr)      # 配列をランダムに並べ替え（破壊的）"
+    "objectID": "vector_matrix.html#ベクトルの表現",
+    "href": "vector_matrix.html#ベクトルの表現",
+    "title": "ベクトルと行列",
+    "section": "ベクトルの表現",
+    "text": "ベクトルの表現\n\nNumPyでは配列（1次元配列）でベクトルを表現\n\n1次元でもndarrayの扱い\n\n1D array\n\n縦ベクトルでないが問題ない\n\n\nimport numpy as np\n\na = np.array([3, 4]) \nprint(a) # [3, 4]と横表記だが気にしない\nprint(type(a)) # &lt;class 'numpy.ndarray'&gt;"
   },
   {
-    "objectID": "numpy.html#要素へのアクセス",
-    "href": "numpy.html#要素へのアクセス",
-    "title": "NumPy入門",
-    "section": "要素へのアクセス",
-    "text": "要素へのアクセス\n\nアクセス方法はlistと同じ\nスライスにも対応\n\nimport numpy as np\n\narr = np.array([1, 2, 3, 4])\n\nprint(arr[0])    # 先頭の要素（1）\nprint(arr[1])    # 2番目の要素（2）\nprint(arr[-1])   # 最後の要素（4）\narr[0] = 10      # 1番目の要素を10に変更\n\n# スライス\nprint(arr[1:3])  # 2番目から3番目まで（[2, 3]）\nprint(arr[:2])   # 先頭から2番目まで（[1, 2]）\nprint(arr[2:])   # 3番目から最後まで（[3, 4]）"
+    "objectID": "vector_matrix.html#ベクトルの足し算",
+    "href": "vector_matrix.html#ベクトルの足し算",
+    "title": "ベクトルと行列",
+    "section": "ベクトルの足し算",
+    "text": "ベクトルの足し算\n\n\n\n足し算は成分ごとに行う\n入力：「ベクトルとベクトル」\n出力：「ベクトル」\n\n引き算も同様\n\n\n\\[\n\\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix} + \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}\n\\]\nimport numpy as np\n\na = np.array([1, 3])\nb = np.array([2, 1])\n\nprint(a + b)   # [3 4]\nprint(a - b)   # [-1  2]"
   },
   {
-    "objectID": "numpy.html#型",
-    "href": "numpy.html#型",
-    "title": "NumPy入門",
-    "section": "型",
-    "text": "型\n\nndarray全体は numpy.ndarray\n各要素は代入時のリテラルによって決まる\n\nintなら numpy.int64\nfloatなら numpy.float64\n\n異なる型の混在はできない\n\nimport numpy as np\n\narr = np.array([1, 2, 3, 4])\nprint(type(arr))    # &lt;class 'numpy.ndarray'&gt;\nprint(type(arr[0])) # &lt;class 'numpy.int64'&gt;\n\narr2 = np.array([1.0, 2.0, 3.0, 4.0])\nprint(type(arr2))    # &lt;class 'numpy.ndarray'&gt;\nprint(type(arr2[0])) # &lt;class 'numpy.float64'&gt;"
+    "objectID": "vector_matrix.html#ベクトルの掛け算-1スカラー倍",
+    "href": "vector_matrix.html#ベクトルの掛け算-1スカラー倍",
+    "title": "ベクトルと行列",
+    "section": "ベクトルの掛け算 1（スカラー倍）",
+    "text": "ベクトルの掛け算 1（スカラー倍）\n\n\n\n掛け算は全成分それぞれ にスカラー値を掛ける\n入力：「ベクトルとスカラー」\n出力：「ベクトル」\n\n割り算も同じ\n\n\n\\[\n\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} \\times 2 = \\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix}\n\\]\nimport numpy as np\n\na = np.array([1, 2])\n\nprint(a * 2)   # [2 4]"
   },
   {
-    "objectID": "numpy.html#強力な演算",
-    "href": "numpy.html#強力な演算",
-    "title": "NumPy入門",
-    "section": "強力な演算",
-    "text": "強力な演算\n\nListと違い、各要素に対する演算が可能\n\nfor文が不要なため非常に高速\n\n\nimport numpy as np\n\nmy_array = np.array([1, 2, 3])\nmy_array * 2  # array([2, 4, 6])  ← 要素ごとの計算\n\n# listに * 2 を使うと...\nprint(my_list * 2)  # [1, 2, 3, 1, 2, 3]  ← 演算ではなく、２つのリストのconcat\n\n# listで同じことをするにはfor文や内包表記が必要\nmy_list = [1, 2, 3]\n[x * 2 for x in my_list]"
+    "objectID": "vector_matrix.html#ベクトルの掛け算-2内積",
+    "href": "vector_matrix.html#ベクトルの掛け算-2内積",
+    "title": "ベクトルと行列",
+    "section": "ベクトルの掛け算 2（内積）",
+    "text": "ベクトルの掛け算 2（内積）\n\n内積（inner product、dot product）は、対応成分同士をかけて足す\n入力：「ベクトルとベクトル」\n出力：「スカラー」\n\n\\[\n\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} \\cdot \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} = 1 \\times 3 + 2 \\times 4 = 11\n\\]"
   },
   {
-    "objectID": "numpy.html#その他長さやアクセス方法",
-    "href": "numpy.html#その他長さやアクセス方法",
-    "title": "NumPy入門",
-    "section": "その他（長さやアクセス方法）",
-    "text": "その他（長さやアクセス方法）\n\nlistと同じくlenもある\n\nただし、sizeを使うことが多い\n\nfor文はlistと同じように記述可能\n\nimport numpy as np\n\narr = np.array([4, 5, 6])\n\nprint(len(arr))  # 長さ（listと同じ）\nprint(arr.size)  # 普通はこちらを使う\n\n# for文もlistと同じように使える\nfor v in arr:\n    print(v)\n\n# 差分（数値微分）\narr = np.array([0, 2, 5, 3, 1, 4]) # 時系列の信号を想定\ndiff = np.zeros(len(arr) - 1) # 結果格納用のndarray\nfor i in range(len(arr) - 1): \n    diff[i] = arr[i+1] - arr[i] # 微分\nprint(diff)  # [ 2.  3. -2. -2.  3.]"
+    "objectID": "vector_matrix.html#重要-numpyにおける内積の演算子",
+    "href": "vector_matrix.html#重要-numpyにおける内積の演算子",
+    "title": "ベクトルと行列",
+    "section": "【重要】 NumPyにおける内積の演算子",
+    "text": "【重要】 NumPyにおける内積の演算子\n\n２つのndarray を @ という二項演算子に入力\n\n普通なら*とするところを@に変える\n\n\nimport numpy as np\n\na = np.array([1, 2])\nb = np.array([3, 4])\n\n# 内積\nprint(a @ b)  # 11 \n\n#  * 演算子だと内積にならない\nprint(a * b)  # [1*3, 2*4] → [3 8]\n\n\n\n\n\n\n注意\n\n\n\n* で演算してもエラーにはならないので危険"
   },
   {
-    "objectID": "numpy.html#多次元array",
-    "href": "numpy.html#多次元array",
-    "title": "NumPy入門",
-    "section": "多次元Array",
-    "text": "多次元Array\n\nndarrayは多次元（N-Dimensional）で力を発揮\n\n特に行列演算が強力\n\n\nimport numpy as np\n\n# 2次元配列（行列）\nA = np.array([[1, 2], [3, 4]])\n\nB = np.array([[5, 0],\n              [0, 5]])\n\n# 要素へのアクセス\nprint(A[0, 1])  # 1行目2列目\nprint(A[1, :])  # 2行目全体\nprint(A[:, 0])  # 1列目全体\n\n# 転置\nprint(A.T)\nprint(B.T)"
+    "objectID": "vector_matrix.html#section-2",
+    "href": "vector_matrix.html#section-2",
+    "title": "ベクトルと行列",
+    "section": "",
+    "text": "行列"
   },
   {
-    "objectID": "numpy.html#その他演算等",
-    "href": "numpy.html#その他演算等",
-    "title": "NumPy入門",
-    "section": "その他演算等",
-    "text": "その他演算等\n\n統計処理の組み込み関数も多数提供されている\n\nimport numpy as np\n\nscores = np.array([80, 85, 90, 75, 88, 92, 82, 79, 87])\n\nprint(np.max(scores))    # 最大値\nprint(np.min(scores))    # 最小値\nprint(np.mean(scores))   # 平均値\nprint(np.median(scores)) # 中央値\nprint(np.var(scores))    # 分散\nprint(np.std(scores))    # 標準偏差\n\n# 3人の生徒の英語・数学・国語の成績\n# 多次元の処理はaxisを指定する\ndata = np.array([[80, 85, 90], [75, 88, 92], [82, 79, 87]])\nprint(np.mean(data, axis=0))  # 列ごと（各科目の平均）\nprint(np.mean(data, axis=1))  # 行ごと（各生徒の平均）\n\n# 条件を満たすデータの抽出\nprint(scores &gt;= 85)           # True/False\nprint(scores[scores &gt;= 85])   # 85点以上のデータ"
+    "objectID": "vector_matrix.html#行列",
+    "href": "vector_matrix.html#行列",
+    "title": "ベクトルと行列",
+    "section": "行列",
+    "text": "行列\n\nベクトルを横方向に並べたもの\n\n\\[\n\\vec{\\vphantom{b}a} = \\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix}, \\quad\n\\vec{b} = \\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\]\n\n\\(3 \\times 4\\) 行列の例\n\n\\[\n\\vec{\\vphantom{b}a} = \\begin{pmatrix} 1 \\\\ 4 \\\\ 7 \\end{pmatrix}, \\quad\n\\vec{b} = \\begin{pmatrix} 2 \\\\ 5 \\\\ 8 \\end{pmatrix}, \\quad\n\\vec{c} = \\begin{pmatrix} 3 \\\\ 6 \\\\ 9 \\end{pmatrix}, \\quad\n\\vec{d} = \\begin{pmatrix} 10 \\\\ 11 \\\\ 12 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA = \\begin{pmatrix} 1 & 2 & 3 & 10 \\\\ 4 & 5 & 6 & 11 \\\\ 7 & 8 & 9 & 12 \\end{pmatrix}\n\\]"
   },
   {
-    "objectID": "numpy.html#演習1",
-    "href": "numpy.html#演習1",
-    "title": "NumPy入門",
-    "section": "演習1",
-    "text": "演習1\n（１） 「1から10までの連続した整数」から成るndarrayを表示\n（２） その各要素を2倍にした新しいndarrayを作って表示\n（３） そのnumpy配列の各要素をランダムに並べ替えた新しいndarrayを表示\n（４） 100以上400以下のランダムな数字を１つ表示\n（５） 0以上1未満のランダムな数字を１つ表示"
+    "objectID": "vector_matrix.html#行列とベクトルの積",
+    "href": "vector_matrix.html#行列とベクトルの積",
+    "title": "ベクトルと行列",
+    "section": "行列とベクトルの積",
+    "text": "行列とベクトルの積\n\n行列の列数とベクトルの次元が同じ場合、掛け算することが可能\n\nそれぞれの行とベクトルの内積を縦に並べる\n\n\n\n\\[\n\\begin{pmatrix} \\cssId{mm-a}{1} & \\cssId{mm-b}{2} \\\\ \\cssId{mm-c}{3} & \\cssId{mm-d}{4} \\end{pmatrix}\n\\begin{pmatrix} \\cssId{mm-x1}{5} \\\\ \\cssId{mm-x2}{6} \\end{pmatrix}\n=\n\\begin{pmatrix} \\cssId{mm-r1}{17} \\\\ \\cssId{mm-r2}{39} \\end{pmatrix}\n\\]\n\n\n\n\n\n▶ 再生"
   },
   {
-    "objectID": "numpy.html#演習2",
-    "href": "numpy.html#演習2",
-    "title": "NumPy入門",
-    "section": "演習2",
-    "text": "演習2\n（１）li = [10, 20, 30] に対してfor文ですべての要素の型を確認するコードを書け\n（２）li をNumPyの配列 arr に変換し、要素の型を表示\n（３）同じくli = [0.1, 0.2, 0.3] の要素の型を表示\n（４）li をNumPyの配列 arr2 に変換し、要素の型を表示"
+    "objectID": "vector_matrix.html#行列と行列の積",
+    "href": "vector_matrix.html#行列と行列の積",
+    "title": "ベクトルと行列",
+    "section": "行列と行列の積",
+    "text": "行列と行列の積\n\n行列同士の掛け算は「行×列」の内積を並べる\n\n\\[\n\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}\n=\n\\begin{pmatrix} 1 \\cdot 5 + 2 \\cdot 7 & 1 \\cdot 6 + 2 \\cdot 8 \\\\ 3 \\cdot 5 + 4 \\cdot 7 & 3 \\cdot 6 + 4 \\cdot 8 \\end{pmatrix}\n=\n\\begin{pmatrix} 19 & 22 \\\\ 43 & 50 \\end{pmatrix}\n\\]"
   },
   {
-    "objectID": "variables.html#リテラル値",
-    "href": "variables.html#リテラル値",
-    "title": "変数と代入",
-    "section": "リテラル（値）",
-    "text": "リテラル（値）\n速習を終えたところで、敢えて変数と代入をおさらいしましょう。\nPythonでは値を直接コードに書くことができます。\n\n値はそれだけで評価できる（エラーにならない）\n変数や関数なしで、その行に書くだけで意味を持つ\n\n1\n\"1\"\n[1, 2, 3]\nTrue\n1.0\n\n\n\n\n\n\nメモリ上での記述\n\n\n上記の値はその行が実行された時に、メモリ上に値として記述されます（000001001 のようにメモリ上のスペースを使って記録される）。これらをリテラルと呼び、直接コード中に記述できる値の表現方法です。"
+    "objectID": "vector_matrix.html#section-3",
+    "href": "vector_matrix.html#section-3",
+    "title": "ベクトルと行列",
+    "section": "",
+    "text": "NumPyで行列を表現・演算"
   },
   {
-    "objectID": "variables.html#変数とは",
-    "href": "variables.html#変数とは",
-    "title": "変数と代入",
-    "section": "変数とは",
-    "text": "変数とは\n一方で、このように書くとエラーになります。なぜでしょうか。\na # NameError: name 'a' is not defined\n\n1 や \"1\" はリテラル（直接記述できる値）\na は値ではなく変数として認識される"
+    "objectID": "vector_matrix.html#numpyでの行列",
+    "href": "vector_matrix.html#numpyでの行列",
+    "title": "ベクトルと行列",
+    "section": "NumPyでの行列",
+    "text": "NumPyでの行列\n\nndarrayで作成可能だが、行ごとに宣言する点に注意\n\n縦ベクトルの並びではないので少し気持ち悪い（仕様）\n「行」ごとに宣言 して縦にスタックしていく\n以下の場合でも[[1 3][2 4]]ではなく[[1 2][3 4]]\n\n\n\\[\n\\vec{\\vphantom{b}a} = \\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix}, \\quad\n\\vec{b} = \\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\]\nimport numpy as np\n\nA = np.array([[1, 2],\n              [3, 4]])\n\n# アクセス方法\nprint(A[0, 1])   # 1行目2列目 → 2\nprint(A[1, :])   # 2行目全体  → [3 4]\nprint(A[:, 0])   # 1列目全体  → [1 3]\n\n\n\n\n\n\nノート\n\n\n\n行優先（row-major）ではなく列優先（column-major）の実装もありうる（OpenGLなど）\nただ、現在の言語では行優先が大半"
   },
   {
-    "objectID": "variables.html#変数の命名規則",
-    "href": "variables.html#変数の命名規則",
-    "title": "変数と代入",
-    "section": "変数の命名規則",
-    "text": "変数の命名規則\n変数として認識される単語のルールは以下のとおりです。\n例外はありません。覚えましょう\n\n文字（a-z, A-Z）またはアンダースコア（_）で始まる\n\nつまり数字始まりはダメ（NG例： 3200scores ）\n終わるのはOK（例：scores_of_3200）\n\n2文字目以降が文字、数字（0-9）、アンダースコアであること\n予約語（if / for / while など）ではないこと\n\na01    # OK。変数\n_aa_aa # OK。変数\n1a     # NG。最初が数字\ncontinue # NG。予約語"
+    "objectID": "vector_matrix.html#numpyでの行列の演算",
+    "href": "vector_matrix.html#numpyでの行列の演算",
+    "title": "ベクトルと行列",
+    "section": "NumPyでの行列の演算",
+    "text": "NumPyでの行列の演算\n\nベクトルの内積と同じく @ を使用\n\nimport numpy as np\n\n# A: Matrix b:Vector \nA = np.array([[1, 2], [3, 4]])\nb = np.array([5, 6])\n\nprint(A @ b)  # [17 39]\n\n\n# A:Matrix B:Matrix\nA = np.array([[1, 2], [3, 4]])\nB = np.array([[5, 6], [7, 8]])\n\nprint(A @ B)  # [[19 22] [43 50]]"
   },
   {
-    "objectID": "variables.html#代入",
-    "href": "variables.html#代入",
-    "title": "変数と代入",
-    "section": "代入",
-    "text": "代入\n\n変数 = リテラル と記述すると「代入」という操作がおこなわれる\n\n左辺は変数\n右辺はリテラルかオブジェクト\n\n\na = 1234\ntest_2 = \"test2\"\n\n\n\n\n\n\n箱ではなく「看板」\n\n\n\na = 1234 は「a という箱に 1234 が入る」ではない\na は 1234 が格納された住所（アドレス）を指す看板になる\nただし、アクセス時はその看板自体ではなく住所が指す先にあるリテラルやオブジェクトが返る"
+    "objectID": "vector_matrix.html#もし-を使用するとどうなってしまうのか",
+    "href": "vector_matrix.html#もし-を使用するとどうなってしまうのか",
+    "title": "ベクトルと行列",
+    "section": "もし * を使用するとどうなってしまうのか",
+    "text": "もし * を使用するとどうなってしまうのか\n\n@ : 積（行列積）\n* : 要素ごとの掛け算\n\nHadamard積（ハダマール積）\n画像処理等である要素をマスクするときに使用される\n\n\nimport numpy as np\n\nA = np.array([[1, 2], [3, 4]])\nB = np.array([[5, 6], [7, 8]])\n\nprint(A * B)\n# [[ 5 12]\n#  [21 32]]  ← 同じ位置同士をかけただけ\n\nprint(A @ B)\n# [[19 22]\n#  [43 50]]  ← 行列積"
   },
   {
-    "objectID": "variables.html#変数-変数-の代入",
-    "href": "variables.html#変数-変数-の代入",
-    "title": "変数と代入",
-    "section": "変数 = 変数 の代入",
-    "text": "変数 = 変数 の代入\n\n変数同士の代入は、左辺に右辺のアドレスを代入する\n\nつまり、同じアドレスを指すようになる\n\n\na11 = 11\na12 = 12\na11 = a12 # a11とa12は同じアドレスを指す\nprint(a12) # 12\n\na11 = 13 # 別の値に変更\nprint(a11) # 当然13\nprint(a12) # ??? （同じアドレスを指しているはずだが？）\n\n結果： 12\n数値（int）は、宣言する度 新しいアドレス にリテラルを作る\nつまり、5行目の時点でa11は別のアドレスが書かれている\nよって、3行目で共有したアドレスはa12しか持たなくなる"
+    "objectID": "vector_matrix.html#逆行列",
+    "href": "vector_matrix.html#逆行列",
+    "title": "ベクトルと行列",
+    "section": "逆行列",
+    "text": "逆行列\n\n逆行列：行列 \\(A\\) に対して \\(A A^{-1} = I\\)（単位行列）を満たす \\(A^{-1}\\)\n\n元の数と掛けたら１になる逆数のようなもの\n\nNumPyではnp.linalg.inv() という便利関数で逆行列が求まる\n\nlinalg = linear algebra（線形代数）の略\n\n\n\\[\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA^{-1} = \\begin{pmatrix} -2 & 1 \\\\ 1.5 & -0.5 \\end{pmatrix}\n\\]\nimport numpy as np\n\nA = np.array([[1, 2], [3, 4]])\nA_inv = np.linalg.inv(A)\nprint(A_inv) # [[-2.   1. ][ 1.5 -0.5]]\nprint(A @ A_inv) # [[1. 0.][0. 1.]]  ← 単位行列"
   },
   {
-    "objectID": "variables.html#リストの代入罠",
-    "href": "variables.html#リストの代入罠",
-    "title": "変数と代入",
-    "section": "リストの代入（罠）",
-    "text": "リストの代入（罠）\n数値でやった操作をリストでやると…\nodd1 = [1, 3]\nodd2 = [5, 7]\nodd1 = odd2\nodd1[0] = 9\nprint(odd2) # ???\n\n結果： [9, 7]\nodd1[0] = 9 は odd1 を変えただけなのに、odd2 まで変化\n\nつまり、3行目で共有したアドレスはずっと共有したまま"
+    "objectID": "vector_matrix.html#section-4",
+    "href": "vector_matrix.html#section-4",
+    "title": "ベクトルと行列",
+    "section": "",
+    "text": "@ 演算子で方程式を解こう"
   },
   {
-    "objectID": "variables.html#id-で住所を確認数値",
-    "href": "variables.html#id-で住所を確認数値",
-    "title": "変数と代入",
-    "section": "id() で住所を確認（数値）",
-    "text": "id() で住所を確認（数値）\nid() 関数で変数が指しているアドレスを調べられます。\na11 = 11\na12 = 12\nprint(id(a11)) # 2083050422832\nprint(id(a12)) # 2083050422864\na11 = a12\nprint(id(a11)) # 2083050422864。a12と同じ場所\na11 = 13\nprint(id(a11)) # 2083050422896。違う場所を指している。\n\nリテラルが代入されるたびに アドレスが変わっている\nリテラルは必ず新しいアドレスに新しい値として書き込まれる"
+    "objectID": "vector_matrix.html#行列で連立方程式を表現",
+    "href": "vector_matrix.html#行列で連立方程式を表現",
+    "title": "ベクトルと行列",
+    "section": "行列で連立方程式を表現",
+    "text": "行列で連立方程式を表現\n以下の連立方程式は\n\\[\n\\begin{cases}\nx - y = 1 \\\\\nx + y = 3\n\\end{cases}\n\\]\n行列で以下のように表現可能\n\\[\n\\underbrace{\\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix}}_{A}\n\\underbrace{\\begin{pmatrix} x \\\\ y \\end{pmatrix}}_{\\mathbf{x}}\n=\n\\underbrace{\\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix}}_{\\mathbf{b}}\n\\]\n\nこれは \\(A\\mathbf{x} = \\mathbf{b}\\) の形である"
   },
   {
-    "objectID": "variables.html#id-で住所を確認リスト",
-    "href": "variables.html#id-で住所を確認リスト",
-    "title": "変数と代入",
-    "section": "id() で住所を確認（リスト）",
-    "text": "id() で住所を確認（リスト）\nリストでは、要素に代入してもアドレスが変わりません。\nodd1 = [1, 3]\nodd2 = [5, 7]\nprint(id(odd1)) # 2738928019264\nprint(id(odd2)) # 2738927989120\nodd1 = odd2\nprint(id(odd1)) # 2738927989120\nprint(id(odd2)) # 2738927989120\nodd1[0] = 9    # odd2ではなくodd1を変更\nprint(odd1)    # [9, 7]\n\nodd1 = odd2 後、両者が同じアドレスを指している\nだから odd1[0] = 9 が odd2 にも影響する"
+    "objectID": "vector_matrix.html#numpyで-amathbfx-mathbfb-の連立方程式を解く",
+    "href": "vector_matrix.html#numpyで-amathbfx-mathbfb-の連立方程式を解く",
+    "title": "ベクトルと行列",
+    "section": "NumPyで \\(A\\mathbf{x} = \\mathbf{b}\\) の連立方程式を解く",
+    "text": "NumPyで \\(A\\mathbf{x} = \\mathbf{b}\\) の連立方程式を解く\n\n\\(A\\mathbf{x} = \\mathbf{b}\\) の両辺に左から \\(A^{-1}\\) を掛ける\n\n\\[\n\\begin{aligned}\nA \\mathbf{x} &= \\mathbf{b} \\\\\nA^{-1} A \\mathbf{x} &= A^{-1} \\mathbf{b} \\\\\n\\mathbf{x} &= A^{-1} \\mathbf{b}\n\\end{aligned}\n\\]\n\n\\(A^{-1} \\mathbf{b}\\) が解\n\nimport numpy as np\n\nA = np.array([[1, -1],\n              [1,  1]])\nb = np.array([1, 3])\n\nx = np.linalg.inv(A) @ b\nprint(x)  # [2. 1.] ← x=2, y=1\n\n\n\n\n\n\n実は連立方程式用の関数が存在\n\n\n\\(Ax = b\\) の解は np.linalg.solve(A, b)"
   },
   {
-    "objectID": "variables.html#ミュータブル-イミュータブル",
-    "href": "variables.html#ミュータブル-イミュータブル",
-    "title": "変数と代入",
-    "section": "ミュータブル / イミュータブル",
-    "text": "ミュータブル / イミュータブル\nPythonにおいて変数が指せるValueには以下の２種類が存在\n\n代入時に必ず新しいアドレスに新たに作られる型（イミュータブル）\n\nアドレスを意識しなくてもいい楽な型\nint str bool 等\n\n代入時に現状のアドレスの中身を変更する型（ミュータブル）\n\nずっと同じところに居る\nlist、dict 等\n\n\n\n\n\n\n\n\n\n分類\n型\n\n\n\n\nイミュータブル\nint / float / complex / bool / str / tuple / frozenset / bytes / None\n\n\nミュータブル\nlist dict set クラス など"
+    "objectID": "vector_matrix.html#まとめ",
+    "href": "vector_matrix.html#まとめ",
+    "title": "ベクトルと行列",
+    "section": "まとめ",
+    "text": "まとめ\n\n\n\n\n\n\n\n\n概念\n数式\nNumPy\n\n\n\n\nベクトル\n\\(\\mathbf{a}\\)\nnp.array([1, 2])\n\n\n内積\n\\(\\mathbf{a} \\cdot \\mathbf{b}\\)\na @ b\n\n\n行列積\n\\(AB\\)\nA @ B\n\n\n転置\n\\(A^T\\)\nA.T\n\n\n直交\n\\(\\mathbf{a} \\cdot \\mathbf{b} = 0\\)\na @ b == 0\n\n\n逆行列\n\\(A^{-1}\\)\nnp.linalg.inv(A)\n\n\n連立方程式\n\\(Ax = b\\)\nnp.linalg.solve(A, b)\n\n\nノルム\n\\(\\|\\mathbf{a}\\|\\)\nnp.linalg.norm(a)\n\n\n単位ベクトル\n\\(\\hat{\\mathbf{a}} = \\mathbf{a} / \\|\\mathbf{a}\\|\\)\na / np.linalg.norm(a)"
   },
   {
-    "objectID": "variables.html#実例関数がリストを書き換えてしまう",
-    "href": "variables.html#実例関数がリストを書き換えてしまう",
-    "title": "変数と代入",
-    "section": "実例：関数がリストを書き換えてしまう",
-    "text": "実例：関数がリストを書き換えてしまう\ndef double_all(data):\n    for i in range(len(data)):\n        data[i] = data[i] * 2\n    return data\n\nscores = [10, 20, 30]\nresult = double_all(scores)\nprint(result)  # [20, 40, 60]\nprint(scores)  # ???\n\n答えは [20, 40, 60] — scores も書き換わっている\nresult = double_all(scores) は新しいリストを作ったのではなく、同じリストの別名を作っただけ"
-  },
-  {
-    "objectID": "variables.html#ミュータブルの罠を回避するコピー",
-    "href": "variables.html#ミュータブルの罠を回避するコピー",
-    "title": "変数と代入",
-    "section": "ミュータブルの罠を回避する：コピー",
-    "text": "ミュータブルの罠を回避する：コピー\n\nリストを別のアドレスに新たに複製したいときは .copy() を使う。\n\nこの場面を残したいからセーブデータを一旦 別のスロットにするイメージ\n単に = で代入するとダメなケース\n\n\nodd1 = [1, 3]\n\n# NG: 同じアドレスを共有 → 両方が変わる\nodd2 = odd1\nodd2[0] = 9\nprint(odd1)  # [9, 3] ← 意図せず変わってしまう\n\n# OK: .copy() で別アドレスの複製を作る\nodd3 = odd1.copy()\nodd3[0] = 99\nprint(odd1)  # [9, 3] ← 変わらない\nprint(odd3)  # [99, 3]\n\n# （参考）全スライス [:] でも同じ結果\nodd4 = odd1[:]\nprint(id(odd1) == id(odd4))  # False（別アドレス）"
-  },
-  {
-    "objectID": "variables.html#演習",
-    "href": "variables.html#演習",
-    "title": "変数と代入",
+    "objectID": "vector_matrix.html#演習",
+    "href": "vector_matrix.html#演習",
+    "title": "ベクトルと行列",
     "section": "演習",
-    "text": "演習\n\ndict がミュータブルであることを id() を使って確認しましょう\nlist と同じようにアクセスできる str がミュータブルかイミュータブルかを確認してください。\n上記の例で odd1[0] のアドレスを確認して、どうなっているか見てみましょう（list はミュータブルですが、list の要素は int なのでイミュータブルのはず）"
+    "text": "演習\n（１）以下の2つのベクトルの内積を求め、直交しているか判定せよ。\n\\[\n\\mathbf{a} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}, \\quad\n\\mathbf{b} = \\begin{pmatrix} -1 \\\\ 2 \\end{pmatrix}\n\\]\n（２）以下の行列の掛け算を手計算で求め、NumPyで確認せよ。\n\\[\n\\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}\n\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\n\\]\n（３）以下の連立方程式を np.linalg.solve() で解け。また、np.linalg.solve()を使わずに逆行列でもとき、結果を比較せよ\n\\[\n\\begin{cases} x + y = 4 \\\\ x - y = 2 \\end{cases}\n\\]\n（４）\\(\\mathbf{a} = \\begin{pmatrix} 6 \\\\ 8 \\end{pmatrix}\\) のノルムと単位ベクトルを求めよ。\n\n\n解答例を見る\nimport numpy as np\n\n# (1)\na = np.array([2, 1])\nb = np.array([-1, 2])\nprint(a @ b)  # 0 → 直交している\n\n# (2)\nA = np.array([[2, 0], [0, 3]])\nv = np.array([1, 1])\nprint(A @ v)  # [2 3]\n\n# (3)\nA = np.array([[1, 1], [1, -1]])\nb = np.array([4, 2])\nx1 = np.linalg.solve(A, b)\nprint(x1)  # [3. 1.] → x=3, y=1\n\n# 逆行列で解く\nx2 = np.linalg.inv(A) @ b\nprint(x2)  # [3. 1.]\n\n# 比較\nprint(np.allclose(x1, x2))  # True\n\n# (4)\na = np.array([6, 8])\nprint(np.linalg.norm(a))       # 10.0\nprint(a / np.linalg.norm(a))   # [0.6 0.8]"
   },
   {
-    "objectID": "variables.html#まとめ",
-    "href": "variables.html#まとめ",
-    "title": "変数と代入",
-    "section": "まとめ",
-    "text": "まとめ\n\n変数は値そのものではなく、値が置かれたアドレスを指す看板\nint / str / bool 等はイミュータブル — 代入時に必ず新しいアドレスに作られる\nlist / dict 等はミュータブル — 同じアドレスの中身を変更するため意図せぬ書き換えに注意\n独立したコピーが必要なときは .copy() を使う"
+    "objectID": "vector_matrix.html#section-5",
+    "href": "vector_matrix.html#section-5",
+    "title": "ベクトルと行列",
+    "section": "",
+    "text": "その他"
+  },
+  {
+    "objectID": "vector_matrix.html#ベクトルの大きさノルム",
+    "href": "vector_matrix.html#ベクトルの大きさノルム",
+    "title": "ベクトルと行列",
+    "section": "ベクトルの大きさ（ノルム）",
+    "text": "ベクトルの大きさ（ノルム）\n\nベクトルの大きさをノルム（norm、L2ノルム）と呼ぶ\n\n\\(|\\mathbf{a}|\\) や \\(\\|\\mathbf{a}\\|\\) と書く\n\n\n\\[\n\\mathbf{a} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} \\qquad\n\\|\\mathbf{a}\\| = \\sqrt{3^2 + 4^2} = 5\n\\]\nimport numpy as np\n\na = np.array([3, 4])\nprint(np.linalg.norm(a))  # 5.0\n\n\n\n\n\n\n他にも色々あるノルム\n\n\n\nL1ノルム（マンハッタン距離）：\\(\\sum |a_i|\\)\nL2ノルム（ユークリッド距離）：\\(\\sqrt{\\sum a_i^2}\\) ← 最もよく使う\nフロベニウスノルム：行列版のL2ノルム"
+  },
+  {
+    "objectID": "vector_matrix.html#単位ベクトル",
+    "href": "vector_matrix.html#単位ベクトル",
+    "title": "ベクトルと行列",
+    "section": "単位ベクトル",
+    "text": "単位ベクトル\n\nノルムが1のベクトルを単位ベクトルと呼ぶ\n元のベクトルをノルムで割ると単位ベクトルになる\n\n正規化という\n\n\n\\[\n\\hat{\\mathbf{a}} = \\frac{\\mathbf{a}}{\\|\\mathbf{a}\\|}\n\\]\n\n\nimport numpy as np\n\na = np.array([3, 4])\nnorm = np.sqrt(a[0]**2 + a[1]**2)\na_hat = a / norm\nprint(a_hat)                  # [0.6 0.8]\nprint(np.linalg.norm(a_hat))  # 1.0"
+  },
+  {
+    "objectID": "vector_matrix.html#行列の転置",
+    "href": "vector_matrix.html#行列の転置",
+    "title": "ベクトルと行列",
+    "section": "行列の転置",
+    "text": "行列の転置\n\n行と列を入れ替える操作を転置（\\(A^T\\)）と呼ぶ\n\nベクトルの転置も実は同じ操作\n\nNumPyでは .T で一発\n\n\\[\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\nA^T = \\begin{pmatrix} 1 & 3 \\\\ 2 & 4 \\end{pmatrix}\n\\]\nimport numpy as np\n\nA = np.array([[1, 2], [3, 4]])\nprint(A.T)\n# [[1 3]\n#  [2 4]]"
+  },
+  {
+    "objectID": "vector_matrix.html#ベクトルの転置",
+    "href": "vector_matrix.html#ベクトルの転置",
+    "title": "ベクトルと行列",
+    "section": "ベクトルの転置",
+    "text": "ベクトルの転置\n\n行と列を入れ替える操作を転置（Transpose）と呼ぶ\n\nベクトルでは縦を横に倒す操作となる\n\n\n\\[\n\\mathbf{a} = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}\n\\quad \\Rightarrow \\quad\n\\mathbf{a}^T = \\begin{pmatrix} 1 & 2 \\end{pmatrix}\n\\]\n\n転置を使うと、内積は \\(\\mathbf{a}^T \\mathbf{b}\\) と書ける\n\nこれなら内積の演算を行列と同じ計算方法で扱える\n\n行 と 列 の要素同士の積の和\n\n\n\n\\[\n\\mathbf{a}^T \\mathbf{b} = \\begin{pmatrix} 1 & 2 \\end{pmatrix} \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} = 1 \\times 3 + 2 \\times 4 = 11\n\\]"
+  },
+  {
+    "objectID": "vector_matrix.html#図でみる内積",
+    "href": "vector_matrix.html#図でみる内積",
+    "title": "ベクトルと行列",
+    "section": "図でみる内積",
+    "text": "図でみる内積\n\n教科書での内積の定義\n\n\\[\n\\mathbf{a} \\cdot \\mathbf{b} = |\\mathbf{a}||\\mathbf{b}|\\cos\\theta\n\\]\n\n\\(|\\mathbf{b}|\\cos\\theta\\) ：\\(\\mathbf{b}\\) を \\(\\mathbf{a}\\) の方向に射影した長さ\n内積 = 「\\(\\mathbf{b}\\)の\\(\\mathbf{a}\\)方向に対する成分」× 「\\(\\mathbf{a}\\)の長さ\\(|\\mathbf{a}|\\)」"
+  },
+  {
+    "objectID": "vector_matrix.html#内積と直交",
+    "href": "vector_matrix.html#内積と直交",
+    "title": "ベクトルと行列",
+    "section": "内積と直交",
+    "text": "内積と直交\n\n2つのベクトルが直交（90°）しているとき内積は 0\n\n\\(\\cos 90° = 0\\)\nつまり、射影の長さがゼロ → 「\\(\\mathbf{a}\\) 方向の成分がない」\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n覚えること\n\n\n内積 = 0 ⟺ 直交（垂直）"
+  },
+  {
+    "objectID": "vector_matrix.html#ベクトルの掛け算-3外積",
+    "href": "vector_matrix.html#ベクトルの掛け算-3外積",
+    "title": "ベクトルと行列",
+    "section": "ベクトルの掛け算 3（外積）",
+    "text": "ベクトルの掛け算 3（外積）\n\n外積（cross product）は3次元ベクトル同士から新しいベクトルを作る\n\n内積：ベクトル → スカラー\n外積：ベクトル → ベクトル\n\n結果は元の2つのベクトルに直交する方向を向く\nNumPyではnp.cross(a, b)\n\n\\[\n\\mathbf{a} \\times \\mathbf{b} =\n\\begin{pmatrix} a_2 b_3 - a_3 b_2 \\\\ a_3 b_1 - a_1 b_3 \\\\ a_1 b_2 - a_2 b_1 \\end{pmatrix}\n\\]\n\n\\(|\\mathbf{a} \\times \\mathbf{b}| = |\\mathbf{a}||\\mathbf{b}|\\sin\\theta\\)（2つのベクトルが張る平行四辺形の面積）\n\nimport numpy as np\n\na = np.array([1, 0, 0])\nb = np.array([0, 1, 0])\n\nprint(np.cross(a, b))  # [0 0 1] ← a, b 両方に垂直"
+  },
+  {
+    "objectID": "vector_matrix.html#応用例多角形に対する内外判定",
+    "href": "vector_matrix.html#応用例多角形に対する内外判定",
+    "title": "ベクトルと行列",
+    "section": "応用例：多角形に対する内外判定",
+    "text": "応用例：多角形に対する内外判定\n\n\n\n\n\n\n\n\n\n\n三角形ABCと点Pがある\n各辺について「辺のベクトル」と「辺の始点→Pのベクトル」の外積を計算\n全ての外積が同符号 なら内側、そうでなければ外側"
+  },
+  {
+    "objectID": "vector_matrix.html#内外判定の実装例",
+    "href": "vector_matrix.html#内外判定の実装例",
+    "title": "ベクトルと行列",
+    "section": "内外判定の実装例",
+    "text": "内外判定の実装例\n\\[\nc_1 = (\\overrightarrow{AB}) \\times (\\overrightarrow{AP}), \\quad\nc_2 = (\\overrightarrow{BC}) \\times (\\overrightarrow{BP}), \\quad\nc_3 = (\\overrightarrow{CA}) \\times (\\overrightarrow{CP})\n\\]\n\\(c_1, c_2, c_3\\) が全て同符号 → 内側\n\nimport numpy as np\n\ndef cross_2d(v1, v2):\n    \"\"\"2Dベクトルの外積（z成分のみ）\"\"\"\n    return v1[0] * v2[1] - v1[1] * v2[0]\n\ndef is_inside_triangle(A, B, C, P):\n    \"\"\"点Pが三角形ABCの内側にあるか判定\"\"\"\n    # 各辺と点Pへのベクトルの外積\n    c1 = cross_2d(B - A, P - A)  # 辺AB\n    c2 = cross_2d(C - B, P - B)  # 辺BC\n    c3 = cross_2d(A - C, P - C)  # 辺CA\n\n    # 全て同符号なら内側\n    return (c1 &gt;= 0 and c2 &gt;= 0 and c3 &gt;= 0) or (c1 &lt;= 0 and c2 &lt;= 0 and c3 &lt;= 0)\n\n# テスト\nA = np.array([0, 0])\nB = np.array([4, 0])\nC = np.array([2, 3])\n\nP_in = np.array([2, 1])\nP_out = np.array([3.5, 2.5])\n\nprint(is_inside_triangle(A, B, C, P_in))   # True\nprint(is_inside_triangle(A, B, C, P_out))  # False"
+  },
+  {
+    "objectID": "vector_matrix.html#その他外積の応用例",
+    "href": "vector_matrix.html#その他外積の応用例",
+    "title": "ベクトルと行列",
+    "section": "その他外積の応用例",
+    "text": "その他外積の応用例\n\nポリゴンの表裏判定（バックフェースカリング）\n\n三角形の頂点 P0→P1→P2 から2辺を作り外積 → 法線ベクトル\n法線がカメラを向いていれば表、逆なら裏（描画しない）\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport numpy as np\n\nP0, P1, P2 = np.array([0,0,0]), np.array([1,0,0]), np.array([0,1,0])\nnormal = np.cross(P1 - P0, P2 - P0)\nprint(normal)  # [0 0 1] ← +Z方向 = 手前向き"
   }
 ]
