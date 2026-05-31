@@ -25,13 +25,13 @@
 
 - [NumPy入門](numpy.qmd)
 - [ベクトルと行列](vector_matrix.qmd)
-- [データの可視化](visualize.qmd)
 
 </details>
 
 <details open>
-<summary>Web/APIで実データを扱う</summary>
+<summary>データ処理基礎</summary>
 
+- [データの可視化](visualize.qmd)
 - [APIでデータ取得](api.qmd)
 
 </details>
@@ -42,6 +42,6 @@
 document.querySelectorAll("details").forEach(d => {
   const n = d.querySelectorAll("li").length;
   const s = d.querySelector("summary");
-  s.textContent += `（${n}）`;
+  s.textContent += `[${n}]`;
 });
 </script>

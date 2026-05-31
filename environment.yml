@@ -9,7 +9,9 @@ dependencies:
   - nbclient
   - ipykernel
   - numpy
+  - pandas
   - matplotlib
+  - plotly
   - requests
   - pip
   - pip:

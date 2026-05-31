@@ -4,6 +4,8 @@ project:
     - "*.qmd"
   resources:
     - "imgs/**"
+    - "data/**"
+    - "iframes/**"
 
 website:
   title: "高専3年 情報処理"

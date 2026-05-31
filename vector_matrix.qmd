@@ -641,7 +641,7 @@ $$
 \begin{pmatrix} 1 \\ 1 \end{pmatrix}
 $$
 
-（３）以下の連立方程式を `np.linalg.solve()` で解け。
+（３）以下の連立方程式を `np.linalg.solve()` で解け。また、`np.linalg.solve()`を使わずに逆行列でもとき、結果を比較せよ
 
 $$
 \begin{cases} x + y = 4 \\ x - y = 2 \end{cases}
@@ -669,8 +669,15 @@ print(A @ v)  # [2 3]
 # (3)
 A = np.array([[1, 1], [1, -1]])
 b = np.array([4, 2])
-x = np.linalg.solve(A, b)
-print(x)  # [3. 1.] → x=3, y=1
+x1 = np.linalg.solve(A, b)
+print(x1)  # [3. 1.] → x=3, y=1
+
+# 逆行列で解く
+x2 = np.linalg.inv(A) @ b
+print(x2)  # [3. 1.]
+
+# 比較
+print(np.allclose(x1, x2))  # True
 
 # (4)
 a = np.array([6, 8])
@@ -936,12 +943,13 @@ plt.show()
 :::
 
 
-## （参考）ベクトルの掛け算 3（外積）
+## ベクトルの掛け算 3（外積）
 
 - **外積**（cross product）は3次元ベクトル同士から**新しいベクトル**を作る
    - 内積：ベクトル → **スカラー**
    - 外積：ベクトル → **ベクトル**
 - 結果は元の2つのベクトルに**直交**する方向を向く
+- NumPyでは`np.cross(a, b)`
 
 $$
 \mathbf{a} \times \mathbf{b} =
@@ -959,7 +967,137 @@ b = np.array([0, 1, 0])
 print(np.cross(a, b))  # [0 0 1] ← a, b 両方に垂直
 ```
 
-- **どこで使われるか**
-   - **3Dグラフィックス** — ポリゴンの法線ベクトル（面の向き）の計算
-   - **物理シミュレーション** — トルク（回転力）、ローレンツ力
-   - **ロボティクス** — 関節の回転軸の計算
+
+
+## 応用例：多角形に対する内外判定
+
+```{python}
+#| echo: false
+#| fig-align: center
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig, axes = plt.subplots(1, 2, figsize=(8, 3.5))
+
+A = np.array([0, 0])
+B = np.array([4, 0])
+C = np.array([2, 3])
+P_in = np.array([2, 1])
+P_out = np.array([3.5, 2.5])
+
+for ax, P, title, color in [(axes[0], P_in, 'P: inside', '#22AA22'), (axes[1], P_out, 'P: outside', '#CC4444')]:
+    triangle = plt.Polygon([A, B, C], fill=True, alpha=0.3, facecolor='#5dade2', edgecolor='black', linewidth=2)
+    ax.add_patch(triangle)
+    for pt, label in [(A, 'A'), (B, 'B'), (C, 'C')]:
+        ax.plot(*pt, 'ko', markersize=8)
+        ax.annotate(label, pt, textcoords="offset points", xytext=(-10, -15), fontsize=12)
+    ax.plot(*P, 'o', color=color, markersize=10)
+    ax.annotate('P', P, textcoords="offset points", xytext=(5, 5), fontsize=12, color=color)
+    ax.set_xlim(-0.5, 5)
+    ax.set_ylim(-0.5, 4)
+    ax.set_aspect('equal')
+    ax.set_title(title, fontsize=14)
+    ax.grid(True, linestyle='--', alpha=0.5)
+
+plt.tight_layout()
+plt.show()
+```
+
+- 三角形ABCと点Pがある
+- 各辺について「辺のベクトル」と「辺の始点→Pのベクトル」の外積を計算
+- ==全ての外積が同符号== なら内側、そうでなければ外側
+
+## 内外判定の実装例
+
+$$
+c_1 = (\overrightarrow{AB}) \times (\overrightarrow{AP}), \quad
+c_2 = (\overrightarrow{BC}) \times (\overrightarrow{BP}), \quad
+c_3 = (\overrightarrow{CA}) \times (\overrightarrow{CP})
+$$
+
+$c_1, c_2, c_3$ が全て同符号 → 内側
+
+```{python}
+#| echo: true
+#| eval: false
+import numpy as np
+
+def cross_2d(v1, v2):
+    """2Dベクトルの外積（z成分のみ）"""
+    return v1[0] * v2[1] - v1[1] * v2[0]
+
+def is_inside_triangle(A, B, C, P):
+    """点Pが三角形ABCの内側にあるか判定"""
+    # 各辺と点Pへのベクトルの外積
+    c1 = cross_2d(B - A, P - A)  # 辺AB
+    c2 = cross_2d(C - B, P - B)  # 辺BC
+    c3 = cross_2d(A - C, P - C)  # 辺CA
+
+    # 全て同符号なら内側
+    return (c1 >= 0 and c2 >= 0 and c3 >= 0) or (c1 <= 0 and c2 <= 0 and c3 <= 0)
+
+# テスト
+A = np.array([0, 0])
+B = np.array([4, 0])
+C = np.array([2, 3])
+
+P_in = np.array([2, 1])
+P_out = np.array([3.5, 2.5])
+
+print(is_inside_triangle(A, B, C, P_in))   # True
+print(is_inside_triangle(A, B, C, P_out))  # False
+```
+
+
+## その他外積の応用例
+
+- ポリゴンの表裏判定（バックフェースカリング）
+   - 三角形の頂点 P0→P1→P2 から2辺を作り外積 → **法線ベクトル**
+   - 法線がカメラを向いていれば**表**、逆なら**裏**（描画しない）
+
+::: {style="width: 40%; margin: 0 auto;"}
+```{python}
+#| echo: false
+import matplotlib.pyplot as plt
+import numpy as np
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+
+fig = plt.figure(figsize=(3.5, 3.5))
+ax = fig.add_subplot(111, projection='3d')
+
+P0 = np.array([0, 0, 0])
+P1 = np.array([1, 0, 0])
+P2 = np.array([0, 1, 0])
+
+verts = [[P0, P1, P2]]
+poly = Poly3DCollection(verts, alpha=0.6, facecolor='#5dade2', edgecolor='black', linewidth=2)
+ax.add_collection3d(poly)
+
+for p, label in [(P0, 'P0'), (P1, 'P1'), (P2, 'P2')]:
+    ax.scatter(*p, color='black', s=50)
+    ax.text(p[0]-0.15, p[1]-0.15, p[2]+0.1, label, fontsize=11)
+
+center = (P0 + P1 + P2) / 3
+normal = np.cross(P1 - P0, P2 - P0)
+ax.quiver(*center, *normal*0.8, color='#CC4444', linewidth=2, arrow_length_ratio=0.2)
+ax.text(center[0]+0.1, center[1]+0.1, center[2]+0.9, 'normal', fontsize=10, color='#CC4444')
+
+ax.set_xlim(-0.5, 1.5)
+ax.set_ylim(-0.5, 1.5)
+ax.set_zlim(-0.5, 1.5)
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+ax.view_init(elev=25, azim=-60)
+plt.tight_layout()
+plt.show()
+```
+:::
+
+```python
+import numpy as np
+
+P0, P1, P2 = np.array([0,0,0]), np.array([1,0,0]), np.array([0,1,0])
+normal = np.cross(P1 - P0, P2 - P0)
+print(normal)  # [0 0 1] ← +Z方向 = 手前向き
+```
