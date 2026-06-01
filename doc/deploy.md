@@ -1,8 +1,10 @@
 # Deploy to GitHub Pages
 
 ```bash
-quarto publish gh-pages --no-prompt --id ip3200
+rm -rf _site .quarto && quarto publish gh-pages --no-prompt --id ip3200
 ```
+
+- Clearing `_site/` and `.quarto/` prevents stale artifact errors on interrupted builds
 
 - `_publish.yml` is required (created on first setup):
 
