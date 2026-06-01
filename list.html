@@ -189,6 +189,10 @@
     }
   </style>
   <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;400;700&display=swap');
+  .reveal {
+    font-family: "Noto Sans JP", "Roboto", sans-serif;
+  }
   .callout.callout-note {
       font-size: 1.5rem;
       line-height: 1.4;
@@ -247,6 +251,15 @@
     max-height: 500px;
     width: auto;
     height: auto;
+  }
+  .reveal p.caption {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: 0.8em;
+    color: #444;
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: lighter;
   }
   .fig-small img {
     max-height: 300px !important;
@@ -362,6 +375,10 @@
   }
   #slide-nav button:active {
     background: rgba(93, 173, 226, 0.2);
+  }
+  #slide-nav button:disabled {
+    opacity: 0.3;
+    cursor: default;
   }
   #nav-counter {
     font-size: 0.9rem;
@@ -500,6 +517,8 @@
       var slides = Array.from(document.querySelectorAll('.reveal .slides section:not(.stack)'));
       var idx = slides.findIndex(function(s) { return s.classList.contains('present'); });
       el.textContent = (idx + 1) + ' / ' + slides.length;
+      document.getElementById('nav-prev').disabled = (idx <= 0);
+      document.getElementById('nav-next').disabled = (idx >= slides.length - 1);
     }
     if (Reveal.isReady()) { initNav(); } else { Reveal.addEventListener('ready', initNav); }
   });
@@ -904,7 +923,7 @@ rkskmt
 <li><strong>スライス</strong>を使って、上位5名分（先頭5つ）と下位5名分（末尾5つ）をそれぞれ別のリストに分けて表示</li>
 <li><code>sorted</code> を使って、<strong>元のリストを変えずに</strong>降順に並び替えた新しいリストを作り、<strong>上位3名の点数</strong>を表示</li>
 </ol>
-<div id="920ba19a" class="cell" data-execution_count="1">
+<div id="c88ebe9a" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="co"># 1</span></span>
@@ -932,7 +951,7 @@ rkskmt
 <li><code>scores</code> から、<strong>80点以上の点数だけ</strong>を取り出した新しいリストを作ろう</li>
 <li>標準入力で受け取った空白区切りの整数列を、<strong>list of int</strong> に変換しよう（AtCoder 頻出パターン）</li>
 </ol>
-<div id="f4ed9ae0" class="cell" data-execution_count="2">
+<div id="8f6d5725" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="co"># 1</span></span>
@@ -964,7 +983,7 @@ rkskmt
 <li><strong>C さんの3科目合計</strong>を表示しよう</li>
 <li><strong>各学生の平均点</strong>を <code>for</code> 文で順に表示しよう</li>
 </ol>
-<div id="98602a73" class="cell" data-execution_count="3">
+<div id="e75c9ab7" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="co"># 1</span></span>

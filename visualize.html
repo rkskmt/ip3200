@@ -189,6 +189,10 @@
     }
   </style>
   <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;400;700&display=swap');
+  .reveal {
+    font-family: "Noto Sans JP", "Roboto", sans-serif;
+  }
   .callout.callout-note {
       font-size: 1.5rem;
       line-height: 1.4;
@@ -247,6 +251,15 @@
     max-height: 500px;
     width: auto;
     height: auto;
+  }
+  .reveal p.caption {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: 0.8em;
+    color: #444;
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: lighter;
   }
   .fig-small img {
     max-height: 300px !important;
@@ -362,6 +375,10 @@
   }
   #slide-nav button:active {
     background: rgba(93, 173, 226, 0.2);
+  }
+  #slide-nav button:disabled {
+    opacity: 0.3;
+    cursor: default;
   }
   #nav-counter {
     font-size: 0.9rem;
@@ -500,6 +517,8 @@
       var slides = Array.from(document.querySelectorAll('.reveal .slides section:not(.stack)'));
       var idx = slides.findIndex(function(s) { return s.classList.contains('present'); });
       el.textContent = (idx + 1) + ' / ' + slides.length;
+      document.getElementById('nav-prev').disabled = (idx <= 0);
+      document.getElementById('nav-next').disabled = (idx >= slides.length - 1);
     }
     if (Reveal.isReady()) { initNav(); } else { Reveal.addEventListener('ready', initNav); }
   });
@@ -537,6 +556,11 @@ rkskmt
 <li>見えないものを <strong>「見える」化</strong></li>
 <li>人間の <strong>視覚・直感・経験</strong> で共通に扱えるようにする</li>
 </ul></li>
+<li>情報視覚化ともいう
+<ul>
+<li>Information Visualization</li>
+<li>Data Visualization</li>
+</ul></li>
 </ul>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -548,22 +572,86 @@ rkskmt
 </div>
 <div class="callout-content">
 <ul>
-<li>数字の表を眺めても気づけないパターン（外れ値、相関、周期性、クラスタ）が、図にすると一瞬で分かる</li>
-<li><strong>視覚は最強の前処理</strong></li>
+<li>数字の表を眺めても気づけないパターン（外れ値、相関、周期性、クラスタ）が見える</li>
+<li><strong>図示は最強の前処理</strong></li>
 </ul>
 </div>
 </div>
 </div>
 </section>
-<section id="古典ジョンスノウのコレラ地図" class="slide level2">
-<h2>古典<span class="fw-colon">：</span>ジョン・スノウのコレラ地図</h2>
+<section id="可視化の古典ジョンスノウのコレラ地図" class="slide level2">
+<h2>可視化の古典<span class="fw-colon">：</span>ジョン・スノウのコレラ地図</h2>
 <ul>
 <li>1854年、ロンドンで原因不明の病気が大流行
 <ul>
-<li>医師 <strong>John Snow</strong> が原因調査をおこなう</li>
-<li>感染データを地図にプロットしたところ<strong>Broad Street の井戸</strong> の周囲に感染者が集中していることを発見</li>
-<li>「水が感染源」という仮説を視覚で立証</li>
+<li><strong>医師 John Snow</strong> が原因調査をおこなう</li>
+<li>感染データを<strong>地図にプロット</strong>したところBroad Street の井戸の周囲に感染者が集中していることを発見</li>
+<li>「水が感染源」という<strong>仮説を視覚で立証</strong></li>
 <li><strong>疫学</strong> という分野の出発点とされる</li>
+</ul></li>
+</ul>
+<div style="display:flex; justify-content:center;">
+<iframe src="iframes/cholera_map.html" width="900" height="520" style="border:none;"></iframe>
+</div>
+</section>
+<section id="数的グラフの始祖ウィリアムプレイフェア" class="slide level2">
+<h2>数的グラフの始祖<span class="fw-colon">：</span>ウィリアム・プレイフェア</h2>
+<ul>
+<li><strong>William Playfair</strong>（1759–1823）はスコットランドの技師・経済学者</li>
+<li>現代の <strong>棒グラフ・折れ線グラフ・円グラフ</strong> を <span class="hl">すべて発明</span>
+<ul>
+<li>1786年<span class="fw-colon">：</span><em>Commercial and Political Atlas</em> で折れ線・棒グラフを初めて使用</li>
+<li>1801年<span class="fw-colon">：</span><em>Statistical Breviary</em> で円グラフ（パイチャート）を発明</li>
+</ul></li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>スノウとプレイフェア</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><strong>スノウ</strong> — 視覚化で <span class="hl">因果関係を発見</span> し、社会を変えた</li>
+<li><strong>プレイフェア</strong> — 視覚化の <span class="hl">形式そのもの</span> を発明した</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="プレイフェアの折れ線グラフ1786" class="slide level2">
+<h2>プレイフェアの折れ線グラフ（1786）</h2>
+
+<img data-src="imgs/visualization/Playfair_TimeSeries-2.jpg" style="width:85.0%" class="r-stretch quarto-figure-center"><p class="caption">イングランドの国家債務の推移</p><ul>
+<li>時間を横軸、量を縦軸にとる — 現代の時系列グラフの原型</li>
+</ul>
+</section>
+<section id="プレイフェアの棒グラフ1786" class="slide level2">
+<h2>プレイフェアの棒グラフ（1786）</h2>
+
+<img data-src="imgs/visualization/960px-1786_Playfair_-_Exports_and_Imports_of_Scotland_to_and_from_different_parts_for_one_Year_from_Christmas_1780_to_Christmas_1781.jpg" style="width:85.0%" class="r-stretch quarto-figure-center"><p class="caption">スコットランドの輸出入（1780–1781）</p><ul>
+<li>カテゴリ（貿易相手国）を並べて <strong>長さで比較</strong> — 棒グラフの誕生</li>
+</ul>
+</section>
+<section id="プレイフェアの円グラフ1801" class="slide level2">
+<h2>プレイフェアの円グラフ（1801）</h2>
+
+<img data-src="imgs/visualization/Playfair-piechart.jpg" style="width:70.0%" class="r-stretch quarto-figure-center"><p class="caption">トルコ帝国の領土配分</p><ul>
+<li>全体に対する <strong>割合を角度で表現</strong> — 円グラフの誕生</li>
+</ul>
+</section>
+<section id="プレイフェアの問いなぜ数字を図にするのか" class="slide level2">
+<h2>プレイフェアの問い<span class="fw-colon">：</span>なぜ数字を図にするのか</h2>
+<blockquote>
+<p>Making information available, for thought and memory, without the <strong>trouble of studying</strong> rows of figures.</p>
+<p>── William Playfair, <em>Commercial and Political Atlas</em> (1786)</p>
+</blockquote>
+<ul>
+<li>数字の羅列を眺める <strong>苦労を省く</strong> ためにグラフを描く
+<ul>
+<li>200年以上前に「視覚化の本質」を言い当てていた</li>
 </ul></li>
 </ul>
 <div class="callout callout-note callout-titled callout-style-default">
@@ -578,9 +666,6 @@ rkskmt
 <p>「データに <strong>適切な空間（軸）</strong> を与えること」</p>
 </div>
 </div>
-</div>
-<div style="display:flex; justify-content:center;">
-<iframe src="iframes/cholera_map.html" width="900" height="520" style="border:none;"></iframe>
 </div>
 </section>
 <section id="現代の可視化実例" class="slide level2">
@@ -697,7 +782,7 @@ rkskmt
 </tr>
 </tbody>
 </table>
-<div id="76308ed6" class="cell" data-execution_count="2">
+<div id="0728bd76" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -714,7 +799,7 @@ rkskmt
 <li>線形回帰の前提（直線関係 + 均一なばらつき）が成立</li>
 <li>典型的な普通のデータ</li>
 </ul>
-<div id="b5103d5c" class="cell" data-execution_count="3">
+<div id="a06525a1" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -723,7 +808,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="2a030f1d" class="cell" data-execution_count="4">
+<div id="0e63dcff" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -763,7 +848,7 @@ rkskmt
 <li>直線を当てはめても本質を捉えられない</li>
 <li>統計量だけ見ていると「直線で説明できた」と思い込みやすい</li>
 </ul>
-<div id="2f1f1da3" class="cell" data-execution_count="5">
+<div id="b7282bc3" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -772,7 +857,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="59fca17a" class="cell" data-execution_count="6">
+<div id="076e255c" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -813,7 +898,7 @@ rkskmt
 <li>たった1点だけ大きく外れている</li>
 <li>その1点に <strong>回帰直線が引っ張られている</strong></li>
 </ul>
-<div id="34062c76" class="cell" data-execution_count="7">
+<div id="d69d842c" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -822,7 +907,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="6923eb30" class="cell" data-execution_count="8">
+<div id="480c09fe" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -863,7 +948,7 @@ rkskmt
 <li>1点だけ <code>x=19</code> にあり、その1点が「直線がある」ように見せている</li>
 <li>同じ条件で測定しすぎていて、<code>x</code> が振れていない</li>
 </ul>
-<div id="ba634555" class="cell" data-execution_count="9">
+<div id="8f0eb704" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -872,7 +957,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="ac7f7692" class="cell" data-execution_count="10">
+<div id="c977b1d9" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -960,9 +1045,9 @@ rkskmt
 <section id="探索的データ解析eda" class="slide level2">
 <h2>探索的データ解析（EDA）</h2>
 <ul>
-<li><strong>John Wilder Tukey</strong> が1977年の著書 <strong>E</strong>xploratory <strong>D</strong>ata <strong>A</strong>nalysis で提唱
+<li><strong>テューキー（Tukey）</strong> が1977年の著書 <strong>E</strong>xploratory <strong>D</strong>ata <strong>A</strong>nalysis で提唱
 <ul>
-<li>「まずデータを <strong>見て</strong> から仮説を立てる」</li>
+<li>「まずデータを <strong>見て</strong> から仮説を立てる」という原則</li>
 <li>統計学の前段として現在も基本中の基本</li>
 </ul></li>
 <li>箱ひげ図・幹葉図など、Tukeyが広めた可視化手法は多数</li>
@@ -973,10 +1058,10 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tukey という人</strong></p>
+<p><strong>Tukey</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>“bit”</strong>（<strong>bi</strong>nary digi<strong>t</strong> の短縮形）や <strong>“software”</strong> という用語の普及にも関わった、計算機文化の偉人。</p>
+<p><strong>“bit”</strong>（<strong>bi</strong>nary digi<strong>t</strong> の短縮形）や <strong>“software”</strong> の生みの親</p>
 </div>
 </div>
 </div>
@@ -1033,7 +1118,7 @@ rkskmt
 </ul></li>
 <li>内部はC実装で高速、NumPyの <code>ndarray</code> と相性が良い
 <ul>
-<li>派生ライブラリ（seaborn、pandas plotting、Plotly）も多くが matplotlib をベースにしている</li>
+<li>seaborn や pandas の plotting 機能など、派生ライブラリも多い</li>
 </ul></li>
 </ul>
 <p>ターミナルからインストール<span class="fw-colon">：</span></p>
@@ -1071,7 +1156,7 @@ rkskmt
 <li>一番基本の <code>plt.plot(x, y, 'o')</code> — ‘o’ は <strong>マーカー</strong> を表す</li>
 <li><code>x</code> も <code>y</code> も <strong><code>ndarray</code></strong> や <strong><code>list</code></strong> でOK</li>
 </ul>
-<div id="17a53765" class="cell" data-execution_count="11">
+<div id="e5b48780" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a></a></span>
@@ -1095,7 +1180,7 @@ rkskmt
 <li>第3引数を <strong>省略すると折れ線</strong></li>
 <li><code>'o-'</code> だと <strong>点＋線</strong></li>
 </ul>
-<div id="b3996184" class="cell" data-execution_count="12">
+<div id="e27838b9" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-3"><a></a></span>
@@ -1120,7 +1205,7 @@ rkskmt
 <li>3次元プロットでは <code>zlim</code> も使える</li>
 <li>何も指定しないと <strong>データの範囲＋少し余白</strong> が自動で選ばれる</li>
 </ul>
-<div id="9e2a9172" class="cell" data-execution_count="13">
+<div id="ddeae27f" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-3"><a></a></span>
@@ -1164,7 +1249,7 @@ rkskmt
 <li><code>plt.legend()</code> で <strong>凡例</strong>（<code>plot()</code> に <code>label=</code> を指定しておく）</li>
 <li><code>plt.grid(True)</code> で <strong>グリッド線</strong></li>
 </ul>
-<div id="a7ced1dd" class="cell" data-execution_count="14">
+<div id="2804b05e" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb10-3"><a></a></span>
@@ -1219,7 +1304,7 @@ rkskmt
 <div style="text-align:center; font-family:monospace;">
 <p>1 │ 2<br> ─┼─<br> 3 │ 4</p>
 </div>
-<div id="ab5b9ae9" class="cell" data-execution_count="15">
+<div id="9f15a30b" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb11-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-3"><a></a></span>
@@ -1249,7 +1334,7 @@ rkskmt
 <li>大量の <code>(x, y)</code> を点で打つ → 分布や相関が見える</li>
 <li><code>alpha</code> で <strong>透明度</strong> を指定すると重なりが分かりやすい</li>
 </ul>
-<div id="18591a00" class="cell" data-execution_count="16">
+<div id="caef71a8" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-3"><a></a></span>
@@ -1294,7 +1379,7 @@ rkskmt
 <li>3D は <code>add_subplot(projection="3d")</code> で軸オブジェクトを作る</li>
 <li><code>plt.◯◯</code> ではなく <strong><code>ax.◯◯</code></strong> で操作する</li>
 </ul>
-<div id="c66d3f52" class="cell" data-execution_count="17">
+<div id="424b01cd" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb13-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb13-3"><a></a></span>
@@ -1313,7 +1398,7 @@ rkskmt
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="visualize_files/figure-revealjs/cell-18-output-1.png" width="408" height="397"></p>
+<p><img data-src="visualize_files/figure-revealjs/cell-18-output-1.png" width="408" height="396"></p>
 </figure>
 </div>
 </div>
@@ -1476,7 +1561,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="20d04df9" class="cell" data-execution_count="18">
+<div id="96b71c11" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1536,6 +1621,35 @@ rkskmt
 </div>
 </div>
 </div>
+<div id="ac20f931" class="cell" data-execution_count="19">
+<details class="code-fold">
+<summary>解答例を見る</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb16-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb16-3"><a></a></span>
+<span id="cb16-4"><a></a>x1 <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span>
+<span id="cb16-5"><a></a>y1 <span class="op">=</span> np.array([<span class="fl">8.04</span>, <span class="fl">6.95</span>, <span class="fl">7.58</span>, <span class="fl">8.81</span>, <span class="fl">8.33</span>, <span class="fl">9.96</span>, <span class="fl">7.24</span>, <span class="fl">4.26</span>, <span class="fl">10.84</span>, <span class="fl">4.82</span>, <span class="fl">5.68</span>])</span>
+<span id="cb16-6"><a></a>y2 <span class="op">=</span> np.array([<span class="fl">9.14</span>, <span class="fl">8.14</span>, <span class="fl">8.74</span>, <span class="fl">8.77</span>, <span class="fl">9.26</span>, <span class="fl">8.10</span>, <span class="fl">6.13</span>, <span class="fl">3.10</span>, <span class="fl">9.13</span>, <span class="fl">7.26</span>, <span class="fl">4.74</span>])</span>
+<span id="cb16-7"><a></a>y3 <span class="op">=</span> np.array([<span class="fl">7.46</span>, <span class="fl">6.77</span>, <span class="fl">12.74</span>, <span class="fl">7.11</span>, <span class="fl">7.81</span>, <span class="fl">8.84</span>, <span class="fl">6.08</span>, <span class="fl">5.39</span>, <span class="fl">8.15</span>, <span class="fl">6.42</span>, <span class="fl">5.73</span>])</span>
+<span id="cb16-8"><a></a>x4 <span class="op">=</span> np.array([<span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">19</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>])</span>
+<span id="cb16-9"><a></a>y4 <span class="op">=</span> np.array([<span class="fl">6.58</span>, <span class="fl">5.76</span>, <span class="fl">7.71</span>, <span class="fl">8.84</span>, <span class="fl">8.47</span>, <span class="fl">7.04</span>, <span class="fl">5.25</span>, <span class="fl">12.50</span>, <span class="fl">5.56</span>, <span class="fl">7.91</span>, <span class="fl">6.89</span>])</span>
+<span id="cb16-10"><a></a></span>
+<span id="cb16-11"><a></a>datasets <span class="op">=</span> [(x1, y1, <span class="st">"I"</span>), (x1, y2, <span class="st">"II"</span>), (x1, y3, <span class="st">"III"</span>), (x4, y4, <span class="st">"IV"</span>)]</span>
+<span id="cb16-12"><a></a></span>
+<span id="cb16-13"><a></a><span class="cf">for</span> i, (x, y, title) <span class="kw">in</span> <span class="bu">enumerate</span>(datasets, <span class="dv">1</span>):</span>
+<span id="cb16-14"><a></a>    plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, i)</span>
+<span id="cb16-15"><a></a>    plt.scatter(x, y)</span>
+<span id="cb16-16"><a></a>    m, b <span class="op">=</span> np.polyfit(x, y, <span class="dv">1</span>)</span>
+<span id="cb16-17"><a></a>    xs <span class="op">=</span> np.linspace(<span class="dv">2</span>, <span class="dv">20</span>, <span class="dv">50</span>)</span>
+<span id="cb16-18"><a></a>    plt.plot(xs, m <span class="op">*</span> xs <span class="op">+</span> b, color<span class="op">=</span><span class="st">"red"</span>)</span>
+<span id="cb16-19"><a></a>    plt.xlim(<span class="dv">2</span>, <span class="dv">20</span>)</span>
+<span id="cb16-20"><a></a>    plt.ylim(<span class="dv">2</span>, <span class="dv">14</span>)</span>
+<span id="cb16-21"><a></a>    plt.title(<span class="ss">f"Dataset </span><span class="sc">{</span>title<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb16-22"><a></a></span>
+<span id="cb16-23"><a></a>plt.tight_layout()</span>
+<span id="cb16-24"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 </section>
 <section id="演習3好きな画像を表示" class="slide level2">
 <h2>演習3<span class="fw-colon">：</span>好きな画像を表示</h2>
@@ -1544,21 +1658,22 @@ rkskmt
 <li>公式チュートリアルを参考</li>
 <li><a href="https://matplotlib.org/stable/tutorials/images.html" class="uri">https://matplotlib.org/stable/tutorials/images.html</a></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb16-2"><a></a><span class="im">import</span> matplotlib.image <span class="im">as</span> mpimg</span>
-<span id="cb16-3"><a></a></span>
-<span id="cb16-4"><a></a>img <span class="op">=</span> mpimg.imread(<span class="st">"path/to/your.png"</span>)</span>
-<span id="cb16-5"><a></a>plt.imshow(img)</span>
-<span id="cb16-6"><a></a>plt.axis(<span class="st">"off"</span>)        <span class="co"># 軸を消す</span></span>
-<span id="cb16-7"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb17-2"><a></a><span class="im">import</span> matplotlib.image <span class="im">as</span> mpimg</span>
+<span id="cb17-3"><a></a></span>
+<span id="cb17-4"><a></a>img <span class="op">=</span> mpimg.imread(<span class="st">"something.jpg"</span>) <span class="co"># 画像名。フォルダの場合はpathを指定</span></span>
+<span id="cb17-5"><a></a>plt.imshow(img)</span>
+<span id="cb17-6"><a></a>plt.axis(<span class="st">"off"</span>)        <span class="co"># 軸を消す</span></span>
+<span id="cb17-7"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="まとめ" class="slide level2">
 <h2>まとめ</h2>
 <ul>
 <li><strong>可視化の歴史</strong><span class="fw-colon">：</span>
 <ul>
-<li>ジョン・スノウのコレラ地図</li>
-<li>現代のインタラクティブ可視化</li>
+<li>プレイフェア — 棒・折れ線・円グラフを発明</li>
+<li>スノウ — コレラ地図で因果関係を視覚的に立証</li>
+<li>現代のインタラクティブ可視化へ</li>
 </ul></li>
 <li><strong>大原則</strong><span class="fw-colon">：</span><em>Always plot your data first.</em>
 <ul>
