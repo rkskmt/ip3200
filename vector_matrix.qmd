@@ -1101,3 +1101,49 @@ P0, P1, P2 = np.array([0,0,0]), np.array([1,0,0]), np.array([0,1,0])
 normal = np.cross(P1 - P0, P2 - P0)
 print(normal)  # [0 0 1] ← +Z方向 = 手前向き
 ```
+
+
+## 外積を行列積に変換する
+
+- 外積は**特殊な演算** → 行列のパイプラインに乗せにくい
+- **歪対称行列**を使うと、外積が==普通の行列積==になる
+   - 3DCG・ロボティクス：姿勢制御の **Lie代数**（SO(3) / se(3)）
+   - 物理シミュレーション：回転行列の微分 $dR/dt = \Omega R$
+
+$$
+\mathbf{a} \times \mathbf{b} \quad \longrightarrow \quad [\mathbf{a}]_\times \cdot \mathbf{b}
+$$
+
+::: {.callout-tip}
+## 何が嬉しいか
+- 行列積なら `@` で統一的に扱える
+- 複数の変換を**行列の連鎖**として一括計算できる
+:::
+
+
+## 歪対称行列（skew-symmetric matrix）
+
+- ベクトル $\mathbf{a} = (a_1, a_2, a_3)$ に対応する歪対称行列：
+
+$$
+[\mathbf{a}]_\times = \begin{pmatrix} 0 & -a_3 & a_2 \\ a_3 & 0 & -a_1 \\ -a_2 & a_1 & 0 \end{pmatrix}
+$$
+
+- 性質：$A^T = -A$（転置すると符号反転）、対角成分は常に 0
+
+```python
+import numpy as np
+
+def skew(a):
+    """ベクトルから歪対称行列を作成"""
+    return np.array([[0,    -a[2],  a[1]],
+                     [a[2],  0,    -a[0]],
+                     [-a[1], a[0],  0   ]])
+
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
+
+print(np.cross(a, b))   # [-3  6 -3]  外積
+print(skew(a) @ b)      # [-3.  6. -3.]  行列積で同じ結果
+```
+
