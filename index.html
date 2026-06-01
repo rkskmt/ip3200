@@ -123,6 +123,10 @@
     }
   </style>
   <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;400;700&display=swap');
+  .reveal {
+    font-family: "Noto Sans JP", "Roboto", sans-serif;
+  }
   .callout.callout-note {
       font-size: 1.5rem;
       line-height: 1.4;
@@ -181,6 +185,15 @@
     max-height: 500px;
     width: auto;
     height: auto;
+  }
+  .reveal p.caption {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: 0.8em;
+    color: #444;
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: lighter;
   }
   .fig-small img {
     max-height: 300px !important;
@@ -296,6 +309,10 @@
   }
   #slide-nav button:active {
     background: rgba(93, 173, 226, 0.2);
+  }
+  #slide-nav button:disabled {
+    opacity: 0.3;
+    cursor: default;
   }
   #nav-counter {
     font-size: 0.9rem;
@@ -434,6 +451,8 @@
       var slides = Array.from(document.querySelectorAll('.reveal .slides section:not(.stack)'));
       var idx = slides.findIndex(function(s) { return s.classList.contains('present'); });
       el.textContent = (idx + 1) + ' / ' + slides.length;
+      document.getElementById('nav-prev').disabled = (idx <= 0);
+      document.getElementById('nav-next').disabled = (idx >= slides.length - 1);
     }
     if (Reveal.isReady()) { initNav(); } else { Reveal.addEventListener('ready', initNav); }
   });

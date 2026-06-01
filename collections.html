@@ -189,6 +189,10 @@
     }
   </style>
   <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;400;700&display=swap');
+  .reveal {
+    font-family: "Noto Sans JP", "Roboto", sans-serif;
+  }
   .callout.callout-note {
       font-size: 1.5rem;
       line-height: 1.4;
@@ -247,6 +251,15 @@
     max-height: 500px;
     width: auto;
     height: auto;
+  }
+  .reveal p.caption {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: 0.8em;
+    color: #444;
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: lighter;
   }
   .fig-small img {
     max-height: 300px !important;
@@ -362,6 +375,10 @@
   }
   #slide-nav button:active {
     background: rgba(93, 173, 226, 0.2);
+  }
+  #slide-nav button:disabled {
+    opacity: 0.3;
+    cursor: default;
   }
   #nav-counter {
     font-size: 0.9rem;
@@ -500,6 +517,8 @@
       var slides = Array.from(document.querySelectorAll('.reveal .slides section:not(.stack)'));
       var idx = slides.findIndex(function(s) { return s.classList.contains('present'); });
       el.textContent = (idx + 1) + ' / ' + slides.length;
+      document.getElementById('nav-prev').disabled = (idx <= 0);
+      document.getElementById('nav-next').disabled = (idx >= slides.length - 1);
     }
     if (Reveal.isReady()) { initNav(); } else { Reveal.addEventListener('ready', initNav); }
   });
@@ -847,7 +866,7 @@ rkskmt
 </ul></li>
 <li><strong>平均点</strong>を表示しよう</li>
 </ol>
-<div id="9e919f04" class="cell" data-execution_count="1">
+<div id="ec314c5c" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>student_scores.append(<span class="dv">100</span>)</span>
@@ -962,7 +981,7 @@ rkskmt
 </ul></li>
 <li><code>"Yamada"</code> が <code>dict</code> に存在するか <code>in</code> を使って確認し、存在すれば点数を表示しよう</li>
 </ol>
-<div id="7be35895" class="cell" data-execution_count="2">
+<div id="fb7a6f3c" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>name2score[<span class="st">"Tanaka"</span>] <span class="op">=</span> <span class="dv">100</span></span>
@@ -1218,7 +1237,7 @@ rkskmt
 <li><code>low, high</code> の2変数でアンパックして「最低: ○点, 最高: ○点」と表示</li>
 <li><code>result[0] = 100</code> と改ざんを試してみよう</li>
 </ol>
-<div id="ce6a3daa" class="cell" data-execution_count="3">
+<div id="cf381aa6" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>result <span class="op">=</span> get_min_max(scores)</span>

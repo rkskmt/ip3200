@@ -11,14 +11,49 @@
     "href": "visualize.html#情報可視化とは",
     "title": "データの可視化",
     "section": "情報可視化とは？",
-    "text": "情報可視化とは？\n\nデータや情報がもつ 関係性 や 特徴 を、視覚的に見て理解できるようにすること\n\n見えないものを 「見える」化\n人間の 視覚・直感・経験 で共通に扱えるようにする\n\n\n\n\n\n\n\n\nなぜ「見る」のか\n\n\n\n数字の表を眺めても気づけないパターン（外れ値、相関、周期性、クラスタ）が、図にすると一瞬で分かる\n視覚は最強の前処理"
+    "text": "情報可視化とは？\n\nデータや情報がもつ 関係性 や 特徴 を、視覚的に見て理解できるようにすること\n\n見えないものを 「見える」化\n人間の 視覚・直感・経験 で共通に扱えるようにする\n\n情報視覚化ともいう\n\nInformation Visualization\nData Visualization\n\n\n\n\n\n\n\n\nなぜ「見る」のか\n\n\n\n数字の表を眺めても気づけないパターン（外れ値、相関、周期性、クラスタ）が見える\n図示は最強の前処理"
   },
   {
-    "objectID": "visualize.html#古典ジョンスノウのコレラ地図",
-    "href": "visualize.html#古典ジョンスノウのコレラ地図",
+    "objectID": "visualize.html#可視化の古典ジョンスノウのコレラ地図",
+    "href": "visualize.html#可視化の古典ジョンスノウのコレラ地図",
     "title": "データの可視化",
-    "section": "古典：ジョン・スノウのコレラ地図",
-    "text": "古典：ジョン・スノウのコレラ地図\n\n1854年、ロンドンで原因不明の病気が大流行\n\n医師 John Snow が原因調査をおこなう\n感染データを地図にプロットしたところBroad Street の井戸 の周囲に感染者が集中していることを発見\n「水が感染源」という仮説を視覚で立証\n疫学 という分野の出発点とされる\n\n\n\n\n\n\n\n\n可視化の本質\n\n\n「データに 適切な空間（軸） を与えること」"
+    "section": "可視化の古典：ジョン・スノウのコレラ地図",
+    "text": "可視化の古典：ジョン・スノウのコレラ地図\n\n1854年、ロンドンで原因不明の病気が大流行\n\n医師 John Snow が原因調査をおこなう\n感染データを地図にプロットしたところBroad Street の井戸の周囲に感染者が集中していることを発見\n「水が感染源」という仮説を視覚で立証\n疫学 という分野の出発点とされる"
+  },
+  {
+    "objectID": "visualize.html#数的グラフの始祖ウィリアムプレイフェア",
+    "href": "visualize.html#数的グラフの始祖ウィリアムプレイフェア",
+    "title": "データの可視化",
+    "section": "数的グラフの始祖：ウィリアム・プレイフェア",
+    "text": "数的グラフの始祖：ウィリアム・プレイフェア\n\nWilliam Playfair（1759–1823）はスコットランドの技師・経済学者\n現代の 棒グラフ・折れ線グラフ・円グラフ を すべて発明\n\n1786年：Commercial and Political Atlas で折れ線・棒グラフを初めて使用\n1801年：Statistical Breviary で円グラフ（パイチャート）を発明\n\n\n\n\n\n\n\n\nスノウとプレイフェア\n\n\n\nスノウ — 視覚化で 因果関係を発見 し、社会を変えた\nプレイフェア — 視覚化の 形式そのもの を発明した"
+  },
+  {
+    "objectID": "visualize.html#プレイフェアの折れ線グラフ1786",
+    "href": "visualize.html#プレイフェアの折れ線グラフ1786",
+    "title": "データの可視化",
+    "section": "プレイフェアの折れ線グラフ（1786）",
+    "text": "プレイフェアの折れ線グラフ（1786）\n\nイングランドの国家債務の推移\n時間を横軸、量を縦軸にとる — 現代の時系列グラフの原型"
+  },
+  {
+    "objectID": "visualize.html#プレイフェアの棒グラフ1786",
+    "href": "visualize.html#プレイフェアの棒グラフ1786",
+    "title": "データの可視化",
+    "section": "プレイフェアの棒グラフ（1786）",
+    "text": "プレイフェアの棒グラフ（1786）\n\nスコットランドの輸出入（1780–1781）\nカテゴリ（貿易相手国）を並べて 長さで比較 — 棒グラフの誕生"
+  },
+  {
+    "objectID": "visualize.html#プレイフェアの円グラフ1801",
+    "href": "visualize.html#プレイフェアの円グラフ1801",
+    "title": "データの可視化",
+    "section": "プレイフェアの円グラフ（1801）",
+    "text": "プレイフェアの円グラフ（1801）\n\nトルコ帝国の領土配分\n全体に対する 割合を角度で表現 — 円グラフの誕生"
+  },
+  {
+    "objectID": "visualize.html#プレイフェアの問いなぜ数字を図にするのか",
+    "href": "visualize.html#プレイフェアの問いなぜ数字を図にするのか",
+    "title": "データの可視化",
+    "section": "プレイフェアの問い：なぜ数字を図にするのか",
+    "text": "プレイフェアの問い：なぜ数字を図にするのか\n\nMaking information available, for thought and memory, without the trouble of studying rows of figures.\n── William Playfair, Commercial and Political Atlas (1786)\n\n\n数字の羅列を眺める 苦労を省く ためにグラフを描く\n\n200年以上前に「視覚化の本質」を言い当てていた\n\n\n\n\n\n\n\n\n可視化の本質\n\n\n「データに 適切な空間（軸） を与えること」"
   },
   {
     "objectID": "visualize.html#現代の可視化実例",
@@ -88,7 +123,7 @@
     "href": "visualize.html#探索的データ解析eda",
     "title": "データの可視化",
     "section": "探索的データ解析（EDA）",
-    "text": "探索的データ解析（EDA）\n\nJohn Wilder Tukey が1977年の著書 Exploratory Data Analysis で提唱\n\n「まずデータを 見て から仮説を立てる」\n統計学の前段として現在も基本中の基本\n\n箱ひげ図・幹葉図など、Tukeyが広めた可視化手法は多数\n\n\n\n\n\n\n\nTukey という人\n\n\n“bit”（binary digit の短縮形）や “software” という用語の普及にも関わった、計算機文化の偉人。"
+    "text": "探索的データ解析（EDA）\n\nテューキー（Tukey） が1977年の著書 Exploratory Data Analysis で提唱\n\n「まずデータを 見て から仮説を立てる」という原則\n統計学の前段として現在も基本中の基本\n\n箱ひげ図・幹葉図など、Tukeyが広めた可視化手法は多数\n\n\n\n\n\n\n\nTukey\n\n\n“bit”（binary digit の短縮形）や “software” の生みの親"
   },
   {
     "objectID": "visualize.html#グラフの種類",
@@ -109,7 +144,7 @@
     "href": "visualize.html#matplotlib-とは",
     "title": "データの可視化",
     "section": "matplotlib とは",
-    "text": "matplotlib とは\n\nPythonにおけるグラフ描画の デファクトスタンダード\n\nマットプロットリブと読む\n\n内部はC実装で高速、NumPyの ndarray と相性が良い\n\n派生ライブラリ（seaborn、pandas plotting、Plotly）も多くが matplotlib をベースにしている\n\n\nターミナルからインストール：\npip install matplotlib\n冒頭で import（plt としてインポートするのが一般的）：\nimport matplotlib.pyplot as plt"
+    "text": "matplotlib とは\n\nPythonにおけるグラフ描画の デファクトスタンダード\n\nマットプロットリブと読む\n\n内部はC実装で高速、NumPyの ndarray と相性が良い\n\nseaborn や pandas の plotting 機能など、派生ライブラリも多い\n\n\nターミナルからインストール：\npip install matplotlib\n冒頭で import（plt としてインポートするのが一般的）：\nimport matplotlib.pyplot as plt"
   },
   {
     "objectID": "visualize.html#まずはドキュメントを眺める重要",
@@ -186,21 +221,21 @@
     "href": "visualize.html#演習2アンスコムの四重奏を再現",
     "title": "データの可視化",
     "section": "演習2：アンスコムの四重奏を再現",
-    "text": "演習2：アンスコムの四重奏を再現\n\n手順\n\n下のデータをコピペして使う\nplt.subplot(2, 2, i) で2×2に並べる\nそれぞれ scatter でプロット\nnp.polyfit(x, y, 1) で1次回帰直線を求め、plot で重ねる\nすべてのサブプロットで xlim / ylim を 揃える\n\n\nimport numpy as np\n\n# データセット I, II, III（x は共通）\nx1 = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])\ny1 = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68])\ny2 = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74])\ny3 = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73])\n\n# データセット IV（x が異なる）\nx4 = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])\ny4 = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89])\n\n\n\n\n\n\nなぜ軸を揃える？\n\n\n\n4つのプロットを 公平に比較 するため\n違うスケールで並べると印象操作になる"
+    "text": "演習2：アンスコムの四重奏を再現\n\n手順\n\n下のデータをコピペして使う\nplt.subplot(2, 2, i) で2×2に並べる\nそれぞれ scatter でプロット\nnp.polyfit(x, y, 1) で1次回帰直線を求め、plot で重ねる\nすべてのサブプロットで xlim / ylim を 揃える\n\n\nimport numpy as np\n\n# データセット I, II, III（x は共通）\nx1 = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])\ny1 = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68])\ny2 = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74])\ny3 = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73])\n\n# データセット IV（x が異なる）\nx4 = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])\ny4 = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89])\n\n\n\n\n\n\nなぜ軸を揃える？\n\n\n\n4つのプロットを 公平に比較 するため\n違うスケールで並べると印象操作になる\n\n\n\n\n\n\n解答例を見る\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nx1 = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])\ny1 = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68])\ny2 = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74])\ny3 = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73])\nx4 = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])\ny4 = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89])\n\ndatasets = [(x1, y1, \"I\"), (x1, y2, \"II\"), (x1, y3, \"III\"), (x4, y4, \"IV\")]\n\nfor i, (x, y, title) in enumerate(datasets, 1):\n    plt.subplot(2, 2, i)\n    plt.scatter(x, y)\n    m, b = np.polyfit(x, y, 1)\n    xs = np.linspace(2, 20, 50)\n    plt.plot(xs, m * xs + b, color=\"red\")\n    plt.xlim(2, 20)\n    plt.ylim(2, 14)\n    plt.title(f\"Dataset {title}\")\n\nplt.tight_layout()\nplt.show()"
   },
   {
     "objectID": "visualize.html#演習3好きな画像を表示",
     "href": "visualize.html#演習3好きな画像を表示",
     "title": "データの可視化",
     "section": "演習3：好きな画像を表示",
-    "text": "演習3：好きな画像を表示\n\nmatplotlib は 画像も描画できる\n公式チュートリアルを参考\nhttps://matplotlib.org/stable/tutorials/images.html\n\nimport matplotlib.pyplot as plt\nimport matplotlib.image as mpimg\n\nimg = mpimg.imread(\"path/to/your.png\")\nplt.imshow(img)\nplt.axis(\"off\")        # 軸を消す\nplt.show()"
+    "text": "演習3：好きな画像を表示\n\nmatplotlib は 画像も描画できる\n公式チュートリアルを参考\nhttps://matplotlib.org/stable/tutorials/images.html\n\nimport matplotlib.pyplot as plt\nimport matplotlib.image as mpimg\n\nimg = mpimg.imread(\"something.jpg\") # 画像名。フォルダの場合はpathを指定\nplt.imshow(img)\nplt.axis(\"off\")        # 軸を消す\nplt.show()"
   },
   {
     "objectID": "visualize.html#まとめ",
     "href": "visualize.html#まとめ",
     "title": "データの可視化",
     "section": "まとめ",
-    "text": "まとめ\n\n可視化の歴史：\n\nジョン・スノウのコレラ地図\n現代のインタラクティブ可視化\n\n大原則：Always plot your data first.\n\nアンスコムの四重奏が示す数値の限界\n\nmatplotlib：最小構造（plot/scatter/bar）\n\n修飾（ラベル/タイトル/凡例/グリッド）\n応用（subplot, 2D/3D散布）"
+    "text": "まとめ\n\n可視化の歴史：\n\nプレイフェア — 棒・折れ線・円グラフを発明\nスノウ — コレラ地図で因果関係を視覚的に立証\n現代のインタラクティブ可視化へ\n\n大原則：Always plot your data first.\n\nアンスコムの四重奏が示す数値の限界\n\nmatplotlib：最小構造（plot/scatter/bar）\n\n修飾（ラベル/タイトル/凡例/グリッド）\n応用（subplot, 2D/3D散布）"
   },
   {
     "objectID": "visualize.html#参考リンク",
@@ -1489,5 +1524,19 @@
     "title": "ベクトルと行列",
     "section": "その他外積の応用例",
     "text": "その他外積の応用例\n\nポリゴンの表裏判定（バックフェースカリング）\n\n三角形の頂点 P0→P1→P2 から2辺を作り外積 → 法線ベクトル\n法線がカメラを向いていれば表、逆なら裏（描画しない）\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport numpy as np\n\nP0, P1, P2 = np.array([0,0,0]), np.array([1,0,0]), np.array([0,1,0])\nnormal = np.cross(P1 - P0, P2 - P0)\nprint(normal)  # [0 0 1] ← +Z方向 = 手前向き"
+  },
+  {
+    "objectID": "vector_matrix.html#外積を行列積に変換する",
+    "href": "vector_matrix.html#外積を行列積に変換する",
+    "title": "ベクトルと行列",
+    "section": "外積を行列積に変換する",
+    "text": "外積を行列積に変換する\n\n外積は特殊な演算 → 行列のパイプラインに乗せにくい\n歪対称行列を使うと、外積が普通の行列積になる\n\n3DCG・ロボティクス：姿勢制御の Lie代数（SO(3) / se(3)）\n物理シミュレーション：回転行列の微分 \\(dR/dt = \\Omega R\\)\n\n\n\\[\n\\mathbf{a} \\times \\mathbf{b} \\quad \\longrightarrow \\quad [\\mathbf{a}]_\\times \\cdot \\mathbf{b}\n\\]\n\n\n\n\n\n\n何が嬉しいか\n\n\n\n行列積なら @ で統一的に扱える\n複数の変換を行列の連鎖として一括計算できる"
+  },
+  {
+    "objectID": "vector_matrix.html#歪対称行列skew-symmetric-matrix",
+    "href": "vector_matrix.html#歪対称行列skew-symmetric-matrix",
+    "title": "ベクトルと行列",
+    "section": "歪対称行列（skew-symmetric matrix）",
+    "text": "歪対称行列（skew-symmetric matrix）\n\nベクトル \\(\\mathbf{a} = (a_1, a_2, a_3)\\) に対応する歪対称行列：\n\n\\[\n[\\mathbf{a}]_\\times = \\begin{pmatrix} 0 & -a_3 & a_2 \\\\ a_3 & 0 & -a_1 \\\\ -a_2 & a_1 & 0 \\end{pmatrix}\n\\]\n\n性質：\\(A^T = -A\\)（転置すると符号反転）、対角成分は常に 0\n\nimport numpy as np\n\ndef skew(a):\n    \"\"\"ベクトルから歪対称行列を作成\"\"\"\n    return np.array([[0,    -a[2],  a[1]],\n                     [a[2],  0,    -a[0]],\n                     [-a[1], a[0],  0   ]])\n\na = np.array([1, 2, 3])\nb = np.array([4, 5, 6])\n\nprint(np.cross(a, b))   # [-3  6 -3]  外積\nprint(skew(a) @ b)      # [-3.  6. -3.]  行列積で同じ結果"
   }
 ]

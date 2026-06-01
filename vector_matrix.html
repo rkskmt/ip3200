@@ -189,6 +189,10 @@
     }
   </style>
   <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;400;700&display=swap');
+  .reveal {
+    font-family: "Noto Sans JP", "Roboto", sans-serif;
+  }
   .callout.callout-note {
       font-size: 1.5rem;
       line-height: 1.4;
@@ -247,6 +251,15 @@
     max-height: 500px;
     width: auto;
     height: auto;
+  }
+  .reveal p.caption {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: 0.8em;
+    color: #444;
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: lighter;
   }
   .fig-small img {
     max-height: 300px !important;
@@ -362,6 +375,10 @@
   }
   #slide-nav button:active {
     background: rgba(93, 173, 226, 0.2);
+  }
+  #slide-nav button:disabled {
+    opacity: 0.3;
+    cursor: default;
   }
   #nav-counter {
     font-size: 0.9rem;
@@ -500,6 +517,8 @@
       var slides = Array.from(document.querySelectorAll('.reveal .slides section:not(.stack)'));
       var idx = slides.findIndex(function(s) { return s.classList.contains('present'); });
       el.textContent = (idx + 1) + ' / ' + slides.length;
+      document.getElementById('nav-prev').disabled = (idx <= 0);
+      document.getElementById('nav-next').disabled = (idx >= slides.length - 1);
     }
     if (Reveal.isReady()) { initNav(); } else { Reveal.addEventListener('ready', initNav); }
   });
@@ -552,7 +571,7 @@ rkskmt
 </ul></li>
 </ul>
 <div style="width: 30%; margin: 0 auto;">
-<div id="e23942a6" class="cell" data-execution_count="1">
+<div id="ffd359d3" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -626,7 +645,7 @@ rkskmt
 <span id="cb2-6"><a></a><span class="bu">print</span>(a <span class="op">+</span> b)   <span class="co"># [3 4]</span></span>
 <span id="cb2-7"><a></a><span class="bu">print</span>(a <span class="op">-</span> b)   <span class="co"># [-1  2]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="6d6ba72d" class="cell" data-execution_count="2">
+<div id="110d1d55" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -658,7 +677,7 @@ rkskmt
 <span id="cb3-4"><a></a></span>
 <span id="cb3-5"><a></a><span class="bu">print</span>(a <span class="op">*</span> <span class="dv">2</span>)   <span class="co"># [2 4]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="d654b63b" class="cell" data-execution_count="3">
+<div id="842d2108" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -837,7 +856,7 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 10 \\ 4 &amp; 5 &amp; 6 &amp; 11 \\ 
 =
 \begin{pmatrix} 19 &amp; 22 \\ 43 &amp; 50 \end{pmatrix}
 \]</span></p>
-<div id="2a583fb7" class="cell" data-execution_count="4">
+<div id="320c2b1d" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1106,7 +1125,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 \begin{cases} x + y = 4 \\ x - y = 2 \end{cases}
 \]</span></p>
 <p>（４）<span class="math inline">\(\mathbf{a} = \begin{pmatrix} 6 \\ 8 \end{pmatrix}\)</span> のノルムと単位ベクトルを求めよ。</p>
-<div id="aa4efefe" class="cell" data-execution_count="5">
+<div id="7fe818ab" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1203,7 +1222,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 <span id="cb12-6"><a></a><span class="bu">print</span>(a_hat)                  <span class="co"># [0.6 0.8]</span></span>
 <span id="cb12-7"><a></a><span class="bu">print</span>(np.linalg.norm(a_hat))  <span class="co"># 1.0</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="f764a755" class="cell" data-execution_count="6">
+<div id="1b15e36b" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1273,7 +1292,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <li><span class="math inline">\(|\mathbf{b}|\cos\theta\)</span> <span class="fw-colon">：</span><span class="math inline">\(\mathbf{b}\)</span> を <span class="math inline">\(\mathbf{a}\)</span> の方向に<strong>射影</strong>した長さ</li>
 <li>内積 = 「<span class="math inline">\(\mathbf{b}\)</span>の<span class="math inline">\(\mathbf{a}\)</span>方向に対する成分」× 「<span class="math inline">\(\mathbf{a}\)</span>の長さ<span class="math inline">\(|\mathbf{a}|\)</span>」</li>
 </ul>
-<div id="796a9bf5" class="cell" data-execution_count="7">
+<div id="2f5a7b63" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1292,7 +1311,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <li>つまり、射影の長さがゼロ → 「<span class="math inline">\(\mathbf{a}\)</span> 方向の成分がない」</li>
 </ul></li>
 </ul>
-<div id="b5f94c06" class="cell" data-execution_count="8">
+<div id="c68650d2" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1342,7 +1361,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 </section>
 <section id="応用例多角形に対する内外判定" class="slide level2">
 <h2>応用例<span class="fw-colon">：</span>多角形に対する内外判定</h2>
-<div id="7f7f4083" class="cell" data-execution_count="9">
+<div id="b2ad4769" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1365,7 +1384,7 @@ c_2 = (\overrightarrow{BC}) \times (\overrightarrow{BP}), \quad
 c_3 = (\overrightarrow{CA}) \times (\overrightarrow{CP})
 \]</span></p>
 <p><span class="math inline">\(c_1, c_2, c_3\)</span> が全て同符号 → 内側</p>
-<div id="e3b8f6c1" class="cell" data-execution_count="10">
+<div id="dafe20cd" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-2"><a></a></span>
 <span id="cb15-3"><a></a><span class="kw">def</span> cross_2d(v1, v2):</span>
@@ -1404,7 +1423,7 @@ c_3 = (\overrightarrow{CA}) \times (\overrightarrow{CP})
 </ul></li>
 </ul>
 <div style="width: 40%; margin: 0 auto;">
-<div id="c48bbe72" class="cell" data-execution_count="11">
+<div id="1fa6920c" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1419,6 +1438,61 @@ c_3 = (\overrightarrow{CA}) \times (\overrightarrow{CP})
 <span id="cb16-3"><a></a>P0, P1, P2 <span class="op">=</span> np.array([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>]), np.array([<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>]), np.array([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>])</span>
 <span id="cb16-4"><a></a>normal <span class="op">=</span> np.cross(P1 <span class="op">-</span> P0, P2 <span class="op">-</span> P0)</span>
 <span id="cb16-5"><a></a><span class="bu">print</span>(normal)  <span class="co"># [0 0 1] ← +Z方向 = 手前向き</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="外積を行列積に変換する" class="slide level2">
+<h2>外積を行列積に変換する</h2>
+<ul>
+<li>外積は<strong>特殊な演算</strong> → 行列のパイプラインに乗せにくい</li>
+<li><strong>歪対称行列</strong>を使うと、外積が<span class="hl">普通の行列積</span>になる
+<ul>
+<li>3DCG・ロボティクス<span class="fw-colon">：</span>姿勢制御の <strong>Lie代数</strong>（SO(3) / se(3)）</li>
+<li>物理シミュレーション<span class="fw-colon">：</span>回転行列の微分 <span class="math inline">\(dR/dt = \Omega R\)</span></li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+\mathbf{a} \times \mathbf{b} \quad \longrightarrow \quad [\mathbf{a}]_\times \cdot \mathbf{b}
+\]</span></p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>何が嬉しいか</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>行列積なら <code>@</code> で統一的に扱える</li>
+<li>複数の変換を<strong>行列の連鎖</strong>として一括計算できる</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="歪対称行列skew-symmetric-matrix" class="slide level2">
+<h2>歪対称行列（skew-symmetric matrix）</h2>
+<ul>
+<li>ベクトル <span class="math inline">\(\mathbf{a} = (a_1, a_2, a_3)\)</span> に対応する歪対称行列<span class="fw-colon">：</span></li>
+</ul>
+<p><span class="math display">\[
+[\mathbf{a}]_\times = \begin{pmatrix} 0 &amp; -a_3 &amp; a_2 \\ a_3 &amp; 0 &amp; -a_1 \\ -a_2 &amp; a_1 &amp; 0 \end{pmatrix}
+\]</span></p>
+<ul>
+<li>性質<span class="fw-colon">：</span><span class="math inline">\(A^T = -A\)</span>（転置すると符号反転）、対角成分は常に 0</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb17-2"><a></a></span>
+<span id="cb17-3"><a></a><span class="kw">def</span> skew(a):</span>
+<span id="cb17-4"><a></a>    <span class="co">"""ベクトルから歪対称行列を作成"""</span></span>
+<span id="cb17-5"><a></a>    <span class="cf">return</span> np.array([[<span class="dv">0</span>,    <span class="op">-</span>a[<span class="dv">2</span>],  a[<span class="dv">1</span>]],</span>
+<span id="cb17-6"><a></a>                     [a[<span class="dv">2</span>],  <span class="dv">0</span>,    <span class="op">-</span>a[<span class="dv">0</span>]],</span>
+<span id="cb17-7"><a></a>                     [<span class="op">-</span>a[<span class="dv">1</span>], a[<span class="dv">0</span>],  <span class="dv">0</span>   ]])</span>
+<span id="cb17-8"><a></a></span>
+<span id="cb17-9"><a></a>a <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb17-10"><a></a>b <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
+<span id="cb17-11"><a></a></span>
+<span id="cb17-12"><a></a><span class="bu">print</span>(np.cross(a, b))   <span class="co"># [-3  6 -3]  外積</span></span>
+<span id="cb17-13"><a></a><span class="bu">print</span>(skew(a) <span class="op">@</span> b)      <span class="co"># [-3.  6. -3.]  行列積で同じ結果</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
