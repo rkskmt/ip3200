@@ -10,6 +10,10 @@ format:
     include-in-header:
       text: |
         <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;400;700&display=swap');
+        .reveal {
+          font-family: "Noto Sans JP", "Roboto", sans-serif;
+        }
         .callout.callout-note {
             font-size: 1.5rem;
             line-height: 1.4;
@@ -68,6 +72,15 @@ format:
           max-height: 500px;
           width: auto;
           height: auto;
+        }
+        .reveal p.caption {
+          text-align: center;
+          margin-top: 0;
+          margin-bottom: 0.5em;
+          font-size: 0.8em;
+          color: #444;
+          font-family: "Noto Sans JP", sans-serif;
+          font-weight: lighter;
         }
         .fig-small img {
           max-height: 300px !important;
