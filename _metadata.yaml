@@ -197,6 +197,10 @@ format:
         #slide-nav button:active {
           background: rgba(93, 173, 226, 0.2);
         }
+        #slide-nav button:disabled {
+          opacity: 0.3;
+          cursor: default;
+        }
         #nav-counter {
           font-size: 0.9rem;
           min-width: 56px;
@@ -334,6 +338,8 @@ format:
             var slides = Array.from(document.querySelectorAll('.reveal .slides section:not(.stack)'));
             var idx = slides.findIndex(function(s) { return s.classList.contains('present'); });
             el.textContent = (idx + 1) + ' / ' + slides.length;
+            document.getElementById('nav-prev').disabled = (idx <= 0);
+            document.getElementById('nav-next').disabled = (idx >= slides.length - 1);
           }
           if (Reveal.isReady()) { initNav(); } else { Reveal.addEventListener('ready', initNav); }
         });
