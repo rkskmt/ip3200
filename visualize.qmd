@@ -14,26 +14,25 @@ subtitle: "matplotlibで「見える化」する"
 - データや情報がもつ **関係性** や **特徴** を、視覚的に見て理解できるようにすること
    - 見えないものを **「見える」化**
    - 人間の **視覚・直感・経験** で共通に扱えるようにする
+- 情報視覚化ともいう
+   - Information Visualization
+   - Data Visualization
 
 ::: {.callout-tip}
 ## なぜ「見る」のか
-- 数字の表を眺めても気づけないパターン（外れ値、相関、周期性、クラスタ）が、図にすると一瞬で分かる
-- **視覚は最強の前処理**
+- 数字の表を眺めても気づけないパターン（外れ値、相関、周期性、クラスタ）が見える
+- **図示は最強の前処理**
 :::
 
 
-## 古典：ジョン・スノウのコレラ地図
+## 可視化の古典：ジョン・スノウのコレラ地図
 
 - 1854年、ロンドンで原因不明の病気が大流行
-   - 医師 **John Snow** が原因調査をおこなう
-   - 感染データを地図にプロットしたところ**Broad Street の井戸** の周囲に感染者が集中していることを発見
-   - 「水が感染源」という仮説を視覚で立証
+   - **医師 John Snow** が原因調査をおこなう
+   - 感染データを**地図にプロット**したところBroad Street の井戸の周囲に感染者が集中していることを発見
+   - 「水が感染源」という**仮説を視覚で立証**
    - **疫学** という分野の出発点とされる
 
-::: {.callout-note}
-## 可視化の本質
-「データに **適切な空間（軸）** を与えること」
-:::
 
 
 ```{python}
@@ -83,6 +82,56 @@ fig.write_html("iframes/cholera_map.html", include_plotlyjs="cdn")
 ```
 
 ::: {.plotly-iframe src="iframes/cholera_map.html"}
+:::
+
+
+## 数的グラフの始祖：ウィリアム・プレイフェア
+
+- **William Playfair**（1759–1823）はスコットランドの技師・経済学者
+- 現代の **棒グラフ・折れ線グラフ・円グラフ** を ==すべて発明==
+   - 1786年：*Commercial and Political Atlas* で折れ線・棒グラフを初めて使用
+   - 1801年：*Statistical Breviary* で円グラフ（パイチャート）を発明
+
+::: {.callout-note}
+## スノウとプレイフェア
+- **スノウ** — 視覚化で ==因果関係を発見== し、社会を変えた
+- **プレイフェア** — 視覚化の ==形式そのもの== を発明した
+:::
+
+
+## プレイフェアの折れ線グラフ（1786）
+
+![イングランドの国家債務の推移](imgs/visualization/Playfair_TimeSeries-2.jpg){width="85%"}
+
+- 時間を横軸、量を縦軸にとる — 現代の時系列グラフの原型
+
+
+## プレイフェアの棒グラフ（1786）
+
+![スコットランドの輸出入（1780–1781）](imgs/visualization/960px-1786_Playfair_-_Exports_and_Imports_of_Scotland_to_and_from_different_parts_for_one_Year_from_Christmas_1780_to_Christmas_1781.jpg){width="85%"}
+
+- カテゴリ（貿易相手国）を並べて **長さで比較** — 棒グラフの誕生
+
+
+## プレイフェアの円グラフ（1801）
+
+![トルコ帝国の領土配分](imgs/visualization/Playfair-piechart.jpg){width="70%"}
+
+- 全体に対する **割合を角度で表現** — 円グラフの誕生
+
+
+## プレイフェアの問い：なぜ数字を図にするのか
+
+> Making information available, for thought and memory, without the **trouble of studying** rows of figures.
+>
+> ── William Playfair, *Commercial and Political Atlas* (1786)
+
+- 数字の羅列を眺める **苦労を省く** ためにグラフを描く
+    - 200年以上前に「視覚化の本質」を言い当てていた
+
+::: {.callout-note}
+## 可視化の本質
+「データに **適切な空間（軸）** を与えること」
 :::
 
 
@@ -391,14 +440,14 @@ plt.show()
 
 ## 探索的データ解析（EDA）
 
-- **John Wilder Tukey** が1977年の著書 **E**xploratory **D**ata **A**nalysis で提唱
-   - 「まずデータを **見て** から仮説を立てる」
+- **テューキー（Tukey）** が1977年の著書 **E**xploratory **D**ata **A**nalysis で提唱
+   - 「まずデータを **見て** から仮説を立てる」という原則
    - 統計学の前段として現在も基本中の基本
 - 箱ひげ図・幹葉図など、Tukeyが広めた可視化手法は多数
 
 ::: {.callout-note}
-## Tukey という人
-**"bit"**（**bi**nary digi**t** の短縮形）や **"software"** という用語の普及にも関わった、計算機文化の偉人。
+## Tukey 
+**"bit"**（**bi**nary digi**t** の短縮形）や **"software"** の生みの親
 :::
 
 
@@ -428,7 +477,7 @@ matplotlibでグラフを描く
 - Pythonにおけるグラフ描画の **デファクトスタンダード**
    - **マットプロットリブ**と読む
 - 内部はC実装で高速、NumPyの `ndarray` と相性が良い
-   - 派生ライブラリ（seaborn、pandas plotting、Plotly）も多くが matplotlib をベースにしている
+   - seaborn や pandas の plotting 機能など、派生ライブラリも多い
 
 ターミナルからインストール：
 
@@ -749,6 +798,37 @@ y4 = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89
 - 違うスケールで並べると印象操作になる
 :::
 
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+import numpy as np
+import matplotlib.pyplot as plt
+
+x1 = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])
+y1 = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68])
+y2 = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74])
+y3 = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73])
+x4 = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])
+y4 = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89])
+
+datasets = [(x1, y1, "I"), (x1, y2, "II"), (x1, y3, "III"), (x4, y4, "IV")]
+
+for i, (x, y, title) in enumerate(datasets, 1):
+    plt.subplot(2, 2, i)
+    plt.scatter(x, y)
+    m, b = np.polyfit(x, y, 1)
+    xs = np.linspace(2, 20, 50)
+    plt.plot(xs, m * xs + b, color="red")
+    plt.xlim(2, 20)
+    plt.ylim(2, 14)
+    plt.title(f"Dataset {title}")
+
+plt.tight_layout()
+plt.show()
+```
+
 
 ## 演習3：好きな画像を表示
 
@@ -760,7 +840,7 @@ y4 = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
-img = mpimg.imread("path/to/your.png")
+img = mpimg.imread("something.jpg") # 画像名。フォルダの場合はpathを指定
 plt.imshow(img)
 plt.axis("off")        # 軸を消す
 plt.show()
@@ -770,8 +850,9 @@ plt.show()
 ## まとめ
 
 - **可視化の歴史**：
-   - ジョン・スノウのコレラ地図 
-   - 現代のインタラクティブ可視化
+   - プレイフェア — 棒・折れ線・円グラフを発明
+   - スノウ — コレラ地図で因果関係を視覚的に立証
+   - 現代のインタラクティブ可視化へ
 - **大原則**：*Always plot your data first.* 
    - アンスコムの四重奏が示す数値の限界
 - **matplotlib**：最小構造（plot/scatter/bar） 
