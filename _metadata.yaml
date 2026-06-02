@@ -16,6 +16,21 @@ format:
         .reveal {
           font-family: system-ui, -apple-system, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", "Meiryo", sans-serif;
         }
+        /* Force scrollbar visibility on macOS/mobile */
+        .reveal .slides section {
+          scrollbar-width: thin;
+        }
+        .reveal .slides section::-webkit-scrollbar {
+          width: 8px;
+          height: 8px;
+        }
+        .reveal .slides section::-webkit-scrollbar-track {
+          background: rgba(0, 0, 0, 0.1);
+        }
+        .reveal .slides section::-webkit-scrollbar-thumb {
+          background: rgba(0, 0, 0, 0.3);
+          border-radius: 4px;
+        }
         .callout.callout-note {
             font-size: 1.5rem;
             line-height: 1.4;
@@ -359,13 +374,27 @@ format:
               } catch (e) {}
             }
 
+            function isFirstSlide() {
+              return Reveal.getIndices().h === 0 && Reveal.getIndices().v === 0;
+            }
+
+            function handleNav(btn) {
+              initCounter();
+              if (btn.id === 'nav-prev') {
+                if (isFirstSlide()) {
+                  window.location.href = './index.html';
+                } else {
+                  Reveal.prev();
+                }
+              }
+              if (btn.id === 'nav-next') Reveal.next();
+            }
+
             document.addEventListener('click', function(e) {
               try {
                 var btn = e.target.closest('#nav-prev, #nav-next');
                 if (!btn || !window.Reveal) return;
-                initCounter();
-                if (btn.id === 'nav-prev') Reveal.prev();
-                if (btn.id === 'nav-next') Reveal.next();
+                handleNav(btn);
               } catch (e) {}
             });
 
@@ -374,11 +403,18 @@ format:
                 var btn = e.target.closest('#nav-prev, #nav-next');
                 if (!btn || !window.Reveal) return;
                 e.preventDefault();
-                initCounter();
-                if (btn.id === 'nav-prev') Reveal.prev();
-                if (btn.id === 'nav-next') Reveal.next();
+                handleNav(btn);
               } catch (e) {}
             }, { passive: false });
+
+            document.addEventListener('keydown', function(e) {
+              try {
+                if (!window.Reveal) return;
+                if (isFirstSlide() && (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp')) {
+                  window.location.href = './index.html';
+                }
+              } catch (e) {}
+            });
 
             function setup() {
               try {

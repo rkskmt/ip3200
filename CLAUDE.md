@@ -55,11 +55,15 @@ quarto preview --port 4321   # local dev server (fixed port)
 quarto render                # build to _site/
 ```
 
+**Do not run `quarto preview` or `quarto render` yourself.** The user handles previewing and building.
+
 ## Style or functionality changes
 
 Most tasks are content editing — the conventions above are all you need.
 
 When changing CSS, theme, or `_metadata.yaml`: read **[doc/troubleshooting.md](doc/troubleshooting.md)** first. It covers the Pandoc vs revealjs CSS distinction (critical — easy to confuse), the no-`.reveal`-prefix rule, and cache-clearing steps.
+
+**JavaScript robustness:** Inline JS in `_metadata.yaml` must be defensive. On slow networks, DOM elements or `Reveal` may not be ready when scripts run. Wrap operations in `try/catch` and check for existence (`if (!window.Reveal) return;`). Uncaught errors can break other scripts (e.g., MathJax) loaded on the same page.
 
 ## Reference Docs
 
