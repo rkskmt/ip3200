@@ -189,9 +189,23 @@
     }
   </style>
   <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;400;700&display=swap');
   .reveal {
-    font-family: "Noto Sans JP", "Roboto", sans-serif;
+    font-family: system-ui, -apple-system, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", "Meiryo", sans-serif;
+  }
+  /* Force scrollbar visibility on macOS/mobile */
+  .reveal .slides section {
+    scrollbar-width: thin;
+  }
+  .reveal .slides section::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .reveal .slides section::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  .reveal .slides section::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
   }
   .callout.callout-note {
       font-size: 1.5rem;
@@ -258,7 +272,7 @@
     margin-bottom: 0.5em;
     font-size: 0.8em;
     color: #444;
-    font-family: "Noto Sans JP", sans-serif;
+    font-family: inherit;
     font-weight: lighter;
   }
   .fig-small img {
@@ -486,42 +500,119 @@
   }
   </style>
   <script>
-  window.addEventListener('load', function() {
-    if (typeof Reveal === 'undefined') return;
-    function initNav() {
-      var home = document.createElement('a');
-      home.id = 'home-btn';
-      home.href = './index.html';
-      home.textContent = 'Home';
-      document.body.appendChild(home);
-      var footer = document.querySelector('.reveal > .footer');
-      if (!footer) return;
-      var nav = document.createElement('span');
-      nav.id = 'slide-nav';
-      nav.innerHTML = '<button id="nav-prev">&#9664;</button><span id="nav-counter"></span><button id="nav-next">&#9654;</button>';
-      footer.appendChild(nav);
-      function addNavHandler(el, fn) {
-        var touched = false;
-        el.addEventListener('touchstart', function(e) { e.stopPropagation(); touched = true; fn(); }, { passive: true });
-        el.addEventListener('click', function() { if (touched) { touched = false; return; } fn(); });
+  (function() {
+    try {
+      var counterInit = false;
+
+      function createNav() {
+        try {
+          if (document.getElementById('slide-nav')) return;
+          var footer = document.querySelector('.reveal > .footer');
+          if (!footer) return;
+          var nav = document.createElement('span');
+          nav.id = 'slide-nav';
+          nav.innerHTML = '<button id="nav-prev">&#9664;</button><span id="nav-counter">-/-</span><button id="nav-next">&#9654;</button>';
+          footer.appendChild(nav);
+        } catch (e) {}
       }
-      addNavHandler(document.getElementById('nav-prev'), function() { Reveal.prev(); });
-      addNavHandler(document.getElementById('nav-next'), function() { Reveal.next(); });
-      updateCounter();
-      var mo = new MutationObserver(updateCounter);
-      mo.observe(document.querySelector('.reveal .slides'), { subtree: true, attributeFilter: ['class'] });
-    }
-    function updateCounter() {
-      var el = document.getElementById('nav-counter');
-      if (!el) return;
-      var slides = Array.from(document.querySelectorAll('.reveal .slides section:not(.stack)'));
-      var idx = slides.findIndex(function(s) { return s.classList.contains('present'); });
-      el.textContent = (idx + 1) + ' / ' + slides.length;
-      document.getElementById('nav-prev').disabled = (idx <= 0);
-      document.getElementById('nav-next').disabled = (idx >= slides.length - 1);
-    }
-    if (Reveal.isReady()) { initNav(); } else { Reveal.addEventListener('ready', initNav); }
-  });
+
+      function createHome() {
+        try {
+          if (document.getElementById('home-btn')) return;
+          var home = document.createElement('a');
+          home.id = 'home-btn';
+          home.href = './index.html';
+          home.textContent = 'Home';
+          document.body.appendChild(home);
+        } catch (e) {}
+      }
+
+      function updateCounter() {
+        try {
+          var el = document.getElementById('nav-counter');
+          if (!el || !window.Reveal) return;
+          var slides = Array.from(document.querySelectorAll('.reveal .slides section:not(.stack)'));
+          var idx = slides.findIndex(function(s) { return s.classList.contains('present'); });
+          el.textContent = (idx + 1) + ' / ' + slides.length;
+          var prev = document.getElementById('nav-prev');
+          var next = document.getElementById('nav-next');
+          if (prev) prev.disabled = (idx <= 0);
+          if (next) next.disabled = (idx >= slides.length - 1);
+        } catch (e) {}
+      }
+
+      function initCounter() {
+        try {
+          if (counterInit || !window.Reveal) return;
+          counterInit = true;
+          updateCounter();
+          Reveal.on('slidechanged', updateCounter);
+        } catch (e) {}
+      }
+
+      function isFirstSlide() {
+        return Reveal.getIndices().h === 0 && Reveal.getIndices().v === 0;
+      }
+
+      function handleNav(btn) {
+        initCounter();
+        if (btn.id === 'nav-prev') {
+          if (isFirstSlide()) {
+            window.location.href = './index.html';
+          } else {
+            Reveal.prev();
+          }
+        }
+        if (btn.id === 'nav-next') Reveal.next();
+      }
+
+      document.addEventListener('click', function(e) {
+        try {
+          var btn = e.target.closest('#nav-prev, #nav-next');
+          if (!btn || !window.Reveal) return;
+          handleNav(btn);
+        } catch (e) {}
+      });
+
+      document.addEventListener('touchend', function(e) {
+        try {
+          var btn = e.target.closest('#nav-prev, #nav-next');
+          if (!btn || !window.Reveal) return;
+          e.preventDefault();
+          handleNav(btn);
+        } catch (e) {}
+      }, { passive: false });
+
+      document.addEventListener('keydown', function(e) {
+        try {
+          if (!window.Reveal) return;
+          if (isFirstSlide() && (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp')) {
+            window.location.href = './index.html';
+          }
+        } catch (e) {}
+      });
+
+      function setup() {
+        try {
+          new MutationObserver(function() {
+            createHome();
+            if (document.querySelector('.reveal > .footer')) {
+              createNav();
+              if (window.Reveal && Reveal.isReady()) initCounter();
+            }
+          }).observe(document.body, { childList: true, subtree: true });
+          createHome();
+          createNav();
+        } catch (e) {}
+      }
+
+      if (document.body) {
+        setup();
+      } else {
+        document.addEventListener('DOMContentLoaded', setup);
+      }
+    } catch (e) {}
+  })();
   </script>
 </head>
 <body class="quarto-light">
@@ -997,7 +1088,7 @@ rkskmt
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js',
+          mathjax: './libs/mathjax/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

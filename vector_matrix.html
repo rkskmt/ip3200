@@ -189,9 +189,23 @@
     }
   </style>
   <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;400;700&display=swap');
   .reveal {
-    font-family: "Noto Sans JP", "Roboto", sans-serif;
+    font-family: system-ui, -apple-system, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", "Meiryo", sans-serif;
+  }
+  /* Force scrollbar visibility on macOS/mobile */
+  .reveal .slides section {
+    scrollbar-width: thin;
+  }
+  .reveal .slides section::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .reveal .slides section::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  .reveal .slides section::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
   }
   .callout.callout-note {
       font-size: 1.5rem;
@@ -258,7 +272,7 @@
     margin-bottom: 0.5em;
     font-size: 0.8em;
     color: #444;
-    font-family: "Noto Sans JP", sans-serif;
+    font-family: inherit;
     font-weight: lighter;
   }
   .fig-small img {
@@ -486,42 +500,119 @@
   }
   </style>
   <script>
-  window.addEventListener('load', function() {
-    if (typeof Reveal === 'undefined') return;
-    function initNav() {
-      var home = document.createElement('a');
-      home.id = 'home-btn';
-      home.href = './index.html';
-      home.textContent = 'Home';
-      document.body.appendChild(home);
-      var footer = document.querySelector('.reveal > .footer');
-      if (!footer) return;
-      var nav = document.createElement('span');
-      nav.id = 'slide-nav';
-      nav.innerHTML = '<button id="nav-prev">&#9664;</button><span id="nav-counter"></span><button id="nav-next">&#9654;</button>';
-      footer.appendChild(nav);
-      function addNavHandler(el, fn) {
-        var touched = false;
-        el.addEventListener('touchstart', function(e) { e.stopPropagation(); touched = true; fn(); }, { passive: true });
-        el.addEventListener('click', function() { if (touched) { touched = false; return; } fn(); });
+  (function() {
+    try {
+      var counterInit = false;
+
+      function createNav() {
+        try {
+          if (document.getElementById('slide-nav')) return;
+          var footer = document.querySelector('.reveal > .footer');
+          if (!footer) return;
+          var nav = document.createElement('span');
+          nav.id = 'slide-nav';
+          nav.innerHTML = '<button id="nav-prev">&#9664;</button><span id="nav-counter">-/-</span><button id="nav-next">&#9654;</button>';
+          footer.appendChild(nav);
+        } catch (e) {}
       }
-      addNavHandler(document.getElementById('nav-prev'), function() { Reveal.prev(); });
-      addNavHandler(document.getElementById('nav-next'), function() { Reveal.next(); });
-      updateCounter();
-      var mo = new MutationObserver(updateCounter);
-      mo.observe(document.querySelector('.reveal .slides'), { subtree: true, attributeFilter: ['class'] });
-    }
-    function updateCounter() {
-      var el = document.getElementById('nav-counter');
-      if (!el) return;
-      var slides = Array.from(document.querySelectorAll('.reveal .slides section:not(.stack)'));
-      var idx = slides.findIndex(function(s) { return s.classList.contains('present'); });
-      el.textContent = (idx + 1) + ' / ' + slides.length;
-      document.getElementById('nav-prev').disabled = (idx <= 0);
-      document.getElementById('nav-next').disabled = (idx >= slides.length - 1);
-    }
-    if (Reveal.isReady()) { initNav(); } else { Reveal.addEventListener('ready', initNav); }
-  });
+
+      function createHome() {
+        try {
+          if (document.getElementById('home-btn')) return;
+          var home = document.createElement('a');
+          home.id = 'home-btn';
+          home.href = './index.html';
+          home.textContent = 'Home';
+          document.body.appendChild(home);
+        } catch (e) {}
+      }
+
+      function updateCounter() {
+        try {
+          var el = document.getElementById('nav-counter');
+          if (!el || !window.Reveal) return;
+          var slides = Array.from(document.querySelectorAll('.reveal .slides section:not(.stack)'));
+          var idx = slides.findIndex(function(s) { return s.classList.contains('present'); });
+          el.textContent = (idx + 1) + ' / ' + slides.length;
+          var prev = document.getElementById('nav-prev');
+          var next = document.getElementById('nav-next');
+          if (prev) prev.disabled = (idx <= 0);
+          if (next) next.disabled = (idx >= slides.length - 1);
+        } catch (e) {}
+      }
+
+      function initCounter() {
+        try {
+          if (counterInit || !window.Reveal) return;
+          counterInit = true;
+          updateCounter();
+          Reveal.on('slidechanged', updateCounter);
+        } catch (e) {}
+      }
+
+      function isFirstSlide() {
+        return Reveal.getIndices().h === 0 && Reveal.getIndices().v === 0;
+      }
+
+      function handleNav(btn) {
+        initCounter();
+        if (btn.id === 'nav-prev') {
+          if (isFirstSlide()) {
+            window.location.href = './index.html';
+          } else {
+            Reveal.prev();
+          }
+        }
+        if (btn.id === 'nav-next') Reveal.next();
+      }
+
+      document.addEventListener('click', function(e) {
+        try {
+          var btn = e.target.closest('#nav-prev, #nav-next');
+          if (!btn || !window.Reveal) return;
+          handleNav(btn);
+        } catch (e) {}
+      });
+
+      document.addEventListener('touchend', function(e) {
+        try {
+          var btn = e.target.closest('#nav-prev, #nav-next');
+          if (!btn || !window.Reveal) return;
+          e.preventDefault();
+          handleNav(btn);
+        } catch (e) {}
+      }, { passive: false });
+
+      document.addEventListener('keydown', function(e) {
+        try {
+          if (!window.Reveal) return;
+          if (isFirstSlide() && (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp')) {
+            window.location.href = './index.html';
+          }
+        } catch (e) {}
+      });
+
+      function setup() {
+        try {
+          new MutationObserver(function() {
+            createHome();
+            if (document.querySelector('.reveal > .footer')) {
+              createNav();
+              if (window.Reveal && Reveal.isReady()) initCounter();
+            }
+          }).observe(document.body, { childList: true, subtree: true });
+          createHome();
+          createNav();
+        } catch (e) {}
+      }
+
+      if (document.body) {
+        setup();
+      } else {
+        document.addEventListener('DOMContentLoaded', setup);
+      }
+    } catch (e) {}
+  })();
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
@@ -571,7 +662,7 @@ rkskmt
 </ul></li>
 </ul>
 <div style="width: 30%; margin: 0 auto;">
-<div id="ffd359d3" class="cell" data-execution_count="1">
+<div id="8c28a9a3" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -645,7 +736,7 @@ rkskmt
 <span id="cb2-6"><a></a><span class="bu">print</span>(a <span class="op">+</span> b)   <span class="co"># [3 4]</span></span>
 <span id="cb2-7"><a></a><span class="bu">print</span>(a <span class="op">-</span> b)   <span class="co"># [-1  2]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="110d1d55" class="cell" data-execution_count="2">
+<div id="0ef6c24c" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -677,7 +768,7 @@ rkskmt
 <span id="cb3-4"><a></a></span>
 <span id="cb3-5"><a></a><span class="bu">print</span>(a <span class="op">*</span> <span class="dv">2</span>)   <span class="co"># [2 4]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="842d2108" class="cell" data-execution_count="3">
+<div id="40050c99" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -856,7 +947,7 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 10 \\ 4 &amp; 5 &amp; 6 &amp; 11 \\ 
 =
 \begin{pmatrix} 19 &amp; 22 \\ 43 &amp; 50 \end{pmatrix}
 \]</span></p>
-<div id="320c2b1d" class="cell" data-execution_count="4">
+<div id="b31098d9" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1125,7 +1216,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 \begin{cases} x + y = 4 \\ x - y = 2 \end{cases}
 \]</span></p>
 <p>（４）<span class="math inline">\(\mathbf{a} = \begin{pmatrix} 6 \\ 8 \end{pmatrix}\)</span> のノルムと単位ベクトルを求めよ。</p>
-<div id="7fe818ab" class="cell" data-execution_count="5">
+<div id="16e88cdb" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1222,7 +1313,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 <span id="cb12-6"><a></a><span class="bu">print</span>(a_hat)                  <span class="co"># [0.6 0.8]</span></span>
 <span id="cb12-7"><a></a><span class="bu">print</span>(np.linalg.norm(a_hat))  <span class="co"># 1.0</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="1b15e36b" class="cell" data-execution_count="6">
+<div id="3159eb34" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1292,7 +1383,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <li><span class="math inline">\(|\mathbf{b}|\cos\theta\)</span> <span class="fw-colon">：</span><span class="math inline">\(\mathbf{b}\)</span> を <span class="math inline">\(\mathbf{a}\)</span> の方向に<strong>射影</strong>した長さ</li>
 <li>内積 = 「<span class="math inline">\(\mathbf{b}\)</span>の<span class="math inline">\(\mathbf{a}\)</span>方向に対する成分」× 「<span class="math inline">\(\mathbf{a}\)</span>の長さ<span class="math inline">\(|\mathbf{a}|\)</span>」</li>
 </ul>
-<div id="2f5a7b63" class="cell" data-execution_count="7">
+<div id="2490f471" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1311,7 +1402,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <li>つまり、射影の長さがゼロ → 「<span class="math inline">\(\mathbf{a}\)</span> 方向の成分がない」</li>
 </ul></li>
 </ul>
-<div id="c68650d2" class="cell" data-execution_count="8">
+<div id="7c42e62d" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1361,7 +1452,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 </section>
 <section id="応用例多角形に対する内外判定" class="slide level2">
 <h2>応用例<span class="fw-colon">：</span>多角形に対する内外判定</h2>
-<div id="b2ad4769" class="cell" data-execution_count="9">
+<div id="4f2421bd" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1384,7 +1475,7 @@ c_2 = (\overrightarrow{BC}) \times (\overrightarrow{BP}), \quad
 c_3 = (\overrightarrow{CA}) \times (\overrightarrow{CP})
 \]</span></p>
 <p><span class="math inline">\(c_1, c_2, c_3\)</span> が全て同符号 → 内側</p>
-<div id="dafe20cd" class="cell" data-execution_count="10">
+<div id="f5713b6d" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-2"><a></a></span>
 <span id="cb15-3"><a></a><span class="kw">def</span> cross_2d(v1, v2):</span>
@@ -1423,7 +1514,7 @@ c_3 = (\overrightarrow{CA}) \times (\overrightarrow{CP})
 </ul></li>
 </ul>
 <div style="width: 40%; margin: 0 auto;">
-<div id="1fa6920c" class="cell" data-execution_count="11">
+<div id="285d8c05" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1685,7 +1776,7 @@ c_3 = (\overrightarrow{CA}) \times (\overrightarrow{CP})
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js',
+          mathjax: './libs/mathjax/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
