@@ -6,6 +6,9 @@ site_libs/
 *.quarto_ipynb
 iframes/
 
+# Local dependencies (installed by setup.py)
+libs/
+
 # OS
 .DS_Store
 Thumbs.db

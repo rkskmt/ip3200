@@ -1,39 +1,27 @@
-# 情報処理（IP3200）
-
-Quarto で作成した授業スライド。  
-公開URL: https://rkskmt.github.io/ip3200/
-
 ## セットアップ
 
 ### 必要なもの
 
 - [Quarto](https://quarto.org/docs/get-started/) (>= 1.8)
-- Python 3.10+
-- NumPy, Matplotlib, japanize-matplotlib
+- conda (Miniconda / Anaconda)
 
-### Python 環境（conda 推奨）
-
-`environment.yml` から `IP3200` という名前の conda 環境を再現できる。
+### ワンコマンドセットアップ
 
 ```bash
-conda env create -f environment.yml   # IP3200 環境を作成
+python setup.py
 conda activate IP3200
 ```
 
-conda を使わない場合は pip でも可：
+`setup.py` が以下をまとめて行う：
+- conda 環境 `IP3200` の作成（Python 3.12 + NumPy, Matplotlib, japanize-matplotlib）
+- `QUARTO_PYTHON` 自動設定の activate フック
+- MathJax 2 のダウンロード（`libs/mathjax/`）
+
+MathJax だけ再取得したい場合：
 
 ```bash
-pip install numpy matplotlib japanize-matplotlib
+python setup.py --mathjax-only
 ```
-
-### VSCode で環境を自動有効化
-
-conda の名前付き環境はフォルダに紐付かないため、このフォルダを開いても自動では有効化されない。一度だけ次の操作をすると、以後このワークスペースで開く統合ターミナルが自動で `IP3200` に切り替わる。
-
-1. `Ctrl+Shift+P` → **Python: Select Interpreter**
-2. `IP3200` を選ぶ
-
-新しいターミナルのプロンプトが `(IP3200)` になっていれば成功（設定は VSCode 側に保存され、リポジトリには含まれない。PC ごとに 1 回ずつ必要）。
 
 ### ローカルプレビュー
 
