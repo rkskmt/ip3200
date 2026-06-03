@@ -44,4 +44,16 @@ document.querySelectorAll("details").forEach(d => {
   const s = d.querySelector("summary");
   s.textContent += `[${n}]`;
 });
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown') {
+    try {
+      var last = sessionStorage.getItem('lastSlide');
+      if (last) {
+        sessionStorage.removeItem('lastSlide');
+        window.location.href = last;
+      }
+    } catch (e) {}
+  }
+});
 </script>
