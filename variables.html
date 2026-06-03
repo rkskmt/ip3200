@@ -523,6 +523,10 @@
           home.id = 'home-btn';
           home.href = './index.html';
           home.textContent = 'Home';
+          home.addEventListener('click', function(e) {
+            e.preventDefault();
+            goHome();
+          });
           document.body.appendChild(home);
         } catch (e) {}
       }
@@ -554,11 +558,16 @@
         return Reveal.getIndices().h === 0 && Reveal.getIndices().v === 0;
       }
 
+      function goHome() {
+        try { sessionStorage.setItem('lastSlide', window.location.href); } catch (e) {}
+        window.location.href = './index.html';
+      }
+
       function handleNav(btn) {
         initCounter();
         if (btn.id === 'nav-prev') {
           if (isFirstSlide()) {
-            window.location.href = './index.html';
+            goHome();
           } else {
             Reveal.prev();
           }
@@ -587,7 +596,7 @@
         try {
           if (!window.Reveal) return;
           if (isFirstSlide() && (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp')) {
-            window.location.href = './index.html';
+            goHome();
           }
         } catch (e) {}
       });

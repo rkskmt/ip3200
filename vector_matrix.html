@@ -523,6 +523,10 @@
           home.id = 'home-btn';
           home.href = './index.html';
           home.textContent = 'Home';
+          home.addEventListener('click', function(e) {
+            e.preventDefault();
+            goHome();
+          });
           document.body.appendChild(home);
         } catch (e) {}
       }
@@ -554,11 +558,16 @@
         return Reveal.getIndices().h === 0 && Reveal.getIndices().v === 0;
       }
 
+      function goHome() {
+        try { sessionStorage.setItem('lastSlide', window.location.href); } catch (e) {}
+        window.location.href = './index.html';
+      }
+
       function handleNav(btn) {
         initCounter();
         if (btn.id === 'nav-prev') {
           if (isFirstSlide()) {
-            window.location.href = './index.html';
+            goHome();
           } else {
             Reveal.prev();
           }
@@ -587,7 +596,7 @@
         try {
           if (!window.Reveal) return;
           if (isFirstSlide() && (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp')) {
-            window.location.href = './index.html';
+            goHome();
           }
         } catch (e) {}
       });
@@ -662,7 +671,7 @@ rkskmt
 </ul></li>
 </ul>
 <div style="width: 30%; margin: 0 auto;">
-<div id="8c28a9a3" class="cell" data-execution_count="1">
+<div id="d176625f" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -736,7 +745,7 @@ rkskmt
 <span id="cb2-6"><a></a><span class="bu">print</span>(a <span class="op">+</span> b)   <span class="co"># [3 4]</span></span>
 <span id="cb2-7"><a></a><span class="bu">print</span>(a <span class="op">-</span> b)   <span class="co"># [-1  2]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="0ef6c24c" class="cell" data-execution_count="2">
+<div id="0a452d53" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -768,7 +777,7 @@ rkskmt
 <span id="cb3-4"><a></a></span>
 <span id="cb3-5"><a></a><span class="bu">print</span>(a <span class="op">*</span> <span class="dv">2</span>)   <span class="co"># [2 4]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="40050c99" class="cell" data-execution_count="3">
+<div id="a12f4e61" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -947,7 +956,7 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 10 \\ 4 &amp; 5 &amp; 6 &amp; 11 \\ 
 =
 \begin{pmatrix} 19 &amp; 22 \\ 43 &amp; 50 \end{pmatrix}
 \]</span></p>
-<div id="b31098d9" class="cell" data-execution_count="4">
+<div id="78ead968" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1216,7 +1225,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 \begin{cases} x + y = 4 \\ x - y = 2 \end{cases}
 \]</span></p>
 <p>（４）<span class="math inline">\(\mathbf{a} = \begin{pmatrix} 6 \\ 8 \end{pmatrix}\)</span> のノルムと単位ベクトルを求めよ。</p>
-<div id="16e88cdb" class="cell" data-execution_count="5">
+<div id="edf2a7e7" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1313,7 +1322,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 <span id="cb12-6"><a></a><span class="bu">print</span>(a_hat)                  <span class="co"># [0.6 0.8]</span></span>
 <span id="cb12-7"><a></a><span class="bu">print</span>(np.linalg.norm(a_hat))  <span class="co"># 1.0</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="3159eb34" class="cell" data-execution_count="6">
+<div id="bdd76db3" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1383,7 +1392,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <li><span class="math inline">\(|\mathbf{b}|\cos\theta\)</span> <span class="fw-colon">：</span><span class="math inline">\(\mathbf{b}\)</span> を <span class="math inline">\(\mathbf{a}\)</span> の方向に<strong>射影</strong>した長さ</li>
 <li>内積 = 「<span class="math inline">\(\mathbf{b}\)</span>の<span class="math inline">\(\mathbf{a}\)</span>方向に対する成分」× 「<span class="math inline">\(\mathbf{a}\)</span>の長さ<span class="math inline">\(|\mathbf{a}|\)</span>」</li>
 </ul>
-<div id="2490f471" class="cell" data-execution_count="7">
+<div id="5183bf8b" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1402,7 +1411,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <li>つまり、射影の長さがゼロ → 「<span class="math inline">\(\mathbf{a}\)</span> 方向の成分がない」</li>
 </ul></li>
 </ul>
-<div id="7c42e62d" class="cell" data-execution_count="8">
+<div id="d30a43bc" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1452,7 +1461,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 </section>
 <section id="応用例多角形に対する内外判定" class="slide level2">
 <h2>応用例<span class="fw-colon">：</span>多角形に対する内外判定</h2>
-<div id="4f2421bd" class="cell" data-execution_count="9">
+<div id="bb43392c" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1475,7 +1484,7 @@ c_2 = (\overrightarrow{BC}) \times (\overrightarrow{BP}), \quad
 c_3 = (\overrightarrow{CA}) \times (\overrightarrow{CP})
 \]</span></p>
 <p><span class="math inline">\(c_1, c_2, c_3\)</span> が全て同符号 → 内側</p>
-<div id="f5713b6d" class="cell" data-execution_count="10">
+<div id="ec4bbb1c" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-2"><a></a></span>
 <span id="cb15-3"><a></a><span class="kw">def</span> cross_2d(v1, v2):</span>
@@ -1514,7 +1523,7 @@ c_3 = (\overrightarrow{CA}) \times (\overrightarrow{CP})
 </ul></li>
 </ul>
 <div style="width: 40%; margin: 0 auto;">
-<div id="285d8c05" class="cell" data-execution_count="11">
+<div id="4386c11b" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div>
 <figure>

@@ -523,6 +523,10 @@
           home.id = 'home-btn';
           home.href = './index.html';
           home.textContent = 'Home';
+          home.addEventListener('click', function(e) {
+            e.preventDefault();
+            goHome();
+          });
           document.body.appendChild(home);
         } catch (e) {}
       }
@@ -554,11 +558,16 @@
         return Reveal.getIndices().h === 0 && Reveal.getIndices().v === 0;
       }
 
+      function goHome() {
+        try { sessionStorage.setItem('lastSlide', window.location.href); } catch (e) {}
+        window.location.href = './index.html';
+      }
+
       function handleNav(btn) {
         initCounter();
         if (btn.id === 'nav-prev') {
           if (isFirstSlide()) {
-            window.location.href = './index.html';
+            goHome();
           } else {
             Reveal.prev();
           }
@@ -587,7 +596,7 @@
         try {
           if (!window.Reveal) return;
           if (isFirstSlide() && (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp')) {
-            window.location.href = './index.html';
+            goHome();
           }
         } catch (e) {}
       });
@@ -873,7 +882,7 @@ rkskmt
 </tr>
 </tbody>
 </table>
-<div id="f1d63c24" class="cell" data-execution_count="2">
+<div id="114f6f6b" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -890,7 +899,7 @@ rkskmt
 <li>線形回帰の前提（直線関係 + 均一なばらつき）が成立</li>
 <li>典型的な普通のデータ</li>
 </ul>
-<div id="634421e2" class="cell" data-execution_count="3">
+<div id="ab23419f" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -899,7 +908,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="532c3a68" class="cell" data-execution_count="4">
+<div id="0347699a" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -939,7 +948,7 @@ rkskmt
 <li>直線を当てはめても本質を捉えられない</li>
 <li>統計量だけ見ていると「直線で説明できた」と思い込みやすい</li>
 </ul>
-<div id="3d1f5b5e" class="cell" data-execution_count="5">
+<div id="f88539fe" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -948,7 +957,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="d1a68213" class="cell" data-execution_count="6">
+<div id="096c4040" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -989,7 +998,7 @@ rkskmt
 <li>たった1点だけ大きく外れている</li>
 <li>その1点に <strong>回帰直線が引っ張られている</strong></li>
 </ul>
-<div id="b1d95bcf" class="cell" data-execution_count="7">
+<div id="61fc5281" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -998,7 +1007,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="0a270bea" class="cell" data-execution_count="8">
+<div id="203fe6ab" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1039,7 +1048,7 @@ rkskmt
 <li>1点だけ <code>x=19</code> にあり、その1点が「直線がある」ように見せている</li>
 <li>同じ条件で測定しすぎていて、<code>x</code> が振れていない</li>
 </ul>
-<div id="17ff1b0d" class="cell" data-execution_count="9">
+<div id="2a50e2bb" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1048,7 +1057,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="d269860b" class="cell" data-execution_count="10">
+<div id="808c9b2e" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1247,7 +1256,7 @@ rkskmt
 <li>一番基本の <code>plt.plot(x, y, 'o')</code> — ‘o’ は <strong>マーカー</strong> を表す</li>
 <li><code>x</code> も <code>y</code> も <strong><code>ndarray</code></strong> や <strong><code>list</code></strong> でOK</li>
 </ul>
-<div id="52d025f9" class="cell" data-execution_count="11">
+<div id="28217c91" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a></a></span>
@@ -1271,7 +1280,7 @@ rkskmt
 <li>第3引数を <strong>省略すると折れ線</strong></li>
 <li><code>'o-'</code> だと <strong>点＋線</strong></li>
 </ul>
-<div id="fe838030" class="cell" data-execution_count="12">
+<div id="4d9ace90" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-3"><a></a></span>
@@ -1296,7 +1305,7 @@ rkskmt
 <li>3次元プロットでは <code>zlim</code> も使える</li>
 <li>何も指定しないと <strong>データの範囲＋少し余白</strong> が自動で選ばれる</li>
 </ul>
-<div id="37b8622c" class="cell" data-execution_count="13">
+<div id="e8094c31" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-3"><a></a></span>
@@ -1340,7 +1349,7 @@ rkskmt
 <li><code>plt.legend()</code> で <strong>凡例</strong>（<code>plot()</code> に <code>label=</code> を指定しておく）</li>
 <li><code>plt.grid(True)</code> で <strong>グリッド線</strong></li>
 </ul>
-<div id="38bf704a" class="cell" data-execution_count="14">
+<div id="324ad872" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb10-3"><a></a></span>
@@ -1395,7 +1404,7 @@ rkskmt
 <div style="text-align:center; font-family:monospace;">
 <p>1 │ 2<br> ─┼─<br> 3 │ 4</p>
 </div>
-<div id="8201b267" class="cell" data-execution_count="15">
+<div id="c9435098" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb11-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-3"><a></a></span>
@@ -1425,7 +1434,7 @@ rkskmt
 <li>大量の <code>(x, y)</code> を点で打つ → 分布や相関が見える</li>
 <li><code>alpha</code> で <strong>透明度</strong> を指定すると重なりが分かりやすい</li>
 </ul>
-<div id="c7f76dd2" class="cell" data-execution_count="16">
+<div id="72e32e7c" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-3"><a></a></span>
@@ -1470,7 +1479,7 @@ rkskmt
 <li>3D は <code>add_subplot(projection="3d")</code> で軸オブジェクトを作る</li>
 <li><code>plt.◯◯</code> ではなく <strong><code>ax.◯◯</code></strong> で操作する</li>
 </ul>
-<div id="803ad92d" class="cell" data-execution_count="17">
+<div id="919b2ed9" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb13-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb13-3"><a></a></span>
@@ -1652,7 +1661,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="07d05e1c" class="cell" data-execution_count="18">
+<div id="487a831e" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1712,7 +1721,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="12f1a7a2" class="cell" data-execution_count="19">
+<div id="1b66ca31" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>

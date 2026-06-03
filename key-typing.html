@@ -523,6 +523,10 @@
           home.id = 'home-btn';
           home.href = './index.html';
           home.textContent = 'Home';
+          home.addEventListener('click', function(e) {
+            e.preventDefault();
+            goHome();
+          });
           document.body.appendChild(home);
         } catch (e) {}
       }
@@ -554,11 +558,16 @@
         return Reveal.getIndices().h === 0 && Reveal.getIndices().v === 0;
       }
 
+      function goHome() {
+        try { sessionStorage.setItem('lastSlide', window.location.href); } catch (e) {}
+        window.location.href = './index.html';
+      }
+
       function handleNav(btn) {
         initCounter();
         if (btn.id === 'nav-prev') {
           if (isFirstSlide()) {
-            window.location.href = './index.html';
+            goHome();
           } else {
             Reveal.prev();
           }
@@ -587,7 +596,7 @@
         try {
           if (!window.Reveal) return;
           if (isFirstSlide() && (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp')) {
-            window.location.href = './index.html';
+            goHome();
           }
         } catch (e) {}
       });
@@ -864,7 +873,7 @@ rkskmt
 <p><strong>ABC400の解答例（Python）</strong></p>
 </div>
 <div class="callout-content">
-<div id="0c9bfaa3" class="cell" data-execution_count="1">
+<div id="e5bcad07" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>A <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>

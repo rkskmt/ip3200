@@ -523,6 +523,10 @@
           home.id = 'home-btn';
           home.href = './index.html';
           home.textContent = 'Home';
+          home.addEventListener('click', function(e) {
+            e.preventDefault();
+            goHome();
+          });
           document.body.appendChild(home);
         } catch (e) {}
       }
@@ -554,11 +558,16 @@
         return Reveal.getIndices().h === 0 && Reveal.getIndices().v === 0;
       }
 
+      function goHome() {
+        try { sessionStorage.setItem('lastSlide', window.location.href); } catch (e) {}
+        window.location.href = './index.html';
+      }
+
       function handleNav(btn) {
         initCounter();
         if (btn.id === 'nav-prev') {
           if (isFirstSlide()) {
-            window.location.href = './index.html';
+            goHome();
           } else {
             Reveal.prev();
           }
@@ -587,7 +596,7 @@
         try {
           if (!window.Reveal) return;
           if (isFirstSlide() && (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp')) {
-            window.location.href = './index.html';
+            goHome();
           }
         } catch (e) {}
       });
@@ -1141,7 +1150,7 @@ rkskmt
 <li>数値だけでは見落とすので <strong>まず描く</strong> — <a href="./visualize.html">可視化章</a> の大原則</li>
 <li>同じURL/ヘッダーで取得したあと <code>plt.plot(views)</code> するだけ</li>
 </ul>
-<div id="e526e66c" class="cell" data-execution_count="1">
+<div id="dd897879" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1150,7 +1159,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="ebc0b74a" class="cell" data-execution_count="2">
+<div id="0bb9cbb3" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> requests</span>
@@ -1300,7 +1309,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="86473602" class="cell" data-execution_count="3">
+<div id="c8f66182" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> requests</span>
