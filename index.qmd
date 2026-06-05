@@ -46,7 +46,14 @@ document.querySelectorAll("details").forEach(d => {
 });
 
 document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    return;
+  }
   if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown') {
+    e.preventDefault();
+    e.stopImmediatePropagation();
     try {
       var last = sessionStorage.getItem('lastSlide');
       if (last) {
@@ -55,5 +62,5 @@ document.addEventListener('keydown', function(e) {
       }
     } catch (e) {}
   }
-});
+}, true);
 </script>

@@ -65,6 +65,15 @@ When changing CSS, theme, or `_metadata.yaml`: read **[doc/troubleshooting.md](d
 
 **JavaScript robustness:** Inline JS in `_metadata.yaml` must be defensive. On slow networks, DOM elements or `Reveal` may not be ready when scripts run. Wrap operations in `try/catch` and check for existence (`if (!window.Reveal) return;`). Uncaught errors can break other scripts (e.g., MathJax) loaded on the same page.
 
+**Event listener priority:** Inline JS in `.qmd` files loses to Quarto/revealjs event handlers by default. To intercept keyboard events before revealjs, use capture phase and stop propagation:
+```javascript
+document.addEventListener('keydown', function(e) {
+  e.preventDefault();
+  e.stopImmediatePropagation();
+  // ...
+}, true);  // capture phase
+```
+
 ## Reference Docs
 
 - **[doc/slide-notation.md](doc/slide-notation.md)** — image/citation overlay notation (`.fig-cite`, `.content-box`, etc.)
