@@ -23,6 +23,8 @@ MathJax だけ再取得したい場合：
 python setup.py --mathjax-only
 ```
 
+VSCode でこのフォルダを開けば Python 環境は自動で設定される。ターミナルで直接作業する場合は `conda activate IP3200` を実行すること。
+
 ### ローカルプレビュー
 
 ```bash
