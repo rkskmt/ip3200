@@ -447,6 +447,11 @@ format:
           } catch (e) {}
         })();
         </script>
+mermaid:
+  theme: default
+  flowchart:
+    nodeSpacing: 10
+    rankSpacing: 15
 filters:
   - hl.lua
   - fw-colon.lua

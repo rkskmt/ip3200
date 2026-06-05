@@ -23,6 +23,7 @@ MATHJAX_URL = f"https://github.com/mathjax/MathJax/archive/refs/tags/{MATHJAX_VE
 ROOT = Path(__file__).parent
 LIBS_DIR = ROOT / "libs"
 MATHJAX_DIR = LIBS_DIR / "mathjax"
+VSCODE_DIR = ROOT / ".vscode"
 
 
 def run(cmd, check=True, capture=False):
@@ -65,6 +66,27 @@ def setup_quarto_hook():
     print(f"  Created {hook_file}")
 
 
+def setup_vscode():
+    print("\n=== VSCode settings ===")
+
+    VSCODE_DIR.mkdir(exist_ok=True)
+    settings_file = VSCODE_DIR / "settings.json"
+
+    result = run("conda info --base", capture=True)
+    conda_base = Path(result.stdout.strip())
+    python_path = conda_base / "envs" / ENV_NAME / "bin" / "python"
+
+    settings = f'''\
+{{
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python-envs.defaultPackageManager": "ms-python.python:conda",
+    "python.defaultInterpreterPath": "{python_path}"
+}}
+'''
+    settings_file.write_text(settings)
+    print(f"  Created {settings_file}")
+
+
 def setup_mathjax():
     print("\n=== MathJax (self-hosted) ===")
 
@@ -97,6 +119,7 @@ def main():
 
     if not mathjax_only:
         setup_conda_env()
+        setup_vscode()
 
     setup_mathjax()
 
