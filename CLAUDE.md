@@ -28,10 +28,10 @@ Quarto-based website for "情報処理" (Information Processing). Written in Jap
 
 Use Python as the vehicle, but frame concepts as broadly as possible. Where a concept is universal (e.g., iteration, container, method), note that it exists across languages. Prefer language-agnostic expressions alongside Python-specific ones.
 
-## Matplotlib Japanese Text
+## Matplotlib
 
-- **Do not use `rcParams['font.family']`** for Japanese — it never works reliably.
-- Always use `import japanize_matplotlib` instead.
+- **Whenever using matplotlib, `import japanize_matplotlib`** — even if the current plot has no Japanese text, for consistency.
+- **Do not use `rcParams['font.family']`** for Japanese — it never works reliably. `japanize_matplotlib` is the only reliable approach.
 
 ## Conventions
 
