@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Quarto-based website for "情報処理" (Information Processing). Written in Japanese.
+Quarto-based website for an information processing course. Written in Japanese.
 
 ## Tech Stack
 

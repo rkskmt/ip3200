@@ -60,7 +60,7 @@ import requests
 ```python
 import requests
 
-response = requests.get('https://www.example.com/')
+response = requests.get('https://www.python.org/')
 print(response)   # <Response [200]>
 ```
 
@@ -102,7 +102,7 @@ print(response)   # <Response [200]>
 ```python
 import requests
 
-response = requests.get('https://www.example.com/')
+response = requests.get('https://www.python.org/')
 print(response.text)    # HTMLの中身
 ```
 
@@ -115,7 +115,7 @@ print(response.text)    # HTMLの中身
 ```python
 import requests
 
-response = requests.get('https://www.example.com/')
+response = requests.get('https://www.python.org/')
 print(response.headers)
 ```
 
@@ -290,7 +290,7 @@ https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/
 | **end** | ✓ | YYYYMMDD |
 
 
-## 七夕のページビューを取得する
+## 東京スカイツリーのページビューを取得する
 
 - 過去1年分の日別アクセス数を取り、最大・最小・平均・分散を出す
 
@@ -300,7 +300,7 @@ import numpy as np
 
 url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
        "ja.wikipedia/all-access/user/"
-       "七夕/daily/20240401/20250328")
+       "東京スカイツリー/daily/20240401/20250328")
 headers = {'User-Agent': 'example.com/lesson'}
 
 response = requests.get(url, headers=headers)
@@ -373,7 +373,7 @@ import numpy as np
 
 url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
        "ja.wikipedia/all-access/user/"
-       "七夕/daily/20240401/20250328")
+       "東京スカイツリー/daily/20240401/20250328")
 headers = {'User-Agent': 'example.com/lesson'}
 response = requests.get(url, headers=headers)
 data = response.json()
@@ -395,7 +395,7 @@ print(f"Var:  {np.var(views):.1f}")
 ::: {.callout-note}
 ## 1日だけ突出している
 - ほぼ平坦な中、**1日だけ大きな山**
-- なにかニュース・受験イベントなどで参照が増えた可能性
+- なにかニュース・イベントなどで参照が増えた可能性
 - **数値だけ見ていると気づけない** ← アンスコムの教訓と同じ
 :::
 
@@ -460,7 +460,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 headers = {'User-Agent': 'example.com/lesson'}
-article = "七夕"
+article = "東京スカイツリー"
 base = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
         f"ja.wikipedia/{{access}}/user/{article}/daily/20240401/20250328")
 
