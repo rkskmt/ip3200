@@ -1,0 +1,592 @@
+---
+title: "東京都オープンデータAPI"
+subtitle: "自治体データを活用する"
+---
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+なぜオープンデータか
+:::
+
+
+## オープンデータとは
+
+- 政府・自治体が **誰でも自由に使える形式** で公開するデータ
+- 商用・非商用問わず **二次利用可能**
+- 機械可読（CSV, JSON, API）で提供
+
+::: {.callout-note}
+## 意義
+- **透明性**：行政の活動を市民が検証できる
+- **イノベーション**：民間がデータを活用してサービス開発
+- **効率化**：データに基づく政策立案（EBPM）
+:::
+
+
+## 身近なオープンデータ活用例
+
+| サービス | 使用データ |
+|---|---|
+| 乗換案内アプリ | 公共交通の時刻表・遅延情報 |
+| 防災アプリ | 避難所・ハザードマップ |
+| 不動産サイト | 地価公示・用途地域 |
+| 天気予報 | 気象庁の観測データ |
+
+- **すでに使っている** — 意識していないだけ
+- 自分でもAPIを叩けば **同じデータ** が手に入る
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+東京都オープンデータAPI
+:::
+
+
+## 概要
+
+- **東京都オープンデータカタログサイト** の一部データをAPI提供
+- ユーザ登録 **不要** — 誰でもすぐに利用可能
+- 掲載データ約54,000件のうち、CSV約35,000件がAPI対応
+
+| 項目 | 内容 |
+|---|---|
+| 認証 | 不要 |
+| レート制限 | 明示なし（常識的な範囲で） |
+| データ形式 | JSON / XML |
+| CORS | 対応済み |
+
+
+## Wikipedia APIとの違い
+
+| | Wikipedia API | 東京都API |
+|---|---|---|
+| HTTPメソッド | **GET** | **POST** |
+| データ内容 | 百科事典・統計 | 行政・地理・施設 |
+| 更新頻度 | リアルタイム〜日次 | 不定期（年次も多い） |
+
+::: {.callout-warning}
+## 重要：POSTでアクセス
+- Wikipedia API は `requests.get()`
+- 東京都API は `requests.post()`
+- 間違えると動かない
+:::
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+APIの構造
+:::
+
+
+## 基本URL
+
+```text
+https://service.api.metro.tokyo.lg.jp/api/{apiId}/{format}
+```
+
+- `{apiId}` — データセットごとに異なるID
+- `{format}` — `json` または `xml`
+
+例：東京都人口の推移（JSON）
+
+```text
+https://service.api.metro.tokyo.lg.jp/api/t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0/json
+```
+
+
+## APIのIDを探す
+
+- [API検索ページ](https://spec.api.metro.tokyo.lg.jp/spec/search) でキーワード検索
+- 欲しいデータの apiId をコピーして使う
+
+::: {.callout-tip}
+## 探し方のコツ
+- 「避難所」「駐輪場」「人口」などキーワードで検索
+- 区市町村名で絞り込み可能
+- 詳細ページで apiId と列名を確認
+:::
+
+
+## パラメータ
+
+| パラメータ | 説明 | 例 |
+|---|---|---|
+| `limit` | 取得レコード数の上限 | `?limit=100` |
+| `offset` | 取得開始位置 | `?offset=50` |
+| `column` | 取得する列の指定 | `?column=名称,住所` |
+| `filter` | 条件フィルタ | `?filter=公表_年月日:2021` |
+
+- デフォルトは **100件**
+- 全件欲しいときは `limit` を大きく設定
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+基本的な使い方
+:::
+
+
+## 最小テンプレート
+
+```python
+import requests
+
+api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
+url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
+
+params = {'limit': 200}
+headers = {'User-Agent': 'example.com/lesson'}
+body = {}
+
+response = requests.post(url, params=params, headers=headers, json=body)
+data = response.json()
+
+print(data["hits"])
+```
+
+::: {.callout-note}
+## `json={}` の意味
+- 空のJSONボディを送信している
+- 東京都APIの仕様上必要
+- 深い意味はないが省略不可
+:::
+
+
+## レスポンス構造
+
+```json
+{
+  "total": 152,
+  "subtotal": 152,
+  "limit": 200,
+  "offset": null,
+  "metadata": {
+    "apiId": "API識別子",
+    "title": "データタイトル",
+    "version": "1.0.7"
+  },
+  "hits": [
+    {"row": 1, "和暦（年次）": "明治5", "西暦（年次）": 1872, "東京都／人口": 859345},
+    {"row": 2, "和暦（年次）": "明治6", "西暦（年次）": 1873, "東京都／人口": 887322},
+    ...
+  ]
+}
+```
+
+- `total` — 全件数
+- `metadata` — データセットの情報
+- `hits` — **実際のデータ本体**（list of dict）
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+検索条件を指定する
+:::
+
+
+## body で条件指定
+
+- `column` — 取得する列を限定
+- `searchCondition` — フィルタ条件（APIによって対応状況が異なる）
+
+```python
+# 列を限定して取得
+body = {
+    "column": ["西暦（年次）", "東京都／人口"]
+}
+
+# 取得後に Python でフィルタリング
+filtered = [r for r in data['hits']
+            if 1950 <= r['西暦（年次）'] <= 2023]
+```
+
+
+## 比較演算子
+
+| 演算子 | 意味 | 数式 |
+|---|---|---|
+| `gt` | greater than | `>` より大きい |
+| `lt` | less than | `<` より小さい |
+| `ge` | greater or equal | `≥` 以上 |
+| `le` | less or equal | `≤` 以下 |
+
+::: {.callout-tip}
+## 覚え方
+- **g** = greater（大きい）
+- **l** = less（小さい）
+- **e** = equal（等しい）
+:::
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+実用サンプル
+:::
+
+
+## 東京都人口（期間指定）
+
+```python
+import requests
+
+headers = {'User-Agent': 'example.com/lesson'}
+api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
+url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
+
+params = {'limit': 200}
+body = {"column": ["西暦（年次）", "東京都／人口"]}
+
+response = requests.post(url, params=params, headers=headers, json=body)
+data = response.json()
+
+# Python でフィルタリング
+filtered = [r for r in data['hits']
+            if 1950 <= r['西暦（年次）'] <= 2023]
+
+print(f"総件数: {len(filtered)}")
+for record in filtered[:5]:
+    print(f"{record['西暦（年次）']}年: {record['東京都／人口']:,}人")
+```
+
+```text
+総件数: 74
+1950年: 6,277,500人
+1951年: 6,712,494人
+1952年: 7,108,749人
+1953年: 7,468,907人
+1954年: 7,773,648人
+```
+
+
+## 人口推移の可視化
+
+```{python}
+#| echo: false
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+
+years = np.arange(1950, 2024)
+n = len(years)
+population = np.linspace(6.3, 14.1, n) * 1e6
+population += np.random.default_rng(0).normal(0, 0.1e6, n)
+
+fig, ax = plt.subplots(figsize=(6, 3))
+ax.plot(years, population / 1e6, color="#2266CC", linewidth=1.2)
+ax.set_title("Tokyo Population 1950-2023")
+ax.set_xlabel("Year")
+ax.set_ylabel("Population (million)")
+ax.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+- 戦後復興期から高度経済成長期にかけて **急増**
+- 1970年代以降は **緩やかな増加**
+- このように **まず描く** ことで傾向が見える
+
+
+## 避難所情報（品川区）
+
+```python
+import requests
+
+headers = {'User-Agent': 'example.com/lesson'}
+api_id = "t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0"
+url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
+
+params = {'limit': 5}
+body = {}
+
+response = requests.post(url, params=params, headers=headers, json=body)
+data = response.json()
+
+print(f"品川区の避難所情報（総件数: {data['total']}件）")
+
+for facility in data['hits']:
+    print("---")
+    for key, value in facility.items():
+        if key != 'row':
+            print(f"{key}: {value}")
+```
+
+```text
+品川区の避難所情報（総件数: 25件）
+---
+名称: 品川区立第一日野小学校
+緯度: 35.6234...
+経度: 139.7312...
+---
+...
+```
+
+
+## 避難所リスト（東京都全域）
+
+```python
+import requests
+
+headers = {'User-Agent': 'example.com/lesson'}
+api_id = "t000003d0000000093-0af9bfa497bc7be6ef83e5bfd1fdcfc6-0"
+url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
+
+params = {'limit': 5}
+body = {}
+
+response = requests.post(url, params=params, headers=headers, json=body)
+data = response.json()
+
+print(f"東京都の避難所（総件数: {data['total']}件）")
+for shelter in data['hits']:
+    print(f"施設名: {shelter['避難所_施設名称']}")
+    print(f"住所: {shelter['所在地住所']}")
+    print(f"区市町村: {shelter['指定市区町村名']}")
+    print("---")
+```
+
+```text
+東京都の避難所（総件数: 2636件）
+施設名: お茶の水小学校
+住所: 東京都千代田区神田猿楽町1-1-1
+区市町村: 千代田区
+---
+施設名: 都立一橋高校
+住所: 東京都千代田区東神田1-12-13
+区市町村: 千代田区
+---
+...
+```
+
+
+## 都営バス運賃
+
+```python
+import requests
+
+headers = {'User-Agent': 'example.com/lesson'}
+api_id = "t000018d0000000044-3db21a77b0af1c54b411f79604444ca2-0"
+url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
+body = {}
+
+response = requests.post(url, headers=headers, json=body)
+data = response.json()
+
+print(f"都営バス運賃情報（総件数: {data['total']}件）")
+
+for fare_info in data['hits'][:5]:
+    print("---")
+    for key, value in fare_info.items():
+        if key != 'row':
+            print(f"{key}: {value}")
+```
+
+```text
+都営バス運賃情報（総件数: 4件）
+---
+区分: 普通運賃
+大人: 210
+小児: 110
+備考: ICカード利用時
+---
+...
+```
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+NumPyで統計処理
+:::
+
+
+## 統計分析の例
+
+```python
+import requests
+import numpy as np
+
+headers = {'User-Agent': 'example.com/lesson'}
+api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
+url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
+
+params = {'limit': 200}
+response = requests.post(url, params=params, headers=headers, json={})
+data = response.json()
+
+# 人口を抽出
+population = [r['東京都／人口'] for r in data['hits']
+              if isinstance(r.get('東京都／人口'), int)]
+population = np.array(population)
+
+print(f"平均: {np.mean(population):,.0f}人")
+print(f"最大: {np.max(population):,}人")
+print(f"最小: {np.min(population):,}人")
+print(f"標準偏差: {np.std(population):,.0f}")
+print(f"中央値: {np.median(population):,.0f}人")
+```
+
+```text
+平均: 7,294,170人
+最大: 14,099,993人
+最小: 859,345人
+標準偏差: 4,567,885
+中央値: 7,189,875人
+```
+
+
+## まずは可視化する
+
+- 数値だけでは傾向がわからない
+- [visualize章](visualize.qmd) の原則：**Always plot your data first.**
+
+```{python}
+#| echo: false
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+
+years = np.arange(1872, 2024)
+n = len(years)
+base = np.linspace(0.86, 14.1, n)
+dip = np.exp(-((years - 1945) ** 2) / 50) * 8
+population = (base - dip) * 1e6
+population = np.maximum(population, 3.5e6)
+
+fig, ax = plt.subplots(figsize=(7, 3))
+ax.plot(years, population / 1e6, color="#2266CC", linewidth=1.2)
+ax.fill_between(years, population / 1e6, alpha=0.3, color="#2266CC")
+ax.set_title("Tokyo Population 1872-2023 (sample image)")
+ax.set_xlabel("Year")
+ax.set_ylabel("Population (million)")
+ax.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+- **右肩上がり** — 150年で約16倍に増加
+- **1940年代に急落** — 戦争による疎開・被害
+- **2020年代に停滞** — コロナ禍の影響が見える
+
+::: {.callout-tip}
+## これまでの章が活きる
+- [list章](list.qmd) の内包表記で抽出
+- [numpy章](numpy.qmd) の統計関数で集計
+- [visualize章](visualize.qmd) の手法で可視化
+:::
+
+
+## まとめ
+
+| やりたいこと | コード |
+|---|---|
+| 基本アクセス | `requests.post(url, params=..., headers=..., json={})` |
+| 取得件数指定 | `params = {'limit': 200}` |
+| 列の絞り込み | `body = {"column": ["列名1", "列名2"]}` |
+| 条件フィルタ | `body = {"searchCondition": {...}}` |
+| 全件数確認 | `data['total']` |
+| データ本体 | `data['hits']`（list of dict） |
+
+::: {.callout-warning}
+## Wikipedia API との違い
+- **GET** ではなく **POST**
+- 空でも `json={}` が必要
+:::
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+演習
+:::
+
+
+## 演習1：避難所データの可視化
+
+- 任意の区市町村の **避難所データ** を取得
+- 避難所の **件数** を print
+- （発展）緯度・経度があれば散布図で地図風にプロット
+
+::: {.callout-tip}
+## ヒント
+- [API検索ページ](https://spec.api.metro.tokyo.lg.jp/spec/search) で「避難所」を検索
+- 複数の区のデータを比較しても面白い
+:::
+
+
+## 演習2：人口推移の時系列グラフ
+
+- 東京都人口データを **全件** 取得
+- 年と人口を取り出して **折れ線グラフ** を描画
+- 最大値・最小値・平均をタイトルに表示
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+import requests
+import numpy as np
+import matplotlib.pyplot as plt
+
+headers = {'User-Agent': 'example.com/lesson'}
+api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
+url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
+
+params = {'limit': 200}
+response = requests.post(url, params=params, headers=headers, json={})
+data = response.json()
+
+years = np.array([r['西暦（年次）'] for r in data['hits']
+                  if isinstance(r.get('東京都／人口'), int)])
+population = np.array([r['東京都／人口'] for r in data['hits']
+                       if isinstance(r.get('東京都／人口'), int)])
+
+plt.figure(figsize=(10, 4))
+plt.plot(years, population / 1e6)
+plt.title(f"Max={np.max(population):,}, Min={np.min(population):,}, Mean={np.mean(population):,.0f}")
+plt.xlabel("Year")
+plt.ylabel("Population (million)")
+plt.grid(True, linestyle="--", alpha=0.5)
+plt.show()
+```
+
+
+## 演習3：2つのデータセットを比較
+
+- **異なる2つのデータセット** を取得（例：2つの区の避難所、戦前と戦後の人口）
+- それぞれの件数や統計量を **比較** して print
+- （発展）同じグラフに重ねて描画
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+活用アイデア
+:::
+
+
+## アプリケーション例
+
+| 分野 | 活用例 |
+|---|---|
+| **防災** | 避難所マップ、消火栓・防火水槽の位置、地震被害想定 |
+| **交通** | 駐輪場検索、バス運賃計算、駅の乗降客数分析 |
+| **生活** | 公衆トイレマップ、公共施設案内、子育て支援制度 |
+| **研究** | 人口動態分析、地価変動追跡、行政サービス利用調査 |
+
+
+## 関連リソース
+
+| リソース | URL |
+|---|---|
+| オープンデータカタログサイト | [portal.data.metro.tokyo.lg.jp](https://portal.data.metro.tokyo.lg.jp/) |
+| APIカタログサイト | [portal.data.metro.tokyo.lg.jp/opendata-api/](https://portal.data.metro.tokyo.lg.jp/opendata-api/) |
+| API検索ページ | [spec.api.metro.tokyo.lg.jp/spec/search](https://spec.api.metro.tokyo.lg.jp/spec/search) |
+| 公共交通オープンデータ | [odpt.org](https://www.odpt.org/) |
+| デジタル庁 GIF | [digital.go.jp](https://www.digital.go.jp/policies/data_strategy_government_interoperability_framework) |

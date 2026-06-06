@@ -1,0 +1,550 @@
+---
+title: "Wikipedia API リファレンス"
+subtitle: "エンドポイント一覧と使用例"
+---
+
+## このスライドの位置づけ
+
+- これは **リファレンス（参照資料）** です
+- 全部覚える必要はない — **必要なときに引く**
+- [api.qmd](api.qmd) で基本を学んでから参照すること
+
+::: {.callout-tip}
+## 使い方
+1. 「こういうデータ欲しいな」と思う
+2. このスライドで **どのAPIか** を探す
+3. エンドポイントとパラメータをコピーして使う
+:::
+
+
+## どのAPIを使うべきか
+
+```{mermaid}
+%%| fig-width: 9
+%%| fig-align: center
+flowchart TD
+    A[何がしたい？] --> B{統計}
+    A --> C{記事内容}
+    A --> D{構造化データ}
+
+    B --> E[AQS]
+    C --> F{概要だけ}
+    C --> G{細かく制御}
+    F --> H[REST API v1]
+    G --> I[Action API]
+    D --> J[Wikidata]
+
+    style E fill:#e8f5e9
+    style H fill:#e3f2fd
+    style I fill:#fff3e0
+    style J fill:#fce4ec
+```
+
+| 色 | API | 用途 | 例 |
+|---|---|---|---|
+| 緑 | **AQS** | ページビュー統計 | [api.qmd](api.qmd) で使用 |
+| 青 | **REST API v1** | 概要をサクッと | `/page/summary/桜` |
+| 橙 | **Action API** | 検索・カテゴリ・履歴 | `action=query&list=search` |
+| 桃 | **Wikidata** | 機械可読な構造化データ | `entities/items/Q1490` |
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+Wikipedia API の全体像
+:::
+
+
+## 3つのAPIファミリー
+
+| API | 特徴 | 用途 |
+|---|---|---|
+| **Action API** | 豊富なクエリ・編集・コンテンツアクセス | 検索、ページ情報、履歴取得 |
+| **REST API v1** | 高負荷コンテンツアクセスに特化 | 概要取得、HTML/PDF変換 |
+| **Analytics Query Service** | 統計データとメトリクス | ページビュー、編集統計 |
+
+
+## 基本情報
+
+| 項目 | 内容 |
+|---|---|
+| 認証 | 基本的に不要（一部機能は要認証） |
+| レート制限 | 200リクエスト/秒（全体） |
+| データ形式 | JSON / XML / HTML |
+| CORS | サポート済み |
+
+::: {.callout-tip}
+## 授業での利用
+- 読み取り専用なら認証不要
+- `User-Agent` ヘッダーは必須
+:::
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+Action API
+:::
+
+
+## Action API：基本URL
+
+```text
+https://ja.wikipedia.org/w/api.php
+```
+
+- **パラメータはクエリ文字列**（`?action=...&prop=...`）で渡す
+- 例：「桜」で記事を検索して上位5件を取得
+
+```text
+https://ja.wikipedia.org/w/api.php?action=query&list=search&srsearch=桜&format=json&srlimit=5
+```
+
+
+## Action API：検索系
+
+| エンドポイント | 説明 | パラメータ例 |
+|---|---|---|
+| `action=query&list=search` | 記事検索 | `srsearch=桜&srlimit=10` |
+| `action=query&list=opensearch` | オートコンプリート | `search=桜&limit=8` |
+| `action=query&list=random` | ランダムページ | `rnlimit=10&rnnamespace=0` |
+
+
+## Action API：ページ情報
+
+| エンドポイント | 説明 | パラメータ例 |
+|---|---|---|
+| `action=query&prop=info` | 基本情報 | `titles=桜&prop=info` |
+| `action=query&prop=extracts` | 要約テキスト | `titles=桜&exintro&explaintext` |
+| `action=query&prop=images` | 画像一覧 | `titles=桜&prop=images` |
+| `action=query&prop=categories` | カテゴリ | `titles=桜&prop=categories` |
+| `action=query&prop=pageviews` | 過去60日のPV | `titles=桜&prop=pageviews` |
+
+
+## Action API：リンク・履歴
+
+| エンドポイント | 説明 | パラメータ例 |
+|---|---|---|
+| `action=query&prop=links` | ページ内リンク | `titles=桜&prop=links` |
+| `action=query&list=backlinks` | 被リンク一覧 | `bltitle=桜&bllimit=50` |
+| `action=query&prop=revisions` | 編集履歴 | `titles=桜&prop=revisions&rvlimit=10` |
+| `action=query&list=recentchanges` | 最近の編集 | `rclimit=50&rcnamespace=0` |
+
+
+## Action API：カテゴリ・ユーザー
+
+| エンドポイント | 説明 | パラメータ例 |
+|---|---|---|
+| `action=query&list=categorymembers` | カテゴリ内ページ | `cmtitle=Category:桜&cmlimit=50` |
+| `action=query&list=usercontribs` | ユーザー編集履歴 | `ucuser=UserName&uclimit=50` |
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+REST API v1
+:::
+
+
+## REST API v1：基本URL
+
+```text
+https://ja.wikipedia.org/api/rest_v1/
+```
+
+- **パスにパラメータを埋め込む** タイプ
+- 例：「桜」の記事概要を取得
+
+```text
+https://ja.wikipedia.org/api/rest_v1/page/summary/桜
+```
+
+
+## REST API v1：ページ系
+
+| エンドポイント | 説明 | 形式 |
+|---|---|---|
+| `/page/summary/{title}` | ページ概要 | JSON |
+| `/page/html/{title}` | HTMLコンテンツ | HTML |
+| `/page/mobile-sections/{title}` | モバイル用セクション | JSON |
+| `/page/media/{title}` | メディアファイル | JSON |
+| `/page/pdf/{title}` | PDF生成 | PDF |
+| `/page/random/summary` | ランダム概要 | JSON |
+
+
+## REST API v1：変換・フィード
+
+| エンドポイント | 説明 | 形式 |
+|---|---|---|
+| `/transform/wikitext/to/html` | Wikitext→HTML | HTML |
+| `/transform/html/to/wikitext` | HTML→Wikitext | Text |
+| `/feed/featured/{year}/{month}/{day}` | 注目記事 | JSON |
+| `/feed/onthisday/{type}/{month}/{day}` | 今日は何の日 | JSON |
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+Analytics Query Service（AQS）
+:::
+
+
+## AQS：基本URL
+
+```text
+https://wikimedia.org/api/rest_v1/metrics/
+```
+
+- [api.qmd](api.qmd) で使ったのはこれ
+- 例：「桜」の2024年3月の日別アクセス数
+
+```text
+https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/ja.wikipedia/all-access/all-agents/桜/daily/20240301/20240331
+```
+
+
+## AQS：ページビュー
+
+**per-article** — 記事別PV（2015年7月〜）
+
+```text
+pageviews/per-article/{project}/{access}/{agent}/{article}/{granularity}/{start}/{end}
+```
+
+例：`pageviews/per-article/ja.wikipedia/all-access/user/東京/daily/20240101/20240131`
+
+**aggregate** — プロジェクト全体PV（2015年7月〜）
+
+```text
+pageviews/aggregate/{project}/{access}/{agent}/{granularity}/{start}/{end}
+```
+
+例：`pageviews/aggregate/ja.wikipedia/all-access/user/daily/20240101/20240131`
+
+**top** — 人気記事ランキング（2015年7月〜）
+
+```text
+pageviews/top/{project}/{access}/{year}/{month}/{day}
+```
+
+例：`pageviews/top/ja.wikipedia/all-access/2024/06/01`
+
+
+## AQS：その他統計
+
+**unique-devices** — ユニークデバイス数（2016年1月〜）
+
+```text
+unique-devices/{project}/{access-site}/{granularity}/{start}/{end}
+```
+
+例：`unique-devices/ja.wikipedia/all-sites/daily/20240101/20240131`
+
+**edits** — 編集統計（2001年1月〜）
+
+```text
+edits/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}
+```
+
+例：`edits/aggregate/ja.wikipedia/all-editor-types/all-page-types/daily/20240101/20240131`
+
+**registered-users** — 新規ユーザー登録（2001年1月〜）
+
+```text
+registered-users/new/{project}/{granularity}/{start}/{end}
+```
+
+例：`registered-users/new/ja.wikipedia/daily/20240101/20240131`
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+Wikidata REST API
+:::
+
+
+## Wikidata API：基本URL
+
+```text
+https://www.wikidata.org/w/rest.php/wikibase/v1/
+```
+
+- Wikipedia記事には内部ID（**Wikidata ID**）がある
+- 例：東京（Q1490）のアイテム情報
+
+```text
+https://www.wikidata.org/w/rest.php/wikibase/v1/entities/items/Q1490
+```
+
+
+## Wikidata API：エンドポイント
+
+| エンドポイント | 説明 | 操作 |
+|---|---|---|
+| `entities/items/{item_id}` | アイテム取得 | Read |
+| `entities/items` | アイテム作成 | Create |
+| `entities/properties/{property_id}` | プロパティ取得 | Read |
+| `entities/items/{item_id}/statements` | ステートメント一覧 | Read |
+| `entities/items/{item_id}/labels` | ラベル管理 | CRUD |
+| `entities/items/{item_id}/descriptions` | 説明管理 | CRUD |
+
+::: {.callout-note}
+## CRUDとは
+**C**reate（作成）・**R**ead（読取）・**U**pdate（更新）・**D**elete（削除）の略
+:::
+
+
+## Wikidata IDの調べ方
+
+- Wikipedia記事 → サイドバー「ウィキデータ項目」→ URLの末尾
+- または Action API で取得
+
+```python
+import requests
+
+params = {
+    'action': 'query',
+    'prop': 'pageprops',
+    'titles': '東京',
+    'format': 'json'
+}
+response = requests.get('https://ja.wikipedia.org/w/api.php', params=params)
+data = response.json()
+
+for page_id, page_info in data['query']['pages'].items():
+    if 'pageprops' in page_info:
+        wikidata_id = page_info['pageprops'].get('wikibase_item')
+        print(f"Wikidata ID: {wikidata_id}")  # Q1490
+```
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+実用サンプルコード
+:::
+
+
+## Action API：検索 + 詳細取得
+
+```python
+import requests
+
+headers = {'User-Agent': 'example.com/lesson'}
+
+# 検索：「桜」で5件
+search_params = {
+    'action': 'query',
+    'list': 'search',
+    'srsearch': '桜',
+    'format': 'json',
+    'srlimit': 5
+}
+r = requests.get('https://ja.wikipedia.org/w/api.php',
+                 params=search_params, headers=headers)
+results = r.json()['query']['search']
+
+for item in results:
+    print(f"- {item['title']}")
+```
+
+
+## Action API：ページ詳細
+
+```python
+detail_params = {
+    'action': 'query',
+    'prop': 'extracts|info|images',
+    'titles': '桜',
+    'format': 'json',
+    'formatversion': 2,   # JSONが扱いやすくなる
+    'exintro': True,      # 導入部分のみ
+    'explaintext': True,  # HTMLタグ除去
+    'redirects': True     # リダイレクト自動追従
+}
+r = requests.get('https://ja.wikipedia.org/w/api.php',
+                 params=detail_params, headers=headers)
+pages = r.json()['query']['pages']
+
+for page in pages:
+    print(f"タイトル: {page.get('title')}")
+    print(f"概要: {page.get('extract', '')[:100]}...")
+```
+
+
+## Action API：カテゴリ + ランダム
+
+```python
+# カテゴリメンバー
+cats_params = {
+    'action': 'query',
+    'list': 'categorymembers',
+    'cmtitle': 'Category:日本の桜',
+    'format': 'json',
+    'cmlimit': 10
+}
+r = requests.get('https://ja.wikipedia.org/w/api.php',
+                 params=cats_params, headers=headers)
+members = r.json()['query']['categorymembers']
+for m in members:
+    print(f"- {m['title']}")
+
+# ランダム記事
+rnd_params = {
+    'action': 'query', 'list': 'random',
+    'rnnamespace': 0, 'rnlimit': 3, 'format': 'json'
+}
+r = requests.get('https://ja.wikipedia.org/w/api.php',
+                 params=rnd_params, headers=headers)
+for p in r.json()['query']['random']:
+    print(f"- {p['title']}")
+```
+
+
+## REST API v1：概要取得
+
+```python
+import requests
+
+headers = {'User-Agent': 'example.com/lesson'}
+
+# 記事概要（タイトル、要約、画像URL）
+response = requests.get(
+    'https://ja.wikipedia.org/api/rest_v1/page/summary/桜',
+    headers=headers
+)
+data = response.json()
+
+print(f"タイトル: {data['title']}")
+print(f"概要: {data['extract']}")
+if 'thumbnail' in data:
+    print(f"画像: {data['thumbnail']['source']}")
+```
+
+
+## AQS：人気記事 + 編集統計
+
+```python
+import requests
+
+headers = {'User-Agent': 'example.com/lesson'}
+
+# 人気記事ランキング
+url = ('https://wikimedia.org/api/rest_v1/metrics/'
+       'pageviews/top/ja.wikipedia/all-access/2024/03/15')
+r = requests.get(url, headers=headers)
+articles = r.json()['items'][0]['articles'][:5]
+for a in articles:
+    print(f"{a['rank']}. {a['article']} ({a['views']:,} views)")
+
+# 編集統計
+url = ('https://wikimedia.org/api/rest_v1/metrics/'
+       'edits/aggregate/ja.wikipedia/all-editor-types/'
+       'all-page-types/monthly/20240101/20240331')
+r = requests.get(url, headers=headers)
+for item in r.json()['items'][0]['results']:
+    print(f"{item['timestamp']}: {item['edits']:,} edits")
+```
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+統計データの活用
+:::
+
+
+## ページビュー分析の観点
+
+| 観点 | 説明 |
+|---|---|
+| **粒度** | 時間別 / 日別 / 月別 |
+| **アクセス種別** | desktop / mobile-web / mobile-app |
+| **エージェント** | user（人間）/ spider / automated |
+
+
+## 分析のアイデア
+
+- **季節性の検出**
+   - 「桜」は春にアクセス増
+   - 「クリスマス」「花火」などの季節語
+- **ニュースイベントとの相関**
+   - 事件・事故・訃報で急増
+   - テレビ放送やSNSバズ
+- **言語版比較**
+   - 同じ記事の日本語版 vs 英語版
+   - 地域による関心の違い
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+演習
+:::
+
+
+## 演習1：好きな記事のPVを可視化
+
+- **任意のWikipedia記事** の過去1年間のページビューを取得
+- 日別データを **折れ線グラフ** で描画
+- 最大アクセス日とその値を print
+
+::: {.callout-tip}
+## ヒント
+- AQS の `pageviews/per-article` を使う
+- 記事名は日本語のままURLに入れてOK（requestsが自動エンコード）
+- [api.qmd](api.qmd) のコードをベースに改造
+:::
+
+
+## 演習2：カテゴリ内の記事を列挙
+
+- Action API で **任意のカテゴリ** に属する記事を10件取得
+- 各記事のタイトルを print
+
+```python
+# カテゴリ例
+# Category:日本の城
+# Category:東京都の鉄道駅
+# Category:日本のアニメ映画
+```
+
+
+## 演習3：REST API で概要取得
+
+- REST API v1 の `/page/summary/{title}` を使う
+- 任意の記事の **タイトル・概要・サムネイルURL** を取得して print
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+import requests
+
+headers = {'User-Agent': 'example.com/lesson'}
+title = "東京タワー"  # 好きな記事に変更
+
+response = requests.get(
+    f'https://ja.wikipedia.org/api/rest_v1/page/summary/{title}',
+    headers=headers
+)
+data = response.json()
+
+print(f"タイトル: {data['title']}")
+print(f"概要: {data['extract'][:100]}...")
+if 'thumbnail' in data:
+    print(f"画像: {data['thumbnail']['source']}")
+```
+
+
+## 関連リソース
+
+| リソース | URL |
+|---|---|
+| MediaWiki Action API | [mediawiki.org/wiki/API:Main_page](https://www.mediawiki.org/wiki/API:Main_page) |
+| Wikimedia REST API v1 | [en.wikipedia.org/api/rest_v1/](https://en.wikipedia.org/api/rest_v1/) |
+| Analytics Query Service | [wikitech.wikimedia.org](https://wikitech.wikimedia.org/wiki/Analytics/PageviewAPI) |
+| Wikidata REST API | [wikidata.org/wiki/Wikidata:REST_API](https://www.wikidata.org/wiki/Wikidata:REST_API) |
+| User-Agent ポリシー | [meta.wikimedia.org](https://meta.wikimedia.org/wiki/User-Agent_policy) |

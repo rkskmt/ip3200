@@ -174,11 +174,6 @@ print(data, type(data))
 :::
 
 
-## なぜ `.dict()` ではなく `.json()` なのか
-
-- `.json()` はAPIが返すデータを **dict として受け取る** メソッド
-- では JSON とは？
-
 
 ## JSON とは
 
@@ -260,6 +255,7 @@ https://wikimedia.org/api/rest_v1/metrics/pageviews/top/
 ## 覚える必要はない
 - API ごとにURL構造はバラバラ
 - 使うときに **公式ドキュメントを見る** のが正解
+- [Wikimedia REST API ドキュメント](https://wikimedia.org/api/rest_v1/)
 :::
 
 
@@ -279,15 +275,17 @@ https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/
     {project} / {access} / {agent} / {article} / {granularity} / {start} / {end}
 ```
 
-| パラメータ | 必須 | 選択肢 |
-|---|---|---|
-| **project** | ✓ | ja.wikipedia など |
-| **access** | ✓ | all-access / desktop / mobile-app / mobile-web |
-| **agent** | ✓ | all-agents / **user** / spider / automated |
-| **article** | ✓ | 任意の記事名（スペースは `_`） |
-| **granularity** | ✓ | daily / monthly |
-| **start** | ✓ | YYYYMMDD |
-| **end** | ✓ | YYYYMMDD |
+
+## per-article のパラメータ
+
+| パラメータ | 選択肢 |
+|---|---|
+| **project** | ja.wikipedia など |
+| **access** | all-access / desktop / mobile-app / mobile-web |
+| **agent** | all-agents / **user** / spider / automated |
+| **article** | 任意の記事名（スペースは `_`） |
+| **granularity** | daily / monthly |
+| **start** / **end** | YYYYMMDD 形式 |
 
 
 ## 東京スカイツリーのページビューを取得する
@@ -476,9 +474,8 @@ plt.plot(views_desktop,    label="desktop")
 plt.plot(views_mobile_web, label="mobile-web")
 plt.legend()
 
-title = (f"max={max(views_desktop.max(), views_mobile_web.max())}  "
-         f"min={min(views_desktop.min(), views_mobile_web.min())}  "
-         f"mean={(views_desktop.mean() + views_mobile_web.mean()) / 2:.1f}")
+title = (f"desktop: max={views_desktop.max()}, mean={views_desktop.mean():.1f}  "
+         f"mobile: max={views_mobile_web.max()}, mean={views_mobile_web.mean():.1f}")
 plt.title(title)
 plt.xlabel("days"); plt.ylabel("Views")
 plt.show()

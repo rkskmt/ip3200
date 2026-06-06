@@ -21,18 +21,20 @@
 </details>
 
 <details open>
-<summary>Pythonデータ処理基礎</summary>
+<summary>データ処理基礎</summary>
 
 - [NumPy入門](numpy.qmd)
-- [ベクトルと行列](vector_matrix.qmd)
+  - （参考）[ベクトルと行列](vector_matrix.qmd)
+- [データの可視化](visualize.qmd)
 
 </details>
 
-<details open>
-<summary>データ処理基礎</summary>
+<details>
+<summary>API</summary>
 
-- [データの可視化](visualize.qmd)
 - [APIでデータ取得](api.qmd)
+- [Wikipedia APIリファレンス](wiki-api.qmd)
+- [東京都オープンデータAPI](tokyo-api.qmd)
 
 </details>
 

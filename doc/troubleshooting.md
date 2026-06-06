@@ -54,10 +54,10 @@ ERROR: NotFound: No such file or directory (os error 2): rename '.../index.html'
 
 ---
 
-## Stale cache after `_metadata.yaml` change
+## Stale cache after changes
 
-If `_metadata.yaml` is changed, run `rm -rf _site` and restart `quarto preview` with a fixed port to avoid port changes:
+If changes to `_metadata.yaml` or `.qmd` files don't appear, clear both `_site` and `.quarto` cache:
 
 ```bash
-rm -rf _site && quarto preview --port 4321
+rm -rf _site .quarto && quarto preview --port 4321
 ```
