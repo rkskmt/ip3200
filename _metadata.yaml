@@ -2,6 +2,9 @@ author: "rkskmt"
 lang: ja
 format:
   clean-revealjs:
+    width: 1280
+    height: 720
+    margin: 0.06
     html-math-method:
       method: mathjax
       url: "./libs/mathjax/MathJax.js?config=TeX-AMS_HTML-full"
