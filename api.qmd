@@ -344,6 +344,7 @@ print(f"分散: {np.var(views):.1f}")
 #| fig-align: center
 import numpy as np
 import matplotlib.pyplot as plt
+import japanize_matplotlib
 
 np.random.seed(0)
 days = 365
@@ -367,6 +368,7 @@ plt.show()
 #| code-summary: "コードを見る"
 import requests
 import matplotlib.pyplot as plt
+import japanize_matplotlib
 import numpy as np
 
 url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
@@ -455,6 +457,7 @@ print(f"Var:  {np.var(views):.1f}")
 #| code-summary: "解答例を見る"
 import requests
 import matplotlib.pyplot as plt
+import japanize_matplotlib
 import numpy as np
 
 headers = {'User-Agent': 'example.com/lesson'}

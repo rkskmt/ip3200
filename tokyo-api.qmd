@@ -271,6 +271,7 @@ for record in filtered[:5]:
 #| fig-align: center
 import numpy as np
 import matplotlib.pyplot as plt
+import japanize_matplotlib
 
 years = np.arange(1950, 2024)
 n = len(years)
@@ -450,6 +451,7 @@ print(f"中央値: {np.median(population):,.0f}人")
 #| fig-align: center
 import numpy as np
 import matplotlib.pyplot as plt
+import japanize_matplotlib
 
 years = np.arange(1872, 2024)
 n = len(years)
@@ -533,6 +535,7 @@ plt.show()
 import requests
 import numpy as np
 import matplotlib.pyplot as plt
+import japanize_matplotlib
 
 headers = {'User-Agent': 'example.com/lesson'}
 api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
