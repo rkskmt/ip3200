@@ -16,6 +16,21 @@ format:
         .reveal {
           font-family: system-ui, -apple-system, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", "Meiryo", sans-serif;
         }
+        .reveal .slides section:not(.stack):not(.break-slide) > .slide-body {
+          width: 100% !important;
+          margin: 0 !important;
+          padding: 28px 55px 18px !important;
+          box-sizing: border-box !important;
+        }
+        .reveal .slides section:not(.stack):not(.break-slide) > h2 {
+          padding-left: 18px;
+          padding-bottom: 7px;
+          box-sizing: border-box;
+        }
+        .reveal #title-slide > * {
+          padding-left: 80px;
+          box-sizing: border-box;
+        }
         /* Force scrollbar visibility on macOS/mobile */
         .reveal .slides section,
         .reveal .slides section.present {
@@ -73,7 +88,17 @@ format:
             font-size: 2.3rem;
             background-color: #5dade2;
             color: white;
-            padding: 20px 25px;
+            padding: 20px 12px;
+            margin: 12px;
+            border-radius: 5px;
+        }
+        .reveal .slide-body-heading {
+            font-style: normal !important;
+            font-weight: bold !important;
+            font-size: 2.3rem;
+            background-color: #5dade2;
+            color: white;
+            padding: 10px 25px;
             margin: 12px;
             border-radius: 5px;
         }
@@ -516,25 +541,69 @@ format:
         .break-slide h2 { border: none !important; }
         .break-slide p { margin: 0 !important; }
         .break-slide .break-title {
+          display: block;
+          width: 860px;
+          max-width: calc(100% - 310px);
           font-size: 1.5em;
           font-weight: bold;
           color: #333;
-          border-bottom: 0.5px solid #333;
-          padding-bottom: 0.1em;
+          border-bottom: 0.5px solid #999;
+          margin-left: 190px !important;
+          margin-right: auto !important;
+          padding: 0 0 0.24em;
+          text-align: left;
         }
-        .reveal ul li::marker {
-          color: #0099cc;
-          font-size: 1.3em;
-        }
-        .reveal ul ul li::before, .reveal ol ul li::before {
-          font-weight: 500;
-          color: #0099cc;
-        }
-        .reveal ul ul ul {
+        .reveal .slide-body ul { /* level 1 */
           list-style: none;
+          padding-left: 1.45em;
         }
-        .reveal ul ul ul li::before {
-          content: "‣";
+        .reveal .slide-body ul ul { /* level 2 */
+          padding-left: 1.0em;
+        }
+        .reveal .slide-body ul ul ul { /* level 3 */
+          padding-left: 0.0em;
+        }
+        .reveal .slide-body ul > li::before {
+          content: "";
+          display: inline-block;
+          width: 0.58em;
+          height: 0.58em;
+          margin-left: -1.2em;
+          margin-right: 0.62em;
+          vertical-align: 0.1em;
+          background-color: #0099cc;
+          -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
+        }
+        .reveal .slide-body ul ul > li::before,
+        .reveal .slide-body ol ul > li::before {
+          content: "";
+          display: inline-block;
+          width: 1.1em;
+          height: 0.7em;
+          margin-left: -1.55em;
+          margin-right: 0.45em;
+          vertical-align: 0.02em;
+          background-color: #0099cc;
+          -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 28'%3E%3Cpath d='M2 14h37M29 4l10 10-10 10' fill='none' stroke='black' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 28'%3E%3Cpath d='M2 14h37M29 4l10 10-10 10' fill='none' stroke='black' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
+        }
+        .reveal .slide ul li, .reveal .slide ol li {
+            margin-top: 0.1em;
+            margin-bottom: 0.1em;
+        }
+
+        .reveal .slide-body ul ul ul > li::before {
+          content: "";
+          display: inline-block;
+          width: 0.42em;
+          height: 0.62em;
+          margin-left: -0.92em;
+          margin-right: 0.5em;
+          vertical-align: 0.02em;
+          background-color: #6aaec6;
+          -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 32'%3E%3Cpath d='M3 3l18 13L3 29z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 32'%3E%3Cpath d='M3 3l18 13L3 29z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
         }
         .reveal strong {
           padding: 0 0.1em;
@@ -938,6 +1007,7 @@ mermaid:
     nodeSpacing: 10
     rankSpacing: 15
 filters:
+  - slide-body.lua
   - hl.lua
   - fw-colon.lua
   - cite-image.lua
