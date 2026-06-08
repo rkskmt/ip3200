@@ -192,20 +192,48 @@
   .reveal {
     font-family: system-ui, -apple-system, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", "Meiryo", sans-serif;
   }
+  .reveal .slides section:not(.stack):not(.break-slide) > .slide-body {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 28px 55px 18px !important;
+    box-sizing: border-box !important;
+  }
+  .reveal .slides section:not(.stack):not(.break-slide) > h2 {
+    padding-left: 18px;
+    padding-bottom: 7px;
+    box-sizing: border-box;
+  }
+  .reveal #title-slide > * {
+    padding-left: 80px;
+    box-sizing: border-box;
+  }
   /* Force scrollbar visibility on macOS/mobile */
-  .reveal .slides section {
-    scrollbar-width: thin;
+  .reveal .slides section,
+  .reveal .slides section.present {
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(0,0,0,0.3) rgba(0,0,0,0.1) !important;
   }
-  .reveal .slides section::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  .reveal .slides section::-webkit-scrollbar,
+  .reveal .slides section.present::-webkit-scrollbar {
+    width: 10px !important;
+    height: 10px !important;
+    -webkit-appearance: none !important;
   }
-  .reveal .slides section::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
+  .reveal .slides section::-webkit-scrollbar-track,
+  .reveal .slides section.present::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.08) !important;
+    border-radius: 5px !important;
   }
-  .reveal .slides section::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
+  .reveal .slides section::-webkit-scrollbar-thumb,
+  .reveal .slides section.present::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.25) !important;
+    border-radius: 5px !important;
+    border: 2px solid transparent !important;
+    background-clip: content-box !important;
+  }
+  .reveal .slides section::-webkit-scrollbar-thumb:hover,
+  .reveal .slides section.present::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4) !important;
   }
   .callout.callout-note {
       font-size: 1.5rem;
@@ -222,7 +250,7 @@
       font-size: 2.3rem;
   }
   .reveal .callout pre code {
-      font-size: 1.5rem !important;
+      font-size: 1.25rem !important;
   }
   .reveal h2 {
       font-weight: bold !important;
@@ -236,7 +264,17 @@
       font-size: 2.3rem;
       background-color: #5dade2;
       color: white;
-      padding: 20px 25px;
+      padding: 20px 12px;
+      margin: 12px;
+      border-radius: 5px;
+  }
+  .reveal .slide-body-heading {
+      font-style: normal !important;
+      font-weight: bold !important;
+      font-size: 2.3rem;
+      background-color: #5dade2;
+      color: white;
+      padding: 10px 25px;
       margin: 12px;
       border-radius: 5px;
   }
@@ -255,11 +293,18 @@
   .cell-output pre {
     font-size: 2.0rem;
   }
+  .reveal pre,
+  .reveal div.sourceCode {
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+    max-width: calc(100% - 1.6rem);
+    box-sizing: border-box;
+  }
   .reveal pre code {
-    font-size: 1.8rem !important;
+    font-size: 1.35rem !important;
   }
   .reveal details pre code {
-    font-size: 1.5rem;
+    font-size: 1.2rem !important;
   }
   .reveal img {
     max-height: 500px;
@@ -284,6 +329,17 @@
   table {
     width: 100%;
     border-bottom: none !important;
+  }
+  .reveal table.dataframe {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .reveal table.dataframe th,
+  .reveal table.dataframe td {
+    text-align: center;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
   }
   table tbody {
     border-bottom: none !important;
@@ -390,7 +446,7 @@
   #slide-nav button:active {
     background: rgba(93, 173, 226, 0.2);
   }
-  #slide-nav button:disabled {
+  #slide-nav button.nav-disabled {
     opacity: 0.3;
     cursor: default;
   }
@@ -410,6 +466,198 @@
   .code-copy-outer-scaffold {
     position: relative !important;
     margin-top: 0.3em !important;
+  }
+  .code-expand-scaffold {
+    position: relative !important;
+  }
+  .code-expand-button {
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 2px solid rgba(0,0,0,0.25);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.92);
+    color: #666;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0.82;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+    transition: opacity 0.15s ease, background 0.15s ease, transform 0.15s ease;
+    touch-action: manipulation;
+  }
+  .code-expand-button:hover,
+  .code-expand-button:focus {
+    opacity: 1;
+    background: white;
+    transform: scale(1.04);
+  }
+  .code-expand-button svg {
+    width: 21px;
+    height: 21px;
+    display: block;
+    pointer-events: none;
+  }
+  #code-zoom-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 4vh 4vw;
+    background: rgba(0,0,0,0.72);
+    box-sizing: border-box;
+  }
+  #code-zoom-modal.code-zoom-open {
+    display: flex;
+  }
+  #code-zoom-panel {
+    position: relative;
+    width: min(92vw, 1500px);
+    max-height: 88vh;
+    --code-zoom-font-size: 2.2rem;
+    padding: 32px 22px 22px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  #code-zoom-close {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(0,0,0,0.14);
+    border-radius: 4px;
+    background: rgba(255,255,255,0.75);
+    color: #333;
+    padding: 0;
+    font-size: 1.45rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: none;
+  }
+  #code-zoom-close:hover,
+  #code-zoom-close:focus {
+    background: rgba(245,245,245,0.98);
+    border-color: rgba(0,0,0,0.28);
+    color: #111;
+  }
+  #code-zoom-content pre {
+    max-height: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  #code-zoom-content pre > code.sourceCode {
+    white-space: pre !important;
+  }
+  #code-zoom-content {
+    max-height: calc(88vh - 80px);
+    overflow: auto;
+    box-sizing: border-box;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(0,0,0,0.3) rgba(0,0,0,0.1) !important;
+  }
+  #code-zoom-content.code-zoom-pan-mode {
+    cursor: grab;
+    user-select: none;
+  }
+  #code-zoom-content.code-zoom-pan-mode * {
+    cursor: grab !important;
+    user-select: none;
+  }
+  #code-zoom-content.code-zoom-dragging {
+    cursor: grabbing;
+  }
+  #code-zoom-content.code-zoom-dragging * {
+    cursor: grabbing !important;
+  }
+  #code-zoom-content::-webkit-scrollbar {
+    width: 10px !important;
+    height: 10px !important;
+    -webkit-appearance: none !important;
+  }
+  #code-zoom-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.08) !important;
+    border-radius: 5px !important;
+  }
+  #code-zoom-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.25) !important;
+    border-radius: 5px !important;
+    border: 2px solid transparent !important;
+    background-clip: content-box !important;
+  }
+  #code-zoom-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4) !important;
+  }
+  #code-zoom-content .sourceCode {
+    max-width: none;
+    overflow: visible !important;
+  }
+  #code-zoom-content div.sourceCode {
+    display: inline-block;
+    min-width: 100%;
+    border: 1px solid rgba(0,0,0,0.18);
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  #code-zoom-content pre.sourceCode {
+    width: fit-content;
+    min-width: calc(100% - 2px);
+  }
+  #code-zoom-content pre.numberSource {
+    margin-left: 5.4em !important;
+    margin-right: -5.4em !important;
+    min-width: calc(100% - 2px);
+    padding-left: 0 !important;
+  }
+  #code-zoom-content pre.numberSource code > span {
+    left: -4em !important;
+  }
+  #code-zoom-content pre.numberSource code > span > a:first-child::before {
+    left: -1em !important;
+  }
+  #code-zoom-content pre code {
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+    font-size: var(--code-zoom-font-size) !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0 !important;
+    word-spacing: normal !important;
+    font-variant-ligatures: none !important;
+  }
+  .reveal .columns.columns-tight {
+    max-width: 1050px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+  }
+  .reveal .columns.columns-tight .column {
+    text-align: center;
+  }
+  .reveal .column.mermaid-compact .cell {
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .reveal .column.mermaid-compact svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  .reveal .mermaid .nodeLabel,
+  .reveal .mermaid foreignObject div {
+    text-align: center !important;
+    font-weight: 700 !important;
   }
   .code-copy-outer-scaffold:has(pre.python)::before,
   .code-copy-outer-scaffold:has(pre.shell)::before {
@@ -439,6 +687,12 @@
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M290.4 19.8C295.4 7.8 307.1 0 320 0h160c17.7 0 32 14.3 32 32v160c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9L400 157.3 246.6 310.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L354.7 112l-57.3-57.4c-9.2-9.2-11.9-22.9-6.9-34.9zM0 176c0-44.2 35.8-80 80-80h80c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-8.8 0-16 7.2-16 16v256c0 8.8 7.2 16 16 16h256c8.8 0 16-7.2 16-16v-80c0-17.7 14.3-32 32-32s32 14.3 32 32v80c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176z'/%3E%3C/svg%3E") no-repeat center / contain;
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M290.4 19.8C295.4 7.8 307.1 0 320 0h160c17.7 0 32 14.3 32 32v160c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9L400 157.3 246.6 310.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L354.7 112l-57.3-57.4c-9.2-9.2-11.9-22.9-6.9-34.9zM0 176c0-44.2 35.8-80 80-80h80c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-8.8 0-16 7.2-16 16v256c0 8.8 7.2 16 16 16h256c8.8 0 16-7.2 16-16v-80c0-17.7 14.3-32 32-32s32 14.3 32 32v80c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176z'/%3E%3C/svg%3E") no-repeat center / contain;
   }
+  .reveal .slide-menu-button a[href]::after,
+  .slide-menu-wrapper a[href]::after,
+  a.lightbox[href]::after {
+    content: none !important;
+    display: none !important;
+  }
   .reveal .hl {
     color: rgba(255,255,255,1);
     font-weight: bold;
@@ -464,31 +718,96 @@
   .break-slide h2 { border: none !important; }
   .break-slide p { margin: 0 !important; }
   .break-slide .break-title {
+    display: block;
+    width: 860px;
+    max-width: calc(100% - 310px);
     font-size: 1.5em;
     font-weight: bold;
     color: #333;
-    border-bottom: 0.5px solid #333;
-    padding-bottom: 0.1em;
+    border-bottom: 0.5px solid #999;
+    margin-left: 190px !important;
+    margin-right: auto !important;
+    padding: 0 0 0.24em;
+    text-align: left;
   }
-  .reveal ul li::marker {
-    color: #0099cc;
-    font-size: 1.3em;
-  }
-  .reveal ul ul li::before, .reveal ol ul li::before {
-    font-weight: 500;
-    color: #0099cc;
-  }
-  .reveal ul ul ul {
+  .reveal .slide-body ul { /* level 1 */
     list-style: none;
+    padding-left: 1.45em;
   }
-  .reveal ul ul ul li::before {
-    content: "‣";
+  .reveal .slide-body ul ul { /* level 2 */
+    padding-left: 1.0em;
+  }
+  .reveal .slide-body ul ul ul { /* level 3 */
+    padding-left: 0.0em;
+  }
+  .reveal .slide-body ul > li::before {
+    content: "";
+    display: inline-block;
+    width: 0.58em;
+    height: 0.58em;
+    margin-left: -1.2em;
+    margin-right: 0.62em;
+    vertical-align: 0.1em;
+    background-color: #0099cc;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
+  }
+  .reveal .slide-body ul ul > li::before,
+  .reveal .slide-body ol ul > li::before {
+    content: "";
+    display: inline-block;
+    width: 1.1em;
+    height: 0.7em;
+    margin-left: -1.55em;
+    margin-right: 0.45em;
+    vertical-align: 0.02em;
+    background-color: #0099cc;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 28'%3E%3Cpath d='M2 14h37M29 4l10 10-10 10' fill='none' stroke='black' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 28'%3E%3Cpath d='M2 14h37M29 4l10 10-10 10' fill='none' stroke='black' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
+  }
+  .reveal .slide ul li, .reveal .slide ol li {
+      margin-top: 0.3em;
+      margin-bottom: 0.3em;
+  }
+
+  .reveal .slide-body ul ul ul > li::before {
+    content: "";
+    display: inline-block;
+    width: 0.42em;
+    height: 0.62em;
+    margin-left: -0.92em;
+    margin-right: 0.5em;
+    vertical-align: 0.02em;
+    background-color: #6aaec6;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 32'%3E%3Cpath d='M3 3l18 13L3 29z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 32'%3E%3Cpath d='M3 3l18 13L3 29z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
   }
   .reveal strong {
     padding: 0 0.1em;
   }
   .reveal .fw-colon {
     font-weight: 300;
+  }
+  .cell:has(details.code-fold) {
+    display: flex;
+    flex-direction: column;
+  }
+  .cell:has(details.code-fold) details.code-fold {
+    order: 1;
+  }
+  .cell-output.cell-output-display .quarto-figure {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .cell-output.cell-output-display a.lightbox {
+    display: block;
+  }
+  .cell-output.cell-output-display figure p {
+    margin-bottom: 0 !important;
+  }
+  .cell details.code-fold {
+    margin-left: 1.6em;
+    font-size: 1.2rem;
   }
   .reveal :not(pre) > code {
     color: #005cc5;
@@ -503,6 +822,15 @@
   (function() {
     try {
       var counterInit = false;
+      var codeExpandInit = false;
+      var codeZoomFontSize = 2.2;
+      var codeZoomPanMode = false;
+      var codeZoomDragging = false;
+      var codeZoomDragStartX = 0;
+      var codeZoomDragStartY = 0;
+      var codeZoomScrollStartLeft = 0;
+      var codeZoomScrollStartTop = 0;
+      var codeZoomPreviousKeyboard = null;
 
       function createNav() {
         try {
@@ -540,8 +868,8 @@
           el.textContent = (idx + 1) + ' / ' + slides.length;
           var prev = document.getElementById('nav-prev');
           var next = document.getElementById('nav-next');
-          if (prev) prev.disabled = (idx <= 0);
-          if (next) next.disabled = (idx >= slides.length - 1);
+          if (prev) prev.classList.toggle('nav-disabled', idx <= 0);
+          if (next) next.classList.toggle('nav-disabled', idx >= slides.length - 1);
         } catch (e) {}
       }
 
@@ -563,6 +891,20 @@
         window.location.href = './index.html';
       }
 
+      function isIndexPage() {
+        return window.location.pathname.endsWith('/index.html') || window.location.pathname.endsWith('/');
+      }
+
+      function goBack() {
+        try {
+          var last = sessionStorage.getItem('lastSlide');
+          if (last) {
+            sessionStorage.removeItem('lastSlide');
+            window.location.href = last;
+          }
+        } catch (e) {}
+      }
+
       function handleNav(btn) {
         initCounter();
         if (btn.id === 'nav-prev') {
@@ -572,7 +914,236 @@
             Reveal.prev();
           }
         }
-        if (btn.id === 'nav-next') Reveal.next();
+        if (btn.id === 'nav-next') {
+          if (isIndexPage()) {
+            goBack();
+          } else {
+            Reveal.next();
+          }
+        }
+      }
+
+      function ensureCodeZoomModal() {
+        try {
+          var modal = document.getElementById('code-zoom-modal');
+          if (modal) return modal;
+          modal = document.createElement('div');
+          modal.id = 'code-zoom-modal';
+          modal.setAttribute('role', 'dialog');
+          modal.setAttribute('aria-modal', 'true');
+          modal.innerHTML = '<div id="code-zoom-panel"><button id="code-zoom-close" type="button" aria-label="閉じる">&times;</button><div id="code-zoom-content"></div></div>';
+          document.body.appendChild(modal);
+          modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeCodeZoom();
+          });
+          var close = document.getElementById('code-zoom-close');
+          if (close) close.addEventListener('click', closeCodeZoom);
+          initCodeZoomPanHandlers();
+          return modal;
+        } catch (e) {}
+      }
+
+      function setRevealKeyboard(active) {
+        try {
+          if (!window.Reveal || !Reveal.configure) return;
+          if (!active) {
+            if (codeZoomPreviousKeyboard === null && Reveal.getConfig) {
+              codeZoomPreviousKeyboard = Reveal.getConfig().keyboard;
+            }
+            Reveal.configure({ keyboard: false });
+          } else {
+            Reveal.configure({ keyboard: codeZoomPreviousKeyboard === null ? true : codeZoomPreviousKeyboard });
+            codeZoomPreviousKeyboard = null;
+          }
+        } catch (e) {}
+      }
+
+      function clampCodeZoomFontSize(size) {
+        if (!Number.isFinite(size)) return codeZoomFontSize;
+        return Math.max(1.2, Math.min(3.6, Math.round(size * 10) / 10));
+      }
+
+      function setCodeZoomFontSize(size) {
+        try {
+          codeZoomFontSize = clampCodeZoomFontSize(size);
+          var panel = document.getElementById('code-zoom-panel');
+          if (panel) panel.style.setProperty('--code-zoom-font-size', codeZoomFontSize + 'rem');
+        } catch (e) {}
+      }
+
+      function setCodeZoomPanMode(active) {
+        try {
+          codeZoomPanMode = active;
+          var content = document.getElementById('code-zoom-content');
+          if (!content) return;
+          content.classList.toggle('code-zoom-pan-mode', active);
+          if (!active) {
+            codeZoomDragging = false;
+            content.classList.remove('code-zoom-dragging');
+          }
+        } catch (e) {}
+      }
+
+      function initCodeZoomPanHandlers() {
+        try {
+          var content = document.getElementById('code-zoom-content');
+          if (!content || content.dataset.panInit === 'true') return;
+          content.dataset.panInit = 'true';
+          content.addEventListener('pointerdown', function(e) {
+            try {
+              if (!codeZoomPanMode) return;
+              e.preventDefault();
+              e.stopPropagation();
+              codeZoomDragging = true;
+              codeZoomDragStartX = e.clientX;
+              codeZoomDragStartY = e.clientY;
+              codeZoomScrollStartLeft = content.scrollLeft;
+              codeZoomScrollStartTop = content.scrollTop;
+              content.classList.add('code-zoom-dragging');
+              content.setPointerCapture(e.pointerId);
+            } catch (e) {}
+          });
+          content.addEventListener('pointermove', function(e) {
+            try {
+              if (!codeZoomDragging) return;
+              e.preventDefault();
+              e.stopPropagation();
+              content.scrollLeft = codeZoomScrollStartLeft - (e.clientX - codeZoomDragStartX);
+              content.scrollTop = codeZoomScrollStartTop - (e.clientY - codeZoomDragStartY);
+            } catch (e) {}
+          });
+          content.addEventListener('pointerup', function(e) {
+            try {
+              if (!codeZoomDragging) return;
+              e.preventDefault();
+              e.stopPropagation();
+              codeZoomDragging = false;
+              content.classList.remove('code-zoom-dragging');
+              content.releasePointerCapture(e.pointerId);
+            } catch (e) {}
+          });
+          content.addEventListener('pointercancel', function() {
+            try {
+              codeZoomDragging = false;
+              content.classList.remove('code-zoom-dragging');
+            } catch (e) {}
+          });
+          content.addEventListener('wheel', function(e) {
+            try {
+              var modal = document.getElementById('code-zoom-modal');
+              if (!modal || !modal.classList.contains('code-zoom-open')) return;
+              if (!e.ctrlKey) return;
+              e.preventDefault();
+              e.stopPropagation();
+              var delta = e.deltaY < 0 ? 0.1 : -0.1;
+              setCodeZoomFontSize(codeZoomFontSize + delta);
+            } catch (e) {}
+          }, { passive: false });
+        } catch (e) {}
+      }
+
+      function closeCodeZoom() {
+        try {
+          var modal = document.getElementById('code-zoom-modal');
+          var content = document.getElementById('code-zoom-content');
+          if (content) content.innerHTML = '';
+          setCodeZoomPanMode(false);
+          setRevealKeyboard(true);
+          if (modal) modal.classList.remove('code-zoom-open');
+        } catch (e) {}
+      }
+
+      function openCodeZoom(container) {
+        try {
+          var modal = ensureCodeZoomModal();
+          var content = document.getElementById('code-zoom-content');
+          if (!modal || !content || !container) return;
+          var source = container.querySelector('div.sourceCode') || container.querySelector('pre');
+          if (!source) return;
+          var clone = source.cloneNode(true);
+          content.innerHTML = '';
+          content.appendChild(clone);
+          setCodeZoomFontSize(codeZoomFontSize);
+          setRevealKeyboard(false);
+          modal.classList.add('code-zoom-open');
+          var close = document.getElementById('code-zoom-close');
+          if (close) close.focus();
+        } catch (e) {}
+      }
+
+      function wrapPlainCodeBlock(pre) {
+        try {
+          if (!pre || pre.closest('.code-copy-outer-scaffold') || pre.closest('.code-expand-scaffold')) return null;
+          var wrapper = document.createElement('div');
+          wrapper.className = 'code-expand-scaffold';
+          pre.parentNode.insertBefore(wrapper, pre);
+          wrapper.appendChild(pre);
+          return wrapper;
+        } catch (e) {}
+      }
+
+      function addCodeExpandButtons() {
+        try {
+          var containers = Array.from(document.querySelectorAll('.code-copy-outer-scaffold'));
+          Array.from(document.querySelectorAll('.reveal pre')).forEach(function(pre) {
+            var text = pre.textContent || '';
+            if (text.indexOf('\n') === -1) return;
+            var wrapper = wrapPlainCodeBlock(pre);
+            if (wrapper) containers.push(wrapper);
+          });
+          containers.forEach(function(container) {
+            if (!container || container.querySelector('.code-expand-button')) return;
+            if (!container.querySelector('pre')) return;
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'code-expand-button';
+            btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/></svg>';
+            btn.title = '拡大';
+            btn.setAttribute('aria-label', 'コードを拡大表示');
+            btn.addEventListener('click', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              openCodeZoom(container);
+            });
+            container.appendChild(btn);
+          });
+        } catch (e) {}
+      }
+
+      function initCodeExpand() {
+        try {
+          ensureCodeZoomModal();
+          addCodeExpandButtons();
+          if (codeExpandInit) return;
+          codeExpandInit = true;
+          document.addEventListener('keydown', function(e) {
+            try {
+              var modal = document.getElementById('code-zoom-modal');
+              if (!modal || !modal.classList.contains('code-zoom-open')) return;
+              if (e.key === 'Escape') {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                closeCodeZoom();
+              }
+              if (e.code === 'Space' || e.key === ' ' || e.key === 'Spacebar') {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                if (!e.repeat) setCodeZoomPanMode(true);
+              }
+            } catch (e) {}
+          }, true);
+          document.addEventListener('keyup', function(e) {
+            try {
+              var modal = document.getElementById('code-zoom-modal');
+              if (!modal || !modal.classList.contains('code-zoom-open')) return;
+              if (e.code === 'Space' || e.key === ' ' || e.key === 'Spacebar') {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                setCodeZoomPanMode(false);
+              }
+            } catch (e) {}
+          }, true);
+        } catch (e) {}
       }
 
       document.addEventListener('click', function(e) {
@@ -598,6 +1169,9 @@
           if (isFirstSlide() && (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp')) {
             goHome();
           }
+          if (isIndexPage() && (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown')) {
+            goBack();
+          }
         } catch (e) {}
       });
 
@@ -605,6 +1179,7 @@
         try {
           new MutationObserver(function() {
             createHome();
+            addCodeExpandButtons();
             if (document.querySelector('.reveal > .footer')) {
               createNav();
               if (window.Reveal && Reveal.isReady()) initCounter();
@@ -612,6 +1187,7 @@
           }).observe(document.body, { childList: true, subtree: true });
           createHome();
           createNav();
+          initCodeExpand();
         } catch (e) {}
       }
 
@@ -650,6 +1226,7 @@ rkskmt
 </section>
 <section id="ここまでで揃った道具" class="slide level2">
 <h2>ここまでで揃った「道具」</h2>
+<div class="slide-body">
 <ul>
 <li><strong>データを置く</strong> — 変数、コレクション（list / dict / tuple）</li>
 <li><strong>データを計算する</strong> — NumPy（ベクトル・行列・統計）</li>
@@ -672,14 +1249,17 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="本授業の最終目標" class="slide level2">
 <h2>本授業の最終目標</h2>
+<div class="slide-body">
 <ul>
 <li>なにかのデータ群を処理して</li>
 <li><strong>役に立つ、もしくは興味深い</strong> 出力やサービスのモックを作る</li>
 <li>今回はその第一歩として <strong>Webからデータを取ってくる</strong> ことをやる</li>
 </ul>
+</div>
 </section>
 <section id="section-1" class="slide level2 center break-slide" data-background-color="white">
 <h2></h2>
@@ -689,6 +1269,7 @@ rkskmt
 </section>
 <section id="requests-ライブラリ" class="slide level2">
 <h2>requests ライブラリ</h2>
+<div class="slide-body">
 <ul>
 <li>PythonでWebにアクセスする <strong>定番ライブラリ</strong></li>
 <li>標準ライブラリではないので pip でインストール</li>
@@ -698,16 +1279,18 @@ rkskmt
 <li>コード冒頭でいつもどおり import</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> requests</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="一番シンプルな使い方" class="slide level2">
 <h2>一番シンプルな使い方</h2>
+<div class="slide-body">
 <ul>
 <li><code>requests.get(url)</code> で <strong>指定URLにアクセス</strong></li>
 <li>戻り値の <code>response</code> を print すると <strong>状態コード</strong> が見える</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a>response <span class="op">=</span> requests.get(<span class="st">'https://www.example.com/'</span>)</span>
+<span id="cb3-3"><a></a>response <span class="op">=</span> requests.get(<span class="st">'https://www.python.org/'</span>)</span>
 <span id="cb3-4"><a></a><span class="bu">print</span>(response)   <span class="co"># &lt;Response [200]&gt;</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -725,9 +1308,11 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="httpステータスコードよく見るもの" class="slide level2">
 <h2>HTTPステータスコード（よく見るもの）</h2>
+<div class="slide-body">
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -768,9 +1353,11 @@ rkskmt
 <li>全部覚える必要なし</li>
 <li><strong>200番台 = 成功、400番台 = リクエスト側のミス、500番台 = サーバ側のミス</strong> くらいの感覚</li>
 </ul>
+</div>
 </section>
 <section id="response-の中身" class="slide level2">
 <h2>response の中身</h2>
+<div class="slide-body">
 <ul>
 <li>取得した内容は <strong>プロパティ</strong> で取り出せる</li>
 </ul>
@@ -800,26 +1387,30 @@ rkskmt
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="text-で本文を取得" class="slide level2">
 <h2>.text で本文を取得</h2>
+<div class="slide-body">
 <ul>
 <li>HTMLがそのまま str で返ってくる</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a>response <span class="op">=</span> requests.get(<span class="st">'https://www.example.com/'</span>)</span>
+<span id="cb4-3"><a></a>response <span class="op">=</span> requests.get(<span class="st">'https://www.python.org/'</span>)</span>
 <span id="cb4-4"><a></a><span class="bu">print</span>(response.text)    <span class="co"># HTMLの中身</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="headers-でメタデータを取得" class="slide level2">
 <h2>.headers でメタデータを取得</h2>
+<div class="slide-body">
 <ul>
 <li>ヘッダーは <strong>本文と別についてくる情報</strong></li>
 <li>応答時刻、サーバ情報、本文のバイト長、コンテンツ種別 など</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a>response <span class="op">=</span> requests.get(<span class="st">'https://www.example.com/'</span>)</span>
+<span id="cb5-3"><a></a>response <span class="op">=</span> requests.get(<span class="st">'https://www.python.org/'</span>)</span>
 <span id="cb5-4"><a></a><span class="bu">print</span>(response.headers)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -844,6 +1435,7 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="section-2" class="slide level2 center break-slide" data-background-color="white">
 <h2></h2>
@@ -853,6 +1445,7 @@ rkskmt
 </section>
 <section id="wikipedia-pageviews-api" class="slide level2">
 <h2>Wikipedia Pageviews API</h2>
+<div class="slide-body">
 <ul>
 <li>Wikipedia財団が公開している <strong>ページビュー統計</strong> のAPI</li>
 <li>まずは「2025/6/27 にアクセス数が多かった記事ランキング」を取ってみる</li>
@@ -865,9 +1458,11 @@ rkskmt
 <span id="cb7-6"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
 <span id="cb7-7"><a></a>data <span class="op">=</span> response.json()</span>
 <span id="cb7-8"><a></a><span class="bu">print</span>(data, <span class="bu">type</span>(data))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="ヘッダーを送る理由" class="slide level2">
 <h2>ヘッダーを送る理由</h2>
+<div class="slide-body">
 <ul>
 <li>Wikipedia の API は <strong>User-Agent がないと応答を返さない</strong></li>
 <li>本来はChromeなどブラウザ名を入れる場所</li>
@@ -890,16 +1485,11 @@ rkskmt
 </div>
 </div>
 </div>
-</section>
-<section id="なぜ-.dict-ではなく-.json-なのか" class="slide level2">
-<h2>なぜ <code>.dict()</code> ではなく <code>.json()</code> なのか</h2>
-<ul>
-<li><code>.json()</code> はAPIが返すデータを <strong>dict として受け取る</strong> メソッド</li>
-<li>では JSON とは？</li>
-</ul>
+</div>
 </section>
 <section id="json-とは" class="slide level2">
 <h2>JSON とは</h2>
+<div class="slide-body">
 <ul>
 <li><strong>JavaScript Object Notation</strong> の略</li>
 <li>「ある文法に従って書かれた <strong>ただのテキスト</strong>」</li>
@@ -913,9 +1503,11 @@ rkskmt
 <ul>
 <li><code>.json()</code> は <strong>このテキストを dict に変換</strong> するメソッド</li>
 </ul>
+</div>
 </section>
 <section id="余談手動で-json-dict" class="slide level2">
 <h2>（余談）手動で JSON → dict</h2>
+<div class="slide-body">
 <ul>
 <li>標準ライブラリ <code>json</code> で同じことができる</li>
 <li>pip 不要</li>
@@ -943,6 +1535,7 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="section-3" class="slide level2 center break-slide" data-background-color="white">
 <h2></h2>
@@ -952,6 +1545,7 @@ rkskmt
 </section>
 <section id="api-と-エンドポイント" class="slide level2">
 <h2>API と エンドポイント</h2>
+<div class="slide-body">
 <ul>
 <li><strong>API</strong>（<strong>A</strong>pplication <strong>P</strong>rograming <strong>I</strong>nterface）
 <ul>
@@ -967,9 +1561,11 @@ rkskmt
 <li><code>/metrics/pageviews/top/...</code> がエンドポイントのひとつ</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="urlにパラメータが埋め込まれている" class="slide level2">
 <h2>URLにパラメータが埋め込まれている</h2>
+<div class="slide-body">
 <ul>
 <li>エンドポイントの一部に <strong>値を直接埋め込む</strong> タイプ</li>
 <li>今回のAPIだと…</li>
@@ -1024,7 +1620,9 @@ rkskmt
 <ul>
 <li>API ごとにURL構造はバラバラ</li>
 <li>使うときに <strong>公式ドキュメントを見る</strong> のが正解</li>
+<li><a href="https://wikimedia.org/api/rest_v1/">Wikimedia REST API ドキュメント</a></li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -1037,60 +1635,56 @@ rkskmt
 </section>
 <section id="別のエンドポイントper-article" class="slide level2">
 <h2>別のエンドポイント<span class="fw-colon">：</span>per-article</h2>
+<div class="slide-body">
 <ul>
 <li>特定の記事の、任意の期間のアクセス数（日単位 / 月単位）を返す</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a></a>https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/</span>
 <span id="cb12-2"><a></a>    {project} / {access} / {agent} / {article} / {granularity} / {start} / {end}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="per-article-のパラメータ" class="slide level2">
+<h2>per-article のパラメータ</h2>
+<div class="slide-body">
 <table class="caption-top">
 <thead>
 <tr class="header">
 <th>パラメータ</th>
-<th>必須</th>
 <th>選択肢</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>project</strong></td>
-<td>✓</td>
 <td>ja.wikipedia など</td>
 </tr>
 <tr class="even">
 <td><strong>access</strong></td>
-<td>✓</td>
 <td>all-access / desktop / mobile-app / mobile-web</td>
 </tr>
 <tr class="odd">
 <td><strong>agent</strong></td>
-<td>✓</td>
 <td>all-agents / <strong>user</strong> / spider / automated</td>
 </tr>
 <tr class="even">
 <td><strong>article</strong></td>
-<td>✓</td>
 <td>任意の記事名（スペースは <code>_</code>）</td>
 </tr>
 <tr class="odd">
 <td><strong>granularity</strong></td>
-<td>✓</td>
 <td>daily / monthly</td>
 </tr>
 <tr class="even">
-<td><strong>start</strong></td>
-<td>✓</td>
-<td>YYYYMMDD</td>
-</tr>
-<tr class="odd">
-<td><strong>end</strong></td>
-<td>✓</td>
-<td>YYYYMMDD</td>
+<td><strong>start</strong> / <strong>end</strong></td>
+<td>YYYYMMDD 形式</td>
 </tr>
 </tbody>
 </table>
+</div>
 </section>
-<section id="七夕のページビューを取得する" class="slide level2">
-<h2>七夕のページビューを取得する</h2>
+<section id="東京スカイツリーのページビューを取得する" class="slide level2">
+<h2>東京スカイツリーのページビューを取得する</h2>
+<div class="slide-body">
 <ul>
 <li>過去1年分の日別アクセス数を取り、最大・最小・平均・分散を出す</li>
 </ul>
@@ -1099,7 +1693,7 @@ rkskmt
 <span id="cb13-3"><a></a></span>
 <span id="cb13-4"><a></a>url <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"</span></span>
 <span id="cb13-5"><a></a>       <span class="st">"ja.wikipedia/all-access/user/"</span></span>
-<span id="cb13-6"><a></a>       <span class="st">"七夕/daily/20240401/20250328"</span>)</span>
+<span id="cb13-6"><a></a>       <span class="st">"東京スカイツリー/daily/20240401/20250328"</span>)</span>
 <span id="cb13-7"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
 <span id="cb13-8"><a></a></span>
 <span id="cb13-9"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
@@ -1116,9 +1710,11 @@ rkskmt
 <span id="cb13-20"><a></a><span class="bu">print</span>(<span class="ss">f"最小: </span><span class="sc">{</span>views[min_i]<span class="sc">}</span><span class="ss">回  </span><span class="sc">{</span>dates[min_i]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb13-21"><a></a><span class="bu">print</span>(<span class="ss">f"平均: </span><span class="sc">{</span>np<span class="sc">.</span>mean(views)<span class="sc">:.1f}</span><span class="ss">回"</span>)</span>
 <span id="cb13-22"><a></a><span class="bu">print</span>(<span class="ss">f"分散: </span><span class="sc">{</span>np<span class="sc">.</span>var(views)<span class="sc">:.1f}</span><span class="ss">"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="過去の章が一気に効いてくる" class="slide level2">
 <h2>過去の章が一気に効いてくる</h2>
+<div class="slide-body">
 <ul>
 <li><code>data['items']</code> は <strong>list of dict</strong>（<a href="./dict.html">dict章</a> でやった形）</li>
 <li>内包表記でフィールド抽出（<a href="./list.html">list章</a>）</li>
@@ -1143,48 +1739,51 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="まずは可視化する" class="slide level2">
 <h2>まずは可視化する</h2>
+<div class="slide-body">
 <ul>
 <li>数値だけでは見落とすので <strong>まず描く</strong> — <a href="./visualize.html">可視化章</a> の大原則</li>
 <li>同じURL/ヘッダーで取得したあと <code>plt.plot(views)</code> するだけ</li>
 </ul>
-<div id="dd897879" class="cell" data-execution_count="1">
+<div id="680e62d6" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="api_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="565" height="276"></p>
+<p><img data-src="api_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="565" height="277"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="0bb9cbb3" class="cell" data-execution_count="2">
+<div id="6bbf0fb8" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb14-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb14-3"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb14-4"><a></a></span>
-<span id="cb14-5"><a></a>url <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"</span></span>
-<span id="cb14-6"><a></a>       <span class="st">"ja.wikipedia/all-access/user/"</span></span>
-<span id="cb14-7"><a></a>       <span class="st">"七夕/daily/20240401/20250328"</span>)</span>
-<span id="cb14-8"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
-<span id="cb14-9"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
-<span id="cb14-10"><a></a>data <span class="op">=</span> response.json()</span>
-<span id="cb14-11"><a></a></span>
-<span id="cb14-12"><a></a>views <span class="op">=</span> np.array([item[<span class="st">'views'</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">'items'</span>]])</span>
-<span id="cb14-13"><a></a></span>
-<span id="cb14-14"><a></a>plt.plot(views)</span>
-<span id="cb14-15"><a></a>plt.title(<span class="st">'Page View Trend'</span>)</span>
-<span id="cb14-16"><a></a>plt.xlabel(<span class="st">'days'</span>)</span>
-<span id="cb14-17"><a></a>plt.ylabel(<span class="st">'Views'</span>)</span>
-<span id="cb14-18"><a></a>plt.show()</span>
-<span id="cb14-19"><a></a></span>
-<span id="cb14-20"><a></a><span class="bu">print</span>(<span class="ss">f"Max:  </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">max</span>(views)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb14-21"><a></a><span class="bu">print</span>(<span class="ss">f"Min:  </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">min</span>(views)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb14-22"><a></a><span class="bu">print</span>(<span class="ss">f"Mean: </span><span class="sc">{</span>np<span class="sc">.</span>mean(views)<span class="sc">:.1f}</span><span class="ss">"</span>)</span>
-<span id="cb14-23"><a></a><span class="bu">print</span>(<span class="ss">f"Var:  </span><span class="sc">{</span>np<span class="sc">.</span>var(views)<span class="sc">:.1f}</span><span class="ss">"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb14-4"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb14-5"><a></a></span>
+<span id="cb14-6"><a></a>url <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"</span></span>
+<span id="cb14-7"><a></a>       <span class="st">"ja.wikipedia/all-access/user/"</span></span>
+<span id="cb14-8"><a></a>       <span class="st">"東京スカイツリー/daily/20240401/20250328"</span>)</span>
+<span id="cb14-9"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb14-10"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
+<span id="cb14-11"><a></a>data <span class="op">=</span> response.json()</span>
+<span id="cb14-12"><a></a></span>
+<span id="cb14-13"><a></a>views <span class="op">=</span> np.array([item[<span class="st">'views'</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">'items'</span>]])</span>
+<span id="cb14-14"><a></a></span>
+<span id="cb14-15"><a></a>plt.plot(views)</span>
+<span id="cb14-16"><a></a>plt.title(<span class="st">'Page View Trend'</span>)</span>
+<span id="cb14-17"><a></a>plt.xlabel(<span class="st">'days'</span>)</span>
+<span id="cb14-18"><a></a>plt.ylabel(<span class="st">'Views'</span>)</span>
+<span id="cb14-19"><a></a>plt.show()</span>
+<span id="cb14-20"><a></a></span>
+<span id="cb14-21"><a></a><span class="bu">print</span>(<span class="ss">f"Max:  </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">max</span>(views)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb14-22"><a></a><span class="bu">print</span>(<span class="ss">f"Min:  </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">min</span>(views)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb14-23"><a></a><span class="bu">print</span>(<span class="ss">f"Mean: </span><span class="sc">{</span>np<span class="sc">.</span>mean(views)<span class="sc">:.1f}</span><span class="ss">"</span>)</span>
+<span id="cb14-24"><a></a><span class="bu">print</span>(<span class="ss">f"Var:  </span><span class="sc">{</span>np<span class="sc">.</span>var(views)<span class="sc">:.1f}</span><span class="ss">"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="callout callout-note callout-titled callout-style-default">
@@ -1198,15 +1797,17 @@ rkskmt
 <div class="callout-content">
 <ul>
 <li>ほぼ平坦な中、<strong>1日だけ大きな山</strong></li>
-<li>なにかニュース・受験イベントなどで参照が増えた可能性</li>
+<li>なにかニュース・イベントなどで参照が増えた可能性</li>
 <li><strong>数値だけ見ていると気づけない</strong> ← アンスコムの教訓と同じ</li>
 </ul>
+</div>
 </div>
 </div>
 </div>
 </section>
 <section id="まとめ" class="slide level2">
 <h2>まとめ</h2>
+<div class="slide-body">
 <table class="caption-top">
 <colgroup>
 <col style="width: 50%">
@@ -1253,6 +1854,7 @@ rkskmt
 <li>Web から取った dict は今まで通り <code>for</code> / <code>items()</code> / <code>np.array()</code> で処理できる</li>
 <li>最初の一手は <strong>常に可視化</strong></li>
 </ul>
+</div>
 </section>
 <section id="section-5" class="slide level2 center break-slide" data-background-color="white">
 <h2></h2>
@@ -1262,6 +1864,7 @@ rkskmt
 </section>
 <section id="演習1desktop-と-mobile-web-の比較" class="slide level2">
 <h2>演習1<span class="fw-colon">：</span>desktop と mobile-web の比較</h2>
+<div class="slide-body">
 <ul>
 <li>同じ期間（2024/04/01 – 2025/03/28）で <strong>API を2回呼ぶ</strong></li>
 <li><code>access</code> を <code>desktop</code> と <code>mobile-web</code> に切り替える</li>
@@ -1284,9 +1887,11 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="演習21枚のグラフに2本の折れ線" class="slide level2">
 <h2>演習2<span class="fw-colon">：</span>1枚のグラフに2本の折れ線</h2>
+<div class="slide-body">
 <ul>
 <li><code>views_desktop</code> と <code>views_mobile_web</code> を <strong>同じグラフに重ねる</strong></li>
 <li><code>plt.plot()</code> を 2回呼ぶだけ</li>
@@ -1309,37 +1914,38 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="c8f66182" class="cell" data-execution_count="3">
+<div id="de32b70b" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb15-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb15-3"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb15-4"><a></a></span>
-<span id="cb15-5"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
-<span id="cb15-6"><a></a>article <span class="op">=</span> <span class="st">"七夕"</span></span>
-<span id="cb15-7"><a></a>base <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"</span></span>
-<span id="cb15-8"><a></a>        <span class="ss">f"ja.wikipedia/</span><span class="ch">{{</span><span class="ss">access</span><span class="ch">}}</span><span class="ss">/user/</span><span class="sc">{</span>article<span class="sc">}</span><span class="ss">/daily/20240401/20250328"</span>)</span>
-<span id="cb15-9"><a></a></span>
-<span id="cb15-10"><a></a><span class="kw">def</span> fetch_views(access):</span>
-<span id="cb15-11"><a></a>    url <span class="op">=</span> base.<span class="bu">format</span>(access<span class="op">=</span>access)</span>
-<span id="cb15-12"><a></a>    data <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers).json()</span>
-<span id="cb15-13"><a></a>    <span class="cf">return</span> np.array([item[<span class="st">'views'</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">'items'</span>]])</span>
-<span id="cb15-14"><a></a></span>
-<span id="cb15-15"><a></a>views_desktop    <span class="op">=</span> fetch_views(<span class="st">"desktop"</span>)</span>
-<span id="cb15-16"><a></a>views_mobile_web <span class="op">=</span> fetch_views(<span class="st">"mobile-web"</span>)</span>
-<span id="cb15-17"><a></a></span>
-<span id="cb15-18"><a></a>plt.plot(views_desktop,    label<span class="op">=</span><span class="st">"desktop"</span>)</span>
-<span id="cb15-19"><a></a>plt.plot(views_mobile_web, label<span class="op">=</span><span class="st">"mobile-web"</span>)</span>
-<span id="cb15-20"><a></a>plt.legend()</span>
-<span id="cb15-21"><a></a></span>
-<span id="cb15-22"><a></a>title <span class="op">=</span> (<span class="ss">f"max=</span><span class="sc">{</span><span class="bu">max</span>(views_desktop.<span class="bu">max</span>(), views_mobile_web.<span class="bu">max</span>())<span class="sc">}</span><span class="ss">  "</span></span>
-<span id="cb15-23"><a></a>         <span class="ss">f"min=</span><span class="sc">{</span><span class="bu">min</span>(views_desktop.<span class="bu">min</span>(), views_mobile_web.<span class="bu">min</span>())<span class="sc">}</span><span class="ss">  "</span></span>
-<span id="cb15-24"><a></a>         <span class="ss">f"mean=</span><span class="sc">{</span>(views_desktop.mean() <span class="op">+</span> views_mobile_web.mean()) <span class="op">/</span> <span class="dv">2</span><span class="sc">:.1f}</span><span class="ss">"</span>)</span>
+<span id="cb15-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb15-4"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-5"><a></a></span>
+<span id="cb15-6"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb15-7"><a></a>article <span class="op">=</span> <span class="st">"東京スカイツリー"</span></span>
+<span id="cb15-8"><a></a>base <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"</span></span>
+<span id="cb15-9"><a></a>        <span class="ss">f"ja.wikipedia/</span><span class="ch">{{</span><span class="ss">access</span><span class="ch">}}</span><span class="ss">/user/</span><span class="sc">{</span>article<span class="sc">}</span><span class="ss">/daily/20240401/20250328"</span>)</span>
+<span id="cb15-10"><a></a></span>
+<span id="cb15-11"><a></a><span class="kw">def</span> fetch_views(access):</span>
+<span id="cb15-12"><a></a>    url <span class="op">=</span> base.<span class="bu">format</span>(access<span class="op">=</span>access)</span>
+<span id="cb15-13"><a></a>    data <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers).json()</span>
+<span id="cb15-14"><a></a>    <span class="cf">return</span> np.array([item[<span class="st">'views'</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">'items'</span>]])</span>
+<span id="cb15-15"><a></a></span>
+<span id="cb15-16"><a></a>views_desktop    <span class="op">=</span> fetch_views(<span class="st">"desktop"</span>)</span>
+<span id="cb15-17"><a></a>views_mobile_web <span class="op">=</span> fetch_views(<span class="st">"mobile-web"</span>)</span>
+<span id="cb15-18"><a></a></span>
+<span id="cb15-19"><a></a>plt.plot(views_desktop,    label<span class="op">=</span><span class="st">"desktop"</span>)</span>
+<span id="cb15-20"><a></a>plt.plot(views_mobile_web, label<span class="op">=</span><span class="st">"mobile-web"</span>)</span>
+<span id="cb15-21"><a></a>plt.legend()</span>
+<span id="cb15-22"><a></a></span>
+<span id="cb15-23"><a></a>title <span class="op">=</span> (<span class="ss">f"desktop: max=</span><span class="sc">{</span>views_desktop<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">, mean=</span><span class="sc">{</span>views_desktop<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">  "</span></span>
+<span id="cb15-24"><a></a>         <span class="ss">f"mobile: max=</span><span class="sc">{</span>views_mobile_web<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">, mean=</span><span class="sc">{</span>views_mobile_web<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">"</span>)</span>
 <span id="cb15-25"><a></a>plt.title(title)</span>
 <span id="cb15-26"><a></a>plt.xlabel(<span class="st">"days"</span>)<span class="op">;</span> plt.ylabel(<span class="st">"Views"</span>)</span>
 <span id="cb15-27"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+</div>
 </div>
 </section>
 <section id="section-6" class="slide level2 center break-slide" data-background-color="white">
@@ -1350,6 +1956,7 @@ rkskmt
 </section>
 <section id="実際のブラウザのuser-agent" class="slide level2">
 <h2>実際のブラウザのUser-Agent</h2>
+<div class="slide-body">
 <ul>
 <li>普段ブラウザでWebを見るときも <strong>裏でヘッダーが飛んでいる</strong></li>
 <li>サーバはこの値を見て <strong>PC / スマホ / OS / ブラウザ</strong> を判別している</li>
@@ -1385,9 +1992,11 @@ rkskmt
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="ここまでの流れ" class="slide level2">
 <h2>ここまでの流れ</h2>
+<div class="slide-body">
 <ul>
 <li><strong>道具→材料</strong> へ<span class="fw-colon">：</span>今回は Web から材料を仕入れる</li>
 <li><code>requests</code> で <strong>アクセス</strong>、<code>.text / .json() / .headers</code> で <strong>取り出す</strong></li>
@@ -1396,9 +2005,11 @@ rkskmt
 <li>NumPy で <strong>集計</strong>、matplotlib で <strong>可視化</strong></li>
 <li>大原則 <em>Always plot your data first.</em> を <strong>API由来のデータ</strong> にも適用</li>
 </ul>
+</div>
 </section>
 <section id="参考リンク" class="slide level2">
 <h2>参考リンク</h2>
+<div class="slide-body">
 <ul>
 <li><a href="https://requests.readthedocs.io/">requests Documentation</a></li>
 <li><a href="https://wikimedia.org/api/rest_v1/">Wikimedia REST API</a></li>
@@ -1407,6 +2018,10 @@ rkskmt
 </ul>
 
 
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
+
+</div>
+</div>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -1589,12 +2204,12 @@ rkskmt
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1280,
 
-        height: 700,
+        height: 720,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 6.0e-2,
 
         math: {
           mathjax: './libs/mathjax/MathJax.js',

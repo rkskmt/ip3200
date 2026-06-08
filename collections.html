@@ -192,20 +192,48 @@
   .reveal {
     font-family: system-ui, -apple-system, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", "Meiryo", sans-serif;
   }
+  .reveal .slides section:not(.stack):not(.break-slide) > .slide-body {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 28px 55px 18px !important;
+    box-sizing: border-box !important;
+  }
+  .reveal .slides section:not(.stack):not(.break-slide) > h2 {
+    padding-left: 18px;
+    padding-bottom: 7px;
+    box-sizing: border-box;
+  }
+  .reveal #title-slide > * {
+    padding-left: 80px;
+    box-sizing: border-box;
+  }
   /* Force scrollbar visibility on macOS/mobile */
-  .reveal .slides section {
-    scrollbar-width: thin;
+  .reveal .slides section,
+  .reveal .slides section.present {
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(0,0,0,0.3) rgba(0,0,0,0.1) !important;
   }
-  .reveal .slides section::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  .reveal .slides section::-webkit-scrollbar,
+  .reveal .slides section.present::-webkit-scrollbar {
+    width: 10px !important;
+    height: 10px !important;
+    -webkit-appearance: none !important;
   }
-  .reveal .slides section::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
+  .reveal .slides section::-webkit-scrollbar-track,
+  .reveal .slides section.present::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.08) !important;
+    border-radius: 5px !important;
   }
-  .reveal .slides section::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
+  .reveal .slides section::-webkit-scrollbar-thumb,
+  .reveal .slides section.present::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.25) !important;
+    border-radius: 5px !important;
+    border: 2px solid transparent !important;
+    background-clip: content-box !important;
+  }
+  .reveal .slides section::-webkit-scrollbar-thumb:hover,
+  .reveal .slides section.present::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4) !important;
   }
   .callout.callout-note {
       font-size: 1.5rem;
@@ -222,7 +250,7 @@
       font-size: 2.3rem;
   }
   .reveal .callout pre code {
-      font-size: 1.5rem !important;
+      font-size: 1.25rem !important;
   }
   .reveal h2 {
       font-weight: bold !important;
@@ -236,7 +264,17 @@
       font-size: 2.3rem;
       background-color: #5dade2;
       color: white;
-      padding: 20px 25px;
+      padding: 20px 12px;
+      margin: 12px;
+      border-radius: 5px;
+  }
+  .reveal .slide-body-heading {
+      font-style: normal !important;
+      font-weight: bold !important;
+      font-size: 2.3rem;
+      background-color: #5dade2;
+      color: white;
+      padding: 10px 25px;
       margin: 12px;
       border-radius: 5px;
   }
@@ -255,11 +293,18 @@
   .cell-output pre {
     font-size: 2.0rem;
   }
+  .reveal pre,
+  .reveal div.sourceCode {
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+    max-width: calc(100% - 1.6rem);
+    box-sizing: border-box;
+  }
   .reveal pre code {
-    font-size: 1.8rem !important;
+    font-size: 1.35rem !important;
   }
   .reveal details pre code {
-    font-size: 1.5rem;
+    font-size: 1.2rem !important;
   }
   .reveal img {
     max-height: 500px;
@@ -284,6 +329,17 @@
   table {
     width: 100%;
     border-bottom: none !important;
+  }
+  .reveal table.dataframe {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .reveal table.dataframe th,
+  .reveal table.dataframe td {
+    text-align: center;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
   }
   table tbody {
     border-bottom: none !important;
@@ -390,7 +446,7 @@
   #slide-nav button:active {
     background: rgba(93, 173, 226, 0.2);
   }
-  #slide-nav button:disabled {
+  #slide-nav button.nav-disabled {
     opacity: 0.3;
     cursor: default;
   }
@@ -410,6 +466,198 @@
   .code-copy-outer-scaffold {
     position: relative !important;
     margin-top: 0.3em !important;
+  }
+  .code-expand-scaffold {
+    position: relative !important;
+  }
+  .code-expand-button {
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 2px solid rgba(0,0,0,0.25);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.92);
+    color: #666;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0.82;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+    transition: opacity 0.15s ease, background 0.15s ease, transform 0.15s ease;
+    touch-action: manipulation;
+  }
+  .code-expand-button:hover,
+  .code-expand-button:focus {
+    opacity: 1;
+    background: white;
+    transform: scale(1.04);
+  }
+  .code-expand-button svg {
+    width: 21px;
+    height: 21px;
+    display: block;
+    pointer-events: none;
+  }
+  #code-zoom-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 4vh 4vw;
+    background: rgba(0,0,0,0.72);
+    box-sizing: border-box;
+  }
+  #code-zoom-modal.code-zoom-open {
+    display: flex;
+  }
+  #code-zoom-panel {
+    position: relative;
+    width: min(92vw, 1500px);
+    max-height: 88vh;
+    --code-zoom-font-size: 2.2rem;
+    padding: 32px 22px 22px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  #code-zoom-close {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(0,0,0,0.14);
+    border-radius: 4px;
+    background: rgba(255,255,255,0.75);
+    color: #333;
+    padding: 0;
+    font-size: 1.45rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: none;
+  }
+  #code-zoom-close:hover,
+  #code-zoom-close:focus {
+    background: rgba(245,245,245,0.98);
+    border-color: rgba(0,0,0,0.28);
+    color: #111;
+  }
+  #code-zoom-content pre {
+    max-height: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  #code-zoom-content pre > code.sourceCode {
+    white-space: pre !important;
+  }
+  #code-zoom-content {
+    max-height: calc(88vh - 80px);
+    overflow: auto;
+    box-sizing: border-box;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(0,0,0,0.3) rgba(0,0,0,0.1) !important;
+  }
+  #code-zoom-content.code-zoom-pan-mode {
+    cursor: grab;
+    user-select: none;
+  }
+  #code-zoom-content.code-zoom-pan-mode * {
+    cursor: grab !important;
+    user-select: none;
+  }
+  #code-zoom-content.code-zoom-dragging {
+    cursor: grabbing;
+  }
+  #code-zoom-content.code-zoom-dragging * {
+    cursor: grabbing !important;
+  }
+  #code-zoom-content::-webkit-scrollbar {
+    width: 10px !important;
+    height: 10px !important;
+    -webkit-appearance: none !important;
+  }
+  #code-zoom-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.08) !important;
+    border-radius: 5px !important;
+  }
+  #code-zoom-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.25) !important;
+    border-radius: 5px !important;
+    border: 2px solid transparent !important;
+    background-clip: content-box !important;
+  }
+  #code-zoom-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4) !important;
+  }
+  #code-zoom-content .sourceCode {
+    max-width: none;
+    overflow: visible !important;
+  }
+  #code-zoom-content div.sourceCode {
+    display: inline-block;
+    min-width: 100%;
+    border: 1px solid rgba(0,0,0,0.18);
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  #code-zoom-content pre.sourceCode {
+    width: fit-content;
+    min-width: calc(100% - 2px);
+  }
+  #code-zoom-content pre.numberSource {
+    margin-left: 5.4em !important;
+    margin-right: -5.4em !important;
+    min-width: calc(100% - 2px);
+    padding-left: 0 !important;
+  }
+  #code-zoom-content pre.numberSource code > span {
+    left: -4em !important;
+  }
+  #code-zoom-content pre.numberSource code > span > a:first-child::before {
+    left: -1em !important;
+  }
+  #code-zoom-content pre code {
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+    font-size: var(--code-zoom-font-size) !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0 !important;
+    word-spacing: normal !important;
+    font-variant-ligatures: none !important;
+  }
+  .reveal .columns.columns-tight {
+    max-width: 1050px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+  }
+  .reveal .columns.columns-tight .column {
+    text-align: center;
+  }
+  .reveal .column.mermaid-compact .cell {
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .reveal .column.mermaid-compact svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  .reveal .mermaid .nodeLabel,
+  .reveal .mermaid foreignObject div {
+    text-align: center !important;
+    font-weight: 700 !important;
   }
   .code-copy-outer-scaffold:has(pre.python)::before,
   .code-copy-outer-scaffold:has(pre.shell)::before {
@@ -439,6 +687,12 @@
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M290.4 19.8C295.4 7.8 307.1 0 320 0h160c17.7 0 32 14.3 32 32v160c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9L400 157.3 246.6 310.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L354.7 112l-57.3-57.4c-9.2-9.2-11.9-22.9-6.9-34.9zM0 176c0-44.2 35.8-80 80-80h80c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-8.8 0-16 7.2-16 16v256c0 8.8 7.2 16 16 16h256c8.8 0 16-7.2 16-16v-80c0-17.7 14.3-32 32-32s32 14.3 32 32v80c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176z'/%3E%3C/svg%3E") no-repeat center / contain;
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M290.4 19.8C295.4 7.8 307.1 0 320 0h160c17.7 0 32 14.3 32 32v160c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9L400 157.3 246.6 310.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L354.7 112l-57.3-57.4c-9.2-9.2-11.9-22.9-6.9-34.9zM0 176c0-44.2 35.8-80 80-80h80c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-8.8 0-16 7.2-16 16v256c0 8.8 7.2 16 16 16h256c8.8 0 16-7.2 16-16v-80c0-17.7 14.3-32 32-32s32 14.3 32 32v80c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176z'/%3E%3C/svg%3E") no-repeat center / contain;
   }
+  .reveal .slide-menu-button a[href]::after,
+  .slide-menu-wrapper a[href]::after,
+  a.lightbox[href]::after {
+    content: none !important;
+    display: none !important;
+  }
   .reveal .hl {
     color: rgba(255,255,255,1);
     font-weight: bold;
@@ -464,31 +718,96 @@
   .break-slide h2 { border: none !important; }
   .break-slide p { margin: 0 !important; }
   .break-slide .break-title {
+    display: block;
+    width: 860px;
+    max-width: calc(100% - 310px);
     font-size: 1.5em;
     font-weight: bold;
     color: #333;
-    border-bottom: 0.5px solid #333;
-    padding-bottom: 0.1em;
+    border-bottom: 0.5px solid #999;
+    margin-left: 190px !important;
+    margin-right: auto !important;
+    padding: 0 0 0.24em;
+    text-align: left;
   }
-  .reveal ul li::marker {
-    color: #0099cc;
-    font-size: 1.3em;
-  }
-  .reveal ul ul li::before, .reveal ol ul li::before {
-    font-weight: 500;
-    color: #0099cc;
-  }
-  .reveal ul ul ul {
+  .reveal .slide-body ul { /* level 1 */
     list-style: none;
+    padding-left: 1.45em;
   }
-  .reveal ul ul ul li::before {
-    content: "‣";
+  .reveal .slide-body ul ul { /* level 2 */
+    padding-left: 1.0em;
+  }
+  .reveal .slide-body ul ul ul { /* level 3 */
+    padding-left: 0.0em;
+  }
+  .reveal .slide-body ul > li::before {
+    content: "";
+    display: inline-block;
+    width: 0.58em;
+    height: 0.58em;
+    margin-left: -1.2em;
+    margin-right: 0.62em;
+    vertical-align: 0.1em;
+    background-color: #0099cc;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
+  }
+  .reveal .slide-body ul ul > li::before,
+  .reveal .slide-body ol ul > li::before {
+    content: "";
+    display: inline-block;
+    width: 1.1em;
+    height: 0.7em;
+    margin-left: -1.55em;
+    margin-right: 0.45em;
+    vertical-align: 0.02em;
+    background-color: #0099cc;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 28'%3E%3Cpath d='M2 14h37M29 4l10 10-10 10' fill='none' stroke='black' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 28'%3E%3Cpath d='M2 14h37M29 4l10 10-10 10' fill='none' stroke='black' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
+  }
+  .reveal .slide ul li, .reveal .slide ol li {
+      margin-top: 0.3em;
+      margin-bottom: 0.3em;
+  }
+
+  .reveal .slide-body ul ul ul > li::before {
+    content: "";
+    display: inline-block;
+    width: 0.42em;
+    height: 0.62em;
+    margin-left: -0.92em;
+    margin-right: 0.5em;
+    vertical-align: 0.02em;
+    background-color: #6aaec6;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 32'%3E%3Cpath d='M3 3l18 13L3 29z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 32'%3E%3Cpath d='M3 3l18 13L3 29z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
   }
   .reveal strong {
     padding: 0 0.1em;
   }
   .reveal .fw-colon {
     font-weight: 300;
+  }
+  .cell:has(details.code-fold) {
+    display: flex;
+    flex-direction: column;
+  }
+  .cell:has(details.code-fold) details.code-fold {
+    order: 1;
+  }
+  .cell-output.cell-output-display .quarto-figure {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .cell-output.cell-output-display a.lightbox {
+    display: block;
+  }
+  .cell-output.cell-output-display figure p {
+    margin-bottom: 0 !important;
+  }
+  .cell details.code-fold {
+    margin-left: 1.6em;
+    font-size: 1.2rem;
   }
   .reveal :not(pre) > code {
     color: #005cc5;
@@ -503,6 +822,15 @@
   (function() {
     try {
       var counterInit = false;
+      var codeExpandInit = false;
+      var codeZoomFontSize = 2.2;
+      var codeZoomPanMode = false;
+      var codeZoomDragging = false;
+      var codeZoomDragStartX = 0;
+      var codeZoomDragStartY = 0;
+      var codeZoomScrollStartLeft = 0;
+      var codeZoomScrollStartTop = 0;
+      var codeZoomPreviousKeyboard = null;
 
       function createNav() {
         try {
@@ -540,8 +868,8 @@
           el.textContent = (idx + 1) + ' / ' + slides.length;
           var prev = document.getElementById('nav-prev');
           var next = document.getElementById('nav-next');
-          if (prev) prev.disabled = (idx <= 0);
-          if (next) next.disabled = (idx >= slides.length - 1);
+          if (prev) prev.classList.toggle('nav-disabled', idx <= 0);
+          if (next) next.classList.toggle('nav-disabled', idx >= slides.length - 1);
         } catch (e) {}
       }
 
@@ -563,6 +891,20 @@
         window.location.href = './index.html';
       }
 
+      function isIndexPage() {
+        return window.location.pathname.endsWith('/index.html') || window.location.pathname.endsWith('/');
+      }
+
+      function goBack() {
+        try {
+          var last = sessionStorage.getItem('lastSlide');
+          if (last) {
+            sessionStorage.removeItem('lastSlide');
+            window.location.href = last;
+          }
+        } catch (e) {}
+      }
+
       function handleNav(btn) {
         initCounter();
         if (btn.id === 'nav-prev') {
@@ -572,7 +914,236 @@
             Reveal.prev();
           }
         }
-        if (btn.id === 'nav-next') Reveal.next();
+        if (btn.id === 'nav-next') {
+          if (isIndexPage()) {
+            goBack();
+          } else {
+            Reveal.next();
+          }
+        }
+      }
+
+      function ensureCodeZoomModal() {
+        try {
+          var modal = document.getElementById('code-zoom-modal');
+          if (modal) return modal;
+          modal = document.createElement('div');
+          modal.id = 'code-zoom-modal';
+          modal.setAttribute('role', 'dialog');
+          modal.setAttribute('aria-modal', 'true');
+          modal.innerHTML = '<div id="code-zoom-panel"><button id="code-zoom-close" type="button" aria-label="閉じる">&times;</button><div id="code-zoom-content"></div></div>';
+          document.body.appendChild(modal);
+          modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeCodeZoom();
+          });
+          var close = document.getElementById('code-zoom-close');
+          if (close) close.addEventListener('click', closeCodeZoom);
+          initCodeZoomPanHandlers();
+          return modal;
+        } catch (e) {}
+      }
+
+      function setRevealKeyboard(active) {
+        try {
+          if (!window.Reveal || !Reveal.configure) return;
+          if (!active) {
+            if (codeZoomPreviousKeyboard === null && Reveal.getConfig) {
+              codeZoomPreviousKeyboard = Reveal.getConfig().keyboard;
+            }
+            Reveal.configure({ keyboard: false });
+          } else {
+            Reveal.configure({ keyboard: codeZoomPreviousKeyboard === null ? true : codeZoomPreviousKeyboard });
+            codeZoomPreviousKeyboard = null;
+          }
+        } catch (e) {}
+      }
+
+      function clampCodeZoomFontSize(size) {
+        if (!Number.isFinite(size)) return codeZoomFontSize;
+        return Math.max(1.2, Math.min(3.6, Math.round(size * 10) / 10));
+      }
+
+      function setCodeZoomFontSize(size) {
+        try {
+          codeZoomFontSize = clampCodeZoomFontSize(size);
+          var panel = document.getElementById('code-zoom-panel');
+          if (panel) panel.style.setProperty('--code-zoom-font-size', codeZoomFontSize + 'rem');
+        } catch (e) {}
+      }
+
+      function setCodeZoomPanMode(active) {
+        try {
+          codeZoomPanMode = active;
+          var content = document.getElementById('code-zoom-content');
+          if (!content) return;
+          content.classList.toggle('code-zoom-pan-mode', active);
+          if (!active) {
+            codeZoomDragging = false;
+            content.classList.remove('code-zoom-dragging');
+          }
+        } catch (e) {}
+      }
+
+      function initCodeZoomPanHandlers() {
+        try {
+          var content = document.getElementById('code-zoom-content');
+          if (!content || content.dataset.panInit === 'true') return;
+          content.dataset.panInit = 'true';
+          content.addEventListener('pointerdown', function(e) {
+            try {
+              if (!codeZoomPanMode) return;
+              e.preventDefault();
+              e.stopPropagation();
+              codeZoomDragging = true;
+              codeZoomDragStartX = e.clientX;
+              codeZoomDragStartY = e.clientY;
+              codeZoomScrollStartLeft = content.scrollLeft;
+              codeZoomScrollStartTop = content.scrollTop;
+              content.classList.add('code-zoom-dragging');
+              content.setPointerCapture(e.pointerId);
+            } catch (e) {}
+          });
+          content.addEventListener('pointermove', function(e) {
+            try {
+              if (!codeZoomDragging) return;
+              e.preventDefault();
+              e.stopPropagation();
+              content.scrollLeft = codeZoomScrollStartLeft - (e.clientX - codeZoomDragStartX);
+              content.scrollTop = codeZoomScrollStartTop - (e.clientY - codeZoomDragStartY);
+            } catch (e) {}
+          });
+          content.addEventListener('pointerup', function(e) {
+            try {
+              if (!codeZoomDragging) return;
+              e.preventDefault();
+              e.stopPropagation();
+              codeZoomDragging = false;
+              content.classList.remove('code-zoom-dragging');
+              content.releasePointerCapture(e.pointerId);
+            } catch (e) {}
+          });
+          content.addEventListener('pointercancel', function() {
+            try {
+              codeZoomDragging = false;
+              content.classList.remove('code-zoom-dragging');
+            } catch (e) {}
+          });
+          content.addEventListener('wheel', function(e) {
+            try {
+              var modal = document.getElementById('code-zoom-modal');
+              if (!modal || !modal.classList.contains('code-zoom-open')) return;
+              if (!e.ctrlKey) return;
+              e.preventDefault();
+              e.stopPropagation();
+              var delta = e.deltaY < 0 ? 0.1 : -0.1;
+              setCodeZoomFontSize(codeZoomFontSize + delta);
+            } catch (e) {}
+          }, { passive: false });
+        } catch (e) {}
+      }
+
+      function closeCodeZoom() {
+        try {
+          var modal = document.getElementById('code-zoom-modal');
+          var content = document.getElementById('code-zoom-content');
+          if (content) content.innerHTML = '';
+          setCodeZoomPanMode(false);
+          setRevealKeyboard(true);
+          if (modal) modal.classList.remove('code-zoom-open');
+        } catch (e) {}
+      }
+
+      function openCodeZoom(container) {
+        try {
+          var modal = ensureCodeZoomModal();
+          var content = document.getElementById('code-zoom-content');
+          if (!modal || !content || !container) return;
+          var source = container.querySelector('div.sourceCode') || container.querySelector('pre');
+          if (!source) return;
+          var clone = source.cloneNode(true);
+          content.innerHTML = '';
+          content.appendChild(clone);
+          setCodeZoomFontSize(codeZoomFontSize);
+          setRevealKeyboard(false);
+          modal.classList.add('code-zoom-open');
+          var close = document.getElementById('code-zoom-close');
+          if (close) close.focus();
+        } catch (e) {}
+      }
+
+      function wrapPlainCodeBlock(pre) {
+        try {
+          if (!pre || pre.closest('.code-copy-outer-scaffold') || pre.closest('.code-expand-scaffold')) return null;
+          var wrapper = document.createElement('div');
+          wrapper.className = 'code-expand-scaffold';
+          pre.parentNode.insertBefore(wrapper, pre);
+          wrapper.appendChild(pre);
+          return wrapper;
+        } catch (e) {}
+      }
+
+      function addCodeExpandButtons() {
+        try {
+          var containers = Array.from(document.querySelectorAll('.code-copy-outer-scaffold'));
+          Array.from(document.querySelectorAll('.reveal pre')).forEach(function(pre) {
+            var text = pre.textContent || '';
+            if (text.indexOf('\n') === -1) return;
+            var wrapper = wrapPlainCodeBlock(pre);
+            if (wrapper) containers.push(wrapper);
+          });
+          containers.forEach(function(container) {
+            if (!container || container.querySelector('.code-expand-button')) return;
+            if (!container.querySelector('pre')) return;
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'code-expand-button';
+            btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/></svg>';
+            btn.title = '拡大';
+            btn.setAttribute('aria-label', 'コードを拡大表示');
+            btn.addEventListener('click', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              openCodeZoom(container);
+            });
+            container.appendChild(btn);
+          });
+        } catch (e) {}
+      }
+
+      function initCodeExpand() {
+        try {
+          ensureCodeZoomModal();
+          addCodeExpandButtons();
+          if (codeExpandInit) return;
+          codeExpandInit = true;
+          document.addEventListener('keydown', function(e) {
+            try {
+              var modal = document.getElementById('code-zoom-modal');
+              if (!modal || !modal.classList.contains('code-zoom-open')) return;
+              if (e.key === 'Escape') {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                closeCodeZoom();
+              }
+              if (e.code === 'Space' || e.key === ' ' || e.key === 'Spacebar') {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                if (!e.repeat) setCodeZoomPanMode(true);
+              }
+            } catch (e) {}
+          }, true);
+          document.addEventListener('keyup', function(e) {
+            try {
+              var modal = document.getElementById('code-zoom-modal');
+              if (!modal || !modal.classList.contains('code-zoom-open')) return;
+              if (e.code === 'Space' || e.key === ' ' || e.key === 'Spacebar') {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                setCodeZoomPanMode(false);
+              }
+            } catch (e) {}
+          }, true);
+        } catch (e) {}
       }
 
       document.addEventListener('click', function(e) {
@@ -598,6 +1169,9 @@
           if (isFirstSlide() && (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp')) {
             goHome();
           }
+          if (isIndexPage() && (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown')) {
+            goBack();
+          }
         } catch (e) {}
       });
 
@@ -605,6 +1179,7 @@
         try {
           new MutationObserver(function() {
             createHome();
+            addCodeExpandButtons();
             if (document.querySelector('.reveal > .footer')) {
               createNav();
               if (window.Reveal && Reveal.isReady()) initCounter();
@@ -612,6 +1187,7 @@
           }).observe(document.body, { childList: true, subtree: true });
           createHome();
           createNav();
+          initCodeExpand();
         } catch (e) {}
       }
 
@@ -660,6 +1236,7 @@ rkskmt
 </section>
 <section id="よく使われるcollection型" class="slide level2">
 <h2>よく使われるCollection型</h2>
+<div class="slide-body">
 <p>この３種類だけは絶対に知っておく必要あり</p>
 <table class="caption-top">
 <thead>
@@ -690,6 +1267,7 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="一般的にはコンテナとも呼ばれる" class="slide level2">
 <h2>一般的にはコンテナとも呼ばれる</h2>
@@ -714,6 +1292,7 @@ rkskmt
 </section>
 <section id="クラスの定期テスト成績を処理したい" class="slide level2">
 <h2>クラスの定期テスト成績を処理したい</h2>
+<div class="slide-body">
 <p><strong>データの特徴</strong><span class="fw-colon">：</span>1クラスあたり30数＋のレコード。学生番号・名前・各教科の成績で構成。成績の判定や平均点などを出したい。</p>
 <table class="caption-top">
 <thead>
@@ -805,9 +1384,11 @@ rkskmt
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="悪い例コレクション型なし" class="slide level2">
 <h2>（悪い例）コレクション型なし</h2>
+<div class="slide-body">
 <p>変数を1つずつ作るとどうなるか？</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>R06_0001 <span class="op">=</span> <span class="dv">85</span>  <span class="co"># 令和6年度 学生番号1番</span></span>
 <span id="cb1-2"><a></a>R06_0002 <span class="op">=</span> <span class="dv">90</span></span>
@@ -835,6 +1416,7 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="collection１-listリスト型" class="slide level2">
 <h2>【Collection１】 <code>list</code>（リスト型）</h2>
@@ -851,6 +1433,7 @@ rkskmt
 </section>
 <section id="list-の初期化" class="slide level2">
 <h2><code>list</code> の初期化</h2>
+<div class="slide-body">
 <ul>
 <li>まずは、右辺で <strong><code>list</code>型ですよ</strong> と宣言しないと始まらない</li>
 <li>ケースにより色々あるが <code>[]</code> が一般的</li>
@@ -870,9 +1453,11 @@ rkskmt
 <span id="cb2-13"><a></a></span>
 <span id="cb2-14"><a></a><span class="co"># rangeから変換して初期化</span></span>
 <span id="cb2-15"><a></a>odd_numbers <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">2</span>))  <span class="co"># [1, 3, 5, 7, 9]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="アクセス方法" class="slide level2">
 <h2>アクセス方法</h2>
+<div class="slide-body">
 <ul>
 <li><code>[]</code> に数字（インデックス or 添字）でアクセス
 <ul>
@@ -900,9 +1485,11 @@ rkskmt
 <span id="cb3-12"><a></a></span>
 <span id="cb3-13"><a></a><span class="co"># リストの長さ+1のマイナスを指定するとエラー</span></span>
 <span id="cb3-14"><a></a><span class="bu">print</span>(scores[<span class="op">-</span><span class="dv">6</span>])  <span class="co"># IndexError: list index out of range</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="要素の追加appendと結合" class="slide level2">
 <h2>要素の追加（append）と結合</h2>
+<div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co"># 要素の追加は .append を使う（末尾に追加）</span></span>
 <span id="cb4-2"><a></a>scores.append(<span class="dv">95</span>)</span>
 <span id="cb4-3"><a></a><span class="bu">print</span>(scores)  <span class="co"># [85, 90, 78, 92, 88, 95]</span></span>
@@ -920,9 +1507,11 @@ rkskmt
 <span id="cb4-15"><a></a><span class="co"># これでも可</span></span>
 <span id="cb4-16"><a></a>scores <span class="op">+=</span> other_scores</span>
 <span id="cb4-17"><a></a><span class="bu">print</span>(scores)  <span class="co"># [85, 90, 78, 92, 88, 95, 20, 30, 40, 50]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="すべての要素へのアクセス走査" class="slide level2">
 <h2>すべての要素へのアクセス（走査）</h2>
+<div class="slide-body">
 <ul>
 <li>基本的に<code>for in</code>で使われる</li>
 </ul>
@@ -954,9 +1543,11 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="演習問題list" class="slide level2 scrollable">
 <h2>演習問題（<code>list</code>）</h2>
+<div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>student_scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ol type="1">
 <li><code>append</code> を使って <strong>100点</strong> の学生を追加しよう</li>
@@ -966,7 +1557,7 @@ rkskmt
 </ul></li>
 <li><strong>平均点</strong>を表示しよう</li>
 </ol>
-<div id="38425fc6" class="cell" data-execution_count="1">
+<div id="dcf021a3" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>student_scores.append(<span class="dv">100</span>)</span>
@@ -976,16 +1567,20 @@ rkskmt
 <span id="cb7-5"><a></a><span class="bu">print</span>(<span class="bu">sum</span>(student_scores) <span class="op">/</span> <span class="bu">len</span>(student_scores))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
+</div>
 </section>
 <section id="collection２-dict辞書型" class="slide level2">
 <h2>【Collection２】 <code>dict</code>（辞書型）</h2>
-
-<img data-src="imgs/Focus_definition_(Unsplash).jpg" class="r-stretch"><div class="cite">
+<div class="slide-body">
+<p><img data-src="imgs/Focus_definition_(Unsplash).jpg"></p>
+<div class="cite">
 <p>CC0: <a href="https://en.wikipedia.org/wiki/Fictionary#/media/File:Focus_definition_(Unsplash).jpg" class="uri">https://en.wikipedia.org/wiki/Fictionary#/media/File:Focus_definition_(Unsplash).jpg</a></p>
+</div>
 </div>
 </section>
 <section id="dict-の初期化" class="slide level2">
 <h2><code>dict</code> の初期化</h2>
+<div class="slide-body">
 <ul>
 <li><code>{}</code> に <code>キー: 値</code> のペアをカンマ区切りで書いて初期化</li>
 <li>変数名は <code>name2score</code> のような「<code>x2y</code>」形式が慣例
@@ -1006,9 +1601,11 @@ rkskmt
 <span id="cb8-8"><a></a><span class="co"># 空の dict の初期化</span></span>
 <span id="cb8-9"><a></a>dict_test1 <span class="op">=</span> {}</span>
 <span id="cb8-10"><a></a>dict_test2 <span class="op">=</span> <span class="bu">dict</span>()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="要素の追加アクセス方法" class="slide level2">
 <h2>要素の追加・アクセス方法</h2>
+<div class="slide-body">
 <ul>
 <li><code>["キー"]</code> でアクセス（list の <code>[0]</code> に相当）</li>
 <li>存在しないキーへの代入 → <strong>追加</strong>、存在するキーへの代入 → <strong>上書き</strong></li>
@@ -1026,9 +1623,11 @@ rkskmt
 <span id="cb9-11"><a></a><span class="co"># 存在するキーに代入すると上書き</span></span>
 <span id="cb9-12"><a></a>name2score[<span class="st">"Suzuki"</span>] <span class="op">=</span> <span class="dv">70</span></span>
 <span id="cb9-13"><a></a><span class="bu">print</span>(name2score)  <span class="co"># {'Yamada': 95, 'Suzuki': 70, 'Takahashi': 80}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="キーの存在確認in-演算子" class="slide level2">
 <h2>キーの存在確認（<code>in</code> 演算子）</h2>
+<div class="slide-body">
 <p><code>in</code> 演算子でキーや値の存在を確認できる。存在しないキーを指定する前に使うと <code>KeyError</code> を防げる。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>}</span>
 <span id="cb10-2"><a></a></span>
@@ -1045,9 +1644,11 @@ rkskmt
 <span id="cb10-13"><a></a><span class="co"># not in で「存在しない」を確認</span></span>
 <span id="cb10-14"><a></a><span class="cf">if</span> <span class="st">"Sato"</span> <span class="kw">not</span> <span class="kw">in</span> name2score:</span>
 <span id="cb10-15"><a></a>    <span class="bu">print</span>(<span class="st">"Sato は未登録"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="for-文での使い方dict" class="slide level2">
 <h2><code>for</code> 文での使い方（<code>dict</code>）</h2>
+<div class="slide-body">
 <ul>
 <li><code>.keys()</code> / <code>.values()</code> / <code>.items()</code> の3種類を使い分ける</li>
 <li>実務では <code>.items()</code> が最頻出</li>
@@ -1068,9 +1669,11 @@ rkskmt
 <span id="cb11-14"><a></a><span class="co"># キーと値を同時に使うパターン（最もよく使う）</span></span>
 <span id="cb11-15"><a></a><span class="cf">for</span> key, value <span class="kw">in</span> name2score.items():</span>
 <span id="cb11-16"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">さんは</span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">点です"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="演習問題dict" class="slide level2 scrollable">
 <h2>演習問題（<code>dict</code>）</h2>
+<div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>, <span class="st">"Takahashi"</span>: <span class="dv">80</span>}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ol type="1">
 <li><code>dict</code> に100点を取った <strong>“Tanaka”</strong> さんを追加しよう</li>
@@ -1081,7 +1684,7 @@ rkskmt
 </ul></li>
 <li><code>"Yamada"</code> が <code>dict</code> に存在するか <code>in</code> を使って確認し、存在すれば点数を表示しよう</li>
 </ol>
-<div id="4505ce5e" class="cell" data-execution_count="2">
+<div id="2170c60c" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>name2score[<span class="st">"Tanaka"</span>] <span class="op">=</span> <span class="dv">100</span></span>
@@ -1092,6 +1695,7 @@ rkskmt
 <span id="cb13-6"><a></a><span class="cf">if</span> <span class="st">"Yamada"</span> <span class="kw">in</span> name2score:</span>
 <span id="cb13-7"><a></a>    <span class="bu">print</span>(<span class="ss">f"Yamadaさんの点数は</span><span class="sc">{</span>name2score[<span class="st">'Yamada'</span>]<span class="sc">}</span><span class="ss">点です"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+</div>
 </div>
 </section>
 <section id="collection３-tupleタプル" class="slide level2">
@@ -1118,6 +1722,7 @@ rkskmt
 </section>
 <section id="数学用語からきている" class="slide level2">
 <h2>数学用語からきている</h2>
+<div class="slide-body">
 <ul>
 <li><code>tuple</code>は、<strong>組</strong>のこと</li>
 <li>よく似た概念に<strong>集合</strong>（<code>set</code>）がある</li>
@@ -1174,9 +1779,11 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="tuple-の使いどころ" class="slide level2">
 <h2><code>tuple</code> の使いどころ</h2>
+<div class="slide-body">
 <ul>
 <li>要素数が固定のデータを表すのに使う
 <ul>
@@ -1189,9 +1796,11 @@ rkskmt
 </ul></li>
 <li>関数から複数の値を返すときによく使う</li>
 </ul>
+</div>
 </section>
 <section id="tuple-の初期化アクセス" class="slide level2">
 <h2><code>tuple</code> の初期化・アクセス</h2>
+<div class="slide-body">
 <ul>
 <li><code>()</code> にカンマ区切りで値を書いて初期化
 <ul>
@@ -1208,9 +1817,11 @@ rkskmt
 <span id="cb14-7"><a></a><span class="bu">print</span>(score[<span class="dv">0</span>])   <span class="co"># 90</span></span>
 <span id="cb14-8"><a></a><span class="bu">print</span>(score[<span class="op">-</span><span class="dv">1</span>])  <span class="co"># 72（末尾からもOK）</span></span>
 <span id="cb14-9"><a></a><span class="bu">print</span>(score[<span class="dv">3</span>])   <span class="co"># IndexError: tuple index out of range</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="tuple-と-list-の違い制限" class="slide level2">
 <h2><code>tuple</code> と <code>list</code> の違い・制限</h2>
+<div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co"># 値の変更はエラー（listでは可能。タプルでは付加）</span></span>
 <span id="cb15-2"><a></a>score[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">100</span>  <span class="co"># TypeError: 'tuple' object does not support item assignment</span></span>
 <span id="cb15-3"><a></a></span>
@@ -1237,9 +1848,11 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="よくある-tuple-の使われ方関数の戻り値" class="slide level2">
 <h2>よくある <code>tuple</code> の使われ方（関数の戻り値）</h2>
+<div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="co"># リストの最小値と最大値を返す関数</span></span>
 <span id="cb16-2"><a></a><span class="kw">def</span> get_min_max_value(data):</span>
 <span id="cb16-3"><a></a>    <span class="cf">return</span> (<span class="bu">min</span>(data), <span class="bu">max</span>(data))  <span class="co"># ← tuple で複数の値を返す</span></span>
@@ -1314,9 +1927,11 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="実は-dict-で出てきていた-tuple" class="slide level2">
 <h2>実は <code>dict</code> で出てきていた <code>tuple</code></h2>
+<div class="slide-body">
 <p><code>dict</code>のメソッド <code>.items()</code> はタプルの <code>list</code> を返している。だから <code>key, value</code> という2変数に代入できる。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="bu">print</span>(name2score.items())</span>
 <span id="cb18-2"><a></a><span class="co"># dict_items([('Yamada', 95), ('Suzuki', 70), ('Takahashi', 80)])</span></span>
@@ -1324,9 +1939,11 @@ rkskmt
 <span id="cb18-4"><a></a></span>
 <span id="cb18-5"><a></a><span class="cf">for</span> key, value <span class="kw">in</span> name2score.items():  <span class="co"># tuple を2変数に展開</span></span>
 <span id="cb18-6"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">さんは</span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">点です"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="演習問題tuple" class="slide level2 scrollable">
 <h2>演習問題（<code>tuple</code>）</h2>
+<div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="kw">def</span> get_min_max(scores):</span>
 <span id="cb19-2"><a></a>    <span class="cf">return</span> <span class="bu">min</span>(scores), <span class="bu">max</span>(scores)  <span class="co"># カッコなしでも tuple になる！</span></span>
 <span id="cb19-3"><a></a></span>
@@ -1337,7 +1954,7 @@ rkskmt
 <li><code>low, high</code> の2変数でアンパックして「最低: ○点, 最高: ○点」と表示</li>
 <li><code>result[0] = 100</code> と改ざんを試してみよう</li>
 </ol>
-<div id="65447062" class="cell" data-execution_count="3">
+<div id="1be96d95" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>result <span class="op">=</span> get_min_max(scores)</span>
@@ -1349,9 +1966,11 @@ rkskmt
 <span id="cb20-7"><a></a>result[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">100</span>  <span class="co"># TypeError: 'tuple' object does not support item assignment</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
+</div>
 </section>
 <section id="まとめ" class="slide level2">
 <h2>まとめ</h2>
+<div class="slide-body">
 <p>コレクションは複数のデータをまとめて管理するための型。</p>
 <table class="caption-top">
 <thead>
@@ -1387,9 +2006,11 @@ rkskmt
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="発展その他のコレクション型" class="slide level2">
 <h2>発展<span class="fw-colon">：</span>その他のコレクション型</h2>
+<div class="slide-body">
 <p>現場でも競技プログラミングでもよく使われる。各自で調べよう。</p>
 <ul>
 <li><strong><code>deque</code></strong> — 先端への挿入・削除が高速（double ended queue）</li>
@@ -1406,6 +2027,10 @@ rkskmt
 <p>数値データには <code>numpy</code> の <code>ndarray</code> がよく使われる（後日扱う）。</p>
 
 
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
+
+</div>
+</div>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -1588,12 +2213,12 @@ rkskmt
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1280,
 
-        height: 700,
+        height: 720,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 6.0e-2,
 
         math: {
           mathjax: './libs/mathjax/MathJax.js',

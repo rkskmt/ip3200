@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="rkskmt">
-  <title>情報処理 – リストをあらためて</title>
+  <title>情報処理 – 東京都オープンデータAPI</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -1206,8 +1206,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">リストをあらためて</h1>
-  <p class="subtitle">少しだけ詳しく</p>
+  <h1 class="title">東京都オープンデータAPI</h1>
+  <p class="subtitle">自治体データを活用する</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -1218,397 +1218,612 @@ rkskmt
 </div>
 
 </section>
-<section id="復習listとは" class="slide level2">
-<h2>復習(listとは)</h2>
-<div class="fig-cite" style="background-image: url('imgs/list.jpg'); height: 90%;">
-<div class="content-box pos-br">
-<ul>
-<li>最もよく使われるコンテナ</li>
-<li>データは追加順に並んでいる</li>
-<li>他言語では配列やアレイと呼ばれる　</li>
-<li>変数名は、要素の名詞の複数形をつけることが多い（foodsなど）</li>
-</ul>
-</div>
+<section id="section" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>なぜオープンデータか</p>
 </div>
 </section>
-<section id="宣言" class="slide level2">
-<h2>宣言</h2>
+<section id="オープンデータとは" class="slide level2">
+<h2>オープンデータとは</h2>
 <div class="slide-body">
-<p><code>[]</code> でカンマ区切りでデータを入力するとリストになる。</p>
 <ul>
-<li>順序が保持される</li>
-<li>重複してもよい</li>
+<li>政府・自治体が <strong>誰でも自由に使える形式</strong> で公開するデータ</li>
+<li>商用・非商用問わず <strong>二次利用可能</strong></li>
+<li>機械可読（CSV, JSON, API）で提供</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>]</span>
-<span id="cb1-2"><a></a><span class="bu">print</span>(scores)  <span class="co"># [85, 90, 92, 78, 92, 88]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>お作法</strong></p>
+<p><strong>意義</strong></p>
 </div>
 <div class="callout-content">
-<p>カンマ <code>,</code> の後は<strong>必ずスペースを空ける</strong>のが綺麗に書くコツ。</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="アクセスインデックス" class="slide level2">
-<h2>アクセス（インデックス）</h2>
-<div class="slide-body">
-<p>要素にアクセスするには<strong>インデックス</strong>（数字）を使う。</p>
 <ul>
-<li>インデックスは<strong>ゼロ始まり</strong></li>
-<li>後ろにいくにつれて 1 ずつ増加</li>
+<li><strong>透明性</strong><span class="fw-colon">：</span>行政の活動を市民が検証できる</li>
+<li><strong>イノベーション</strong><span class="fw-colon">：</span>民間がデータを活用してサービス開発</li>
+<li><strong>効率化</strong><span class="fw-colon">：</span>データに基づく政策立案（EBPM）</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>]</span>
-<span id="cb2-2"><a></a><span class="bu">print</span>(scores[<span class="dv">0</span>])  <span class="co"># 85</span></span>
-<span id="cb2-3"><a></a><span class="bu">print</span>(scores[<span class="dv">4</span>])  <span class="co"># 92</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
 </div>
 </section>
-<section id="マイナスインデックス" class="slide level2">
-<h2>マイナスインデックス</h2>
+<section id="身近なオープンデータ活用例" class="slide level2">
+<h2>身近なオープンデータ活用例</h2>
 <div class="slide-body">
-<p>インデックスをマイナスにすると<strong>末尾からアクセス</strong>できる。</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>サービス</th>
+<th>使用データ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>乗換案内アプリ</td>
+<td>公共交通の時刻表・遅延情報</td>
+</tr>
+<tr class="even">
+<td>防災アプリ</td>
+<td>避難所・ハザードマップ</td>
+</tr>
+<tr class="odd">
+<td>不動産サイト</td>
+<td>地価公示・用途地域</td>
+</tr>
+<tr class="even">
+<td>天気予報</td>
+<td>気象庁の観測データ</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><code>-1</code> が末尾（<code>-0</code> ではない）</li>
+<li><strong>すでに使っている</strong> — 意識していないだけ</li>
+<li>自分でもAPIを叩けば <strong>同じデータ</strong> が手に入る</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="bu">print</span>(scores[<span class="op">-</span><span class="dv">1</span>])  <span class="co"># 88（末尾）</span></span>
-<span id="cb3-2"><a></a><span class="bu">print</span>(scores[<span class="op">-</span><span class="dv">5</span>])  <span class="co"># 90（末尾から5番目）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="要素の追加append" class="slide level2">
-<h2>要素の追加（append）</h2>
+<section id="section-1" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>東京都オープンデータAPI</p>
+</div>
+</section>
+<section id="概要" class="slide level2">
+<h2>概要</h2>
 <div class="slide-body">
-<p><code>append</code> メソッドで末尾に要素を追加できる。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>]</span>
-<span id="cb4-2"><a></a>scores.append(<span class="dv">95</span>)</span>
-<span id="cb4-3"><a></a><span class="bu">print</span>(scores)  <span class="co"># [85, 90, 92, 78, 92, 88, 95]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>東京都オープンデータカタログサイト</strong> の一部データをAPI提供</li>
+<li>ユーザ登録 <strong>不要</strong> — 誰でもすぐに利用可能</li>
+<li>掲載データ約54,000件のうち、CSV約35,000件がAPI対応</li>
+</ul>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>認証</td>
+<td>不要</td>
+</tr>
+<tr class="even">
+<td>レート制限</td>
+<td>明示なし（常識的な範囲で）</td>
+</tr>
+<tr class="odd">
+<td>データ形式</td>
+<td>JSON / XML</td>
+</tr>
+<tr class="even">
+<td>CORS</td>
+<td>対応済み</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="wikipedia-apiとの違い" class="slide level2">
+<h2>Wikipedia APIとの違い</h2>
+<div class="slide-body">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>Wikipedia API</th>
+<th>東京都API</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HTTPメソッド</td>
+<td><strong>GET</strong></td>
+<td><strong>POST</strong></td>
+</tr>
+<tr class="even">
+<td>データ内容</td>
+<td>百科事典・統計</td>
+<td>行政・地理・施設</td>
+</tr>
+<tr class="odd">
+<td>更新頻度</td>
+<td>リアルタイム〜日次</td>
+<td>不定期（年次も多い）</td>
+</tr>
+</tbody>
+</table>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>戻り値は None</strong></p>
+<p><strong>重要<span class="fw-colon">：</span>POSTでアクセス</strong></p>
 </div>
 <div class="callout-content">
-<p><code>append</code> は末尾に追加するだけで、<strong>新しいリストを返さない</strong>。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>result <span class="op">=</span> scores.append(<span class="dv">95</span>)</span>
-<span id="cb5-2"><a></a><span class="bu">print</span>(result)  <span class="co"># None ← リストではない！</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>result = scores.append(95)</code> のように書くと <code>result</code> が <code>None</code> になってしまう。</p>
+<ul>
+<li>Wikipedia API は <code>requests.get()</code></li>
+<li>東京都API は <code>requests.post()</code></li>
+<li>間違えると動かない</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="走査全要素へのアクセス" class="slide level2">
-<h2>走査（全要素へのアクセス）</h2>
-<div class="slide-body">
-<p>リストの全要素にアクセスすることを<strong>走査</strong>という。<code>for</code> 文で簡単に書ける。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="cf">for</span> score <span class="kw">in</span> scores:</span>
-<span id="cb6-2"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>score<span class="sc">}</span><span class="ss">点"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>85点
-90点
-92点
-78点
-92点
-88点</code></pre>
+<section id="section-2" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>APIの構造</p>
 </div>
 </section>
-<section id="要素の存在確認in-演算子" class="slide level2">
-<h2>要素の存在確認（<code>in</code> 演算子）</h2>
+<section id="基本url" class="slide level2">
+<h2>基本URL</h2>
 <div class="slide-body">
-<p><code>in</code> 演算子でリストに特定の値が含まれているか確認できる。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">78</span>]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>https://service.api.metro.tokyo.lg.jp/api/{apiId}/{format}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>{apiId}</code> — データセットごとに異なるID</li>
+<li><code>{format}</code> — <code>json</code> または <code>xml</code></li>
+</ul>
+<p>例<span class="fw-colon">：</span>東京都人口の推移（JSON）</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a></a>https://service.api.metro.tokyo.lg.jp/api/t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0/json</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="apiのidを探す" class="slide level2">
+<h2>APIのIDを探す</h2>
+<div class="slide-body">
+<ul>
+<li><a href="https://spec.api.metro.tokyo.lg.jp/spec/search">API検索ページ</a> でキーワード検索</li>
+<li>欲しいデータの apiId をコピーして使う</li>
+</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>探し方のコツ</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>「避難所」「駐輪場」「人口」などキーワードで検索</li>
+<li>区市町村名で絞り込み可能</li>
+<li>詳細ページで apiId と列名を確認</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="パラメータ" class="slide level2">
+<h2>パラメータ</h2>
+<div class="slide-body">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>パラメータ</th>
+<th>説明</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>limit</code></td>
+<td>取得レコード数の上限</td>
+<td><code>?limit=100</code></td>
+</tr>
+<tr class="even">
+<td><code>offset</code></td>
+<td>取得開始位置</td>
+<td><code>?offset=50</code></td>
+</tr>
+<tr class="odd">
+<td><code>column</code></td>
+<td>取得する列の指定</td>
+<td><code>?column=名称,住所</code></td>
+</tr>
+<tr class="even">
+<td><code>filter</code></td>
+<td>条件フィルタ</td>
+<td><code>?filter=公表_年月日:2021</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>デフォルトは <strong>100件</strong></li>
+<li>全件欲しいときは <code>limit</code> を大きく設定</li>
+</ul>
+</div>
+</section>
+<section id="section-3" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>基本的な使い方</p>
+</div>
+</section>
+<section id="最小テンプレート" class="slide level2">
+<h2>最小テンプレート</h2>
+<div class="slide-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
+<span id="cb3-4"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb3-5"><a></a></span>
+<span id="cb3-6"><a></a>params <span class="op">=</span> {<span class="st">'limit'</span>: <span class="dv">200</span>}</span>
+<span id="cb3-7"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb3-8"><a></a>body <span class="op">=</span> {}</span>
+<span id="cb3-9"><a></a></span>
+<span id="cb3-10"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>params, headers<span class="op">=</span>headers, json<span class="op">=</span>body)</span>
+<span id="cb3-11"><a></a>data <span class="op">=</span> response.json()</span>
+<span id="cb3-12"><a></a></span>
+<span id="cb3-13"><a></a><span class="bu">print</span>(data[<span class="st">"hits"</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><code>json={}</code> の意味</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>空のJSONボディを送信している</li>
+<li>東京都APIの仕様上必要</li>
+<li>深い意味はないが省略不可</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="レスポンス構造" class="slide level2">
+<h2>レスポンス構造</h2>
+<div class="slide-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb4-1"><a></a><span class="fu">{</span></span>
+<span id="cb4-2"><a></a>  <span class="dt">"total"</span><span class="fu">:</span> <span class="dv">152</span><span class="fu">,</span></span>
+<span id="cb4-3"><a></a>  <span class="dt">"subtotal"</span><span class="fu">:</span> <span class="dv">152</span><span class="fu">,</span></span>
+<span id="cb4-4"><a></a>  <span class="dt">"limit"</span><span class="fu">:</span> <span class="dv">200</span><span class="fu">,</span></span>
+<span id="cb4-5"><a></a>  <span class="dt">"offset"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb4-6"><a></a>  <span class="dt">"metadata"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb4-7"><a></a>    <span class="dt">"apiId"</span><span class="fu">:</span> <span class="st">"API識別子"</span><span class="fu">,</span></span>
+<span id="cb4-8"><a></a>    <span class="dt">"title"</span><span class="fu">:</span> <span class="st">"データタイトル"</span><span class="fu">,</span></span>
+<span id="cb4-9"><a></a>    <span class="dt">"version"</span><span class="fu">:</span> <span class="st">"1.0.7"</span></span>
+<span id="cb4-10"><a></a>  <span class="fu">},</span></span>
+<span id="cb4-11"><a></a>  <span class="dt">"hits"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb4-12"><a></a>    <span class="fu">{</span><span class="dt">"row"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span> <span class="dt">"和暦（年次）"</span><span class="fu">:</span> <span class="st">"明治5"</span><span class="fu">,</span> <span class="dt">"西暦（年次）"</span><span class="fu">:</span> <span class="dv">1872</span><span class="fu">,</span> <span class="dt">"東京都／人口"</span><span class="fu">:</span> <span class="dv">859345</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb4-13"><a></a>    <span class="fu">{</span><span class="dt">"row"</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">,</span> <span class="dt">"和暦（年次）"</span><span class="fu">:</span> <span class="st">"明治6"</span><span class="fu">,</span> <span class="dt">"西暦（年次）"</span><span class="fu">:</span> <span class="dv">1873</span><span class="fu">,</span> <span class="dt">"東京都／人口"</span><span class="fu">:</span> <span class="dv">887322</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb4-14"><a></a>    <span class="er">...</span></span>
+<span id="cb4-15"><a></a>  <span class="ot">]</span></span>
+<span id="cb4-16"><a></a><span class="fu">}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>total</code> — 全件数</li>
+<li><code>metadata</code> — データセットの情報</li>
+<li><code>hits</code> — <strong>実際のデータ本体</strong>（list of dict）</li>
+</ul>
+</div>
+</section>
+<section id="section-4" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>検索条件を指定する</p>
+</div>
+</section>
+<section id="body-で条件指定" class="slide level2">
+<h2>body で条件指定</h2>
+<div class="slide-body">
+<ul>
+<li><code>column</code> — 取得する列を限定</li>
+<li><code>searchCondition</code> — フィルタ条件（APIによって対応状況が異なる）</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># 列を限定して取得</span></span>
+<span id="cb5-2"><a></a>body <span class="op">=</span> {</span>
+<span id="cb5-3"><a></a>    <span class="st">"column"</span>: [<span class="st">"西暦（年次）"</span>, <span class="st">"東京都／人口"</span>]</span>
+<span id="cb5-4"><a></a>}</span>
+<span id="cb5-5"><a></a></span>
+<span id="cb5-6"><a></a><span class="co"># 取得後に Python でフィルタリング</span></span>
+<span id="cb5-7"><a></a>filtered <span class="op">=</span> [r <span class="cf">for</span> r <span class="kw">in</span> data[<span class="st">'hits'</span>]</span>
+<span id="cb5-8"><a></a>            <span class="cf">if</span> <span class="dv">1950</span> <span class="op">&lt;=</span> r[<span class="st">'西暦（年次）'</span>] <span class="op">&lt;=</span> <span class="dv">2023</span>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="比較演算子" class="slide level2">
+<h2>比較演算子</h2>
+<div class="slide-body">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>演算子</th>
+<th>意味</th>
+<th>数式</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>gt</code></td>
+<td>greater than</td>
+<td><code>&gt;</code> より大きい</td>
+</tr>
+<tr class="even">
+<td><code>lt</code></td>
+<td>less than</td>
+<td><code>&lt;</code> より小さい</td>
+</tr>
+<tr class="odd">
+<td><code>ge</code></td>
+<td>greater or equal</td>
+<td><code>≥</code> 以上</td>
+</tr>
+<tr class="even">
+<td><code>le</code></td>
+<td>less or equal</td>
+<td><code>≤</code> 以下</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>覚え方</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><strong>g</strong> = greater（大きい）</li>
+<li><strong>l</strong> = less（小さい）</li>
+<li><strong>e</strong> = equal（等しい）</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-5" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>実用サンプル</p>
+</div>
+</section>
+<section id="東京都人口期間指定" class="slide level2">
+<h2>東京都人口（期間指定）</h2>
+<div class="slide-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb6-2"><a></a></span>
+<span id="cb6-3"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb6-4"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
+<span id="cb6-5"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb6-6"><a></a></span>
+<span id="cb6-7"><a></a>params <span class="op">=</span> {<span class="st">'limit'</span>: <span class="dv">200</span>}</span>
+<span id="cb6-8"><a></a>body <span class="op">=</span> {<span class="st">"column"</span>: [<span class="st">"西暦（年次）"</span>, <span class="st">"東京都／人口"</span>]}</span>
+<span id="cb6-9"><a></a></span>
+<span id="cb6-10"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>params, headers<span class="op">=</span>headers, json<span class="op">=</span>body)</span>
+<span id="cb6-11"><a></a>data <span class="op">=</span> response.json()</span>
+<span id="cb6-12"><a></a></span>
+<span id="cb6-13"><a></a><span class="co"># Python でフィルタリング</span></span>
+<span id="cb6-14"><a></a>filtered <span class="op">=</span> [r <span class="cf">for</span> r <span class="kw">in</span> data[<span class="st">'hits'</span>]</span>
+<span id="cb6-15"><a></a>            <span class="cf">if</span> <span class="dv">1950</span> <span class="op">&lt;=</span> r[<span class="st">'西暦（年次）'</span>] <span class="op">&lt;=</span> <span class="dv">2023</span>]</span>
+<span id="cb6-16"><a></a></span>
+<span id="cb6-17"><a></a><span class="bu">print</span>(<span class="ss">f"総件数: </span><span class="sc">{</span><span class="bu">len</span>(filtered)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-18"><a></a><span class="cf">for</span> record <span class="kw">in</span> filtered[:<span class="dv">5</span>]:</span>
+<span id="cb6-19"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>record[<span class="st">'西暦（年次）'</span>]<span class="sc">}</span><span class="ss">年: </span><span class="sc">{</span>record[<span class="st">'東京都／人口'</span>]<span class="sc">:,}</span><span class="ss">人"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a></a>総件数: 74</span>
+<span id="cb7-2"><a></a>1950年: 6,277,500人</span>
+<span id="cb7-3"><a></a>1951年: 6,712,494人</span>
+<span id="cb7-4"><a></a>1952年: 7,108,749人</span>
+<span id="cb7-5"><a></a>1953年: 7,468,907人</span>
+<span id="cb7-6"><a></a>1954年: 7,773,648人</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="人口推移の可視化" class="slide level2">
+<h2>人口推移の可視化</h2>
+<div class="slide-body">
+<div id="f225dbcc" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="tokyo-api_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="566" height="276"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>戦後復興期から高度経済成長期にかけて <strong>急増</strong></li>
+<li>1970年代以降は <strong>緩やかな増加</strong></li>
+<li>このように <strong>まず描く</strong> ことで傾向が見える</li>
+</ul>
+</div>
+</section>
+<section id="避難所情報品川区" class="slide level2">
+<h2>避難所情報（品川区）</h2>
+<div class="slide-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb8-2"><a></a></span>
-<span id="cb8-3"><a></a><span class="cf">if</span> <span class="dv">90</span> <span class="kw">in</span> scores:</span>
-<span id="cb8-4"><a></a>    <span class="bu">print</span>(<span class="st">"90点の学生がいる"</span>)  <span class="co"># 90点がいる</span></span>
-<span id="cb8-5"><a></a></span>
-<span id="cb8-6"><a></a><span class="cf">if</span> <span class="dv">100</span> <span class="kw">not</span> <span class="kw">in</span> scores:</span>
-<span id="cb8-7"><a></a>    <span class="bu">print</span>(<span class="st">"満点はいない"</span>)  <span class="co"># 満点はいない</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-3"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb8-4"><a></a>api_id <span class="op">=</span> <span class="st">"t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0"</span></span>
+<span id="cb8-5"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb8-6"><a></a></span>
+<span id="cb8-7"><a></a>params <span class="op">=</span> {<span class="st">'limit'</span>: <span class="dv">5</span>}</span>
+<span id="cb8-8"><a></a>body <span class="op">=</span> {}</span>
+<span id="cb8-9"><a></a></span>
+<span id="cb8-10"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>params, headers<span class="op">=</span>headers, json<span class="op">=</span>body)</span>
+<span id="cb8-11"><a></a>data <span class="op">=</span> response.json()</span>
+<span id="cb8-12"><a></a></span>
+<span id="cb8-13"><a></a><span class="bu">print</span>(<span class="ss">f"品川区の避難所情報（総件数: </span><span class="sc">{</span>data[<span class="st">'total'</span>]<span class="sc">}</span><span class="ss">件）"</span>)</span>
+<span id="cb8-14"><a></a></span>
+<span id="cb8-15"><a></a><span class="cf">for</span> facility <span class="kw">in</span> data[<span class="st">'hits'</span>]:</span>
+<span id="cb8-16"><a></a>    <span class="bu">print</span>(<span class="st">"---"</span>)</span>
+<span id="cb8-17"><a></a>    <span class="cf">for</span> key, value <span class="kw">in</span> facility.items():</span>
+<span id="cb8-18"><a></a>        <span class="cf">if</span> key <span class="op">!=</span> <span class="st">'row'</span>:</span>
+<span id="cb8-19"><a></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a></a>品川区の避難所情報（総件数: 25件）</span>
+<span id="cb9-2"><a></a>---</span>
+<span id="cb9-3"><a></a>名称: 品川区立第一日野小学校</span>
+<span id="cb9-4"><a></a>緯度: 35.6234...</span>
+<span id="cb9-5"><a></a>経度: 139.7312...</span>
+<span id="cb9-6"><a></a>---</span>
+<span id="cb9-7"><a></a>...</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="避難所リスト東京都全域" class="slide level2">
+<h2>避難所リスト（東京都全域）</h2>
+<div class="slide-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb10-2"><a></a></span>
+<span id="cb10-3"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb10-4"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d0000000093-0af9bfa497bc7be6ef83e5bfd1fdcfc6-0"</span></span>
+<span id="cb10-5"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb10-6"><a></a></span>
+<span id="cb10-7"><a></a>params <span class="op">=</span> {<span class="st">'limit'</span>: <span class="dv">5</span>}</span>
+<span id="cb10-8"><a></a>body <span class="op">=</span> {}</span>
+<span id="cb10-9"><a></a></span>
+<span id="cb10-10"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>params, headers<span class="op">=</span>headers, json<span class="op">=</span>body)</span>
+<span id="cb10-11"><a></a>data <span class="op">=</span> response.json()</span>
+<span id="cb10-12"><a></a></span>
+<span id="cb10-13"><a></a><span class="bu">print</span>(<span class="ss">f"東京都の避難所（総件数: </span><span class="sc">{</span>data[<span class="st">'total'</span>]<span class="sc">}</span><span class="ss">件）"</span>)</span>
+<span id="cb10-14"><a></a><span class="cf">for</span> shelter <span class="kw">in</span> data[<span class="st">'hits'</span>]:</span>
+<span id="cb10-15"><a></a>    <span class="bu">print</span>(<span class="ss">f"施設名: </span><span class="sc">{</span>shelter[<span class="st">'避難所_施設名称'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-16"><a></a>    <span class="bu">print</span>(<span class="ss">f"住所: </span><span class="sc">{</span>shelter[<span class="st">'所在地住所'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-17"><a></a>    <span class="bu">print</span>(<span class="ss">f"区市町村: </span><span class="sc">{</span>shelter[<span class="st">'指定市区町村名'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-18"><a></a>    <span class="bu">print</span>(<span class="st">"---"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a></a>東京都の避難所（総件数: 2636件）</span>
+<span id="cb11-2"><a></a>施設名: お茶の水小学校</span>
+<span id="cb11-3"><a></a>住所: 東京都千代田区神田猿楽町1-1-1</span>
+<span id="cb11-4"><a></a>区市町村: 千代田区</span>
+<span id="cb11-5"><a></a>---</span>
+<span id="cb11-6"><a></a>施設名: 都立一橋高校</span>
+<span id="cb11-7"><a></a>住所: 東京都千代田区東神田1-12-13</span>
+<span id="cb11-8"><a></a>区市町村: 千代田区</span>
+<span id="cb11-9"><a></a>---</span>
+<span id="cb11-10"><a></a>...</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="都営バス運賃" class="slide level2">
+<h2>都営バス運賃</h2>
+<div class="slide-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb12-2"><a></a></span>
+<span id="cb12-3"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb12-4"><a></a>api_id <span class="op">=</span> <span class="st">"t000018d0000000044-3db21a77b0af1c54b411f79604444ca2-0"</span></span>
+<span id="cb12-5"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb12-6"><a></a>body <span class="op">=</span> {}</span>
+<span id="cb12-7"><a></a></span>
+<span id="cb12-8"><a></a>response <span class="op">=</span> requests.post(url, headers<span class="op">=</span>headers, json<span class="op">=</span>body)</span>
+<span id="cb12-9"><a></a>data <span class="op">=</span> response.json()</span>
+<span id="cb12-10"><a></a></span>
+<span id="cb12-11"><a></a><span class="bu">print</span>(<span class="ss">f"都営バス運賃情報（総件数: </span><span class="sc">{</span>data[<span class="st">'total'</span>]<span class="sc">}</span><span class="ss">件）"</span>)</span>
+<span id="cb12-12"><a></a></span>
+<span id="cb12-13"><a></a><span class="cf">for</span> fare_info <span class="kw">in</span> data[<span class="st">'hits'</span>][:<span class="dv">5</span>]:</span>
+<span id="cb12-14"><a></a>    <span class="bu">print</span>(<span class="st">"---"</span>)</span>
+<span id="cb12-15"><a></a>    <span class="cf">for</span> key, value <span class="kw">in</span> fare_info.items():</span>
+<span id="cb12-16"><a></a>        <span class="cf">if</span> key <span class="op">!=</span> <span class="st">'row'</span>:</span>
+<span id="cb12-17"><a></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a></a>都営バス運賃情報（総件数: 4件）</span>
+<span id="cb13-2"><a></a>---</span>
+<span id="cb13-3"><a></a>区分: 普通運賃</span>
+<span id="cb13-4"><a></a>大人: 210</span>
+<span id="cb13-5"><a></a>小児: 110</span>
+<span id="cb13-6"><a></a>備考: ICカード利用時</span>
+<span id="cb13-7"><a></a>---</span>
+<span id="cb13-8"><a></a>...</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="section-6" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>NumPyで統計処理</p>
+</div>
+</section>
+<section id="統計分析の例" class="slide level2">
+<h2>統計分析の例</h2>
+<div class="slide-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb14-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb14-3"><a></a></span>
+<span id="cb14-4"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb14-5"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
+<span id="cb14-6"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb14-7"><a></a></span>
+<span id="cb14-8"><a></a>params <span class="op">=</span> {<span class="st">'limit'</span>: <span class="dv">200</span>}</span>
+<span id="cb14-9"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>params, headers<span class="op">=</span>headers, json<span class="op">=</span>{})</span>
+<span id="cb14-10"><a></a>data <span class="op">=</span> response.json()</span>
+<span id="cb14-11"><a></a></span>
+<span id="cb14-12"><a></a><span class="co"># 人口を抽出</span></span>
+<span id="cb14-13"><a></a>population <span class="op">=</span> [r[<span class="st">'東京都／人口'</span>] <span class="cf">for</span> r <span class="kw">in</span> data[<span class="st">'hits'</span>]</span>
+<span id="cb14-14"><a></a>              <span class="cf">if</span> <span class="bu">isinstance</span>(r.get(<span class="st">'東京都／人口'</span>), <span class="bu">int</span>)]</span>
+<span id="cb14-15"><a></a>population <span class="op">=</span> np.array(population)</span>
+<span id="cb14-16"><a></a></span>
+<span id="cb14-17"><a></a><span class="bu">print</span>(<span class="ss">f"平均: </span><span class="sc">{</span>np<span class="sc">.</span>mean(population)<span class="sc">:,.0f}</span><span class="ss">人"</span>)</span>
+<span id="cb14-18"><a></a><span class="bu">print</span>(<span class="ss">f"最大: </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">max</span>(population)<span class="sc">:,}</span><span class="ss">人"</span>)</span>
+<span id="cb14-19"><a></a><span class="bu">print</span>(<span class="ss">f"最小: </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">min</span>(population)<span class="sc">:,}</span><span class="ss">人"</span>)</span>
+<span id="cb14-20"><a></a><span class="bu">print</span>(<span class="ss">f"標準偏差: </span><span class="sc">{</span>np<span class="sc">.</span>std(population)<span class="sc">:,.0f}</span><span class="ss">"</span>)</span>
+<span id="cb14-21"><a></a><span class="bu">print</span>(<span class="ss">f"中央値: </span><span class="sc">{</span>np<span class="sc">.</span>median(population)<span class="sc">:,.0f}</span><span class="ss">人"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb15-1"><a></a>平均: 7,294,170人</span>
+<span id="cb15-2"><a></a>最大: 14,099,993人</span>
+<span id="cb15-3"><a></a>最小: 859,345人</span>
+<span id="cb15-4"><a></a>標準偏差: 4,567,885</span>
+<span id="cb15-5"><a></a>中央値: 7,189,875人</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="まずは可視化する" class="slide level2">
+<h2>まずは可視化する</h2>
+<div class="slide-body">
+<ul>
+<li>数値だけでは傾向がわからない</li>
+<li><a href="./visualize.html">visualize章</a> の原則<span class="fw-colon">：</span><strong>Always plot your data first.</strong></li>
+</ul>
+<div id="637b8aa9" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="tokyo-api_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="674" height="277"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>右肩上がり</strong> — 150年で約16倍に増加</li>
+<li><strong>1940年代に急落</strong> — 戦争による疎開・被害</li>
+<li><strong>2020年代に停滞</strong> — コロナ禍の影響が見える</li>
+</ul>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong><code>in</code> vs インデックス検索</strong></p>
+<p><strong>これまでの章が活きる</strong></p>
 </div>
 <div class="callout-content">
-<p>「含まれているか知りたいだけ」なら <code>in</code> が最もシンプル。 位置（インデックス）も必要なときは <code>.index()</code> を使う。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="bu">print</span>(scores.index(<span class="dv">90</span>))  <span class="co"># 1</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="listを処理する便利なアレコレ" class="slide level2">
-<h2>listを処理する便利なアレコレ</h2>
-<div class="fig-cite" style="background-image: url('imgs/processed_list.jpg'); height: 90%;">
-<div class="content-box pos-br">
 <ul>
-<li>スライス（部分集合の取得）</li>
-<li>２次元配列</li>
-<li>N 次元配列　</li>
-<li>list 同士の結合</li>
-<li>sortとsorted</li>
-<li>内包表記</li>
+<li><a href="./list.html">list章</a> の内包表記で抽出</li>
+<li><a href="./numpy.html">numpy章</a> の統計関数で集計</li>
+<li><a href="./visualize.html">visualize章</a> の手法で可視化</li>
 </ul>
-</div>
-</div>
-</section>
-<section id="範囲外のインデックスはエラー" class="slide level2">
-<h2>範囲外のインデックスはエラー</h2>
-<div class="slide-body">
-<p>以下のインデックスは指定できない（エラーになる）。</p>
-<ul>
-<li><strong>要素数（list の長さ）以上</strong></li>
-<li><strong>マイナス要素数＋1 以下</strong></li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>test <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb10-2"><a></a><span class="bu">print</span>(<span class="bu">len</span>(test))  <span class="co"># 4</span></span>
-<span id="cb10-3"><a></a><span class="bu">print</span>(test[<span class="dv">4</span>])    <span class="co"># IndexError</span></span>
-<span id="cb10-4"><a></a><span class="bu">print</span>(test[<span class="op">-</span><span class="dv">5</span>])   <span class="co"># IndexError</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>IndexError: list index out of range</strong></p>
-</div>
-<div class="callout-content">
-<p><code>len(test)</code> は <code>4</code> なので有効なインデックスは <code>-4</code> ～ <code>3</code> まで。 <code>test[4]</code> や <code>test[-5]</code> はその範囲外なのでエラー。</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="リストの長さと-range-による走査" class="slide level2">
-<h2>リストの長さと <code>range</code> による走査</h2>
-<div class="slide-body">
-<ul>
-<li><code>len(list)</code> でリストの<strong>要素数</strong>を取得できる</li>
-<li><code>range(N)</code> は <code>0, 1, 2, ..., N-1</code> を返す（list ではなく range 型）
-<ul>
-<li><code>list(range(N))</code> で list に変換可能</li>
-</ul></li>
-<li><code>range(len(list))</code> と組み合わせて走査するパターンをよく使う</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>student_scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>]</span>
-<span id="cb11-2"><a></a></span>
-<span id="cb11-3"><a></a><span class="bu">print</span>(<span class="bu">len</span>(student_scores))                  <span class="co"># 6</span></span>
-<span id="cb11-4"><a></a><span class="bu">print</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="bu">len</span>(student_scores))))     <span class="co"># [0, 1, 2, 3, 4, 5]</span></span>
-<span id="cb11-5"><a></a></span>
-<span id="cb11-6"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(student_scores)):</span>
-<span id="cb11-7"><a></a>    <span class="bu">print</span>(<span class="ss">f"出席番号</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">は、</span><span class="sc">{</span>student_scores[i]<span class="sc">}</span><span class="ss">点です。"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>出席番号1は、85点です。
-出席番号2は、90点です。
-...</code></pre>
-</div>
-</section>
-<section id="スライス部分集合の取得" class="slide level2">
-<h2>スライス（部分集合の取得）</h2>
-<div class="slide-body">
-<p>リストの一部を切り取って別のリストにできる。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a></a>list[切り取る先頭インデックス : 切り取る末尾インデックス+1]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>org_test <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
-<span id="cb14-2"><a></a>sliced_list <span class="op">=</span> org_test[<span class="dv">2</span>:<span class="dv">5</span>]</span>
-<span id="cb14-3"><a></a><span class="bu">print</span>(sliced_list)  <span class="co"># [2, 3, 4]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>ポイント</strong></p>
-</div>
-<div class="callout-content">
-<p>末尾インデックスは「取りたい最後の要素のインデックス＋1」を指定する。 <code>org_test[2:5]</code> → インデックス 2, 3, 4 の要素を取得。</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="次元配列" class="slide level2">
-<h2>２次元配列</h2>
-<div class="slide-body">
-<p>list の要素として list を入れると<strong>２次元配列</strong>になる。</p>
-<p>アクセスは <code>list[行][列]</code> の形式。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>list_of_list <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]]</span>
-<span id="cb15-2"><a></a><span class="bu">print</span>(list_of_list)        <span class="co"># [[1, 2, 3], [4, 5, 6]]</span></span>
-<span id="cb15-3"><a></a><span class="bu">print</span>(list_of_list[<span class="dv">0</span>][<span class="dv">1</span>])  <span class="co"># 2</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>       列0  列1  列2
-行0 →  [1,   2,   3]
-行1 →  [4,   5,   6]</code></pre>
-<p><code>list_of_list[0][1]</code> → 行0・列1 → <code>2</code></p>
-</div>
-</section>
-<section id="n-次元配列" class="slide level2">
-<h2>N 次元配列</h2>
-<div class="slide-body">
-<p>２次元以上の多次元化も可能。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>N_dimensional_list <span class="op">=</span> [[[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]],</span>
-<span id="cb17-2"><a></a>                      [[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]]]</span>
-<span id="cb17-3"><a></a></span>
-<span id="cb17-4"><a></a><span class="bu">print</span>(N_dimensional_list[<span class="dv">1</span>][<span class="dv">1</span>][<span class="dv">2</span>])  <span class="co"># 12</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li><code>[1]</code> → 2番目のブロック <code>[[7,8,9],[10,11,12]]</code></li>
-<li><code>[1]</code> → その中の2番目 <code>[10,11,12]</code></li>
-<li><code>[2]</code> → その中の3番目 → <code>12</code></li>
-</ul>
-</div>
-</section>
-<section id="list-同士の結合" class="slide level2">
-<h2>list 同士の結合</h2>
-<div class="slide-body">
-<p><code>+</code> 演算子でリスト同士を結合できる。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>list1 <span class="op">=</span> [<span class="st">"banana"</span>, <span class="st">"apple"</span>]</span>
-<span id="cb18-2"><a></a>list2 <span class="op">=</span> [<span class="st">"orange"</span>, <span class="st">"peach"</span>]</span>
-<span id="cb18-3"><a></a></span>
-<span id="cb18-4"><a></a><span class="bu">print</span>(list1 <span class="op">+</span> list2)  <span class="co"># ['banana', 'apple', 'orange', 'peach']</span></span>
-<span id="cb18-5"><a></a></span>
-<span id="cb18-6"><a></a><span class="co"># += 演算も可能</span></span>
-<span id="cb18-7"><a></a>list1 <span class="op">+=</span> list2</span>
-<span id="cb18-8"><a></a><span class="bu">print</span>(list1)          <span class="co"># ['banana', 'apple', 'orange', 'peach']</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>重複はそのまま追加される</strong></p>
-</div>
-<div class="callout-content">
-<p>同じ要素があっても重複して追加される（重複排除はされない）。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>list3 <span class="op">=</span> [<span class="st">"banana"</span>, <span class="st">"grape"</span>]</span>
-<span id="cb19-2"><a></a><span class="bu">print</span>(list1 <span class="op">+</span> list3)</span>
-<span id="cb19-3"><a></a><span class="co"># ['banana', 'apple', 'orange', 'peach', 'banana', 'grape']</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="ソート" class="slide level2">
-<h2>ソート</h2>
-<div class="slide-body">
-<p><code>sort()</code> と <code>sorted()</code> でリストを並び替えられる。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>]</span>
-<span id="cb20-2"><a></a></span>
-<span id="cb20-3"><a></a><span class="co"># sort()：元のリストを直接変更（ミュータブル！）</span></span>
-<span id="cb20-4"><a></a>scores.sort()</span>
-<span id="cb20-5"><a></a><span class="bu">print</span>(scores)  <span class="co"># [78, 85, 88, 90, 92, 92]</span></span>
-<span id="cb20-6"><a></a></span>
-<span id="cb20-7"><a></a><span class="co"># sorted()：新しいリストを返す（元は変わらない）</span></span>
-<span id="cb20-8"><a></a>original <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>]</span>
-<span id="cb20-9"><a></a>result <span class="op">=</span> <span class="bu">sorted</span>(original)</span>
-<span id="cb20-10"><a></a><span class="bu">print</span>(original)  <span class="co"># [85, 90, 92, 78] ← 変わらない</span></span>
-<span id="cb20-11"><a></a><span class="bu">print</span>(result)    <span class="co"># [78, 85, 90, 92]</span></span>
-<span id="cb20-12"><a></a></span>
-<span id="cb20-13"><a></a><span class="co"># 降順は reverse=True</span></span>
-<span id="cb20-14"><a></a>scores.sort(reverse<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb20-15"><a></a><span class="bu">print</span>(scores)  <span class="co"># [92, 92, 90, 88, 85, 78]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>sort vs sorted の使い分け</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>元のリストを壊してよい → <code>sort()</code>（速い）</li>
-<li>元のリストを保持したい → <code>sorted()</code>（安全）</li>
-</ul>
-<p><code>sort()</code> が in-place で変更する点は、第4回で学んだミュータブルの性質そのもの。</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="リスト内包表記" class="slide level2">
-<h2>リスト内包表記</h2>
-<div class="slide-body">
-<p><code>for</code> 文を1行に圧縮してリストを作る書き方</p>
-<p>例えば、[0, 1, 4, 9, 16]のリストを作りたい時、</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>squares <span class="op">=</span> []</span>
-<span id="cb21-2"><a></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
-<span id="cb21-3"><a></a>    squares.append(x <span class="op">*</span> x)</span>
-<span id="cb21-4"><a></a><span class="bu">print</span>(squares)  <span class="co"># [0, 1, 4, 9, 16]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>と書けるけど、長いので以下のように一撃でも書ける。それがリスト内包表記</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="co"># 基本形：[式 for 変数 in イテラブル]</span></span>
-<span id="cb22-2"><a></a>squares <span class="op">=</span> [x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)]</span>
-<span id="cb22-3"><a></a><span class="bu">print</span>(squares)  <span class="co"># [0, 1, 4, 9, 16]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="リスト内包表記条件式付き" class="slide level2">
-<h2>リスト内包表記（条件式付き）</h2>
-<div class="slide-body">
-<p>例えば、0-99の整数うち３の倍数以外のリストを作る場合、以下のようにfor文に条件を書くことになる。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a></span>
-<span id="cb23-2"><a></a>not_divisible_by_3s <span class="op">=</span> []</span>
-<span id="cb23-3"><a></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
-<span id="cb23-4"><a></a>    <span class="cf">if</span> x <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb23-5"><a></a>        <span class="cf">continue</span></span>
-<span id="cb23-6"><a></a>    not_divisible_by_3s.append(x)</span>
-<span id="cb23-7"><a></a><span class="bu">print</span>(not_divisible_by_3s)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>これをリスト内包表記だとこう書ける。短い</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="co"># 条件付き：[式 for 変数 in イテラブル if 条件]</span></span>
-<span id="cb24-2"><a></a>not_divisible_by_3s <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>) <span class="cf">if</span> x <span class="op">%</span> <span class="dv">3</span> <span class="op">!=</span> <span class="dv">0</span>]</span>
-<span id="cb24-3"><a></a><span class="bu">print</span>(not_divisible_by_3s)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>ノート</strong></p>
-</div>
-<div class="callout-content">
-<p>リスト内包表記はAtCoderでよく使う（次スライド）</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="リスト内包表記の使いどころ" class="slide level2">
-<h2>リスト内包表記の使いどころ</h2>
-<div class="slide-body">
-<p>第1回 AtCoder の参考コードに出てきた謎の構文<span class="fw-colon">：</span></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a>As <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>().split()]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>これはリスト内包表記だった。<code>input().split()</code> で <code>["1", "2", "3"]</code> という文字列のリストを作り、 各要素を <code>int(x)</code> で整数に変換しながら新しいリストを作っている。</p>
-<p><code>for</code> 文で書くと以下と同じ意味<span class="fw-colon">：</span></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a>input_str <span class="op">=</span> <span class="bu">input</span>().split() <span class="co"># split(" ")と同じ。つまり、空白区切りで分けてlist化</span></span>
-<span id="cb26-2"><a></a>As <span class="op">=</span> []</span>
-<span id="cb26-3"><a></a><span class="cf">for</span> x <span class="kw">in</span> input_str:</span>
-<span id="cb26-4"><a></a>    As.append(<span class="bu">int</span>(x))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="参考異なる型の混在" class="slide level2">
-<h2>【参考】異なる型の混在</h2>
-<div class="slide-body">
-<p>Python の list は数値・文字列など<strong>異なる型を混在</strong>させることができる。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="bu">print</span>([<span class="dv">10</span>, <span class="st">"text"</span>, <span class="fl">10.5</span>])        <span class="co"># [10, 'text', 10.5]</span></span>
-<span id="cb27-2"><a></a><span class="bu">print</span>([<span class="dv">10</span>, [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">"text"</span>])   <span class="co"># [10, [1, 2, 3], 'text']</span></span>
-<span id="cb27-3"><a></a></span>
-<span id="cb27-4"><a></a>test <span class="op">=</span> [<span class="dv">10</span>, [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">"text"</span>]</span>
-<span id="cb27-5"><a></a><span class="bu">print</span>(test[<span class="dv">2</span>])     <span class="co"># text</span></span>
-<span id="cb27-6"><a></a><span class="bu">print</span>(test[<span class="dv">1</span>][<span class="dv">2</span>])  <span class="co"># 3</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>実際には使わない</strong></p>
-</div>
-<div class="callout-content">
-<p>管理しにくいため実務では使わない。 ただし<strong>多次元配列</strong>はこの仕組みを応用している。</p>
 </div>
 </div>
 </div>
@@ -1617,105 +1832,214 @@ rkskmt
 <section id="まとめ" class="slide level2">
 <h2>まとめ</h2>
 <div class="slide-body">
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>やりたいこと</th>
+<th>コード</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>基本アクセス</td>
+<td><code>requests.post(url, params=..., headers=..., json={})</code></td>
+</tr>
+<tr class="even">
+<td>取得件数指定</td>
+<td><code>params = {'limit': 200}</code></td>
+</tr>
+<tr class="odd">
+<td>列の絞り込み</td>
+<td><code>body = {"column": ["列名1", "列名2"]}</code></td>
+</tr>
+<tr class="even">
+<td>条件フィルタ</td>
+<td><code>body = {"searchCondition": {...}}</code></td>
+</tr>
+<tr class="odd">
+<td>全件数確認</td>
+<td><code>data['total']</code></td>
+</tr>
+<tr class="even">
+<td>データ本体</td>
+<td><code>data['hits']</code>（list of dict）</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wikipedia API との違い</strong></p>
+</div>
+<div class="callout-content">
 <ul>
-<li>インデックスは<strong>ゼロ始まり</strong>、マイナスで末尾からアクセスできる</li>
-<li><code>append</code> で末尾追加、<code>in</code> で存在確認、<code>sort</code> / <code>sorted</code> で並び替え</li>
-<li>スライス <code>[i:j]</code>・多次元配列・<code>+</code> 結合など、組み合わせ次第で幅広く使える</li>
-<li>リスト内包表記 <code>[式 for x in ...]</code> で <code>for</code>+<code>append</code> を1行に圧縮できる</li>
-<li><code>list</code> はミュータブル — コピーが必要なときは <code>.copy()</code> を使う</li>
+<li><strong>GET</strong> ではなく <strong>POST</strong></li>
+<li>空でも <code>json={}</code> が必要</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-7" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>演習</p>
+</div>
+</section>
+<section id="演習1避難所データの可視化" class="slide level2">
+<h2>演習1<span class="fw-colon">：</span>避難所データの可視化</h2>
+<div class="slide-body">
+<ul>
+<li>任意の区市町村の <strong>避難所データ</strong> を取得</li>
+<li>避難所の <strong>件数</strong> を print</li>
+<li>（発展）緯度・経度があれば散布図で地図風にプロット</li>
+</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>ヒント</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><a href="https://spec.api.metro.tokyo.lg.jp/spec/search">API検索ページ</a> で「避難所」を検索</li>
+<li>複数の区のデータを比較しても面白い</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="演習2人口推移の時系列グラフ" class="slide level2">
+<h2>演習2<span class="fw-colon">：</span>人口推移の時系列グラフ</h2>
+<div class="slide-body">
+<ul>
+<li>東京都人口データを <strong>全件</strong> 取得</li>
+<li>年と人口を取り出して <strong>折れ線グラフ</strong> を描画</li>
+<li>最大値・最小値・平均をタイトルに表示</li>
+</ul>
+<div id="6b06ce90" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>解答例を見る</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb16-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb16-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb16-4"><a></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb16-5"><a></a></span>
+<span id="cb16-6"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb16-7"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
+<span id="cb16-8"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb16-9"><a></a></span>
+<span id="cb16-10"><a></a>params <span class="op">=</span> {<span class="st">'limit'</span>: <span class="dv">200</span>}</span>
+<span id="cb16-11"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>params, headers<span class="op">=</span>headers, json<span class="op">=</span>{})</span>
+<span id="cb16-12"><a></a>data <span class="op">=</span> response.json()</span>
+<span id="cb16-13"><a></a></span>
+<span id="cb16-14"><a></a>years <span class="op">=</span> np.array([r[<span class="st">'西暦（年次）'</span>] <span class="cf">for</span> r <span class="kw">in</span> data[<span class="st">'hits'</span>]</span>
+<span id="cb16-15"><a></a>                  <span class="cf">if</span> <span class="bu">isinstance</span>(r.get(<span class="st">'東京都／人口'</span>), <span class="bu">int</span>)])</span>
+<span id="cb16-16"><a></a>population <span class="op">=</span> np.array([r[<span class="st">'東京都／人口'</span>] <span class="cf">for</span> r <span class="kw">in</span> data[<span class="st">'hits'</span>]</span>
+<span id="cb16-17"><a></a>                       <span class="cf">if</span> <span class="bu">isinstance</span>(r.get(<span class="st">'東京都／人口'</span>), <span class="bu">int</span>)])</span>
+<span id="cb16-18"><a></a></span>
+<span id="cb16-19"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
+<span id="cb16-20"><a></a>plt.plot(years, population <span class="op">/</span> <span class="fl">1e6</span>)</span>
+<span id="cb16-21"><a></a>plt.title(<span class="ss">f"Max=</span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">max</span>(population)<span class="sc">:,}</span><span class="ss">, Min=</span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">min</span>(population)<span class="sc">:,}</span><span class="ss">, Mean=</span><span class="sc">{</span>np<span class="sc">.</span>mean(population)<span class="sc">:,.0f}</span><span class="ss">"</span>)</span>
+<span id="cb16-22"><a></a>plt.xlabel(<span class="st">"Year"</span>)</span>
+<span id="cb16-23"><a></a>plt.ylabel(<span class="st">"Population (million)"</span>)</span>
+<span id="cb16-24"><a></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb16-25"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</div>
+</section>
+<section id="演習32つのデータセットを比較" class="slide level2">
+<h2>演習3<span class="fw-colon">：</span>2つのデータセットを比較</h2>
+<div class="slide-body">
+<ul>
+<li><strong>異なる2つのデータセット</strong> を取得（例<span class="fw-colon">：</span>2つの区の避難所、戦前と戦後の人口）</li>
+<li>それぞれの件数や統計量を <strong>比較</strong> して print</li>
+<li>（発展）同じグラフに重ねて描画</li>
 </ul>
 </div>
 </section>
-<section id="演習問題" class="slide level2 scrollable">
-<h2>演習問題</h2>
-<div class="slide-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>, <span class="dv">65</span>, <span class="dv">100</span>, <span class="dv">73</span>, <span class="dv">80</span>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>上記のリストをコピーして、以下の操作を実装せよ</p>
-<ol type="1">
-<li><code>range(len(...))</code> を使って、<strong>出席番号（1始まり）と点数</strong>を表示</li>
-<li><strong>スライス</strong>を使って、上位5名分（先頭5つ）と下位5名分（末尾5つ）をそれぞれ別のリストに分けて表示</li>
-<li><code>sorted</code> を使って、<strong>元のリストを変えずに</strong>降順に並び替えた新しいリストを作り、<strong>上位3名の点数</strong>を表示</li>
-</ol>
-<div id="01c6b443" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="co"># 1</span></span>
-<span id="cb29-2"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(scores)):</span>
-<span id="cb29-3"><a></a>    <span class="bu">print</span>(<span class="ss">f"出席番号</span><span class="sc">{</span>i <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">は</span><span class="sc">{</span>scores[i]<span class="sc">}</span><span class="ss">点"</span>)</span>
-<span id="cb29-4"><a></a></span>
-<span id="cb29-5"><a></a><span class="co"># 2</span></span>
-<span id="cb29-6"><a></a>top5 <span class="op">=</span> scores[:<span class="dv">5</span>]</span>
-<span id="cb29-7"><a></a>bottom5 <span class="op">=</span> scores[<span class="op">-</span><span class="dv">5</span>:]</span>
-<span id="cb29-8"><a></a><span class="bu">print</span>(top5)</span>
-<span id="cb29-9"><a></a><span class="bu">print</span>(bottom5)</span>
-<span id="cb29-10"><a></a></span>
-<span id="cb29-11"><a></a><span class="co"># 3</span></span>
-<span id="cb29-12"><a></a>ranked <span class="op">=</span> <span class="bu">sorted</span>(scores, reverse<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb29-13"><a></a><span class="bu">print</span>(ranked[:<span class="dv">3</span>])</span>
-<span id="cb29-14"><a></a><span class="bu">print</span>(scores)  <span class="co"># 元のリストは変わっていない</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
+<section id="section-8" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>活用アイデア</p>
 </div>
 </section>
-<section id="演習問題リスト内包表記" class="slide level2 scrollable">
-<h2>演習問題（リスト内包表記）</h2>
+<section id="アプリケーション例" class="slide level2">
+<h2>アプリケーション例</h2>
 <div class="slide-body">
-<p>以下の操作を実装せよ</p>
-<ol type="1">
-<li><code>range(1, 11)</code> を使って、<strong>1から10までの平方数</strong>のリストを作ろう（<code>[1, 4, 9, ..., 100]</code>）</li>
-<li><code>scores</code> から、<strong>80点以上の点数だけ</strong>を取り出した新しいリストを作ろう</li>
-<li>標準入力で受け取った空白区切りの整数列を、<strong>list of int</strong> に変換しよう（AtCoder 頻出パターン）</li>
-</ol>
-<div id="9eb50bdc" class="cell" data-execution_count="2">
-<details class="code-fold">
-<summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="co"># 1</span></span>
-<span id="cb30-2"><a></a>squares <span class="op">=</span> [x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)]</span>
-<span id="cb30-3"><a></a><span class="bu">print</span>(squares)</span>
-<span id="cb30-4"><a></a></span>
-<span id="cb30-5"><a></a><span class="co"># 2</span></span>
-<span id="cb30-6"><a></a>passed <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> scores <span class="cf">if</span> s <span class="op">&gt;=</span> <span class="dv">80</span>]</span>
-<span id="cb30-7"><a></a><span class="bu">print</span>(passed)</span>
-<span id="cb30-8"><a></a></span>
-<span id="cb30-9"><a></a><span class="co"># 3</span></span>
-<span id="cb30-10"><a></a>As <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>().split()]</span>
-<span id="cb30-11"><a></a><span class="bu">print</span>(As)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>分野</th>
+<th>活用例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>防災</strong></td>
+<td>避難所マップ、消火栓・防火水槽の位置、地震被害想定</td>
+</tr>
+<tr class="even">
+<td><strong>交通</strong></td>
+<td>駐輪場検索、バス運賃計算、駅の乗降客数分析</td>
+</tr>
+<tr class="odd">
+<td><strong>生活</strong></td>
+<td>公衆トイレマップ、公共施設案内、子育て支援制度</td>
+</tr>
+<tr class="even">
+<td><strong>研究</strong></td>
+<td>人口動態分析、地価変動追跡、行政サービス利用調査</td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
-<section id="演習問題２次元配列" class="slide level2 scrollable">
-<h2>演習問題（２次元配列）</h2>
+<section id="関連リソース" class="slide level2">
+<h2>関連リソース</h2>
 <div class="slide-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="co"># 行：学生（0: A さん, 1: B さん, 2: C さん）</span></span>
-<span id="cb31-2"><a></a><span class="co"># 列：科目（0: 国語, 1: 数学, 2: 英語）</span></span>
-<span id="cb31-3"><a></a>table <span class="op">=</span> [</span>
-<span id="cb31-4"><a></a>    [<span class="dv">80</span>, <span class="dv">90</span>, <span class="dv">70</span>],</span>
-<span id="cb31-5"><a></a>    [<span class="dv">60</span>, <span class="dv">85</span>, <span class="dv">95</span>],</span>
-<span id="cb31-6"><a></a>    [<span class="dv">75</span>, <span class="dv">70</span>, <span class="dv">80</span>],</span>
-<span id="cb31-7"><a></a>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>上記の学生の国語・数学・英語の点数をもつ２次元配列をコピーして、以下の操作を実装せよ。</p>
-<ol type="1">
-<li><strong>B さんの数学</strong>の点数を表示しよう</li>
-<li><strong>C さんの3科目合計</strong>を表示しよう</li>
-<li><strong>各学生の平均点</strong>を <code>for</code> 文で順に表示しよう</li>
-</ol>
-<div id="19cadcea" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="co"># 1</span></span>
-<span id="cb32-2"><a></a><span class="bu">print</span>(table[<span class="dv">1</span>][<span class="dv">1</span>])  <span class="co"># 85</span></span>
-<span id="cb32-3"><a></a></span>
-<span id="cb32-4"><a></a><span class="co"># 2</span></span>
-<span id="cb32-5"><a></a><span class="bu">print</span>(<span class="bu">sum</span>(table[<span class="dv">2</span>]))  <span class="co"># 225</span></span>
-<span id="cb32-6"><a></a></span>
-<span id="cb32-7"><a></a><span class="co"># 3</span></span>
-<span id="cb32-8"><a></a>names <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
-<span id="cb32-9"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(table)):</span>
-<span id="cb32-10"><a></a>    avg <span class="op">=</span> <span class="bu">sum</span>(table[i]) <span class="op">/</span> <span class="bu">len</span>(table[i])</span>
-<span id="cb32-11"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>names[i]<span class="sc">}</span><span class="ss">さんの平均点：</span><span class="sc">{</span>avg<span class="sc">:.1f}</span><span class="ss">点"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>リソース</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>オープンデータカタログサイト</td>
+<td><a href="https://portal.data.metro.tokyo.lg.jp/">portal.data.metro.tokyo.lg.jp</a></td>
+</tr>
+<tr class="even">
+<td>APIカタログサイト</td>
+<td><a href="https://portal.data.metro.tokyo.lg.jp/opendata-api/">portal.data.metro.tokyo.lg.jp/opendata-api/</a></td>
+</tr>
+<tr class="odd">
+<td>API検索ページ</td>
+<td><a href="https://spec.api.metro.tokyo.lg.jp/spec/search">spec.api.metro.tokyo.lg.jp/spec/search</a></td>
+</tr>
+<tr class="even">
+<td>公共交通オープンデータ</td>
+<td><a href="https://www.odpt.org/">odpt.org</a></td>
+</tr>
+<tr class="odd">
+<td>デジタル庁 GIF</td>
+<td><a href="https://www.digital.go.jp/policies/data_strategy_government_interoperability_framework">digital.go.jp</a></td>
+</tr>
+</tbody>
+</table>
 
 
 <div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
