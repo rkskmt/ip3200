@@ -171,22 +171,23 @@ fig.write_html("iframes/cholera_map.html", include_plotlyjs="cdn")
 
 ## 例：アンスコムの四重奏
 
-- **F. J. Anscombe（1973）** が示した4つのデータセット
-- 以下の統計量が ==4つともほぼ完全に一致== する
-- でも、==図にすると完全に異なるデータ==
 
-| 統計量 | 値 |
-|---|---|
-| $x$ の平均 | 9 **（完全に一致）** |
-| $x$ の標本分散 | 11 **（完全に一致）** |
-| $y$ の平均 | 7.50 **（小数第2位まで一致）** |
-| $y$ の標本分散 | 4.122 or 4.127 **（小数第3位まで一致）** |
-| $x$ と $y$ の相関係数 | 0.816 **（小数第3位まで一致）** |
-| 回帰直線 | $y = 3.00 + 0.500x$ **（小数第2〜3位まで一致）** |
+:::{.columns}
+:::{.column width="55%"}
+
+
+- **F. J. Anscombe（1973）** のデータセット
+- 以下の統計量が ==4つともほぼ完全に一致==
+- しかし、==図にすると完全に異なる==
+
+
+:::
+:::{.column width="45%"}
 
 ```{python}
 #| echo: false
 #| fig-align: center
+#| lightbox: true
 import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
@@ -212,17 +213,35 @@ plt.tight_layout()
 plt.show()
 ```
 
+:::
+:::
+
+| 統計量 | 値 |
+|---|---|
+| $x$ の平均 | 9 **（完全に一致）** |
+| $x$ の標本分散 | 11 **（完全に一致）** |
+| $y$ の平均 | 7.50 **（小数第2位まで一致）** |
+| $y$ の標本分散 | 4.122 or 4.127 **（小数第3位まで一致）** |
+| $x$ と $y$ の相関係数 | 0.816 **（小数第3位まで一致）** |
+| 回帰直線 | $y = 3.00 + 0.500x$ **（小数第2〜3位まで一致）** |
 
 
 ## アンスコムの四重奏 ①：普通のデータ
 
+:::{.columns}
+:::{.column width="55%"}
 - ばらつきはあるが **ゆるやかに直線的に増える**
 - 線形回帰の前提（直線関係 + 均一なばらつき）が成立
 - 典型的な普通のデータ
-
+:::
+:::{.column width="45%"}
 ```{python}
-#| echo: false
+#| echo: true
 #| fig-align: center
+#| lightbox: true
+#| code-fold: true
+#| code-summary: "コードを見る"
+
 import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
@@ -240,25 +259,9 @@ plt.grid(True, linestyle="--", alpha=0.5)
 plt.tight_layout()
 plt.show()
 ```
+:::
+:::
 
-```{python}
-#| echo: true
-#| eval: false
-#| code-fold: true
-#| code-summary: "コードを見る"
-import numpy as np
-import matplotlib.pyplot as plt
-import japanize_matplotlib
-
-x = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])
-y = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96,
-              7.24, 4.26, 10.84, 4.82, 5.68])
-
-plt.scatter(x, y)
-m, b = np.polyfit(x, y, 1)        # 1次回帰
-plt.plot(x, m * x + b, color="red")
-plt.show()
-```
 
 ::: {.callout-tip}
 ## 教訓
@@ -269,13 +272,20 @@ plt.show()
 
 ## アンスコムの四重奏 ②：曲線にフィッティング
 
+:::{.columns}
+:::{.column width="55%"}
 - `y` が **滑らかな曲線**（2次関数的）を描いている
 - 直線を当てはめても本質を捉えられない
 - 統計量だけ見ていると「直線で説明できた」と思い込みやすい
-
+:::
+:::{.column width="45%"}
 ```{python}
-#| echo: false
+#| echo: true
 #| fig-align: center
+#| lightbox: true
+#| code-fold: true
+#| code-summary: "コードを見る"
+
 import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
@@ -293,25 +303,8 @@ plt.grid(True, linestyle="--", alpha=0.5)
 plt.tight_layout()
 plt.show()
 ```
-
-```{python}
-#| echo: true
-#| eval: false
-#| code-fold: true
-#| code-summary: "コードを見る"
-import numpy as np
-import matplotlib.pyplot as plt
-import japanize_matplotlib
-
-x = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])
-y = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10,
-              6.13, 3.10, 9.13, 7.26, 4.74])
-
-plt.scatter(x, y)
-m, b = np.polyfit(x, y, 1)
-plt.plot(x, m * x + b, color="red")
-plt.show()
-```
+:::
+:::
 
 ::: {.callout-warning}
 ## 教訓
@@ -323,13 +316,20 @@ plt.show()
 
 ## アンスコムの四重奏 ③：1つだけ外れ値
 
+:::{.columns}
+:::{.column width="55%"}
 - ほぼ **完全な直線** に並んでいる
 - たった1点だけ大きく外れている
 - その1点に **回帰直線が引っ張られている**
-
+:::
+:::{.column width="45%"}
 ```{python}
-#| echo: false
+#| echo: true
 #| fig-align: center
+#| lightbox: true
+#| code-fold: true
+#| code-summary: "コードを見る"
+
 import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
@@ -347,25 +347,8 @@ plt.grid(True, linestyle="--", alpha=0.5)
 plt.tight_layout()
 plt.show()
 ```
-
-```{python}
-#| echo: true
-#| eval: false
-#| code-fold: true
-#| code-summary: "コードを見る"
-import numpy as np
-import matplotlib.pyplot as plt
-import japanize_matplotlib
-
-x = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])
-y = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84,
-              6.08, 5.39, 8.15, 6.42, 5.73])
-
-plt.scatter(x, y)
-m, b = np.polyfit(x, y, 1)
-plt.plot(x, m * x + b, color="red")
-plt.show()
-```
+:::
+:::
 
 ::: {.callout-warning}
 ## 教訓
@@ -377,13 +360,20 @@ plt.show()
 
 ## アンスコムの四重奏 ④： 共通した値を共有したデータ
 
+:::{.columns}
+:::{.column width="55%"}
 - `x` の値が **ほぼすべて 8**
 - 1点だけ `x=19` にあり、その1点が「直線がある」ように見せている
 - 同じ条件で測定しすぎていて、`x` が振れていない
-
+:::
+:::{.column width="45%"}
 ```{python}
-#| echo: false
+#| echo: true
 #| fig-align: center
+#| lightbox: true
+#| code-fold: true
+#| code-summary: "コードを見る"
+
 import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
@@ -401,25 +391,8 @@ plt.grid(True, linestyle="--", alpha=0.5)
 plt.tight_layout()
 plt.show()
 ```
-
-```{python}
-#| echo: true
-#| eval: false
-#| code-fold: true
-#| code-summary: "コードを見る"
-import numpy as np
-import matplotlib.pyplot as plt
-import japanize_matplotlib
-
-x = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])
-y = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04,
-              5.25, 12.50, 5.56, 7.91, 6.89])
-
-plt.scatter(x, y)
-m, b = np.polyfit(x, y, 1)
-plt.plot(x, m * x + b, color="red")
-plt.show()
-```
+:::
+:::
 
 ::: {.callout-warning}
 ## 教訓
@@ -658,6 +631,7 @@ plt.show()
 
 ```{python}
 #| echo: true
+#| out-width: 50%
 import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
