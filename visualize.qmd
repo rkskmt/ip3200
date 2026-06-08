@@ -115,7 +115,7 @@ fig.write_html("iframes/cholera_map.html", include_plotlyjs="cdn")
 
 ## プレイフェアの円グラフ（1801）
 
-![トルコ帝国の領土配分](imgs/visualization/Playfair-piechart.jpg){width="70%"}
+![トルコ帝国の領土配分](imgs/visualization/Playfair-piechart.jpg){width="50%"}
 
 - 全体に対する **割合を角度で表現** — 円グラフの誕生
 
@@ -149,7 +149,7 @@ fig.write_html("iframes/cholera_map.html", include_plotlyjs="cdn")
 | 3D点群 | [Cesium "3D Tiles Point"](https://sandcastle.cesium.com/) |
 
 ::: {.callout-tip}
-## 自分の興味で1つ開いてみる
+## 自分の興味で開いてみる
 - 動的なものほど **データ量と表現力の関係** がよく分かる
 :::
 
@@ -226,7 +226,7 @@ plt.show()
 | 回帰直線 | $y = 3.00 + 0.500x$ **（小数第2〜3位まで一致）** |
 
 
-## アンスコムの四重奏 ①：普通のデータ
+## アンスコムの四重奏：普通のデータ
 
 :::{.columns}
 :::{.column width="55%"}
@@ -270,7 +270,7 @@ plt.show()
 :::
 
 
-## アンスコムの四重奏 ②：曲線にフィッティング
+## アンスコムの四重奏：曲線にフィッティング
 
 :::{.columns}
 :::{.column width="55%"}
@@ -314,7 +314,7 @@ plt.show()
 :::
 
 
-## アンスコムの四重奏 ③：1つだけ外れ値
+## アンスコムの四重奏：外れ値が目立つデータ
 
 :::{.columns}
 :::{.column width="55%"}
@@ -358,7 +358,7 @@ plt.show()
 :::
 
 
-## アンスコムの四重奏 ④： 共通した値を共有したデータ
+## アンスコムの四重奏：共通した値を共有したデータ
 
 :::{.columns}
 :::{.column width="55%"}
@@ -402,7 +402,7 @@ plt.show()
 :::
 
 
-## 4つを並べると…
+## 四重奏を並べると…
 
 | データ | 見た目 | 何が問題か |
 |---|---|---|
@@ -464,7 +464,7 @@ matplotlibでグラフを描く
 ターミナルからインストール：
 
 ```shell
-pip install matplotlib
+pip install matplotlib japanize-matplotlib
 ```
 
 冒頭で import（`plt` としてインポートするのが一般的）：
@@ -473,6 +473,42 @@ pip install matplotlib
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 ```
+
+
+## pltだと日本語が文字化けする
+
+- matplotlib は多くの環境で **日本語が文字化け** する
+
+
+```{python}
+#| echo: false
+#| warning: false
+#| out-width: 8%
+import matplotlib.pyplot as plt
+
+with plt.rc_context():
+    plt.rcdefaults()
+    plt.figure(figsize=(2.0, 1.2))
+    plt.bar(["平均", "中央値"], [780, 460])
+    plt.title("年収の分布")
+    plt.ylabel("万円")
+    plt.show()
+```
+
+
+- そこで ** `import japanize_matplotlib`**
+   - これだけで解決
+
+```python
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+```
+
+::: {.callout-warning}
+## `rcParams` でフォント指定しない
+- `rcParams["font.family"]` は環境差で失敗しやすい
+- 日本語表示は **`japanize_matplotlib` に任せる**
+:::
 
 
 ## まずはドキュメントを眺める（重要）
@@ -488,7 +524,7 @@ import japanize_matplotlib
 :::
 
 
-## 1. 点のプロット
+## 点のプロット
 
 - 一番基本の `plt.plot(x, y, 'o')` — 'o' は **マーカー** を表す
 - `x` も `y` も **`ndarray`** や **`list`** でOK
@@ -507,7 +543,7 @@ plt.show()
 ```
 
 
-## 2. 線のグラフ
+## 線のグラフ
 
 - 第3引数を **省略すると折れ線**
 - `'o-'` だと **点＋線**
@@ -526,7 +562,7 @@ plt.show()
 ```
 
 
-## 3. 表示範囲の指定（xlim / ylim）
+## 表示範囲の指定（xlim / ylim）
 
 - `plt.xlim(a, b)` / `plt.ylim(a, b)` で軸の範囲を固定
 - 3次元プロットでは `zlim` も使える
@@ -554,7 +590,7 @@ plt.show()
 :::
 
 
-## 4. ラベル・グリッド・タイトル・凡例
+## ラベル・グリッド・タイトル・凡例
 
 - `plt.xlabel()` / `plt.ylabel()` で **軸ラベル**
 - `plt.title()` で **グラフタイトル**
@@ -592,7 +628,7 @@ plt.show()
 :::
 
 
-## 5. 複数のグラフを並べる（subplot）
+## 複数のグラフを並べる（subplot）
 
 - `plt.subplot(行数, 列数, 場所番号)` で碁盤の目状に並べる
 - 場所番号は **1始まり、左上から右へ**
@@ -624,7 +660,7 @@ plt.show()
 ```
 
 
-## 6. 二次元データの散布図
+## 二次元データの散布図
 
 - 大量の `(x, y)` を点で打つ → 分布や相関が見える
 - `alpha` で **透明度** を指定すると重なりが分かりやすい
@@ -655,7 +691,49 @@ plt.show()
 :::
 
 
-## 7. 三次元データの散布図
+## ヒストグラムで分布を見る
+
+- たくさんの値を **区間ごとに数える** グラフ
+- 平均だけでは分からない **ばらつき・偏り・山の形** が見える
+- `bins` で区間の数を指定する
+- `plt.axvline(値)` で **縦線** を引ける
+- `np.median(x)` で **中央値** を計算できる
+- 年収のように一部の値が大きいデータでは、平均と中央値がずれる
+
+```{python}
+#| echo: true
+#| out-width: 60%
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+income = np.array([
+    280, 310, 330, 350, 360, 380, 400, 410, 430, 450, 470, 500, 520, 450, 470, 500, 520, 550, 600, 650, 700, 760, 900, 950 ,1100, 1260, 3100, 3000, 3200
+])
+
+mean_income = income.mean()
+median_income = np.median(income)
+
+plt.hist(income, bins=20, edgecolor="white")
+plt.axvline(mean_income, color="red", linewidth=2, label=f"平均 ({mean_income:,.0f})")
+plt.axvline(median_income, color="blue", linewidth=2, label=f"中央値 ({median_income:,.0f})")
+plt.xlabel("年収（万円）")
+plt.ylabel("人数")
+plt.title("年収のような右に長い分布")
+plt.legend()
+plt.show()
+```
+
+::: {.callout-note}
+## 平均と中央値
+- 一部の大きな値があると、平均は **右に引っ張られる**
+- 中央値は **真ん中の人** に近い値を示す
+- 分布が左右対称でないときは、平均だけでは代表値として弱い
+- `plt.axvline(線を引く位置, label="説明")` で凡例つきの縦線を描ける
+:::
+
+
+## 三次元データの散布図
 
 - 3D は `add_subplot(projection="3d")` で軸オブジェクトを作る
 - `plt.◯◯` ではなく **`ax.◯◯`** で操作する
@@ -712,6 +790,8 @@ plt.show()
 | 折れ線 | `plt.plot(x, y)` |
 | 棒グラフ | `plt.bar(x, y)` |
 | 散布図 | `plt.scatter(x, y)` |
+| ヒストグラム | `plt.hist(x)` |
+| 縦線 | `plt.axvline(x)` |
 | 軸の範囲 | `plt.xlim(a, b)` / `plt.ylim(a, b)` |
 | 軸ラベル | `plt.xlabel("...")` / `plt.ylabel("...")` |
 | タイトル | `plt.title("...")` |
@@ -721,7 +801,7 @@ plt.show()
 | 3D散布 | `ax = fig.add_subplot(projection="3d")` |
 
 
-## 演習1：二次関数を描く
+## 演習：二次関数を描く
 
 - $y = x^2 - 2x + 3$ を **定義域 $-2 \leq x \leq 5$** で描け
 - 手順
@@ -761,7 +841,7 @@ plt.show()
 ```
 
 
-## 演習2：アンスコムの四重奏を再現
+## 演習：アンスコムの四重奏を再現
 
 - 手順
   1. 下のデータをコピペして使う
@@ -823,7 +903,7 @@ plt.show()
 ```
 
 
-## 演習3：好きな画像を表示
+## 演習：好きな画像を表示
 
 - matplotlib は **画像も描画できる**
 - 公式チュートリアルを参考
