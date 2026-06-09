@@ -1,0 +1,597 @@
+---
+title: "Plotly入門"
+subtitle: "動かせるグラフを作る"
+---
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+静的な図から動かせる図へ
+:::
+
+## Plotlyとは
+
+- Plotlyは **インタラクティブな可視化** を作るライブラリ
+   - 拡大・縮小
+   - ホバーで値を確認
+   - 凡例クリックで表示・非表示
+   - 3Dグラフを回転
+- matplotlibと同じく、Pythonから使える
+- Webページ上で動くHTMLとして出力できる
+
+```python
+import plotly.express as px
+```
+
+::: {.callout-note}
+## matplotlibとの違い
+- matplotlib：静的な図に強い
+- Plotly：Web上で動かせる図に強い
+- どちらが上ではなく、目的で使い分ける
+:::
+
+
+## この資料で扱うこと
+
+- `plotly.express` を使って、短いコードでグラフを作る
+- Pandasの `DataFrame` をそのまま渡す
+- 棒グラフ・散布図・折れ線・3D散布図を作る
+- Quartoスライドでは、HTMLに書き出して埋め込む
+
+::: {.callout-warning}
+## 今回は深追いしないこと
+- DashなどのWebアプリ化
+- 細かいレイアウト調整
+- Plotlyの全グラフ種類
+- `graph_objects` の詳細
+:::
+
+
+## まずDataFrameを用意する
+
+- PlotlyはPandasの `DataFrame` と相性がよい
+- 「どの列をx軸にするか」「どの列をy軸にするか」を列名で指定する
+
+```{python}
+#| echo: true
+import pandas as pd
+
+df = pd.DataFrame({
+    "名前": ["田中", "佐藤", "鈴木", "高橋", "伊藤"],
+    "学科": ["情報", "機械", "情報", "電気", "情報"],
+    "点数": [82, 75, 91, 68, 57],
+})
+
+df
+```
+
+
+## 棒グラフを作る
+
+- `px.bar()` で棒グラフを作る
+- `x=` と `y=` に列名を指定する
+- `fig.show()` で表示する
+
+```python
+import plotly.express as px
+
+fig = px.bar(df, x="名前", y="点数")
+fig.show()
+```
+
+```{python}
+#| echo: false
+#| output: false
+import plotly.express as px
+
+fig = px.bar(df, x="名前", y="点数")
+fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=40, b=20))
+fig.write_html("iframes/plotly_bar.html", include_plotlyjs="cdn")
+```
+
+::: {.plotly-iframe src="iframes/plotly_bar.html"}
+:::
+
+
+## Plotly Expressの考え方
+
+- `plotly.express` は、短く書くための高レベルAPI
+- 基本形はどのグラフでも似ている
+
+```python
+fig = px.グラフ種類(
+    データフレーム,
+    x="x軸に使う列名",
+    y="y軸に使う列名",
+)
+```
+
+| グラフ | 関数 |
+|---|---|
+| 棒グラフ | `px.bar()` |
+| 散布図 | `px.scatter()` |
+| 折れ線 | `px.line()` |
+| ヒストグラム | `px.histogram()` |
+| 3D散布図 | `px.scatter_3d()` |
+
+
+## ラベルとタイトルをつける
+
+- `title=` でタイトル
+- `labels=` で軸ラベルや凡例名を変えられる
+- `labels` には辞書を渡す
+
+```python
+fig = px.bar(
+    df,
+    x="名前",
+    y="点数",
+    title="生徒ごとの点数",
+    labels={"名前": "生徒", "点数": "得点"},
+)
+fig.show()
+```
+
+```{python}
+#| echo: false
+#| output: false
+fig = px.bar(
+    df,
+    x="名前",
+    y="点数",
+    title="生徒ごとの点数",
+    labels={"名前": "生徒", "点数": "得点"},
+)
+fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
+fig.write_html("iframes/plotly_bar_labels.html", include_plotlyjs="cdn")
+```
+
+::: {.plotly-iframe src="iframes/plotly_bar_labels.html"}
+:::
+
+
+## 色分けする
+
+- `color=` に列名を指定すると、その列の値で色分けできる
+- カテゴリの違いを見せたいときに便利
+
+```python
+fig = px.bar(
+    df,
+    x="名前",
+    y="点数",
+    color="学科",
+    title="学科で色分けした点数",
+)
+fig.show()
+```
+
+```{python}
+#| echo: false
+#| output: false
+fig = px.bar(
+    df,
+    x="名前",
+    y="点数",
+    color="学科",
+    title="学科で色分けした点数",
+)
+fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
+fig.write_html("iframes/plotly_bar_color.html", include_plotlyjs="cdn")
+```
+
+::: {.plotly-iframe src="iframes/plotly_bar_color.html"}
+:::
+
+::: {.callout-tip}
+## 何が便利？
+- 凡例をクリックすると、特定の学科だけ表示・非表示にできる
+- 棒にマウスを乗せると、値が表示される
+:::
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+いろいろなグラフ
+:::
+
+## 散布図
+
+- `px.scatter()` で散布図を作る
+- `x` と `y` に数値列を指定する
+- `hover_name=` に列名を指定すると、ホバー時に名前を表示できる
+
+```{python}
+#| echo: true
+df_scores = pd.DataFrame({
+    "名前": ["田中", "佐藤", "鈴木", "高橋", "伊藤", "渡辺", "山本", "中村"],
+    "数学": [70, 75, 88, 64, 59, 92, 73, 81],
+    "英語": [90, 85, 84, 72, 60, 78, 70, 86],
+    "学科": ["情報", "機械", "情報", "電気", "情報", "機械", "電気", "情報"],
+})
+
+df_scores
+```
+
+
+## 散布図を作る
+
+```python
+fig = px.scatter(
+    df_scores,
+    x="数学",
+    y="英語",
+    color="学科",
+    hover_name="名前",
+    title="数学と英語の点数",
+)
+fig.show()
+```
+
+```{python}
+#| echo: false
+#| output: false
+fig = px.scatter(
+    df_scores,
+    x="数学",
+    y="英語",
+    color="学科",
+    hover_name="名前",
+    title="数学と英語の点数",
+)
+fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
+fig.write_html("iframes/plotly_scatter.html", include_plotlyjs="cdn")
+```
+
+::: {.plotly-iframe src="iframes/plotly_scatter.html"}
+:::
+
+
+## サイズもデータで変える
+
+- `size=` に数値列を指定すると、点の大きさを変えられる
+- 2次元の位置に加えて、もう1つの量を表現できる
+
+```python
+df_scores["合計"] = df_scores["数学"] + df_scores["英語"]
+
+fig = px.scatter(
+    df_scores,
+    x="数学",
+    y="英語",
+    color="学科",
+    size="合計",
+    hover_name="名前",
+)
+fig.show()
+```
+
+```{python}
+#| echo: false
+#| output: false
+df_scores["合計"] = df_scores["数学"] + df_scores["英語"]
+
+fig = px.scatter(
+    df_scores,
+    x="数学",
+    y="英語",
+    color="学科",
+    size="合計",
+    hover_name="名前",
+    title="数学・英語・合計点",
+)
+fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
+fig.write_html("iframes/plotly_scatter_size.html", include_plotlyjs="cdn")
+```
+
+::: {.plotly-iframe src="iframes/plotly_scatter_size.html"}
+:::
+
+
+## 折れ線グラフ
+
+- `px.line()` で折れ線グラフを作る
+- 時間変化や順序のあるデータに向いている
+
+```{python}
+#| echo: true
+df_temp = pd.DataFrame({
+    "日": ["月", "火", "水", "木", "金", "土", "日"],
+    "気温": [22, 24, 23, 26, 28, 27, 25],
+})
+
+df_temp
+```
+
+
+## 折れ線グラフを作る
+
+```python
+fig = px.line(df_temp, x="日", y="気温", markers=True)
+fig.show()
+```
+
+```{python}
+#| echo: false
+#| output: false
+fig = px.line(
+    df_temp,
+    x="日",
+    y="気温",
+    markers=True,
+    title="1週間の気温",
+)
+fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
+fig.write_html("iframes/plotly_line.html", include_plotlyjs="cdn")
+```
+
+::: {.plotly-iframe src="iframes/plotly_line.html"}
+:::
+
+
+## ヒストグラム
+
+- `px.histogram()` で分布を見られる
+- `nbins=` で区間の数を指定する
+
+```{python}
+#| echo: true
+df_height = pd.DataFrame({
+    "身長": [
+        158, 160, 161, 163, 165, 166, 168, 169, 170, 171,
+        172, 173, 174, 175, 176, 178, 180, 181, 183, 186
+    ]
+})
+
+df_height.head()
+```
+
+
+## ヒストグラムを作る
+
+```python
+fig = px.histogram(df_height, x="身長", nbins=8)
+fig.show()
+```
+
+```{python}
+#| echo: false
+#| output: false
+fig = px.histogram(
+    df_height,
+    x="身長",
+    nbins=8,
+    title="身長の分布",
+)
+fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
+fig.write_html("iframes/plotly_histogram.html", include_plotlyjs="cdn")
+```
+
+::: {.plotly-iframe src="iframes/plotly_histogram.html"}
+:::
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+Pandasの集計結果をPlotlyへ
+:::
+
+## 学科ごとの平均点を作る
+
+- Pandasで集計してからPlotlyで可視化する
+- `groupby()` の結果は `Series`
+- Plotlyに渡すため、いったん `reset_index()` でDataFrameに戻す
+
+```{python}
+#| echo: true
+url = "https://rkskmt.github.io/ip3200/data/students.csv"
+df_students = pd.read_csv(url)
+subjects = ["現代文", "数学I", "英会話", "物理"]
+
+df_students["平均点"] = df_students[subjects].mean(axis=1)
+avg = df_students.groupby("学科")["平均点"].mean()
+avg
+```
+
+
+## SeriesをDataFrameに戻す
+
+- `reset_index()` で、indexを普通の列に戻せる
+- Plotly ExpressはDataFrame + 列名指定が書きやすい
+
+```{python}
+#| echo: true
+avg_df = avg.reset_index()
+avg_df
+```
+
+```python
+fig = px.bar(avg_df, x="学科", y="平均点")
+fig.show()
+```
+
+
+## 集計結果をPlotlyで可視化
+
+```{python}
+#| echo: false
+#| output: false
+fig = px.bar(
+    avg_df,
+    x="学科",
+    y="平均点",
+    title="学科ごとの平均点",
+)
+fig.update_yaxes(range=[0, 100])
+fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
+fig.write_html("iframes/plotly_groupby_bar.html", include_plotlyjs="cdn")
+```
+
+::: {.plotly-iframe src="iframes/plotly_groupby_bar.html"}
+:::
+
+::: {.callout-note}
+## matplotlibとの違い
+```text
+matplotlib: Series → index / values
+Plotly:     Series → reset_index() → DataFrame
+```
+:::
+
+
+## そのままDataFrameを作る方法
+
+- `groupby(..., as_index=False)` とすると、最初からDataFrameで結果を受け取れる
+- Plotlyで使う場合はこちらも便利
+
+```{python}
+#| echo: true
+avg_df = df_students.groupby("学科", as_index=False)["平均点"].mean()
+avg_df
+```
+
+```python
+fig = px.bar(avg_df, x="学科", y="平均点")
+fig.show()
+```
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+3Dと書き出し
+:::
+
+## 3D散布図
+
+- `px.scatter_3d()` で3D散布図を作れる
+- Web上ではドラッグして回転できる
+- 3つの数値列の関係を見るときに使う
+
+```{python}
+#| echo: true
+df_3d = pd.DataFrame({
+    "数学": [70, 75, 88, 64, 59, 92, 73, 81],
+    "英語": [90, 85, 84, 72, 60, 78, 70, 86],
+    "物理": [76, 69, 90, 71, 62, 88, 75, 80],
+    "学科": ["情報", "機械", "情報", "電気", "情報", "機械", "電気", "情報"],
+    "名前": ["田中", "佐藤", "鈴木", "高橋", "伊藤", "渡辺", "山本", "中村"],
+})
+
+df_3d.head()
+```
+
+
+## 3D散布図を作る
+
+```python
+fig = px.scatter_3d(
+    df_3d,
+    x="数学",
+    y="英語",
+    z="物理",
+    color="学科",
+    hover_name="名前",
+)
+fig.show()
+```
+
+```{python}
+#| echo: false
+#| output: false
+fig = px.scatter_3d(
+    df_3d,
+    x="数学",
+    y="英語",
+    z="物理",
+    color="学科",
+    hover_name="名前",
+    title="3科目の点数",
+)
+fig.update_layout(width=900, height=520, margin=dict(l=0, r=0, t=60, b=0))
+fig.write_html("iframes/plotly_scatter_3d.html", include_plotlyjs="cdn")
+```
+
+::: {.plotly-iframe src="iframes/plotly_scatter_3d.html" height="540"}
+:::
+
+
+## HTMLとして保存する
+
+- Plotlyの図はHTMLとして保存できる
+- ブラウザで開けるので、相手に共有しやすい
+- Quartoスライドでは、このHTMLをiframeとして埋め込んでいる
+
+```python
+fig.write_html("graph.html", include_plotlyjs="cdn")
+```
+
+::: {.callout-note}
+## `include_plotlyjs="cdn"`
+- Plotly本体をインターネット上のCDNから読み込む指定
+- HTMLファイルが軽くなる
+- オフラインで完全に動かしたい場合は別の設定が必要
+:::
+
+
+## matplotlibとPlotlyの使い分け
+
+| 目的 | 向いている道具 |
+|---|---|
+| レポートに貼る静止画 | matplotlib |
+| 論文・印刷用の細かい調整 | matplotlib |
+| ホバーで値を見たい | Plotly |
+| 拡大して細部を見たい | Plotly |
+| Webページで共有したい | Plotly |
+| 3Dを回して見たい | Plotly |
+
+- まずはmatplotlibで基本を覚える
+- Webで動かしたいときにPlotlyを使う
+
+
+## 演習：学科ごとの平均点をPlotlyで描く
+
+- `https://rkskmt.github.io/ip3200/data/students.csv` を読み込む
+- `groupby("学科", as_index=False)` で平均点を作る
+- `px.bar()` で棒グラフを作る
+- `color="学科"` を指定して色分けする
+- y軸を0〜100にする
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+import pandas as pd
+import plotly.express as px
+
+url = "https://rkskmt.github.io/ip3200/data/students.csv"
+df = pd.read_csv(url)
+subjects = ["現代文", "数学I", "英会話", "物理"]
+
+df["平均点"] = df[subjects].mean(axis=1)
+avg_df = df.groupby("学科", as_index=False)["平均点"].mean()
+
+fig = px.bar(
+    avg_df,
+    x="学科",
+    y="平均点",
+    color="学科",
+    title="学科ごとの平均点",
+)
+fig.update_yaxes(range=[0, 100])
+fig.show()
+```
+
+
+## まとめ
+
+- Plotlyは **インタラクティブな可視化** に強い
+- `plotly.express` は短いコードで書ける
+- 基本形は `px.bar(df, x="列名", y="列名")`
+- 色分けは `color=`
+- ホバー表示は `hover_name=`
+- Pandasの集計結果は、DataFrameにしてからPlotlyに渡すと分かりやすい
+- HTMLとして保存して、Webページに埋め込める

@@ -26,6 +26,8 @@
 - [NumPy入門](numpy.qmd)
   - （参考）[ベクトルと行列](vector_matrix.qmd)
 - [データの可視化](visualize.qmd)
+- [Pandas入門](pandas.qmd)
+- [Plotly入門](plotly.qmd)
 
 </details>
 

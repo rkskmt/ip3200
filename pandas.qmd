@@ -1,0 +1,705 @@
+---
+title: "Pandas入門"
+subtitle: "DataFrame・Series・index・columns"
+---
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+NumPyの表に名前をつける
+:::
+
+## Pandasとは
+
+- Pandasは **表形式データ** を扱うためのライブラリ
+   - Excelの表、CSV、実験結果、アンケート結果など
+   - データ分析の入口で非常によく使う
+- NumPyの `ndarray` と同じく、Pythonの標準機能ではない
+   - `import pandas as pd` として使うのが一般的
+
+```python
+import pandas as pd
+```
+
+::: {.callout-note}
+## この資料のゴール
+- Pandasを網羅的に覚えることではない
+- **DataFrame / Series / index / columns** を理解する
+- 集計結果を **matplotlibで可視化** できるようにする
+:::
+
+
+## NumPyだけだと何が困る？
+
+- NumPyの2次元配列は「数値の行列」としては便利
+- しかし、実際のデータでは **列の意味** が重要
+   - 1列目は現代文？
+   - 2列目は数学I？
+   - どの行が田中さん？
+
+```python
+import numpy as np
+
+arr = np.array([
+    [80, 70, 90],
+    [65, 75, 85],
+])
+
+arr
+```
+
+- `arr[0, 1]` は `70`
+- ただし、これだけでは **何の70点か分からない**
+
+
+## ndarrayからDataFrameを作る
+
+- `pd.DataFrame()` に `ndarray` を渡す
+- 最初は列名も行名も指定しない
+
+```{python}
+#| echo: true
+import numpy as np
+import pandas as pd
+
+arr = np.array([
+    [80, 70, 90],
+    [65, 75, 85],
+])
+
+df = pd.DataFrame(arr)
+df
+```
+
+- `DataFrame` は **表** として表示される
+- 左端と上端に `0, 1, 2, ...` の番号が自動でつく
+
+
+## indexとcolumnsを確認
+
+- 行の名前を **index**
+- 列の名前を **columns** という
+- 指定しない場合は、どちらも自動で番号が振られる
+
+```{python}
+#| echo: true
+df.index
+```
+
+```{python}
+#| echo: true
+df.columns
+```
+
+::: {.callout-note}
+## 自動でつく番号
+- `RangeIndex(start=0, stop=2, step=1)` は「0から1までの行番号」
+- `RangeIndex(start=0, stop=3, step=1)` は「0から2までの列番号」
+- Pythonの `range()` と同じく、`stop` の値は含まない
+:::
+
+
+## columnsを指定する
+
+- 列の意味が分かるように `columns=` を指定する
+- これだけで表がかなり読みやすくなる
+
+```{python}
+#| echo: true
+df = pd.DataFrame(
+    arr,
+    columns=["現代文", "数学I", "英会話"]
+)
+
+df
+```
+
+- もう `df[1]` ではなく、`df["数学I"]` として扱える
+- 「何列目か」ではなく **何の列か** で読める
+
+
+## indexも指定する
+
+- 行の意味が分かるように `index=` も指定する
+- この例では、行名を生徒名にする
+
+```{python}
+#| echo: true
+df = pd.DataFrame(
+    arr,
+    columns=["現代文", "数学I", "英会話"],
+    index=["田中", "佐藤"]
+)
+
+df
+```
+
+::: {.callout-tip}
+## DataFrameの正体
+```text
+DataFrame = データ + 行名(index) + 列名(columns)
+```
+:::
+
+
+## 名前があると何がうれしい？
+
+- `df["数学I"]` と書くと、数学Iの列だけ取り出せる
+- `df.mean()` と書くと、列ごとの平均が計算できる
+- 出力にも列名が残るので、結果を読み間違えにくい
+
+```{python}
+#| echo: true
+df.mean()
+```
+
+- NumPyの `axis=0` より読みやすい場面が多い
+- データ分析では **名前つきの表** が強い
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+Seriesを理解する
+:::
+
+## Seriesを取り出す
+
+- `df["列名"]` で1列だけ取り出せる
+- 取り出した1列は `DataFrame` ではなく **Series**
+
+```{python}
+#| echo: true
+math = df["数学I"]
+math
+```
+
+```{python}
+#| echo: true
+type(df)
+```
+
+```{python}
+#| echo: true
+type(math)
+```
+
+
+## DataFrameとSeries
+
+- DataFrameは **表**
+- Seriesは **1列**
+- Seriesにも `index` がある
+
+```text
+DataFrame = 表
+Series    = 1列
+```
+
+```{python}
+#| echo: true
+math.index
+```
+
+```{python}
+#| echo: true
+math.values
+```
+
+- `math.index` は生徒名
+- `math.values` は点数だけを取り出したNumPy配列
+
+
+## Seriesは「値」と「名前」のセット
+
+- NumPy配列は値だけ
+- Seriesは値に **index** がついている
+
+| 見方 | 中身 |
+|---|---|
+| `math.index` | `["田中", "佐藤"]` |
+| `math.values` | `[70, 75]` |
+
+```{python}
+#| echo: true
+math.mean()
+```
+
+- 1列だけでも、平均・最大・最小などの計算ができる
+- `DataFrame` から列を取り出すと、集計しやすい
+
+
+## 列名で取り出す練習
+
+- 現代文の列を取り出す
+- 英会話の列を取り出す
+- それぞれの平均を計算する
+
+```{python}
+#| echo: true
+japanese = df["現代文"]
+english = df["英会話"]
+
+print(japanese.mean())
+print(english.mean())
+```
+
+::: {.callout-tip}
+## まずは列単位で考える
+- Pandasでは「列を取り出す → 計算する」が基本
+- 1列を取り出すと `Series`
+- 複数列を取り出すと `DataFrame`
+:::
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+CSVを読み込む
+:::
+
+## CSVとは
+
+- CSVは表をテキストで保存する形式
+   - **C**omma **S**eparated **V**alues
+   - カンマで値を区切る
+- ExcelやGoogleスプレッドシートからも書き出せる
+
+```text
+名前,学科,学年,現代文,数学I,英会話,物理,欠席日数
+田中,情報,1,80,70,90,85,2
+佐藤,機械,1,65,75,85,72,4
+鈴木,情報,2,88,91,84,90,1
+```
+
+- 1行目は列名として扱われることが多い
+- 列が増えるほど、Pandasで扱う意味が出てくる
+- Pandasでは `pd.read_csv()` で読み込む
+
+
+## CSVを読み込む
+
+- 授業用データはデプロイ先に置いてある
+- `pd.read_csv()` にCSVのURLを渡す
+
+```{python}
+#| echo: true
+import pandas as pd
+
+url = "https://rkskmt.github.io/ip3200/data/students.csv"
+df = pd.read_csv(url)
+df
+```
+
+- CSVの1行目が `columns` になる
+- `index` は指定しなければ自動で番号が振られる
+
+
+## 読み込んだ表の形を確認
+
+- データを読み込んだら、まず **中身と形** を確認する
+- `head()` は先頭数行を表示する
+- `shape` は `(行数, 列数)`
+
+```{python}
+#| echo: true
+df.head()
+```
+
+```{python}
+#| echo: true
+df.shape
+```
+
+```{python}
+#| echo: true
+df.columns
+```
+
+```{python}
+#| echo: true
+df.index
+```
+
+
+## 名前をindexにする読み込み
+
+- `index_col="名前"` とすると、名前列をindexにできる
+- 「行名として使いたい列」があるときに使う
+
+```{python}
+#| echo: true
+df_name = pd.read_csv(url, index_col="名前")
+df_name.head()
+```
+
+- ただし、最初は自動番号のindexでも問題ない
+- 「indexとは行名である」と理解できれば十分
+
+::: {.callout-note}
+## 今回の方針
+- `loc` / `iloc` の詳細は深追いしない
+- まずは **列選択・条件抽出・集計** に慣れる
+:::
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+DataFrameの基本操作
+:::
+
+## 単一列を選択する
+
+- `df["列名"]` で1列を取り出す
+- 返ってくるものは `Series`
+
+```{python}
+#| echo: true
+math = df["数学I"]
+math
+```
+
+```{python}
+#| echo: true
+type(math)
+```
+
+- 1列だけ取り出したら `Series`
+- 集計の入口としてよく使う
+
+
+## 複数列を選択する
+
+- `df[["列名1", "列名2"]]` で複数列を取り出す
+- 列名のリストを渡すので、角括弧が2重になる
+- 返ってくるものは `DataFrame`
+
+```{python}
+#| echo: true
+df[["名前", "学科", "数学I", "英会話"]]
+```
+
+```{python}
+#| echo: true
+type(df[["名前", "学科", "数学I", "英会話"]])
+```
+
+::: {.callout-warning}
+## 角括弧を重ねる理由
+```python
+df["数学I"]                         # 列名を1つ渡す
+df[["名前", "学科", "数学I"]]        # 列名のリストを渡す
+```
+:::
+
+
+## 条件抽出
+
+- 条件式を書くと、各行について `True` / `False` が返る
+- その `True` の行だけを取り出せる
+
+```{python}
+#| echo: true
+df["数学I"] >= 80
+```
+
+```{python}
+#| echo: true
+df[df["数学I"] >= 80]
+```
+
+- `数学I` が80点以上の行だけが残る
+- 条件式をそのまま `df[...]` の中に入れる
+
+
+## 文字列の条件抽出
+
+- 数値だけでなく、文字列でも条件を作れる
+- `==` は「等しいかどうか」を調べる演算子
+
+```{python}
+#| echo: true
+df[df["学科"] == "情報"]
+```
+
+- `学科` が `"情報"` の行だけが残る
+- アンケートや名簿データではよく使う
+
+
+## 複数条件で抽出する
+
+- 複数条件は `&` でつなぐ
+- それぞれの条件を丸括弧で囲む
+
+```{python}
+#| echo: true
+df[
+    (df["学科"] == "情報")
+    & (df["数学I"] >= 80)
+]
+```
+
+::: {.callout-warning}
+## `and` ではなく `&`
+- Pandasの条件抽出では `and` ではなく `&`
+- 条件ごとに丸括弧をつける
+- この書き方は最初だけ少し変だが、よく使う
+:::
+
+
+## 列を追加する
+
+- `df["新しい列名"] = ...` で列を追加できる
+- 既存の列を使って、新しい列を計算することが多い
+
+```{python}
+#| echo: true
+subjects = ["現代文", "数学I", "英会話", "物理"]
+
+df["平均点"] = df[subjects].mean(axis=1)
+df["合否"] = df["平均点"] >= 60
+df["補正数学I"] = df["数学I"] * 1.1
+
+df.head()
+```
+
+- `平均点` は4科目の平均
+- `合否` は平均点が60点以上かどうか
+- `補正数学I` は数学Iを1.1倍した値
+
+::: {.callout-note}
+## NumPyと同じ感覚
+- `df["数学I"] * 1.1` は、数学I列の各要素をまとめて計算する
+- `mean(axis=1)` は、行ごとに平均を計算する
+- for文を書かなくても列全体に計算がかかる
+:::
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+CSVデータを集計して可視化する
+:::
+
+
+## ここから使うCSVデータ
+
+- ここからは `students.csv` から読み込んだ `df` を前提にする
+- CSVには、名前・学科・学年・4科目・欠席日数が入っている
+- まず4科目から `平均点` 列を作る
+
+```{python}
+#| echo: true
+url = "https://rkskmt.github.io/ip3200/data/students.csv"
+df = pd.read_csv(url)
+
+subjects = ["現代文", "数学I", "英会話", "物理"]
+df["平均点"] = df[subjects].mean(axis=1)
+
+df.head()
+```
+
+::: {.callout-note}
+## CSVを読んだあとの典型的な流れ
+```text
+CSVを読む → 必要な列を作る → 集計する → 可視化する
+```
+:::
+
+
+## 平均点列を集計する
+
+- まず `平均点` 列を `Series` として取り出す
+- Seriesには平均・最大・最小などのメソッドがある
+
+```{python}
+#| echo: true
+scores = df["平均点"]
+
+print(scores.mean())
+print(scores.max())
+print(scores.min())
+```
+
+- `mean()` は平均
+- `max()` は最大
+- `min()` は最小
+
+
+## 学科ごとに平均点を出す
+
+- `groupby("学科")` で学科ごとに分ける
+- そのあと `["平均点"].mean()` で平均点の平均を出す
+- CSVの `学科` 列と、追加した `平均点` 列を使っている
+
+```{python}
+#| echo: true
+avg = df.groupby("学科")["平均点"].mean()
+avg
+```
+
+- 学科ごとの平均点が求まる
+- 結果は `DataFrame` ではなく `Series`
+
+
+## groupbyの結果を確認
+
+- groupbyの結果も `Series`
+- `index` が学科名
+- `values` が平均点
+
+```{python}
+#| echo: true
+type(avg)
+```
+
+```{python}
+#| echo: true
+avg.index
+```
+
+```{python}
+#| echo: true
+avg.values
+```
+
+::: {.callout-tip}
+## groupbyの結果
+```text
+groupby の結果も Series
+index  が「学科」
+values が「平均点」
+```
+:::
+
+
+## locとilocを少しだけ
+
+- `loc` は **index名** で取り出す
+- `iloc` は **位置番号** で取り出す
+- 今回はこの程度で十分
+
+```{python}
+#| echo: true
+avg.loc["情報"]
+```
+
+```{python}
+#| echo: true
+avg.iloc[0]
+```
+
+- `avg.loc["情報"]` は「情報」の平均点
+- `avg.iloc[0]` は先頭の平均点
+
+
+## matplotlibで棒グラフにする
+
+- Pandasの `.plot.bar()` は今回は使わない
+- `Series` を `index` と `values` に分けて matplotlib に渡す
+- ここでは `groupby()` で作った `avg` を可視化する
+
+```{python}
+#| echo: true
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+plt.bar(avg.index, avg.values)
+plt.xlabel("学科")
+plt.ylabel("平均点")
+plt.title("学科ごとの平均点")
+plt.ylim(0, 100)
+plt.show()
+```
+
+::: {.callout-tip}
+## Pandasからmatplotlibへ
+```text
+Series → index / values → matplotlib
+```
+:::
+
+
+## 少し整える
+
+- 色やグリッドを足すと、比較しやすくなる
+- 棒グラフでは `ylim(0, 100)` のように、0から見せることが多い
+
+```{python}
+#| echo: true
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+plt.bar(avg.index, avg.values, color="#2266CC")
+plt.xlabel("学科")
+plt.ylabel("平均点")
+plt.title("学科ごとの平均点")
+plt.ylim(0, 100)
+plt.grid(axis="y", linestyle="--", alpha=0.5)
+plt.show()
+```
+
+
+## 演習：高得点者を可視化
+
+- `https://rkskmt.github.io/ip3200/data/students.csv` を読み込む
+- 4科目の平均点を計算する
+- 平均点が80点以上の生徒だけを抽出する
+- 生徒名を横軸、平均点を縦軸にして棒グラフを描く
+- y軸は `0` から `100` にする
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+import pandas as pd
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+url = "https://rkskmt.github.io/ip3200/data/students.csv"
+df = pd.read_csv(url)
+subjects = ["現代文", "数学I", "英会話", "物理"]
+
+df["平均点"] = df[subjects].mean(axis=1)
+high = df[df["平均点"] >= 80]
+
+plt.bar(high["名前"], high["平均点"], color="#2266CC")
+plt.xlabel("名前")
+plt.ylabel("平均点")
+plt.title("平均点80点以上の生徒")
+plt.ylim(0, 100)
+plt.grid(axis="y", linestyle="--", alpha=0.5)
+plt.show()
+```
+
+
+## まとめ
+
+- `DataFrame` は **表**
+   - データ + `index` + `columns`
+- `Series` は **1列**
+   - 値 + `index`
+- `pd.read_csv()` でCSVを読み込める
+- 条件抽出は `df[条件]`
+- `groupby()` でグループごとの集計ができる
+- 集計結果の `index` / `values` を matplotlib に渡して可視化できる
+
+
+## 今回は深追いしないこと
+
+- `apply`
+- `merge`
+- `pivot_table`
+- `MultiIndex`
+- 欠損値処理
+- datetime
+- `loc` / `iloc` の詳細
+
+::: {.callout-note}
+## まず必要な型を見失わない
+- `DataFrame` なのか
+- `Series` なのか
+- `index` と `columns` は何なのか
+:::

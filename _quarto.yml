@@ -32,6 +32,10 @@ website:
         text: "ベクトルと行列"
       - href: visualize.qmd
         text: "データの可視化"
+      - href: pandas.qmd
+        text: "Pandas入門"
+      - href: plotly.qmd
+        text: "Plotly入門"
       - href: api.qmd
         text: "APIでデータ取得"
       - href: wiki-api.qmd
