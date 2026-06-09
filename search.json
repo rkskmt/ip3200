@@ -1435,11 +1435,11 @@
     "text": "発展：その他のコレクション型\n\n現場でも競技プログラミングでもよく使われる。各自で調べよう。\n\ndeque — 先端への挿入・削除が高速（double ended queue）\ndefaultdict — キーが存在しない場合にデフォルト値を返す dict\nheapq — 最小値の取り出しに強い（heap木で管理）\nset — 重複が許されない。和集合などの論理演算も可能\n\nA = {'a', 'b', 'c'}\nB = {'b', 'c', 'd'}\nprint(A | B)  # {'a', 'b', 'c', 'd'}  ← 和集合\nprint(A & B)  # {'b', 'c'}            ← 積集合\nprint(A ^ B)  # {'a', 'd'}            ← 対称差\nprint(A - B)  # {'a'}                 ← 差集合\n数値データには numpy の ndarray がよく使われる（後日扱う）。"
   },
   {
-    "objectID": "index.html#情報処理-2025年度",
-    "href": "index.html#情報処理-2025年度",
+    "objectID": "index.html#情報処理",
+    "href": "index.html#情報処理",
     "title": "情報処理",
-    "section": "情報処理 2025年度",
-    "text": "情報処理 2025年度\n\nhttps://rkskmt.github.io/ip3200/\n\n\nPCの使い方アップデート\n\n\nキータイピング\nショートカット\n\n\n\n\n速習Python基礎\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\n\n\nデータ処理基礎\n\n\nNumPy入門\n\n（参考）ベクトルと行列\n\nデータの可視化\n\n\n\n\nAPI\n\n\nAPIでデータ取得\nWikipedia APIリファレンス\n東京都オープンデータAPI"
+    "section": "情報処理",
+    "text": "情報処理\n\nhttps://rkskmt.github.io/ip3200/\n\n\nPCの使い方アップデート\n\n\nキータイピング\nショートカット\n\n\n\n\n速習Python基礎\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\n\n\nデータ処理基礎\n\n\nNumPy入門\n\n（参考）ベクトルと行列\n\nデータの可視化\n\n\n\n\nAPI\n\n\nAPIでデータ取得\nWikipedia APIリファレンス\n東京都オープンデータAPI"
   },
   {
     "objectID": "list.html#復習listとは",
@@ -1845,7 +1845,7 @@
     "href": "visualize.html#現代の可視化実例",
     "title": "データの可視化",
     "section": "現代の可視化実例",
-    "text": "現代の可視化実例\n\n\n\n\nジャンル\nサンプル\n\n\n\n\n人口動態\nPopulation Pyramids of the World\n\n\n未来予測ゲーム\nINED “Tomorrow’s Population”\n\n\n気候変動\n#ShowYourStripes\n\n\n統計バブル\nGapminder “Wealth & Health of Nations”\n\n\nネットワーク\nForce-Directed Graph\n\n\n地理 + 時系列\nNYC CitiBike\n\n\n3D点群\nCesium “3D Tiles Point”\n\n\n\n\n\n\n\n\n\n自分の興味で1つ開いてみる\n\n\n\n動的なものほど データ量と表現力の関係 がよく分かる"
+    "text": "現代の可視化実例\n\n\n\n\nジャンル\nサンプル\n\n\n\n\n人口動態\nPopulation Pyramids of the World\n\n\n未来予測ゲーム\nINED “Tomorrow’s Population”\n\n\n気候変動\n#ShowYourStripes\n\n\n統計バブル\nGapminder “Wealth & Health of Nations”\n\n\nネットワーク\nForce-Directed Graph\n\n\n地理 + 時系列\nNYC CitiBike\n\n\n3D点群\nCesium “3D Tiles Point”\n\n\n\n\n\n\n\n\n\n自分の興味で開いてみる\n\n\n\n動的なものほど データ量と表現力の関係 がよく分かる"
   },
   {
     "objectID": "visualize.html#section-1",
@@ -1869,39 +1869,39 @@
     "text": "例：アンスコムの四重奏\n\n\n\n\nF. J. Anscombe（1973） のデータセット\n以下の統計量が 4つともほぼ完全に一致\nしかし、図にすると完全に異なる\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n統計量\n値\n\n\n\n\n\\(x\\) の平均\n9 （完全に一致）\n\n\n\\(x\\) の標本分散\n11 （完全に一致）\n\n\n\\(y\\) の平均\n7.50 （小数第2位まで一致）\n\n\n\\(y\\) の標本分散\n4.122 or 4.127 （小数第3位まで一致）\n\n\n\\(x\\) と \\(y\\) の相関係数\n0.816 （小数第3位まで一致）\n\n\n回帰直線\n\\(y = 3.00 + 0.500x\\) （小数第2〜3位まで一致）"
   },
   {
-    "objectID": "visualize.html#アンスコムの四重奏-①普通のデータ",
-    "href": "visualize.html#アンスコムの四重奏-①普通のデータ",
+    "objectID": "visualize.html#アンスコムの四重奏普通のデータ",
+    "href": "visualize.html#アンスコムの四重奏普通のデータ",
     "title": "データの可視化",
-    "section": "アンスコムの四重奏 ①：普通のデータ",
-    "text": "アンスコムの四重奏 ①：普通のデータ\n\n\n\n\nばらつきはあるが ゆるやかに直線的に増える\n線形回帰の前提（直線関係 + 均一なばらつき）が成立\n典型的な普通のデータ\n\n\n\n\nコードを見る\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])\ny = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68])\n\nplt.figure(figsize=(4, 3))\nplt.scatter(x, y, color=\"#2266CC\")\nm, b = np.polyfit(x, y, 1)\nxs = np.linspace(2, 20, 50)\nplt.plot(xs, m * xs + b, color=\"#CC4444\", linewidth=1)\nplt.xlim(2, 20); plt.ylim(2, 14)\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n教訓\n\n\n\n回帰直線が データの要約として正しく機能\n4つの中で線形モデルが成立する 唯一の例"
+    "section": "アンスコムの四重奏：普通のデータ",
+    "text": "アンスコムの四重奏：普通のデータ\n\n\n\n\nばらつきはあるが ゆるやかに直線的に増える\n線形回帰の前提（直線関係 + 均一なばらつき）が成立\n典型的な普通のデータ\n\n\n\n\nコードを見る\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])\ny = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68])\n\nplt.figure(figsize=(4, 3))\nplt.scatter(x, y, color=\"#2266CC\")\nm, b = np.polyfit(x, y, 1)\nxs = np.linspace(2, 20, 50)\nplt.plot(xs, m * xs + b, color=\"#CC4444\", linewidth=1)\nplt.xlim(2, 20); plt.ylim(2, 14)\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n教訓\n\n\n\n回帰直線が データの要約として正しく機能\n4つの中で線形モデルが成立する 唯一の例"
   },
   {
-    "objectID": "visualize.html#アンスコムの四重奏-②曲線にフィッティング",
-    "href": "visualize.html#アンスコムの四重奏-②曲線にフィッティング",
+    "objectID": "visualize.html#アンスコムの四重奏曲線にフィッティング",
+    "href": "visualize.html#アンスコムの四重奏曲線にフィッティング",
     "title": "データの可視化",
-    "section": "アンスコムの四重奏 ②：曲線にフィッティング",
-    "text": "アンスコムの四重奏 ②：曲線にフィッティング\n\n\n\n\ny が 滑らかな曲線（2次関数的）を描いている\n直線を当てはめても本質を捉えられない\n統計量だけ見ていると「直線で説明できた」と思い込みやすい\n\n\n\n\nコードを見る\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])\ny = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74])\n\nplt.figure(figsize=(4, 3))\nplt.scatter(x, y, color=\"#2266CC\")\nm, b = np.polyfit(x, y, 1)\nxs = np.linspace(2, 20, 50)\nplt.plot(xs, m * xs + b, color=\"#CC4444\", linewidth=1)\nplt.xlim(2, 20); plt.ylim(2, 14)\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n教訓\n\n\n\nそもそも 直線で表現すべきでない データ\n多項式回帰や対数変換などモデルを変える必要あり\n統計量だけだと モデル選択ミス に気づけない"
+    "section": "アンスコムの四重奏：曲線にフィッティング",
+    "text": "アンスコムの四重奏：曲線にフィッティング\n\n\n\n\ny が 滑らかな曲線（2次関数的）を描いている\n直線を当てはめても本質を捉えられない\n統計量だけ見ていると「直線で説明できた」と思い込みやすい\n\n\n\n\nコードを見る\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])\ny = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74])\n\nplt.figure(figsize=(4, 3))\nplt.scatter(x, y, color=\"#2266CC\")\nm, b = np.polyfit(x, y, 1)\nxs = np.linspace(2, 20, 50)\nplt.plot(xs, m * xs + b, color=\"#CC4444\", linewidth=1)\nplt.xlim(2, 20); plt.ylim(2, 14)\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n教訓\n\n\n\nそもそも 直線で表現すべきでない データ\n多項式回帰や対数変換などモデルを変える必要あり\n統計量だけだと モデル選択ミス に気づけない"
   },
   {
-    "objectID": "visualize.html#アンスコムの四重奏-③1つだけ外れ値",
-    "href": "visualize.html#アンスコムの四重奏-③1つだけ外れ値",
+    "objectID": "visualize.html#アンスコムの四重奏外れ値が目立つデータ",
+    "href": "visualize.html#アンスコムの四重奏外れ値が目立つデータ",
     "title": "データの可視化",
-    "section": "アンスコムの四重奏 ③：1つだけ外れ値",
-    "text": "アンスコムの四重奏 ③：1つだけ外れ値\n\n\n\n\nほぼ 完全な直線 に並んでいる\nたった1点だけ大きく外れている\nその1点に 回帰直線が引っ張られている\n\n\n\n\nコードを見る\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])\ny = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73])\n\nplt.figure(figsize=(4, 3))\nplt.scatter(x, y, color=\"#2266CC\")\nm, b = np.polyfit(x, y, 1)\nxs = np.linspace(2, 20, 50)\nplt.plot(xs, m * xs + b, color=\"#CC4444\", linewidth=1)\nplt.xlim(2, 20); plt.ylim(2, 14)\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n教訓\n\n\n\n外れ値（outlier） に統計量が支配される\n入力ミスとして除外するか、本物の現象として尊重するか\n図を見ないと判断できない"
+    "section": "アンスコムの四重奏：外れ値が目立つデータ",
+    "text": "アンスコムの四重奏：外れ値が目立つデータ\n\n\n\n\nほぼ 完全な直線 に並んでいる\nたった1点だけ大きく外れている\nその1点に 回帰直線が引っ張られている\n\n\n\n\nコードを見る\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])\ny = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73])\n\nplt.figure(figsize=(4, 3))\nplt.scatter(x, y, color=\"#2266CC\")\nm, b = np.polyfit(x, y, 1)\nxs = np.linspace(2, 20, 50)\nplt.plot(xs, m * xs + b, color=\"#CC4444\", linewidth=1)\nplt.xlim(2, 20); plt.ylim(2, 14)\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n教訓\n\n\n\n外れ値（outlier） に統計量が支配される\n入力ミスとして除外するか、本物の現象として尊重するか\n図を見ないと判断できない"
   },
   {
-    "objectID": "visualize.html#アンスコムの四重奏-④-共通した値を共有したデータ",
-    "href": "visualize.html#アンスコムの四重奏-④-共通した値を共有したデータ",
+    "objectID": "visualize.html#アンスコムの四重奏共通した値を共有したデータ",
+    "href": "visualize.html#アンスコムの四重奏共通した値を共有したデータ",
     "title": "データの可視化",
-    "section": "アンスコムの四重奏 ④： 共通した値を共有したデータ",
-    "text": "アンスコムの四重奏 ④： 共通した値を共有したデータ\n\n\n\n\nx の値が ほぼすべて 8\n1点だけ x=19 にあり、その1点が「直線がある」ように見せている\n同じ条件で測定しすぎていて、x が振れていない\n\n\n\n\nコードを見る\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])\ny = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89])\n\nplt.figure(figsize=(4, 3))\nplt.scatter(x, y, color=\"#2266CC\")\nm, b = np.polyfit(x, y, 1)\nxs = np.linspace(2, 20, 50)\nplt.plot(xs, m * xs + b, color=\"#CC4444\", linewidth=1)\nplt.xlim(2, 20); plt.ylim(2, 14)\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n教訓\n\n\n\nサンプリングが偏っている\n1点だけで「相関がある」と言っているのと同じ\n実験計画（データの取り方）そのもの を疑うべきケース"
+    "section": "アンスコムの四重奏：共通した値を共有したデータ",
+    "text": "アンスコムの四重奏：共通した値を共有したデータ\n\n\n\n\nx の値が ほぼすべて 8\n1点だけ x=19 にあり、その1点が「直線がある」ように見せている\n同じ条件で測定しすぎていて、x が振れていない\n\n\n\n\nコードを見る\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])\ny = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89])\n\nplt.figure(figsize=(4, 3))\nplt.scatter(x, y, color=\"#2266CC\")\nm, b = np.polyfit(x, y, 1)\nxs = np.linspace(2, 20, 50)\nplt.plot(xs, m * xs + b, color=\"#CC4444\", linewidth=1)\nplt.xlim(2, 20); plt.ylim(2, 14)\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n教訓\n\n\n\nサンプリングが偏っている\n1点だけで「相関がある」と言っているのと同じ\n実験計画（データの取り方）そのもの を疑うべきケース"
   },
   {
-    "objectID": "visualize.html#つを並べると",
-    "href": "visualize.html#つを並べると",
+    "objectID": "visualize.html#四重奏を並べると",
+    "href": "visualize.html#四重奏を並べると",
     "title": "データの可視化",
-    "section": "4つを並べると…",
-    "text": "4つを並べると…\n\n\n\n\nデータ\n見た目\n何が問題か\n\n\n\n\n① 素直\n緩やかな散布 + 直線\n問題なし — 線形回帰がうまく機能\n\n\n② 曲線\n2次関数的\nモデル選択が間違っている\n\n\n③ 外れ値\n直線 + 1個ハズレ\n外れ値が統計量を支配\n\n\n④ x偏り\n1点除いて全部同じ x\nサンプリングが偏っている\n\n\n\n\n統計量は4つとも同じ\n図にしないと 絶対に気づけない\n\n\n\n\n\n\n\nだからデータ処理=まず視覚化\n\n\n見ればわかる。見なければ見逃す。"
+    "section": "四重奏を並べると…",
+    "text": "四重奏を並べると…\n\n\n\n\nデータ\n見た目\n何が問題か\n\n\n\n\n① 素直\n緩やかな散布 + 直線\n問題なし — 線形回帰がうまく機能\n\n\n② 曲線\n2次関数的\nモデル選択が間違っている\n\n\n③ 外れ値\n直線 + 1個ハズレ\n外れ値が統計量を支配\n\n\n④ x偏り\n1点除いて全部同じ x\nサンプリングが偏っている\n\n\n\n\n統計量は4つとも同じ\n図にしないと 絶対に気づけない\n\n\n\n\n\n\n\nだからデータ処理=まず視覚化\n\n\n見ればわかる。見なければ見逃す。"
   },
   {
     "objectID": "visualize.html#探索的データ解析eda",
@@ -1929,7 +1929,14 @@
     "href": "visualize.html#matplotlib-とは",
     "title": "データの可視化",
     "section": "matplotlib とは",
-    "text": "matplotlib とは\n\n\nPythonにおけるグラフ描画の デファクトスタンダード\n\nマットプロットリブと読む\n\n内部はC実装で高速、NumPyの ndarray と相性が良い\n\nseaborn や pandas の plotting 機能など、派生ライブラリも多い\n\n\nターミナルからインストール：\npip install matplotlib\n冒頭で import（plt としてインポートするのが一般的）：\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib"
+    "text": "matplotlib とは\n\n\nPythonにおけるグラフ描画の デファクトスタンダード\n\nマットプロットリブと読む\n\n内部はC実装で高速、NumPyの ndarray と相性が良い\n\nseaborn や pandas の plotting 機能など、派生ライブラリも多い\n\n\nターミナルからインストール：\npip install matplotlib japanize-matplotlib\n冒頭で import（plt としてインポートするのが一般的）：\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib"
+  },
+  {
+    "objectID": "visualize.html#pltだと日本語が文字化けする",
+    "href": "visualize.html#pltだと日本語が文字化けする",
+    "title": "データの可視化",
+    "section": "pltだと日本語が文字化けする",
+    "text": "pltだと日本語が文字化けする\n\n\nmatplotlib は多くの環境で 日本語が文字化け する\n\n\n\n\n\n\n\n\n\n\n\nそこで ** import japanize_matplotlib**\n\nこれだけで解決\n\n\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\n\n\n\n\n\nrcParams でフォント指定しない\n\n\n\nrcParams[\"font.family\"] は環境差で失敗しやすい\n日本語表示は japanize_matplotlib に任せる"
   },
   {
     "objectID": "visualize.html#まずはドキュメントを眺める重要",
@@ -1942,78 +1949,85 @@
     "objectID": "visualize.html#点のプロット",
     "href": "visualize.html#点のプロット",
     "title": "データの可視化",
-    "section": "1. 点のプロット",
-    "text": "1. 点のプロット\n\n\n一番基本の plt.plot(x, y, 'o') — ‘o’ は マーカー を表す\nx も y も ndarray や list でOK\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.arange(4)       # [0 1 2 3]\ny = [10, 20, 5, 30]\n\nplt.plot(x, y, 'o')    # 'o' で点だけプロット\nplt.show()"
+    "section": "点のプロット",
+    "text": "点のプロット\n\n\n一番基本の plt.plot(x, y, 'o') — ‘o’ は マーカー を表す\nx も y も ndarray や list でOK\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.arange(4)       # [0 1 2 3]\ny = [10, 20, 5, 30]\n\nplt.plot(x, y, 'o')    # 'o' で点だけプロット\nplt.show()"
   },
   {
     "objectID": "visualize.html#線のグラフ",
     "href": "visualize.html#線のグラフ",
     "title": "データの可視化",
-    "section": "2. 線のグラフ",
-    "text": "2. 線のグラフ\n\n\n第3引数を 省略すると折れ線\n'o-' だと 点＋線\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.arange(10)      # [0 ... 9]\ny = x + 5\n\nplt.plot(x, y)         # 折れ線\nplt.show()"
+    "section": "線のグラフ",
+    "text": "線のグラフ\n\n\n第3引数を 省略すると折れ線\n'o-' だと 点＋線\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.arange(10)      # [0 ... 9]\ny = x + 5\n\nplt.plot(x, y)         # 折れ線\nplt.show()"
   },
   {
     "objectID": "visualize.html#表示範囲の指定xlim-ylim",
     "href": "visualize.html#表示範囲の指定xlim-ylim",
     "title": "データの可視化",
-    "section": "3. 表示範囲の指定（xlim / ylim）",
-    "text": "3. 表示範囲の指定（xlim / ylim）\n\n\nplt.xlim(a, b) / plt.ylim(a, b) で軸の範囲を固定\n3次元プロットでは zlim も使える\n何も指定しないと データの範囲＋少し余白 が自動で選ばれる\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.arange(10)\ny = x + 5\n\nplt.xlim(0, 10)        # x軸: 0〜10\nplt.ylim(0, 15)        # y軸: 0〜15（あえて0から見せる）\nplt.plot(x, y, 'o-')\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ny軸の罠\n\n\n\n範囲をデータに合わせると 小さな変化が大きく見える ことがある\n比較するグラフは y軸を揃える か 0から見せる のが原則"
+    "section": "表示範囲の指定（xlim / ylim）",
+    "text": "表示範囲の指定（xlim / ylim）\n\n\nplt.xlim(a, b) / plt.ylim(a, b) で軸の範囲を固定\n3次元プロットでは zlim も使える\n何も指定しないと データの範囲＋少し余白 が自動で選ばれる\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.arange(10)\ny = x + 5\n\nplt.xlim(0, 10)        # x軸: 0〜10\nplt.ylim(0, 15)        # y軸: 0〜15（あえて0から見せる）\nplt.plot(x, y, 'o-')\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ny軸の罠\n\n\n\n範囲をデータに合わせると 小さな変化が大きく見える ことがある\n比較するグラフは y軸を揃える か 0から見せる のが原則"
   },
   {
     "objectID": "visualize.html#ラベルグリッドタイトル凡例",
     "href": "visualize.html#ラベルグリッドタイトル凡例",
     "title": "データの可視化",
-    "section": "4. ラベル・グリッド・タイトル・凡例",
-    "text": "4. ラベル・グリッド・タイトル・凡例\n\n\nplt.xlabel() / plt.ylabel() で 軸ラベル\nplt.title() で グラフタイトル\nplt.legend() で 凡例（plot() に label= を指定しておく）\nplt.grid(True) で グリッド線\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.arange(10, 200)\n\ny1 = x ** (1/2)\nplt.plot(x, y1, 'o-', label=\"sqrt(x)\")     # 凡例ラベル\n\ny2 = x ** (1/3)\nplt.plot(x, y2, 'o-', label=\"cbrt(x)\")\n\nplt.legend()                                # 凡例を表示\nplt.title(\"1/2 vs 1/3 power\")               # タイトル\nplt.xlabel(\"x value\")                       # x軸ラベル\nplt.ylabel(\"y value\")                       # y軸ラベル\nplt.grid(True)                              # グリッド線\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n装飾の優先順位\n\n\n\n軸ラベル（何の量か）\n凡例（どの線が何か）\nタイトル（何のグラフか）\nこの3つが揃っていない図は 資料に載せてはいけない"
+    "section": "ラベル・グリッド・タイトル・凡例",
+    "text": "ラベル・グリッド・タイトル・凡例\n\n\nplt.xlabel() / plt.ylabel() で 軸ラベル\nplt.title() で グラフタイトル\nplt.legend() で 凡例（plot() に label= を指定しておく）\nplt.grid(True) で グリッド線\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.arange(10, 200)\n\ny1 = x ** (1/2)\nplt.plot(x, y1, 'o-', label=\"sqrt(x)\")     # 凡例ラベル\n\ny2 = x ** (1/3)\nplt.plot(x, y2, 'o-', label=\"cbrt(x)\")\n\nplt.legend()                                # 凡例を表示\nplt.title(\"1/2 vs 1/3 power\")               # タイトル\nplt.xlabel(\"x value\")                       # x軸ラベル\nplt.ylabel(\"y value\")                       # y軸ラベル\nplt.grid(True)                              # グリッド線\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n装飾の優先順位\n\n\n\n軸ラベル（何の量か）\n凡例（どの線が何か）\nタイトル（何のグラフか）\nこの3つが揃っていない図は 資料に載せてはいけない"
   },
   {
     "objectID": "visualize.html#複数のグラフを並べるsubplot",
     "href": "visualize.html#複数のグラフを並べるsubplot",
     "title": "データの可視化",
-    "section": "5. 複数のグラフを並べる（subplot）",
-    "text": "5. 複数のグラフを並べる（subplot）\n\n\nplt.subplot(行数, 列数, 場所番号) で碁盤の目状に並べる\n場所番号は 1始まり、左上から右へ\n例：plt.subplot(2, 2, 3) は2×2の3番目（左下）\n\n\n1 │ 2 ─┼─ 3 │ 4\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.arange(5)\ny = x ** 2\n\nplt.subplot(1, 2, 1)        # 1行2列の左\nplt.plot(x, y, '-')\n\nplt.subplot(1, 2, 2)        # 1行2列の右\nplt.bar(x, y)\n\nplt.tight_layout()          # 余白を自動調整\nplt.show()"
+    "section": "複数のグラフを並べる（subplot）",
+    "text": "複数のグラフを並べる（subplot）\n\n\nplt.subplot(行数, 列数, 場所番号) で碁盤の目状に並べる\n場所番号は 1始まり、左上から右へ\n例：plt.subplot(2, 2, 3) は2×2の3番目（左下）\n\n\n1 │ 2 ─┼─ 3 │ 4\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.arange(5)\ny = x ** 2\n\nplt.subplot(1, 2, 1)        # 1行2列の左\nplt.plot(x, y, '-')\n\nplt.subplot(1, 2, 2)        # 1行2列の右\nplt.bar(x, y)\n\nplt.tight_layout()          # 余白を自動調整\nplt.show()"
   },
   {
     "objectID": "visualize.html#二次元データの散布図",
     "href": "visualize.html#二次元データの散布図",
     "title": "データの可視化",
-    "section": "6. 二次元データの散布図",
-    "text": "6. 二次元データの散布図\n\n\n大量の (x, y) を点で打つ → 分布や相関が見える\nalpha で 透明度 を指定すると重なりが分かりやすい\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\n# 0〜1 の一様乱数を 200点\nx = np.random.rand(200)\ny = np.random.rand(200)\n\nplt.scatter(x, y, alpha=0.7)\nplt.xlabel(\"X (0-1)\")\nplt.ylabel(\"Y (0-1)\")\nplt.title(\"2D scatter: uniform random\")\nplt.axis(\"equal\")           # 縦横を同じスケールに\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n重なりが多いとき\n\n\n\nalpha=0.3 などで透過 → 密度が見える\n点数が万を超えるなら ヒートマップ や hexbin を検討"
+    "section": "二次元データの散布図",
+    "text": "二次元データの散布図\n\n\n大量の (x, y) を点で打つ → 分布や相関が見える\nalpha で 透明度 を指定すると重なりが分かりやすい\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\n# 0〜1 の一様乱数を 200点\nx = np.random.rand(200)\ny = np.random.rand(200)\n\nplt.scatter(x, y, alpha=0.7)\nplt.xlabel(\"X (0-1)\")\nplt.ylabel(\"Y (0-1)\")\nplt.title(\"2D scatter: uniform random\")\nplt.axis(\"equal\")           # 縦横を同じスケールに\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n重なりが多いとき\n\n\n\nalpha=0.3 などで透過 → 密度が見える\n点数が万を超えるなら ヒートマップ や hexbin を検討"
+  },
+  {
+    "objectID": "visualize.html#ヒストグラムで分布を見る",
+    "href": "visualize.html#ヒストグラムで分布を見る",
+    "title": "データの可視化",
+    "section": "ヒストグラムで分布を見る",
+    "text": "ヒストグラムで分布を見る\n\n\nたくさんの値を 区間ごとに数える グラフ\n平均だけでは分からない ばらつき・偏り・山の形 が見える\nbins で区間の数を指定する\nplt.axvline(値) で 縦線 を引ける\nnp.median(x) で 中央値 を計算できる\n年収のように一部の値が大きいデータでは、平均と中央値がずれる\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nincome = np.array([\n    280, 310, 330, 350, 360, 380, 400, 410, 430, 450, 470, 500, 520, 450, 470, 500, 520, 550, 600, 650, 700, 760, 900, 950 ,1100, 1260, 3100, 3000, 3200\n])\n\nmean_income = income.mean()\nmedian_income = np.median(income)\n\nplt.hist(income, bins=20, edgecolor=\"white\")\nplt.axvline(mean_income, color=\"red\", linewidth=2, label=f\"平均 ({mean_income:,.0f})\")\nplt.axvline(median_income, color=\"blue\", linewidth=2, label=f\"中央値 ({median_income:,.0f})\")\nplt.xlabel(\"年収（万円）\")\nplt.ylabel(\"人数\")\nplt.title(\"年収のような右に長い分布\")\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n平均と中央値\n\n\n\n一部の大きな値があると、平均は 右に引っ張られる\n中央値は 真ん中の人 に近い値を示す\n分布が左右対称でないときは、平均だけでは代表値として弱い\nplt.axvline(線を引く位置, label=\"説明\") で凡例つきの縦線を描ける"
   },
   {
     "objectID": "visualize.html#三次元データの散布図",
     "href": "visualize.html#三次元データの散布図",
     "title": "データの可視化",
-    "section": "7. 三次元データの散布図",
-    "text": "7. 三次元データの散布図\n\n\n3D は add_subplot(projection=\"3d\") で軸オブジェクトを作る\nplt.◯◯ ではなく ax.◯◯ で操作する\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.random.rand(300)\ny = np.random.rand(300)\nz = np.random.rand(300)\n\nfig = plt.figure()\nax = fig.add_subplot(projection=\"3d\")\nax.scatter(x, y, z, alpha=0.6)\n\nax.set_xlabel(\"X\")\nax.set_ylabel(\"Y\")\nax.set_zlabel(\"Z\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nなぜ 3D だけ ax. を使う？\n\n\n\nplt.scatter() などは 2D専用のショートカット\n3D軸を作るには projection=\"3d\" の指定が必要で、plt.subplot() では対応できない\n3D では ax.scatter(), ax.set_zlabel() など 軸オブジェクト経由 で操作する\n\n\n\n\n\n\n\n\n\n\nplt. と ax. の対応\n\n\n\n\n\n2D（plt.）\n3D（ax.）\n\n\n\n\nplt.scatter(x, y)\nax.scatter(x, y, z)\n\n\nplt.xlabel(\"X\")\nax.set_xlabel(\"X\")\n\n\nplt.xlim(0, 10)\nax.set_xlim(0, 10)\n\n\nplt.title(\"...\")\nax.set_title(\"...\")\n\n\n\n\n\n\n\n\n\n\n\n\n3Dは多用しない\n\n\n\n紙やスライドだと 奥行きが伝わらない ことが多い\nインタラクティブに回せない場面では 2Dの分割表示 のほうが伝わる"
+    "section": "三次元データの散布図",
+    "text": "三次元データの散布図\n\n\n3D は add_subplot(projection=\"3d\") で軸オブジェクトを作る\nplt.◯◯ ではなく ax.◯◯ で操作する\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.random.rand(300)\ny = np.random.rand(300)\nz = np.random.rand(300)\n\nfig = plt.figure()\nax = fig.add_subplot(projection=\"3d\")\nax.scatter(x, y, z, alpha=0.6)\n\nax.set_xlabel(\"X\")\nax.set_ylabel(\"Y\")\nax.set_zlabel(\"Z\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nなぜ 3D だけ ax. を使う？\n\n\n\nplt.scatter() などは 2D専用のショートカット\n3D軸を作るには projection=\"3d\" の指定が必要で、plt.subplot() では対応できない\n3D では ax.scatter(), ax.set_zlabel() など 軸オブジェクト経由 で操作する\n\n\n\n\n\n\n\n\n\n\nplt. と ax. の対応\n\n\n\n\n\n2D（plt.）\n3D（ax.）\n\n\n\n\nplt.scatter(x, y)\nax.scatter(x, y, z)\n\n\nplt.xlabel(\"X\")\nax.set_xlabel(\"X\")\n\n\nplt.xlim(0, 10)\nax.set_xlim(0, 10)\n\n\nplt.title(\"...\")\nax.set_title(\"...\")\n\n\n\n\n\n\n\n\n\n\n\n\n3Dは多用しない\n\n\n\n紙やスライドだと 奥行きが伝わらない ことが多い\nインタラクティブに回せない場面では 2Dの分割表示 のほうが伝わる"
   },
   {
     "objectID": "visualize.html#plt早見表",
     "href": "visualize.html#plt早見表",
     "title": "データの可視化",
     "section": "plt早見表",
-    "text": "plt早見表\n\n\n\n\n操作\nコード\n\n\n\n\n点だけ\nplt.plot(x, y, 'o')\n\n\n折れ線\nplt.plot(x, y)\n\n\n棒グラフ\nplt.bar(x, y)\n\n\n散布図\nplt.scatter(x, y)\n\n\n軸の範囲\nplt.xlim(a, b) / plt.ylim(a, b)\n\n\n軸ラベル\nplt.xlabel(\"...\") / plt.ylabel(\"...\")\n\n\nタイトル\nplt.title(\"...\")\n\n\n凡例\nplt.legend()（要 label=...）\n\n\nグリッド\nplt.grid(True)\n\n\n並べる\nplt.subplot(行, 列, 番号)\n\n\n3D散布\nax = fig.add_subplot(projection=\"3d\")"
+    "text": "plt早見表\n\n\n\n\n操作\nコード\n\n\n\n\n点だけ\nplt.plot(x, y, 'o')\n\n\n折れ線\nplt.plot(x, y)\n\n\n棒グラフ\nplt.bar(x, y)\n\n\n散布図\nplt.scatter(x, y)\n\n\nヒストグラム\nplt.hist(x)\n\n\n縦線\nplt.axvline(x)\n\n\n軸の範囲\nplt.xlim(a, b) / plt.ylim(a, b)\n\n\n軸ラベル\nplt.xlabel(\"...\") / plt.ylabel(\"...\")\n\n\nタイトル\nplt.title(\"...\")\n\n\n凡例\nplt.legend()（要 label=...）\n\n\nグリッド\nplt.grid(True)\n\n\n並べる\nplt.subplot(行, 列, 番号)\n\n\n3D散布\nax = fig.add_subplot(projection=\"3d\")"
   },
   {
-    "objectID": "visualize.html#演習1二次関数を描く",
-    "href": "visualize.html#演習1二次関数を描く",
+    "objectID": "visualize.html#演習二次関数を描く",
+    "href": "visualize.html#演習二次関数を描く",
     "title": "データの可視化",
-    "section": "演習1：二次関数を描く",
-    "text": "演習1：二次関数を描く\n\n\n\\(y = x^2 - 2x + 3\\) を 定義域 \\(-2 \\leq x \\leq 5\\) で描け\n手順\n\nnp.arange または np.linspace で x を作る（線が滑らかになるように細かく）\ny を計算\nプロット — 折れ線でもOK\nY軸は0から見えるように ylim を設定\nタイトルとラベルもつける\n\n\n\n\n\n\n\n\n平方完成で検算\n\n\n\n\\(y = (x - 1)^2 + 2\\) なので 頂点は \\((1, 2)\\)\nグラフが合っているか確認\n\n\n\n\n\n\n解答例を見る\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.linspace(-2, 5, 200)\ny = x ** 2 - 2 * x + 3\n\nplt.plot(x, y)\nplt.scatter([1], [2], color=\"red\", zorder=3)   # 頂点\nplt.xlim(-2, 5)\nplt.ylim(0, 20)                                 # 0から見せる\nplt.xlabel(\"x\")\nplt.ylabel(\"y\")\nplt.title(\"y = x^2 - 2x + 3\")\nplt.grid(True)\nplt.show()"
+    "section": "演習：二次関数を描く",
+    "text": "演習：二次関数を描く\n\n\n\\(y = x^2 - 2x + 3\\) を 定義域 \\(-2 \\leq x \\leq 5\\) で描け\n手順\n\nnp.arange または np.linspace で x を作る（線が滑らかになるように細かく）\ny を計算\nプロット — 折れ線でもOK\nY軸は0から見えるように ylim を設定\nタイトルとラベルもつける\n\n\n\n\n\n\n\n\n平方完成で検算\n\n\n\n\\(y = (x - 1)^2 + 2\\) なので 頂点は \\((1, 2)\\)\nグラフが合っているか確認\n\n\n\n\n\n\n解答例を見る\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.linspace(-2, 5, 200)\ny = x ** 2 - 2 * x + 3\n\nplt.plot(x, y)\nplt.scatter([1], [2], color=\"red\", zorder=3)   # 頂点\nplt.xlim(-2, 5)\nplt.ylim(0, 20)                                 # 0から見せる\nplt.xlabel(\"x\")\nplt.ylabel(\"y\")\nplt.title(\"y = x^2 - 2x + 3\")\nplt.grid(True)\nplt.show()"
   },
   {
-    "objectID": "visualize.html#演習2アンスコムの四重奏を再現",
-    "href": "visualize.html#演習2アンスコムの四重奏を再現",
+    "objectID": "visualize.html#演習アンスコムの四重奏を再現",
+    "href": "visualize.html#演習アンスコムの四重奏を再現",
     "title": "データの可視化",
-    "section": "演習2：アンスコムの四重奏を再現",
-    "text": "演習2：アンスコムの四重奏を再現\n\n\n手順\n\n下のデータをコピペして使う\nplt.subplot(2, 2, i) で2×2に並べる\nそれぞれ scatter でプロット\nnp.polyfit(x, y, 1) で1次回帰直線を求め、plot で重ねる\nすべてのサブプロットで xlim / ylim を 揃える\n\n\nimport numpy as np\n\n# データセット I, II, III（x は共通）\nx1 = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])\ny1 = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68])\ny2 = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74])\ny3 = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73])\n\n# データセット IV（x が異なる）\nx4 = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])\ny4 = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89])\n\n\n\n\n\n\nなぜ軸を揃える？\n\n\n\n4つのプロットを 公平に比較 するため\n違うスケールで並べると印象操作になる\n\n\n\n\n\n\n解答例を見る\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx1 = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])\ny1 = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68])\ny2 = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74])\ny3 = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73])\nx4 = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])\ny4 = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89])\n\ndatasets = [(x1, y1, \"I\"), (x1, y2, \"II\"), (x1, y3, \"III\"), (x4, y4, \"IV\")]\n\nfor i, (x, y, title) in enumerate(datasets, 1):\n    plt.subplot(2, 2, i)\n    plt.scatter(x, y)\n    m, b = np.polyfit(x, y, 1)\n    xs = np.linspace(2, 20, 50)\n    plt.plot(xs, m * xs + b, color=\"red\")\n    plt.xlim(2, 20)\n    plt.ylim(2, 14)\n    plt.title(f\"Dataset {title}\")\n\nplt.tight_layout()\nplt.show()"
+    "section": "演習：アンスコムの四重奏を再現",
+    "text": "演習：アンスコムの四重奏を再現\n\n\n手順\n\n下のデータをコピペして使う\nplt.subplot(2, 2, i) で2×2に並べる\nそれぞれ scatter でプロット\nnp.polyfit(x, y, 1) で1次回帰直線を求め、plot で重ねる\nすべてのサブプロットで xlim / ylim を 揃える\n\n\nimport numpy as np\n\n# データセット I, II, III（x は共通）\nx1 = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])\ny1 = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68])\ny2 = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74])\ny3 = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73])\n\n# データセット IV（x が異なる）\nx4 = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])\ny4 = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89])\n\n\n\n\n\n\nなぜ軸を揃える？\n\n\n\n4つのプロットを 公平に比較 するため\n違うスケールで並べると印象操作になる\n\n\n\n\n\n\n解答例を見る\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx1 = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])\ny1 = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68])\ny2 = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74])\ny3 = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73])\nx4 = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])\ny4 = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89])\n\ndatasets = [(x1, y1, \"I\"), (x1, y2, \"II\"), (x1, y3, \"III\"), (x4, y4, \"IV\")]\n\nfor i, (x, y, title) in enumerate(datasets, 1):\n    plt.subplot(2, 2, i)\n    plt.scatter(x, y)\n    m, b = np.polyfit(x, y, 1)\n    xs = np.linspace(2, 20, 50)\n    plt.plot(xs, m * xs + b, color=\"red\")\n    plt.xlim(2, 20)\n    plt.ylim(2, 14)\n    plt.title(f\"Dataset {title}\")\n\nplt.tight_layout()\nplt.show()"
   },
   {
-    "objectID": "visualize.html#演習3好きな画像を表示",
-    "href": "visualize.html#演習3好きな画像を表示",
+    "objectID": "visualize.html#演習好きな画像を表示",
+    "href": "visualize.html#演習好きな画像を表示",
     "title": "データの可視化",
-    "section": "演習3：好きな画像を表示",
-    "text": "演習3：好きな画像を表示\n\n\nmatplotlib は 画像も描画できる\n公式チュートリアルを参考\nhttps://matplotlib.org/stable/tutorials/images.html\n\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\nimport matplotlib.image as mpimg\n\nimg = mpimg.imread(\"something.jpg\") # 画像名。フォルダの場合はpathを指定\nplt.imshow(img)\nplt.axis(\"off\")        # 軸を消す\nplt.show()"
+    "section": "演習：好きな画像を表示",
+    "text": "演習：好きな画像を表示\n\n\nmatplotlib は 画像も描画できる\n公式チュートリアルを参考\nhttps://matplotlib.org/stable/tutorials/images.html\n\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\nimport matplotlib.image as mpimg\n\nimg = mpimg.imread(\"something.jpg\") # 画像名。フォルダの場合はpathを指定\nplt.imshow(img)\nplt.axis(\"off\")        # 軸を消す\nplt.show()"
   },
   {
     "objectID": "visualize.html#まとめ",
