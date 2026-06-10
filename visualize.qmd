@@ -25,6 +25,35 @@ subtitle: "matplotlibで「見える化」する"
 :::
 
 
+## 予告：この授業のゴール
+
+- 数回後には、**世界中の人がいま何を見ているか** を自分のコードで取得して可視化できるようになる
+- 例：ある観光名所のWikipediaページ、1年分の閲覧数
+
+```{python}
+#| echo: false
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+np.random.seed(0)
+views = np.random.poisson(lam=15, size=365)
+views[170] = 1200          # 1日だけ突出（イメージ）
+
+fig, ax = plt.subplots(figsize=(7, 2.6))
+ax.plot(views, color="#2266CC", linewidth=1)
+ax.set_xlabel("日数")
+ax.set_ylabel("閲覧数")
+ax.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+- ほぼ平坦なのに **1日だけ大きな山** — この日、何があった？
+- 答えは **API回** で。今日はその第一歩、「描いて、見る」技術
+
+
 ## 可視化の古典：ジョン・スノウのコレラ地図
 
 - 1854年、ロンドンで原因不明の病気が大流行
@@ -149,7 +178,9 @@ fig.write_html("iframes/cholera_map.html", include_plotlyjs="cdn")
 | 3D点群 | [Cesium "3D Tiles Point"](https://sandcastle.cesium.com/) |
 
 ::: {.callout-tip}
-## 自分の興味で開いてみる
+## ミニアクティビティ
+- どれか1つ開いて、**隣の人に30秒で説明** する
+   - 何のデータ？ 軸は何？ 何が見えた？
 - 動的なものほど **データ量と表現力の関係** がよく分かる
 :::
 
@@ -169,20 +200,13 @@ fig.write_html("iframes/cholera_map.html", include_plotlyjs="cdn")
 - データ分析の最初の一手は **常にプロット**
 
 
-## 例：アンスコムの四重奏
+## クイズ：「平均所得 524万円」
 
+- 厚生労働省の調査：日本の1世帯当たり **平均所得は 524万2千円**（2022年）
+- では、**所得が平均以下** の世帯は全体のどれくらい？
+   - 「平均」なんだから、だいたい半分（50%）……？
 
-:::{.columns}
-:::{.column width="55%"}
-
-
-- **F. J. Anscombe（1973）** のデータセット
-- 以下の統計量が ==4つともほぼ完全に一致==
-- しかし、==図にすると完全に異なる==
-
-
-:::
-:::{.column width="45%"}
+## 平均以下の世帯は 62.2%
 
 ```{python}
 #| echo: false
@@ -192,29 +216,40 @@ import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-x1 = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])
-y1 = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68])
-y2 = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74])
-y3 = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73])
-x4 = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])
-y4 = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89])
+# 厚生労働省「2023年 国民生活基礎調査の概況」図9（所得金額階級別 相対度数分布）
+freq = [6.9, 14.6, 14.5, 12.9, 10.7, 8.5, 6.4, 5.8, 4.6, 3.7,
+        2.6, 2.3, 1.8, 1.0, 0.8, 0.7, 0.3, 0.3, 0.3, 0.2, 1.3]
+centers = np.arange(50, 2150, 100)   # 各階級の中央（2000万円以上は2050に代表させる）
 
-fig, axes = plt.subplots(2, 2, figsize=(6, 5))
-for ax, (x, y, t) in zip(axes.ravel(), [(x1, y1, "I"), (x1, y2, "II"), (x1, y3, "III"), (x4, y4, "IV")]):
-    ax.scatter(x, y, color="#2266CC")
-    m, b = np.polyfit(x, y, 1)
-    xs = np.linspace(2, 20, 50)
-    ax.plot(xs, m * xs + b, color="#CC4444", linewidth=1)
-    ax.set_xlim(2, 20)
-    ax.set_ylim(2, 14)
-    ax.set_title(f"dataset {t}", fontsize=10)
-    ax.grid(True, linestyle="--", alpha=0.5)
+plt.figure(figsize=(8, 3.6))
+plt.bar(centers, freq, width=92, color="#7FB3D5", edgecolor="white")
+plt.axvline(405, color="blue", linewidth=2)
+plt.axvline(524.2, color="red", linewidth=2)
+plt.ylim(0, 17)
+plt.annotate("中央値 405万円", xy=(390, 15.8), color="blue", ha="right", fontsize=11)
+plt.annotate("平均 524.2万円", xy=(545, 14.3), color="red", ha="left", fontsize=11)
+plt.xlabel("所得金額（万円）")
+plt.ylabel("世帯の割合（％）")
+plt.title("所得金額階級別 世帯数の相対度数分布（2022年）")
 plt.tight_layout()
 plt.show()
 ```
 
+- **平均以下の世帯は 62.2%** — 「平均」は真ん中ではない
+- 真ん中の値（**中央値**）は **405万円**。平均より **119万円** も低い
+   - 一部の高所得世帯が、平均を ==右に引っ張る==
+- 分布を **見ないと**、「平均」という言葉の意味すら誤解する
+
+::: {.callout-note}
+## 出典
+厚生労働省「2023（令和5）年 国民生活基礎調査の概況」図9
 :::
-:::
+
+
+## 例：アンスコムの四重奏
+
+- **F. J. Anscombe（1973）** が作った ==4つのデータセット==
+- 4つとも、以下の統計量が ==ほぼ完全に一致== する
 
 | 統計量 | 値 |
 |---|---|
@@ -224,6 +259,12 @@ plt.show()
 | $y$ の標本分散 | 4.122 or 4.127 **（小数第3位まで一致）** |
 | $x$ と $y$ の相関係数 | 0.816 **（小数第3位まで一致）** |
 | 回帰直線 | $y = 3.00 + 0.500x$ **（小数第2〜3位まで一致）** |
+
+::: {.callout-important .fragment}
+## 問題：散布図にしたら、どんな形？
+- 統計量がここまで揃っているなら、**4つとも似た形になるはず…だよね？**
+- めくる前に **予想して手で描いてみる**
+:::
 
 
 ## アンスコムの四重奏：普通のデータ
@@ -404,19 +445,274 @@ plt.show()
 
 ## 四重奏を並べると…
 
+:::{.columns}
+:::{.column width="45%"}
+
+```{python}
+#| echo: false
+#| fig-align: center
+#| lightbox: true
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+x1 = np.array([10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5])
+y1 = np.array([8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68])
+y2 = np.array([9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74])
+y3 = np.array([7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73])
+x4 = np.array([8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8])
+y4 = np.array([6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89])
+
+fig, axes = plt.subplots(2, 2, figsize=(6, 5))
+for ax, (x, y, t) in zip(axes.ravel(), [(x1, y1, "I"), (x1, y2, "II"), (x1, y3, "III"), (x4, y4, "IV")]):
+    ax.scatter(x, y, color="#2266CC")
+    m, b = np.polyfit(x, y, 1)
+    xs = np.linspace(2, 20, 50)
+    ax.plot(xs, m * xs + b, color="#CC4444", linewidth=1)
+    ax.set_xlim(2, 20)
+    ax.set_ylim(2, 14)
+    ax.set_title(f"dataset {t}", fontsize=10)
+    ax.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+:::
+:::{.column width="55%"}
+
 | データ | 見た目 | 何が問題か |
 |---|---|---|
-| ① 素直 | 緩やかな散布 + 直線 | 問題なし — 線形回帰がうまく機能 |
-| ② 曲線 | 2次関数的 | モデル選択が間違っている |
+| ① 素直 | 緩やかな散布 + 直線 | 線形回帰がうまく機能 |
+| ② 曲線 | 2次関数的 | モデル選択が間違い |
 | ③ 外れ値 | 直線 + 1個ハズレ | 外れ値が統計量を支配 |
-| ④ x偏り | 1点除いて全部同じ x | サンプリングが偏っている |
+| ④ x偏り | ほぼ全部同じ x | サンプリングが偏っている |
 
 - **統計量は4つとも同じ**
 - 図にしないと **絶対に気づけない**
 
+:::
+:::
+
 ::: {.callout-note}
 ## だからデータ処理=まず視覚化
 **見ればわかる。見なければ見逃す。**
+:::
+
+
+## 現代版アンスコム：Datasaurus Dozen
+
+- **Matejka & Fitzmaurice（2017）** が作った ==13個== のデータセット
+- どれも以下の統計量が一致（小数第2位まで）
+
+:::{.columns}
+:::{.column width="50%"}
+
+| 統計量 | 13個すべてで |
+|---|---|
+| $x$ の平均 | 54.26 |
+| $y$ の平均 | 47.83 |
+| $x$ の標準偏差 | 16.76 |
+| $y$ の標準偏差 | 26.93 |
+| 相関係数 | $-0.06$ |
+
+そのうちの1つを散布図にすると…
+
+:::
+:::{.column width="50%"}
+
+::: {.fragment}
+```{python}
+#| echo: false
+#| fig-align: center
+#| lightbox: true
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+data = np.loadtxt("data/datasaurus_dino.csv", delimiter=",", skiprows=1)
+plt.figure(figsize=(4.5, 4))
+plt.scatter(data[:, 0], data[:, 1], color="#2266CC", s=18)
+plt.xlim(0, 105)
+plt.ylim(-5, 105)
+plt.tight_layout()
+plt.show()
+```
+:::
+
+:::
+:::
+
+
+## Datasaurus Dozen：全13個
+
+```{python}
+#| echo: false
+#| fig-align: center
+#| lightbox: true
+import csv
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+groups = {}
+with open("data/datasaurus_dozen.tsv") as f:
+    reader = csv.reader(f, delimiter="\t")
+    next(reader)
+    for name, x, y in reader:
+        groups.setdefault(name, []).append((float(x), float(y)))
+
+fig, axes = plt.subplots(2, 7, figsize=(13, 4))
+order = ["dino", "away", "bullseye", "circle", "dots", "h_lines", "high_lines",
+         "slant_down", "slant_up", "star", "v_lines", "wide_lines", "x_shape"]
+for ax, name in zip(axes.ravel(), order):
+    pts = groups[name]
+    ax.scatter([p[0] for p in pts], [p[1] for p in pts], s=4, color="#2266CC")
+    ax.set_xlim(0, 105)
+    ax.set_ylim(-5, 105)
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.set_title(name, fontsize=8)
+axes.ravel()[-1].axis("off")
+plt.tight_layout()
+plt.show()
+```
+
+- 13個全部、**同じ平均・同じ標準偏差・同じ相関係数**
+- 教訓はアンスコムと同じ — ただし ==より強烈に==
+- 出典：[Same Stats, Different Graphs (Autodesk Research)](https://www.research.autodesk.com/publications/same-stats-different-graphs/)
+
+::: {.callout-tip}
+## 作り方も面白い
+- 恐竜の形を保ったまま、統計量が変わらないように点を少しずつ動かして生成
+- 「統計量は強い要約だが、**形の情報はほぼ捨てている**」ことの証明
+:::
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+グラフはウソをつく
+:::
+
+## ここまでは「描く側」の話
+
+- アンスコムの教訓：**描かないと、騙される**
+- もう一つの現実：**描き方しだいで、人を騙せる**
+   - ニュース・広告・プレゼンで毎日使われているテクニック
+- ここからは ==騙されない側== になる練習
+   - ルール：これから見せるグラフに **ウソのデータは1つもない**
+
+## クイズ：どちらの商品が売れている？
+
+```{python}
+#| echo: false
+#| fig-align: center
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+plt.figure(figsize=(5, 3.5))
+plt.bar(["商品A", "商品B"], [1052, 1075], color=["#888888", "#CC4444"])
+plt.ylim(1040, 1080)
+plt.ylabel("売上（個）")
+plt.title("今月の売上比較")
+plt.tight_layout()
+plt.show()
+```
+
+- 商品Bの圧勝に見える
+- でも、**何かおかしい。どこ？**
+
+## 種明かし：y軸の切断
+
+```{python}
+#| echo: false
+#| fig-align: center
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+fig, axes = plt.subplots(1, 2, figsize=(8, 3.5))
+axes[0].bar(["商品A", "商品B"], [1052, 1075], color=["#888888", "#CC4444"])
+axes[0].set_ylim(1040, 1080)
+axes[0].set_title("さっきの図（軸: 1040〜1080）")
+axes[1].bar(["商品A", "商品B"], [1052, 1075], color=["#888888", "#CC4444"])
+axes[1].set_ylim(0, 1200)
+axes[1].set_title("0から描いた図")
+for ax in axes:
+    ax.set_ylabel("売上（個）")
+plt.tight_layout()
+plt.show()
+```
+
+::: {.callout-warning}
+## 棒グラフは「長さ」で比較するグラフ
+- 実際の差は **約2%**。軸を切ると何倍にも見える
+- 棒グラフは **0から描く** のが原則
+- 軸の数字を確認するクセをつける
+:::
+
+## クイズ：東京は寒冷化している？
+
+```{python}
+#| echo: false
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+data = np.loadtxt("data/tokyo_temp_annual.csv", delimiter=",", skiprows=1)
+year, temp = data[:, 0], data[:, 1]
+mask = (year >= 2006) & (year <= 2017)
+
+plt.figure(figsize=(6, 3.5))
+plt.plot(year[mask], temp[mask], 'o-', color="#2266CC")
+m, b = np.polyfit(year[mask], temp[mask], 1)
+plt.plot(year[mask], m * year[mask] + b, color="#CC4444", linewidth=2)
+plt.xlabel("年")
+plt.ylabel("年平均気温（℃）")
+plt.title("東京の年平均気温（2006〜2017）")
+plt.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+- **気象庁の実測データ**（ウソのデータは1つもない）
+- 12年間で気温は下降トレンド。「温暖化はウソだった」？
+- **どう反論する？**
+
+## 種明かし：期間のチェリーピック
+
+```{python}
+#| echo: false
+#| fig-align: center
+#| lightbox: true
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+data = np.loadtxt("data/tokyo_temp_annual.csv", delimiter=",", skiprows=1)
+year, temp = data[:, 0], data[:, 1]
+
+plt.figure(figsize=(8, 3.5))
+plt.plot(year, temp, color="#2266CC", linewidth=1)
+plt.axvspan(2006, 2017, color="#CC4444", alpha=0.2)
+plt.annotate("さっき見せた範囲", xy=(2011, 14.0), color="#CC4444", ha="center")
+plt.xlabel("年")
+plt.ylabel("年平均気温（℃）")
+plt.title("東京の年平均気温（1876〜2025）")
+plt.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+::: {.callout-warning}
+## データが本物でも、切り取りでウソがつける
+- 150年で見れば気温は **約4℃上昇**（都市化の影響も大きい）
+- 揺らぎのある時系列は、**都合のいい12年** を選べば逆向きに見せられる
+- 「**どの範囲を見せるか**」も作為のうち — 全体を確認するクセをつける
+:::
+
+::: {.callout-note}
+## このデータは後半でもう一度使う
+東京の気温、**自分の手で** 描いて確かめる
 :::
 
 
@@ -444,7 +740,7 @@ plt.show()
 | 折れ線 | 時系列・連続データ |
 | 棒グラフ | カテゴリ比較 |
 | ヒストグラム | 分布把握 |
-| 3D散布図 | 3変量関係 |
+| 3D散布図 | 3変量関係（回せる **Plotly回** で扱う） |
 
 
 ## {background-color="white" .center .break-slide}
@@ -524,9 +820,33 @@ import japanize_matplotlib
 :::
 
 
+## 今日の題材：東京は本当に暑くなったのか
+
+- さっきのクイズの続き — 今度は **自分の手で** 確かめる
+- **気象庁の実測データ**：東京の月別平均気温
+   - **1900年** と **2024年**、124年離れた2つの年
+- 材料はこれだけ（コピペ用）：
+
+```python
+import numpy as np
+
+months = np.arange(1, 13)    # 1〜12月
+temp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])
+temp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])
+```
+
+- 数字を眺めて、違いがパッと分かる？
+- ここから **1枚のグラフを「資料に載せられるレベル」まで育てる**
+
+::: {.callout-note}
+## 出典
+気象庁「過去の気象データ検索」東京（月平均気温）
+:::
+
+
 ## 点のプロット
 
-- 一番基本の `plt.plot(x, y, 'o')` — 'o' は **マーカー** を表す
+- 一番基本の `plt.plot(x, y, 'o')` — `'o'` は **マーカー** を表す
 - `x` も `y` も **`ndarray`** や **`list`** でOK
 
 ```{python}
@@ -535,12 +855,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-x = np.arange(4)       # [0 1 2 3]
-y = [10, 20, 5, 30]
+months = np.arange(1, 13)
+temp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])
 
-plt.plot(x, y, 'o')    # 'o' で点だけプロット
+plt.plot(months, temp_2024, 'o')    # 'o' で点だけプロット
 plt.show()
 ```
+
+- まだ裸の図だが、数字の表より **季節の山がもう見えている**
 
 
 ## 線のグラフ
@@ -554,19 +876,53 @@ import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-x = np.arange(10)      # [0 ... 9]
-y = x + 5
+months = np.arange(1, 13)
+temp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])
 
-plt.plot(x, y)         # 折れ線
+plt.plot(months, temp_2024, 'o-')   # 点＋線
+plt.show()
+```
+
+- 月ごとの **つながり**（連続的な変化）が見えるようになった
+
+
+## 演習：二次関数を描く
+
+- 一番なじみのある「データ」でウォーミングアップ
+- $y = x^2 - 2x + 3$ を **定義域 $-2 \leq x \leq 5$** で描け
+- 手順
+  1. `np.linspace(-2, 5, 200)` で `x` を作る（細かく刻むと線が滑らかになる）
+  2. `y` を計算（`ndarray` はそのまま式に入れられる — NumPy回の復習）
+  3. `plt.plot(x, y)` で折れ線として描く
+
+::: {.callout-tip}
+## 平方完成で検算
+- $y = (x - 1)^2 + 2$ なので **頂点は $(1, 2)$**
+- グラフの谷が $(1, 2)$ に来ているか確認
+:::
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+x = np.linspace(-2, 5, 200)
+y = x ** 2 - 2 * x + 3
+
+plt.plot(x, y)
+plt.plot([1], [2], 'o', color="red")   # 頂点に印をつけて検算
 plt.show()
 ```
 
 
-## 表示範囲の指定（xlim / ylim）
+## 2本目を重ねる・凡例をつける
 
-- `plt.xlim(a, b)` / `plt.ylim(a, b)` で軸の範囲を固定
-- 3次元プロットでは `zlim` も使える
-- 何も指定しないと **データの範囲＋少し余白** が自動で選ばれる
+- `plt.plot()` を **2回呼ぶと重ね描き** になる
+- どの線が何かを示すために `label=` + `plt.legend()` で **凡例**
 
 ```{python}
 #| echo: true
@@ -574,27 +930,24 @@ import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-x = np.arange(10)
-y = x + 5
+months = np.arange(1, 13)
+temp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])
+temp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])
 
-plt.xlim(0, 10)        # x軸: 0〜10
-plt.ylim(0, 15)        # y軸: 0〜15（あえて0から見せる）
-plt.plot(x, y, 'o-')
+plt.plot(months, temp_1900, 'o-', label="1900年")   # 凡例ラベル
+plt.plot(months, temp_2024, 'o-', label="2024年")
+plt.legend()                                         # 凡例を表示
 plt.show()
 ```
 
-::: {.callout-warning}
-## y軸の罠
-- 範囲をデータに合わせると **小さな変化が大きく見える** ことがある
-- 比較するグラフは **y軸を揃える** か **0から見せる** のが原則
-:::
+- 重ねた瞬間、**124年分の差** が一目で見える
+   - 2024年の冬は1900年の春なみ、夏は **ほぼ全月で上**
 
 
-## ラベル・グリッド・タイトル・凡例
+## ラベル・グリッド・タイトル
 
 - `plt.xlabel()` / `plt.ylabel()` で **軸ラベル**
 - `plt.title()` で **グラフタイトル**
-- `plt.legend()` で **凡例**（`plot()` に `label=` を指定しておく）
 - `plt.grid(True)` で **グリッド線**
 
 ```{python}
@@ -603,19 +956,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-x = np.arange(10, 200)
+months = np.arange(1, 13)
+temp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])
+temp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])
 
-y1 = x ** (1/2)
-plt.plot(x, y1, 'o-', label="sqrt(x)")     # 凡例ラベル
-
-y2 = x ** (1/3)
-plt.plot(x, y2, 'o-', label="cbrt(x)")
-
-plt.legend()                                # 凡例を表示
-plt.title("1/2 vs 1/3 power")               # タイトル
-plt.xlabel("x value")                       # x軸ラベル
-plt.ylabel("y value")                       # y軸ラベル
-plt.grid(True)                              # グリッド線
+plt.plot(months, temp_1900, 'o-', label="1900年")
+plt.plot(months, temp_2024, 'o-', label="2024年")
+plt.legend()
+plt.title("東京の月別平均気温")        # タイトル
+plt.xlabel("月")                       # x軸ラベル
+plt.ylabel("平均気温（℃）")           # y軸ラベル
+plt.grid(True)                         # グリッド線
 plt.show()
 ```
 
@@ -625,6 +976,40 @@ plt.show()
 - **凡例**（どの線が何か）
 - **タイトル**（何のグラフか）
 - この3つが揃っていない図は **資料に載せてはいけない**
+:::
+
+
+## 表示範囲の指定（xlim / ylim）
+
+- `plt.xlim(a, b)` / `plt.ylim(a, b)` で軸の範囲を固定
+- 何も指定しないと **データの範囲＋少し余白** が自動で選ばれる
+- クイズで見たとおり、**軸の選び方は正直さの問題**
+   - 0から見せて、差が本物か確かめる
+
+```{python}
+#| echo: true
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+months = np.arange(1, 13)
+temp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])
+temp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])
+
+plt.plot(months, temp_1900, 'o-', label="1900年")
+plt.plot(months, temp_2024, 'o-', label="2024年")
+plt.legend()
+plt.xlim(1, 12)        # x軸: 1〜12月
+plt.ylim(0, 35)        # y軸: あえて0から見せる
+plt.grid(True)
+plt.show()
+```
+
+::: {.callout-warning}
+## y軸の罠（描く側の責任）
+- 範囲をデータに合わせると **小さな変化が大きく見える**
+- 比較するグラフは **y軸を揃える** か **0から見せる** のが原則
+- 0から見せても、この気温差は **本物** だと分かる
 :::
 
 
@@ -646,59 +1031,129 @@ import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-x = np.arange(5)
-y = x ** 2
+months = np.arange(1, 13)
+temp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])
+temp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])
 
 plt.subplot(1, 2, 1)        # 1行2列の左
-plt.plot(x, y, '-')
+plt.plot(months, temp_1900, 'o-')
+plt.ylim(0, 35)             # 並べて比較するなら軸を揃える
+plt.title("1900年")
 
 plt.subplot(1, 2, 2)        # 1行2列の右
-plt.bar(x, y)
+plt.plot(months, temp_2024, 'o-')
+plt.ylim(0, 35)
+plt.title("2024年")
 
 plt.tight_layout()          # 余白を自動調整
 plt.show()
 ```
 
+::: {.callout-note}
+## 重ねる vs 並べる
+- 直接比較したい → **重ねる**（さっきの凡例つき1枚）
+- 形をそれぞれ見たい・線が多すぎる → **並べる**（subplot）
+:::
 
-## 二次元データの散布図
 
-- 大量の `(x, y)` を点で打つ → 分布や相関が見える
-- `alpha` で **透明度** を指定すると重なりが分かりやすい
+## ここまでの成果：図は「育てる」もの
 
 ```{python}
-#| echo: true
-#| out-width: 50%
+#| echo: false
+#| fig-align: center
+#| lightbox: true
 import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-# 0〜1 の一様乱数を 200点
-x = np.random.rand(200)
-y = np.random.rand(200)
+months = np.arange(1, 13)
+temp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])
+temp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])
 
-plt.scatter(x, y, alpha=0.7)
-plt.xlabel("X (0-1)")
-plt.ylabel("Y (0-1)")
-plt.title("2D scatter: uniform random")
-plt.axis("equal")           # 縦横を同じスケールに
+fig, axes = plt.subplots(1, 2, figsize=(9, 3.5))
+axes[0].plot(months, temp_2024, 'o')
+axes[0].set_title("最初の図", fontsize=11)
+
+axes[1].plot(months, temp_1900, 'o-', label="1900年")
+axes[1].plot(months, temp_2024, 'o-', label="2024年")
+axes[1].legend()
+axes[1].set_title("東京の月別平均気温", fontsize=11)
+axes[1].set_xlabel("月")
+axes[1].set_ylabel("平均気温（℃）")
+axes[1].set_ylim(0, 35)
+axes[1].grid(True)
+plt.tight_layout()
 plt.show()
 ```
 
-::: {.callout-tip}
-## 重なりが多いとき
-- `alpha=0.3` などで透過 → 密度が見える
-- 点数が万を超えるなら **ヒートマップ** や **hexbin** を検討
+- **同じデータ**。でも伝わり方は別物
+- 育てた手順：点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲
+- 右の図は「東京は暑くなったのか？」に **一人で答えられる**
+
+
+## 散布図で150年を一気に見る
+
+- 月別の比較は2年分だけだった。**全部の年** を見たい
+- 年平均気温150年分のCSV（気象庁）を `np.loadtxt` で読み込む
+   - データ：[tokyo_temp_annual.csv](data/tokyo_temp_annual.csv)（`.py` と同じフォルダに置く）
+- 大量の点は `plt.scatter()`。`alpha` で **透明度** を指定すると重なりが見やすい
+
+```{python}
+#| echo: true
+#| eval: false
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+data = np.loadtxt("tokyo_temp_annual.csv", delimiter=",", skiprows=1)
+year = data[:, 0]      # 1列目：年
+temp = data[:, 1]      # 2列目：年平均気温
+
+plt.scatter(year, temp, alpha=0.7)
+plt.xlabel("年")
+plt.ylabel("年平均気温（℃）")
+plt.title("東京の年平均気温（1876〜2025）")
+plt.grid(True)
+plt.show()
+```
+
+```{python}
+#| echo: false
+#| fig-align: center
+#| out-width: 55%
+#| lightbox: true
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+data = np.loadtxt("data/tokyo_temp_annual.csv", delimiter=",", skiprows=1)
+year = data[:, 0]
+temp = data[:, 1]
+
+plt.figure(figsize=(7, 3.2))
+plt.scatter(year, temp, alpha=0.7)
+plt.xlabel("年")
+plt.ylabel("年平均気温（℃）")
+plt.title("東京の年平均気温（1876〜2025）")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+```
+
+::: {.callout-note}
+## 結論：東京は暑くなった。ただし
+- 150年で **約4℃上昇** — クイズの「寒冷化」は揺らぎの切り取りだった
+- この上昇には **都市化（ヒートアイランド）** の影響も大きく含まれる
+- 図は答えをくれるが、**解釈には背景知識が要る**
 :::
 
 
-## ヒストグラムで分布を見る
+## ヒストグラム：冒頭の所得分布を自分で作る
 
-- たくさんの値を **区間ごとに数える** グラフ
-- 平均だけでは分からない **ばらつき・偏り・山の形** が見える
-- `bins` で区間の数を指定する
-- `plt.axvline(値)` で **縦線** を引ける
-- `np.median(x)` で **中央値** を計算できる
-- 年収のように一部の値が大きいデータでは、平均と中央値がずれる
+- 冒頭で見た厚労省の図は **ヒストグラム**（区間ごとに数えるグラフ）だった
+- 同じ構造の図を、ミニチュア（ある会社の社員29人の年収）で再現する
+- `plt.hist(x, bins=区間の数)` で描ける
+- `plt.axvline(値)` で **縦線**、`np.median(x)` で **中央値**
 
 ```{python}
 #| echo: true
@@ -725,60 +1180,10 @@ plt.show()
 ```
 
 ::: {.callout-note}
-## 平均と中央値
-- 一部の大きな値があると、平均は **右に引っ張られる**
-- 中央値は **真ん中の人** に近い値を示す
-- 分布が左右対称でないときは、平均だけでは代表値として弱い
-- `plt.axvline(線を引く位置, label="説明")` で凡例つきの縦線を描ける
-:::
-
-
-## 三次元データの散布図
-
-- 3D は `add_subplot(projection="3d")` で軸オブジェクトを作る
-- `plt.◯◯` ではなく **`ax.◯◯`** で操作する
-
-```{python}
-#| echo: true
-import numpy as np
-import matplotlib.pyplot as plt
-import japanize_matplotlib
-
-x = np.random.rand(300)
-y = np.random.rand(300)
-z = np.random.rand(300)
-
-fig = plt.figure()
-ax = fig.add_subplot(projection="3d")
-ax.scatter(x, y, z, alpha=0.6)
-
-ax.set_xlabel("X")
-ax.set_ylabel("Y")
-ax.set_zlabel("Z")
-plt.show()
-```
-
-::: {.callout-note}
-## なぜ 3D だけ `ax.` を使う？
-- `plt.scatter()` などは **2D専用のショートカット**
-- 3D軸を作るには `projection="3d"` の指定が必要で、`plt.subplot()` では対応できない
-- 3D では `ax.scatter()`, `ax.set_zlabel()` など **軸オブジェクト経由** で操作する
-:::
-
-::: {.callout-tip}
-## `plt.` と `ax.` の対応
-| 2D（`plt.`） | 3D（`ax.`） |
-|---|---|
-| `plt.scatter(x, y)` | `ax.scatter(x, y, z)` |
-| `plt.xlabel("X")` | `ax.set_xlabel("X")` |
-| `plt.xlim(0, 10)` | `ax.set_xlim(0, 10)` |
-| `plt.title("...")` | `ax.set_title("...")` |
-:::
-
-::: {.callout-warning}
-## 3Dは多用しない
-- 紙やスライドだと **奥行きが伝わらない** ことが多い
-- インタラクティブに回せない場面では **2Dの分割表示** のほうが伝わる
+## 「平均年収824万円の会社」のからくり
+- この会社、求人票に「平均年収824万円」と書ける（ウソではない）
+- でも中央値は **500万円** — 半分の人は500万以下
+- 冒頭の所得分布とまったく同じ構造。**自分で描ければ、もう騙されない**
 :::
 
 
@@ -798,24 +1203,19 @@ plt.show()
 | 凡例 | `plt.legend()`（要 `label=...`） |
 | グリッド | `plt.grid(True)` |
 | 並べる | `plt.subplot(行, 列, 番号)` |
-| 3D散布 | `ax = fig.add_subplot(projection="3d")` |
+| CSV読み込み | `np.loadtxt("file.csv", delimiter=",", skiprows=1)` |
 
 
-## 演習：二次関数を描く
+## 演習：謎のデータをプロットせよ
 
-- $y = x^2 - 2x + 3$ を **定義域 $-2 \leq x \leq 5$** で描け
+- [datasaurus_star.csv](data/datasaurus_star.csv) をダウンロードして、`.py` と同じフォルダに置く
+- 講義で見た **Datasaurus Dozen 13個のうちの1つ**（恐竜ではない）
+   - 統計量はもちろん：$\bar{x} = 54.27$、$\bar{y} = 47.84$、$r = -0.06$
 - 手順
-  1. `np.arange` または `np.linspace` で `x` を作る（線が滑らかになるように細かく）
-  2. `y` を計算
-  3. プロット — 折れ線でもOK
-  4. **Y軸は0から見えるように** `ylim` を設定
-  5. タイトルとラベルもつける
-
-::: {.callout-tip}
-## 平方完成で検算
-- $y = (x - 1)^2 + 2$ なので **頂点は $(1, 2)$**
-- グラフが合っているか確認
-:::
+  1. `np.loadtxt` で読み込む（1行目はヘッダなので `skiprows=1`）
+  2. `data[:, 0]` と `data[:, 1]` で `x`, `y` を取り出す
+  3. `plt.scatter` でプロット — **何が見える？**
+  4. 軸ラベル・タイトルをつけて「資料に載せられる図」に育てる
 
 ```{python}
 #| echo: true
@@ -826,16 +1226,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-x = np.linspace(-2, 5, 200)
-y = x ** 2 - 2 * x + 3
+data = np.loadtxt("datasaurus_star.csv", delimiter=",", skiprows=1)
+x = data[:, 0]
+y = data[:, 1]
 
-plt.plot(x, y)
-plt.scatter([1], [2], color="red", zorder=3)   # 頂点
-plt.xlim(-2, 5)
-plt.ylim(0, 20)                                 # 0から見せる
+plt.scatter(x, y)
 plt.xlabel("x")
 plt.ylabel("y")
-plt.title("y = x^2 - 2x + 3")
+plt.title("statistics are not enough")
 plt.grid(True)
 plt.show()
 ```
@@ -927,11 +1325,14 @@ plt.show()
    - プレイフェア — 棒・折れ線・円グラフを発明
    - スノウ — コレラ地図で因果関係を視覚的に立証
    - 現代のインタラクティブ可視化へ
-- **大原則**：*Always plot your data first.* 
-   - アンスコムの四重奏が示す数値の限界
-- **matplotlib**：最小構造（plot/scatter/bar） 
-   - 修飾（ラベル/タイトル/凡例/グリッド） 
-   - 応用（subplot, 2D/3D散布）
+- **大原則**：*Always plot your data first.*
+   - 平均所得524万円 ≠ 真ん中（中央値405万円）
+   - アンスコム・Datasaurus — 統計量は形を捨てている
+- **グラフはウソをつく**：y軸切断・期間チェリーピック — 騙されない側になる
+- **matplotlib**：「東京は暑くなったのか」を1枚のグラフに育てた
+   - 点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲
+   - 散布図で150年、ヒストグラムで分布
+- **冒頭の謎**（1日だけの大きな山）は **API回で回収する**
 
 ## 参考リンク
 
@@ -939,3 +1340,6 @@ plt.show()
 - [Matplotlib "Plot types"](https://matplotlib.org/stable/plot_types/index.html)
 - *Python Data Science Handbook* — Chapter 3 Visualizations
 - [Anscombe's quartet (Wikipedia)](https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%82%B9%E3%82%B3%E3%83%A0%E3%81%AE%E5%9B%9B%E9%87%8D%E5%A5%8F)
+- [Same Stats, Different Graphs — Datasaurus Dozen (Autodesk Research)](https://www.research.autodesk.com/publications/same-stats-different-graphs/)
+- [厚生労働省「国民生活基礎調査」](https://www.mhlw.go.jp/toukei/list/20-21.html)
+- [気象庁「過去の気象データ検索」](https://www.data.jma.go.jp/obd/stats/etrn/)

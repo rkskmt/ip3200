@@ -38,6 +38,12 @@ import plotly.express as px
 - 棒グラフ・散布図・折れ線・3D散布図を作る
 - Quartoスライドでは、HTMLに書き出して埋め込む
 
+::: {.callout-note}
+## 今回は「描き比べ」の回
+- 散布図・折れ線・ヒストグラムは **matplotlibで一度作った図** ばかり
+- 同じ図を別の道具で作ると、**道具ごとの得意・不得意** が体感できる
+:::
+
 ::: {.callout-warning}
 ## 今回は深追いしないこと
 - DashなどのWebアプリ化
@@ -518,6 +524,13 @@ fig.write_html("iframes/plotly_scatter_3d.html", include_plotlyjs="cdn")
 ::: {.plotly-iframe src="iframes/plotly_scatter_3d.html" height="540"}
 :::
 
+::: {.callout-note}
+## matplotlibにも3Dはある（参考）
+- `ax = fig.add_subplot(projection="3d")` で描けるが、**回せない**
+- 紙やスライドの静止画では奥行きが伝わりにくい
+- **回せるPlotlyでこそ3Dは活きる** — だから3Dはこの回で扱った
+:::
+
 
 ## HTMLとして保存する
 
@@ -596,3 +609,9 @@ fig.show()
 - ホバー表示は `hover_name=`
 - Pandasの集計結果は、DataFrameにしてからPlotlyに渡すと分かりやすい
 - HTMLとして保存して、Webページに埋め込める
+
+::: {.callout-note}
+## 道具は揃った
+- 描く道具（matplotlib / Plotly）と表を扱う道具（Pandas）が揃った
+- 次回は **材料**：世界中の人がいま何を見ているかをAPIで取得し、可視化回の冒頭の **「1日だけの大きな山」の謎** を解く
+:::
