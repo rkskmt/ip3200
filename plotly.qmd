@@ -36,6 +36,7 @@ import plotly.express as px
 - `plotly.express` を使って、短いコードでグラフを作る
 - Pandasの `DataFrame` をそのまま渡す
 - 棒グラフ・散布図・折れ線・3D散布図を作る
+- 仕上げに、**世界一有名な「動くグラフ」** を自分の手で作る
 - Quartoスライドでは、HTMLに書き出して埋め込む
 
 ::: {.callout-note}
@@ -207,17 +208,12 @@ fig.write_html("iframes/plotly_bar_color.html", include_plotlyjs="cdn")
 - `px.scatter()` で散布図を作る
 - `x` と `y` に数値列を指定する
 - `hover_name=` に列名を指定すると、ホバー時に名前を表示できる
+- データはPandas回と同じ `data/students.csv`（20人）
 
 ```{python}
 #| echo: true
-df_scores = pd.DataFrame({
-    "名前": ["田中", "佐藤", "鈴木", "高橋", "伊藤", "渡辺", "山本", "中村"],
-    "数学": [70, 75, 88, 64, 59, 92, 73, 81],
-    "英語": [90, 85, 84, 72, 60, 78, 70, 86],
-    "学科": ["情報", "機械", "情報", "電気", "情報", "機械", "電気", "情報"],
-})
-
-df_scores
+df_scores = pd.read_csv("data/students.csv")
+print(df_scores.head())
 ```
 
 
@@ -226,11 +222,11 @@ df_scores
 ```python
 fig = px.scatter(
     df_scores,
-    x="数学",
-    y="英語",
+    x="数学I",
+    y="英会話",
     color="学科",
     hover_name="名前",
-    title="数学と英語の点数",
+    title="数学Iと英会話の点数",
 )
 fig.show()
 ```
@@ -240,17 +236,23 @@ fig.show()
 #| output: false
 fig = px.scatter(
     df_scores,
-    x="数学",
-    y="英語",
+    x="数学I",
+    y="英会話",
     color="学科",
     hover_name="名前",
-    title="数学と英語の点数",
+    title="数学Iと英会話の点数",
 )
 fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
 fig.write_html("iframes/plotly_scatter.html", include_plotlyjs="cdn")
 ```
 
 ::: {.plotly-iframe src="iframes/plotly_scatter.html"}
+:::
+
+::: {.callout-tip}
+## matplotlibとの違いがここに出る
+- 外れている点にマウスを乗せると **誰なのか** その場で分かる
+- matplotlibなら「この点、誰？」のたびにコードを書き足すことになる
 :::
 
 
@@ -260,12 +262,12 @@ fig.write_html("iframes/plotly_scatter.html", include_plotlyjs="cdn")
 - 2次元の位置に加えて、もう1つの量を表現できる
 
 ```python
-df_scores["合計"] = df_scores["数学"] + df_scores["英語"]
+df_scores["合計"] = df_scores["数学I"] + df_scores["英会話"]
 
 fig = px.scatter(
     df_scores,
-    x="数学",
-    y="英語",
+    x="数学I",
+    y="英会話",
     color="学科",
     size="合計",
     hover_name="名前",
@@ -276,16 +278,16 @@ fig.show()
 ```{python}
 #| echo: false
 #| output: false
-df_scores["合計"] = df_scores["数学"] + df_scores["英語"]
+df_scores["合計"] = df_scores["数学I"] + df_scores["英会話"]
 
 fig = px.scatter(
     df_scores,
-    x="数学",
-    y="英語",
+    x="数学I",
+    y="英会話",
     color="学科",
     size="合計",
     hover_name="名前",
-    title="数学・英語・合計点",
+    title="数学I・英会話・合計点",
 )
 fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
 fig.write_html("iframes/plotly_scatter_size.html", include_plotlyjs="cdn")
@@ -299,22 +301,20 @@ fig.write_html("iframes/plotly_scatter_size.html", include_plotlyjs="cdn")
 
 - `px.line()` で折れ線グラフを作る
 - 時間変化や順序のあるデータに向いている
+- 題材は可視化回の **東京150年の年平均気温**（気象庁）
+   - データ：[tokyo_temp_annual.csv](data/tokyo_temp_annual.csv)（`data` フォルダに置く）
 
 ```{python}
 #| echo: true
-df_temp = pd.DataFrame({
-    "日": ["月", "火", "水", "木", "金", "土", "日"],
-    "気温": [22, 24, 23, 26, 28, 27, 25],
-})
-
-df_temp
+df_temp = pd.read_csv("data/tokyo_temp_annual.csv")
+print(df_temp.head())
 ```
 
 
 ## 折れ線グラフを作る
 
 ```python
-fig = px.line(df_temp, x="日", y="気温", markers=True)
+fig = px.line(df_temp, x="year", y="temp", markers=True)
 fig.show()
 ```
 
@@ -323,10 +323,11 @@ fig.show()
 #| output: false
 fig = px.line(
     df_temp,
-    x="日",
-    y="気温",
+    x="year",
+    y="temp",
     markers=True,
-    title="1週間の気温",
+    title="東京の年平均気温（1876〜2025）",
+    labels={"year": "年", "temp": "年平均気温（℃）"},
 )
 fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
 fig.write_html("iframes/plotly_line.html", include_plotlyjs="cdn")
@@ -335,29 +336,22 @@ fig.write_html("iframes/plotly_line.html", include_plotlyjs="cdn")
 ::: {.plotly-iframe src="iframes/plotly_line.html"}
 :::
 
+::: {.callout-tip}
+## 自分の指でチェリーピックしてみる
+- **ドラッグで2006〜2017年あたりを選択** してズーム →「寒冷化」に見える
+- 可視化回の騙しグラフは、この **切り取り** と同じ操作だった
+- **ダブルクリックで全体に戻る** — 全体を確認するクセをつける
+:::
+
 
 ## ヒストグラム
 
 - `px.histogram()` で分布を見られる
 - `nbins=` で区間の数を指定する
-
-```{python}
-#| echo: true
-df_height = pd.DataFrame({
-    "身長": [
-        158, 160, 161, 163, 165, 166, 168, 169, 170, 171,
-        172, 173, 174, 175, 176, 178, 180, 181, 183, 186
-    ]
-})
-
-print(df_height.head())
-```
-
-
-## ヒストグラムを作る
+- 同じ150年の気温データ — 折れ線は **変化**、ヒストグラムは **分布** を見せる
 
 ```python
-fig = px.histogram(df_height, x="身長", nbins=8)
+fig = px.histogram(df_temp, x="temp", nbins=20)
 fig.show()
 ```
 
@@ -365,10 +359,11 @@ fig.show()
 #| echo: false
 #| output: false
 fig = px.histogram(
-    df_height,
-    x="身長",
-    nbins=8,
-    title="身長の分布",
+    df_temp,
+    x="temp",
+    nbins=20,
+    title="東京の年平均気温の分布（150年分）",
+    labels={"temp": "年平均気温（℃）"},
 )
 fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
 fig.write_html("iframes/plotly_histogram.html", include_plotlyjs="cdn")
@@ -376,6 +371,8 @@ fig.write_html("iframes/plotly_histogram.html", include_plotlyjs="cdn")
 
 ::: {.plotly-iframe src="iframes/plotly_histogram.html"}
 :::
+
+- 棒にマウスを乗せると **どの気温帯が何年分か** まで分かる
 
 
 ## {background-color="white" .center .break-slide}
@@ -411,7 +408,7 @@ print(avg)
 ```{python}
 #| echo: true
 avg_df = avg.reset_index()
-avg_df
+print(avg_df)
 ```
 
 ```python
@@ -456,7 +453,7 @@ Plotly:     Series → reset_index() → DataFrame
 ```{python}
 #| echo: true
 avg_df = df_students.groupby("学科", as_index=False)["平均点"].mean()
-avg_df
+print(avg_df)
 ```
 
 ```python
@@ -476,17 +473,11 @@ fig.show()
 - `px.scatter_3d()` で3D散布図を作れる
 - Web上ではドラッグして回転できる
 - 3つの数値列の関係を見るときに使う
+- `data/students.csv` の3科目（数学I・英会話・物理）を使う
 
 ```{python}
 #| echo: true
-df_3d = pd.DataFrame({
-    "数学": [70, 75, 88, 64, 59, 92, 73, 81],
-    "英語": [90, 85, 84, 72, 60, 78, 70, 86],
-    "物理": [76, 69, 90, 71, 62, 88, 75, 80],
-    "学科": ["情報", "機械", "情報", "電気", "情報", "機械", "電気", "情報"],
-    "名前": ["田中", "佐藤", "鈴木", "高橋", "伊藤", "渡辺", "山本", "中村"],
-})
-
+df_3d = pd.read_csv("data/students.csv")
 print(df_3d.head())
 ```
 
@@ -496,8 +487,8 @@ print(df_3d.head())
 ```python
 fig = px.scatter_3d(
     df_3d,
-    x="数学",
-    y="英語",
+    x="数学I",
+    y="英会話",
     z="物理",
     color="学科",
     hover_name="名前",
@@ -510,8 +501,8 @@ fig.show()
 #| output: false
 fig = px.scatter_3d(
     df_3d,
-    x="数学",
-    y="英語",
+    x="数学I",
+    y="英会話",
     z="物理",
     color="学科",
     hover_name="名前",
@@ -563,6 +554,72 @@ fig.write_html("graph.html", include_plotlyjs="cdn")
 
 - まずはmatplotlibで基本を覚える
 - Webで動かしたいときにPlotlyを使う
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+仕上げ：あの有名なグラフを自分で作る
+:::
+
+## Gapminder "Wealth & Health of Nations"
+
+- 可視化回の実例集で見た、**世界で一番有名な「動くグラフ」**
+   - 横軸：1人あたりGDP、縦軸：平均寿命、バブルの大きさ：人口
+- Plotlyには **このデータが同梱** されている
+
+```{python}
+#| echo: true
+gap = px.data.gapminder()
+print(gap.head())
+print(gap.shape)
+```
+
+- **142カ国 × 12時点（1952〜2007年）** の実データ
+
+
+## 動くバブルチャートを1命令で
+
+```python
+fig = px.scatter(
+    gap,
+    x="gdpPercap",
+    y="lifeExp",
+    size="pop",
+    color="continent",
+    hover_name="country",
+    log_x=True,
+    size_max=55,
+    animation_frame="year",
+)
+fig.show()
+```
+
+```{python}
+#| echo: false
+#| output: false
+fig = px.scatter(
+    gap,
+    x="gdpPercap",
+    y="lifeExp",
+    size="pop",
+    color="continent",
+    hover_name="country",
+    log_x=True,
+    size_max=55,
+    animation_frame="year",
+    range_y=[20, 90],
+    title="Wealth & Health of Nations（1952〜2007）",
+)
+fig.update_layout(width=900, height=520, margin=dict(l=20, r=20, t=60, b=20))
+fig.write_html("iframes/plotly_gapminder.html", include_plotlyjs="cdn")
+```
+
+::: {.plotly-iframe src="iframes/plotly_gapminder.html" height="540"}
+:::
+
+- **▶ を押す** と55年分の世界が動き出す（ホバーで国名）
+- 実例集で「眺めるもの」だった可視化が、**自分で作れるもの** になった
 
 
 ## 演習：学科ごとの平均点をPlotlyで描く

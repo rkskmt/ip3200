@@ -29,13 +29,9 @@ import pandas as pd
 :::
 
 
-## NumPyだけだと何が困る？
+## クイズ：田中さんの数学Iの点は？
 
-- NumPyの2次元配列は「数値の行列」としては便利
-- しかし、実際のデータでは **列の意味** が重要
-   - 1列目は現代文？
-   - 2列目は数学I？
-   - どの行が田中さん？
+- 2人の生徒（田中・佐藤）の3科目（現代文・数学I・英会話）の点数がある
 
 ```python
 import numpy as np
@@ -44,12 +40,17 @@ arr = np.array([
     [80, 70, 90],
     [65, 75, 85],
 ])
-
-arr
 ```
 
-- `arr[0, 1]` は `70`
-- ただし、これだけでは **何の70点か分からない**
+- **「田中さんの数学Iの点」を取り出すコードを書け**
+
+::: {.callout-important .fragment}
+## 答え：`arr[0, 1]` …… で合ってる？自信ある？
+- 田中さんが0行目、数学Iが1列目という情報は **配列のどこにも書いていない**
+- 取り出した `70` も、画面に出るのはただの数字 — **何の70点か分からない**
+- 計算はNumPyで十分。困るのは **意味（名前）の管理**
+- 表に **名前** をつけたもの、それが今日の `DataFrame`
+:::
 
 
 ## ndarrayからDataFrameを作る
@@ -150,7 +151,7 @@ DataFrame = データ + 行名(index) + 列名(columns)
 
 ```{python}
 #| echo: true
-df.mean()
+print(df.mean())
 ```
 
 - NumPyの `axis=0` より読みやすい場面が多い
@@ -171,17 +172,17 @@ Seriesを理解する
 ```{python}
 #| echo: true
 math = df["数学I"]
-math
+print(math)
 ```
 
 ```{python}
 #| echo: true
-type(df)
+print(type(df))
 ```
 
 ```{python}
 #| echo: true
-type(math)
+print(type(math))
 ```
 
 
@@ -198,12 +199,12 @@ Series    = 1列
 
 ```{python}
 #| echo: true
-math.index
+print(math.index)
 ```
 
 ```{python}
 #| echo: true
-math.values
+print(math.values)
 ```
 
 - `math.index` は生徒名
@@ -222,7 +223,7 @@ math.values
 
 ```{python}
 #| echo: true
-math.mean()
+print(math.mean())
 ```
 
 - 1列だけでも、平均・最大・最小などの計算ができる
@@ -359,12 +360,12 @@ DataFrameの基本操作
 ```{python}
 #| echo: true
 math = df["数学I"]
-math
+print(math)
 ```
 
 ```{python}
 #| echo: true
-type(math)
+print(type(math))
 ```
 
 - 1列だけ取り出したら `Series`
@@ -379,12 +380,12 @@ type(math)
 
 ```{python}
 #| echo: true
-df[["名前", "学科", "数学I", "英会話"]]
+print(df[["名前", "学科", "数学I", "英会話"]])
 ```
 
 ```{python}
 #| echo: true
-type(df[["名前", "学科", "数学I", "英会話"]])
+print(type(df[["名前", "学科", "数学I", "英会話"]]))
 ```
 
 ::: {.callout-warning}
@@ -403,12 +404,12 @@ df[["名前", "学科", "数学I"]]        # 列名のリストを渡す
 
 ```{python}
 #| echo: true
-df["数学I"] >= 80
+print(df["数学I"] >= 80)
 ```
 
 ```{python}
 #| echo: true
-df[df["数学I"] >= 80]
+print(df[df["数学I"] >= 80])
 ```
 
 - `数学I` が80点以上の行だけが残る
@@ -422,7 +423,7 @@ df[df["数学I"] >= 80]
 
 ```{python}
 #| echo: true
-df[df["学科"] == "情報"]
+print(df[df["学科"] == "情報"])
 ```
 
 - `学科` が `"情報"` の行だけが残る
@@ -436,10 +437,10 @@ df[df["学科"] == "情報"]
 
 ```{python}
 #| echo: true
-df[
+print(df[
     (df["学科"] == "情報")
     & (df["数学I"] >= 80)
-]
+])
 ```
 
 ::: {.callout-warning}
@@ -553,17 +554,17 @@ print(avg)
 
 ```{python}
 #| echo: true
-type(avg)
+print(type(avg))
 ```
 
 ```{python}
 #| echo: true
-avg.index
+print(avg.index)
 ```
 
 ```{python}
 #| echo: true
-avg.values
+print(avg.values)
 ```
 
 ::: {.callout-tip}
@@ -584,12 +585,12 @@ values が「平均点」
 
 ```{python}
 #| echo: true
-avg.loc["情報"]
+print(avg.loc["情報"])
 ```
 
 ```{python}
 #| echo: true
-avg.iloc[0]
+print(avg.iloc[0])
 ```
 
 - `avg.loc["情報"]` は「情報」の平均点
@@ -677,6 +678,51 @@ plt.show()
 ```
 
 
+## 実データで：明治の東京 vs 21世紀の東京
+
+- 可視化回で使った気象庁データをPandasで読む
+   - データ：[tokyo_temp_annual.csv](data/tokyo_temp_annual.csv)（`data` フォルダに置く）
+- 「明治時代（〜1911年）の平均気温」と「2000年以降の平均気温」— **条件抽出がそのまま効く**
+
+```{python}
+#| echo: true
+import pandas as pd
+
+df_temp = pd.read_csv("data/tokyo_temp_annual.csv")
+
+meiji = df_temp[df_temp["year"] <= 1911]
+recent = df_temp[df_temp["year"] >= 2000]
+
+print(f"明治の東京     : {meiji['temp'].mean():.1f} ℃")
+print(f"21世紀の東京   : {recent['temp'].mean():.1f} ℃")
+```
+
+- 150行のデータから **2行で答えが出る**
+- NumPyなら「何列目が年だっけ？」から始まる作業が、**列名で読み書きできる**
+
+::: {.callout-tip}
+## CSVを読んだあとの典型的な流れ（再掲）
+```text
+CSVを読む → 必要な列を作る → 絞る・集計する → 可視化する
+```
+どんなデータでも、この型は同じ
+:::
+
+
+## 伏線：あの山の「日付」を特定するには
+
+- 可視化回の冒頭の謎 — 1年分の閲覧数で **1日だけの大きな山**
+- 山の **高さ** は `max()` で分かる。でも知りたいのは **「いつ」**
+- 今日の道具がそのまま効く：
+
+```python
+df[df["views"] == df["views"].max()]   # 最大値の行を「日付ごと」取り出す
+```
+
+- 閲覧数と日付を **表** にしてしまえば、条件抽出1行
+- 謎を解く日まで、あと2回
+
+
 ## まとめ
 
 - `DataFrame` は **表**
@@ -687,11 +733,6 @@ plt.show()
 - 条件抽出は `df[条件]`
 - `groupby()` でグループごとの集計ができる
 - 集計結果の `index` / `values` を matplotlib に渡して可視化できる
-
-::: {.callout-note}
-## 伏線
-可視化回の冒頭で見た **「1日だけの大きな山」**。あの謎を解く日まで、あと2回 — 今日の「表を読む・絞る・集計する」がその武器になる
-:::
 
 
 ## 今回は深追いしないこと
