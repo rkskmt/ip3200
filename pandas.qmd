@@ -68,7 +68,7 @@ arr = np.array([
 ])
 
 df = pd.DataFrame(arr)
-df
+print(df)
 ```
 
 - `DataFrame` は **表** として表示される
@@ -83,12 +83,12 @@ df
 
 ```{python}
 #| echo: true
-df.index
+print(df.index)
 ```
 
 ```{python}
 #| echo: true
-df.columns
+print(df.columns)
 ```
 
 ::: {.callout-note}
@@ -111,7 +111,7 @@ df = pd.DataFrame(
     columns=["現代文", "数学I", "英会話"]
 )
 
-df
+print(df)
 ```
 
 - もう `df[1]` ではなく、`df["数学I"]` として扱える
@@ -131,7 +131,7 @@ df = pd.DataFrame(
     index=["田中", "佐藤"]
 )
 
-df
+print(df)
 ```
 
 ::: {.callout-tip}
@@ -279,16 +279,18 @@ CSVを読み込む
 
 ## CSVを読み込む
 
-- 授業用データはデプロイ先に置いてある
-- `pd.read_csv()` にCSVのURLを渡す
+- 授業用CSVは <a href="data/students.csv" download="students.csv">data/students.csv</a> からダウンロードできる
+- 自分の作業フォルダに `data` フォルダを作る
+- その中に `students.csv` を置く
+- Pythonからは `data/students.csv` というファイルパスで読む
 
 ```{python}
 #| echo: true
 import pandas as pd
 
-url = "https://rkskmt.github.io/ip3200/data/students.csv"
-df = pd.read_csv(url)
-df
+csv_path = "data/students.csv"
+df = pd.read_csv(csv_path)
+print(df.head())
 ```
 
 - CSVの1行目が `columns` になる
@@ -303,22 +305,22 @@ df
 
 ```{python}
 #| echo: true
-df.head()
+print(df.head())
 ```
 
 ```{python}
 #| echo: true
-df.shape
+print(df.shape)
 ```
 
 ```{python}
 #| echo: true
-df.columns
+print(df.columns)
 ```
 
 ```{python}
 #| echo: true
-df.index
+print(df.index)
 ```
 
 
@@ -329,8 +331,8 @@ df.index
 
 ```{python}
 #| echo: true
-df_name = pd.read_csv(url, index_col="名前")
-df_name.head()
+df_name = pd.read_csv(csv_path, index_col="名前")
+print(df_name.head())
 ```
 
 - ただし、最初は自動番号のindexでも問題ない
@@ -461,7 +463,7 @@ df["平均点"] = df[subjects].mean(axis=1)
 df["合否"] = df["平均点"] >= 60
 df["補正数学I"] = df["数学I"] * 1.1
 
-df.head()
+print(df.head())
 ```
 
 - `平均点` は4科目の平均
@@ -485,19 +487,19 @@ CSVデータを集計して可視化する
 
 ## ここから使うCSVデータ
 
-- ここからは `students.csv` から読み込んだ `df` を前提にする
+- ここからは `data/students.csv` から読み込んだ `df` を前提にする
 - CSVには、名前・学科・学年・4科目・欠席日数が入っている
 - まず4科目から `平均点` 列を作る
 
 ```{python}
 #| echo: true
-url = "https://rkskmt.github.io/ip3200/data/students.csv"
-df = pd.read_csv(url)
+csv_path = "data/students.csv"
+df = pd.read_csv(csv_path)
 
 subjects = ["現代文", "数学I", "英会話", "物理"]
 df["平均点"] = df[subjects].mean(axis=1)
 
-df.head()
+print(df.head())
 ```
 
 ::: {.callout-note}
@@ -536,7 +538,7 @@ print(scores.min())
 ```{python}
 #| echo: true
 avg = df.groupby("学科")["平均点"].mean()
-avg
+print(avg)
 ```
 
 - 学科ごとの平均点が求まる
@@ -643,7 +645,7 @@ plt.show()
 
 ## 演習：高得点者を可視化
 
-- `https://rkskmt.github.io/ip3200/data/students.csv` を読み込む
+- `data/students.csv` を読み込む
 - 4科目の平均点を計算する
 - 平均点が80点以上の生徒だけを抽出する
 - 生徒名を横軸、平均点を縦軸にして棒グラフを描く
@@ -658,8 +660,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-url = "https://rkskmt.github.io/ip3200/data/students.csv"
-df = pd.read_csv(url)
+csv_path = "data/students.csv"
+df = pd.read_csv(csv_path)
 subjects = ["現代文", "数学I", "英会話", "物理"]
 
 df["平均点"] = df[subjects].mean(axis=1)

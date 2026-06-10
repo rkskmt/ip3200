@@ -62,7 +62,7 @@ df = pd.DataFrame({
     "点数": [82, 75, 91, 68, 57],
 })
 
-df
+print(df)
 ```
 
 
@@ -344,7 +344,7 @@ df_height = pd.DataFrame({
     ]
 })
 
-df_height.head()
+print(df_height.head())
 ```
 
 
@@ -381,18 +381,19 @@ Pandasの集計結果をPlotlyへ
 ## 学科ごとの平均点を作る
 
 - Pandasで集計してからPlotlyで可視化する
+- Pandas入門と同じ `data/students.csv` を使う
 - `groupby()` の結果は `Series`
 - Plotlyに渡すため、いったん `reset_index()` でDataFrameに戻す
 
 ```{python}
 #| echo: true
-url = "https://rkskmt.github.io/ip3200/data/students.csv"
-df_students = pd.read_csv(url)
+csv_path = "data/students.csv"
+df_students = pd.read_csv(csv_path)
 subjects = ["現代文", "数学I", "英会話", "物理"]
 
 df_students["平均点"] = df_students[subjects].mean(axis=1)
 avg = df_students.groupby("学科")["平均点"].mean()
-avg
+print(avg)
 ```
 
 
@@ -480,7 +481,7 @@ df_3d = pd.DataFrame({
     "名前": ["田中", "佐藤", "鈴木", "高橋", "伊藤", "渡辺", "山本", "中村"],
 })
 
-df_3d.head()
+print(df_3d.head())
 ```
 
 
@@ -553,7 +554,7 @@ fig.write_html("graph.html", include_plotlyjs="cdn")
 
 ## 演習：学科ごとの平均点をPlotlyで描く
 
-- `https://rkskmt.github.io/ip3200/data/students.csv` を読み込む
+- `data/students.csv` を読み込む
 - `groupby("学科", as_index=False)` で平均点を作る
 - `px.bar()` で棒グラフを作る
 - `color="学科"` を指定して色分けする
@@ -567,8 +568,8 @@ fig.write_html("graph.html", include_plotlyjs="cdn")
 import pandas as pd
 import plotly.express as px
 
-url = "https://rkskmt.github.io/ip3200/data/students.csv"
-df = pd.read_csv(url)
+csv_path = "data/students.csv"
+df = pd.read_csv(csv_path)
 subjects = ["現代文", "数学I", "英会話", "物理"]
 
 df["平均点"] = df[subjects].mean(axis=1)
