@@ -1,12 +1,12 @@
 ---
 title: "Plotly入門"
-subtitle: "動かせるグラフを作る"
+subtitle: "インタラクティブな可視化"
 ---
 
 ## {background-color="white" .center .break-slide}
 
 ::: {.break-title}
-静的な図から動かせる図へ
+静的から動へ
 :::
 
 ## Plotlyとは
@@ -18,6 +18,16 @@ subtitle: "動かせるグラフを作る"
    - 3Dグラフを回転
 - matplotlibと同じく、Pythonから使える
 - Webページ上で動くHTMLとして出力できる
+
+## インストール ＆ import
+
+- pipからインストール
+
+```shell
+import plotly.express as px
+```
+
+- importは可視化ツールをあつめたplotly.expressをpxとして読み込むのが一般的
 
 ```python
 import plotly.express as px
@@ -33,11 +43,10 @@ import plotly.express as px
 
 ## この資料で扱うこと
 
-- `plotly.express` を使って、短いコードでグラフを作る
-- Pandasの `DataFrame` をそのまま渡す
+- `plotly.express` を使ってグラフを作る
+- Pandasの `DataFrame` と連携できることを理解
 - 棒グラフ・散布図・折れ線・3D散布図を作る
-- 仕上げに、**世界一有名な「動くグラフ」** を自分の手で作る
-- Quartoスライドでは、HTMLに書き出して埋め込む
+- 最後に **世界一有名な「動くグラフ」** を手で作る
 
 ::: {.callout-note}
 ## 今回は「描き比べ」の回
@@ -45,19 +54,12 @@ import plotly.express as px
 - 同じ図を別の道具で作ると、**道具ごとの得意・不得意** が体感できる
 :::
 
-::: {.callout-warning}
-## 今回は深追いしないこと
-- DashなどのWebアプリ化
-- 細かいレイアウト調整
-- Plotlyの全グラフ種類
-- `graph_objects` の詳細
-:::
-
 
 ## まずDataFrameを用意する
 
 - PlotlyはPandasの `DataFrame` と相性がよい
-- 「どの列をx軸にするか」「どの列をy軸にするか」を列名で指定する
+- 「どの列をx軸にするか」「どの列をy軸にするか」を列名で指定するだけ
+- まずは以下をVS Codeにコピペ
 
 ```{python}
 #| echo: true
@@ -93,27 +95,27 @@ import plotly.express as px
 
 fig = px.bar(df, x="名前", y="点数")
 fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=40, b=20))
-fig.write_html("iframes/plotly_bar.html", include_plotlyjs="cdn")
+fig.write_html("iframes/plotly_bar.html", include_plotlyjs="directory")
 ```
 
 ::: {.plotly-iframe src="iframes/plotly_bar.html"}
 :::
 
 
-## Plotly Expressの考え方
+## Plotly Expressの基本形
 
 - `plotly.express` は、短く書くための高レベルAPI
 - 基本形はどのグラフでも似ている
 
 ```python
-fig = px.グラフ種類(
+fig = px.グラフの種類(
     データフレーム,
     x="x軸に使う列名",
     y="y軸に使う列名",
 )
 ```
 
-| グラフ | 関数 |
+| グラフの種類 | 関数 |
 |---|---|
 | 棒グラフ | `px.bar()` |
 | 散布図 | `px.scatter()` |
@@ -122,7 +124,7 @@ fig = px.グラフ種類(
 | 3D散布図 | `px.scatter_3d()` |
 
 
-## ラベルとタイトルをつける
+## 図にラベルとタイトルをつける
 
 - `title=` でタイトル
 - `labels=` で軸ラベルや凡例名を変えられる
@@ -150,7 +152,7 @@ fig = px.bar(
     labels={"名前": "生徒", "点数": "得点"},
 )
 fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
-fig.write_html("iframes/plotly_bar_labels.html", include_plotlyjs="cdn")
+fig.write_html("iframes/plotly_bar_labels.html", include_plotlyjs="directory")
 ```
 
 ::: {.plotly-iframe src="iframes/plotly_bar_labels.html"}
@@ -184,7 +186,7 @@ fig = px.bar(
     title="学科で色分けした点数",
 )
 fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
-fig.write_html("iframes/plotly_bar_color.html", include_plotlyjs="cdn")
+fig.write_html("iframes/plotly_bar_color.html", include_plotlyjs="directory")
 ```
 
 ::: {.plotly-iframe src="iframes/plotly_bar_color.html"}
@@ -209,6 +211,7 @@ fig.write_html("iframes/plotly_bar_color.html", include_plotlyjs="cdn")
 - `x` と `y` に数値列を指定する
 - `hover_name=` に列名を指定すると、ホバー時に名前を表示できる
 - データはPandas回と同じ `data/students.csv`（20人）
+   - csvをdataフォルダに配置して以下で読み込み
 
 ```{python}
 #| echo: true
@@ -217,7 +220,7 @@ print(df_scores.head())
 ```
 
 
-## 散布図を作る
+## 散布図のコード
 
 ```python
 fig = px.scatter(
@@ -243,7 +246,7 @@ fig = px.scatter(
     title="数学Iと英会話の点数",
 )
 fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
-fig.write_html("iframes/plotly_scatter.html", include_plotlyjs="cdn")
+fig.write_html("iframes/plotly_scatter.html", include_plotlyjs="directory")
 ```
 
 ::: {.plotly-iframe src="iframes/plotly_scatter.html"}
@@ -256,7 +259,7 @@ fig.write_html("iframes/plotly_scatter.html", include_plotlyjs="cdn")
 :::
 
 
-## サイズもデータで変える
+## 点のサイズはデータで可変にできる
 
 - `size=` に数値列を指定すると、点の大きさを変えられる
 - 2次元の位置に加えて、もう1つの量を表現できる
@@ -290,7 +293,7 @@ fig = px.scatter(
     title="数学I・英会話・合計点",
 )
 fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
-fig.write_html("iframes/plotly_scatter_size.html", include_plotlyjs="cdn")
+fig.write_html("iframes/plotly_scatter_size.html", include_plotlyjs="directory")
 ```
 
 ::: {.plotly-iframe src="iframes/plotly_scatter_size.html"}
@@ -311,7 +314,7 @@ print(df_temp.head())
 ```
 
 
-## 折れ線グラフを作る
+## 折れ線グラフのコード
 
 ```python
 fig = px.line(df_temp, x="year", y="temp", markers=True)
@@ -330,7 +333,7 @@ fig = px.line(
     labels={"year": "年", "temp": "年平均気温（℃）"},
 )
 fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
-fig.write_html("iframes/plotly_line.html", include_plotlyjs="cdn")
+fig.write_html("iframes/plotly_line.html", include_plotlyjs="directory")
 ```
 
 ::: {.plotly-iframe src="iframes/plotly_line.html"}
@@ -344,7 +347,7 @@ fig.write_html("iframes/plotly_line.html", include_plotlyjs="cdn")
 :::
 
 
-## ヒストグラム
+## ヒストグラムのコード
 
 - `px.histogram()` で分布を見られる
 - `nbins=` で区間の数を指定する
@@ -366,7 +369,7 @@ fig = px.histogram(
     labels={"temp": "年平均気温（℃）"},
 )
 fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
-fig.write_html("iframes/plotly_histogram.html", include_plotlyjs="cdn")
+fig.write_html("iframes/plotly_histogram.html", include_plotlyjs="directory")
 ```
 
 ::: {.plotly-iframe src="iframes/plotly_histogram.html"}
@@ -381,7 +384,7 @@ fig.write_html("iframes/plotly_histogram.html", include_plotlyjs="cdn")
 Pandasの集計結果をPlotlyへ
 :::
 
-## 学科ごとの平均点を作る
+## 学科ごとの平均点を計算
 
 - Pandasで集計してからPlotlyで可視化する
 - Pandas入門と同じ `data/students.csv` を使う
@@ -430,7 +433,7 @@ fig = px.bar(
 )
 fig.update_yaxes(range=[0, 100])
 fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
-fig.write_html("iframes/plotly_groupby_bar.html", include_plotlyjs="cdn")
+fig.write_html("iframes/plotly_groupby_bar.html", include_plotlyjs="directory")
 ```
 
 ::: {.plotly-iframe src="iframes/plotly_groupby_bar.html"}
@@ -509,7 +512,7 @@ fig = px.scatter_3d(
     title="3科目の点数",
 )
 fig.update_layout(width=900, height=520, margin=dict(l=0, r=0, t=60, b=0))
-fig.write_html("iframes/plotly_scatter_3d.html", include_plotlyjs="cdn")
+fig.write_html("iframes/plotly_scatter_3d.html", include_plotlyjs="directory")
 ```
 
 ::: {.plotly-iframe src="iframes/plotly_scatter_3d.html" height="540"}
@@ -527,17 +530,27 @@ fig.write_html("iframes/plotly_scatter_3d.html", include_plotlyjs="cdn")
 
 - Plotlyの図はHTMLとして保存できる
 - ブラウザで開けるので、相手に共有しやすい
-- Quartoスライドでは、このHTMLをiframeとして埋め込んでいる
+
+
+
+- 実は本スライドは、このHTMLを以下のようにiframeとして埋め込んでいる
 
 ```python
-fig.write_html("graph.html", include_plotlyjs="cdn")
+fig.write_html("graph.html")
 ```
 
+- 何も指定しないと **Plotly本体ごと** HTMLに埋め込まれる（約4MB）
+   - ファイルは重いが、**ネットがなくても動く**
+
 ::: {.callout-note}
-## `include_plotlyjs="cdn"`
-- Plotly本体をインターネット上のCDNから読み込む指定
-- HTMLファイルが軽くなる
-- オフラインで完全に動かしたい場合は別の設定が必要
+## `include_plotlyjs` で本体の置き場所を選べる
+| 指定 | HTMLのサイズ | 閲覧時のネット |
+|---|---|---|
+| （指定なし） | 重い（約4MB） | 不要 |
+| `"cdn"` | 軽い | **必要** |
+| `"directory"` | 軽い（`plotly.min.js` を同じフォルダに書き出す） | 不要 |
+
+本スライドは `"directory"` を使っている — 教室のWi-Fiが切れても動くように
 :::
 
 
@@ -559,7 +572,7 @@ fig.write_html("graph.html", include_plotlyjs="cdn")
 ## {background-color="white" .center .break-slide}
 
 ::: {.break-title}
-仕上げ：あの有名なグラフを自分で作る
+演習：Gapminder “Wealth & Health of Nations”を自分で可視化
 :::
 
 ## Gapminder "Wealth & Health of Nations"
@@ -578,7 +591,7 @@ print(gap.shape)
 - **142カ国 × 12時点（1952〜2007年）** の実データ
 
 
-## 動くバブルチャートを1命令で
+## 動くバブルチャートを簡単コーディング
 
 ```python
 fig = px.scatter(
@@ -612,14 +625,13 @@ fig = px.scatter(
     title="Wealth & Health of Nations（1952〜2007）",
 )
 fig.update_layout(width=900, height=520, margin=dict(l=20, r=20, t=60, b=20))
-fig.write_html("iframes/plotly_gapminder.html", include_plotlyjs="cdn")
+fig.write_html("iframes/plotly_gapminder.html", include_plotlyjs="directory")
 ```
 
 ::: {.plotly-iframe src="iframes/plotly_gapminder.html" height="540"}
 :::
 
-- **▶ を押す** と55年分の世界が動き出す（ホバーで国名）
-- 実例集で「眺めるもの」だった可視化が、**自分で作れるもの** になった
+- **▶ を押す** と55年分の世界が動く（カーソルをあわせると国名がでる）
 
 
 ## 演習：学科ごとの平均点をPlotlyで描く
@@ -670,5 +682,5 @@ fig.show()
 ::: {.callout-note}
 ## 道具は揃った
 - 描く道具（matplotlib / Plotly）と表を扱う道具（Pandas）が揃った
-- 次回は **材料**：世界中の人がいま何を見ているかをAPIで取得し、可視化回の冒頭の **「1日だけの大きな山」の謎** を解く
+- 次回は **材料**の調達：世界中の人がいま何を見ているかをAPIで取得
 :::
