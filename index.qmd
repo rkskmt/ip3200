@@ -35,6 +35,7 @@
 <summary>API</summary>
 
 - [APIでデータ取得](api.qmd)
+- [APIデータを可視化する](api-viz.qmd)
 - [Wikipedia APIリファレンス](wiki-api.qmd)
 - [東京都オープンデータAPI](tokyo-api.qmd)
 
