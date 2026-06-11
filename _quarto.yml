@@ -32,6 +32,8 @@ website:
         text: "ベクトルと行列"
       - href: visualize.qmd
         text: "データの可視化"
+      - href: matplotlib.qmd
+        text: "matplotlib入門"
       - href: pandas.qmd
         text: "Pandas入門"
       - href: plotly.qmd

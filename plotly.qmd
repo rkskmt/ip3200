@@ -304,7 +304,7 @@ fig.write_html("iframes/plotly_scatter_size.html", include_plotlyjs="directory")
 
 - `px.line()` で折れ線グラフを作る
 - 時間変化や順序のあるデータに向いている
-- 題材は可視化回の **東京150年の年平均気温**（気象庁）
+- 題材は可視化編の **東京150年の年平均気温**（気象庁）
    - データ：[tokyo_temp_annual.csv](data/tokyo_temp_annual.csv)（`data` フォルダに置く）
 
 ```{python}
@@ -342,7 +342,7 @@ fig.write_html("iframes/plotly_line.html", include_plotlyjs="directory")
 ::: {.callout-tip}
 ## 自分の指でチェリーピックしてみる
 - **ドラッグで2006〜2017年あたりを選択** してズーム →「寒冷化」に見える
-- 可視化回の騙しグラフは、この **切り取り** と同じ操作だった
+- 可視化編の騙しグラフは、この **切り取り** と同じ操作だった
 - **ダブルクリックで全体に戻る** — 全体を確認するクセをつける
 :::
 
@@ -577,7 +577,7 @@ fig.write_html("graph.html")
 
 ## Gapminder "Wealth & Health of Nations"
 
-- 可視化回の実例集で見た、**世界で一番有名な「動くグラフ」**
+- 可視化編の実例集で見た、**世界で一番有名な「動くグラフ」**
    - 横軸：1人あたりGDP、縦軸：平均寿命、バブルの大きさ：人口
 - Plotlyには **このデータが同梱** されている
 
