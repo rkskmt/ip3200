@@ -29,7 +29,7 @@ import numpy as np
 
 
 ::: {.callout-note}
-## inportの `as` とは？
+## importの `as` とは？
 
 `import numpy as np` の `as np` は**別名（エイリアス）**をつける構文
 

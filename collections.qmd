@@ -187,18 +187,18 @@ scores.append(95)
 print(scores)  # [85, 90, 78, 92, 88, 95]
 
 # 【注意】このような書き方はできない
-score2 = scores.append(95)  # エラーにはならないが…
-print(score2)  # None ← リストではない！
+score2 = scores.append(60)  # エラーにはならないが…
+print(score2)  # None ← リストではない！（60自体は追加されている）
 
 # リスト同士を接続（concat）することも可能
-other_scores1 = [20, 30]
-other_scores2 = [40, 50]
-other_scores = other_scores1 + other_scores2
-print(other_scores)  # [20, 30, 40, 50]
+classA_scores = [72, 81]
+classB_scores = [94, 66]
+other_scores = classA_scores + classB_scores
+print(other_scores)  # [72, 81, 94, 66]
 
 # これでも可
 scores += other_scores
-print(scores)  # [85, 90, 78, 92, 88, 95, 20, 30, 40, 50]
+print(scores)  # [85, 90, 78, 92, 88, 95, 60, 72, 81, 94, 66]
 ```
 
 
@@ -566,6 +566,29 @@ print(f"最低: {low}点, 最高: {high}点")
 
 result[0] = 100  # TypeError: 'tuple' object does not support item assignment
 ```
+
+
+## 冒頭の成績表、いまなら持てる
+
+- `list` と `dict` を組み合わせると、最初に見た成績表がそのままコードになる
+
+```python
+students = [
+    {"番号": 1, "名前": "佐藤 太郎", "国語": 85, "数学": 90, "英語": 85},
+    {"番号": 2, "名前": "鈴木 花子", "国語": 90, "数学": 85, "英語": 80},
+    {"番号": 3, "名前": "高橋 一郎", "国語": 78, "数学": 95, "英語": 92},
+]
+
+# 全員の3教科平均を一気に計算（30人でも300人でも同じコード）
+for s in students:
+    avg = (s["国語"] + s["数学"] + s["英語"]) / 3
+    print(f'{s["名前"]}: 平均 {avg:.1f}点')
+# 佐藤 太郎: 平均 86.7点
+# 鈴木 花子: 平均 85.0点
+# 高橋 一郎: 平均 88.3点
+```
+
+- 「変数を1人ずつ作る」世界には、もう戻らなくていい
 
 
 ## まとめ
