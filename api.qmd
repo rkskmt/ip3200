@@ -288,9 +288,9 @@ https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/
 | **start** / **end** | YYYYMMDD 形式 |
 
 
-## 東京スカイツリーのページビューを取得する
+## 「七夕」のページビューを取得する
 
-- 過去1年分の日別アクセス数を取り、最大・最小・平均・分散を出す
+- 記事「七夕」の **2025年まるごと1年分** の日別アクセス数を取り、統計量を出す
 
 ```python
 import requests
@@ -298,7 +298,7 @@ import numpy as np
 
 url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
        "ja.wikipedia/all-access/user/"
-       "東京スカイツリー/daily/20240401/20250328")
+       "七夕/daily/20250101/20251231")
 headers = {'User-Agent': 'example.com/lesson'}
 
 response = requests.get(url, headers=headers)
@@ -308,14 +308,23 @@ data = response.json()
 views = np.array([item['views']     for item in data['items']])
 dates = np.array([item['timestamp'] for item in data['items']])
 
-max_i = np.argmax(views)
-min_i = np.argmin(views)
-
-print(f"最大: {views[max_i]}回  {dates[max_i]}")
-print(f"最小: {views[min_i]}回  {dates[min_i]}")
-print(f"平均: {np.mean(views):.1f}回")
-print(f"分散: {np.var(views):.1f}")
+print(f"日数:   {len(views)}")
+print(f"最大:   {views.max()}回")
+print(f"最小:   {views.min()}回")
+print(f"平均:   {views.mean():.1f}回")
+print(f"中央値: {np.median(views):.0f}回")
 ```
+
+```text
+日数:   365
+最大:   47656回
+最小:   58回
+平均:   467.6回
+中央値: 154回
+```
+
+- **最大が中央値の約300倍**。平均と中央値も大きくズレている
+- 可視化回でやった「右に引っ張られた平均」の匂い — **なにかがおかしい**
 
 
 ## 過去の章が一気に効いてくる
@@ -346,16 +355,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-np.random.seed(0)
-days = 365
-views = np.random.poisson(lam=15, size=days)
-views[170] = 1200          # 1日だけ突出（イメージ）
+views = np.loadtxt("data/tanabata_pageviews_2025.csv", delimiter=",", skiprows=1, usecols=1)
 
 fig, ax = plt.subplots(figsize=(6, 3))
 ax.plot(views, color="#2266CC", linewidth=1)
-ax.set_title("Page View Trend (sample image)")
-ax.set_xlabel("days")
-ax.set_ylabel("Views")
+ax.set_title("「七夕」の閲覧数（2025年）")
+ax.set_xlabel("日数")
+ax.set_ylabel("閲覧数")
 ax.grid(True, linestyle="--", alpha=0.5)
 plt.tight_layout()
 plt.show()
@@ -373,7 +379,7 @@ import numpy as np
 
 url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
        "ja.wikipedia/all-access/user/"
-       "東京スカイツリー/daily/20240401/20250328")
+       "七夕/daily/20250101/20251231")
 headers = {'User-Agent': 'example.com/lesson'}
 response = requests.get(url, headers=headers)
 data = response.json()
@@ -381,23 +387,67 @@ data = response.json()
 views = np.array([item['views'] for item in data['items']])
 
 plt.plot(views)
-plt.title('Page View Trend')
-plt.xlabel('days')
-plt.ylabel('Views')
+plt.title("「七夕」の閲覧数（2025年）")
+plt.xlabel("日数")
+plt.ylabel("閲覧数")
 plt.show()
-
-print(f"Max:  {np.max(views)}")
-print(f"Min:  {np.min(views)}")
-print(f"Mean: {np.mean(views):.1f}")
-print(f"Var:  {np.var(views):.1f}")
 ```
 
 ::: {.callout-note}
 ## 1日だけ突出している
-- ほぼ平坦な中、**1日だけ大きな山**
-- なにかニュース・イベントなどで参照が増えた可能性
-- **数値だけ見ていると気づけない** ← アンスコムの教訓と同じ
+- ほぼ平坦な中、**1日だけ大きな山** — **数値だけ見ていると気づけない**（アンスコムの教訓と同じ）
+- そして見覚えがあるはず：**可視化回の冒頭で見せた謎の図は、実はこのデータ**
 :::
+
+
+## 山の正体：「いつ」を特定する
+
+- 山の **高さ** は `max()`。知りたいのは **「いつ」**
+- `np.argmax()` で **インデックス** を取り、同じインデックスで `dates` を引く
+
+```python
+max_i = np.argmax(views)
+print(f"{dates[max_i]} に {views[max_i]} 回")
+```
+
+```text
+2025070700 に 47656 回
+```
+
+- **2025年7月7日 — 七夕の当日**
+- みんな、**行事の当日にその行事を調べる**
+   - 「七夕って何の日？」「短冊はなぜ？」— 検索が記事に殺到する
+- 1年分の人間の行動が、API経由の数列ひとつに写っている
+
+
+## よく見ると、もう一つ山がある
+
+```{python}
+#| echo: false
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+data = np.loadtxt("data/tanabata_pageviews_2025.csv", delimiter=",", skiprows=1)
+views = data[:, 1]
+
+fig, ax = plt.subplots(figsize=(7, 3))
+ax.plot(views, color="#2266CC", linewidth=1)
+ax.set_ylim(0, 3000)        # 大きな山の「足元」を拡大
+ax.annotate("7/7（軸の外まで続く）", xy=(187, 2800), color="#CC4444", ha="center")
+ax.annotate("8/29 ←これは何？", xy=(240, 2400), color="#2266CC", ha="left")
+ax.set_xlabel("日数")
+ax.set_ylabel("閲覧数")
+ax.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+- y軸を拡大すると、**8月29日にも小さな山**（2,291回）
+- 正体：**伝統的七夕** — 旧暦7月7日にあたる日（2025年は8月29日）
+   - 国立天文台が毎年発表している。7月7日は梅雨だが、**旧暦の七夕は夏空で天の川が見える**
+- ==ズームしないと見えない発見もある== — 軸の範囲は「正直さ」だけでなく「発見」の道具でもある
 
 
 ## まとめ
@@ -425,7 +475,7 @@ print(f"Var:  {np.var(views):.1f}")
 
 ## 演習1：desktop と mobile-web の比較
 
-- 同じ期間（2024/04/01 – 2025/03/28）で **API を2回呼ぶ**
+- 同じ期間（2025/01/01 – 2025/12/31）・同じ記事「七夕」で **API を2回呼ぶ**
 - `access` を `desktop` と `mobile-web` に切り替える
 - それぞれの **最大・最小・平均・分散** を print する
 
@@ -461,9 +511,9 @@ import japanize_matplotlib
 import numpy as np
 
 headers = {'User-Agent': 'example.com/lesson'}
-article = "東京スカイツリー"
+article = "七夕"
 base = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
-        f"ja.wikipedia/{{access}}/user/{article}/daily/20240401/20250328")
+        f"ja.wikipedia/{{access}}/user/{article}/daily/20250101/20251231")
 
 def fetch_views(access):
     url = base.format(access=access)
@@ -483,6 +533,67 @@ plt.title(title)
 plt.xlabel("days"); plt.ylabel("Views")
 plt.show()
 ```
+
+
+## 演習3：富士山には山があるか
+
+- 記事名を `富士山` に変えて、2025年1年分を取得して描け
+   - 「七夕」のコードの **記事名を変えるだけ**
+- 問い：七夕のような **鋭い山（スパイク）** はあるか？
+- 問い：スパイクがないなら、**何が見えるか**？ 自分の言葉で説明せよ
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+import requests
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+import numpy as np
+
+url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
+       "ja.wikipedia/all-access/user/"
+       "富士山/daily/20250101/20251231")
+headers = {'User-Agent': 'example.com/lesson'}
+response = requests.get(url, headers=headers)
+data = response.json()
+
+views = np.array([item['views'] for item in data['items']])
+
+plt.plot(views)
+plt.title("「富士山」の閲覧数（2025年）")
+plt.xlabel("日数")
+plt.ylabel("閲覧数")
+plt.show()
+```
+
+```{python}
+#| echo: false
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+views = np.loadtxt("data/fuji_pageviews_2025.csv", delimiter=",", skiprows=1, usecols=1)
+
+fig, ax = plt.subplots(figsize=(7, 2.8))
+ax.plot(views, color="#2266CC", linewidth=1)
+ax.set_title("「富士山」の閲覧数（2025年）")
+ax.set_xlabel("日数")
+ax.set_ylabel("閲覧数")
+ax.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+::: {.callout-note}
+## 種明かし：針はない。でも「波」がある
+- 七夕のような数百倍のスパイクは **ない**（最大でも中央値の約3倍）
+- 代わりに **8月（登山シーズン）と1〜2月** が高い、ゆるやかな波
+   - 夏が高いのは分かる。**冬はなぜ高い？** — 考えてみよう
+- ==スパイクだけが発見ではない==。波（季節性）も、データが教えてくれる人間の行動
+:::
 
 
 ## {background-color="white" .center .break-slide}

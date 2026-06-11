@@ -28,7 +28,7 @@ subtitle: "matplotlibで「見える化」する"
 ## 予告：この授業のゴール
 
 - 数回後には、**世界中の人がいま何を見ているか** を自分のコードで取得して可視化できるようになる
-- 例：ある観光名所のWikipediaページ、1年分の閲覧数
+- 例：あるWikipediaページの **2025年・1年分の閲覧数**（実データ。記事名はまだ秘密）
 
 ```{python}
 #| echo: false
@@ -37,20 +37,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-np.random.seed(0)
-views = np.random.poisson(lam=15, size=365)
-views[170] = 1200          # 1日だけ突出（イメージ）
+views = np.loadtxt("data/tanabata_pageviews_2025.csv", delimiter=",", skiprows=1, usecols=1)
 
 fig, ax = plt.subplots(figsize=(7, 2.6))
 ax.plot(views, color="#2266CC", linewidth=1)
-ax.set_xlabel("日数")
+ax.set_xlabel("日数（1月1日からの経過日数）")
 ax.set_ylabel("閲覧数")
 ax.grid(True, linestyle="--", alpha=0.5)
 plt.tight_layout()
 plt.show()
 ```
 
-- ほぼ平坦なのに **1日だけ大きな山** — この日、何があった？
+- ほぼ平坦なのに **1日だけ大きな山**（最大47,656回、ふだんの約300倍） — この日、何があった？
 - 答えは **API回** で。今日はその第一歩、「描いて、見る」技術
 
 
