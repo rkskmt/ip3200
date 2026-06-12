@@ -6,7 +6,7 @@ Quarto-based website for an information processing course. Written in Japanese.
 
 ## Tech Stack
 
-- **Quarto** website project with `clean-revealjs` slide format
+- **Quarto** website project with `revealjs` slide format (theme.scss + custom.css, no theme extension)
 - **MathJax** for math rendering
 - Extensions: `lightbox`
 
@@ -37,7 +37,7 @@ Use Python as the vehicle, but frame concepts as broadly as possible. Where a co
 
 - Content is written in **Japanese**
 - `##` delimits slides (do not use `---`)
-- `_metadata.yaml` applies `clean-revealjs` to all `.qmd` files
+- `_metadata.yaml` applies `revealjs` (theme: default + theme.scss, plus custom.css and slide-ui.js via include-in-header) to all `.qmd` files
 - **Do not add frontmatter to `index.qmd`.**  Quarto **merges** (not overwrites) `format` from `_metadata.yaml` and the file, so adding `format: html` causes it to render in both formats and trigger a `rename` error. Raw HTML (e.g. `<details>/<summary>`) is fine — it needs no frontmatter.
 - **Do not use `listing:` in `index.qmd` either.** Same reason — it requires `format: html`, which conflicts.
 - `render: ["*.qmd"]` in `_quarto.yml` prevents `.md` files (e.g. CLAUDE.md) from being rendered
