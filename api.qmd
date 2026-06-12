@@ -52,6 +52,41 @@ import requests
 ```
 
 
+## Webアクセスの正体：リクエストとレスポンス
+
+```{python}
+#| echo: false
+#| fig-align: center
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+fig, ax = plt.subplots(figsize=(10, 3.0))
+ax.set_xlim(0, 10); ax.set_ylim(0, 4); ax.axis("off")
+ax.text(1.5, 2.0, "あなたの\nPython\n（requests）", ha="center", va="center",
+        fontsize=12, fontweight="bold",
+        bbox={"boxstyle": "round,pad=0.6", "fc": "#d6eaf8", "ec": "#2471a3", "lw": 2})
+ax.text(8.5, 2.0, "Webサーバ\n（www.python.org\nなど）", ha="center", va="center",
+        fontsize=12, fontweight="bold",
+        bbox={"boxstyle": "round,pad=0.6", "fc": "#d5f5e3", "ec": "#1e8449", "lw": 2})
+ax.annotate("", xy=(7.1, 2.7), xytext=(2.9, 2.7),
+            arrowprops={"arrowstyle": "->", "color": "#2471a3", "lw": 2.5})
+ax.text(5.0, 3.05, "リクエスト：GET <URL> ＋ ヘッダー", ha="center",
+        fontsize=11, color="#2471a3", fontweight="bold")
+ax.annotate("", xy=(2.9, 1.3), xytext=(7.1, 1.3),
+            arrowprops={"arrowstyle": "->", "color": "#1e8449", "lw": 2.5})
+ax.text(5.0, 0.95, "レスポンス：ステータスコード ＋ ヘッダー ＋ 本文",
+        ha="center", fontsize=11, color="#1e8449", fontweight="bold", va="top")
+ax.text(5.0, 0.35, "（200）　（メタ情報）　（HTML / JSON）",
+        ha="center", fontsize=9.5, color="#1e8449", va="top")
+plt.tight_layout()
+plt.show()
+```
+
+- Webアクセスは、つねにこの **1往復**
+- この往復を `requests.get()` が1行でやってくれる
+- 返事は3点セット — **状態（コード）・メタ情報（ヘッダー）・本文** を順に見ていく
+
+
 ## 一番シンプルな使い方
 
 - `requests.get(url)` で **指定URLにアクセス**
@@ -82,6 +117,24 @@ print(response)   # <Response [200]>
 
 - 全部覚える必要なし
 - **200番台 = 成功、400番台 = リクエスト側のミス、500番台 = サーバ側のミス** くらいの感覚
+
+```{python}
+#| echo: false
+#| fig-align: center
+fig, ax = plt.subplots(figsize=(10, 2.0))
+ax.set_xlim(0, 10); ax.set_ylim(0, 2.2); ax.axis("off")
+bands = [(0.2, "#d5f5e3", "#1e8449", "200番台：成功", "200 OK"),
+         (3.6, "#fdebd0", "#b9770e", "400番台：リクエスト側のミス", "404 Not Found"),
+         (7.0, "#fadbd8", "#943126", "500番台：サーバ側のミス", "500 / 501 / 503")]
+for x0, fc, ec, title, examples in bands:
+    ax.add_patch(plt.Rectangle((x0, 0.3), 2.8, 1.6, fc=fc, ec=ec, lw=2))
+    ax.text(x0 + 1.4, 1.45, title, ha="center", fontsize=11, fontweight="bold",
+            color=ec)
+    ax.text(x0 + 1.4, 0.75, examples, ha="center", fontsize=11, color=ec,
+            family="monospace")
+plt.tight_layout()
+plt.show()
+```
 
 
 ## response の中身
@@ -194,6 +247,41 @@ print(response.text)   # 中身は生のJSONテキスト
 
 - `.json()` は **このテキストを dict に変換** するメソッド
 
+```{python}
+#| echo: false
+#| fig-align: center
+fig, ax = plt.subplots(figsize=(11.5, 3.4))
+ax.set_xlim(0, 11.5); ax.set_ylim(0, 5); ax.axis("off")
+raw = ('{"items": [\n'
+       '  {"project": "ja.wikipedia",\n'
+       '   "access": "all-access",\n'
+       '   "year": "2025",\n'
+       '   ... }]}')
+ax.text(2.1, 2.5, raw, ha="center", va="center", fontsize=10, family="monospace",
+        multialignment="left",
+        bbox={"boxstyle": "round,pad=0.6", "fc": "#fef9e7", "ec": "#b7950b", "lw": 1.8})
+ax.text(2.1, 4.6, "JSON：ただのテキスト（str）", ha="center", fontsize=11,
+        fontweight="bold", color="#b7950b")
+ax.annotate("", xy=(6.0, 2.5), xytext=(4.4, 2.5),
+            arrowprops={"arrowstyle": "->", "color": "#34495e", "lw": 2.5})
+ax.text(5.2, 2.9, ".json()", ha="center", fontsize=12, family="monospace",
+        fontweight="bold", color="#34495e")
+ax.add_patch(plt.Rectangle((6.3, 0.5), 4.9, 3.6, fc="#eaf2f8", ec="#2471a3", lw=2))
+ax.text(6.55, 3.7, "dict", fontsize=11, fontweight="bold", color="#2471a3")
+ax.add_patch(plt.Rectangle((6.7, 0.8), 4.2, 2.6, fc="#d4efdf", ec="#1e8449", lw=1.8))
+ax.text(6.95, 3.0, '"items" → list', fontsize=10.5, fontweight="bold",
+        color="#1e8449", family="monospace")
+ax.add_patch(plt.Rectangle((7.1, 1.05), 3.5, 1.7, fc="#fdf2e9", ec="#b9770e", lw=1.6))
+ax.text(7.3, 2.4, "[0] → dict", fontsize=10, fontweight="bold", color="#b9770e",
+        family="monospace")
+ax.text(7.35, 1.7, '"project": "ja.wikipedia"\n"access": "all-access"',
+        fontsize=9.5, family="monospace", va="center", ha="left", color="#5d4037")
+ax.text(8.75, 4.6, "dict / list の入れ子（プログラムで扱える）", ha="center",
+        fontsize=11, fontweight="bold", color="#2471a3")
+plt.tight_layout()
+plt.show()
+```
+
 
 ## （余談）手動で JSON → dict
 
@@ -243,6 +331,32 @@ APIとエンドポイントの構造
 ```text
 https://wikimedia.org/api/rest_v1/metrics/pageviews/top/
     {プロジェクト} / {アクセス方法} / {日付}
+```
+
+```{python}
+#| echo: false
+#| fig-align: center
+fig, ax = plt.subplots(figsize=(12.5, 2.4))
+ax.set_xlim(0, 100); ax.set_ylim(0, 5); ax.axis("off")
+segments = [
+    ("https://wikimedia.org/api/rest_v1", "#eaecee", "#5d6d7e", "APIの入口（共通）"),
+    ("/metrics/pageviews/top", "#d6eaf8", "#2471a3", "エンドポイント\n（top ランキング）"),
+    ("/ja.wikipedia", "#d5f5e3", "#1e8449", "プロジェクト"),
+    ("/all-access", "#fdebd0", "#b9770e", "アクセス方法"),
+    ("/2025/06/27", "#e8daef", "#6c3483", "日付"),
+]
+x = 1.0
+char_w = 0.95
+for text, fc, ec, label in segments:
+    w = len(text) * char_w
+    ax.add_patch(plt.Rectangle((x, 2.4), w, 1.4, fc=fc, ec=ec, lw=1.8))
+    ax.text(x + w / 2, 3.1, text, ha="center", va="center", fontsize=10.5,
+            family="monospace", color="#1c2833")
+    ax.text(x + w / 2, 1.9, label, ha="center", va="top", fontsize=10,
+            color=ec, fontweight="bold")
+    x += w
+plt.tight_layout()
+plt.show()
 ```
 
 | パラメータ | 例の値 | 意味 | 他の選択肢 |
