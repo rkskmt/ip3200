@@ -3,6 +3,30 @@ title: "変数と代入"
 subtitle: "メモリモデルで理解する"
 ---
 
+## 事件：関数に渡しただけなのに
+
+成績データの「2倍にしたコピー」を作ろうとしました。
+
+```python
+def double_all(data):
+    for i in range(len(data)):
+        data[i] = data[i] * 2
+    return data
+
+scores = [10, 20, 30]
+result = double_all(scores)
+print(result)  # [20, 40, 60] ← 期待どおり
+print(scores)  # [20, 40, 60] ← ！？ 元データまで壊れた
+```
+
+- `scores` には一度も代入していないのに、**元の成績が消えた**
+
+::: {.callout-important}
+## 今回のゴール
+この回が終わる頃には、この事故を**図1枚で説明**でき、**1行で防げる**ようになる。
+:::
+
+
 ## リテラル（値）
 
 速習を終えたところで、敢えて変数と代入をおさらいしましょう。
@@ -36,6 +60,62 @@ a # NameError: name 'a' is not defined
 
 - `1` や `"1"` は**リテラル（直接記述できる値）**
 - `a` は値ではなく**変数**として認識される
+
+```{python}
+#| echo: false
+#| fig-align: center
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+TAG_FC, TAG_EC = "#fef9e7", "#b7950b"
+OBJ_FC, OBJ_EC = "#d6eaf8", "#2471a3"
+FADE_FC, FADE_EC = "#f2f3f4", "#aab7c4"
+NEW_EC = "#c0392b"
+
+def tag(ax, x, y, name, faded=False):
+    ax.text(x, y, name, ha="center", va="center", fontsize=12, family="monospace",
+            fontweight="bold", color="#7d6608" if not faded else "#aab7c4",
+            bbox={"boxstyle": "round,pad=0.35",
+                  "fc": TAG_FC if not faded else FADE_FC,
+                  "ec": TAG_EC if not faded else FADE_EC, "lw": 1.8})
+
+def obj(ax, x, y, value, addr, faded=False, hot=False):
+    ec = NEW_EC if hot else (FADE_EC if faded else OBJ_EC)
+    fc = FADE_FC if faded else OBJ_FC
+    color = "#aab7c4" if faded else "#1c2833"
+    ax.text(x, y, value, ha="center", va="center", fontsize=12, family="monospace",
+            fontweight="bold", color=color,
+            bbox={"boxstyle": "round,pad=0.45", "fc": fc, "ec": ec, "lw": 2})
+    ax.text(x, y - 0.62, addr, ha="center", va="top", fontsize=8.5,
+            color="#aab7c4" if faded else "#5d6d7e")
+
+def link(ax, x0, y0, x1, y1, faded=False, hot=False):
+    color = NEW_EC if hot else ("#d5d8dc" if faded else "#566573")
+    ax.annotate("", xy=(x1, y1), xytext=(x0, y0),
+                arrowprops={"arrowstyle": "->", "color": color, "lw": 2.2})
+
+def panel(ax, title=None, mono=True):
+    ax.set_xlim(0, 4.6); ax.set_ylim(0, 4); ax.axis("off")
+    if title:
+        ax.set_title(title, fontsize=11, family="monospace" if mono else None)
+
+fig, axes = plt.subplots(1, 2, figsize=(9.5, 2.6))
+ax = axes[0]
+panel(ax, mono=False)
+ax.set_title("看板のない値：すぐ回収されて消える", fontsize=11)
+obj(ax, 2.3, 2.2, "1234", "誰にも指されていない", faded=True)
+ax = axes[1]
+panel(ax, mono=False)
+ax.set_title("看板が立った値：生き続ける", fontsize=11)
+tag(ax, 0.8, 2.2, "a")
+obj(ax, 3.2, 2.2, "1234", "a に指されている")
+link(ax, 1.35, 2.2, 2.45, 2.2)
+plt.tight_layout()
+plt.show()
+```
+
+- 変数とは、**値をつかんで離さないための「名前」** — 看板が立っている限り値は消えない
+- `a` はまだどこにも立てていない看板なので、エラーになる
 
 ## 変数の命名規則
 
@@ -78,41 +158,6 @@ test_2 = "test2"
 ```{python}
 #| echo: false
 #| fig-align: center
-import matplotlib.pyplot as plt
-import japanize_matplotlib
-
-TAG_FC, TAG_EC = "#fef9e7", "#b7950b"
-OBJ_FC, OBJ_EC = "#d6eaf8", "#2471a3"
-FADE_FC, FADE_EC = "#f2f3f4", "#aab7c4"
-NEW_EC = "#c0392b"
-
-def tag(ax, x, y, name, faded=False):
-    ax.text(x, y, name, ha="center", va="center", fontsize=12, family="monospace",
-            fontweight="bold", color="#7d6608" if not faded else "#aab7c4",
-            bbox={"boxstyle": "round,pad=0.35",
-                  "fc": TAG_FC if not faded else FADE_FC,
-                  "ec": TAG_EC if not faded else FADE_EC, "lw": 1.8})
-
-def obj(ax, x, y, value, addr, faded=False, hot=False):
-    ec = NEW_EC if hot else (FADE_EC if faded else OBJ_EC)
-    fc = FADE_FC if faded else OBJ_FC
-    color = "#aab7c4" if faded else "#1c2833"
-    ax.text(x, y, value, ha="center", va="center", fontsize=12, family="monospace",
-            fontweight="bold", color=color,
-            bbox={"boxstyle": "round,pad=0.45", "fc": fc, "ec": ec, "lw": 2})
-    ax.text(x, y - 0.62, addr, ha="center", va="top", fontsize=8.5,
-            color="#aab7c4" if faded else "#5d6d7e")
-
-def link(ax, x0, y0, x1, y1, faded=False, hot=False):
-    color = NEW_EC if hot else ("#d5d8dc" if faded else "#566573")
-    ax.annotate("", xy=(x1, y1), xytext=(x0, y0),
-                arrowprops={"arrowstyle": "->", "color": color, "lw": 2.2})
-
-def panel(ax, title=None, mono=True):
-    ax.set_xlim(0, 4.6); ax.set_ylim(0, 4); ax.axis("off")
-    if title:
-        ax.set_title(title, fontsize=11, family="monospace" if mono else None)
-
 fig, axes = plt.subplots(1, 2, figsize=(9.5, 2.8))
 ax = axes[0]
 panel(ax, mono=False)
@@ -150,10 +195,12 @@ print(a11) # 当然13
 print(a12) # ??? （同じアドレスを指しているはずだが？）
 ```
 
+::: {.fragment}
+
 - 結果： **12**
-- 数値（`int`）は、宣言する度 **新しいアドレス** にリテラルを作る
-- つまり、5行目の時点でa11は別のアドレスが書かれている
-- よって、3行目で共有したアドレスはa12しか持たなくなる
+- `a11 = 13` は「11 だった場所に 13 を書き込む」**ではない** — **看板の掛け替え**
+- 代入 `x = ...` は**常に掛け替え**。共有していたのは3行目から5行目までの一瞬だけ
+- 5行目以降、共有していた場所を指すのは a12 だけになる
 
 ```{python}
 #| echo: false
@@ -180,6 +227,8 @@ plt.tight_layout()
 plt.show()
 ```
 
+:::
+
 
 ## リストの代入（罠）
 
@@ -193,9 +242,11 @@ odd1[0] = 9
 print(odd2) # ???
 ```
 
+::: {.fragment}
+
 - 結果： **[9, 7]**
-- `odd1[0] = 9` は `odd1` を変えただけなのに、`odd2` まで変化
-   - つまり、3行目で共有したアドレスはずっと共有したまま
+- `odd1[0] = 9` は看板の掛け替え**ではない** — 指している先の**中身の変更**
+- 看板は2枚とも同じリストを指したまま → `odd2` から見ても変わる
 
 ```{python}
 #| echo: false
@@ -224,6 +275,76 @@ plt.tight_layout()
 plt.show()
 ```
 
+:::
+
+
+## クイズ：どっちなら odd2 は無事？
+
+ほぼ同じに見える2つのコード。`print(odd2)` は何と出る？
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```python
+# A
+odd1 = [1, 3]
+odd2 = odd1
+odd1 = [9, 7]
+print(odd2)  # ???
+```
+:::
+
+::: {.column width="50%"}
+```python
+# B
+odd1 = [1, 3]
+odd2 = odd1
+odd1[0] = 9
+print(odd2)  # ???
+```
+:::
+
+::::
+
+::: {.fragment}
+
+- A： **[1, 3]** — `odd1 = [9, 7]` は**看板の掛け替え**。odd2 は無傷
+- B： **[9, 7]** — `odd1[0] = 9` は**中身の変更**。odd2 も巻き込まれる
+
+```{python}
+#| echo: false
+#| fig-align: center
+fig, axes = plt.subplots(1, 2, figsize=(10.5, 2.9))
+ax = axes[0]; panel(ax, "A の実行後（掛け替え）", mono=False)
+tag(ax, 0.8, 3.0, "odd1"); obj(ax, 3.2, 3.0, "[9, 7]", "…776（新しい場所）", hot=True)
+tag(ax, 0.8, 1.2, "odd2"); obj(ax, 3.2, 1.2, "[1, 3]", "…264")
+link(ax, 1.5, 3.0, 2.45, 3.0, hot=True); link(ax, 1.5, 1.2, 2.45, 1.2)
+
+ax = axes[1]; panel(ax, "B の実行後（中身の変更）", mono=False)
+tag(ax, 0.8, 3.0, "odd1"); tag(ax, 0.8, 1.2, "odd2")
+obj(ax, 3.2, 2.1, "[9, 7]", "…264（同じ場所のまま）", hot=True)
+link(ax, 1.5, 3.0, 2.5, 2.3); link(ax, 1.5, 1.2, 2.5, 1.9)
+plt.tight_layout()
+plt.show()
+```
+
+:::
+
+
+## ルールは2本だけ
+
+| | 操作 | 何が起きる |
+|---|---|---|
+| **ルール1** | `x = ...`（代入） | **看板の掛け替え**。型に関係なく常に。コピーは起きない |
+| **ルール2** | `x[0] = ...` や `.append()` | 指している先の**中身を変更**。できるのは**ミュータブル**だけ |
+
+- 「リストだけ変な動きをする」のではない — リストは**起こせる操作（ルール2）が1つ多い**だけ
+- 迷ったら「これは掛け替え？　中身の変更？」と聞けば、すべてのクイズが解ける
+
+::: {.callout-tip}
+この2本で、冒頭の事件も説明できる。あと少し道具（`id()`）を足してから戻ろう。
+:::
+
 
 ## `id()` で住所を確認（数値）
 
@@ -240,8 +361,15 @@ a11 = 13
 print(id(a11)) # 2083050422896。違う場所を指している。
 ```
 
-- リテラルが代入されるたびに **アドレスが変わっている**
-- リテラルは必ず**新しいアドレスに新しい値**として書き込まれる
+- 代入のたびに**指す先（アドレス）が変わっている** — ルール1（掛け替え）を `id()` で目撃できる
+- `a11 = 13` をしても、`11` や `12` の場所は書き換わっていない
+
+::: {.callout-warning}
+## 豆知識：小さい整数は使い回される
+- CPython は **-5〜256 の int をあらかじめ作って使い回す**
+- だから `x = 11; y = 11` とすると `id(x) == id(y)` は **True** になる
+- 「同じ値なら同じ場所を指すことがある」だけで、看板モデル自体は変わらない（高速化のための最適化）
+:::
 
 ## `id()` で住所を確認（リスト）
 
@@ -262,16 +390,33 @@ print(odd1)    # [9, 7]
 - `odd1 = odd2` 後、両者が**同じアドレスを指している**
 - だから `odd1[0] = 9` が `odd2` にも**影響する**
 
+## 「同じ場所？」を直接聞く：`is` 演算子
+
+- `id() == id()` を毎回書くのは回りくどい — **`is`** で直接聞ける
+
+```python
+odd1 = [9, 7]
+odd2 = odd1
+
+print(odd1 is odd2)      # True  （同じ場所を指している）
+print(odd1 == [9, 7])    # True  （中身が同じ）
+print(odd1 is [9, 7])    # False （中身は同じでも別の場所）
+```
+
+- **`==` は中身の比較、`is` は場所の比較**
+- 「この2枚の看板、同じ実体を指してる？」と聞きたいときは `is`
+
 ## ミュータブル / イミュータブル
 
-Pythonにおいて変数が指せるValueには以下の２種類が存在
+値（オブジェクト）は2種類に分かれる
 
-- 代入時に**必ず新しいアドレスに新たに作られる**型（イミュータブル）
-  - アドレスを意識しなくてもいい楽な型
-  - int str bool 等
-- 代入時に**現状のアドレスの中身を変更する**型（ミュータブル）
-  - ずっと同じところに居る
-  - list、dict 等 
+- **イミュータブル**：中身を変更する手段が**存在しない**型
+  - int str bool tuple 等
+  - 「変えた」ように見える操作も、すべて**新しい値への掛け替え**（ルール1）
+  - だからアドレスを意識しなくても事故が起きない
+- **ミュータブル**：中身を**その場で変更できる**型（ルール2が使える）
+  - list、dict 等
+  - 看板を何枚立てても実体は1つ — **共有に気づかないと事故になる**
 
 | 分類 | 型 |
 |---|---|
@@ -279,22 +424,23 @@ Pythonにおいて変数が指せるValueには以下の２種類が存在
 | ミュータブル | `list` `dict` `set` クラス など |
 
 
-## 実例：関数がリストを書き換えてしまう
+## 事件の解決：冒頭のコードに戻る
 
 ```python
 def double_all(data):
     for i in range(len(data)):
-        data[i] = data[i] * 2
+        data[i] = data[i] * 2   # ← ルール2：中身の変更！
     return data
 
 scores = [10, 20, 30]
-result = double_all(scores)
+result = double_all(scores)     # ← 関数に渡す＝ data という看板を立てる（ルール1）
 print(result)  # [20, 40, 60]
-print(scores)  # ???
+print(scores)  # [20, 40, 60]
 ```
 
-- 答えは **[20, 40, 60]** — `scores` も書き換わっている
-- `result = double_all(scores)` は新しいリストを作ったのではなく、**同じリストの別名**を作っただけ
+- 関数に渡しても**コピーは起きない**。引数 `data` は `scores` と同じリストを指す看板（ルール1）
+- 中で `data[i] = ...` と**中身を変更**したので（ルール2）、`scores` から見ても壊れていた
+- 約束どおり、**図1枚**で説明できる：
 
 ```{python}
 #| echo: false
@@ -321,6 +467,11 @@ plt.show()
 - リストを**別のアドレスに新たに複製**したいときは `.copy()` を使う。
    - この場面を残したいからセーブデータを一旦 別のスロットにするイメージ
    - 単に `=` で代入するとダメなケース
+- 冒頭の事故も、**渡す側の1行**で防げる：
+
+```python
+result = double_all(scores.copy())   # 複製を渡す → scores は無傷
+```
 
 ```python
 odd1 = [1, 3]
@@ -362,13 +513,30 @@ plt.show()
 
 ## 演習
 
-1. `dict` がミュータブルであることを `id()` を使って確認しましょう
-2. `list` と同じようにアクセスできる `str` がミュータブルかイミュータブルかを確認してください。
-3. 上記の例で `odd1[0]` のアドレスを確認して、どうなっているか見てみましょう（`list` はミュータブルですが、`list` の要素は `int` なのでイミュータブルのはず）
+1. **紙に看板図を描く**：次のコードを1行ずつ、看板と矢印で描きながら追い、最後の出力を**予想してから**実行して答え合わせしましょう
+
+   ```python
+   a = [1, 2]
+   b = a
+   a.append(3)   # 掛け替え？ 中身の変更？
+   a = [9]       # 掛け替え？ 中身の変更？
+   print(b)      # ???
+   ```
+
+2. `dict` がミュータブルであることを `id()`（または `is`）を使って確認しましょう
+3. `list` と同じようにアクセスできる `str` がミュータブルかイミュータブルかを確認してください。
+4. 上記の例で `odd1[0]` のアドレスを確認して、どうなっているか見てみましょう（`list` はミュータブルですが、`list` の要素は `int` なのでイミュータブルのはず）
+
+::: {.callout-tip}
+## 矢印が動くのを見たいとき
+[Python Tutor](https://pythontutor.com/) にコードを貼ると、看板（名前）と矢印が
+1行ごとに動く様子をステップ実行で確認できます。今日の図と同じ世界観です。
+:::
 
 ## まとめ
 
 - 変数は値そのものではなく、**値が置かれたアドレスを指す看板**
-- `int` / `str` / `bool` 等は**イミュータブル** — 代入時に必ず新しいアドレスに作られる
-- `list` / `dict` 等は**ミュータブル** — 同じアドレスの中身を変更するため意図せぬ書き換えに注意
-- 独立したコピーが必要なときは **`.copy()`** を使う
+- **ルール1**：代入 `x = ...` は型に関係なく**常に看板の掛け替え**。コピーは起きない
+- **ルール2**：**ミュータブル**（list / dict 等）だけが**中身をその場で変更**できる — 共有中の変更は全員に見える
+- イミュータブル（int / str / bool / tuple 等）は中身を変える手段がないので事故が起きない
+- 事故を防ぐには **`.copy()`** で別の実体を渡す。確認の道具は **`id()`**（住所）と **`is`**（同じ場所か）
