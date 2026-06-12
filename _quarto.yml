@@ -7,6 +7,7 @@ project:
     - "data/**"
     - "iframes/**"
     - "libs/**"
+    - "search-ui.js"
 
 website:
   title: "情報処理"
