@@ -73,16 +73,18 @@ arr = np.array([1, 2, 3, 4]) # 1-4のndarray
 ```python
 import numpy as np
 
-list = [1, 2, 3, 4]
-arr = np.array(list)
+li = [1, 2, 3, 4]
+arr = np.array(li)
 
 arr = np.array([1, 2, 3, 4])    # 同じ
 arr = np.array(range(1, 5))     # 同じ。実際には後述のarangeがよく使われる
-
-list += list
-arr = np.array(list)
-
 ```
+
+::: {.callout-warning}
+## 変数名を `list` にしない
+`list = [1, 2, 3]` と書くと**組み込みの `list` 型が上書き**され、
+以降 `list(range(5))` などが謎のエラーになります。`li` や `numbers` を使いましょう。
+:::
 
 
 
@@ -107,6 +109,8 @@ np.arange(1, 10, 2)  # [1 3 5 7 9]
 np.random.rand(3)           # [0.0, 1.0) の一様乱数 3要素
 np.random.randint(10)       # 0〜9のランダムな整数
 np.random.randint(1, 7, 3)  # 1〜6のランダムな整数 3要素
+
+arr = np.arange(10)
 np.random.shuffle(arr)      # 配列をランダムに並べ替え（破壊的）
 ```
 
@@ -164,16 +168,72 @@ print(type(arr2[0])) # <class 'numpy.float64'>
 import numpy as np
 
 my_array = np.array([1, 2, 3])
-my_array * 2  # array([2, 4, 6])  ← 要素ごとの計算
+print(my_array * 2)  # [2 4 6]  ← 要素ごとの計算
 
 # listに * 2 を使うと...
-print(my_list * 2)  # [1, 2, 3, 1, 2, 3]  ← 演算ではなく、２つのリストのconcat
+my_list = [1, 2, 3]
+print(my_list * 2)   # [1, 2, 3, 1, 2, 3]  ← 演算ではなく、２つのリストのconcat
 
 # listで同じことをするにはfor文や内包表記が必要
-my_list = [1, 2, 3]
-[x * 2 for x in my_list]   
-
+print([x * 2 for x in my_list])  # [2, 4, 6]
 ```
+
+
+## 本当に速いの？ — 100万要素で実測
+
+- 「for文が不要なため非常に高速」— 何倍くらい違うと思いますか？
+
+::: {.fragment}
+
+```{python}
+#| echo: true
+#| code-fold: true
+#| code-summary: "計測コードを表示"
+import time
+import numpy as np
+
+n = 1_000_000
+li = list(range(n))
+arr = np.arange(n)
+
+def best_time(f, repeat=5):
+    """repeat回実行して最速を返す（タイマーの揺れ対策の定石）"""
+    times = []
+    for _ in range(repeat):
+        t0 = time.perf_counter()
+        f()
+        times.append(time.perf_counter() - t0)
+    return min(times)
+
+t_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍
+t_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍
+
+print(f"list（内包表記）: {t_list * 1000:.1f} ミリ秒")
+print(f"ndarray:          {t_arr * 1000:.2f} ミリ秒")
+print(f"→ 約 {t_list / t_arr:.0f} 倍速い")
+```
+
+```{python}
+#| echo: false
+#| fig-align: center
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+plt.figure(figsize=(7, 2.6))
+bars = plt.barh(["ndarray", "list（内包表記）"],
+                [t_arr * 1000, t_list * 1000], color=["#2980b9", "#aab7c4"])
+for b, v in zip(bars, [t_arr * 1000, t_list * 1000]):
+    plt.text(b.get_width(), b.get_y() + b.get_height() / 2,
+             f" {v:.2f} ms", va="center", fontsize=11)
+plt.xlabel("100万要素を2倍するのにかかった時間（ミリ秒）")
+plt.tight_layout()
+plt.show()
+```
+
+- C言語で実装されたループが中で回るため、**桁違いに速い**
+- データが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由
+
+:::
 
 
 ## その他（長さやアクセス方法）
@@ -197,11 +257,12 @@ for v in arr:
 # 差分（数値微分）
 arr = np.array([0, 2, 5, 3, 1, 4]) # 時系列の信号を想定
 diff = np.zeros(len(arr) - 1) # 結果格納用のndarray
-for i in range(len(arr) - 1): 
+for i in range(len(arr) - 1):
     diff[i] = arr[i+1] - arr[i] # 微分
-print(diff)  # [ 2.  3. -2. -2.  3.] 
+print(diff)  # [ 2.  3. -2. -2.  3.]
 
-
+# 実はNumPyなら1行（こういう「定番処理の組み込み」が大量にある）
+print(np.diff(arr))  # [ 2  3 -2 -2  3]
 ```
 
 ## 多次元Array
@@ -227,6 +288,42 @@ print(A[:, 0])  # 1列目全体
 print(A.T)
 print(B.T)
 ```
+
+```{python}
+#| echo: false
+#| fig-align: center
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+A_vals = [[1, 2], [3, 4]]
+
+def draw_grid(ax, hl, title):
+    ax.set_xlim(-0.7, 2.2); ax.set_ylim(-2.4, 0.9)
+    ax.set_aspect("equal"); ax.axis("off")
+    for r in range(2):
+        for c in range(2):
+            on = (r, c) in hl
+            ax.add_patch(plt.Rectangle((c, -r - 1), 0.95, 0.95,
+                fc="#f5b7b1" if on else "#eaf2f8",
+                ec="#c0392b" if on else "#2471a3", lw=2.2 if on else 1.2))
+            ax.text(c + 0.475, -r - 0.525, str(A_vals[r][c]), ha="center",
+                    va="center", fontsize=14, family="monospace",
+                    fontweight="bold" if on else "normal")
+    ax.text(-0.35, -0.525, "行0", ha="center", va="center", fontsize=9, color="#666")
+    ax.text(-0.35, -1.525, "行1", ha="center", va="center", fontsize=9, color="#666")
+    ax.text(0.475, 0.25, "列0", ha="center", fontsize=9, color="#666")
+    ax.text(1.475, 0.25, "列1", ha="center", fontsize=9, color="#666")
+    ax.set_title(title, fontsize=12, family="monospace")
+
+fig, axes = plt.subplots(1, 3, figsize=(10, 2.7))
+draw_grid(axes[0], {(0, 1)}, "A[0, 1]")
+draw_grid(axes[1], {(1, 0), (1, 1)}, "A[1, :]")
+draw_grid(axes[2], {(0, 0), (1, 0)}, "A[:, 0]")
+plt.tight_layout()
+plt.show()
+```
+
+- `A[行, 列]` の順。`:` は「その方向ぜんぶ」
 
 
 
@@ -258,6 +355,94 @@ print(np.mean(data, axis=1))  # 行ごと（各生徒の平均）
 print(scores >= 85)           # True/False
 print(scores[scores >= 85])   # 85点以上のデータ
 ```
+
+```{python}
+#| echo: false
+#| fig-align: center
+import numpy as np
+
+data = np.array([[80, 85, 90], [75, 88, 92], [82, 79, 87]])
+
+fig, ax = plt.subplots(figsize=(8.5, 3.4))
+ax.set_xlim(-2.2, 6.2); ax.set_ylim(-4.8, 1.6)
+ax.set_aspect("equal"); ax.axis("off")
+
+for r in range(3):
+    for c in range(3):
+        ax.add_patch(plt.Rectangle((c, -r - 1), 0.95, 0.95,
+                                   fc="#eaf2f8", ec="#2471a3", lw=1.2))
+        ax.text(c + 0.475, -r - 0.525, str(data[r, c]), ha="center", va="center",
+                fontsize=12, family="monospace")
+    ax.text(-0.35, -r - 0.525, f"生徒{r}", ha="right", va="center", fontsize=9,
+            color="#666")
+for c, sub in enumerate(["英語", "数学", "国語"]):
+    ax.text(c + 0.475, 0.25, sub, ha="center", fontsize=9, color="#666")
+
+# axis=0: collapse rows (down arrows) -> per-subject means
+for c in range(3):
+    ax.annotate("", xy=(c + 0.475, -4.0), xytext=(c + 0.475, -3.15),
+                arrowprops={"arrowstyle": "->", "color": "#c0392b", "lw": 2})
+    m = data[:, c].mean()
+    ax.text(c + 0.475, -4.4, f"{m:.0f}", ha="center", va="center", fontsize=11,
+            family="monospace", color="#c0392b",
+            bbox={"boxstyle": "round,pad=0.25", "fc": "#fdedec", "ec": "#c0392b"})
+ax.text(1.475, -5.6, "axis=0：行方向に潰す → 科目ごとの平均", ha="center",
+        fontsize=10.5, color="#c0392b", fontweight="bold")
+
+# axis=1: collapse columns (right arrows) -> per-student means
+for r in range(3):
+    ax.annotate("", xy=(4.0, -r - 0.525), xytext=(3.15, -r - 0.525),
+                arrowprops={"arrowstyle": "->", "color": "#1e8449", "lw": 2})
+    m = data[r, :].mean()
+    ax.text(4.5, -r - 0.525, f"{m:.0f}", ha="center", va="center", fontsize=11,
+            family="monospace", color="#1e8449",
+            bbox={"boxstyle": "round,pad=0.25", "fc": "#e9f7ef", "ec": "#1e8449"})
+ax.text(5.0, 0.25, "axis=1：列方向に潰す\n→ 生徒ごとの平均", ha="left", fontsize=10.5,
+        color="#1e8449", fontweight="bold")
+ax.set_ylim(-6.2, 1.6)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+#| echo: false
+#| fig-align: center
+scores = np.array([80, 85, 90, 75, 88, 92, 82, 79, 87])
+mask = scores >= 85
+
+fig, ax = plt.subplots(figsize=(9.5, 3.0))
+ax.set_xlim(-2.6, 9.4); ax.set_ylim(-5.4, 0.6)
+ax.set_aspect("equal"); ax.axis("off")
+
+rows = [("scores", [str(v) for v in scores], None),
+        ("scores >= 85", ["T" if m else "F" for m in mask], mask),
+        ("scores[scores >= 85]", [str(v) for v in scores[mask]], None)]
+for ri, (label, vals, m) in enumerate(rows):
+    y = -ri * 2 - 1
+    ax.text(-0.25, y + 0.475, label, ha="right", va="center", fontsize=10.5,
+            family="monospace")
+    for ci, v in enumerate(vals):
+        if m is None:
+            keep = ri == 0 and mask[ci]
+            fc = "#d5f5e3" if (ri == 2 or keep) else "#eaf2f8"
+            ec = "#1e8449" if (ri == 2 or keep) else "#2471a3"
+        else:
+            fc = "#d5f5e3" if m[ci] else "#fadbd8"
+            ec = "#1e8449" if m[ci] else "#943126"
+        ax.add_patch(plt.Rectangle((ci, y), 0.95, 0.95, fc=fc, ec=ec, lw=1.3))
+        ax.text(ci + 0.475, y + 0.475, v, ha="center", va="center", fontsize=11,
+                family="monospace")
+ax.annotate("", xy=(4.3, -2.0), xytext=(4.3, -1.15),
+            arrowprops={"arrowstyle": "->", "color": "#555", "lw": 1.8})
+ax.annotate("", xy=(4.3, -4.0), xytext=(4.3, -3.15),
+            arrowprops={"arrowstyle": "->", "color": "#555", "lw": 1.8})
+ax.text(4.75, -1.6, "比較は全要素に一斉に効く", fontsize=9.5, color="#555", va="center")
+ax.text(4.75, -3.6, "True の位置だけ残る", fontsize=9.5, color="#555", va="center")
+plt.tight_layout()
+plt.show()
+```
+
+- 比較演算も「全要素いっせい」— その True/False を添字に渡すと**フィルタ**になる
 
 
 
