@@ -8,6 +8,8 @@ project:
     - "iframes/**"
     - "libs/**"
     - "search-ui.js"
+    - "custom.css"
+    - "slide-ui.js"
 
 website:
   title: "情報処理"
