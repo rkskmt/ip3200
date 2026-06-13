@@ -1,6 +1,7 @@
 ---
 title: "Wikipedia API リファレンス"
 subtitle: "エンドポイント一覧と使用例"
+lightbox: auto
 ---
 
 ## このスライドの位置づけ
@@ -19,26 +20,30 @@ subtitle: "エンドポイント一覧と使用例"
 
 ## どのAPIを使うべきか
 
-```{mermaid}
-%%| fig-width: 9
-%%| fig-align: center
-flowchart TD
-    A[何がしたい？] --> B{統計}
-    A --> C{記事内容}
-    A --> D{構造化データ}
-
-    B --> E[AQS]
-    C --> F{概要だけ}
-    C --> G{細かく制御}
-    F --> H[REST API v1]
-    G --> I[Action API]
-    D --> J[Wikidata]
-
-    style E fill:#e8f5e9
-    style H fill:#e3f2fd
-    style I fill:#fff3e0
-    style J fill:#fce4ec
+::: {style="text-align: center;"}
+```{.d2 sketch="true" width="80%"}
+direction: down
+A: 何がしたい？
+B: 統計 { shape: diamond }
+C: 記事内容 { shape: diamond }
+D: 構造化データ { shape: diamond }
+E: AQS { style.fill: "#e8f5e9" }
+F: 概要だけ { shape: diamond }
+G: 細かく制御 { shape: diamond }
+H: REST API v1 { style.fill: "#e3f2fd" }
+I: Action API { style.fill: "#fff3e0" }
+J: Wikidata { style.fill: "#fce4ec" }
+A -> B
+A -> C
+A -> D
+B -> E
+C -> F
+C -> G
+F -> H
+G -> I
+D -> J
 ```
+:::
 
 | 色 | API | 用途 | 例 |
 |---|---|---|---|

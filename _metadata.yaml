@@ -32,3 +32,4 @@ filters:
   - fw-colon.lua
   - cite-image.lua
   - plotly-iframe.lua
+  - d2
