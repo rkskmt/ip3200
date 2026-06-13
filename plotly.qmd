@@ -342,7 +342,7 @@ fig.write_html("iframes/plotly_line.html", include_plotlyjs="directory")
 ::: {.callout-tip}
 ## 自分の指でチェリーピックしてみる
 - **ドラッグで2006〜2017年あたりを選択** してズーム →「寒冷化」に見える
-- 可視化編の騙しグラフは、この **切り取り** と同じ操作だった
+- [可視化編の騙しグラフ](visualize.qmd#peek-ycut){.peek}は、この **切り取り** と同じ操作だった
 - **ダブルクリックで全体に戻る** — 全体を確認するクセをつける
 :::
 
@@ -577,7 +577,7 @@ fig.write_html("graph.html")
 
 ## Gapminder "Wealth & Health of Nations"
 
-- 可視化編の実例集で見た、**世界で一番有名な「動くグラフ」**
+- 可視化編の実例集で見た、[**世界で一番有名な「動くグラフ」**](visualize.qmd#peek-gapminder){.peek}
    - 横軸：1人あたりGDP、縦軸：平均寿命、バブルの大きさ：人口
 - Plotlyには **このデータが同梱** されている
 

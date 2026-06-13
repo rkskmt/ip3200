@@ -417,7 +417,7 @@ plt.show()
 
 ## ヒストグラム：あの所得分布を自分で作る
 
-- 前回見た厚労省の所得分布は **ヒストグラム**（区間ごとに数えるグラフ）だった
+- 前回見た[厚労省の所得分布](visualize.qmd#peek-income){.peek}は **ヒストグラム**（区間ごとに数えるグラフ）だった
 - 同じ構造の図を、ミニチュア（ある会社の社員29人の年収）で再現する
 - `plt.hist(x, bins=区間の数)` で描ける
 - `plt.axvline(値)` で **縦線**、`np.median(x)` で **中央値**
@@ -476,7 +476,7 @@ plt.show()
 ## 演習：謎のデータをプロットせよ
 
 - [datasaurus_star.csv](data/datasaurus_star.csv) をダウンロードして、`.py` と同じフォルダに置く
-- 前回見た **Datasaurus Dozen 13個のうちの1つ**（恐竜ではない）
+- 前回見た [**Datasaurus Dozen 13個のうちの1つ**](visualize.qmd#peek-datasaurus){.peek}（恐竜ではない）
    - 統計量はもちろん：$\bar{x} = 54.27$、$\bar{y} = 47.84$、$r = -0.06$
 - 手順
   1. `np.loadtxt` で読み込む（1行目はヘッダなので `skiprows=1`）

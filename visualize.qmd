@@ -163,7 +163,7 @@ fig.write_html("iframes/cholera_map.html", include_plotlyjs="directory")
 
 
 
-## 現代の可視化実例
+## 現代の可視化実例 {#peek-gapminder}
 
 | ジャンル | サンプル |
 |---|---|
@@ -204,7 +204,7 @@ fig.write_html("iframes/cholera_map.html", include_plotlyjs="directory")
 - では、**所得が平均以下** の世帯は全体のどれくらい？
    - 「平均」なんだから、だいたい半分（50%）……？
 
-## 平均以下の世帯は 62.2%
+## 平均以下の世帯は 62.2% {#peek-income}
 
 ```{python}
 #| echo: false
@@ -541,7 +541,7 @@ plt.show()
 :::
 
 
-## Datasaurus Dozen：全13個
+## Datasaurus Dozen：全13個 {#peek-datasaurus}
 
 ```{python}
 #| echo: false
@@ -619,7 +619,7 @@ plt.show()
 - 商品Bの圧勝に見える
 - でも、**何かおかしい。どこ？**
 
-## 種明かし：y軸の切断
+## 種明かし：y軸の切断 {#peek-ycut}
 
 ```{python}
 #| echo: false
