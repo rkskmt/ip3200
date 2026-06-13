@@ -358,6 +358,105 @@ $$
 </script>
 
 
+## 計算の意味：行列は点を「動かす機械」
+
+- さっきの掛け算、何をしていたのか？ — **行列はベクトル（点）を別の場所へ動かす変換**
+- 形（F）にかけてみると、その正体が見える
+
+```{python}
+#| echo: false
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+# 非対称な「F」字（回転・反転が一目で分かる）
+F = np.array([
+    [0, 0], [0, 3], [2, 3], [2, 2.3], [0.7, 2.3],
+    [0.7, 1.8], [1.6, 1.8], [1.6, 1.1], [0.7, 1.1], [0.7, 0], [0, 0],
+]).T
+
+def draw_shape(ax, M, color, label):
+    P = M @ F
+    ax.fill(P[0], P[1], color=color, alpha=0.3, zorder=1)
+    ax.plot(P[0], P[1], color=color, lw=2, zorder=2, label=label)
+
+mats = [
+    (np.array([[2.0, 0.0], [0.0, 1.0]]), "横に2倍に伸ばす\n[[2, 0], [0, 1]]"),
+    (np.array([[1.0, 0.8], [0.0, 1.0]]), "せん断（傾ける）\n[[1, 0.8], [0, 1]]"),
+    (np.array([[0.0, -1.0], [1.0, 0.0]]), "90°回す\n[[0, -1], [1, 0]]"),
+]
+fig, axes = plt.subplots(1, 3, figsize=(12, 4))
+for ax, (M, title) in zip(axes, mats):
+    draw_shape(ax, np.eye(2), "#aab7c4", "変換前")
+    draw_shape(ax, M, "#2980b9", "変換後")
+    ax.set_title(title, fontsize=11)
+    ax.set_xlim(-3.5, 4.5); ax.set_ylim(-1, 4)
+    ax.set_aspect("equal"); ax.grid(True, alpha=0.3)
+    ax.axhline(0, color="gray", lw=0.6); ax.axvline(0, color="gray", lw=0.6)
+axes[0].legend(fontsize=9, loc="upper right")
+plt.tight_layout()
+plt.show()
+```
+
+- 同じ「行列×ベクトル」でも、行列を変えれば**伸ばす・傾ける・回す**と動きが変わる
+- 行列とは「**空間そのものをどう変形するか**」を表す数の表
+
+
+## なぜ回転行列は cos と sin なのか
+
+- 行列の**列**には、深い意味がある：**$(1,0)$ と $(0,1)$ の行き先**を並べただけ
+
+```{python}
+#| echo: false
+#| fig-align: center
+theta = np.radians(35)
+R = np.array([[np.cos(theta), -np.sin(theta)],
+              [np.sin(theta),  np.cos(theta)]])
+
+def basis_arrows(ax, M, faded=False):
+    e1, e2 = M @ np.array([1, 0]), M @ np.array([0, 1])
+    a = 0.4 if faded else 1.0
+    ax.annotate("", xy=e1, xytext=(0, 0), zorder=5,
+                arrowprops={"arrowstyle": "->", "color": "#e74c3c", "lw": 2.5, "alpha": a})
+    ax.annotate("", xy=e2, xytext=(0, 0), zorder=5,
+                arrowprops={"arrowstyle": "->", "color": "#27ae60", "lw": 2.5, "alpha": a})
+
+fig, axes = plt.subplots(1, 2, figsize=(9.5, 4.4))
+ax = axes[0]
+basis_arrows(ax, np.eye(2))
+ax.text(1.02, -0.22, "(1, 0)", color="#e74c3c", fontsize=11)
+ax.text(-0.55, 1.05, "(0, 1)", color="#27ae60", fontsize=11)
+ax.set_title("変換前：標準の2本", fontsize=11)
+
+ax = axes[1]
+basis_arrows(ax, np.eye(2), faded=True)
+basis_arrows(ax, R)
+e1, e2 = R @ np.array([1, 0]), R @ np.array([0, 1])
+ax.text(e1[0] + 0.05, e1[1] - 0.28, "(cosθ, sinθ)", color="#e74c3c", fontsize=10)
+ax.text(e2[0] - 1.45, e2[1] + 0.12, "(−sinθ, cosθ)", color="#27ae60", fontsize=10)
+arc = np.linspace(0, theta, 30)
+ax.plot(0.5 * np.cos(arc), 0.5 * np.sin(arc), color="#555", lw=1)
+ax.text(0.64, 0.16, "θ", fontsize=13)
+ax.set_title("θ回した先＝列に並べる", fontsize=11)
+
+for ax in axes:
+    ax.set_xlim(-1.3, 1.5); ax.set_ylim(-0.5, 1.6)
+    ax.set_aspect("equal"); ax.grid(True, alpha=0.3)
+    ax.axhline(0, color="gray", lw=0.6); ax.axvline(0, color="gray", lw=0.6)
+plt.tight_layout()
+plt.show()
+```
+
+- $(1,0)$ を $\theta$ 回すと $(\cos\theta, \sin\theta)$、$(0,1)$ を回すと $(-\sin\theta, \cos\theta)$
+- これを**列に並べる**と、みんな知っている回転行列：
+
+$$R(\theta) = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$$
+
+::: {.callout-tip}
+「行列の列＝基底ベクトルの行き先」と知っていれば、**変換を見れば行列を、行列を見れば変換を**書ける。
+拡大は対角行列 $\begin{pmatrix} s_x & 0 \\ 0 & s_y \end{pmatrix}$、回転は上の $R(\theta)$ — この2つの組み合わせが変換の基本。
+:::
 
 
 ## 行列と行列の積
