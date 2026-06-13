@@ -98,7 +98,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-d3a26a7442888a116b43ccec6150e9c5.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -191,1026 +191,17 @@
       margin-right: 0; 
     }
   </style>
-  <style>
-  .reveal {
-    font-family: system-ui, -apple-system, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", "Meiryo", sans-serif;
-  }
-  .reveal .slides section:not(.stack):not(.break-slide) > .slide-body {
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 28px 55px 18px !important;
-    box-sizing: border-box !important;
-  }
-  .reveal .slides section:not(.stack):not(.break-slide) > h2 {
-    padding-left: 18px;
-    padding-bottom: 7px;
-    box-sizing: border-box;
-  }
-  .reveal #title-slide > * {
-    padding-left: 80px;
-    box-sizing: border-box;
-  }
-  /* Force scrollbar visibility on macOS/mobile */
-  .reveal .slides section,
-  .reveal .slides section.present {
-    scrollbar-width: thin !important;
-    scrollbar-color: rgba(0,0,0,0.3) rgba(0,0,0,0.1) !important;
-  }
-  .reveal .slides section::-webkit-scrollbar,
-  .reveal .slides section.present::-webkit-scrollbar {
-    width: 10px !important;
-    height: 10px !important;
-    -webkit-appearance: none !important;
-  }
-  .reveal .slides section::-webkit-scrollbar-track,
-  .reveal .slides section.present::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.08) !important;
-    border-radius: 5px !important;
-  }
-  .reveal .slides section::-webkit-scrollbar-thumb,
-  .reveal .slides section.present::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.25) !important;
-    border-radius: 5px !important;
-    border: 2px solid transparent !important;
-    background-clip: content-box !important;
-  }
-  .reveal .slides section::-webkit-scrollbar-thumb:hover,
-  .reveal .slides section.present::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.4) !important;
-  }
-  .callout.callout-note {
-      font-size: 1.5rem;
-      line-height: 1.4;
-  }
-  .callout.callout-note .callout-title {
-      font-size: 2.3rem;
-  }
-  .reveal .callout.callout-tip {
-      font-size: 1.5rem;
-      line-height: 1.4;
-  }
-  .reveal .callout.callout-tip .callout-title {
-      font-size: 2.3rem;
-  }
-  .reveal .callout pre code {
-      font-size: 1.25rem !important;
-  }
-  .reveal h2 {
-      font-weight: bold !important;
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #000;
-  }
-  .reveal h3 {
-      font-style: normal !important;
-      font-weight: bold !important;
-      font-size: 2.3rem;
-      background-color: #5dade2;
-      color: white;
-      padding: 20px 12px;
-      margin: 12px;
-      border-radius: 5px;
-  }
-  .reveal .slide-body-heading {
-      font-style: normal !important;
-      font-weight: bold !important;
-      font-size: 2.3rem;
-      background-color: #5dade2;
-      color: white;
-      padding: 10px 25px;
-      margin: 12px;
-      border-radius: 5px;
-  }
-  .reveal p {
-      line-height: 1.6;
-      margin: 30px 0;
-  }
-  .cell details {
-      margin: 4px 0;
-      font-size: 1.5rem;
-  }
-  .cell details summary {
-      margin-bottom: 0px;
-      padding: 4px;
-  }
-  .cell-output pre {
-    font-size: 2.0rem;
-  }
-  .reveal pre,
-  .reveal div.sourceCode {
-    margin-left: 0.8rem;
-    margin-right: 0.8rem;
-    max-width: calc(100% - 1.6rem);
-    box-sizing: border-box;
-  }
-  .reveal pre code {
-    font-size: 1.35rem !important;
-  }
-  .reveal details pre code {
-    font-size: 1.2rem !important;
-  }
-  .reveal img {
-    max-height: 500px;
-    width: auto;
-    height: auto;
-  }
-  .reveal p.caption {
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 0.5em;
-    font-size: 0.8em;
-    color: #444;
-    font-family: inherit;
-    font-weight: lighter;
-  }
-  .fig-small img {
-    max-height: 300px !important;
-  }
-  .fig-medium img {
-    max-height: 400px !important;
-  }
-  table {
-    width: 100%;
-    border-bottom: none !important;
-  }
-  .reveal table.dataframe {
-    width: auto;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .reveal table.dataframe th,
-  .reveal table.dataframe td {
-    text-align: center;
-    padding-left: 0.7em;
-    padding-right: 0.7em;
-  }
-  table tbody {
-    border-bottom: none !important;
-  }
-  table tr:last-child,
-  table tr:last-child td {
-    border-bottom: none !important;
-  }
-  table th:first-child,
-  table td:first-child {
-    font-weight: bold;
-    border-right: 2px solid #aaa;
-  }
-  .reveal .cite {
-    position: absolute;
-    bottom: 6px;
-    right: 6px;
-    font-size: 0.4em;
-    background: rgba(0,0,0,0.4);
-    color: rgba(255,255,255,0.9);
-    padding: 2px 6px;
-    border-radius: 3px;
-    z-index: 2;
-  }
-  .reveal .cite p {
-    margin: 0;
-    line-height: 1.4;
-  }
-  .reveal .cite a {
-    color: rgba(255,255,255,0.9);
-  }
-  .reveal .content-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.5);
-    color: white;
-    padding: 20px 30px;
-    border-radius: 8px;
-    max-width: 60%;
-    box-sizing: border-box;
-    width: max-content;
-  }
-  .reveal .content-box.pos-br {
-    position: absolute;
-    bottom: 60px;
-    right: 60px;
-    top: auto;
-    left: auto;
-    transform: none;
-    text-align: left;
-  }
-  .reveal .content-box.pos-cl {
-    position: absolute;
-    top: 50%;
-    left: 60px;
-    transform: translateY(-50%);
-    text-align: left;
-  }
-  .reveal .fig-cite {
-    position: relative;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  #home-btn {
-    position: fixed;
-    top: 12px;
-    left: 12px;
-    z-index: 100;
-    background: #5dade2;
-    color: white;
-    padding: 4px 14px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 1rem;
-  }
-  .reveal > .footer {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    padding: 0 16px;
-    height: auto !important;
-    overflow: visible !important;
-    box-sizing: border-box;
-  }
-  #slide-nav {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  #slide-nav button {
-    background: transparent;
-    color: #5dade2;
-    border: 1px solid #5dade2;
-    border-radius: 4px;
-    padding: 4px 14px;
-    font-size: 1rem;
-    cursor: pointer;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-  }
-  #slide-nav button:active {
-    background: rgba(93, 173, 226, 0.2);
-  }
-  #slide-nav button.nav-disabled {
-    opacity: 0.3;
-    cursor: default;
-  }
-  #nav-counter {
-    font-size: 0.9rem;
-    min-width: 56px;
-    text-align: center;
-  }
-  .reveal .slide-number {
-    display: none !important;
-  }
-  pre.shell code > span > a:first-child::before {
-    content: "$" !important;
-    color: #888 !important;
-    user-select: none !important;
-  }
-  .code-copy-outer-scaffold {
-    position: relative !important;
-    margin-top: 0.3em !important;
-  }
-  .code-expand-scaffold {
-    position: relative !important;
-  }
-  .code-expand-button {
-    position: absolute;
-    right: 6px;
-    bottom: 6px;
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    border: 2px solid rgba(0,0,0,0.25);
-    border-radius: 50%;
-    background: rgba(255,255,255,0.92);
-    color: #666;
-    padding: 0;
-    cursor: pointer;
-    opacity: 0.82;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.22);
-    transition: opacity 0.15s ease, background 0.15s ease, transform 0.15s ease;
-    touch-action: manipulation;
-  }
-  .code-expand-button:hover,
-  .code-expand-button:focus {
-    opacity: 1;
-    background: white;
-    transform: scale(1.04);
-  }
-  .code-expand-button svg {
-    width: 21px;
-    height: 21px;
-    display: block;
-    pointer-events: none;
-  }
-  #code-zoom-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 10000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 4vh 4vw;
-    background: rgba(0,0,0,0.72);
-    box-sizing: border-box;
-  }
-  #code-zoom-modal.code-zoom-open {
-    display: flex;
-  }
-  #code-zoom-panel {
-    position: relative;
-    width: min(92vw, 1500px);
-    max-height: 88vh;
-    --code-zoom-font-size: 2.2rem;
-    padding: 32px 22px 22px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 16px 48px rgba(0,0,0,0.35);
-    box-sizing: border-box;
-    overflow: hidden;
-  }
-  #code-zoom-close {
-    position: absolute;
-    top: 6px;
-    right: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    border: 1px solid rgba(0,0,0,0.14);
-    border-radius: 4px;
-    background: rgba(255,255,255,0.75);
-    color: #333;
-    padding: 0;
-    font-size: 1.45rem;
-    line-height: 1;
-    cursor: pointer;
-    box-shadow: none;
-  }
-  #code-zoom-close:hover,
-  #code-zoom-close:focus {
-    background: rgba(245,245,245,0.98);
-    border-color: rgba(0,0,0,0.28);
-    color: #111;
-  }
-  #code-zoom-content pre {
-    max-height: none !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-  #code-zoom-content pre > code.sourceCode {
-    white-space: pre !important;
-  }
-  #code-zoom-content {
-    max-height: calc(88vh - 80px);
-    overflow: auto;
-    box-sizing: border-box;
-    scrollbar-width: thin !important;
-    scrollbar-color: rgba(0,0,0,0.3) rgba(0,0,0,0.1) !important;
-  }
-  #code-zoom-content.code-zoom-pan-mode {
-    cursor: grab;
-    user-select: none;
-  }
-  #code-zoom-content.code-zoom-pan-mode * {
-    cursor: grab !important;
-    user-select: none;
-  }
-  #code-zoom-content.code-zoom-dragging {
-    cursor: grabbing;
-  }
-  #code-zoom-content.code-zoom-dragging * {
-    cursor: grabbing !important;
-  }
-  #code-zoom-content::-webkit-scrollbar {
-    width: 10px !important;
-    height: 10px !important;
-    -webkit-appearance: none !important;
-  }
-  #code-zoom-content::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.08) !important;
-    border-radius: 5px !important;
-  }
-  #code-zoom-content::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.25) !important;
-    border-radius: 5px !important;
-    border: 2px solid transparent !important;
-    background-clip: content-box !important;
-  }
-  #code-zoom-content::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.4) !important;
-  }
-  #code-zoom-content .sourceCode {
-    max-width: none;
-    overflow: visible !important;
-  }
-  #code-zoom-content div.sourceCode {
-    display: inline-block;
-    min-width: 100%;
-    border: 1px solid rgba(0,0,0,0.18);
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  #code-zoom-content pre.sourceCode {
-    width: fit-content;
-    min-width: calc(100% - 2px);
-  }
-  #code-zoom-content pre.numberSource {
-    margin-left: 5.4em !important;
-    margin-right: -5.4em !important;
-    min-width: calc(100% - 2px);
-    padding-left: 0 !important;
-  }
-  #code-zoom-content pre.numberSource code > span {
-    left: -4em !important;
-  }
-  #code-zoom-content pre.numberSource code > span > a:first-child::before {
-    left: -1em !important;
-  }
-  #code-zoom-content pre code {
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
-    font-size: var(--code-zoom-font-size) !important;
-    line-height: 1.35 !important;
-    letter-spacing: 0 !important;
-    word-spacing: normal !important;
-    font-variant-ligatures: none !important;
-  }
-  .reveal .columns.columns-tight {
-    max-width: 1050px;
-    margin-left: auto;
-    margin-right: auto;
-    align-items: center;
-  }
-  .reveal .columns.columns-tight .column {
-    text-align: center;
-  }
-  .reveal .column.mermaid-compact .cell {
-    max-width: 460px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .reveal .column.mermaid-compact svg {
-    max-width: 100% !important;
-    height: auto !important;
-  }
-  .reveal .mermaid .nodeLabel,
-  .reveal .mermaid foreignObject div {
-    text-align: center !important;
-    font-weight: 700 !important;
-  }
-  .code-copy-outer-scaffold:has(pre.python)::before,
-  .code-copy-outer-scaffold:has(pre.shell)::before {
-    position: absolute;
-    top: 2px;
-    right: 30px;
-    font-size: 10px;
-    color: #bbb;
-    pointer-events: none;
-    z-index: 2;
-  }
-  .code-copy-outer-scaffold:has(pre.python)::before {
-    content: "Python";
-  }
-  .code-copy-outer-scaffold:has(pre.shell)::before {
-    content: "Shell";
-  }
-  a[href]::after {
-    content: "";
-    display: inline-block;
-    width: 0.6em;
-    height: 0.6em;
-    margin-left: 0.3em;
-    vertical-align: middle;
-    opacity: 0.5;
-    background: currentColor;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M290.4 19.8C295.4 7.8 307.1 0 320 0h160c17.7 0 32 14.3 32 32v160c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9L400 157.3 246.6 310.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L354.7 112l-57.3-57.4c-9.2-9.2-11.9-22.9-6.9-34.9zM0 176c0-44.2 35.8-80 80-80h80c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-8.8 0-16 7.2-16 16v256c0 8.8 7.2 16 16 16h256c8.8 0 16-7.2 16-16v-80c0-17.7 14.3-32 32-32s32 14.3 32 32v80c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176z'/%3E%3C/svg%3E") no-repeat center / contain;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M290.4 19.8C295.4 7.8 307.1 0 320 0h160c17.7 0 32 14.3 32 32v160c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9L400 157.3 246.6 310.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L354.7 112l-57.3-57.4c-9.2-9.2-11.9-22.9-6.9-34.9zM0 176c0-44.2 35.8-80 80-80h80c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-8.8 0-16 7.2-16 16v256c0 8.8 7.2 16 16 16h256c8.8 0 16-7.2 16-16v-80c0-17.7 14.3-32 32-32s32 14.3 32 32v80c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176z'/%3E%3C/svg%3E") no-repeat center / contain;
-  }
-  .reveal .slide-menu-button a[href]::after,
-  .slide-menu-wrapper a[href]::after,
-  a.lightbox[href]::after {
-    content: none !important;
-    display: none !important;
-  }
-  .reveal .hl {
-    color: rgba(255,255,255,1);
-    font-weight: bold;
-    font-family: monospace;
-    text-shadow:
-      -3px  0   0 #0099cc,
-      -3px -1px 0 #0099cc,
-      -2px -2px 0 #0099cc,
-      -1px -3px 0 #0099cc,
-       0   -3px 0 #0099cc,
-       1px -3px 0 #0099cc,
-       2px -2px 0 #0099cc,
-       3px -1px 0 #0099cc,
-       3px  0   0 #0099cc,
-       3px  1px 0 #0099cc,
-       2px  2px 0 #0099cc,
-       1px  3px 0 #0099cc,
-       0    3px 0 #0099cc,
-      -1px  3px 0 #0099cc,
-      -2px  2px 0 #0099cc,
-      -3px  1px 0 #0099cc;
-  }
-  .break-slide h2 { border: none !important; }
-  .break-slide p { margin: 0 !important; }
-  .break-slide .break-title {
-    display: block;
-    width: 860px;
-    max-width: calc(100% - 310px);
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #333;
-    border-bottom: 0.5px solid #999;
-    margin-left: 190px !important;
-    margin-right: auto !important;
-    padding: 0 0 0.24em;
-    text-align: left;
-  }
-  .reveal .slide-body ul { /* level 1 */
-    list-style: none;
-    padding-left: 1.45em;
-  }
-  .reveal .slide-body ul ul { /* level 2 */
-    padding-left: 1.0em;
-  }
-  .reveal .slide-body ul ul ul { /* level 3 */
-    padding-left: 0.0em;
-  }
-  .reveal .slide-body ul > li::before {
-    content: "";
-    display: inline-block;
-    width: 0.58em;
-    height: 0.58em;
-    margin-left: -1.2em;
-    margin-right: 0.62em;
-    vertical-align: 0.1em;
-    background-color: #0099cc;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
-  }
-  .reveal .slide-body ul ul > li::before,
-  .reveal .slide-body ol ul > li::before {
-    content: "";
-    display: inline-block;
-    width: 1.1em;
-    height: 0.7em;
-    margin-left: -1.55em;
-    margin-right: 0.45em;
-    vertical-align: 0.02em;
-    background-color: #0099cc;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 28'%3E%3Cpath d='M2 14h37M29 4l10 10-10 10' fill='none' stroke='black' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 28'%3E%3Cpath d='M2 14h37M29 4l10 10-10 10' fill='none' stroke='black' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
-  }
-  .reveal .slide ul li, .reveal .slide ol li {
-      margin-top: 0.3em;
-      margin-bottom: 0.3em;
-  }
-
-  .reveal .slide-body ul ul ul > li::before {
-    content: "";
-    display: inline-block;
-    width: 0.42em;
-    height: 0.62em;
-    margin-left: -0.92em;
-    margin-right: 0.5em;
-    vertical-align: 0.02em;
-    background-color: #6aaec6;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 32'%3E%3Cpath d='M3 3l18 13L3 29z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 32'%3E%3Cpath d='M3 3l18 13L3 29z' fill='black'/%3E%3C/svg%3E") no-repeat center / contain;
-  }
-  .reveal strong {
-    padding: 0 0.1em;
-  }
-  .reveal .fw-colon {
-    font-weight: 300;
-  }
-  .cell:has(details.code-fold) {
-    display: flex;
-    flex-direction: column;
-  }
-  .cell:has(details.code-fold) details.code-fold {
-    order: 1;
-  }
-  .cell-output.cell-output-display .quarto-figure {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-  }
-  .cell-output.cell-output-display a.lightbox {
-    display: block;
-  }
-  .cell-output.cell-output-display figure p {
-    margin-bottom: 0 !important;
-  }
-  .cell details.code-fold {
-    margin-left: 1.6em;
-    font-size: 1.2rem;
-  }
-  .reveal :not(pre) > code {
-    color: #005cc5;
-    font-weight: bold;
-    font-size: 1.1em;
-    padding: 0 0.15em;
-    font-family: monospace, serif;
-    text-shadow: none;
-  }
-  </style>
-  <script>
-  (function() {
-    try {
-      var counterInit = false;
-      var codeExpandInit = false;
-      var codeZoomFontSize = 2.2;
-      var codeZoomPanMode = false;
-      var codeZoomDragging = false;
-      var codeZoomDragStartX = 0;
-      var codeZoomDragStartY = 0;
-      var codeZoomScrollStartLeft = 0;
-      var codeZoomScrollStartTop = 0;
-      var codeZoomPreviousKeyboard = null;
-
-      function createNav() {
-        try {
-          if (document.getElementById('slide-nav')) return;
-          var footer = document.querySelector('.reveal > .footer');
-          if (!footer) return;
-          var nav = document.createElement('span');
-          nav.id = 'slide-nav';
-          nav.innerHTML = '<button id="nav-prev">&#9664;</button><span id="nav-counter">-/-</span><button id="nav-next">&#9654;</button>';
-          footer.appendChild(nav);
-        } catch (e) {}
-      }
-
-      function createHome() {
-        try {
-          if (document.getElementById('home-btn')) return;
-          var home = document.createElement('a');
-          home.id = 'home-btn';
-          home.href = './index.html';
-          home.textContent = 'Home';
-          home.addEventListener('click', function(e) {
-            e.preventDefault();
-            goHome();
-          });
-          document.body.appendChild(home);
-        } catch (e) {}
-      }
-
-      function updateCounter() {
-        try {
-          var el = document.getElementById('nav-counter');
-          if (!el || !window.Reveal) return;
-          var slides = Array.from(document.querySelectorAll('.reveal .slides section:not(.stack)'));
-          var idx = slides.findIndex(function(s) { return s.classList.contains('present'); });
-          el.textContent = (idx + 1) + ' / ' + slides.length;
-          var prev = document.getElementById('nav-prev');
-          var next = document.getElementById('nav-next');
-          if (prev) prev.classList.toggle('nav-disabled', idx <= 0);
-          if (next) next.classList.toggle('nav-disabled', idx >= slides.length - 1);
-        } catch (e) {}
-      }
-
-      function initCounter() {
-        try {
-          if (counterInit || !window.Reveal) return;
-          counterInit = true;
-          updateCounter();
-          Reveal.on('slidechanged', updateCounter);
-        } catch (e) {}
-      }
-
-      function isFirstSlide() {
-        return Reveal.getIndices().h === 0 && Reveal.getIndices().v === 0;
-      }
-
-      function goHome() {
-        try { sessionStorage.setItem('lastSlide', window.location.href); } catch (e) {}
-        window.location.href = './index.html';
-      }
-
-      function isIndexPage() {
-        return window.location.pathname.endsWith('/index.html') || window.location.pathname.endsWith('/');
-      }
-
-      function goBack() {
-        try {
-          var last = sessionStorage.getItem('lastSlide');
-          if (last) {
-            sessionStorage.removeItem('lastSlide');
-            window.location.href = last;
-          }
-        } catch (e) {}
-      }
-
-      function handleNav(btn) {
-        initCounter();
-        if (btn.id === 'nav-prev') {
-          if (isFirstSlide()) {
-            goHome();
-          } else {
-            Reveal.prev();
-          }
-        }
-        if (btn.id === 'nav-next') {
-          if (isIndexPage()) {
-            goBack();
-          } else {
-            Reveal.next();
-          }
-        }
-      }
-
-      function ensureCodeZoomModal() {
-        try {
-          var modal = document.getElementById('code-zoom-modal');
-          if (modal) return modal;
-          modal = document.createElement('div');
-          modal.id = 'code-zoom-modal';
-          modal.setAttribute('role', 'dialog');
-          modal.setAttribute('aria-modal', 'true');
-          modal.innerHTML = '<div id="code-zoom-panel"><button id="code-zoom-close" type="button" aria-label="閉じる">&times;</button><div id="code-zoom-content"></div></div>';
-          document.body.appendChild(modal);
-          modal.addEventListener('click', function(e) {
-            if (e.target === modal) closeCodeZoom();
-          });
-          var close = document.getElementById('code-zoom-close');
-          if (close) close.addEventListener('click', closeCodeZoom);
-          initCodeZoomPanHandlers();
-          return modal;
-        } catch (e) {}
-      }
-
-      function setRevealKeyboard(active) {
-        try {
-          if (!window.Reveal || !Reveal.configure) return;
-          if (!active) {
-            if (codeZoomPreviousKeyboard === null && Reveal.getConfig) {
-              codeZoomPreviousKeyboard = Reveal.getConfig().keyboard;
-            }
-            Reveal.configure({ keyboard: false });
-          } else {
-            Reveal.configure({ keyboard: codeZoomPreviousKeyboard === null ? true : codeZoomPreviousKeyboard });
-            codeZoomPreviousKeyboard = null;
-          }
-        } catch (e) {}
-      }
-
-      function clampCodeZoomFontSize(size) {
-        if (!Number.isFinite(size)) return codeZoomFontSize;
-        return Math.max(1.2, Math.min(3.6, Math.round(size * 10) / 10));
-      }
-
-      function setCodeZoomFontSize(size) {
-        try {
-          codeZoomFontSize = clampCodeZoomFontSize(size);
-          var panel = document.getElementById('code-zoom-panel');
-          if (panel) panel.style.setProperty('--code-zoom-font-size', codeZoomFontSize + 'rem');
-        } catch (e) {}
-      }
-
-      function setCodeZoomPanMode(active) {
-        try {
-          codeZoomPanMode = active;
-          var content = document.getElementById('code-zoom-content');
-          if (!content) return;
-          content.classList.toggle('code-zoom-pan-mode', active);
-          if (!active) {
-            codeZoomDragging = false;
-            content.classList.remove('code-zoom-dragging');
-          }
-        } catch (e) {}
-      }
-
-      function initCodeZoomPanHandlers() {
-        try {
-          var content = document.getElementById('code-zoom-content');
-          if (!content || content.dataset.panInit === 'true') return;
-          content.dataset.panInit = 'true';
-          content.addEventListener('pointerdown', function(e) {
-            try {
-              if (!codeZoomPanMode) return;
-              e.preventDefault();
-              e.stopPropagation();
-              codeZoomDragging = true;
-              codeZoomDragStartX = e.clientX;
-              codeZoomDragStartY = e.clientY;
-              codeZoomScrollStartLeft = content.scrollLeft;
-              codeZoomScrollStartTop = content.scrollTop;
-              content.classList.add('code-zoom-dragging');
-              content.setPointerCapture(e.pointerId);
-            } catch (e) {}
-          });
-          content.addEventListener('pointermove', function(e) {
-            try {
-              if (!codeZoomDragging) return;
-              e.preventDefault();
-              e.stopPropagation();
-              content.scrollLeft = codeZoomScrollStartLeft - (e.clientX - codeZoomDragStartX);
-              content.scrollTop = codeZoomScrollStartTop - (e.clientY - codeZoomDragStartY);
-            } catch (e) {}
-          });
-          content.addEventListener('pointerup', function(e) {
-            try {
-              if (!codeZoomDragging) return;
-              e.preventDefault();
-              e.stopPropagation();
-              codeZoomDragging = false;
-              content.classList.remove('code-zoom-dragging');
-              content.releasePointerCapture(e.pointerId);
-            } catch (e) {}
-          });
-          content.addEventListener('pointercancel', function() {
-            try {
-              codeZoomDragging = false;
-              content.classList.remove('code-zoom-dragging');
-            } catch (e) {}
-          });
-          content.addEventListener('wheel', function(e) {
-            try {
-              var modal = document.getElementById('code-zoom-modal');
-              if (!modal || !modal.classList.contains('code-zoom-open')) return;
-              if (!e.ctrlKey) return;
-              e.preventDefault();
-              e.stopPropagation();
-              var delta = e.deltaY < 0 ? 0.1 : -0.1;
-              setCodeZoomFontSize(codeZoomFontSize + delta);
-            } catch (e) {}
-          }, { passive: false });
-        } catch (e) {}
-      }
-
-      function closeCodeZoom() {
-        try {
-          var modal = document.getElementById('code-zoom-modal');
-          var content = document.getElementById('code-zoom-content');
-          if (content) content.innerHTML = '';
-          setCodeZoomPanMode(false);
-          setRevealKeyboard(true);
-          if (modal) modal.classList.remove('code-zoom-open');
-        } catch (e) {}
-      }
-
-      function openCodeZoom(container) {
-        try {
-          var modal = ensureCodeZoomModal();
-          var content = document.getElementById('code-zoom-content');
-          if (!modal || !content || !container) return;
-          var source = container.querySelector('div.sourceCode') || container.querySelector('pre');
-          if (!source) return;
-          var clone = source.cloneNode(true);
-          content.innerHTML = '';
-          content.appendChild(clone);
-          setCodeZoomFontSize(codeZoomFontSize);
-          setRevealKeyboard(false);
-          modal.classList.add('code-zoom-open');
-          var close = document.getElementById('code-zoom-close');
-          if (close) close.focus();
-        } catch (e) {}
-      }
-
-      function wrapPlainCodeBlock(pre) {
-        try {
-          if (!pre || pre.closest('.code-copy-outer-scaffold') || pre.closest('.code-expand-scaffold')) return null;
-          var wrapper = document.createElement('div');
-          wrapper.className = 'code-expand-scaffold';
-          pre.parentNode.insertBefore(wrapper, pre);
-          wrapper.appendChild(pre);
-          return wrapper;
-        } catch (e) {}
-      }
-
-      function addCodeExpandButtons() {
-        try {
-          var containers = Array.from(document.querySelectorAll('.code-copy-outer-scaffold'));
-          Array.from(document.querySelectorAll('.reveal pre')).forEach(function(pre) {
-            var text = pre.textContent || '';
-            if (text.indexOf('\n') === -1) return;
-            var wrapper = wrapPlainCodeBlock(pre);
-            if (wrapper) containers.push(wrapper);
-          });
-          containers.forEach(function(container) {
-            if (!container || container.querySelector('.code-expand-button')) return;
-            if (!container.querySelector('pre')) return;
-            var btn = document.createElement('button');
-            btn.type = 'button';
-            btn.className = 'code-expand-button';
-            btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/></svg>';
-            btn.title = '拡大';
-            btn.setAttribute('aria-label', 'コードを拡大表示');
-            btn.addEventListener('click', function(e) {
-              e.preventDefault();
-              e.stopPropagation();
-              openCodeZoom(container);
-            });
-            container.appendChild(btn);
-          });
-        } catch (e) {}
-      }
-
-      function initCodeExpand() {
-        try {
-          ensureCodeZoomModal();
-          addCodeExpandButtons();
-          if (codeExpandInit) return;
-          codeExpandInit = true;
-          document.addEventListener('keydown', function(e) {
-            try {
-              var modal = document.getElementById('code-zoom-modal');
-              if (!modal || !modal.classList.contains('code-zoom-open')) return;
-              if (e.key === 'Escape') {
-                e.preventDefault();
-                e.stopImmediatePropagation();
-                closeCodeZoom();
-              }
-              if (e.code === 'Space' || e.key === ' ' || e.key === 'Spacebar') {
-                e.preventDefault();
-                e.stopImmediatePropagation();
-                if (!e.repeat) setCodeZoomPanMode(true);
-              }
-            } catch (e) {}
-          }, true);
-          document.addEventListener('keyup', function(e) {
-            try {
-              var modal = document.getElementById('code-zoom-modal');
-              if (!modal || !modal.classList.contains('code-zoom-open')) return;
-              if (e.code === 'Space' || e.key === ' ' || e.key === 'Spacebar') {
-                e.preventDefault();
-                e.stopImmediatePropagation();
-                setCodeZoomPanMode(false);
-              }
-            } catch (e) {}
-          }, true);
-        } catch (e) {}
-      }
-
-      document.addEventListener('click', function(e) {
-        try {
-          var btn = e.target.closest('#nav-prev, #nav-next');
-          if (!btn || !window.Reveal) return;
-          handleNav(btn);
-        } catch (e) {}
-      });
-
-      document.addEventListener('touchend', function(e) {
-        try {
-          var btn = e.target.closest('#nav-prev, #nav-next');
-          if (!btn || !window.Reveal) return;
-          e.preventDefault();
-          handleNav(btn);
-        } catch (e) {}
-      }, { passive: false });
-
-      document.addEventListener('keydown', function(e) {
-        try {
-          if (!window.Reveal) return;
-          if (isFirstSlide() && (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp')) {
-            goHome();
-          }
-          if (isIndexPage() && (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown')) {
-            goBack();
-          }
-        } catch (e) {}
-      });
-
-      function setup() {
-        try {
-          new MutationObserver(function() {
-            createHome();
-            addCodeExpandButtons();
-            if (document.querySelector('.reveal > .footer')) {
-              createNav();
-              if (window.Reveal && Reveal.isReady()) initCounter();
-            }
-          }).observe(document.body, { childList: true, subtree: true });
-          createHome();
-          createNav();
-          initCodeExpand();
-        } catch (e) {}
-      }
-
-      if (document.body) {
-        setup();
-      } else {
-        document.addEventListener('DOMContentLoaded', setup);
-      }
-    } catch (e) {}
-  })();
-  </script>
+  <link rel="stylesheet" href="custom.css">
+  <script src="slide-ui.js" defer=""></script>
+  <script src="search-ui.js" defer=""></script>
 </head>
 <body class="quarto-light">
-<script src="mathjax-config.js"></script>
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">データの可視化</h1>
-  <p class="subtitle">matplotlibで「見える化」する</p>
+  <p class="subtitle">「見る」原則と、騙されないための技術</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -1258,6 +249,28 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
+</section>
+<section id="予告この授業のゴール" class="slide level2">
+<h2>予告<span class="fw-colon">：</span>この授業のゴール</h2>
+<div class="slide-body">
+<ul>
+<li>数回後には、<strong>世界中の人がいま何を見ているか</strong> を自分のコードで取得して可視化できるようになる</li>
+<li>例<span class="fw-colon">：</span>あるWikipediaページの <strong>2025年・1年分の閲覧数</strong>（実データ。記事名はまだ秘密）</li>
+</ul>
+<div id="dd47c84e" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="visualize_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="661" height="239"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>ほぼ平坦なのに <strong>1日だけ大きな山</strong>（最大47,656回、ふだんの約300倍） — この日、何があった？</li>
+<li>答えは <strong>API編</strong> で。今日はその第一歩、「描いて、見る」技術</li>
+</ul>
 </div>
 </section>
 <section id="可視化の古典ジョンスノウのコレラ地図" class="slide level2">
@@ -1423,10 +436,14 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>自分の興味で開いてみる</strong></p>
+<p><strong>ミニアクティビティ</strong></p>
 </div>
 <div class="callout-content">
 <ul>
+<li>どれか1つ開いて、<strong>隣の人に30秒で説明</strong> する
+<ul>
+<li>何のデータ？ 軸は何？ 何が見えた？</li>
+</ul></li>
 <li>動的なものほど <strong>データ量と表現力の関係</strong> がよく分かる</li>
 </ul>
 </div>
@@ -1453,27 +470,60 @@ rkskmt
 </ul>
 </div>
 </section>
-<section id="例アンスコムの四重奏" class="slide level2">
-<h2>例<span class="fw-colon">：</span>アンスコムの四重奏</h2>
+<section id="クイズ平均所得-524万円" class="slide level2">
+<h2>クイズ<span class="fw-colon">：</span>「平均所得 524万円」</h2>
 <div class="slide-body">
-<div class="columns">
-<div class="column" style="width:55%;">
 <ul>
-<li><strong>F. J. Anscombe（1973）</strong> のデータセット</li>
-<li>以下の統計量が <span class="hl">4つともほぼ完全に一致</span></li>
-<li>しかし、<span class="hl">図にすると完全に異なる</span></li>
+<li>厚生労働省の調査<span class="fw-colon">：</span>日本の1世帯当たり <strong>平均所得は 524万2千円</strong>（2022年）</li>
+<li>では、<strong>所得が平均以下</strong> の世帯は全体のどれくらい？
+<ul>
+<li>「平均」なんだから、だいたい半分（50%）……？</li>
+</ul></li>
 </ul>
-</div><div class="column" style="width:45%;">
-<div id="7b2b456a" class="cell" data-execution_count="2">
+</div>
+</section>
+<section id="平均以下の世帯は-62.2" class="slide level2">
+<h2>平均以下の世帯は 62.2%</h2>
+<div class="slide-body">
+<div id="3f1fff66" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="visualize_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="visualize_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="566" height="470"></a></p>
+<p><a href="visualize_files/figure-revealjs/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="visualize_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="758" height="334"></a></p>
 </figure>
 </div>
 </div>
 </div>
-</div></div>
+<ul>
+<li><strong>平均以下の世帯は 62.2%</strong> — 「平均」は真ん中ではない</li>
+<li>真ん中の値（<strong>中央値</strong>）は <strong>405万円</strong>。平均より <strong>119万円</strong> も低い
+<ul>
+<li>一部の高所得世帯が、平均を <span class="hl">右に引っ張る</span></li>
+</ul></li>
+<li>分布を <strong>見ないと</strong>、「平均」という言葉の意味すら誤解する</li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>出典</strong></p>
+</div>
+<div class="callout-content">
+<p>厚生労働省「2023（令和5）年 国民生活基礎調査の概況」図9</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="例アンスコムの四重奏" class="slide level2">
+<h2>例<span class="fw-colon">：</span>アンスコムの四重奏</h2>
+<div class="slide-body">
+<ul>
+<li><strong>F. J. Anscombe（1973）</strong> が作った <span class="hl">4つのデータセット</span></li>
+<li>4つとも、以下の統計量が <span class="hl">ほぼ完全に一致</span> する</li>
+</ul>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -1508,6 +558,24 @@ rkskmt
 </tr>
 </tbody>
 </table>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>問題<span class="fw-colon">：</span>散布図にしたら、どんな形？</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>統計量がここまで揃っているなら、<strong>4つとも似た形になるはず…だよね？</strong></li>
+<li>めくる前に <strong>予想して手で描いてみる</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="アンスコムの四重奏普通のデータ" class="slide level2">
@@ -1521,7 +589,7 @@ rkskmt
 <li>典型的な普通のデータ</li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="0e353c8b" class="cell" data-execution_count="3">
+<div id="3822d824" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1544,7 +612,7 @@ rkskmt
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="visualize_files/figure-revealjs/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="visualize_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="380" height="278"></a></p>
+<p><a href="visualize_files/figure-revealjs/cell-5-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="visualize_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="380" height="278"></a></p>
 </figure>
 </div>
 </div>
@@ -1579,7 +647,7 @@ rkskmt
 <li>統計量だけ見ていると「直線で説明できた」と思い込みやすい</li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="671bdb58" class="cell" data-execution_count="4">
+<div id="262b046b" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1602,7 +670,7 @@ rkskmt
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="visualize_files/figure-revealjs/cell-5-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="visualize_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="380" height="278"></a></p>
+<p><a href="visualize_files/figure-revealjs/cell-6-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="visualize_files/figure-revealjs/cell-6-output-1.png" class="quarto-figure quarto-figure-center" width="380" height="278"></a></p>
 </figure>
 </div>
 </div>
@@ -1638,7 +706,7 @@ rkskmt
 <li>その1点に <strong>回帰直線が引っ張られている</strong></li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="06dbd340" class="cell" data-execution_count="5">
+<div id="20cac66f" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1661,7 +729,7 @@ rkskmt
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="visualize_files/figure-revealjs/cell-6-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="visualize_files/figure-revealjs/cell-6-output-1.png" class="quarto-figure quarto-figure-center" width="380" height="278"></a></p>
+<p><a href="visualize_files/figure-revealjs/cell-7-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="visualize_files/figure-revealjs/cell-7-output-1.png" class="quarto-figure quarto-figure-center" width="380" height="278"></a></p>
 </figure>
 </div>
 </div>
@@ -1677,7 +745,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <ul>
-<li><strong>外れ値（outlier）</strong> に統計量が支配される</li>
+<li><strong>外れ値（<span class="en">outlier</span>）</strong> に統計量が支配される</li>
 <li>入力ミスとして除外するか、本物の現象として尊重するか</li>
 <li><strong>図を見ないと判断できない</strong></li>
 </ul>
@@ -1697,7 +765,7 @@ rkskmt
 <li>同じ条件で測定しすぎていて、<code>x</code> が振れていない</li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="24a52c7f" class="cell" data-execution_count="6">
+<div id="82bb3409" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1720,7 +788,7 @@ rkskmt
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="visualize_files/figure-revealjs/cell-7-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="visualize_files/figure-revealjs/cell-7-output-1.png" class="quarto-figure quarto-figure-center" width="380" height="278"></a></p>
+<p><a href="visualize_files/figure-revealjs/cell-8-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="visualize_files/figure-revealjs/cell-8-output-1.png" class="quarto-figure quarto-figure-center" width="380" height="278"></a></p>
 </figure>
 </div>
 </div>
@@ -1748,6 +816,18 @@ rkskmt
 <section id="四重奏を並べると" class="slide level2">
 <h2>四重奏を並べると…</h2>
 <div class="slide-body">
+<div class="columns">
+<div class="column" style="width:45%;">
+<div id="0d062f0b" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="visualize_files/figure-revealjs/cell-9-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="visualize_files/figure-revealjs/cell-9-output-1.png" class="quarto-figure quarto-figure-center" width="566" height="470"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:55%;">
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -1760,12 +840,12 @@ rkskmt
 <tr class="odd">
 <td>① 素直</td>
 <td>緩やかな散布 + 直線</td>
-<td>問題なし — 線形回帰がうまく機能</td>
+<td>線形回帰がうまく機能</td>
 </tr>
 <tr class="even">
 <td>② 曲線</td>
 <td>2次関数的</td>
-<td>モデル選択が間違っている</td>
+<td>モデル選択が間違い</td>
 </tr>
 <tr class="odd">
 <td>③ 外れ値</td>
@@ -1774,7 +854,7 @@ rkskmt
 </tr>
 <tr class="even">
 <td>④ x偏り</td>
-<td>1点除いて全部同じ x</td>
+<td>ほぼ全部同じ x</td>
 <td>サンプリングが偏っている</td>
 </tr>
 </tbody>
@@ -1783,6 +863,7 @@ rkskmt
 <li><strong>統計量は4つとも同じ</strong></li>
 <li>図にしないと <strong>絶対に気づけない</strong></li>
 </ul>
+</div></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1793,6 +874,230 @@ rkskmt
 </div>
 <div class="callout-content">
 <p><strong>見ればわかる。見なければ見逃す。</strong></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="現代版アンスコムdatasaurus-dozen" class="slide level2">
+<h2>現代版アンスコム<span class="fw-colon">：</span>Datasaurus Dozen</h2>
+<div class="slide-body">
+<ul>
+<li><strong>Matejka &amp; Fitzmaurice（2017）</strong> が作った <span class="hl">13個</span> のデータセット</li>
+<li>どれも以下の統計量が一致（小数第2位まで）</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>統計量</th>
+<th>13個すべてで</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x\)</span> の平均</td>
+<td>54.26</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(y\)</span> の平均</td>
+<td>47.83</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(x\)</span> の標準偏差</td>
+<td>16.76</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(y\)</span> の標準偏差</td>
+<td>26.93</td>
+</tr>
+<tr class="odd">
+<td>相関係数</td>
+<td><span class="math inline">\(-0.06\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>そのうちの1つを散布図にすると…</p>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div id="04a1047c" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="visualize_files/figure-revealjs/cell-10-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="visualize_files/figure-revealjs/cell-10-output-1.png" class="quarto-figure quarto-figure-center" width="422" height="374"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+<section id="datasaurus-dozen全13個" class="slide level2">
+<h2>Datasaurus Dozen<span class="fw-colon">：</span>全13個</h2>
+<div class="slide-body">
+<div id="0c2a8988" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="visualize_files/figure-revealjs/cell-11-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="visualize_files/figure-revealjs/cell-11-output-1.png" class="quarto-figure quarto-figure-center" width="1238" height="373"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>13個全部、<strong>同じ平均・同じ標準偏差・同じ相関係数</strong></li>
+<li>教訓はアンスコムと同じ — ただし <span class="hl">より強烈に</span></li>
+<li>出典<span class="fw-colon">：</span><a href="https://www.research.autodesk.com/publications/same-stats-different-graphs/">Same Stats, Different Graphs (Autodesk Research)</a></li>
+</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>作り方も面白い</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>恐竜の形を保ったまま、統計量が変わらないように点を少しずつ動かして生成</li>
+<li>「統計量は強い要約だが、<strong>形の情報はほぼ捨てている</strong>」ことの証明</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-2" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>グラフはウソをつく</p>
+</div>
+</section>
+<section id="ここまでは描く側の話" class="slide level2">
+<h2>ここまでは「描く側」の話</h2>
+<div class="slide-body">
+<ul>
+<li>アンスコムの教訓<span class="fw-colon">：</span><strong>描かないと、騙される</strong></li>
+<li>もう一つの現実<span class="fw-colon">：</span><strong>描き方しだいで、人を騙せる</strong>
+<ul>
+<li>ニュース・広告・プレゼンで毎日使われているテクニック</li>
+</ul></li>
+<li>ここからは <span class="hl">騙されない側</span> になる練習
+<ul>
+<li>ルール<span class="fw-colon">：</span>これから見せるグラフに <strong>ウソのデータは1つもない</strong></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="クイズどちらの商品が売れている" class="slide level2">
+<h2>クイズ<span class="fw-colon">：</span>どちらの商品が売れている？</h2>
+<div class="slide-body">
+<div id="a81d308d" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="visualize_files/figure-revealjs/cell-12-output-1.png" class="quarto-figure quarto-figure-center" width="470" height="325"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>商品Bの圧勝に見える</li>
+<li>でも、<strong>何かおかしい。どこ？</strong></li>
+</ul>
+</div>
+</section>
+<section id="種明かしy軸の切断" class="slide level2">
+<h2>種明かし<span class="fw-colon">：</span>y軸の切断</h2>
+<div class="slide-body">
+<div id="04d725e0" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="visualize_files/figure-revealjs/cell-13-output-1.png" class="quarto-figure quarto-figure-center" width="758" height="325"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>棒グラフは「長さ」で比較するグラフ</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>実際の差は <strong>約2%</strong>。軸を切ると何倍にも見える</li>
+<li>棒グラフは <strong>0から描く</strong> のが原則</li>
+<li>軸の数字を確認するクセをつける</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="クイズ東京は寒冷化している" class="slide level2">
+<h2>クイズ<span class="fw-colon">：</span>東京は寒冷化している？</h2>
+<div class="slide-body">
+<div id="f59691bf" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="visualize_files/figure-revealjs/cell-14-output-1.png" class="quarto-figure quarto-figure-center" width="566" height="324"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>気象庁の実測データ</strong>（ウソのデータは1つもない）</li>
+<li>12年間で気温は下降トレンド。「温暖化はウソだった」？</li>
+<li><strong>どう反論する？</strong></li>
+</ul>
+</div>
+</section>
+<section id="種明かし期間のチェリーピック" class="slide level2">
+<h2>種明かし<span class="fw-colon">：</span>期間のチェリーピック</h2>
+<div class="slide-body">
+<div id="fcbdfaef" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="visualize_files/figure-revealjs/cell-15-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="visualize_files/figure-revealjs/cell-15-output-1.png" class="quarto-figure quarto-figure-center" width="758" height="324"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>データが本物でも、切り取りでウソがつける</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>150年で見れば気温は <strong>約4℃上昇</strong>（都市化の影響も大きい）</li>
+<li>揺らぎのある時系列は、<strong>都合のいい12年</strong> を選べば逆向きに見せられる</li>
+<li>「<strong>どの範囲を見せるか</strong>」も作為のうち — 全体を確認するクセをつける</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>このデータは次回もう一度使う</strong></p>
+</div>
+<div class="callout-content">
+<p>東京の気温、<strong>自分の手で</strong> 描いて確かめる</p>
 </div>
 </div>
 </div>
@@ -1857,718 +1162,10 @@ rkskmt
 </tr>
 <tr class="odd">
 <td>3D散布図</td>
-<td>3変量関係</td>
+<td>3変量関係（回せる <strong>Plotly回</strong> で扱う）</td>
 </tr>
 </tbody>
 </table>
-</div>
-</section>
-<section id="section-2" class="slide level2 center break-slide" data-background-color="white">
-<h2></h2>
-<div class="break-title">
-<p>matplotlibでグラフを描く</p>
-</div>
-</section>
-<section id="matplotlib-とは" class="slide level2">
-<h2>matplotlib とは</h2>
-<div class="slide-body">
-<ul>
-<li>Pythonにおけるグラフ描画の <strong>デファクトスタンダード</strong>
-<ul>
-<li><strong>マットプロットリブ</strong>と読む</li>
-</ul></li>
-<li>内部はC実装で高速、NumPyの <code>ndarray</code> と相性が良い
-<ul>
-<li>seaborn や pandas の plotting 機能など、派生ライブラリも多い</li>
-</ul></li>
-</ul>
-<p>ターミナルからインストール<span class="fw-colon">：</span></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a></a>pip install matplotlib japanize-matplotlib</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>冒頭で import（<code>plt</code> としてインポートするのが一般的）<span class="fw-colon">：</span></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb6-2"><a></a><span class="im">import</span> japanize_matplotlib</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="pltだと日本語が文字化けする" class="slide level2">
-<h2>pltだと日本語が文字化けする</h2>
-<div class="slide-body">
-<ul>
-<li>matplotlib は多くの環境で <strong>日本語が文字化け</strong> する</li>
-</ul>
-<div id="7a973d87" class="cell" data-execution_count="7">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="visualize_files/figure-revealjs/cell-8-output-1.png" width="230" height="157"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>そこで ** <code>import japanize_matplotlib</code>**
-<ul>
-<li>これだけで解決</li>
-</ul></li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb7-2"><a></a><span class="im">import</span> japanize_matplotlib</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong><code>rcParams</code> でフォント指定しない</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li><code>rcParams["font.family"]</code> は環境差で失敗しやすい</li>
-<li>日本語表示は <strong><code>japanize_matplotlib</code> に任せる</strong></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="まずはドキュメントを眺める重要" class="slide level2">
-<h2>まずはドキュメントを眺める（重要）</h2>
-<div class="slide-body">
-<ul>
-<li>公式の <strong>Plot types</strong> ページに、描けるグラフの一覧がある</li>
-<li><a href="https://matplotlib.org/stable/plot_types/index.html" class="uri">https://matplotlib.org/stable/plot_types/index.html</a></li>
-</ul>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>上達のコツ</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>まず <strong>何ができるかを頭に入れる</strong></li>
-<li>やりたい図ができたら、似たギャラリーを探してコードを真似る</li>
-<li><strong>自前でゼロから書かない</strong> のが鉄則</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="点のプロット" class="slide level2">
-<h2>点のプロット</h2>
-<div class="slide-body">
-<ul>
-<li>一番基本の <code>plt.plot(x, y, 'o')</code> — ‘o’ は <strong>マーカー</strong> を表す</li>
-<li><code>x</code> も <code>y</code> も <strong><code>ndarray</code></strong> や <strong><code>list</code></strong> でOK</li>
-</ul>
-<div id="b819b667" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb8-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb8-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb8-4"><a></a></span>
-<span id="cb8-5"><a></a>x <span class="op">=</span> np.arange(<span class="dv">4</span>)       <span class="co"># [0 1 2 3]</span></span>
-<span id="cb8-6"><a></a>y <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">30</span>]</span>
-<span id="cb8-7"><a></a></span>
-<span id="cb8-8"><a></a>plt.plot(x, y, <span class="st">'o'</span>)    <span class="co"># 'o' で点だけプロット</span></span>
-<span id="cb8-9"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="visualize_files/figure-revealjs/cell-9-output-1.png" width="789" height="411"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="線のグラフ" class="slide level2">
-<h2>線のグラフ</h2>
-<div class="slide-body">
-<ul>
-<li>第3引数を <strong>省略すると折れ線</strong></li>
-<li><code>'o-'</code> だと <strong>点＋線</strong></li>
-</ul>
-<div id="ff1cb7fa" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb9-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb9-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb9-4"><a></a></span>
-<span id="cb9-5"><a></a>x <span class="op">=</span> np.arange(<span class="dv">10</span>)      <span class="co"># [0 ... 9]</span></span>
-<span id="cb9-6"><a></a>y <span class="op">=</span> x <span class="op">+</span> <span class="dv">5</span></span>
-<span id="cb9-7"><a></a></span>
-<span id="cb9-8"><a></a>plt.plot(x, y)         <span class="co"># 折れ線</span></span>
-<span id="cb9-9"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="visualize_files/figure-revealjs/cell-10-output-1.png" width="789" height="411"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="表示範囲の指定xlim-ylim" class="slide level2">
-<h2>表示範囲の指定（xlim / ylim）</h2>
-<div class="slide-body">
-<ul>
-<li><code>plt.xlim(a, b)</code> / <code>plt.ylim(a, b)</code> で軸の範囲を固定</li>
-<li>3次元プロットでは <code>zlim</code> も使える</li>
-<li>何も指定しないと <strong>データの範囲＋少し余白</strong> が自動で選ばれる</li>
-</ul>
-<div id="2ce86ca2" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb10-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb10-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb10-4"><a></a></span>
-<span id="cb10-5"><a></a>x <span class="op">=</span> np.arange(<span class="dv">10</span>)</span>
-<span id="cb10-6"><a></a>y <span class="op">=</span> x <span class="op">+</span> <span class="dv">5</span></span>
-<span id="cb10-7"><a></a></span>
-<span id="cb10-8"><a></a>plt.xlim(<span class="dv">0</span>, <span class="dv">10</span>)        <span class="co"># x軸: 0〜10</span></span>
-<span id="cb10-9"><a></a>plt.ylim(<span class="dv">0</span>, <span class="dv">15</span>)        <span class="co"># y軸: 0〜15（あえて0から見せる）</span></span>
-<span id="cb10-10"><a></a>plt.plot(x, y, <span class="st">'o-'</span>)</span>
-<span id="cb10-11"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="visualize_files/figure-revealjs/cell-11-output-1.png" width="798" height="411"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>y軸の罠</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>範囲をデータに合わせると <strong>小さな変化が大きく見える</strong> ことがある</li>
-<li>比較するグラフは <strong>y軸を揃える</strong> か <strong>0から見せる</strong> のが原則</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="ラベルグリッドタイトル凡例" class="slide level2">
-<h2>ラベル・グリッド・タイトル・凡例</h2>
-<div class="slide-body">
-<ul>
-<li><code>plt.xlabel()</code> / <code>plt.ylabel()</code> で <strong>軸ラベル</strong></li>
-<li><code>plt.title()</code> で <strong>グラフタイトル</strong></li>
-<li><code>plt.legend()</code> で <strong>凡例</strong>（<code>plot()</code> に <code>label=</code> を指定しておく）</li>
-<li><code>plt.grid(True)</code> で <strong>グリッド線</strong></li>
-</ul>
-<div id="8de36f2f" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb11-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb11-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb11-4"><a></a></span>
-<span id="cb11-5"><a></a>x <span class="op">=</span> np.arange(<span class="dv">10</span>, <span class="dv">200</span>)</span>
-<span id="cb11-6"><a></a></span>
-<span id="cb11-7"><a></a>y1 <span class="op">=</span> x <span class="op">**</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb11-8"><a></a>plt.plot(x, y1, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">"sqrt(x)"</span>)     <span class="co"># 凡例ラベル</span></span>
-<span id="cb11-9"><a></a></span>
-<span id="cb11-10"><a></a>y2 <span class="op">=</span> x <span class="op">**</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span>
-<span id="cb11-11"><a></a>plt.plot(x, y2, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">"cbrt(x)"</span>)</span>
-<span id="cb11-12"><a></a></span>
-<span id="cb11-13"><a></a>plt.legend()                                <span class="co"># 凡例を表示</span></span>
-<span id="cb11-14"><a></a>plt.title(<span class="st">"1/2 vs 1/3 power"</span>)               <span class="co"># タイトル</span></span>
-<span id="cb11-15"><a></a>plt.xlabel(<span class="st">"x value"</span>)                       <span class="co"># x軸ラベル</span></span>
-<span id="cb11-16"><a></a>plt.ylabel(<span class="st">"y value"</span>)                       <span class="co"># y軸ラベル</span></span>
-<span id="cb11-17"><a></a>plt.grid(<span class="va">True</span>)                              <span class="co"># グリッド線</span></span>
-<span id="cb11-18"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="visualize_files/figure-revealjs/cell-12-output-1.png" width="807" height="449"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>装飾の優先順位</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li><strong>軸ラベル</strong>（何の量か）</li>
-<li><strong>凡例</strong>（どの線が何か）</li>
-<li><strong>タイトル</strong>（何のグラフか）</li>
-<li>この3つが揃っていない図は <strong>資料に載せてはいけない</strong></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="複数のグラフを並べるsubplot" class="slide level2">
-<h2>複数のグラフを並べる（subplot）</h2>
-<div class="slide-body">
-<ul>
-<li><code>plt.subplot(行数, 列数, 場所番号)</code> で碁盤の目状に並べる</li>
-<li>場所番号は <strong>1始まり、左上から右へ</strong></li>
-<li>例<span class="fw-colon">：</span><code>plt.subplot(2, 2, 3)</code> は2×2の3番目（左下）</li>
-</ul>
-<div style="text-align:center; font-family:monospace;">
-<p>1 │ 2<br> ─┼─<br> 3 │ 4</p>
-</div>
-<div id="620db549" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb12-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb12-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb12-4"><a></a></span>
-<span id="cb12-5"><a></a>x <span class="op">=</span> np.arange(<span class="dv">5</span>)</span>
-<span id="cb12-6"><a></a>y <span class="op">=</span> x <span class="op">**</span> <span class="dv">2</span></span>
-<span id="cb12-7"><a></a></span>
-<span id="cb12-8"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)        <span class="co"># 1行2列の左</span></span>
-<span id="cb12-9"><a></a>plt.plot(x, y, <span class="st">'-'</span>)</span>
-<span id="cb12-10"><a></a></span>
-<span id="cb12-11"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)        <span class="co"># 1行2列の右</span></span>
-<span id="cb12-12"><a></a>plt.bar(x, y)</span>
-<span id="cb12-13"><a></a></span>
-<span id="cb12-14"><a></a>plt.tight_layout()          <span class="co"># 余白を自動調整</span></span>
-<span id="cb12-15"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="visualize_files/figure-revealjs/cell-13-output-1.png" width="950" height="470"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="二次元データの散布図" class="slide level2">
-<h2>二次元データの散布図</h2>
-<div class="slide-body">
-<ul>
-<li>大量の <code>(x, y)</code> を点で打つ → 分布や相関が見える</li>
-<li><code>alpha</code> で <strong>透明度</strong> を指定すると重なりが分かりやすい</li>
-</ul>
-<div id="03a52dc7" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb13-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb13-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb13-4"><a></a></span>
-<span id="cb13-5"><a></a><span class="co"># 0〜1 の一様乱数を 200点</span></span>
-<span id="cb13-6"><a></a>x <span class="op">=</span> np.random.rand(<span class="dv">200</span>)</span>
-<span id="cb13-7"><a></a>y <span class="op">=</span> np.random.rand(<span class="dv">200</span>)</span>
-<span id="cb13-8"><a></a></span>
-<span id="cb13-9"><a></a>plt.scatter(x, y, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb13-10"><a></a>plt.xlabel(<span class="st">"X (0-1)"</span>)</span>
-<span id="cb13-11"><a></a>plt.ylabel(<span class="st">"Y (0-1)"</span>)</span>
-<span id="cb13-12"><a></a>plt.title(<span class="st">"2D scatter: uniform random"</span>)</span>
-<span id="cb13-13"><a></a>plt.axis(<span class="st">"equal"</span>)           <span class="co"># 縦横を同じスケールに</span></span>
-<span id="cb13-14"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="visualize_files/figure-revealjs/cell-14-output-1.png" width="811" height="449"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>重なりが多いとき</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li><code>alpha=0.3</code> などで透過 → 密度が見える</li>
-<li>点数が万を超えるなら <strong>ヒートマップ</strong> や <strong>hexbin</strong> を検討</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="ヒストグラムで分布を見る" class="slide level2">
-<h2>ヒストグラムで分布を見る</h2>
-<div class="slide-body">
-<ul>
-<li>たくさんの値を <strong>区間ごとに数える</strong> グラフ</li>
-<li>平均だけでは分からない <strong>ばらつき・偏り・山の形</strong> が見える</li>
-<li><code>bins</code> で区間の数を指定する</li>
-<li><code>plt.axvline(値)</code> で <strong>縦線</strong> を引ける</li>
-<li><code>np.median(x)</code> で <strong>中央値</strong> を計算できる</li>
-<li>年収のように一部の値が大きいデータでは、平均と中央値がずれる</li>
-</ul>
-<div id="ddb1ac33" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb14-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb14-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb14-4"><a></a></span>
-<span id="cb14-5"><a></a>income <span class="op">=</span> np.array([</span>
-<span id="cb14-6"><a></a>    <span class="dv">280</span>, <span class="dv">310</span>, <span class="dv">330</span>, <span class="dv">350</span>, <span class="dv">360</span>, <span class="dv">380</span>, <span class="dv">400</span>, <span class="dv">410</span>, <span class="dv">430</span>, <span class="dv">450</span>, <span class="dv">470</span>, <span class="dv">500</span>, <span class="dv">520</span>, <span class="dv">450</span>, <span class="dv">470</span>, <span class="dv">500</span>, <span class="dv">520</span>, <span class="dv">550</span>, <span class="dv">600</span>, <span class="dv">650</span>, <span class="dv">700</span>, <span class="dv">760</span>, <span class="dv">900</span>, <span class="dv">950</span> ,<span class="dv">1100</span>, <span class="dv">1260</span>, <span class="dv">3100</span>, <span class="dv">3000</span>, <span class="dv">3200</span></span>
-<span id="cb14-7"><a></a>])</span>
-<span id="cb14-8"><a></a></span>
-<span id="cb14-9"><a></a>mean_income <span class="op">=</span> income.mean()</span>
-<span id="cb14-10"><a></a>median_income <span class="op">=</span> np.median(income)</span>
-<span id="cb14-11"><a></a></span>
-<span id="cb14-12"><a></a>plt.hist(income, bins<span class="op">=</span><span class="dv">20</span>, edgecolor<span class="op">=</span><span class="st">"white"</span>)</span>
-<span id="cb14-13"><a></a>plt.axvline(mean_income, color<span class="op">=</span><span class="st">"red"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="ss">f"平均 (</span><span class="sc">{</span>mean_income<span class="sc">:,.0f}</span><span class="ss">)"</span>)</span>
-<span id="cb14-14"><a></a>plt.axvline(median_income, color<span class="op">=</span><span class="st">"blue"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="ss">f"中央値 (</span><span class="sc">{</span>median_income<span class="sc">:,.0f}</span><span class="ss">)"</span>)</span>
-<span id="cb14-15"><a></a>plt.xlabel(<span class="st">"年収（万円）"</span>)</span>
-<span id="cb14-16"><a></a>plt.ylabel(<span class="st">"人数"</span>)</span>
-<span id="cb14-17"><a></a>plt.title(<span class="st">"年収のような右に長い分布"</span>)</span>
-<span id="cb14-18"><a></a>plt.legend()</span>
-<span id="cb14-19"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="visualize_files/figure-revealjs/cell-15-output-1.png" width="807" height="448"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>平均と中央値</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>一部の大きな値があると、平均は <strong>右に引っ張られる</strong></li>
-<li>中央値は <strong>真ん中の人</strong> に近い値を示す</li>
-<li>分布が左右対称でないときは、平均だけでは代表値として弱い</li>
-<li><code>plt.axvline(線を引く位置, label="説明")</code> で凡例つきの縦線を描ける</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="三次元データの散布図" class="slide level2">
-<h2>三次元データの散布図</h2>
-<div class="slide-body">
-<ul>
-<li>3D は <code>add_subplot(projection="3d")</code> で軸オブジェクトを作る</li>
-<li><code>plt.◯◯</code> ではなく <strong><code>ax.◯◯</code></strong> で操作する</li>
-</ul>
-<div id="36ecce0d" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb15-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb15-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb15-4"><a></a></span>
-<span id="cb15-5"><a></a>x <span class="op">=</span> np.random.rand(<span class="dv">300</span>)</span>
-<span id="cb15-6"><a></a>y <span class="op">=</span> np.random.rand(<span class="dv">300</span>)</span>
-<span id="cb15-7"><a></a>z <span class="op">=</span> np.random.rand(<span class="dv">300</span>)</span>
-<span id="cb15-8"><a></a></span>
-<span id="cb15-9"><a></a>fig <span class="op">=</span> plt.figure()</span>
-<span id="cb15-10"><a></a>ax <span class="op">=</span> fig.add_subplot(projection<span class="op">=</span><span class="st">"3d"</span>)</span>
-<span id="cb15-11"><a></a>ax.scatter(x, y, z, alpha<span class="op">=</span><span class="fl">0.6</span>)</span>
-<span id="cb15-12"><a></a></span>
-<span id="cb15-13"><a></a>ax.set_xlabel(<span class="st">"X"</span>)</span>
-<span id="cb15-14"><a></a>ax.set_ylabel(<span class="st">"Y"</span>)</span>
-<span id="cb15-15"><a></a>ax.set_zlabel(<span class="st">"Z"</span>)</span>
-<span id="cb15-16"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="visualize_files/figure-revealjs/cell-16-output-1.png" width="407" height="396"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>なぜ 3D だけ <code>ax.</code> を使う？</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li><code>plt.scatter()</code> などは <strong>2D専用のショートカット</strong></li>
-<li>3D軸を作るには <code>projection="3d"</code> の指定が必要で、<code>plt.subplot()</code> では対応できない</li>
-<li>3D では <code>ax.scatter()</code>, <code>ax.set_zlabel()</code> など <strong>軸オブジェクト経由</strong> で操作する</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong><code>plt.</code> と <code>ax.</code> の対応</strong></p>
-</div>
-<div class="callout-content">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>2D（<code>plt.</code>）</th>
-<th>3D（<code>ax.</code>）</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>plt.scatter(x, y)</code></td>
-<td><code>ax.scatter(x, y, z)</code></td>
-</tr>
-<tr class="even">
-<td><code>plt.xlabel("X")</code></td>
-<td><code>ax.set_xlabel("X")</code></td>
-</tr>
-<tr class="odd">
-<td><code>plt.xlim(0, 10)</code></td>
-<td><code>ax.set_xlim(0, 10)</code></td>
-</tr>
-<tr class="even">
-<td><code>plt.title("...")</code></td>
-<td><code>ax.set_title("...")</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>3Dは多用しない</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>紙やスライドだと <strong>奥行きが伝わらない</strong> ことが多い</li>
-<li>インタラクティブに回せない場面では <strong>2Dの分割表示</strong> のほうが伝わる</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="plt早見表" class="slide level2">
-<h2>plt早見表</h2>
-<div class="slide-body">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>操作</th>
-<th>コード</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>点だけ</td>
-<td><code>plt.plot(x, y, 'o')</code></td>
-</tr>
-<tr class="even">
-<td>折れ線</td>
-<td><code>plt.plot(x, y)</code></td>
-</tr>
-<tr class="odd">
-<td>棒グラフ</td>
-<td><code>plt.bar(x, y)</code></td>
-</tr>
-<tr class="even">
-<td>散布図</td>
-<td><code>plt.scatter(x, y)</code></td>
-</tr>
-<tr class="odd">
-<td>ヒストグラム</td>
-<td><code>plt.hist(x)</code></td>
-</tr>
-<tr class="even">
-<td>縦線</td>
-<td><code>plt.axvline(x)</code></td>
-</tr>
-<tr class="odd">
-<td>軸の範囲</td>
-<td><code>plt.xlim(a, b)</code> / <code>plt.ylim(a, b)</code></td>
-</tr>
-<tr class="even">
-<td>軸ラベル</td>
-<td><code>plt.xlabel("...")</code> / <code>plt.ylabel("...")</code></td>
-</tr>
-<tr class="odd">
-<td>タイトル</td>
-<td><code>plt.title("...")</code></td>
-</tr>
-<tr class="even">
-<td>凡例</td>
-<td><code>plt.legend()</code>（要 <code>label=...</code>）</td>
-</tr>
-<tr class="odd">
-<td>グリッド</td>
-<td><code>plt.grid(True)</code></td>
-</tr>
-<tr class="even">
-<td>並べる</td>
-<td><code>plt.subplot(行, 列, 番号)</code></td>
-</tr>
-<tr class="odd">
-<td>3D散布</td>
-<td><code>ax = fig.add_subplot(projection="3d")</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="演習二次関数を描く" class="slide level2 scrollable">
-<h2>演習<span class="fw-colon">：</span>二次関数を描く</h2>
-<div class="slide-body">
-<ul>
-<li><span class="math inline">\(y = x^2 - 2x + 3\)</span> を <strong>定義域 <span class="math inline">\(-2 \leq x \leq 5\)</span></strong> で描け</li>
-<li>手順
-<ol type="1">
-<li><code>np.arange</code> または <code>np.linspace</code> で <code>x</code> を作る（線が滑らかになるように細かく）</li>
-<li><code>y</code> を計算</li>
-<li>プロット — 折れ線でもOK</li>
-<li><strong>Y軸は0から見えるように</strong> <code>ylim</code> を設定</li>
-<li>タイトルとラベルもつける</li>
-</ol></li>
-</ul>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>平方完成で検算</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li><span class="math inline">\(y = (x - 1)^2 + 2\)</span> なので <strong>頂点は <span class="math inline">\((1, 2)\)</span></strong></li>
-<li>グラフが合っているか確認</li>
-</ul>
-</div>
-</div>
-</div>
-<div id="d69a4bd9" class="cell" data-execution_count="16">
-<details class="code-fold">
-<summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb16-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb16-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb16-4"><a></a></span>
-<span id="cb16-5"><a></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">200</span>)</span>
-<span id="cb16-6"><a></a>y <span class="op">=</span> x <span class="op">**</span> <span class="dv">2</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> x <span class="op">+</span> <span class="dv">3</span></span>
-<span id="cb16-7"><a></a></span>
-<span id="cb16-8"><a></a>plt.plot(x, y)</span>
-<span id="cb16-9"><a></a>plt.scatter([<span class="dv">1</span>], [<span class="dv">2</span>], color<span class="op">=</span><span class="st">"red"</span>, zorder<span class="op">=</span><span class="dv">3</span>)   <span class="co"># 頂点</span></span>
-<span id="cb16-10"><a></a>plt.xlim(<span class="op">-</span><span class="dv">2</span>, <span class="dv">5</span>)</span>
-<span id="cb16-11"><a></a>plt.ylim(<span class="dv">0</span>, <span class="dv">20</span>)                                 <span class="co"># 0から見せる</span></span>
-<span id="cb16-12"><a></a>plt.xlabel(<span class="st">"x"</span>)</span>
-<span id="cb16-13"><a></a>plt.ylabel(<span class="st">"y"</span>)</span>
-<span id="cb16-14"><a></a>plt.title(<span class="st">"y = x^2 - 2x + 3"</span>)</span>
-<span id="cb16-15"><a></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb16-16"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-</div>
-</section>
-<section id="演習アンスコムの四重奏を再現" class="slide level2 scrollable">
-<h2>演習<span class="fw-colon">：</span>アンスコムの四重奏を再現</h2>
-<div class="slide-body">
-<ul>
-<li>手順
-<ol type="1">
-<li>下のデータをコピペして使う</li>
-<li><code>plt.subplot(2, 2, i)</code> で2×2に並べる</li>
-<li>それぞれ <code>scatter</code> でプロット</li>
-<li><code>np.polyfit(x, y, 1)</code> で1次回帰直線を求め、<code>plot</code> で重ねる</li>
-<li>すべてのサブプロットで <code>xlim</code> / <code>ylim</code> を <strong>揃える</strong></li>
-</ol></li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb17-2"><a></a></span>
-<span id="cb17-3"><a></a><span class="co"># データセット I, II, III（x は共通）</span></span>
-<span id="cb17-4"><a></a>x1 <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span>
-<span id="cb17-5"><a></a>y1 <span class="op">=</span> np.array([<span class="fl">8.04</span>, <span class="fl">6.95</span>, <span class="fl">7.58</span>, <span class="fl">8.81</span>, <span class="fl">8.33</span>, <span class="fl">9.96</span>, <span class="fl">7.24</span>, <span class="fl">4.26</span>, <span class="fl">10.84</span>, <span class="fl">4.82</span>, <span class="fl">5.68</span>])</span>
-<span id="cb17-6"><a></a>y2 <span class="op">=</span> np.array([<span class="fl">9.14</span>, <span class="fl">8.14</span>, <span class="fl">8.74</span>, <span class="fl">8.77</span>, <span class="fl">9.26</span>, <span class="fl">8.10</span>, <span class="fl">6.13</span>, <span class="fl">3.10</span>, <span class="fl">9.13</span>, <span class="fl">7.26</span>, <span class="fl">4.74</span>])</span>
-<span id="cb17-7"><a></a>y3 <span class="op">=</span> np.array([<span class="fl">7.46</span>, <span class="fl">6.77</span>, <span class="fl">12.74</span>, <span class="fl">7.11</span>, <span class="fl">7.81</span>, <span class="fl">8.84</span>, <span class="fl">6.08</span>, <span class="fl">5.39</span>, <span class="fl">8.15</span>, <span class="fl">6.42</span>, <span class="fl">5.73</span>])</span>
-<span id="cb17-8"><a></a></span>
-<span id="cb17-9"><a></a><span class="co"># データセット IV（x が異なる）</span></span>
-<span id="cb17-10"><a></a>x4 <span class="op">=</span> np.array([<span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">19</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>])</span>
-<span id="cb17-11"><a></a>y4 <span class="op">=</span> np.array([<span class="fl">6.58</span>, <span class="fl">5.76</span>, <span class="fl">7.71</span>, <span class="fl">8.84</span>, <span class="fl">8.47</span>, <span class="fl">7.04</span>, <span class="fl">5.25</span>, <span class="fl">12.50</span>, <span class="fl">5.56</span>, <span class="fl">7.91</span>, <span class="fl">6.89</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>なぜ軸を揃える？</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>4つのプロットを <strong>公平に比較</strong> するため</li>
-<li>違うスケールで並べると印象操作になる</li>
-</ul>
-</div>
-</div>
-</div>
-<div id="58fca767" class="cell" data-execution_count="17">
-<details class="code-fold">
-<summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb18-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb18-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb18-4"><a></a></span>
-<span id="cb18-5"><a></a>x1 <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span>
-<span id="cb18-6"><a></a>y1 <span class="op">=</span> np.array([<span class="fl">8.04</span>, <span class="fl">6.95</span>, <span class="fl">7.58</span>, <span class="fl">8.81</span>, <span class="fl">8.33</span>, <span class="fl">9.96</span>, <span class="fl">7.24</span>, <span class="fl">4.26</span>, <span class="fl">10.84</span>, <span class="fl">4.82</span>, <span class="fl">5.68</span>])</span>
-<span id="cb18-7"><a></a>y2 <span class="op">=</span> np.array([<span class="fl">9.14</span>, <span class="fl">8.14</span>, <span class="fl">8.74</span>, <span class="fl">8.77</span>, <span class="fl">9.26</span>, <span class="fl">8.10</span>, <span class="fl">6.13</span>, <span class="fl">3.10</span>, <span class="fl">9.13</span>, <span class="fl">7.26</span>, <span class="fl">4.74</span>])</span>
-<span id="cb18-8"><a></a>y3 <span class="op">=</span> np.array([<span class="fl">7.46</span>, <span class="fl">6.77</span>, <span class="fl">12.74</span>, <span class="fl">7.11</span>, <span class="fl">7.81</span>, <span class="fl">8.84</span>, <span class="fl">6.08</span>, <span class="fl">5.39</span>, <span class="fl">8.15</span>, <span class="fl">6.42</span>, <span class="fl">5.73</span>])</span>
-<span id="cb18-9"><a></a>x4 <span class="op">=</span> np.array([<span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">19</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>])</span>
-<span id="cb18-10"><a></a>y4 <span class="op">=</span> np.array([<span class="fl">6.58</span>, <span class="fl">5.76</span>, <span class="fl">7.71</span>, <span class="fl">8.84</span>, <span class="fl">8.47</span>, <span class="fl">7.04</span>, <span class="fl">5.25</span>, <span class="fl">12.50</span>, <span class="fl">5.56</span>, <span class="fl">7.91</span>, <span class="fl">6.89</span>])</span>
-<span id="cb18-11"><a></a></span>
-<span id="cb18-12"><a></a>datasets <span class="op">=</span> [(x1, y1, <span class="st">"I"</span>), (x1, y2, <span class="st">"II"</span>), (x1, y3, <span class="st">"III"</span>), (x4, y4, <span class="st">"IV"</span>)]</span>
-<span id="cb18-13"><a></a></span>
-<span id="cb18-14"><a></a><span class="cf">for</span> i, (x, y, title) <span class="kw">in</span> <span class="bu">enumerate</span>(datasets, <span class="dv">1</span>):</span>
-<span id="cb18-15"><a></a>    plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, i)</span>
-<span id="cb18-16"><a></a>    plt.scatter(x, y)</span>
-<span id="cb18-17"><a></a>    m, b <span class="op">=</span> np.polyfit(x, y, <span class="dv">1</span>)</span>
-<span id="cb18-18"><a></a>    xs <span class="op">=</span> np.linspace(<span class="dv">2</span>, <span class="dv">20</span>, <span class="dv">50</span>)</span>
-<span id="cb18-19"><a></a>    plt.plot(xs, m <span class="op">*</span> xs <span class="op">+</span> b, color<span class="op">=</span><span class="st">"red"</span>)</span>
-<span id="cb18-20"><a></a>    plt.xlim(<span class="dv">2</span>, <span class="dv">20</span>)</span>
-<span id="cb18-21"><a></a>    plt.ylim(<span class="dv">2</span>, <span class="dv">14</span>)</span>
-<span id="cb18-22"><a></a>    plt.title(<span class="ss">f"Dataset </span><span class="sc">{</span>title<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb18-23"><a></a></span>
-<span id="cb18-24"><a></a>plt.tight_layout()</span>
-<span id="cb18-25"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-</div>
-</section>
-<section id="演習好きな画像を表示" class="slide level2">
-<h2>演習<span class="fw-colon">：</span>好きな画像を表示</h2>
-<div class="slide-body">
-<ul>
-<li>matplotlib は <strong>画像も描画できる</strong></li>
-<li>公式チュートリアルを参考</li>
-<li><a href="https://matplotlib.org/stable/tutorials/images.html" class="uri">https://matplotlib.org/stable/tutorials/images.html</a></li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb19-2"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb19-3"><a></a><span class="im">import</span> matplotlib.image <span class="im">as</span> mpimg</span>
-<span id="cb19-4"><a></a></span>
-<span id="cb19-5"><a></a>img <span class="op">=</span> mpimg.imread(<span class="st">"something.jpg"</span>) <span class="co"># 画像名。フォルダの場合はpathを指定</span></span>
-<span id="cb19-6"><a></a>plt.imshow(img)</span>
-<span id="cb19-7"><a></a>plt.axis(<span class="st">"off"</span>)        <span class="co"># 軸を消す</span></span>
-<span id="cb19-8"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="まとめ" class="slide level2">
@@ -2579,16 +1176,26 @@ rkskmt
 <ul>
 <li>プレイフェア — 棒・折れ線・円グラフを発明</li>
 <li>スノウ — コレラ地図で因果関係を視覚的に立証</li>
-<li>現代のインタラクティブ可視化へ</li>
 </ul></li>
 <li><strong>大原則</strong><span class="fw-colon">：</span><em>Always plot your data first.</em>
 <ul>
-<li>アンスコムの四重奏が示す数値の限界</li>
+<li>平均所得524万円 ≠ 真ん中（中央値405万円）</li>
+<li>アンスコム・Datasaurus — 統計量は形を捨てている</li>
 </ul></li>
-<li><strong>matplotlib</strong><span class="fw-colon">：</span>最小構造（plot/scatter/bar）
+<li><strong>グラフはウソをつく</strong><span class="fw-colon">：</span>y軸切断・期間チェリーピック — 騙されない側になる</li>
+<li><strong>冒頭の謎</strong>（1日だけの大きな山）は <strong>API編で回収する</strong></li>
+</ul>
+</div>
+</section>
+<section id="次回予告" class="slide level2">
+<h2>次回予告</h2>
+<div class="slide-body">
 <ul>
-<li>修飾（ラベル/タイトル/凡例/グリッド）</li>
-<li>応用（subplot, 2D/3D散布）</li>
+<li>今日は「見る」「見抜く」 — <span class="hl">読む側</span> の話だけだった</li>
+<li>次回は <span class="hl">描く側</span> へ<span class="fw-colon">：</span><strong>matplotlib</strong> を使う
+<ul>
+<li>クイズに出た <strong>東京の気温</strong> を、自分の手で描いて確かめる</li>
+<li>1枚のグラフを「資料に載せられるレベル」まで <strong>育てる</strong></li>
 </ul></li>
 </ul>
 </div>
@@ -2597,10 +1204,10 @@ rkskmt
 <h2>参考リンク</h2>
 <div class="slide-body">
 <ul>
-<li><a href="https://matplotlib.org/stable/tutorials/introductory/pyplot.html">Matplotlib “Pyplot Tutorial”</a></li>
-<li><a href="https://matplotlib.org/stable/plot_types/index.html">Matplotlib “Plot types”</a></li>
-<li><em>Python Data Science Handbook</em> — Chapter 3 Visualizations</li>
 <li><a href="https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%82%B9%E3%82%B3%E3%83%A0%E3%81%AE%E5%9B%9B%E9%87%8D%E5%A5%8F">Anscombe’s quartet (Wikipedia)</a></li>
+<li><a href="https://www.research.autodesk.com/publications/same-stats-different-graphs/">Same Stats, Different Graphs — Datasaurus Dozen (Autodesk Research)</a></li>
+<li><a href="https://www.mhlw.go.jp/toukei/list/20-21.html">厚生労働省「国民生活基礎調査」</a></li>
+<li><a href="https://www.data.jma.go.jp/obd/stats/etrn/">気象庁「過去の気象データ検索」</a></li>
 </ul>
 
 
@@ -2644,7 +1251,7 @@ rkskmt
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -2665,7 +1272,7 @@ rkskmt
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: 'c/t',
+        slideNumber: false,
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',

@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
+
+  <meta name="author" content="rkskmt">
+  <title>情報処理 – matplotlib入門</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-d3a26a7442888a116b43ccec6150e9c5.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <link rel="stylesheet" href="custom.css">
+  <script src="slide-ui.js" defer=""></script>
+  <script src="search-ui.js" defer=""></script>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">matplotlib入門</h1>
+  <p class="subtitle">1枚のグラフを「育てる」</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+rkskmt 
+</div>
+</div>
+</div>
+
+</section>
+<section id="section" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>matplotlibでグラフを描く</p>
+</div>
+</section>
+<section id="前回のあらすじ" class="slide level2">
+<h2>前回のあらすじ</h2>
+<div class="slide-body">
+<ul>
+<li><strong>見ればわかる。見なければ見逃す</strong> — アンスコム、Datasaurus</li>
+<li>グラフは <strong>ウソをつく</strong> — y軸切断、期間チェリーピック</li>
+<li>ここまでは <span class="hl">読む側</span> の話。今日から <span class="hl">描く側</span> へ
+<ul>
+<li>道具は <strong>matplotlib</strong>。1枚のグラフを「資料に載せられるレベル」まで育てる</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="matplotlib-とは" class="slide level2">
+<h2>matplotlib とは</h2>
+<div class="slide-body">
+<ul>
+<li>Pythonにおけるグラフ描画の <strong>デファクトスタンダード</strong>
+<ul>
+<li><strong>マットプロットリブ</strong>と読む</li>
+</ul></li>
+<li>内部はC実装で高速、NumPyの <code>ndarray</code> と相性が良い
+<ul>
+<li>seaborn や pandas の plotting 機能など、派生ライブラリも多い</li>
+</ul></li>
+</ul>
+<p>ターミナルからインストール<span class="fw-colon">：</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>pip install matplotlib japanize-matplotlib</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>冒頭で import（<code>plt</code> としてインポートするのが一般的）<span class="fw-colon">：</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-2"><a></a><span class="im">import</span> japanize_matplotlib</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="pltだと日本語が文字化けする" class="slide level2">
+<h2>pltだと日本語が文字化けする</h2>
+<div class="slide-body">
+<ul>
+<li>matplotlib は多くの環境で <strong>日本語が文字化け</strong> する</li>
+</ul>
+<div id="bd22b511" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="matplotlib_files/figure-revealjs/cell-2-output-1.png" width="230" height="157"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>そこで ** <code>import japanize_matplotlib</code>**
+<ul>
+<li>これだけで解決</li>
+</ul></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-2"><a></a><span class="im">import</span> japanize_matplotlib</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><code>rcParams</code> でフォント指定しない</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><code>rcParams["font.family"]</code> は環境差で失敗しやすい</li>
+<li>日本語表示は <strong><code>japanize_matplotlib</code> に任せる</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="まずはドキュメントを眺める重要" class="slide level2">
+<h2>まずはドキュメントを眺める（重要）</h2>
+<div class="slide-body">
+<ul>
+<li>公式の <strong>Plot types</strong> ページに、描けるグラフの一覧がある</li>
+<li><a href="https://matplotlib.org/stable/plot_types/index.html" class="uri">https://matplotlib.org/stable/plot_types/index.html</a></li>
+</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>上達のコツ</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>まず <strong>何ができるかを頭に入れる</strong></li>
+<li>やりたい図ができたら、似たギャラリーを探してコードを真似る</li>
+<li><strong>自前でゼロから書かない</strong> のが鉄則</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="今日の題材東京は本当に暑くなったのか" class="slide level2">
+<h2>今日の題材<span class="fw-colon">：</span>東京は本当に暑くなったのか</h2>
+<div class="slide-body">
+<ul>
+<li>前回のクイズの続き — 今度は <strong>自分の手で</strong> 確かめる</li>
+<li><strong>気象庁の実測データ</strong><span class="fw-colon">：</span>東京の月別平均気温
+<ul>
+<li><strong>1900年</strong> と <strong>2024年</strong>、124年離れた2つの年</li>
+</ul></li>
+<li>材料はこれだけ（コピペ用）<span class="fw-colon">：</span></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)    <span class="co"># 1〜12月</span></span>
+<span id="cb4-4"><a></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
+<span id="cb4-5"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>数字を眺めて、違いがパッと分かる？</li>
+<li>ここから <strong>1枚のグラフを「資料に載せられるレベル」まで育てる</strong></li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>出典</strong></p>
+</div>
+<div class="callout-content">
+<p>気象庁「過去の気象データ検索」東京（月平均気温）</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="点のプロット" class="slide level2">
+<h2>点のプロット</h2>
+<div class="slide-body">
+<ul>
+<li>一番基本の <code>plt.plot(x, y, 'o')</code> — <code>'o'</code> は <strong>マーカー</strong> を表す</li>
+<li><code>x</code> も <code>y</code> も <strong><code>ndarray</code></strong> や <strong><code>list</code></strong> でOK</li>
+</ul>
+<div id="d86c48c5" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb5-4"><a></a></span>
+<span id="cb5-5"><a></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
+<span id="cb5-6"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
+<span id="cb5-7"><a></a></span>
+<span id="cb5-8"><a></a>plt.plot(months, temp_2024, <span class="st">'o'</span>)    <span class="co"># 'o' で点だけプロット</span></span>
+<span id="cb5-9"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="matplotlib_files/figure-revealjs/cell-3-output-1.png" width="789" height="414"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>まだ裸の図だが、数字の表より <strong>季節の山がもう見えている</strong></li>
+</ul>
+</div>
+</section>
+<section id="線のグラフ" class="slide level2">
+<h2>線のグラフ</h2>
+<div class="slide-body">
+<ul>
+<li>第3引数を <strong>省略すると折れ線</strong></li>
+<li><code>'o-'</code> だと <strong>点＋線</strong></li>
+</ul>
+<div id="c9ff08a1" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb6-4"><a></a></span>
+<span id="cb6-5"><a></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
+<span id="cb6-6"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
+<span id="cb6-7"><a></a></span>
+<span id="cb6-8"><a></a>plt.plot(months, temp_2024, <span class="st">'o-'</span>)   <span class="co"># 点＋線</span></span>
+<span id="cb6-9"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="matplotlib_files/figure-revealjs/cell-4-output-1.png" width="789" height="414"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>月ごとの <strong>つながり</strong>（連続的な変化）が見えるようになった</li>
+</ul>
+</div>
+</section>
+<section id="演習二次関数を描く" class="slide level2 scrollable">
+<h2>演習<span class="fw-colon">：</span>二次関数を描く</h2>
+<div class="slide-body">
+<ul>
+<li>一番なじみのある「データ」でウォーミングアップ</li>
+<li><span class="math inline">\(y = x^2 - 2x + 3\)</span> を <strong>定義域 <span class="math inline">\(-2 \leq x \leq 5\)</span></strong> で描け</li>
+<li>手順
+<ol type="1">
+<li><code>np.linspace(-2, 5, 200)</code> で <code>x</code> を作る（細かく刻むと線が滑らかになる）</li>
+<li><code>y</code> を計算（<code>ndarray</code> はそのまま式に入れられる — NumPy回の復習）</li>
+<li><code>plt.plot(x, y)</code> で折れ線として描く</li>
+</ol></li>
+</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>平方完成で検算</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><span class="math inline">\(y = (x - 1)^2 + 2\)</span> なので <strong>頂点は <span class="math inline">\((1, 2)\)</span></strong></li>
+<li>グラフの谷が <span class="math inline">\((1, 2)\)</span> に来ているか確認</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="12801b7b" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>解答例を見る</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb7-4"><a></a></span>
+<span id="cb7-5"><a></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">200</span>)</span>
+<span id="cb7-6"><a></a>y <span class="op">=</span> x <span class="op">**</span> <span class="dv">2</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> x <span class="op">+</span> <span class="dv">3</span></span>
+<span id="cb7-7"><a></a></span>
+<span id="cb7-8"><a></a>plt.plot(x, y)</span>
+<span id="cb7-9"><a></a>plt.plot([<span class="dv">1</span>], [<span class="dv">2</span>], <span class="st">'o'</span>, color<span class="op">=</span><span class="st">"red"</span>)   <span class="co"># 頂点に印をつけて検算</span></span>
+<span id="cb7-10"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</div>
+</section>
+<section id="本目を重ねる凡例をつける" class="slide level2">
+<h2>2本目を重ねる・凡例をつける</h2>
+<div class="slide-body">
+<ul>
+<li><code>plt.plot()</code> を <strong>2回呼ぶと重ね描き</strong> になる</li>
+<li>どの線が何かを示すために <code>label=</code> + <code>plt.legend()</code> で <strong>凡例</strong></li>
+</ul>
+<div id="34688110" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb8-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb8-4"><a></a></span>
+<span id="cb8-5"><a></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
+<span id="cb8-6"><a></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
+<span id="cb8-7"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
+<span id="cb8-8"><a></a></span>
+<span id="cb8-9"><a></a>plt.plot(months, temp_1900, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">"1900年"</span>)   <span class="co"># 凡例ラベル</span></span>
+<span id="cb8-10"><a></a>plt.plot(months, temp_2024, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">"2024年"</span>)</span>
+<span id="cb8-11"><a></a>plt.legend()                                         <span class="co"># 凡例を表示</span></span>
+<span id="cb8-12"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="matplotlib_files/figure-revealjs/cell-6-output-1.png" width="789" height="411"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>重ねた瞬間、<strong>124年分の差</strong> が一目で見える
+<ul>
+<li>2024年の冬は1900年の春なみ、夏は <strong>ほぼ全月で上</strong></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="ラベルグリッドタイトル" class="slide level2">
+<h2>ラベル・グリッド・タイトル</h2>
+<div class="slide-body">
+<ul>
+<li><code>plt.xlabel()</code> / <code>plt.ylabel()</code> で <strong>軸ラベル</strong></li>
+<li><code>plt.title()</code> で <strong>グラフタイトル</strong></li>
+<li><code>plt.grid(True)</code> で <strong>グリッド線</strong></li>
+</ul>
+<div id="e6d73c94" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb9-4"><a></a></span>
+<span id="cb9-5"><a></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
+<span id="cb9-6"><a></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
+<span id="cb9-7"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
+<span id="cb9-8"><a></a></span>
+<span id="cb9-9"><a></a>plt.plot(months, temp_1900, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">"1900年"</span>)</span>
+<span id="cb9-10"><a></a>plt.plot(months, temp_2024, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">"2024年"</span>)</span>
+<span id="cb9-11"><a></a>plt.legend()</span>
+<span id="cb9-12"><a></a>plt.title(<span class="st">"東京の月別平均気温"</span>)        <span class="co"># タイトル</span></span>
+<span id="cb9-13"><a></a>plt.xlabel(<span class="st">"月"</span>)                       <span class="co"># x軸ラベル</span></span>
+<span id="cb9-14"><a></a>plt.ylabel(<span class="st">"平均気温（℃）"</span>)           <span class="co"># y軸ラベル</span></span>
+<span id="cb9-15"><a></a>plt.grid(<span class="va">True</span>)                         <span class="co"># グリッド線</span></span>
+<span id="cb9-16"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="matplotlib_files/figure-revealjs/cell-7-output-1.png" width="807" height="448"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>装飾の優先順位</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><strong>軸ラベル</strong>（何の量か）</li>
+<li><strong>凡例</strong>（どの線が何か）</li>
+<li><strong>タイトル</strong>（何のグラフか）</li>
+<li>この3つが揃っていない図は <strong>資料に載せてはいけない</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="表示範囲の指定xlim-ylim" class="slide level2">
+<h2>表示範囲の指定（xlim / ylim）</h2>
+<div class="slide-body">
+<ul>
+<li><code>plt.xlim(a, b)</code> / <code>plt.ylim(a, b)</code> で軸の範囲を固定</li>
+<li>何も指定しないと <strong>データの範囲＋少し余白</strong> が自動で選ばれる</li>
+<li>前回のクイズで見たとおり、<strong>軸の選び方は正直さの問題</strong>
+<ul>
+<li>0から見せて、差が本物か確かめる</li>
+</ul></li>
+</ul>
+<div id="20ec3cb9" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb10-4"><a></a></span>
+<span id="cb10-5"><a></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
+<span id="cb10-6"><a></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
+<span id="cb10-7"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
+<span id="cb10-8"><a></a></span>
+<span id="cb10-9"><a></a>plt.plot(months, temp_1900, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">"1900年"</span>)</span>
+<span id="cb10-10"><a></a>plt.plot(months, temp_2024, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">"2024年"</span>)</span>
+<span id="cb10-11"><a></a>plt.legend()</span>
+<span id="cb10-12"><a></a>plt.xlim(<span class="dv">1</span>, <span class="dv">12</span>)        <span class="co"># x軸: 1〜12月</span></span>
+<span id="cb10-13"><a></a>plt.ylim(<span class="dv">0</span>, <span class="dv">35</span>)        <span class="co"># y軸: あえて0から見せる</span></span>
+<span id="cb10-14"><a></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb10-15"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="matplotlib_files/figure-revealjs/cell-8-output-1.png" width="798" height="416"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>y軸の罠（描く側の責任）</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>範囲をデータに合わせると <strong>小さな変化が大きく見える</strong></li>
+<li>比較するグラフは <strong>y軸を揃える</strong> か <strong>0から見せる</strong> のが原則</li>
+<li>0から見せても、この気温差は <strong>本物</strong> だと分かる</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="複数のグラフを並べるsubplot" class="slide level2">
+<h2>複数のグラフを並べる（subplot）</h2>
+<div class="slide-body">
+<ul>
+<li><code>plt.subplot(行数, 列数, 場所番号)</code> で碁盤の目状に並べる</li>
+<li>場所番号は <strong>1始まり、左上から右へ</strong></li>
+<li>例<span class="fw-colon">：</span><code>plt.subplot(2, 2, 3)</code> は2×2の3番目（左下）</li>
+</ul>
+<div style="text-align:center; font-family:monospace;">
+<p>1 │ 2<br> ─┼─<br> 3 │ 4</p>
+</div>
+<div id="89bf376f" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb11-4"><a></a></span>
+<span id="cb11-5"><a></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
+<span id="cb11-6"><a></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
+<span id="cb11-7"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
+<span id="cb11-8"><a></a></span>
+<span id="cb11-9"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)        <span class="co"># 1行2列の左</span></span>
+<span id="cb11-10"><a></a>plt.plot(months, temp_1900, <span class="st">'o-'</span>)</span>
+<span id="cb11-11"><a></a>plt.ylim(<span class="dv">0</span>, <span class="dv">35</span>)             <span class="co"># 並べて比較するなら軸を揃える</span></span>
+<span id="cb11-12"><a></a>plt.title(<span class="st">"1900年"</span>)</span>
+<span id="cb11-13"><a></a></span>
+<span id="cb11-14"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)        <span class="co"># 1行2列の右</span></span>
+<span id="cb11-15"><a></a>plt.plot(months, temp_2024, <span class="st">'o-'</span>)</span>
+<span id="cb11-16"><a></a>plt.ylim(<span class="dv">0</span>, <span class="dv">35</span>)</span>
+<span id="cb11-17"><a></a>plt.title(<span class="st">"2024年"</span>)</span>
+<span id="cb11-18"><a></a></span>
+<span id="cb11-19"><a></a>plt.tight_layout()          <span class="co"># 余白を自動調整</span></span>
+<span id="cb11-20"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="matplotlib_files/figure-revealjs/cell-9-output-1.png" width="950" height="469"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>重ねる vs 並べる</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>直接比較したい → <strong>重ねる</strong>（さっきの凡例つき1枚）</li>
+<li>形をそれぞれ見たい・線が多すぎる → <strong>並べる</strong>（subplot）</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ここまでの成果図は育てるもの" class="slide level2">
+<h2>ここまでの成果<span class="fw-colon">：</span>図は「育てる」もの</h2>
+<div class="slide-body">
+<div id="ecf298da" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="matplotlib_files/figure-revealjs/cell-10-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="matplotlib_files/figure-revealjs/cell-10-output-1.png" class="quarto-figure quarto-figure-center" width="854" height="325"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>同じデータ</strong>。でも伝わり方は別物</li>
+<li>育てた手順<span class="fw-colon">：</span>点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲</li>
+<li>右の図は「東京は暑くなったのか？」に <strong>一人で答えられる</strong></li>
+</ul>
+</div>
+</section>
+<section id="散布図で150年を一気に見る" class="slide level2">
+<h2>散布図で150年を一気に見る</h2>
+<div class="slide-body">
+<ul>
+<li>月別の比較は2年分だけだった。<strong>全部の年</strong> を見たい</li>
+<li>年平均気温150年分のCSV（気象庁）を <code>np.loadtxt</code> で読み込む
+<ul>
+<li>データ<span class="fw-colon">：</span><a href="data/tokyo_temp_annual.csv">tokyo_temp_annual.csv</a>（<code>.py</code> と同じフォルダに置く）</li>
+</ul></li>
+<li>大量の点は <code>plt.scatter()</code>。<code>alpha</code> で <strong>透明度</strong> を指定すると重なりが見やすい</li>
+</ul>
+<div id="d301bec7" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb12-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb12-4"><a></a></span>
+<span id="cb12-5"><a></a>data <span class="op">=</span> np.loadtxt(<span class="st">"tokyo_temp_annual.csv"</span>, delimiter<span class="op">=</span><span class="st">","</span>, skiprows<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb12-6"><a></a>year <span class="op">=</span> data[:, <span class="dv">0</span>]      <span class="co"># 1列目：年</span></span>
+<span id="cb12-7"><a></a>temp <span class="op">=</span> data[:, <span class="dv">1</span>]      <span class="co"># 2列目：年平均気温</span></span>
+<span id="cb12-8"><a></a></span>
+<span id="cb12-9"><a></a>plt.scatter(year, temp, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb12-10"><a></a>plt.xlabel(<span class="st">"年"</span>)</span>
+<span id="cb12-11"><a></a>plt.ylabel(<span class="st">"年平均気温（℃）"</span>)</span>
+<span id="cb12-12"><a></a>plt.title(<span class="st">"東京の年平均気温（1876〜2025）"</span>)</span>
+<span id="cb12-13"><a></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb12-14"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="d2b01eb7" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="matplotlib_files/figure-revealjs/cell-12-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="matplotlib_files/figure-revealjs/cell-12-output-1.png" class="quarto-figure quarto-figure-center" width="662" height="296"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>結論<span class="fw-colon">：</span>東京は暑くなった。ただし</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>150年で <strong>約4℃上昇</strong> — 前回のクイズの「寒冷化」は揺らぎの切り取りだった</li>
+<li>この上昇には <strong>都市化（ヒートアイランド）</strong> の影響も大きく含まれる</li>
+<li>図は答えをくれるが、<strong>解釈には背景知識が要る</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ヒストグラムあの所得分布を自分で作る" class="slide level2">
+<h2>ヒストグラム<span class="fw-colon">：</span>あの所得分布を自分で作る</h2>
+<div class="slide-body">
+<ul>
+<li>前回見た厚労省の所得分布は <strong>ヒストグラム</strong>（区間ごとに数えるグラフ）だった</li>
+<li>同じ構造の図を、ミニチュア（ある会社の社員29人の年収）で再現する</li>
+<li><code>plt.hist(x, bins=区間の数)</code> で描ける</li>
+<li><code>plt.axvline(値)</code> で <strong>縦線</strong>、<code>np.median(x)</code> で <strong>中央値</strong></li>
+</ul>
+<div id="9e7c4a67" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb13-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb13-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb13-4"><a></a></span>
+<span id="cb13-5"><a></a>income <span class="op">=</span> np.array([</span>
+<span id="cb13-6"><a></a>    <span class="dv">280</span>, <span class="dv">310</span>, <span class="dv">330</span>, <span class="dv">350</span>, <span class="dv">360</span>, <span class="dv">380</span>, <span class="dv">400</span>, <span class="dv">410</span>, <span class="dv">430</span>, <span class="dv">450</span>, <span class="dv">470</span>, <span class="dv">500</span>, <span class="dv">520</span>, <span class="dv">450</span>, <span class="dv">470</span>, <span class="dv">500</span>, <span class="dv">520</span>, <span class="dv">550</span>, <span class="dv">600</span>, <span class="dv">650</span>, <span class="dv">700</span>, <span class="dv">760</span>, <span class="dv">900</span>, <span class="dv">950</span> ,<span class="dv">1100</span>, <span class="dv">1260</span>, <span class="dv">3100</span>, <span class="dv">3000</span>, <span class="dv">3200</span></span>
+<span id="cb13-7"><a></a>])</span>
+<span id="cb13-8"><a></a></span>
+<span id="cb13-9"><a></a>mean_income <span class="op">=</span> income.mean()</span>
+<span id="cb13-10"><a></a>median_income <span class="op">=</span> np.median(income)</span>
+<span id="cb13-11"><a></a></span>
+<span id="cb13-12"><a></a>plt.hist(income, bins<span class="op">=</span><span class="dv">20</span>, edgecolor<span class="op">=</span><span class="st">"white"</span>)</span>
+<span id="cb13-13"><a></a>plt.axvline(mean_income, color<span class="op">=</span><span class="st">"red"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="ss">f"平均 (</span><span class="sc">{</span>mean_income<span class="sc">:,.0f}</span><span class="ss">)"</span>)</span>
+<span id="cb13-14"><a></a>plt.axvline(median_income, color<span class="op">=</span><span class="st">"blue"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="ss">f"中央値 (</span><span class="sc">{</span>median_income<span class="sc">:,.0f}</span><span class="ss">)"</span>)</span>
+<span id="cb13-15"><a></a>plt.xlabel(<span class="st">"年収（万円）"</span>)</span>
+<span id="cb13-16"><a></a>plt.ylabel(<span class="st">"人数"</span>)</span>
+<span id="cb13-17"><a></a>plt.title(<span class="st">"年収のような右に長い分布"</span>)</span>
+<span id="cb13-18"><a></a>plt.legend()</span>
+<span id="cb13-19"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="matplotlib_files/figure-revealjs/cell-13-output-1.png" width="807" height="448"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>「平均年収824万円の会社」のからくり</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>この会社、求人票に「平均年収824万円」と書ける（ウソではない）</li>
+<li>でも中央値は <strong>500万円</strong> — 半分の人は500万以下</li>
+<li>前回の所得分布とまったく同じ構造。<strong>自分で描ければ、もう騙されない</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="plt早見表" class="slide level2">
+<h2>plt早見表</h2>
+<div class="slide-body">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>操作</th>
+<th>コード</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>点だけ</td>
+<td><code>plt.plot(x, y, 'o')</code></td>
+</tr>
+<tr class="even">
+<td>折れ線</td>
+<td><code>plt.plot(x, y)</code></td>
+</tr>
+<tr class="odd">
+<td>棒グラフ</td>
+<td><code>plt.bar(x, y)</code></td>
+</tr>
+<tr class="even">
+<td>散布図</td>
+<td><code>plt.scatter(x, y)</code></td>
+</tr>
+<tr class="odd">
+<td>ヒストグラム</td>
+<td><code>plt.hist(x)</code></td>
+</tr>
+<tr class="even">
+<td>縦線</td>
+<td><code>plt.axvline(x)</code></td>
+</tr>
+<tr class="odd">
+<td>軸の範囲</td>
+<td><code>plt.xlim(a, b)</code> / <code>plt.ylim(a, b)</code></td>
+</tr>
+<tr class="even">
+<td>軸ラベル</td>
+<td><code>plt.xlabel("...")</code> / <code>plt.ylabel("...")</code></td>
+</tr>
+<tr class="odd">
+<td>タイトル</td>
+<td><code>plt.title("...")</code></td>
+</tr>
+<tr class="even">
+<td>凡例</td>
+<td><code>plt.legend()</code>（要 <code>label=...</code>）</td>
+</tr>
+<tr class="odd">
+<td>グリッド</td>
+<td><code>plt.grid(True)</code></td>
+</tr>
+<tr class="even">
+<td>並べる</td>
+<td><code>plt.subplot(行, 列, 番号)</code></td>
+</tr>
+<tr class="odd">
+<td>CSV読み込み</td>
+<td><code>np.loadtxt("file.csv", delimiter=",", skiprows=1)</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="演習謎のデータをプロットせよ" class="slide level2 scrollable">
+<h2>演習<span class="fw-colon">：</span>謎のデータをプロットせよ</h2>
+<div class="slide-body">
+<ul>
+<li><a href="data/datasaurus_star.csv">datasaurus_star.csv</a> をダウンロードして、<code>.py</code> と同じフォルダに置く</li>
+<li>前回見た <strong>Datasaurus Dozen 13個のうちの1つ</strong>（恐竜ではない）
+<ul>
+<li>統計量はもちろん<span class="fw-colon">：</span><span class="math inline">\(\bar{x} = 54.27\)</span>、<span class="math inline">\(\bar{y} = 47.84\)</span>、<span class="math inline">\(r = -0.06\)</span></li>
+</ul></li>
+<li>手順
+<ol type="1">
+<li><code>np.loadtxt</code> で読み込む（1行目はヘッダなので <code>skiprows=1</code>）</li>
+<li><code>data[:, 0]</code> と <code>data[:, 1]</code> で <code>x</code>, <code>y</code> を取り出す</li>
+<li><code>plt.scatter</code> でプロット — <strong>何が見える？</strong></li>
+<li>軸ラベル・タイトルをつけて「資料に載せられる図」に育てる</li>
+</ol></li>
+</ul>
+<div id="c0b6ce71" class="cell" data-execution_count="13">
+<details class="code-fold">
+<summary>解答例を見る</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb14-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb14-4"><a></a></span>
+<span id="cb14-5"><a></a>data <span class="op">=</span> np.loadtxt(<span class="st">"datasaurus_star.csv"</span>, delimiter<span class="op">=</span><span class="st">","</span>, skiprows<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb14-6"><a></a>x <span class="op">=</span> data[:, <span class="dv">0</span>]</span>
+<span id="cb14-7"><a></a>y <span class="op">=</span> data[:, <span class="dv">1</span>]</span>
+<span id="cb14-8"><a></a></span>
+<span id="cb14-9"><a></a>plt.scatter(x, y)</span>
+<span id="cb14-10"><a></a>plt.xlabel(<span class="st">"x"</span>)</span>
+<span id="cb14-11"><a></a>plt.ylabel(<span class="st">"y"</span>)</span>
+<span id="cb14-12"><a></a>plt.title(<span class="st">"statistics are not enough"</span>)</span>
+<span id="cb14-13"><a></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb14-14"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</div>
+</section>
+<section id="演習アンスコムの四重奏を再現" class="slide level2 scrollable">
+<h2>演習<span class="fw-colon">：</span>アンスコムの四重奏を再現</h2>
+<div class="slide-body">
+<ul>
+<li>手順
+<ol type="1">
+<li>下のデータをコピペして使う</li>
+<li><code>plt.subplot(2, 2, i)</code> で2×2に並べる</li>
+<li>それぞれ <code>scatter</code> でプロット</li>
+<li><code>np.polyfit(x, y, 1)</code> で1次回帰直線を求め、<code>plot</code> で重ねる</li>
+<li>すべてのサブプロットで <code>xlim</code> / <code>ylim</code> を <strong>揃える</strong></li>
+</ol></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-2"><a></a></span>
+<span id="cb15-3"><a></a><span class="co"># データセット I, II, III（x は共通）</span></span>
+<span id="cb15-4"><a></a>x1 <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span>
+<span id="cb15-5"><a></a>y1 <span class="op">=</span> np.array([<span class="fl">8.04</span>, <span class="fl">6.95</span>, <span class="fl">7.58</span>, <span class="fl">8.81</span>, <span class="fl">8.33</span>, <span class="fl">9.96</span>, <span class="fl">7.24</span>, <span class="fl">4.26</span>, <span class="fl">10.84</span>, <span class="fl">4.82</span>, <span class="fl">5.68</span>])</span>
+<span id="cb15-6"><a></a>y2 <span class="op">=</span> np.array([<span class="fl">9.14</span>, <span class="fl">8.14</span>, <span class="fl">8.74</span>, <span class="fl">8.77</span>, <span class="fl">9.26</span>, <span class="fl">8.10</span>, <span class="fl">6.13</span>, <span class="fl">3.10</span>, <span class="fl">9.13</span>, <span class="fl">7.26</span>, <span class="fl">4.74</span>])</span>
+<span id="cb15-7"><a></a>y3 <span class="op">=</span> np.array([<span class="fl">7.46</span>, <span class="fl">6.77</span>, <span class="fl">12.74</span>, <span class="fl">7.11</span>, <span class="fl">7.81</span>, <span class="fl">8.84</span>, <span class="fl">6.08</span>, <span class="fl">5.39</span>, <span class="fl">8.15</span>, <span class="fl">6.42</span>, <span class="fl">5.73</span>])</span>
+<span id="cb15-8"><a></a></span>
+<span id="cb15-9"><a></a><span class="co"># データセット IV（x が異なる）</span></span>
+<span id="cb15-10"><a></a>x4 <span class="op">=</span> np.array([<span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">19</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>])</span>
+<span id="cb15-11"><a></a>y4 <span class="op">=</span> np.array([<span class="fl">6.58</span>, <span class="fl">5.76</span>, <span class="fl">7.71</span>, <span class="fl">8.84</span>, <span class="fl">8.47</span>, <span class="fl">7.04</span>, <span class="fl">5.25</span>, <span class="fl">12.50</span>, <span class="fl">5.56</span>, <span class="fl">7.91</span>, <span class="fl">6.89</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>なぜ軸を揃える？</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>4つのプロットを <strong>公平に比較</strong> するため</li>
+<li>違うスケールで並べると印象操作になる</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="6f9a9c57" class="cell" data-execution_count="14">
+<details class="code-fold">
+<summary>解答例を見る</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb16-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb16-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb16-4"><a></a></span>
+<span id="cb16-5"><a></a>x1 <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span>
+<span id="cb16-6"><a></a>y1 <span class="op">=</span> np.array([<span class="fl">8.04</span>, <span class="fl">6.95</span>, <span class="fl">7.58</span>, <span class="fl">8.81</span>, <span class="fl">8.33</span>, <span class="fl">9.96</span>, <span class="fl">7.24</span>, <span class="fl">4.26</span>, <span class="fl">10.84</span>, <span class="fl">4.82</span>, <span class="fl">5.68</span>])</span>
+<span id="cb16-7"><a></a>y2 <span class="op">=</span> np.array([<span class="fl">9.14</span>, <span class="fl">8.14</span>, <span class="fl">8.74</span>, <span class="fl">8.77</span>, <span class="fl">9.26</span>, <span class="fl">8.10</span>, <span class="fl">6.13</span>, <span class="fl">3.10</span>, <span class="fl">9.13</span>, <span class="fl">7.26</span>, <span class="fl">4.74</span>])</span>
+<span id="cb16-8"><a></a>y3 <span class="op">=</span> np.array([<span class="fl">7.46</span>, <span class="fl">6.77</span>, <span class="fl">12.74</span>, <span class="fl">7.11</span>, <span class="fl">7.81</span>, <span class="fl">8.84</span>, <span class="fl">6.08</span>, <span class="fl">5.39</span>, <span class="fl">8.15</span>, <span class="fl">6.42</span>, <span class="fl">5.73</span>])</span>
+<span id="cb16-9"><a></a>x4 <span class="op">=</span> np.array([<span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">19</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>])</span>
+<span id="cb16-10"><a></a>y4 <span class="op">=</span> np.array([<span class="fl">6.58</span>, <span class="fl">5.76</span>, <span class="fl">7.71</span>, <span class="fl">8.84</span>, <span class="fl">8.47</span>, <span class="fl">7.04</span>, <span class="fl">5.25</span>, <span class="fl">12.50</span>, <span class="fl">5.56</span>, <span class="fl">7.91</span>, <span class="fl">6.89</span>])</span>
+<span id="cb16-11"><a></a></span>
+<span id="cb16-12"><a></a>datasets <span class="op">=</span> [(x1, y1, <span class="st">"I"</span>), (x1, y2, <span class="st">"II"</span>), (x1, y3, <span class="st">"III"</span>), (x4, y4, <span class="st">"IV"</span>)]</span>
+<span id="cb16-13"><a></a></span>
+<span id="cb16-14"><a></a><span class="cf">for</span> i, (x, y, title) <span class="kw">in</span> <span class="bu">enumerate</span>(datasets, <span class="dv">1</span>):</span>
+<span id="cb16-15"><a></a>    plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, i)</span>
+<span id="cb16-16"><a></a>    plt.scatter(x, y)</span>
+<span id="cb16-17"><a></a>    m, b <span class="op">=</span> np.polyfit(x, y, <span class="dv">1</span>)</span>
+<span id="cb16-18"><a></a>    xs <span class="op">=</span> np.linspace(<span class="dv">2</span>, <span class="dv">20</span>, <span class="dv">50</span>)</span>
+<span id="cb16-19"><a></a>    plt.plot(xs, m <span class="op">*</span> xs <span class="op">+</span> b, color<span class="op">=</span><span class="st">"red"</span>)</span>
+<span id="cb16-20"><a></a>    plt.xlim(<span class="dv">2</span>, <span class="dv">20</span>)</span>
+<span id="cb16-21"><a></a>    plt.ylim(<span class="dv">2</span>, <span class="dv">14</span>)</span>
+<span id="cb16-22"><a></a>    plt.title(<span class="ss">f"Dataset </span><span class="sc">{</span>title<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb16-23"><a></a></span>
+<span id="cb16-24"><a></a>plt.tight_layout()</span>
+<span id="cb16-25"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</div>
+</section>
+<section id="演習好きな画像を表示" class="slide level2">
+<h2>演習<span class="fw-colon">：</span>好きな画像を表示</h2>
+<div class="slide-body">
+<ul>
+<li>matplotlib は <strong>画像も描画できる</strong></li>
+<li>公式チュートリアルを参考</li>
+<li><a href="https://matplotlib.org/stable/tutorials/images.html" class="uri">https://matplotlib.org/stable/tutorials/images.html</a></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb17-2"><a></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb17-3"><a></a><span class="im">import</span> matplotlib.image <span class="im">as</span> mpimg</span>
+<span id="cb17-4"><a></a></span>
+<span id="cb17-5"><a></a>img <span class="op">=</span> mpimg.imread(<span class="st">"something.jpg"</span>) <span class="co"># 画像名。フォルダの場合はpathを指定</span></span>
+<span id="cb17-6"><a></a>plt.imshow(img)</span>
+<span id="cb17-7"><a></a>plt.axis(<span class="st">"off"</span>)        <span class="co"># 軸を消す</span></span>
+<span id="cb17-8"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="まとめ" class="slide level2">
+<h2>まとめ</h2>
+<div class="slide-body">
+<ul>
+<li><strong>matplotlib</strong><span class="fw-colon">：</span>「東京は暑くなったのか」を1枚のグラフに育てた
+<ul>
+<li>点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲</li>
+<li>散布図で150年、ヒストグラムで分布</li>
+</ul></li>
+<li>装飾の優先順位<span class="fw-colon">：</span><strong>軸ラベル・凡例・タイトル</strong> — 揃っていない図は資料に載せない</li>
+<li><strong>可視化編の謎</strong>（1日だけの大きな山）は <strong>API編で回収する</strong></li>
+</ul>
+</div>
+</section>
+<section id="参考リンク" class="slide level2">
+<h2>参考リンク</h2>
+<div class="slide-body">
+<ul>
+<li><a href="https://matplotlib.org/stable/tutorials/introductory/pyplot.html">Matplotlib “Pyplot Tutorial”</a></li>
+<li><a href="https://matplotlib.org/stable/plot_types/index.html">Matplotlib “Plot types”</a></li>
+<li><em>Python Data Science Handbook</em> — Chapter 3 Visualizations</li>
+<li><a href="https://www.research.autodesk.com/publications/same-stats-different-graphs/">Same Stats, Different Graphs — Datasaurus Dozen (Autodesk Research)</a></li>
+<li><a href="https://www.data.jma.go.jp/obd/stats/etrn/">気象庁「過去の気象データ検索」</a></li>
+</ul>
+
+
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
+
+</div>
+</div>
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 6.0e-2,
+
+        math: {
+          mathjax: './libs/mathjax/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "コピーしました");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "コピーしました");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
+    
+
+</body></html>
