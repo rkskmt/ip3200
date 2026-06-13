@@ -5,7 +5,7 @@ subtitle: "`list` / `dict` / `tuple`"
 
 
 
-## コレクション（Collection）とは
+## コレクション（[Collection]{.en}）とは
 
 ::: {.fig-cite src="imgs/Numismatic_items_or_specimens_on_display_at_an_exhibition_in_Ballygunge,_Kolkata.jpg" height="90%"}
 
@@ -494,7 +494,7 @@ min_val, max_val = get_min_max_value(scores)
 ```
 
 ::: {.callout-tip}
-## アンパック（unpacking）
+## アンパック（[unpacking]{.en}）
 
 `tuple`などの`イテラブル`なクラスの各要素を複数の変数に一度に代入することを**アンパック**という。
 
@@ -507,9 +507,9 @@ x, y = point      # x=3, y=7
 :::
 
 ::: {.callout-note}
-## イテラブル（iterable）とは
+## イテラブル（[iterable]{.en}）とは
 
-イテレーション（iteration）は「コンテナから要素を1つずつ順番に取り出す操作」のこと。どの言語でも `for` 文の基本動作はこれ。イテラブルとは、イテレーションができるもの＝順番に要素を取り出せるもの。
+イテレーション（[iteration]{.en}）は「コンテナから要素を1つずつ順番に取り出す操作」のこと。どの言語でも `for` 文の基本動作はこれ。イテラブルとは、イテレーションができるもの＝順番に要素を取り出せるもの。
 
 | 型 | イテラブル？ |
 |---|---|
@@ -606,7 +606,7 @@ for s in students:
 
 現場でも競技プログラミングでもよく使われる。各自で調べよう。
 
-- **`deque`** — 先端への挿入・削除が高速（double ended queue）
+- **`deque`** — 先端への挿入・削除が高速（[double ended queue]{.en}）
 - **`defaultdict`** — キーが存在しない場合にデフォルト値を返す `dict`
 - **`heapq`** — 最小値の取り出しに強い（heap木で管理）
 - **`set`** — 重複が許されない。和集合などの論理演算も可能

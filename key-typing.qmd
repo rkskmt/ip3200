@@ -16,8 +16,8 @@ subtitle: "すべての基礎力"
 
 タイピングの速さを測る指標は主に2つある。
 
-- **WPM（Words Per Minute）**：1分間に打てる **単語数**
-- **KPM（Keys Per Minute）**：1分間に打てる **キーの打鍵数**
+- **WPM（[Words Per Minute]{.en .abbr}）**：1分間に打てる **単語数**
+- **KPM（[Keys Per Minute]{.en .abbr}）**：1分間に打てる **キーの打鍵数**
 
 ### WPM
 
@@ -137,10 +137,10 @@ subtitle: "すべての基礎力"
 2. アカウントを作る
 3. 問題を解く
 4. 右上の「提出」ボタンを押す
-5. ジャッジ結果が **AC（Accepted）** になれば正解！
-   - **WA（Wrong Answer）** ：出力が違う
-   - **RE（Runtime Error）** ：実行中にエラー
-   - **TLE（Time Limit Exceeded）** ：時間超過
+5. ジャッジ結果が **AC（[Accepted]{.en .abbr}）** になれば正解！
+   - **WA（[Wrong Answer]{.en .abbr}）** ：出力が違う
+   - **RE（[Runtime Error]{.en .abbr}）** ：実行中にエラー
+   - **TLE（[Time Limit Exceeded]{.en .abbr}）** ：時間超過
 
 ::: {.callout-tip}
 ## ABC400の解答例（Python）

@@ -267,7 +267,7 @@ print(np.diff(arr))  # [ 2  3 -2 -2  3]
 
 ## 多次元Array
 
-- ndarrayは多次元（N-Dimensional）で力を発揮
+- ndarrayは多次元（[N-dimensional]{.en}）で力を発揮
     - 特に行列演算が強力
 
 ```python
