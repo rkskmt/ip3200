@@ -348,14 +348,16 @@ fig.write_html("iframes/plotly_line.html", include_plotlyjs="directory")
 
 ## ズームアウト：80万年の気温
 
-- 南極の氷から復元した気温 — **80万年前**まで遡れる（EPICA Dome C）
+- 南極の氷から復元した気温 — **80万年前**まで遡れる（EPICA Dome C）。縦軸 **0℃＝現在の水準**（直近1000年の平均）、マイナスほど寒い
 - ドラッグでズーム → 氷期と間氷期を **約10℃も往復**。東京150年の変化は、この巨大なリズムのごく一部
 - 同じ「気温」でも **見せるスパンで物語が変わる**
 - データ：[epica_temp.csv](data/epica_temp.csv)（`data` フォルダに置く）
 
 ```python
 df_temp_long = pd.read_csv("data/epica_temp.csv")
-fig = px.line(df_temp_long, x="age_kyr_bp", y="temp_anomaly_c")
+df_temp_long["万年前"] = df_temp_long["age_kyr_bp"] / 10  # 千年 → 万年 で読みやすく
+
+fig = px.line(df_temp_long, x="万年前", y="temp_anomaly_c")
 fig.show()
 ```
 
@@ -363,19 +365,21 @@ fig.show()
 #| echo: false
 #| output: false
 df_temp_long = pd.read_csv("data/epica_temp.csv")
+df_temp_long["万年前"] = df_temp_long["age_kyr_bp"] / 10
+
 fig = px.line(
     df_temp_long,
-    x="age_kyr_bp",
+    x="万年前",
     y="temp_anomaly_c",
-    title="南極の氷から復元した気温（過去80万年・現在との差）",
-    labels={"age_kyr_bp": "年前（千年 = kyr）", "temp_anomaly_c": "気温（現在との差 ℃）"},
+    title="南極の氷から復元した気温（過去80万年）",
+    labels={"万年前": "万年前（0 = 現在）", "temp_anomaly_c": "現在との気温差（℃）"},
 )
 fig.update_xaxes(autorange="reversed")
-fig.update_layout(width=900, height=430, margin=dict(l=20, r=20, t=50, b=20))
+fig.update_layout(width=900, height=460, margin=dict(l=70, r=30, t=60, b=60))
 fig.write_html("iframes/plotly_icecore.html", include_plotlyjs="directory")
 ```
 
-::: {.plotly-iframe src="iframes/plotly_icecore.html"}
+::: {.plotly-iframe src="iframes/plotly_icecore.html" height="480"}
 :::
 
 
