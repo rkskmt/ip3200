@@ -346,35 +346,31 @@ fig.write_html("iframes/plotly_line.html", include_plotlyjs="directory")
 :::
 
 
-## ズームアウト：80万年の氷床コア
+## ズームアウト：80万年の気温
 
-- 東京の150年でも切り取りかも。南極の氷で **80万年前**の大気まで遡れる（EPICA Dome C）
-- ドラッグでズーム → CO₂は氷期・間氷期で **180〜300ppm を往復** するだけ。右端の現在値だけ枠の外
-- データ：[epica_co2.csv](data/epica_co2.csv)（`data` フォルダに置く）
+- 南極の氷から復元した気温 — **80万年前**まで遡れる（EPICA Dome C）
+- ドラッグでズーム → 氷期と間氷期を **約10℃も往復**。東京150年の変化は、この巨大なリズムのごく一部
+- 同じ「気温」でも **見せるスパンで物語が変わる**
+- データ：[epica_temp.csv](data/epica_temp.csv)（`data` フォルダに置く）
 
 ```python
-df_co2 = pd.read_csv("data/epica_co2.csv")
-fig = px.line(df_co2, x="age_kyr_bp", y="co2_ppm")
+df_temp_long = pd.read_csv("data/epica_temp.csv")
+fig = px.line(df_temp_long, x="age_kyr_bp", y="temp_anomaly_c")
 fig.show()
 ```
 
 ```{python}
 #| echo: false
 #| output: false
-df_co2 = pd.read_csv("data/epica_co2.csv")
+df_temp_long = pd.read_csv("data/epica_temp.csv")
 fig = px.line(
-    df_co2,
+    df_temp_long,
     x="age_kyr_bp",
-    y="co2_ppm",
-    title="南極の氷床コアに残る大気CO₂（過去80万年）",
-    labels={"age_kyr_bp": "年前（千年 = kyr）", "co2_ppm": "CO₂濃度（ppm）"},
+    y="temp_anomaly_c",
+    title="南極の氷から復元した気温（過去80万年・現在との差）",
+    labels={"age_kyr_bp": "年前（千年 = kyr）", "temp_anomaly_c": "気温（現在との差 ℃）"},
 )
 fig.update_xaxes(autorange="reversed")
-fig.update_yaxes(range=[160, 440])
-fig.add_hline(
-    y=420, line_dash="dash", line_color="#CC4444",
-    annotation_text="現在 約420ppm", annotation_position="top left",
-)
 fig.update_layout(width=900, height=430, margin=dict(l=20, r=20, t=50, b=20))
 fig.write_html("iframes/plotly_icecore.html", include_plotlyjs="directory")
 ```
@@ -383,19 +379,6 @@ fig.write_html("iframes/plotly_icecore.html", include_plotlyjs="directory")
 :::
 
 
-## どのスパンで切っても隠せない一点
-
-::: {.callout-important}
-## 「昔も暑かった」は作れる、でも
-- 「昔は暖かかった／寒かった」は、見せるスパンを選べば作れる（チェリーピック）
-- だが **現在のCO₂ 約420ppm は、80万年で一度も到達していない** 水準 — どう切り取っても枠の外
-- 大事なのは「**史上最高に暑いか**」ではなく **変化の速度と原因**
-:::
-
-::: {.callout-note}
-## 出典
-EPICA Dome C 氷床コア・CO₂合成記録（Bereiter et al. 2015, NOAA WDS Paleoclimatology）。データ：[epica_co2.csv](data/epica_co2.csv)
-:::
 
 
 ## ヒストグラムのコード
