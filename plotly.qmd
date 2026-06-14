@@ -210,8 +210,8 @@ fig.write_html("iframes/plotly_bar_color.html", include_plotlyjs="directory")
 - `px.scatter()` で散布図を作る
 - `x` と `y` に数値列を指定する
 - `hover_name=` に列名を指定すると、ホバー時に名前を表示できる
-- データはPandas回と同じ `data/students.csv`（20人）
-   - csvをdataフォルダに配置して以下で読み込み
+- データはPandas回と同じ [students.csv](data/students.csv)（20人）
+   - csvを `data` フォルダに置いて以下で読み込み
 
 ```{python}
 #| echo: true
@@ -262,17 +262,16 @@ fig.write_html("iframes/plotly_scatter.html", include_plotlyjs="directory")
 ## 点のサイズはデータで可変にできる
 
 - `size=` に数値列を指定すると、点の大きさを変えられる
-- 2次元の位置に加えて、もう1つの量を表現できる
+- 位置（数学I・英会話）に加えて、**欠席日数**という別の量を大きさで重ねられる
+- 大きい点ほど欠席が多い — 成績との関係が見えるか？
 
 ```python
-df_scores["合計"] = df_scores["数学I"] + df_scores["英会話"]
-
 fig = px.scatter(
     df_scores,
     x="数学I",
     y="英会話",
     color="学科",
-    size="合計",
+    size="欠席日数",
     hover_name="名前",
 )
 fig.show()
@@ -281,17 +280,17 @@ fig.show()
 ```{python}
 #| echo: false
 #| output: false
-df_scores["合計"] = df_scores["数学I"] + df_scores["英会話"]
-
 fig = px.scatter(
     df_scores,
     x="数学I",
     y="英会話",
     color="学科",
-    size="合計",
+    size="欠席日数",
+    size_max=38,
     hover_name="名前",
-    title="数学I・英会話・合計点",
+    title="数学I・英会話・欠席日数",
 )
+fig.update_traces(marker=dict(sizemin=3))  # keep 0-absence points visible
 fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
 fig.write_html("iframes/plotly_scatter_size.html", include_plotlyjs="directory")
 ```
@@ -351,6 +350,7 @@ fig.write_html("iframes/plotly_line.html", include_plotlyjs="directory")
 
 - 東京の150年でも切り取りかも。南極の氷で **80万年前**の大気まで遡れる（EPICA Dome C）
 - ドラッグでズーム → CO₂は氷期・間氷期で **180〜300ppm を往復** するだけ。右端の現在値だけ枠の外
+- データ：[epica_co2.csv](data/epica_co2.csv)（`data` フォルダに置く）
 
 ```python
 df_co2 = pd.read_csv("data/epica_co2.csv")
