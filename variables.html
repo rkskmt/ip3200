@@ -6,7 +6,10 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="rkskmt">
@@ -191,6 +194,7 @@
   <link rel="stylesheet" href="custom.css">
   <script src="slide-ui.js" defer=""></script>
   <script src="search-ui.js" defer=""></script>
+  <script src="peek-ui.js" defer=""></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -278,11 +282,11 @@ rkskmt
 <li><code>1</code> や <code>"1"</code> は<strong>リテラル（直接記述できる値）</strong></li>
 <li><code>a</code> は値ではなく<strong>変数</strong>として認識される</li>
 </ul>
-<div id="8299791b" class="cell" data-execution_count="1">
+<div id="af209087" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="variables_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="902" height="240"></p>
+<p><a href="variables_files/figure-revealjs/cell-2-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="variables_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="902" height="240"></a></p>
 </figure>
 </div>
 </div>
@@ -342,11 +346,11 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="6f97b2d2" class="cell" data-execution_count="2">
+<div id="89c06983" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="variables_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="902" height="259"></p>
+<p><a href="variables_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="variables_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="902" height="259"></a></p>
 </figure>
 </div>
 </div>
@@ -377,11 +381,11 @@ rkskmt
 <li>代入 <code>x = ...</code> は<strong>常に掛け替え</strong>。共有していたのは3行目から5行目までの一瞬だけ</li>
 <li>5行目以降、共有していた場所を指すのは a12 だけになる</li>
 </ul>
-<div id="c2bb273d" class="cell" data-execution_count="3">
+<div id="f6848687" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="variables_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="1190" height="277"></p>
+<p><a href="variables_files/figure-revealjs/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="variables_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="1190" height="277"></a></p>
 </figure>
 </div>
 </div>
@@ -404,11 +408,11 @@ rkskmt
 <li><code>odd1[0] = 9</code> は看板の掛け替え<strong>ではない</strong> — 指している先の<strong>中身の変更</strong></li>
 <li>看板は2枚とも同じリストを指したまま → <code>odd2</code> から見ても変わる</li>
 </ul>
-<div id="e1e763fb" class="cell" data-execution_count="4">
+<div id="a55eea89" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="variables_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="1190" height="277"></p>
+<p><a href="variables_files/figure-revealjs/cell-5-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="variables_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="1190" height="277"></a></p>
 </figure>
 </div>
 </div>
@@ -439,11 +443,11 @@ rkskmt
 <li>A<span class="fw-colon">：</span> <strong>[1, 3]</strong> — <code>odd1 = [9, 7]</code> は<strong>看板の掛け替え</strong>。odd2 は無傷</li>
 <li>B<span class="fw-colon">：</span> <strong>[9, 7]</strong> — <code>odd1[0] = 9</code> は<strong>中身の変更</strong>。odd2 も巻き込まれる</li>
 </ul>
-<div id="a218a8dd" class="cell" data-execution_count="5">
+<div id="0514ce86" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="variables_files/figure-revealjs/cell-6-output-1.png" class="quarto-figure quarto-figure-center" width="998" height="269"></p>
+<p><a href="variables_files/figure-revealjs/cell-6-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="variables_files/figure-revealjs/cell-6-output-1.png" class="quarto-figure quarto-figure-center" width="998" height="269"></a></p>
 </figure>
 </div>
 </div>
@@ -629,11 +633,11 @@ rkskmt
 <li>中で <code>data[i] = ...</code> と<strong>中身を変更</strong>したので（ルール2）、<code>scores</code> から見ても壊れていた</li>
 <li>約束どおり、<strong>図1枚</strong>で説明できる<span class="fw-colon">：</span></li>
 </ul>
-<div id="4e03f63d" class="cell" data-execution_count="6">
+<div id="fbd3ae78" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="variables_files/figure-revealjs/cell-7-output-1.png" class="quarto-figure quarto-figure-center" width="710" height="259"></p>
+<p><a href="variables_files/figure-revealjs/cell-7-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="variables_files/figure-revealjs/cell-7-output-1.png" class="quarto-figure quarto-figure-center" width="710" height="259"></a></p>
 </figure>
 </div>
 </div>
@@ -668,11 +672,11 @@ rkskmt
 <span id="cb15-14"><a></a><span class="co"># （参考）全スライス [:] でも同じ結果</span></span>
 <span id="cb15-15"><a></a>odd4 <span class="op">=</span> odd1[:]</span>
 <span id="cb15-16"><a></a><span class="bu">print</span>(<span class="bu">id</span>(odd1) <span class="op">==</span> <span class="bu">id</span>(odd4))  <span class="co"># False（別アドレス）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="9a6f4d75" class="cell" data-execution_count="7">
+<div id="3c455639" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="variables_files/figure-revealjs/cell-8-output-1.png" class="quarto-figure quarto-figure-center" width="998" height="269"></p>
+<p><a href="variables_files/figure-revealjs/cell-8-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="variables_files/figure-revealjs/cell-8-output-1.png" class="quarto-figure quarto-figure-center" width="998" height="269"></a></p>
 </figure>
 </div>
 </div>
@@ -914,7 +918,7 @@ rkskmt
         margin: 6.0e-2,
 
         math: {
-          mathjax: './libs/mathjax/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1108,6 +1112,38 @@ rkskmt
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

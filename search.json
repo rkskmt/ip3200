@@ -11,7 +11,7 @@
     "href": "wiki-api.html#どのapiを使うべきか",
     "title": "Wikipedia API リファレンス",
     "section": "どのAPIを使うべきか",
-    "text": "どのAPIを使うべきか\n\n\n\n\n\n\nflowchart TD\n    A[何がしたい？] --&gt; B{統計}\n    A --&gt; C{記事内容}\n    A --&gt; D{構造化データ}\n\n    B --&gt; E[AQS]\n    C --&gt; F{概要だけ}\n    C --&gt; G{細かく制御}\n    F --&gt; H[REST API v1]\n    G --&gt; I[Action API]\n    D --&gt; J[Wikidata]\n\n    style E fill:#e8f5e9\n    style H fill:#e3f2fd\n    style I fill:#fff3e0\n    style J fill:#fce4ec\n\n\n\n\n\n\n\n\n\n色\nAPI\n用途\n例\n\n\n\n\n緑\nAQS\nページビュー統計\napi.qmd で使用\n\n\n青\nREST API v1\n概要をサクッと\n/page/summary/桜\n\n\n橙\nAction API\n検索・カテゴリ・履歴\naction=query&list=search\n\n\n桃\nWikidata\n機械可読な構造化データ\nentities/items/Q1490"
+    "text": "どのAPIを使うべきか\n\n\n\n\n\n\n\n色\nAPI\n用途\n例\n\n\n\n\n緑\nAQS\nページビュー統計\napi.qmd で使用\n\n\n青\nREST API v1\n概要をサクッと\n/page/summary/桜\n\n\n橙\nAction API\n検索・カテゴリ・履歴\naction=query&list=search\n\n\n桃\nWikidata\n機械可読な構造化データ\nentities/items/Q1490"
   },
   {
     "objectID": "wiki-api.html#section",
@@ -830,7 +830,7 @@
     "href": "plotly.html#散布図",
     "title": "Plotly入門",
     "section": "散布図",
-    "text": "散布図\n\n\npx.scatter() で散布図を作る\nx と y に数値列を指定する\nhover_name= に列名を指定すると、ホバー時に名前を表示できる\nデータはPandas回と同じ data/students.csv（20人）\n\ncsvをdataフォルダに配置して以下で読み込み\n\n\n\ndf_scores = pd.read_csv(\"data/students.csv\")\nprint(df_scores.head())\n\n   名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n0  田中  情報   1   80   70   90  85     2\n1  佐藤  機械   1   65   75   85  72     4\n2  鈴木  情報   2   88   91   84  90     1\n3  高橋  電気   2   72   68   76  80     3\n4  伊藤  情報   1   58   57   62  65     6"
+    "text": "散布図\n\n\npx.scatter() で散布図を作る\nx と y に数値列を指定する\nhover_name= に列名を指定すると、ホバー時に名前を表示できる\nデータはPandas回と同じ students.csv（20人）\n\ncsvを data フォルダに置いて以下で読み込み\n\n\n\ndf_scores = pd.read_csv(\"data/students.csv\")\nprint(df_scores.head())\n\n   名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n0  田中  情報   1   80   70   90  85     2\n1  佐藤  機械   1   65   75   85  72     4\n2  鈴木  情報   2   88   91   84  90     1\n3  高橋  電気   2   72   68   76  80     3\n4  伊藤  情報   1   58   57   62  65     6"
   },
   {
     "objectID": "plotly.html#散布図のコード",
@@ -844,7 +844,7 @@
     "href": "plotly.html#点のサイズはデータで可変にできる",
     "title": "Plotly入門",
     "section": "点のサイズはデータで可変にできる",
-    "text": "点のサイズはデータで可変にできる\n\n\nsize= に数値列を指定すると、点の大きさを変えられる\n2次元の位置に加えて、もう1つの量を表現できる\n\ndf_scores[\"合計\"] = df_scores[\"数学I\"] + df_scores[\"英会話\"]\n\nfig = px.scatter(\n    df_scores,\n    x=\"数学I\",\n    y=\"英会話\",\n    color=\"学科\",\n    size=\"合計\",\n    hover_name=\"名前\",\n)\nfig.show()"
+    "text": "点のサイズはデータで可変にできる\n\n\nsize= に数値列を指定すると、点の大きさを変えられる\n位置（数学I・英会話）に加えて、欠席日数という別の量を大きさで重ねられる\n大きい点ほど欠席が多い — 成績との関係が見えるか？\n\nfig = px.scatter(\n    df_scores,\n    x=\"数学I\",\n    y=\"英会話\",\n    color=\"学科\",\n    size=\"欠席日数\",\n    hover_name=\"名前\",\n)\nfig.show()"
   },
   {
     "objectID": "plotly.html#折れ線グラフ",
@@ -859,6 +859,13 @@
     "title": "Plotly入門",
     "section": "折れ線グラフのコード",
     "text": "折れ線グラフのコード\n\nfig = px.line(df_temp, x=\"year\", y=\"temp\", markers=True)\nfig.show()\n\n\n\n\n\n\n\n\n\n自分の指でチェリーピックしてみる\n\n\n\nドラッグで2006〜2017年あたりを選択 してズーム →「寒冷化」に見える\n可視化編の騙しグラフは、この 切り取り と同じ操作だった\nダブルクリックで全体に戻る — 全体を確認するクセをつける"
+  },
+  {
+    "objectID": "plotly.html#ズームアウト80万年の気温",
+    "href": "plotly.html#ズームアウト80万年の気温",
+    "title": "Plotly入門",
+    "section": "ズームアウト：80万年の気温",
+    "text": "ズームアウト：80万年の気温\n\n\n南極の氷から復元した気温 — 80万年前まで遡れる（EPICA Dome C）。縦軸 0℃＝現在の水準（直近1000年の平均）、マイナスほど寒い\nドラッグでズーム → 氷期と間氷期を 約10℃も往復。東京150年の変化は、この巨大なリズムのごく一部\n同じ「気温」でも 見せるスパンで物語が変わる\nデータ：epica_temp.csv（data フォルダに置く）\n\ndf_temp_long = pd.read_csv(\"data/epica_temp.csv\")\ndf_temp_long[\"万年前\"] = df_temp_long[\"age_kyr_bp\"] / 10  # 千年 → 万年 で読みやすく\n\nfig = px.line(df_temp_long, x=\"万年前\", y=\"temp_anomaly_c\")\nfig.show()"
   },
   {
     "objectID": "plotly.html#ヒストグラムのコード",
@@ -1033,7 +1040,7 @@
     "href": "numpy.html#本当に速いの-100万要素で実測",
     "title": "NumPy入門",
     "section": "本当に速いの？ — 100万要素で実測",
-    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思いますか？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 28.9 ミリ秒\nndarray:          0.38 ミリ秒\n→ 約 75 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
+    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思いますか？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 32.4 ミリ秒\nndarray:          0.58 ミリ秒\n→ 約 56 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
   },
   {
     "objectID": "numpy.html#その他長さやアクセス方法",
@@ -1673,8 +1680,8 @@
     "text": "per-article のパラメータ\n\n\n\n\nパラメータ\n選択肢\n\n\n\n\nproject\nja.wikipedia など\n\n\naccess\nall-access / desktop / mobile-app / mobile-web\n\n\nagent\nall-agents / user / spider / automated\n\n\narticle\n任意の記事名（スペースは _）\n\n\ngranularity\ndaily / monthly\n\n\nstart / end\nYYYYMMDD 形式"
   },
   {
-    "objectID": "api.html#七夕のページビューを取得する",
-    "href": "api.html#七夕のページビューを取得する",
+    "objectID": "api.html#peek-tanabata",
+    "href": "api.html#peek-tanabata",
     "title": "APIでデータ取得",
     "section": "「七夕」のページビューを取得する",
     "text": "「七夕」のページビューを取得する\n\n\n記事「七夕」の 2025年まるごと1年分 の日別アクセス数を取り、統計量を出す\n\nimport requests\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia/all-access/user/\"\n       \"七夕/daily/20250101/20251231\")\nheaders = {'User-Agent': 'example.com/lesson'}\n\nresponse = requests.get(url, headers=headers)\ndata = response.json()\n\n# data['items'] は list of dict\nviews = np.array([item['views']     for item in data['items']])\ndates = np.array([item['timestamp'] for item in data['items']])\n\nprint(f\"日数:   {len(views)}\")\nprint(f\"最大:   {views.max()}回\")\nprint(f\"最小:   {views.min()}回\")\nprint(f\"平均:   {views.mean():.1f}回\")\nprint(f\"中央値: {np.median(views):.0f}回\")\n日数:   365\n最大:   47656回\n最小:   58回\n平均:   467.6回\n中央値: 154回\n\n最大が中央値の約300倍。平均と中央値も大きくズレている\n可視化編でやった「右に引っ張られた平均」の匂い — なにかがおかしい"
@@ -1932,11 +1939,11 @@
     "text": "matplotlibでグラフを描く"
   },
   {
-    "objectID": "matplotlib.html#前回のあらすじ",
-    "href": "matplotlib.html#前回のあらすじ",
+    "objectID": "matplotlib.html#前回のおさらい",
+    "href": "matplotlib.html#前回のおさらい",
     "title": "matplotlib入門",
-    "section": "前回のあらすじ",
-    "text": "前回のあらすじ\n\n\n見ればわかる。見なければ見逃す — アンスコム、Datasaurus\nグラフは ウソをつく — y軸切断、期間チェリーピック\nここまでは 読む側 の話。今日から 描く側 へ\n\n道具は matplotlib。1枚のグラフを「資料に載せられるレベル」まで育てる"
+    "section": "前回のおさらい",
+    "text": "前回のおさらい\n\n\n\n\n\n\n\nまず可視化せよ\n\n\n\n\n\n\n\n見ればわかる。見なければ見逃す — アンスコム、Datasaurus\nグラフは ウソをつく — y軸切断、期間チェリーピック\nここまでは 読む側 の話。今日から 描く側 へ\n\n道具は matplotlib。1枚のグラフを「資料に載せられるレベル」まで育てる"
   },
   {
     "objectID": "matplotlib.html#matplotlib-とは",
@@ -1946,53 +1953,67 @@
     "text": "matplotlib とは\n\n\nPythonにおけるグラフ描画の デファクトスタンダード\n\nマットプロットリブと読む\n\n内部はC実装で高速、NumPyの ndarray と相性が良い\n\nseaborn や pandas の plotting 機能など、派生ライブラリも多い\n\n\nターミナルからインストール：\npip install matplotlib japanize-matplotlib\n冒頭で import（plt としてインポートするのが一般的）：\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib"
   },
   {
-    "objectID": "matplotlib.html#pltだと日本語が文字化けする",
-    "href": "matplotlib.html#pltだと日本語が文字化けする",
+    "objectID": "matplotlib.html#文字化け対応",
+    "href": "matplotlib.html#文字化け対応",
     "title": "matplotlib入門",
-    "section": "pltだと日本語が文字化けする",
-    "text": "pltだと日本語が文字化けする\n\n\nmatplotlib は多くの環境で 日本語が文字化け する\n\n\n\n\n\n\n\n\n\n\n\nそこで ** import japanize_matplotlib**\n\nこれだけで解決\n\n\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\n\n\n\n\n\nrcParams でフォント指定しない\n\n\n\nrcParams[\"font.family\"] は環境差で失敗しやすい\n日本語表示は japanize_matplotlib に任せる"
+    "section": "文字化け対応",
+    "text": "文字化け対応\n\n\nmatplotlib は多くの環境で 日本語が文字化け する\n\n\n\n\n\n\n\n\n\n\n\nそこで ** import japanize_matplotlib**\n\nこれだけで解決\n\n\n\n\n\n\n\n\nrcParams でフォント指定しない\n\n\n\nrcParams[\"font.family\"] は環境差で失敗しやすい\n日本語表示は japanize_matplotlib に任せる"
   },
   {
-    "objectID": "matplotlib.html#まずはドキュメントを眺める重要",
-    "href": "matplotlib.html#まずはドキュメントを眺める重要",
+    "objectID": "matplotlib.html#まずはドキュメントをチラ見",
+    "href": "matplotlib.html#まずはドキュメントをチラ見",
     "title": "matplotlib入門",
-    "section": "まずはドキュメントを眺める（重要）",
-    "text": "まずはドキュメントを眺める（重要）\n\n\n公式の Plot types ページに、描けるグラフの一覧がある\nhttps://matplotlib.org/stable/plot_types/index.html\n\n\n\n\n\n\n\n上達のコツ\n\n\n\nまず 何ができるかを頭に入れる\nやりたい図ができたら、似たギャラリーを探してコードを真似る\n自前でゼロから書かない のが鉄則"
+    "section": "まずはドキュメントをチラ見",
+    "text": "まずはドキュメントをチラ見\n\n\n公式の Plot types ページに、描けるグラフの一覧がある\nhttps://matplotlib.org/stable/plot_types/index.html\n\n\n\n\n\n\n\nライブラリとの接し方\n\n\n\nまず 何ができるかを大体把握\nsandbox的な環境にインストールする\nsampleを動かしてTweak"
   },
   {
-    "objectID": "matplotlib.html#今日の題材東京は本当に暑くなったのか",
-    "href": "matplotlib.html#今日の題材東京は本当に暑くなったのか",
+    "objectID": "matplotlib.html#東京の気温変化を図示する",
+    "href": "matplotlib.html#東京の気温変化を図示する",
     "title": "matplotlib入門",
-    "section": "今日の題材：東京は本当に暑くなったのか",
-    "text": "今日の題材：東京は本当に暑くなったのか\n\n\n前回のクイズの続き — 今度は 自分の手で 確かめる\n気象庁の実測データ：東京の月別平均気温\n\n1900年 と 2024年、124年離れた2つの年\n\n材料はこれだけ（コピペ用）：\n\nimport numpy as np\n\nmonths = np.arange(1, 13)    # 1〜12月\ntemp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\n数字を眺めて、違いがパッと分かる？\nここから 1枚のグラフを「資料に載せられるレベル」まで育てる\n\n\n\n\n\n\n\n出典\n\n\n気象庁「過去の気象データ検索」東京（月平均気温）"
+    "section": "東京の気温変化を図示する",
+    "text": "東京の気温変化を図示する\n\n\n気象庁の実測データ：東京の月別平均気温\n\n1900年 と 2024年、124年離れた2つの年\n\n材料データ（以下をコピペ）：\n\nimport numpy as np\n\nmonths = np.arange(1, 13)    # 1〜12月\ntemp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\n\n\n\n\n\n出典\n\n\n気象庁「過去の気象データ検索」東京（月平均気温）\n\n\n\n\nここから グラフを育てていく"
   },
   {
-    "objectID": "matplotlib.html#点のプロット",
-    "href": "matplotlib.html#点のプロット",
+    "objectID": "matplotlib.html#まずは点のプロット",
+    "href": "matplotlib.html#まずは点のプロット",
     "title": "matplotlib入門",
-    "section": "点のプロット",
-    "text": "点のプロット\n\n\n一番基本の plt.plot(x, y, 'o') — 'o' は マーカー を表す\nx も y も ndarray や list でOK\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nmonths = np.arange(1, 13)\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\nplt.plot(months, temp_2024, 'o')    # 'o' で点だけプロット\nplt.show()\n\n\n\n\n\n\n\n\n\nまだ裸の図だが、数字の表より 季節の山がもう見えている"
+    "section": "まずは点のプロット",
+    "text": "まずは点のプロット\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nmonths = np.arange(1, 13)\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\nplt.plot(months, temp_2024, 'o')    # 'o' で点だけプロット\nplt.show()\n\n\n\n\n\n\n\n\n\n一番基本の plt.plot(x, y, 'o') — 'o' は マーカー を表す\n\nx も y も ndarray や list でOK\n\n季節の山がもう見えている"
   },
   {
-    "objectID": "matplotlib.html#線のグラフ",
-    "href": "matplotlib.html#線のグラフ",
+    "objectID": "matplotlib.html#peek-line-code",
+    "href": "matplotlib.html#peek-line-code",
     "title": "matplotlib入門",
-    "section": "線のグラフ",
-    "text": "線のグラフ\n\n\n第3引数を 省略すると折れ線\n'o-' だと 点＋線\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nmonths = np.arange(1, 13)\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\nplt.plot(months, temp_2024, 'o-')   # 点＋線\nplt.show()\n\n\n\n\n\n\n\n\n\n月ごとの つながり（連続的な変化）が見えるようになった"
+    "section": "点に線を付け足す",
+    "text": "点に線を付け足す\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nmonths = np.arange(1, 13)\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\nplt.plot(months, temp_2024, 'o-')   # 点＋線\nplt.show()\n\n\n\n\n\n\n\n\n\n第3引数を 省略すると折れ線\n'o-' だと 点＋線\n月ごとの つながり（連続的な変化）が見えるようになった"
+  },
+  {
+    "objectID": "matplotlib.html#tweak線の見た目",
+    "href": "matplotlib.html#tweak線の見た目",
+    "title": "matplotlib入門",
+    "section": "Tweak：線の見た目",
+    "text": "Tweak：線の見た目\n\n\nさっきのコード の 'o-' を以下に 書き換えて実行せよ\n\n\n\n\nやってみる\n'o-' をこう変える\n\n\n\n\n点を消して線だけにする\n'-'\n\n\n線を消して点だけにする\n'o'\n\n\n線を破線にする\n'--'\n\n\n\n\n\n\n\n\n\nここで質問\n\n\n\n一点鎖線（─・─・）にするには、どう書くと思う？\n\n答え： 線の早見表）"
   },
   {
     "objectID": "matplotlib.html#演習二次関数を描く",
     "href": "matplotlib.html#演習二次関数を描く",
     "title": "matplotlib入門",
     "section": "演習：二次関数を描く",
-    "text": "演習：二次関数を描く\n\n\n一番なじみのある「データ」でウォーミングアップ\n\\(y = x^2 - 2x + 3\\) を 定義域 \\(-2 \\leq x \\leq 5\\) で描け\n手順\n\nnp.linspace(-2, 5, 200) で x を作る（細かく刻むと線が滑らかになる）\ny を計算（ndarray はそのまま式に入れられる — NumPy回の復習）\nplt.plot(x, y) で折れ線として描く\n\n\n\n\n\n\n\n\n平方完成で検算\n\n\n\n\\(y = (x - 1)^2 + 2\\) なので 頂点は \\((1, 2)\\)\nグラフの谷が \\((1, 2)\\) に来ているか確認\n\n\n\n\n\n\n解答例を見る\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.linspace(-2, 5, 200)\ny = x ** 2 - 2 * x + 3\n\nplt.plot(x, y)\nplt.plot([1], [2], 'o', color=\"red\")   # 頂点に印をつけて検算\nplt.show()"
+    "text": "演習：二次関数を描く\n\n\n\\(y = x^2 - 2x + 3\\) を 定義域 \\(-2 \\leq x \\leq 5\\) で描け\n手順\n\nnp.linspace(-2, 5, 200) で x を作る（細かく刻むと線が滑らかになる）\ny を計算（ndarray はそのまま式に入れられる — NumPy回の復習）\nplt.plot(x, y) で折れ線として描く\n\n\n\n\n\n\n\n\n平方完成で検算\n\n\n\n\\(y = (x - 1)^2 + 2\\) なので 頂点は \\((1, 2)\\)\nグラフの谷が \\((1, 2)\\) に来ているか確認\n\n\n\n\n\n\n解答例を見る\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nx = np.linspace(-2, 5, 200)\ny = x ** 2 - 2 * x + 3\n\nplt.plot(x, y)\nplt.plot([1], [2], 'o', color=\"red\")   # 頂点に印をつけて検算\nplt.show()"
   },
   {
-    "objectID": "matplotlib.html#本目を重ねる凡例をつける",
-    "href": "matplotlib.html#本目を重ねる凡例をつける",
+    "objectID": "matplotlib.html#peek-legend-code",
+    "href": "matplotlib.html#peek-legend-code",
     "title": "matplotlib入門",
     "section": "2本目を重ねる・凡例をつける",
-    "text": "2本目を重ねる・凡例をつける\n\n\nplt.plot() を 2回呼ぶと重ね描き になる\nどの線が何かを示すために label= + plt.legend() で 凡例\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nmonths = np.arange(1, 13)\ntemp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\nplt.plot(months, temp_1900, 'o-', label=\"1900年\")   # 凡例ラベル\nplt.plot(months, temp_2024, 'o-', label=\"2024年\")\nplt.legend()                                         # 凡例を表示\nplt.show()\n\n\n\n\n\n\n\n\n\n重ねた瞬間、124年分の差 が一目で見える\n\n2024年の冬は1900年の春なみ、夏は ほぼ全月で上"
+    "text": "2本目を重ねる・凡例をつける\n\n\nplt.plot() を 2回呼ぶと重ね描き になる\nどの線が何かを示すために凡例も書ける\n\nplot関数に引数：label=\nその後plt.legend()を呼ぶ\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nmonths = np.arange(1, 13)\ntemp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\nplt.plot(months, temp_1900, 'o-', label=\"1900年\")   # 凡例ラベル\nplt.plot(months, temp_2024, 'o-', label=\"2024年\")\nplt.legend()                                         # 凡例を表示\nplt.show()\n\n\n\n\n\n\n\n\n\n重ねた瞬間、124年分の差 が一目で見える\n\n2024年の冬は1900年の春なみ、夏は ほぼ全月で上"
+  },
+  {
+    "objectID": "matplotlib.html#tweak凡例",
+    "href": "matplotlib.html#tweak凡例",
+    "title": "matplotlib入門",
+    "section": "Tweak：凡例",
+    "text": "Tweak：凡例\n\n\n前のスライドのコード の以下の部分を変えよ\n\n\n\n\nやってみる\nどう変える\n\n\n\n\n凡例の文字を変える\nlabel=\"1900年\" → label=\"明治33年\"\n\n\n片方を凡例から消す\n一方の label=... だけ消す\n\n\n凡例ごと消す\nplt.legend() の行を消す\n\n\n\n\n\n\n\n\n\n予想してから試す\n\n\n\nplt.legend() を 2本の plt.plot より前の行 に動かすと、凡例はどうなる？\nまず予想 → 実行して確かめる（順番が関係する？）"
   },
   {
     "objectID": "matplotlib.html#ラベルグリッドタイトル",
@@ -2002,11 +2023,18 @@
     "text": "ラベル・グリッド・タイトル\n\n\nplt.xlabel() / plt.ylabel() で 軸ラベル\nplt.title() で グラフタイトル\nplt.grid(True) で グリッド線\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nmonths = np.arange(1, 13)\ntemp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\nplt.plot(months, temp_1900, 'o-', label=\"1900年\")\nplt.plot(months, temp_2024, 'o-', label=\"2024年\")\nplt.legend()\nplt.title(\"東京の月別平均気温\")        # タイトル\nplt.xlabel(\"月\")                       # x軸ラベル\nplt.ylabel(\"平均気温（℃）\")           # y軸ラベル\nplt.grid(True)                         # グリッド線\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n装飾の優先順位\n\n\n\n軸ラベル（何の量か）\n凡例（どの線が何か）\nタイトル（何のグラフか）\nこの3つが揃っていない図は 資料に載せてはいけない"
   },
   {
-    "objectID": "matplotlib.html#表示範囲の指定xlim-ylim",
-    "href": "matplotlib.html#表示範囲の指定xlim-ylim",
+    "objectID": "matplotlib.html#peek-axis-code",
+    "href": "matplotlib.html#peek-axis-code",
     "title": "matplotlib入門",
     "section": "表示範囲の指定（xlim / ylim）",
-    "text": "表示範囲の指定（xlim / ylim）\n\n\nplt.xlim(a, b) / plt.ylim(a, b) で軸の範囲を固定\n何も指定しないと データの範囲＋少し余白 が自動で選ばれる\n前回のクイズで見たとおり、軸の選び方は正直さの問題\n\n0から見せて、差が本物か確かめる\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nmonths = np.arange(1, 13)\ntemp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\nplt.plot(months, temp_1900, 'o-', label=\"1900年\")\nplt.plot(months, temp_2024, 'o-', label=\"2024年\")\nplt.legend()\nplt.xlim(1, 12)        # x軸: 1〜12月\nplt.ylim(0, 35)        # y軸: あえて0から見せる\nplt.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ny軸の罠（描く側の責任）\n\n\n\n範囲をデータに合わせると 小さな変化が大きく見える\n比較するグラフは y軸を揃える か 0から見せる のが原則\n0から見せても、この気温差は 本物 だと分かる"
+    "text": "表示範囲の指定（xlim / ylim）\n\n\nplt.xlim(a, b) / plt.ylim(a, b) で軸の範囲を固定\n何も指定しないと データの範囲＋少し余白 が自動で選ばれる\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nmonths = np.arange(1, 13)\ntemp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\nplt.plot(months, temp_1900, 'o-', label=\"1900年\")\nplt.plot(months, temp_2024, 'o-', label=\"2024年\")\nplt.legend()\nplt.xlim(1, 12)        # x軸: 1〜12月\nplt.ylim(0, 35)        # y軸: あえて0から見せる\nplt.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ny軸の罠（描く側の責任）\n\n\n\n範囲をデータに合わせると 小さな変化が大きく見える\n比較するグラフは y軸を揃える か 0から見せる のが原則"
+  },
+  {
+    "objectID": "matplotlib.html#tweak軸の範囲で印象を操る",
+    "href": "matplotlib.html#tweak軸の範囲で印象を操る",
+    "title": "matplotlib入門",
+    "section": "Tweak：軸の範囲で印象を操る",
+    "text": "Tweak：軸の範囲で印象を操る\n\n\nさっきのコード の軸だけ変えて実行 — 同じデータでも印象がどう動くか\n\n\n\n\nやってみる\nどう変える\n\n\n\n\n差を誇張する\nplt.ylim(0, 35) → plt.ylim(15, 30)\n\n\n夏だけ切り取る\nplt.xlim(1, 12) → plt.xlim(6, 9)\n\n\n\n\n\n\n\n\n\n予想してから試す\n\n\n\nplt.ylim(...) の行を 消す（自動範囲）と、y軸の下限は 0 になる？"
   },
   {
     "objectID": "matplotlib.html#複数のグラフを並べるsubplot",
@@ -2016,25 +2044,25 @@
     "text": "複数のグラフを並べる（subplot）\n\n\nplt.subplot(行数, 列数, 場所番号) で碁盤の目状に並べる\n場所番号は 1始まり、左上から右へ\n例：plt.subplot(2, 2, 3) は2×2の3番目（左下）\n\n\n1 │ 2 ─┼─ 3 │ 4\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nmonths = np.arange(1, 13)\ntemp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\nplt.subplot(1, 2, 1)        # 1行2列の左\nplt.plot(months, temp_1900, 'o-')\nplt.ylim(0, 35)             # 並べて比較するなら軸を揃える\nplt.title(\"1900年\")\n\nplt.subplot(1, 2, 2)        # 1行2列の右\nplt.plot(months, temp_2024, 'o-')\nplt.ylim(0, 35)\nplt.title(\"2024年\")\n\nplt.tight_layout()          # 余白を自動調整\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n重ねる vs 並べる\n\n\n\n直接比較したい → 重ねる（さっきの凡例つき1枚）\n形をそれぞれ見たい・線が多すぎる → 並べる（subplot）"
   },
   {
-    "objectID": "matplotlib.html#ここまでの成果図は育てるもの",
-    "href": "matplotlib.html#ここまでの成果図は育てるもの",
+    "objectID": "matplotlib.html#ここまでの成果図は育てる",
+    "href": "matplotlib.html#ここまでの成果図は育てる",
     "title": "matplotlib入門",
-    "section": "ここまでの成果：図は「育てる」もの",
-    "text": "ここまでの成果：図は「育てる」もの\n\n\n\n\n\n\n\n\n\n\n\n同じデータ。でも伝わり方は別物\n育てた手順：点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲\n右の図は「東京は暑くなったのか？」に 一人で答えられる"
+    "section": "ここまでの成果：図は「育てる」",
+    "text": "ここまでの成果：図は「育てる」\n\n\n\n\n\n\n\n\n\n\n\n同じデータ。でも伝わり方は別物\n育てた手順：点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲"
   },
   {
     "objectID": "matplotlib.html#散布図で150年を一気に見る",
     "href": "matplotlib.html#散布図で150年を一気に見る",
     "title": "matplotlib入門",
     "section": "散布図で150年を一気に見る",
-    "text": "散布図で150年を一気に見る\n\n\n月別の比較は2年分だけだった。全部の年 を見たい\n年平均気温150年分のCSV（気象庁）を np.loadtxt で読み込む\n\nデータ：tokyo_temp_annual.csv（.py と同じフォルダに置く）\n\n大量の点は plt.scatter()。alpha で 透明度 を指定すると重なりが見やすい\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\ndata = np.loadtxt(\"tokyo_temp_annual.csv\", delimiter=\",\", skiprows=1)\nyear = data[:, 0]      # 1列目：年\ntemp = data[:, 1]      # 2列目：年平均気温\n\nplt.scatter(year, temp, alpha=0.7)\nplt.xlabel(\"年\")\nplt.ylabel(\"年平均気温（℃）\")\nplt.title(\"東京の年平均気温（1876〜2025）\")\nplt.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n結論：東京は暑くなった。ただし\n\n\n\n150年で 約4℃上昇 — 前回のクイズの「寒冷化」は揺らぎの切り取りだった\nこの上昇には 都市化（ヒートアイランド） の影響も大きく含まれる\n図は答えをくれるが、解釈には背景知識が要る"
+    "text": "散布図で150年を一気に見る\n\n\n年平均気温150年分のCSV（気象庁）を np.loadtxt で読み込む\n\nデータ：tokyo_temp_annual.csv（dataフォルダを作成して中に置く）\n\n大量の点は plt.scatter()\n\nalpha で 透明度 を指定すると重なりが見やすい\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\ndata = np.loadtxt(\"data/tokyo_temp_annual.csv\", delimiter=\",\", skiprows=1)\nyear = data[:, 0]      # 1列目：年\ntemp = data[:, 1]      # 2列目：年平均気温\n\nplt.figure(figsize=(7, 3.2))   # 横長・低めにしてスライドに収める\nplt.scatter(year, temp, alpha=0.7)\nplt.xlabel(\"年\")\nplt.ylabel(\"年平均気温（℃）\")\nplt.title(\"東京の年平均気温（1876〜2025）\")\nplt.grid(True)\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n結論：東京は暑くなった。ただし\n\n\n\n150年で 約4℃上昇\nこの上昇には 都市化（ヒートアイランド） の影響も大きく含まれる\n図は答えをくれるが、解釈には背景知識が要る"
   },
   {
     "objectID": "matplotlib.html#ヒストグラムあの所得分布を自分で作る",
     "href": "matplotlib.html#ヒストグラムあの所得分布を自分で作る",
     "title": "matplotlib入門",
     "section": "ヒストグラム：あの所得分布を自分で作る",
-    "text": "ヒストグラム：あの所得分布を自分で作る\n\n\n前回見た厚労省の所得分布は ヒストグラム（区間ごとに数えるグラフ）だった\n同じ構造の図を、ミニチュア（ある会社の社員29人の年収）で再現する\nplt.hist(x, bins=区間の数) で描ける\nplt.axvline(値) で 縦線、np.median(x) で 中央値\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nincome = np.array([\n    280, 310, 330, 350, 360, 380, 400, 410, 430, 450, 470, 500, 520, 450, 470, 500, 520, 550, 600, 650, 700, 760, 900, 950 ,1100, 1260, 3100, 3000, 3200\n])\n\nmean_income = income.mean()\nmedian_income = np.median(income)\n\nplt.hist(income, bins=20, edgecolor=\"white\")\nplt.axvline(mean_income, color=\"red\", linewidth=2, label=f\"平均 ({mean_income:,.0f})\")\nplt.axvline(median_income, color=\"blue\", linewidth=2, label=f\"中央値 ({median_income:,.0f})\")\nplt.xlabel(\"年収（万円）\")\nplt.ylabel(\"人数\")\nplt.title(\"年収のような右に長い分布\")\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n「平均年収824万円の会社」のからくり\n\n\n\nこの会社、求人票に「平均年収824万円」と書ける（ウソではない）\nでも中央値は 500万円 — 半分の人は500万以下\n前回の所得分布とまったく同じ構造。自分で描ければ、もう騙されない"
+    "text": "ヒストグラム：あの所得分布を自分で作る\n\n\n前回の厚労省の所得分布は ヒストグラム（区間ごとに数えるグラフ）だった\n同じような構造の図を、ある会社の社員29人の年収で再現したとする\n\nplt.hist(x, bins=区間の数) で描ける\nplt.axvline(値) で 縦線、np.median(x) で 中央値\n\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nincome = np.array([\n    280, 310, 330, 350, 360, 380, 400, 410, 430, 450, 470, 500, 520, 450, 470, 500, 520, 550, 600, 650, 700, 760, 900, 950 ,1100, 1260, 3100, 3000, 3200\n])\n\nmean_income = income.mean()\nmedian_income = np.median(income)\n\nplt.hist(income, bins=20, edgecolor=\"white\")\nplt.axvline(mean_income, color=\"red\", linewidth=2, label=f\"平均 ({mean_income:,.0f})\")\nplt.axvline(median_income, color=\"blue\", linewidth=2, label=f\"中央値 ({median_income:,.0f})\")\nplt.xlabel(\"年収（万円）\")\nplt.ylabel(\"人数\")\nplt.title(\"年収のような右に長い分布\")\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n「平均年収824万円の会社」\n\n\n\nこの会社は求人票に「平均年収824万円」と書かれて、そのくらいもらえると錯覚する\nでも中央値は 500万円 — 半分の人は500万以下\n描けば誰でも分かる"
   },
   {
     "objectID": "matplotlib.html#plt早見表",
@@ -2077,6 +2105,13 @@
     "title": "matplotlib入門",
     "section": "参考リンク",
     "text": "参考リンク\n\n\nMatplotlib “Pyplot Tutorial”\nMatplotlib “Plot types”\nPython Data Science Handbook — Chapter 3 Visualizations\nSame Stats, Different Graphs — Datasaurus Dozen (Autodesk Research)\n気象庁「過去の気象データ検索」"
+  },
+  {
+    "objectID": "matplotlib.html#peek-fmt",
+    "href": "matplotlib.html#peek-fmt",
+    "title": "matplotlib入門",
+    "section": "付録：線とマーカーの早見表",
+    "text": "付録：線とマーカーの早見表\n\n\nplt.plot(x, y, 'o-') の第3引数は マーカー・線種・色 を文字で並べたもの\n暗記する必要はない。「こう変えるとこうなる」を一度試せば十分\n\n\n\n\n\n\n線種（line style）\n記号\n\n\n\n\n実線\n-\n\n\n破線\n--\n\n\n一点鎖線\n-.\n\n\n点線\n:\n\n\n\n\n\n\n\nマーカー（marker）\n記号\n\n\n\n\n丸\no\n\n\n四角\ns\n\n\n三角\n^\n\n\n星\n*\n\n\n\n\n\n組み合わせ例：'o--'（丸＋破線）・'s:'（四角＋点線）・'r-.'（赤の一点鎖線）"
   },
   {
     "objectID": "pandas.html#section",
@@ -2569,11 +2604,11 @@
     "text": "情報可視化とは？\n\n\nデータや情報がもつ 関係性 や 特徴 を、視覚的に見て理解できるようにすること\n\n見えないものを 「見える」化\n人間の 視覚・直感・経験 で共通に扱えるようにする\n\n情報視覚化ともいう\n\nInformation Visualization\nData Visualization\n\n\n\n\n\n\n\n\nなぜ「見る」のか\n\n\n\n数字の表を眺めても気づけないパターン（外れ値、相関、周期性、クラスタ）が見える\n図示は最強の前処理"
   },
   {
-    "objectID": "visualize.html#予告この授業のゴール",
-    "href": "visualize.html#予告この授業のゴール",
+    "objectID": "visualize.html#この授業のゴール",
+    "href": "visualize.html#この授業のゴール",
     "title": "データの可視化",
-    "section": "予告：この授業のゴール",
-    "text": "予告：この授業のゴール\n\n\n数回後には、世界中の人がいま何を見ているか を自分のコードで取得して可視化できるようになる\n例：あるWikipediaページの 2025年・1年分の閲覧数（実データ。記事名はまだ秘密）\n\n\n\n\n\n\n\n\n\n\n\nほぼ平坦なのに 1日だけ大きな山（最大47,656回、ふだんの約300倍） — この日、何があった？\n答えは API編 で。今日はその第一歩、「描いて、見る」技術"
+    "section": "この授業のゴール",
+    "text": "この授業のゴール\n\n\nあるWikipediaページの 2025年・1年分の閲覧数 を可視化\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nノート\n\n\n\nほぼ平坦なのに 1日だけ大きな山（最大47,656回、ふだんの約300倍）\nこの日、何があった？"
   },
   {
     "objectID": "visualize.html#可視化の古典ジョンスノウのコレラ地図",
@@ -2618,8 +2653,8 @@
     "text": "プレイフェアの問い：なぜ数字を図にするのか\n\n\nMaking information available, for thought and memory, without the trouble of studying rows of figures.\n── William Playfair, Commercial and Political Atlas (1786)\n\n\n数字の羅列を眺める 苦労を省く ためにグラフを描く\n\n200年以上前に「視覚化の本質」を言い当てていた\n\n\n\n\n\n\n\n\n可視化の本質\n\n\n「データに 適切な空間（軸） を与えること」"
   },
   {
-    "objectID": "visualize.html#現代の可視化実例",
-    "href": "visualize.html#現代の可視化実例",
+    "objectID": "visualize.html#peek-gapminder",
+    "href": "visualize.html#peek-gapminder",
     "title": "データの可視化",
     "section": "現代の可視化実例",
     "text": "現代の可視化実例\n\n\n\n\nジャンル\nサンプル\n\n\n\n\n人口動態\nPopulation Pyramids of the World\n\n\n未来予測ゲーム\nINED “Tomorrow’s Population”\n\n\n気候変動\n#ShowYourStripes\n\n\n統計バブル\nGapminder “Wealth & Health of Nations”\n\n\nネットワーク\nForce-Directed Graph\n\n\n地理 + 時系列\nNYC CitiBike\n\n\n3D点群\nCesium “3D Tiles Point”\n\n\n\n\n\n\n\n\n\nミニアクティビティ\n\n\n\nどれか1つ開いて、隣の人に30秒で説明 する\n\n何のデータ？ 軸は何？ 何が見えた？\n\n動的なものほど データ量と表現力の関係 がよく分かる"
@@ -2639,15 +2674,15 @@
     "text": "“Always plot your data first.”\n\n\nあらゆるデータは、まず最初に「見て」みる\n\n\n平均や分散などの 統計量だけでは騙される\n図にしてはじめて気づける構造がある\nデータ分析の最初の一手は 常にプロット"
   },
   {
-    "objectID": "visualize.html#クイズ平均所得-524万円",
-    "href": "visualize.html#クイズ平均所得-524万円",
+    "objectID": "visualize.html#peek-bargraph",
+    "href": "visualize.html#peek-bargraph",
     "title": "データの可視化",
     "section": "クイズ：「平均所得 524万円」",
     "text": "クイズ：「平均所得 524万円」\n\n\n厚生労働省の調査：日本の1世帯当たり 平均所得は 524万2千円（2022年）\nでは、所得が平均以下 の世帯は全体のどれくらい？\n\n「平均」なんだから、だいたい半分（50%）……？"
   },
   {
-    "objectID": "visualize.html#平均以下の世帯は-62.2",
-    "href": "visualize.html#平均以下の世帯は-62.2",
+    "objectID": "visualize.html#peek-income",
+    "href": "visualize.html#peek-income",
     "title": "データの可視化",
     "section": "平均以下の世帯は 62.2%",
     "text": "平均以下の世帯は 62.2%\n\n\n\n\n\n\n\n\n\n\n\n平均以下の世帯は 62.2% — 「平均」は真ん中ではない\n真ん中の値（中央値）は 405万円。平均より 119万円 も低い\n\n一部の高所得世帯が、平均を 右に引っ張る\n\n分布を 見ないと、「平均」という言葉の意味すら誤解する\n\n\n\n\n\n\n\n出典\n\n\n厚生労働省「2023（令和5）年 国民生活基礎調査の概況」図9"
@@ -2702,8 +2737,8 @@
     "text": "現代版アンスコム：Datasaurus Dozen\n\n\nMatejka & Fitzmaurice（2017） が作った 13個 のデータセット\nどれも以下の統計量が一致（小数第2位まで）\n\n\n\n\n\n\n統計量\n13個すべてで\n\n\n\n\n\\(x\\) の平均\n54.26\n\n\n\\(y\\) の平均\n47.83\n\n\n\\(x\\) の標準偏差\n16.76\n\n\n\\(y\\) の標準偏差\n26.93\n\n\n相関係数\n\\(-0.06\\)\n\n\n\nそのうちの1つを散布図にすると…"
   },
   {
-    "objectID": "visualize.html#datasaurus-dozen全13個",
-    "href": "visualize.html#datasaurus-dozen全13個",
+    "objectID": "visualize.html#peek-datasaurus",
+    "href": "visualize.html#peek-datasaurus",
     "title": "データの可視化",
     "section": "Datasaurus Dozen：全13個",
     "text": "Datasaurus Dozen：全13個\n\n\n\n\n\n\n\n\n\n\n\n13個全部、同じ平均・同じ標準偏差・同じ相関係数\n教訓はアンスコムと同じ — ただし より強烈に\n出典：Same Stats, Different Graphs (Autodesk Research)\n\n\n\n\n\n\n\n作り方も面白い\n\n\n\n恐竜の形を保ったまま、統計量が変わらないように点を少しずつ動かして生成\n「統計量は強い要約だが、形の情報はほぼ捨てている」ことの証明"
@@ -2720,35 +2755,35 @@
     "href": "visualize.html#ここまでは描く側の話",
     "title": "データの可視化",
     "section": "ここまでは「描く側」の話",
-    "text": "ここまでは「描く側」の話\n\n\nアンスコムの教訓：描かないと、騙される\nもう一つの現実：描き方しだいで、人を騙せる\n\nニュース・広告・プレゼンで毎日使われているテクニック\n\nここからは 騙されない側 になる練習\n\nルール：これから見せるグラフに ウソのデータは1つもない"
+    "text": "ここまでは「描く側」の話\n\n\nアンスコムの教訓：描かないと、騙される\nもう一つの現実：描き方しだいで、人を騙せる\n\nニュース・広告・プレゼンで毎日使われているテクニック\n\nここからは 騙されない 練習"
   },
   {
-    "objectID": "visualize.html#クイズどちらの商品が売れている",
-    "href": "visualize.html#クイズどちらの商品が売れている",
+    "objectID": "visualize.html#商品bはaより圧倒的に売れている",
+    "href": "visualize.html#商品bはaより圧倒的に売れている",
     "title": "データの可視化",
-    "section": "クイズ：どちらの商品が売れている？",
-    "text": "クイズ：どちらの商品が売れている？\n\n\n\n\n\n\n\n\n\n\n\n商品Bの圧勝に見える\nでも、何かおかしい。どこ？"
+    "section": "商品BはAより圧倒的に売れている？",
+    "text": "商品BはAより圧倒的に売れている？\n\n\n\n\n\n\n\n\n\n\n\n商品Bの圧勝に見える"
   },
   {
-    "objectID": "visualize.html#種明かしy軸の切断",
-    "href": "visualize.html#種明かしy軸の切断",
+    "objectID": "visualize.html#peek-ycut",
+    "href": "visualize.html#peek-ycut",
     "title": "データの可視化",
-    "section": "種明かし：y軸の切断",
-    "text": "種明かし：y軸の切断\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n棒グラフは「長さ」で比較するグラフ\n\n\n\n実際の差は 約2%。軸を切ると何倍にも見える\n棒グラフは 0から描く のが原則\n軸の数字を確認するクセをつける"
+    "section": "トリック：y軸の切断",
+    "text": "トリック：y軸の切断\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n棒グラフは「長さ」で比較するグラフ\n\n\n\n実際の差は 約2%。軸を切ると何倍にも見える\n棒グラフは 0から描く のが原則\n軸の数字を確認するクセをつける"
   },
   {
-    "objectID": "visualize.html#クイズ東京は寒冷化している",
-    "href": "visualize.html#クイズ東京は寒冷化している",
+    "objectID": "visualize.html#東京は寒冷化している",
+    "href": "visualize.html#東京は寒冷化している",
     "title": "データの可視化",
-    "section": "クイズ：東京は寒冷化している？",
-    "text": "クイズ：東京は寒冷化している？\n\n\n\n\n\n\n\n\n\n\n\n気象庁の実測データ（ウソのデータは1つもない）\n12年間で気温は下降トレンド。「温暖化はウソだった」？\nどう反論する？"
+    "section": "東京は寒冷化している？",
+    "text": "東京は寒冷化している？\n\n\n\n\n\n\n\n\n\n\n\n気象庁の実測データ\n12年間で気温は下降トレンド"
   },
   {
-    "objectID": "visualize.html#種明かし期間のチェリーピック",
-    "href": "visualize.html#種明かし期間のチェリーピック",
+    "objectID": "visualize.html#トリック期間のチェリーピック",
+    "href": "visualize.html#トリック期間のチェリーピック",
     "title": "データの可視化",
-    "section": "種明かし：期間のチェリーピック",
-    "text": "種明かし：期間のチェリーピック\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nデータが本物でも、切り取りでウソがつける\n\n\n\n150年で見れば気温は 約4℃上昇（都市化の影響も大きい）\n揺らぎのある時系列は、都合のいい12年 を選べば逆向きに見せられる\n「どの範囲を見せるか」も作為のうち — 全体を確認するクセをつける\n\n\n\n\n\n\n\n\n\n\nこのデータは次回もう一度使う\n\n\n東京の気温、自分の手で 描いて確かめる"
+    "section": "トリック：期間のチェリーピック",
+    "text": "トリック：期間のチェリーピック\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nデータが本物でも、切り取りでウソがつける\n\n\n\n150年で見れば気温は 約4℃上昇（都市化の影響も大きい）\n揺らぎのある時系列は、都合のいい12年 を選べば逆向きに見せられる\n「どの範囲を見せるか」も作為のうち — 全体を確認するクセをつける"
   },
   {
     "objectID": "visualize.html#探索的データ解析eda",

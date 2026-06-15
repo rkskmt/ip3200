@@ -6,7 +6,10 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="rkskmt">
@@ -125,6 +128,7 @@
   <link rel="stylesheet" href="custom.css">
   <script src="slide-ui.js" defer=""></script>
   <script src="search-ui.js" defer=""></script>
+  <script src="peek-ui.js" defer=""></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -189,7 +193,7 @@ API
 </details>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="imgs/qrcode_rkskmt.github.io.png" class="quarto-figure quarto-figure-center" width="300"></p>
+<p><a href="imgs/qrcode_rkskmt.github.io.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="imgs/qrcode_rkskmt.github.io.png" class="quarto-figure quarto-figure-center" width="300"></a></p>
 </figure>
 </div>
 <script>
@@ -404,7 +408,7 @@ document.addEventListener('keydown', function(e) {
         margin: 6.0e-2,
 
         math: {
-          mathjax: './libs/mathjax/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -598,6 +602,38 @@ document.addEventListener('keydown', function(e) {
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

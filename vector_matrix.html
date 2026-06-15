@@ -6,7 +6,10 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="rkskmt">
@@ -191,6 +194,7 @@
   <link rel="stylesheet" href="custom.css">
   <script src="slide-ui.js" defer=""></script>
   <script src="search-ui.js" defer=""></script>
+  <script src="peek-ui.js" defer=""></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
 <body class="quarto-light">
@@ -239,11 +243,11 @@ rkskmt
 </ul></li>
 </ul>
 <div style="width: 30%; margin: 0 auto;">
-<div id="cac077da" class="cell" data-execution_count="1">
+<div id="2670e1bc" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="vector_matrix_files/figure-revealjs/cell-2-output-1.png" width="273" height="278"></p>
+<p><a href="vector_matrix_files/figure-revealjs/cell-2-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="vector_matrix_files/figure-revealjs/cell-2-output-1.png" width="273" height="278"></a></p>
 </figure>
 </div>
 </div>
@@ -319,11 +323,11 @@ rkskmt
 <span id="cb2-6"><a></a><span class="bu">print</span>(a <span class="op">+</span> b)   <span class="co"># [3 4]</span></span>
 <span id="cb2-7"><a></a><span class="bu">print</span>(a <span class="op">-</span> b)   <span class="co"># [-1  2]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="f57bd737" class="cell" data-execution_count="2">
+<div id="65af5c0e" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="vector_matrix_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="230" height="259"></p>
+<p><a href="vector_matrix_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="vector_matrix_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="230" height="259"></a></p>
 </figure>
 </div>
 </div>
@@ -353,11 +357,11 @@ rkskmt
 <span id="cb3-4"><a></a></span>
 <span id="cb3-5"><a></a><span class="bu">print</span>(a <span class="op">*</span> <span class="dv">2</span>)   <span class="co"># [2 4]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="d1603cf0" class="cell" data-execution_count="3">
+<div id="30bfb756" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="vector_matrix_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="192" height="259"></p>
+<p><a href="vector_matrix_files/figure-revealjs/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="vector_matrix_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="192" height="259"></a></p>
 </figure>
 </div>
 </div>
@@ -535,11 +539,11 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 10 \\ 4 &amp; 5 &amp; 6 &amp; 11 \\ 
 <li>さっきの掛け算、何をしていたのか？ — <strong>行列はベクトル（点）を別の場所へ動かす変換</strong></li>
 <li>形（F）にかけてみると、その正体が見える</li>
 </ul>
-<div id="5e6feaff" class="cell" data-execution_count="4">
+<div id="0ec3f277" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="vector_matrix_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="1142" height="287"></p>
+<p><a href="vector_matrix_files/figure-revealjs/cell-5-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="vector_matrix_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="1142" height="287"></a></p>
 </figure>
 </div>
 </div>
@@ -556,11 +560,11 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 10 \\ 4 &amp; 5 &amp; 6 &amp; 11 \\ 
 <ul>
 <li>行列の<strong>列</strong>には、深い意味がある<span class="fw-colon">：</span><strong><span class="math inline">\((1,0)\)</span> と <span class="math inline">\((0,1)\)</span> の行き先</strong>を並べただけ</li>
 </ul>
-<div id="aafd5004" class="cell" data-execution_count="5">
+<div id="9196c9af" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="vector_matrix_files/figure-revealjs/cell-6-output-1.png" class="quarto-figure quarto-figure-center" width="902" height="329"></p>
+<p><a href="vector_matrix_files/figure-revealjs/cell-6-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="vector_matrix_files/figure-revealjs/cell-6-output-1.png" class="quarto-figure quarto-figure-center" width="902" height="329"></a></p>
 </figure>
 </div>
 </div>
@@ -599,11 +603,11 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 10 \\ 4 &amp; 5 &amp; 6 &amp; 11 \\ 
 =
 \begin{pmatrix} 19 &amp; 22 \\ 43 &amp; 50 \end{pmatrix}
 \]</span></p>
-<div id="75810f63" class="cell" data-execution_count="6">
+<div id="cc469ead" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="vector_matrix_files/figure-revealjs/cell-7-output-1.png" class="quarto-figure quarto-figure-center" width="470" height="233"></p>
+<p><a href="vector_matrix_files/figure-revealjs/cell-7-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="vector_matrix_files/figure-revealjs/cell-7-output-1.png" class="quarto-figure quarto-figure-center" width="470" height="233"></a></p>
 </figure>
 </div>
 </div>
@@ -884,7 +888,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 \begin{cases} x + y = 4 \\ x - y = 2 \end{cases}
 \]</span></p>
 <p>（４）<span class="math inline">\(\mathbf{a} = \begin{pmatrix} 6 \\ 8 \end{pmatrix}\)</span> のノルムと単位ベクトルを求めよ。</p>
-<div id="fbfee43a" class="cell" data-execution_count="7">
+<div id="683b339b" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -985,11 +989,11 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 <span id="cb12-6"><a></a><span class="bu">print</span>(a_hat)                  <span class="co"># [0.6 0.8]</span></span>
 <span id="cb12-7"><a></a><span class="bu">print</span>(np.linalg.norm(a_hat))  <span class="co"># 1.0</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="ea5177b9" class="cell" data-execution_count="8">
+<div id="c91750ae" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="vector_matrix_files/figure-revealjs/cell-9-output-1.png" class="quarto-figure quarto-figure-center" width="243" height="258"></p>
+<p><a href="vector_matrix_files/figure-revealjs/cell-9-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="vector_matrix_files/figure-revealjs/cell-9-output-1.png" class="quarto-figure quarto-figure-center" width="243" height="258"></a></p>
 </figure>
 </div>
 </div>
@@ -1061,11 +1065,11 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <li><span class="math inline">\(|\mathbf{b}|\cos\theta\)</span> <span class="fw-colon">：</span><span class="math inline">\(\mathbf{b}\)</span> を <span class="math inline">\(\mathbf{a}\)</span> の方向に<strong>射影</strong>した長さ</li>
 <li>内積 = 「<span class="math inline">\(\mathbf{b}\)</span>の<span class="math inline">\(\mathbf{a}\)</span>方向に対する成分」× 「<span class="math inline">\(\mathbf{a}\)</span>の長さ<span class="math inline">\(|\mathbf{a}|\)</span>」</li>
 </ul>
-<div id="a9884da2" class="cell" data-execution_count="9">
+<div id="9577ef88" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="vector_matrix_files/figure-revealjs/cell-10-output-1.png" class="quarto-figure quarto-figure-center" width="356" height="325"></p>
+<p><a href="vector_matrix_files/figure-revealjs/cell-10-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="vector_matrix_files/figure-revealjs/cell-10-output-1.png" class="quarto-figure quarto-figure-center" width="356" height="325"></a></p>
 </figure>
 </div>
 </div>
@@ -1082,11 +1086,11 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <li>つまり、射影の長さがゼロ → 「<span class="math inline">\(\mathbf{a}\)</span> 方向の成分がない」</li>
 </ul></li>
 </ul>
-<div id="0091a10f" class="cell" data-execution_count="10">
+<div id="574fa1c5" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="vector_matrix_files/figure-revealjs/cell-11-output-1.png" class="quarto-figure quarto-figure-center" width="326" height="287"></p>
+<p><a href="vector_matrix_files/figure-revealjs/cell-11-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="vector_matrix_files/figure-revealjs/cell-11-output-1.png" class="quarto-figure quarto-figure-center" width="326" height="287"></a></p>
 </figure>
 </div>
 </div>
@@ -1136,11 +1140,11 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <section id="応用例多角形に対する内外判定" class="slide level2">
 <h2>応用例<span class="fw-colon">：</span>多角形に対する内外判定</h2>
 <div class="slide-body">
-<div id="d8aa74b7" class="cell" data-execution_count="11">
+<div id="37c9be7d" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="vector_matrix_files/figure-revealjs/cell-12-output-1.png" class="quarto-figure quarto-figure-center" width="779" height="341"></p>
+<p><a href="vector_matrix_files/figure-revealjs/cell-12-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="vector_matrix_files/figure-revealjs/cell-12-output-1.png" class="quarto-figure quarto-figure-center" width="779" height="341"></a></p>
 </figure>
 </div>
 </div>
@@ -1161,7 +1165,7 @@ c_2 = (\overrightarrow{BC}) \times (\overrightarrow{BP}), \quad
 c_3 = (\overrightarrow{CA}) \times (\overrightarrow{CP})
 \]</span></p>
 <p><span class="math inline">\(c_1, c_2, c_3\)</span> が全て同符号 → 内側</p>
-<div id="f8034bc6" class="cell" data-execution_count="12">
+<div id="d6023dd7" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-2"><a></a></span>
 <span id="cb15-3"><a></a><span class="kw">def</span> cross_2d(v1, v2):</span>
@@ -1202,11 +1206,11 @@ c_3 = (\overrightarrow{CA}) \times (\overrightarrow{CP})
 </ul></li>
 </ul>
 <div style="width: 40%; margin: 0 auto;">
-<div id="fe45e5c6" class="cell" data-execution_count="13">
+<div id="23e4a097" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="vector_matrix_files/figure-revealjs/cell-14-output-1.png" width="350" height="334"></p>
+<p><a href="vector_matrix_files/figure-revealjs/cell-14-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="vector_matrix_files/figure-revealjs/cell-14-output-1.png" width="350" height="334"></a></p>
 </figure>
 </div>
 </div>
@@ -1472,7 +1476,7 @@ c_3 = (\overrightarrow{CA}) \times (\overrightarrow{CP})
         margin: 6.0e-2,
 
         math: {
-          mathjax: './libs/mathjax/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1666,6 +1670,38 @@ c_3 = (\overrightarrow{CA}) \times (\overrightarrow{CP})
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

@@ -194,6 +194,7 @@
   <link rel="stylesheet" href="custom.css">
   <script src="slide-ui.js" defer=""></script>
   <script src="search-ui.js" defer=""></script>
+  <script src="peek-ui.js" defer=""></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -251,26 +252,37 @@ rkskmt
 </div>
 </div>
 </section>
-<section id="予告この授業のゴール" class="slide level2">
-<h2>予告<span class="fw-colon">：</span>この授業のゴール</h2>
+<section id="この授業のゴール" class="slide level2">
+<h2>この授業のゴール</h2>
 <div class="slide-body">
 <ul>
-<li>数回後には、<strong>世界中の人がいま何を見ているか</strong> を自分のコードで取得して可視化できるようになる</li>
-<li>例<span class="fw-colon">：</span>あるWikipediaページの <strong>2025年・1年分の閲覧数</strong>（実データ。記事名はまだ秘密）</li>
+<li>あるWikipediaページの <strong>2025年・1年分の閲覧数</strong> を可視化</li>
 </ul>
-<div id="dd47c84e" class="cell" data-execution_count="1">
+<div id="85df0000" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="visualize_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="661" height="239"></p>
+<p><a href="visualize_files/figure-revealjs/cell-2-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="visualize_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="661" height="239"></a></p>
 </figure>
 </div>
 </div>
 </div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>ノート</strong></p>
+</div>
+<div class="callout-content">
 <ul>
-<li>ほぼ平坦なのに <strong>1日だけ大きな山</strong>（最大47,656回、ふだんの約300倍） — この日、何があった？</li>
-<li>答えは <strong>API編</strong> で。今日はその第一歩、「描いて、見る」技術</li>
+<li>ほぼ平坦なのに <strong>1日だけ大きな山</strong>（最大47,656回、ふだんの約300倍）</li>
+<li>この日、何があった？</li>
 </ul>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="可視化の古典ジョンスノウのコレラ地図" class="slide level2">
@@ -286,7 +298,7 @@ rkskmt
 </ul></li>
 </ul>
 <div style="display:flex; justify-content:center;">
-<iframe src="iframes/cholera_map.html" width="900" height="520" style="border:none;"></iframe>
+<iframe src="iframes/cholera_map.html" width="900" height="520" style="border:none;" onload="try{var d=this.contentDocument;if(d){d.documentElement.style.margin='0';d.documentElement.style.padding='0';d.body.style.margin='0';d.body.style.padding='0';}}catch(e){}"></iframe>
 </div>
 </div>
 </section>
@@ -324,7 +336,7 @@ rkskmt
 <div class="slide-body">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="imgs/visualization/Playfair_TimeSeries-2.jpg" style="width:85.0%"></p>
+<p><a href="imgs/visualization/Playfair_TimeSeries-2.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="イングランドの国家債務の推移"><img data-src="imgs/visualization/Playfair_TimeSeries-2.jpg" style="width:55.0%" alt="イングランドの国家債務の推移"></a></p>
 <figcaption>イングランドの国家債務の推移</figcaption>
 </figure>
 </div>
@@ -338,7 +350,7 @@ rkskmt
 <div class="slide-body">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="imgs/visualization/960px-1786_Playfair_-_Exports_and_Imports_of_Scotland_to_and_from_different_parts_for_one_Year_from_Christmas_1780_to_Christmas_1781.jpg" style="width:85.0%"></p>
+<p><a href="imgs/visualization/960px-1786_Playfair_-_Exports_and_Imports_of_Scotland_to_and_from_different_parts_for_one_Year_from_Christmas_1780_to_Christmas_1781.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="スコットランドの輸出入（1780–1781）"><img data-src="imgs/visualization/960px-1786_Playfair_-_Exports_and_Imports_of_Scotland_to_and_from_different_parts_for_one_Year_from_Christmas_1780_to_Christmas_1781.jpg" style="width:55.0%" alt="スコットランドの輸出入（1780–1781）"></a></p>
 <figcaption>スコットランドの輸出入（1780–1781）</figcaption>
 </figure>
 </div>
@@ -352,7 +364,7 @@ rkskmt
 <div class="slide-body">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="imgs/visualization/Playfair-piechart.jpg" style="width:50.0%"></p>
+<p><a href="imgs/visualization/Playfair-piechart.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="トルコ帝国の領土配分"><img data-src="imgs/visualization/Playfair-piechart.jpg" style="width:30.0%" alt="トルコ帝国の領土配分"></a></p>
 <figcaption>トルコ帝国の領土配分</figcaption>
 </figure>
 </div>
@@ -389,7 +401,7 @@ rkskmt
 </div>
 </div>
 </section>
-<section id="現代の可視化実例" class="slide level2">
+<section id="peek-gapminder" class="slide level2">
 <h2>現代の可視化実例</h2>
 <div class="slide-body">
 <table class="caption-top">
@@ -470,7 +482,7 @@ rkskmt
 </ul>
 </div>
 </section>
-<section id="クイズ平均所得-524万円" class="slide level2">
+<section id="peek-bargraph" class="slide level2">
 <h2>クイズ<span class="fw-colon">：</span>「平均所得 524万円」</h2>
 <div class="slide-body">
 <ul>
@@ -482,14 +494,14 @@ rkskmt
 </ul>
 </div>
 </section>
-<section id="平均以下の世帯は-62.2" class="slide level2">
+<section id="peek-income" class="slide level2">
 <h2>平均以下の世帯は 62.2%</h2>
 <div class="slide-body">
-<div id="3f1fff66" class="cell" data-execution_count="3">
+<div id="d7d721c0" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="visualize_files/figure-revealjs/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="visualize_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="758" height="334"></a></p>
+<p><a href="visualize_files/figure-revealjs/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="visualize_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="758" height="334"></a></p>
 </figure>
 </div>
 </div>
@@ -589,7 +601,7 @@ rkskmt
 <li>典型的な普通のデータ</li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="3822d824" class="cell" data-execution_count="4">
+<div id="7f41c984" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -612,7 +624,7 @@ rkskmt
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="visualize_files/figure-revealjs/cell-5-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="visualize_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="380" height="278"></a></p>
+<p><a href="visualize_files/figure-revealjs/cell-5-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="visualize_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="380" height="278"></a></p>
 </figure>
 </div>
 </div>
@@ -647,7 +659,7 @@ rkskmt
 <li>統計量だけ見ていると「直線で説明できた」と思い込みやすい</li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="262b046b" class="cell" data-execution_count="5">
+<div id="037ec98f" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -670,7 +682,7 @@ rkskmt
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="visualize_files/figure-revealjs/cell-6-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="visualize_files/figure-revealjs/cell-6-output-1.png" class="quarto-figure quarto-figure-center" width="380" height="278"></a></p>
+<p><a href="visualize_files/figure-revealjs/cell-6-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="visualize_files/figure-revealjs/cell-6-output-1.png" class="quarto-figure quarto-figure-center" width="380" height="278"></a></p>
 </figure>
 </div>
 </div>
@@ -706,7 +718,7 @@ rkskmt
 <li>その1点に <strong>回帰直線が引っ張られている</strong></li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="20cac66f" class="cell" data-execution_count="6">
+<div id="177bca6d" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -729,7 +741,7 @@ rkskmt
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="visualize_files/figure-revealjs/cell-7-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="visualize_files/figure-revealjs/cell-7-output-1.png" class="quarto-figure quarto-figure-center" width="380" height="278"></a></p>
+<p><a href="visualize_files/figure-revealjs/cell-7-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="visualize_files/figure-revealjs/cell-7-output-1.png" class="quarto-figure quarto-figure-center" width="380" height="278"></a></p>
 </figure>
 </div>
 </div>
@@ -765,7 +777,7 @@ rkskmt
 <li>同じ条件で測定しすぎていて、<code>x</code> が振れていない</li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="82bb3409" class="cell" data-execution_count="7">
+<div id="31e695a7" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -788,7 +800,7 @@ rkskmt
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="visualize_files/figure-revealjs/cell-8-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="visualize_files/figure-revealjs/cell-8-output-1.png" class="quarto-figure quarto-figure-center" width="380" height="278"></a></p>
+<p><a href="visualize_files/figure-revealjs/cell-8-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="visualize_files/figure-revealjs/cell-8-output-1.png" class="quarto-figure quarto-figure-center" width="380" height="278"></a></p>
 </figure>
 </div>
 </div>
@@ -818,11 +830,11 @@ rkskmt
 <div class="slide-body">
 <div class="columns">
 <div class="column" style="width:45%;">
-<div id="0d062f0b" class="cell" data-execution_count="8">
+<div id="0d74cee1" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="visualize_files/figure-revealjs/cell-9-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="visualize_files/figure-revealjs/cell-9-output-1.png" class="quarto-figure quarto-figure-center" width="566" height="470"></a></p>
+<p><a href="visualize_files/figure-revealjs/cell-9-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="visualize_files/figure-revealjs/cell-9-output-1.png" class="quarto-figure quarto-figure-center" width="566" height="470"></a></p>
 </figure>
 </div>
 </div>
@@ -921,11 +933,11 @@ rkskmt
 <p>そのうちの1つを散布図にすると…</p>
 </div><div class="column" style="width:50%;">
 <div class="fragment">
-<div id="04a1047c" class="cell" data-execution_count="9">
+<div id="276ff4dc" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="visualize_files/figure-revealjs/cell-10-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="visualize_files/figure-revealjs/cell-10-output-1.png" class="quarto-figure quarto-figure-center" width="422" height="374"></a></p>
+<p><a href="visualize_files/figure-revealjs/cell-10-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="visualize_files/figure-revealjs/cell-10-output-1.png" class="quarto-figure quarto-figure-center" width="422" height="374"></a></p>
 </figure>
 </div>
 </div>
@@ -934,14 +946,14 @@ rkskmt
 </div></div>
 </div>
 </section>
-<section id="datasaurus-dozen全13個" class="slide level2">
+<section id="peek-datasaurus" class="slide level2">
 <h2>Datasaurus Dozen<span class="fw-colon">：</span>全13個</h2>
 <div class="slide-body">
-<div id="0c2a8988" class="cell" data-execution_count="10">
+<div id="6e964698" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="visualize_files/figure-revealjs/cell-11-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="visualize_files/figure-revealjs/cell-11-output-1.png" class="quarto-figure quarto-figure-center" width="1238" height="373"></a></p>
+<p><a href="visualize_files/figure-revealjs/cell-11-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="visualize_files/figure-revealjs/cell-11-output-1.png" class="quarto-figure quarto-figure-center" width="1238" height="373"></a></p>
 </figure>
 </div>
 </div>
@@ -984,39 +996,35 @@ rkskmt
 <ul>
 <li>ニュース・広告・プレゼンで毎日使われているテクニック</li>
 </ul></li>
-<li>ここからは <span class="hl">騙されない側</span> になる練習
-<ul>
-<li>ルール<span class="fw-colon">：</span>これから見せるグラフに <strong>ウソのデータは1つもない</strong></li>
-</ul></li>
+<li>ここからは <span class="hl">騙されない</span> 練習</li>
 </ul>
 </div>
 </section>
-<section id="クイズどちらの商品が売れている" class="slide level2">
-<h2>クイズ<span class="fw-colon">：</span>どちらの商品が売れている？</h2>
+<section id="商品bはaより圧倒的に売れている" class="slide level2">
+<h2>商品BはAより圧倒的に売れている？</h2>
 <div class="slide-body">
-<div id="a81d308d" class="cell" data-execution_count="11">
+<div id="f6edd0c2" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="visualize_files/figure-revealjs/cell-12-output-1.png" class="quarto-figure quarto-figure-center" width="470" height="325"></p>
+<p><a href="visualize_files/figure-revealjs/cell-12-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="visualize_files/figure-revealjs/cell-12-output-1.png" class="quarto-figure quarto-figure-center" width="470" height="325"></a></p>
 </figure>
 </div>
 </div>
 </div>
 <ul>
 <li>商品Bの圧勝に見える</li>
-<li>でも、<strong>何かおかしい。どこ？</strong></li>
 </ul>
 </div>
 </section>
-<section id="種明かしy軸の切断" class="slide level2">
-<h2>種明かし<span class="fw-colon">：</span>y軸の切断</h2>
+<section id="peek-ycut" class="slide level2">
+<h2>トリック<span class="fw-colon">：</span>y軸の切断</h2>
 <div class="slide-body">
-<div id="04d725e0" class="cell" data-execution_count="12">
+<div id="3babcaa5" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="visualize_files/figure-revealjs/cell-13-output-1.png" class="quarto-figure quarto-figure-center" width="758" height="325"></p>
+<p><a href="visualize_files/figure-revealjs/cell-13-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="visualize_files/figure-revealjs/cell-13-output-1.png" class="quarto-figure quarto-figure-center" width="758" height="325"></a></p>
 </figure>
 </div>
 </div>
@@ -1040,33 +1048,32 @@ rkskmt
 </div>
 </div>
 </section>
-<section id="クイズ東京は寒冷化している" class="slide level2">
-<h2>クイズ<span class="fw-colon">：</span>東京は寒冷化している？</h2>
+<section id="東京は寒冷化している" class="slide level2">
+<h2>東京は寒冷化している？</h2>
 <div class="slide-body">
-<div id="f59691bf" class="cell" data-execution_count="13">
+<div id="6a7370e2" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="visualize_files/figure-revealjs/cell-14-output-1.png" class="quarto-figure quarto-figure-center" width="566" height="324"></p>
+<p><a href="visualize_files/figure-revealjs/cell-14-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="visualize_files/figure-revealjs/cell-14-output-1.png" class="quarto-figure quarto-figure-center" width="566" height="324"></a></p>
 </figure>
 </div>
 </div>
 </div>
 <ul>
-<li><strong>気象庁の実測データ</strong>（ウソのデータは1つもない）</li>
-<li>12年間で気温は下降トレンド。「温暖化はウソだった」？</li>
-<li><strong>どう反論する？</strong></li>
+<li><strong>気象庁の実測データ</strong></li>
+<li>12年間で気温は下降トレンド</li>
 </ul>
 </div>
 </section>
-<section id="種明かし期間のチェリーピック" class="slide level2">
-<h2>種明かし<span class="fw-colon">：</span>期間のチェリーピック</h2>
+<section id="トリック期間のチェリーピック" class="slide level2">
+<h2>トリック<span class="fw-colon">：</span>期間のチェリーピック</h2>
 <div class="slide-body">
-<div id="fcbdfaef" class="cell" data-execution_count="14">
+<div id="b3a138bd" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="visualize_files/figure-revealjs/cell-15-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="visualize_files/figure-revealjs/cell-15-output-1.png" class="quarto-figure quarto-figure-center" width="758" height="324"></a></p>
+<p><a href="visualize_files/figure-revealjs/cell-15-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="visualize_files/figure-revealjs/cell-15-output-1.png" class="quarto-figure quarto-figure-center" width="758" height="324"></a></p>
 </figure>
 </div>
 </div>
@@ -1085,19 +1092,6 @@ rkskmt
 <li>揺らぎのある時系列は、<strong>都合のいい12年</strong> を選べば逆向きに見せられる</li>
 <li>「<strong>どの範囲を見せるか</strong>」も作為のうち — 全体を確認するクセをつける</li>
 </ul>
-</div>
-</div>
-</div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>このデータは次回もう一度使う</strong></p>
-</div>
-<div class="callout-content">
-<p>東京の気温、<strong>自分の手で</strong> 描いて確かめる</p>
 </div>
 </div>
 </div>
@@ -1405,7 +1399,7 @@ rkskmt
         margin: 6.0e-2,
 
         math: {
-          mathjax: './libs/mathjax/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

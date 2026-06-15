@@ -6,7 +6,10 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="rkskmt">
@@ -191,6 +194,7 @@
   <link rel="stylesheet" href="custom.css">
   <script src="slide-ui.js" defer=""></script>
   <script src="search-ui.js" defer=""></script>
+  <script src="peek-ui.js" defer=""></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -219,7 +223,7 @@ rkskmt
 <h2>「なにかがおかしい」ところまで来た</h2>
 <div class="slide-body">
 <ul>
-<li>前回<span class="fw-colon">：</span>記事「七夕」の <strong>2025年まるごと1年分</strong> の日別アクセス数を取得した</li>
+<li>前回<span class="fw-colon">：</span><a href="./api.html#peek-tanabata" class="peek">記事「七夕」の <strong>2025年まるごと1年分</strong> の日別アクセス数を取得した</a></li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb1-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -273,16 +277,16 @@ rkskmt
 <li>数値だけでは見落とすので <strong>まず描く</strong> — <a href="./visualize.html">可視化章</a> の大原則</li>
 <li>同じURL/ヘッダーで取得したあと <code>plt.plot(views)</code> するだけ</li>
 </ul>
-<div id="cf11b984" class="cell" data-execution_count="1">
+<div id="94a76d8d" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="api-viz_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="565" height="276"></p>
+<p><a href="api-viz_files/figure-revealjs/cell-2-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="api-viz_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="565" height="276"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="fd019c0e" class="cell" data-execution_count="2">
+<div id="29ccee61" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> requests</span>
@@ -364,11 +368,11 @@ rkskmt
 <section id="よく見るともう一つ山がある" class="slide level2">
 <h2>よく見ると、もう一つ山がある</h2>
 <div class="slide-body">
-<div id="4e3a1702" class="cell" data-execution_count="3">
+<div id="146dc6ed" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="api-viz_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="661" height="277"></p>
+<p><a href="api-viz_files/figure-revealjs/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="api-viz_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="661" height="277"></a></p>
 </figure>
 </div>
 </div>
@@ -452,7 +456,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="d5502d94" class="cell" data-execution_count="4">
+<div id="23ec9844" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> requests</span>
@@ -498,7 +502,7 @@ rkskmt
 <li>問い<span class="fw-colon">：</span>七夕のような <strong>鋭い山（スパイク）</strong> はあるか？</li>
 <li>問い<span class="fw-colon">：</span>スパイクがないなら、<strong>何が見えるか</strong>？ 自分の言葉で説明せよ</li>
 </ul>
-<div id="7ac8bbfa" class="cell" data-execution_count="5">
+<div id="a6ccbad8" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> requests</span>
@@ -523,11 +527,11 @@ rkskmt
 </details>
 </div>
 <div class="fragment">
-<div id="acdcdff3" class="cell" data-execution_count="6">
+<div id="aac97387" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="api-viz_files/figure-revealjs/cell-7-output-1.png" class="quarto-figure quarto-figure-center" width="661" height="257"></p>
+<p><a href="api-viz_files/figure-revealjs/cell-7-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="api-viz_files/figure-revealjs/cell-7-output-1.png" class="quarto-figure quarto-figure-center" width="661" height="257"></a></p>
 </figure>
 </div>
 </div>
@@ -771,7 +775,7 @@ rkskmt
         margin: 6.0e-2,
 
         math: {
-          mathjax: './libs/mathjax/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -965,6 +969,38 @@ rkskmt
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

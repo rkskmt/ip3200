@@ -6,7 +6,10 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="rkskmt">
@@ -191,6 +194,7 @@
   <link rel="stylesheet" href="custom.css">
   <script src="slide-ui.js" defer=""></script>
   <script src="search-ui.js" defer=""></script>
+  <script src="peek-ui.js" defer=""></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -275,11 +279,11 @@ rkskmt
 <section id="webアクセスの正体リクエストとレスポンス" class="slide level2">
 <h2>Webアクセスの正体<span class="fw-colon">：</span>リクエストとレスポンス</h2>
 <div class="slide-body">
-<div id="46b37a7f" class="cell" data-execution_count="1">
+<div id="96d08886" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="api_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="950" height="278"></p>
+<p><a href="api_files/figure-revealjs/cell-2-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="api_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="950" height="278"></a></p>
 </figure>
 </div>
 </div>
@@ -363,11 +367,11 @@ rkskmt
 <li>全部覚える必要なし</li>
 <li><strong>200番台 = 成功、400番台 = リクエスト側のミス、500番台 = サーバ側のミス</strong> くらいの感覚</li>
 </ul>
-<div id="17723705" class="cell" data-execution_count="2">
+<div id="af1d7f43" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="api_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="950" height="182"></p>
+<p><a href="api_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="api_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="950" height="182"></a></p>
 </figure>
 </div>
 </div>
@@ -522,11 +526,11 @@ rkskmt
 <ul>
 <li><code>.json()</code> は <strong>このテキストを dict に変換</strong> するメソッド</li>
 </ul>
-<div id="be690c27" class="cell" data-execution_count="3">
+<div id="17dc8a47" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="api_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="1094" height="317"></p>
+<p><a href="api_files/figure-revealjs/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="api_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="1094" height="317"></a></p>
 </figure>
 </div>
 </div>
@@ -600,11 +604,11 @@ rkskmt
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a></a>https://wikimedia.org/api/rest_v1/metrics/pageviews/top/</span>
 <span id="cb11-2"><a></a>    {プロジェクト} / {アクセス方法} / {日付}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="70ac9b59" class="cell" data-execution_count="4">
+<div id="c41430b3" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="api_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="1190" height="221"></p>
+<p><a href="api_files/figure-revealjs/cell-5-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="api_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="1190" height="221"></a></p>
 </figure>
 </div>
 </div>
@@ -719,7 +723,7 @@ rkskmt
 </table>
 </div>
 </section>
-<section id="七夕のページビューを取得する" class="slide level2">
+<section id="peek-tanabata" class="slide level2">
 <h2>「七夕」のページビューを取得する</h2>
 <div class="slide-body">
 <ul>
@@ -752,7 +756,7 @@ rkskmt
 <span id="cb14-5"><a></a>中央値: 154回</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong>最大が中央値の約300倍</strong>。平均と中央値も大きくズレている</li>
-<li>可視化編でやった「右に引っ張られた平均」の匂い — <strong>なにかがおかしい</strong></li>
+<li>可視化編でやった「<a href="./visualize.html#peek-income" class="peek">右に引っ張られた平均</a>」の匂い — <strong>なにかがおかしい</strong></li>
 </ul>
 </div>
 </section>
@@ -1145,7 +1149,7 @@ rkskmt
         margin: 6.0e-2,
 
         math: {
-          mathjax: './libs/mathjax/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1339,6 +1343,38 @@ rkskmt
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>
