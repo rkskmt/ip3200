@@ -128,14 +128,14 @@ fig.write_html("iframes/cholera_map.html", include_plotlyjs="directory")
 
 ## プレイフェアの折れ線グラフ（1786）
 
-![イングランドの国家債務の推移](imgs/visualization/Playfair_TimeSeries-2.jpg){width="85%"}
+![イングランドの国家債務の推移](imgs/visualization/Playfair_TimeSeries-2.jpg){width="55%"}
 
 - 時間を横軸、量を縦軸にとる — 現代の時系列グラフの原型
 
 
 ## プレイフェアの棒グラフ（1786）
 
-![スコットランドの輸出入（1780–1781）](imgs/visualization/960px-1786_Playfair_-_Exports_and_Imports_of_Scotland_to_and_from_different_parts_for_one_Year_from_Christmas_1780_to_Christmas_1781.jpg){width="85%"}
+![スコットランドの輸出入（1780–1781）](imgs/visualization/960px-1786_Playfair_-_Exports_and_Imports_of_Scotland_to_and_from_different_parts_for_one_Year_from_Christmas_1780_to_Christmas_1781.jpg){width="55%"}
 
 - カテゴリ（貿易相手国）を並べて **長さで比較** — 棒グラフの誕生
 
@@ -596,8 +596,7 @@ plt.show()
 - アンスコムの教訓：**描かないと、騙される**
 - もう一つの現実：**描き方しだいで、人を騙せる**
    - ニュース・広告・プレゼンで毎日使われているテクニック
-- ここからは ==騙されない側== になる練習
-   - ルール：これから見せるグラフに **ウソのデータは1つもない**
+- ここからは ==騙されない== 練習
 
 ## クイズ：どちらの商品が売れている？
 
