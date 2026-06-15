@@ -9,7 +9,14 @@ subtitle: "1枚のグラフを「育てる」"
 matplotlibでグラフを描く
 :::
 
-## 前回のあらすじ
+## 前回のおさらい
+
+
+::: {.callout-important}
+### まず可視化せよ
+
+:::
+
 
 - **見ればわかる。見なければ見逃す** — アンスコム、Datasaurus
 - グラフは **ウソをつく** — y軸切断、期間チェリーピック
@@ -38,7 +45,7 @@ import japanize_matplotlib
 ```
 
 
-## pltだと日本語が文字化けする
+## 文字化け対応
 
 - matplotlib は多くの環境で **日本語が文字化け** する
 
@@ -46,7 +53,6 @@ import japanize_matplotlib
 ```{python}
 #| echo: false
 #| warning: false
-#| out-width: 8%
 import matplotlib.pyplot as plt
 
 with plt.rc_context():
@@ -62,10 +68,6 @@ with plt.rc_context():
 - そこで ** `import japanize_matplotlib`**
    - これだけで解決
 
-```python
-import matplotlib.pyplot as plt
-import japanize_matplotlib
-```
 
 ::: {.callout-warning}
 ## `rcParams` でフォント指定しない
@@ -74,25 +76,25 @@ import japanize_matplotlib
 :::
 
 
-## まずはドキュメントを眺める（重要）
+## まずはドキュメントをチラ見
 
 - 公式の **Plot types** ページに、描けるグラフの一覧がある
 - <https://matplotlib.org/stable/plot_types/index.html>
 
+
 ::: {.callout-tip}
-## 上達のコツ
-- まず **何ができるかを頭に入れる**
-- やりたい図ができたら、似たギャラリーを探してコードを真似る
-- **自前でゼロから書かない** のが鉄則
+## ライブラリとの接し方
+- まず **何ができるかを大体把握**
+- sandbox的な環境にインストールする
+- sampleを動かしてTweak
 :::
 
 
-## 今日の題材：東京は本当に暑くなったのか
+## 東京の気温変化を図示する
 
-- 前回のクイズの続き — 今度は **自分の手で** 確かめる
 - **気象庁の実測データ**：東京の月別平均気温
    - **1900年** と **2024年**、124年離れた2つの年
-- 材料はこれだけ（コピペ用）：
+- 材料データ（以下をコピペ）：
 
 ```python
 import numpy as np
@@ -102,19 +104,18 @@ temp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 1
 temp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])
 ```
 
-- 数字を眺めて、違いがパッと分かる？
-- ここから **1枚のグラフを「資料に載せられるレベル」まで育てる**
-
 ::: {.callout-note}
 ## 出典
 気象庁「過去の気象データ検索」東京（月平均気温）
 :::
 
 
-## 点のプロット
+- ここから **グラフを育てていく**
 
-- 一番基本の `plt.plot(x, y, 'o')` — `'o'` は **マーカー** を表す
-- `x` も `y` も **`ndarray`** や **`list`** でOK
+
+
+## まずは点のプロット
+
 
 ```{python}
 #| echo: true
@@ -129,13 +130,13 @@ plt.plot(months, temp_2024, 'o')    # 'o' で点だけプロット
 plt.show()
 ```
 
-- まだ裸の図だが、数字の表より **季節の山がもう見えている**
+- 一番基本の `plt.plot(x, y, 'o')` 
+   — `'o'` は **マーカー** を表す
+   - `x` も `y` も **`ndarray`** や **`list`** でOK
+- **季節の山がもう見えている**
 
 
-## 線のグラフ {#peek-line-code}
-
-- 第3引数を **省略すると折れ線**
-- `'o-'` だと **点＋線**
+## 点に線を付け足す {#peek-line-code}
 
 ```{python}
 #| echo: true
@@ -149,14 +150,14 @@ temp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 1
 plt.plot(months, temp_2024, 'o-')   # 点＋線
 plt.show()
 ```
-
+- 第3引数を **省略すると折れ線**
+- `'o-'` だと **点＋線**
 - 月ごとの **つながり**（連続的な変化）が見えるようになった
 
 
 ## Tweak：線の見た目
 
-- [さっきのコード](#peek-line-code){.peek} の `'o-'` を **1か所だけ書き換えて実行**してみる
-- 結果から、「`o`」と「`-`」がそれぞれ何を表しているか当てる
+- [さっきのコード](#peek-line-code){.peek} の `'o-'` を以下に **書き換えて実行**せよ
 
 | やってみる | `'o-'` をこう変える |
 |---|---|
@@ -165,15 +166,15 @@ plt.show()
 | 線を破線にする | `'--'` |
 
 ::: {.callout-tip}
-## 予想してから試す
+
+## ここで質問
 - **一点鎖線**（`─・─・`）にするには、どう書くと思う？
-- まず予想 → 実行して確かめる（答え合わせは [線の早見表](#peek-fmt){.peek}）
+   - 答え： [線の早見表](#peek-fmt){.peek}）
 :::
 
 
 ## 演習：二次関数を描く
 
-- 一番なじみのある「データ」でウォーミングアップ
 - $y = x^2 - 2x + 3$ を **定義域 $-2 \leq x \leq 5$** で描け
 - 手順
   1. `np.linspace(-2, 5, 200)` で `x` を作る（細かく刻むと線が滑らかになる）
@@ -207,7 +208,9 @@ plt.show()
 ## 2本目を重ねる・凡例をつける {#peek-legend-code}
 
 - `plt.plot()` を **2回呼ぶと重ね描き** になる
-- どの線が何かを示すために `label=` + `plt.legend()` で **凡例**
+- どの線が何かを示すために**凡例**も書ける
+   -   plot関数に引数：`label=`
+   -   その後`plt.legend()`を呼ぶ 
 
 ```{python}
 #| echo: true
@@ -231,7 +234,7 @@ plt.show()
 
 ## Tweak：凡例
 
-- [さっきのコード](#peek-legend-code){.peek} を **1か所だけ変えて実行**。凡例（legend）の正体を探る
+- [前のスライドのコード](#peek-legend-code){.peek} の以下の部分を変えよ
 
 | やってみる | どう変える |
 |---|---|
@@ -285,8 +288,6 @@ plt.show()
 
 - `plt.xlim(a, b)` / `plt.ylim(a, b)` で軸の範囲を固定
 - 何も指定しないと **データの範囲＋少し余白** が自動で選ばれる
-- 前回のクイズで見たとおり、**軸の選び方は正直さの問題**
-   - 0から見せて、差が本物か確かめる
 
 ```{python}
 #| echo: true
@@ -307,11 +308,11 @@ plt.grid(True)
 plt.show()
 ```
 
+
 ::: {.callout-warning}
 ## y軸の罠（描く側の責任）
-- 範囲をデータに合わせると **小さな変化が大きく見える**
+- 範囲をデータに合わせると **[小さな変化が大きく見える](visualize.qmd#peek-bargraph){.peek}**
 - 比較するグラフは **y軸を揃える** か **0から見せる** のが原則
-- 0から見せても、この気温差は **本物** だと分かる
 :::
 
 
@@ -327,7 +328,6 @@ plt.show()
 ::: {.callout-tip}
 ## 予想してから試す
 - `plt.ylim(...)` の行を **消す**（自動範囲）と、y軸の下限は 0 になる？
-- 予想 → 実行。なぜ「0から見せる」が大事か、体で分かる
 :::
 
 
@@ -374,7 +374,7 @@ plt.show()
 :::
 
 
-## ここまでの成果：図は「育てる」もの
+## ここまでの成果：図は「育てる」
 
 ```{python}
 #| echo: false
@@ -406,49 +406,28 @@ plt.show()
 
 - **同じデータ**。でも伝わり方は別物
 - 育てた手順：点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲
-- 右の図は「東京は暑くなったのか？」に **一人で答えられる**
 
 
 ## 散布図で150年を一気に見る
 
-- 月別の比較は2年分だけだった。**全部の年** を見たい
 - 年平均気温150年分のCSV（気象庁）を `np.loadtxt` で読み込む
-   - データ：[tokyo_temp_annual.csv](data/tokyo_temp_annual.csv)（`.py` と同じフォルダに置く）
-- 大量の点は `plt.scatter()`。`alpha` で **透明度** を指定すると重なりが見やすい
+   - データ：[tokyo_temp_annual.csv](data/tokyo_temp_annual.csv)（`data`フォルダを作成して中に置く）
+- 大量の点は `plt.scatter()`
+   - `alpha` で **透明度** を指定すると重なりが見やすい
 
 ```{python}
 #| echo: true
-#| eval: false
-import numpy as np
-import matplotlib.pyplot as plt
-import japanize_matplotlib
-
-data = np.loadtxt("tokyo_temp_annual.csv", delimiter=",", skiprows=1)
-year = data[:, 0]      # 1列目：年
-temp = data[:, 1]      # 2列目：年平均気温
-
-plt.scatter(year, temp, alpha=0.7)
-plt.xlabel("年")
-plt.ylabel("年平均気温（℃）")
-plt.title("東京の年平均気温（1876〜2025）")
-plt.grid(True)
-plt.show()
-```
-
-```{python}
-#| echo: false
 #| fig-align: center
-#| out-width: 55%
 #| lightbox: true
 import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
 data = np.loadtxt("data/tokyo_temp_annual.csv", delimiter=",", skiprows=1)
-year = data[:, 0]
-temp = data[:, 1]
+year = data[:, 0]      # 1列目：年
+temp = data[:, 1]      # 2列目：年平均気温
 
-plt.figure(figsize=(7, 3.2))
+plt.figure(figsize=(7, 3.2))   # 横長・低めにしてスライドに収める
 plt.scatter(year, temp, alpha=0.7)
 plt.xlabel("年")
 plt.ylabel("年平均気温（℃）")
@@ -460,7 +439,7 @@ plt.show()
 
 ::: {.callout-note}
 ## 結論：東京は暑くなった。ただし
-- 150年で **約4℃上昇** — 前回のクイズの「寒冷化」は揺らぎの切り取りだった
+- 150年で **約4℃上昇** 
 - この上昇には **都市化（ヒートアイランド）** の影響も大きく含まれる
 - 図は答えをくれるが、**解釈には背景知識が要る**
 :::
@@ -468,14 +447,14 @@ plt.show()
 
 ## ヒストグラム：あの所得分布を自分で作る
 
-- 前回見た[厚労省の所得分布](visualize.qmd#peek-income){.peek}は **ヒストグラム**（区間ごとに数えるグラフ）だった
-- 同じ構造の図を、ミニチュア（ある会社の社員29人の年収）で再現する
-- `plt.hist(x, bins=区間の数)` で描ける
-- `plt.axvline(値)` で **縦線**、`np.median(x)` で **中央値**
+- 前回の[厚労省の所得分布](visualize.qmd#peek-income){.peek}は **ヒストグラム**（区間ごとに数えるグラフ）だった
+- 同じような構造の図を、ある会社の社員29人の年収で再現したとする
+   - `plt.hist(x, bins=区間の数)` で描ける
+   - `plt.axvline(値)` で **縦線**、`np.median(x)` で **中央値**
 
+::: {.fig width="60%"}
 ```{python}
 #| echo: true
-#| out-width: 60%
 import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
@@ -496,12 +475,14 @@ plt.title("年収のような右に長い分布")
 plt.legend()
 plt.show()
 ```
+:::
 
 ::: {.callout-note}
-## 「平均年収824万円の会社」のからくり
-- この会社、求人票に「平均年収824万円」と書ける（ウソではない）
-- でも中央値は **500万円** — 半分の人は500万以下
-- 前回の所得分布とまったく同じ構造。**自分で描ければ、もう騙されない**
+## 「平均年収824万円の会社」
+- この会社は求人票に「平均年収824万円」と書かれて、そのくらいもらえると錯覚する
+- でも中央値は **500万円** 
+   — 半分の人は500万以下
+- 描けば誰でも分かる
 :::
 
 
