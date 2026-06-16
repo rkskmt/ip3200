@@ -297,7 +297,7 @@ rkskmt
 <li><code>pd.DataFrame()</code> に <code>ndarray</code> を渡す</li>
 <li>最初は列名も行名も指定しない</li>
 </ul>
-<div id="dd0f3a6d" class="cell" data-execution_count="1">
+<div id="6ea9c62a" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-3"><a></a></span>
@@ -328,13 +328,13 @@ rkskmt
 <li>列の名前を <strong>columns</strong> という</li>
 <li>指定しない場合は、どちらも自動で番号が振られる</li>
 </ul>
-<div id="2f54d506" class="cell" data-execution_count="2">
+<div id="dbf49465" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="bu">print</span>(df.index)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>RangeIndex(start=0, stop=2, step=1)</code></pre>
 </div>
 </div>
-<div id="0b852347" class="cell" data-execution_count="3">
+<div id="6d2691b9" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="bu">print</span>(df.columns)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>RangeIndex(start=0, stop=3, step=1)</code></pre>
@@ -366,7 +366,7 @@ rkskmt
 <li>列の意味が分かるように <code>columns=</code> を指定する</li>
 <li>これだけで表がかなり読みやすくなる</li>
 </ul>
-<div id="f90e9a7b" class="cell" data-execution_count="4">
+<div id="d1c99dbd" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>df <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb9-2"><a></a>    arr,</span>
 <span id="cb9-3"><a></a>    columns<span class="op">=</span>[<span class="st">"現代文"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>]</span>
@@ -392,7 +392,7 @@ rkskmt
 <li>行の意味が分かるように <code>index=</code> も指定する</li>
 <li>この例では、行名を生徒名にする</li>
 </ul>
-<div id="cae8f8b0" class="cell" data-execution_count="5">
+<div id="ca520bb0" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>df <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb11-2"><a></a>    arr,</span>
 <span id="cb11-3"><a></a>    columns<span class="op">=</span>[<span class="st">"現代文"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>],</span>
@@ -429,7 +429,7 @@ rkskmt
 <li><code>df.mean()</code> と書くと、列ごとの平均が計算できる</li>
 <li>出力にも列名が残るので、結果を読み間違えにくい</li>
 </ul>
-<div id="3f52b643" class="cell" data-execution_count="6">
+<div id="88b68b24" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="bu">print</span>(df.mean())</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>現代文    72.5
@@ -457,7 +457,7 @@ dtype: float64</code></pre>
 <li><code>df["列名"]</code> で1列だけ取り出せる</li>
 <li>取り出した1列は <code>DataFrame</code> ではなく <strong>Series</strong></li>
 </ul>
-<div id="62cf301d" class="cell" data-execution_count="7">
+<div id="5dd21eb9" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>math <span class="op">=</span> df[<span class="st">"数学I"</span>]</span>
 <span id="cb16-2"><a></a><span class="bu">print</span>(math)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -466,13 +466,13 @@ dtype: float64</code></pre>
 Name: 数学I, dtype: int64</code></pre>
 </div>
 </div>
-<div id="7553939f" class="cell" data-execution_count="8">
+<div id="0a5f6813" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="bu">print</span>(<span class="bu">type</span>(df))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;</code></pre>
 </div>
 </div>
-<div id="9ee1a39f" class="cell" data-execution_count="9">
+<div id="b60354ee" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="bu">print</span>(<span class="bu">type</span>(math))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.series.Series'&gt;</code></pre>
@@ -490,13 +490,13 @@ Name: 数学I, dtype: int64</code></pre>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb22-1"><a></a>DataFrame = 表</span>
 <span id="cb22-2"><a></a>Series    = 1列</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="03d1df1b" class="cell" data-execution_count="10">
+<div id="8e4de1e6" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="bu">print</span>(math.index)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Index(['田中', '佐藤'], dtype='object')</code></pre>
 </div>
 </div>
-<div id="c5a6b836" class="cell" data-execution_count="11">
+<div id="82cc2df2" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="bu">print</span>(math.values)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[70 75]</code></pre>
@@ -533,7 +533,7 @@ Name: 数学I, dtype: int64</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="38796d7f" class="cell" data-execution_count="12">
+<div id="af6324dd" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="bu">print</span>(math.mean())</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>72.5</code></pre>
@@ -553,7 +553,7 @@ Name: 数学I, dtype: int64</code></pre>
 <li>英会話の列を取り出す</li>
 <li>それぞれの平均を計算する</li>
 </ul>
-<div id="f834f3f0" class="cell" data-execution_count="13">
+<div id="93f2dad5" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a>japanese <span class="op">=</span> df[<span class="st">"現代文"</span>]</span>
 <span id="cb29-2"><a></a>english <span class="op">=</span> df[<span class="st">"英会話"</span>]</span>
 <span id="cb29-3"><a></a></span>
@@ -620,7 +620,7 @@ Name: 数学I, dtype: int64</code></pre>
 <li>その中に <code>students.csv</code> を置く</li>
 <li>Pythonからは <code>data/students.csv</code> というファイルパスで読む</li>
 </ul>
-<div id="758f6d12" class="cell" data-execution_count="14">
+<div id="4a6de4db" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb32-2"><a></a></span>
 <span id="cb32-3"><a></a>csv_path <span class="op">=</span> <span class="st">"data/students.csv"</span></span>
@@ -649,7 +649,7 @@ Name: 数学I, dtype: int64</code></pre>
 <li><code>head()</code> は先頭数行を表示する</li>
 <li><code>shape</code> は <code>(行数, 列数)</code></li>
 </ul>
-<div id="4258e9a7" class="cell" data-execution_count="15">
+<div id="b1c4d795" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a><span class="bu">print</span>(df.head())</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   名前  学科  学年  現代文  数学I  英会話  物理  欠席日数
@@ -660,19 +660,19 @@ Name: 数学I, dtype: int64</code></pre>
 4  伊藤  情報   1   58   57   62  65     6</code></pre>
 </div>
 </div>
-<div id="ea337264" class="cell" data-execution_count="16">
+<div id="e44cf57c" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a><span class="bu">print</span>(df.shape)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(20, 8)</code></pre>
 </div>
 </div>
-<div id="20532e2e" class="cell" data-execution_count="17">
+<div id="504161d4" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a><span class="bu">print</span>(df.columns)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Index(['名前', '学科', '学年', '現代文', '数学I', '英会話', '物理', '欠席日数'], dtype='object')</code></pre>
 </div>
 </div>
-<div id="556c5ffc" class="cell" data-execution_count="18">
+<div id="251fc4c5" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a><span class="bu">print</span>(df.index)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>RangeIndex(start=0, stop=20, step=1)</code></pre>
@@ -687,7 +687,7 @@ Name: 数学I, dtype: int64</code></pre>
 <li><code>index_col="名前"</code> とすると、名前列をindexにできる</li>
 <li>「行名として使いたい列」があるときに使う</li>
 </ul>
-<div id="c84a7000" class="cell" data-execution_count="19">
+<div id="5b61dc30" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a></a>df_name <span class="op">=</span> pd.read_csv(csv_path, index_col<span class="op">=</span><span class="st">"名前"</span>)</span>
 <span id="cb42-2"><a></a><span class="bu">print</span>(df_name.head())</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -735,7 +735,7 @@ Name: 数学I, dtype: int64</code></pre>
 <li><code>df["列名"]</code> で1列を取り出す</li>
 <li>返ってくるものは <code>Series</code></li>
 </ul>
-<div id="6e4a9f74" class="cell" data-execution_count="20">
+<div id="9eb51e9d" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a></a>math <span class="op">=</span> df[<span class="st">"数学I"</span>]</span>
 <span id="cb44-2"><a></a><span class="bu">print</span>(math)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -762,7 +762,7 @@ Name: 数学I, dtype: int64</code></pre>
 Name: 数学I, dtype: int64</code></pre>
 </div>
 </div>
-<div id="140fbbd2" class="cell" data-execution_count="21">
+<div id="bae7ea54" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a></a><span class="bu">print</span>(<span class="bu">type</span>(math))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.series.Series'&gt;</code></pre>
@@ -782,7 +782,7 @@ Name: 数学I, dtype: int64</code></pre>
 <li>列名のリストを渡すので、角括弧が2重になる</li>
 <li>返ってくるものは <code>DataFrame</code></li>
 </ul>
-<div id="fc93e548" class="cell" data-execution_count="22">
+<div id="8b601100" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a></a><span class="bu">print</span>(df[[<span class="st">"名前"</span>, <span class="st">"学科"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>]])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     名前  学科  数学I  英会話
@@ -808,7 +808,7 @@ Name: 数学I, dtype: int64</code></pre>
 19   斎藤  情報   93   85</code></pre>
 </div>
 </div>
-<div id="28a902e2" class="cell" data-execution_count="23">
+<div id="38f30a90" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a></a><span class="bu">print</span>(<span class="bu">type</span>(df[[<span class="st">"名前"</span>, <span class="st">"学科"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>]]))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;</code></pre>
@@ -837,7 +837,7 @@ Name: 数学I, dtype: int64</code></pre>
 <li>条件式を書くと、各行について <code>True</code> / <code>False</code> が返る</li>
 <li>その <code>True</code> の行だけを取り出せる</li>
 </ul>
-<div id="7d624c9d" class="cell" data-execution_count="24">
+<div id="0b96006b" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a></a><span class="bu">print</span>(df[<span class="st">"数学I"</span>] <span class="op">&gt;=</span> <span class="dv">80</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0     False
@@ -863,7 +863,7 @@ Name: 数学I, dtype: int64</code></pre>
 Name: 数学I, dtype: bool</code></pre>
 </div>
 </div>
-<div id="3104eaae" class="cell" data-execution_count="25">
+<div id="f590c4a6" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a></a><span class="bu">print</span>(df[df[<span class="st">"数学I"</span>] <span class="op">&gt;=</span> <span class="dv">80</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     名前  学科  学年  現代文  数学I  英会話  物理  欠席日数
@@ -891,7 +891,7 @@ Name: 数学I, dtype: bool</code></pre>
 <li>数値だけでなく、文字列でも条件を作れる</li>
 <li><code>==</code> は「等しいかどうか」を調べる演算子</li>
 </ul>
-<div id="86cd1e0c" class="cell" data-execution_count="26">
+<div id="e97831ee" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a></a><span class="bu">print</span>(df[df[<span class="st">"学科"</span>] <span class="op">==</span> <span class="st">"情報"</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    名前  学科  学年  現代文  数学I  英会話  物理  欠席日数
@@ -918,7 +918,7 @@ Name: 数学I, dtype: bool</code></pre>
 <li>複数条件は <code>&amp;</code> でつなぐ</li>
 <li>それぞれの条件を丸括弧で囲む</li>
 </ul>
-<div id="15836079" class="cell" data-execution_count="27">
+<div id="f4a11abd" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a></a><span class="bu">print</span>(df[</span>
 <span id="cb59-2"><a></a>    (df[<span class="st">"学科"</span>] <span class="op">==</span> <span class="st">"情報"</span>)</span>
 <span id="cb59-3"><a></a>    <span class="op">&amp;</span> (df[<span class="st">"数学I"</span>] <span class="op">&gt;=</span> <span class="dv">80</span>)</span>
@@ -957,7 +957,7 @@ Name: 数学I, dtype: bool</code></pre>
 <li><code>df["新しい列名"] = ...</code> で列を追加できる</li>
 <li>既存の列を使って、新しい列を計算することが多い</li>
 </ul>
-<div id="172dc7a0" class="cell" data-execution_count="28">
+<div id="039446b5" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a></a>subjects <span class="op">=</span> [<span class="st">"現代文"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>, <span class="st">"物理"</span>]</span>
 <span id="cb61-2"><a></a></span>
 <span id="cb61-3"><a></a>df[<span class="st">"平均点"</span>] <span class="op">=</span> df[subjects].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
@@ -1012,7 +1012,7 @@ Name: 数学I, dtype: bool</code></pre>
 <li>CSVには、名前・学科・学年・4科目・欠席日数が入っている</li>
 <li>まず4科目から <code>平均点</code> 列を作る</li>
 </ul>
-<div id="86fc2ba0" class="cell" data-execution_count="29">
+<div id="45aa0021" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a></a>csv_path <span class="op">=</span> <span class="st">"data/students.csv"</span></span>
 <span id="cb63-2"><a></a>df <span class="op">=</span> pd.read_csv(csv_path)</span>
 <span id="cb63-3"><a></a></span>
@@ -1051,7 +1051,7 @@ Name: 数学I, dtype: bool</code></pre>
 <li>まず <code>平均点</code> 列を <code>Series</code> として取り出す</li>
 <li>Seriesには平均・最大・最小などのメソッドがある</li>
 </ul>
-<div id="7942f784" class="cell" data-execution_count="30">
+<div id="97b2b4d2" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a></a>scores <span class="op">=</span> df[<span class="st">"平均点"</span>]</span>
 <span id="cb66-2"><a></a></span>
 <span id="cb66-3"><a></a><span class="bu">print</span>(scores.mean())</span>
@@ -1078,7 +1078,7 @@ Name: 数学I, dtype: bool</code></pre>
 <li>そのあと <code>["平均点"].mean()</code> で平均点の平均を出す</li>
 <li>CSVの <code>学科</code> 列と、追加した <code>平均点</code> 列を使っている</li>
 </ul>
-<div id="2107f007" class="cell" data-execution_count="31">
+<div id="cfac042b" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a></a>avg <span class="op">=</span> df.groupby(<span class="st">"学科"</span>)[<span class="st">"平均点"</span>].mean()</span>
 <span id="cb68-2"><a></a><span class="bu">print</span>(avg)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1103,19 +1103,19 @@ Name: 平均点, dtype: float64</code></pre>
 <li><code>index</code> が学科名</li>
 <li><code>values</code> が平均点</li>
 </ul>
-<div id="7d21460e" class="cell" data-execution_count="32">
+<div id="4a405c7e" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a></a><span class="bu">print</span>(<span class="bu">type</span>(avg))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.series.Series'&gt;</code></pre>
 </div>
 </div>
-<div id="5f8c3f09" class="cell" data-execution_count="33">
+<div id="4230a887" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a></a><span class="bu">print</span>(avg.index)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Index(['情報', '機械', '電気'], dtype='object', name='学科')</code></pre>
 </div>
 </div>
-<div id="94059dbd" class="cell" data-execution_count="34">
+<div id="ae28629e" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a></a><span class="bu">print</span>(avg.values)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[80.0625     71.625      77.58333333]</code></pre>
@@ -1146,13 +1146,13 @@ Name: 平均点, dtype: float64</code></pre>
 <li><code>iloc</code> は <strong>位置番号</strong> で取り出す</li>
 <li>今回はこの程度で十分</li>
 </ul>
-<div id="607466e9" class="cell" data-execution_count="35">
+<div id="4b031ead" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a></a><span class="bu">print</span>(avg.loc[<span class="st">"情報"</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>80.0625</code></pre>
 </div>
 </div>
-<div id="187c7bd6" class="cell" data-execution_count="36">
+<div id="1e42657c" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a></a><span class="bu">print</span>(avg.iloc[<span class="dv">0</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>80.0625</code></pre>
@@ -1172,7 +1172,7 @@ Name: 平均点, dtype: float64</code></pre>
 <li><code>Series</code> を <code>index</code> と <code>values</code> に分けて matplotlib に渡す</li>
 <li>ここでは <code>groupby()</code> で作った <code>avg</code> を可視化する</li>
 </ul>
-<div id="2275e793" class="cell" data-execution_count="37">
+<div id="fc2fb526" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb81-2"><a></a><span class="im">import</span> japanize_matplotlib</span>
 <span id="cb81-3"><a></a></span>
@@ -1212,7 +1212,7 @@ Name: 平均点, dtype: float64</code></pre>
 <li>色やグリッドを足すと、比較しやすくなる</li>
 <li>棒グラフでは <code>ylim(0, 100)</code> のように、0から見せることが多い</li>
 </ul>
-<div id="3fe65e6d" class="cell" data-execution_count="38">
+<div id="5bd0084c" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb83-2"><a></a><span class="im">import</span> japanize_matplotlib</span>
 <span id="cb83-3"><a></a></span>
@@ -1243,7 +1243,7 @@ Name: 平均点, dtype: float64</code></pre>
 <li>生徒名を横軸、平均点を縦軸にして棒グラフを描く</li>
 <li>y軸は <code>0</code> から <code>100</code> にする</li>
 </ul>
-<div id="77b1b7eb" class="cell" data-execution_count="39">
+<div id="5ee4092e" class="cell" data-execution_count="39">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -1278,7 +1278,7 @@ Name: 平均点, dtype: float64</code></pre>
 </ul></li>
 <li>「明治時代（〜1911年）の平均気温」と「2000年以降の平均気温」— <strong>条件抽出がそのまま効く</strong></li>
 </ul>
-<div id="1b945249" class="cell" data-execution_count="40">
+<div id="b2426325" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb85-2"><a></a></span>
 <span id="cb85-3"><a></a>df_temp <span class="op">=</span> pd.read_csv(<span class="st">"data/tokyo_temp_annual.csv"</span>)</span>
