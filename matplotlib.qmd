@@ -507,7 +507,7 @@ plt.show()
 
 ## 演習：謎のデータをプロットせよ
 
-- [datasaurus_star.csv](data/datasaurus_star.csv) をダウンロードして、`.py` と同じフォルダに置く
+- [datasaurus_star.csv](data/datasaurus_star.csv) をダウンロードして、`data/` フォルダに置く
 - 前回見た [**Datasaurus Dozen 13個のうちの1つ**](visualize.qmd#peek-datasaurus){.peek}（恐竜ではない）
    - 統計量はもちろん：$\bar{x} = 54.27$、$\bar{y} = 47.84$、$r = -0.06$
 - 手順
@@ -525,7 +525,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-data = np.loadtxt("datasaurus_star.csv", delimiter=",", skiprows=1)
+data = np.loadtxt("data/datasaurus_star.csv", delimiter=",", skiprows=1)
 x = data[:, 0]
 y = data[:, 1]
 
