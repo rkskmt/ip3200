@@ -195,6 +195,7 @@
   <script src="slide-ui.js" defer=""></script>
   <script src="search-ui.js" defer=""></script>
   <script src="peek-ui.js" defer=""></script>
+  <script src="badge-ui.js" defer=""></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -277,7 +278,7 @@ rkskmt
 <li>数値だけでは見落とすので <strong>まず描く</strong> — <a href="./visualize.html">可視化章</a> の大原則</li>
 <li>同じURL/ヘッダーで取得したあと <code>plt.plot(views)</code> するだけ</li>
 </ul>
-<div id="82733247" class="cell" data-execution_count="1">
+<div id="ab0fc981" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -286,7 +287,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="a3933577" class="cell" data-execution_count="2">
+<div id="a7ef26aa" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> requests</span>
@@ -368,7 +369,7 @@ rkskmt
 <section id="よく見るともう一つ山がある" class="slide level2">
 <h2>よく見ると、もう一つ山がある</h2>
 <div class="slide-body">
-<div id="c7ec6286" class="cell" data-execution_count="3">
+<div id="f5343072" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -380,6 +381,17 @@ rkskmt
 <ul>
 <li>y軸を拡大すると、<strong>8月29日にも小さな山</strong>（2,291回）— 七夕でもないのに、なぜ？</li>
 </ul>
+</div>
+</section>
+<section id="小さな異変の発見と解釈" class="slide level2 badge-important">
+<h2>小さな異変の発見と解釈</h2>
+<div class="slide-body">
+<ul>
+<li>小さな山の正体は？ <strong>グラフをドラッグで拡大</strong>して確かめよう</li>
+</ul>
+<div style="display:flex; justify-content:center;">
+<iframe src="iframes/plotly_tanabata.html" width="900" height="340" style="border:none;" onload="try{var d=this.contentDocument;if(d){d.documentElement.style.margin='0';d.documentElement.style.padding='0';d.body.style.margin='0';d.body.style.padding='0';}}catch(e){}"></iframe>
+</div>
 <div class="fragment">
 <ul>
 <li>正体<span class="fw-colon">：</span><strong>伝統的七夕</strong> — 旧暦7月7日にあたる日（2025年は8月29日）
@@ -432,7 +444,7 @@ rkskmt
 <p>演習</p>
 </div>
 </section>
-<section id="演習1枚のグラフに2本の折れ線" class="slide level2">
+<section id="演習1枚のグラフに2本の折れ線" class="slide level2 badge-practice">
 <h2>演習<span class="fw-colon">：</span>1枚のグラフに2本の折れ線</h2>
 <div class="slide-body">
 <ul>
@@ -456,7 +468,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="592a0836" class="cell" data-execution_count="4">
+<div id="70a9fea2" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> requests</span>
@@ -491,7 +503,7 @@ rkskmt
 </div>
 </div>
 </section>
-<section id="演習富士山には山があるか" class="slide level2">
+<section id="演習富士山には山があるか" class="slide level2 badge-practice">
 <h2>演習<span class="fw-colon">：</span>富士山には山があるか</h2>
 <div class="slide-body">
 <ul>
@@ -502,7 +514,7 @@ rkskmt
 <li>問い<span class="fw-colon">：</span>七夕のような <strong>鋭い山（スパイク）</strong> はあるか？</li>
 <li>問い<span class="fw-colon">：</span>スパイクがないなら、<strong>何が見えるか</strong>？ 自分の言葉で説明せよ</li>
 </ul>
-<div id="7e47e939" class="cell" data-execution_count="5">
+<div id="eab2bde2" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> requests</span>
@@ -527,11 +539,11 @@ rkskmt
 </details>
 </div>
 <div class="fragment">
-<div id="208afa7a" class="cell" data-execution_count="6">
+<div id="28d6010e" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="api-viz_files/figure-revealjs/cell-7-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="api-viz_files/figure-revealjs/cell-7-output-1.png" class="quarto-figure quarto-figure-center" width="661" height="257"></a></p>
+<p><a href="api-viz_files/figure-revealjs/cell-8-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="api-viz_files/figure-revealjs/cell-8-output-1.png" class="quarto-figure quarto-figure-center" width="661" height="257"></a></p>
 </figure>
 </div>
 </div>

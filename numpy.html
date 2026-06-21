@@ -195,6 +195,7 @@
   <script src="slide-ui.js" defer=""></script>
   <script src="search-ui.js" defer=""></script>
   <script src="peek-ui.js" defer=""></script>
+  <script src="badge-ui.js" defer=""></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -418,7 +419,7 @@ rkskmt
 <li>「for文が不要なため非常に高速」— 何倍くらい違うと思いますか？</li>
 </ul>
 <div class="fragment">
-<div id="066ffaf8" class="cell" data-execution_count="1">
+<div id="35a24864" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>計測コードを表示</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> time</span>
@@ -445,12 +446,12 @@ rkskmt
 <span id="cb10-22"><a></a><span class="bu">print</span>(<span class="ss">f"→ 約 </span><span class="sc">{</span>t_list <span class="op">/</span> t_arr<span class="sc">:.0f}</span><span class="ss"> 倍速い"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>list（内包表記）: 28.0 ミリ秒
-ndarray:          0.43 ミリ秒
-→ 約 66 倍速い</code></pre>
+<pre><code>list（内包表記）: 30.5 ミリ秒
+ndarray:          0.47 ミリ秒
+→ 約 65 倍速い</code></pre>
 </div>
 </div>
-<div id="241a39f7" class="cell" data-execution_count="2">
+<div id="bafd1de5" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -523,7 +524,7 @@ ndarray:          0.43 ミリ秒
 <span id="cb13-14"><a></a><span class="co"># 転置</span></span>
 <span id="cb13-15"><a></a><span class="bu">print</span>(A.T)</span>
 <span id="cb13-16"><a></a><span class="bu">print</span>(B.T)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="e26e5ae2" class="cell" data-execution_count="3">
+<div id="c0ec7a7b" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -563,7 +564,7 @@ ndarray:          0.43 ミリ秒
 <span id="cb14-18"><a></a><span class="co"># 条件を満たすデータの抽出</span></span>
 <span id="cb14-19"><a></a><span class="bu">print</span>(scores <span class="op">&gt;=</span> <span class="dv">85</span>)           <span class="co"># True/False</span></span>
 <span id="cb14-20"><a></a><span class="bu">print</span>(scores[scores <span class="op">&gt;=</span> <span class="dv">85</span>])   <span class="co"># 85点以上のデータ</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="5d6ab308" class="cell" data-execution_count="4">
+<div id="3a185573" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -572,7 +573,7 @@ ndarray:          0.43 ミリ秒
 </div>
 </div>
 </div>
-<div id="2c6d939b" class="cell" data-execution_count="5">
+<div id="4ed069df" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -586,7 +587,7 @@ ndarray:          0.43 ミリ秒
 </ul>
 </div>
 </section>
-<section id="演習1" class="slide level2">
+<section id="演習1" class="slide level2 badge-practice">
 <h2>演習1</h2>
 <div class="slide-body">
 <p>（１） 「1から10までの連続した整数」から成る<code>ndarray</code>を表示</p>
@@ -596,7 +597,7 @@ ndarray:          0.43 ミリ秒
 <p>（５） 0以上1未満のランダムな数字を１つ表示</p>
 </div>
 </section>
-<section id="演習2" class="slide level2">
+<section id="演習2" class="slide level2 badge-practice">
 <h2>演習2</h2>
 <div class="slide-body">
 <p>（１）<code>li = [10, 20, 30]</code> に対してfor文ですべての要素の型を確認するコードを書け</p>

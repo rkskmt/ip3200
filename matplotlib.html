@@ -195,6 +195,7 @@
   <script src="slide-ui.js" defer=""></script>
   <script src="search-ui.js" defer=""></script>
   <script src="peek-ui.js" defer=""></script>
+  <script src="badge-ui.js" defer=""></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -271,7 +272,7 @@ rkskmt
 <ul>
 <li>matplotlib は多くの環境で <strong>日本語が文字化け</strong> する</li>
 </ul>
-<div id="feba47fc" class="cell" data-execution_count="1">
+<div id="93ff8a6f" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -366,7 +367,7 @@ rkskmt
 <section id="まずは点のプロット" class="slide level2">
 <h2>まずは点のプロット</h2>
 <div class="slide-body">
-<div id="900c884d" class="cell" data-execution_count="2">
+<div id="c39e1755" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -396,7 +397,7 @@ rkskmt
 <section id="peek-line-code" class="slide level2">
 <h2>点に線を付け足す</h2>
 <div class="slide-body">
-<div id="cb11a2b2" class="cell" data-execution_count="3">
+<div id="b054cd3a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -421,7 +422,7 @@ rkskmt
 </ul>
 </div>
 </section>
-<section id="tweak線の見た目" class="slide level2">
+<section id="tweak線の見た目" class="slide level2 badge-practice">
 <h2>Tweak<span class="fw-colon">：</span>線の見た目</h2>
 <div class="slide-body">
 <ul>
@@ -469,7 +470,7 @@ rkskmt
 </div>
 </div>
 </section>
-<section id="演習二次関数を描く" class="slide level2 scrollable">
+<section id="演習二次関数を描く" class="slide level2 badge-practice scrollable">
 <h2>演習<span class="fw-colon">：</span>二次関数を描く</h2>
 <div class="slide-body">
 <ul>
@@ -497,7 +498,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="834198ad" class="cell" data-execution_count="4">
+<div id="25c79688" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -525,7 +526,7 @@ rkskmt
 <li>その後<code>plt.legend()</code>を呼ぶ</li>
 </ul></li>
 </ul>
-<div id="db084e3d" class="cell" data-execution_count="5">
+<div id="7e390acf" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -554,7 +555,7 @@ rkskmt
 </ul>
 </div>
 </section>
-<section id="tweak凡例" class="slide level2">
+<section id="tweak凡例" class="slide level2 badge-practice">
 <h2>Tweak<span class="fw-colon">：</span>凡例</h2>
 <div class="slide-body">
 <ul>
@@ -608,7 +609,7 @@ rkskmt
 <li><code>plt.title()</code> で <strong>グラフタイトル</strong></li>
 <li><code>plt.grid(True)</code> で <strong>グリッド線</strong></li>
 </ul>
-<div id="f8f1059f" class="cell" data-execution_count="6">
+<div id="9e63b658" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -660,7 +661,7 @@ rkskmt
 <li><code>plt.xlim(a, b)</code> / <code>plt.ylim(a, b)</code> で軸の範囲を固定</li>
 <li>何も指定しないと <strong>データの範囲＋少し余白</strong> が自動で選ばれる</li>
 </ul>
-<div id="f41fbad4" class="cell" data-execution_count="7">
+<div id="bbf9122c" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -702,7 +703,7 @@ rkskmt
 </div>
 </div>
 </section>
-<section id="tweak軸の範囲で印象を操る" class="slide level2">
+<section id="tweak軸の範囲で印象を操る" class="slide level2 badge-practice">
 <h2>Tweak<span class="fw-colon">：</span>軸の範囲で印象を操る</h2>
 <div class="slide-body">
 <ul>
@@ -754,7 +755,7 @@ rkskmt
 <div style="text-align:center; font-family:monospace;">
 <p>1 │ 2<br> ─┼─<br> 3 │ 4</p>
 </div>
-<div id="68820b58" class="cell" data-execution_count="8">
+<div id="5fdded0f" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb10-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -804,7 +805,7 @@ rkskmt
 <section id="ここまでの成果図は育てる" class="slide level2">
 <h2>ここまでの成果<span class="fw-colon">：</span>図は「育てる」</h2>
 <div class="slide-body">
-<div id="bca1e3b4" class="cell" data-execution_count="9">
+<div id="e7ec7f22" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -832,7 +833,7 @@ rkskmt
 <li><code>alpha</code> で <strong>透明度</strong> を指定すると重なりが見やすい</li>
 </ul></li>
 </ul>
-<div id="edc2e29d" class="cell" data-execution_count="10">
+<div id="01889984" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb11-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -857,27 +858,20 @@ rkskmt
 </div>
 </div>
 </div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<p><strong>結論<span class="fw-colon">：</span>東京は暑くなった。ただし</strong></p>
-</div>
-<div class="callout-content">
+</section>
+<section id="結論東京は暑くなったただし" class="slide level2 badge-important">
+<h2>結論<span class="fw-colon">：</span>東京は暑くなった。ただし</h2>
+<div class="slide-body">
 <ul>
 <li>150年で <strong>約4℃上昇</strong></li>
 <li>この上昇には <strong>都市化（ヒートアイランド）</strong> の影響も大きく含まれる</li>
 <li>図は答えをくれるが、<strong>解釈には背景知識が要る</strong></li>
 </ul>
 </div>
-</div>
-</div>
-</div>
 </section>
-<section id="ヒストグラムあの所得分布を自分で作る" class="slide level2">
-<h2>ヒストグラム<span class="fw-colon">：</span>あの所得分布を自分で作る</h2>
+<section id="peek-hist-code" class="slide level2">
+<h2>ヒストグラム<span class="fw-colon">：</span>所得分布の可視化</h2>
 <div class="slide-body">
 <ul>
 <li>前回の<a href="./visualize.html#peek-income" class="peek">厚労省の所得分布</a>は <strong>ヒストグラム</strong>（区間ごとに数えるグラフ）だった</li>
@@ -888,7 +882,7 @@ rkskmt
 </ul></li>
 </ul>
 <div class="fig">
-<div id="81a4a887" class="cell" data-execution_count="11">
+<div id="1555403b" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -930,6 +924,48 @@ rkskmt
 <li>この会社は求人票に「平均年収824万円」と書かれて、そのくらいもらえると錯覚する</li>
 <li>でも中央値は <strong>500万円</strong> — 半分の人は500万以下</li>
 <li>描けば誰でも分かる</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="tweakビンの数で分布が化ける" class="slide level2 badge-practice">
+<h2>Tweak<span class="fw-colon">：</span>ビンの数で分布が化ける</h2>
+<div class="slide-body">
+<ul>
+<li><a href="#/peek-hist-code" class="peek">さっきのコード</a> の <code>bins</code> だけ変えて実行 — 同じ29人なのに形が変わる</li>
+</ul>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>やってみる</th>
+<th>どう変える</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>粗く刻む</td>
+<td><code>bins=20</code> → <code>bins=5</code></td>
+</tr>
+<tr class="even">
+<td>細かく刻む</td>
+<td><code>bins=20</code> → <code>bins=50</code></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>予想してから試す</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><code>bins=5</code> にすると、右に長く伸びる <strong>高年収の外れ値</strong> の山は見える？消える？</li>
+<li>まず予想 → 実行して確かめる（軸の範囲と同じで、ビンの切り方も印象を動かす）</li>
 </ul>
 </div>
 </div>
@@ -1003,7 +1039,7 @@ rkskmt
 </table>
 </div>
 </section>
-<section id="演習謎のデータをプロットせよ" class="slide level2 scrollable">
+<section id="演習謎のデータをプロットせよ" class="slide level2 badge-practice scrollable">
 <h2>演習<span class="fw-colon">：</span>謎のデータをプロットせよ</h2>
 <div class="slide-body">
 <ul>
@@ -1017,10 +1053,10 @@ rkskmt
 <li><code>np.loadtxt</code> で読み込む（1行目はヘッダなので <code>skiprows=1</code>）</li>
 <li><code>data[:, 0]</code> と <code>data[:, 1]</code> で <code>x</code>, <code>y</code> を取り出す</li>
 <li><code>plt.scatter</code> でプロット — <strong>何が見える？</strong></li>
-<li>軸ラベル・タイトルをつけて「資料に載せられる図」に育てる</li>
+<li>軸ラベル・タイトルをつける</li>
 </ol></li>
 </ul>
-<div id="5e199673" class="cell" data-execution_count="12">
+<div id="27a6ed5e" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1041,7 +1077,7 @@ rkskmt
 </div>
 </div>
 </section>
-<section id="演習アンスコムの四重奏を再現" class="slide level2 scrollable">
+<section id="演習アンスコムの四重奏を再現" class="slide level2 badge-practice scrollable">
 <h2>演習<span class="fw-colon">：</span>アンスコムの四重奏を再現</h2>
 <div class="slide-body">
 <ul>
@@ -1081,7 +1117,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="5f3e6e76" class="cell" data-execution_count="13">
+<div id="5ce1e66c" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1113,7 +1149,7 @@ rkskmt
 </div>
 </div>
 </section>
-<section id="演習好きな画像を表示" class="slide level2">
+<section id="演習好きな画像を表示" class="slide level2 badge-practice">
 <h2>演習<span class="fw-colon">：</span>好きな画像を表示</h2>
 <div class="slide-body">
 <ul>
