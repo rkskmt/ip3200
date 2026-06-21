@@ -192,7 +192,7 @@ fig.write_html("iframes/cholera_map.html", include_plotlyjs="directory")
 データを扱う際の大原則
 :::
 
-## "Always plot your data first."
+## "Always plot your data first." {.badge-important}
 
 > **あらゆるデータは、まず最初に「見て」みる**
 

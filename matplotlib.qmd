@@ -155,7 +155,7 @@ plt.show()
 - 月ごとの **つながり**（連続的な変化）が見えるようになった
 
 
-## Tweak：線の見た目
+## Tweak：線の見た目 {.badge-practice}
 
 - [さっきのコード](#peek-line-code){.peek} の `'o-'` を以下に **書き換えて実行**せよ
 
@@ -173,7 +173,7 @@ plt.show()
 :::
 
 
-## 演習：二次関数を描く
+## 演習：二次関数を描く {.badge-practice}
 
 - $y = x^2 - 2x + 3$ を **定義域 $-2 \leq x \leq 5$** で描け
 - 手順
@@ -232,7 +232,7 @@ plt.show()
    - 2024年の冬は1900年の春なみ、夏は **ほぼ全月で上**
 
 
-## Tweak：凡例
+## Tweak：凡例 {.badge-practice}
 
 - [前のスライドのコード](#peek-legend-code){.peek} の以下の部分を変えよ
 
@@ -316,7 +316,7 @@ plt.show()
 :::
 
 
-## Tweak：軸の範囲で印象を操る
+## Tweak：軸の範囲で印象を操る {.badge-practice}
 
 - [さっきのコード](#peek-axis-code){.peek} の軸だけ変えて実行 — 同じデータでも印象がどう動くか
 
@@ -437,12 +437,11 @@ plt.tight_layout()
 plt.show()
 ```
 
-::: {.callout-note}
-## 結論：東京は暑くなった。ただし
-- 150年で **約4℃上昇** 
+## 結論：東京は暑くなった。ただし {.badge-important}
+
+- 150年で **約4℃上昇**
 - この上昇には **都市化（ヒートアイランド）** の影響も大きく含まれる
 - 図は答えをくれるが、**解釈には背景知識が要る**
-:::
 
 
 ## ヒストグラム：所得分布の可視化 {#peek-hist-code}
@@ -486,7 +485,7 @@ plt.show()
 :::
 
 
-## Tweak：ビンの数で分布が化ける
+## Tweak：ビンの数で分布が化ける {.badge-practice}
 
 - [さっきのコード](#peek-hist-code){.peek} の `bins` だけ変えて実行 — 同じ29人なのに形が変わる
 
@@ -521,7 +520,7 @@ plt.show()
 | CSV読み込み | `np.loadtxt("file.csv", delimiter=",", skiprows=1)` |
 
 
-## 演習：謎のデータをプロットせよ
+## 演習：謎のデータをプロットせよ {.badge-practice}
 
 - [datasaurus_star.csv](data/datasaurus_star.csv) をダウンロードして、`data/` フォルダに置く
 - 前回見た [**Datasaurus Dozen 13個のうちの1つ**](visualize.qmd#peek-datasaurus){.peek}（恐竜ではない）
@@ -554,7 +553,7 @@ plt.show()
 ```
 
 
-## 演習：アンスコムの四重奏を再現
+## 演習：アンスコムの四重奏を再現 {.badge-practice}
 
 - 手順
   1. 下のデータをコピペして使う
@@ -616,7 +615,7 @@ plt.show()
 ```
 
 
-## 演習：好きな画像を表示
+## 演習：好きな画像を表示 {.badge-practice}
 
 - matplotlib は **画像も描画できる**
 - 公式チュートリアルを参考

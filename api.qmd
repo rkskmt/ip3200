@@ -479,7 +479,7 @@ print(f"中央値: {np.median(views):.0f}回")
 :::
 
 
-## 演習：desktop と mobile-web の比較
+## 演習：desktop と mobile-web の比較 {.badge-practice}
 
 - 同じ期間（2025/01/01 – 2025/12/31）・同じ記事「七夕」で **API を2回呼ぶ**
 - `access` を `desktop` と `mobile-web` に切り替える

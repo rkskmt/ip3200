@@ -129,7 +129,7 @@ subtitle: "すべての基礎力"
 :::
 
 
-## 演習：AtCoderでプログラムを動かしてみよう
+## 演習：AtCoderでプログラムを動かしてみよう {.badge-practice}
 
 「**AtCoder ABC 400 tasks**」で検索して A 問題を解いてみよう。
 

@@ -229,7 +229,7 @@ for i, score in enumerate(scores):
 :::
 
 
-## 演習問題（`list`）
+## 演習問題（`list`） {.badge-practice}
 
 ```python
 student_scores = [85, 90, 92, 78, 92, 88]
@@ -354,7 +354,7 @@ for key, value in name2score.items():
 ```
 
 
-## 演習問題（`dict`）
+## 演習問題（`dict`） {.badge-practice}
 
 ```python
 name2score = {"Yamada": 95, "Suzuki": 75, "Takahashi": 80}
@@ -539,7 +539,7 @@ for key, value in name2score.items():  # tuple を2変数に展開
 ```
 
 
-## 演習問題（`tuple`）
+## 演習問題（`tuple`） {.badge-practice}
 
 ```python
 def get_min_max(scores):

@@ -283,7 +283,7 @@ print(score2name)  # {95: 'Yamada', 75: 'Suzuki', 80: 'Takahashi'}
 - 辞書内包表記 `{k: v for ...}` で `for` ＋ 追加を1行に圧縮できる
 
 
-## 演習問題
+## 演習問題 {.badge-practice}
 
 
 ```python
@@ -314,7 +314,7 @@ print(sum(name2score.values()) / len(name2score))
 ```
 
 
-## 演習問題（辞書内包表記）
+## 演習問題（辞書内包表記） {.badge-practice}
 
 以下の操作を実装せよ
 
@@ -349,7 +349,7 @@ print(score2name)
 ```
 
 
-## 演習問題（list of dict）
+## 演習問題（list of dict） {.badge-practice}
 
 
 ```python

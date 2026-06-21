@@ -672,7 +672,7 @@ fig.write_html("iframes/plotly_gapminder.html", include_plotlyjs="directory")
 - **▶ を押す** と55年分の世界が動く（カーソルをあわせると国名がでる）
 
 
-## 演習：学科ごとの平均点をPlotlyで描く
+## 演習：学科ごとの平均点をPlotlyで描く {.badge-practice}
 
 - `data/students.csv` を読み込む
 - `groupby("学科", as_index=False)` で平均点を作る

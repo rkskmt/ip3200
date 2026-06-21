@@ -724,7 +724,7 @@ $Ax = b$ の解は `np.linalg.solve(A, b)`
 | 単位ベクトル | $\hat{\mathbf{a}} = \mathbf{a} / \|\mathbf{a}\|$ | `a / np.linalg.norm(a)` |
 
 
-## 演習
+## 演習 {.badge-practice}
 
 （１）以下の2つのベクトルの内積を求め、直交しているか判定せよ。
 

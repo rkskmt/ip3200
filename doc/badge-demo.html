@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Rosette badge — presets (EN / ja)</title>
+<style>
+  :root { font-family: system-ui, "Yu Gothic UI", "Hiragino Sans", "Noto Sans CJK JP", sans-serif; }
+  body { margin: 0; padding: 32px 40px 90px; color: #1a1a1a; background: #f4f6f9; }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  .sub { color: #555; font-size: 14px; margin-bottom: 26px; }
+  h2.sec { font-size: 18px; margin: 40px 0 6px; padding: 7px 12px; background: #1f2733; color: #fff; border-radius: 5px; }
+  .note { color: #555; font-size: 13px; margin: 0 0 14px; }
+  .rowlabel { font-size: 13px; font-weight: 700; color:#1f2733; margin: 18px 0 2px; }
+  .grid { display: flex; flex-wrap: wrap; gap: 18px 30px; align-items: flex-end; margin: 8px 0 4px; }
+  .cell { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+  .cap { font-size: 12px; color: #777; }
+  .arc { font-weight: 800; letter-spacing: 1.2px; }
+  /* mock slide */
+  .slide { border: 1px solid #e0e4ea; border-radius: 8px; padding: 22px 30px; background:#fff; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+  .slide .hd { position: relative; }
+  .slide h3.title { font-weight: 800; font-size: 30px; margin: 0; padding: 0 0 8px; border-bottom: 1px solid #000; padding-right: 5.5em; }
+  .slide .pin { position: absolute; top: -10px; right: 0; display:flex; gap:10px; align-items:flex-start; }
+  .slide p { color:#333; font-size:15px; }
+  .landscape { width: 620px; }
+  .portrait  { width: 350px; }
+</style>
+</head>
+<body>
+<h1>ロゼット型バッジ プリセット（Normal=英語 / ja=日本語）</h1>
+<div class="sub">3プリセット（重要 / 手を動かせ / 参考まで）× 2言語＝6種。上下アーチは英語、ja版は中央に日本語を水平で大きく。</div>
+<div id="root"></div>
+
+<script>
+const UID=(()=>{let n=0;return()=>++n;})();
+
+const C={ coral:'#f76d5e', coralL:'#fba892', blue:'#3a8dde', cream:'#f8e3ad',
+  peach:'#f6b394', red:'#f4736a', navy:'#1a3c6e' };
+
+const ICON={
+  star: c=>`<polygon points="12 2 14.94 8.63 22 9.27 16.5 14.14 18.18 21 12 17.27 5.82 21 7.5 14.14 2 9.27 9.06 8.63" fill="${c}"/>`,
+  wrench: c=>`<path d="M21 4.2a5.6 5.6 0 0 1-7.1 7.1l-7.7 7.7a2.1 2.1 0 0 1-3-3l7.7-7.7A5.6 5.6 0 0 1 18 1.2L14.6 4.6a1.4 1.4 0 0 0 0 2l1.8 1.8a1.4 1.4 0 0 0 2 0z" fill="${c}"/>`,
+  pencil: c=>`<path d="M4 20l1.4-4.6L17 4l3.6 3.6L9 19.2z" fill="${c}"/>`,
+  book: c=>`<path d="M3 4.6c2.7-1.1 6.3-1.1 9 .6 2.7-1.7 6.3-1.7 9-.6v14.2c-2.7-1.1-6.3-1.1-9 .6-2.7-1.7-6.3-1.7-9-.6z" fill="none" stroke="${c}" stroke-width="1.9" stroke-linejoin="round"/><path d="M12 5.2v14.2" fill="none" stroke="${c}" stroke-width="1.9"/>`,
+};
+
+function scallopPath(n,rv,rb){ const cx=100,cy=100,p=[];
+  for(let i=0;i<n;i++){const a=i/n*2*Math.PI;p.push([cx+rv*Math.cos(a),cy+rv*Math.sin(a)]);}
+  let d=`M${p[0][0].toFixed(2)},${p[0][1].toFixed(2)}`;
+  for(let i=0;i<n;i++){const q=p[(i+1)%n];d+=` A${rb},${rb} 0 0 1 ${q[0].toFixed(2)},${q[1].toFixed(2)}`;}
+  return d+'Z'; }
+function zigzagPath(n,ro,ri){ const cx=100,cy=100;let d='';
+  for(let i=0;i<n*2;i++){const r=(i%2===0)?ro:ri;const a=i/(n*2)*2*Math.PI-Math.PI/2;
+    d+=(i===0?'M':'L')+(cx+r*Math.cos(a)).toFixed(2)+','+(cy+r*Math.sin(a)).toFixed(2);}
+  return d+'Z'; }
+
+function badge(t){
+  const n=UID(), size=t.size||150;
+  const w=Math.round(size*200/256), h=size, tp=`tp${n}`, bp=`bp${n}`;
+  const rTop=t.textRTop||60, rBot=t.textR||68;   // top: inner (original) / bottom: nearer outer edge
+  let s=`<svg width="${w}" height="${h}" viewBox="0 0 200 256" xmlns="http://www.w3.org/2000/svg">`;
+  s+=`<defs><path id="${tp}" d="M${100-rTop},100 A${rTop},${rTop} 0 0 1 ${100+rTop},100"/>
+      <path id="${bp}" d="M${100-rBot},100 A${rBot},${rBot} 0 0 0 ${100+rBot},100"/></defs>`;
+  // ribbon tails (behind), outward V splay
+  const tg=(side)=>{const w=46,L=92,nn=15,px=100+side*14,py=140,deg=-side*24;
+    return {tf:`translate(${px} ${py}) rotate(${deg})`,d:`M${-w/2} 0 H${w/2} V${L} L0 ${L-nn} L${-w/2} ${L} Z`};};
+  const tL=tg(-1),tR=tg(1),fld=t.field||80;
+  s+=`<path transform="${tL.tf}" d="${tL.d}" fill="${t.ribbon}"/><path transform="${tR.tf}" d="${tR.d}" fill="${t.ribbon}"/>`;
+  // badge shadow on the upper part of the ribbon (clipped to tails)
+  s+=`<defs><clipPath id="rc${n}"><path transform="${tL.tf}" d="${tL.d}"/><path transform="${tR.tf}" d="${tR.d}"/></clipPath>
+      <filter id="bl${n}" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="3.5"/></filter></defs>
+      <g clip-path="url(#rc${n})"><circle cx="100" cy="104" r="${fld+2}" fill="rgba(0,0,0,0.22)" filter="url(#bl${n})"/></g>`;
+  // edge + field
+  const edge=t.edge==='scallop'?scallopPath(t.teeth||13,80,(2*Math.PI*80/(t.teeth||13))/2):zigzagPath(t.teeth||22,96,84);
+  s+=`<path d="${edge}" fill="${t.rosette}"/><circle cx="100" cy="100" r="${fld}" fill="${t.fieldColor}"/>`;
+  if(t.ring) s+=`<circle cx="100" cy="100" r="${fld-4}" fill="none" stroke="${t.ring}" stroke-width="2"/>`;
+  // center: icon and/or horizontal JP text
+  const hasTxt=!!t.centerText, hasIcon=t.icon&&t.icon!=='none';
+  const tlen=hasTxt?[...t.centerText].length:0, multi=tlen>=3;
+  if(hasIcon){const iy=hasTxt?(multi?70:76):100, sc=hasTxt?1.65:2.8;
+    s+=`<g transform="translate(100 ${iy}) scale(${sc}) translate(-12 -12)">${ICON[t.icon](t.iconColor)}</g>`;}
+  if(hasTxt){const ty=hasIcon?(multi?116:124):109;
+    const tl=multi?` textLength="118" lengthAdjust="spacingAndGlyphs"`:'';
+    s+=`<text x="100" y="${ty}" text-anchor="middle" font-weight="800" font-size="${t.centerSize||26}" fill="${t.centerTextColor||t.textColor}"${tl}>${t.centerText}</text>`;}
+  // arch text
+  s+=`<text class="arc" font-size="${t.fontSizeTop||16}" fill="${t.textColor}"><textPath href="#${tp}" startOffset="50%" text-anchor="middle">${t.top||''}</textPath></text>`;
+  s+=`<text class="arc" font-size="${t.fontSize||18}" fill="${t.textColor}"><textPath href="#${bp}" startOffset="50%" text-anchor="middle">${t.bottom||''}</textPath></text>`;
+  return s+'</svg>';
+}
+
+/* ===== preset registry (this is what badge-ui.js would hold) ===== */
+const PRESETS={
+  important:{ edge:'scallop',teeth:13, rosette:C.coral, fieldColor:C.cream, ribbon:C.blue,
+    icon:'star', iconColor:C.coral, textColor:C.navy, top:'KEY POINT', bottom:'IMPORTANT', ja:'重要' },
+  practice:{ edge:'scallop',teeth:13, rosette:C.blue, fieldColor:C.cream, ribbon:C.coral,
+    icon:'wrench', iconColor:C.blue, textColor:C.navy, top:'HANDS-ON', bottom:'TRY IT', ja:'手を動かせ' },
+  fyi:{ edge:'zigzag',teeth:40, rosette:C.peach, fieldColor:C.cream, ring:C.coral, ribbon:C.blue,
+    icon:'book', iconColor:C.coral, textColor:C.navy, top:'REFERENCE', bottom:'FYI', ja:'参考まで' },
+};
+const ORDER=['important','practice','fyi'];
+const jaSize=s=> s.length<=2?30 : 26;
+
+function renderEN(key,size){ const P=PRESETS[key]; return badge(Object.assign({},P,{size, fontSizeTop:20, fontSize:22})); }
+function renderJA(key,size){ const P=PRESETS[key];
+  return badge(Object.assign({},P,{centerText:P.ja, centerSize:jaSize(P.ja), size})); }
+
+function cell(html,cap){return `<div class="cell">${html}${cap?`<span class="cap">${cap}</span>`:''}</div>`;}
+
+let H='';
+H+=`<h2 class="sec">6種：Normal（英語・デフォルト） / ja（日本語）</h2>`;
+H+=`<p class="note">important＝coral花びら＋星 / practice（演習）＝blue花びら＋レンチ＋「手を動かせ」 / fyi＝peach細ギザ＋本＋「参考まで」。</p>`;
+
+H+=`<div class="rowlabel">Normal（英語・デフォルト）— 中央はアイコン</div><div class="grid">`;
+for(const k of ORDER) H+=cell(renderEN(k), k);
+H+=`</div>`;
+
+H+=`<div class="rowlabel">ja（日本語）— 中央に日本語＋上にアイコン</div><div class="grid">`;
+for(const k of ORDER) H+=cell(renderJA(k), k+'-ja');
+H+=`</div>`;
+
+/* placement */
+H+=`<h2 class="sec">スライド配置イメージ（タイトル右肩）</h2>`;
+H+=`<div class="grid" style="align-items:flex-start">
+  <div class="slide landscape"><div class="hd">
+    <h3 class="title">Tweak：AND と OR で「絞る」と「広がる」</h3>
+    <div class="pin">${renderJA('practice',100)}${renderEN('important',100)}</div>
+  </div><p>本文テキスト。条件式を &amp; から | に変えて実行…</p></div>
+  <div class="slide portrait"><div class="hd">
+    <h3 class="title">列を追加する</h3>
+    <div class="pin">${renderJA('important',100)}</div>
+  </div><p>本文テキスト。新しい列を作る…</p></div>
+</div>`;
+
+document.getElementById('root').innerHTML=H;
+</script>
+</body>
+</html>

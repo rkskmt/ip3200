@@ -143,7 +143,7 @@ DataFrame = データ + 行名(index) + 列名(columns)
 :::
 
 
-## 名前があると何がうれしい？
+## 名前があると何がうれしい？ {.badge-important}
 
 - `df["数学I"]` と書くと、数学Iの列だけ取り出せる
 - `df.mean()` と書くと、列ごとの平均が計算できる
@@ -451,7 +451,7 @@ print(df[
 :::
 
 
-## Tweak：AND と OR で「絞る」と「広がる」
+## Tweak：AND と OR で「絞る」と「広がる」 {.badge-practice}
 
 - [前ページのコード](#peek-and-or-code){.peek} の `&` を `|`（または）に変えて実行
    - 「両方を満たす行」→「どちらか一方でも満たす行」に変わり、残る行が増える
@@ -599,7 +599,7 @@ values が「平均点」
 :::
 
 
-## Tweak：groupby は「分ける × 集計する列 × 集計方法」
+## Tweak：groupby は「分ける × 集計する列 × 集計方法」 {.badge-practice}
 
 - [前ページのコード](#peek-groupby-code){.peek} の3か所を、以下に差し替えて実行
    - 項目ごとに都度実行ずること
@@ -686,7 +686,7 @@ plt.show()
 ```
 
 
-## 演習：高得点者を可視化
+## 演習：高得点者を可視化 {.badge-practice}
 
 - `data/students.csv` を読み込む
 - 4科目の平均点を計算する
