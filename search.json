@@ -774,7 +774,7 @@
     "href": "plotly.html#インストール-import",
     "title": "Plotly入門",
     "section": "インストール ＆ import",
-    "text": "インストール ＆ import\n\n\npipからインストール\n\nimport plotly.express as px\n\nimportは可視化ツールをあつめたplotly.expressをpxとして読み込むのが一般的\n\nimport plotly.express as px\n\n\n\n\n\n\nmatplotlibとの違い\n\n\n\nmatplotlib：静的な図に強い\nPlotly：Web上で動かせる図に強い\nどちらが上ではなく、目的で使い分ける"
+    "text": "インストール ＆ import\n\n\npipからインストール\n\npip install plotly\n\nimportは可視化ツールをあつめたplotly.expressをpxとして読み込むのが一般的\n\nimport plotly.express as px\n\n\n\n\n\n\nmatplotlibとの違い\n\n\n\nmatplotlib：静的な図に強い\nPlotly：Web上で動かせる図に強い\nどちらが上ではなく、目的で使い分ける"
   },
   {
     "objectID": "plotly.html#この資料で扱うこと",
@@ -1040,7 +1040,7 @@
     "href": "numpy.html#本当に速いの-100万要素で実測",
     "title": "NumPy入門",
     "section": "本当に速いの？ — 100万要素で実測",
-    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思いますか？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 30.5 ミリ秒\nndarray:          0.47 ミリ秒\n→ 約 65 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
+    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思いますか？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 29.7 ミリ秒\nndarray:          0.40 ミリ秒\n→ 約 75 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
   },
   {
     "objectID": "numpy.html#その他長さやアクセス方法",
@@ -1582,11 +1582,11 @@
     "text": "一番シンプルな使い方\n\n\nrequests.get(url) で 指定URLにアクセス\n戻り値の response を print すると 状態コード が見える\n\nimport requests\n\nresponse = requests.get('https://www.python.org/')\nprint(response)   # &lt;Response [200]&gt;\n\n\n\n\n\n\n200 とは？\n\n\n\nHTTPの応答コードで 「正常に取得できた」 の意味\nとりあえず 「200か否か」 だけ判断できればOK"
   },
   {
-    "objectID": "api.html#httpステータスコードよく見るもの",
-    "href": "api.html#httpステータスコードよく見るもの",
+    "objectID": "api.html#httpステータスコード普段あなたも見ている",
+    "href": "api.html#httpステータスコード普段あなたも見ている",
     "title": "APIでデータ取得",
-    "section": "HTTPステータスコード（よく見るもの）",
-    "text": "HTTPステータスコード（よく見るもの）\n\n\n\n\nコード\n意味\n説明\n対処法\n\n\n\n\n200\nOK\n正常にデータを取得できた\nそのまま処理を続行\n\n\n404\nNot Found\nURLや記事が存在しない\nURL・記事名を確認\n\n\n500\nInternal Server Error\nサーバ側でエラー\n時間をおいて再試行\n\n\n501\nNot Implemented\n機能が未対応\nパラメータを確認\n\n\n\n\n全部覚える必要なし\n200番台 = 成功、400番台 = リクエスト側のミス、500番台 = サーバ側のミス くらいの感覚"
+    "section": "HTTPステータスコード（普段あなたも見ている）",
+    "text": "HTTPステータスコード（普段あなたも見ている）\n\n\nネットを使っていれば すでに目にしている 番号たち — その意味を知る\n\n\n\n\n\n\n\n\n\n\nコード\n意味\nどんなときに出るか（普段の遭遇）\n対処\n\n\n\n\n200\nOK\n正常に表示・取得できた（普段は気づかない）\nそのまま処理を続行\n\n\n403\nForbidden\nアクセスを拒否された（権限がない・弾かれた）\n権限・ヘッダーを確認\n\n\n404\nNot Found\nリンク切れ・URLの打ち間違いで出る定番のページ\nURL・記事名を確認\n\n\n500\nInternal Server Error\nサイト側が落ちている・不具合（自分は悪くない）\n時間をおいて再試行\n\n\n\n\n全部覚える必要なし\n200番台 = 成功、400番台 = リクエスト側のミス、500番台 = サーバ側のミス くらいの感覚\n\n\n\n\n\n\n\n「403」はこのあとすぐ出会う\n\n\n\n次のWikipedia APIは User-Agentを付けないと弾かれる — それがこの403\n「アクセス拒否」はエラーではなく、サーバからの正しい返事"
   },
   {
     "objectID": "api.html#response-の中身",
@@ -1656,7 +1656,7 @@
     "href": "api.html#api-と-エンドポイント",
     "title": "APIでデータ取得",
     "section": "API と エンドポイント",
-    "text": "API と エンドポイント\n\n\nAPI（Application Programing Interface）\n\nデータ取得などのために公開された「窓口」\n\nエンドポイント\n\nAPI の中の、具体的な処理を呼ぶ 個別のURL\n\n例\n\nhttps://wikimedia.org/api/ 配下が API\n/metrics/pageviews/top/... がエンドポイントのひとつ"
+    "text": "API と エンドポイント\n\n\nAPI（Application Programming Interface）\n\nデータ取得などのために公開された「窓口」\n\nエンドポイント\n\nAPI の中の、具体的な処理を呼ぶ 個別のURL\n\n例\n\nhttps://wikimedia.org/api/ 配下が API\n/metrics/pageviews/top/... がエンドポイントのひとつ"
   },
   {
     "objectID": "api.html#urlにパラメータが埋め込まれている",
@@ -2356,7 +2356,7 @@
     "href": "pandas.html#tweakgroupby-は分ける-集計する列-集計方法",
     "title": "Pandas入門",
     "section": "Tweak：groupby は「分ける × 集計する列 × 集計方法」",
-    "text": "Tweak：groupby は「分ける × 集計する列 × 集計方法」\n\n\n前ページのコード の3か所を、以下に差し替えて実行\n\n項目ごとに都度実行ずること\n\n\n\n\n\n\n\n\n\n\nこう変えろ\n変化\n\n\n\n\ngroupby(\"学科\") → groupby(\"学年\")\n「分ける軸」が変わる\n\n\n[\"平均点\"] → [\"欠席日数\"]\n集計列が変わる\n\n\n.mean() → .max() / .min() / .count()\n「集計方法」が変わる（最大／最小／件数）\n\n\n\n\n\n\n\n\n\n\nそもそもここから始めるのが筋\n\n\n\ndf.groupby(\"学科\") だけを表示して確認\ndf.groupby(\"学科\")[\"平均点\"]も確認"
+    "text": "Tweak：groupby は「分ける × 集計する列 × 集計方法」\n\n\n前ページのコード の3か所を、以下に差し替えて実行\n\n項目ごとに都度実行すること\n\n\n\n\n\n\n\n\n\n\nこう変えろ\n変化\n\n\n\n\ngroupby(\"学科\") → groupby(\"学年\")\n「分ける軸」が変わる\n\n\n[\"平均点\"] → [\"欠席日数\"]\n集計列が変わる\n\n\n.mean() → .max() / .min() / .count()\n「集計方法」が変わる（最大／最小／件数）\n\n\n\n\n\n\n\n\n\n\nそもそもここから始めるのが筋\n\n\n\ndf.groupby(\"学科\") だけを表示して確認\ndf.groupby(\"学科\")[\"平均点\"]も確認"
   },
   {
     "objectID": "pandas.html#locとilocを少しだけ",
@@ -2692,7 +2692,7 @@
     "href": "visualize.html#peek-gapminder",
     "title": "データの可視化",
     "section": "現代の可視化実例",
-    "text": "現代の可視化実例\n\n\n\n\nジャンル\nサンプル\n\n\n\n\n人口動態\nPopulation Pyramids of the World\n\n\n未来予測ゲーム\nINED “Tomorrow’s Population”\n\n\n気候変動\n#ShowYourStripes\n\n\n統計バブル\nGapminder “Wealth & Health of Nations”\n\n\nネットワーク\nForce-Directed Graph\n\n\n地理 + 時系列\nNYC CitiBike\n\n\n3D点群\nCesium “3D Tiles Point”\n\n\n\n\n\n\n\n\n\nミニアクティビティ\n\n\n\nどれか1つ開いて、隣の人に30秒で説明 する\n\n何のデータ？ 軸は何？ 何が見えた？\n\n動的なものほど データ量と表現力の関係 がよく分かる"
+    "text": "現代の可視化実例\n\n\n\n\nジャンル\nサンプル\n\n\n\n\n人口動態\nPopulation Pyramids of the World\n\n\n未来予測ゲーム\nINED “Tomorrow’s Population”\n\n\n気候変動\n#ShowYourStripes\n\n\n統計バブル\nGapminder “Wealth & Health of Nations”\n\n\nネットワーク\nForce-Directed Graph\n\n\n地理 + 時系列\nearth :: 地球の風・気象\n\n\n3D点群\nCesium “3D Tiles Point”\n\n\n\n\n\n\n\n\n\nミニアクティビティ\n\n\n\nどれか1つ開いて、隣の人に30秒で説明 する\n\n何のデータ？ 軸は何？ 何が見えた？\n\n動的なものほど データ量と表現力の関係 がよく分かる"
   },
   {
     "objectID": "visualize.html#section-1",

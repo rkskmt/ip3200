@@ -280,7 +280,7 @@ rkskmt
 <section id="webアクセスの正体リクエストとレスポンス" class="slide level2">
 <h2>Webアクセスの正体<span class="fw-colon">：</span>リクエストとレスポンス</h2>
 <div class="slide-body">
-<div id="dde7207c" class="cell" data-execution_count="1">
+<div id="db381f63" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -325,42 +325,51 @@ rkskmt
 </div>
 </div>
 </section>
-<section id="httpステータスコードよく見るもの" class="slide level2">
-<h2>HTTPステータスコード（よく見るもの）</h2>
+<section id="httpステータスコード普段あなたも見ている" class="slide level2">
+<h2>HTTPステータスコード（普段あなたも見ている）</h2>
 <div class="slide-body">
+<ul>
+<li>ネットを使っていれば <strong>すでに目にしている</strong> 番号たち — その意味を知る</li>
+</ul>
 <table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>コード</th>
 <th>意味</th>
-<th>説明</th>
-<th>対処法</th>
+<th>どんなときに出るか（普段の遭遇）</th>
+<th>対処</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>200</strong></td>
 <td>OK</td>
-<td>正常にデータを取得できた</td>
+<td>正常に表示・取得できた（普段は気づかない）</td>
 <td>そのまま処理を続行</td>
 </tr>
 <tr class="even">
-<td>404</td>
-<td>Not Found</td>
-<td>URLや記事が存在しない</td>
-<td>URL・記事名を確認</td>
+<td>403</td>
+<td>Forbidden</td>
+<td>アクセスを拒否された（権限がない・弾かれた）</td>
+<td>権限・ヘッダーを確認</td>
 </tr>
 <tr class="odd">
-<td>500</td>
-<td>Internal Server Error</td>
-<td>サーバ側でエラー</td>
-<td>時間をおいて再試行</td>
+<td>404</td>
+<td>Not Found</td>
+<td>リンク切れ・URLの打ち間違いで出る定番のページ</td>
+<td>URL・記事名を確認</td>
 </tr>
 <tr class="even">
-<td>501</td>
-<td>Not Implemented</td>
-<td>機能が未対応</td>
-<td>パラメータを確認</td>
+<td>500</td>
+<td>Internal Server Error</td>
+<td><strong>サイト側が落ちている</strong>・不具合（自分は悪くない）</td>
+<td>時間をおいて再試行</td>
 </tr>
 </tbody>
 </table>
@@ -368,7 +377,23 @@ rkskmt
 <li>全部覚える必要なし</li>
 <li><strong>200番台 = 成功、400番台 = リクエスト側のミス、500番台 = サーバ側のミス</strong> くらいの感覚</li>
 </ul>
-<div id="e141020f" class="cell" data-execution_count="2">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>「403」はこのあとすぐ出会う</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>次のWikipedia APIは <strong>User-Agentを付けないと弾かれる</strong> — それがこの403</li>
+<li>「アクセス拒否」はエラーではなく、<strong>サーバからの正しい返事</strong></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="4d90b749" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -527,7 +552,7 @@ rkskmt
 <ul>
 <li><code>.json()</code> は <strong>このテキストを dict に変換</strong> するメソッド</li>
 </ul>
-<div id="b3f0949a" class="cell" data-execution_count="3">
+<div id="0b402e2a" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -580,7 +605,7 @@ rkskmt
 <h2>API と エンドポイント</h2>
 <div class="slide-body">
 <ul>
-<li><strong>API</strong>（<strong>A</strong>pplication <strong>P</strong>rograming <strong>I</strong>nterface）
+<li><strong>API</strong>（<strong>A</strong>pplication <strong>P</strong>rogramming <strong>I</strong>nterface）
 <ul>
 <li>データ取得などのために公開された「窓口」</li>
 </ul></li>
@@ -605,7 +630,7 @@ rkskmt
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a></a>https://wikimedia.org/api/rest_v1/metrics/pageviews/top/</span>
 <span id="cb11-2"><a></a>    {プロジェクト} / {アクセス方法} / {日付}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="4acfb073" class="cell" data-execution_count="4">
+<div id="164c374c" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
