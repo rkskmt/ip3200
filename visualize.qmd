@@ -78,7 +78,7 @@ broad_st = pumps[pumps["Pump Name"] == "Broad St."].iloc[0]
 
 fig = go.Figure()
 
-fig.add_trace(go.Scattermapbox(
+fig.add_trace(go.Scattermap(
     lat=deaths["X coordinate"], lon=deaths["Y coordinate"],
     mode="markers",
     marker=dict(size=deaths["Death"]*5, color="red", opacity=0.6),
@@ -86,14 +86,14 @@ fig.add_trace(go.Scattermapbox(
 ))
 
 other_pumps = pumps[pumps["Pump Name"] != "Broad St."]
-fig.add_trace(go.Scattermapbox(
+fig.add_trace(go.Scattermap(
     lat=other_pumps["X coordinate"], lon=other_pumps["Y coordinate"],
     mode="markers",
     marker=dict(size=10, color="gray"),
     name="Other Pumps", hoverinfo="skip"
 ))
 
-fig.add_trace(go.Scattermapbox(
+fig.add_trace(go.Scattermap(
     lat=[broad_st["X coordinate"]], lon=[broad_st["Y coordinate"]],
     mode="markers+text",
     marker=dict(size=20, color="blue", symbol="circle"),
@@ -103,8 +103,8 @@ fig.add_trace(go.Scattermapbox(
 ))
 
 fig.update_layout(
-    mapbox=dict(style="open-street-map",
-                center=dict(lat=51.5135, lon=-0.1365), zoom=16),
+    map=dict(style="open-street-map",
+             center=dict(lat=51.5135, lon=-0.1365), zoom=16),
     margin=dict(l=0, r=0, t=0, b=0),
     width=900, height=500, showlegend=False
 )
@@ -175,7 +175,7 @@ fig.write_html("iframes/cholera_map.html", include_plotlyjs="directory")
 | 気候変動 | [#ShowYourStripes](https://showyourstripes.info/) |
 | 統計バブル | [Gapminder "Wealth & Health of Nations"](https://www.gapminder.org/tools/) |
 | ネットワーク | [Force-Directed Graph](https://observablehq.com/@d3/force-directed-graph) |
-| 地理 + 時系列 | [NYC CitiBike](https://users.flatironinstitute.org/~kmclennan/) |
+| 地理 + 時系列 | [earth :: 地球の風・気象](https://earth.nullschool.net/) |
 | 3D点群 | [Cesium "3D Tiles Point"](https://sandcastle.cesium.com/) |
 
 ::: {.callout-tip}

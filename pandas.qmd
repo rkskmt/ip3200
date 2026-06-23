@@ -602,7 +602,7 @@ values が「平均点」
 ## Tweak：groupby は「分ける × 集計する列 × 集計方法」 {.badge-practice}
 
 - [前ページのコード](#peek-groupby-code){.peek} の3か所を、以下に差し替えて実行
-   - 項目ごとに都度実行ずること
+   - 項目ごとに都度実行すること
 
 ::: {.tweak}
 | こう変えろ | 変化 |

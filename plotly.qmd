@@ -24,7 +24,7 @@ subtitle: "インタラクティブな可視化"
 - pipからインストール
 
 ```shell
-import plotly.express as px
+pip install plotly
 ```
 
 - importは可視化ツールをあつめたplotly.expressをpxとして読み込むのが一般的
