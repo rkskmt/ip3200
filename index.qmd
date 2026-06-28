@@ -10,44 +10,53 @@
 <details>
 <summary>PCの使い方アップデート</summary>
 
-- [キータイピング](key-typing.qmd) · [PDF](pdf/key-typing.pdf){target="_blank"}
-- [ショートカット](shortcuts.qmd) · [PDF](pdf/shortcuts.pdf){target="_blank"}
+- [キータイピング](key-typing.qmd)[PDF](pdf/key-typing.pdf){.pdf-dl target="_blank"}
+- [ショートカット](shortcuts.qmd)[PDF](pdf/shortcuts.pdf){.pdf-dl target="_blank"}
 
 </details>
 
 <details>
 <summary>速習Python基礎</summary>
 
-- [変数と代入](variables.qmd) · [PDF](pdf/variables.pdf){target="_blank"}
-- [速習：コレクション](collections.qmd) · [PDF](pdf/collections.pdf){target="_blank"}
-- [listあらためて](list.qmd) · [PDF](pdf/list.pdf){target="_blank"}
-- [dictあらためて](dict.qmd) · [PDF](pdf/dict.pdf){target="_blank"}
+- [変数と代入](variables.qmd)[PDF](pdf/variables.pdf){.pdf-dl target="_blank"}
+- [速習：コレクション](collections.qmd)[PDF](pdf/collections.pdf){.pdf-dl target="_blank"}
+- [listあらためて](list.qmd)[PDF](pdf/list.pdf){.pdf-dl target="_blank"}
+- [dictあらためて](dict.qmd)[PDF](pdf/dict.pdf){.pdf-dl target="_blank"}
 
 </details>
 
 <details open>
 <summary>データ処理基礎</summary>
 
-- [NumPy入門](numpy.qmd) · [PDF](pdf/numpy.pdf){target="_blank"}
-  - （参考）[ベクトルと行列](vector_matrix.qmd) · [PDF](pdf/vector_matrix.pdf){target="_blank"}
-- [データの可視化](visualize.qmd) · [PDF](pdf/visualize.pdf){target="_blank"}
-- [matplotlib入門](matplotlib.qmd) · [PDF](pdf/matplotlib.pdf){target="_blank"}
-- [Pandas入門](pandas.qmd) · [PDF](pdf/pandas.pdf){target="_blank"}
-- [Plotly入門](plotly.qmd) · [PDF](pdf/plotly.pdf){target="_blank"}
+- [NumPy入門](numpy.qmd)[PDF](pdf/numpy.pdf){.pdf-dl target="_blank"}
+  - （参考）[ベクトルと行列](vector_matrix.qmd)[PDF](pdf/vector_matrix.pdf){.pdf-dl target="_blank"}
+- [データの可視化](visualize.qmd)[PDF](pdf/visualize.pdf){.pdf-dl target="_blank"}
+- [matplotlib入門](matplotlib.qmd)[PDF](pdf/matplotlib.pdf){.pdf-dl target="_blank"}
+- [Pandas入門](pandas.qmd)[PDF](pdf/pandas.pdf){.pdf-dl target="_blank"}
+- [Plotly入門](plotly.qmd)[PDF](pdf/plotly.pdf){.pdf-dl target="_blank"}
 
 </details>
 
 <details>
 <summary>API</summary>
 
-- [APIでデータ取得](api.qmd) · [PDF](pdf/api.pdf){target="_blank"}
-- [APIデータを可視化する](api-viz.qmd) · [PDF](pdf/api-viz.pdf){target="_blank"}
-- [Wikipedia APIリファレンス](wiki-api.qmd) · [PDF](pdf/wiki-api.pdf){target="_blank"}
-- [東京都オープンデータAPI](tokyo-api.qmd) · [PDF](pdf/tokyo-api.pdf){target="_blank"}
+- [APIでデータ取得](api.qmd)[PDF](pdf/api.pdf){.pdf-dl target="_blank"}
+- [APIデータを可視化する](api-viz.qmd)[PDF](pdf/api-viz.pdf){.pdf-dl target="_blank"}
+- [Wikipedia APIリファレンス](wiki-api.qmd)[PDF](pdf/wiki-api.pdf){.pdf-dl target="_blank"}
+- [東京都オープンデータAPI](tokyo-api.qmd)[PDF](pdf/tokyo-api.pdf){.pdf-dl target="_blank"}
 
 </details>
 
 ![](imgs/qrcode_rkskmt.github.io.png){fig-align="center" width=300}
+
+<style>
+/* PDF ダウンロードバッジ：小さなドキュメントアイコン付きタグ（控えめ） */
+.reveal a.pdf-dl{display:inline-block;font-size:0.34em;font-weight:700;letter-spacing:0.05em;
+  vertical-align:0.36em;margin-left:0.55em;color:#bb4a3f;text-decoration:none;
+  border:1px solid #e6c4bf;border-radius:4px;padding:0.3em 0.55em 0.3em 1.7em;opacity:0.82;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23bb4a3f' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3C/svg%3E") no-repeat 0.5em center / 0.82em}
+.reveal a.pdf-dl:hover{opacity:1;background-color:#fbf1ef;border-color:#dca99f}
+</style>
 
 <script>
 document.querySelectorAll("details").forEach(d => {
