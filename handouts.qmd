@@ -1,0 +1,43 @@
+## Handouts
+
+[← Lectures](index.qmd){.backlink}
+
+::: {.idx-lead}
+各回スライドの配布用 PDF。クリックで開く。番号は講義一覧と対応。
+:::
+
+:::: {.lectures}
+
+### PCの使い方アップデート {.sec .cat1}
+::: {.grid .cat1 .dl}
+- [キータイピング](pdf/key-typing.pdf){target="_blank"}
+- [ショートカット](pdf/shortcuts.pdf){target="_blank"}
+:::
+
+### 速習Python基礎 {.sec .cat2}
+::: {.grid .cat2 .dl}
+- [変数と代入](pdf/variables.pdf){target="_blank"}
+- [速習：コレクション](pdf/collections.pdf){target="_blank"}
+- [listあらためて](pdf/list.pdf){target="_blank"}
+- [dictあらためて](pdf/dict.pdf){target="_blank"}
+:::
+
+### データ処理基礎 {.sec .cat3}
+::: {.grid .cat3 .dl}
+- [NumPy入門](pdf/numpy.pdf){target="_blank"}
+- [（参考）ベクトルと行列](pdf/vector_matrix.pdf){target="_blank"}
+- [データの可視化](pdf/visualize.pdf){target="_blank"}
+- [matplotlib入門](pdf/matplotlib.pdf){target="_blank"}
+- [Pandas入門](pdf/pandas.pdf){target="_blank"}
+- [Plotly入門](pdf/plotly.pdf){target="_blank"}
+:::
+
+### API {.sec .cat4}
+::: {.grid .cat4 .dl}
+- [APIでデータ取得](pdf/api.pdf){target="_blank"}
+- [APIデータを可視化する](pdf/api-viz.pdf){target="_blank"}
+- [Wikipedia APIリファレンス](pdf/wiki-api.pdf){target="_blank"}
+- [東京都オープンデータAPI](pdf/tokyo-api.pdf){target="_blank"}
+:::
+
+::::
