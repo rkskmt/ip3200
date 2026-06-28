@@ -10,40 +10,40 @@
 <details>
 <summary>PCの使い方アップデート</summary>
 
-- [キータイピング](key-typing.qmd)
-- [ショートカット](shortcuts.qmd)
+- [キータイピング](key-typing.qmd) · [PDF](pdf/key-typing.pdf){target="_blank"}
+- [ショートカット](shortcuts.qmd) · [PDF](pdf/shortcuts.pdf){target="_blank"}
 
 </details>
 
 <details>
 <summary>速習Python基礎</summary>
 
-- [変数と代入](variables.qmd)
-- [速習：コレクション](collections.qmd)
-- [listあらためて](list.qmd)
-- [dictあらためて](dict.qmd)
+- [変数と代入](variables.qmd) · [PDF](pdf/variables.pdf){target="_blank"}
+- [速習：コレクション](collections.qmd) · [PDF](pdf/collections.pdf){target="_blank"}
+- [listあらためて](list.qmd) · [PDF](pdf/list.pdf){target="_blank"}
+- [dictあらためて](dict.qmd) · [PDF](pdf/dict.pdf){target="_blank"}
 
 </details>
 
 <details open>
 <summary>データ処理基礎</summary>
 
-- [NumPy入門](numpy.qmd)
-  - （参考）[ベクトルと行列](vector_matrix.qmd)
-- [データの可視化](visualize.qmd)
-- [matplotlib入門](matplotlib.qmd)
-- [Pandas入門](pandas.qmd)
-- [Plotly入門](plotly.qmd)
+- [NumPy入門](numpy.qmd) · [PDF](pdf/numpy.pdf){target="_blank"}
+  - （参考）[ベクトルと行列](vector_matrix.qmd) · [PDF](pdf/vector_matrix.pdf){target="_blank"}
+- [データの可視化](visualize.qmd) · [PDF](pdf/visualize.pdf){target="_blank"}
+- [matplotlib入門](matplotlib.qmd) · [PDF](pdf/matplotlib.pdf){target="_blank"}
+- [Pandas入門](pandas.qmd) · [PDF](pdf/pandas.pdf){target="_blank"}
+- [Plotly入門](plotly.qmd) · [PDF](pdf/plotly.pdf){target="_blank"}
 
 </details>
 
 <details>
 <summary>API</summary>
 
-- [APIでデータ取得](api.qmd)
-- [APIデータを可視化する](api-viz.qmd)
-- [Wikipedia APIリファレンス](wiki-api.qmd)
-- [東京都オープンデータAPI](tokyo-api.qmd)
+- [APIでデータ取得](api.qmd) · [PDF](pdf/api.pdf){target="_blank"}
+- [APIデータを可視化する](api-viz.qmd) · [PDF](pdf/api-viz.pdf){target="_blank"}
+- [Wikipedia APIリファレンス](wiki-api.qmd) · [PDF](pdf/wiki-api.pdf){target="_blank"}
+- [東京都オープンデータAPI](tokyo-api.qmd) · [PDF](pdf/tokyo-api.pdf){target="_blank"}
 
 </details>
 

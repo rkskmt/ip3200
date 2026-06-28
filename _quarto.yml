@@ -6,6 +6,7 @@ project:
     - "imgs/**"
     - "data/**"
     - "iframes/**"
+    - "pdf/**"
 
 website:
   title: "情報処理"
