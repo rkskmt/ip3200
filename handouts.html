@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="rkskmt">
-  <title>情報処理</title>
+  <title>情報処理 – handouts</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -133,67 +133,74 @@
     <div class="slides">
 
 
-<section id="情報処理" class="slide level2">
-<h2>情報処理</h2>
+<section id="handouts" class="slide level2">
+<h2>Handouts</h2>
 <div class="slide-body">
-<p><a href="./handouts.html" class="pdf-gate" title="配布資料（PDF）">PDF</a></p>
+<style>
+/* ===== handout PDF list — same card grid as the index ===== */
+.reveal a.backlink{position:absolute;top:0;right:0;font-size:.46em;font-weight:600;
+  color:#2a76dd!important;text-decoration:none!important;z-index:20}
+.reveal .idx-lead{color:#8a93a0!important;font-size:.5em;margin:.1em 0 1em}
+.reveal .lectures{counter-reset:lec}
+.reveal .lectures .sec{background:none!important;font-size:.56em!important;font-weight:700;color:#2a76dd!important;
+  letter-spacing:.03em;margin:1em 0 .5em!important;padding:0 0 .35em!important;border:none!important;
+  border-bottom:2px solid #eef2f8!important;text-align:left}
+.reveal .lectures .grid ul{list-style:none!important;display:grid!important;
+  grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:10px;margin:0!important;padding:0!important}
+.reveal .lectures .grid li{display:flex!important;align-items:center;gap:.55em;margin:0!important;padding:.42em .6em!important;
+  border:1px solid #e8ebf0;border-radius:10px;background:#fff;counter-increment:lec;transition:.13s}
+.reveal .lectures .grid li::before{content:counter(lec,decimal-leading-zero)!important;flex:0 0 auto;width:2.2em;height:2.2em;
+  display:flex!important;align-items:center;justify-content:center;font-size:.72em;font-weight:700;color:#bb4a3f!important;
+  background:#fbeeec!important;border-radius:7px!important;margin:0!important;letter-spacing:.02em;-webkit-mask:none!important;mask:none!important}
+.reveal .lectures .grid li>a{flex:1;text-decoration:none!important;color:#1f2d3d!important;font-size:.55em;font-weight:600;line-height:1.3}
+.reveal .lectures .grid li::after{content:"";flex:0 0 auto;width:.95em;height:1.2em;opacity:.5;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23bb4a3f' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3C/svg%3E") no-repeat center/contain}
+.reveal .lectures .grid li:hover{border-color:#e6c4bf;background:#fdf7f5;box-shadow:0 4px 14px rgba(187,74,63,.08)}
+.reveal .lectures .grid li:hover::after{opacity:.95}
+.reveal .lectures a svg,.reveal .lectures a i{display:none!important}
+</style>
+<p><a href="./index.html" class="backlink">← Lectures</a></p>
 <div class="idx-lead">
-<p><a href="https://rkskmt.github.io/ip3200/">https://rkskmt.github.io/ip3200/</a></p>
-</div>
-<div id="lecture-search">
-<input id="search-input" type="search" placeholder="全文検索 — どの回に出てきたか探せる（例：API、axis、平均）" autocomplete="off">
-<div id="search-results" class="search-ui-results">
-
-</div>
+<p>各回スライドの配布用 PDF。クリックで開く。番号は講義一覧と対応。</p>
 </div>
 <div class="lectures">
-<h3 class="sec cat1" id="pcの使い方アップデート">PCの使い方アップデート</h3>
-<div class="grid cat1">
+<h3 class="sec" id="pcの使い方アップデート">PCの使い方アップデート</h3>
+<div class="grid">
 <ul>
-<li><a href="./key-typing.html">キータイピング</a></li>
-<li><a href="./shortcuts.html">ショートカット</a></li>
+<li><a href="pdf/key-typing.pdf" target="_blank">キータイピング</a></li>
+<li><a href="pdf/shortcuts.pdf" target="_blank">ショートカット</a></li>
 </ul>
 </div>
-<h3 class="sec cat2" id="速習python基礎">速習Python基礎</h3>
-<div class="grid cat2">
+<h3 class="sec" id="速習python基礎">速習Python基礎</h3>
+<div class="grid">
 <ul>
-<li><a href="./variables.html">変数と代入</a></li>
-<li><a href="./collections.html">速習<span class="fw-colon">：</span>コレクション</a></li>
-<li><a href="./list.html">listあらためて</a></li>
-<li><a href="./dict.html">dictあらためて</a></li>
+<li><a href="pdf/variables.pdf" target="_blank">変数と代入</a></li>
+<li><a href="pdf/collections.pdf" target="_blank">速習<span class="fw-colon">：</span>コレクション</a></li>
+<li><a href="pdf/list.pdf" target="_blank">listあらためて</a></li>
+<li><a href="pdf/dict.pdf" target="_blank">dictあらためて</a></li>
 </ul>
 </div>
-<h3 class="sec cat3" id="データ処理基礎">データ処理基礎</h3>
-<div class="grid cat3">
+<h3 class="sec" id="データ処理基礎">データ処理基礎</h3>
+<div class="grid">
 <ul>
-<li><a href="./numpy.html">NumPy入門</a></li>
-<li><a href="./vector_matrix.html">（参考）ベクトルと行列</a></li>
-<li><a href="./visualize.html">データの可視化</a></li>
-<li><a href="./matplotlib.html">matplotlib入門</a></li>
-<li><a href="./pandas.html">Pandas入門</a></li>
-<li><a href="./plotly.html">Plotly入門</a></li>
+<li><a href="pdf/numpy.pdf" target="_blank">NumPy入門</a></li>
+<li><a href="pdf/vector_matrix.pdf" target="_blank">（参考）ベクトルと行列</a></li>
+<li><a href="pdf/visualize.pdf" target="_blank">データの可視化</a></li>
+<li><a href="pdf/matplotlib.pdf" target="_blank">matplotlib入門</a></li>
+<li><a href="pdf/pandas.pdf" target="_blank">Pandas入門</a></li>
+<li><a href="pdf/plotly.pdf" target="_blank">Plotly入門</a></li>
 </ul>
 </div>
-<h3 class="sec cat4" id="api">API</h3>
-<div class="grid cat4">
+<h3 class="sec" id="api">API</h3>
+<div class="grid">
 <ul>
-<li><a href="./api.html">APIでデータ取得</a></li>
-<li><a href="./api-viz.html">APIデータを可視化する</a></li>
-<li><a href="./wiki-api.html">Wikipedia APIリファレンス</a></li>
-<li><a href="./tokyo-api.html">東京都オープンデータAPI</a></li>
+<li><a href="pdf/api.pdf" target="_blank">APIでデータ取得</a></li>
+<li><a href="pdf/api-viz.pdf" target="_blank">APIデータを可視化する</a></li>
+<li><a href="pdf/wiki-api.pdf" target="_blank">Wikipedia APIリファレンス</a></li>
+<li><a href="pdf/tokyo-api.pdf" target="_blank">東京都オープンデータAPI</a></li>
 </ul>
 </div>
 </div>
-<script>
-document.addEventListener('keydown', function(e) {
-  if (e.target && /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
-  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
-    e.preventDefault();
-    e.stopImmediatePropagation();
-  }
-}, true);
-</script>
-<!-- 検索ボックスの動作は search-ui.js（全ページ共通、_metadata.yaml で読み込み）が担う -->
 
 
 <div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">

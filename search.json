@@ -1040,7 +1040,7 @@
     "href": "numpy.html#本当に速いの-100万要素で実測",
     "title": "NumPy入門",
     "section": "本当に速いの？ — 100万要素で実測",
-    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思いますか？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 29.7 ミリ秒\nndarray:          0.40 ミリ秒\n→ 約 75 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
+    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思いますか？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 31.8 ミリ秒\nndarray:          0.34 ミリ秒\n→ 約 92 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
   },
   {
     "objectID": "numpy.html#その他長さやアクセス方法",
@@ -1243,7 +1243,7 @@
     "href": "index.html#情報処理",
     "title": "情報処理",
     "section": "情報処理",
-    "text": "情報処理\n\nhttps://rkskmt.github.io/ip3200/\n\n\n\n\n\n\n\n\nPCの使い方アップデート\n\n\nキータイピング\nショートカット\n\n\n\n\n速習Python基礎\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\n\n\nデータ処理基礎\n\n\nNumPy入門\n\n（参考）ベクトルと行列\n\nデータの可視化\nmatplotlib入門\nPandas入門\nPlotly入門\n\n\n\n\nAPI\n\n\nAPIでデータ取得\nAPIデータを可視化する\nWikipedia APIリファレンス\n東京都オープンデータAPI"
+    "text": "情報処理\n\nPDF\n\nhttps://rkskmt.github.io/ip3200/\n\n\n\n\n\n\n\n\nPCの使い方アップデート\n\n\nキータイピング\nショートカット\n\n\n速習Python基礎\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\nデータ処理基礎\n\n\nNumPy入門\n（参考）ベクトルと行列\nデータの可視化\nmatplotlib入門\nPandas入門\nPlotly入門\n\n\nAPI\n\n\nAPIでデータ取得\nAPIデータを可視化する\nWikipedia APIリファレンス\n東京都オープンデータAPI"
   },
   {
     "objectID": "collections.html#コレクションcollectionとは",
@@ -2854,5 +2854,12 @@
     "title": "データの可視化",
     "section": "参考リンク",
     "text": "参考リンク\n\n\nAnscombe’s quartet (Wikipedia)\nSame Stats, Different Graphs — Datasaurus Dozen (Autodesk Research)\n厚生労働省「国民生活基礎調査」\n気象庁「過去の気象データ検索」"
+  },
+  {
+    "objectID": "handouts.html#handouts",
+    "href": "handouts.html#handouts",
+    "title": "情報処理",
+    "section": "Handouts",
+    "text": "Handouts\n\n\n← Lectures\n\n各回スライドの配布用 PDF。クリックで開く。番号は講義一覧と対応。\n\n\nPCの使い方アップデート\n\n\nキータイピング\nショートカット\n\n\n速習Python基礎\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\nデータ処理基礎\n\n\nNumPy入門\n（参考）ベクトルと行列\nデータの可視化\nmatplotlib入門\nPandas入門\nPlotly入門\n\n\nAPI\n\n\nAPIでデータ取得\nAPIデータを可視化する\nWikipedia APIリファレンス\n東京都オープンデータAPI"
   }
 ]
