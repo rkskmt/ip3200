@@ -272,7 +272,7 @@ rkskmt
 <ul>
 <li>matplotlib は多くの環境で <strong>日本語が文字化け</strong> する</li>
 </ul>
-<div id="2f51fbe9" class="cell" data-execution_count="1">
+<div id="bf4bf988" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -367,7 +367,7 @@ rkskmt
 <section id="まずは点のプロット" class="slide level2">
 <h2>まずは点のプロット</h2>
 <div class="slide-body">
-<div id="57fe257b" class="cell" data-execution_count="2">
+<div id="a53d1538" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -375,7 +375,7 @@ rkskmt
 <span id="cb4-5"><a></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
 <span id="cb4-6"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
 <span id="cb4-7"><a></a></span>
-<span id="cb4-8"><a></a>plt.plot(months, temp_2024, <span class="st">'o'</span>)    <span class="co"># 'o' で点だけプロット</span></span>
+<span id="cb4-8"><a></a>plt.plot(months, temp_2024, <span class="st">"o"</span>)    <span class="co"># "o" で点だけプロット</span></span>
 <span id="cb4-9"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -386,7 +386,7 @@ rkskmt
 </div>
 </div>
 <ul>
-<li>一番基本の <code>plt.plot(x, y, 'o')</code> — <code>'o'</code> は <strong>マーカー</strong> を表す
+<li>一番基本の <code>plt.plot(x, y, "o")</code> — <code>"o"</code> は <strong>マーカー</strong> を表す
 <ul>
 <li><code>x</code> も <code>y</code> も <strong><code>ndarray</code></strong> や <strong><code>list</code></strong> でOK</li>
 </ul></li>
@@ -397,7 +397,7 @@ rkskmt
 <section id="peek-line-code" class="slide level2">
 <h2>点に線を付け足す</h2>
 <div class="slide-body">
-<div id="6b780e6e" class="cell" data-execution_count="3">
+<div id="074e163b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -405,7 +405,7 @@ rkskmt
 <span id="cb5-5"><a></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
 <span id="cb5-6"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
 <span id="cb5-7"><a></a></span>
-<span id="cb5-8"><a></a>plt.plot(months, temp_2024, <span class="st">'o-'</span>)   <span class="co"># 点＋線</span></span>
+<span id="cb5-8"><a></a>plt.plot(months, temp_2024, <span class="st">"o-"</span>)   <span class="co"># 点＋線</span></span>
 <span id="cb5-9"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -417,7 +417,7 @@ rkskmt
 </div>
 <ul>
 <li>第3引数を <strong>省略すると折れ線</strong></li>
-<li><code>'o-'</code> だと <strong>点＋線</strong></li>
+<li><code>"o-"</code> だと <strong>点＋線</strong></li>
 <li>月ごとの <strong>つながり</strong>（連続的な変化）が見えるようになった</li>
 </ul>
 </div>
@@ -426,30 +426,32 @@ rkskmt
 <h2>Tweak<span class="fw-colon">：</span>線の見た目</h2>
 <div class="slide-body">
 <ul>
-<li><a href="#/peek-line-code" class="peek">さっきのコード</a> の <code>'o-'</code> を以下に <strong>書き換えて実行</strong>せよ</li>
+<li><a href="#/peek-line-code" class="peek">さっきのコード</a> の <code>"o-"</code> を <strong>書き換えて実行</strong>せよ</li>
 </ul>
+<div class="tweak">
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>やってみる</th>
-<th><code>'o-'</code> をこう変える</th>
+<th>やりたいこと</th>
+<th>コード</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>点を消して線だけにする</td>
-<td><code>'-'</code></td>
+<td>線だけにする（点を消す）</td>
+<td><code>"-"</code></td>
 </tr>
 <tr class="even">
-<td>線を消して点だけにする</td>
-<td><code>'o'</code></td>
+<td>点だけにする（線を消す）</td>
+<td><code>"o"</code></td>
 </tr>
 <tr class="odd">
-<td>線を破線にする</td>
-<td><code>'--'</code></td>
+<td>破線にする</td>
+<td><code>"--"</code></td>
 </tr>
 </tbody>
 </table>
+</div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -498,7 +500,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="6bce09ef" class="cell" data-execution_count="4">
+<div id="ff569701" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -509,7 +511,7 @@ rkskmt
 <span id="cb6-6"><a></a>y <span class="op">=</span> x <span class="op">**</span> <span class="dv">2</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> x <span class="op">+</span> <span class="dv">3</span></span>
 <span id="cb6-7"><a></a></span>
 <span id="cb6-8"><a></a>plt.plot(x, y)</span>
-<span id="cb6-9"><a></a>plt.plot([<span class="dv">1</span>], [<span class="dv">2</span>], <span class="st">'o'</span>, color<span class="op">=</span><span class="st">"red"</span>)   <span class="co"># 頂点に印をつけて検算</span></span>
+<span id="cb6-9"><a></a>plt.plot([<span class="dv">1</span>], [<span class="dv">2</span>], <span class="st">"o"</span>, color<span class="op">=</span><span class="st">"red"</span>)   <span class="co"># 頂点に印をつけて検算</span></span>
 <span id="cb6-10"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
@@ -526,7 +528,7 @@ rkskmt
 <li>その後<code>plt.legend()</code>を呼ぶ</li>
 </ul></li>
 </ul>
-<div id="08b0985e" class="cell" data-execution_count="5">
+<div id="0d671584" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -535,8 +537,8 @@ rkskmt
 <span id="cb7-6"><a></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
 <span id="cb7-7"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
 <span id="cb7-8"><a></a></span>
-<span id="cb7-9"><a></a>plt.plot(months, temp_1900, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">"1900年"</span>)   <span class="co"># 凡例ラベル</span></span>
-<span id="cb7-10"><a></a>plt.plot(months, temp_2024, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">"2024年"</span>)</span>
+<span id="cb7-9"><a></a>plt.plot(months, temp_1900, <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">"1900年"</span>)   <span class="co"># 凡例ラベル</span></span>
+<span id="cb7-10"><a></a>plt.plot(months, temp_2024, <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">"2024年"</span>)</span>
 <span id="cb7-11"><a></a>plt.legend()                                         <span class="co"># 凡例を表示</span></span>
 <span id="cb7-12"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -559,30 +561,15 @@ rkskmt
 <h2>Tweak<span class="fw-colon">：</span>凡例</h2>
 <div class="slide-body">
 <ul>
-<li><a href="#/peek-legend-code" class="peek">前のスライドのコード</a> の以下の部分を変えよ</li>
+<li><a href="#/peek-legend-code" class="peek">前のスライドのコード</a> を <strong>1か所だけ変えて</strong>実行</li>
 </ul>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>やってみる</th>
-<th>どう変える</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>凡例の文字を変える</td>
-<td><code>label="1900年"</code> → <code>label="明治33年"</code></td>
-</tr>
-<tr class="even">
-<td>片方を凡例から消す</td>
-<td>一方の <code>label=...</code> だけ消す</td>
-</tr>
-<tr class="odd">
-<td>凡例ごと消す</td>
-<td><code>plt.legend()</code> の行を消す</td>
-</tr>
-</tbody>
-</table>
+<div class="tweak">
+<ul>
+<li>凡例の文字を変える</li>
+<li>片方だけ凡例から消す</li>
+<li>凡例ごと消す</li>
+</ul>
+</div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -609,7 +596,7 @@ rkskmt
 <li><code>plt.title()</code> で <strong>グラフタイトル</strong></li>
 <li><code>plt.grid(True)</code> で <strong>グリッド線</strong></li>
 </ul>
-<div id="dfc90e39" class="cell" data-execution_count="6">
+<div id="d289999b" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -618,8 +605,8 @@ rkskmt
 <span id="cb8-6"><a></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
 <span id="cb8-7"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
 <span id="cb8-8"><a></a></span>
-<span id="cb8-9"><a></a>plt.plot(months, temp_1900, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">"1900年"</span>)</span>
-<span id="cb8-10"><a></a>plt.plot(months, temp_2024, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">"2024年"</span>)</span>
+<span id="cb8-9"><a></a>plt.plot(months, temp_1900, <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">"1900年"</span>)</span>
+<span id="cb8-10"><a></a>plt.plot(months, temp_2024, <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">"2024年"</span>)</span>
 <span id="cb8-11"><a></a>plt.legend()</span>
 <span id="cb8-12"><a></a>plt.title(<span class="st">"東京の月別平均気温"</span>)        <span class="co"># タイトル</span></span>
 <span id="cb8-13"><a></a>plt.xlabel(<span class="st">"月"</span>)                       <span class="co"># x軸ラベル</span></span>
@@ -661,7 +648,7 @@ rkskmt
 <li><code>plt.xlim(a, b)</code> / <code>plt.ylim(a, b)</code> で軸の範囲を固定</li>
 <li>何も指定しないと <strong>データの範囲＋少し余白</strong> が自動で選ばれる</li>
 </ul>
-<div id="21f735b2" class="cell" data-execution_count="7">
+<div id="e4688f78" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -670,8 +657,8 @@ rkskmt
 <span id="cb9-6"><a></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
 <span id="cb9-7"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
 <span id="cb9-8"><a></a></span>
-<span id="cb9-9"><a></a>plt.plot(months, temp_1900, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">"1900年"</span>)</span>
-<span id="cb9-10"><a></a>plt.plot(months, temp_2024, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">"2024年"</span>)</span>
+<span id="cb9-9"><a></a>plt.plot(months, temp_1900, <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">"1900年"</span>)</span>
+<span id="cb9-10"><a></a>plt.plot(months, temp_2024, <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">"2024年"</span>)</span>
 <span id="cb9-11"><a></a>plt.legend()</span>
 <span id="cb9-12"><a></a>plt.xlim(<span class="dv">1</span>, <span class="dv">12</span>)        <span class="co"># x軸: 1〜12月</span></span>
 <span id="cb9-13"><a></a>plt.ylim(<span class="dv">0</span>, <span class="dv">35</span>)        <span class="co"># y軸: あえて0から見せる</span></span>
@@ -709,24 +696,26 @@ rkskmt
 <ul>
 <li><a href="#/peek-axis-code" class="peek">さっきのコード</a> の軸だけ変えて実行 — 同じデータでも印象がどう動くか</li>
 </ul>
+<div class="tweak">
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>やってみる</th>
-<th>どう変える</th>
+<th>やりたいこと</th>
+<th>コード</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>差を誇張する</td>
-<td><code>plt.ylim(0, 35)</code> → <code>plt.ylim(15, 30)</code></td>
+<td><code>plt.ylim(15, 30)</code></td>
 </tr>
 <tr class="even">
 <td>夏だけ切り取る</td>
-<td><code>plt.xlim(1, 12)</code> → <code>plt.xlim(6, 9)</code></td>
+<td><code>plt.xlim(6, 9)</code></td>
 </tr>
 </tbody>
 </table>
+</div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -755,7 +744,7 @@ rkskmt
 <div style="text-align:center; font-family:monospace;">
 <p>1 │ 2<br> ─┼─<br> 3 │ 4</p>
 </div>
-<div id="ccc618b9" class="cell" data-execution_count="8">
+<div id="a74c8084" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb10-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -765,12 +754,12 @@ rkskmt
 <span id="cb10-7"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
 <span id="cb10-8"><a></a></span>
 <span id="cb10-9"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)        <span class="co"># 1行2列の左</span></span>
-<span id="cb10-10"><a></a>plt.plot(months, temp_1900, <span class="st">'o-'</span>)</span>
+<span id="cb10-10"><a></a>plt.plot(months, temp_1900, <span class="st">"o-"</span>)</span>
 <span id="cb10-11"><a></a>plt.ylim(<span class="dv">0</span>, <span class="dv">35</span>)             <span class="co"># 並べて比較するなら軸を揃える</span></span>
 <span id="cb10-12"><a></a>plt.title(<span class="st">"1900年"</span>)</span>
 <span id="cb10-13"><a></a></span>
 <span id="cb10-14"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)        <span class="co"># 1行2列の右</span></span>
-<span id="cb10-15"><a></a>plt.plot(months, temp_2024, <span class="st">'o-'</span>)</span>
+<span id="cb10-15"><a></a>plt.plot(months, temp_2024, <span class="st">"o-"</span>)</span>
 <span id="cb10-16"><a></a>plt.ylim(<span class="dv">0</span>, <span class="dv">35</span>)</span>
 <span id="cb10-17"><a></a>plt.title(<span class="st">"2024年"</span>)</span>
 <span id="cb10-18"><a></a></span>
@@ -805,7 +794,7 @@ rkskmt
 <section id="ここまでの成果図は育てる" class="slide level2">
 <h2>ここまでの成果<span class="fw-colon">：</span>図は「育てる」</h2>
 <div class="slide-body">
-<div id="06ac77ff" class="cell" data-execution_count="9">
+<div id="bbc5b38b" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -833,7 +822,7 @@ rkskmt
 <li><code>alpha</code> で <strong>透明度</strong> を指定すると重なりが見やすい</li>
 </ul></li>
 </ul>
-<div id="c72e2681" class="cell" data-execution_count="10">
+<div id="51a66309" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb11-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -882,7 +871,7 @@ rkskmt
 </ul></li>
 </ul>
 <div class="fig">
-<div id="3066c2d8" class="cell" data-execution_count="11">
+<div id="e8787f28" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -936,24 +925,26 @@ rkskmt
 <ul>
 <li><a href="#/peek-hist-code" class="peek">さっきのコード</a> の <code>bins</code> だけ変えて実行 — 同じ29人なのに形が変わる</li>
 </ul>
+<div class="tweak">
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>やってみる</th>
-<th>どう変える</th>
+<th>やりたいこと</th>
+<th>コード</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>粗く刻む</td>
-<td><code>bins=20</code> → <code>bins=5</code></td>
+<td><code>5</code></td>
 </tr>
 <tr class="even">
 <td>細かく刻む</td>
-<td><code>bins=20</code> → <code>bins=50</code></td>
+<td><code>50</code></td>
 </tr>
 </tbody>
 </table>
+</div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -985,7 +976,7 @@ rkskmt
 <tbody>
 <tr class="odd">
 <td>点だけ</td>
-<td><code>plt.plot(x, y, 'o')</code></td>
+<td><code>plt.plot(x, y, "o")</code></td>
 </tr>
 <tr class="even">
 <td>折れ線</td>
@@ -1056,7 +1047,7 @@ rkskmt
 <li>軸ラベル・タイトルをつける</li>
 </ol></li>
 </ul>
-<div id="0bc9e7ba" class="cell" data-execution_count="12">
+<div id="1c231162" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1117,7 +1108,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="808ec0d2" class="cell" data-execution_count="13">
+<div id="7e86fd89" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1197,7 +1188,7 @@ rkskmt
 <h2>付録<span class="fw-colon">：</span>線とマーカーの早見表</h2>
 <div class="slide-body">
 <ul>
-<li><code>plt.plot(x, y, 'o-')</code> の第3引数は <strong>マーカー・線種・色</strong> を文字で並べたもの</li>
+<li><code>plt.plot(x, y, "o-")</code> の第3引数は <strong>マーカー・線種・色</strong> を文字で並べたもの</li>
 <li>暗記する必要はない。「こう変えるとこうなる」を一度試せば十分</li>
 </ul>
 <div class="columns">
@@ -1257,7 +1248,7 @@ rkskmt
 </table>
 </div></div>
 <ul>
-<li>組み合わせ例<span class="fw-colon">：</span><code>'o--'</code>（丸＋破線）・<code>'s:'</code>（四角＋点線）・<code>'r-.'</code>（赤の一点鎖線）</li>
+<li>組み合わせ例<span class="fw-colon">：</span><code>"o--"</code>（丸＋破線）・<code>"s:"</code>（四角＋点線）・<code>"r-."</code>（赤の一点鎖線）</li>
 </ul>
 
 
