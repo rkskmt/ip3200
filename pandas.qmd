@@ -15,18 +15,24 @@ NumPyの表に名前をつける
    - Excelの表、CSV、実験結果、アンケート結果など
    - データ分析の入口で非常によく使う
 - NumPyの `ndarray` と同じく、Pythonの標準機能ではない
-   - `import pandas as pd` として使うのが一般的
+
+ターミナルからインストール：
+
+```shell
+pip install pandas
+```
+
+冒頭で import（`pd` としてインポートするのが一般的）：
 
 ```python
 import pandas as pd
 ```
 
-::: {.callout-note}
-## この資料のゴール
-- Pandasを網羅的に覚えることではない
+
+## 今回のゴール
+
 - **DataFrame / Series / index / columns** を理解する
 - 集計結果を **matplotlibで可視化** できるようにする
-:::
 
 
 ## クイズ：田中さんの数学Iの点は？
@@ -53,6 +59,27 @@ arr = np.array([
 :::
 
 
+## DataFrameとは
+
+- Pandasの主役となる、**名前つきの表（テーブル, table）**
+- **データ** ＋ 行の名前（**index**）＋ 列の名前（**columns**）の3点セット
+- 行・列に名前をつけて表を扱う考え方は、Excelやデータベースなど多くの道具に共通
+
+| | 現代文 | 数学I | 英会話 |
+|---|---|---|---|
+| **田中** | 80 | 70 | 90 |
+| **佐藤** | 65 | 75 | 85 |
+
+::: {.caption-note}
+上端の見出し（現代文・数学I・英会話）が **columns**で左端の見出し（田中・佐藤）が **index**
+:::
+
+::: {.callout-tip}
+## pandasの基本はDataFrameなので用語を覚えよう
+DataFrame ＝ データ ＋ index（行の名前）＋ columns（列の名前）
+:::
+
+
 ## ndarrayからDataFrameを作る
 
 - `pd.DataFrame()` に `ndarray` を渡す
@@ -72,8 +99,9 @@ df = pd.DataFrame(arr)
 print(df)
 ```
 
-- `DataFrame` は **表** として表示される
-- 左端と上端に `0, 1, 2, ...` の番号が自動でつく
+::: {.caption-note}
+`DataFrame` は表として表示され、左端と上端に `0, 1, 2, ...` の番号が自動でつく
+:::
 
 
 ## indexとcolumnsを確認
@@ -84,11 +112,13 @@ print(df)
 
 ```{python}
 #| echo: true
-print(df.index)
-```
+import numpy as np
+import pandas as pd
 
-```{python}
-#| echo: true
+arr = np.array([[80, 70, 90], [65, 75, 85]])
+df = pd.DataFrame(arr)
+
+print(df.index)
 print(df.columns)
 ```
 
@@ -107,16 +137,18 @@ print(df.columns)
 
 ```{python}
 #| echo: true
-df = pd.DataFrame(
-    arr,
-    columns=["現代文", "数学I", "英会話"]
-)
+import numpy as np
+import pandas as pd
+
+arr = np.array([[80, 70, 90], [65, 75, 85]])
+df = pd.DataFrame(arr, columns=["現代文", "数学I", "英会話"])
 
 print(df)
 ```
 
-- もう `df[1]` ではなく、`df["数学I"]` として扱える
-- 「何列目か」ではなく **何の列か** で読める
+::: {.caption-note}
+もう `df[1]` ではなく `df["数学I"]`。「何列目か」ではなく「何の列か」で読める
+:::
 
 
 ## indexも指定する
@@ -126,11 +158,11 @@ print(df)
 
 ```{python}
 #| echo: true
-df = pd.DataFrame(
-    arr,
-    columns=["現代文", "数学I", "英会話"],
-    index=["田中", "佐藤"]
-)
+import numpy as np
+import pandas as pd
+
+arr = np.array([[80, 70, 90], [65, 75, 85]])
+df = pd.DataFrame(arr, columns=["現代文", "数学I", "英会話"], index=["田中", "佐藤"])
 
 print(df)
 ```
@@ -151,11 +183,20 @@ DataFrame = データ + 行名(index) + 列名(columns)
 
 ```{python}
 #| echo: true
+import numpy as np
+import pandas as pd
+
+arr = np.array([[80, 70, 90], [65, 75, 85]])
+df = pd.DataFrame(arr, columns=["現代文", "数学I", "英会話"], index=["田中", "佐藤"])
+
 print(df.mean())
 ```
 
-- NumPyの `axis=0` より読みやすい場面が多い
-- データ分析では **名前つきの表** が強い
+::: {.callout-tip}
+## 名前つきの表が強い
+- `axis=0` のような番号指定より読みやすい場面が多い
+- データ分析では **名前つきの表（DataFrame）** が効く
+:::
 
 
 ## {background-color="white" .center .break-slide}
@@ -164,24 +205,21 @@ print(df.mean())
 Seriesを理解する
 :::
 
-## Seriesを取り出す
+## 列を取り出す（Series）
 
 - `df["列名"]` で1列だけ取り出せる
-- 取り出した1列は `DataFrame` ではなく **Series**
+- 取り出した1列は `DataFrame`型 ではなく **Series**型
 
 ```{python}
 #| echo: true
+import pandas as pd
+
+df = pd.DataFrame([[80, 70, 90], [65, 75, 85]],
+                  columns=["現代文", "数学I", "英会話"], index=["田中", "佐藤"])
 math = df["数学I"]
+
 print(math)
-```
-
-```{python}
-#| echo: true
 print(type(df))
-```
-
-```{python}
-#| echo: true
 print(type(math))
 ```
 
@@ -199,16 +237,19 @@ Series    = 1列
 
 ```{python}
 #| echo: true
-print(math.index)
-```
+import pandas as pd
 
-```{python}
-#| echo: true
+df = pd.DataFrame([[80, 70, 90], [65, 75, 85]],
+                  columns=["現代文", "数学I", "英会話"], index=["田中", "佐藤"])
+math = df["数学I"]
+
+print(math.index)
 print(math.values)
 ```
 
-- `math.index` は生徒名
-- `math.values` は点数だけを取り出したNumPy配列
+::: {.caption-note}
+`math.index` は生徒名、`math.values` は点数だけのNumPy配列
+:::
 
 
 ## Seriesは「値」と「名前」のセット
@@ -223,11 +264,18 @@ print(math.values)
 
 ```{python}
 #| echo: true
+import pandas as pd
+
+df = pd.DataFrame([[80, 70, 90], [65, 75, 85]],
+                  columns=["現代文", "数学I", "英会話"], index=["田中", "佐藤"])
+math = df["数学I"]
+
 print(math.mean())
 ```
 
-- 1列だけでも、平均・最大・最小などの計算ができる
-- `DataFrame` から列を取り出すと、集計しやすい
+::: {.caption-note}
+1列（Series）だけでも、平均・最大・最小などの計算ができる
+:::
 
 
 ## 列名で取り出す練習
@@ -238,6 +286,11 @@ print(math.mean())
 
 ```{python}
 #| echo: true
+import pandas as pd
+
+df = pd.DataFrame([[80, 70, 90], [65, 75, 85]],
+                  columns=["現代文", "数学I", "英会話"], index=["田中", "佐藤"])
+
 japanese = df["現代文"]
 english = df["英会話"]
 
@@ -250,6 +303,38 @@ print(english.mean())
 - Pandasでは「列を取り出す → 計算する」が基本
 - 1列を取り出すと `Series`
 - 複数列を取り出すと `DataFrame`
+:::
+
+
+## 演習：型を見失わない {.badge-practice}
+
+- 田中・佐藤の `df` で、次を **実行する前に型を予想** → `type(...)` で答え合わせ
+   1. `df`
+   2. `df["数学I"]`（1列）
+   3. `df[["現代文", "英会話"]]`（複数列）
+   4. `df["数学I"].mean()`（集計）
+- それぞれ `DataFrame` / `Series` / 数値 のどれ？ `Series` なら `.index` も見よ
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "答え合わせ（df を作って type を確認）"
+import pandas as pd
+
+df = pd.DataFrame([[80, 70, 90], [65, 75, 85]],
+                  columns=["現代文", "数学I", "英会話"], index=["田中", "佐藤"])
+
+print(type(df))  # DataFrame
+print(type(df["数学I"]))  # Series
+print(type(df[["現代文", "英会話"]]))  # DataFrame
+print(type(df["数学I"].mean()))  # 数値（numpy.float64）
+```
+
+::: {.callout-tip}
+## 操作のたびに自問する
+- いま手元は `DataFrame` か `Series` か（あるいは値か）
+- その `index` / `columns` は何か
 :::
 
 
@@ -280,22 +365,30 @@ CSVを読み込む
 
 ## CSVを読み込む
 
-- 授業用CSVは <a href="data/students.csv" download="students.csv">data/students.csv</a> からダウンロードできる
-- 自分の作業フォルダに `data` フォルダを作る
-- その中に `students.csv` を置く
-- Pythonからは `data/students.csv` というファイルパスで読む
+1. <a href="data/students.csv" download="students.csv">data/students.csv</a> をダウンロード
+2. 作業フォルダに `data` フォルダを作る
+3. その中に `students.csv` を置く
+4. Pythonから `data/students.csv` で読み込む
+
+- ※ `students.csv` は授業用の**架空データ**（実在の個人ではない）
 
 ```{python}
 #| echo: true
 import pandas as pd
 
-csv_path = "data/students.csv"
-df = pd.read_csv(csv_path)
+df = pd.read_csv("data/students.csv")
 print(df.head())
 ```
 
-- CSVの1行目が `columns` になる
-- `index` は指定しなければ自動で番号が振られる
+::: {.caption-note}
+CSVの1行目が `columns` になり、`index` は指定しなければ自動で番号が振られる
+:::
+
+::: {.callout-important}
+## ここから `df` は students.csv に変わる
+- これまでの田中・佐藤（2人×3科目）は、仕組みをつかむための **練習用の表** だった
+- 以降の `df` は **students.csv（20人×8列）** — 集計・可視化はこのデータで進める
+:::
 
 
 ## 読み込んだ表の形を確認
@@ -306,22 +399,14 @@ print(df.head())
 
 ```{python}
 #| echo: true
-print(df.head())
-```
+import pandas as pd
 
-```{python}
-#| echo: true
-print(df.shape)
-```
+df = pd.read_csv("data/students.csv")
 
-```{python}
-#| echo: true
-print(df.columns)
-```
-
-```{python}
-#| echo: true
-print(df.index)
+print(df.head())   # 先頭5行（中身）
+print(df.shape)    # (行数, 列数)
+print(df.columns)  # 列名
+print(df.index)    # 行のラベル
 ```
 
 
@@ -332,17 +417,16 @@ print(df.index)
 
 ```{python}
 #| echo: true
-df_name = pd.read_csv(csv_path, index_col="名前")
+import pandas as pd
+
+df_name = pd.read_csv("data/students.csv", index_col="名前")
 print(df_name.head())
 ```
 
-- ただし、最初は自動番号のindexでも問題ない
-- 「indexとは行名である」と理解できれば十分
-
-::: {.callout-note}
-## 今回の方針
-- `loc` / `iloc` の詳細は深追いしない
-- まずは **列選択・条件抽出・集計** に慣れる
+::: {.callout-tip}
+## まずはここだけ分かれば十分
+- 最初は自動番号のindexのままで問題ない
+- **indexとは行名** — それが分かればOK
 :::
 
 
@@ -352,24 +436,25 @@ print(df_name.head())
 DataFrameの基本操作
 :::
 
-## 単一列を選択する
+## 単一列を選択する（おさらい）
 
-- `df["列名"]` で1列を取り出す
-- 返ってくるものは `Series`
+- `df["列名"]` で1列取り出すと **Series**（Series節と同じ操作）
+- 今度は **CSVのdf（20人分）** で確認する
 
 ```{python}
 #| echo: true
+import pandas as pd
+
+df = pd.read_csv("data/students.csv")
 math = df["数学I"]
-print(math)
-```
 
-```{python}
-#| echo: true
+print(math)
 print(type(math))
 ```
 
-- 1列だけ取り出したら `Series`
-- 集計の入口としてよく使う
+::: {.caption-note}
+1列だけ取り出すと `Series`。集計の入口としてよく使う
+:::
 
 
 ## 複数列を選択する
@@ -380,11 +465,11 @@ print(type(math))
 
 ```{python}
 #| echo: true
-print(df[["名前", "学科", "数学I", "英会話"]])
-```
+import pandas as pd
 
-```{python}
-#| echo: true
+df = pd.read_csv("data/students.csv")
+
+print(df[["名前", "学科", "数学I", "英会話"]])
 print(type(df[["名前", "学科", "数学I", "英会話"]]))
 ```
 
@@ -404,16 +489,17 @@ df[["名前", "学科", "数学I"]]        # 列名のリストを渡す
 
 ```{python}
 #| echo: true
-print(df["数学I"] >= 80)
-```
+import pandas as pd
 
-```{python}
-#| echo: true
+df = pd.read_csv("data/students.csv")
+
+print(df["数学I"] >= 80)
 print(df[df["数学I"] >= 80])
 ```
 
-- `数学I` が80点以上の行だけが残る
-- 条件式をそのまま `df[...]` の中に入れる
+::: {.caption-note}
+`数学I` が80点以上の行だけが残る（条件式をそのまま `df[...]` に入れる）
+:::
 
 
 ## 文字列の条件抽出
@@ -423,11 +509,16 @@ print(df[df["数学I"] >= 80])
 
 ```{python}
 #| echo: true
+import pandas as pd
+
+df = pd.read_csv("data/students.csv")
+
 print(df[df["学科"] == "情報"])
 ```
 
-- `学科` が `"情報"` の行だけが残る
-- アンケートや名簿データではよく使う
+::: {.caption-note}
+`学科` が `"情報"` の行だけが残る（名簿・アンケートでよく使う）
+:::
 
 
 ## 複数条件で抽出する {#peek-and-or-code}
@@ -437,6 +528,10 @@ print(df[df["学科"] == "情報"])
 
 ```{python}
 #| echo: true
+import pandas as pd
+
+df = pd.read_csv("data/students.csv")
+
 print(df[
     (df["学科"] == "情報")
     & (df["数学I"] >= 80)
@@ -453,23 +548,13 @@ print(df[
 
 ## Tweak：AND と OR で「絞る」と「広がる」 {.badge-practice}
 
-- [前ページのコード](#peek-and-or-code){.peek} の `&` を `|`（または）に変えて実行
-   - 「両方を満たす行」→「どちらか一方でも満たす行」に変わり、残る行が増える
-- さらに条件もいじる（項目ごとに都度実行）
+- [前ページのコード](#peek-and-or-code){.peek} を1か所ずつ変えて実行
 
 ::: {.tweak}
-| こう変えろ | 変化 |
-|---|---|
-| `>= 80` → `< 80` | 条件が反転し、残る生徒が入れ替わる |
-| 末尾に `& (df["英会話"] >= 80)` を足す | 条件が増えて、さらに絞り込まれる |
-| `>= 80` → `>= 70` | 基準がゆるみ、残る行が増える |
-:::
-
-::: {.callout-tip}
-## そもそもここから始めるのが筋
-- まず条件式だけを表示：`(df["学科"]=="情報") & (df["数学I"]>=80)`
-- 各行が両条件を満たすかの True / False の列が返る
-- `df[...]` は、その True の行だけを取り出している
+- 条件式だけ実行する（`df[...]` を外す）→ 各行に True/False が返る
+- `&` を `|` にする（「両方」→「どちらか一方」で残る行が増える）
+- 数学Iの基準を反転する（80点未満）
+- 英会話も80点以上、と条件を足す
 :::
 
 
@@ -480,23 +565,24 @@ print(df[
 
 ```{python}
 #| echo: true
+import pandas as pd
+
+df = pd.read_csv("data/students.csv")
 subjects = ["現代文", "数学I", "英会話", "物理"]
 
 df["平均点"] = df[subjects].mean(axis=1)
-df["合否"] = df["平均点"] >= 60
-df["補正数学I"] = df["数学I"] * 1.1
 
 print(df.head())
 ```
 
-- `平均点` は4科目の平均
-- `合否` は平均点が60点以上かどうか
-- `補正数学I` は数学Iを1.1倍した値
+::: {.caption-note}
+`平均点` は4科目（現代文・数学I・英会話・物理）の平均
+:::
 
 ::: {.callout-note}
 ## NumPyと同じ感覚
-- `df["数学I"] * 1.1` は、数学I列の各要素をまとめて計算する
-- `mean(axis=1)` は、行ごとに平均を計算する
+- `mean(axis=1)` は、行ごとに平均を計算する（いま作った `平均点`）
+- `df["数学I"] * 1.1` のように、列全体へまとめて計算もできる
 - for文を書かなくても列全体に計算がかかる
 :::
 
@@ -508,17 +594,17 @@ CSVデータを集計して可視化する
 :::
 
 
-## ここから使うCSVデータ
+## 集計の準備：データをそろえる
 
-- ここからは `data/students.csv` から読み込んだ `df` を前提にする
-- CSVには、名前・学科・学年・4科目・欠席日数が入っている
+- ここまでと同じ `data/students.csv` を使う（この節だけでも実行できるよう、読み込みから用意）
 - まず4科目から `平均点` 列を作る
+- （CSVの中身：名前・学科・学年・4科目・欠席日数）
 
 ```{python}
 #| echo: true
-csv_path = "data/students.csv"
-df = pd.read_csv(csv_path)
+import pandas as pd
 
+df = pd.read_csv("data/students.csv")
 subjects = ["現代文", "数学I", "英会話", "物理"]
 df["平均点"] = df[subjects].mean(axis=1)
 
@@ -540,6 +626,11 @@ CSVを読む → 必要な列を作る → 集計する → 可視化する
 
 ```{python}
 #| echo: true
+import pandas as pd
+
+df = pd.read_csv("data/students.csv")
+subjects = ["現代文", "数学I", "英会話", "物理"]
+df["平均点"] = df[subjects].mean(axis=1)
 scores = df["平均点"]
 
 print(scores.mean())
@@ -547,9 +638,9 @@ print(scores.max())
 print(scores.min())
 ```
 
-- `mean()` は平均
-- `max()` は最大
-- `min()` は最小
+::: {.caption-note}
+`mean()`＝平均、`max()`＝最大、`min()`＝最小
+:::
 
 
 ## 学科ごとに平均点を出す {#peek-groupby-code}
@@ -560,12 +651,19 @@ print(scores.min())
 
 ```{python}
 #| echo: true
+import pandas as pd
+
+df = pd.read_csv("data/students.csv")
+subjects = ["現代文", "数学I", "英会話", "物理"]
+df["平均点"] = df[subjects].mean(axis=1)
+
 avg = df.groupby("学科")["平均点"].mean()
 print(avg)
 ```
 
-- 学科ごとの平均点が求まる
-- 結果は `DataFrame` ではなく `Series`
+::: {.caption-note}
+学科ごとの平均点が求まる。結果は `DataFrame` ではなく `Series`
+:::
 
 
 ## groupbyの結果を確認
@@ -576,16 +674,15 @@ print(avg)
 
 ```{python}
 #| echo: true
+import pandas as pd
+
+df = pd.read_csv("data/students.csv")
+subjects = ["現代文", "数学I", "英会話", "物理"]
+df["平均点"] = df[subjects].mean(axis=1)
+avg = df.groupby("学科")["平均点"].mean()
+
 print(type(avg))
-```
-
-```{python}
-#| echo: true
 print(avg.index)
-```
-
-```{python}
-#| echo: true
 print(avg.values)
 ```
 
@@ -601,42 +698,14 @@ values が「平均点」
 
 ## Tweak：groupby は「分ける × 集計する列 × 集計方法」 {.badge-practice}
 
-- [前ページのコード](#peek-groupby-code){.peek} の3か所を、以下に差し替えて実行
-   - 項目ごとに都度実行すること
+- [前ページのコード](#peek-groupby-code){.peek} を1か所ずつ変えて実行
 
 ::: {.tweak}
-| こう変えろ | 変化 |
-|---|---|
-| `groupby("学科")` → `groupby("学年")` | 「分ける軸」が変わる |
-| `["平均点"]` → `["欠席日数"]` | 集計列が変わる |
-| `.mean()` → `.max()` / `.min()` / `.count()` | 「集計方法」が変わる（最大／最小／件数） |
+- `df.groupby("学科")` だけ実行して中身を見る（まだ集計前）
+- 学年でgroupbyする
+- 集計する列を欠席日数にする
+- 集計を最大値にする
 :::
-
-::: {.callout-tip}
-## そもそもここから始めるのが筋
-- `df.groupby("学科")` だけを表示して確認
-- `df.groupby("学科")["平均点"]`も確認
-:::
-
-
-## locとilocを少しだけ
-
-- `loc` は **index名** で取り出す
-- `iloc` は **位置番号** で取り出す
-- 今回はこの程度で十分
-
-```{python}
-#| echo: true
-print(avg.loc["情報"])
-```
-
-```{python}
-#| echo: true
-print(avg.iloc[0])
-```
-
-- `avg.loc["情報"]` は「情報」の平均点
-- `avg.iloc[0]` は先頭の平均点
 
 
 ## matplotlibで棒グラフにする
@@ -647,8 +716,14 @@ print(avg.iloc[0])
 
 ```{python}
 #| echo: true
+import pandas as pd
 import matplotlib.pyplot as plt
 import japanize_matplotlib
+
+df = pd.read_csv("data/students.csv")
+subjects = ["現代文", "数学I", "英会話", "物理"]
+df["平均点"] = df[subjects].mean(axis=1)
+avg = df.groupby("学科")["平均点"].mean()
 
 plt.bar(avg.index, avg.values)
 plt.xlabel("学科")
@@ -673,8 +748,14 @@ Series → index / values → matplotlib
 
 ```{python}
 #| echo: true
+import pandas as pd
 import matplotlib.pyplot as plt
 import japanize_matplotlib
+
+df = pd.read_csv("data/students.csv")
+subjects = ["現代文", "数学I", "英会話", "物理"]
+df["平均点"] = df[subjects].mean(axis=1)
+avg = df.groupby("学科")["平均点"].mean()
 
 plt.bar(avg.index, avg.values, color="#2266CC")
 plt.xlabel("学科")
@@ -703,8 +784,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-csv_path = "data/students.csv"
-df = pd.read_csv(csv_path)
+df = pd.read_csv("data/students.csv")
 subjects = ["現代文", "数学I", "英会話", "物理"]
 
 df["平均点"] = df[subjects].mean(axis=1)
@@ -720,51 +800,6 @@ plt.show()
 ```
 
 
-## 実データで：明治の東京 vs 21世紀の東京
-
-- 可視化編で使った気象庁データをPandasで読む
-   - データ：[tokyo_temp_annual.csv](data/tokyo_temp_annual.csv)（`data` フォルダに置く）
-- 「明治時代（〜1911年）の平均気温」と「2000年以降の平均気温」— **条件抽出がそのまま効く**
-
-```{python}
-#| echo: true
-import pandas as pd
-
-df_temp = pd.read_csv("data/tokyo_temp_annual.csv")
-
-meiji = df_temp[df_temp["year"] <= 1911]
-recent = df_temp[df_temp["year"] >= 2000]
-
-print(f"明治の東京     : {meiji['temp'].mean():.1f} ℃")
-print(f"21世紀の東京   : {recent['temp'].mean():.1f} ℃")
-```
-
-- 150行のデータから **2行で答えが出る**
-- NumPyなら「何列目が年だっけ？」から始まる作業が、**列名で読み書きできる**
-
-::: {.callout-tip}
-## CSVを読んだあとの典型的な流れ（再掲）
-```text
-CSVを読む → 必要な列を作る → 絞る・集計する → 可視化する
-```
-どんなデータでも、この型は同じ
-:::
-
-
-## 伏線：あの山の「日付」を特定するには
-
-- 可視化編の冒頭の謎 — 1年分の閲覧数で **1日だけの大きな山**
-- 山の **高さ** は `max()` で分かる。でも知りたいのは **「いつ」**
-- 今日の道具がそのまま効く：
-
-```python
-df[df["views"] == df["views"].max()]   # 最大値の行を「日付ごと」取り出す
-```
-
-- 閲覧数と日付を **表** にしてしまえば、条件抽出1行
-- 謎を解く日は近い — 道具はもうほとんど揃っている
-
-
 ## まとめ
 
 - `DataFrame` は **表**
@@ -777,19 +812,30 @@ df[df["views"] == df["views"].max()]   # 最大値の行を「日付ごと」取
 - 集計結果の `index` / `values` を matplotlib に渡して可視化できる
 
 
-## 今回は深追いしないこと
+## 演習：実データで明治の東京 vs 21世紀の東京 {.badge-practice}
 
-- `apply`
-- `merge`
-- `pivot_table`
-- `MultiIndex`
-- 欠損値処理
-- datetime
-- `loc` / `iloc` の詳細
+- 学んだ道具（`read_csv` → `条件抽出` → 集計）を、**新しい実データ** に当てる
+- 気象庁の東京・年平均気温データ：[tokyo_temp_annual.csv](data/tokyo_temp_annual.csv)（`data` に置く）
+- やること：**明治（〜1911年）** と **21世紀（2000年〜）** の平均気温を出して比べる
+- まず **予想** → 何度ちがう？ → 自分で書く → 解答例で答え合わせ
 
-::: {.callout-note}
-## まず必要な型を見失わない
-- `DataFrame` なのか
-- `Series` なのか
-- `index` と `columns` は何なのか
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+import pandas as pd
+
+df_temp = pd.read_csv("data/tokyo_temp_annual.csv")
+
+meiji = df_temp[df_temp["year"] <= 1911]
+recent = df_temp[df_temp["year"] >= 2000]
+print(f"明治の東京   : {meiji['temp'].mean():.1f} ℃")
+print(f"21世紀の東京 : {recent['temp'].mean():.1f} ℃")
+```
+
+::: {.callout-tip}
+## 列名で読み書きできる強さ
+- 150行のデータから **たった2行で答えが出る**
+- NumPyの「何列目が年だっけ？」が、Pandasでは **列名** で済む
 :::
