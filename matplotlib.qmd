@@ -126,12 +126,12 @@ import japanize_matplotlib
 months = np.arange(1, 13)
 temp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])
 
-plt.plot(months, temp_2024, 'o')    # 'o' で点だけプロット
+plt.plot(months, temp_2024, "o")    # "o" で点だけプロット
 plt.show()
 ```
 
-- 一番基本の `plt.plot(x, y, 'o')` 
-   — `'o'` は **マーカー** を表す
+- 一番基本の `plt.plot(x, y, "o")` 
+   — `"o"` は **マーカー** を表す
    - `x` も `y` も **`ndarray`** や **`list`** でOK
 - **季節の山がもう見えている**
 
@@ -147,23 +147,25 @@ import japanize_matplotlib
 months = np.arange(1, 13)
 temp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])
 
-plt.plot(months, temp_2024, 'o-')   # 点＋線
+plt.plot(months, temp_2024, "o-")   # 点＋線
 plt.show()
 ```
 - 第3引数を **省略すると折れ線**
-- `'o-'` だと **点＋線**
+- `"o-"` だと **点＋線**
 - 月ごとの **つながり**（連続的な変化）が見えるようになった
 
 
 ## Tweak：線の見た目 {.badge-practice}
 
-- [さっきのコード](#peek-line-code){.peek} の `'o-'` を以下に **書き換えて実行**せよ
+- [さっきのコード](#peek-line-code){.peek} の `"o-"` を **書き換えて実行**せよ
 
-| やってみる | `'o-'` をこう変える |
-|---|---|
-| 点を消して線だけにする | `'-'` |
-| 線を消して点だけにする | `'o'` |
-| 線を破線にする | `'--'` |
+::: {.tweak}
+| やりたいこと | コード |
+|--|--|
+| 線だけにする（点を消す） | `"-"` |
+| 点だけにする（線を消す） | `"o"` |
+| 破線にする | `"--"` |
+:::
 
 ::: {.callout-tip}
 
@@ -200,7 +202,7 @@ x = np.linspace(-2, 5, 200)
 y = x ** 2 - 2 * x + 3
 
 plt.plot(x, y)
-plt.plot([1], [2], 'o', color="red")   # 頂点に印をつけて検算
+plt.plot([1], [2], "o", color="red")   # 頂点に印をつけて検算
 plt.show()
 ```
 
@@ -222,8 +224,8 @@ months = np.arange(1, 13)
 temp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])
 temp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])
 
-plt.plot(months, temp_1900, 'o-', label="1900年")   # 凡例ラベル
-plt.plot(months, temp_2024, 'o-', label="2024年")
+plt.plot(months, temp_1900, "o-", label="1900年")   # 凡例ラベル
+plt.plot(months, temp_2024, "o-", label="2024年")
 plt.legend()                                         # 凡例を表示
 plt.show()
 ```
@@ -234,13 +236,13 @@ plt.show()
 
 ## Tweak：凡例 {.badge-practice}
 
-- [前のスライドのコード](#peek-legend-code){.peek} の以下の部分を変えよ
+- [前のスライドのコード](#peek-legend-code){.peek} を **1か所だけ変えて**実行
 
-| やってみる | どう変える |
-|---|---|
-| 凡例の文字を変える | `label="1900年"` → `label="明治33年"` |
-| 片方を凡例から消す | 一方の `label=...` だけ消す |
-| 凡例ごと消す | `plt.legend()` の行を消す |
+::: {.tweak}
+- 凡例の文字を変える
+- 片方だけ凡例から消す
+- 凡例ごと消す
+:::
 
 ::: {.callout-tip}
 ## 予想してから試す
@@ -265,8 +267,8 @@ months = np.arange(1, 13)
 temp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])
 temp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])
 
-plt.plot(months, temp_1900, 'o-', label="1900年")
-plt.plot(months, temp_2024, 'o-', label="2024年")
+plt.plot(months, temp_1900, "o-", label="1900年")
+plt.plot(months, temp_2024, "o-", label="2024年")
 plt.legend()
 plt.title("東京の月別平均気温")        # タイトル
 plt.xlabel("月")                       # x軸ラベル
@@ -299,8 +301,8 @@ months = np.arange(1, 13)
 temp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])
 temp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])
 
-plt.plot(months, temp_1900, 'o-', label="1900年")
-plt.plot(months, temp_2024, 'o-', label="2024年")
+plt.plot(months, temp_1900, "o-", label="1900年")
+plt.plot(months, temp_2024, "o-", label="2024年")
 plt.legend()
 plt.xlim(1, 12)        # x軸: 1〜12月
 plt.ylim(0, 35)        # y軸: あえて0から見せる
@@ -320,10 +322,12 @@ plt.show()
 
 - [さっきのコード](#peek-axis-code){.peek} の軸だけ変えて実行 — 同じデータでも印象がどう動くか
 
-| やってみる | どう変える |
-|---|---|
-| 差を誇張する | `plt.ylim(0, 35)` → `plt.ylim(15, 30)` |
-| 夏だけ切り取る | `plt.xlim(1, 12)` → `plt.xlim(6, 9)` |
+::: {.tweak}
+| やりたいこと | コード |
+|--|--|
+| 差を誇張する | `plt.ylim(15, 30)` |
+| 夏だけ切り取る | `plt.xlim(6, 9)` |
+:::
 
 ::: {.callout-tip}
 ## 予想してから試す
@@ -354,12 +358,12 @@ temp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 1
 temp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])
 
 plt.subplot(1, 2, 1)        # 1行2列の左
-plt.plot(months, temp_1900, 'o-')
+plt.plot(months, temp_1900, "o-")
 plt.ylim(0, 35)             # 並べて比較するなら軸を揃える
 plt.title("1900年")
 
 plt.subplot(1, 2, 2)        # 1行2列の右
-plt.plot(months, temp_2024, 'o-')
+plt.plot(months, temp_2024, "o-")
 plt.ylim(0, 35)
 plt.title("2024年")
 
@@ -389,11 +393,11 @@ temp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 1
 temp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])
 
 fig, axes = plt.subplots(1, 2, figsize=(9, 3.5))
-axes[0].plot(months, temp_2024, 'o')
+axes[0].plot(months, temp_2024, "o")
 axes[0].set_title("最初の図", fontsize=11)
 
-axes[1].plot(months, temp_1900, 'o-', label="1900年")
-axes[1].plot(months, temp_2024, 'o-', label="2024年")
+axes[1].plot(months, temp_1900, "o-", label="1900年")
+axes[1].plot(months, temp_2024, "o-", label="2024年")
 axes[1].legend()
 axes[1].set_title("東京の月別平均気温", fontsize=11)
 axes[1].set_xlabel("月")
@@ -489,10 +493,12 @@ plt.show()
 
 - [さっきのコード](#peek-hist-code){.peek} の `bins` だけ変えて実行 — 同じ29人なのに形が変わる
 
-| やってみる | どう変える |
-|---|---|
-| 粗く刻む | `bins=20` → `bins=5` |
-| 細かく刻む | `bins=20` → `bins=50` |
+::: {.tweak}
+| やりたいこと | コード |
+|--|--|
+| 粗く刻む | `5` |
+| 細かく刻む | `50` |
+:::
 
 ::: {.callout-tip}
 ## 予想してから試す
@@ -505,7 +511,7 @@ plt.show()
 
 | 操作 | コード |
 |------|------|
-| 点だけ | `plt.plot(x, y, 'o')` |
+| 点だけ | `plt.plot(x, y, "o")` |
 | 折れ線 | `plt.plot(x, y)` |
 | 棒グラフ | `plt.bar(x, y)` |
 | 散布図 | `plt.scatter(x, y)` |
@@ -652,7 +658,7 @@ plt.show()
 
 ## 付録：線とマーカーの早見表 {#peek-fmt}
 
-- `plt.plot(x, y, 'o-')` の第3引数は **マーカー・線種・色** を文字で並べたもの
+- `plt.plot(x, y, "o-")` の第3引数は **マーカー・線種・色** を文字で並べたもの
 - 暗記する必要はない。「こう変えるとこうなる」を一度試せば十分
 
 ::: {.columns}
@@ -674,4 +680,4 @@ plt.show()
 :::
 :::
 
-- 組み合わせ例：`'o--'`（丸＋破線）・`'s:'`（四角＋点線）・`'r-.'`（赤の一点鎖線）
+- 組み合わせ例：`"o--"`（丸＋破線）・`"s:"`（四角＋点線）・`"r-."`（赤の一点鎖線）
