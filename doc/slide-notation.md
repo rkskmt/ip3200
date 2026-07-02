@@ -4,7 +4,7 @@
 
 ## セットアップ
 
-各プロジェクトの `_metadata.yaml` に CSS と Lua フィルター（`cite-image.lua`）が設定済み。
+CSS と Lua フィルター（`cite-image.lua`・`plotly-iframe.lua` 等）は cleanslidekit 拡張（`_extensions/rkskmt/cleanslidekit/`）が同梱。プロジェクト側の追加設定は不要。
 
 ---
 
@@ -148,10 +148,11 @@ revealjs で Plotly の地図などを埋め込むと、スライド遷移時に
 ### Python 側の書き出し
 
 ```python
-fig.write_html("iframes/map.html", include_plotlyjs="cdn")
+fig.write_html("iframes/map.html", include_plotlyjs="directory")
 ```
 
 - `iframes/` フォルダに出力
+- `include_plotlyjs="directory"` で `plotly.min.js` を同フォルダに書き出す（オフラインでも動く。`"cdn"` は軽いがネット必須）
 - `_quarto.yml` の `resources: ["iframes/**"]` で `_site` にコピーされる
 
 ---
@@ -184,7 +185,7 @@ fig.write_html("iframes/map.html", include_plotlyjs="cdn")
 
 - CSS は cleanslidekit 拡張の `custom.css`（`.reveal .caption-note`）。フォントは
   **システムのセリフのみ**（Web フォントの DL はしない）。
-- いまは IP3200 側のみ。ai でも使うなら ai 側の拡張 `custom.css` に同じ規則を移す。
+- テーマ本体には取り込み済み。ai の vendored 拡張は未同期（使うときにテーマから同期する）。
 
 ### コードの「後ろの説明」は素の箇条書きにしない
 
@@ -229,9 +230,8 @@ print(df.columns)
 
 ```
 プロジェクト/
-├── cite-image.lua      # Lua フィルター（.fig-cite / .bg-cover → style 展開）
-├── plotly-iframe.lua   # Lua フィルター（.plotly-iframe → iframe 展開）
-├── _metadata.yaml      # CSS 定義 + フィルター登録
+├── _extensions/rkskmt/cleanslidekit/   # テーマ拡張（cite-image.lua / plotly-iframe.lua / CSS を同梱）
+├── _metadata.yaml      # cleanslidekit-revealjs 形式 + d2/lightbox フィルタ
 ├── _quarto.yml         # resources: ["imgs/**", "iframes/**"] で_siteへコピー
 ├── imgs/               # 画像置き場
 └── iframes/            # Plotly 等の埋め込み用 HTML

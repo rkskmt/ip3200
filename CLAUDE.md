@@ -6,14 +6,15 @@ Quarto-based website for an information processing course. Written in Japanese.
 
 ## Tech Stack
 
-- **Quarto** website project with `revealjs` slide format (theme.scss + custom.css, no theme extension)
+- **Quarto** website project; slides use the vendored **cleanslidekit-revealjs** extension (theme.scss + custom.css + UI JS + Lua filters, in `_extensions/rkskmt/cleanslidekit/`)
 - **MathJax** for math rendering
-- Extensions: `lightbox`
+- **D2** (quarto-d2) for diagrams
+- Extensions: `cleanslidekit`, `d2`, `lightbox` (all vendored)
 
 ## Structure
 
-- `_quarto.yml` — site config and navigation
-- `_metadata.yaml` — shared slide format settings (revealjs theme, CSS)
+- `_quarto.yml` — site config and resources
+- `_metadata.yaml` — shared slide format settings (`cleanslidekit-revealjs` format + `d2`/`lightbox` filters)
 - `*.qmd` — lecture content files
 - `imgs/` — image assets
 - `_extensions/` — Quarto extensions
@@ -39,23 +40,34 @@ Use Python as the vehicle, but frame concepts as broadly as possible. Where a co
 
 ## Conventions
 
-- Content is written in **Japanese**
 - `##` delimits slides (do not use `---`)
-- `_metadata.yaml` applies `revealjs` (theme: default + theme.scss, plus custom.css and slide-ui.js via include-in-header) to all `.qmd` files
+- `_metadata.yaml` applies the `cleanslidekit-revealjs` format (+ `d2`/`lightbox` filters) to all `.qmd` files; theme, CSS, and UI JS ship from `_extensions/rkskmt/cleanslidekit/`
 - **Do not add frontmatter to `index.qmd`.**  Quarto **merges** (not overwrites) `format` from `_metadata.yaml` and the file, so adding `format: html` causes it to render in both formats and trigger a `rename` error. Raw HTML (e.g. `<details>/<summary>`) is fine — it needs no frontmatter.
 - **Do not use `listing:` in `index.qmd` either.** Same reason — it requires `format: html`, which conflicts.
 - `render: ["*.qmd"]` in `_quarto.yml` prevents `.md` files (e.g. CLAUDE.md) from being rendered
 - **When adding a new `.qmd`, add it to `index.qmd`.** It is the site's only navigation: every page renders as revealjs slides, so the Quarto website navbar is never displayed — do not maintain a `navbar` in `_quarto.yml` (verified 2026-06: no navbar element appears in any built page).
-- **`search-ui.js` provides site-wide full-text search**: a 検索 button + modal on every deck (loaded via `_metadata.yaml` include-in-header, listed in `_quarto.yml` resources) and the inline box on `index.qmd` (`#search-input`/`#search-results`). It reads Quarto's generated `search.json` and deep-links to slides via `#/slide-id` — no per-lecture maintenance.
+- **`search-ui.js` provides site-wide full-text search**: a 検索 button + modal on every deck (shipped by the cleanslidekit extension) and the inline box on `index.qmd` (`#search-input`/`#search-results`). It reads Quarto's generated `search.json` and deep-links to slides via `#/slide-id` — no per-lecture maintenance.
 - **Never add numbers to slide section headers or `index.qmd` link text.** Numbered slides (e.g. `## １. ...`) and numbered links (e.g. `第N回`) break on reorder — every insert or swap requires renaming every entry after it. Use plain titles only (e.g. `## \`in\` 演算子で存在確認`, `[dict改めて](dict.qmd)`).
 - Use Quarto callouts for key concepts
 - Slide text should use **bullet points**, not prose sentences
-- **Do not write the teaching intent or pedagogical effect onto the slide.** Things like "the figure on the right lets students answer ◯◯ on their own" or "this builds intuition for △△" are author/lecturer rationale, not slide content. They belong in conversation, design notes, or `doc/`, never in the deck itself. Put on the slide only the content students see; keep the *why* out of it.
+- **Every sentence on a slide must be written for the student — author-side circumstances are never slide content.** Litmus test: *does the student gain anything from reading this line?* Banned categories (each has been found and scrubbed in a real audit):
+   - **Authoring/build decisions**: 「（この節だけでも実行できるよう、読み込みから用意）」「本スライドは `"directory"` を使っている — 教室のWi-Fiが切れても動くように」
+   - **Curriculum decisions** — especially naming untaught material only to exclude it: 「`.plot.bar()` は今回は使わない」「だから3Dはこの回で扱った」
+   - **Lecture-structure narration / pedagogical-effect claims**: 「今回は「◯◯」の回」「〜が体感できる」 "this builds intuition for △△"
+   - Meta-information may stay only if reframed as a fact useful to the student: 「ここまで触ってきた動くグラフも、こうして保存したHTMLの埋め込み」 is fine; 「実は本スライドは以下のように埋め込んでいる」 is not.
+   Teaching intent belongs in conversation, design notes, or `doc/` — never in the deck.
+- **Never require untaught syntax.** Exercises (演習/Tweak) must be solvable with only what earlier slides have introduced — a one-line preview in a callout is fine, quizzing on it is not. Related consistency checks: introduce a feature on its **first** use (not silently one slide early), and back-references must be literally true (「前ページのコード」 only if it *is* the previous page; otherwise 「さっきのコード」).
 - **Assume students run Python in VSCode as normal `.py` scripts, not notebooks.** Code examples must be copy-pasteable into a Python file and still show the intended output.
-- **Any data file a code cell reads must have a download link in the slide body.** Students run the copied code on their own machine, so a bare `pd.read_csv("data/foo.csv")` / `np.loadtxt("data/foo.csv")` fails unless they can obtain `foo.csv`. Put `[foo.csv](data/foo.csv)` in the slide text and tell them to place it in their `data/` folder (see the tokyo_temp / datasaurus / students slides). Never show runnable student code that reads a data file without a download link for that file.
+- **Echoed executed cells (`echo: true`) must be self-contained** — include their own `import` and `read_csv`. Quarto runs all cells in one kernel, so a cell missing an import renders fine but breaks for the student who copies just that cell. Hidden authoring cells (`echo: false`) may share kernel state freely.
+- **`eval: false` cells (解答例) are never executed at render — run them manually before shipping** (including live-API solutions). Every 演習 slide carries a `code-fold` 解答例; keep this invariant when adding exercises.
+- **Any data file a code cell reads must have a download link in the slide body.** Students run the copied code on their own machine, so a bare `pd.read_csv("data/foo.csv")` / `np.loadtxt("data/foo.csv")` fails unless they can obtain `foo.csv`. Put `[foo.csv](data/foo.csv)` in the slide text and tell them to place it in their `data/` folder (see the tokyo_temp / datasaurus / students slides). Never show runnable student code that reads a data file without a download link for that file. (Exception: hidden `echo: false` figure cells may read committed CSVs without a link — students use the live-API code shown in the `code-fold` block instead.)
+- **Never fabricate figure data.** A chart presented as the result of an API or dataset must be computed from that real data — no `np.linspace` + noise stand-ins. For network sources, fetch once, commit the CSV under `data/` (e.g. `tanabata_pageviews_2025.csv`, `tokyo_population.csv`), load it in a hidden cell, and show the live-API code in a `code-fold`. Interpretation bullets must describe features actually present in the data — verify every number/claim against the file before writing it.
 - **Do not use notebook-only display style** such as a bare `df`, `df.head()`, `df.shape`, `series`, or expression as the final line when the goal is to show output. Use `print(...)` for textual/tabular output (e.g. `print(df.head())`, `print(df.shape)`). Use plotting calls like `plt.show()` when the goal is a figure.
-- For large tables or arrays, show only a small, intentional preview such as `print(df.head())`; do not dump all rows unless the full output is pedagogically necessary.
+- For large tables or arrays, show only a small, intentional preview such as `print(df.head())`; do not dump all rows unless the full output is pedagogically necessary (a 20-row dump pushes captions/callouts below the fold).
+- **One slide = one idea.** If bullets + code + output + note don't fit the 720px slide, split the slide at the conceptual seam (e.g. 条件抽出 became "mask を作る" and "行を残す") rather than shrinking the content. Some scroll on code+figure slides is idiomatic in this course; a caption or callout stranded far below the fold is not.
+- **String literals in student-visible code use double quotes** (`"数学I"`, `{"User-Agent": "..."}`). Inside f-string braces keep single quotes for Python <3.12 compatibility (`f"{d['title']}"`); genuine Python repr output shows singles — leave real output as-is.
 - **Highlight marker (`==text==`):** `hl.lua` filter turns `==text==` into a highlighted span (white text + cyan outline). For text with spaces use `[a b]{.hl}`.
+- **`**bold**` in a slide title (`##`) becomes a solid label chip** (white on the title's near-black, rounded — a content color like blue would compete with code/links in the body), not bold (the title is already bold, so plain bold is invisible). `## **Tweak**：線の見た目` renders `Tweak` as a blue chip, and the `：` directly after the chip is hidden at render time — keep writing it in the source (it stays in slide ids and search text; colons elsewhere are untouched). This is generic and universal — any `**word**` directly in a title becomes a chip showing that word (`## **重要**：…`, `## **例**：…`), so it is not Tweak-specific. In *body* text `**bold**` is still ordinary bold. Exception: `**…**` inside `{.en}` (abbreviation spell-out, e.g. `## LUT（[**Look-Up Table**]{.en}）`) is nested, not a direct child, so it stays plain bold. Styled via `.reveal h2 > strong` (+ the `strong + .fw-colon` hide rule) in `custom.css`.
 - **MathJax `\vec{}` height fix:** `\vec{a}` and `\vec{b}` render at different heights because `b` has an ascender. Use `\vec{\vphantom{b}a}` to match the arrow height of shorter letters to `b`.
 
 ## Error Handling
@@ -85,7 +97,7 @@ Each repo must build from a **fresh clone** on any machine — students build it
 
 Most tasks are content editing — the conventions above are all you need.
 
-When changing CSS, theme, or `_metadata.yaml`: read **[doc/troubleshooting.md](doc/troubleshooting.md)** first. It covers the Pandoc vs revealjs CSS distinction (critical — easy to confuse), the no-`.reveal`-prefix rule, and cache-clearing steps.
+When changing CSS, theme, or `_metadata.yaml`: read **[doc/troubleshooting.md](doc/troubleshooting.md)** first. It covers which `custom.css` copy to edit (the extension one — the root copy is overwritten on render), the Pandoc vs reveal CSS layers, and cache-clearing steps.
 
 **JavaScript robustness:** Inline JS in `_metadata.yaml` must be defensive. On slow networks, DOM elements or `Reveal` may not be ready when scripts run. Wrap operations in `try/catch` and check for existence (`if (!window.Reveal) return;`). Uncaught errors can break other scripts (e.g., MathJax) loaded on the same page.
 
@@ -102,5 +114,5 @@ document.addEventListener('keydown', function(e) {
 
 - **[doc/slide-notation.md](doc/slide-notation.md)** — image/citation overlay notation (`.fig-cite`, `.content-box`, etc.)
 - **[doc/deploy.md](doc/deploy.md)** — GitHub Pages deploy instructions
-- **[doc/troubleshooting.md](doc/troubleshooting.md)** — CSS/style changes: Pandoc vs revealjs, selector rules, cache issues
-- **[footer-nav.md](footer-nav.md)** — footer navigation script notes
+- **[doc/troubleshooting.md](doc/troubleshooting.md)** — CSS/style changes: which custom.css to edit, Pandoc vs reveal layers, cache issues
+- **[doc/engaging-lecture-design.md](doc/engaging-lecture-design.md)** — lecture design playbook (cold open, quiz-then-reveal, one-dataset-per-section)

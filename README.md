@@ -71,18 +71,19 @@ done
 ## ファイル構成
 
 ```
-_quarto.yml       サイト設定・ナビゲーション
-_metadata.yaml    スライド共通設定（テーマ・CSS・フィルタ）
+_quarto.yml       サイト設定・resources
+_metadata.yaml    スライド共通設定（cleanslidekit-revealjs 形式・d2/lightbox フィルタ）
+environment.yml   conda 環境定義
 index.qmd         トップページ（リンク一覧）
 *.qmd             各回のスライド
+data/             講義で使うデータ（CSV。スライドからDLリンクを張る）
 imgs/             画像ファイル
 pdf/              配布用ハンドアウトPDF（生成物・gitignore、上記参照）
 doc/              執筆ガイド・トラブルシュート
-hl.lua            ==text== ハイライト用 Lua フィルタ
-fw-colon.lua      全角コロン「：」の表示調整 Lua フィルタ
-cite-image.lua    画像引用表示用 Lua フィルタ
-_extensions/      Quarto 拡張（clean-revealjs テーマ等）
+_extensions/      Quarto 拡張（cleanslidekit テーマ＝CSS/UI JS/Lua フィルタ同梱、d2、lightbox）
 ```
+
+Lua フィルタ（`hl.lua`・`fw-colon.lua`・`cite-image.lua` 等）は cleanslidekit 拡張に同梱されている（ルート直下には置かない）。
 
 ## スライドの書き方
 
@@ -122,18 +123,17 @@ NumPy では ==@== が内積の演算子
 - 中身に空白は含められない（`==` と `==` の間に空白があるとマッチしない）
 - スペースを含む場合は `[a @ b]{.hl}` と書く
 
-### Mermaid 図
+### D2 図（ダイアグラム）
 
-コードブロックで `mermaid` を指定すると図が描画される。
+コードブロックで `.d2` を指定すると図が描画される（quarto-d2 拡張。`d2` バイナリは `environment.yml` で導入済み）。
 
 ````markdown
-```{mermaid}
-flowchart LR
-  A[入力] --> B[処理] --> C[出力]
+```{.d2 sketch="true" width="80%"}
+A -> B: ラベル
 ```
 ````
 
-`_metadata.yaml` でテーマとノード間隔を設定済み。
+クリックで拡大したい図は lightbox が効く（`lightbox: auto` 設定済み）。Mermaid は使わない（D2 に移行済み）。
 
 ### Matplotlib で日本語
 
@@ -154,5 +154,6 @@ import japanize_matplotlib  # これだけでOK
 ## 参考ドキュメント
 
 - [doc/slide-notation.md](doc/slide-notation.md) — 画像引用・オーバーレイ表記
+- [doc/engaging-lecture-design.md](doc/engaging-lecture-design.md) — 講義設計の装置（コールドオープン、クイズ→めくり等）
 - [doc/deploy.md](doc/deploy.md) — GitHub Pages デプロイ手順
-- [doc/troubleshooting.md](doc/troubleshooting.md) — CSS変更時の注意点（Pandoc vs revealjs の区別等）
+- [doc/troubleshooting.md](doc/troubleshooting.md) — CSS変更時の注意点（編集すべき custom.css の場所、Pandoc vs reveal の層）
