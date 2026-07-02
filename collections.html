@@ -233,7 +233,7 @@ rkskmt
 <section id="よく使われるcollection型" class="slide level2">
 <h2>よく使われるCollection型</h2>
 <div class="slide-body">
-<p>この３種類だけは絶対に知っておく必要あり</p>
+<p>他にもあるが、この３種類だけは <strong>使い方も含め</strong> 絶対に知っておくこと</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -256,13 +256,6 @@ rkskmt
 </tr>
 </tbody>
 </table>
-<div class="callout callout-none no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p><strong>他にもあるが、この三種だけは使い方も含め絶対に知っておくこと</strong></p>
-</div>
-</div>
-</div>
 </div>
 </section>
 <section id="一般的にはコンテナとも呼ばれる" class="slide level2">
@@ -270,9 +263,9 @@ rkskmt
 <div class="fig-cite" style="background-image: url('imgs/container.jpg'); height: 90%;">
 <div class="content-box pos-br" style="max-width: 80%;">
 <ul>
-<li><strong>英単語の意味</strong><span class="fw-colon">：</span>集めること・収集
+<li><strong>英単語の意味</strong><span class="fw-colon">：</span>入れ物・容器
 <ul>
-<li>Contain（内に含む）＋ er（やつ）</li>
+<li>Contain（内に含む）＋ er（もの）</li>
 </ul></li>
 </ul>
 </div>
@@ -421,7 +414,7 @@ rkskmt
 <ul>
 <li>最もよく使われるコンテナ</li>
 <li>データは追加順に並んでいる</li>
-<li>他言語では配列やアレイと呼ばれる　</li>
+<li>他言語では <strong>配列（<span class="en">array</span>）</strong> と呼ばれることが多い</li>
 <li>変数名は、要素の名詞の複数形をつけることが多い（foodsなど）</li>
 </ul>
 </div>
@@ -480,7 +473,7 @@ rkskmt
 <span id="cb3-11"><a></a><span class="bu">print</span>(scores[<span class="op">-</span><span class="dv">5</span>])  <span class="co"># 85</span></span>
 <span id="cb3-12"><a></a></span>
 <span id="cb3-13"><a></a><span class="co"># リストの長さ+1のマイナスを指定するとエラー</span></span>
-<span id="cb3-14"><a></a><span class="bu">print</span>(scores[<span class="op">-</span><span class="dv">6</span>])  <span class="co"># IndexError: list index out of range</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-14"><a></a><span class="co"># print(scores[-6])  # IndexError: list index out of range</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="要素の追加appendと結合" class="slide level2">
@@ -545,15 +538,15 @@ rkskmt
 <h2>演習問題（<code>list</code>）</h2>
 <div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>student_scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="prompt">
+<p>上記のリストをコピペして、以下の操作を実装せよ。</p>
+</div>
 <ol type="1">
-<li><code>append</code> を使って <strong>100点</strong> の学生を追加しよう</li>
-<li><strong>90点以上</strong>の学生の「学生番号」と「点数」を表示するプログラムを書こう
-<ul>
-<li>ヒント<span class="fw-colon">：</span><code>for</code> 文の中で <code>if</code> 文を使う</li>
-</ul></li>
-<li><strong>平均点</strong>を表示しよう</li>
+<li><code>append</code> で <strong>100点</strong> の学生を追加</li>
+<li><strong>90点以上</strong>の学生の「学生番号」と「点数」を表示（<code>for</code> 文の中で <code>if</code> 文）</li>
+<li><strong>平均点</strong>を表示</li>
 </ol>
-<div id="c74b6b31" class="cell" data-execution_count="1">
+<div id="40c29d12" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>student_scores.append(<span class="dv">100</span>)</span>
@@ -671,16 +664,16 @@ rkskmt
 <h2>演習問題（<code>dict</code>）</h2>
 <div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>, <span class="st">"Takahashi"</span>: <span class="dv">80</span>}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="prompt">
+<p>上記の dict をコピペして、以下の操作を実装せよ。</p>
+</div>
 <ol type="1">
-<li><code>dict</code> に100点を取った <strong>“Tanaka”</strong> さんを追加しよう</li>
-<li><strong>Takahashi</strong> さんの点数を <strong>92点</strong> に訂正しよう</li>
-<li><strong>90点以上</strong>の学生の「名前」と「点数」を表示するプログラムを書こう
-<ul>
-<li>ヒント<span class="fw-colon">：</span><code>items()</code> を使って value を判定</li>
-</ul></li>
-<li><code>"Yamada"</code> が <code>dict</code> に存在するか <code>in</code> を使って確認し、存在すれば点数を表示しよう</li>
+<li>100点を取った <strong>“Tanaka”</strong> さんを追加</li>
+<li><strong>Takahashi</strong> さんの点数を <strong>92点</strong> に訂正</li>
+<li><strong>90点以上</strong>の学生の「名前」と「点数」を表示（<code>items()</code> で value を判定）</li>
+<li><code>"Yamada"</code> が存在するか <code>in</code> で確認し、存在すれば点数を表示</li>
 </ol>
-<div id="9c5d33f1" class="cell" data-execution_count="2">
+<div id="9fc03d7d" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>name2score[<span class="st">"Tanaka"</span>] <span class="op">=</span> <span class="dv">100</span></span>
@@ -812,17 +805,17 @@ rkskmt
 <span id="cb14-6"><a></a><span class="co"># アクセスは list と同じ</span></span>
 <span id="cb14-7"><a></a><span class="bu">print</span>(score[<span class="dv">0</span>])   <span class="co"># 90</span></span>
 <span id="cb14-8"><a></a><span class="bu">print</span>(score[<span class="op">-</span><span class="dv">1</span>])  <span class="co"># 72（末尾からもOK）</span></span>
-<span id="cb14-9"><a></a><span class="bu">print</span>(score[<span class="dv">3</span>])   <span class="co"># IndexError: tuple index out of range</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-9"><a></a><span class="co"># print(score[3])  # IndexError: tuple index out of range</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="tuple-と-list-の違い制限" class="slide level2">
 <h2><code>tuple</code> と <code>list</code> の違い・制限</h2>
 <div class="slide-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co"># 値の変更はエラー（listでは可能。タプルでは付加）</span></span>
-<span id="cb15-2"><a></a>score[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">100</span>  <span class="co"># TypeError: 'tuple' object does not support item assignment</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co"># 値の変更はエラー（listでは可能。タプルでは不可）</span></span>
+<span id="cb15-2"><a></a><span class="co"># score[0] = 100     # TypeError: 'tuple' object does not support item assignment</span></span>
 <span id="cb15-3"><a></a></span>
-<span id="cb15-4"><a></a><span class="co"># 値を追加できない（同じく）</span></span>
-<span id="cb15-5"><a></a>score.append(<span class="dv">100</span>)  <span class="co"># error</span></span>
+<span id="cb15-4"><a></a><span class="co"># 値の追加もエラー</span></span>
+<span id="cb15-5"><a></a><span class="co"># score.append(100)  # AttributeError: 'tuple' object has no attribute 'append'</span></span>
 <span id="cb15-6"><a></a></span>
 <span id="cb15-7"><a></a><span class="co"># どうしても追加したい場合は、list へ一度変換すれば可能</span></span>
 <span id="cb15-8"><a></a><span class="co"># しかし、普通は使わない</span></span>
@@ -944,13 +937,16 @@ rkskmt
 <span id="cb19-2"><a></a>    <span class="cf">return</span> <span class="bu">min</span>(scores), <span class="bu">max</span>(scores)  <span class="co"># カッコなしでも tuple になる！</span></span>
 <span id="cb19-3"><a></a></span>
 <span id="cb19-4"><a></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="prompt">
+<p>上記の関数とリストをコピペして、以下の操作を実装せよ。</p>
+</div>
 <ol type="1">
-<li>関数を引数scoresでコールして、戻り値を変数 <code>result</code> で受け取る</li>
-<li><code>type(result)</code> と値を <code>print</code> する</li>
+<li>関数を引数 <code>scores</code> でコールして、戻り値を変数 <code>result</code> で受け取る</li>
+<li><code>type(result)</code> と値を表示</li>
 <li><code>low, high</code> の2変数でアンパックして「最低: ○点, 最高: ○点」と表示</li>
-<li><code>result[0] = 100</code> と改ざんを試してみよう</li>
+<li><code>result[0] = 100</code> と改ざんを試す（何が起きるか確認）</li>
 </ol>
-<div id="70e9644c" class="cell" data-execution_count="3">
+<div id="17a4903b" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>result <span class="op">=</span> get_min_max(scores)</span>
@@ -979,7 +975,7 @@ rkskmt
 <span id="cb21-7"><a></a><span class="co"># 全員の3教科平均を一気に計算（30人でも300人でも同じコード）</span></span>
 <span id="cb21-8"><a></a><span class="cf">for</span> s <span class="kw">in</span> students:</span>
 <span id="cb21-9"><a></a>    avg <span class="op">=</span> (s[<span class="st">"国語"</span>] <span class="op">+</span> s[<span class="st">"数学"</span>] <span class="op">+</span> s[<span class="st">"英語"</span>]) <span class="op">/</span> <span class="dv">3</span></span>
-<span id="cb21-10"><a></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>s[<span class="st">"名前"</span>]<span class="sc">}</span><span class="ss">: 平均 </span><span class="sc">{</span>avg<span class="sc">:.1f}</span><span class="ss">点'</span>)</span>
+<span id="cb21-10"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>s[<span class="st">'名前'</span>]<span class="sc">}</span><span class="ss">: 平均 </span><span class="sc">{</span>avg<span class="sc">:.1f}</span><span class="ss">点"</span>)</span>
 <span id="cb21-11"><a></a><span class="co"># 佐藤 太郎: 平均 86.7点</span></span>
 <span id="cb21-12"><a></a><span class="co"># 鈴木 花子: 平均 85.0点</span></span>
 <span id="cb21-13"><a></a><span class="co"># 高橋 一郎: 平均 88.3点</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1038,8 +1034,8 @@ rkskmt
 <li><strong><code>heapq</code></strong> — 最小値の取り出しに強い（heap木で管理）</li>
 <li><strong><code>set</code></strong> — 重複が許されない。和集合などの論理演算も可能</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>A <span class="op">=</span> {<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>}</span>
-<span id="cb22-2"><a></a>B <span class="op">=</span> {<span class="st">'b'</span>, <span class="st">'c'</span>, <span class="st">'d'</span>}</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>A <span class="op">=</span> {<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>}</span>
+<span id="cb22-2"><a></a>B <span class="op">=</span> {<span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>}</span>
 <span id="cb22-3"><a></a><span class="bu">print</span>(A <span class="op">|</span> B)  <span class="co"># {'a', 'b', 'c', 'd'}  ← 和集合</span></span>
 <span id="cb22-4"><a></a><span class="bu">print</span>(A <span class="op">&amp;</span> B)  <span class="co"># {'b', 'c'}            ← 積集合</span></span>
 <span id="cb22-5"><a></a><span class="bu">print</span>(A <span class="op">^</span> B)  <span class="co"># {'a', 'd'}            ← 対称差</span></span>

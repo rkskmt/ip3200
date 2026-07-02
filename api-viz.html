@@ -232,13 +232,13 @@ rkskmt
 <span id="cb1-4"><a></a>url <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"</span></span>
 <span id="cb1-5"><a></a>       <span class="st">"ja.wikipedia/all-access/user/"</span></span>
 <span id="cb1-6"><a></a>       <span class="st">"七夕/daily/20250101/20251231"</span>)</span>
-<span id="cb1-7"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb1-7"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
 <span id="cb1-8"><a></a></span>
 <span id="cb1-9"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
 <span id="cb1-10"><a></a>data <span class="op">=</span> response.json()</span>
 <span id="cb1-11"><a></a></span>
-<span id="cb1-12"><a></a>views <span class="op">=</span> np.array([item[<span class="st">'views'</span>]     <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">'items'</span>]])</span>
-<span id="cb1-13"><a></a>dates <span class="op">=</span> np.array([item[<span class="st">'timestamp'</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">'items'</span>]])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-12"><a></a>views <span class="op">=</span> np.array([item[<span class="st">"views"</span>]     <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
+<span id="cb1-13"><a></a>dates <span class="op">=</span> np.array([item[<span class="st">"timestamp"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -278,7 +278,7 @@ rkskmt
 <li>数値だけでは見落とすので <strong>まず描く</strong> — <a href="./visualize.html">可視化章</a> の大原則</li>
 <li>同じURL/ヘッダーで取得したあと <code>plt.plot(views)</code> するだけ</li>
 </ul>
-<div id="c7546df2" class="cell" data-execution_count="1">
+<div id="a5cb709b" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -287,7 +287,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="7d3df99c" class="cell" data-execution_count="2">
+<div id="ac563491" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> requests</span>
@@ -298,11 +298,11 @@ rkskmt
 <span id="cb2-6"><a></a>url <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"</span></span>
 <span id="cb2-7"><a></a>       <span class="st">"ja.wikipedia/all-access/user/"</span></span>
 <span id="cb2-8"><a></a>       <span class="st">"七夕/daily/20250101/20251231"</span>)</span>
-<span id="cb2-9"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb2-9"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
 <span id="cb2-10"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
 <span id="cb2-11"><a></a>data <span class="op">=</span> response.json()</span>
 <span id="cb2-12"><a></a></span>
-<span id="cb2-13"><a></a>views <span class="op">=</span> np.array([item[<span class="st">'views'</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">'items'</span>]])</span>
+<span id="cb2-13"><a></a>views <span class="op">=</span> np.array([item[<span class="st">"views"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
 <span id="cb2-14"><a></a></span>
 <span id="cb2-15"><a></a>plt.plot(views)</span>
 <span id="cb2-16"><a></a>plt.title(<span class="st">"「七夕」の閲覧数（2025年）"</span>)</span>
@@ -369,7 +369,7 @@ rkskmt
 <section id="よく見るともう一つ山がある" class="slide level2">
 <h2>よく見ると、もう一つ山がある</h2>
 <div class="slide-body">
-<div id="bc4a5b9c" class="cell" data-execution_count="3">
+<div id="3c6e93bd" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -444,14 +444,16 @@ rkskmt
 <p>演習</p>
 </div>
 </section>
-<section id="演習1枚のグラフに2本の折れ線" class="slide level2 badge-practice">
+<section id="演習1枚のグラフに2本の折れ線" class="slide level2 badge-practice scrollable">
 <h2>演習<span class="fw-colon">：</span>1枚のグラフに2本の折れ線</h2>
 <div class="slide-body">
-<ul>
-<li>前回の演習で取得した <code>views_desktop</code> と <code>views_mobile_web</code> を <strong>同じグラフに重ねる</strong></li>
-<li><code>plt.plot()</code> を 2回呼ぶだけ</li>
-<li>グラフの <strong>タイトルに max / min / mean</strong> を入れる</li>
-</ul>
+<div class="prompt">
+<p>前回の演習で取得した <code>views_desktop</code> と <code>views_mobile_web</code> を、<strong>同じグラフに重ねて</strong>比較せよ。</p>
+</div>
+<ol type="1">
+<li><code>plt.plot()</code> を2回呼ぶ — それだけで重なる</li>
+<li>グラフの <strong>タイトルに max / min / mean</strong> を表示</li>
+</ol>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -468,7 +470,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="03940c6f" class="cell" data-execution_count="5">
+<div id="e14d4c7c" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> requests</span>
@@ -476,7 +478,7 @@ rkskmt
 <span id="cb5-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
 <span id="cb5-4"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-5"><a></a></span>
-<span id="cb5-6"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb5-6"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
 <span id="cb5-7"><a></a>article <span class="op">=</span> <span class="st">"七夕"</span></span>
 <span id="cb5-8"><a></a>base <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"</span></span>
 <span id="cb5-9"><a></a>        <span class="ss">f"ja.wikipedia/</span><span class="ch">{{</span><span class="ss">access</span><span class="ch">}}</span><span class="ss">/user/</span><span class="sc">{</span>article<span class="sc">}</span><span class="ss">/daily/20250101/20251231"</span>)</span>
@@ -484,7 +486,7 @@ rkskmt
 <span id="cb5-11"><a></a><span class="kw">def</span> fetch_views(access):</span>
 <span id="cb5-12"><a></a>    url <span class="op">=</span> base.<span class="bu">format</span>(access<span class="op">=</span>access)</span>
 <span id="cb5-13"><a></a>    data <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers).json()</span>
-<span id="cb5-14"><a></a>    <span class="cf">return</span> np.array([item[<span class="st">'views'</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">'items'</span>]])</span>
+<span id="cb5-14"><a></a>    <span class="cf">return</span> np.array([item[<span class="st">"views"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
 <span id="cb5-15"><a></a></span>
 <span id="cb5-16"><a></a>views_desktop    <span class="op">=</span> fetch_views(<span class="st">"desktop"</span>)</span>
 <span id="cb5-17"><a></a>views_mobile_web <span class="op">=</span> fetch_views(<span class="st">"mobile-web"</span>)</span>
@@ -506,15 +508,14 @@ rkskmt
 <section id="演習富士山には山があるか" class="slide level2 badge-practice">
 <h2>演習<span class="fw-colon">：</span>富士山には山があるか</h2>
 <div class="slide-body">
+<div class="prompt">
+<p>「七夕」のコードの<strong>記事名を <code>富士山</code> に変えるだけ</strong>で2025年1年分を取得して描き、次の問いに答えよ。</p>
+</div>
 <ul>
-<li>記事名を <code>富士山</code> に変えて、2025年1年分を取得して描け
-<ul>
-<li>「七夕」のコードの <strong>記事名を変えるだけ</strong></li>
-</ul></li>
 <li>問い<span class="fw-colon">：</span>七夕のような <strong>鋭い山（スパイク）</strong> はあるか？</li>
 <li>問い<span class="fw-colon">：</span>スパイクがないなら、<strong>何が見えるか</strong>？ 自分の言葉で説明せよ</li>
 </ul>
-<div id="f5efd46d" class="cell" data-execution_count="6">
+<div id="20a28d1e" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> requests</span>
@@ -525,11 +526,11 @@ rkskmt
 <span id="cb6-6"><a></a>url <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"</span></span>
 <span id="cb6-7"><a></a>       <span class="st">"ja.wikipedia/all-access/user/"</span></span>
 <span id="cb6-8"><a></a>       <span class="st">"富士山/daily/20250101/20251231"</span>)</span>
-<span id="cb6-9"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb6-9"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
 <span id="cb6-10"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
 <span id="cb6-11"><a></a>data <span class="op">=</span> response.json()</span>
 <span id="cb6-12"><a></a></span>
-<span id="cb6-13"><a></a>views <span class="op">=</span> np.array([item[<span class="st">'views'</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">'items'</span>]])</span>
+<span id="cb6-13"><a></a>views <span class="op">=</span> np.array([item[<span class="st">"views"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
 <span id="cb6-14"><a></a></span>
 <span id="cb6-15"><a></a>plt.plot(views)</span>
 <span id="cb6-16"><a></a>plt.title(<span class="st">"「富士山」の閲覧数（2025年）"</span>)</span>
@@ -539,7 +540,7 @@ rkskmt
 </details>
 </div>
 <div class="fragment">
-<div id="693bdda0" class="cell" data-execution_count="7">
+<div id="4e880f76" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>

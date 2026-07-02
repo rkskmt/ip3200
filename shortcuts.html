@@ -528,7 +528,7 @@ rkskmt
 <tr class="odd">
 <td>実行</td>
 <td>Ctrl + F5</td>
-<td></td>
+<td>Ctrl + F5</td>
 <td>デバッグなしで実行（F5はデバッグ付き）</td>
 </tr>
 <tr class="even">
@@ -568,9 +568,9 @@ rkskmt
 <section id="演習①vs-codeで日本語入力" class="slide level2 badge-practice scrollable">
 <h2>演習①<span class="fw-colon">：</span>VS Codeで日本語入力</h2>
 <div class="slide-body">
-<p><strong>前提</strong><span class="fw-colon">：</span>日本語入力モード（IMEオン）で開始すること。</p>
-<p><strong>課題</strong><span class="fw-colon">：</span>VS Codeを開き、以下のコメントをそのまま入力しよう。</p>
-<p><strong>ゴール（これを入力する）</strong><span class="fw-colon">：</span></p>
+<div class="prompt">
+<p><strong>日本語入力モード（IMEオン）</strong> のままVS Codeを開き、次の2行のコメントをそのまま入力せよ。</p>
+</div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Alt（オルタナティブ）キーで行を移動できる</span></span>
 <span id="cb2-2"><a></a><span class="co"># Ctrl+/でコメントアウト、F5で実行</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -597,7 +597,9 @@ rkskmt
 <section id="演習②カットペースト字下げ" class="slide level2 badge-practice">
 <h2>演習②<span class="fw-colon">：</span>カット＆ペースト＋字下げ</h2>
 <div class="slide-body">
-<p><strong>課題</strong><span class="fw-colon">：</span>順序と字下げが崩れたコードを <strong>ショートカットだけで</strong> 直そう。</p>
+<div class="prompt">
+<p>順序と字下げが崩れた次のコードを、<strong>ショートカットだけで</strong>ゴールの形に直せ。</p>
+</div>
 <p><strong>初期状態</strong><span class="fw-colon">：</span></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>score <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
 <span id="cb3-2"><a></a>    <span class="cf">if</span> score <span class="op">&gt;=</span> <span class="dv">60</span>:</span>
@@ -620,7 +622,9 @@ rkskmt
 <section id="演習③コメントアウトでバグを追い詰める" class="slide level2 badge-practice scrollable">
 <h2>演習③<span class="fw-colon">：</span>コメントアウトでバグを追い詰める</h2>
 <div class="slide-body">
-<p><strong>課題</strong><span class="fw-colon">：</span>このプログラムを実行すると結果がおかしい。コメントアウトを使ってどのブロックが原因か突き止めよう。</p>
+<div class="prompt">
+<p>実行すると結果がおかしい次のプログラムで、<strong>どのブロックが原因か</strong>をコメントアウトで突き止めよ。</p>
+</div>
 <p><strong>コード（VS Codeに貼り付けて実行）</strong><span class="fw-colon">：</span></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">55</span>, <span class="dv">65</span>]</span>
 <span id="cb5-2"><a></a>names <span class="op">=</span> [<span class="st">"田中"</span>, <span class="st">"鈴木"</span>, <span class="st">"佐藤"</span>, <span class="st">"山田"</span>, <span class="st">"高橋"</span>]</span>
@@ -656,12 +660,11 @@ rkskmt
 <span id="cb5-32"><a></a><span class="bu">print</span>(<span class="st">"不合格者数："</span>, <span class="bu">len</span>(failed), <span class="st">"人"</span>)</span>
 <span id="cb5-33"><a></a><span class="bu">print</span>(<span class="st">"合格者数："</span>, <span class="bu">len</span>(scores) <span class="op">-</span> <span class="bu">len</span>(failed), <span class="st">"人"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>おかしい点</strong><span class="fw-colon">：</span>①で山田は55点と表示されるのに、③では山田が合格、④では不合格者0人になっている。</p>
-<p><strong>手順</strong><span class="fw-colon">：</span></p>
 <ol type="1">
-<li>まず全体を実行して、おかしい箇所を確認する</li>
+<li>まず全体を実行して、おかしい箇所を確認</li>
 <li>怪しいブロックを <strong>複数行まとめてCtrl+/</strong> でコメントアウトして再実行</li>
-<li>どのブロックをコメントアウトしたら結果が正しくなるかを確認する</li>
-<li>原因のブロックのどの行がバグか特定する</li>
+<li>どのブロックをコメントアウトしたら結果が正しくなるかを確認</li>
+<li>原因のブロックのどの行がバグかを特定</li>
 </ol>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -672,7 +675,7 @@ rkskmt
 <p><strong>なぜこうなるの？</strong></p>
 </div>
 <div class="callout-content">
-<p><code>normalize()</code> がリストを<strong>中で書き換えている</strong>ことが原因です。 なぜそうなるのかのメカニズムは、<a href="./variables.html">変数と代入</a>で詳しく解説します。</p>
+<p><code>normalize()</code> がリストを<strong>中で書き換えている</strong>ことが原因。 なぜそうなるのかのメカニズムは、<a href="./variables.html">変数と代入</a>で詳しく扱う。</p>
 </div>
 </div>
 </div>

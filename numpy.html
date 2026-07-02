@@ -293,7 +293,9 @@ rkskmt
 <section id="基本的な初期化" class="slide level2">
 <h2>基本的な初期化</h2>
 <div class="slide-body">
-<p>リストを <code>np.array()</code> に渡すと、NumPy配列になります。</p>
+<ul>
+<li>リストを <code>np.array()</code> に渡すと、NumPy配列になる</li>
+</ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a></a></span>
 <span id="cb5-3"><a></a>li <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
@@ -377,7 +379,7 @@ rkskmt
 <li>intなら <code>numpy.int64</code></li>
 <li>floatなら <code>numpy.float64</code></li>
 </ul></li>
-<li>異なる型の混在はできない</li>
+<li>異なる型は混ぜられない（intとfloatを混ぜると <strong>全部floatに統一</strong> される）</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a></a></span>
@@ -416,10 +418,10 @@ rkskmt
 <h2>本当に速いの？ — 100万要素で実測</h2>
 <div class="slide-body">
 <ul>
-<li>「for文が不要なため非常に高速」— 何倍くらい違うと思いますか？</li>
+<li>「for文が不要なため非常に高速」— 何倍くらい違うと思う？</li>
 </ul>
 <div class="fragment">
-<div id="46cdfecd" class="cell" data-execution_count="1">
+<div id="ad73a9a9" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>計測コードを表示</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> time</span>
@@ -446,12 +448,12 @@ rkskmt
 <span id="cb10-22"><a></a><span class="bu">print</span>(<span class="ss">f"→ 約 </span><span class="sc">{</span>t_list <span class="op">/</span> t_arr<span class="sc">:.0f}</span><span class="ss"> 倍速い"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>list（内包表記）: 23.6 ミリ秒
-ndarray:          0.26 ミリ秒
-→ 約 92 倍速い</code></pre>
+<pre><code>list（内包表記）: 25.4 ミリ秒
+ndarray:          0.32 ミリ秒
+→ 約 81 倍速い</code></pre>
 </div>
 </div>
-<div id="ff9749b7" class="cell" data-execution_count="2">
+<div id="e1b8e333" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -521,10 +523,10 @@ ndarray:          0.26 ミリ秒
 <span id="cb13-11"><a></a><span class="bu">print</span>(A[<span class="dv">1</span>, :])  <span class="co"># 2行目全体</span></span>
 <span id="cb13-12"><a></a><span class="bu">print</span>(A[:, <span class="dv">0</span>])  <span class="co"># 1列目全体</span></span>
 <span id="cb13-13"><a></a></span>
-<span id="cb13-14"><a></a><span class="co"># 転置</span></span>
+<span id="cb13-14"><a></a><span class="co"># 転置（transpose）</span></span>
 <span id="cb13-15"><a></a><span class="bu">print</span>(A.T)</span>
 <span id="cb13-16"><a></a><span class="bu">print</span>(B.T)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="629ee44f" class="cell" data-execution_count="3">
+<div id="1762e998" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -538,8 +540,8 @@ ndarray:          0.26 ミリ秒
 </ul>
 </div>
 </section>
-<section id="その他演算等" class="slide level2">
-<h2>その他演算等</h2>
+<section id="統計の組み込み関数" class="slide level2">
+<h2>統計の組み込み関数</h2>
 <div class="slide-body">
 <ul>
 <li>統計処理の組み込み関数も多数提供されている</li>
@@ -553,18 +555,23 @@ ndarray:          0.26 ミリ秒
 <span id="cb14-7"><a></a><span class="bu">print</span>(np.mean(scores))   <span class="co"># 平均値</span></span>
 <span id="cb14-8"><a></a><span class="bu">print</span>(np.median(scores)) <span class="co"># 中央値</span></span>
 <span id="cb14-9"><a></a><span class="bu">print</span>(np.var(scores))    <span class="co"># 分散</span></span>
-<span id="cb14-10"><a></a><span class="bu">print</span>(np.std(scores))    <span class="co"># 標準偏差</span></span>
-<span id="cb14-11"><a></a></span>
-<span id="cb14-12"><a></a><span class="co"># 3人の生徒の英語・数学・国語の成績</span></span>
-<span id="cb14-13"><a></a><span class="co"># 多次元の処理はaxisを指定する</span></span>
-<span id="cb14-14"><a></a>data <span class="op">=</span> np.array([[<span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">90</span>], [<span class="dv">75</span>, <span class="dv">88</span>, <span class="dv">92</span>], [<span class="dv">82</span>, <span class="dv">79</span>, <span class="dv">87</span>]])</span>
-<span id="cb14-15"><a></a><span class="bu">print</span>(np.mean(data, axis<span class="op">=</span><span class="dv">0</span>))  <span class="co"># 列ごと（各科目の平均）</span></span>
-<span id="cb14-16"><a></a><span class="bu">print</span>(np.mean(data, axis<span class="op">=</span><span class="dv">1</span>))  <span class="co"># 行ごと（各生徒の平均）</span></span>
-<span id="cb14-17"><a></a></span>
-<span id="cb14-18"><a></a><span class="co"># 条件を満たすデータの抽出</span></span>
-<span id="cb14-19"><a></a><span class="bu">print</span>(scores <span class="op">&gt;=</span> <span class="dv">85</span>)           <span class="co"># True/False</span></span>
-<span id="cb14-20"><a></a><span class="bu">print</span>(scores[scores <span class="op">&gt;=</span> <span class="dv">85</span>])   <span class="co"># 85点以上のデータ</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="57605c84" class="cell" data-execution_count="4">
+<span id="cb14-10"><a></a><span class="bu">print</span>(np.std(scores))    <span class="co"># 標準偏差</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="多次元は-axis-で潰す向きを指定" class="slide level2">
+<h2>多次元は axis で「潰す向き」を指定</h2>
+<div class="slide-body">
+<ul>
+<li>2次元以上の集計は <code>axis=</code> で向きを指定する</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-2"><a></a></span>
+<span id="cb15-3"><a></a><span class="co"># 3人の生徒の英語・数学・国語の成績</span></span>
+<span id="cb15-4"><a></a>data <span class="op">=</span> np.array([[<span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">90</span>], [<span class="dv">75</span>, <span class="dv">88</span>, <span class="dv">92</span>], [<span class="dv">82</span>, <span class="dv">79</span>, <span class="dv">87</span>]])</span>
+<span id="cb15-5"><a></a></span>
+<span id="cb15-6"><a></a><span class="bu">print</span>(np.mean(data, axis<span class="op">=</span><span class="dv">0</span>))  <span class="co"># 列ごと（各科目の平均）</span></span>
+<span id="cb15-7"><a></a><span class="bu">print</span>(np.mean(data, axis<span class="op">=</span><span class="dv">1</span>))  <span class="co"># 行ごと（各生徒の平均）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="b52add56" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -573,7 +580,22 @@ ndarray:          0.26 ミリ秒
 </div>
 </div>
 </div>
-<div id="99fab634" class="cell" data-execution_count="5">
+</div>
+</section>
+<section id="条件でフィルタする" class="slide level2">
+<h2>条件でフィルタする</h2>
+<div class="slide-body">
+<ul>
+<li>比較演算も「全要素いっせい」に効く</li>
+<li>その <code>True</code> / <code>False</code> を添字に渡すと <strong>フィルタ</strong> になる</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb16-2"><a></a></span>
+<span id="cb16-3"><a></a>scores <span class="op">=</span> np.array([<span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">75</span>, <span class="dv">88</span>, <span class="dv">92</span>, <span class="dv">82</span>, <span class="dv">79</span>, <span class="dv">87</span>])</span>
+<span id="cb16-4"><a></a></span>
+<span id="cb16-5"><a></a><span class="bu">print</span>(scores <span class="op">&gt;=</span> <span class="dv">85</span>)           <span class="co"># True/False</span></span>
+<span id="cb16-6"><a></a><span class="bu">print</span>(scores[scores <span class="op">&gt;=</span> <span class="dv">85</span>])   <span class="co"># 85点以上のデータ</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="dda60857" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -582,28 +604,76 @@ ndarray:          0.26 ミリ秒
 </div>
 </div>
 </div>
-<ul>
-<li>比較演算も「全要素いっせい」— その True/False を添字に渡すと<strong>フィルタ</strong>になる</li>
-</ul>
+<div class="caption-note">
+<p><code>scores &gt;= 85</code> が True/False の並びを作り、それを添字に渡すと True の位置だけ残る</p>
+</div>
 </div>
 </section>
-<section id="演習1" class="slide level2 badge-practice">
-<h2>演習1</h2>
+<section id="演習ndarrayを作って操作する" class="slide level2 badge-practice scrollable">
+<h2>演習<span class="fw-colon">：</span>ndarrayを作って操作する</h2>
 <div class="slide-body">
-<p>（１） 「1から10までの連続した整数」から成る<code>ndarray</code>を表示</p>
-<p>（２） その各要素を2倍にした新しい<code>ndarray</code>を作って表示</p>
-<p>（３） そのnumpy配列の各要素をランダムに並べ替えた新しい<code>ndarray</code>を表示</p>
-<p>（４） 100以上400以下のランダムな数字を１つ表示</p>
-<p>（５） 0以上1未満のランダムな数字を１つ表示</p>
+<div class="prompt">
+<p>NumPyで次の5つを作り、表示せよ。</p>
+</div>
+<ol type="1">
+<li>「1から10までの連続した整数」から成る <code>ndarray</code></li>
+<li>その各要素を2倍にした新しい <code>ndarray</code></li>
+<li>元の <code>ndarray</code> の各要素をランダムに並べ替えた新しい <code>ndarray</code></li>
+<li>100以上400以下のランダムな整数１つ</li>
+<li>0以上1未満のランダムな数１つ</li>
+</ol>
+<div id="4d11d042" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>解答例を見る</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb17-2"><a></a></span>
+<span id="cb17-3"><a></a>arr <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">11</span>)</span>
+<span id="cb17-4"><a></a><span class="bu">print</span>(arr)                        <span class="co"># (1)</span></span>
+<span id="cb17-5"><a></a></span>
+<span id="cb17-6"><a></a><span class="bu">print</span>(arr <span class="op">*</span> <span class="dv">2</span>)                    <span class="co"># (2)</span></span>
+<span id="cb17-7"><a></a></span>
+<span id="cb17-8"><a></a>shuffled <span class="op">=</span> arr.copy()             <span class="co"># (3) 並べ替えは破壊的なのでコピーしてから</span></span>
+<span id="cb17-9"><a></a>np.random.shuffle(shuffled)</span>
+<span id="cb17-10"><a></a><span class="bu">print</span>(shuffled)</span>
+<span id="cb17-11"><a></a></span>
+<span id="cb17-12"><a></a><span class="bu">print</span>(np.random.randint(<span class="dv">100</span>, <span class="dv">401</span>))  <span class="co"># (4) 上限は含まないので401</span></span>
+<span id="cb17-13"><a></a><span class="bu">print</span>(np.random.rand())             <span class="co"># (5)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 </div>
 </section>
-<section id="演習2" class="slide level2 badge-practice">
-<h2>演習2</h2>
+<section id="演習listとndarrayの型" class="slide level2 badge-practice scrollable">
+<h2>演習<span class="fw-colon">：</span>listとndarrayの型</h2>
 <div class="slide-body">
-<p>（１）<code>li = [10, 20, 30]</code> に対してfor文ですべての要素の型を確認するコードを書け</p>
-<p>（２）<code>li</code> をNumPyの配列 <code>arr</code> に変換し、要素の型を表示</p>
-<p>（３）同じく<code>li = [0.1, 0.2, 0.3]</code> の要素の型を表示</p>
-<p>（４）<code>li</code> をNumPyの配列 <code>arr2</code> に変換し、要素の型を表示</p>
+<div class="prompt">
+<p>同じ数値でも、<code>list</code> の要素とNumPy配列の要素で<strong>型がどう変わるか</strong>を <code>type()</code> で確かめよ。</p>
+</div>
+<ol type="1">
+<li><code>li = [10, 20, 30]</code> の全要素の型を <code>for</code> 文で表示</li>
+<li><code>li</code> をNumPyの配列 <code>arr</code> に変換し、要素の型を表示</li>
+<li><code>li = [0.1, 0.2, 0.3]</code> でも同様に全要素の型を表示</li>
+<li>これもNumPyの配列 <code>arr2</code> に変換し、要素の型を表示</li>
+</ol>
+<div id="a5b14ef0" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>解答例を見る</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb18-2"><a></a></span>
+<span id="cb18-3"><a></a>li <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
+<span id="cb18-4"><a></a><span class="cf">for</span> v <span class="kw">in</span> li:                <span class="co"># (1)</span></span>
+<span id="cb18-5"><a></a>    <span class="bu">print</span>(<span class="bu">type</span>(v))          <span class="co"># int</span></span>
+<span id="cb18-6"><a></a></span>
+<span id="cb18-7"><a></a>arr <span class="op">=</span> np.array(li)          <span class="co"># (2)</span></span>
+<span id="cb18-8"><a></a><span class="bu">print</span>(<span class="bu">type</span>(arr[<span class="dv">0</span>]))         <span class="co"># numpy.int64</span></span>
+<span id="cb18-9"><a></a></span>
+<span id="cb18-10"><a></a>li <span class="op">=</span> [<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>]</span>
+<span id="cb18-11"><a></a><span class="cf">for</span> v <span class="kw">in</span> li:                <span class="co"># (3)</span></span>
+<span id="cb18-12"><a></a>    <span class="bu">print</span>(<span class="bu">type</span>(v))          <span class="co"># float</span></span>
+<span id="cb18-13"><a></a></span>
+<span id="cb18-14"><a></a>arr2 <span class="op">=</span> np.array(li)         <span class="co"># (4)</span></span>
+<span id="cb18-15"><a></a><span class="bu">print</span>(<span class="bu">type</span>(arr2[<span class="dv">0</span>]))        <span class="co"># numpy.float64</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 
 
 <div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">

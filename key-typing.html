@@ -214,8 +214,8 @@ rkskmt
 <section id="キータイピングを速めよう" class="slide level2">
 <h2>キータイピングを速めよう</h2>
 <div class="slide-body">
-<p>入力の主流なインタフェースはいまだキーボードである。 音声入力もあるが、特に日本語においては漢字変換や URLなど音声だけで必要な入力を賄うことは不可能です。</p>
-<p>よって、PCを生涯使うであろう我々にとってキーボードを打つスピードは<strong>生涯の生産性</strong>に直結するため、速いに越したことはない。</p>
+<p>入力の主流なインタフェースはいまだキーボードである。 音声入力もあるが、特に日本語では漢字変換や URL など、音声だけで必要な入力を賄うことはできない。</p>
+<p>よって、PCを生涯使うであろう我々にとってキーボードを打つスピードは<strong>生涯の生産性</strong>に直結する — 速いに越したことはない。</p>
 </div>
 </section>
 <section id="日本語タイピング速度の目安" class="slide level2">
@@ -432,16 +432,17 @@ rkskmt
 </div>
 </div>
 </section>
-<section id="演習atcoderでプログラムを動かしてみよう" class="slide level2 badge-practice scrollable">
-<h2>演習<span class="fw-colon">：</span>AtCoderでプログラムを動かしてみよう</h2>
+<section id="演習atcoderでプログラムを動かす" class="slide level2 badge-practice scrollable">
+<h2>演習<span class="fw-colon">：</span>AtCoderでプログラムを動かす</h2>
 <div class="slide-body">
-<p>「<strong>AtCoder ABC 400 tasks</strong>」で検索して A 問題を解いてみよう。</p>
+<div class="prompt">
+<p><a href="https://atcoder.jp/contests/abc400/tasks/abc400_a">AtCoder Beginner Contest 400 の A問題</a> を解いて提出し、<strong>AC（<span class="en"><strong>Accepted</strong></span>）</strong> を取れ。</p>
+</div>
 <ol type="1">
-<li><a href="https://atcoder.jp/contests/abc400/tasks/abc400_a">AtCoder Beginner Contest 400 A問題</a> にアクセス</li>
+<li>「<strong>AtCoder ABC 400 tasks</strong>」で検索、または上のリンクからA問題にアクセス</li>
 <li>アカウントを作る</li>
-<li>問題を解く</li>
-<li>右上の「提出」ボタンを押す</li>
-<li>ジャッジ結果が <strong>AC（<span class="en"><strong>Accepted</strong></span>）</strong> になれば正解！
+<li>問題を解いて、右上の「提出」ボタンから提出</li>
+<li>ジャッジ結果が <strong>AC</strong> になれば正解
 <ul>
 <li><strong>WA（<span class="en"><strong>Wrong Answer</strong></span>）</strong> <span class="fw-colon">：</span>出力が違う</li>
 <li><strong>RE（<span class="en"><strong>Runtime Error</strong></span>）</strong> <span class="fw-colon">：</span>実行中にエラー</li>
@@ -457,7 +458,7 @@ rkskmt
 <p><strong>ABC400の解答例（Python）</strong></p>
 </div>
 <div class="callout-content">
-<div id="03caa350" class="cell" data-execution_count="1">
+<div id="863ad5c8" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>A <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
@@ -480,10 +481,10 @@ rkskmt
 <span id="cb2-5"><a></a>i <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
 <span id="cb2-6"><a></a></span>
 <span id="cb2-7"><a></a><span class="co"># スペース区切りの文字列（[foo bar baz]）をリストとして取得する場合</span></span>
-<span id="cb2-8"><a></a>ss <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> <span class="bu">input</span>().split()]</span>
+<span id="cb2-8"><a></a>ss <span class="op">=</span> <span class="bu">input</span>().split()</span>
 <span id="cb2-9"><a></a></span>
-<span id="cb2-10"><a></a><span class="co"># スペース区切りの2文字を別の変数としたい場合</span></span>
-<span id="cb2-11"><a></a>A, B <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> <span class="bu">input</span>().split()]</span>
+<span id="cb2-10"><a></a><span class="co"># スペース区切りの2文字を別の変数で受けたい場合（アンパック）</span></span>
+<span id="cb2-11"><a></a>A, B <span class="op">=</span> <span class="bu">input</span>().split()</span>
 <span id="cb2-12"><a></a></span>
 <span id="cb2-13"><a></a><span class="co"># 「Aを1 2 3 4からなる数列とする」のような場合</span></span>
 <span id="cb2-14"><a></a>As <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>().split()]</span>
@@ -498,7 +499,7 @@ rkskmt
 <ul>
 <li>キータイピング速度は<strong>生涯の生産性</strong>に直結する — 早めに投資する価値がある</li>
 <li>まず<strong>ホームポジション</strong>を身につけることが上達の近道</li>
-<li>目標は KPM 300（WPM 60）— 毎日少しずつ練習を続けよう</li>
+<li>まずは <strong>140 KPM</strong> を目標に — 毎日少しずつ練習を続けよう</li>
 <li>AtCoder の入力パターン（<code>input()</code> / <code>int()</code> / <code>split()</code>）は今後も頻出</li>
 </ul>
 

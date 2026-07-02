@@ -67,6 +67,43 @@
     margin-bottom: 10px;
     border-bottom: 1px solid #000;
 }
+/* A **bold** word placed directly in a slide title renders as a solid label
+   chip — white text on the title's own near-black (#131516 = the text color),
+   like a textbook section label. Deliberately NOT a content color: blue/teal/
+   coral all belong to body content (code, links, table numbers), so a colored
+   chip competes with the content; near-black reads as title *structure*.
+   Weight 600 (not 700) keeps the small white-on-dark type from bloating.
+   Generic — it keys off position (direct child of h2), not any specific word —
+   so `## **Tweak**：…`, `## **重要**：…`, `## **例**：…` all get the chip,
+   showing whatever word was bolded. Bold is otherwise meaningless in an
+   already-bold title, so nothing is displaced. Kept inline (not inline-block)
+   and smaller than the title's line box, so a title on the slide's first row
+   is not clipped at the top by the slide's overflow.
+   `> ` (direct child) is deliberate: <strong> nested in .en (the abbreviation
+   spell-out, e.g. `## LUT（[**Look-Up Table**]{.en}）`) is a grandchild and
+   stays untouched. */
+.reveal h2 > strong {
+    font-size: 0.55em;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    white-space: nowrap;        /* a label never line-breaks inside its chip */
+    color: #fff;
+    background: #131516;
+    border-radius: 4px;
+    padding: 0.3em 0.75em;
+    margin-right: 0.55em;
+    vertical-align: 0.28em;     /* optical center against the 2.5rem title glyphs */
+    -webkit-text-stroke: 0;     /* same guard as .en strong: no double-weighting */
+}
+/* Sources keep the readable `**Tweak**：…` notation, but after the chip the
+   full-width colon is a leftover text separator — the chip's own margin
+   already separates. fw-colon.lua wraps every ： in span.fw-colon, so the one
+   directly following the chip can be hidden without touching the source.
+   Display-only: slide ids and search text keep the colon; colons elsewhere in
+   the title (and in chip-less titles like `## 演習：…`) are untouched. */
+.reveal h2 > strong + .fw-colon {
+    display: none;
+}
 .reveal h3 {
     font-style: normal !important;
     font-weight: bold !important;
@@ -135,6 +172,15 @@
   margin-right: 0.8rem;
   max-width: calc(100% - 1.6rem);
   box-sizing: border-box;
+}
+/* div.sourceCode and pre are nested (scaffold > div.sourceCode > pre) and BOTH
+   match the margin rule above, doubling the inset to 1.6rem — while bare <pre>
+   blocks (text/output) get 0.8rem. Zero the inner margin so every code/output
+   box is inset exactly 0.8rem; the copy/expand button offsets rely on this. */
+.reveal div.sourceCode pre {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 100%;
 }
 .reveal pre code {
   font-size: 1.35rem !important;
@@ -230,6 +276,23 @@ table td:first-child {
    intent to the exact code to type. Header hidden (kept for screen readers); the
    slide intro gives the context. Palette = the practice badge: coral accents,
    neutral bands. Value tweaks → 2-col table (intent | `code`). Task → bullet list. */
+/* Exercise prompt (問題文) — a plain rounded frame around the task statement
+   on 演習 slides. Deliberately neutral: typed callouts carry colored-header
+   emphasis and .caption-note annotates the element above it — this frame just
+   marks "this paragraph is the problem". Usage: ::: {.prompt} 問題文 ::: */
+.reveal .prompt {
+  border: 1.5px solid #b9c2cf;
+  border-radius: 10px;
+  background: #fafbfd;
+  padding: 0.5em 0.9em;
+  margin: 0.35em 0 0.75em;
+}
+.reveal .prompt p {
+  margin: 0;
+}
+.reveal .prompt p + p {
+  margin-top: 0.4em;
+}
 .tweak {
   width: fit-content;
   max-width: 96%;
@@ -462,9 +525,15 @@ pre.shell code > span > a:first-child::before {
 .code-expand-scaffold {
   position: relative !important;
 }
+/* The scaffolds span the full content width while the visible box (<pre>) is
+   inset 0.8rem (see the sourceCode margin rules), so anchor the buttons to the
+   box edge, not the scaffold edge — otherwise they float outside the box. */
+.reveal .code-copy-outer-scaffold > .code-copy-button {
+  right: 0.8rem !important;
+}
 .code-expand-button {
   position: absolute;
-  right: 6px;
+  right: calc(0.8rem + 6px);
   bottom: 6px;
   z-index: 3;
   display: flex;

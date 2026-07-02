@@ -229,7 +229,7 @@ rkskmt
 <section id="宣言" class="slide level2">
 <h2>宣言</h2>
 <div class="slide-body">
-<p><code>{}</code> で <code>キー: 値</code> をカンマ区切りで入力すると辞書になる。</p>
+<p><code>{}</code> の中に <code>キー: 値</code> をカンマ区切りで書くと辞書になる。</p>
 <ul>
 <li>キーは重複不可</li>
 <li>値は何でもよい</li>
@@ -502,13 +502,15 @@ Takahashiさんは80点です</code></pre>
 <h2>演習問題</h2>
 <div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>, <span class="st">"Takahashi"</span>: <span class="dv">80</span>, <span class="st">"Tanaka"</span>: <span class="dv">60</span>}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>上記の dict をコピーして、以下の操作を実装せよ</p>
+<div class="prompt">
+<p>上記の dict をコピペして、以下の操作を実装せよ。</p>
+</div>
 <ol type="1">
-<li><code>.get()</code> を使って <strong>“Sato”</strong> さんの点数を取り出す（存在しなければ <code>0</code> を返す）</li>
+<li><code>.get()</code> で <strong>“Sato”</strong> さんの点数を取り出す（存在しなければ <code>0</code> を返す）</li>
 <li><strong>Tanaka</strong> さんを <code>del</code> で削除</li>
-<li><code>.values()</code> と <code>sum</code> / <code>len</code> を使って、全員の <strong>平均点</strong> を表示</li>
+<li><code>.values()</code> と <code>sum</code> / <code>len</code> で、全員の <strong>平均点</strong> を表示</li>
 </ol>
-<div id="534393c6" class="cell" data-execution_count="1">
+<div id="55eea32c" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="co"># 1</span></span>
@@ -527,11 +529,13 @@ Takahashiさんは80点です</code></pre>
 <section id="演習問題辞書内包表記" class="slide level2 badge-practice scrollable">
 <h2>演習問題（辞書内包表記）</h2>
 <div class="slide-body">
-<p>以下の操作を実装せよ</p>
+<div class="prompt">
+<p>以下の3つを<strong>辞書内包表記</strong>で実装せよ。</p>
+</div>
 <ol type="1">
-<li><code>range(1, 6)</code> を使って、<code>{1: 1, 2: 4, 3: 9, 4: 16, 5: 25}</code> という「数 → 2乗」の dict を作ろう</li>
-<li><code>name2score</code> から、<strong>80点以上の学生だけ</strong> を取り出した新しい dict を作ろう</li>
-<li><code>name2score</code> の <strong>キーと値を入れ替えた</strong> dict（<code>score2name</code>）を作ろう</li>
+<li><code>range(1, 6)</code> から <code>{1: 1, 2: 4, 3: 9, 4: 16, 5: 25}</code> という「数 → 2乗」の dict を作る</li>
+<li><code>name2score</code> から <strong>80点以上の学生だけ</strong> を取り出した新しい dict を作る</li>
+<li><code>name2score</code> の <strong>キーと値を入れ替えた</strong> dict（<code>score2name</code>）を作る</li>
 </ol>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -547,7 +551,7 @@ Takahashiさんは80点です</code></pre>
 </div>
 </div>
 </div>
-<div id="85bf6c5f" class="cell" data-execution_count="2">
+<div id="84c15b9f" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="co"># 1</span></span>
@@ -575,13 +579,15 @@ Takahashiさんは80点です</code></pre>
 <span id="cb20-5"><a></a>    {<span class="st">"name"</span>: <span class="st">"B"</span>, <span class="st">"国語"</span>: <span class="dv">60</span>, <span class="st">"数学"</span>: <span class="dv">85</span>, <span class="st">"英語"</span>: <span class="dv">95</span>},</span>
 <span id="cb20-6"><a></a>    {<span class="st">"name"</span>: <span class="st">"C"</span>, <span class="st">"国語"</span>: <span class="dv">75</span>, <span class="st">"数学"</span>: <span class="dv">70</span>, <span class="st">"英語"</span>: <span class="dv">80</span>},</span>
 <span id="cb20-7"><a></a>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>上記の学生の国語・数学・英語の点数をもつ list of dict をコピーして、以下の操作を実装せよ。</p>
+<div class="prompt">
+<p>上記の学生の国語・数学・英語の点数をもつ list of dict をコピペして、以下の操作を実装せよ。</p>
+</div>
 <ol type="1">
-<li><strong>B さんの数学</strong>の点数を表示しよう</li>
-<li><strong>C さんの3科目合計</strong>を表示しよう</li>
-<li><strong>各学生の平均点</strong>を <code>for</code> 文で順に表示しよう</li>
+<li><strong>B さんの数学</strong>の点数を表示</li>
+<li><strong>C さんの3科目合計</strong>を表示</li>
+<li><strong>各学生の平均点</strong>を <code>for</code> 文で順に表示</li>
 </ol>
-<div id="f30c7c51" class="cell" data-execution_count="3">
+<div id="b2f29d7d" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="co"># 1</span></span>

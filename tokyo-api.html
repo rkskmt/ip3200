@@ -240,7 +240,7 @@ rkskmt
 <ul>
 <li><strong>透明性</strong><span class="fw-colon">：</span>行政の活動を市民が検証できる</li>
 <li><strong>イノベーション</strong><span class="fw-colon">：</span>民間がデータを活用してサービス開発</li>
-<li><strong>効率化</strong><span class="fw-colon">：</span>データに基づく政策立案（EBPM）</li>
+<li><strong>効率化</strong><span class="fw-colon">：</span>データに基づく政策立案（<strong>EBPM</strong>: <span class="en"><strong>E</strong>vidence-<strong>B</strong>ased <strong>P</strong>olicy <strong>M</strong>aking</span>）</li>
 </ul>
 </div>
 </div>
@@ -470,8 +470,8 @@ rkskmt
 <span id="cb3-3"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
 <span id="cb3-4"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
 <span id="cb3-5"><a></a></span>
-<span id="cb3-6"><a></a>params <span class="op">=</span> {<span class="st">'limit'</span>: <span class="dv">200</span>}</span>
-<span id="cb3-7"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb3-6"><a></a>params <span class="op">=</span> {<span class="st">"limit"</span>: <span class="dv">200</span>}</span>
+<span id="cb3-7"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
 <span id="cb3-8"><a></a>body <span class="op">=</span> {}</span>
 <span id="cb3-9"><a></a></span>
 <span id="cb3-10"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>params, headers<span class="op">=</span>headers, json<span class="op">=</span>body)</span>
@@ -542,8 +542,8 @@ rkskmt
 <span id="cb5-4"><a></a>}</span>
 <span id="cb5-5"><a></a></span>
 <span id="cb5-6"><a></a><span class="co"># 取得後に Python でフィルタリング</span></span>
-<span id="cb5-7"><a></a>filtered <span class="op">=</span> [r <span class="cf">for</span> r <span class="kw">in</span> data[<span class="st">'hits'</span>]</span>
-<span id="cb5-8"><a></a>            <span class="cf">if</span> <span class="dv">1950</span> <span class="op">&lt;=</span> r[<span class="st">'西暦（年次）'</span>] <span class="op">&lt;=</span> <span class="dv">2023</span>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-7"><a></a>filtered <span class="op">=</span> [r <span class="cf">for</span> r <span class="kw">in</span> data[<span class="st">"hits"</span>]</span>
+<span id="cb5-8"><a></a>            <span class="cf">if</span> <span class="dv">1950</span> <span class="op">&lt;=</span> r[<span class="st">"西暦（年次）"</span>] <span class="op">&lt;=</span> <span class="dv">2023</span>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="比較演算子" class="slide level2">
@@ -610,19 +610,19 @@ rkskmt
 <div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb6-3"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
 <span id="cb6-4"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
 <span id="cb6-5"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
 <span id="cb6-6"><a></a></span>
-<span id="cb6-7"><a></a>params <span class="op">=</span> {<span class="st">'limit'</span>: <span class="dv">200</span>}</span>
+<span id="cb6-7"><a></a>params <span class="op">=</span> {<span class="st">"limit"</span>: <span class="dv">200</span>}</span>
 <span id="cb6-8"><a></a>body <span class="op">=</span> {<span class="st">"column"</span>: [<span class="st">"西暦（年次）"</span>, <span class="st">"東京都／人口"</span>]}</span>
 <span id="cb6-9"><a></a></span>
 <span id="cb6-10"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>params, headers<span class="op">=</span>headers, json<span class="op">=</span>body)</span>
 <span id="cb6-11"><a></a>data <span class="op">=</span> response.json()</span>
 <span id="cb6-12"><a></a></span>
 <span id="cb6-13"><a></a><span class="co"># Python でフィルタリング</span></span>
-<span id="cb6-14"><a></a>filtered <span class="op">=</span> [r <span class="cf">for</span> r <span class="kw">in</span> data[<span class="st">'hits'</span>]</span>
-<span id="cb6-15"><a></a>            <span class="cf">if</span> <span class="dv">1950</span> <span class="op">&lt;=</span> r[<span class="st">'西暦（年次）'</span>] <span class="op">&lt;=</span> <span class="dv">2023</span>]</span>
+<span id="cb6-14"><a></a>filtered <span class="op">=</span> [r <span class="cf">for</span> r <span class="kw">in</span> data[<span class="st">"hits"</span>]</span>
+<span id="cb6-15"><a></a>            <span class="cf">if</span> <span class="dv">1950</span> <span class="op">&lt;=</span> r[<span class="st">"西暦（年次）"</span>] <span class="op">&lt;=</span> <span class="dv">2023</span>]</span>
 <span id="cb6-16"><a></a></span>
 <span id="cb6-17"><a></a><span class="bu">print</span>(<span class="ss">f"総件数: </span><span class="sc">{</span><span class="bu">len</span>(filtered)<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb6-18"><a></a><span class="cf">for</span> record <span class="kw">in</span> filtered[:<span class="dv">5</span>]:</span>
@@ -638,7 +638,7 @@ rkskmt
 <section id="人口推移の可視化" class="slide level2">
 <h2>人口推移の可視化</h2>
 <div class="slide-body">
-<div id="716473f7" class="cell" data-execution_count="1">
+<div id="26e7ac75" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -649,7 +649,7 @@ rkskmt
 </div>
 <ul>
 <li>戦後復興期から高度経済成長期にかけて <strong>急増</strong></li>
-<li>1970年代以降は <strong>緩やかな増加</strong></li>
+<li>1970年代からしばらく <strong>横ばい</strong>、1990年代後半から再び増加</li>
 <li>このように <strong>まず描く</strong> ことで傾向が見える</li>
 </ul>
 </div>
@@ -659,11 +659,11 @@ rkskmt
 <div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb8-2"><a></a></span>
-<span id="cb8-3"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb8-3"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
 <span id="cb8-4"><a></a>api_id <span class="op">=</span> <span class="st">"t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0"</span></span>
 <span id="cb8-5"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
 <span id="cb8-6"><a></a></span>
-<span id="cb8-7"><a></a>params <span class="op">=</span> {<span class="st">'limit'</span>: <span class="dv">5</span>}</span>
+<span id="cb8-7"><a></a>params <span class="op">=</span> {<span class="st">"limit"</span>: <span class="dv">5</span>}</span>
 <span id="cb8-8"><a></a>body <span class="op">=</span> {}</span>
 <span id="cb8-9"><a></a></span>
 <span id="cb8-10"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>params, headers<span class="op">=</span>headers, json<span class="op">=</span>body)</span>
@@ -671,10 +671,10 @@ rkskmt
 <span id="cb8-12"><a></a></span>
 <span id="cb8-13"><a></a><span class="bu">print</span>(<span class="ss">f"品川区の避難所情報（総件数: </span><span class="sc">{</span>data[<span class="st">'total'</span>]<span class="sc">}</span><span class="ss">件）"</span>)</span>
 <span id="cb8-14"><a></a></span>
-<span id="cb8-15"><a></a><span class="cf">for</span> facility <span class="kw">in</span> data[<span class="st">'hits'</span>]:</span>
+<span id="cb8-15"><a></a><span class="cf">for</span> facility <span class="kw">in</span> data[<span class="st">"hits"</span>]:</span>
 <span id="cb8-16"><a></a>    <span class="bu">print</span>(<span class="st">"---"</span>)</span>
 <span id="cb8-17"><a></a>    <span class="cf">for</span> key, value <span class="kw">in</span> facility.items():</span>
-<span id="cb8-18"><a></a>        <span class="cf">if</span> key <span class="op">!=</span> <span class="st">'row'</span>:</span>
+<span id="cb8-18"><a></a>        <span class="cf">if</span> key <span class="op">!=</span> <span class="st">"row"</span>:</span>
 <span id="cb8-19"><a></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a></a>品川区の避難所情報（総件数: 25件）</span>
 <span id="cb9-2"><a></a>---</span>
@@ -690,18 +690,18 @@ rkskmt
 <div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb10-2"><a></a></span>
-<span id="cb10-3"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb10-3"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
 <span id="cb10-4"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d0000000093-0af9bfa497bc7be6ef83e5bfd1fdcfc6-0"</span></span>
 <span id="cb10-5"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
 <span id="cb10-6"><a></a></span>
-<span id="cb10-7"><a></a>params <span class="op">=</span> {<span class="st">'limit'</span>: <span class="dv">5</span>}</span>
+<span id="cb10-7"><a></a>params <span class="op">=</span> {<span class="st">"limit"</span>: <span class="dv">5</span>}</span>
 <span id="cb10-8"><a></a>body <span class="op">=</span> {}</span>
 <span id="cb10-9"><a></a></span>
 <span id="cb10-10"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>params, headers<span class="op">=</span>headers, json<span class="op">=</span>body)</span>
 <span id="cb10-11"><a></a>data <span class="op">=</span> response.json()</span>
 <span id="cb10-12"><a></a></span>
 <span id="cb10-13"><a></a><span class="bu">print</span>(<span class="ss">f"東京都の避難所（総件数: </span><span class="sc">{</span>data[<span class="st">'total'</span>]<span class="sc">}</span><span class="ss">件）"</span>)</span>
-<span id="cb10-14"><a></a><span class="cf">for</span> shelter <span class="kw">in</span> data[<span class="st">'hits'</span>]:</span>
+<span id="cb10-14"><a></a><span class="cf">for</span> shelter <span class="kw">in</span> data[<span class="st">"hits"</span>]:</span>
 <span id="cb10-15"><a></a>    <span class="bu">print</span>(<span class="ss">f"施設名: </span><span class="sc">{</span>shelter[<span class="st">'避難所_施設名称'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb10-16"><a></a>    <span class="bu">print</span>(<span class="ss">f"住所: </span><span class="sc">{</span>shelter[<span class="st">'所在地住所'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb10-17"><a></a>    <span class="bu">print</span>(<span class="ss">f"区市町村: </span><span class="sc">{</span>shelter[<span class="st">'指定市区町村名'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -723,7 +723,7 @@ rkskmt
 <div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb12-2"><a></a></span>
-<span id="cb12-3"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb12-3"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
 <span id="cb12-4"><a></a>api_id <span class="op">=</span> <span class="st">"t000018d0000000044-3db21a77b0af1c54b411f79604444ca2-0"</span></span>
 <span id="cb12-5"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
 <span id="cb12-6"><a></a>body <span class="op">=</span> {}</span>
@@ -733,10 +733,10 @@ rkskmt
 <span id="cb12-10"><a></a></span>
 <span id="cb12-11"><a></a><span class="bu">print</span>(<span class="ss">f"都営バス運賃情報（総件数: </span><span class="sc">{</span>data[<span class="st">'total'</span>]<span class="sc">}</span><span class="ss">件）"</span>)</span>
 <span id="cb12-12"><a></a></span>
-<span id="cb12-13"><a></a><span class="cf">for</span> fare_info <span class="kw">in</span> data[<span class="st">'hits'</span>][:<span class="dv">5</span>]:</span>
+<span id="cb12-13"><a></a><span class="cf">for</span> fare_info <span class="kw">in</span> data[<span class="st">"hits"</span>][:<span class="dv">5</span>]:</span>
 <span id="cb12-14"><a></a>    <span class="bu">print</span>(<span class="st">"---"</span>)</span>
 <span id="cb12-15"><a></a>    <span class="cf">for</span> key, value <span class="kw">in</span> fare_info.items():</span>
-<span id="cb12-16"><a></a>        <span class="cf">if</span> key <span class="op">!=</span> <span class="st">'row'</span>:</span>
+<span id="cb12-16"><a></a>        <span class="cf">if</span> key <span class="op">!=</span> <span class="st">"row"</span>:</span>
 <span id="cb12-17"><a></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a></a>都営バス運賃情報（総件数: 4件）</span>
 <span id="cb13-2"><a></a>---</span>
@@ -760,17 +760,17 @@ rkskmt
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb14-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb14-3"><a></a></span>
-<span id="cb14-4"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
+<span id="cb14-4"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
 <span id="cb14-5"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
 <span id="cb14-6"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
 <span id="cb14-7"><a></a></span>
-<span id="cb14-8"><a></a>params <span class="op">=</span> {<span class="st">'limit'</span>: <span class="dv">200</span>}</span>
+<span id="cb14-8"><a></a>params <span class="op">=</span> {<span class="st">"limit"</span>: <span class="dv">200</span>}</span>
 <span id="cb14-9"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>params, headers<span class="op">=</span>headers, json<span class="op">=</span>{})</span>
 <span id="cb14-10"><a></a>data <span class="op">=</span> response.json()</span>
 <span id="cb14-11"><a></a></span>
 <span id="cb14-12"><a></a><span class="co"># 人口を抽出</span></span>
-<span id="cb14-13"><a></a>population <span class="op">=</span> [r[<span class="st">'東京都／人口'</span>] <span class="cf">for</span> r <span class="kw">in</span> data[<span class="st">'hits'</span>]</span>
-<span id="cb14-14"><a></a>              <span class="cf">if</span> <span class="bu">isinstance</span>(r.get(<span class="st">'東京都／人口'</span>), <span class="bu">int</span>)]</span>
+<span id="cb14-13"><a></a>population <span class="op">=</span> [r[<span class="st">"東京都／人口"</span>] <span class="cf">for</span> r <span class="kw">in</span> data[<span class="st">"hits"</span>]</span>
+<span id="cb14-14"><a></a>              <span class="cf">if</span> <span class="bu">isinstance</span>(r.get(<span class="st">"東京都／人口"</span>), <span class="bu">int</span>)]</span>
 <span id="cb14-15"><a></a>population <span class="op">=</span> np.array(population)</span>
 <span id="cb14-16"><a></a></span>
 <span id="cb14-17"><a></a><span class="bu">print</span>(<span class="ss">f"平均: </span><span class="sc">{</span>np<span class="sc">.</span>mean(population)<span class="sc">:,.0f}</span><span class="ss">人"</span>)</span>
@@ -792,11 +792,11 @@ rkskmt
 <li>数値だけでは傾向がわからない</li>
 <li><a href="./visualize.html">visualize章</a> の原則<span class="fw-colon">：</span><strong>Always plot your data first.</strong></li>
 </ul>
-<div id="d1431922" class="cell" data-execution_count="2">
+<div id="85679e43" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="tokyo-api_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="tokyo-api_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="674" height="277"></a></p>
+<p><a href="tokyo-api_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="tokyo-api_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="674" height="276"></a></p>
 </figure>
 </div>
 </div>
@@ -804,7 +804,7 @@ rkskmt
 <ul>
 <li><strong>右肩上がり</strong> — 150年で約16倍に増加</li>
 <li><strong>1940年代に急落</strong> — 戦争による疎開・被害</li>
-<li><strong>2020年代に停滞</strong> — コロナ禍の影響が見える</li>
+<li><strong>2020年代は横ばい</strong> — コロナ禍の2021年には減少もあった</li>
 </ul>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -846,7 +846,7 @@ rkskmt
 </tr>
 <tr class="even">
 <td>取得件数指定</td>
-<td><code>params = {'limit': 200}</code></td>
+<td><code>params = {"limit": 200}</code></td>
 </tr>
 <tr class="odd">
 <td>列の絞り込み</td>
@@ -858,11 +858,11 @@ rkskmt
 </tr>
 <tr class="odd">
 <td>全件数確認</td>
-<td><code>data['total']</code></td>
+<td><code>data["total"]</code></td>
 </tr>
 <tr class="even">
 <td>データ本体</td>
-<td><code>data['hits']</code>（list of dict）</td>
+<td><code>data["hits"]</code>（list of dict）</td>
 </tr>
 </tbody>
 </table>
@@ -893,9 +893,10 @@ rkskmt
 <section id="演習1避難所データの可視化" class="slide level2 badge-practice">
 <h2>演習1<span class="fw-colon">：</span>避難所データの可視化</h2>
 <div class="slide-body">
+<div class="prompt">
+<p>任意の区市町村の<strong>避難所データ</strong>を取得し、<strong>件数</strong>を表示せよ。</p>
+</div>
 <ul>
-<li>任意の区市町村の <strong>避難所データ</strong> を取得</li>
-<li>避難所の <strong>件数</strong> を print</li>
 <li>（発展）緯度・経度があれば散布図で地図風にプロット</li>
 </ul>
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -914,44 +915,61 @@ rkskmt
 </div>
 </div>
 </div>
+<div id="ba39d46a" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>解答例を見る（品川区の例 — apiIdは検索ページで差し替え）</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb16-2"><a></a></span>
+<span id="cb16-3"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
+<span id="cb16-4"><a></a>api_id <span class="op">=</span> <span class="st">"t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0"</span>  <span class="co"># 品川区の避難所</span></span>
+<span id="cb16-5"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb16-6"><a></a></span>
+<span id="cb16-7"><a></a>response <span class="op">=</span> requests.post(url, headers<span class="op">=</span>headers, json<span class="op">=</span>{})</span>
+<span id="cb16-8"><a></a>data <span class="op">=</span> response.json()</span>
+<span id="cb16-9"><a></a></span>
+<span id="cb16-10"><a></a><span class="bu">print</span>(<span class="ss">f"避難所の件数: </span><span class="sc">{</span>data[<span class="st">'total'</span>]<span class="sc">}</span><span class="ss">件"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 </div>
 </section>
-<section id="演習2人口推移の時系列グラフ" class="slide level2 badge-practice">
+<section id="演習2人口推移の時系列グラフ" class="slide level2 badge-practice scrollable">
 <h2>演習2<span class="fw-colon">：</span>人口推移の時系列グラフ</h2>
 <div class="slide-body">
-<ul>
-<li>東京都人口データを <strong>全件</strong> 取得</li>
+<div class="prompt">
+<p>東京都の人口データを<strong>全件</strong>取得し、人口推移を折れ線グラフで描け。</p>
+</div>
+<ol type="1">
 <li>年と人口を取り出して <strong>折れ線グラフ</strong> を描画</li>
-<li>最大値・最小値・平均をタイトルに表示</li>
-</ul>
-<div id="c06a3b1a" class="cell" data-execution_count="3">
+<li><strong>最大値・最小値・平均</strong> をタイトルに表示</li>
+</ol>
+<div id="198fe037" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb16-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb16-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb16-4"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb16-5"><a></a></span>
-<span id="cb16-6"><a></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'example.com/lesson'</span>}</span>
-<span id="cb16-7"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
-<span id="cb16-8"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
-<span id="cb16-9"><a></a></span>
-<span id="cb16-10"><a></a>params <span class="op">=</span> {<span class="st">'limit'</span>: <span class="dv">200</span>}</span>
-<span id="cb16-11"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>params, headers<span class="op">=</span>headers, json<span class="op">=</span>{})</span>
-<span id="cb16-12"><a></a>data <span class="op">=</span> response.json()</span>
-<span id="cb16-13"><a></a></span>
-<span id="cb16-14"><a></a>years <span class="op">=</span> np.array([r[<span class="st">'西暦（年次）'</span>] <span class="cf">for</span> r <span class="kw">in</span> data[<span class="st">'hits'</span>]</span>
-<span id="cb16-15"><a></a>                  <span class="cf">if</span> <span class="bu">isinstance</span>(r.get(<span class="st">'東京都／人口'</span>), <span class="bu">int</span>)])</span>
-<span id="cb16-16"><a></a>population <span class="op">=</span> np.array([r[<span class="st">'東京都／人口'</span>] <span class="cf">for</span> r <span class="kw">in</span> data[<span class="st">'hits'</span>]</span>
-<span id="cb16-17"><a></a>                       <span class="cf">if</span> <span class="bu">isinstance</span>(r.get(<span class="st">'東京都／人口'</span>), <span class="bu">int</span>)])</span>
-<span id="cb16-18"><a></a></span>
-<span id="cb16-19"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
-<span id="cb16-20"><a></a>plt.plot(years, population <span class="op">/</span> <span class="fl">1e6</span>)</span>
-<span id="cb16-21"><a></a>plt.title(<span class="ss">f"Max=</span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">max</span>(population)<span class="sc">:,}</span><span class="ss">, Min=</span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">min</span>(population)<span class="sc">:,}</span><span class="ss">, Mean=</span><span class="sc">{</span>np<span class="sc">.</span>mean(population)<span class="sc">:,.0f}</span><span class="ss">"</span>)</span>
-<span id="cb16-22"><a></a>plt.xlabel(<span class="st">"Year"</span>)</span>
-<span id="cb16-23"><a></a>plt.ylabel(<span class="st">"Population (million)"</span>)</span>
-<span id="cb16-24"><a></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb16-25"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb17-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb17-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb17-4"><a></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb17-5"><a></a></span>
+<span id="cb17-6"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
+<span id="cb17-7"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
+<span id="cb17-8"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb17-9"><a></a></span>
+<span id="cb17-10"><a></a>params <span class="op">=</span> {<span class="st">"limit"</span>: <span class="dv">200</span>}</span>
+<span id="cb17-11"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>params, headers<span class="op">=</span>headers, json<span class="op">=</span>{})</span>
+<span id="cb17-12"><a></a>data <span class="op">=</span> response.json()</span>
+<span id="cb17-13"><a></a></span>
+<span id="cb17-14"><a></a>years <span class="op">=</span> np.array([r[<span class="st">"西暦（年次）"</span>] <span class="cf">for</span> r <span class="kw">in</span> data[<span class="st">"hits"</span>]</span>
+<span id="cb17-15"><a></a>                  <span class="cf">if</span> <span class="bu">isinstance</span>(r.get(<span class="st">"東京都／人口"</span>), <span class="bu">int</span>)])</span>
+<span id="cb17-16"><a></a>population <span class="op">=</span> np.array([r[<span class="st">"東京都／人口"</span>] <span class="cf">for</span> r <span class="kw">in</span> data[<span class="st">"hits"</span>]</span>
+<span id="cb17-17"><a></a>                       <span class="cf">if</span> <span class="bu">isinstance</span>(r.get(<span class="st">"東京都／人口"</span>), <span class="bu">int</span>)])</span>
+<span id="cb17-18"><a></a></span>
+<span id="cb17-19"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
+<span id="cb17-20"><a></a>plt.plot(years, population <span class="op">/</span> <span class="fl">1e6</span>)</span>
+<span id="cb17-21"><a></a>plt.title(<span class="ss">f"Max=</span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">max</span>(population)<span class="sc">:,}</span><span class="ss">, Min=</span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">min</span>(population)<span class="sc">:,}</span><span class="ss">, Mean=</span><span class="sc">{</span>np<span class="sc">.</span>mean(population)<span class="sc">:,.0f}</span><span class="ss">"</span>)</span>
+<span id="cb17-22"><a></a>plt.xlabel(<span class="st">"Year"</span>)</span>
+<span id="cb17-23"><a></a>plt.ylabel(<span class="st">"Population (million)"</span>)</span>
+<span id="cb17-24"><a></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb17-25"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -959,11 +977,32 @@ rkskmt
 <section id="演習32つのデータセットを比較" class="slide level2 badge-practice">
 <h2>演習3<span class="fw-colon">：</span>2つのデータセットを比較</h2>
 <div class="slide-body">
+<div class="prompt">
+<p><strong>異なる2つのデータセット</strong>（例<span class="fw-colon">：</span>2つの区の避難所、戦前と戦後の人口）を取得し、件数や統計量を比較して表示せよ。</p>
+</div>
 <ul>
-<li><strong>異なる2つのデータセット</strong> を取得（例<span class="fw-colon">：</span>2つの区の避難所、戦前と戦後の人口）</li>
-<li>それぞれの件数や統計量を <strong>比較</strong> して print</li>
 <li>（発展）同じグラフに重ねて描画</li>
 </ul>
+<div id="9ea6fc75" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>解答例を見る（戦前と戦後の人口を比較する例）</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb18-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb18-3"><a></a></span>
+<span id="cb18-4"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
+<span id="cb18-5"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
+<span id="cb18-6"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb18-7"><a></a></span>
+<span id="cb18-8"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>{<span class="st">"limit"</span>: <span class="dv">200</span>}, headers<span class="op">=</span>headers, json<span class="op">=</span>{})</span>
+<span id="cb18-9"><a></a>hits <span class="op">=</span> response.json()[<span class="st">"hits"</span>]</span>
+<span id="cb18-10"><a></a></span>
+<span id="cb18-11"><a></a>prewar  <span class="op">=</span> np.array([r[<span class="st">"東京都／人口"</span>] <span class="cf">for</span> r <span class="kw">in</span> hits <span class="cf">if</span> r[<span class="st">"西暦（年次）"</span>] <span class="op">&lt;=</span> <span class="dv">1944</span>])</span>
+<span id="cb18-12"><a></a>postwar <span class="op">=</span> np.array([r[<span class="st">"東京都／人口"</span>] <span class="cf">for</span> r <span class="kw">in</span> hits <span class="cf">if</span> r[<span class="st">"西暦（年次）"</span>] <span class="op">&gt;=</span> <span class="dv">1946</span>])</span>
+<span id="cb18-13"><a></a></span>
+<span id="cb18-14"><a></a><span class="bu">print</span>(<span class="ss">f"戦前（〜1944）: </span><span class="sc">{</span><span class="bu">len</span>(prewar)<span class="sc">}</span><span class="ss">年分 平均 </span><span class="sc">{</span>prewar<span class="sc">.</span>mean()<span class="sc">:,.0f}</span><span class="ss">人"</span>)</span>
+<span id="cb18-15"><a></a><span class="bu">print</span>(<span class="ss">f"戦後（1946〜）: </span><span class="sc">{</span><span class="bu">len</span>(postwar)<span class="sc">}</span><span class="ss">年分 平均 </span><span class="sc">{</span>postwar<span class="sc">.</span>mean()<span class="sc">:,.0f}</span><span class="ss">人"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 </div>
 </section>
 <section id="section-8" class="slide level2 center break-slide" data-background-color="white">

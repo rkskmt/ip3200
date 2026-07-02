@@ -218,7 +218,7 @@ rkskmt
 <ul>
 <li>最もよく使われるコンテナ</li>
 <li>データは追加順に並んでいる</li>
-<li>他言語では配列やアレイと呼ばれる　</li>
+<li>他言語では <strong>配列（<span class="en">array</span>）</strong> と呼ばれることが多い</li>
 <li>変数名は、要素の名詞の複数形をつけることが多い（foodsなど）</li>
 </ul>
 </div>
@@ -227,7 +227,7 @@ rkskmt
 <section id="宣言" class="slide level2">
 <h2>宣言</h2>
 <div class="slide-body">
-<p><code>[]</code> でカンマ区切りでデータを入力するとリストになる。</p>
+<p><code>[]</code> の中にカンマ区切りでデータを書くとリストになる。</p>
 <ul>
 <li>順序が保持される</li>
 <li>重複してもよい</li>
@@ -301,7 +301,7 @@ rkskmt
 <section id="走査全要素へのアクセス" class="slide level2">
 <h2>走査（全要素へのアクセス）</h2>
 <div class="slide-body">
-<p>リストの全要素にアクセスすることを<strong>走査</strong>という。<code>for</code> 文で簡単に書ける。</p>
+<p>リストの全要素にアクセスすることを<strong>走査（<span class="en">traversal</span>）</strong>という。<code>for</code> 文で簡単に書ける。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="cf">for</span> score <span class="kw">in</span> scores:</span>
 <span id="cb6-2"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>score<span class="sc">}</span><span class="ss">点"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <pre><code>85点
@@ -346,7 +346,7 @@ rkskmt
 <ul>
 <li>スライス（部分集合の取得）</li>
 <li>２次元配列</li>
-<li>N 次元配列　</li>
+<li>N 次元配列</li>
 <li>list 同士の結合</li>
 <li>sortとsorted</li>
 <li>内包表記</li>
@@ -363,9 +363,9 @@ rkskmt
 <li><strong>マイナス要素数＋1 以下</strong></li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>test <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb10-2"><a></a><span class="bu">print</span>(<span class="bu">len</span>(test))  <span class="co"># 4</span></span>
-<span id="cb10-3"><a></a><span class="bu">print</span>(test[<span class="dv">4</span>])    <span class="co"># IndexError</span></span>
-<span id="cb10-4"><a></a><span class="bu">print</span>(test[<span class="op">-</span><span class="dv">5</span>])   <span class="co"># IndexError</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-2"><a></a><span class="bu">print</span>(<span class="bu">len</span>(test))   <span class="co"># 4</span></span>
+<span id="cb10-3"><a></a><span class="co"># print(test[4])   # IndexError</span></span>
+<span id="cb10-4"><a></a><span class="co"># print(test[-5])  # IndexError</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -518,7 +518,7 @@ rkskmt
 <li>元のリストを壊してよい → <code>sort()</code>（速い）</li>
 <li>元のリストを保持したい → <code>sorted()</code>（安全）</li>
 </ul>
-<p><code>sort()</code> が in-place で変更する点は、第4回で学んだミュータブルの性質そのもの。</p>
+<p><code>sort()</code> が in-place で変更する点は、<a href="./variables.html">変数と代入</a>で学んだミュータブルの性質そのもの。</p>
 </div>
 </div>
 </div>
@@ -572,7 +572,7 @@ rkskmt
 <section id="リスト内包表記の使いどころ" class="slide level2">
 <h2>リスト内包表記の使いどころ</h2>
 <div class="slide-body">
-<p>第1回 AtCoder の参考コードに出てきた謎の構文<span class="fw-colon">：</span></p>
+<p>AtCoder演習の参考コードに出てきた謎の構文<span class="fw-colon">：</span></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a>As <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>().split()]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p>これはリスト内包表記だった。<code>input().split()</code> で <code>["1", "2", "3"]</code> という文字列のリストを作り、 各要素を <code>int(x)</code> で整数に変換しながら新しいリストを作っている。</p>
 <p><code>for</code> 文で書くと以下と同じ意味<span class="fw-colon">：</span></p>
@@ -623,13 +623,15 @@ rkskmt
 <h2>演習問題</h2>
 <div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>, <span class="dv">65</span>, <span class="dv">100</span>, <span class="dv">73</span>, <span class="dv">80</span>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>上記のリストをコピーして、以下の操作を実装せよ</p>
+<div class="prompt">
+<p>上記のリストをコピペして、以下の操作を実装せよ。</p>
+</div>
 <ol type="1">
-<li><code>range(len(...))</code> を使って、<strong>出席番号（1始まり）と点数</strong>を表示</li>
-<li><strong>スライス</strong>を使って、上位5名分（先頭5つ）と下位5名分（末尾5つ）をそれぞれ別のリストに分けて表示</li>
-<li><code>sorted</code> を使って、<strong>元のリストを変えずに</strong>降順に並び替えた新しいリストを作り、<strong>上位3名の点数</strong>を表示</li>
+<li><code>range(len(...))</code> で <strong>出席番号（1始まり）と点数</strong>を表示</li>
+<li><strong>スライス</strong>で上位5名分（先頭5つ）と下位5名分（末尾5つ）をそれぞれ別のリストに分けて表示</li>
+<li><code>sorted</code> で <strong>元のリストを変えずに</strong>降順に並び替えた新しいリストを作り、<strong>上位3名の点数</strong>を表示</li>
 </ol>
-<div id="5dbdbe44" class="cell" data-execution_count="1">
+<div id="ad3254cc" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="co"># 1</span></span>
@@ -653,13 +655,15 @@ rkskmt
 <section id="演習問題リスト内包表記" class="slide level2 badge-practice scrollable">
 <h2>演習問題（リスト内包表記）</h2>
 <div class="slide-body">
-<p>以下の操作を実装せよ</p>
+<div class="prompt">
+<p>以下の3つを<strong>リスト内包表記</strong>で実装せよ。</p>
+</div>
 <ol type="1">
-<li><code>range(1, 11)</code> を使って、<strong>1から10までの平方数</strong>のリストを作ろう（<code>[1, 4, 9, ..., 100]</code>）</li>
-<li><code>scores</code> から、<strong>80点以上の点数だけ</strong>を取り出した新しいリストを作ろう</li>
-<li>標準入力で受け取った空白区切りの整数列を、<strong>list of int</strong> に変換しよう（AtCoder 頻出パターン）</li>
+<li><code>range(1, 11)</code> から <strong>1から10までの平方数</strong>のリストを作る（<code>[1, 4, 9, ..., 100]</code>）</li>
+<li><code>scores</code> から <strong>80点以上の点数だけ</strong>を取り出した新しいリストを作る</li>
+<li>標準入力で受け取った空白区切りの整数列を <strong>list of int</strong> に変換（AtCoder 頻出パターン）</li>
 </ol>
-<div id="fc814dd4" class="cell" data-execution_count="2">
+<div id="885174b9" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="co"># 1</span></span>
@@ -687,13 +691,15 @@ rkskmt
 <span id="cb31-5"><a></a>    [<span class="dv">60</span>, <span class="dv">85</span>, <span class="dv">95</span>],</span>
 <span id="cb31-6"><a></a>    [<span class="dv">75</span>, <span class="dv">70</span>, <span class="dv">80</span>],</span>
 <span id="cb31-7"><a></a>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>上記の学生の国語・数学・英語の点数をもつ２次元配列をコピーして、以下の操作を実装せよ。</p>
+<div class="prompt">
+<p>上記の学生の国語・数学・英語の点数をもつ２次元配列をコピペして、以下の操作を実装せよ。</p>
+</div>
 <ol type="1">
-<li><strong>B さんの数学</strong>の点数を表示しよう</li>
-<li><strong>C さんの3科目合計</strong>を表示しよう</li>
-<li><strong>各学生の平均点</strong>を <code>for</code> 文で順に表示しよう</li>
+<li><strong>B さんの数学</strong>の点数を表示</li>
+<li><strong>C さんの3科目合計</strong>を表示</li>
+<li><strong>各学生の平均点</strong>を <code>for</code> 文で順に表示</li>
 </ol>
-<div id="ddf42544" class="cell" data-execution_count="3">
+<div id="9dfa269b" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="co"># 1</span></span>
