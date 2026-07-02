@@ -6,7 +6,7 @@ subtitle: "インタラクティブな可視化"
 ## {background-color="white" .center .break-slide}
 
 ::: {.break-title}
-静的から動へ
+静的から動的へ
 :::
 
 ## Plotlyとは
@@ -27,7 +27,7 @@ subtitle: "インタラクティブな可視化"
 pip install plotly
 ```
 
-- importは可視化ツールをあつめたplotly.expressをpxとして読み込むのが一般的
+- importでは、可視化ツールを集めた `plotly.express` を `px` として読み込むのが一般的
 
 ```python
 import plotly.express as px
@@ -45,13 +45,13 @@ import plotly.express as px
 
 - `plotly.express` を使ってグラフを作る
 - Pandasの `DataFrame` と連携できることを理解
-- 棒グラフ・散布図・折れ線・3D散布図を作る
+- 棒グラフ・散布図・折れ線・ヒストグラム・3D散布図を作る
 - 最後に **世界一有名な「動くグラフ」** を手で作る
 
 ::: {.callout-note}
-## 今回は「描き比べ」の回
+## matplotlibとの「描き比べ」
 - 散布図・折れ線・ヒストグラムは **matplotlibで一度作った図** ばかり
-- 同じ図を別の道具で作ると、**道具ごとの得意・不得意** が体感できる
+- 同じ図を別の道具で作りながら、**道具ごとの得意・不得意** を比べよう
 :::
 
 
@@ -211,10 +211,12 @@ fig.write_html("iframes/plotly_bar_color.html", include_plotlyjs="directory")
 - `x` と `y` に数値列を指定する
 - `hover_name=` に列名を指定すると、ホバー時に名前を表示できる
 - データはPandas回と同じ [students.csv](data/students.csv)（20人）
-   - csvを `data` フォルダに置いて以下で読み込み
+   - CSVを `data` フォルダに置いて以下で読み込み
 
 ```{python}
 #| echo: true
+import pandas as pd
+
 df_scores = pd.read_csv("data/students.csv")
 print(df_scores.head())
 ```
@@ -385,7 +387,7 @@ fig.write_html("iframes/plotly_icecore.html", include_plotlyjs="directory")
 
 
 
-## ヒストグラムのコード
+## ヒストグラム
 
 - `px.histogram()` で分布を見られる
 - `nbins=` で区間の数を指定する
@@ -431,8 +433,9 @@ Pandasの集計結果をPlotlyへ
 
 ```{python}
 #| echo: true
-csv_path = "data/students.csv"
-df_students = pd.read_csv(csv_path)
+import pandas as pd
+
+df_students = pd.read_csv("data/students.csv")
 subjects = ["現代文", "数学I", "英会話", "物理"]
 
 df_students["平均点"] = df_students[subjects].mean(axis=1)
@@ -448,6 +451,13 @@ print(avg)
 
 ```{python}
 #| echo: true
+import pandas as pd
+
+df_students = pd.read_csv("data/students.csv")
+subjects = ["現代文", "数学I", "英会話", "物理"]
+df_students["平均点"] = df_students[subjects].mean(axis=1)
+avg = df_students.groupby("学科")["平均点"].mean()
+
 avg_df = avg.reset_index()
 print(avg_df)
 ```
@@ -493,6 +503,12 @@ Plotly:     Series → reset_index() → DataFrame
 
 ```{python}
 #| echo: true
+import pandas as pd
+
+df_students = pd.read_csv("data/students.csv")
+subjects = ["現代文", "数学I", "英会話", "物理"]
+df_students["平均点"] = df_students[subjects].mean(axis=1)
+
 avg_df = df_students.groupby("学科", as_index=False)["平均点"].mean()
 print(avg_df)
 ```
@@ -518,6 +534,8 @@ fig.show()
 
 ```{python}
 #| echo: true
+import pandas as pd
+
 df_3d = pd.read_csv("data/students.csv")
 print(df_3d.head())
 ```
@@ -559,19 +577,14 @@ fig.write_html("iframes/plotly_scatter_3d.html", include_plotlyjs="directory")
 ::: {.callout-note}
 ## matplotlibにも3Dはある（参考）
 - `ax = fig.add_subplot(projection="3d")` で描けるが、**回せない**
-- 紙やスライドの静止画では奥行きが伝わりにくい
-- **回せるPlotlyでこそ3Dは活きる** — だから3Dはこの回で扱った
+- 静止画では奥行きが伝わりにくい — **回せるPlotlyでこそ3Dは活きる**
 :::
 
 
 ## HTMLとして保存する
 
-- Plotlyの図はHTMLとして保存できる
+- Plotlyの図は `write_html()` でHTMLとして保存できる
 - ブラウザで開けるので、相手に共有しやすい
-
-
-
-- 実は本スライドは、このHTMLを以下のようにiframeとして埋め込んでいる
 
 ```python
 fig.write_html("graph.html")
@@ -579,6 +592,7 @@ fig.write_html("graph.html")
 
 - 何も指定しないと **Plotly本体ごと** HTMLに埋め込まれる（約4MB）
    - ファイルは重いが、**ネットがなくても動く**
+- ここまで触ってきた動くグラフも、こうして保存したHTMLの埋め込み
 
 ::: {.callout-note}
 ## `include_plotlyjs` で本体の置き場所を選べる
@@ -588,7 +602,7 @@ fig.write_html("graph.html")
 | `"cdn"` | 軽い | **必要** |
 | `"directory"` | 軽い（`plotly.min.js` を同じフォルダに書き出す） | 不要 |
 
-本スライドは `"directory"` を使っている — 教室のWi-Fiが切れても動くように
+ネットのない場所でも動かしたい資料は、指定なし か `"directory"` を選ぶ
 :::
 
 
@@ -621,6 +635,8 @@ fig.write_html("graph.html")
 
 ```{python}
 #| echo: true
+import plotly.express as px
+
 gap = px.data.gapminder()
 print(gap.head())
 print(gap.shape)
@@ -669,7 +685,7 @@ fig.write_html("iframes/plotly_gapminder.html", include_plotlyjs="directory")
 ::: {.plotly-iframe src="iframes/plotly_gapminder.html" height="540"}
 :::
 
-- **▶ を押す** と55年分の世界が動く（カーソルをあわせると国名がでる）
+- **▶ を押す** と55年分の世界が動く（カーソルを合わせると国名が出る）
 
 
 ## 演習：学科ごとの平均点をPlotlyで描く {.badge-practice}
@@ -688,8 +704,7 @@ fig.write_html("iframes/plotly_gapminder.html", include_plotlyjs="directory")
 import pandas as pd
 import plotly.express as px
 
-csv_path = "data/students.csv"
-df = pd.read_csv(csv_path)
+df = pd.read_csv("data/students.csv")
 subjects = ["現代文", "数学I", "英会話", "物理"]
 
 df["平均点"] = df[subjects].mean(axis=1)

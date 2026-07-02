@@ -11,7 +11,7 @@ NumPyの表に名前をつける
 
 ## Pandasとは
 
-- Pandasは **表形式データ** を扱うためのライブラリ
+- Pandasは **表形式データ（[tabular data]{.en}）** を扱うためのライブラリ
    - Excelの表、CSV、実験結果、アンケート結果など
    - データ分析の入口で非常によく使う
 - NumPyの `ndarray` と同じく、Pythonの標準機能ではない
@@ -71,7 +71,7 @@ arr = np.array([
 | **佐藤** | 65 | 75 | 85 |
 
 ::: {.caption-note}
-上端の見出し（現代文・数学I・英会話）が **columns**で左端の見出し（田中・佐藤）が **index**
+上端の見出し（現代文・数学I・英会話）が **columns**、左端の見出し（田中・佐藤）が **index**
 :::
 
 ::: {.callout-tip}
@@ -167,11 +167,8 @@ df = pd.DataFrame(arr, columns=["現代文", "数学I", "英会話"], index=["�
 print(df)
 ```
 
-::: {.callout-tip}
-## DataFrameの正体
-```text
-DataFrame = データ + 行名(index) + 列名(columns)
-```
+::: {.caption-note}
+これで数字の並びに「誰の・何の点か」という意味がついた
 :::
 
 
@@ -208,7 +205,8 @@ Seriesを理解する
 ## 列を取り出す（Series）
 
 - `df["列名"]` で1列だけ取り出せる
-- 取り出した1列は `DataFrame`型 ではなく **Series**型
+- 取り出した1列は `DataFrame`型ではなく **Series**型
+- （表は `pd.DataFrame()` にリストを直接渡しても作れる — 以降はこの書き方）
 
 ```{python}
 #| echo: true
@@ -311,9 +309,9 @@ print(english.mean())
 - 田中・佐藤の `df` で、次を **実行する前に型を予想** → `type(...)` で答え合わせ
    1. `df`
    2. `df["数学I"]`（1列）
-   3. `df[["現代文", "英会話"]]`（複数列）
+   3. `df["数学I"].values`（値だけ）
    4. `df["数学I"].mean()`（集計）
-- それぞれ `DataFrame` / `Series` / 数値 のどれ？ `Series` なら `.index` も見よ
+- それぞれ `DataFrame` / `Series` / `ndarray` / 数値 のどれ？ `Series` なら `.index` も見よ
 
 ```{python}
 #| echo: true
@@ -327,7 +325,7 @@ df = pd.DataFrame([[80, 70, 90], [65, 75, 85]],
 
 print(type(df))  # DataFrame
 print(type(df["数学I"]))  # Series
-print(type(df[["現代文", "英会話"]]))  # DataFrame
+print(type(df["数学I"].values))  # ndarray
 print(type(df["数学I"].mean()))  # 数値（numpy.float64）
 ```
 
@@ -386,7 +384,7 @@ CSVの1行目が `columns` になり、`index` は指定しなければ自動で
 
 ::: {.callout-important}
 ## ここから `df` は students.csv に変わる
-- これまでの田中・佐藤（2人×3科目）は、仕組みをつかむための **練習用の表** だった
+- ここまでの田中・佐藤（2人×3科目）は **練習用の小さな表**
 - 以降の `df` は **students.csv（20人×8列）** — 集計・可視化はこのデータで進める
 :::
 
@@ -438,8 +436,7 @@ DataFrameの基本操作
 
 ## 単一列を選択する（おさらい）
 
-- `df["列名"]` で1列取り出すと **Series**（Series節と同じ操作）
-- 今度は **CSVのdf（20人分）** で確認する
+- `df["列名"]` で1列取り出すと **Series** — 集計の入口としてよく使う
 
 ```{python}
 #| echo: true
@@ -448,20 +445,29 @@ import pandas as pd
 df = pd.read_csv("data/students.csv")
 math = df["数学I"]
 
-print(math)
-print(type(math))
+print(math.head())  # 20人分あるので先頭5行だけ
 ```
-
-::: {.caption-note}
-1列だけ取り出すと `Series`。集計の入口としてよく使う
-:::
 
 
 ## 複数列を選択する
 
-- `df[["列名1", "列名2"]]` で複数列を取り出す
-- 列名のリストを渡すので、角括弧が2重になる
-- 返ってくるものは `DataFrame`
+- `df[["列名1", "列名2"]]` のように列名の **リスト** を渡す（角括弧が2重）
+- 返ってくるのは `Series` ではなく `DataFrame`
+
+```{python}
+#| echo: true
+import pandas as pd
+
+df = pd.read_csv("data/students.csv")
+cols = df[["名前", "学科", "数学I", "英会話"]]
+
+print(cols.head())
+```
+
+
+## 条件式は「残す行の印」を作る
+
+- 列に条件式を書くと、**各行について** `True` / `False` が返る
 
 ```{python}
 #| echo: true
@@ -469,43 +475,35 @@ import pandas as pd
 
 df = pd.read_csv("data/students.csv")
 
-print(df[["名前", "学科", "数学I", "英会話"]])
-print(type(df[["名前", "学科", "数学I", "英会話"]]))
-```
-
-::: {.callout-warning}
-## 角括弧を重ねる理由
-```python
-df["数学I"]                         # 列名を1つ渡す
-df[["名前", "学科", "数学I"]]        # 列名のリストを渡す
-```
-:::
-
-
-## 条件抽出
-
-- 条件式を書くと、各行について `True` / `False` が返る
-- その `True` の行だけを取り出せる
-
-```{python}
-#| echo: true
-import pandas as pd
-
-df = pd.read_csv("data/students.csv")
-
-print(df["数学I"] >= 80)
-print(df[df["数学I"] >= 80])
+print((df["数学I"] >= 80).head())  # 先頭5行
 ```
 
 ::: {.caption-note}
-`数学I` が80点以上の行だけが残る（条件式をそのまま `df[...]` に入れる）
+`数学I` が80点以上の行だけ `True` — これが「どの行を残すか」の印になる
+:::
+
+
+## 条件抽出（[filtering]{.en}）
+
+- 条件式を `df[...]` に入れると、`True` の行だけが残る
+
+```{python}
+#| echo: true
+import pandas as pd
+
+df = pd.read_csv("data/students.csv")
+
+print(df[df["数学I"] >= 80].head())  # 先頭5行
+```
+
+::: {.caption-note}
+`数学I` が80点以上の行だけが残る（20人中9人が該当）
 :::
 
 
 ## 文字列の条件抽出
 
-- 数値だけでなく、文字列でも条件を作れる
-- `==` は「等しいかどうか」を調べる演算子
+- 数値だけでなく、文字列でも条件を作れる（`==` は「等しい」）
 
 ```{python}
 #| echo: true
@@ -546,7 +544,7 @@ print(df[
 :::
 
 
-## Tweak：AND と OR で「絞る」と「広がる」 {.badge-practice}
+## **Tweak**：AND と OR で「絞る」と「広がる」 {.badge-practice}
 
 - [前ページのコード](#peek-and-or-code){.peek} を1か所ずつ変えて実行
 
@@ -594,35 +592,10 @@ CSVデータを集計して可視化する
 :::
 
 
-## 集計の準備：データをそろえる
-
-- ここまでと同じ `data/students.csv` を使う（この節だけでも実行できるよう、読み込みから用意）
-- まず4科目から `平均点` 列を作る
-- （CSVの中身：名前・学科・学年・4科目・欠席日数）
-
-```{python}
-#| echo: true
-import pandas as pd
-
-df = pd.read_csv("data/students.csv")
-subjects = ["現代文", "数学I", "英会話", "物理"]
-df["平均点"] = df[subjects].mean(axis=1)
-
-print(df.head())
-```
-
-::: {.callout-note}
-## CSVを読んだあとの典型的な流れ
-```text
-CSVを読む → 必要な列を作る → 集計する → 可視化する
-```
-:::
-
-
 ## 平均点列を集計する
 
-- まず `平均点` 列を `Series` として取り出す
-- Seriesには平均・最大・最小などのメソッドがある
+- 4科目から作った `平均点` 列を `Series` として取り出す
+- Seriesには平均・最大・最小など **集計（[aggregation]{.en}）** のメソッドがある
 
 ```{python}
 #| echo: true
@@ -638,15 +611,18 @@ print(scores.max())
 print(scores.min())
 ```
 
-::: {.caption-note}
-`mean()`＝平均、`max()`＝最大、`min()`＝最小
+::: {.callout-note}
+## CSVを読んだあとの典型的な流れ
+```text
+CSVを読む → 必要な列を作る → 集計する → 可視化する
+```
 :::
 
 
 ## 学科ごとに平均点を出す {#peek-groupby-code}
 
 - `groupby("学科")` で学科ごとに分ける
-- そのあと `["平均点"].mean()` で平均点の平均を出す
+- 続けて `["平均点"].mean()` — 分けた各グループで `平均点` 列を平均する
 - CSVの `学科` 列と、追加した `平均点` 列を使っている
 
 ```{python}
@@ -696,9 +672,9 @@ values が「平均点」
 :::
 
 
-## Tweak：groupby は「分ける × 集計する列 × 集計方法」 {.badge-practice}
+## **Tweak**：groupby は「分ける × 集計する列 × 集計方法」 {.badge-practice}
 
-- [前ページのコード](#peek-groupby-code){.peek} を1か所ずつ変えて実行
+- [さっきのコード](#peek-groupby-code){.peek} を1か所ずつ変えて実行
 
 ::: {.tweak}
 - `df.groupby("学科")` だけ実行して中身を見る（まだ集計前）
@@ -710,9 +686,9 @@ values が「平均点」
 
 ## matplotlibで棒グラフにする
 
-- Pandasの `.plot.bar()` は今回は使わない
+- `groupby()` で作った `avg`（Series）を棒グラフにする
 - `Series` を `index` と `values` に分けて matplotlib に渡す
-- ここでは `groupby()` で作った `avg` を可視化する
+- 縦軸は `ylim(0, 100)` で0点〜満点に固定（棒グラフは0から見せる）
 
 ```{python}
 #| echo: true
@@ -743,8 +719,8 @@ Series → index / values → matplotlib
 
 ## 少し整える
 
-- 色やグリッドを足すと、比較しやすくなる
-- 棒グラフでは `ylim(0, 100)` のように、0から見せることが多い
+- 色（`color=`）とグリッド（`grid()`）を足すと、比較しやすくなる
+- `grid(axis="y", ...)` は横線だけを薄く引く
 
 ```{python}
 #| echo: true
