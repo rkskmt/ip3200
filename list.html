@@ -542,7 +542,7 @@ rkskmt
 <section id="リスト内包表記条件式付き" class="slide level2">
 <h2>リスト内包表記（条件式付き）</h2>
 <div class="slide-body">
-<p>例えば、0-99の整数うち３の倍数以外のリストを作る場合、以下のようにfor文に条件を書くことになる。</p>
+<p>例えば、0-99の整数のうち３の倍数以外のリストを作る場合、以下のようにfor文に条件を書くことになる。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a></span>
 <span id="cb23-2"><a></a>not_divisible_by_3s <span class="op">=</span> []</span>
 <span id="cb23-3"><a></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
@@ -550,6 +550,7 @@ rkskmt
 <span id="cb23-5"><a></a>        <span class="cf">continue</span></span>
 <span id="cb23-6"><a></a>    not_divisible_by_3s.append(x)</span>
 <span id="cb23-7"><a></a><span class="bu">print</span>(not_divisible_by_3s)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>continue</code> は、その回の残りの処理をスキップして次の繰り返しへ進む命令（３の倍数のときは <code>append</code> せずに次へ）。</p>
 <p>これをリスト内包表記だとこう書ける。短い</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="co"># 条件付き：[式 for 変数 in イテラブル if 条件]</span></span>
 <span id="cb24-2"><a></a>not_divisible_by_3s <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>) <span class="cf">if</span> x <span class="op">%</span> <span class="dv">3</span> <span class="op">!=</span> <span class="dv">0</span>]</span>
@@ -631,7 +632,7 @@ rkskmt
 <li><strong>スライス</strong>で上位5名分（先頭5つ）と下位5名分（末尾5つ）をそれぞれ別のリストに分けて表示</li>
 <li><code>sorted</code> で <strong>元のリストを変えずに</strong>降順に並び替えた新しいリストを作り、<strong>上位3名の点数</strong>を表示</li>
 </ol>
-<div id="ad3254cc" class="cell" data-execution_count="1">
+<div id="a6cdcf43" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="co"># 1</span></span>
@@ -655,28 +656,29 @@ rkskmt
 <section id="演習問題リスト内包表記" class="slide level2 badge-practice scrollable">
 <h2>演習問題（リスト内包表記）</h2>
 <div class="slide-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>, <span class="dv">65</span>, <span class="dv">100</span>, <span class="dv">73</span>, <span class="dv">80</span>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="prompt">
-<p>以下の3つを<strong>リスト内包表記</strong>で実装せよ。</p>
+<p>以下の3つを<strong>リスト内包表記</strong>で実装せよ（2は上記の <code>scores</code> を使う）。</p>
 </div>
 <ol type="1">
 <li><code>range(1, 11)</code> から <strong>1から10までの平方数</strong>のリストを作る（<code>[1, 4, 9, ..., 100]</code>）</li>
 <li><code>scores</code> から <strong>80点以上の点数だけ</strong>を取り出した新しいリストを作る</li>
 <li>標準入力で受け取った空白区切りの整数列を <strong>list of int</strong> に変換（AtCoder 頻出パターン）</li>
 </ol>
-<div id="885174b9" class="cell" data-execution_count="2">
+<div id="f7d74af0" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="co"># 1</span></span>
-<span id="cb30-2"><a></a>squares <span class="op">=</span> [x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)]</span>
-<span id="cb30-3"><a></a><span class="bu">print</span>(squares)</span>
-<span id="cb30-4"><a></a></span>
-<span id="cb30-5"><a></a><span class="co"># 2</span></span>
-<span id="cb30-6"><a></a>passed <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> scores <span class="cf">if</span> s <span class="op">&gt;=</span> <span class="dv">80</span>]</span>
-<span id="cb30-7"><a></a><span class="bu">print</span>(passed)</span>
-<span id="cb30-8"><a></a></span>
-<span id="cb30-9"><a></a><span class="co"># 3</span></span>
-<span id="cb30-10"><a></a>As <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>().split()]</span>
-<span id="cb30-11"><a></a><span class="bu">print</span>(As)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="co"># 1</span></span>
+<span id="cb31-2"><a></a>squares <span class="op">=</span> [x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)]</span>
+<span id="cb31-3"><a></a><span class="bu">print</span>(squares)</span>
+<span id="cb31-4"><a></a></span>
+<span id="cb31-5"><a></a><span class="co"># 2</span></span>
+<span id="cb31-6"><a></a>passed <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> scores <span class="cf">if</span> s <span class="op">&gt;=</span> <span class="dv">80</span>]</span>
+<span id="cb31-7"><a></a><span class="bu">print</span>(passed)</span>
+<span id="cb31-8"><a></a></span>
+<span id="cb31-9"><a></a><span class="co"># 3</span></span>
+<span id="cb31-10"><a></a>As <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>().split()]</span>
+<span id="cb31-11"><a></a><span class="bu">print</span>(As)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -684,13 +686,13 @@ rkskmt
 <section id="演習問題２次元配列" class="slide level2 badge-practice scrollable">
 <h2>演習問題（２次元配列）</h2>
 <div class="slide-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="co"># 行：学生（0: A さん, 1: B さん, 2: C さん）</span></span>
-<span id="cb31-2"><a></a><span class="co"># 列：科目（0: 国語, 1: 数学, 2: 英語）</span></span>
-<span id="cb31-3"><a></a>table <span class="op">=</span> [</span>
-<span id="cb31-4"><a></a>    [<span class="dv">80</span>, <span class="dv">90</span>, <span class="dv">70</span>],</span>
-<span id="cb31-5"><a></a>    [<span class="dv">60</span>, <span class="dv">85</span>, <span class="dv">95</span>],</span>
-<span id="cb31-6"><a></a>    [<span class="dv">75</span>, <span class="dv">70</span>, <span class="dv">80</span>],</span>
-<span id="cb31-7"><a></a>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="co"># 行：学生（0: A さん, 1: B さん, 2: C さん）</span></span>
+<span id="cb32-2"><a></a><span class="co"># 列：科目（0: 国語, 1: 数学, 2: 英語）</span></span>
+<span id="cb32-3"><a></a>table <span class="op">=</span> [</span>
+<span id="cb32-4"><a></a>    [<span class="dv">80</span>, <span class="dv">90</span>, <span class="dv">70</span>],</span>
+<span id="cb32-5"><a></a>    [<span class="dv">60</span>, <span class="dv">85</span>, <span class="dv">95</span>],</span>
+<span id="cb32-6"><a></a>    [<span class="dv">75</span>, <span class="dv">70</span>, <span class="dv">80</span>],</span>
+<span id="cb32-7"><a></a>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="prompt">
 <p>上記の学生の国語・数学・英語の点数をもつ２次元配列をコピペして、以下の操作を実装せよ。</p>
 </div>
@@ -699,20 +701,20 @@ rkskmt
 <li><strong>C さんの3科目合計</strong>を表示</li>
 <li><strong>各学生の平均点</strong>を <code>for</code> 文で順に表示</li>
 </ol>
-<div id="9dfa269b" class="cell" data-execution_count="3">
+<div id="2acf3caf" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="co"># 1</span></span>
-<span id="cb32-2"><a></a><span class="bu">print</span>(table[<span class="dv">1</span>][<span class="dv">1</span>])  <span class="co"># 85</span></span>
-<span id="cb32-3"><a></a></span>
-<span id="cb32-4"><a></a><span class="co"># 2</span></span>
-<span id="cb32-5"><a></a><span class="bu">print</span>(<span class="bu">sum</span>(table[<span class="dv">2</span>]))  <span class="co"># 225</span></span>
-<span id="cb32-6"><a></a></span>
-<span id="cb32-7"><a></a><span class="co"># 3</span></span>
-<span id="cb32-8"><a></a>names <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
-<span id="cb32-9"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(table)):</span>
-<span id="cb32-10"><a></a>    avg <span class="op">=</span> <span class="bu">sum</span>(table[i]) <span class="op">/</span> <span class="bu">len</span>(table[i])</span>
-<span id="cb32-11"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>names[i]<span class="sc">}</span><span class="ss">さんの平均点：</span><span class="sc">{</span>avg<span class="sc">:.1f}</span><span class="ss">点"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a><span class="co"># 1</span></span>
+<span id="cb33-2"><a></a><span class="bu">print</span>(table[<span class="dv">1</span>][<span class="dv">1</span>])  <span class="co"># 85</span></span>
+<span id="cb33-3"><a></a></span>
+<span id="cb33-4"><a></a><span class="co"># 2</span></span>
+<span id="cb33-5"><a></a><span class="bu">print</span>(<span class="bu">sum</span>(table[<span class="dv">2</span>]))  <span class="co"># 225</span></span>
+<span id="cb33-6"><a></a></span>
+<span id="cb33-7"><a></a><span class="co"># 3</span></span>
+<span id="cb33-8"><a></a>names <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
+<span id="cb33-9"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(table)):</span>
+<span id="cb33-10"><a></a>    avg <span class="op">=</span> <span class="bu">sum</span>(table[i]) <span class="op">/</span> <span class="bu">len</span>(table[i])</span>
+<span id="cb33-11"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>names[i]<span class="sc">}</span><span class="ss">さんの平均点：</span><span class="sc">{</span>avg<span class="sc">:.1f}</span><span class="ss">点"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 

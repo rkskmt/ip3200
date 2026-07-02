@@ -298,7 +298,7 @@ rkskmt
 <li>「どの列をx軸にするか」「どの列をy軸にするか」を列名で指定するだけ</li>
 <li>まずは以下をVS Codeにコピペ</li>
 </ul>
-<div id="6e6bbaf7" class="cell" data-execution_count="1">
+<div id="7b3016ed" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a></a></span>
 <span id="cb3-3"><a></a>df <span class="op">=</span> pd.DataFrame({</span>
@@ -455,7 +455,7 @@ rkskmt
 <li>CSVを <code>data</code> フォルダに置いて以下で読み込み</li>
 </ul></li>
 </ul>
-<div id="08004919" class="cell" data-execution_count="5">
+<div id="49b22bfb" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb9-2"><a></a></span>
 <span id="cb9-3"><a></a>df_scores <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
@@ -537,9 +537,11 @@ rkskmt
 <li>データ<span class="fw-colon">：</span><a href="data/tokyo_temp_annual.csv">tokyo_temp_annual.csv</a>（<code>data</code> フォルダに置く）</li>
 </ul></li>
 </ul>
-<div id="d12840c9" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>df_temp <span class="op">=</span> pd.read_csv(<span class="st">"data/tokyo_temp_annual.csv"</span>)</span>
-<span id="cb13-2"><a></a><span class="bu">print</span>(df_temp.head())</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="762ab0aa" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb13-2"><a></a></span>
+<span id="cb13-3"><a></a>df_temp <span class="op">=</span> pd.read_csv(<span class="st">"data/tokyo_temp_annual.csv"</span>)</span>
+<span id="cb13-4"><a></a><span class="bu">print</span>(df_temp.head())</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   year  temp
 0  1876  13.6
@@ -570,7 +572,7 @@ rkskmt
 <div class="callout-content">
 <ul>
 <li><strong>ドラッグで2006〜2017年あたりを選択</strong> してズーム →「寒冷化」に見える</li>
-<li><a href="./visualize.html#peek-ycut" class="peek">可視化編の騙しグラフ</a>は、この <strong>切り取り</strong> と同じ操作だった</li>
+<li><a href="./visualize.html#peek-cherry" class="peek">可視化編の騙しグラフ</a>は、この <strong>切り取り</strong> と同じ操作だった</li>
 <li><strong>ダブルクリックで全体に戻る</strong> — 全体を確認するクセをつける</li>
 </ul>
 </div>
@@ -630,7 +632,7 @@ rkskmt
 <li><code>groupby()</code> の結果は <code>Series</code></li>
 <li>Plotlyに渡すため、いったん <code>reset_index()</code> でDataFrameに戻す</li>
 </ul>
-<div id="a7d965cf" class="cell" data-execution_count="12">
+<div id="6b1285e3" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb18-2"><a></a></span>
 <span id="cb18-3"><a></a>df_students <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
@@ -656,7 +658,7 @@ Name: 平均点, dtype: float64</code></pre>
 <li><code>reset_index()</code> で、indexを普通の列に戻せる</li>
 <li>Plotly ExpressはDataFrame + 列名指定が書きやすい</li>
 </ul>
-<div id="7c475969" class="cell" data-execution_count="13">
+<div id="82350cb2" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb20-2"><a></a></span>
 <span id="cb20-3"><a></a>df_students <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
@@ -706,7 +708,7 @@ Name: 平均点, dtype: float64</code></pre>
 <li><code>groupby(..., as_index=False)</code> とすると、最初からDataFrameで結果を受け取れる</li>
 <li>Plotlyで使う場合はこちらも便利</li>
 </ul>
-<div id="036cc6ad" class="cell" data-execution_count="15">
+<div id="01901577" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb24-2"><a></a></span>
 <span id="cb24-3"><a></a>df_students <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
@@ -741,7 +743,7 @@ Name: 平均点, dtype: float64</code></pre>
 <li>3つの数値列の関係を見るときに使う</li>
 <li><code>data/students.csv</code> の3科目（数学I・英会話・物理）を使う</li>
 </ul>
-<div id="84d2f31b" class="cell" data-execution_count="16">
+<div id="d1f3d20c" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb27-2"><a></a></span>
 <span id="cb27-3"><a></a>df_3d <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
@@ -910,7 +912,7 @@ Name: 平均点, dtype: float64</code></pre>
 </ul></li>
 <li>Plotlyには <strong>このデータが同梱</strong> されている</li>
 </ul>
-<div id="cdc9d658" class="cell" data-execution_count="18">
+<div id="e7725478" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb31-2"><a></a></span>
 <span id="cb31-3"><a></a>gap <span class="op">=</span> px.data.gapminder()</span>
@@ -938,21 +940,51 @@ Name: 平均点, dtype: float64</code></pre>
 </ul>
 </div>
 </section>
+<section id="まず1年分だけ描いてみる" class="slide level2">
+<h2>まず1年分だけ描いてみる</h2>
+<div class="slide-body">
+<ul>
+<li>ここまでと同じ <code>x, y, size, color, hover_name</code> だけで散布図を作る</li>
+<li><code>year</code> 列で絞れば、1年分だけを取り出せる</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a>gap_1952 <span class="op">=</span> gap[gap[<span class="st">"year"</span>] <span class="op">==</span> <span class="dv">1952</span>]</span>
+<span id="cb33-2"><a></a></span>
+<span id="cb33-3"><a></a>fig <span class="op">=</span> px.scatter(</span>
+<span id="cb33-4"><a></a>    gap_1952,</span>
+<span id="cb33-5"><a></a>    x<span class="op">=</span><span class="st">"gdpPercap"</span>,</span>
+<span id="cb33-6"><a></a>    y<span class="op">=</span><span class="st">"lifeExp"</span>,</span>
+<span id="cb33-7"><a></a>    size<span class="op">=</span><span class="st">"pop"</span>,</span>
+<span id="cb33-8"><a></a>    color<span class="op">=</span><span class="st">"continent"</span>,</span>
+<span id="cb33-9"><a></a>    hover_name<span class="op">=</span><span class="st">"country"</span>,</span>
+<span id="cb33-10"><a></a>)</span>
+<span id="cb33-11"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div style="display:flex; justify-content:center;">
+<iframe src="iframes/plotly_gapminder_1952.html" width="900" height="540" style="border:none;" onload="try{var d=this.contentDocument;if(d){d.documentElement.style.margin='0';d.documentElement.style.padding='0';d.body.style.margin='0';d.body.style.padding='0';}}catch(e){}"></iframe>
+</div>
+<div class="caption-note">
+<p>GDPは数百〜10万ドル超まで桁違いに広がり、ほとんどの国が左端に固まって見える</p>
+</div>
+</div>
+</section>
 <section id="動くバブルチャートを簡単コーディング" class="slide level2">
 <h2>動くバブルチャートを簡単コーディング</h2>
 <div class="slide-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a>fig <span class="op">=</span> px.scatter(</span>
-<span id="cb33-2"><a></a>    gap,</span>
-<span id="cb33-3"><a></a>    x<span class="op">=</span><span class="st">"gdpPercap"</span>,</span>
-<span id="cb33-4"><a></a>    y<span class="op">=</span><span class="st">"lifeExp"</span>,</span>
-<span id="cb33-5"><a></a>    size<span class="op">=</span><span class="st">"pop"</span>,</span>
-<span id="cb33-6"><a></a>    color<span class="op">=</span><span class="st">"continent"</span>,</span>
-<span id="cb33-7"><a></a>    hover_name<span class="op">=</span><span class="st">"country"</span>,</span>
-<span id="cb33-8"><a></a>    log_x<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb33-9"><a></a>    size_max<span class="op">=</span><span class="dv">55</span>,</span>
-<span id="cb33-10"><a></a>    animation_frame<span class="op">=</span><span class="st">"year"</span>,</span>
-<span id="cb33-11"><a></a>)</span>
-<span id="cb33-12"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>year</code> で絞る代わりに <code>animation_frame="year"</code> を渡すと、年ごとのコマがアニメーションになる</li>
+<li>GDPの桁が国によって大きく違うので <code>log_x=True</code> で対数軸にする（さっきの偏りを解消）</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a>fig <span class="op">=</span> px.scatter(</span>
+<span id="cb34-2"><a></a>    gap,</span>
+<span id="cb34-3"><a></a>    x<span class="op">=</span><span class="st">"gdpPercap"</span>,</span>
+<span id="cb34-4"><a></a>    y<span class="op">=</span><span class="st">"lifeExp"</span>,</span>
+<span id="cb34-5"><a></a>    size<span class="op">=</span><span class="st">"pop"</span>,</span>
+<span id="cb34-6"><a></a>    color<span class="op">=</span><span class="st">"continent"</span>,</span>
+<span id="cb34-7"><a></a>    hover_name<span class="op">=</span><span class="st">"country"</span>,</span>
+<span id="cb34-8"><a></a>    log_x<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb34-9"><a></a>    size_max<span class="op">=</span><span class="dv">55</span>,</span>
+<span id="cb34-10"><a></a>    animation_frame<span class="op">=</span><span class="st">"year"</span>,</span>
+<span id="cb34-11"><a></a>)</span>
+<span id="cb34-12"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div style="display:flex; justify-content:center;">
 <iframe src="iframes/plotly_gapminder.html" width="900" height="540" style="border:none;" onload="try{var d=this.contentDocument;if(d){d.documentElement.style.margin='0';d.documentElement.style.padding='0';d.body.style.margin='0';d.body.style.padding='0';}}catch(e){}"></iframe>
 </div>
@@ -972,27 +1004,27 @@ Name: 平均点, dtype: float64</code></pre>
 <li><code>groupby("学科", as_index=False)</code> で学科ごとの平均点を集計</li>
 <li><code>px.bar()</code> で棒グラフを描く（<code>color="学科"</code> で色分け、y軸は <code>0</code>〜<code>100</code>）</li>
 </ol>
-<div id="7e4397b6" class="cell" data-execution_count="20">
+<div id="b21caae5" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb34-2"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb34-3"><a></a></span>
-<span id="cb34-4"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
-<span id="cb34-5"><a></a>subjects <span class="op">=</span> [<span class="st">"現代文"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>, <span class="st">"物理"</span>]</span>
-<span id="cb34-6"><a></a></span>
-<span id="cb34-7"><a></a>df[<span class="st">"平均点"</span>] <span class="op">=</span> df[subjects].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb34-8"><a></a>avg_df <span class="op">=</span> df.groupby(<span class="st">"学科"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"平均点"</span>].mean()</span>
-<span id="cb34-9"><a></a></span>
-<span id="cb34-10"><a></a>fig <span class="op">=</span> px.bar(</span>
-<span id="cb34-11"><a></a>    avg_df,</span>
-<span id="cb34-12"><a></a>    x<span class="op">=</span><span class="st">"学科"</span>,</span>
-<span id="cb34-13"><a></a>    y<span class="op">=</span><span class="st">"平均点"</span>,</span>
-<span id="cb34-14"><a></a>    color<span class="op">=</span><span class="st">"学科"</span>,</span>
-<span id="cb34-15"><a></a>    title<span class="op">=</span><span class="st">"学科ごとの平均点"</span>,</span>
-<span id="cb34-16"><a></a>)</span>
-<span id="cb34-17"><a></a>fig.update_yaxes(<span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, <span class="dv">100</span>])</span>
-<span id="cb34-18"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb35-2"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb35-3"><a></a></span>
+<span id="cb35-4"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
+<span id="cb35-5"><a></a>subjects <span class="op">=</span> [<span class="st">"現代文"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>, <span class="st">"物理"</span>]</span>
+<span id="cb35-6"><a></a></span>
+<span id="cb35-7"><a></a>df[<span class="st">"平均点"</span>] <span class="op">=</span> df[subjects].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb35-8"><a></a>avg_df <span class="op">=</span> df.groupby(<span class="st">"学科"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"平均点"</span>].mean()</span>
+<span id="cb35-9"><a></a></span>
+<span id="cb35-10"><a></a>fig <span class="op">=</span> px.bar(</span>
+<span id="cb35-11"><a></a>    avg_df,</span>
+<span id="cb35-12"><a></a>    x<span class="op">=</span><span class="st">"学科"</span>,</span>
+<span id="cb35-13"><a></a>    y<span class="op">=</span><span class="st">"平均点"</span>,</span>
+<span id="cb35-14"><a></a>    color<span class="op">=</span><span class="st">"学科"</span>,</span>
+<span id="cb35-15"><a></a>    title<span class="op">=</span><span class="st">"学科ごとの平均点"</span>,</span>
+<span id="cb35-16"><a></a>)</span>
+<span id="cb35-17"><a></a>fig.update_yaxes(<span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, <span class="dv">100</span>])</span>
+<span id="cb35-18"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
