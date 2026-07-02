@@ -315,7 +315,7 @@ plt.show()
 
 ::: {.callout-warning}
 ## y軸の罠（描く側の責任）
-- 範囲をデータに合わせると **[小さな変化が大きく見える](visualize.qmd#peek-bargraph){.peek}**
+- 範囲をデータに合わせると **[小さな変化が大きく見える](visualize.qmd#peek-ycut){.peek}**
 - 比較するグラフは **y軸を揃える** か **0から見せる** のが原則
 :::
 

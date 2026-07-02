@@ -407,6 +407,9 @@ NumPyで統計処理
 
 ## 統計分析の例
 
+- 外部APIのデータは型が揃っているとは限らない — 使う前に型を確認すると安全
+- `isinstance(値, int)` で「int型かどうか」を判定できる
+
 ```python
 import requests
 import numpy as np
@@ -419,7 +422,7 @@ params = {"limit": 200}
 response = requests.post(url, params=params, headers=headers, json={})
 data = response.json()
 
-# 人口を抽出
+# 人口を抽出（int型の値だけ使う）
 population = [r["東京都／人口"] for r in data["hits"]
               if isinstance(r.get("東京都／人口"), int)]
 population = np.array(population)
@@ -503,7 +506,7 @@ plt.show()
 :::
 
 
-## 演習1：避難所データの可視化 {.badge-practice}
+## 演習：避難所データの可視化 {.badge-practice}
 
 ::: {.prompt}
 任意の区市町村の**避難所データ**を取得し、**件数**を表示せよ。
@@ -535,7 +538,7 @@ print(f"避難所の件数: {data['total']}件")
 ```
 
 
-## 演習2：人口推移の時系列グラフ {.badge-practice}
+## 演習：人口推移の時系列グラフ {.badge-practice}
 
 ::: {.prompt}
 東京都の人口データを**全件**取得し、人口推移を折れ線グラフで描け。
@@ -577,7 +580,7 @@ plt.show()
 ```
 
 
-## 演習3：2つのデータセットを比較 {.badge-practice}
+## 演習：2つのデータセットを比較 {.badge-practice}
 
 ::: {.prompt}
 **異なる2つのデータセット**（例：2つの区の避難所、戦前と戦後の人口）を取得し、件数や統計量を比較して表示せよ。

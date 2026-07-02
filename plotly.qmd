@@ -310,6 +310,8 @@ fig.write_html("iframes/plotly_scatter_size.html", include_plotlyjs="directory")
 
 ```{python}
 #| echo: true
+import pandas as pd
+
 df_temp = pd.read_csv("data/tokyo_temp_annual.csv")
 print(df_temp.head())
 ```
@@ -343,7 +345,7 @@ fig.write_html("iframes/plotly_line.html", include_plotlyjs="directory")
 ::: {.callout-tip}
 ## 自分の指でチェリーピックしてみる
 - **ドラッグで2006〜2017年あたりを選択** してズーム →「寒冷化」に見える
-- [可視化編の騙しグラフ](visualize.qmd#peek-ycut){.peek}は、この **切り取り** と同じ操作だった
+- [可視化編の騙しグラフ](visualize.qmd#peek-cherry){.peek}は、この **切り取り** と同じ操作だった
 - **ダブルクリックで全体に戻る** — 全体を確認するクセをつける
 :::
 
@@ -645,7 +647,54 @@ print(gap.shape)
 - **142カ国 × 12時点（1952〜2007年）** の実データ
 
 
+## まず1年分だけ描いてみる
+
+- ここまでと同じ `x, y, size, color, hover_name` だけで散布図を作る
+- `year` 列で絞れば、1年分だけを取り出せる
+
+```python
+gap_1952 = gap[gap["year"] == 1952]
+
+fig = px.scatter(
+    gap_1952,
+    x="gdpPercap",
+    y="lifeExp",
+    size="pop",
+    color="continent",
+    hover_name="country",
+)
+fig.show()
+```
+
+```{python}
+#| echo: false
+#| output: false
+gap_1952 = gap[gap["year"] == 1952]
+fig = px.scatter(
+    gap_1952,
+    x="gdpPercap",
+    y="lifeExp",
+    size="pop",
+    color="continent",
+    hover_name="country",
+    title="1952年の世界（142カ国）",
+)
+fig.update_layout(width=900, height=520, margin=dict(l=20, r=20, t=60, b=20))
+fig.write_html("iframes/plotly_gapminder_1952.html", include_plotlyjs="directory")
+```
+
+::: {.plotly-iframe src="iframes/plotly_gapminder_1952.html" height="540"}
+:::
+
+::: {.caption-note}
+GDPは数百〜10万ドル超まで桁違いに広がり、ほとんどの国が左端に固まって見える
+:::
+
+
 ## 動くバブルチャートを簡単コーディング
+
+- `year` で絞る代わりに `animation_frame="year"` を渡すと、年ごとのコマがアニメーションになる
+- GDPの桁が国によって大きく違うので `log_x=True` で対数軸にする（さっきの偏りを解消）
 
 ```python
 fig = px.scatter(

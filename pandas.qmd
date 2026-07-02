@@ -621,11 +621,29 @@ CSVを読む → 必要な列を作る → 集計する → 可視化する
 :::
 
 
+## 学科ごとに人数を数える
+
+- `groupby("学科")` で、学科ごとに行をグループへ分ける
+- グループの中身を見るには `.size()` などを続ける必要がある
+
+```{python}
+#| echo: true
+import pandas as pd
+
+df = pd.read_csv("data/students.csv")
+
+print(df.groupby("学科").size())
+```
+
+::: {.caption-note}
+情報8人・機械6人・電気6人で合計20人 — 全員がどこかのグループに分けられている
+:::
+
+
 ## 学科ごとに平均点を出す {#peek-groupby-code}
 
-- `groupby("学科")` で学科ごとに分ける
-- 続けて `["平均点"].mean()` — 分けた各グループで `平均点` 列を平均する
-- CSVの `学科` 列と、追加した `平均点` 列を使っている
+- `groupby("学科")` に、集計する列と方法を続ける
+- `["平均点"]` で列を選び、`.mean()` で学科ごとの平均を出す
 
 ```{python}
 #| echo: true
@@ -640,7 +658,7 @@ print(avg)
 ```
 
 ::: {.caption-note}
-学科ごとの平均点が求まる。結果は `DataFrame` ではなく `Series`
+CSVの `学科` 列と、追加した `平均点` 列を使う。結果は `DataFrame` ではなく `Series`
 :::
 
 
@@ -679,7 +697,6 @@ values が「平均点」
 - [さっきのコード](#peek-groupby-code){.peek} を1か所ずつ変えて実行
 
 ::: {.tweak}
-- `df.groupby("学科")` だけ実行して中身を見る（まだ集計前）
 - 学年でgroupbyする
 - 集計する列を欠席日数にする
 - 集計を最大値にする

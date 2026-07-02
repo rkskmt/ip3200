@@ -106,7 +106,7 @@ if R06_0002 >= 90:
 :::
 
 
-## 【Collection１】 `list`（リスト型）
+## 【Collection】 `list`（リスト型）
 
 
 
@@ -251,7 +251,7 @@ print(sum(student_scores) / len(student_scores))
 ```
 
 
-## 【Collection２】 `dict`（辞書型）
+## 【Collection】 `dict`（辞書型）
 
 ![](imgs/Focus_definition_(Unsplash).jpg)
 
@@ -384,7 +384,7 @@ if "Yamada" in name2score:
 
 
 
-## 【Collection３】 `tuple`（タプル）
+## 【Collection】 `tuple`（タプル）
 
 ::: {.fig-cite src="imgs/3D_Spherical.svg.jpg" height="90%"}
 

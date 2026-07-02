@@ -276,7 +276,7 @@ https://www.wikidata.org/w/rest.php/wikibase/v1/
 ```
 
 - Wikipedia記事には内部ID（**Wikidata ID**）がある
-- 例：東京（Q1490）のアイテム情報
+- 例：東京都（Q1490）のアイテム情報
 
 ```text
 https://www.wikidata.org/w/rest.php/wikibase/v1/entities/items/Q1490
@@ -308,15 +308,32 @@ https://www.wikidata.org/w/rest.php/wikibase/v1/entities/items/Q1490
 ```python
 import requests
 
+headers = {"User-Agent": "example.com/lesson"}
+
 params = {
     "action": "query",
     "prop": "pageprops",
-    "titles": "東京",
+    "titles": "東京都",
     "format": "json"
 }
-response = requests.get("https://ja.wikipedia.org/w/api.php", params=params)
+response = requests.get("https://ja.wikipedia.org/w/api.php",
+                        params=params, headers=headers)
 data = response.json()
 
+print(data["query"]["pages"])
+```
+
+::: {.caption-note}
+`pages` は **ページIDをキーにした辞書**（例：`{"774362": {"title": "東京都", "pageprops": {...}}}`）
+:::
+
+
+## 中身を取り出す
+
+- キーがページID、値がページ情報の辞書
+- `.items()` でキーと値のペアを順に取り出す
+
+```python
 for page_id, page_info in data["query"]["pages"].items():
     if "pageprops" in page_info:
         wikidata_id = page_info["pageprops"].get("wikibase_item")
@@ -356,6 +373,8 @@ for item in results:
 
 
 ## Action API：ページ詳細
+
+- `formatversion: 2` を付けると、`pages` が「ページIDをキーにした辞書」ではなく **リスト** で返る — ループで素直に回せる
 
 ```python
 detail_params = {
@@ -430,6 +449,8 @@ if "thumbnail" in data:
 
 ## AQS：人気記事 + 編集統計
 
+- ここの `items` は **1要素のリスト**（`[0]` で中身を取り出す）— per-articleの `items`（日ごとに1件）とは形が違う
+
 ```python
 import requests
 
@@ -489,7 +510,7 @@ for item in r.json()["items"][0]["results"]:
 :::
 
 
-## 演習1：好きな記事のPVを可視化 {.badge-practice}
+## 演習：好きな記事のPVを可視化 {.badge-practice}
 
 ::: {.prompt}
 **好きなWikipedia記事**の過去1年間の日別ページビューを取得し、折れ線グラフで描け（**最大アクセス日とその値**も表示）。
@@ -532,7 +553,7 @@ plt.show()
 ```
 
 
-## 演習2：カテゴリ内の記事を列挙 {.badge-practice}
+## 演習：カテゴリ内の記事を列挙 {.badge-practice}
 
 ::: {.prompt}
 Action API で**好きなカテゴリ**に属する記事を10件取得し、各記事のタイトルを表示せよ。
@@ -567,7 +588,7 @@ for m in r.json()["query"]["categorymembers"]:
 ```
 
 
-## 演習3：REST API で概要取得 {.badge-practice}
+## 演習：REST API で概要取得 {.badge-practice}
 
 ::: {.prompt}
 REST API v1 の `/page/summary/{title}` で好きな記事の **タイトル・概要・サムネイルURL** を取得して表示せよ。
