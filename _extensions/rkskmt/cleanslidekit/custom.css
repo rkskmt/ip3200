@@ -276,6 +276,23 @@ table td:first-child {
    intent to the exact code to type. Header hidden (kept for screen readers); the
    slide intro gives the context. Palette = the practice badge: coral accents,
    neutral bands. Value tweaks → 2-col table (intent | `code`). Task → bullet list. */
+/* Exercise prompt (問題文) — a plain rounded frame around the task statement
+   on 演習 slides. Deliberately neutral: typed callouts carry colored-header
+   emphasis and .caption-note annotates the element above it — this frame just
+   marks "this paragraph is the problem". Usage: ::: {.prompt} 問題文 ::: */
+.reveal .prompt {
+  border: 1.5px solid #b9c2cf;
+  border-radius: 10px;
+  background: #fafbfd;
+  padding: 0.5em 0.9em;
+  margin: 0.35em 0 0.75em;
+}
+.reveal .prompt p {
+  margin: 0;
+}
+.reveal .prompt p + p {
+  margin-top: 0.4em;
+}
 .tweak {
   width: fit-content;
   max-width: 96%;

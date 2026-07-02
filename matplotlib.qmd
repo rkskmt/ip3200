@@ -157,7 +157,7 @@ plt.show()
 
 ## **Tweak**：線の見た目 {.badge-practice}
 
-- [さっきのコード](#peek-line-code){.peek} の `"o-"` を **書き換えて実行**せよ
+- [さっきのコード](#peek-line-code){.peek} の `"o-"` を **書き換えて実行**
 
 ::: {.tweak}
 | やりたいこと | コード |
@@ -177,11 +177,13 @@ plt.show()
 
 ## 演習：二次関数を描く {.badge-practice}
 
-- $y = x^2 - 2x + 3$ を **定義域 $-2 \leq x \leq 5$** で描け
-- 手順
-  1. `np.linspace(-2, 5, 200)` で `x` を作る（細かく刻むと線が滑らかになる）
-  2. `y` を計算（`ndarray` はそのまま式に入れられる — NumPy回の復習）
-  3. `plt.plot(x, y)` で折れ線として描く
+::: {.prompt}
+$y = x^2 - 2x + 3$ を **定義域 $-2 \leq x \leq 5$** で描け。
+:::
+
+1. `np.linspace(-2, 5, 200)` で `x` を作る（細かく刻むと線が滑らかになる）
+2. `y` を計算（`ndarray` はそのまま式に入れられる — NumPy回の復習）
+3. `plt.plot(x, y)` で折れ線として描く
 
 ::: {.callout-tip}
 ## 平方完成で検算
@@ -527,14 +529,14 @@ plt.show()
 
 ## 演習：謎のデータをプロットせよ {.badge-practice}
 
-- [datasaurus_star.csv](data/datasaurus_star.csv) をダウンロードして、`data/` フォルダに置く
-- 前回見た [**Datasaurus Dozen 13個のうちの1つ**](visualize.qmd#peek-datasaurus){.peek}（恐竜ではない）
-   - 統計量はもちろん：$\bar{x} = 54.27$、$\bar{y} = 47.84$、$r = -0.06$
-- 手順
-  1. `np.loadtxt` で読み込む（1行目はヘッダなので `skiprows=1`）
-  2. `data[:, 0]` と `data[:, 1]` で `x`, `y` を取り出す
-  3. `plt.scatter` でプロット — **何が見える？**
-  4. 軸ラベル・タイトルをつける
+::: {.prompt}
+前回見た [**Datasaurus Dozen 13個のうちの1つ**](visualize.qmd#peek-datasaurus){.peek}（恐竜ではない）を散布図にして、統計量（$\bar{x} = 54.27$、$\bar{y} = 47.84$、$r = -0.06$）からは見えない**正体**を確かめよ。
+:::
+
+0. [datasaurus_star.csv](data/datasaurus_star.csv) をダウンロードして `data/` フォルダに置く
+1. `np.loadtxt` で読み込む（1行目はヘッダなので `skiprows=1`）
+2. `data[:, 0]` と `data[:, 1]` で `x`, `y` を取り出す
+3. `plt.scatter` でプロットし、軸ラベル・タイトルをつける
 
 ```{python}
 #| echo: true
@@ -560,12 +562,15 @@ plt.show()
 
 ## 演習：アンスコムの四重奏を再現 {.badge-practice}
 
-- 手順
-  1. 下のデータをコピペして使う
-  2. `plt.subplot(2, 2, i)` で2×2に並べる
-  3. それぞれ `scatter` でプロット
-  4. `np.polyfit(x, y, 1)` で1次回帰直線を求め、`plot` で重ねる
-  5. すべてのサブプロットで `xlim` / `ylim` を **揃える**
+::: {.prompt}
+前回見た**アンスコムの四重奏**を、2×2のサブプロット＋回帰直線つき散布図で再現せよ。
+:::
+
+0. 下のデータをコピペして使う
+1. `plt.subplot(2, 2, i)` で2×2に並べる
+2. それぞれ `scatter` でプロット
+3. `np.polyfit(x, y, 1)` で1次回帰直線を求め、`plot` で重ねる
+4. すべてのサブプロットで `xlim` / `ylim` を **揃える**
 
 ```python
 import numpy as np
@@ -622,9 +627,11 @@ plt.show()
 
 ## 演習：好きな画像を表示 {.badge-practice}
 
-- matplotlib は **画像も描画できる**
-- 公式チュートリアルを参考
-- <https://matplotlib.org/stable/tutorials/images.html>
+- matplotlib は **画像も描画できる** — [公式チュートリアル](https://matplotlib.org/stable/tutorials/images.html)
+
+::: {.prompt}
+下のコードを参考に、手元の好きな画像を表示せよ。
+:::
 
 ```python
 import matplotlib.pyplot as plt

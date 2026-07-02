@@ -306,12 +306,14 @@ print(english.mean())
 
 ## 演習：型を見失わない {.badge-practice}
 
-- 田中・佐藤の `df` で、次を **実行する前に型を予想** → `type(...)` で答え合わせ
-   1. `df`
-   2. `df["数学I"]`（1列）
-   3. `df["数学I"].values`（値だけ）
-   4. `df["数学I"].mean()`（集計）
-- それぞれ `DataFrame` / `Series` / `ndarray` / 数値 のどれ？ `Series` なら `.index` も見よ
+::: {.prompt}
+田中・佐藤の `df` で、次の4つが `DataFrame` / `Series` / `ndarray` / 数値のどれになるかを**実行する前に予想**し、`type(...)` で確かめよ（`Series` になったものは `.index` も表示）。
+:::
+
+1. `df`
+2. `df["数学I"]`（1列）
+3. `df["数学I"].values`（値だけ）
+4. `df["数学I"].mean()`（集計）
 
 ```{python}
 #| echo: true
@@ -745,11 +747,13 @@ plt.show()
 
 ## 演習：高得点者を可視化 {.badge-practice}
 
-- `data/students.csv` を読み込む
-- 4科目の平均点を計算する
-- 平均点が80点以上の生徒だけを抽出する
-- 生徒名を横軸、平均点を縦軸にして棒グラフを描く
-- y軸は `0` から `100` にする
+::: {.prompt}
+`students.csv` の20人から**4科目平均が80点以上の高得点者**だけを抜き出し、棒グラフで比較せよ。
+:::
+
+1. `data/students.csv` を読み込み、4科目の平均点の列を追加
+2. 平均点が80点以上の生徒だけを条件抽出
+3. 生徒名を横軸、平均点を縦軸に棒グラフを描く（y軸は `0`〜`100` に固定）
 
 ```{python}
 #| echo: true
@@ -790,10 +794,14 @@ plt.show()
 
 ## 演習：実データで明治の東京 vs 21世紀の東京 {.badge-practice}
 
-- 学んだ道具（`read_csv` → `条件抽出` → 集計）を、**新しい実データ** に当てる
-- 気象庁の東京・年平均気温データ：[tokyo_temp_annual.csv](data/tokyo_temp_annual.csv)（`data` に置く）
-- やること：**明治（〜1911年）** と **21世紀（2000年〜）** の平均気温を出して比べる
-- まず **予想** → 何度ちがう？ → 自分で書く → 解答例で答え合わせ
+::: {.prompt}
+気象庁が公開している東京150年分の年平均気温をCSVで読み込み、**明治の東京と21世紀の東京は平均で何度ちがうのか**を自分のコードで確かめよ。
+:::
+
+0. [tokyo_temp_annual.csv](data/tokyo_temp_annual.csv) をダウンロードして `data` フォルダに置く
+1. `pd.read_csv()` で読み込み、`columns` で**列名を確認**
+2. 条件抽出で **明治（1911年以前）** と **21世紀（2000年以降）** の行に分ける
+3. それぞれの気温の平均を比較（**差分値も表示**）
 
 ```{python}
 #| echo: true
@@ -803,15 +811,20 @@ plt.show()
 import pandas as pd
 
 df_temp = pd.read_csv("data/tokyo_temp_annual.csv")
+print(df_temp.columns)  # (1) 列名を確認 → year と temp
 
-meiji = df_temp[df_temp["year"] <= 1911]
+meiji  = df_temp[df_temp["year"] <= 1911]
 recent = df_temp[df_temp["year"] >= 2000]
-print(f"明治の東京   : {meiji['temp'].mean():.1f} ℃")
-print(f"21世紀の東京 : {recent['temp'].mean():.1f} ℃")
+
+meiji_avg  = meiji["temp"].mean()
+recent_avg = recent["temp"].mean()
+print(f"明治の東京   : {meiji_avg:.1f} ℃")
+print(f"21世紀の東京 : {recent_avg:.1f} ℃")
+print(f"差           : {recent_avg - meiji_avg:.1f} ℃")
 ```
 
 ::: {.callout-tip}
 ## 列名で読み書きできる強さ
-- 150行のデータから **たった2行で答えが出る**
+- 150行のデータでも、**絞り込み1行＋平均1行**で答えが出る
 - NumPyの「何列目が年だっけ？」が、Pandasでは **列名** で済む
 :::

@@ -1188,6 +1188,10 @@ print(skew(a) @ b)      # [-3.  6. -3.]  行列積で同じ結果
 
 ## 演習 {.badge-practice}
 
+::: {.prompt}
+次の4問をNumPyで解け。
+:::
+
 （１）以下の2つのベクトルの内積を求め、直交しているか判定せよ。
 
 $$
@@ -1202,7 +1206,7 @@ $$
 \begin{pmatrix} 1 \\ 1 \end{pmatrix}
 $$
 
-（３）以下の連立方程式を `np.linalg.solve()` で解け。また、`np.linalg.solve()`を使わずに逆行列でもとき、結果を比較せよ
+（３）以下の連立方程式を `np.linalg.solve()` で解け。また、`np.linalg.solve()` を使わずに逆行列でも解き、結果を比較せよ。
 
 $$
 \begin{cases} x + y = 4 \\ x - y = 2 \end{cases}

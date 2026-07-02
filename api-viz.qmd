@@ -206,9 +206,12 @@ fig.write_html("iframes/plotly_tanabata.html", include_plotlyjs="directory")
 
 ## 演習：1枚のグラフに2本の折れ線 {.badge-practice}
 
-- 前回の演習で取得した `views_desktop` と `views_mobile_web` を **同じグラフに重ねる**
-- `plt.plot()` を 2回呼ぶだけ
-- グラフの **タイトルに max / min / mean** を入れる
+::: {.prompt}
+前回の演習で取得した `views_desktop` と `views_mobile_web` を、**同じグラフに重ねて**比較せよ。
+:::
+
+1. `plt.plot()` を2回呼ぶ — それだけで重なる
+2. グラフの **タイトルに max / min / mean** を表示
 
 ::: {.callout-warning}
 ## やってはいけない
@@ -254,8 +257,10 @@ plt.show()
 
 ## 演習：富士山には山があるか {.badge-practice}
 
-- 記事名を `富士山` に変えて、2025年1年分を取得して描け
-   - 「七夕」のコードの **記事名を変えるだけ**
+::: {.prompt}
+「七夕」のコードの**記事名を `富士山` に変えるだけ**で2025年1年分を取得して描き、次の問いに答えよ。
+:::
+
 - 問い：七夕のような **鋭い山（スパイク）** はあるか？
 - 問い：スパイクがないなら、**何が見えるか**？ 自分の言葉で説明せよ
 

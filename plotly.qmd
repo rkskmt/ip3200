@@ -690,11 +690,13 @@ fig.write_html("iframes/plotly_gapminder.html", include_plotlyjs="directory")
 
 ## 演習：学科ごとの平均点をPlotlyで描く {.badge-practice}
 
-- `data/students.csv` を読み込む
-- `groupby("学科", as_index=False)` で平均点を作る
-- `px.bar()` で棒グラフを作る
-- `color="学科"` を指定して色分けする
-- y軸を0〜100にする
+::: {.prompt}
+`students.csv` の**学科ごとの平均点**を、Plotlyの棒グラフで描け。
+:::
+
+1. `data/students.csv` を読み込み、4科目の平均点の列を追加
+2. `groupby("学科", as_index=False)` で学科ごとの平均点を集計
+3. `px.bar()` で棒グラフを描く（`color="学科"` で色分け、y軸は `0`〜`100`）
 
 ```{python}
 #| echo: true

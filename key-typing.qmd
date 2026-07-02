@@ -129,15 +129,16 @@ subtitle: "すべての基礎力"
 :::
 
 
-## 演習：AtCoderでプログラムを動かしてみよう {.badge-practice}
+## 演習：AtCoderでプログラムを動かす {.badge-practice}
 
-「**AtCoder ABC 400 tasks**」で検索して A 問題を解いてみよう。
+::: {.prompt}
+[AtCoder Beginner Contest 400 の A問題](https://atcoder.jp/contests/abc400/tasks/abc400_a) を解いて提出し、**AC（[**Accepted**]{.en}）** を取れ。
+:::
 
-1. [AtCoder Beginner Contest 400 A問題](https://atcoder.jp/contests/abc400/tasks/abc400_a) にアクセス
+1. 「**AtCoder ABC 400 tasks**」で検索、または上のリンクからA問題にアクセス
 2. アカウントを作る
-3. 問題を解く
-4. 右上の「提出」ボタンを押す
-5. ジャッジ結果が **AC（[**Accepted**]{.en}）** になれば正解！
+3. 問題を解いて、右上の「提出」ボタンから提出
+4. ジャッジ結果が **AC** になれば正解
    - **WA（[**Wrong Answer**]{.en}）** ：出力が違う
    - **RE（[**Runtime Error**]{.en}）** ：実行中にエラー
    - **TLE（[**Time Limit Exceeded**]{.en}）** ：時間超過
