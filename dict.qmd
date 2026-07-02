@@ -22,7 +22,7 @@ CC0: <https://en.wikipedia.org/wiki/Fictionary#/media/File:Focus_definition_(Uns
 
 ## 宣言
 
-`{}` で `キー: 値` をカンマ区切りで入力すると辞書になる。
+`{}` の中に `キー: 値` をカンマ区切りで書くと辞書になる。
 
 - キーは重複不可
 - 値は何でもよい
@@ -290,7 +290,7 @@ print(score2name)  # {95: 'Yamada', 75: 'Suzuki', 80: 'Takahashi'}
 name2score = {"Yamada": 95, "Suzuki": 75, "Takahashi": 80, "Tanaka": 60}
 ```
 
-上記の dict をコピーして、以下の操作を実装せよ
+上記の dict をコピペして、以下の操作を実装せよ
 
 
 1. `.get()` を使って **"Sato"** さんの点数を取り出す（存在しなければ `0` を返す）
@@ -362,7 +362,7 @@ students = [
 ]
 ```
 
-上記の学生の国語・数学・英語の点数をもつ list of dict をコピーして、以下の操作を実装せよ。
+上記の学生の国語・数学・英語の点数をもつ list of dict をコピペして、以下の操作を実装せよ。
 
 
 1. **B さんの数学**の点数を表示しよう

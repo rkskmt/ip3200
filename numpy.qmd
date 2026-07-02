@@ -68,7 +68,7 @@ arr = np.array([1, 2, 3, 4]) # 1-4のndarray
 
 ## 基本的な初期化
 
-リストを `np.array()` に渡すと、NumPy配列になります。
+- リストを `np.array()` に渡すと、NumPy配列になる
 
 ```python
 import numpy as np
@@ -142,8 +142,8 @@ print(arr[2:])   # 3番目から最後まで（[3, 4]）
 - ndarray全体は `numpy.ndarray`
 - 各要素は代入時のリテラルによって決まる
    - intなら `numpy.int64`
-   - floatなら `numpy.float64` 
-- 異なる型の混在はできない
+   - floatなら `numpy.float64`
+- 異なる型は混ぜられない（intとfloatを混ぜると **全部floatに統一** される）
 
 ```python
 import numpy as np
@@ -181,7 +181,7 @@ print([x * 2 for x in my_list])  # [2, 4, 6]
 
 ## 本当に速いの？ — 100万要素で実測
 
-- 「for文が不要なため非常に高速」— 何倍くらい違うと思いますか？
+- 「for文が不要なため非常に高速」— 何倍くらい違うと思う？
 
 ::: {.fragment}
 
@@ -284,7 +284,7 @@ print(A[0, 1])  # 1行目2列目
 print(A[1, :])  # 2行目全体
 print(A[:, 0])  # 1列目全体
 
-# 転置
+# 転置（transpose）
 print(A.T)
 print(B.T)
 ```
@@ -329,7 +329,7 @@ plt.show()
 
 
 
-## その他演算等
+## 統計の組み込み関数
 
 - 統計処理の組み込み関数も多数提供されている
 
@@ -344,16 +344,21 @@ print(np.mean(scores))   # 平均値
 print(np.median(scores)) # 中央値
 print(np.var(scores))    # 分散
 print(np.std(scores))    # 標準偏差
+```
+
+
+## 多次元は axis で「潰す向き」を指定
+
+- 2次元以上の集計は `axis=` で向きを指定する
+
+```python
+import numpy as np
 
 # 3人の生徒の英語・数学・国語の成績
-# 多次元の処理はaxisを指定する
 data = np.array([[80, 85, 90], [75, 88, 92], [82, 79, 87]])
+
 print(np.mean(data, axis=0))  # 列ごと（各科目の平均）
 print(np.mean(data, axis=1))  # 行ごと（各生徒の平均）
-
-# 条件を満たすデータの抽出
-print(scores >= 85)           # True/False
-print(scores[scores >= 85])   # 85点以上のデータ
 ```
 
 ```{python}
@@ -404,6 +409,21 @@ plt.tight_layout()
 plt.show()
 ```
 
+
+## 条件でフィルタする
+
+- 比較演算も「全要素いっせい」に効く
+- その `True` / `False` を添字に渡すと **フィルタ** になる
+
+```python
+import numpy as np
+
+scores = np.array([80, 85, 90, 75, 88, 92, 82, 79, 87])
+
+print(scores >= 85)           # True/False
+print(scores[scores >= 85])   # 85点以上のデータ
+```
+
 ```{python}
 #| echo: false
 #| fig-align: center
@@ -442,11 +462,12 @@ plt.tight_layout()
 plt.show()
 ```
 
-- 比較演算も「全要素いっせい」— その True/False を添字に渡すと**フィルタ**になる
+::: {.caption-note}
+`scores >= 85` が True/False の並びを作り、それを添字に渡すと True の位置だけ残る
+:::
 
 
-
-## 演習1 {.badge-practice}
+## 演習：ndarrayを作って操作する {.badge-practice}
 
 （１） 「1から10までの連続した整数」から成る`ndarray`を表示
 
@@ -458,8 +479,28 @@ plt.show()
 
 （５） 0以上1未満のランダムな数字を１つ表示
 
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+import numpy as np
 
-## 演習2 {.badge-practice}
+arr = np.arange(1, 11)
+print(arr)                        # (1)
+
+print(arr * 2)                    # (2)
+
+shuffled = arr.copy()             # (3) 並べ替えは破壊的なのでコピーしてから
+np.random.shuffle(shuffled)
+print(shuffled)
+
+print(np.random.randint(100, 401))  # (4) 上限は含まないので401
+print(np.random.rand())             # (5)
+```
+
+
+## 演習：listとndarrayの型 {.badge-practice}
 
 （１）`li = [10, 20, 30]` に対してfor文ですべての要素の型を確認するコードを書け
 
@@ -468,6 +509,28 @@ plt.show()
 （３）同じく`li = [0.1, 0.2, 0.3]` の要素の型を表示
 
 （４）`li` をNumPyの配列 `arr2` に変換し、要素の型を表示
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+import numpy as np
+
+li = [10, 20, 30]
+for v in li:                # (1)
+    print(type(v))          # int
+
+arr = np.array(li)          # (2)
+print(type(arr[0]))         # numpy.int64
+
+li = [0.1, 0.2, 0.3]
+for v in li:                # (3)
+    print(type(v))          # float
+
+arr2 = np.array(li)         # (4)
+print(type(arr2[0]))        # numpy.float64
+```
 
 
 

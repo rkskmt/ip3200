@@ -709,86 +709,10 @@ $Ax = b$ の解は `np.linalg.solve(A, b)`
 :::
 
 
-## まとめ
-
-| 概念 | 数式 | NumPy |
-|------|------|-------|
-| ベクトル | $\mathbf{a}$ | `np.array([1, 2])` |
-| 内積 | $\mathbf{a} \cdot \mathbf{b}$ | `a @ b` |
-| 行列積 | $AB$ | `A @ B` |
-| 転置 | $A^T$ | `A.T` |
-| 直交 | $\mathbf{a} \cdot \mathbf{b} = 0$ | `a @ b == 0` |
-| 逆行列 | $A^{-1}$ | `np.linalg.inv(A)` |
-| 連立方程式 | $Ax = b$ | `np.linalg.solve(A, b)` |
-| ノルム | $\|\mathbf{a}\|$ | `np.linalg.norm(a)` |
-| 単位ベクトル | $\hat{\mathbf{a}} = \mathbf{a} / \|\mathbf{a}\|$ | `a / np.linalg.norm(a)` |
-
-
-## 演習 {.badge-practice}
-
-（１）以下の2つのベクトルの内積を求め、直交しているか判定せよ。
-
-$$
-\mathbf{a} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}, \quad
-\mathbf{b} = \begin{pmatrix} -1 \\ 2 \end{pmatrix}
-$$
-
-（２）以下の行列の掛け算を手計算で求め、NumPyで確認せよ。
-
-$$
-\begin{pmatrix} 2 & 0 \\ 0 & 3 \end{pmatrix}
-\begin{pmatrix} 1 \\ 1 \end{pmatrix}
-$$
-
-（３）以下の連立方程式を `np.linalg.solve()` で解け。また、`np.linalg.solve()`を使わずに逆行列でもとき、結果を比較せよ
-
-$$
-\begin{cases} x + y = 4 \\ x - y = 2 \end{cases}
-$$
-
-（４）$\mathbf{a} = \begin{pmatrix} 6 \\ 8 \end{pmatrix}$ のノルムと単位ベクトルを求めよ。
-
-```{python}
-#| echo: true
-#| eval: false
-#| code-fold: true
-#| code-summary: "解答例を見る"
-import numpy as np
-
-# (1)
-a = np.array([2, 1])
-b = np.array([-1, 2])
-print(a @ b)  # 0 → 直交している
-
-# (2)
-A = np.array([[2, 0], [0, 3]])
-v = np.array([1, 1])
-print(A @ v)  # [2 3]
-
-# (3)
-A = np.array([[1, 1], [1, -1]])
-b = np.array([4, 2])
-x1 = np.linalg.solve(A, b)
-print(x1)  # [3. 1.] → x=3, y=1
-
-# 逆行列で解く
-x2 = np.linalg.inv(A) @ b
-print(x2)  # [3. 1.]
-
-# 比較
-print(np.allclose(x1, x2))  # True
-
-# (4)
-a = np.array([6, 8])
-print(np.linalg.norm(a))       # 10.0
-print(a / np.linalg.norm(a))   # [0.6 0.8]
-```
-
-
 ## {background-color="white" .center .break-slide}
 
 ::: {.break-title}
-その他
+その他のベクトル演算
 :::
 
 ## ベクトルの大きさ（ノルム）
@@ -1244,5 +1168,81 @@ b = np.array([4, 5, 6])
 
 print(np.cross(a, b))   # [-3  6 -3]  外積
 print(skew(a) @ b)      # [-3.  6. -3.]  行列積で同じ結果
+```
+
+
+## まとめ
+
+| 概念 | 数式 | NumPy |
+|------|------|-------|
+| ベクトル | $\mathbf{a}$ | `np.array([1, 2])` |
+| 内積 | $\mathbf{a} \cdot \mathbf{b}$ | `a @ b` |
+| 行列積 | $AB$ | `A @ B` |
+| 転置 | $A^T$ | `A.T` |
+| 直交 | $\mathbf{a} \cdot \mathbf{b} = 0$ | `a @ b == 0` |
+| 逆行列 | $A^{-1}$ | `np.linalg.inv(A)` |
+| 連立方程式 | $Ax = b$ | `np.linalg.solve(A, b)` |
+| ノルム | $\|\mathbf{a}\|$ | `np.linalg.norm(a)` |
+| 単位ベクトル | $\hat{\mathbf{a}} = \mathbf{a} / \|\mathbf{a}\|$ | `a / np.linalg.norm(a)` |
+
+
+## 演習 {.badge-practice}
+
+（１）以下の2つのベクトルの内積を求め、直交しているか判定せよ。
+
+$$
+\mathbf{a} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}, \quad
+\mathbf{b} = \begin{pmatrix} -1 \\ 2 \end{pmatrix}
+$$
+
+（２）以下の行列の掛け算を手計算で求め、NumPyで確認せよ。
+
+$$
+\begin{pmatrix} 2 & 0 \\ 0 & 3 \end{pmatrix}
+\begin{pmatrix} 1 \\ 1 \end{pmatrix}
+$$
+
+（３）以下の連立方程式を `np.linalg.solve()` で解け。また、`np.linalg.solve()`を使わずに逆行列でもとき、結果を比較せよ
+
+$$
+\begin{cases} x + y = 4 \\ x - y = 2 \end{cases}
+$$
+
+（４）$\mathbf{a} = \begin{pmatrix} 6 \\ 8 \end{pmatrix}$ のノルムと単位ベクトルを求めよ。
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+import numpy as np
+
+# (1)
+a = np.array([2, 1])
+b = np.array([-1, 2])
+print(a @ b)  # 0 → 直交している
+
+# (2)
+A = np.array([[2, 0], [0, 3]])
+v = np.array([1, 1])
+print(A @ v)  # [2 3]
+
+# (3)
+A = np.array([[1, 1], [1, -1]])
+b = np.array([4, 2])
+x1 = np.linalg.solve(A, b)
+print(x1)  # [3. 1.] → x=3, y=1
+
+# 逆行列で解く
+x2 = np.linalg.inv(A) @ b
+print(x2)  # [3. 1.]
+
+# 比較
+print(np.allclose(x1, x2))  # True
+
+# (4)
+a = np.array([6, 8])
+print(np.linalg.norm(a))       # 10.0
+print(a / np.linalg.norm(a))   # [0.6 0.8]
 ```
 
