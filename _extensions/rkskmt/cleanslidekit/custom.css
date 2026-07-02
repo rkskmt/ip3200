@@ -1008,7 +1008,8 @@ a.lightbox[href]::after {
 .reveal .pdf-gate::after{content:none!important}
 .reveal a.backlink{position:absolute;top:0;right:0;font-size:.46em;font-weight:600;color:#2a76dd!important;text-decoration:none!important;z-index:20}
 .reveal .idx-lead{color:#8a93a0!important;font-size:.5em;margin:.1em 0 1em}
-.reveal #lecture-search{margin-bottom:1.1em}
+.reveal #lecture-search{margin:.5em 0 1.1em}
+.reveal #search-input{width:100%;font-size:1.4rem;padding:8px 14px;border:2px solid #5dade2;border-radius:6px;box-sizing:border-box;background:#fff}
 .reveal .lectures{counter-reset:lec}
 .reveal .lectures .sec{background:none!important;font-size:.62em!important;font-weight:700;color:#6b7280;
   letter-spacing:.03em;margin:1em 0 .5em!important;padding:0 0 .35em!important;border:none!important;
