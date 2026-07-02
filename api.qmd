@@ -95,7 +95,7 @@ plt.show()
 ```python
 import requests
 
-response = requests.get('https://www.python.org/')
+response = requests.get("https://www.python.org/")
 print(response)   # <Response [200]>
 ```
 
@@ -151,6 +151,7 @@ plt.show()
 
 | プロパティ | 型 | 説明 |
 |---|---|---|
+| `.status_code` | `int` | 状態コード（`200` = OK） |
 | `.text` | `str` | 本文を文字列で取得 |
 | `.json()` | `dict` | 本文がJSONなら dict として取得 |
 | `.headers` | dict風 | ヘッダーを辞書風に取得 |
@@ -163,7 +164,7 @@ plt.show()
 ```python
 import requests
 
-response = requests.get('https://www.python.org/')
+response = requests.get("https://www.python.org/")
 print(response.text)    # HTMLの中身
 ```
 
@@ -176,7 +177,7 @@ print(response.text)    # HTMLの中身
 ```python
 import requests
 
-response = requests.get('https://www.python.org/')
+response = requests.get("https://www.python.org/")
 print(response.headers)
 ```
 
@@ -213,7 +214,7 @@ Wikipedia の統計APIに触れる
 import requests
 
 url = "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia/all-access/2025/06/27"
-headers = {'User-Agent': 'example.com/lesson'}
+headers = {"User-Agent": "example.com/lesson"}
 
 response = requests.get(url, headers=headers)
 data = response.json()
@@ -223,7 +224,7 @@ print(data, type(data))
 
 ## ヘッダーを送る理由
 
-- Wikipedia の API は **User-Agent がないと応答を返さない**
+- Wikipedia の API は **User-Agent がないと403で拒否される**
 - 本来はChromeなどブラウザ名を入れる場所
 - 今回は教育目的を示す架空のもの `example.com/lesson` を使う
 
@@ -421,14 +422,14 @@ import numpy as np
 url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
        "ja.wikipedia/all-access/user/"
        "七夕/daily/20250101/20251231")
-headers = {'User-Agent': 'example.com/lesson'}
+headers = {"User-Agent": "example.com/lesson"}
 
 response = requests.get(url, headers=headers)
 data = response.json()
 
-# data['items'] は list of dict
-views = np.array([item['views']     for item in data['items']])
-dates = np.array([item['timestamp'] for item in data['items']])
+# data["items"] は list of dict
+views = np.array([item["views"]     for item in data["items"]])
+dates = np.array([item["timestamp"] for item in data["items"]])
 
 print(f"日数:   {len(views)}")
 print(f"最大:   {views.max()}回")
@@ -451,7 +452,7 @@ print(f"中央値: {np.median(views):.0f}回")
 
 ## 過去の章が一気に効いてくる
 
-- `data['items']` は **list of dict**（[dict章](dict.qmd) でやった形）
+- `data["items"]` は **list of dict**（[dict章](dict.qmd) でやった形）
 - 内包表記でフィールド抽出（[list章](list.qmd)）
 - `np.array()` で `ndarray` 化（[numpy章](numpy.qmd)）
 - `np.mean / np.var` で統計量
@@ -474,8 +475,8 @@ print(f"中央値: {np.median(views):.0f}回")
 | 本文(str) | `response.text` |
 | JSON → dict | `response.json()` |
 | ヘッダー | `response.headers` |
-| User-Agent | `headers={'User-Agent': '...'}` |
-| 値の集計 | `np.array([d['views'] for d in items])` → `mean/var/argmax` |
+| User-Agent | `headers={"User-Agent": "..."}` |
+| 値の集計 | `np.array([d["views"] for d in items])` → `mean/var/argmax` |
 
 - Web から取った dict は今まで通り `for` / `items()` / `np.array()` で処理できる
 
@@ -501,6 +502,31 @@ print(f"中央値: {np.median(views):.0f}回")
 - 関数化すると重複が消えてスッキリ
 :::
 
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+import requests
+import numpy as np
+
+headers = {"User-Agent": "example.com/lesson"}
+base = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
+        "ja.wikipedia/{access}/user/七夕/daily/20250101/20251231")
+
+def fetch_views(access):
+    url = base.format(access=access)
+    data = requests.get(url, headers=headers).json()
+    return np.array([item["views"] for item in data["items"]])
+
+views_desktop    = fetch_views("desktop")
+views_mobile_web = fetch_views("mobile-web")
+
+for name, views in [("desktop", views_desktop), ("mobile-web", views_mobile_web)]:
+    print(f"{name}: 最大={views.max()} 最小={views.min()} "
+          f"平均={views.mean():.1f} 分散={views.var():.1f}")
+```
+
 
 ## {background-color="white" .center .break-slide}
 
@@ -520,7 +546,7 @@ print(f"中央値: {np.median(views):.0f}回")
 | Chrome (Windows) | `Mozilla/5.0 (Windows NT 10.0; Win64; x64) ... Chrome/119.0.0.0 Safari/537.36` |
 | Chrome (Mac) | `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) ... Chrome/119.0.0.0 Safari/537.36` |
 | iOS Safari (iPhone) | `Mozilla/5.0 (iPhone; CPU iPhone OS 17_1 like Mac OS X) ... Mobile/15E148 Safari/604.1` |
-| iOS Safari (iPad) | `Mozilla/5.0 (iPad; CPU OS 17_1 like Mac OS X) ... Mobile/15E148 Safari/604.` |
+| iOS Safari (iPad) | `Mozilla/5.0 (iPad; CPU OS 17_1 like Mac OS X) ... Mobile/15E148 Safari/604.1` |
 
 
 ## ここまでの流れ

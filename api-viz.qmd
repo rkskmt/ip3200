@@ -20,13 +20,13 @@ import numpy as np
 url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
        "ja.wikipedia/all-access/user/"
        "七夕/daily/20250101/20251231")
-headers = {'User-Agent': 'example.com/lesson'}
+headers = {"User-Agent": "example.com/lesson"}
 
 response = requests.get(url, headers=headers)
 data = response.json()
 
-views = np.array([item['views']     for item in data['items']])
-dates = np.array([item['timestamp'] for item in data['items']])
+views = np.array([item["views"]     for item in data["items"]])
+dates = np.array([item["timestamp"] for item in data["items"]])
 ```
 
 | 統計量 | 値 |
@@ -77,11 +77,11 @@ import numpy as np
 url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
        "ja.wikipedia/all-access/user/"
        "七夕/daily/20250101/20251231")
-headers = {'User-Agent': 'example.com/lesson'}
+headers = {"User-Agent": "example.com/lesson"}
 response = requests.get(url, headers=headers)
 data = response.json()
 
-views = np.array([item['views'] for item in data['items']])
+views = np.array([item["views"] for item in data["items"]])
 
 plt.plot(views)
 plt.title("「七夕」の閲覧数（2025年）")
@@ -226,7 +226,7 @@ import matplotlib.pyplot as plt
 import japanize_matplotlib
 import numpy as np
 
-headers = {'User-Agent': 'example.com/lesson'}
+headers = {"User-Agent": "example.com/lesson"}
 article = "七夕"
 base = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
         f"ja.wikipedia/{{access}}/user/{article}/daily/20250101/20251231")
@@ -234,7 +234,7 @@ base = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
 def fetch_views(access):
     url = base.format(access=access)
     data = requests.get(url, headers=headers).json()
-    return np.array([item['views'] for item in data['items']])
+    return np.array([item["views"] for item in data["items"]])
 
 views_desktop    = fetch_views("desktop")
 views_mobile_web = fetch_views("mobile-web")
@@ -272,11 +272,11 @@ import numpy as np
 url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
        "ja.wikipedia/all-access/user/"
        "富士山/daily/20250101/20251231")
-headers = {'User-Agent': 'example.com/lesson'}
+headers = {"User-Agent": "example.com/lesson"}
 response = requests.get(url, headers=headers)
 data = response.json()
 
-views = np.array([item['views'] for item in data['items']])
+views = np.array([item["views"] for item in data["items"]])
 
 plt.plot(views)
 plt.title("「富士山」の閲覧数（2025年）")

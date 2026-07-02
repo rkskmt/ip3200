@@ -8,7 +8,7 @@ lightbox: auto
 
 - これは **リファレンス（参照資料）** です
 - 全部覚える必要はない — **必要なときに引く**
-- [api.qmd](api.qmd) で基本を学んでから参照すること
+- [API章](api.qmd) で基本を学んでから参照すること
 
 ::: {.callout-tip}
 ## 使い方
@@ -47,7 +47,7 @@ D -> J
 
 | 色 | API | 用途 | 例 |
 |---|---|---|---|
-| 緑 | **AQS** | ページビュー統計 | [api.qmd](api.qmd) で使用 |
+| 緑 | **AQS** | ページビュー統計 | [API章](api.qmd) で使用 |
 | 青 | **REST API v1** | 概要をサクッと | `/page/summary/桜` |
 | 橙 | **Action API** | 検索・カテゴリ・履歴 | `action=query&list=search` |
 | 桃 | **Wikidata** | 機械可読な構造化データ | `entities/items/Q1490` |
@@ -200,7 +200,7 @@ Analytics Query Service（AQS）
 https://wikimedia.org/api/rest_v1/metrics/
 ```
 
-- [api.qmd](api.qmd) で使ったのはこれ
+- [API章](api.qmd) で使ったのはこれ
 - 例：「桜」の2024年3月の日別アクセス数
 
 ```text
@@ -309,17 +309,17 @@ https://www.wikidata.org/w/rest.php/wikibase/v1/entities/items/Q1490
 import requests
 
 params = {
-    'action': 'query',
-    'prop': 'pageprops',
-    'titles': '東京',
-    'format': 'json'
+    "action": "query",
+    "prop": "pageprops",
+    "titles": "東京",
+    "format": "json"
 }
-response = requests.get('https://ja.wikipedia.org/w/api.php', params=params)
+response = requests.get("https://ja.wikipedia.org/w/api.php", params=params)
 data = response.json()
 
-for page_id, page_info in data['query']['pages'].items():
-    if 'pageprops' in page_info:
-        wikidata_id = page_info['pageprops'].get('wikibase_item')
+for page_id, page_info in data["query"]["pages"].items():
+    if "pageprops" in page_info:
+        wikidata_id = page_info["pageprops"].get("wikibase_item")
         print(f"Wikidata ID: {wikidata_id}")  # Q1490
 ```
 
@@ -336,19 +336,19 @@ for page_id, page_info in data['query']['pages'].items():
 ```python
 import requests
 
-headers = {'User-Agent': 'example.com/lesson'}
+headers = {"User-Agent": "example.com/lesson"}
 
 # 検索：「桜」で5件
 search_params = {
-    'action': 'query',
-    'list': 'search',
-    'srsearch': '桜',
-    'format': 'json',
-    'srlimit': 5
+    "action": "query",
+    "list": "search",
+    "srsearch": "桜",
+    "format": "json",
+    "srlimit": 5
 }
-r = requests.get('https://ja.wikipedia.org/w/api.php',
+r = requests.get("https://ja.wikipedia.org/w/api.php",
                  params=search_params, headers=headers)
-results = r.json()['query']['search']
+results = r.json()["query"]["search"]
 
 for item in results:
     print(f"- {item['title']}")
@@ -359,18 +359,18 @@ for item in results:
 
 ```python
 detail_params = {
-    'action': 'query',
-    'prop': 'extracts|info|images',
-    'titles': '桜',
-    'format': 'json',
-    'formatversion': 2,   # JSONが扱いやすくなる
-    'exintro': True,      # 導入部分のみ
-    'explaintext': True,  # HTMLタグ除去
-    'redirects': True     # リダイレクト自動追従
+    "action": "query",
+    "prop": "extracts|info|images",
+    "titles": "桜",
+    "format": "json",
+    "formatversion": 2,   # JSONが扱いやすくなる
+    "exintro": True,      # 導入部分のみ
+    "explaintext": True,  # HTMLタグ除去
+    "redirects": True     # リダイレクト自動追従
 }
-r = requests.get('https://ja.wikipedia.org/w/api.php',
+r = requests.get("https://ja.wikipedia.org/w/api.php",
                  params=detail_params, headers=headers)
-pages = r.json()['query']['pages']
+pages = r.json()["query"]["pages"]
 
 for page in pages:
     print(f"タイトル: {page.get('title')}")
@@ -383,26 +383,26 @@ for page in pages:
 ```python
 # カテゴリメンバー
 cats_params = {
-    'action': 'query',
-    'list': 'categorymembers',
-    'cmtitle': 'Category:日本の桜',
-    'format': 'json',
-    'cmlimit': 10
+    "action": "query",
+    "list": "categorymembers",
+    "cmtitle": "Category:日本の桜",
+    "format": "json",
+    "cmlimit": 10
 }
-r = requests.get('https://ja.wikipedia.org/w/api.php',
+r = requests.get("https://ja.wikipedia.org/w/api.php",
                  params=cats_params, headers=headers)
-members = r.json()['query']['categorymembers']
+members = r.json()["query"]["categorymembers"]
 for m in members:
     print(f"- {m['title']}")
 
 # ランダム記事
 rnd_params = {
-    'action': 'query', 'list': 'random',
-    'rnnamespace': 0, 'rnlimit': 3, 'format': 'json'
+    "action": "query", "list": "random",
+    "rnnamespace": 0, "rnlimit": 3, "format": "json"
 }
-r = requests.get('https://ja.wikipedia.org/w/api.php',
+r = requests.get("https://ja.wikipedia.org/w/api.php",
                  params=rnd_params, headers=headers)
-for p in r.json()['query']['random']:
+for p in r.json()["query"]["random"]:
     print(f"- {p['title']}")
 ```
 
@@ -412,18 +412,18 @@ for p in r.json()['query']['random']:
 ```python
 import requests
 
-headers = {'User-Agent': 'example.com/lesson'}
+headers = {"User-Agent": "example.com/lesson"}
 
 # 記事概要（タイトル、要約、画像URL）
 response = requests.get(
-    'https://ja.wikipedia.org/api/rest_v1/page/summary/桜',
+    "https://ja.wikipedia.org/api/rest_v1/page/summary/桜",
     headers=headers
 )
 data = response.json()
 
 print(f"タイトル: {data['title']}")
 print(f"概要: {data['extract']}")
-if 'thumbnail' in data:
+if "thumbnail" in data:
     print(f"画像: {data['thumbnail']['source']}")
 ```
 
@@ -433,22 +433,22 @@ if 'thumbnail' in data:
 ```python
 import requests
 
-headers = {'User-Agent': 'example.com/lesson'}
+headers = {"User-Agent": "example.com/lesson"}
 
 # 人気記事ランキング
-url = ('https://wikimedia.org/api/rest_v1/metrics/'
-       'pageviews/top/ja.wikipedia/all-access/2024/03/15')
+url = ("https://wikimedia.org/api/rest_v1/metrics/"
+       "pageviews/top/ja.wikipedia/all-access/2024/03/15")
 r = requests.get(url, headers=headers)
-articles = r.json()['items'][0]['articles'][:5]
+articles = r.json()["items"][0]["articles"][:5]
 for a in articles:
     print(f"{a['rank']}. {a['article']} ({a['views']:,} views)")
 
 # 編集統計
-url = ('https://wikimedia.org/api/rest_v1/metrics/'
-       'edits/aggregate/ja.wikipedia/all-editor-types/'
-       'all-page-types/monthly/20240101/20240331')
+url = ("https://wikimedia.org/api/rest_v1/metrics/"
+       "edits/aggregate/ja.wikipedia/all-editor-types/"
+       "all-page-types/monthly/20240101/20240331")
 r = requests.get(url, headers=headers)
-for item in r.json()['items'][0]['results']:
+for item in r.json()["items"][0]["results"]:
     print(f"{item['timestamp']}: {item['edits']:,} edits")
 ```
 
@@ -499,8 +499,37 @@ for item in r.json()['items'][0]['results']:
 ## ヒント
 - AQS の `pageviews/per-article` を使う
 - 記事名は日本語のままURLに入れてOK（requestsが自動エンコード）
-- [api.qmd](api.qmd) のコードをベースに改造
+- [API章](api.qmd) のコードをベースに改造
 :::
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+import requests
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+import numpy as np
+
+headers = {"User-Agent": "example.com/lesson"}
+article = "サクラ"  # 好きな記事に変更（リダイレクト元の「桜」だと別カウントになる点に注意）
+url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
+       f"ja.wikipedia/all-access/user/{article}/daily/20250101/20251231")
+
+data = requests.get(url, headers=headers).json()
+views = np.array([item["views"] for item in data["items"]])
+dates = np.array([item["timestamp"] for item in data["items"]])
+
+max_i = np.argmax(views)
+print(f"最大アクセス日: {dates[max_i]} （{views[max_i]}回）")
+
+plt.plot(views)
+plt.title(f"「{article}」の閲覧数（2025年）")
+plt.xlabel("日数")
+plt.ylabel("閲覧数")
+plt.show()
+```
 
 
 ## 演習2：カテゴリ内の記事を列挙 {.badge-practice}
@@ -513,6 +542,27 @@ for item in r.json()['items'][0]['results']:
 # Category:日本の城
 # Category:東京都の鉄道駅
 # Category:日本のアニメ映画
+```
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る"
+import requests
+
+headers = {"User-Agent": "example.com/lesson"}
+params = {
+    "action": "query",
+    "list": "categorymembers",
+    "cmtitle": "Category:日本の城",  # 好きなカテゴリに変更
+    "cmlimit": 10,
+    "format": "json",
+}
+r = requests.get("https://ja.wikipedia.org/w/api.php",
+                 params=params, headers=headers)
+for m in r.json()["query"]["categorymembers"]:
+    print(m["title"])
 ```
 
 
@@ -528,18 +578,18 @@ for item in r.json()['items'][0]['results']:
 #| code-summary: "解答例を見る"
 import requests
 
-headers = {'User-Agent': 'example.com/lesson'}
+headers = {"User-Agent": "example.com/lesson"}
 title = "東京タワー"  # 好きな記事に変更
 
 response = requests.get(
-    f'https://ja.wikipedia.org/api/rest_v1/page/summary/{title}',
+    f"https://ja.wikipedia.org/api/rest_v1/page/summary/{title}",
     headers=headers
 )
 data = response.json()
 
 print(f"タイトル: {data['title']}")
 print(f"概要: {data['extract'][:100]}...")
-if 'thumbnail' in data:
+if "thumbnail" in data:
     print(f"画像: {data['thumbnail']['source']}")
 ```
 

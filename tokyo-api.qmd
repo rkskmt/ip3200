@@ -20,7 +20,7 @@ subtitle: "自治体データを活用する"
 ## 意義
 - **透明性**：行政の活動を市民が検証できる
 - **イノベーション**：民間がデータを活用してサービス開発
-- **効率化**：データに基づく政策立案（EBPM）
+- **効率化**：データに基づく政策立案（**EBPM**: [**E**vidence-**B**ased **P**olicy **M**aking]{.en}）
 :::
 
 
@@ -138,8 +138,8 @@ import requests
 api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
-params = {'limit': 200}
-headers = {'User-Agent': 'example.com/lesson'}
+params = {"limit": 200}
+headers = {"User-Agent": "example.com/lesson"}
 body = {}
 
 response = requests.post(url, params=params, headers=headers, json=body)
@@ -201,8 +201,8 @@ body = {
 }
 
 # 取得後に Python でフィルタリング
-filtered = [r for r in data['hits']
-            if 1950 <= r['西暦（年次）'] <= 2023]
+filtered = [r for r in data["hits"]
+            if 1950 <= r["西暦（年次）"] <= 2023]
 ```
 
 
@@ -235,19 +235,19 @@ filtered = [r for r in data['hits']
 ```python
 import requests
 
-headers = {'User-Agent': 'example.com/lesson'}
+headers = {"User-Agent": "example.com/lesson"}
 api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
-params = {'limit': 200}
+params = {"limit": 200}
 body = {"column": ["西暦（年次）", "東京都／人口"]}
 
 response = requests.post(url, params=params, headers=headers, json=body)
 data = response.json()
 
 # Python でフィルタリング
-filtered = [r for r in data['hits']
-            if 1950 <= r['西暦（年次）'] <= 2023]
+filtered = [r for r in data["hits"]
+            if 1950 <= r["西暦（年次）"] <= 2023]
 
 print(f"総件数: {len(filtered)}")
 for record in filtered[:5]:
@@ -273,10 +273,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-years = np.arange(1950, 2024)
-n = len(years)
-population = np.linspace(6.3, 14.1, n) * 1e6
-population += np.random.default_rng(0).normal(0, 0.1e6, n)
+pop = np.loadtxt("data/tokyo_population.csv", delimiter=",", skiprows=1)
+mask = pop[:, 0] >= 1950
+years, population = pop[mask, 0], pop[mask, 1]
 
 fig, ax = plt.subplots(figsize=(6, 3))
 ax.plot(years, population / 1e6, color="#2266CC", linewidth=1.2)
@@ -289,7 +288,7 @@ plt.show()
 ```
 
 - 戦後復興期から高度経済成長期にかけて **急増**
-- 1970年代以降は **緩やかな増加**
+- 1970年代からしばらく **横ばい**、1990年代後半から再び増加
 - このように **まず描く** ことで傾向が見える
 
 
@@ -298,11 +297,11 @@ plt.show()
 ```python
 import requests
 
-headers = {'User-Agent': 'example.com/lesson'}
+headers = {"User-Agent": "example.com/lesson"}
 api_id = "t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0"
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
-params = {'limit': 5}
+params = {"limit": 5}
 body = {}
 
 response = requests.post(url, params=params, headers=headers, json=body)
@@ -310,10 +309,10 @@ data = response.json()
 
 print(f"品川区の避難所情報（総件数: {data['total']}件）")
 
-for facility in data['hits']:
+for facility in data["hits"]:
     print("---")
     for key, value in facility.items():
-        if key != 'row':
+        if key != "row":
             print(f"{key}: {value}")
 ```
 
@@ -333,18 +332,18 @@ for facility in data['hits']:
 ```python
 import requests
 
-headers = {'User-Agent': 'example.com/lesson'}
+headers = {"User-Agent": "example.com/lesson"}
 api_id = "t000003d0000000093-0af9bfa497bc7be6ef83e5bfd1fdcfc6-0"
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
-params = {'limit': 5}
+params = {"limit": 5}
 body = {}
 
 response = requests.post(url, params=params, headers=headers, json=body)
 data = response.json()
 
 print(f"東京都の避難所（総件数: {data['total']}件）")
-for shelter in data['hits']:
+for shelter in data["hits"]:
     print(f"施設名: {shelter['避難所_施設名称']}")
     print(f"住所: {shelter['所在地住所']}")
     print(f"区市町村: {shelter['指定市区町村名']}")
@@ -370,7 +369,7 @@ for shelter in data['hits']:
 ```python
 import requests
 
-headers = {'User-Agent': 'example.com/lesson'}
+headers = {"User-Agent": "example.com/lesson"}
 api_id = "t000018d0000000044-3db21a77b0af1c54b411f79604444ca2-0"
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 body = {}
@@ -380,10 +379,10 @@ data = response.json()
 
 print(f"都営バス運賃情報（総件数: {data['total']}件）")
 
-for fare_info in data['hits'][:5]:
+for fare_info in data["hits"][:5]:
     print("---")
     for key, value in fare_info.items():
-        if key != 'row':
+        if key != "row":
             print(f"{key}: {value}")
 ```
 
@@ -412,17 +411,17 @@ NumPyで統計処理
 import requests
 import numpy as np
 
-headers = {'User-Agent': 'example.com/lesson'}
+headers = {"User-Agent": "example.com/lesson"}
 api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
-params = {'limit': 200}
+params = {"limit": 200}
 response = requests.post(url, params=params, headers=headers, json={})
 data = response.json()
 
 # 人口を抽出
-population = [r['東京都／人口'] for r in data['hits']
-              if isinstance(r.get('東京都／人口'), int)]
+population = [r["東京都／人口"] for r in data["hits"]
+              if isinstance(r.get("東京都／人口"), int)]
 population = np.array(population)
 
 print(f"平均: {np.mean(population):,.0f}人")
@@ -453,17 +452,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-years = np.arange(1872, 2024)
-n = len(years)
-base = np.linspace(0.86, 14.1, n)
-dip = np.exp(-((years - 1945) ** 2) / 50) * 8
-population = (base - dip) * 1e6
-population = np.maximum(population, 3.5e6)
+pop = np.loadtxt("data/tokyo_population.csv", delimiter=",", skiprows=1)
+years, population = pop[:, 0], pop[:, 1]
 
 fig, ax = plt.subplots(figsize=(7, 3))
 ax.plot(years, population / 1e6, color="#2266CC", linewidth=1.2)
 ax.fill_between(years, population / 1e6, alpha=0.3, color="#2266CC")
-ax.set_title("Tokyo Population 1872-2023 (sample image)")
+ax.set_title("Tokyo Population 1872-2023")
 ax.set_xlabel("Year")
 ax.set_ylabel("Population (million)")
 ax.grid(True, linestyle="--", alpha=0.5)
@@ -473,7 +468,7 @@ plt.show()
 
 - **右肩上がり** — 150年で約16倍に増加
 - **1940年代に急落** — 戦争による疎開・被害
-- **2020年代に停滞** — コロナ禍の影響が見える
+- **2020年代は横ばい** — コロナ禍の2021年には減少もあった
 
 ::: {.callout-tip}
 ## これまでの章が活きる
@@ -488,11 +483,11 @@ plt.show()
 | やりたいこと | コード |
 |---|---|
 | 基本アクセス | `requests.post(url, params=..., headers=..., json={})` |
-| 取得件数指定 | `params = {'limit': 200}` |
+| 取得件数指定 | `params = {"limit": 200}` |
 | 列の絞り込み | `body = {"column": ["列名1", "列名2"]}` |
 | 条件フィルタ | `body = {"searchCondition": {...}}` |
-| 全件数確認 | `data['total']` |
-| データ本体 | `data['hits']`（list of dict） |
+| 全件数確認 | `data["total"]` |
+| データ本体 | `data["hits"]`（list of dict） |
 
 ::: {.callout-warning}
 ## Wikipedia API との違い
@@ -520,6 +515,23 @@ plt.show()
 - 複数の区のデータを比較しても面白い
 :::
 
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る（品川区の例 — apiIdは検索ページで差し替え）"
+import requests
+
+headers = {"User-Agent": "example.com/lesson"}
+api_id = "t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0"  # 品川区の避難所
+url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
+
+response = requests.post(url, headers=headers, json={})
+data = response.json()
+
+print(f"避難所の件数: {data['total']}件")
+```
+
 
 ## 演習2：人口推移の時系列グラフ {.badge-practice}
 
@@ -537,18 +549,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-headers = {'User-Agent': 'example.com/lesson'}
+headers = {"User-Agent": "example.com/lesson"}
 api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
-params = {'limit': 200}
+params = {"limit": 200}
 response = requests.post(url, params=params, headers=headers, json={})
 data = response.json()
 
-years = np.array([r['西暦（年次）'] for r in data['hits']
-                  if isinstance(r.get('東京都／人口'), int)])
-population = np.array([r['東京都／人口'] for r in data['hits']
-                       if isinstance(r.get('東京都／人口'), int)])
+years = np.array([r["西暦（年次）"] for r in data["hits"]
+                  if isinstance(r.get("東京都／人口"), int)])
+population = np.array([r["東京都／人口"] for r in data["hits"]
+                       if isinstance(r.get("東京都／人口"), int)])
 
 plt.figure(figsize=(10, 4))
 plt.plot(years, population / 1e6)
@@ -565,6 +577,28 @@ plt.show()
 - **異なる2つのデータセット** を取得（例：2つの区の避難所、戦前と戦後の人口）
 - それぞれの件数や統計量を **比較** して print
 - （発展）同じグラフに重ねて描画
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "解答例を見る（戦前と戦後の人口を比較する例）"
+import requests
+import numpy as np
+
+headers = {"User-Agent": "example.com/lesson"}
+api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
+url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
+
+response = requests.post(url, params={"limit": 200}, headers=headers, json={})
+hits = response.json()["hits"]
+
+prewar  = np.array([r["東京都／人口"] for r in hits if r["西暦（年次）"] <= 1944])
+postwar = np.array([r["東京都／人口"] for r in hits if r["西暦（年次）"] >= 1946])
+
+print(f"戦前（〜1944）: {len(prewar)}年分 平均 {prewar.mean():,.0f}人")
+print(f"戦後（1946〜）: {len(postwar)}年分 平均 {postwar.mean():,.0f}人")
+```
 
 
 ## {background-color="white" .center .break-slide}
