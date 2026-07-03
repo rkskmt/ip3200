@@ -255,9 +255,9 @@ fig.write_html("iframes/plotly_scatter.html", include_plotlyjs="directory")
 :::
 
 ::: {.callout-tip}
-## matplotlibとの違いがここに出る
+## ホバーで点を確認できる
 - 外れている点にマウスを乗せると **誰なのか** その場で分かる
-- matplotlibなら「この点、誰？」のたびにコードを書き足すことになる
+- `hover_name=` を指定しておくと、点ごとの情報を探索しやすい
 :::
 
 
@@ -490,11 +490,9 @@ fig.write_html("iframes/plotly_groupby_bar.html", include_plotlyjs="directory")
 :::
 
 ::: {.callout-note}
-## matplotlibとの違い
-```text
-matplotlib: Series → index / values
-Plotly:     Series → reset_index() → DataFrame
-```
+## Plotly Expressに渡しやすい形
+- `groupby()` の結果は `Series`
+- `reset_index()` でDataFrameに戻すと、`x="学科"`、`y="平均点"` のように列名で指定できる
 :::
 
 
@@ -578,8 +576,9 @@ fig.write_html("iframes/plotly_scatter_3d.html", include_plotlyjs="directory")
 
 ::: {.callout-note}
 ## matplotlibにも3Dはある（参考）
-- `ax = fig.add_subplot(projection="3d")` で描けるが、**回せない**
-- 静止画では奥行きが伝わりにくい — **回せるPlotlyでこそ3Dは活きる**
+- matplotlibでも3D図は作れる
+- Plotlyはブラウザ上で回転・ズーム・ホバー表示を扱いやすい
+- 点の情報を見ながら探索したい3D散布図ではPlotlyが向いている
 :::
 
 
@@ -617,7 +616,7 @@ fig.write_html("graph.html")
 | ホバーで値を見たい | Plotly |
 | 拡大して細部を見たい | Plotly |
 | Webページで共有したい | Plotly |
-| 3Dを回して見たい | Plotly |
+| Webページで3Dを回して見たい | Plotly |
 
 - まずはmatplotlibで基本を覚える
 - Webで動かしたいときにPlotlyを使う
@@ -631,7 +630,7 @@ fig.write_html("graph.html")
 
 ## Gapminder "Wealth & Health of Nations"
 
-- 可視化編の実例集で見た、[**世界で一番有名な「動くグラフ」**](visualize.qmd#peek-gapminder){.peek}
+- 可視化編の実例集で見た、[**有名な「動くグラフ」**](visualize.qmd#peek-gapminder){.peek}
    - 横軸：1人あたりGDP、縦軸：平均寿命、バブルの大きさ：人口
 - Plotlyには **このデータが同梱** されている
 
