@@ -320,6 +320,10 @@ print(scores)  # [92, 92, 90, 88, 85, 78]
 
 例えば、[0, 1, 4, 9, 16]のリストを作りたい時、
 
+::: {.panel-tabset}
+
+### for文
+
 ```python
 squares = []
 for x in range(5):
@@ -327,7 +331,11 @@ for x in range(5):
 print(squares)  # [0, 1, 4, 9, 16]
 ```
 
-と書けるけど、長いので以下のように一撃でも書ける。それがリスト内包表記
+と書けるけど、長い
+
+### 内包表記
+
+同じリストが一撃で書ける。それがリスト内包表記
 
 ```python
 # 基本形：[式 for 変数 in イテラブル]
@@ -335,12 +343,19 @@ squares = [x ** 2 for x in range(5)]
 print(squares)  # [0, 1, 4, 9, 16]
 ```
 
+:::
+
 ## リスト内包表記（条件式付き）
 
-例えば、0-99の整数のうち３の倍数以外のリストを作る場合、以下のようにfor文に条件を書くことになる。
+例えば、0-99の整数のうち３の倍数以外のリストを作る場合、
+
+::: {.panel-tabset}
+
+### for文
+
+for文に条件を書くことになる。
 
 ```python
-
 not_divisible_by_3s = []
 for x in range(100):
     if x % 3 == 0:
@@ -351,14 +366,17 @@ print(not_divisible_by_3s)
 
 `continue` は、その回の残りの処理をスキップして次の繰り返しへ進む命令（３の倍数のときは `append` せずに次へ）。
 
-これをリスト内包表記だとこう書ける。短い
+### 内包表記
 
+同じリストがこう書ける。短い
 
 ```python
 # 条件付き：[式 for 変数 in イテラブル if 条件]
 not_divisible_by_3s = [x for x in range(100) if x % 3 != 0]
 print(not_divisible_by_3s)
 ```
+
+:::
 
 
 ::: {.callout-note}

@@ -106,7 +106,11 @@ https://ja.wikipedia.org/w/api.php?action=query&list=search&srsearch=桜&format=
 ```
 
 
-## Action API：検索系
+## Action API：エンドポイント
+
+::: {.panel-tabset}
+
+### 検索系
 
 | エンドポイント | 説明 | パラメータ例 |
 |---|---|---|
@@ -114,8 +118,7 @@ https://ja.wikipedia.org/w/api.php?action=query&list=search&srsearch=桜&format=
 | `action=query&list=opensearch` | オートコンプリート | `search=桜&limit=8` |
 | `action=query&list=random` | ランダムページ | `rnlimit=10&rnnamespace=0` |
 
-
-## Action API：ページ情報
+### ページ情報
 
 | エンドポイント | 説明 | パラメータ例 |
 |---|---|---|
@@ -125,8 +128,7 @@ https://ja.wikipedia.org/w/api.php?action=query&list=search&srsearch=桜&format=
 | `action=query&prop=categories` | カテゴリ | `titles=桜&prop=categories` |
 | `action=query&prop=pageviews` | 過去60日のPV | `titles=桜&prop=pageviews` |
 
-
-## Action API：リンク・履歴
+### リンク・履歴
 
 | エンドポイント | 説明 | パラメータ例 |
 |---|---|---|
@@ -135,13 +137,14 @@ https://ja.wikipedia.org/w/api.php?action=query&list=search&srsearch=桜&format=
 | `action=query&prop=revisions` | 編集履歴 | `titles=桜&prop=revisions&rvlimit=10` |
 | `action=query&list=recentchanges` | 最近の編集 | `rclimit=50&rcnamespace=0` |
 
-
-## Action API：カテゴリ・ユーザー
+### カテゴリ・ユーザー
 
 | エンドポイント | 説明 | パラメータ例 |
 |---|---|---|
 | `action=query&list=categorymembers` | カテゴリ内ページ | `cmtitle=Category:桜&cmlimit=50` |
 | `action=query&list=usercontribs` | ユーザー編集履歴 | `ucuser=UserName&uclimit=50` |
+
+:::
 
 
 ## {background-color="white" .center .break-slide}
@@ -165,7 +168,11 @@ https://ja.wikipedia.org/api/rest_v1/page/summary/桜
 ```
 
 
-## REST API v1：ページ系
+## REST API v1：エンドポイント
+
+::: {.panel-tabset}
+
+### ページ系
 
 | エンドポイント | 説明 | 形式 |
 |---|---|---|
@@ -176,8 +183,7 @@ https://ja.wikipedia.org/api/rest_v1/page/summary/桜
 | `/page/pdf/{title}` | PDF生成 | PDF |
 | `/page/random/summary` | ランダム概要 | JSON |
 
-
-## REST API v1：変換・フィード
+### 変換・フィード
 
 | エンドポイント | 説明 | 形式 |
 |---|---|---|
@@ -185,6 +191,8 @@ https://ja.wikipedia.org/api/rest_v1/page/summary/桜
 | `/transform/html/to/wikitext` | HTML→Wikitext | Text |
 | `/feed/featured/{year}/{month}/{day}` | 注目記事 | JSON |
 | `/feed/onthisday/{type}/{month}/{day}` | 今日は何の日 | JSON |
+
+:::
 
 
 ## {background-color="white" .center .break-slide}
@@ -208,7 +216,11 @@ https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/ja.wikipedia/all
 ```
 
 
-## AQS：ページビュー
+## AQS：エンドポイント
+
+::: {.panel-tabset}
+
+### ページビュー
 
 **per-article** — 記事別PV（2015年7月〜）
 
@@ -234,8 +246,7 @@ pageviews/top/{project}/{access}/{year}/{month}/{day}
 
 例：`pageviews/top/ja.wikipedia/all-access/2024/06/01`
 
-
-## AQS：その他統計
+### その他統計
 
 **unique-devices** — ユニークデバイス数（2016年1月〜）
 
@@ -260,6 +271,8 @@ registered-users/new/{project}/{granularity}/{start}/{end}
 ```
 
 例：`registered-users/new/ja.wikipedia/daily/20240101/20240131`
+
+:::
 
 
 ## {background-color="white" .center .break-slide}
