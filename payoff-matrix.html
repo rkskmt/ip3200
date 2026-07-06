@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
+
+  <meta name="author" content="rkskmt">
+  <title>情報処理 – ペイオフマトリクス</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-d3a26a7442888a116b43ccec6150e9c5.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="custom.css">
+  <script src="slide-ui.js" defer=""></script>
+  <script src="search-ui.js" defer=""></script>
+  <script src="peek-ui.js" defer=""></script>
+  <script src="badge-ui.js" defer=""></script>
+  <script src="toc-ui.js" defer=""></script>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">ペイオフマトリクス</h1>
+  <p class="subtitle">どれからやるかを「2軸」で決める</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+rkskmt 
+</div>
+</div>
+</div>
+
+</section>
+<section id="section" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>アイデアを評価して、優先順位を決める</p>
+</div>
+</section>
+<section id="あるある" class="slide level2">
+<h2>あるある</h2>
+<div class="slide-body">
+<ul>
+<li>研究テーマを決めるとき、どれも面白そうで <strong>決められない</strong></li>
+<li>「あれもこれも実装したい」と欲張って、<strong>結局完成しない</strong></li>
+<li>チームで作るとき、メンバーの <strong>意見がバラバラ</strong></li>
+<li>時間をかけて作ったのに「<strong>誰も使わない機能</strong>」だった</li>
+</ul>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>アイデアは出すほど良い。でも全部は作れない</strong></p>
+</div>
+<div class="callout-content">
+<p>発散（ブレスト）→ 整理（KJ法）ときて、最後に必要なのは <span class="hl">「何から手をつけるか」を決める技術</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="payoff-見返り" class="slide level2">
+<h2>Payoff = 見返り</h2>
+<div class="slide-body">
+<ul>
+<li><strong>ペイオフ</strong>（<span class="en">payoff</span>）= 努力や投資に対して得られる <strong>成果・見返り</strong>
+<ul>
+<li><span class="en">pay</span>（支払う・報いる）+ <span class="en">off</span>（完了・結果）</li>
+<li>毎日勉強した payoff = 試験でいい点 ／ 投資した payoff = 利益</li>
+</ul></li>
+<li><strong>ペイオフマトリクス</strong>（<span class="en">Payoff Matrix</span>）は、案を2軸で評価する表
+<ul>
+<li>横軸<span class="fw-colon">：</span>どれくらい <strong>手間</strong>（<span class="en">effort</span>）がかかるか</li>
+<li>縦軸<span class="fw-colon">：</span>どれくらい <strong>効果</strong>（payoff）があるか</li>
+<li>要するに <span class="hl">「コスパが良いのはどれか」を見える化する図</span></li>
+</ul></li>
+<li>無理やり日本語にすると「費用対効果マトリクス」「コスパ分析図」</li>
+</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>実際の開発現場でも</strong></p>
+</div>
+<div class="callout-content">
+<p>IT企業では新機能・バグ修正・改善案が毎日生まれるが、エンジニアの時間は有限。 「直感」ではなくこの種の <strong>アイデア評価手法</strong> で開発順を決めている</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="題材学校生活をよくするスマホアプリ" class="slide level2">
+<h2>題材<span class="fw-colon">：</span>学校生活をよくするスマホアプリ</h2>
+<div class="slide-body">
+<ul>
+<li>ここからの題材 — 「学校生活をより良くするスマホアプリ」のアイデアたち
+<ul>
+<li>この題材はこのままワイヤーフレーム・実装・最終課題まで <strong>使い続ける</strong></li>
+</ul></li>
+</ul>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>アイデア</th>
+<th></th>
+<th>アイデア</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>時間割アプリ</td>
+<td>5</td>
+<td>図書館の蔵書検索</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>課題管理アプリ</td>
+<td>6</td>
+<td>サークル連絡ツール</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>食堂の混雑状況確認</td>
+<td>7</td>
+<td>テスト範囲共有</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>教室の空き状況確認</td>
+<td>8</td>
+<td>落とし物掲示板</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>さて、<strong>どれを優先すべきか？</strong> — 直感ではなく、図で決める</li>
+</ul>
+</div>
+</section>
+<section id="マトリクスの構造2軸-4象限" class="slide level2">
+<h2>マトリクスの構造<span class="fw-colon">：</span>2軸 → 4象限</h2>
+<div class="slide-body">
+<div id="0bbf2a03" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="payoff-matrix_files/figure-revealjs/cell-2-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="payoff-matrix_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="758" height="490"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>各アイデアを「手間」と「効果」で見て、<span class="hl">4つの部屋のどれか</span> に置くだけ</li>
+<li>英語では左上から時計回りに <span class="en">Quick Wins</span> / <span class="en">Big Projects</span> / <span class="en">Time Sinks</span> / <span class="en">Fill-ins</span></li>
+</ul>
+</div>
+</section>
+<section id="つの象限優先度が高い側" class="slide level2">
+<h2>4つの象限（優先度が高い側）</h2>
+<div class="slide-body">
+<table class="caption-top">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 45%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>すぐやるべき ⭐⭐⭐</th>
+<th>時間かかるけど重要 ⭐⭐</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>条件</td>
+<td>手間 <strong>小</strong> × 効果 <strong>大</strong></td>
+<td>手間 <strong>大</strong> × 効果 <strong>大</strong></td>
+</tr>
+<tr class="even">
+<td>目安</td>
+<td>1週間以内で作れて、多くの人が使う</td>
+<td>1ヶ月以上かかるが、成功すれば画期的</td>
+</tr>
+<tr class="odd">
+<td>方針</td>
+<td><span class="hl">即着手</span></td>
+<td>計画を立てて <strong>段階的に</strong></td>
+</tr>
+<tr class="even">
+<td>例</td>
+<td>時間割表示（カレンダー連携なら数日・全員が毎日使う）</td>
+<td>課題管理 + 通知の統合（2〜3ヶ月・課題忘れが消える）</td>
+</tr>
+<tr class="odd">
+<td>例</td>
+<td>食堂メニュー表示（献立表を出すだけ・毎日見る）</td>
+<td>食堂混雑予測AI（センサー + 機械学習で数ヶ月）</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="つの象限優先度が低い側" class="slide level2">
+<h2>4つの象限（優先度が低い側）</h2>
+<div class="slide-body">
+<table class="caption-top">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 45%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>余裕があれば ⭐</th>
+<th>後回し ❌</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>条件</td>
+<td>手間 <strong>小</strong> × 効果 <strong>小</strong></td>
+<td>手間 <strong>大</strong> × 効果 <strong>小</strong></td>
+</tr>
+<tr class="even">
+<td>目安</td>
+<td>数時間で作れるが、あると嬉しい程度</td>
+<td>1ヶ月以上かかるのにニッチ・代替がある</td>
+</tr>
+<tr class="odd">
+<td>方針</td>
+<td>時間が余ったら／練習用</td>
+<td><span class="hl">基本的に作らない</span>。仕様を見直す</td>
+</tr>
+<tr class="even">
+<td>例</td>
+<td>テーマカラー変更（色選択を足すだけ）</td>
+<td>3Dバーチャル校舎ツアー（数ヶ月かけて一度見たら終わり）</td>
+</tr>
+<tr class="odd">
+<td>例</td>
+<td>誕生日通知（使う人が限られる）</td>
+<td>AI自動レポート作成（学習にならない・倫理的問題）</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="使い方の手順" class="slide level2 scrollable">
+<h2>使い方の手順</h2>
+<div class="slide-body">
+<ol start="0" type="1">
+<li><strong>リストアップ</strong> — ブレスト・KJ法で残ったアイデアを全部書き出す</li>
+<li><strong>評価軸を確認</strong> — 手間 =（開発時間・技術難易度）、効果 =（使う人数 × 頻度 × 解決の大きさ）</li>
+<li><strong>議論しながら配置</strong> — 付箋をホワイトボードの4象限に貼っていく</li>
+<li><strong>優先順位を決定</strong> — 「すぐやるべき」から着手、「後回し」はカット</li>
+</ol>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>議論のコツ</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>「自分が使いたい」ではなく <span class="hl">「多くの人が使うか」</span> で判断</li>
+<li>技術的難易度は正直に（できそうな気がする ≠ 簡単）</li>
+<li>似たものが世の中に既にないか確認（車輪の再発明を避ける）</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="よくある失敗" class="slide level2">
+<h2>よくある失敗</h2>
+<div class="slide-body">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>失敗</th>
+<th>何が起きるか</th>
+<th>教訓</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>「かっこいい」機能に飛びつく</strong>（AR・AIチャットボット）</td>
+<td>難しすぎて完成しない</td>
+<td>まず基本機能、拡張は後</td>
+</tr>
+<tr class="even">
+<td><strong>「自分が欲しい」を優先</strong>（自分だけの特殊ツール）</td>
+<td>ユーザーが自分しかいない</td>
+<td>多数の共通の困りごとを解く</td>
+</tr>
+<tr class="odd">
+<td><strong>全部やろうとする</strong>（10機能を同時進行）</td>
+<td>全部が中途半端</td>
+<td>「すぐやるべき」に集中、1個ずつ完成</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>完成しない最大の原因は「欲張り」</strong></p>
+</div>
+<div class="callout-content">
+<p>機能を増やす判断は簡単で、減らす判断は難しい。マトリクスは <span class="hl">減らす勇気を出すための道具</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="実践例アプリ案10個を配置すると" class="slide level2">
+<h2>実践例<span class="fw-colon">：</span>アプリ案10個を配置すると</h2>
+<div class="slide-body">
+<div id="af0b6159" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="payoff-matrix_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="payoff-matrix_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="758" height="490"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>4人チームで作る想定で配置した例
+<ul>
+<li>左上の4つ（時間割・課題リスト・食堂メニュー・教室空き）から着手</li>
+<li>右上は <strong>2番手として計画</strong> ／ 右下（3D校舎ツアー）は <strong>カット</strong></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="演習ペイオフマトリクス" class="slide level2 badge-practice scrollable">
+<h2><strong>演習</strong><span class="fw-colon">：</span>ペイオフマトリクス</h2>
+<div class="slide-body">
+<div class="prompt">
+<p>次の12案を4象限に分類せよ（模造紙に2軸を描き、付箋1枚1案で配置。チームで議論して動かすこと）。</p>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>アイデア</th>
+<th></th>
+<th>アイデア</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>時間割表示（手動入力）</td>
+<td>7</td>
+<td>サークル活動の連絡ツール</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>課題管理 + 締切通知</td>
+<td>8</td>
+<td>テスト範囲の共有掲示板</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>食堂の今日のメニュー表示</td>
+<td>9</td>
+<td>落とし物掲示板</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>食堂の混雑予測AI</td>
+<td>10</td>
+<td>出席管理システム</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>教室の空き状況確認（手動入力）</td>
+<td>11</td>
+<td>AR校内ナビゲーション</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>図書館の蔵書検索</td>
+<td>12</td>
+<td>学校の歴史紹介ページ</td>
+</tr>
+</tbody>
+</table>
+<ol start="0" type="1">
+<li>模造紙に「手間 →」「効果 ↑」の2軸と十字線</li>
+<li>12案を付箋にして、議論しながら配置（<strong>1案30秒</strong> で仮置き → あとで動かす）</li>
+<li>「すぐやるべき」に入った案から <strong>上位3つ</strong> に順位を付ける</li>
+<li>「後回し」に入った案について、<strong>カットの理由を1行</strong> ずつ書く</li>
+</ol>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>KJ法の付箋がそのまま使える</strong></p>
+</div>
+<div class="callout-content">
+<p>前回KJ法でグループ化した付箋の「中見出し」を12案の代わりに置けば、自分たちのアイデアの優先順位が決まる</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="まとめ評価は厳密さより速さ" class="slide level2">
+<h2>まとめ<span class="fw-colon">：</span>評価は「厳密さ」より「速さ」</h2>
+<div class="slide-body">
+<ul>
+<li><strong>視覚的</strong> — 付箋と2軸だけ。チーム全員で同じ図を見て話せる</li>
+<li><strong>速い</strong> — 10〜30分で大まかな優先順位が出る。詳細な数値計算は不要</li>
+<li><strong>合意を作る</strong> — 一人で決めない。<span class="hl">配置をめぐる議論そのものに価値がある</span></li>
+<li><strong>完璧を目指さない</strong> — 最初の絞り込み用。状況が変われば貼り直す</li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>もっと厳密にやりたくなったら</strong></p>
+</div>
+<div class="callout-content">
+<p>案が多い・利害が複雑な場面では、<strong>ICEスコア</strong>（<span class="en">Impact / Confidence / Ease</span> の3軸を数値化）など定量的な手法もある</p>
+</div>
+</div>
+</div>
+<ul>
+<li>優先順位が決まったら、次は画面の設計 — <a href="./figma.html">Figmaでワイヤーフレーム</a> へ</li>
+</ul>
+
+
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
+
+</div>
+</div>
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 6.0e-2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "コピーしました");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "コピーしました");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
+    
+
+</body></html>

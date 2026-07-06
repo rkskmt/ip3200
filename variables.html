@@ -287,7 +287,7 @@ rkskmt
 <li><code>1</code> や <code>"1"</code> は<strong>リテラル（直接記述できる値）</strong></li>
 <li><code>a</code> は値ではなく<strong>変数</strong>として認識される</li>
 </ul>
-<div id="6b7c09ec" class="cell" data-execution_count="1">
+<div id="a780cfbf" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -351,7 +351,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="e0097079" class="cell" data-execution_count="2">
+<div id="8269bfe4" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -386,7 +386,7 @@ rkskmt
 <li>代入 <code>x = ...</code> は<strong>常に掛け替え</strong>。共有していたのは3行目から5行目までの一瞬だけ</li>
 <li>5行目以降、共有していた場所を指すのは a12 だけになる</li>
 </ul>
-<div id="3d9a4048" class="cell" data-execution_count="3">
+<div id="f8422c5a" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -413,7 +413,7 @@ rkskmt
 <li><code>odd1[0] = 9</code> は看板の掛け替え<strong>ではない</strong> — 指している先の<strong>中身の変更</strong></li>
 <li>看板は2枚とも同じリストを指したまま → <code>odd2</code> から見ても変わる</li>
 </ul>
-<div id="d7a85729" class="cell" data-execution_count="4">
+<div id="920d3f5d" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -448,7 +448,7 @@ rkskmt
 <li>A<span class="fw-colon">：</span> <strong>[1, 3]</strong> — <code>odd1 = [9, 7]</code> は<strong>看板の掛け替え</strong>。odd2 は無傷</li>
 <li>B<span class="fw-colon">：</span> <strong>[9, 7]</strong> — <code>odd1[0] = 9</code> は<strong>中身の変更</strong>。odd2 も巻き込まれる</li>
 </ul>
-<div id="c90d11a9" class="cell" data-execution_count="5">
+<div id="8e02cf8e" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -638,7 +638,7 @@ rkskmt
 <li>中で <code>data[i] = ...</code> と<strong>中身を変更</strong>したので（ルール2）、<code>scores</code> から見ても壊れていた</li>
 <li>約束どおり、<strong>図1枚</strong>で説明できる<span class="fw-colon">：</span></li>
 </ul>
-<div id="fd53901d" class="cell" data-execution_count="6">
+<div id="7971ffae" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -677,7 +677,7 @@ rkskmt
 <span id="cb15-14"><a></a><span class="co"># （参考）全スライス [:] でも同じ結果</span></span>
 <span id="cb15-15"><a></a>odd4 <span class="op">=</span> odd1[:]</span>
 <span id="cb15-16"><a></a><span class="bu">print</span>(<span class="bu">id</span>(odd1) <span class="op">==</span> <span class="bu">id</span>(odd4))  <span class="co"># False（別アドレス）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="e5c5c634" class="cell" data-execution_count="7">
+<div id="e00dce10" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -707,7 +707,7 @@ rkskmt
 <li><p><code>list</code> と同じようにアクセスできる <code>str</code> は、ミュータブルかイミュータブルかを確認</p></li>
 <li><p>上記の例で <code>odd1[0]</code> のアドレスがどうなるかを確認（<code>list</code> はミュータブルだが、<code>list</code> の要素は <code>int</code> なのでイミュータブルのはず）</p></li>
 </ol>
-<div id="330b4be4" class="cell" data-execution_count="8">
+<div id="1c7566ec" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>]</span>

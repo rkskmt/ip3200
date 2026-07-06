@@ -763,6 +763,90 @@
     "text": "関連リソース\n\n\n\n\nリソース\nURL\n\n\n\n\nオープンデータカタログサイト\nportal.data.metro.tokyo.lg.jp\n\n\nAPIカタログサイト\nportal.data.metro.tokyo.lg.jp/opendata-api/\n\n\nAPI検索ページ\nspec.api.metro.tokyo.lg.jp/spec/search\n\n\n公共交通オープンデータ\nodpt.org\n\n\nデジタル庁 GIF\ndigital.go.jp"
   },
   {
+    "objectID": "scamper.html#section",
+    "href": "scamper.html#section",
+    "title": "オズボーンのチェックリスト・SCAMPER",
+    "section": "",
+    "text": "「今あるもの」から発想する"
+  },
+  {
+    "objectID": "scamper.html#クイズ回転寿司はどこから来た",
+    "href": "scamper.html#クイズ回転寿司はどこから来た",
+    "title": "オズボーンのチェックリスト・SCAMPER",
+    "section": "クイズ：回転寿司はどこから来た？",
+    "text": "クイズ：回転寿司はどこから来た？\n\n\n写真: Alberto Carrasco Casado, CC BY 2.0, via Wikimedia Commons\n\n\n\n1958年、大阪の寿司店主・白石義明 が考案\n寿司とはまったく関係ない ある工場 を見学して思いついた——どこ？\n\n\n\n\n\n\n\n\n答え：ビール工場\n\n\n瓶ビールを運ぶ ベルトコンベア を見て「寿司を回せばいい」—— 他分野の仕組みを取り入れる、のちに言う 応用（Adapt） の教科書的な例"
+  },
+  {
+    "objectID": "scamper.html#ゼロから考えない",
+    "href": "scamper.html#ゼロから考えない",
+    "title": "オズボーンのチェックリスト・SCAMPER",
+    "section": "ゼロから考えない",
+    "text": "ゼロから考えない\n\n\n発想法（ブレスト・635法）は 自由に広げる 道具だった\n\n弱点：手が止まったら終わり。「自由に考えて」が一番難しい\n\n今日の道具は逆のアプローチ——質問リスト（チェックリスト）\n\n「小さくできない？」「逆にしたら？」と 質問に答える形 で強制的に案を出す\n何もないところからではなく、今あるものをどう変えるか を考える\n\n\n\n\n\n\n\n\n強制連想法\n\n\n自由連想（ブレスト）に対して、枠を与えて発想させる方法を 強制連想法 と呼ぶ。 「制約があるほうが出る」ことは意外なほど多い"
+  },
+  {
+    "objectID": "scamper.html#オズボーンのチェックリスト",
+    "href": "scamper.html#オズボーンのチェックリスト",
+    "title": "オズボーンのチェックリスト・SCAMPER",
+    "section": "オズボーンのチェックリスト",
+    "text": "オズボーンのチェックリスト\n\n\nブレインストーミング考案者の アレックス・F・オズボーン が作った、発想を広げるための 9つの質問\n\n改善・改良・転用のアイデアを 体系的に 生み出せる\n\n対象（製品・サービス・研究テーマ）を1つ決めて、9つの質問を 順番に全部 ぶつける"
+  },
+  {
+    "objectID": "scamper.html#チェックリスト9項目前半",
+    "href": "scamper.html#チェックリスト9項目前半",
+    "title": "オズボーンのチェックリスト・SCAMPER",
+    "section": "チェックリスト9項目（前半）",
+    "text": "チェックリスト9項目（前半）\n\n\n\n\n\n\n\n\n\n\nNo\n視点\n質問\n例\n\n\n\n\n1\n転用（Put to other uses）\n別の使い方はできないか？\nドローンを農薬散布・測量に転用\n\n\n2\n応用（Adapt）\n他分野の仕組みを取り入れられないか？\nビール工場のコンベア → 回転寿司\n\n\n3\n変更（Modify）\n色・形・意味を変えたら？\n信号ランプをLED化して省電力・長寿命に\n\n\n4\n拡大（Magnify）\n数・範囲・強度・時間を増やせないか？\n電動自転車のバッテリーを大容量化\n\n\n5\n縮小（Minify）\n小さく・軽く・短くできないか？\nモーターを小型化して軽量・高効率に"
+  },
+  {
+    "objectID": "scamper.html#チェックリスト9項目後半",
+    "href": "scamper.html#チェックリスト9項目後半",
+    "title": "オズボーンのチェックリスト・SCAMPER",
+    "section": "チェックリスト9項目（後半）",
+    "text": "チェックリスト9項目（後半）\n\n\n\n\n\n\n\n\n\n\nNo\n視点\n質問\n例\n\n\n\n\n6\n代用（Substitute）\n別の素材・手段で代えられないか？\nプラスチックの代わりに紙ストロー\n\n\n7\n再配置（Rearrange）\n並び・順番・配置を変えたら？\n工場ラインの配置換えで効率アップ\n\n\n8\n逆転（Reverse）\n逆にしたらどうなる？\n「買う」→「借りる」のサブスク\n\n\n9\n結合（Combine）\n組み合わせたら新しくならないか？\n時計 + スマホ = スマートウォッチ"
+  },
+  {
+    "objectID": "scamper.html#クイズウォークマンはどの視点",
+    "href": "scamper.html#クイズウォークマンはどの視点",
+    "title": "オズボーンのチェックリスト・SCAMPER",
+    "section": "クイズ：ウォークマンはどの視点？",
+    "text": "クイズ：ウォークマンはどの視点？\n\n\n写真: Anna Gerdén, CC BY-SA 3.0, via Wikimedia Commons\n\n\n\n1979年、ソニーの初代ウォークマン TPS-L2\nベースは記者用の録音機「プレスマン」——9項目のどれで生まれた？\n\n\n\n\n\n\n\n\n答え：縮小 — というより「省いた」\n\n\n録音機から 録音機能とスピーカーを削除、再生とヘッドホンだけ残した。 「省く」はチェックリストでは「縮小」の一部だが、あまりに強力なので——次のSCAMPERで 独立項目に昇格 する"
+  },
+  {
+    "objectID": "scamper.html#scamper法",
+    "href": "scamper.html#scamper法",
+    "title": "オズボーンのチェックリスト・SCAMPER",
+    "section": "SCAMPER法",
+    "text": "SCAMPER法\n\n\nオズボーンの9項目を、教育学者 ボブ・エバール（Bob Eberle）が 7項目に再編成 した実践版\n7つの視点の頭文字で SCAMPER（スキャンパー）\n\n\n\n\n\n\n\n\n\n\n視点\n質問\n\n\n\n\nS\nSubstitute（代える）\n材料・部品・工程・人を代えられないか？\n\n\nC\nCombine（組み合わせる）\n他のものと組み合わせられないか？\n\n\nA\nAdapt（応用する）\n他分野の考えを取り入れられないか？\n\n\nM\nModify / Magnify（修正・拡大する）\n機能や形を変えたり強化できないか？\n\n\nP\nPut to other uses（転用する）\n別の使い方はできないか？\n\n\nE\nEliminate（省く）\n不要な要素・工程・機能をなくせないか？\n\n\nR\nReverse / Rearrange（逆転・再配置する）\n逆にしたら？ 順番を変えたら？"
+  },
+  {
+    "objectID": "scamper.html#項目からどう変わったか",
+    "href": "scamper.html#項目からどう変わったか",
+    "title": "オズボーンのチェックリスト・SCAMPER",
+    "section": "9項目からどう変わったか",
+    "text": "9項目からどう変わったか\n\n\n\n\n\n\n\n\n変更\n内容\n\n\n\n\n統合\n縮小 と 変更 → 「M（Modify / Magnify）」に吸収。拡大も縮小も「修正」の一種として扱う\n\n\n統合\n逆転 と 再配置 → 「R（Reverse / Rearrange）」に一本化\n\n\n昇格\n省く（Eliminate） が独立項目に。ウォークマンも QRコードメニューも「E」の産物\n\n\n\n\n中身は同じ発想の道具 — 7文字で暗記できる ようにしたのが SCAMPER の価値\n\n迷ったら「スキャンパー」と唱えて S→C→A→M→P→E→R の順に質問する"
+  },
+  {
+    "objectID": "scamper.html#クイズどの文字から生まれた",
+    "href": "scamper.html#クイズどの文字から生まれた",
+    "title": "オズボーンのチェックリスト・SCAMPER",
+    "section": "クイズ：どの文字から生まれた？",
+    "text": "クイズ：どの文字から生まれた？\n\n\n身の回りの「当たり前」も、SCAMPER で読み解ける — それぞれどの文字？\n\n紙ストロー\nカメラ付きスマホ\nセルフレジ\n飲食店のQRコード注文\n\n\n\n\n\n\n\n\n\n答え\n\n\n紙ストロー = S（素材を代用） ／ カメラ付きスマホ = C（結合） ／ セルフレジ = R（店員と客の逆転） ／ QRコード注文 = E（紙メニューと注文係を省く）"
+  },
+  {
+    "objectID": "scamper.html#演習scamper-7連発",
+    "href": "scamper.html#演習scamper-7連発",
+    "title": "オズボーンのチェックリスト・SCAMPER",
+    "section": "演習：SCAMPER 7連発",
+    "text": "演習：SCAMPER 7連発\n\n\n身近な文房具・持ち物（ペン・消しゴム・水筒・傘など）を1つ選び、SCAMPER の7視点で1案ずつ、計7案を書き出せ（実現性は問わない）。\n\n\n対象を1つ決める（迷ったら「傘」）\nS→C→A→M→P→E→R の順に、各視点で1案（1案1行）\n7案の中から「意外と売れそう」な1案に星印\n班内で星つきの案だけ共有\n\n\n\n\n\n\n\n質問が発想を引っ張る\n\n\n「思いつかない」は起きない — 質問に答えられないだけ。答えにくい文字（P や R）ほど、出たときの飛距離が大きい"
+  },
+  {
+    "objectID": "scamper.html#まとめ発想法との使い分け",
+    "href": "scamper.html#まとめ発想法との使い分け",
+    "title": "オズボーンのチェックリスト・SCAMPER",
+    "section": "まとめ：発想法との使い分け",
+    "text": "まとめ：発想法との使い分け\n\n\n\n\n場面\n道具\n\n\n\n\nゼロからテーマを広げたい\nブレスト・クレイジー8・635法（自由連想）\n\n\n既存の物・サービスを改良したい\nチェックリスト・SCAMPER（強制連想）\n\n\nブレストで手が止まった\nSCAMPER の質問を投げ込んで再点火\n\n\n\n\n質問リストは 手が止まらない のが最大の強み\n出した案の整理・評価は次の 収束技法 と ペイオフマトリクス へ"
+  },
+  {
     "objectID": "plotly.html#section",
     "href": "plotly.html#section",
     "title": "Plotly入門",
@@ -994,116 +1078,445 @@
     "text": "まとめ\n\n\nPlotlyは インタラクティブな可視化 に強い\nplotly.express は短いコードで書ける\n基本形は px.bar(df, x=\"列名\", y=\"列名\")\n色分けは color=\nホバー表示は hover_name=\nPandasの集計結果は、DataFrameにしてからPlotlyに渡すと分かりやすい\nHTMLとして保存して、Webページに埋め込める\n\n\n\n\n\n\n\n道具は揃った\n\n\n\n描く道具（matplotlib / Plotly）と表を扱う道具（Pandas）が揃った\n次回は 材料の調達：世界中の人がいま何を見ているかをAPIで取得"
   },
   {
-    "objectID": "numpy.html#numpyとは",
-    "href": "numpy.html#numpyとは",
-    "title": "NumPy入門",
-    "section": "NumPyとは",
-    "text": "NumPyとは\n\n\nNumPyは数値計算のデファクトスタンダード\n\n普通、数値計算やデータ処理にlistは使わない\n\n内部的にはC言語で実装されている\n\n通常のリストに比べて非常に高速"
+    "objectID": "pandas.html#section",
+    "href": "pandas.html#section",
+    "title": "Pandas入門",
+    "section": "",
+    "text": "NumPyの表に名前をつける"
   },
   {
-    "objectID": "numpy.html#インストールと使用",
-    "href": "numpy.html#インストールと使用",
-    "title": "NumPy入門",
-    "section": "インストールと使用",
-    "text": "インストールと使用\n\nターミナルからインストール\npip install numpy\n冒頭でimportして使用（ただしnpというエイリアス指定が一般的）\nimport numpy as np\n\n\n\n\n\n\nimportの as とは？\n\n\nimport numpy as np の as np は別名（エイリアス）をつける構文\nimport numpy         # 使用時にnumpy.array(...) と書く\nimport numpy as np   # np.array(...) でよいので短い\n\n注：np の部分は何でもよく別の名前も使用可能\n\nただし、NumPyは np が非常に一般的"
+    "objectID": "pandas.html#pandasとは",
+    "href": "pandas.html#pandasとは",
+    "title": "Pandas入門",
+    "section": "Pandasとは",
+    "text": "Pandasとは\n\n\nPandasは 表形式データ（tabular data） を扱うためのライブラリ\n\nExcelの表、CSV、実験結果、アンケート結果など\nデータ分析の入口で非常によく使う\n\nNumPyの ndarray と同じく、Pythonの標準機能ではない\n\nターミナルからインストール：\npip install pandas\n冒頭で import（pd としてインポートするのが一般的）：\nimport pandas as pd"
   },
   {
-    "objectID": "numpy.html#numpy配列ndarray",
-    "href": "numpy.html#numpy配列ndarray",
-    "title": "NumPy入門",
-    "section": "NumPy配列（ndarray）",
-    "text": "NumPy配列（ndarray）\n\n\n数値のリストっぽいものをnpに渡すとndarrayになる\nndarray は list によく似たNumPy用の配列型\n\n先頭の nd は多次元配列（N-Dimensional Array）の略\n\nNumPyはndarrayを効率よく処理するためのライブラリ\n\nimport numpy as np\n\narr = np.array([1, 2, 3, 4]) # 1-4のndarray\n\n# 以下でarrを数値計算（例：平均・分散 etc.）\n\n\n\n\n\n\nノート\n\n\nnp.ndarray() ではなく np.array() と書くことに注意"
+    "objectID": "pandas.html#今回のゴール",
+    "href": "pandas.html#今回のゴール",
+    "title": "Pandas入門",
+    "section": "今回のゴール",
+    "text": "今回のゴール\n\n\nDataFrame / Series / index / columns を理解する\n集計結果を matplotlibで可視化 できるようにする"
   },
   {
-    "objectID": "numpy.html#基本的な初期化",
-    "href": "numpy.html#基本的な初期化",
-    "title": "NumPy入門",
-    "section": "基本的な初期化",
-    "text": "基本的な初期化\n\n\nリストを np.array() に渡すと、NumPy配列になる\n\nimport numpy as np\n\nli = [1, 2, 3, 4]\narr = np.array(li)\n\narr = np.array([1, 2, 3, 4])    # 同じ\narr = np.array(range(1, 5))     # 同じ。実際には後述のarangeがよく使われる\n\n\n\n\n\n\n変数名を list にしない\n\n\nlist = [1, 2, 3] と書くと組み込みの list 型が上書きされ、 以降 list(range(5)) などが謎のエラーになります。li や numbers を使いましょう。"
+    "objectID": "pandas.html#クイズ田中さんの数学iの点は",
+    "href": "pandas.html#クイズ田中さんの数学iの点は",
+    "title": "Pandas入門",
+    "section": "クイズ：田中さんの数学Iの点は？",
+    "text": "クイズ：田中さんの数学Iの点は？\n\n\n2人の生徒（田中・佐藤）の3科目（現代文・数学I・英会話）の点数がある\n\nimport numpy as np\n\narr = np.array([\n    [80, 70, 90],\n    [65, 75, 85],\n])\n\n「田中さんの数学Iの点」を取り出すコードを書け\n\n\n\n\n\n\n\n\n答え：arr[0, 1] …… で合ってる？自信ある？\n\n\n\n田中さんが0行目、数学Iが1列目という情報は 配列のどこにも書いていない\n取り出した 70 も、画面に出るのはただの数字 — 何の70点か分からない\n計算はNumPyで十分。困るのは 意味（名前）の管理\n表に 名前 をつけたもの、それが今日の DataFrame"
   },
   {
-    "objectID": "numpy.html#初期化ヘルパー関数",
-    "href": "numpy.html#初期化ヘルパー関数",
-    "title": "NumPy入門",
-    "section": "初期化（ヘルパー関数）",
-    "text": "初期化（ヘルパー関数）\n\n\n下記のよく使う数列は、ヘルパー関数で一撃生成\n特にrandom 系は強力\n\nテスト用データを作るときに非常によく使われる\n\n\nimport numpy as np\n\nnp.zeros(3)          # 0.0が3つの要素で初期化。 [0. 0. 0. ] \nnp.ones(5)           # 1.0が5つの要素で初期化。 [1. 1. 1. 1. 1.]\nnp.full(4, 7)        # 7が4つの要素で初期化。 [7 7 7 7]\n\n# arrangeではなくarange（\"a range\" = ある範囲）\nnp.arange(4)         # [0 1 2 3]\nnp.arange(1, 5)      # [1 2 3 4]\nnp.arange(1, 10, 2)  # [1 3 5 7 9]\n\nnp.random.rand(3)           # [0.0, 1.0) の一様乱数 3要素\nnp.random.randint(10)       # 0〜9のランダムな整数\nnp.random.randint(1, 7, 3)  # 1〜6のランダムな整数 3要素\n\narr = np.arange(10)\nnp.random.shuffle(arr)      # 配列をランダムに並べ替え（破壊的）"
+    "objectID": "pandas.html#dataframeとは",
+    "href": "pandas.html#dataframeとは",
+    "title": "Pandas入門",
+    "section": "DataFrameとは",
+    "text": "DataFrameとは\n\n\nPandasの主役となる、名前つきの表（テーブル, table）\nデータ ＋ 行の名前（index）＋ 列の名前（columns）の3点セット\n行・列に名前をつけて表を扱う考え方は、Excelやデータベースなど多くの道具に共通\n\n\n\n\n\n現代文\n数学I\n英会話\n\n\n\n\n田中\n80\n70\n90\n\n\n佐藤\n65\n75\n85\n\n\n\n\n上端の見出し（現代文・数学I・英会話）が columns、左端の見出し（田中・佐藤）が index\n\n\n\n\n\n\n\npandasの基本はDataFrameなので用語を覚えよう\n\n\nDataFrame ＝ データ ＋ index（行の名前）＋ columns（列の名前）"
   },
   {
-    "objectID": "numpy.html#要素へのアクセス",
-    "href": "numpy.html#要素へのアクセス",
-    "title": "NumPy入門",
-    "section": "要素へのアクセス",
-    "text": "要素へのアクセス\n\n\nアクセス方法はlistと同じ\nスライスにも対応\n\nimport numpy as np\n\narr = np.array([1, 2, 3, 4])\n\nprint(arr[0])    # 先頭の要素（1）\nprint(arr[1])    # 2番目の要素（2）\nprint(arr[-1])   # 最後の要素（4）\narr[0] = 10      # 1番目の要素を10に変更\n\n# スライス\nprint(arr[1:3])  # 2番目から3番目まで（[2, 3]）\nprint(arr[:2])   # 先頭から2番目まで（[1, 2]）\nprint(arr[2:])   # 3番目から最後まで（[3, 4]）"
+    "objectID": "pandas.html#ndarrayからdataframeを作る",
+    "href": "pandas.html#ndarrayからdataframeを作る",
+    "title": "Pandas入門",
+    "section": "ndarrayからDataFrameを作る",
+    "text": "ndarrayからDataFrameを作る\n\n\npd.DataFrame() に ndarray を渡す\n最初は列名も行名も指定しない\n\n\nimport numpy as np\nimport pandas as pd\n\narr = np.array([\n    [80, 70, 90],\n    [65, 75, 85],\n])\n\ndf = pd.DataFrame(arr)\nprint(df)\n\n    0   1   2\n0  80  70  90\n1  65  75  85\n\n\n\nDataFrame は表として表示され、左端と上端に 0, 1, 2, ... の番号が自動でつく"
   },
   {
-    "objectID": "numpy.html#型",
-    "href": "numpy.html#型",
-    "title": "NumPy入門",
-    "section": "型",
-    "text": "型\n\n\nndarray全体は numpy.ndarray\n各要素は代入時のリテラルによって決まる\n\nintなら numpy.int64\nfloatなら numpy.float64\n\n異なる型は混ぜられない（intとfloatを混ぜると 全部floatに統一 される）\n\nimport numpy as np\n\narr = np.array([1, 2, 3, 4])\nprint(type(arr))    # &lt;class 'numpy.ndarray'&gt;\nprint(type(arr[0])) # &lt;class 'numpy.int64'&gt;\n\narr2 = np.array([1.0, 2.0, 3.0, 4.0])\nprint(type(arr2))    # &lt;class 'numpy.ndarray'&gt;\nprint(type(arr2[0])) # &lt;class 'numpy.float64'&gt;"
+    "objectID": "pandas.html#indexとcolumnsを確認",
+    "href": "pandas.html#indexとcolumnsを確認",
+    "title": "Pandas入門",
+    "section": "indexとcolumnsを確認",
+    "text": "indexとcolumnsを確認\n\n\n行の名前を index\n列の名前を columns という\n指定しない場合は、どちらも自動で番号が振られる\n\n\nimport numpy as np\nimport pandas as pd\n\narr = np.array([[80, 70, 90], [65, 75, 85]])\ndf = pd.DataFrame(arr)\n\nprint(df.index)\nprint(df.columns)\n\nRangeIndex(start=0, stop=2, step=1)\nRangeIndex(start=0, stop=3, step=1)\n\n\n\n\n\n\n\n\n自動でつく番号\n\n\n\nRangeIndex(start=0, stop=2, step=1) は「0から1までの行番号」\nRangeIndex(start=0, stop=3, step=1) は「0から2までの列番号」\nPythonの range() と同じく、stop の値は含まない"
   },
   {
-    "objectID": "numpy.html#強力な演算",
-    "href": "numpy.html#強力な演算",
-    "title": "NumPy入門",
-    "section": "強力な演算",
-    "text": "強力な演算\n\n\nListと違い、各要素に対する演算が可能\n\nfor文が不要なため非常に高速\n\n\nimport numpy as np\n\nmy_array = np.array([1, 2, 3])\nprint(my_array * 2)  # [2 4 6]  ← 要素ごとの計算\n\n# listに * 2 を使うと...\nmy_list = [1, 2, 3]\nprint(my_list * 2)   # [1, 2, 3, 1, 2, 3]  ← 演算ではなく、２つのリストのconcat\n\n# listで同じことをするにはfor文や内包表記が必要\nprint([x * 2 for x in my_list])  # [2, 4, 6]"
+    "objectID": "pandas.html#columnsを指定する",
+    "href": "pandas.html#columnsを指定する",
+    "title": "Pandas入門",
+    "section": "columnsを指定する",
+    "text": "columnsを指定する\n\n\n列の意味が分かるように columns= を指定する\nこれだけで表がかなり読みやすくなる\n\n\nimport numpy as np\nimport pandas as pd\n\narr = np.array([[80, 70, 90], [65, 75, 85]])\ndf = pd.DataFrame(arr, columns=[\"現代文\", \"数学I\", \"英会話\"])\n\nprint(df)\n\n   現代文  数学I  英会話\n0   80   70   90\n1   65   75   85\n\n\n\nもう df[1] ではなく df[\"数学I\"]。「何列目か」ではなく「何の列か」で読める"
   },
   {
-    "objectID": "numpy.html#本当に速いの-100万要素で実測",
-    "href": "numpy.html#本当に速いの-100万要素で実測",
-    "title": "NumPy入門",
-    "section": "本当に速いの？ — 100万要素で実測",
-    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 25.1 ミリ秒\nndarray:          0.35 ミリ秒\n→ 約 72 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
+    "objectID": "pandas.html#indexも指定する",
+    "href": "pandas.html#indexも指定する",
+    "title": "Pandas入門",
+    "section": "indexも指定する",
+    "text": "indexも指定する\n\n\n行の意味が分かるように index= も指定する\nこの例では、行名を生徒名にする\n\n\nimport numpy as np\nimport pandas as pd\n\narr = np.array([[80, 70, 90], [65, 75, 85]])\ndf = pd.DataFrame(arr, columns=[\"現代文\", \"数学I\", \"英会話\"], index=[\"田中\", \"佐藤\"])\n\nprint(df)\n\n    現代文  数学I  英会話\n田中   80   70   90\n佐藤   65   75   85\n\n\n\nこれで数字の並びに「誰の・何の点か」という意味がついた"
   },
   {
-    "objectID": "numpy.html#その他長さやアクセス方法",
-    "href": "numpy.html#その他長さやアクセス方法",
-    "title": "NumPy入門",
-    "section": "その他（長さやアクセス方法）",
-    "text": "その他（長さやアクセス方法）\n\n\nlistと同じくlenもある\n\nただし、sizeを使うことが多い\n\nfor文はlistと同じように記述可能\n\nimport numpy as np\n\narr = np.array([4, 5, 6])\n\nprint(len(arr))  # 長さ（listと同じ）\nprint(arr.size)  # 普通はこちらを使う\n\n# for文もlistと同じように使える\nfor v in arr:\n    print(v)\n\n# 差分（数値微分）\narr = np.array([0, 2, 5, 3, 1, 4]) # 時系列の信号を想定\ndiff = np.zeros(len(arr) - 1) # 結果格納用のndarray\nfor i in range(len(arr) - 1):\n    diff[i] = arr[i+1] - arr[i] # 微分\nprint(diff)  # [ 2.  3. -2. -2.  3.]\n\n# 実はNumPyなら1行（こういう「定番処理の組み込み」が大量にある）\nprint(np.diff(arr))  # [ 2  3 -2 -2  3]"
+    "objectID": "pandas.html#名前があると何がうれしい",
+    "href": "pandas.html#名前があると何がうれしい",
+    "title": "Pandas入門",
+    "section": "名前があると何がうれしい？",
+    "text": "名前があると何がうれしい？\n\n\ndf[\"数学I\"] と書くと、数学Iの列だけ取り出せる\ndf.mean() と書くと、列ごとの平均が計算できる\n出力にも列名が残るので、結果を読み間違えにくい\n\n\nimport numpy as np\nimport pandas as pd\n\narr = np.array([[80, 70, 90], [65, 75, 85]])\ndf = pd.DataFrame(arr, columns=[\"現代文\", \"数学I\", \"英会話\"], index=[\"田中\", \"佐藤\"])\n\nprint(df.mean())\n\n現代文    72.5\n数学I    72.5\n英会話    87.5\ndtype: float64\n\n\n\n\n\n\n\n\n名前つきの表が強い\n\n\n\naxis=0 のような番号指定より読みやすい場面が多い\nデータ分析では 名前つきの表（DataFrame） が効く"
   },
   {
-    "objectID": "numpy.html#多次元array",
-    "href": "numpy.html#多次元array",
-    "title": "NumPy入門",
-    "section": "多次元Array",
-    "text": "多次元Array\n\n\nndarrayは多次元（N-dimensional）で力を発揮\n\n特に行列演算が強力\n\n\nimport numpy as np\n\n# 2次元配列（行列）\nA = np.array([[1, 2], [3, 4]])\n\nB = np.array([[5, 0],\n              [0, 5]])\n\n# 要素へのアクセス\nprint(A[0, 1])  # 1行目2列目\nprint(A[1, :])  # 2行目全体\nprint(A[:, 0])  # 1列目全体\n\n# 転置（transpose）\nprint(A.T)\nprint(B.T)\n\n\n\n\n\n\n\n\n\n\nA[行, 列] の順。: は「その方向ぜんぶ」"
+    "objectID": "pandas.html#section-1",
+    "href": "pandas.html#section-1",
+    "title": "Pandas入門",
+    "section": "",
+    "text": "Seriesを理解する"
   },
   {
-    "objectID": "numpy.html#統計の組み込み関数",
-    "href": "numpy.html#統計の組み込み関数",
-    "title": "NumPy入門",
-    "section": "統計の組み込み関数",
-    "text": "統計の組み込み関数\n\n\n統計処理の組み込み関数も多数提供されている\n\nimport numpy as np\n\nscores = np.array([80, 85, 90, 75, 88, 92, 82, 79, 87])\n\nprint(np.max(scores))    # 最大値\nprint(np.min(scores))    # 最小値\nprint(np.mean(scores))   # 平均値\nprint(np.median(scores)) # 中央値\nprint(np.var(scores))    # 分散\nprint(np.std(scores))    # 標準偏差"
+    "objectID": "pandas.html#列を取り出すseries",
+    "href": "pandas.html#列を取り出すseries",
+    "title": "Pandas入門",
+    "section": "列を取り出す（Series）",
+    "text": "列を取り出す（Series）\n\n\ndf[\"列名\"] で1列だけ取り出せる\n取り出した1列は DataFrame型ではなく Series型\n（表は pd.DataFrame() にリストを直接渡しても作れる — 以降はこの書き方）\n\n\nimport pandas as pd\n\ndf = pd.DataFrame([[80, 70, 90], [65, 75, 85]],\n                  columns=[\"現代文\", \"数学I\", \"英会話\"], index=[\"田中\", \"佐藤\"])\nmath = df[\"数学I\"]\n\nprint(math)\nprint(type(df))\nprint(type(math))\n\n田中    70\n佐藤    75\nName: 数学I, dtype: int64\n&lt;class 'pandas.core.frame.DataFrame'&gt;\n&lt;class 'pandas.core.series.Series'&gt;"
   },
   {
-    "objectID": "numpy.html#多次元は-axis-で潰す向きを指定",
-    "href": "numpy.html#多次元は-axis-で潰す向きを指定",
-    "title": "NumPy入門",
-    "section": "多次元は axis で「潰す向き」を指定",
-    "text": "多次元は axis で「潰す向き」を指定\n\n\n2次元以上の集計は axis= で向きを指定する\n\nimport numpy as np\n\n# 3人の生徒の英語・数学・国語の成績\ndata = np.array([[80, 85, 90], [75, 88, 92], [82, 79, 87]])\n\nprint(np.mean(data, axis=0))  # 列ごと（各科目の平均）\nprint(np.mean(data, axis=1))  # 行ごと（各生徒の平均）"
+    "objectID": "pandas.html#dataframeとseries",
+    "href": "pandas.html#dataframeとseries",
+    "title": "Pandas入門",
+    "section": "DataFrameとSeries",
+    "text": "DataFrameとSeries\n\n\nDataFrameは 表\nSeriesは 1列\nSeriesにも index がある\n\nDataFrame = 表\nSeries    = 1列\n\nimport pandas as pd\n\ndf = pd.DataFrame([[80, 70, 90], [65, 75, 85]],\n                  columns=[\"現代文\", \"数学I\", \"英会話\"], index=[\"田中\", \"佐藤\"])\nmath = df[\"数学I\"]\n\nprint(math.index)\nprint(math.values)\n\nIndex(['田中', '佐藤'], dtype='object')\n[70 75]\n\n\n\nmath.index は生徒名、math.values は点数だけのNumPy配列"
   },
   {
-    "objectID": "numpy.html#条件でフィルタする",
-    "href": "numpy.html#条件でフィルタする",
-    "title": "NumPy入門",
-    "section": "条件でフィルタする",
-    "text": "条件でフィルタする\n\n\n比較演算も「全要素いっせい」に効く\nその True / False を添字に渡すと フィルタ になる\n\nimport numpy as np\n\nscores = np.array([80, 85, 90, 75, 88, 92, 82, 79, 87])\n\nprint(scores &gt;= 85)           # True/False\nprint(scores[scores &gt;= 85])   # 85点以上のデータ\n\n\n\n\n\n\n\n\n\n\nscores &gt;= 85 が True/False の並びを作り、それを添字に渡すと True の位置だけ残る"
+    "objectID": "pandas.html#seriesは値と名前のセット",
+    "href": "pandas.html#seriesは値と名前のセット",
+    "title": "Pandas入門",
+    "section": "Seriesは「値」と「名前」のセット",
+    "text": "Seriesは「値」と「名前」のセット\n\n\nNumPy配列は値だけ\nSeriesは値に index がついている\n\n\n\n\n見方\n中身\n\n\n\n\nmath.index\n[\"田中\", \"佐藤\"]\n\n\nmath.values\n[70, 75]\n\n\n\n\nimport pandas as pd\n\ndf = pd.DataFrame([[80, 70, 90], [65, 75, 85]],\n                  columns=[\"現代文\", \"数学I\", \"英会話\"], index=[\"田中\", \"佐藤\"])\nmath = df[\"数学I\"]\n\nprint(math.mean())\n\n72.5\n\n\n\n1列（Series）だけでも、平均・最大・最小などの計算ができる"
   },
   {
-    "objectID": "numpy.html#演習ndarrayを作って操作する",
-    "href": "numpy.html#演習ndarrayを作って操作する",
-    "title": "NumPy入門",
-    "section": "演習：ndarrayを作って操作する",
-    "text": "演習：ndarrayを作って操作する\n\n\nNumPyで次の5つを作り、表示せよ。\n\n\n「1から10までの連続した整数」から成る ndarray\nその各要素を2倍にした新しい ndarray\n元の ndarray の各要素をランダムに並べ替えた新しい ndarray\n100以上400以下のランダムな整数１つ\n0以上1未満のランダムな数１つ\n\n\n\n解答例を見る\nimport numpy as np\n\narr = np.arange(1, 11)\nprint(arr)                        # (1)\n\nprint(arr * 2)                    # (2)\n\nshuffled = arr.copy()             # (3) 並べ替えは破壊的なのでコピーしてから\nnp.random.shuffle(shuffled)\nprint(shuffled)\n\nprint(np.random.randint(100, 401))  # (4) 上限は含まないので401\nprint(np.random.rand())             # (5)"
+    "objectID": "pandas.html#列名で取り出す練習",
+    "href": "pandas.html#列名で取り出す練習",
+    "title": "Pandas入門",
+    "section": "列名で取り出す練習",
+    "text": "列名で取り出す練習\n\n\n現代文の列を取り出す\n英会話の列を取り出す\nそれぞれの平均を計算する\n\n\nimport pandas as pd\n\ndf = pd.DataFrame([[80, 70, 90], [65, 75, 85]],\n                  columns=[\"現代文\", \"数学I\", \"英会話\"], index=[\"田中\", \"佐藤\"])\n\njapanese = df[\"現代文\"]\nenglish = df[\"英会話\"]\n\nprint(japanese.mean())\nprint(english.mean())\n\n72.5\n87.5\n\n\n\n\n\n\n\n\nまずは列単位で考える\n\n\n\nPandasでは「列を取り出す → 計算する」が基本\n1列を取り出すと Series\n複数列を取り出すと DataFrame"
   },
   {
-    "objectID": "numpy.html#演習listとndarrayの型",
-    "href": "numpy.html#演習listとndarrayの型",
-    "title": "NumPy入門",
-    "section": "演習：listとndarrayの型",
-    "text": "演習：listとndarrayの型\n\n\n同じ数値でも、list の要素とNumPy配列の要素で型がどう変わるかを type() で確かめよ。\n\n\nli = [10, 20, 30] の全要素の型を for 文で表示\nli をNumPyの配列 arr に変換し、要素の型を表示\nli = [0.1, 0.2, 0.3] でも同様に全要素の型を表示\nこれもNumPyの配列 arr2 に変換し、要素の型を表示\n\n\n\n解答例を見る\nimport numpy as np\n\nli = [10, 20, 30]\nfor v in li:                # (1)\n    print(type(v))          # int\n\narr = np.array(li)          # (2)\nprint(type(arr[0]))         # numpy.int64\n\nli = [0.1, 0.2, 0.3]\nfor v in li:                # (3)\n    print(type(v))          # float\n\narr2 = np.array(li)         # (4)\nprint(type(arr2[0]))        # numpy.float64"
+    "objectID": "pandas.html#演習型を見失わない",
+    "href": "pandas.html#演習型を見失わない",
+    "title": "Pandas入門",
+    "section": "演習：型を見失わない",
+    "text": "演習：型を見失わない\n\n\n田中・佐藤の df で、次の4つが DataFrame / Series / ndarray / 数値のどれになるかを実行する前に予想し、type(...) で確かめよ（Series になったものは .index も表示）。\n\n\ndf\ndf[\"数学I\"]（1列）\ndf[\"数学I\"].values（値だけ）\ndf[\"数学I\"].mean()（集計）\n\n\n\n答え合わせ（df を作って type を確認）\nimport pandas as pd\n\ndf = pd.DataFrame([[80, 70, 90], [65, 75, 85]],\n                  columns=[\"現代文\", \"数学I\", \"英会話\"], index=[\"田中\", \"佐藤\"])\n\nprint(type(df))  # DataFrame\nprint(type(df[\"数学I\"]))  # Series\nprint(type(df[\"数学I\"].values))  # ndarray\nprint(type(df[\"数学I\"].mean()))  # 数値（numpy.float64）\n\n\n\n\n\n\n\n\n操作のたびに自問する\n\n\n\nいま手元は DataFrame か Series か（あるいは値か）\nその index / columns は何か"
+  },
+  {
+    "objectID": "pandas.html#section-2",
+    "href": "pandas.html#section-2",
+    "title": "Pandas入門",
+    "section": "",
+    "text": "CSVを読み込む"
+  },
+  {
+    "objectID": "pandas.html#csvとは",
+    "href": "pandas.html#csvとは",
+    "title": "Pandas入門",
+    "section": "CSVとは",
+    "text": "CSVとは\n\n\nCSVは表をテキストで保存する形式\n\nComma Separated Values\nカンマで値を区切る\n\nExcelやGoogleスプレッドシートからも書き出せる\n\n名前,学科,学年,現代文,数学I,英会話,物理,欠席日数\n田中,情報,1,80,70,90,85,2\n佐藤,機械,1,65,75,85,72,4\n鈴木,情報,2,88,91,84,90,1\n\n1行目は列名として扱われることが多い\n列が増えるほど、Pandasで扱う意味が出てくる\nPandasでは pd.read_csv() で読み込む"
+  },
+  {
+    "objectID": "pandas.html#csvを読み込む",
+    "href": "pandas.html#csvを読み込む",
+    "title": "Pandas入門",
+    "section": "CSVを読み込む",
+    "text": "CSVを読み込む\n\n\ndata/students.csv をダウンロード\n作業フォルダに data フォルダを作る\nその中に students.csv を置く\nPythonから data/students.csv で読み込む\n\n\n※ students.csv は授業用の架空データ（実在の個人ではない）\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nprint(df.head())\n\n   名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n0  田中  情報   1   80   70   90  85     2\n1  佐藤  機械   1   65   75   85  72     4\n2  鈴木  情報   2   88   91   84  90     1\n3  高橋  電気   2   72   68   76  80     3\n4  伊藤  情報   1   58   57   62  65     6\n\n\n\nCSVの1行目が columns になり、index は指定しなければ自動で番号が振られる\n\n\n\n\n\n\n\nここから df は students.csv に変わる\n\n\n\nここまでの田中・佐藤（2人×3科目）は 練習用の小さな表\n以降の df は students.csv（20人×8列） — 集計・可視化はこのデータで進める"
+  },
+  {
+    "objectID": "pandas.html#読み込んだ表の形を確認",
+    "href": "pandas.html#読み込んだ表の形を確認",
+    "title": "Pandas入門",
+    "section": "読み込んだ表の形を確認",
+    "text": "読み込んだ表の形を確認\n\n\nデータを読み込んだら、まず 中身と形 を確認する\nhead() は先頭数行を表示する\nshape は (行数, 列数)\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df.head())   # 先頭5行（中身）\nprint(df.shape)    # (行数, 列数)\nprint(df.columns)  # 列名\nprint(df.index)    # 行のラベル\n\n   名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n0  田中  情報   1   80   70   90  85     2\n1  佐藤  機械   1   65   75   85  72     4\n2  鈴木  情報   2   88   91   84  90     1\n3  高橋  電気   2   72   68   76  80     3\n4  伊藤  情報   1   58   57   62  65     6\n(20, 8)\nIndex(['名前', '学科', '学年', '現代文', '数学I', '英会話', '物理', '欠席日数'], dtype='object')\nRangeIndex(start=0, stop=20, step=1)"
+  },
+  {
+    "objectID": "pandas.html#名前をindexにする読み込み",
+    "href": "pandas.html#名前をindexにする読み込み",
+    "title": "Pandas入門",
+    "section": "名前をindexにする読み込み",
+    "text": "名前をindexにする読み込み\n\n\nindex_col=\"名前\" とすると、名前列をindexにできる\n「行名として使いたい列」があるときに使う\n\n\nimport pandas as pd\n\ndf_name = pd.read_csv(\"data/students.csv\", index_col=\"名前\")\nprint(df_name.head())\n\n    学科  学年  現代文  数学I  英会話  物理  欠席日数\n名前                                 \n田中  情報   1   80   70   90  85     2\n佐藤  機械   1   65   75   85  72     4\n鈴木  情報   2   88   91   84  90     1\n高橋  電気   2   72   68   76  80     3\n伊藤  情報   1   58   57   62  65     6\n\n\n\n\n\n\n\n\nまずはここだけ分かれば十分\n\n\n\n最初は自動番号のindexのままで問題ない\nindexとは行名 — それが分かればOK"
+  },
+  {
+    "objectID": "pandas.html#section-3",
+    "href": "pandas.html#section-3",
+    "title": "Pandas入門",
+    "section": "",
+    "text": "DataFrameの基本操作"
+  },
+  {
+    "objectID": "pandas.html#単一列を選択するおさらい",
+    "href": "pandas.html#単一列を選択するおさらい",
+    "title": "Pandas入門",
+    "section": "単一列を選択する（おさらい）",
+    "text": "単一列を選択する（おさらい）\n\n\ndf[\"列名\"] で1列取り出すと Series — 集計の入口としてよく使う\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nmath = df[\"数学I\"]\n\nprint(math.head())  # 20人分あるので先頭5行だけ\n\n0    70\n1    75\n2    91\n3    68\n4    57\nName: 数学I, dtype: int64"
+  },
+  {
+    "objectID": "pandas.html#複数列を選択する",
+    "href": "pandas.html#複数列を選択する",
+    "title": "Pandas入門",
+    "section": "複数列を選択する",
+    "text": "複数列を選択する\n\n\ndf[[\"列名1\", \"列名2\"]] のように列名の リスト を渡す（角括弧が2重）\n返ってくるのは Series ではなく DataFrame\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\ncols = df[[\"名前\", \"学科\", \"数学I\", \"英会話\"]]\n\nprint(cols.head())\n\n   名前  学科  数学I  英会話\n0  田中  情報   70   90\n1  佐藤  機械   75   85\n2  鈴木  情報   91   84\n3  高橋  電気   68   76\n4  伊藤  情報   57   62"
+  },
+  {
+    "objectID": "pandas.html#条件式は残す行の印を作る",
+    "href": "pandas.html#条件式は残す行の印を作る",
+    "title": "Pandas入門",
+    "section": "条件式は「残す行の印」を作る",
+    "text": "条件式は「残す行の印」を作る\n\n\n列に条件式を書くと、各行について True / False が返る\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint((df[\"数学I\"] &gt;= 80).head())  # 先頭5行\n\n0    False\n1    False\n2     True\n3    False\n4    False\nName: 数学I, dtype: bool\n\n\n\n数学I が80点以上の行だけ True — これが「どの行を残すか」の印になる"
+  },
+  {
+    "objectID": "pandas.html#条件抽出filtering",
+    "href": "pandas.html#条件抽出filtering",
+    "title": "Pandas入門",
+    "section": "条件抽出（filtering）",
+    "text": "条件抽出（filtering）\n\n\n条件式を df[...] に入れると、True の行だけが残る\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df[df[\"数学I\"] &gt;= 80].head())  # 先頭5行\n\n     名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n2    鈴木  情報   2   88   91   84  90     1\n5    渡辺  機械   3   84   88   78  86     2\n9    加藤  電気   3   90   95   88  92     0\n10   吉田  情報   3   83   86   91  89     1\n12  佐々木  電気   1   74   80   69  83     2\n\n\n\n数学I が80点以上の行だけが残る（20人中9人が該当）"
+  },
+  {
+    "objectID": "pandas.html#文字列の条件抽出",
+    "href": "pandas.html#文字列の条件抽出",
+    "title": "Pandas入門",
+    "section": "文字列の条件抽出",
+    "text": "文字列の条件抽出\n\n\n数値だけでなく、文字列でも条件を作れる（== は「等しい」）\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df[df[\"学科\"] == \"情報\"])\n\n    名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n0   田中  情報   1   80   70   90  85     2\n2   鈴木  情報   2   88   91   84  90     1\n4   伊藤  情報   1   58   57   62  65     6\n7   中村  情報   2   76   65   82  74     3\n10  吉田  情報   3   83   86   91  89     1\n13  山口  情報   2   62   78   75  70     5\n16  木村  情報   1   92   89   94  91     0\n19  斎藤  情報   3   77   93   85  90     1\n\n\n\n学科 が \"情報\" の行だけが残る（名簿・アンケートでよく使う）"
+  },
+  {
+    "objectID": "pandas.html#peek-and-or-code",
+    "href": "pandas.html#peek-and-or-code",
+    "title": "Pandas入門",
+    "section": "複数条件で抽出する",
+    "text": "複数条件で抽出する\n\n\n複数条件は & でつなぐ\nそれぞれの条件を丸括弧で囲む\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df[\n    (df[\"学科\"] == \"情報\")\n    & (df[\"数学I\"] &gt;= 80)\n])\n\n    名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n2   鈴木  情報   2   88   91   84  90     1\n10  吉田  情報   3   83   86   91  89     1\n16  木村  情報   1   92   89   94  91     0\n19  斎藤  情報   3   77   93   85  90     1\n\n\n\n\n\n\n\n\nand ではなく &\n\n\n\nPandasの条件抽出では and ではなく &\n条件ごとに丸括弧をつける\nこの書き方は最初だけ少し変だが、よく使う"
+  },
+  {
+    "objectID": "pandas.html#tweakand-と-or-で絞ると広がる",
+    "href": "pandas.html#tweakand-と-or-で絞ると広がる",
+    "title": "Pandas入門",
+    "section": "Tweak：AND と OR で「絞る」と「広がる」",
+    "text": "Tweak：AND と OR で「絞る」と「広がる」\n\n\n前ページのコード を1か所ずつ変えて実行\n\n\n\n条件式だけ実行する（df[...] を外す）→ 各行に True/False が返る\n& を | にする（「両方」→「どちらか一方」で残る行が増える）\n数学Iの基準を反転する（80点未満）\n英会話も80点以上、と条件を足す"
+  },
+  {
+    "objectID": "pandas.html#列を追加する",
+    "href": "pandas.html#列を追加する",
+    "title": "Pandas入門",
+    "section": "列を追加する",
+    "text": "列を追加する\n\n\ndf[\"新しい列名\"] = ... で列を追加できる\n既存の列を使って、新しい列を計算することが多い\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\n\ndf[\"平均点\"] = df[subjects].mean(axis=1)\n\nprint(df.head())\n\n   名前  学科  学年  現代文  数学I  英会話  物理  欠席日数    平均点\n0  田中  情報   1   80   70   90  85     2  81.25\n1  佐藤  機械   1   65   75   85  72     4  74.25\n2  鈴木  情報   2   88   91   84  90     1  88.25\n3  高橋  電気   2   72   68   76  80     3  74.00\n4  伊藤  情報   1   58   57   62  65     6  60.50\n\n\n\n平均点 は4科目（現代文・数学I・英会話・物理）の平均\n\n\n\n\n\n\n\nNumPyと同じ感覚\n\n\n\nmean(axis=1) は、行ごとに平均を計算する（いま作った 平均点）\ndf[\"数学I\"] * 1.1 のように、列全体へまとめて計算もできる\nfor文を書かなくても列全体に計算がかかる"
+  },
+  {
+    "objectID": "pandas.html#section-4",
+    "href": "pandas.html#section-4",
+    "title": "Pandas入門",
+    "section": "",
+    "text": "CSVデータを集計して可視化する"
+  },
+  {
+    "objectID": "pandas.html#平均点列を集計する",
+    "href": "pandas.html#平均点列を集計する",
+    "title": "Pandas入門",
+    "section": "平均点列を集計する",
+    "text": "平均点列を集計する\n\n\n4科目から作った 平均点 列を Series として取り出す\nSeriesには平均・最大・最小など 集計（aggregation） のメソッドがある\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\nscores = df[\"平均点\"]\n\nprint(scores.mean())\nprint(scores.max())\nprint(scores.min())\n\n76.7875\n91.5\n56.75\n\n\n\n\n\n\n\n\nCSVを読んだあとの典型的な流れ\n\n\nCSVを読む → 必要な列を作る → 集計する → 可視化する"
+  },
+  {
+    "objectID": "pandas.html#学科ごとに人数を数える",
+    "href": "pandas.html#学科ごとに人数を数える",
+    "title": "Pandas入門",
+    "section": "学科ごとに人数を数える",
+    "text": "学科ごとに人数を数える\n\n\ngroupby(\"学科\") で、学科ごとに行をグループへ分ける\nグループの中身を見るには .size() などを続ける必要がある\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df.groupby(\"学科\").size())\n\n学科\n情報    8\n機械    6\n電気    6\ndtype: int64\n\n\n\n情報8人・機械6人・電気6人で合計20人 — 全員がどこかのグループに分けられている"
+  },
+  {
+    "objectID": "pandas.html#peek-groupby-code",
+    "href": "pandas.html#peek-groupby-code",
+    "title": "Pandas入門",
+    "section": "学科ごとに平均点を出す",
+    "text": "学科ごとに平均点を出す\n\n\ngroupby(\"学科\") に、集計する列と方法を続ける\n[\"平均点\"] で列を選び、.mean() で学科ごとの平均を出す\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\n\navg = df.groupby(\"学科\")[\"平均点\"].mean()\nprint(avg)\n\n学科\n情報    80.062500\n機械    71.625000\n電気    77.583333\nName: 平均点, dtype: float64\n\n\n\nCSVの 学科 列と、追加した 平均点 列を使う。結果は DataFrame ではなく Series"
+  },
+  {
+    "objectID": "pandas.html#groupbyの結果を確認",
+    "href": "pandas.html#groupbyの結果を確認",
+    "title": "Pandas入門",
+    "section": "groupbyの結果を確認",
+    "text": "groupbyの結果を確認\n\n\ngroupbyの結果も Series\nindex が学科名\nvalues が平均点\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\navg = df.groupby(\"学科\")[\"平均点\"].mean()\n\nprint(type(avg))\nprint(avg.index)\nprint(avg.values)\n\n&lt;class 'pandas.core.series.Series'&gt;\nIndex(['情報', '機械', '電気'], dtype='object', name='学科')\n[80.0625     71.625      77.58333333]\n\n\n\n\n\n\n\n\ngroupbyの結果\n\n\ngroupby の結果も Series\nindex  が「学科」\nvalues が「平均点」"
+  },
+  {
+    "objectID": "pandas.html#tweakgroupby-は分ける-集計する列-集計方法",
+    "href": "pandas.html#tweakgroupby-は分ける-集計する列-集計方法",
+    "title": "Pandas入門",
+    "section": "Tweak：groupby は「分ける × 集計する列 × 集計方法」",
+    "text": "Tweak：groupby は「分ける × 集計する列 × 集計方法」\n\n\nさっきのコード を1か所ずつ変えて実行\n\n\n\n学年でgroupbyする\n集計する列を欠席日数にする\n集計を最大値にする"
+  },
+  {
+    "objectID": "pandas.html#matplotlibで棒グラフにする",
+    "href": "pandas.html#matplotlibで棒グラフにする",
+    "title": "Pandas入門",
+    "section": "matplotlibで棒グラフにする",
+    "text": "matplotlibで棒グラフにする\n\n\ngroupby() で作った avg（Series）を棒グラフにする\nSeries を index と values に分けて matplotlib に渡す\n縦軸は ylim(0, 100) で0点〜満点に固定（棒グラフは0から見せる）\n\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\navg = df.groupby(\"学科\")[\"平均点\"].mean()\n\nplt.bar(avg.index, avg.values)\nplt.xlabel(\"学科\")\nplt.ylabel(\"平均点\")\nplt.title(\"学科ごとの平均点\")\nplt.ylim(0, 100)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPandasからmatplotlibへ\n\n\nSeries → index / values → matplotlib"
+  },
+  {
+    "objectID": "pandas.html#少し整える",
+    "href": "pandas.html#少し整える",
+    "title": "Pandas入門",
+    "section": "少し整える",
+    "text": "少し整える\n\n\n色（color=）とグリッド（grid()）を足すと、比較しやすくなる\ngrid(axis=\"y\", ...) は横線だけを薄く引く\n\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\navg = df.groupby(\"学科\")[\"平均点\"].mean()\n\nplt.bar(avg.index, avg.values, color=\"#2266CC\")\nplt.xlabel(\"学科\")\nplt.ylabel(\"平均点\")\nplt.title(\"学科ごとの平均点\")\nplt.ylim(0, 100)\nplt.grid(axis=\"y\", linestyle=\"--\", alpha=0.5)\nplt.show()"
+  },
+  {
+    "objectID": "pandas.html#演習高得点者を可視化",
+    "href": "pandas.html#演習高得点者を可視化",
+    "title": "Pandas入門",
+    "section": "演習：高得点者を可視化",
+    "text": "演習：高得点者を可視化\n\n\nstudents.csv の20人から4科目平均が80点以上の高得点者だけを抜き出し、棒グラフで比較せよ。\n\n\ndata/students.csv を読み込み、4科目の平均点の列を追加\n平均点が80点以上の生徒だけを条件抽出\n生徒名を横軸、平均点を縦軸に棒グラフを描く（y軸は 0〜100 に固定）\n\n\n\n解答例を見る\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\n\ndf[\"平均点\"] = df[subjects].mean(axis=1)\nhigh = df[df[\"平均点\"] &gt;= 80]\n\nplt.bar(high[\"名前\"], high[\"平均点\"], color=\"#2266CC\")\nplt.xlabel(\"名前\")\nplt.ylabel(\"平均点\")\nplt.title(\"平均点80点以上の生徒\")\nplt.ylim(0, 100)\nplt.grid(axis=\"y\", linestyle=\"--\", alpha=0.5)\nplt.show()"
+  },
+  {
+    "objectID": "pandas.html#まとめ",
+    "href": "pandas.html#まとめ",
+    "title": "Pandas入門",
+    "section": "まとめ",
+    "text": "まとめ\n\n\nDataFrame は 表\n\nデータ + index + columns\n\nSeries は 1列\n\n値 + index\n\npd.read_csv() でCSVを読み込める\n条件抽出は df[条件]\ngroupby() でグループごとの集計ができる\n集計結果の index / values を matplotlib に渡して可視化できる"
+  },
+  {
+    "objectID": "pandas.html#演習実データで明治の東京-vs-21世紀の東京",
+    "href": "pandas.html#演習実データで明治の東京-vs-21世紀の東京",
+    "title": "Pandas入門",
+    "section": "演習：実データで明治の東京 vs 21世紀の東京",
+    "text": "演習：実データで明治の東京 vs 21世紀の東京\n\n\n気象庁が公開している東京150年分の年平均気温をCSVで読み込み、明治の東京と21世紀の東京は平均で何度ちがうのかを自分のコードで確かめよ。\n\n\ntokyo_temp_annual.csv をダウンロードして data フォルダに置く\npd.read_csv() で読み込み、columns で列名を確認\n条件抽出で 明治（1911年以前） と 21世紀（2000年以降） の行に分ける\nそれぞれの気温の平均を比較（差分値も表示）\n\n\n\n解答例を見る\nimport pandas as pd\n\ndf_temp = pd.read_csv(\"data/tokyo_temp_annual.csv\")\nprint(df_temp.columns)  # (1) 列名を確認 → year と temp\n\nmeiji  = df_temp[df_temp[\"year\"] &lt;= 1911]\nrecent = df_temp[df_temp[\"year\"] &gt;= 2000]\n\nmeiji_avg  = meiji[\"temp\"].mean()\nrecent_avg = recent[\"temp\"].mean()\nprint(f\"明治の東京   : {meiji_avg:.1f} ℃\")\nprint(f\"21世紀の東京 : {recent_avg:.1f} ℃\")\nprint(f\"差           : {recent_avg - meiji_avg:.1f} ℃\")\n\n\n\n\n\n\n\n\n列名で読み書きできる強さ\n\n\n\n150行のデータでも、絞り込み1行＋平均1行で答えが出る\nNumPyの「何列目が年だっけ？」が、Pandasでは 列名 で済む"
+  },
+  {
+    "objectID": "nicegui.html#section",
+    "href": "nicegui.html#section",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "",
+    "text": "ワイヤーフレームを「動くもの」にする"
+  },
+  {
+    "objectID": "nicegui.html#絵は動かない",
+    "href": "nicegui.html#絵は動かない",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "絵は動かない",
+    "text": "絵は動かない\n\n\nFigmaのワイヤーフレーム は設計図としては優秀だが、動きがない\n\nボタンは押せない・データは増えない・本当の使い勝手は分からない\n\n次の段階は、Webブラウザで 実際に動くモック（mock、試作品）\n\n見た目は簡素でよい。押したら反応する ことが価値\n\n\n\n\n\n\n\n\n作る順番が大事\n\n\n紙 → ワイヤーフレーム → 動くモック → 本実装。 1段ずつ「捨てても痛くないもの」で確かめるから、手戻りが小さい"
+  },
+  {
+    "objectID": "nicegui.html#spasingle-page-application",
+    "href": "nicegui.html#spasingle-page-application",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "SPA（Single Page Application）",
+    "text": "SPA（Single Page Application）\n\n\nSPA = 1枚のページの中で動的に画面を切り替える 方式のWebアプリ\n\nページ全体をリロードせずに画面を更新 → 動きがなめらか\n\n実は、スマホアプリの多くも内部ではSPAが動いている\n\nアプリの中に WebKit などのブラウザエンジンが入っていて、その上でSPAが動く\nつまりSPAが作れる = スマホアプリの中身が作れる\n\nプロの現場では Next.js や Vue などの フレームワーク（framework、開発の土台になるプログラム群）+ TypeScript で作ることが多い"
+  },
+  {
+    "objectID": "nicegui.html#niceguipythonだけで-spa",
+    "href": "nicegui.html#niceguipythonだけで-spa",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "NiceGUI：Pythonだけで SPA",
+    "text": "NiceGUI：Pythonだけで SPA\n\n\nNiceGUI（nicegui.io）= Pythonだけ でSPAを作れるフレームワーク\n\nフロントエンド（ブラウザ側）には Vue が使われている\nバックエンドには FastAPI（Pythonの定番APIフレームワーク）を内包 — のちほど API側 でも活躍する\n\nインストールは1行\n\npip install nicegui"
+  },
+  {
+    "objectID": "nicegui.html#ボタンを押すと何が起きているか",
+    "href": "nicegui.html#ボタンを押すと何が起きているか",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "ボタンを押すと何が起きているか",
+    "text": "ボタンを押すと何が起きているか\n\n\n\nブラウザとサーバは WebSocket で常時つながっていて、ボタン1回ごとにPythonの関数が動く\n\n「画面はブラウザ、頭脳はPython」という分業"
+  },
+  {
+    "objectID": "nicegui.html#保存するだけで反映オートリロード",
+    "href": "nicegui.html#保存するだけで反映オートリロード",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "保存するだけで反映：オートリロード",
+    "text": "保存するだけで反映：オートリロード\n\n\nNiceGUIは、ファイルを保存すると サーバーが自動再起動し、ブラウザも自動更新 される\n\n最初に1回実行したら、あとは ==編集 → 保存 → すぐ確認== の繰り返し\nCtrl+C で止めて実行し直す必要がない\n\n\n\n\n\n\n\n\n\n用語\n意味\n\n\n\n\nオートリロード／ライブリロード\nファイル変更を検知してブラウザを自動リロード\n\n\nホットリロード\nプログラムを再起動せずに変更を反映（Python/FastAPI側）"
+  },
+  {
+    "objectID": "nicegui.html#最初の一歩hello-world",
+    "href": "nicegui.html#最初の一歩hello-world",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "最初の一歩：Hello World",
+    "text": "最初の一歩：Hello World\n\nfrom nicegui import ui\n\nui.label(\"Hello, NiceGUI!\")\nui.run()\n\n実行するとターミナルにURLが出る — Ctrl+クリックでブラウザが開く\n\nNiceGUI ready to go on http://localhost:8080\n\n\n\n\n\n\n\n\n関数\n機能\n補足\n\n\n\n\nui.label(text)\n文字列を表示\n\n\n\nui.run()\nNiceGUIを起動（裏でFastAPIが立ち上がり画面を組み立てる）\n部品をすべて書いた いちばん最後に1回だけ 書く"
+  },
+  {
+    "objectID": "nicegui.html#ボタンとコールバック関数",
+    "href": "nicegui.html#ボタンとコールバック関数",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "ボタンとコールバック関数",
+    "text": "ボタンとコールバック関数\n\nfrom nicegui import ui\n\ndef say_hi():\n    ui.notify(\"Hi!\")\n\nui.button(\"Click me\", on_click=say_hi)\nui.run()\n\nui.button() でボタンを作り、on_click に関数を渡す（「登録する」と言う）\n\nボタンが押された ときに 呼ばれる関数を コールバック関数（callback function）と呼ぶ\n\nui.notify() は画面下にポップアップ通知を出す\n\n\n\n\n\n\n\nsay_hi() と書いてはいけない\n\n\non_click=say_hi — カッコを付けない。say_hi() と書くと その場で実行した結果 を渡してしまう。渡したいのは「関数そのもの」"
+  },
+  {
+    "objectID": "nicegui.html#部品は上から順に並ぶだけ",
+    "href": "nicegui.html#部品は上から順に並ぶだけ",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "部品は「上から順に」並ぶだけ",
+    "text": "部品は「上から順に」並ぶだけ\n\nfrom nicegui import ui\n\nui.label(\"A\")\nui.label(\"B\")\nui.button(\"ボタン\")\nui.run()\n\n何も指定しなければ、部品は 書いた順に上から縦に 並ぶだけ\n「横に並べたい」「カードでまとめたい」——そのためには部品を入れる 箱 が要る\n\nこの箱を コンテナ（container）と呼ぶ\nコンテナの使い方が、NiceGUIで いちばんつまずきやすい ところ。ここから数枚かけてゆっくり見る"
+  },
+  {
+    "objectID": "nicegui.html#with-いまからこの箱に入れる",
+    "href": "nicegui.html#with-いまからこの箱に入れる",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "with = 「いまからこの箱に入れる」",
+    "text": "with = 「いまからこの箱に入れる」\n\nfrom nicegui import ui\n\nbox = ui.column()      # 箱を作る（この時点では空）\n\nwith box:              # ここから「箱に入れる」宣言\n    ui.label(\"A\")      # → 箱の中\n    ui.label(\"B\")      # → 箱の中\n\nui.label(\"C\")          # withの外 → 箱の外（ページに直接）\nui.run()\n\nwith box: の インデントの中 で作った部品が、その箱に入る\nインデントを抜けたら、置き場所はページ直下に戻る — だから「C」は箱の外\n\n\n\n\n\n\n\nwith は「ファイルを開く」専用ではない\n\n\nwith open(...) と同じ文法だが、意味は「この範囲のあいだ、◯◯しておく」という汎用の道具。 NiceGUIでは「この範囲のあいだ、部品はこの箱行き」という意味になる"
+  },
+  {
+    "objectID": "nicegui.html#同じ箱にあとから何度でも",
+    "href": "nicegui.html#同じ箱にあとから何度でも",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "同じ箱に、あとから何度でも",
+    "text": "同じ箱に、あとから何度でも\n\nfrom nicegui import ui\n\nbox = ui.column()\n\nwith box:\n    ui.label(\"最初の1個\")\n\nwith box:                      # 同じ箱にもう一度\n    for i in range(1, 11):\n        ui.label(f\"{i}番目\")   # for文で大量に追加\nui.run()\n\n同じ箱への with は 何度でも 書ける — 空の箱を先に置いておき、あとから中身を足す ことができる\n\n「ボタンが押されたら箱に追加」— この後の入力フォームがまさにこの形"
+  },
+  {
+    "objectID": "nicegui.html#箱の中に箱入れ子",
+    "href": "nicegui.html#箱の中に箱入れ子",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "箱の中に箱：入れ子",
+    "text": "箱の中に箱：入れ子\n\nfrom nicegui import ui\n\nwith ui.row():             # 横に並べる箱\n    with ui.card():        # 1枚目のカード\n        ui.label(\"タイトル\")\n        ui.label(\"説明文\")\n    with ui.card():        # 2枚目のカード\n        ui.label(\"タイトル2\")\nui.run()\n\n\nコンテナの中にコンテナを入れて、画面の構造 を作る\n\n変数に代入せず with ui.row(): と その場で作ってそのまま入れる 書き方もできる\nFigmaのワイヤーフレームの「枠の入れ子」が、そのまま with の入れ子になる"
+  },
+  {
+    "objectID": "nicegui.html#コンテナの種類",
+    "href": "nicegui.html#コンテナの種類",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "コンテナの種類",
+    "text": "コンテナの種類\n\n\n\n\nレイアウト系\nインタラクティブ系\n\n\n\n\nui.column() — 縦に並べる\nui.expansion() — 開閉できる折りたたみ\n\n\nui.row() — 横に並べる\nui.dialog() — ポップアップ\n\n\nui.grid() — 格子状に配置\nui.menu() — メニュー\n\n\nui.card() — カード型の枠"
+  },
+  {
+    "objectID": "nicegui.html#tweakwith-で実験",
+    "href": "nicegui.html#tweakwith-で実験",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "Tweak：with で実験",
+    "text": "Tweak：with で実験\n\n\nこの土台を保存して、下の表を 1つずつ 試す\n\nfrom nicegui import ui\n\nbox = ui.column()\n\nwith box:\n    ui.label(\"A\")\n    ui.label(\"B\")\n\nui.label(\"C\")\nui.run()\n\n\n\n\n\n\n\n\nやってみる\n予想すること\n\n\n\n\nui.label(\"C\") を with box: の中へ移動\nCはどこに出る？\n\n\nui.column() を ui.row() に変更\n並ぶ向きは？ Cの位置は？\n\n\nwith box: をもう1つ書き足して ui.label(\"D\")\nDは箱に入る？\n\n\nwith box: の中に with ui.card(): を作って ui.label(\"E\")\nEはどんな見た目で出る？\n\n\n\n\n\n\n\n\n\n\n声に出して予想してから保存\n\n\n「Cは箱の中だから…Bの下」と言ってから保存する。外れたときに with の理解が一段深くなる"
+  },
+  {
+    "objectID": "nicegui.html#コンテナを操作するメソッド",
+    "href": "nicegui.html#コンテナを操作するメソッド",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "コンテナを操作するメソッド",
+    "text": "コンテナを操作するメソッド\n\n\n\n\n\n\n\n\n\n分類\nメソッド\n効果\n\n\n\n\n見た目\n.classes(\"クラス名\")\nスタイル用クラスを付ける（次ページ）\n\n\n見た目\n.style(\"CSSコード\")\nCSSを直接書く\n\n\n内容\n.clear()\n中身を全部消す\n\n\n内容\n.delete()\nコンテナ自体を削除\n\n\n内容\n.update()\n表示を更新\n\n\n表示\n.set_visibility(True/False)\n表示・非表示の切り替え\n\n\n\n\nこの後の演習では .clear() と .delete() が主役になる"
+  },
+  {
+    "objectID": "nicegui.html#見た目を変える.classes",
+    "href": "nicegui.html#見た目を変える.classes",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "見た目を変える：.classes()",
+    "text": "見た目を変える：.classes()\n\nfrom nicegui import ui\n\nwith ui.column():\n    ui.label(\"赤い文字\").classes(\"text-red-500\")\n    ui.label(\"青い文字\").classes(\"text-blue-500\")\n    ui.label(\"背景色付き\").classes(\"bg-yellow-200 p-2\")\n\nui.label(\"目立つラベル\").classes(\"text-2xl font-bold text-blue-500\")\nui.button(\"ボタン\").classes(\"bg-green-500 text-white rounded-lg p-4\")\nui.run()\n\nクラス名の正体は Tailwind CSS（HTMLの見た目を整えるフレームワーク — またフレームワーク！）\n\n複数のクラスは 半角スペースで区切って 並べる"
+  },
+  {
+    "objectID": "nicegui.html#スタイル早見表",
+    "href": "nicegui.html#スタイル早見表",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "スタイル早見表",
+    "text": "スタイル早見表\n\n\n\n\n\n\n\n\n分類\nクラス\n\n\n\n\n間隔・余白\ngap-2/4/8（要素間） ／ p-2/4/8（内側余白） ／ m-2/4/8（外側余白）\n\n\n文字色\ntext-red-500 ／ text-blue-500 ／ text-green-500 ／ text-gray-500 ／ text-white\n\n\n背景色\nbg-red-500 ／ bg-blue-500 ／ bg-gray-200 ／ bg-white\n\n\n文字サイズ\ntext-xs → text-sm → text-base → text-lg → text-xl → text-2xl\n\n\n太字・配置\nfont-bold ／ text-center ／ text-right\n\n\n角丸・枠線\nrounded ／ rounded-lg ／ border ／ border-2\n\n\n\n\n数字は強さ・大きさ（大きいほど強い）。この表は改造課題の 武器庫 — ブックマーク推奨"
+  },
+  {
+    "objectID": "nicegui.html#入力フォーム",
+    "href": "nicegui.html#入力フォーム",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "入力フォーム",
+    "text": "入力フォーム\n\nfrom nicegui import ui\n\ndef add_item():\n    name = name_input.value\n    items.append(name)\n    with list_view:        # withでくくると、その場でコンテナに追加される\n        ui.label(name)\n\nname_input = ui.input(\"name\")\nui.button(\"add\", on_click=add_item)\n\nitems = []\nlist_view = ui.column()\nui.run()\n\nui.input() の入力値は .value で取り出す\n「入力 → ボタン → 一覧に追加」— ほぼすべてのアプリの基本形"
+  },
+  {
+    "objectID": "nicegui.html#演習土台コードを動かす",
+    "href": "nicegui.html#演習土台コードを動かす",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "演習：土台コードを動かす",
+    "text": "演習：土台コードを動かす\n\n\n次の土台コードを main.py として保存・実行し、名前を追加できることを確かめよ。\n\nfrom nicegui import ui\n\ndef add_item():\n    name = name_input.value\n    if not name:\n        return\n    items.append(name)\n\n    with list_view:\n        ui.label(name)\n\nitems = []\nname_input = ui.input(\"名前\")\nui.button(\"追加\", on_click=add_item)\n\nlist_view = ui.column().classes(\"gap-2\")\n\nui.run()\n\nここからの Tweak は、すべてこのコードの改造"
+  },
+  {
+    "objectID": "nicegui.html#tweak見た目を改造する",
+    "href": "nicegui.html#tweak見た目を改造する",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "Tweak：見た目を改造する",
+    "text": "Tweak：見た目を改造する\n\n\n土台コードを 1か所ずつ変えて保存 — オートリロードが即座に見せてくれる\n\n\n\n\n\n\n\n\n\nやりたいこと\nヒント\n\n\n\n\n項目を横に並べる\nlist_view を ui.row() に\n\n\n各項目をカードにする\nadd_item の中で card = ui.card() を作り、with card: に ui.label\n\n\nカードの間隔を広げる\nlist_view に .classes(\"gap-4\")\n\n\nカードの背景を薄いグレーに\nカードに .classes(\"bg-gray-100\")\n\n\nカードの角を丸くする\nカードに .classes(\"bg-gray-100 rounded-lg\")（スペース区切りで追加）\n\n\n\n\n\n\n\n\n\n\n予想してから保存する\n\n\n変える前に「どう変わるはず」と言ってから保存する。予想と違ったら、それが一番の学び"
+  },
+  {
+    "objectID": "nicegui.html#tweak削除機能を付ける",
+    "href": "nicegui.html#tweak削除機能を付ける",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "Tweak：削除機能を付ける",
+    "text": "Tweak：削除機能を付ける\n\n\n\n\n\n\n\n\n\nやりたいこと\nヒント\n\n\n\n\n「全部削除」ボタンを追加\nコールバックの中で list_view.clear()\n\n\nカードごとの×ボタン\nwith card: の中に ui.button(\"×\", on_click=card.delete) — メソッドもコールバックとして渡せる\n\n\n\n\n\n\n解答例を表示\nfrom nicegui import ui\n\n\ndef add_item():\n    name = name_input.value\n    if not name:\n        return\n    items.append(name)\n\n    with list_view:\n        card = ui.card().classes(\"bg-gray-100 rounded-lg\")\n        with card:\n            with ui.row():\n                ui.label(name)\n                ui.button(\"×\", on_click=card.delete).classes(\"text-red-500\")\n\n\ndef clear_all():\n    list_view.clear()\n    ui.notify(\"全部削除しました\")\n\n\nitems = []\nname_input = ui.input(\"名前\")\nui.button(\"追加\", on_click=add_item)\nui.button(\"全部削除\", on_click=clear_all)\n\nlist_view = ui.row().classes(\"gap-4\")\n\nui.run()"
+  },
+  {
+    "objectID": "nicegui.html#まとめ",
+    "href": "nicegui.html#まとめ",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "まとめ",
+    "text": "まとめ\n\n\nSPA — 1枚のページの中で画面を切り替えるWebアプリ。スマホアプリの中身でもある\nNiceGUI — Pythonだけで SPA。中身は Vue（画面）+ FastAPI（サーバ）\n基本パターンは4つだけ\n\n部品を置く（ui.label / ui.button / ui.input）\n箱に入れる（コンテナ + with）\n反応させる（on_click にコールバック登録）\n見た目を整える（.classes(\"...\")）\n\n次は、このアプリに データを出し入れする口 を付ける — 自作API+SPA"
   },
   {
     "objectID": "list.html#復習listとは",
@@ -1271,119 +1684,196 @@
     "href": "index.html#情報処理",
     "title": "情報処理",
     "section": "情報処理",
-    "text": "情報処理\n\nPDF\n\nhttps://rkskmt.github.io/ip3200/\n\n\n\n\n\n\n\n\nPCの使い方アップデート\n\n\nキータイピング\nショートカット\n\n\n速習Python基礎\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\nデータ処理基礎\n\n\nNumPy入門\n（参考）ベクトルと行列\nデータの可視化\nmatplotlib入門\nPandas入門\nPlotly入門\n\n\nAPI\n\n\nAPIでデータ取得\nAPIデータを可視化する\nWikipedia APIリファレンス\n東京都オープンデータAPI"
+    "text": "情報処理\n\nPDF\n\nhttps://rkskmt.github.io/ip3200/\n\n\n\n\n\n\n\n\n前期後期\n\n\n\n\nPCの使い方アップデート\n\n\n\nキータイピング\nショートカット\n\n\n\n速習Python基礎\n\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\n\nデータ処理基礎\n\n\n\nNumPy入門\n（参考）ベクトルと行列\nデータの可視化\nmatplotlib入門\nPandas入門\nPlotly入門\n\n\n\nAPI\n\n\n\nAPIでデータ取得\nAPIデータを可視化する\nWikipedia APIリファレンス\n東京都オープンデータAPI\n\n\n\n\n\n\n\n課題解決・アイデア創出\n\n\n\n発想法（発散思考）\nオズボーンのチェックリスト・SCAMPER\n収束技法（KJ法・アイデアマップ）\nペイオフマトリクス\n\n\n\nワイヤーフレーム・発表\n\n\n\nFigmaでワイヤーフレーム\n発表\n\n\n\n実装\n\n\n\nNiceGUIで作るSPAモック\n自作API+SPA\n最終課題"
   },
   {
-    "objectID": "dict.html#復習dict-とは",
-    "href": "dict.html#復習dict-とは",
-    "title": "辞書をあらためて",
-    "section": "復習（dict とは）",
-    "text": "復習（dict とは）\n\n\n\nキーと値のペアで管理するコレクション型\nデータはキーで管理する（list のような番号ではない）\n変数名は 「x2y」 形式にすることが多い（例：name2score）\n\n\n\nCC0: https://en.wikipedia.org/wiki/Fictionary#/media/File:Focus_definition_(Unsplash).jpg"
+    "objectID": "handouts.html#handouts",
+    "href": "handouts.html#handouts",
+    "title": "情報処理",
+    "section": "Handouts",
+    "text": "Handouts\n\n← Lectures\n\n各回スライドの配布用 PDF。クリックで開く。番号は講義一覧と対応。\n\n\n\nPCの使い方アップデート\n\n\n\nキータイピング\nショートカット\n\n\n\n速習Python基礎\n\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\n\nデータ処理基礎\n\n\n\nNumPy入門\n（参考）ベクトルと行列\nデータの可視化\nmatplotlib入門\nPandas入門\nPlotly入門\n\n\n\nAPI\n\n\n\nAPIでデータ取得\nAPIデータを可視化する\nWikipedia APIリファレンス\n東京都オープンデータAPI"
   },
   {
-    "objectID": "dict.html#宣言",
-    "href": "dict.html#宣言",
-    "title": "辞書をあらためて",
-    "section": "宣言",
-    "text": "宣言\n\n{} の中に キー: 値 をカンマ区切りで書くと辞書になる。\n\nキーは重複不可\n値は何でもよい\n\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}\n\n\n\n\n\n\nお作法\n\n\n: の前は詰めて、: と , の後には必ずスペースを空けるのが綺麗に書くコツ。"
+    "objectID": "figma.html#section",
+    "href": "figma.html#section",
+    "title": "Figmaでワイヤーフレーム",
+    "section": "",
+    "text": "アプリの「設計図」を作る"
   },
   {
-    "objectID": "dict.html#アクセスキー",
-    "href": "dict.html#アクセスキー",
-    "title": "辞書をあらためて",
-    "section": "アクセス（キー）",
-    "text": "アクセス（キー）\n\n要素にアクセスするにはキーを使う（list の [0] に相当）。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\nprint(name2score[\"Yamada\"])     # 95\nprint(name2score[\"Takahashi\"])  # 80"
+    "objectID": "figma.html#いきなりコードを書いてはいけない",
+    "href": "figma.html#いきなりコードを書いてはいけない",
+    "title": "Figmaでワイヤーフレーム",
+    "section": "いきなりコードを書いてはいけない",
+    "text": "いきなりコードを書いてはいけない\n\n\n優先順位が決まった（ペイオフマトリクス）——次にやるのは実装ではなく 画面の設計\n建築と同じ：家をいきなり建て始める大工はいない。まず設計図\n\n画面の設計図のことを ワイヤーフレーム（wireframe）と呼ぶ\n「針金（wire）の枠（frame）」— 線と枠だけの、飾りのない骨組み図\n\n\n\n\n\n\n\n\nなぜ白黒の骨組みだけ？\n\n\n色やアイコンを作り込むと「きれいかどうか」の話になってしまう。 骨組みだけなら、何をどこに置くか という 構造の議論 に集中できる"
   },
   {
-    "objectID": "dict.html#要素の追加上書き",
-    "href": "dict.html#要素の追加上書き",
-    "title": "辞書をあらためて",
-    "section": "要素の追加・上書き",
-    "text": "要素の追加・上書き\n\ndict[キー] = 値 で追加・上書きできる。\n\n存在しないキー → 追加\n存在するキー → 上書き\n\nname2score = {\"Yamada\": 95, \"Suzuki\": 75}\n\n# 追加\nname2score[\"Takahashi\"] = 80\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}\n\n# 上書き\nname2score[\"Suzuki\"] = 70\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 70, 'Takahashi': 80}\n\n\n\n\n\n\ntypo に注意\n\n\n追加と上書きが同じ書き方なので、typo でキーを間違えると新しいキーが勝手に追加される。\nname2score[\"Suzki\"] = 60  # 上書きのつもりが新規追加！"
+    "objectID": "figma.html#ワイヤーフレームは紙でも描ける",
+    "href": "figma.html#ワイヤーフレームは紙でも描ける",
+    "title": "Figmaでワイヤーフレーム",
+    "section": "ワイヤーフレームは紙でも描ける",
+    "text": "ワイヤーフレームは紙でも描ける\n\n\n写真: Intel Free Press, CC BY-SA 2.0, via Wikimedia Commons\n\n\n\n最初の1枚は 紙とペンで十分。プロも紙のスケッチから始める\nただし紙には弱点がある — 修正・共有・使い回しがしにくい\n\nそこで登場するのが専用ツール"
   },
   {
-    "objectID": "dict.html#走査全要素へのアクセス",
-    "href": "dict.html#走査全要素へのアクセス",
-    "title": "辞書をあらためて",
-    "section": "走査（全要素へのアクセス）",
-    "text": "走査（全要素へのアクセス）\n\ndict には3種類の走査方法がある。for 文で書ける。\n# キーだけ\nfor key in name2score.keys():\n    print(key)\n\n# 値だけ\nfor value in name2score.values():\n    print(value)\n\n# キーと値を同時に（最頻出）\nfor key, value in name2score.items():\n    print(f\"{key}さんは{value}点です\")\nYamadaさんは95点です\nSuzukiさんは70点です\nTakahashiさんは80点です\n\n\n\n\n\n\nどれを使う？\n\n\n\n両方必要 → .items()（実務ではこれが一番多い）\nキーだけ → .keys()（for key in name2score: でも同じ）\n値だけ → .values()"
+    "objectID": "figma.html#figma画面設計の定番ツール",
+    "href": "figma.html#figma画面設計の定番ツール",
+    "title": "Figmaでワイヤーフレーム",
+    "section": "Figma：画面設計の定番ツール",
+    "text": "Figma：画面設計の定番ツール\n\n\nFigma（フィグマ）= アプリ・Webサイトの画面を 設計 → 共有 → 改善 → 試作 まで一気にできるデザインツール\n\nブラウザで動く（インストール不要）・個人利用は無料枠で十分\nGoogle Docs のように 複数人で同時編集できる のが最大の特徴\n\n実際の開発現場での使われ方\n\n一般に使われるサービスの 画面設計（メッセージアプリの新機能、フリマアプリの出品フロー…）\n企画段階の アイデア検証 — コードを書かずに画面遷移まで試せる\nエンジニア・デザイナー・企画が 1つのFigmaファイルを見ながら会話する"
   },
   {
-    "objectID": "dict.html#その他-dict-で知っておきたい基礎知識",
-    "href": "dict.html#その他-dict-で知っておきたい基礎知識",
-    "title": "辞書をあらためて",
-    "section": "その他 dict で知っておきたい基礎知識",
-    "text": "その他 dict で知っておきたい基礎知識\n\n\n\nin 演算子で存在確認\n.get() で安全にアクセス\n要素の削除と長さ（del / pop / len）\nネストした dict\ndict と list の組み合わせ\n辞書内包表記"
+    "objectID": "figma.html#figmaを使う職種",
+    "href": "figma.html#figmaを使う職種",
+    "title": "Figmaでワイヤーフレーム",
+    "section": "Figmaを使う職種",
+    "text": "Figmaを使う職種\n\n\n\n\n職種\nFigmaで何をする？\n\n\n\n\nUI/UXデザイナー\n画面レイアウト・色・動きの設計\n\n\nエンジニア（フロント／モバイル）\nFigmaを見て実装。仕様の確認\n\n\nPM（プロダクトマネージャー）\n画面を使って仕様を説明\n\n\n企画・マーケティング\n新サービス案のプロトタイプ作成\n\n\nデータ・研究開発\n実験ツールの画面や説明資料の作成\n\n\n\n\n「デザイナー専用」ではない — 画面で会話するすべての職種 の共通言語"
   },
   {
-    "objectID": "dict.html#in-演算子で存在確認",
-    "href": "dict.html#in-演算子で存在確認",
-    "title": "辞書をあらためて",
-    "section": "in 演算子で存在確認",
-    "text": "in 演算子で存在確認\n\nin 演算子でキーが存在するか確認できる。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75}\n\nif \"Yamada\" in name2score:\n    print(\"Yamada さんは登録済み\")\n\nif \"Tanaka\" not in name2score:\n    print(\"Tanaka さんは未登録\")\n\n\n\n\n\n\nin はキーを見る（値ではない）\n\n\nif 95 in name2score:            # False\nif 95 in name2score.values():   # True ← 値を見たいときはこう"
+    "objectID": "figma.html#今日使う基本操作は5つだけ",
+    "href": "figma.html#今日使う基本操作は5つだけ",
+    "title": "Figmaでワイヤーフレーム",
+    "section": "今日使う基本操作は5つだけ",
+    "text": "今日使う基本操作は5つだけ\n\n\n\n\nキー\n操作\n\n\n\n\nF\nFrame（画面の枠）を置く\n\n\nR\n四角形（ボタンやカード）\n\n\nT\nテキスト（タイトルやラベル）\n\n\nShift + A\nAuto Layout（自動整列）\n\n\nAlt + ドラッグ\nコピー\n\n\n\n\n\n\n\n\n\n迷ったら左上のツールバー\n\n\nキーを忘れてもツールバーから選べる。まずは F・R・T の3つで大半の画面が作れる"
   },
   {
-    "objectID": "dict.html#get-で安全にアクセス",
-    "href": "dict.html#get-で安全にアクセス",
-    "title": "辞書をあらためて",
-    "section": ".get() で安全にアクセス",
-    "text": ".get() で安全にアクセス\n\ndict[キー] は存在しないキーで落ちるが、.get(キー) は存在しなければ None を返すので落ちない。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75}\n\nprint(name2score.get(\"Yamada\"))    # 95\nprint(name2score.get(\"Tanaka\"))    # None ← エラーにならない\n第2引数でデフォルト値を指定できる。\nprint(name2score.get(\"Tanaka\"))      # None ← 第2引数なし\nprint(name2score.get(\"Tanaka\", 0))   # 0    ← 第2引数あり（未登録なら 0 点扱い）\nprint(name2score.get(\"Yamada\", 0))   # 95   ← 登録済みならその値\n\n\n\n\n\n\nin でガード vs .get()\n\n\n\n「ない場合は処理を分けたい」 → if key in dict: でガード\n「ない場合のデフォルト値が決まっている」 → .get(key, default) がスッキリ"
+    "objectID": "figma.html#演習まず1画面作る",
+    "href": "figma.html#演習まず1画面作る",
+    "title": "Figmaでワイヤーフレーム",
+    "section": "演習：まず1画面作る",
+    "text": "演習：まず1画面作る\n\n\n「今日の予定を見る画面（Home）」を Figma で1画面作れ。\n\n\nfigma.com にログインして新規デザインファイルを作成\nF キー → 右パネルから iPhone サイズの Frame を置く\n左上に T で「Home」とタイトルを置く\nR の四角形でカード（Today’s Tasks）\n四角を3つ並べてクイックメニュー（Quick Actions）\n\n\n\n\n\n\n\nきれいさは要らない\n\n\nグレーの四角と黒い文字だけでよい。置く・並べる・名前を付ける が今日の全部"
   },
   {
-    "objectID": "dict.html#要素の削除と長さdel-pop-len",
-    "href": "dict.html#要素の削除と長さdel-pop-len",
-    "title": "辞書をあらためて",
-    "section": "要素の削除と長さ（del / pop / len）",
-    "text": "要素の削除と長さ（del / pop / len）\n\ndel または .pop() で削除、len() でキーの数を確認できる。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\nprint(len(name2score))  # 3\n\n# del：削除するだけ\ndel name2score[\"Suzuki\"]\nprint(name2score)       # {'Yamada': 95, 'Takahashi': 80}\nprint(len(name2score))  # 2\n\n# pop：削除して値を取り出す\nscore = name2score.pop(\"Yamada\")\nprint(score)        # 95\nprint(name2score)   # {'Takahashi': 80}"
+    "objectID": "figma.html#演習3画面のワイヤーフレーム",
+    "href": "figma.html#演習3画面のワイヤーフレーム",
+    "title": "Figmaでワイヤーフレーム",
+    "section": "演習：3画面のワイヤーフレーム",
+    "text": "演習：3画面のワイヤーフレーム\n\n\n\n\n\n\n\nホーム → タスク一覧 → 追加フォーム の3画面ワイヤーフレームを作れ（上図がゴールの目安）。\n\n\nキャンバスに iPhone Frame を横並びで3つ置く\nホーム — タイトル・カード・クイックメニュー・下タブ（◯3つ）\nタスク一覧 — タイトル・リストアイテム5つ・右下に「＋」ボタン\n追加フォーム — Title・Detail・Category の入力欄と Save ボタン"
   },
   {
-    "objectID": "dict.html#ネストした-dict",
-    "href": "dict.html#ネストした-dict",
-    "title": "辞書をあらためて",
-    "section": "ネストした dict",
-    "text": "ネストした dict\n\n値の中にさらに dict を入れると入れ子（ネスト）になる。 学生ごとに複数教科の点数など、複数の属性を持つデータを表現できる。\nstudents = {\n    \"Yamada\":    {\"国語\": 80, \"数学\": 90, \"英語\": 70},\n    \"Suzuki\":    {\"国語\": 60, \"数学\": 85, \"英語\": 95},\n    \"Takahashi\": {\"国語\": 75, \"数学\": 70, \"英語\": 80},\n}\n\n# Yamada さんの数学\nprint(students[\"Yamada\"][\"数学\"])  # 90\n\n# 全員の英語\nfor name, scores in students.items():\n    print(f\"{name}さんの英語：{scores['英語']}点\")"
+    "objectID": "figma.html#よくある画面パターン",
+    "href": "figma.html#よくある画面パターン",
+    "title": "Figmaでワイヤーフレーム",
+    "section": "よくある画面パターン",
+    "text": "よくある画面パターン\n\n\n\n\n\n\n\n\n系統\n定番の部品\n\n\n\n\nホーム系\nカード表示・サマリー情報・クイックリンク\n\n\n一覧系（List）\nタイトル + サブ情報、「＞」で詳細へ\n\n\n詳細系（Detail）\nタイトル・説明、編集／削除ボタン\n\n\n入力系（Form）\nテキスト欄・日付選択・Save / Cancel\n\n\nナビゲーション系\n下タブ（Tab bar）・ハンバーガーメニュー・「＋」の丸ボタン（FAB）\n\n\n\n\n世の中のアプリは、ほぼこのパターンの 組み合わせ でできている\n\n手元のスマホのアプリを開いて、どのパターンか 分解して見る クセをつける"
   },
   {
-    "objectID": "dict.html#dict-と-list-の組み合わせ",
-    "href": "dict.html#dict-と-list-の組み合わせ",
-    "title": "辞書をあらためて",
-    "section": "dict と list の組み合わせ",
-    "text": "dict と list の組み合わせ\n\nlist の中に dict を入れる形は、表形式のデータを表すときの定番。 （JSON や DB の1レコードのイメージ）\nstudents = [\n    {\"name\": \"Yamada\",    \"score\": 95},\n    {\"name\": \"Suzuki\",    \"score\": 75},\n    {\"name\": \"Takahashi\", \"score\": 80},\n]\n\nfor s in students:\n    print(f\"{s['name']}さんは{s['score']}点\")\n\n\n\n\n\n\nネスト dict vs list of dict\n\n\n\n名前から直接引きたい → ネスト dict（students[\"Yamada\"]）\n順序が意味を持つ・全員を順に処理 → list of dict（students[0]）\n\n両方とも実務でよく使う。"
+    "objectID": "figma.html#演習自分のアプリの画面を作る",
+    "href": "figma.html#演習自分のアプリの画面を作る",
+    "title": "Figmaでワイヤーフレーム",
+    "section": "演習：自分のアプリの画面を作る",
+    "text": "演習：自分のアプリの画面を作る\n\n\nペイオフマトリクスで「すぐやるべき」に選んだ自分のアプリ案について、3画面以上のワイヤーフレームを作り、Prototype機能で画面をつなげ。\n\n\n必要な画面を 3つだけ 決める（欲張らない — 増やすのはいつでもできる）\n前ページのUIパターンから部品を選ぶ\n各画面に配置\nPrototype タブでボタンと画面を矢印でつなぐ → 再生ボタンで 動くアプリのように試す\n\n\n\n\n\n\n\nここで作った3画面が実装の設計図になる\n\n\nこの後の NiceGUI では、このワイヤーフレームを 本物のコード にしていく"
   },
   {
-    "objectID": "dict.html#辞書内包表記",
-    "href": "dict.html#辞書内包表記",
-    "title": "辞書をあらためて",
-    "section": "辞書内包表記",
-    "text": "辞書内包表記\n\nリスト内包表記の dict 版。{キー: 値 for ... in ...} の形。\n# 数 → その2乗 の dict を作る\nsquares = {x: x ** 2 for x in range(5)}\nprint(squares)  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}\n条件付きも書ける。\n# 80点以上だけ取り出す\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\npassed = {k: v for k, v in name2score.items() if v &gt;= 80}\nprint(passed)  # {'Yamada': 95, 'Takahashi': 80}\nキーと値を入れ替えるのも一行で書ける。\nscore2name = {v: k for k, v in name2score.items()}\nprint(score2name)  # {95: 'Yamada', 75: 'Suzuki', 80: 'Takahashi'}"
+    "objectID": "convergence.html#section",
+    "href": "convergence.html#section",
+    "title": "収束技法（KJ法・アイデアマップ）",
+    "section": "",
+    "text": "出したアイデアを、意味に変える"
   },
   {
-    "objectID": "dict.html#まとめ",
-    "href": "dict.html#まとめ",
-    "title": "辞書をあらためて",
-    "section": "まとめ",
-    "text": "まとめ\n\n\ndict はキーと値のペアで管理するコレクション（他言語ではハッシュマップ）\nアクセスは dict[キー]、ない場合は KeyError → in または .get() でガード\n走査は .items() が最頻出、.keys() / .values() も使い分ける\nネスト dict や list of dict で表形式のデータを表現できる\n辞書内包表記 {k: v for ...} で for ＋ 追加を1行に圧縮できる"
+    "objectID": "convergence.html#発散のあとに残るもの",
+    "href": "convergence.html#発散のあとに残るもの",
+    "title": "収束技法（KJ法・アイデアマップ）",
+    "section": "発散のあとに残るもの",
+    "text": "発散のあとに残るもの\n\n\n\n\n\n写真: SEI, Public domain, via Wikimedia Commons\n\n\n\n\nブレスト・635法のあと、壁はこうなる\n108案は そのままでは使えない\n\n重複がある・粒度がバラバラ・全体像が見えない\n\n出したものを整理して 本質を取り出す 技法を 収束技法（convergent techniques）と呼ぶ\n\n今日の道具は KJ法 と アイデアマップ の2つ"
   },
   {
-    "objectID": "dict.html#演習問題",
-    "href": "dict.html#演習問題",
-    "title": "辞書をあらためて",
-    "section": "演習問題",
-    "text": "演習問題\n\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80, \"Tanaka\": 60}\n\n上記の dict をコピペして、以下の操作を実装せよ。\n\n\n.get() で “Sato” さんの点数を取り出す（存在しなければ 0 を返す）\nTanaka さんを del で削除\n.values() と sum / len で、全員の 平均点 を表示\n\n\n\n解答例を見る\n# 1\nprint(name2score.get(\"Sato\", 0))  # 0\n\n# 2\ndel name2score[\"Tanaka\"]\nprint(name2score)\n\n# 3\nprint(sum(name2score.values()) / len(name2score))"
+    "objectID": "convergence.html#kj法kawakita-jiro-method",
+    "href": "convergence.html#kj法kawakita-jiro-method",
+    "title": "収束技法（KJ法・アイデアマップ）",
+    "section": "KJ法（Kawakita Jiro Method）",
+    "text": "KJ法（Kawakita Jiro Method）\n\n\n\n\n\n写真: Parul Vora, CC BY-SA 3.0, via Wikimedia Commons\n\n\n\n\n日本の文化人類学者 川喜田二郎（1920–2009）が考案した 発想整理の方法\n\n「KJ」は本人のイニシャル。著書『発想法』（1967）で広まった\n\nもとは、ネパール山岳地帯などのフィールドワークで得た 大量の観察メモを構造化して洞察を得る ための研究手法\n\nのちにビジネス・教育の場で、アイデア整理の定番になった\n\n写真は、まさにKJ法の最中の壁 — かたまりが生まれ始めている"
   },
   {
-    "objectID": "dict.html#演習問題辞書内包表記",
-    "href": "dict.html#演習問題辞書内包表記",
-    "title": "辞書をあらためて",
-    "section": "演習問題（辞書内包表記）",
-    "text": "演習問題（辞書内包表記）\n\n\n以下の3つを辞書内包表記で実装せよ。\n\n\nrange(1, 6) から {1: 1, 2: 4, 3: 9, 4: 16, 5: 25} という「数 → 2乗」の dict を作る\nname2score から 80点以上の学生だけ を取り出した新しい dict を作る\nname2score の キーと値を入れ替えた dict（score2name）を作る\n\n\n\n\n\n\n\nLUT（Look-Up Table）\n\n\n問題１のように 「入力 → 計算結果」を事前に dict に入れて引けるようにしたもの を LUT（Look-Up Table、参照テーブル） と呼ぶ。毎回計算する代わりに lut[x] で引けるため、重い計算を事前計算してキャッシュする用途でよく使われる。\n古典的な例として、ゲーム機や組み込み機器では sin / cos の値を角度ごとに事前計算した LUT がよく使われる（毎フレームの三角関数計算は重いため）。\n\n\n\n\n\n解答例を見る\n# 1\nsquares = {x: x ** 2 for x in range(1, 6)}\nprint(squares)\n\n# 2\npassed = {k: v for k, v in name2score.items() if v &gt;= 80}\nprint(passed)\n\n# 3\nscore2name = {v: k for k, v in name2score.items()}\nprint(score2name)"
+    "objectID": "convergence.html#kj法のいろいろな呼び名",
+    "href": "convergence.html#kj法のいろいろな呼び名",
+    "title": "収束技法（KJ法・アイデアマップ）",
+    "section": "KJ法のいろいろな呼び名",
+    "text": "KJ法のいろいろな呼び名\n\n\n\n\n\n\n\n\n名称\n意味・出典\n\n\n\n\nKJ法\n川喜田二郎の『発想法』による正式名称\n\n\n親和図法（Affinity Diagram）\n海外での一般的な呼び方 — 「親和性」でまとめる図\n\n\nカード法\nアイデアをカード・付箋に書いて動かす形式から\n\n\n\n\n呼び名は違っても中身は同じ — 海外のUXの現場でも「affinity diagramming」として日常的に使われている"
   },
   {
-    "objectID": "dict.html#演習問題list-of-dict",
-    "href": "dict.html#演習問題list-of-dict",
-    "title": "辞書をあらためて",
-    "section": "演習問題（list of dict）",
-    "text": "演習問題（list of dict）\n\n# 要素：学生（0: A さん, 1: B さん, 2: C さん）\n# キー：科目（\"国語\", \"数学\", \"英語\"）\nstudents = [\n    {\"name\": \"A\", \"国語\": 80, \"数学\": 90, \"英語\": 70},\n    {\"name\": \"B\", \"国語\": 60, \"数学\": 85, \"英語\": 95},\n    {\"name\": \"C\", \"国語\": 75, \"数学\": 70, \"英語\": 80},\n]\n\n上記の学生の国語・数学・英語の点数をもつ list of dict をコピペして、以下の操作を実装せよ。\n\n\nB さんの数学の点数を表示\nC さんの3科目合計を表示\n各学生の平均点を for 文で順に表示\n\n\n\n解答例を見る\n# 1\nprint(students[1][\"数学\"])  # 85\n\n# 2\nprint(students[2][\"国語\"] + students[2][\"数学\"] + students[2][\"英語\"])  # 225\n\n# 3\nfor s in students:\n    avg = (s[\"国語\"] + s[\"数学\"] + s[\"英語\"]) / 3\n    print(f\"{s['name']}さんの平均点：{avg:.1f}点\")"
+    "objectID": "convergence.html#kj法の手順",
+    "href": "convergence.html#kj法の手順",
+    "title": "収束技法（KJ法・アイデアマップ）",
+    "section": "KJ法の手順",
+    "text": "KJ法の手順\n\n\nカード化 — 意見・事実・観察を 1枚1件 でカード（付箋）に書く\nグルーピング — 意味の近さ（親和性）でカードを寄せる\n中見出しづけ — 各グループの意味を表す短いフレーズを付ける\n構造化 — グループ同士の上位・下位、因果を矢印で結ぶ\n総合化 — 全体の構造を図や文章にする（→ レポート・企画書へ）"
+  },
+  {
+    "objectID": "convergence.html#完成したkj図のかたち",
+    "href": "convergence.html#完成したkj図のかたち",
+    "title": "収束技法（KJ法・アイデアマップ）",
+    "section": "完成した「KJ図」のかたち",
+    "text": "完成した「KJ図」のかたち\n\n\n図: Jpz, CC BY-SA 3.0, via Wikimedia Commons（品質管理学者・司馬正次が描くKJ図の複製）\n\n\n\nグループに 中見出し、グループ間に 矢印（因果・流れ）\nバラバラの付箋の山が「1枚の構造」になる のがゴール"
+  },
+  {
+    "objectID": "convergence.html#カードに名前は書かない",
+    "href": "convergence.html#カードに名前は書かない",
+    "title": "収束技法（KJ法・アイデアマップ）",
+    "section": "カードに名前は書かない",
+    "text": "カードに名前は書かない\n\n\nKJ法の特徴的なルール：個別のカードに書いた人の名前を入れない\n\n「誰の意見か」が見えると、内容ではなく人 で判断してしまう\n主観を外し、データそのものに語らせるのが狙い\n\n\n\n己れを空しくして、データをして語らしめる\n── 川喜田二郎『発想法』\n\n\n\n\n\n\n\n参画意識という副作用\n\n\n全員の付箋が同じ資格で1枚の図になるため、「参加した」ではなく 「一緒に作った」 という意識が生まれる — KJ法の隠れた効果"
+  },
+  {
+    "objectID": "convergence.html#kj法を使う場面と道具",
+    "href": "convergence.html#kj法を使う場面と道具",
+    "title": "収束技法（KJ法・アイデアマップ）",
+    "section": "KJ法を使う場面と道具",
+    "text": "KJ法を使う場面と道具\n\n\n使う場面\n\n実験・プロジェクトテーマの 問題構造の分析\nアイデアソンやチーム開発の 要件整理\nフィールド調査のまとめ（観察 → 洞察）\n\n\n\n\n\n\n\n\n\nツール\n活用法\n\n\n\n\n付箋 + 模造紙\nアナログKJ法の基本スタイル。物理的に動かせる強さ\n\n\nMiro などのオンラインホワイトボード\nデジタル親和図。離れていても同時にグループ化できる"
+  },
+  {
+    "objectID": "convergence.html#演習kj法",
+    "href": "convergence.html#演習kj法",
+    "title": "収束技法（KJ法・アイデアマップ）",
+    "section": "演習：KJ法",
+    "text": "演習：KJ法\n\n\n発想法の演習で出した付箋（ブレスト・635法の全案）をKJ法で整理し、模造紙1枚の「KJ図」に仕上げよ。\n\n\n付箋を全部テーブルに広げる（名前は書かない・消す）\n近い意味の付箋を寄せてグループ化（3〜7枚 目安、無理に全部入れない）\n各グループに中見出し（短いフレーズ）\nグループ間の関係を矢印で記入（原因→結果、手段→目的）\n図全体を1文で要約して余白に記入\n\n\n\n\n\n\n\n先に見出しを作らない\n\n\n「勉強系」「生活系」のような 箱を先に決めて仕分ける のはKJ法ではない。 カードを読んで、寄ってきたかたまりに後から名前を付ける"
+  },
+  {
+    "objectID": "convergence.html#section-1",
+    "href": "convergence.html#section-1",
+    "title": "収束技法（KJ法・アイデアマップ）",
+    "section": "",
+    "text": "アイデアマップ（マインドマップ）"
+  },
+  {
+    "objectID": "convergence.html#アイデアマップ放射状に整理する",
+    "href": "convergence.html#アイデアマップ放射状に整理する",
+    "title": "収束技法（KJ法・アイデアマップ）",
+    "section": "アイデアマップ：放射状に整理する",
+    "text": "アイデアマップ：放射状に整理する\n\n\n図: Danny Stevens, CC BY 2.5, via Wikimedia Commons\n\n\n\nイギリスの教育家 トニー・ブザン（Tony Buzan、1942–2019）が1970年代に考案\n中心から枝を伸ばす 放射思考（Radiant Thinking）のノート法\n\n「脳は線形ではなく放射的に考える」がブザンの主張"
+  },
+  {
+    "objectID": "convergence.html#アイデアマップの描き方",
+    "href": "convergence.html#アイデアマップの描き方",
+    "title": "収束技法（KJ法・アイデアマップ）",
+    "section": "アイデアマップの描き方",
+    "text": "アイデアマップの描き方\n\n\n中心にテーマを 文字 + イメージ で描く（例：「文化祭」）\n第一枝（主要要素）を放射状に伸ばす — 「企画」「準備」「装飾」「宣伝」\n第二枝・第三枝で詳細化 — 「宣伝」→「ポスター」「SNS」「動画」\n色・絵・記号で分類と強調\n全体を俯瞰して、枝どうしの意外なつながり を探す"
+  },
+  {
+    "objectID": "convergence.html#名前と商標の注意",
+    "href": "convergence.html#名前と商標の注意",
+    "title": "収束技法（KJ法・アイデアマップ）",
+    "section": "名前と商標の注意",
+    "text": "名前と商標の注意\n\n\n\n\n\n\n\n\n名称\n内容\n\n\n\n\nMind Map®（マインドマップ）\nブザン側の 登録商標。商用利用（講座名・商品名）では表記に注意\n\n\nアイデアマップ／思考マップ\n商標を避けた代替名称。多くのアプリがこちらを採用\n\n\n概念マップ（Concept Map）\n研究・教育心理学の近縁技法。枝の関係にラベルを付けて厳密に定義する点が違う\n\n\n\n\n授業・ノートなど非商用の範囲では「マインドマップ」と呼んで問題ない"
+  },
+  {
+    "objectID": "convergence.html#マインドマップ-vs-kj法",
+    "href": "convergence.html#マインドマップ-vs-kj法",
+    "title": "収束技法（KJ法・アイデアマップ）",
+    "section": "マインドマップ vs KJ法",
+    "text": "マインドマップ vs KJ法\n\n\n\n\n\nマインドマップ\nKJ法\n\n\n\n\n発案者\nトニー・ブザン（英国）\n川喜田二郎（日本）\n\n\n目的\n個人 の思考整理・発想\nチーム のアイデア統合・構造化\n\n\n構造\n放射型（中心 → 枝）\n集合型（カード → グループ）\n\n\n思考タイプ\n発散 + 整理の中間\n収束（意味づけ）\n\n\n使う場面\nノート・構想・自己分析\nチーム発表・レポート構造\n\n\n\n\n\n\n\n\n\n使い分けの目安\n\n\n==1人なら マインドマップ、チームなら KJ法==。個人で枝を広げてから、チームで付箋にして持ち寄る合わせ技も定番"
+  },
+  {
+    "objectID": "convergence.html#演習アイデアマップ",
+    "href": "convergence.html#演習アイデアマップ",
+    "title": "収束技法（KJ法・アイデアマップ）",
+    "section": "演習：アイデアマップ",
+    "text": "演習：アイデアマップ\n\n\n「自分のアプリのアイデア」を中心に置き、第一枝4本以上・第二枝まで含めて20ノード以上のアイデアマップを紙1枚に描け（色は3色以上）。\n\n\nA4を横置きにして中心にテーマを描く（絵があるとよい）\n第一枝：「誰が使う」「何ができる」「画面」「データ」など4本以上\n各枝に第二枝を2本以上\n描き終えたら俯瞰し、離れた枝同士のつながり を点線で1本以上引く\n\n\n\n\n\n\n\nこの地図は最終課題まで使う\n\n\nここで描いたマップが、ワイヤーフレーム（Figma）と実装（NiceGUI）の設計図の種になる"
+  },
+  {
+    "objectID": "convergence.html#発散から収束へ全体の流れ",
+    "href": "convergence.html#発散から収束へ全体の流れ",
+    "title": "収束技法（KJ法・アイデアマップ）",
+    "section": "発散から収束へ：全体の流れ",
+    "text": "発散から収束へ：全体の流れ\n\n\n\n量を出す（発散）→ 見える化（マップ）→ 構造化（KJ法）ときて、最後は どれをやるか決める\n\n次は ペイオフマトリクス で 優先順位 を付ける"
   },
   {
     "objectID": "api.html#section",
@@ -1608,6 +2098,104 @@
     "title": "APIでデータ取得",
     "section": "参考リンク",
     "text": "参考リンク\n\n\nrequests Documentation\nWikimedia REST API\nPageviews API ドキュメント\nHTTPステータスコード一覧 (MDN)"
+  },
+  {
+    "objectID": "api-spa.html#section",
+    "href": "api-spa.html#section",
+    "title": "自作API+SPA",
+    "section": "",
+    "text": "使う側から、作る側へ"
+  },
+  {
+    "objectID": "api-spa.html#apiを作る側になる",
+    "href": "api-spa.html#apiを作る側になる",
+    "title": "自作API+SPA",
+    "section": "APIを「作る」側になる",
+    "text": "APIを「作る」側になる\n\n\n前期の APIでデータ取得 では、Wikipedia や東京都の 他人が作ったAPI を使った\n今回はその反対 — 自分のアプリに 自分のAPI を付ける\n\nNiceGUI のSPAは画面にデータを直接書き込むこともできるが、実際のWebサービスでは 画面とデータのやり取りはAPI経由 が一般的\n\n道具は追加不要：NiceGUIが内包する FastAPI をそのまま使う"
+  },
+  {
+    "objectID": "api-spa.html#rest-api-と-httpメソッド",
+    "href": "api-spa.html#rest-api-と-httpメソッド",
+    "title": "自作API+SPA",
+    "section": "REST API と HTTPメソッド",
+    "text": "REST API と HTTPメソッド\n\n\n今回作るのは REST API — もっとも一般的な形式。HTTPメソッド でやり取りの種類を表す\n\n\n\n\nHTTPメソッド\n用途\n例\n\n\n\n\nGET\nデータを取得する\n質問リストを取得\n\n\nPOST\nデータを送信する\n診断結果を保存\n\n\nPUT\nデータを更新する\nプロフィールを更新\n\n\nDELETE\nデータを削除する\nアカウントを削除\n\n\n\n\n取得だけなら GET で足りる — まずはGETをマスターする"
+  },
+  {
+    "objectID": "api-spa.html#最もシンプルなapi",
+    "href": "api-spa.html#最もシンプルなapi",
+    "title": "自作API+SPA",
+    "section": "最もシンプルなAPI",
+    "text": "最もシンプルなAPI\n\nfrom nicegui import ui, app\n\n@app.get(\"/api/hello\")\ndef hello():\n    return {\"message\": \"Hello, API!\"}\n\nui.label(\"APIテスト\")\nui.run()\n\n実行して http://localhost:8080/api/hello を開くと、JSONが返ってくる\n\n{\"message\": \"Hello, API!\"}\n\n\n\n\n\n\n\nコード\n機能\n\n\n\n\nfrom nicegui import app\nNiceGUI内部のFastAPIアプリを取り出す\n\n\n@app.get(\"/api/hello\")\nGETの /api/hello エンドポイントを作る\n\n\nreturn {\"message\": \"...\"}\n辞書を返すと自動でJSONに変換 される"
+  },
+  {
+    "objectID": "api-spa.html#の行の正体デコレータ",
+    "href": "api-spa.html#の行の正体デコレータ",
+    "title": "自作API+SPA",
+    "section": "@ の行の正体：デコレータ",
+    "text": "@ の行の正体：デコレータ\n\n\n@app.get(...) のような @ で始まる行を デコレータ（decorator）と呼ぶ\n\nすぐ下の関数に特別な機能を追加する 記法\nここでは「この関数をAPIエンドポイントとして登録する」という意味\n\n関数名は自由。URLと結びつくのは デコレータの引数 のほう\n\n\n\n\n\n\n\nどこかで見た形\n\n\non_click=say_hi のコールバック登録と同じ発想 — 関数を部品として渡す・登録する のはPythonの常套手段"
+  },
+  {
+    "objectID": "api-spa.html#データファイルを用意する",
+    "href": "api-spa.html#データファイルを用意する",
+    "title": "自作API+SPA",
+    "section": "データファイルを用意する",
+    "text": "データファイルを用意する\n\n\n実際のアプリは、データをファイルやデータベースから取得する — まずはJSONファイルから\nquestions.json をダウンロードして main.py と同じフォルダに置く（中身は自作してもよい）\n\n{\n  \"title\": \"あなたにぴったりの職業診断\",\n  \"questions\": [\n    {\"id\": 1, \"text\": \"休日は何をしたい？\",\n     \"choices\": [\"外で遊ぶ\", \"家でゆっくり\", \"友達と集まる\"]},\n    {\"id\": 2, \"text\": \"得意なことは？\",\n     \"choices\": [\"計算\", \"絵を描く\", \"話すこと\"]}\n  ],\n  \"results\": {\n    \"A\": \"あなたは営業職タイプ！人と話すのが得意です。\",\n    \"B\": \"あなたはデザイナータイプ！創造力が豊かです。\"\n  }\n}"
+  },
+  {
+    "objectID": "api-spa.html#エンドポイントでファイルを読む",
+    "href": "api-spa.html#エンドポイントでファイルを読む",
+    "title": "自作API+SPA",
+    "section": "エンドポイントでファイルを読む",
+    "text": "エンドポイントでファイルを読む\n\nfrom nicegui import ui, app\nimport json\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        data = json.load(f)\n    return data\n\nui.label(\"診断アプリ\")\nui.run()\n\nhttp://localhost:8080/api/questions でJSONファイルの中身がそのまま返る\n\n\n\n\n\n\n\n\nコード\n機能\n\n\n\n\nimport json\nJSONを扱うPython標準ライブラリ\n\n\nopen(\"questions.json\", \"r\", encoding=\"utf-8\")\n読み込みモードで開く（encoding で日本語対応）\n\n\njson.load(f)\nJSONファイル → Pythonの辞書"
+  },
+  {
+    "objectID": "api-spa.html#画面からapiのデータを表示する",
+    "href": "api-spa.html#画面からapiのデータを表示する",
+    "title": "自作API+SPA",
+    "section": "画面からAPIのデータを表示する",
+    "text": "画面からAPIのデータを表示する\n\nfrom nicegui import ui, app\nimport json\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        data = json.load(f)\n    return data\n\ndef load_questions():\n    data = get_questions()          # API関数を直接呼び出す\n    ui.label(data[\"title\"]).classes(\"text-2xl font-bold\")\n    for question in data[\"questions\"]:\n        with ui.card().classes(\"w-full\"):\n            ui.label(f\"Q{question['id']}: {question['text']}\").classes(\"font-bold\")\n            for choice in question[\"choices\"]:\n                ui.label(f\"・{choice}\").classes(\"ml-4\")\n\nui.button(\"質問を読み込む\", on_click=load_questions).classes(\"bg-blue-500 text-white p-2 rounded\")\n\nui.run()"
+  },
+  {
+    "objectID": "api-spa.html#なぜ関数を直接呼べるのか",
+    "href": "api-spa.html#なぜ関数を直接呼べるのか",
+    "title": "自作API+SPA",
+    "section": "なぜ関数を直接呼べるのか",
+    "text": "なぜ関数を直接呼べるのか\n\n\nNiceGUIでは、フロントエンド（ブラウザ側）とバックエンド（Pythonサーバー側）が 同じプロセス で動いている\n\nだからAPI用の関数 get_questions() を 普通のPython関数として 呼び出せる — HTTPリクエストを書く必要がない\n\n一方で、ブラウザから直接 http://localhost:8080/api/questions にもアクセスできる\n\n将来、別のアプリ（スマホアプリ・他人のプログラム）からも同じデータを取れる — 口をAPIにしておく価値 はここにある\n\n\n\n\n\n\n\n\n1つの関数が2つの顔を持つ\n\n\n画面から見れば「データ取得関数」、外から見れば「APIエンドポイント」。この二刀流がNiceGUIの手軽さ"
+  },
+  {
+    "objectID": "api-spa.html#本当にhttpで取りに行く",
+    "href": "api-spa.html#本当にhttpで取りに行く",
+    "title": "自作API+SPA",
+    "section": "本当にHTTPで取りに行く",
+    "text": "本当にHTTPで取りに行く\n\n\n直接呼び出しは手軽だが、データは HTTPを通っていない（API利用の練習としてはショートカット）\nhttpx（NiceGUIが同梱するHTTPクライアント）を使うと、自分のAPIに 本物のリクエスト を送れる\n\nfrom nicegui import ui, app\nimport json\nimport httpx\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\nasync def load_questions():\n    async with httpx.AsyncClient() as client:\n        response = await client.get(\"http://localhost:8080/api/questions\")\n    data = response.json()\n    ui.label(data[\"title\"]).classes(\"text-2xl font-bold\")\n\nui.button(\"HTTPで読み込む\", on_click=load_questions)\nui.run()\n\nasync def + await は「通信を 待つ間、画面を止めない」ための書き方\n\nコールバックは async な関数でもそのまま登録できる\n\n\n\n\n\n\n\n\nここで requests を使ってはいけない\n\n\nrequests.get() は応答を 待つ間プログラム全体を止める。相手が自分自身のサーバーだと、止まっている本人は応答を返せない — アプリごとフリーズする。自分のAPIを呼ぶときは httpx + await 一択"
+  },
+  {
+    "objectID": "api-spa.html#演習土台コードを動かす",
+    "href": "api-spa.html#演習土台コードを動かす",
+    "title": "自作API+SPA",
+    "section": "演習：土台コードを動かす",
+    "text": "演習：土台コードを動かす\n\n\n土台コードと questions.json を同じフォルダに置いて実行し、ボタンで質問一覧が表示されることを確かめよ。\n\nfrom nicegui import ui, app\nimport json\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        data = json.load(f)\n    return data\n\ncontainer = ui.column().classes(\"w-full gap-4 p-4\")\n\ndef load_data():\n    container.clear()               # 前の表示を消してから\n    data = get_questions()          # 取り直して\n    with container:                 # 表示し直す\n        ui.label(data[\"title\"]).classes(\"text-3xl font-bold mb-4\")\n        for question in data[\"questions\"]:\n            with ui.card().classes(\"w-full\"):\n                ui.label(f\"Q{question['id']}: {question['text']}\").classes(\"font-bold text-lg\")\n                for choice in question[\"choices\"]:\n                    ui.label(f\"・{choice}\").classes(\"ml-4\")\n\nui.button(\"質問を読み込む\", on_click=load_data).classes(\"bg-blue-500 text-white p-3 rounded-lg\")\n\nui.run()"
+  },
+  {
+    "objectID": "api-spa.html#演習エンドポイントを増やす",
+    "href": "api-spa.html#演習エンドポイントを増やす",
+    "title": "自作API+SPA",
+    "section": "演習：エンドポイントを増やす",
+    "text": "演習：エンドポイントを増やす\n\n\n土台コードに次の3つの機能を追加せよ（上から順に。各問、ブラウザでURLを直接開いて動作確認すること）。\n\n\n/api/results エンドポイントを追加し、results 部分だけを返す\n/api/questions/1 のように IDを指定した質問だけ 返す — URLの一部は変数として受け取れる：\n\n@app.get(\"/api/questions/{question_id}\")\ndef get_question(question_id: int):\n    ...\n\n存在しないIDが指定されたら {\"error\": \"Not found\"} を返す（if で判定）\n\n\n\n\n\n\n\n動作確認もGETなら簡単\n\n\nGETのAPIは URLをブラウザで開くだけ でテストできる。/api/questions/1 と /api/questions/999 の両方を開いて比べる"
+  },
+  {
+    "objectID": "api-spa.html#演習データが変わったら",
+    "href": "api-spa.html#演習データが変わったら",
+    "title": "自作API+SPA",
+    "section": "演習：データが変わったら",
+    "text": "演習：データが変わったら\n\n\nアプリを起動したまま questions.json に質問を1問書き足して保存し、「質問を読み込む」ボタンだけで新しい質問が表示されることを確かめよ。\n\n\nアプリを起動して質問を表示しておく\nquestions.json に id: 4 の質問を追加して保存\nブラウザの再読み込みは せず、ボタンだけ押す（container.clear() → 再取得の効果）\n\n\n\nエンドポイント追加の解答例を表示\nfrom nicegui import ui, app\nimport json\n\ndef read_data():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    return read_data()\n\n@app.get(\"/api/results\")\ndef get_results():\n    return read_data()[\"results\"]\n\n@app.get(\"/api/questions/{question_id}\")\ndef get_question(question_id: int):\n    for question in read_data()[\"questions\"]:\n        if question[\"id\"] == question_id:\n            return question\n    return {\"error\": \"Not found\"}\n\nui.label(\"診断アプリAPI\")\nui.run()"
+  },
+  {
+    "objectID": "api-spa.html#まとめ",
+    "href": "api-spa.html#まとめ",
+    "title": "自作API+SPA",
+    "section": "まとめ",
+    "text": "まとめ\n\n\nAPI — プログラム同士が情報をやり取りする仕組み。天気アプリもメッセージアプリも、裏ではAPIでデータを取っている\n@app.get() デコレータ — 関数1つがそのままエンドポイントになる\njson.load() — JSONファイルをPythonの辞書として読む\n画面とデータの分離 — 表示は container.clear() → 再取得 → 再表示のサイクル\nhttpx + await — 自分のAPIに本物のHTTPリクエストを送る形。最終課題 のテンプレートはこの形で書かれている\nここまでで部品はそろった\n\nアイデア（発想→収束→評価）、設計図（Figma）、動く画面（NiceGUI）、データの口（API）\n全部つなげるのが 最終課題"
   },
   {
     "objectID": "api-viz.html#section",
@@ -1897,11 +2485,333 @@
     "text": "発展：その他のコレクション型\n\n現場でも競技プログラミングでもよく使われる。各自で調べよう。\n\ndeque — 先端への挿入・削除が高速（double ended queue）\ndefaultdict — キーが存在しない場合にデフォルト値を返す dict\nheapq — 最小値の取り出しに強い（heap木で管理）\nset — 重複が許されない。和集合などの論理演算も可能\n\nA = {\"a\", \"b\", \"c\"}\nB = {\"b\", \"c\", \"d\"}\nprint(A | B)  # {'a', 'b', 'c', 'd'}  ← 和集合\nprint(A & B)  # {'b', 'c'}            ← 積集合\nprint(A ^ B)  # {'a', 'd'}            ← 対称差\nprint(A - B)  # {'a'}                 ← 差集合\n数値データには numpy の ndarray がよく使われる（後日扱う）。"
   },
   {
-    "objectID": "handouts.html#handouts",
-    "href": "handouts.html#handouts",
-    "title": "情報処理",
-    "section": "Handouts",
-    "text": "Handouts\n\n← Lectures\n\n各回スライドの配布用 PDF。クリックで開く。番号は講義一覧と対応。\n\n\nPCの使い方アップデート\n\n\nキータイピング\nショートカット\n\n\n速習Python基礎\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\nデータ処理基礎\n\n\nNumPy入門\n（参考）ベクトルと行列\nデータの可視化\nmatplotlib入門\nPandas入門\nPlotly入門\n\n\nAPI\n\n\nAPIでデータ取得\nAPIデータを可視化する\nWikipedia APIリファレンス\n東京都オープンデータAPI"
+    "objectID": "dict.html#復習dict-とは",
+    "href": "dict.html#復習dict-とは",
+    "title": "辞書をあらためて",
+    "section": "復習（dict とは）",
+    "text": "復習（dict とは）\n\n\n\nキーと値のペアで管理するコレクション型\nデータはキーで管理する（list のような番号ではない）\n変数名は 「x2y」 形式にすることが多い（例：name2score）\n\n\n\nCC0: https://en.wikipedia.org/wiki/Fictionary#/media/File:Focus_definition_(Unsplash).jpg"
+  },
+  {
+    "objectID": "dict.html#宣言",
+    "href": "dict.html#宣言",
+    "title": "辞書をあらためて",
+    "section": "宣言",
+    "text": "宣言\n\n{} の中に キー: 値 をカンマ区切りで書くと辞書になる。\n\nキーは重複不可\n値は何でもよい\n\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}\n\n\n\n\n\n\nお作法\n\n\n: の前は詰めて、: と , の後には必ずスペースを空けるのが綺麗に書くコツ。"
+  },
+  {
+    "objectID": "dict.html#アクセスキー",
+    "href": "dict.html#アクセスキー",
+    "title": "辞書をあらためて",
+    "section": "アクセス（キー）",
+    "text": "アクセス（キー）\n\n要素にアクセスするにはキーを使う（list の [0] に相当）。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\nprint(name2score[\"Yamada\"])     # 95\nprint(name2score[\"Takahashi\"])  # 80"
+  },
+  {
+    "objectID": "dict.html#要素の追加上書き",
+    "href": "dict.html#要素の追加上書き",
+    "title": "辞書をあらためて",
+    "section": "要素の追加・上書き",
+    "text": "要素の追加・上書き\n\ndict[キー] = 値 で追加・上書きできる。\n\n存在しないキー → 追加\n存在するキー → 上書き\n\nname2score = {\"Yamada\": 95, \"Suzuki\": 75}\n\n# 追加\nname2score[\"Takahashi\"] = 80\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}\n\n# 上書き\nname2score[\"Suzuki\"] = 70\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 70, 'Takahashi': 80}\n\n\n\n\n\n\ntypo に注意\n\n\n追加と上書きが同じ書き方なので、typo でキーを間違えると新しいキーが勝手に追加される。\nname2score[\"Suzki\"] = 60  # 上書きのつもりが新規追加！"
+  },
+  {
+    "objectID": "dict.html#走査全要素へのアクセス",
+    "href": "dict.html#走査全要素へのアクセス",
+    "title": "辞書をあらためて",
+    "section": "走査（全要素へのアクセス）",
+    "text": "走査（全要素へのアクセス）\n\ndict には3種類の走査方法がある。for 文で書ける。\n# キーだけ\nfor key in name2score.keys():\n    print(key)\n\n# 値だけ\nfor value in name2score.values():\n    print(value)\n\n# キーと値を同時に（最頻出）\nfor key, value in name2score.items():\n    print(f\"{key}さんは{value}点です\")\nYamadaさんは95点です\nSuzukiさんは70点です\nTakahashiさんは80点です\n\n\n\n\n\n\nどれを使う？\n\n\n\n両方必要 → .items()（実務ではこれが一番多い）\nキーだけ → .keys()（for key in name2score: でも同じ）\n値だけ → .values()"
+  },
+  {
+    "objectID": "dict.html#その他-dict-で知っておきたい基礎知識",
+    "href": "dict.html#その他-dict-で知っておきたい基礎知識",
+    "title": "辞書をあらためて",
+    "section": "その他 dict で知っておきたい基礎知識",
+    "text": "その他 dict で知っておきたい基礎知識\n\n\n\nin 演算子で存在確認\n.get() で安全にアクセス\n要素の削除と長さ（del / pop / len）\nネストした dict\ndict と list の組み合わせ\n辞書内包表記"
+  },
+  {
+    "objectID": "dict.html#in-演算子で存在確認",
+    "href": "dict.html#in-演算子で存在確認",
+    "title": "辞書をあらためて",
+    "section": "in 演算子で存在確認",
+    "text": "in 演算子で存在確認\n\nin 演算子でキーが存在するか確認できる。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75}\n\nif \"Yamada\" in name2score:\n    print(\"Yamada さんは登録済み\")\n\nif \"Tanaka\" not in name2score:\n    print(\"Tanaka さんは未登録\")\n\n\n\n\n\n\nin はキーを見る（値ではない）\n\n\nif 95 in name2score:            # False\nif 95 in name2score.values():   # True ← 値を見たいときはこう"
+  },
+  {
+    "objectID": "dict.html#get-で安全にアクセス",
+    "href": "dict.html#get-で安全にアクセス",
+    "title": "辞書をあらためて",
+    "section": ".get() で安全にアクセス",
+    "text": ".get() で安全にアクセス\n\ndict[キー] は存在しないキーで落ちるが、.get(キー) は存在しなければ None を返すので落ちない。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75}\n\nprint(name2score.get(\"Yamada\"))    # 95\nprint(name2score.get(\"Tanaka\"))    # None ← エラーにならない\n第2引数でデフォルト値を指定できる。\nprint(name2score.get(\"Tanaka\"))      # None ← 第2引数なし\nprint(name2score.get(\"Tanaka\", 0))   # 0    ← 第2引数あり（未登録なら 0 点扱い）\nprint(name2score.get(\"Yamada\", 0))   # 95   ← 登録済みならその値\n\n\n\n\n\n\nin でガード vs .get()\n\n\n\n「ない場合は処理を分けたい」 → if key in dict: でガード\n「ない場合のデフォルト値が決まっている」 → .get(key, default) がスッキリ"
+  },
+  {
+    "objectID": "dict.html#要素の削除と長さdel-pop-len",
+    "href": "dict.html#要素の削除と長さdel-pop-len",
+    "title": "辞書をあらためて",
+    "section": "要素の削除と長さ（del / pop / len）",
+    "text": "要素の削除と長さ（del / pop / len）\n\ndel または .pop() で削除、len() でキーの数を確認できる。\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\nprint(len(name2score))  # 3\n\n# del：削除するだけ\ndel name2score[\"Suzuki\"]\nprint(name2score)       # {'Yamada': 95, 'Takahashi': 80}\nprint(len(name2score))  # 2\n\n# pop：削除して値を取り出す\nscore = name2score.pop(\"Yamada\")\nprint(score)        # 95\nprint(name2score)   # {'Takahashi': 80}"
+  },
+  {
+    "objectID": "dict.html#ネストした-dict",
+    "href": "dict.html#ネストした-dict",
+    "title": "辞書をあらためて",
+    "section": "ネストした dict",
+    "text": "ネストした dict\n\n値の中にさらに dict を入れると入れ子（ネスト）になる。 学生ごとに複数教科の点数など、複数の属性を持つデータを表現できる。\nstudents = {\n    \"Yamada\":    {\"国語\": 80, \"数学\": 90, \"英語\": 70},\n    \"Suzuki\":    {\"国語\": 60, \"数学\": 85, \"英語\": 95},\n    \"Takahashi\": {\"国語\": 75, \"数学\": 70, \"英語\": 80},\n}\n\n# Yamada さんの数学\nprint(students[\"Yamada\"][\"数学\"])  # 90\n\n# 全員の英語\nfor name, scores in students.items():\n    print(f\"{name}さんの英語：{scores['英語']}点\")"
+  },
+  {
+    "objectID": "dict.html#dict-と-list-の組み合わせ",
+    "href": "dict.html#dict-と-list-の組み合わせ",
+    "title": "辞書をあらためて",
+    "section": "dict と list の組み合わせ",
+    "text": "dict と list の組み合わせ\n\nlist の中に dict を入れる形は、表形式のデータを表すときの定番。 （JSON や DB の1レコードのイメージ）\nstudents = [\n    {\"name\": \"Yamada\",    \"score\": 95},\n    {\"name\": \"Suzuki\",    \"score\": 75},\n    {\"name\": \"Takahashi\", \"score\": 80},\n]\n\nfor s in students:\n    print(f\"{s['name']}さんは{s['score']}点\")\n\n\n\n\n\n\nネスト dict vs list of dict\n\n\n\n名前から直接引きたい → ネスト dict（students[\"Yamada\"]）\n順序が意味を持つ・全員を順に処理 → list of dict（students[0]）\n\n両方とも実務でよく使う。"
+  },
+  {
+    "objectID": "dict.html#辞書内包表記",
+    "href": "dict.html#辞書内包表記",
+    "title": "辞書をあらためて",
+    "section": "辞書内包表記",
+    "text": "辞書内包表記\n\nリスト内包表記の dict 版。{キー: 値 for ... in ...} の形。\n# 数 → その2乗 の dict を作る\nsquares = {x: x ** 2 for x in range(5)}\nprint(squares)  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}\n条件付きも書ける。\n# 80点以上だけ取り出す\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\npassed = {k: v for k, v in name2score.items() if v &gt;= 80}\nprint(passed)  # {'Yamada': 95, 'Takahashi': 80}\nキーと値を入れ替えるのも一行で書ける。\nscore2name = {v: k for k, v in name2score.items()}\nprint(score2name)  # {95: 'Yamada', 75: 'Suzuki', 80: 'Takahashi'}"
+  },
+  {
+    "objectID": "dict.html#まとめ",
+    "href": "dict.html#まとめ",
+    "title": "辞書をあらためて",
+    "section": "まとめ",
+    "text": "まとめ\n\n\ndict はキーと値のペアで管理するコレクション（他言語ではハッシュマップ）\nアクセスは dict[キー]、ない場合は KeyError → in または .get() でガード\n走査は .items() が最頻出、.keys() / .values() も使い分ける\nネスト dict や list of dict で表形式のデータを表現できる\n辞書内包表記 {k: v for ...} で for ＋ 追加を1行に圧縮できる"
+  },
+  {
+    "objectID": "dict.html#演習問題",
+    "href": "dict.html#演習問題",
+    "title": "辞書をあらためて",
+    "section": "演習問題",
+    "text": "演習問題\n\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80, \"Tanaka\": 60}\n\n上記の dict をコピペして、以下の操作を実装せよ。\n\n\n.get() で “Sato” さんの点数を取り出す（存在しなければ 0 を返す）\nTanaka さんを del で削除\n.values() と sum / len で、全員の 平均点 を表示\n\n\n\n解答例を見る\n# 1\nprint(name2score.get(\"Sato\", 0))  # 0\n\n# 2\ndel name2score[\"Tanaka\"]\nprint(name2score)\n\n# 3\nprint(sum(name2score.values()) / len(name2score))"
+  },
+  {
+    "objectID": "dict.html#演習問題辞書内包表記",
+    "href": "dict.html#演習問題辞書内包表記",
+    "title": "辞書をあらためて",
+    "section": "演習問題（辞書内包表記）",
+    "text": "演習問題（辞書内包表記）\n\n\n以下の3つを辞書内包表記で実装せよ。\n\n\nrange(1, 6) から {1: 1, 2: 4, 3: 9, 4: 16, 5: 25} という「数 → 2乗」の dict を作る\nname2score から 80点以上の学生だけ を取り出した新しい dict を作る\nname2score の キーと値を入れ替えた dict（score2name）を作る\n\n\n\n\n\n\n\nLUT（Look-Up Table）\n\n\n問題１のように 「入力 → 計算結果」を事前に dict に入れて引けるようにしたもの を LUT（Look-Up Table、参照テーブル） と呼ぶ。毎回計算する代わりに lut[x] で引けるため、重い計算を事前計算してキャッシュする用途でよく使われる。\n古典的な例として、ゲーム機や組み込み機器では sin / cos の値を角度ごとに事前計算した LUT がよく使われる（毎フレームの三角関数計算は重いため）。\n\n\n\n\n\n解答例を見る\n# 1\nsquares = {x: x ** 2 for x in range(1, 6)}\nprint(squares)\n\n# 2\npassed = {k: v for k, v in name2score.items() if v &gt;= 80}\nprint(passed)\n\n# 3\nscore2name = {v: k for k, v in name2score.items()}\nprint(score2name)"
+  },
+  {
+    "objectID": "dict.html#演習問題list-of-dict",
+    "href": "dict.html#演習問題list-of-dict",
+    "title": "辞書をあらためて",
+    "section": "演習問題（list of dict）",
+    "text": "演習問題（list of dict）\n\n# 要素：学生（0: A さん, 1: B さん, 2: C さん）\n# キー：科目（\"国語\", \"数学\", \"英語\"）\nstudents = [\n    {\"name\": \"A\", \"国語\": 80, \"数学\": 90, \"英語\": 70},\n    {\"name\": \"B\", \"国語\": 60, \"数学\": 85, \"英語\": 95},\n    {\"name\": \"C\", \"国語\": 75, \"数学\": 70, \"英語\": 80},\n]\n\n上記の学生の国語・数学・英語の点数をもつ list of dict をコピペして、以下の操作を実装せよ。\n\n\nB さんの数学の点数を表示\nC さんの3科目合計を表示\n各学生の平均点を for 文で順に表示\n\n\n\n解答例を見る\n# 1\nprint(students[1][\"数学\"])  # 85\n\n# 2\nprint(students[2][\"国語\"] + students[2][\"数学\"] + students[2][\"英語\"])  # 225\n\n# 3\nfor s in students:\n    avg = (s[\"国語\"] + s[\"数学\"] + s[\"英語\"]) / 3\n    print(f\"{s['name']}さんの平均点：{avg:.1f}点\")"
+  },
+  {
+    "objectID": "final-project.html#section",
+    "href": "final-project.html#section",
+    "title": "最終課題",
+    "section": "",
+    "text": "半年分の道具を、ぜんぶつなげる"
+  },
+  {
+    "objectID": "final-project.html#最終課題オリジナルアプリ",
+    "href": "final-project.html#最終課題オリジナルアプリ",
+    "title": "最終課題",
+    "section": "最終課題：オリジナルアプリ",
+    "text": "最終課題：オリジナルアプリ\n\n\nNiceGUIで API+SPA のオリジナルアプリ を1本作って提出する\nここまでの道具を全部使う、総合演習\n\n\n\nページ下部にある 3画面テンプレート を土台にする\n\nまず動かす → 中身を理解する → 自分の企画に改造する、の順"
+  },
+  {
+    "objectID": "final-project.html#テーマ例診断ゲーム系",
+    "href": "final-project.html#テーマ例診断ゲーム系",
+    "title": "最終課題",
+    "section": "テーマ例：診断・ゲーム系",
+    "text": "テーマ例：診断・ゲーム系\n\n\n\n\n\n\n\n\n系統\n例\n\n\n\n\n診断系\n推し診断「あなたに合う推しのタイプは？」 ／ 勉強法診断 ／ 進路適性診断「理系？文系？」 ／ 部活診断\n\n\nゲーム系\n三択クイズ（雑学・都道府県） ／ 心理テスト ／ 運試し（今日の運勢・おみくじ） ／ 2択選択ゲーム「あなたはどっち派？」\n\n\n\n\n「質問を出す → 選ばせる → 結果を出す」の構造は テンプレートの3画面とそのまま対応 する\n\nこの系統は questions / results をJSONに書くだけで骨格が完成する"
+  },
+  {
+    "objectID": "final-project.html#テーマ例実用創作系",
+    "href": "final-project.html#テーマ例実用創作系",
+    "title": "最終課題",
+    "section": "テーマ例：実用・創作系",
+    "text": "テーマ例：実用・創作系\n\n\n\n\n\n\n\n\n系統\n例\n\n\n\n\n実用ツール系\nテスト点数計算機（平均・合計） ／ 偏差値計算 ／ BMI計算+アドバイス ／ バイト時給計算機\n\n\n創作・エンタメ系\nランダム決め（今日の昼飯・掃除当番） ／ 2つ名ジェネレーター（名前 → 面白い2つ名）\n\n\n\n\nもちろん この表にないテーマでもよい\n\n迷ったら ペイオフマトリクス — 「作る手間」と「ウケ・実用性」の2軸で選ぶ"
+  },
+  {
+    "objectID": "final-project.html#提出物zipに4点",
+    "href": "final-project.html#提出物zipに4点",
+    "title": "最終課題",
+    "section": "提出物：zipに4点",
+    "text": "提出物：zipに4点\n\n\nファイル名は 「学籍番号_名前.zip」\n\n\n\n\n\n\n\n\n\n\n内容\n形式\n\n\n\n\n1\n635法などのカードで考えた 企画案 の画面（グループで発想したもの）\nPDF\n\n\n2\nFigmaで作った ワイヤーフレーム のスクショ\nPDF\n\n\n3\nテンプレートを元にNiceGUIで実装した ソースコード（.py 1ファイル + .json）\nzip\n\n\n4\nアプリを紹介する スライド1枚（タイトル・特徴・スクショ程度でOK）\nPDF\n\n\n\n\n\n\n\n\n\n3のzipは「入れ子」構造\n\n\n.py と .json をまとめたzipを、提出zipの中に入れる。==解凍して .py を実行するだけで動く== ことを提出前に必ず確認する"
+  },
+  {
+    "objectID": "final-project.html#ルール",
+    "href": "final-project.html#ルール",
+    "title": "最終課題",
+    "section": "ルール",
+    "text": "ルール\n\n\nテンプレートに付け足す形 で実装する\n\n文字・レイアウト変更、ボタン追加、遷移画面追加はOK\n構造を大きく変える／ライブラリを増やすのはNG\n生成AIの出力の丸写しはNG\n\n遷移画面は3画面以上\nライブラリは NiceGUI以外を追加しない\n\n授業で使ったもの（NumPy・Requestsなど）と、pip install不要の標準ライブラリ（mathなど）はOK\n\nFigmaのモックと実装は、方向性が合っていれば同一でなくてよい（見た目に過度にこだわらない）\n人に聞くのはOK・助けるのは推奨 — 助けてもらったら紹介スライドに スペシャルサンクス を書く"
+  },
+  {
+    "objectID": "final-project.html#いちばん大事なルールデータはjsonに",
+    "href": "final-project.html#いちばん大事なルールデータはjsonに",
+    "title": "最終課題",
+    "section": "いちばん大事なルール：データはJSONに",
+    "text": "いちばん大事なルール：データはJSONに\n\n\n表示するコンテンツは JSONに書き、APIから取得 する（テンプレートどおり HTTP経由 で）\n\nJSONを編集するだけでアプリを変更・拡張できる 状態にする\n質問文や結果文を ui.label(\"...\") に直接書かない（ハードコード禁止）\nボタンの「スタート」などコンテンツ以外のラベルはハードコードOK\n\n（テンプレートは読み込みだけだが）JSONへの 書き込みもOK\n\n\n\n\n\n\n\nなぜこのルールがあるのか\n\n\n「データと画面の分離」は実務の鉄則。クイズを10問→100問にするのに コードを1行も触らない 設計が、良いアプリの証拠"
+  },
+  {
+    "objectID": "final-project.html#評価基準",
+    "href": "final-project.html#評価基準",
+    "title": "最終課題",
+    "section": "評価基準",
+    "text": "評価基準\n\n\n提出物の内容とフォーマットが 指定通り\n公序良俗 に反していない\n生成AIの丸写しではなく、テンプレートに沿って 実装されている\nエラーなく実行できる\n\n\n\n\n\n\n\n減点されない技術\n\n\n凝った機能より「指示通り・動く・分かる」が先。実行確認は zipを解凍し直した状態 でもう一度 — 「自分のPCでは動いた」の大半はファイルパスとファイル名の問題"
+  },
+  {
+    "objectID": "final-project.html#テンプレートの構造",
+    "href": "final-project.html#テンプレートの構造",
+    "title": "最終課題",
+    "section": "テンプレートの構造",
+    "text": "テンプレートの構造\n\n\n3画面 = 3つの ui.column()。set_visibility() で1つだけ表示 して画面遷移に見せる\n\n\n\nデータファイルは data.json。この2つだけから始める\n\n{\n  \"title\": \"サンプルタイトル\",\n  \"message\": \"ここにメッセージが入ります\"\n}"
+  },
+  {
+    "objectID": "final-project.html#画面切り替えの核心",
+    "href": "final-project.html#画面切り替えの核心",
+    "title": "最終課題",
+    "section": "画面切り替えの核心",
+    "text": "画面切り替えの核心\n\ndef show_screen(screen_name):\n    top_screen.set_visibility(screen_name == \"top\")\n    main_screen.set_visibility(screen_name == \"main\")\n    result_screen.set_visibility(screen_name == \"result\")\n\nui.button(\"スタート\", on_click=lambda: show_screen(\"main\"))\n\nscreen_name == \"top\" は True / False になる — 指定した画面だけ表示、他は非表示 が1行×3で書ける\n\n\n\n\n\n\n\nlambda = その場で作る小さな関数\n\n\non_click には関数を渡す必要がある（show_screen(\"main\") と書くと即実行されてしまう）。 lambda: show_screen(\"main\") は「押されたら show_screen(\"main\") を実行する 無名の関数」を作る書き方。 lambdaを避けたい人は、def show_main(): ... を画面の数だけ書く簡単版テンプレートを使えばよい"
+  },
+  {
+    "objectID": "final-project.html#テンプレート全文",
+    "href": "final-project.html#テンプレート全文",
+    "title": "最終課題",
+    "section": "テンプレート全文",
+    "text": "テンプレート全文\n\n\nテンプレートと data.json を同じフォルダに置いて実行し、3画面が遷移すること・「データ読み込み」でJSONのタイトルが出ることを確かめてから改造を始めよ。\n\n\n\n\n\n\n\nasync / await は「待つ間、画面を止めない」書き方\n\n\nテンプレートでは、HTTP通信をする load_data だけが async def（自作API+SPA で扱った形）。 改造で自分の関数を足すときは、通信しない関数なら普通の def でよい\n\n\n\n\n\nテンプレート（API版）を表示\n\"\"\"\nNiceGUI SPA テンプレート（API版）\n\n3画面構成：トップ → メイン → 結果\nJSONデータを自作APIからHTTP経由で取得して表示します。\n\"\"\"\n\nfrom nicegui import ui, app\nimport json\nimport httpx\n\n# ========================================\n# APIエンドポイント\n# ========================================\n@app.get(\"/api/data\")\ndef get_data():\n    with open(\"data.json\", \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\n# ========================================\n# 画面切り替え\n# ========================================\ndef show_screen(screen_name):\n    top_screen.set_visibility(screen_name == \"top\")\n    main_screen.set_visibility(screen_name == \"main\")\n    result_screen.set_visibility(screen_name == \"result\")\n\n# ========================================\n# 1. トップ画面\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as top_screen:\n    ui.label(\"アプリタイトル\").classes(\"text-4xl font-bold\")\n    ui.button(\"スタート\", on_click=lambda: show_screen(\"main\")).classes(\"bg-blue-500 text-white p-4 rounded-lg\")\n\n# ========================================\n# 2. メイン画面\n# ========================================\nwith ui.column().classes(\"w-full min-h-screen items-center p-8 gap-4\") as main_screen:\n    ui.label(\"メイン画面\").classes(\"text-3xl font-bold\")\n\n    # JSONデータを表示するコンテナ\n    content = ui.column().classes(\"gap-2\")\n\n    async def load_data():\n        content.clear()\n        # 自作APIにHTTPリクエストを送ってデータを取得\n        async with httpx.AsyncClient() as client:\n            response = await client.get(\"http://localhost:8080/api/data\")\n        data = response.json()\n\n        # TODO: ここでdataの内容を表示する\n        with content:\n            ui.label(f\"タイトル: {data['title']}\")\n\n    ui.button(\"データ読み込み\", on_click=load_data).classes(\"bg-green-500 text-white p-2 rounded\")\n    ui.button(\"結果へ\", on_click=lambda: show_screen(\"result\")).classes(\"bg-purple-500 text-white p-4 rounded-lg mt-4\")\n\n# ========================================\n# 3. 結果画面\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as result_screen:\n    ui.label(\"結果画面\").classes(\"text-3xl font-bold\")\n    ui.label(\"ここに結果を表示\")\n    ui.button(\"もう一度\", on_click=lambda: show_screen(\"top\")).classes(\"bg-blue-500 text-white p-4 rounded-lg\")\n\n# ========================================\n# 初期表示\n# ========================================\nshow_screen(\"top\")\n\nui.run()\n\n\n\n\nテンプレート（簡単版・lambdaなし）を表示\n\"\"\"\nNiceGUI SPA テンプレート（少し簡単版）\n\n3画面構成：トップ → メイン → 結果\nlambdaを使わず、画面ごとの関数で切り替えます。\n\"\"\"\n\nfrom nicegui import ui, app\nimport json\nimport httpx\n\n# ========================================\n# APIエンドポイント\n# ========================================\n@app.get(\"/api/data\")\ndef get_data():\n    import pathlib\n    with open(pathlib.Path(__file__).parent / \"data.json\", \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\ndef show_top():\n    top_screen.set_visibility(True)\n    main_screen.set_visibility(False)\n    result_screen.set_visibility(False)\n\ndef show_main():\n    top_screen.set_visibility(False)\n    main_screen.set_visibility(True)\n    result_screen.set_visibility(False)\n\ndef show_result():\n    top_screen.set_visibility(False)\n    main_screen.set_visibility(False)\n    result_screen.set_visibility(True)\n\n# ========================================\n# 1. トップ画面\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as top_screen:\n    ui.label(\"アプリタイトル\").classes(\"text-4xl font-bold\")\n    ui.button(\"スタート\", on_click=show_main)\n\n# ========================================\n# 2. メイン画面\n# ========================================\nwith ui.column().classes(\"w-full min-h-screen items-center p-8 gap-4\") as main_screen:\n    ui.label(\"メイン画面\").classes(\"text-3xl font-bold\")\n\n    # JSONデータを表示するコンテナ\n    content = ui.column().classes(\"gap-2\")\n\n    async def load_data():\n        content.clear()\n        # 自作APIにHTTPリクエストを送ってデータを取得\n        async with httpx.AsyncClient() as client:\n            response = await client.get(\"http://localhost:8080/api/data\")\n        data = response.json()\n\n        # TODO: ここでdataの内容を表示する\n        with content:\n            ui.label(f\"タイトル: {data['title']}\")\n\n    ui.button(\"データ読み込み\", on_click=load_data).classes(\"bg-green-500 text-white p-2 rounded\")\n    ui.button(\"結果へ\", on_click=show_result)\n\n# ========================================\n# 3. 結果画面\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as result_screen:\n    ui.label(\"結果画面\").classes(\"text-3xl font-bold\")\n    ui.label(\"ここに結果を表示\")\n    ui.button(\"もう一度\", on_click=show_top)\n\n# ========================================\n# 初期表示\n# ========================================\nshow_top()\n\nui.run()"
+  },
+  {
+    "objectID": "final-project.html#進め方のおすすめ",
+    "href": "final-project.html#進め方のおすすめ",
+    "title": "最終課題",
+    "section": "進め方のおすすめ",
+    "text": "進め方のおすすめ\n\n\nテンプレートを そのまま動かす（3画面の遷移と「データ読み込み」を確認）\ndata.json を自分のテーマの内容に差し替える — コードは触らない\nメイン画面の TODO 部分を、自分のデータ構造に合わせて表示に変える\n画面・ボタンを増やす（NiceGUI のスタイル早見表が武器庫）\nzipにして解凍し直し、まっさらな状態で動作確認 → 提出\n\n\n\n\n\n\n\n詰まったら戻る場所\n\n\n画面の部品 → NiceGUI ／ APIとJSON → 自作API+SPA ／ 画面構成に迷う → Figma のワイヤーフレーム"
+  },
+  {
+    "objectID": "ideation.html#後期のゴールこれを自分で作る",
+    "href": "ideation.html#後期のゴールこれを自分で作る",
+    "title": "発想法（発散思考）",
+    "section": "後期のゴール：これを自分で作る",
+    "text": "後期のゴール：これを自分で作る\n\n\n\n質問に答えると結果が出る、Webブラウザで動く診断アプリ\n\n画面はPython（NiceGUI）、データは自作API、そして 企画は自分\n\n最終課題で、これを 企画 → 設計 → 実装 まで全部自分の手で作る\n\nそのための道具を、ここから1つずつ集めていく\n最初の道具が今日の 発想法 — 「何を作るか」は才能ではなく テクニックで出せる"
+  },
+  {
+    "objectID": "ideation.html#section",
+    "href": "ideation.html#section",
+    "title": "発想法（発散思考）",
+    "section": "",
+    "text": "アイデアを広げる3つの発想法"
+  },
+  {
+    "objectID": "ideation.html#発散と収束アイデアづくりの2段階",
+    "href": "ideation.html#発散と収束アイデアづくりの2段階",
+    "title": "発想法（発散思考）",
+    "section": "発散と収束：アイデアづくりの2段階",
+    "text": "発散と収束：アイデアづくりの2段階\n\n\nアイデアづくりは 2つのモード を行き来する\n\n発散思考（divergent thinking）— 考えを 広げる。思いつくまま出して、まだ形にしない\n収束思考（convergent thinking）— 出したものを 整理して絞る。まとめて実行案にする\n\n\n\n\n\n\n\n\n\n鉄則：出すときは出すだけ\n\n\n発散の最中に 評価・批判をしない。「広げる」と「絞る」を 同時にやると両方失敗する"
+  },
+  {
+    "objectID": "ideation.html#なぜ量なのか",
+    "href": "ideation.html#なぜ量なのか",
+    "title": "発想法（発散思考）",
+    "section": "なぜ「量」なのか",
+    "text": "なぜ「量」なのか\n\n\n「いいアイデアを1個出そう」とすると、手が止まる\n\n頭の中で出す→自分で却下、の無限ループ\n\n発想法はどれも、とにかく数を出させる ための 仕掛け\n\n量の中から、あとで質を 選べばいい\n\n今日の3つの発想法は「数を出す仕掛け」がそれぞれ違う\n\n\n\n\n方法\n仕掛け\n\n\n\n\nブレインストーミング\n会話 の連鎖反応\n\n\nクレイジー8\n時間制限 で追い込む\n\n\n635法\n強制ローテーション で全員から集める"
+  },
+  {
+    "objectID": "ideation.html#section-1",
+    "href": "ideation.html#section-1",
+    "title": "発想法（発散思考）",
+    "section": "",
+    "text": "ブレインストーミング"
+  },
+  {
+    "objectID": "ideation.html#ブレインストーミングbrainstorming",
+    "href": "ideation.html#ブレインストーミングbrainstorming",
+    "title": "発想法（発散思考）",
+    "section": "ブレインストーミング（Brainstorming）",
+    "text": "ブレインストーミング（Brainstorming）\n\n\n写真: Jan Dittrich (WMDE), CC BY 4.0, via Wikimedia Commons\n\n\n\nみんなで集まって、テーマについて 自由にアイデアを出し合う 方法\n1950年代、アメリカの広告会社の重役 アレックス・F・オズボーン（Alex F. Osborn、1888–1966）が考案\n\nオズボーンは チェックリスト法 の生みの親でもある\n\n日本では略して ブレスト と呼ばれる"
+  },
+  {
+    "objectID": "ideation.html#ブレストの4つのルール",
+    "href": "ideation.html#ブレストの4つのルール",
+    "title": "発想法（発散思考）",
+    "section": "ブレストの4つのルール",
+    "text": "ブレストの4つのルール\n\n\n批判厳禁 — どんな意見でも受け入れる\n自由奔放 — ふざけたアイデアも歓迎\n質より量 — たくさん出すことがいちばん大事\n便乗歓迎 — 人の意見に乗っかって新しい案を作る\n\n\n\n\n\n\n\nなぜ「批判厳禁」が最初のルールか\n\n\n一度でも批判されると、全員が 「安全な案」しか言わなくなる。 場の心理的安全性が発想の量を決める"
+  },
+  {
+    "objectID": "ideation.html#ブレストの進め方",
+    "href": "ideation.html#ブレストの進め方",
+    "title": "発想法（発散思考）",
+    "section": "ブレストの進め方",
+    "text": "ブレストの進め方\n\n\n司会（ファシリテーター、facilitator）がテーマを発表\n思いついた人からどんどん口に出す\n出た案は すべて書き留める（ホワイトボード・付箋）\nある程度出たら、整理・分類へ（→ 収束技法）\n\n\n得意・不得意がはっきりある方法でもある\n\n会話で盛り上がると発想が 連鎖する\n話すのが苦手な人は参加しにくい — その弱点を消すのが後述の 635法"
+  },
+  {
+    "objectID": "ideation.html#演習ブレスト",
+    "href": "ideation.html#演習ブレスト",
+    "title": "発想法（発散思考）",
+    "section": "演習：ブレスト",
+    "text": "演習：ブレスト\n\n\n4〜5人組でテーマを1つ選び、10分間ブレストせよ。出た案はすべて付箋に書き残すこと（1枚1案）。\n\n\n\n\n\nテーマ\n\n\n\n\nA\n学校の新しいマスコットキャラ\n\n\nB\n新しい未来の靴\n\n\nC\n新しい宇宙人の形\n\n\nD\n教室をもっと快適にする方法\n\n\n\n\n\n\n\n\n\n4つのルールを貼り出しておく\n\n\n批判厳禁・自由奔放・質より量・便乗歓迎 — 途中で誰かが批判を始めたら、指差して止めてよい"
+  },
+  {
+    "objectID": "ideation.html#section-2",
+    "href": "ideation.html#section-2",
+    "title": "発想法（発散思考）",
+    "section": "",
+    "text": "クレイジー8"
+  },
+  {
+    "objectID": "ideation.html#クレイジー8crazy-8s",
+    "href": "ideation.html#クレイジー8crazy-8s",
+    "title": "発想法（発散思考）",
+    "section": "クレイジー8（Crazy 8s）",
+    "text": "クレイジー8（Crazy 8s）\n\n\n1枚の紙を8つに折り、8分で8個のアイデアをスケッチする 発想法\n\n「短時間 × 数量 × 視覚化」で一気に広げる\n\nGoogle の デザインスプリント（Design Sprint）で使われることで有名\n\n\n\nA4を3回折ると8枠 — 1枠1分・1アイデア"
+  },
+  {
+    "objectID": "ideation.html#クレイジー8の進め方",
+    "href": "ideation.html#クレイジー8の進め方",
+    "title": "発想法（発散思考）",
+    "section": "クレイジー8の進め方",
+    "text": "クレイジー8の進め方\n\n\nA4用紙を3回折って8つの枠を作る\nテーマを決める（例：「未来の教室の机」）\nタイマーを 8分 にセット（1枠 = 1分）\n各枠に1アイデアずつスケッチ — 絵・図・文字なんでもOK\n8分後、全員で共有して気になる案をピックアップ\n\n\n\n\n\n\n\n「8個」は追い詰めるための数\n\n\n最初の4つは誰でも思いつく普通の案。後半4つを絞り出すとき に飛躍が出る。 うまく描こうとしない — 線と矢印だけで十分伝わる"
+  },
+  {
+    "objectID": "ideation.html#演習クレイジー4",
+    "href": "ideation.html#演習クレイジー4",
+    "title": "発想法（発散思考）",
+    "section": "演習：クレイジー4",
+    "text": "演習：クレイジー4\n\n\nブレストで使ったテーマのまま、紙を2回折って 4枠・4分 のクレイジー4を実施せよ（1枠1分、絵でも文字でも可）。\n\n\nA4用紙を2回折って4枠を作る\nタイマーを4分にセット\n1枠1分でスケッチ\n終わったら班内で見せ合い、「これは化けそう」な1枚 に星印\n\n\n\n\n\n\n\n予想してから試す\n\n\n自分の「4枚目」が1枚目より面白くなっているか、あとで見比べてみる"
+  },
+  {
+    "objectID": "ideation.html#section-3",
+    "href": "ideation.html#section-3",
+    "title": "発想法（発散思考）",
+    "section": "",
+    "text": "635法・ブレインライティング"
+  },
+  {
+    "objectID": "ideation.html#法ブレインライティング",
+    "href": "ideation.html#法ブレインライティング",
+    "title": "発想法（発散思考）",
+    "section": "635法（ブレインライティング）",
+    "text": "635法（ブレインライティング）\n\n\nブレストのように話し合わず、無言で紙に書いて回す 発想法\n\n6人 × 3アイデア × 5分 で1ラウンド → 「635法」（6-3-5 Method）\nブレインライティング（Brainwriting）とも呼ばれる\n\n前の人のアイデアを見て書くので、量が出るだけでなく 人の案を発展させ、育てる ことができる"
+  },
+  {
+    "objectID": "ideation.html#法のワークシート",
+    "href": "ideation.html#法のワークシート",
+    "title": "発想法（発散思考）",
+    "section": "635法のワークシート",
+    "text": "635法のワークシート\n\n\n\n\n\n案1\n案2\n案3\n\n\n\n\n1巡目（自分）\n通学かばんを軽くする\n…\n…\n\n\n2巡目（隣の人）\n↑を発展：教科書は学校置き\n…\n…\n\n\n3巡目\n…\n…\n…\n\n\n4巡目\n…\n…\n…\n\n\n5巡目\n…\n…\n…\n\n\n6巡目\n…\n…\n…\n\n\n\n\n上の行の案を見て、発展させても、まったく別の案でもよい"
+  },
+  {
+    "objectID": "ideation.html#クイズ30分で何案出る",
+    "href": "ideation.html#クイズ30分で何案出る",
+    "title": "発想法（発散思考）",
+    "section": "クイズ：30分で何案出る？",
+    "text": "クイズ：30分で何案出る？\n\n\n6人 × 3案 × 5分を6巡すると——\n\n\n\n\n\n\n\n\n答え：108案\n\n\n6人 × 3案 × 6巡 = 108案（約30分）。 ブレストで108案は、まず出ない\n\n\n\n\n\n\n話す必要がないので 全員が平等に 出せる\n発言が苦手でも紙の上なら書ける\n「静かに集中して考えたい」チームに向く\n\n\n\n\n\n\n\n\n\n「5分」は実は誤解から広まった\n\n\n考案者 Bernd Rohrbach の原案は「3案 × 5回 発展させる」だったが、のちに「5分」と混同されて広まった（川路 2024）"
+  },
+  {
+    "objectID": "ideation.html#演習635法",
+    "href": "ideation.html#演習635法",
+    "title": "発想法（発散思考）",
+    "section": "演習：635法",
+    "text": "演習：635法\n\n\n6人組（足りなければ4〜5人）でテーマを1つ選び、635法を3巡実施せよ。1巡5分、1巡につき3案。\n\n\n\n\n\nテーマ\n\nテーマ\n\n\n\n\nE\n学校をもっと楽しくするには\nK\nスマホで勉強を楽しくするには\n\n\nF\n教室の暑さ・寒さを解決する方法\nL\n未来の授業スタイル\n\n\nG\n昼休みをもっと充実させる方法\nM\n学校の新しいロゴデザイン\n\n\nH\n勉強の「やる気が出る」工夫\nN\n新しい部活動\n\n\nI\n楽しくテスト勉強をする方法\nO\n「未来のノート」のデザイン\n\n\nJ\n授業中に眠くならない方法\nP\n1日をもっと便利にするアプリ\n\n\n\n\n\n\n\n\n\n上の行を読んでから書く\n\n\n白紙に書くのは1巡目だけ。2巡目からは 前の人の案を育てる のが635法の本体"
+  },
+  {
+    "objectID": "ideation.html#まとめ3つの発想法",
+    "href": "ideation.html#まとめ3つの発想法",
+    "title": "発想法（発散思考）",
+    "section": "まとめ：3つの発想法",
+    "text": "まとめ：3つの発想法\n\n\n\n\n\n\n\n\n\n方法\n発想のしかた\n向いている人・場面\n\n\n\n\nブレインストーミング\n話しながら 出す\n話すのが得意／その場のノリで広げたい\n\n\nクレイジー8\nスケッチ で連想する\n直感・ビジュアル派／1人でもできる\n\n\n635法\n無言で書いて 回す\n発言が苦手な人がいる／全員から集めたい\n\n\n\n\nどれも狙いは同じ：評価を後回しにして、量を出す\n出した108案は、そのままでは使えない\n\n次は 収束技法（KJ法・アイデアマップ） で 整理する"
   },
   {
     "objectID": "key-typing.html#キータイピングを速めよう",
@@ -2170,291 +3080,256 @@
     "text": "付録：線とマーカーの早見表\n\n\nplt.plot(x, y, \"o-\") の第3引数は マーカー・線種・色 を文字で並べたもの\n暗記する必要はない。「こう変えるとこうなる」を一度試せば十分\n\n\n\n\n\n\n線種（line style）\n記号\n\n\n\n\n実線\n-\n\n\n破線\n--\n\n\n一点鎖線\n-.\n\n\n点線\n:\n\n\n\n\n\n\n\nマーカー（marker）\n記号\n\n\n\n\n丸\no\n\n\n四角\ns\n\n\n三角\n^\n\n\n星\n*\n\n\n\n\n\n組み合わせ例：\"o--\"（丸＋破線）・\"s:\"（四角＋点線）・\"r-.\"（赤の一点鎖線）"
   },
   {
-    "objectID": "pandas.html#section",
-    "href": "pandas.html#section",
-    "title": "Pandas入門",
+    "objectID": "numpy.html#numpyとは",
+    "href": "numpy.html#numpyとは",
+    "title": "NumPy入門",
+    "section": "NumPyとは",
+    "text": "NumPyとは\n\n\nNumPyは数値計算のデファクトスタンダード\n\n普通、数値計算やデータ処理にlistは使わない\n\n内部的にはC言語で実装されている\n\n通常のリストに比べて非常に高速"
+  },
+  {
+    "objectID": "numpy.html#インストールと使用",
+    "href": "numpy.html#インストールと使用",
+    "title": "NumPy入門",
+    "section": "インストールと使用",
+    "text": "インストールと使用\n\nターミナルからインストール\npip install numpy\n冒頭でimportして使用（ただしnpというエイリアス指定が一般的）\nimport numpy as np\n\n\n\n\n\n\nimportの as とは？\n\n\nimport numpy as np の as np は別名（エイリアス）をつける構文\nimport numpy         # 使用時にnumpy.array(...) と書く\nimport numpy as np   # np.array(...) でよいので短い\n\n注：np の部分は何でもよく別の名前も使用可能\n\nただし、NumPyは np が非常に一般的"
+  },
+  {
+    "objectID": "numpy.html#numpy配列ndarray",
+    "href": "numpy.html#numpy配列ndarray",
+    "title": "NumPy入門",
+    "section": "NumPy配列（ndarray）",
+    "text": "NumPy配列（ndarray）\n\n\n数値のリストっぽいものをnpに渡すとndarrayになる\nndarray は list によく似たNumPy用の配列型\n\n先頭の nd は多次元配列（N-Dimensional Array）の略\n\nNumPyはndarrayを効率よく処理するためのライブラリ\n\nimport numpy as np\n\narr = np.array([1, 2, 3, 4]) # 1-4のndarray\n\n# 以下でarrを数値計算（例：平均・分散 etc.）\n\n\n\n\n\n\nノート\n\n\nnp.ndarray() ではなく np.array() と書くことに注意"
+  },
+  {
+    "objectID": "numpy.html#基本的な初期化",
+    "href": "numpy.html#基本的な初期化",
+    "title": "NumPy入門",
+    "section": "基本的な初期化",
+    "text": "基本的な初期化\n\n\nリストを np.array() に渡すと、NumPy配列になる\n\nimport numpy as np\n\nli = [1, 2, 3, 4]\narr = np.array(li)\n\narr = np.array([1, 2, 3, 4])    # 同じ\narr = np.array(range(1, 5))     # 同じ。実際には後述のarangeがよく使われる\n\n\n\n\n\n\n変数名を list にしない\n\n\nlist = [1, 2, 3] と書くと組み込みの list 型が上書きされ、 以降 list(range(5)) などが謎のエラーになります。li や numbers を使いましょう。"
+  },
+  {
+    "objectID": "numpy.html#初期化ヘルパー関数",
+    "href": "numpy.html#初期化ヘルパー関数",
+    "title": "NumPy入門",
+    "section": "初期化（ヘルパー関数）",
+    "text": "初期化（ヘルパー関数）\n\n\n下記のよく使う数列は、ヘルパー関数で一撃生成\n特にrandom 系は強力\n\nテスト用データを作るときに非常によく使われる\n\n\nimport numpy as np\n\nnp.zeros(3)          # 0.0が3つの要素で初期化。 [0. 0. 0. ] \nnp.ones(5)           # 1.0が5つの要素で初期化。 [1. 1. 1. 1. 1.]\nnp.full(4, 7)        # 7が4つの要素で初期化。 [7 7 7 7]\n\n# arrangeではなくarange（\"a range\" = ある範囲）\nnp.arange(4)         # [0 1 2 3]\nnp.arange(1, 5)      # [1 2 3 4]\nnp.arange(1, 10, 2)  # [1 3 5 7 9]\n\nnp.random.rand(3)           # [0.0, 1.0) の一様乱数 3要素\nnp.random.randint(10)       # 0〜9のランダムな整数\nnp.random.randint(1, 7, 3)  # 1〜6のランダムな整数 3要素\n\narr = np.arange(10)\nnp.random.shuffle(arr)      # 配列をランダムに並べ替え（破壊的）"
+  },
+  {
+    "objectID": "numpy.html#要素へのアクセス",
+    "href": "numpy.html#要素へのアクセス",
+    "title": "NumPy入門",
+    "section": "要素へのアクセス",
+    "text": "要素へのアクセス\n\n\nアクセス方法はlistと同じ\nスライスにも対応\n\nimport numpy as np\n\narr = np.array([1, 2, 3, 4])\n\nprint(arr[0])    # 先頭の要素（1）\nprint(arr[1])    # 2番目の要素（2）\nprint(arr[-1])   # 最後の要素（4）\narr[0] = 10      # 1番目の要素を10に変更\n\n# スライス\nprint(arr[1:3])  # 2番目から3番目まで（[2, 3]）\nprint(arr[:2])   # 先頭から2番目まで（[1, 2]）\nprint(arr[2:])   # 3番目から最後まで（[3, 4]）"
+  },
+  {
+    "objectID": "numpy.html#型",
+    "href": "numpy.html#型",
+    "title": "NumPy入門",
+    "section": "型",
+    "text": "型\n\n\nndarray全体は numpy.ndarray\n各要素は代入時のリテラルによって決まる\n\nintなら numpy.int64\nfloatなら numpy.float64\n\n異なる型は混ぜられない（intとfloatを混ぜると 全部floatに統一 される）\n\nimport numpy as np\n\narr = np.array([1, 2, 3, 4])\nprint(type(arr))    # &lt;class 'numpy.ndarray'&gt;\nprint(type(arr[0])) # &lt;class 'numpy.int64'&gt;\n\narr2 = np.array([1.0, 2.0, 3.0, 4.0])\nprint(type(arr2))    # &lt;class 'numpy.ndarray'&gt;\nprint(type(arr2[0])) # &lt;class 'numpy.float64'&gt;"
+  },
+  {
+    "objectID": "numpy.html#強力な演算",
+    "href": "numpy.html#強力な演算",
+    "title": "NumPy入門",
+    "section": "強力な演算",
+    "text": "強力な演算\n\n\nListと違い、各要素に対する演算が可能\n\nfor文が不要なため非常に高速\n\n\nimport numpy as np\n\nmy_array = np.array([1, 2, 3])\nprint(my_array * 2)  # [2 4 6]  ← 要素ごとの計算\n\n# listに * 2 を使うと...\nmy_list = [1, 2, 3]\nprint(my_list * 2)   # [1, 2, 3, 1, 2, 3]  ← 演算ではなく、２つのリストのconcat\n\n# listで同じことをするにはfor文や内包表記が必要\nprint([x * 2 for x in my_list])  # [2, 4, 6]"
+  },
+  {
+    "objectID": "numpy.html#本当に速いの-100万要素で実測",
+    "href": "numpy.html#本当に速いの-100万要素で実測",
+    "title": "NumPy入門",
+    "section": "本当に速いの？ — 100万要素で実測",
+    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 24.0 ミリ秒\nndarray:          0.30 ミリ秒\n→ 約 79 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
+  },
+  {
+    "objectID": "numpy.html#その他長さやアクセス方法",
+    "href": "numpy.html#その他長さやアクセス方法",
+    "title": "NumPy入門",
+    "section": "その他（長さやアクセス方法）",
+    "text": "その他（長さやアクセス方法）\n\n\nlistと同じくlenもある\n\nただし、sizeを使うことが多い\n\nfor文はlistと同じように記述可能\n\nimport numpy as np\n\narr = np.array([4, 5, 6])\n\nprint(len(arr))  # 長さ（listと同じ）\nprint(arr.size)  # 普通はこちらを使う\n\n# for文もlistと同じように使える\nfor v in arr:\n    print(v)\n\n# 差分（数値微分）\narr = np.array([0, 2, 5, 3, 1, 4]) # 時系列の信号を想定\ndiff = np.zeros(len(arr) - 1) # 結果格納用のndarray\nfor i in range(len(arr) - 1):\n    diff[i] = arr[i+1] - arr[i] # 微分\nprint(diff)  # [ 2.  3. -2. -2.  3.]\n\n# 実はNumPyなら1行（こういう「定番処理の組み込み」が大量にある）\nprint(np.diff(arr))  # [ 2  3 -2 -2  3]"
+  },
+  {
+    "objectID": "numpy.html#多次元array",
+    "href": "numpy.html#多次元array",
+    "title": "NumPy入門",
+    "section": "多次元Array",
+    "text": "多次元Array\n\n\nndarrayは多次元（N-dimensional）で力を発揮\n\n特に行列演算が強力\n\n\nimport numpy as np\n\n# 2次元配列（行列）\nA = np.array([[1, 2], [3, 4]])\n\nB = np.array([[5, 0],\n              [0, 5]])\n\n# 要素へのアクセス\nprint(A[0, 1])  # 1行目2列目\nprint(A[1, :])  # 2行目全体\nprint(A[:, 0])  # 1列目全体\n\n# 転置（transpose）\nprint(A.T)\nprint(B.T)\n\n\n\n\n\n\n\n\n\n\nA[行, 列] の順。: は「その方向ぜんぶ」"
+  },
+  {
+    "objectID": "numpy.html#統計の組み込み関数",
+    "href": "numpy.html#統計の組み込み関数",
+    "title": "NumPy入門",
+    "section": "統計の組み込み関数",
+    "text": "統計の組み込み関数\n\n\n統計処理の組み込み関数も多数提供されている\n\nimport numpy as np\n\nscores = np.array([80, 85, 90, 75, 88, 92, 82, 79, 87])\n\nprint(np.max(scores))    # 最大値\nprint(np.min(scores))    # 最小値\nprint(np.mean(scores))   # 平均値\nprint(np.median(scores)) # 中央値\nprint(np.var(scores))    # 分散\nprint(np.std(scores))    # 標準偏差"
+  },
+  {
+    "objectID": "numpy.html#多次元は-axis-で潰す向きを指定",
+    "href": "numpy.html#多次元は-axis-で潰す向きを指定",
+    "title": "NumPy入門",
+    "section": "多次元は axis で「潰す向き」を指定",
+    "text": "多次元は axis で「潰す向き」を指定\n\n\n2次元以上の集計は axis= で向きを指定する\n\nimport numpy as np\n\n# 3人の生徒の英語・数学・国語の成績\ndata = np.array([[80, 85, 90], [75, 88, 92], [82, 79, 87]])\n\nprint(np.mean(data, axis=0))  # 列ごと（各科目の平均）\nprint(np.mean(data, axis=1))  # 行ごと（各生徒の平均）"
+  },
+  {
+    "objectID": "numpy.html#条件でフィルタする",
+    "href": "numpy.html#条件でフィルタする",
+    "title": "NumPy入門",
+    "section": "条件でフィルタする",
+    "text": "条件でフィルタする\n\n\n比較演算も「全要素いっせい」に効く\nその True / False を添字に渡すと フィルタ になる\n\nimport numpy as np\n\nscores = np.array([80, 85, 90, 75, 88, 92, 82, 79, 87])\n\nprint(scores &gt;= 85)           # True/False\nprint(scores[scores &gt;= 85])   # 85点以上のデータ\n\n\n\n\n\n\n\n\n\n\nscores &gt;= 85 が True/False の並びを作り、それを添字に渡すと True の位置だけ残る"
+  },
+  {
+    "objectID": "numpy.html#演習ndarrayを作って操作する",
+    "href": "numpy.html#演習ndarrayを作って操作する",
+    "title": "NumPy入門",
+    "section": "演習：ndarrayを作って操作する",
+    "text": "演習：ndarrayを作って操作する\n\n\nNumPyで次の5つを作り、表示せよ。\n\n\n「1から10までの連続した整数」から成る ndarray\nその各要素を2倍にした新しい ndarray\n元の ndarray の各要素をランダムに並べ替えた新しい ndarray\n100以上400以下のランダムな整数１つ\n0以上1未満のランダムな数１つ\n\n\n\n解答例を見る\nimport numpy as np\n\narr = np.arange(1, 11)\nprint(arr)                        # (1)\n\nprint(arr * 2)                    # (2)\n\nshuffled = arr.copy()             # (3) 並べ替えは破壊的なのでコピーしてから\nnp.random.shuffle(shuffled)\nprint(shuffled)\n\nprint(np.random.randint(100, 401))  # (4) 上限は含まないので401\nprint(np.random.rand())             # (5)"
+  },
+  {
+    "objectID": "numpy.html#演習listとndarrayの型",
+    "href": "numpy.html#演習listとndarrayの型",
+    "title": "NumPy入門",
+    "section": "演習：listとndarrayの型",
+    "text": "演習：listとndarrayの型\n\n\n同じ数値でも、list の要素とNumPy配列の要素で型がどう変わるかを type() で確かめよ。\n\n\nli = [10, 20, 30] の全要素の型を for 文で表示\nli をNumPyの配列 arr に変換し、要素の型を表示\nli = [0.1, 0.2, 0.3] でも同様に全要素の型を表示\nこれもNumPyの配列 arr2 に変換し、要素の型を表示\n\n\n\n解答例を見る\nimport numpy as np\n\nli = [10, 20, 30]\nfor v in li:                # (1)\n    print(type(v))          # int\n\narr = np.array(li)          # (2)\nprint(type(arr[0]))         # numpy.int64\n\nli = [0.1, 0.2, 0.3]\nfor v in li:                # (3)\n    print(type(v))          # float\n\narr2 = np.array(li)         # (4)\nprint(type(arr2[0]))        # numpy.float64"
+  },
+  {
+    "objectID": "payoff-matrix.html#section",
+    "href": "payoff-matrix.html#section",
+    "title": "ペイオフマトリクス",
     "section": "",
-    "text": "NumPyの表に名前をつける"
+    "text": "アイデアを評価して、優先順位を決める"
   },
   {
-    "objectID": "pandas.html#pandasとは",
-    "href": "pandas.html#pandasとは",
-    "title": "Pandas入門",
-    "section": "Pandasとは",
-    "text": "Pandasとは\n\n\nPandasは 表形式データ（tabular data） を扱うためのライブラリ\n\nExcelの表、CSV、実験結果、アンケート結果など\nデータ分析の入口で非常によく使う\n\nNumPyの ndarray と同じく、Pythonの標準機能ではない\n\nターミナルからインストール：\npip install pandas\n冒頭で import（pd としてインポートするのが一般的）：\nimport pandas as pd"
+    "objectID": "payoff-matrix.html#あるある",
+    "href": "payoff-matrix.html#あるある",
+    "title": "ペイオフマトリクス",
+    "section": "あるある",
+    "text": "あるある\n\n\n研究テーマを決めるとき、どれも面白そうで 決められない\n「あれもこれも実装したい」と欲張って、結局完成しない\nチームで作るとき、メンバーの 意見がバラバラ\n時間をかけて作ったのに「誰も使わない機能」だった\n\n\n\n\n\n\n\nアイデアは出すほど良い。でも全部は作れない\n\n\n発散（ブレスト）→ 整理（KJ法）ときて、最後に必要なのは 「何から手をつけるか」を決める技術"
   },
   {
-    "objectID": "pandas.html#今回のゴール",
-    "href": "pandas.html#今回のゴール",
-    "title": "Pandas入門",
-    "section": "今回のゴール",
-    "text": "今回のゴール\n\n\nDataFrame / Series / index / columns を理解する\n集計結果を matplotlibで可視化 できるようにする"
+    "objectID": "payoff-matrix.html#payoff-見返り",
+    "href": "payoff-matrix.html#payoff-見返り",
+    "title": "ペイオフマトリクス",
+    "section": "Payoff = 見返り",
+    "text": "Payoff = 見返り\n\n\nペイオフ（payoff）= 努力や投資に対して得られる 成果・見返り\n\npay（支払う・報いる）+ off（完了・結果）\n毎日勉強した payoff = 試験でいい点 ／ 投資した payoff = 利益\n\nペイオフマトリクス（Payoff Matrix）は、案を2軸で評価する表\n\n横軸：どれくらい 手間（effort）がかかるか\n縦軸：どれくらい 効果（payoff）があるか\n要するに 「コスパが良いのはどれか」を見える化する図\n\n無理やり日本語にすると「費用対効果マトリクス」「コスパ分析図」\n\n\n\n\n\n\n\n実際の開発現場でも\n\n\nIT企業では新機能・バグ修正・改善案が毎日生まれるが、エンジニアの時間は有限。 「直感」ではなくこの種の アイデア評価手法 で開発順を決めている"
   },
   {
-    "objectID": "pandas.html#クイズ田中さんの数学iの点は",
-    "href": "pandas.html#クイズ田中さんの数学iの点は",
-    "title": "Pandas入門",
-    "section": "クイズ：田中さんの数学Iの点は？",
-    "text": "クイズ：田中さんの数学Iの点は？\n\n\n2人の生徒（田中・佐藤）の3科目（現代文・数学I・英会話）の点数がある\n\nimport numpy as np\n\narr = np.array([\n    [80, 70, 90],\n    [65, 75, 85],\n])\n\n「田中さんの数学Iの点」を取り出すコードを書け\n\n\n\n\n\n\n\n\n答え：arr[0, 1] …… で合ってる？自信ある？\n\n\n\n田中さんが0行目、数学Iが1列目という情報は 配列のどこにも書いていない\n取り出した 70 も、画面に出るのはただの数字 — 何の70点か分からない\n計算はNumPyで十分。困るのは 意味（名前）の管理\n表に 名前 をつけたもの、それが今日の DataFrame"
+    "objectID": "payoff-matrix.html#題材学校生活をよくするスマホアプリ",
+    "href": "payoff-matrix.html#題材学校生活をよくするスマホアプリ",
+    "title": "ペイオフマトリクス",
+    "section": "題材：学校生活をよくするスマホアプリ",
+    "text": "題材：学校生活をよくするスマホアプリ\n\n\nここからの題材 — 「学校生活をより良くするスマホアプリ」のアイデアたち\n\nこの題材はこのままワイヤーフレーム・実装・最終課題まで 使い続ける\n\n\n\n\n\n\nアイデア\n\nアイデア\n\n\n\n\n1\n時間割アプリ\n5\n図書館の蔵書検索\n\n\n2\n課題管理アプリ\n6\nサークル連絡ツール\n\n\n3\n食堂の混雑状況確認\n7\nテスト範囲共有\n\n\n4\n教室の空き状況確認\n8\n落とし物掲示板\n\n\n\n\nさて、どれを優先すべきか？ — 直感ではなく、図で決める"
   },
   {
-    "objectID": "pandas.html#dataframeとは",
-    "href": "pandas.html#dataframeとは",
-    "title": "Pandas入門",
-    "section": "DataFrameとは",
-    "text": "DataFrameとは\n\n\nPandasの主役となる、名前つきの表（テーブル, table）\nデータ ＋ 行の名前（index）＋ 列の名前（columns）の3点セット\n行・列に名前をつけて表を扱う考え方は、Excelやデータベースなど多くの道具に共通\n\n\n\n\n\n現代文\n数学I\n英会話\n\n\n\n\n田中\n80\n70\n90\n\n\n佐藤\n65\n75\n85\n\n\n\n\n上端の見出し（現代文・数学I・英会話）が columns、左端の見出し（田中・佐藤）が index\n\n\n\n\n\n\n\npandasの基本はDataFrameなので用語を覚えよう\n\n\nDataFrame ＝ データ ＋ index（行の名前）＋ columns（列の名前）"
+    "objectID": "payoff-matrix.html#マトリクスの構造2軸-4象限",
+    "href": "payoff-matrix.html#マトリクスの構造2軸-4象限",
+    "title": "ペイオフマトリクス",
+    "section": "マトリクスの構造：2軸 → 4象限",
+    "text": "マトリクスの構造：2軸 → 4象限\n\n\n\n\n\n\n\n\n\n\n\n各アイデアを「手間」と「効果」で見て、4つの部屋のどれか に置くだけ\n英語では左上から時計回りに Quick Wins / Big Projects / Time Sinks / Fill-ins"
   },
   {
-    "objectID": "pandas.html#ndarrayからdataframeを作る",
-    "href": "pandas.html#ndarrayからdataframeを作る",
-    "title": "Pandas入門",
-    "section": "ndarrayからDataFrameを作る",
-    "text": "ndarrayからDataFrameを作る\n\n\npd.DataFrame() に ndarray を渡す\n最初は列名も行名も指定しない\n\n\nimport numpy as np\nimport pandas as pd\n\narr = np.array([\n    [80, 70, 90],\n    [65, 75, 85],\n])\n\ndf = pd.DataFrame(arr)\nprint(df)\n\n    0   1   2\n0  80  70  90\n1  65  75  85\n\n\n\nDataFrame は表として表示され、左端と上端に 0, 1, 2, ... の番号が自動でつく"
+    "objectID": "payoff-matrix.html#つの象限優先度が高い側",
+    "href": "payoff-matrix.html#つの象限優先度が高い側",
+    "title": "ペイオフマトリクス",
+    "section": "4つの象限（優先度が高い側）",
+    "text": "4つの象限（優先度が高い側）\n\n\n\n\n\n\n\n\n\n\nすぐやるべき ⭐⭐⭐\n時間かかるけど重要 ⭐⭐\n\n\n\n\n条件\n手間 小 × 効果 大\n手間 大 × 効果 大\n\n\n目安\n1週間以内で作れて、多くの人が使う\n1ヶ月以上かかるが、成功すれば画期的\n\n\n方針\n即着手\n計画を立てて 段階的に\n\n\n例\n時間割表示（カレンダー連携なら数日・全員が毎日使う）\n課題管理 + 通知の統合（2〜3ヶ月・課題忘れが消える）\n\n\n例\n食堂メニュー表示（献立表を出すだけ・毎日見る）\n食堂混雑予測AI（センサー + 機械学習で数ヶ月）"
   },
   {
-    "objectID": "pandas.html#indexとcolumnsを確認",
-    "href": "pandas.html#indexとcolumnsを確認",
-    "title": "Pandas入門",
-    "section": "indexとcolumnsを確認",
-    "text": "indexとcolumnsを確認\n\n\n行の名前を index\n列の名前を columns という\n指定しない場合は、どちらも自動で番号が振られる\n\n\nimport numpy as np\nimport pandas as pd\n\narr = np.array([[80, 70, 90], [65, 75, 85]])\ndf = pd.DataFrame(arr)\n\nprint(df.index)\nprint(df.columns)\n\nRangeIndex(start=0, stop=2, step=1)\nRangeIndex(start=0, stop=3, step=1)\n\n\n\n\n\n\n\n\n自動でつく番号\n\n\n\nRangeIndex(start=0, stop=2, step=1) は「0から1までの行番号」\nRangeIndex(start=0, stop=3, step=1) は「0から2までの列番号」\nPythonの range() と同じく、stop の値は含まない"
+    "objectID": "payoff-matrix.html#つの象限優先度が低い側",
+    "href": "payoff-matrix.html#つの象限優先度が低い側",
+    "title": "ペイオフマトリクス",
+    "section": "4つの象限（優先度が低い側）",
+    "text": "4つの象限（優先度が低い側）\n\n\n\n\n\n\n\n\n\n\n余裕があれば ⭐\n後回し ❌\n\n\n\n\n条件\n手間 小 × 効果 小\n手間 大 × 効果 小\n\n\n目安\n数時間で作れるが、あると嬉しい程度\n1ヶ月以上かかるのにニッチ・代替がある\n\n\n方針\n時間が余ったら／練習用\n基本的に作らない。仕様を見直す\n\n\n例\nテーマカラー変更（色選択を足すだけ）\n3Dバーチャル校舎ツアー（数ヶ月かけて一度見たら終わり）\n\n\n例\n誕生日通知（使う人が限られる）\nAI自動レポート作成（学習にならない・倫理的問題）"
   },
   {
-    "objectID": "pandas.html#columnsを指定する",
-    "href": "pandas.html#columnsを指定する",
-    "title": "Pandas入門",
-    "section": "columnsを指定する",
-    "text": "columnsを指定する\n\n\n列の意味が分かるように columns= を指定する\nこれだけで表がかなり読みやすくなる\n\n\nimport numpy as np\nimport pandas as pd\n\narr = np.array([[80, 70, 90], [65, 75, 85]])\ndf = pd.DataFrame(arr, columns=[\"現代文\", \"数学I\", \"英会話\"])\n\nprint(df)\n\n   現代文  数学I  英会話\n0   80   70   90\n1   65   75   85\n\n\n\nもう df[1] ではなく df[\"数学I\"]。「何列目か」ではなく「何の列か」で読める"
+    "objectID": "payoff-matrix.html#使い方の手順",
+    "href": "payoff-matrix.html#使い方の手順",
+    "title": "ペイオフマトリクス",
+    "section": "使い方の手順",
+    "text": "使い方の手順\n\n\nリストアップ — ブレスト・KJ法で残ったアイデアを全部書き出す\n評価軸を確認 — 手間 =（開発時間・技術難易度）、効果 =（使う人数 × 頻度 × 解決の大きさ）\n議論しながら配置 — 付箋をホワイトボードの4象限に貼っていく\n優先順位を決定 — 「すぐやるべき」から着手、「後回し」はカット\n\n\n\n\n\n\n\n議論のコツ\n\n\n\n「自分が使いたい」ではなく 「多くの人が使うか」 で判断\n技術的難易度は正直に（できそうな気がする ≠ 簡単）\n似たものが世の中に既にないか確認（車輪の再発明を避ける）"
   },
   {
-    "objectID": "pandas.html#indexも指定する",
-    "href": "pandas.html#indexも指定する",
-    "title": "Pandas入門",
-    "section": "indexも指定する",
-    "text": "indexも指定する\n\n\n行の意味が分かるように index= も指定する\nこの例では、行名を生徒名にする\n\n\nimport numpy as np\nimport pandas as pd\n\narr = np.array([[80, 70, 90], [65, 75, 85]])\ndf = pd.DataFrame(arr, columns=[\"現代文\", \"数学I\", \"英会話\"], index=[\"田中\", \"佐藤\"])\n\nprint(df)\n\n    現代文  数学I  英会話\n田中   80   70   90\n佐藤   65   75   85\n\n\n\nこれで数字の並びに「誰の・何の点か」という意味がついた"
+    "objectID": "payoff-matrix.html#よくある失敗",
+    "href": "payoff-matrix.html#よくある失敗",
+    "title": "ペイオフマトリクス",
+    "section": "よくある失敗",
+    "text": "よくある失敗\n\n\n\n\n\n\n\n\n\n失敗\n何が起きるか\n教訓\n\n\n\n\n「かっこいい」機能に飛びつく（AR・AIチャットボット）\n難しすぎて完成しない\nまず基本機能、拡張は後\n\n\n「自分が欲しい」を優先（自分だけの特殊ツール）\nユーザーが自分しかいない\n多数の共通の困りごとを解く\n\n\n全部やろうとする（10機能を同時進行）\n全部が中途半端\n「すぐやるべき」に集中、1個ずつ完成\n\n\n\n\n\n\n\n\n\n完成しない最大の原因は「欲張り」\n\n\n機能を増やす判断は簡単で、減らす判断は難しい。マトリクスは 減らす勇気を出すための道具"
   },
   {
-    "objectID": "pandas.html#名前があると何がうれしい",
-    "href": "pandas.html#名前があると何がうれしい",
-    "title": "Pandas入門",
-    "section": "名前があると何がうれしい？",
-    "text": "名前があると何がうれしい？\n\n\ndf[\"数学I\"] と書くと、数学Iの列だけ取り出せる\ndf.mean() と書くと、列ごとの平均が計算できる\n出力にも列名が残るので、結果を読み間違えにくい\n\n\nimport numpy as np\nimport pandas as pd\n\narr = np.array([[80, 70, 90], [65, 75, 85]])\ndf = pd.DataFrame(arr, columns=[\"現代文\", \"数学I\", \"英会話\"], index=[\"田中\", \"佐藤\"])\n\nprint(df.mean())\n\n現代文    72.5\n数学I    72.5\n英会話    87.5\ndtype: float64\n\n\n\n\n\n\n\n\n名前つきの表が強い\n\n\n\naxis=0 のような番号指定より読みやすい場面が多い\nデータ分析では 名前つきの表（DataFrame） が効く"
+    "objectID": "payoff-matrix.html#実践例アプリ案10個を配置すると",
+    "href": "payoff-matrix.html#実践例アプリ案10個を配置すると",
+    "title": "ペイオフマトリクス",
+    "section": "実践例：アプリ案10個を配置すると",
+    "text": "実践例：アプリ案10個を配置すると\n\n\n\n\n\n\n\n\n\n\n\n4人チームで作る想定で配置した例\n\n左上の4つ（時間割・課題リスト・食堂メニュー・教室空き）から着手\n右上は 2番手として計画 ／ 右下（3D校舎ツアー）は カット"
   },
   {
-    "objectID": "pandas.html#section-1",
-    "href": "pandas.html#section-1",
-    "title": "Pandas入門",
+    "objectID": "payoff-matrix.html#演習ペイオフマトリクス",
+    "href": "payoff-matrix.html#演習ペイオフマトリクス",
+    "title": "ペイオフマトリクス",
+    "section": "演習：ペイオフマトリクス",
+    "text": "演習：ペイオフマトリクス\n\n\n次の12案を4象限に分類せよ（模造紙に2軸を描き、付箋1枚1案で配置。チームで議論して動かすこと）。\n\n\n\n\n\nアイデア\n\nアイデア\n\n\n\n\n1\n時間割表示（手動入力）\n7\nサークル活動の連絡ツール\n\n\n2\n課題管理 + 締切通知\n8\nテスト範囲の共有掲示板\n\n\n3\n食堂の今日のメニュー表示\n9\n落とし物掲示板\n\n\n4\n食堂の混雑予測AI\n10\n出席管理システム\n\n\n5\n教室の空き状況確認（手動入力）\n11\nAR校内ナビゲーション\n\n\n6\n図書館の蔵書検索\n12\n学校の歴史紹介ページ\n\n\n\n\n模造紙に「手間 →」「効果 ↑」の2軸と十字線\n12案を付箋にして、議論しながら配置（1案30秒 で仮置き → あとで動かす）\n「すぐやるべき」に入った案から 上位3つ に順位を付ける\n「後回し」に入った案について、カットの理由を1行 ずつ書く\n\n\n\n\n\n\n\nKJ法の付箋がそのまま使える\n\n\n前回KJ法でグループ化した付箋の「中見出し」を12案の代わりに置けば、自分たちのアイデアの優先順位が決まる"
+  },
+  {
+    "objectID": "payoff-matrix.html#まとめ評価は厳密さより速さ",
+    "href": "payoff-matrix.html#まとめ評価は厳密さより速さ",
+    "title": "ペイオフマトリクス",
+    "section": "まとめ：評価は「厳密さ」より「速さ」",
+    "text": "まとめ：評価は「厳密さ」より「速さ」\n\n\n視覚的 — 付箋と2軸だけ。チーム全員で同じ図を見て話せる\n速い — 10〜30分で大まかな優先順位が出る。詳細な数値計算は不要\n合意を作る — 一人で決めない。配置をめぐる議論そのものに価値がある\n完璧を目指さない — 最初の絞り込み用。状況が変われば貼り直す\n\n\n\n\n\n\n\nもっと厳密にやりたくなったら\n\n\n案が多い・利害が複雑な場面では、ICEスコア（Impact / Confidence / Ease の3軸を数値化）など定量的な手法もある\n\n\n\n\n優先順位が決まったら、次は画面の設計 — Figmaでワイヤーフレーム へ"
+  },
+  {
+    "objectID": "presentation.html#section",
+    "href": "presentation.html#section",
+    "title": "発表",
     "section": "",
-    "text": "Seriesを理解する"
+    "text": "ワイヤーフレームを発表する"
   },
   {
-    "objectID": "pandas.html#列を取り出すseries",
-    "href": "pandas.html#列を取り出すseries",
-    "title": "Pandas入門",
-    "section": "列を取り出す（Series）",
-    "text": "列を取り出す（Series）\n\n\ndf[\"列名\"] で1列だけ取り出せる\n取り出した1列は DataFrame型ではなく Series型\n（表は pd.DataFrame() にリストを直接渡しても作れる — 以降はこの書き方）\n\n\nimport pandas as pd\n\ndf = pd.DataFrame([[80, 70, 90], [65, 75, 85]],\n                  columns=[\"現代文\", \"数学I\", \"英会話\"], index=[\"田中\", \"佐藤\"])\nmath = df[\"数学I\"]\n\nprint(math)\nprint(type(df))\nprint(type(math))\n\n田中    70\n佐藤    75\nName: 数学I, dtype: int64\n&lt;class 'pandas.core.frame.DataFrame'&gt;\n&lt;class 'pandas.core.series.Series'&gt;"
+    "objectID": "presentation.html#何を発表するか",
+    "href": "presentation.html#何を発表するか",
+    "title": "発表",
+    "section": "何を発表するか",
+    "text": "何を発表するか\n\n\nチームで作ってきたアプリ案を、6枚のスライド で発表する\nこの構成は思いつきではない — スタートアップが投資家に行うピッチ（pitch）の定番構成そのもの\n\n前半3枚で「作る価値」を、後半3枚で「どう動くか」を順番に説得する\n\n\n\n\n\n\n\n\n\n作品ではなく「提案」を発表する\n\n\n聞き手に伝えるのは「がんばって作った」ではなく、このアプリは作る価値がある という主張と根拠"
   },
   {
-    "objectID": "pandas.html#dataframeとseries",
-    "href": "pandas.html#dataframeとseries",
-    "title": "Pandas入門",
-    "section": "DataFrameとSeries",
-    "text": "DataFrameとSeries\n\n\nDataFrameは 表\nSeriesは 1列\nSeriesにも index がある\n\nDataFrame = 表\nSeries    = 1列\n\nimport pandas as pd\n\ndf = pd.DataFrame([[80, 70, 90], [65, 75, 85]],\n                  columns=[\"現代文\", \"数学I\", \"英会話\"], index=[\"田中\", \"佐藤\"])\nmath = df[\"数学I\"]\n\nprint(math.index)\nprint(math.values)\n\nIndex(['田中', '佐藤'], dtype='object')\n[70 75]\n\n\n\nmath.index は生徒名、math.values は点数だけのNumPy配列"
+    "objectID": "presentation.html#ルールスライドの形式",
+    "href": "presentation.html#ルールスライドの形式",
+    "title": "発表",
+    "section": "ルール：スライドの形式",
+    "text": "ルール：スライドの形式\n\n\nタイトルスライドに チーム名と全員の名前（6枚には数えない）\n内容は次ページからの「6枚スライド内容」に従う\n\n1枚に収まらないときは、2枚以上に渡ってもよい\n\n各スライドの右下に 担当者名\n16:9 横、文字は 最低 18pt\n各スライドに 図画を最低1つ（イラスト・図・スクリーンショット）\n最終的に PDF化して提出（チーム名.pdf）\n\n\n\n\n\n\n\n文字だけのスライドは禁止\n\n\n18pt未満の文字も図ゼロのスライドも、聞き手には「読めない・伝わらない」。ルールというより 伝わるための最低条件"
   },
   {
-    "objectID": "pandas.html#seriesは値と名前のセット",
-    "href": "pandas.html#seriesは値と名前のセット",
-    "title": "Pandas入門",
-    "section": "Seriesは「値」と「名前」のセット",
-    "text": "Seriesは「値」と「名前」のセット\n\n\nNumPy配列は値だけ\nSeriesは値に index がついている\n\n\n\n\n見方\n中身\n\n\n\n\nmath.index\n[\"田中\", \"佐藤\"]\n\n\nmath.values\n[70, 75]\n\n\n\n\nimport pandas as pd\n\ndf = pd.DataFrame([[80, 70, 90], [65, 75, 85]],\n                  columns=[\"現代文\", \"数学I\", \"英会話\"], index=[\"田中\", \"佐藤\"])\nmath = df[\"数学I\"]\n\nprint(math.mean())\n\n72.5\n\n\n\n1列（Series）だけでも、平均・最大・最小などの計算ができる"
+    "objectID": "presentation.html#ルール役割分担と時間",
+    "href": "presentation.html#ルール役割分担と時間",
+    "title": "発表",
+    "section": "ルール：役割分担と時間",
+    "text": "ルール：役割分担と時間\n\n\n役割分担\n\n各自が担当スライドに オーナーシップ を持つ — 作成も発表も担当者\n6人チーム：1人1枚 ／ それ以外：1人最低1枚 + 残りは分担を決める\n\n発表時間\n\n最大 6分\n1人あたり 最低20秒 は話す\n\nスライドめくりは発表者のPCではなく 進行側のPC で行う\n\n「次のスライドをお願いします」と 自分のタイミングで指示する のも発表技術のうち"
   },
   {
-    "objectID": "pandas.html#列名で取り出す練習",
-    "href": "pandas.html#列名で取り出す練習",
-    "title": "Pandas入門",
-    "section": "列名で取り出す練習",
-    "text": "列名で取り出す練習\n\n\n現代文の列を取り出す\n英会話の列を取り出す\nそれぞれの平均を計算する\n\n\nimport pandas as pd\n\ndf = pd.DataFrame([[80, 70, 90], [65, 75, 85]],\n                  columns=[\"現代文\", \"数学I\", \"英会話\"], index=[\"田中\", \"佐藤\"])\n\njapanese = df[\"現代文\"]\nenglish = df[\"英会話\"]\n\nprint(japanese.mean())\nprint(english.mean())\n\n72.5\n87.5\n\n\n\n\n\n\n\n\nまずは列単位で考える\n\n\n\nPandasでは「列を取り出す → 計算する」が基本\n1列を取り出すと Series\n複数列を取り出すと DataFrame"
+    "objectID": "presentation.html#枚の内容前半",
+    "href": "presentation.html#枚の内容前半",
+    "title": "発表",
+    "section": "6枚の内容（前半）",
+    "text": "6枚の内容（前半）\n\n\n\n\n\n\n\n\n\n\nスライド\n入れる内容\n\n\n\n\n①\n課題（Problem）\n学生生活で不便なこと ／ このアプリを作ろうと思った理由 ／ ユーザーの声（仮・身内でOK）\n\n\n②\n目的・コンセプト（Goal / Concept）\nこのアプリで何が良くなるか ／ コンセプトを 一言で ／ ユーザーストーリー（どんな場面でどう使うか）\n\n\n③\n機能概要（Feature Overview）\nメイン機能を箇条書きで ／ その機能がどう役立つか\n\n\n\n\n\n\n\n\n\n①が勝負\n\n\n「たしかにそれは困る」と思わせられれば、あとのスライドは全部聞いてもらえる。①には いちばん共感を呼ぶ実例 を置く"
   },
   {
-    "objectID": "pandas.html#演習型を見失わない",
-    "href": "pandas.html#演習型を見失わない",
-    "title": "Pandas入門",
-    "section": "演習：型を見失わない",
-    "text": "演習：型を見失わない\n\n\n田中・佐藤の df で、次の4つが DataFrame / Series / ndarray / 数値のどれになるかを実行する前に予想し、type(...) で確かめよ（Series になったものは .index も表示）。\n\n\ndf\ndf[\"数学I\"]（1列）\ndf[\"数学I\"].values（値だけ）\ndf[\"数学I\"].mean()（集計）\n\n\n\n答え合わせ（df を作って type を確認）\nimport pandas as pd\n\ndf = pd.DataFrame([[80, 70, 90], [65, 75, 85]],\n                  columns=[\"現代文\", \"数学I\", \"英会話\"], index=[\"田中\", \"佐藤\"])\n\nprint(type(df))  # DataFrame\nprint(type(df[\"数学I\"]))  # Series\nprint(type(df[\"数学I\"].values))  # ndarray\nprint(type(df[\"数学I\"].mean()))  # 数値（numpy.float64）\n\n\n\n\n\n\n\n\n操作のたびに自問する\n\n\n\nいま手元は DataFrame か Series か（あるいは値か）\nその index / columns は何か"
+    "objectID": "presentation.html#枚の内容後半",
+    "href": "presentation.html#枚の内容後半",
+    "title": "発表",
+    "section": "6枚の内容（後半）",
+    "text": "6枚の内容（後半）\n\n\n\n\n\n\n\n\n\n\nスライド\n入れる内容\n\n\n\n\n④\n画面フロー（User Flow）\nFigmaの画面をフローで並べる ／ 起動 → ホーム → 詳細 のようなUI上の流れ\n\n\n⑤\n画面紹介（Main Screens）\nFigmaの画面を大きく表示 ／ デザイン・UIの工夫点（色・アイコン・レイアウトの理由）\n\n\n⑥\nまとめ・今後（Summary / Next Steps）\nアプリの価値のまとめ ／ 今後追加したい機能 ／ チームの学び\n\n\n\n\n⑤の「工夫」の言い方の例\n\n「迷わないようにUIの情報量を減らした」\n「疲れていても読める文字サイズにした」\n「テーマが◯◯なのでブルーを基調にした」"
   },
   {
-    "objectID": "pandas.html#section-2",
-    "href": "pandas.html#section-2",
-    "title": "Pandas入門",
-    "section": "",
-    "text": "CSVを読み込む"
+    "objectID": "presentation.html#評価基準",
+    "href": "presentation.html#評価基準",
+    "title": "発表",
+    "section": "評価基準",
+    "text": "評価基準\n\n\n\n\n\n\n\n\n対象\nチェックされる観点\n\n\n\n\n① 課題\n課題設定が妥当か — 説得できているか\n\n\n② コンセプト\n課題に対して妥当か。実装可能か\n\n\n③ 機能\nコンセプトを実現できているか。実現可能か\n\n\n④ 画面フロー\n流れは妥当か。明らかな抜け はないか（例：ログインが必須の設計なのにログイン画面がない）\n\n\n⑤ 画面紹介\n工夫がなされているか。その工夫は妥当と思わせられるか\n\n\n⑥ まとめ\n価値のまとめと今後の方向は妥当か\n\n\n\n\nどの観点も「凄いか」ではなく 筋が通っているか を見ている"
   },
   {
-    "objectID": "pandas.html#csvとは",
-    "href": "pandas.html#csvとは",
-    "title": "Pandas入門",
-    "section": "CSVとは",
-    "text": "CSVとは\n\n\nCSVは表をテキストで保存する形式\n\nComma Separated Values\nカンマで値を区切る\n\nExcelやGoogleスプレッドシートからも書き出せる\n\n名前,学科,学年,現代文,数学I,英会話,物理,欠席日数\n田中,情報,1,80,70,90,85,2\n佐藤,機械,1,65,75,85,72,4\n鈴木,情報,2,88,91,84,90,1\n\n1行目は列名として扱われることが多い\n列が増えるほど、Pandasで扱う意味が出てくる\nPandasでは pd.read_csv() で読み込む"
-  },
-  {
-    "objectID": "pandas.html#csvを読み込む",
-    "href": "pandas.html#csvを読み込む",
-    "title": "Pandas入門",
-    "section": "CSVを読み込む",
-    "text": "CSVを読み込む\n\n\ndata/students.csv をダウンロード\n作業フォルダに data フォルダを作る\nその中に students.csv を置く\nPythonから data/students.csv で読み込む\n\n\n※ students.csv は授業用の架空データ（実在の個人ではない）\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nprint(df.head())\n\n   名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n0  田中  情報   1   80   70   90  85     2\n1  佐藤  機械   1   65   75   85  72     4\n2  鈴木  情報   2   88   91   84  90     1\n3  高橋  電気   2   72   68   76  80     3\n4  伊藤  情報   1   58   57   62  65     6\n\n\n\nCSVの1行目が columns になり、index は指定しなければ自動で番号が振られる\n\n\n\n\n\n\n\nここから df は students.csv に変わる\n\n\n\nここまでの田中・佐藤（2人×3科目）は 練習用の小さな表\n以降の df は students.csv（20人×8列） — 集計・可視化はこのデータで進める"
-  },
-  {
-    "objectID": "pandas.html#読み込んだ表の形を確認",
-    "href": "pandas.html#読み込んだ表の形を確認",
-    "title": "Pandas入門",
-    "section": "読み込んだ表の形を確認",
-    "text": "読み込んだ表の形を確認\n\n\nデータを読み込んだら、まず 中身と形 を確認する\nhead() は先頭数行を表示する\nshape は (行数, 列数)\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df.head())   # 先頭5行（中身）\nprint(df.shape)    # (行数, 列数)\nprint(df.columns)  # 列名\nprint(df.index)    # 行のラベル\n\n   名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n0  田中  情報   1   80   70   90  85     2\n1  佐藤  機械   1   65   75   85  72     4\n2  鈴木  情報   2   88   91   84  90     1\n3  高橋  電気   2   72   68   76  80     3\n4  伊藤  情報   1   58   57   62  65     6\n(20, 8)\nIndex(['名前', '学科', '学年', '現代文', '数学I', '英会話', '物理', '欠席日数'], dtype='object')\nRangeIndex(start=0, stop=20, step=1)"
-  },
-  {
-    "objectID": "pandas.html#名前をindexにする読み込み",
-    "href": "pandas.html#名前をindexにする読み込み",
-    "title": "Pandas入門",
-    "section": "名前をindexにする読み込み",
-    "text": "名前をindexにする読み込み\n\n\nindex_col=\"名前\" とすると、名前列をindexにできる\n「行名として使いたい列」があるときに使う\n\n\nimport pandas as pd\n\ndf_name = pd.read_csv(\"data/students.csv\", index_col=\"名前\")\nprint(df_name.head())\n\n    学科  学年  現代文  数学I  英会話  物理  欠席日数\n名前                                 \n田中  情報   1   80   70   90  85     2\n佐藤  機械   1   65   75   85  72     4\n鈴木  情報   2   88   91   84  90     1\n高橋  電気   2   72   68   76  80     3\n伊藤  情報   1   58   57   62  65     6\n\n\n\n\n\n\n\n\nまずはここだけ分かれば十分\n\n\n\n最初は自動番号のindexのままで問題ない\nindexとは行名 — それが分かればOK"
-  },
-  {
-    "objectID": "pandas.html#section-3",
-    "href": "pandas.html#section-3",
-    "title": "Pandas入門",
-    "section": "",
-    "text": "DataFrameの基本操作"
-  },
-  {
-    "objectID": "pandas.html#単一列を選択するおさらい",
-    "href": "pandas.html#単一列を選択するおさらい",
-    "title": "Pandas入門",
-    "section": "単一列を選択する（おさらい）",
-    "text": "単一列を選択する（おさらい）\n\n\ndf[\"列名\"] で1列取り出すと Series — 集計の入口としてよく使う\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nmath = df[\"数学I\"]\n\nprint(math.head())  # 20人分あるので先頭5行だけ\n\n0    70\n1    75\n2    91\n3    68\n4    57\nName: 数学I, dtype: int64"
-  },
-  {
-    "objectID": "pandas.html#複数列を選択する",
-    "href": "pandas.html#複数列を選択する",
-    "title": "Pandas入門",
-    "section": "複数列を選択する",
-    "text": "複数列を選択する\n\n\ndf[[\"列名1\", \"列名2\"]] のように列名の リスト を渡す（角括弧が2重）\n返ってくるのは Series ではなく DataFrame\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\ncols = df[[\"名前\", \"学科\", \"数学I\", \"英会話\"]]\n\nprint(cols.head())\n\n   名前  学科  数学I  英会話\n0  田中  情報   70   90\n1  佐藤  機械   75   85\n2  鈴木  情報   91   84\n3  高橋  電気   68   76\n4  伊藤  情報   57   62"
-  },
-  {
-    "objectID": "pandas.html#条件式は残す行の印を作る",
-    "href": "pandas.html#条件式は残す行の印を作る",
-    "title": "Pandas入門",
-    "section": "条件式は「残す行の印」を作る",
-    "text": "条件式は「残す行の印」を作る\n\n\n列に条件式を書くと、各行について True / False が返る\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint((df[\"数学I\"] &gt;= 80).head())  # 先頭5行\n\n0    False\n1    False\n2     True\n3    False\n4    False\nName: 数学I, dtype: bool\n\n\n\n数学I が80点以上の行だけ True — これが「どの行を残すか」の印になる"
-  },
-  {
-    "objectID": "pandas.html#条件抽出filtering",
-    "href": "pandas.html#条件抽出filtering",
-    "title": "Pandas入門",
-    "section": "条件抽出（filtering）",
-    "text": "条件抽出（filtering）\n\n\n条件式を df[...] に入れると、True の行だけが残る\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df[df[\"数学I\"] &gt;= 80].head())  # 先頭5行\n\n     名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n2    鈴木  情報   2   88   91   84  90     1\n5    渡辺  機械   3   84   88   78  86     2\n9    加藤  電気   3   90   95   88  92     0\n10   吉田  情報   3   83   86   91  89     1\n12  佐々木  電気   1   74   80   69  83     2\n\n\n\n数学I が80点以上の行だけが残る（20人中9人が該当）"
-  },
-  {
-    "objectID": "pandas.html#文字列の条件抽出",
-    "href": "pandas.html#文字列の条件抽出",
-    "title": "Pandas入門",
-    "section": "文字列の条件抽出",
-    "text": "文字列の条件抽出\n\n\n数値だけでなく、文字列でも条件を作れる（== は「等しい」）\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df[df[\"学科\"] == \"情報\"])\n\n    名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n0   田中  情報   1   80   70   90  85     2\n2   鈴木  情報   2   88   91   84  90     1\n4   伊藤  情報   1   58   57   62  65     6\n7   中村  情報   2   76   65   82  74     3\n10  吉田  情報   3   83   86   91  89     1\n13  山口  情報   2   62   78   75  70     5\n16  木村  情報   1   92   89   94  91     0\n19  斎藤  情報   3   77   93   85  90     1\n\n\n\n学科 が \"情報\" の行だけが残る（名簿・アンケートでよく使う）"
-  },
-  {
-    "objectID": "pandas.html#peek-and-or-code",
-    "href": "pandas.html#peek-and-or-code",
-    "title": "Pandas入門",
-    "section": "複数条件で抽出する",
-    "text": "複数条件で抽出する\n\n\n複数条件は & でつなぐ\nそれぞれの条件を丸括弧で囲む\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df[\n    (df[\"学科\"] == \"情報\")\n    & (df[\"数学I\"] &gt;= 80)\n])\n\n    名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n2   鈴木  情報   2   88   91   84  90     1\n10  吉田  情報   3   83   86   91  89     1\n16  木村  情報   1   92   89   94  91     0\n19  斎藤  情報   3   77   93   85  90     1\n\n\n\n\n\n\n\n\nand ではなく &\n\n\n\nPandasの条件抽出では and ではなく &\n条件ごとに丸括弧をつける\nこの書き方は最初だけ少し変だが、よく使う"
-  },
-  {
-    "objectID": "pandas.html#tweakand-と-or-で絞ると広がる",
-    "href": "pandas.html#tweakand-と-or-で絞ると広がる",
-    "title": "Pandas入門",
-    "section": "Tweak：AND と OR で「絞る」と「広がる」",
-    "text": "Tweak：AND と OR で「絞る」と「広がる」\n\n\n前ページのコード を1か所ずつ変えて実行\n\n\n\n条件式だけ実行する（df[...] を外す）→ 各行に True/False が返る\n& を | にする（「両方」→「どちらか一方」で残る行が増える）\n数学Iの基準を反転する（80点未満）\n英会話も80点以上、と条件を足す"
-  },
-  {
-    "objectID": "pandas.html#列を追加する",
-    "href": "pandas.html#列を追加する",
-    "title": "Pandas入門",
-    "section": "列を追加する",
-    "text": "列を追加する\n\n\ndf[\"新しい列名\"] = ... で列を追加できる\n既存の列を使って、新しい列を計算することが多い\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\n\ndf[\"平均点\"] = df[subjects].mean(axis=1)\n\nprint(df.head())\n\n   名前  学科  学年  現代文  数学I  英会話  物理  欠席日数    平均点\n0  田中  情報   1   80   70   90  85     2  81.25\n1  佐藤  機械   1   65   75   85  72     4  74.25\n2  鈴木  情報   2   88   91   84  90     1  88.25\n3  高橋  電気   2   72   68   76  80     3  74.00\n4  伊藤  情報   1   58   57   62  65     6  60.50\n\n\n\n平均点 は4科目（現代文・数学I・英会話・物理）の平均\n\n\n\n\n\n\n\nNumPyと同じ感覚\n\n\n\nmean(axis=1) は、行ごとに平均を計算する（いま作った 平均点）\ndf[\"数学I\"] * 1.1 のように、列全体へまとめて計算もできる\nfor文を書かなくても列全体に計算がかかる"
-  },
-  {
-    "objectID": "pandas.html#section-4",
-    "href": "pandas.html#section-4",
-    "title": "Pandas入門",
-    "section": "",
-    "text": "CSVデータを集計して可視化する"
-  },
-  {
-    "objectID": "pandas.html#平均点列を集計する",
-    "href": "pandas.html#平均点列を集計する",
-    "title": "Pandas入門",
-    "section": "平均点列を集計する",
-    "text": "平均点列を集計する\n\n\n4科目から作った 平均点 列を Series として取り出す\nSeriesには平均・最大・最小など 集計（aggregation） のメソッドがある\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\nscores = df[\"平均点\"]\n\nprint(scores.mean())\nprint(scores.max())\nprint(scores.min())\n\n76.7875\n91.5\n56.75\n\n\n\n\n\n\n\n\nCSVを読んだあとの典型的な流れ\n\n\nCSVを読む → 必要な列を作る → 集計する → 可視化する"
-  },
-  {
-    "objectID": "pandas.html#学科ごとに人数を数える",
-    "href": "pandas.html#学科ごとに人数を数える",
-    "title": "Pandas入門",
-    "section": "学科ごとに人数を数える",
-    "text": "学科ごとに人数を数える\n\n\ngroupby(\"学科\") で、学科ごとに行をグループへ分ける\nグループの中身を見るには .size() などを続ける必要がある\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df.groupby(\"学科\").size())\n\n学科\n情報    8\n機械    6\n電気    6\ndtype: int64\n\n\n\n情報8人・機械6人・電気6人で合計20人 — 全員がどこかのグループに分けられている"
-  },
-  {
-    "objectID": "pandas.html#peek-groupby-code",
-    "href": "pandas.html#peek-groupby-code",
-    "title": "Pandas入門",
-    "section": "学科ごとに平均点を出す",
-    "text": "学科ごとに平均点を出す\n\n\ngroupby(\"学科\") に、集計する列と方法を続ける\n[\"平均点\"] で列を選び、.mean() で学科ごとの平均を出す\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\n\navg = df.groupby(\"学科\")[\"平均点\"].mean()\nprint(avg)\n\n学科\n情報    80.062500\n機械    71.625000\n電気    77.583333\nName: 平均点, dtype: float64\n\n\n\nCSVの 学科 列と、追加した 平均点 列を使う。結果は DataFrame ではなく Series"
-  },
-  {
-    "objectID": "pandas.html#groupbyの結果を確認",
-    "href": "pandas.html#groupbyの結果を確認",
-    "title": "Pandas入門",
-    "section": "groupbyの結果を確認",
-    "text": "groupbyの結果を確認\n\n\ngroupbyの結果も Series\nindex が学科名\nvalues が平均点\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\navg = df.groupby(\"学科\")[\"平均点\"].mean()\n\nprint(type(avg))\nprint(avg.index)\nprint(avg.values)\n\n&lt;class 'pandas.core.series.Series'&gt;\nIndex(['情報', '機械', '電気'], dtype='object', name='学科')\n[80.0625     71.625      77.58333333]\n\n\n\n\n\n\n\n\ngroupbyの結果\n\n\ngroupby の結果も Series\nindex  が「学科」\nvalues が「平均点」"
-  },
-  {
-    "objectID": "pandas.html#tweakgroupby-は分ける-集計する列-集計方法",
-    "href": "pandas.html#tweakgroupby-は分ける-集計する列-集計方法",
-    "title": "Pandas入門",
-    "section": "Tweak：groupby は「分ける × 集計する列 × 集計方法」",
-    "text": "Tweak：groupby は「分ける × 集計する列 × 集計方法」\n\n\nさっきのコード を1か所ずつ変えて実行\n\n\n\n学年でgroupbyする\n集計する列を欠席日数にする\n集計を最大値にする"
-  },
-  {
-    "objectID": "pandas.html#matplotlibで棒グラフにする",
-    "href": "pandas.html#matplotlibで棒グラフにする",
-    "title": "Pandas入門",
-    "section": "matplotlibで棒グラフにする",
-    "text": "matplotlibで棒グラフにする\n\n\ngroupby() で作った avg（Series）を棒グラフにする\nSeries を index と values に分けて matplotlib に渡す\n縦軸は ylim(0, 100) で0点〜満点に固定（棒グラフは0から見せる）\n\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\navg = df.groupby(\"学科\")[\"平均点\"].mean()\n\nplt.bar(avg.index, avg.values)\nplt.xlabel(\"学科\")\nplt.ylabel(\"平均点\")\nplt.title(\"学科ごとの平均点\")\nplt.ylim(0, 100)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPandasからmatplotlibへ\n\n\nSeries → index / values → matplotlib"
-  },
-  {
-    "objectID": "pandas.html#少し整える",
-    "href": "pandas.html#少し整える",
-    "title": "Pandas入門",
-    "section": "少し整える",
-    "text": "少し整える\n\n\n色（color=）とグリッド（grid()）を足すと、比較しやすくなる\ngrid(axis=\"y\", ...) は横線だけを薄く引く\n\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\navg = df.groupby(\"学科\")[\"平均点\"].mean()\n\nplt.bar(avg.index, avg.values, color=\"#2266CC\")\nplt.xlabel(\"学科\")\nplt.ylabel(\"平均点\")\nplt.title(\"学科ごとの平均点\")\nplt.ylim(0, 100)\nplt.grid(axis=\"y\", linestyle=\"--\", alpha=0.5)\nplt.show()"
-  },
-  {
-    "objectID": "pandas.html#演習高得点者を可視化",
-    "href": "pandas.html#演習高得点者を可視化",
-    "title": "Pandas入門",
-    "section": "演習：高得点者を可視化",
-    "text": "演習：高得点者を可視化\n\n\nstudents.csv の20人から4科目平均が80点以上の高得点者だけを抜き出し、棒グラフで比較せよ。\n\n\ndata/students.csv を読み込み、4科目の平均点の列を追加\n平均点が80点以上の生徒だけを条件抽出\n生徒名を横軸、平均点を縦軸に棒グラフを描く（y軸は 0〜100 に固定）\n\n\n\n解答例を見る\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\n\ndf[\"平均点\"] = df[subjects].mean(axis=1)\nhigh = df[df[\"平均点\"] &gt;= 80]\n\nplt.bar(high[\"名前\"], high[\"平均点\"], color=\"#2266CC\")\nplt.xlabel(\"名前\")\nplt.ylabel(\"平均点\")\nplt.title(\"平均点80点以上の生徒\")\nplt.ylim(0, 100)\nplt.grid(axis=\"y\", linestyle=\"--\", alpha=0.5)\nplt.show()"
-  },
-  {
-    "objectID": "pandas.html#まとめ",
-    "href": "pandas.html#まとめ",
-    "title": "Pandas入門",
-    "section": "まとめ",
-    "text": "まとめ\n\n\nDataFrame は 表\n\nデータ + index + columns\n\nSeries は 1列\n\n値 + index\n\npd.read_csv() でCSVを読み込める\n条件抽出は df[条件]\ngroupby() でグループごとの集計ができる\n集計結果の index / values を matplotlib に渡して可視化できる"
-  },
-  {
-    "objectID": "pandas.html#演習実データで明治の東京-vs-21世紀の東京",
-    "href": "pandas.html#演習実データで明治の東京-vs-21世紀の東京",
-    "title": "Pandas入門",
-    "section": "演習：実データで明治の東京 vs 21世紀の東京",
-    "text": "演習：実データで明治の東京 vs 21世紀の東京\n\n\n気象庁が公開している東京150年分の年平均気温をCSVで読み込み、明治の東京と21世紀の東京は平均で何度ちがうのかを自分のコードで確かめよ。\n\n\ntokyo_temp_annual.csv をダウンロードして data フォルダに置く\npd.read_csv() で読み込み、columns で列名を確認\n条件抽出で 明治（1911年以前） と 21世紀（2000年以降） の行に分ける\nそれぞれの気温の平均を比較（差分値も表示）\n\n\n\n解答例を見る\nimport pandas as pd\n\ndf_temp = pd.read_csv(\"data/tokyo_temp_annual.csv\")\nprint(df_temp.columns)  # (1) 列名を確認 → year と temp\n\nmeiji  = df_temp[df_temp[\"year\"] &lt;= 1911]\nrecent = df_temp[df_temp[\"year\"] &gt;= 2000]\n\nmeiji_avg  = meiji[\"temp\"].mean()\nrecent_avg = recent[\"temp\"].mean()\nprint(f\"明治の東京   : {meiji_avg:.1f} ℃\")\nprint(f\"21世紀の東京 : {recent_avg:.1f} ℃\")\nprint(f\"差           : {recent_avg - meiji_avg:.1f} ℃\")\n\n\n\n\n\n\n\n\n列名で読み書きできる強さ\n\n\n\n150行のデータでも、絞り込み1行＋平均1行で答えが出る\nNumPyの「何列目が年だっけ？」が、Pandasでは 列名 で済む"
+    "objectID": "presentation.html#発表のコツ",
+    "href": "presentation.html#発表のコツ",
+    "title": "発表",
+    "section": "発表のコツ",
+    "text": "発表のコツ\n\n\n20秒で言えるのは1つだけ — 担当スライドの「一番言いたいこと」を先に決め、それ以外を削る\n図を指して話す — 「この画面のこのボタンが」と指せば、原稿を暗記しなくても話せる\n接続を決めておく — 前の担当者の最後の一言を受けて始めると、チーム発表がひとつの物語になる\n1回は通し練習 — 6分は思ったより短い。めくり指示の練習もここで\n\n\n\n\n\n\n\n発表もプロトタイプ\n\n\n一度発表して質問された点が、そのまま 実装 と 最終課題 の改善リストになる"
   },
   {
     "objectID": "shortcuts.html#ショートカットキーを知るべき理由",
