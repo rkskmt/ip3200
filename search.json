@@ -1369,7 +1369,7 @@
     "href": "nicegui.html#保存するだけで反映オートリロード",
     "title": "NiceGUIで作るSPAモック",
     "section": "保存するだけで反映：オートリロード",
-    "text": "保存するだけで反映：オートリロード\n\n\nNiceGUIは、ファイルを保存すると サーバーが自動再起動し、ブラウザも自動更新 される\n\n最初に1回実行したら、あとは ==編集 → 保存 → すぐ確認== の繰り返し\nCtrl+C で止めて実行し直す必要がない\n\n\n\n\n\n\n\n\n\n用語\n意味\n\n\n\n\nオートリロード／ライブリロード\nファイル変更を検知してブラウザを自動リロード\n\n\nホットリロード\nプログラムを再起動せずに変更を反映（Python/FastAPI側）"
+    "text": "保存するだけで反映：オートリロード\n\n\nNiceGUIは、ファイルを保存すると サーバーが自動再起動し、ブラウザも自動更新 される\n\n最初に1回実行したら、あとは 編集 → 保存 → すぐ確認 の繰り返し\nCtrl+C で止めて実行し直す必要がない\n\n\n\n\n\n\n\n\n\n用語\n意味\n\n\n\n\nオートリロード／ライブリロード\nファイル変更を検知してブラウザを自動リロード\n\n\nホットリロード\nプログラムを再起動せずに変更を反映（Python/FastAPI側）"
   },
   {
     "objectID": "nicegui.html#最初の一歩hello-world",
@@ -1824,7 +1824,7 @@
     "href": "convergence.html#マインドマップ-vs-kj法",
     "title": "収束技法（KJ法・アイデアマップ）",
     "section": "マインドマップ vs KJ法",
-    "text": "マインドマップ vs KJ法\n\n\n\n\n\nマインドマップ\nKJ法\n\n\n\n\n発案者\nトニー・ブザン（英国）\n川喜田二郎（日本）\n\n\n目的\n個人 の思考整理・発想\nチーム のアイデア統合・構造化\n\n\n構造\n放射型（中心 → 枝）\n集合型（カード → グループ）\n\n\n思考タイプ\n発散 + 整理の中間\n収束（意味づけ）\n\n\n使う場面\nノート・構想・自己分析\nチーム発表・レポート構造\n\n\n\n\n\n\n\n\n\n使い分けの目安\n\n\n==1人なら マインドマップ、チームなら KJ法==。個人で枝を広げてから、チームで付箋にして持ち寄る合わせ技も定番"
+    "text": "マインドマップ vs KJ法\n\n\n\n\n\nマインドマップ\nKJ法\n\n\n\n\n発案者\nトニー・ブザン（英国）\n川喜田二郎（日本）\n\n\n目的\n個人 の思考整理・発想\nチーム のアイデア統合・構造化\n\n\n構造\n放射型（中心 → 枝）\n集合型（カード → グループ）\n\n\n思考タイプ\n発散 + 整理の中間\n収束（意味づけ）\n\n\n使う場面\nノート・構想・自己分析\nチーム発表・レポート構造\n\n\n\n\n\n\n\n\n\n使い分けの目安\n\n\n1人なら マインドマップ、チームなら KJ法。個人で枝を広げてから、チームで付箋にして持ち寄る合わせ技も定番"
   },
   {
     "objectID": "convergence.html#演習アイデアマップ",
@@ -2055,7 +2055,7 @@
     "href": "api.html#次回予告",
     "title": "APIでデータ取得",
     "section": "次回予告",
-    "text": "次回予告\n\n\n「七夕」の閲覧数、最大が中央値の300倍 — なにかがおかしい\n統計量だけでは、これ以上なにも分からない\n次回、大原則の出番：==Always plot your data first.==\n\n描けば、山の 正体 と 日付 が分かる\nそして可視化編の冒頭で見せた 謎の図 の正体も明かされる"
+    "text": "次回予告\n\n\n「七夕」の閲覧数、最大が中央値の300倍 — なにかがおかしい\n統計量だけでは、これ以上なにも分からない\n次回、大原則の出番：Always plot your data first.\n\n描けば、山の 正体 と 日付 が分かる\nそして可視化編の冒頭で見せた 謎の図 の正体も明かされる"
   },
   {
     "objectID": "api.html#参考リンク",
@@ -2594,7 +2594,7 @@
     "href": "final-project.html#提出物zipに4点",
     "title": "最終課題",
     "section": "提出物：zipに4点",
-    "text": "提出物：zipに4点\n\n\nファイル名は 「学籍番号_名前.zip」\n\n\n\n\n\n\n\n\n\n\n内容\n形式\n\n\n\n\n1\n635法などのカードで考えた 企画案 の画面（グループで発想したもの）\nPDF\n\n\n2\nFigmaで作った ワイヤーフレーム のスクショ\nPDF\n\n\n3\nテンプレートを元にNiceGUIで実装した ソースコード（.py 1ファイル + .json）\nzip\n\n\n4\nアプリを紹介する スライド1枚（タイトル・特徴・スクショ程度でOK）\nPDF\n\n\n\n\n\n\n\n\n\n3のzipは「入れ子」構造\n\n\n.py と .json をまとめたzipを、提出zipの中に入れる。==解凍して .py を実行するだけで動く== ことを提出前に必ず確認する"
+    "text": "提出物：zipに4点\n\n\nファイル名は 「学籍番号_名前.zip」\n\n\n\n\n\n\n\n\n\n\n内容\n形式\n\n\n\n\n1\n635法などのカードで考えた 企画案 の画面（グループで発想したもの）\nPDF\n\n\n2\nFigmaで作った ワイヤーフレーム のスクショ\nPDF\n\n\n3\nテンプレートを元にNiceGUIで実装した ソースコード（.py 1ファイル + .json）\nzip\n\n\n4\nアプリを紹介する スライド1枚（タイトル・特徴・スクショ程度でOK）\nPDF\n\n\n\n\n\n\n\n\n\n3のzipは「入れ子」構造\n\n\n.py と .json をまとめたzipを、提出zipの中に入れる。解凍して .py を実行するだけで動く ことを提出前に必ず確認する"
   },
   {
     "objectID": "final-project.html#ルール",
@@ -3105,7 +3105,7 @@
     "href": "numpy.html#本当に速いの-100万要素で実測",
     "title": "NumPy入門",
     "section": "本当に速いの？ — 100万要素で実測",
-    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 50.8 ミリ秒\nndarray:          1.76 ミリ秒\n→ 約 29 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
+    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 53.2 ミリ秒\nndarray:          0.45 ミリ秒\n→ 約 118 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
   },
   {
     "objectID": "numpy.html#その他長さやアクセス方法",
