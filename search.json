@@ -49,32 +49,11 @@
     "text": "Action API：基本URL\n\nhttps://ja.wikipedia.org/w/api.php\n\nパラメータはクエリ文字列（?action=...&prop=...）で渡す\n例：「桜」で記事を検索して上位5件を取得\n\nhttps://ja.wikipedia.org/w/api.php?action=query&list=search&srsearch=桜&format=json&srlimit=5"
   },
   {
-    "objectID": "wiki-api.html#action-api検索系",
-    "href": "wiki-api.html#action-api検索系",
+    "objectID": "wiki-api.html#action-apiエンドポイント",
+    "href": "wiki-api.html#action-apiエンドポイント",
     "title": "Wikipedia API リファレンス",
-    "section": "Action API：検索系",
-    "text": "Action API：検索系\n\n\n\n\n\n\n\n\n\nエンドポイント\n説明\nパラメータ例\n\n\n\n\naction=query&list=search\n記事検索\nsrsearch=桜&srlimit=10\n\n\naction=query&list=opensearch\nオートコンプリート\nsearch=桜&limit=8\n\n\naction=query&list=random\nランダムページ\nrnlimit=10&rnnamespace=0"
-  },
-  {
-    "objectID": "wiki-api.html#action-apiページ情報",
-    "href": "wiki-api.html#action-apiページ情報",
-    "title": "Wikipedia API リファレンス",
-    "section": "Action API：ページ情報",
-    "text": "Action API：ページ情報\n\n\n\n\n\n\n\n\n\nエンドポイント\n説明\nパラメータ例\n\n\n\n\naction=query&prop=info\n基本情報\ntitles=桜&prop=info\n\n\naction=query&prop=extracts\n要約テキスト\ntitles=桜&exintro&explaintext\n\n\naction=query&prop=images\n画像一覧\ntitles=桜&prop=images\n\n\naction=query&prop=categories\nカテゴリ\ntitles=桜&prop=categories\n\n\naction=query&prop=pageviews\n過去60日のPV\ntitles=桜&prop=pageviews"
-  },
-  {
-    "objectID": "wiki-api.html#action-apiリンク履歴",
-    "href": "wiki-api.html#action-apiリンク履歴",
-    "title": "Wikipedia API リファレンス",
-    "section": "Action API：リンク・履歴",
-    "text": "Action API：リンク・履歴\n\n\n\n\n\n\n\n\n\nエンドポイント\n説明\nパラメータ例\n\n\n\n\naction=query&prop=links\nページ内リンク\ntitles=桜&prop=links\n\n\naction=query&list=backlinks\n被リンク一覧\nbltitle=桜&bllimit=50\n\n\naction=query&prop=revisions\n編集履歴\ntitles=桜&prop=revisions&rvlimit=10\n\n\naction=query&list=recentchanges\n最近の編集\nrclimit=50&rcnamespace=0"
-  },
-  {
-    "objectID": "wiki-api.html#action-apiカテゴリユーザー",
-    "href": "wiki-api.html#action-apiカテゴリユーザー",
-    "title": "Wikipedia API リファレンス",
-    "section": "Action API：カテゴリ・ユーザー",
-    "text": "Action API：カテゴリ・ユーザー\n\n\n\n\n\n\n\n\n\nエンドポイント\n説明\nパラメータ例\n\n\n\n\naction=query&list=categorymembers\nカテゴリ内ページ\ncmtitle=Category:桜&cmlimit=50\n\n\naction=query&list=usercontribs\nユーザー編集履歴\nucuser=UserName&uclimit=50"
+    "section": "Action API：エンドポイント",
+    "text": "Action API：エンドポイント\n\n\n検索系ページ情報リンク・履歴カテゴリ・ユーザー\n\n\n\n\n\n\n\n\n\n\nエンドポイント\n説明\nパラメータ例\n\n\n\n\naction=query&list=search\n記事検索\nsrsearch=桜&srlimit=10\n\n\naction=query&list=opensearch\nオートコンプリート\nsearch=桜&limit=8\n\n\naction=query&list=random\nランダムページ\nrnlimit=10&rnnamespace=0\n\n\n\n\n\n\n\n\n\n\n\n\n\nエンドポイント\n説明\nパラメータ例\n\n\n\n\naction=query&prop=info\n基本情報\ntitles=桜&prop=info\n\n\naction=query&prop=extracts\n要約テキスト\ntitles=桜&exintro&explaintext\n\n\naction=query&prop=images\n画像一覧\ntitles=桜&prop=images\n\n\naction=query&prop=categories\nカテゴリ\ntitles=桜&prop=categories\n\n\naction=query&prop=pageviews\n過去60日のPV\ntitles=桜&prop=pageviews\n\n\n\n\n\n\n\n\n\n\n\n\n\nエンドポイント\n説明\nパラメータ例\n\n\n\n\naction=query&prop=links\nページ内リンク\ntitles=桜&prop=links\n\n\naction=query&list=backlinks\n被リンク一覧\nbltitle=桜&bllimit=50\n\n\naction=query&prop=revisions\n編集履歴\ntitles=桜&prop=revisions&rvlimit=10\n\n\naction=query&list=recentchanges\n最近の編集\nrclimit=50&rcnamespace=0\n\n\n\n\n\n\n\n\n\n\n\n\n\nエンドポイント\n説明\nパラメータ例\n\n\n\n\naction=query&list=categorymembers\nカテゴリ内ページ\ncmtitle=Category:桜&cmlimit=50\n\n\naction=query&list=usercontribs\nユーザー編集履歴\nucuser=UserName&uclimit=50"
   },
   {
     "objectID": "wiki-api.html#section-2",
@@ -91,18 +70,11 @@
     "text": "REST API v1：基本URL\n\nhttps://ja.wikipedia.org/api/rest_v1/\n\nパスにパラメータを埋め込む タイプ\n例：「桜」の記事概要を取得\n\nhttps://ja.wikipedia.org/api/rest_v1/page/summary/桜"
   },
   {
-    "objectID": "wiki-api.html#rest-api-v1ページ系",
-    "href": "wiki-api.html#rest-api-v1ページ系",
+    "objectID": "wiki-api.html#rest-api-v1エンドポイント",
+    "href": "wiki-api.html#rest-api-v1エンドポイント",
     "title": "Wikipedia API リファレンス",
-    "section": "REST API v1：ページ系",
-    "text": "REST API v1：ページ系\n\n\n\n\nエンドポイント\n説明\n形式\n\n\n\n\n/page/summary/{title}\nページ概要\nJSON\n\n\n/page/html/{title}\nHTMLコンテンツ\nHTML\n\n\n/page/mobile-sections/{title}\nモバイル用セクション\nJSON\n\n\n/page/media/{title}\nメディアファイル\nJSON\n\n\n/page/pdf/{title}\nPDF生成\nPDF\n\n\n/page/random/summary\nランダム概要\nJSON"
-  },
-  {
-    "objectID": "wiki-api.html#rest-api-v1変換フィード",
-    "href": "wiki-api.html#rest-api-v1変換フィード",
-    "title": "Wikipedia API リファレンス",
-    "section": "REST API v1：変換・フィード",
-    "text": "REST API v1：変換・フィード\n\n\n\n\nエンドポイント\n説明\n形式\n\n\n\n\n/transform/wikitext/to/html\nWikitext→HTML\nHTML\n\n\n/transform/html/to/wikitext\nHTML→Wikitext\nText\n\n\n/feed/featured/{year}/{month}/{day}\n注目記事\nJSON\n\n\n/feed/onthisday/{type}/{month}/{day}\n今日は何の日\nJSON"
+    "section": "REST API v1：エンドポイント",
+    "text": "REST API v1：エンドポイント\n\n\nページ系変換・フィード\n\n\n\n\n\nエンドポイント\n説明\n形式\n\n\n\n\n/page/summary/{title}\nページ概要\nJSON\n\n\n/page/html/{title}\nHTMLコンテンツ\nHTML\n\n\n/page/mobile-sections/{title}\nモバイル用セクション\nJSON\n\n\n/page/media/{title}\nメディアファイル\nJSON\n\n\n/page/pdf/{title}\nPDF生成\nPDF\n\n\n/page/random/summary\nランダム概要\nJSON\n\n\n\n\n\n\n\n\nエンドポイント\n説明\n形式\n\n\n\n\n/transform/wikitext/to/html\nWikitext→HTML\nHTML\n\n\n/transform/html/to/wikitext\nHTML→Wikitext\nText\n\n\n/feed/featured/{year}/{month}/{day}\n注目記事\nJSON\n\n\n/feed/onthisday/{type}/{month}/{day}\n今日は何の日\nJSON"
   },
   {
     "objectID": "wiki-api.html#section-3",
@@ -119,18 +91,11 @@
     "text": "AQS：基本URL\n\nhttps://wikimedia.org/api/rest_v1/metrics/\n\nAPI章 で使ったのはこれ\n例：「桜」の2024年3月の日別アクセス数\n\nhttps://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/ja.wikipedia/all-access/all-agents/桜/daily/20240301/20240331"
   },
   {
-    "objectID": "wiki-api.html#aqsページビュー",
-    "href": "wiki-api.html#aqsページビュー",
+    "objectID": "wiki-api.html#aqsエンドポイント",
+    "href": "wiki-api.html#aqsエンドポイント",
     "title": "Wikipedia API リファレンス",
-    "section": "AQS：ページビュー",
-    "text": "AQS：ページビュー\n\nper-article — 記事別PV（2015年7月〜）\npageviews/per-article/{project}/{access}/{agent}/{article}/{granularity}/{start}/{end}\n例：pageviews/per-article/ja.wikipedia/all-access/user/東京/daily/20240101/20240131\naggregate — プロジェクト全体PV（2015年7月〜）\npageviews/aggregate/{project}/{access}/{agent}/{granularity}/{start}/{end}\n例：pageviews/aggregate/ja.wikipedia/all-access/user/daily/20240101/20240131\ntop — 人気記事ランキング（2015年7月〜）\npageviews/top/{project}/{access}/{year}/{month}/{day}\n例：pageviews/top/ja.wikipedia/all-access/2024/06/01"
-  },
-  {
-    "objectID": "wiki-api.html#aqsその他統計",
-    "href": "wiki-api.html#aqsその他統計",
-    "title": "Wikipedia API リファレンス",
-    "section": "AQS：その他統計",
-    "text": "AQS：その他統計\n\nunique-devices — ユニークデバイス数（2016年1月〜）\nunique-devices/{project}/{access-site}/{granularity}/{start}/{end}\n例：unique-devices/ja.wikipedia/all-sites/daily/20240101/20240131\nedits — 編集統計（2001年1月〜）\nedits/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}\n例：edits/aggregate/ja.wikipedia/all-editor-types/all-page-types/daily/20240101/20240131\nregistered-users — 新規ユーザー登録（2001年1月〜）\nregistered-users/new/{project}/{granularity}/{start}/{end}\n例：registered-users/new/ja.wikipedia/daily/20240101/20240131"
+    "section": "AQS：エンドポイント",
+    "text": "AQS：エンドポイント\n\n\nページビューその他統計\n\n\nper-article — 記事別PV（2015年7月〜）\npageviews/per-article/{project}/{access}/{agent}/{article}/{granularity}/{start}/{end}\n例：pageviews/per-article/ja.wikipedia/all-access/user/東京/daily/20240101/20240131\naggregate — プロジェクト全体PV（2015年7月〜）\npageviews/aggregate/{project}/{access}/{agent}/{granularity}/{start}/{end}\n例：pageviews/aggregate/ja.wikipedia/all-access/user/daily/20240101/20240131\ntop — 人気記事ランキング（2015年7月〜）\npageviews/top/{project}/{access}/{year}/{month}/{day}\n例：pageviews/top/ja.wikipedia/all-access/2024/06/01\n\n\nunique-devices — ユニークデバイス数（2016年1月〜）\nunique-devices/{project}/{access-site}/{granularity}/{start}/{end}\n例：unique-devices/ja.wikipedia/all-sites/daily/20240101/20240131\nedits — 編集統計（2001年1月〜）\nedits/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}\n例：edits/aggregate/ja.wikipedia/all-editor-types/all-page-types/daily/20240101/20240131\nregistered-users — 新規ユーザー登録（2001年1月〜）\nregistered-users/new/{project}/{granularity}/{start}/{end}\n例：registered-users/new/ja.wikipedia/daily/20240101/20240131"
   },
   {
     "objectID": "wiki-api.html#section-4",
@@ -1628,14 +1593,14 @@
     "href": "list.html#リスト内包表記",
     "title": "リストをあらためて",
     "section": "リスト内包表記",
-    "text": "リスト内包表記\n\nfor 文を1行に圧縮してリストを作る書き方\n例えば、[0, 1, 4, 9, 16]のリストを作りたい時、\nsquares = []\nfor x in range(5):\n    squares.append(x * x)\nprint(squares)  # [0, 1, 4, 9, 16]\nと書けるけど、長いので以下のように一撃でも書ける。それがリスト内包表記\n# 基本形：[式 for 変数 in イテラブル]\nsquares = [x ** 2 for x in range(5)]\nprint(squares)  # [0, 1, 4, 9, 16]"
+    "text": "リスト内包表記\n\nfor 文を1行に圧縮してリストを作る書き方\n例えば、[0, 1, 4, 9, 16]のリストを作りたい時、\n\nfor文内包表記\n\n\nsquares = []\nfor x in range(5):\n    squares.append(x * x)\nprint(squares)  # [0, 1, 4, 9, 16]\nと書けるけど、長い\n\n\n同じリストが一撃で書ける。それがリスト内包表記\n# 基本形：[式 for 変数 in イテラブル]\nsquares = [x ** 2 for x in range(5)]\nprint(squares)  # [0, 1, 4, 9, 16]"
   },
   {
     "objectID": "list.html#リスト内包表記条件式付き",
     "href": "list.html#リスト内包表記条件式付き",
     "title": "リストをあらためて",
     "section": "リスト内包表記（条件式付き）",
-    "text": "リスト内包表記（条件式付き）\n\n例えば、0-99の整数のうち３の倍数以外のリストを作る場合、以下のようにfor文に条件を書くことになる。\n\nnot_divisible_by_3s = []\nfor x in range(100):\n    if x % 3 == 0:\n        continue\n    not_divisible_by_3s.append(x)\nprint(not_divisible_by_3s)\ncontinue は、その回の残りの処理をスキップして次の繰り返しへ進む命令（３の倍数のときは append せずに次へ）。\nこれをリスト内包表記だとこう書ける。短い\n# 条件付き：[式 for 変数 in イテラブル if 条件]\nnot_divisible_by_3s = [x for x in range(100) if x % 3 != 0]\nprint(not_divisible_by_3s)\n\n\n\n\n\n\nノート\n\n\nリスト内包表記はAtCoderでよく使う（次スライド）"
+    "text": "リスト内包表記（条件式付き）\n\n例えば、0-99の整数のうち３の倍数以外のリストを作る場合、\n\nfor文内包表記\n\n\nfor文に条件を書くことになる。\nnot_divisible_by_3s = []\nfor x in range(100):\n    if x % 3 == 0:\n        continue\n    not_divisible_by_3s.append(x)\nprint(not_divisible_by_3s)\ncontinue は、その回の残りの処理をスキップして次の繰り返しへ進む命令（３の倍数のときは append せずに次へ）。\n\n\n同じリストがこう書ける。短い\n# 条件付き：[式 for 変数 in イテラブル if 条件]\nnot_divisible_by_3s = [x for x in range(100) if x % 3 != 0]\nprint(not_divisible_by_3s)\n\n\n\n\n\n\n\n\n\nノート\n\n\nリスト内包表記はAtCoderでよく使う（次スライド）"
   },
   {
     "objectID": "list.html#リスト内包表記の使いどころ",
@@ -3140,7 +3105,7 @@
     "href": "numpy.html#本当に速いの-100万要素で実測",
     "title": "NumPy入門",
     "section": "本当に速いの？ — 100万要素で実測",
-    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 24.0 ミリ秒\nndarray:          0.30 ミリ秒\n→ 約 79 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
+    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 50.8 ミリ秒\nndarray:          1.76 ミリ秒\n→ 約 29 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
   },
   {
     "objectID": "numpy.html#その他長さやアクセス方法",

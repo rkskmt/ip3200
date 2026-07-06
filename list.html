@@ -531,32 +531,51 @@ rkskmt
 <div class="slide-body">
 <p><code>for</code> 文を1行に圧縮してリストを作る書き方</p>
 <p>例えば、[0, 1, 4, 9, 16]のリストを作りたい時、</p>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">for文</a></li><li><a href="#tabset-1-2">内包表記</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>squares <span class="op">=</span> []</span>
 <span id="cb21-2"><a></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
 <span id="cb21-3"><a></a>    squares.append(x <span class="op">*</span> x)</span>
 <span id="cb21-4"><a></a><span class="bu">print</span>(squares)  <span class="co"># [0, 1, 4, 9, 16]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>と書けるけど、長いので以下のように一撃でも書ける。それがリスト内包表記</p>
+<p>と書けるけど、長い</p>
+</div>
+<div id="tabset-1-2">
+<p>同じリストが一撃で書ける。それがリスト内包表記</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="co"># 基本形：[式 for 変数 in イテラブル]</span></span>
 <span id="cb22-2"><a></a>squares <span class="op">=</span> [x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)]</span>
 <span id="cb22-3"><a></a><span class="bu">print</span>(squares)  <span class="co"># [0, 1, 4, 9, 16]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="リスト内包表記条件式付き" class="slide level2">
 <h2>リスト内包表記（条件式付き）</h2>
 <div class="slide-body">
-<p>例えば、0-99の整数のうち３の倍数以外のリストを作る場合、以下のようにfor文に条件を書くことになる。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a></span>
-<span id="cb23-2"><a></a>not_divisible_by_3s <span class="op">=</span> []</span>
-<span id="cb23-3"><a></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
-<span id="cb23-4"><a></a>    <span class="cf">if</span> x <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb23-5"><a></a>        <span class="cf">continue</span></span>
-<span id="cb23-6"><a></a>    not_divisible_by_3s.append(x)</span>
-<span id="cb23-7"><a></a><span class="bu">print</span>(not_divisible_by_3s)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>例えば、0-99の整数のうち３の倍数以外のリストを作る場合、</p>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">for文</a></li><li><a href="#tabset-2-2">内包表記</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<p>for文に条件を書くことになる。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a>not_divisible_by_3s <span class="op">=</span> []</span>
+<span id="cb23-2"><a></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
+<span id="cb23-3"><a></a>    <span class="cf">if</span> x <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb23-4"><a></a>        <span class="cf">continue</span></span>
+<span id="cb23-5"><a></a>    not_divisible_by_3s.append(x)</span>
+<span id="cb23-6"><a></a><span class="bu">print</span>(not_divisible_by_3s)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>continue</code> は、その回の残りの処理をスキップして次の繰り返しへ進む命令（３の倍数のときは <code>append</code> せずに次へ）。</p>
-<p>これをリスト内包表記だとこう書ける。短い</p>
+</div>
+<div id="tabset-2-2">
+<p>同じリストがこう書ける。短い</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="co"># 条件付き：[式 for 変数 in イテラブル if 条件]</span></span>
 <span id="cb24-2"><a></a>not_divisible_by_3s <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>) <span class="cf">if</span> x <span class="op">%</span> <span class="dv">3</span> <span class="op">!=</span> <span class="dv">0</span>]</span>
 <span id="cb24-3"><a></a><span class="bu">print</span>(not_divisible_by_3s)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -634,7 +653,7 @@ rkskmt
 <li><strong>スライス</strong>で上位5名分（先頭5つ）と下位5名分（末尾5つ）をそれぞれ別のリストに分けて表示</li>
 <li><code>sorted</code> で <strong>元のリストを変えずに</strong>降順に並び替えた新しいリストを作り、<strong>上位3名の点数</strong>を表示</li>
 </ol>
-<div id="04fc6de5" class="cell" data-execution_count="1">
+<div id="ccabf239" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="co"># 1</span></span>
@@ -667,7 +686,7 @@ rkskmt
 <li><code>scores</code> から <strong>80点以上の点数だけ</strong>を取り出した新しいリストを作る</li>
 <li>標準入力で受け取った空白区切りの整数列を <strong>list of int</strong> に変換（AtCoder 頻出パターン）</li>
 </ol>
-<div id="cac45742" class="cell" data-execution_count="2">
+<div id="264cb4c6" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="co"># 1</span></span>
@@ -703,7 +722,7 @@ rkskmt
 <li><strong>C さんの3科目合計</strong>を表示</li>
 <li><strong>各学生の平均点</strong>を <code>for</code> 文で順に表示</li>
 </ol>
-<div id="2e1c4b6d" class="cell" data-execution_count="3">
+<div id="05d11d0a" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a><span class="co"># 1</span></span>
