@@ -1,0 +1,317 @@
+---
+title: "自作API+SPA"
+subtitle: "データの「口」を自分で作る"
+---
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+使う側から、作る側へ
+:::
+
+
+## APIを「作る」側になる
+
+- 前期の [APIでデータ取得](api.qmd) では、Wikipedia や東京都の ==他人が作ったAPI== を使った
+- 今回はその反対 — 自分のアプリに **自分のAPI** を付ける
+   - [NiceGUI](nicegui.qmd) のSPAは画面にデータを直接書き込むこともできるが、実際のWebサービスでは ==画面とデータのやり取りはAPI経由== が一般的
+- 道具は追加不要：NiceGUIが内包する **FastAPI** をそのまま使う
+
+```{.d2 sketch="true" width="88%"}
+direction: right
+B: Webブラウザ\nNiceGUI画面 {style.fill: "#e3f2fd"}
+S: Pythonサーバー {
+  style.fill: "#e8f5e9"
+  A: APIエンドポイント\n/api/questions
+  J: questions.json {style.fill: "#fff3e0"}
+  A -> J: 読み込み
+}
+B -> S.A: HTTP GET
+S.A -> B: JSONデータ
+```
+
+
+## REST API と HTTPメソッド
+
+- 今回作るのは **REST API** — もっとも一般的な形式。**HTTPメソッド** でやり取りの種類を表す
+
+| HTTPメソッド | 用途 | 例 |
+|----|----|----|
+| **GET** | データを取得する | 質問リストを取得 |
+| **POST** | データを送信する | 診断結果を保存 |
+| **PUT** | データを更新する | プロフィールを更新 |
+| **DELETE** | データを削除する | アカウントを削除 |
+
+- 取得だけなら **GET** で足りる — まずはGETをマスターする
+
+
+## 最もシンプルなAPI
+
+```python
+from nicegui import ui, app
+
+@app.get("/api/hello")
+def hello():
+    return {"message": "Hello, API!"}
+
+ui.label("APIテスト")
+ui.run()
+```
+
+- 実行して `http://localhost:8080/api/hello` を開くと、JSONが返ってくる
+
+```json
+{"message": "Hello, API!"}
+```
+
+| コード | 機能 |
+|----|----|
+| `from nicegui import app` | NiceGUI内部のFastAPIアプリを取り出す |
+| `@app.get("/api/hello")` | GETの `/api/hello` エンドポイントを作る |
+| `return {"message": "..."}` | ==辞書を返すと自動でJSONに変換== される |
+
+
+## `@` の行の正体：デコレータ
+
+- `@app.get(...)` のような `@` で始まる行を **デコレータ**（[decorator]{.en}）と呼ぶ
+   - ==すぐ下の関数に特別な機能を追加する== 記法
+   - ここでは「この関数をAPIエンドポイントとして登録する」という意味
+- 関数名は自由。URLと結びつくのは ==デコレータの引数== のほう
+
+::: {.callout-note}
+## どこかで見た形
+`on_click=say_hi` のコールバック登録と同じ発想 — **関数を部品として渡す・登録する** のはPythonの常套手段
+:::
+
+
+## データファイルを用意する
+
+- 実際のアプリは、データをファイルやデータベースから取得する — まずはJSONファイルから
+- [questions.json](data/questions.json) をダウンロードして `main.py` と同じフォルダに置く（中身は自作してもよい）
+
+```json
+{
+  "title": "あなたにぴったりの職業診断",
+  "questions": [
+    {"id": 1, "text": "休日は何をしたい？",
+     "choices": ["外で遊ぶ", "家でゆっくり", "友達と集まる"]},
+    {"id": 2, "text": "得意なことは？",
+     "choices": ["計算", "絵を描く", "話すこと"]}
+  ],
+  "results": {
+    "A": "あなたは営業職タイプ！人と話すのが得意です。",
+    "B": "あなたはデザイナータイプ！創造力が豊かです。"
+  }
+}
+```
+
+
+## エンドポイントでファイルを読む
+
+```python
+from nicegui import ui, app
+import json
+
+@app.get("/api/questions")
+def get_questions():
+    with open("questions.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return data
+
+ui.label("診断アプリ")
+ui.run()
+```
+
+- `http://localhost:8080/api/questions` でJSONファイルの中身がそのまま返る
+
+| コード | 機能 |
+|----|----|
+| `import json` | JSONを扱うPython標準ライブラリ |
+| `open("questions.json", "r", encoding="utf-8")` | 読み込みモードで開く（`encoding` で日本語対応） |
+| `json.load(f)` | JSONファイル → Pythonの辞書 |
+
+
+## 画面からAPIのデータを表示する
+
+```python
+from nicegui import ui, app
+import json
+
+@app.get("/api/questions")
+def get_questions():
+    with open("questions.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return data
+
+def load_questions():
+    data = get_questions()          # API関数を直接呼び出す
+    ui.label(data["title"]).classes("text-2xl font-bold")
+    for question in data["questions"]:
+        with ui.card().classes("w-full"):
+            ui.label(f"Q{question['id']}: {question['text']}").classes("font-bold")
+            for choice in question["choices"]:
+                ui.label(f"・{choice}").classes("ml-4")
+
+ui.button("質問を読み込む", on_click=load_questions).classes("bg-blue-500 text-white p-2 rounded")
+
+ui.run()
+```
+
+
+## なぜ関数を直接呼べるのか
+
+- NiceGUIでは、フロントエンド（ブラウザ側）とバックエンド（Pythonサーバー側）が ==同じプロセス== で動いている
+   - だからAPI用の関数 `get_questions()` を **普通のPython関数として** 呼び出せる — HTTPリクエストを書く必要がない
+- 一方で、ブラウザから直接 `http://localhost:8080/api/questions` にもアクセスできる
+   - 将来、**別のアプリ**（スマホアプリ・他人のプログラム）からも同じデータを取れる — ==口をAPIにしておく価値== はここにある
+
+::: {.callout-tip}
+## 1つの関数が2つの顔を持つ
+画面から見れば「データ取得関数」、外から見れば「APIエンドポイント」。この二刀流がNiceGUIの手軽さ
+:::
+
+
+## 本当にHTTPで取りに行く
+
+- 直接呼び出しは手軽だが、データは ==HTTPを通っていない==（API利用の練習としてはショートカット）
+- **httpx**（NiceGUIが同梱するHTTPクライアント）を使うと、自分のAPIに ==本物のリクエスト== を送れる
+
+```python
+from nicegui import ui, app
+import json
+import httpx
+
+@app.get("/api/questions")
+def get_questions():
+    with open("questions.json", "r", encoding="utf-8") as f:
+        return json.load(f)
+
+async def load_questions():
+    async with httpx.AsyncClient() as client:
+        response = await client.get("http://localhost:8080/api/questions")
+    data = response.json()
+    ui.label(data["title"]).classes("text-2xl font-bold")
+
+ui.button("HTTPで読み込む", on_click=load_questions)
+ui.run()
+```
+
+- `async def` + `await` は「通信を **待つ間、画面を止めない**」ための書き方
+   - コールバックは async な関数でもそのまま登録できる
+
+::: {.callout-warning}
+## ここで `requests` を使ってはいけない
+`requests.get()` は応答を **待つ間プログラム全体を止める**。相手が自分自身のサーバーだと、==止まっている本人は応答を返せない== — アプリごとフリーズする。自分のAPIを呼ぶときは httpx + `await` 一択
+:::
+
+
+## **演習**：土台コードを動かす {.badge-practice}
+
+::: {.prompt}
+土台コードと [questions.json](data/questions.json) を同じフォルダに置いて実行し、ボタンで質問一覧が表示されることを確かめよ。
+:::
+
+```python
+from nicegui import ui, app
+import json
+
+@app.get("/api/questions")
+def get_questions():
+    with open("questions.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return data
+
+container = ui.column().classes("w-full gap-4 p-4")
+
+def load_data():
+    container.clear()               # 前の表示を消してから
+    data = get_questions()          # 取り直して
+    with container:                 # 表示し直す
+        ui.label(data["title"]).classes("text-3xl font-bold mb-4")
+        for question in data["questions"]:
+            with ui.card().classes("w-full"):
+                ui.label(f"Q{question['id']}: {question['text']}").classes("font-bold text-lg")
+                for choice in question["choices"]:
+                    ui.label(f"・{choice}").classes("ml-4")
+
+ui.button("質問を読み込む", on_click=load_data).classes("bg-blue-500 text-white p-3 rounded-lg")
+
+ui.run()
+```
+
+
+## **演習**：エンドポイントを増やす {.badge-practice}
+
+::: {.prompt}
+土台コードに次の3つの機能を追加せよ（上から順に。各問、ブラウザでURLを直接開いて動作確認すること）。
+:::
+
+1. `/api/results` エンドポイントを追加し、`results` 部分だけを返す
+2. `/api/questions/1` のように **IDを指定した質問だけ** 返す — URLの一部は変数として受け取れる：
+
+```python
+@app.get("/api/questions/{question_id}")
+def get_question(question_id: int):
+    ...
+```
+
+3. 存在しないIDが指定されたら `{"error": "Not found"}` を返す（`if` で判定）
+
+::: {.callout-tip}
+## 動作確認もGETなら簡単
+GETのAPIは ==URLをブラウザで開くだけ== でテストできる。`/api/questions/1` と `/api/questions/999` の両方を開いて比べる
+:::
+
+
+## **演習**：データが変わったら {.badge-practice}
+
+::: {.prompt}
+アプリを起動したまま `questions.json` に質問を1問書き足して保存し、「質問を読み込む」ボタンだけで新しい質問が表示されることを確かめよ。
+:::
+
+0. アプリを起動して質問を表示しておく
+1. `questions.json` に `id: 4` の質問を追加して保存
+2. ブラウザの再読み込みは **せず**、ボタンだけ押す（`container.clear()` → 再取得の効果）
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "エンドポイント追加の解答例を表示"
+from nicegui import ui, app
+import json
+
+def read_data():
+    with open("questions.json", "r", encoding="utf-8") as f:
+        return json.load(f)
+
+@app.get("/api/questions")
+def get_questions():
+    return read_data()
+
+@app.get("/api/results")
+def get_results():
+    return read_data()["results"]
+
+@app.get("/api/questions/{question_id}")
+def get_question(question_id: int):
+    for question in read_data()["questions"]:
+        if question["id"] == question_id:
+            return question
+    return {"error": "Not found"}
+
+ui.label("診断アプリAPI")
+ui.run()
+```
+
+
+## まとめ
+
+- **API** — プログラム同士が情報をやり取りする仕組み。天気アプリもメッセージアプリも、裏ではAPIでデータを取っている
+- **`@app.get()` デコレータ** — 関数1つがそのままエンドポイントになる
+- **`json.load()`** — JSONファイルをPythonの辞書として読む
+- **画面とデータの分離** — 表示は `container.clear()` → 再取得 → 再表示のサイクル
+- **httpx + `await`** — 自分のAPIに本物のHTTPリクエストを送る形。[最終課題](final-project.qmd) のテンプレートはこの形で書かれている
+- ここまでで部品はそろった
+   - アイデア（[発想](ideation.qmd)→[収束](convergence.qmd)→[評価](payoff-matrix.qmd)）、設計図（[Figma](figma.qmd)）、動く画面（[NiceGUI](nicegui.qmd)）、データの口（API）
+   - 全部つなげるのが [最終課題](final-project.qmd)

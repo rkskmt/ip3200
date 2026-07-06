@@ -11,6 +11,10 @@
   <div id="search-results" class="search-ui-results"></div>
 </div>
 
+::::: {.panel-tabset}
+
+### 前期
+
 :::: {.lectures}
 
 ### PCの使い方アップデート {.sec .cat1}
@@ -46,6 +50,35 @@
 :::
 
 ::::
+
+### 後期
+
+:::: {.lectures}
+
+### 課題解決・アイデア創出 {.sec .cat1}
+::: {.grid .cat1}
+- [発想法（発散思考）](ideation.qmd)
+- [オズボーンのチェックリスト・SCAMPER](scamper.qmd)
+- [収束技法（KJ法・アイデアマップ）](convergence.qmd)
+- [ペイオフマトリクス](payoff-matrix.qmd)
+:::
+
+### ワイヤーフレーム・発表 {.sec .cat2}
+::: {.grid .cat2}
+- [Figmaでワイヤーフレーム](figma.qmd)
+- [発表](presentation.qmd)
+:::
+
+### 実装 {.sec .cat3}
+::: {.grid .cat3}
+- [NiceGUIで作るSPAモック](nicegui.qmd)
+- [自作API+SPA](api-spa.qmd)
+- [最終課題](final-project.qmd)
+:::
+
+::::
+
+:::::
 
 <script>
 document.addEventListener('keydown', function(e) {
