@@ -261,9 +261,9 @@ rkskmt
 <li>seaborn や pandas の plotting 機能など、派生ライブラリも多い</li>
 </ul></li>
 </ul>
-<p>ターミナルからインストール<span class="fw-colon">：</span></p>
+<p>ターミナルからインストール：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>pip install matplotlib japanize-matplotlib</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>冒頭で import（<code>plt</code> としてインポートするのが一般的）<span class="fw-colon">：</span></p>
+<p>冒頭で import（<code>plt</code> としてインポートするのが一般的）：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-2"><a></a><span class="im">import</span> japanize_matplotlib</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -274,7 +274,7 @@ rkskmt
 <ul>
 <li>matplotlib は多くの環境で <strong>日本語が文字化け</strong> する</li>
 </ul>
-<div id="2fa8173a" class="cell" data-execution_count="1">
+<div id="7daf6d43" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -337,11 +337,11 @@ rkskmt
 <h2>東京の気温変化を図示する</h2>
 <div class="slide-body">
 <ul>
-<li><strong>気象庁の実測データ</strong><span class="fw-colon">：</span>東京の月別平均気温
+<li><strong>気象庁の実測データ</strong>：東京の月別平均気温
 <ul>
 <li><strong>1900年</strong> と <strong>2024年</strong>、124年離れた2つの年</li>
 </ul></li>
-<li>材料データ（以下をコピペ）<span class="fw-colon">：</span></li>
+<li>材料データ（以下をコピペ）：</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a></a></span>
@@ -369,7 +369,7 @@ rkskmt
 <section id="まずは点のプロット" class="slide level2">
 <h2>まずは点のプロット</h2>
 <div class="slide-body">
-<div id="98003f16" class="cell" data-execution_count="2">
+<div id="ab350cd3" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -399,7 +399,7 @@ rkskmt
 <section id="peek-line-code" class="slide level2">
 <h2>点に線を付け足す</h2>
 <div class="slide-body">
-<div id="c5fa2022" class="cell" data-execution_count="3">
+<div id="ac4ce806" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -424,8 +424,8 @@ rkskmt
 </ul>
 </div>
 </section>
-<section id="tweak線の見た目" class="slide level2 badge-practice">
-<h2><strong>Tweak</strong><span class="fw-colon">：</span>線の見た目</h2>
+<section id="tweak-線の見た目" class="slide level2 badge-practice">
+<h2><strong>Tweak</strong> 線の見た目</h2>
 <div class="slide-body">
 <ul>
 <li><a href="#/peek-line-code" class="peek">さっきのコード</a> の <code>"o-"</code> を <strong>書き換えて実行</strong></li>
@@ -466,7 +466,7 @@ rkskmt
 <ul>
 <li><strong>一点鎖線</strong>（<code>─・─・</code>）にするには、どう書くと思う？
 <ul>
-<li>答え<span class="fw-colon">：</span><a href="#/peek-fmt" class="peek">線の早見表</a></li>
+<li>答え：<a href="#/peek-fmt" class="peek">線の早見表</a></li>
 </ul></li>
 </ul>
 </div>
@@ -475,7 +475,7 @@ rkskmt
 </div>
 </section>
 <section id="演習二次関数を描く" class="slide level2 badge-practice scrollable">
-<h2>演習<span class="fw-colon">：</span>二次関数を描く</h2>
+<h2>演習：二次関数を描く</h2>
 <div class="slide-body">
 <div class="prompt">
 <p><span class="math inline">\(y = x^2 - 2x + 3\)</span> を <strong>定義域 <span class="math inline">\(-2 \leq x \leq 5\)</span></strong> で描け。</p>
@@ -501,7 +501,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="2042fe12" class="cell" data-execution_count="4">
+<div id="f8a1f8d9" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -525,11 +525,11 @@ rkskmt
 <li><code>plt.plot()</code> を <strong>2回呼ぶと重ね描き</strong> になる</li>
 <li>どの線が何かを示すために<strong>凡例</strong>も書ける
 <ul>
-<li>plot関数に引数<span class="fw-colon">：</span><code>label=</code></li>
+<li>plot関数に引数：<code>label=</code></li>
 <li>その後<code>plt.legend()</code>を呼ぶ</li>
 </ul></li>
 </ul>
-<div id="81144f48" class="cell" data-execution_count="5">
+<div id="0b3a5908" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -558,8 +558,8 @@ rkskmt
 </ul>
 </div>
 </section>
-<section id="tweak凡例" class="slide level2 badge-practice">
-<h2><strong>Tweak</strong><span class="fw-colon">：</span>凡例</h2>
+<section id="tweak-凡例" class="slide level2 badge-practice">
+<h2><strong>Tweak</strong> 凡例</h2>
 <div class="slide-body">
 <ul>
 <li><a href="#/peek-legend-code" class="peek">前のスライドのコード</a> を <strong>1か所だけ変えて</strong>実行</li>
@@ -597,7 +597,7 @@ rkskmt
 <li><code>plt.title()</code> で <strong>グラフタイトル</strong></li>
 <li><code>plt.grid(True)</code> で <strong>グリッド線</strong></li>
 </ul>
-<div id="063a77c4" class="cell" data-execution_count="6">
+<div id="63db5220" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -649,7 +649,7 @@ rkskmt
 <li><code>plt.xlim(a, b)</code> / <code>plt.ylim(a, b)</code> で軸の範囲を固定</li>
 <li>何も指定しないと <strong>データの範囲＋少し余白</strong> が自動で選ばれる</li>
 </ul>
-<div id="722788e0" class="cell" data-execution_count="7">
+<div id="a49fb393" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -691,8 +691,8 @@ rkskmt
 </div>
 </div>
 </section>
-<section id="tweak軸の範囲で印象を操る" class="slide level2 badge-practice">
-<h2><strong>Tweak</strong><span class="fw-colon">：</span>軸の範囲で印象を操る</h2>
+<section id="tweak-軸の範囲で印象を操る" class="slide level2 badge-practice">
+<h2><strong>Tweak</strong> 軸の範囲で印象を操る</h2>
 <div class="slide-body">
 <ul>
 <li><a href="#/peek-axis-code" class="peek">さっきのコード</a> の軸だけ変えて実行 — 同じデータでも印象がどう動くか</li>
@@ -740,12 +740,12 @@ rkskmt
 <ul>
 <li><code>plt.subplot(行数, 列数, 場所番号)</code> で碁盤の目状に並べる</li>
 <li>場所番号は <strong>1始まり、左上から右へ</strong></li>
-<li>例<span class="fw-colon">：</span><code>plt.subplot(2, 2, 3)</code> は2×2の3番目（左下）</li>
+<li>例：<code>plt.subplot(2, 2, 3)</code> は2×2の3番目（左下）</li>
 </ul>
 <div style="text-align:center; font-family:monospace;">
 <p>1 │ 2<br> ─┼─<br> 3 │ 4</p>
 </div>
-<div id="f587d732" class="cell" data-execution_count="8">
+<div id="d3643bc4" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb10-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -793,9 +793,9 @@ rkskmt
 </div>
 </section>
 <section id="ここまでの成果図は育てる" class="slide level2">
-<h2>ここまでの成果<span class="fw-colon">：</span>図は「育てる」</h2>
+<h2>ここまでの成果：図は「育てる」</h2>
 <div class="slide-body">
-<div id="4640f27d" class="cell" data-execution_count="9">
+<div id="8147077f" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -806,7 +806,7 @@ rkskmt
 </div>
 <ul>
 <li><strong>同じデータ</strong>。でも伝わり方は別物</li>
-<li>育てた手順<span class="fw-colon">：</span>点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲</li>
+<li>育てた手順：点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲</li>
 </ul>
 </div>
 </section>
@@ -816,14 +816,14 @@ rkskmt
 <ul>
 <li>年平均気温150年分のCSV（気象庁）を <code>np.loadtxt</code> で読み込む
 <ul>
-<li>データ<span class="fw-colon">：</span><a href="data/tokyo_temp_annual.csv">tokyo_temp_annual.csv</a>（<code>data</code>フォルダを作成して中に置く）</li>
+<li>データ：<a href="data/tokyo_temp_annual.csv">tokyo_temp_annual.csv</a>（<code>data</code>フォルダを作成して中に置く）</li>
 </ul></li>
 <li>大量の点は <code>plt.scatter()</code>
 <ul>
 <li><code>alpha</code> で <strong>透明度</strong> を指定すると重なりが見やすい</li>
 </ul></li>
 </ul>
-<div id="187d2a79" class="cell" data-execution_count="10">
+<div id="379e15c0" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb11-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -851,7 +851,7 @@ rkskmt
 </div>
 </section>
 <section id="結論東京は暑くなったただし" class="slide level2 badge-important">
-<h2>結論<span class="fw-colon">：</span>東京は暑くなった。ただし</h2>
+<h2>結論：東京は暑くなった。ただし</h2>
 <div class="slide-body">
 <ul>
 <li>150年で <strong>約4℃上昇</strong></li>
@@ -861,7 +861,7 @@ rkskmt
 </div>
 </section>
 <section id="peek-hist-code" class="slide level2">
-<h2>ヒストグラム<span class="fw-colon">：</span>所得分布の可視化</h2>
+<h2>ヒストグラム：所得分布の可視化</h2>
 <div class="slide-body">
 <ul>
 <li>前回の<a href="./visualize.html#peek-income" class="peek">厚労省の所得分布</a>は <strong>ヒストグラム</strong>（区間ごとに数えるグラフ）だった</li>
@@ -872,7 +872,7 @@ rkskmt
 </ul></li>
 </ul>
 <div class="fig">
-<div id="5af5dd0d" class="cell" data-execution_count="11">
+<div id="f0a2032e" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -920,8 +920,8 @@ rkskmt
 </div>
 </div>
 </section>
-<section id="tweakビンの数で分布が化ける" class="slide level2 badge-practice">
-<h2><strong>Tweak</strong><span class="fw-colon">：</span>ビンの数で分布が化ける</h2>
+<section id="tweak-ビンの数で分布が化ける" class="slide level2 badge-practice">
+<h2><strong>Tweak</strong> ビンの数で分布が化ける</h2>
 <div class="slide-body">
 <ul>
 <li><a href="#/peek-hist-code" class="peek">さっきのコード</a> の <code>bins</code> だけ変えて実行 — 同じ29人なのに形が変わる</li>
@@ -1032,7 +1032,7 @@ rkskmt
 </div>
 </section>
 <section id="演習謎のデータをプロットせよ" class="slide level2 badge-practice scrollable">
-<h2>演習<span class="fw-colon">：</span>謎のデータをプロットせよ</h2>
+<h2>演習：謎のデータをプロットせよ</h2>
 <div class="slide-body">
 <div class="prompt">
 <p>前回見た <a href="./visualize.html#peek-datasaurus" class="peek"><strong>Datasaurus Dozen 13個のうちの1つ</strong></a>（恐竜ではない）を散布図にして、統計量（<span class="math inline">\(\bar{x} = 54.27\)</span>、<span class="math inline">\(\bar{y} = 47.84\)</span>、<span class="math inline">\(r = -0.06\)</span>）からは見えない<strong>正体</strong>を確かめよ。</p>
@@ -1043,7 +1043,7 @@ rkskmt
 <li><code>data[:, 0]</code> と <code>data[:, 1]</code> で <code>x</code>, <code>y</code> を取り出す</li>
 <li><code>plt.scatter</code> でプロットし、軸ラベル・タイトルをつける</li>
 </ol>
-<div id="9e97631a" class="cell" data-execution_count="12">
+<div id="1df5a358" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1065,7 +1065,7 @@ rkskmt
 </div>
 </section>
 <section id="演習アンスコムの四重奏を再現" class="slide level2 badge-practice scrollable">
-<h2>演習<span class="fw-colon">：</span>アンスコムの四重奏を再現</h2>
+<h2>演習：アンスコムの四重奏を再現</h2>
 <div class="slide-body">
 <div class="prompt">
 <p>前回見た<strong>アンスコムの四重奏</strong>を、2×2のサブプロット＋回帰直線つき散布図で再現せよ。</p>
@@ -1104,7 +1104,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="8eaf86dc" class="cell" data-execution_count="13">
+<div id="857248e3" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1137,7 +1137,7 @@ rkskmt
 </div>
 </section>
 <section id="演習好きな画像を表示" class="slide level2 badge-practice">
-<h2>演習<span class="fw-colon">：</span>好きな画像を表示</h2>
+<h2>演習：好きな画像を表示</h2>
 <div class="slide-body">
 <ul>
 <li>matplotlib は <strong>画像も描画できる</strong> — <a href="https://matplotlib.org/stable/tutorials/images.html">公式チュートリアル</a></li>
@@ -1159,13 +1159,13 @@ rkskmt
 <h2>まとめ</h2>
 <div class="slide-body">
 <ul>
-<li><strong>matplotlib</strong><span class="fw-colon">：</span>「東京は暑くなったのか」を1枚のグラフに育てた
+<li><strong>matplotlib</strong>：「東京は暑くなったのか」を1枚のグラフに育てた
 <ul>
 <li>点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲</li>
 <li>散布図で150年、ヒストグラムで分布</li>
 </ul></li>
-<li>装飾の優先順位<span class="fw-colon">：</span><strong>軸ラベル・凡例・タイトル</strong> — 揃っていない図は資料に載せない</li>
-<li><strong>可視化編の謎</strong>（1日だけの大きな山）は <strong>API編で回収する</strong></li>
+<li>装飾の優先順位：<strong>軸ラベル・凡例・タイトル</strong> — 揃っていない図は資料に載せない</li>
+<li><a href="./visualize.html#peek-mystery" class="peek">データの可視化の冒頭の謎</a>（1日だけの大きな山）の正体は、<a href="./api-viz.html">APIデータを可視化する</a>で明かされる</li>
 </ul>
 </div>
 </section>
@@ -1182,7 +1182,7 @@ rkskmt
 </div>
 </section>
 <section id="peek-fmt" class="slide level2">
-<h2>付録<span class="fw-colon">：</span>線とマーカーの早見表</h2>
+<h2>付録：線とマーカーの早見表</h2>
 <div class="slide-body">
 <ul>
 <li><code>plt.plot(x, y, "o-")</code> の第3引数は <strong>マーカー・線種・色</strong> を文字で並べたもの</li>
@@ -1245,7 +1245,7 @@ rkskmt
 </table>
 </div></div>
 <ul>
-<li>組み合わせ例<span class="fw-colon">：</span><code>"o--"</code>（丸＋破線）・<code>"s:"</code>（四角＋点線）・<code>"r-."</code>（赤の一点鎖線）</li>
+<li>組み合わせ例：<code>"o--"</code>（丸＋破線）・<code>"s:"</code>（四角＋点線）・<code>"r-."</code>（赤の一点鎖線）</li>
 </ul>
 
 

@@ -4,14 +4,14 @@
     "href": "wiki-api.html#このスライドの位置づけ",
     "title": "Wikipedia API リファレンス",
     "section": "このスライドの位置づけ",
-    "text": "このスライドの位置づけ\n\n\nこれは リファレンス（参照資料） です\n全部覚える必要はない — 必要なときに引く\nAPI章 で基本を学んでから参照すること\n\n\n\n\n\n\n\n使い方\n\n\n\n「こういうデータ欲しいな」と思う\nこのスライドで どのAPIか を探す\nエンドポイントとパラメータをコピーして使う"
+    "text": "このスライドの位置づけ\n\n\nこれは リファレンス（参照資料） — 全部覚える必要はない、必要なときに引く\n前提知識はAPIでデータ取得（requests、エンドポイント、User-Agent）\n\n\n\n\n\n\n\n使い方\n\n\n\n「こういうデータ欲しいな」と思う\nこのスライドで どのAPIか を探す\nエンドポイントとパラメータをコピーして使う"
   },
   {
     "objectID": "wiki-api.html#どのapiを使うべきか",
     "href": "wiki-api.html#どのapiを使うべきか",
     "title": "Wikipedia API リファレンス",
     "section": "どのAPIを使うべきか",
-    "text": "どのAPIを使うべきか\n\n\n\n\n\n\n\n色\nAPI\n用途\n例\n\n\n\n\n緑\nAQS\nページビュー統計\nAPI章 で使用\n\n\n青\nREST API v1\n概要をサクッと\n/page/summary/桜\n\n\n橙\nAction API\n検索・カテゴリ・履歴\naction=query&list=search\n\n\n桃\nWikidata\n機械可読な構造化データ\nentities/items/Q1490"
+    "text": "どのAPIを使うべきか\n\n\n\n\n\n\n\n色\nAPI\n用途\n例\n\n\n\n\n緑\nAQS\nページビュー統計\nAPIでデータ取得で使用\n\n\n青\nREST API v1\n概要をサクッと\n/page/summary/桜\n\n\n橙\nAction API\n検索・カテゴリ・履歴\naction=query&list=search\n\n\n桃\nWikidata\n機械可読な構造化データ\nentities/items/Q1490"
   },
   {
     "objectID": "wiki-api.html#section",
@@ -88,7 +88,7 @@
     "href": "wiki-api.html#aqs基本url",
     "title": "Wikipedia API リファレンス",
     "section": "AQS：基本URL",
-    "text": "AQS：基本URL\n\nhttps://wikimedia.org/api/rest_v1/metrics/\n\nAPI章 で使ったのはこれ\n例：「桜」の2024年3月の日別アクセス数\n\nhttps://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/ja.wikipedia/all-access/all-agents/桜/daily/20240301/20240331"
+    "text": "AQS：基本URL\n\nhttps://wikimedia.org/api/rest_v1/metrics/\n\nAPIでデータ取得で使ったのはこれ\n例：「桜」の2024年3月の日別アクセス数\n\nhttps://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/ja.wikipedia/all-access/all-agents/桜/daily/20240301/20240331"
   },
   {
     "objectID": "wiki-api.html#aqsエンドポイント",
@@ -130,7 +130,7 @@
     "href": "wiki-api.html#中身を取り出す",
     "title": "Wikipedia API リファレンス",
     "section": "中身を取り出す",
-    "text": "中身を取り出す\n\n\nキーがページID、値がページ情報の辞書\n.items() でキーと値のペアを順に取り出す\n\nfor page_id, page_info in data[\"query\"][\"pages\"].items():\n    if \"pageprops\" in page_info:\n        wikidata_id = page_info[\"pageprops\"].get(\"wikibase_item\")\n        print(f\"Wikidata ID: {wikidata_id}\")  # Q1490"
+    "text": "中身を取り出す\n\n\nキーがページID、値がページ情報の辞書\n.items() でキーと値のペアを順に取り出す\n\nfor page_id, page_info in data[\"query\"][\"pages\"].items():\n    wikidata_id = page_info[\"pageprops\"][\"wikibase_item\"]\n    print(f\"Wikidata ID: {wikidata_id}\")  # Q1490"
   },
   {
     "objectID": "wiki-api.html#section-5",
@@ -151,14 +151,14 @@
     "href": "wiki-api.html#action-apiページ詳細",
     "title": "Wikipedia API リファレンス",
     "section": "Action API：ページ詳細",
-    "text": "Action API：ページ詳細\n\n\nformatversion: 2 を付けると、pages が「ページIDをキーにした辞書」ではなく リスト で返る — ループで素直に回せる\n\ndetail_params = {\n    \"action\": \"query\",\n    \"prop\": \"extracts|info|images\",\n    \"titles\": \"桜\",\n    \"format\": \"json\",\n    \"formatversion\": 2,   # JSONが扱いやすくなる\n    \"exintro\": True,      # 導入部分のみ\n    \"explaintext\": True,  # HTMLタグ除去\n    \"redirects\": True     # リダイレクト自動追従\n}\nr = requests.get(\"https://ja.wikipedia.org/w/api.php\",\n                 params=detail_params, headers=headers)\npages = r.json()[\"query\"][\"pages\"]\n\nfor page in pages:\n    print(f\"タイトル: {page.get('title')}\")\n    print(f\"概要: {page.get('extract', '')[:100]}...\")"
+    "text": "Action API：ページ詳細\n\n\nformatversion: 2 を付けると、pages が「ページIDをキーにした辞書」ではなく リスト で返る — ループで素直に回せる\n\nimport requests\n\nheaders = {\"User-Agent\": \"example.com/lesson\"}\n\ndetail_params = {\n    \"action\": \"query\",\n    \"prop\": \"extracts|info|images\",\n    \"titles\": \"桜\",\n    \"format\": \"json\",\n    \"formatversion\": 2,   # JSONが扱いやすくなる\n    \"exintro\": True,      # 導入部分のみ\n    \"explaintext\": True,  # HTMLタグ除去\n    \"redirects\": True     # リダイレクト自動追従\n}\nr = requests.get(\"https://ja.wikipedia.org/w/api.php\",\n                 params=detail_params, headers=headers)\npages = r.json()[\"query\"][\"pages\"]\n\nfor page in pages:\n    print(f\"タイトル: {page['title']}\")\n    print(f\"概要: {page['extract'][:100]}...\")"
   },
   {
     "objectID": "wiki-api.html#action-apiカテゴリ-ランダム",
     "href": "wiki-api.html#action-apiカテゴリ-ランダム",
     "title": "Wikipedia API リファレンス",
     "section": "Action API：カテゴリ + ランダム",
-    "text": "Action API：カテゴリ + ランダム\n\n# カテゴリメンバー\ncats_params = {\n    \"action\": \"query\",\n    \"list\": \"categorymembers\",\n    \"cmtitle\": \"Category:日本の桜\",\n    \"format\": \"json\",\n    \"cmlimit\": 10\n}\nr = requests.get(\"https://ja.wikipedia.org/w/api.php\",\n                 params=cats_params, headers=headers)\nmembers = r.json()[\"query\"][\"categorymembers\"]\nfor m in members:\n    print(f\"- {m['title']}\")\n\n# ランダム記事\nrnd_params = {\n    \"action\": \"query\", \"list\": \"random\",\n    \"rnnamespace\": 0, \"rnlimit\": 3, \"format\": \"json\"\n}\nr = requests.get(\"https://ja.wikipedia.org/w/api.php\",\n                 params=rnd_params, headers=headers)\nfor p in r.json()[\"query\"][\"random\"]:\n    print(f\"- {p['title']}\")"
+    "text": "Action API：カテゴリ + ランダム\n\nimport requests\n\nheaders = {\"User-Agent\": \"example.com/lesson\"}\n\n# カテゴリメンバー\ncats_params = {\n    \"action\": \"query\",\n    \"list\": \"categorymembers\",\n    \"cmtitle\": \"Category:桜\",\n    \"format\": \"json\",\n    \"cmlimit\": 10\n}\nr = requests.get(\"https://ja.wikipedia.org/w/api.php\",\n                 params=cats_params, headers=headers)\nmembers = r.json()[\"query\"][\"categorymembers\"]\nfor m in members:\n    print(f\"- {m['title']}\")\n\n# ランダム記事\nrnd_params = {\n    \"action\": \"query\", \"list\": \"random\",\n    \"rnnamespace\": 0, \"rnlimit\": 3, \"format\": \"json\"\n}\nr = requests.get(\"https://ja.wikipedia.org/w/api.php\",\n                 params=rnd_params, headers=headers)\nfor p in r.json()[\"query\"][\"random\"]:\n    print(f\"- {p['title']}\")"
   },
   {
     "objectID": "wiki-api.html#rest-api-v1概要取得",
@@ -207,7 +207,7 @@
     "href": "wiki-api.html#演習好きな記事のpvを可視化",
     "title": "Wikipedia API リファレンス",
     "section": "演習：好きな記事のPVを可視化",
-    "text": "演習：好きな記事のPVを可視化\n\n\n好きなWikipedia記事の過去1年間の日別ページビューを取得し、折れ線グラフで描け（最大アクセス日とその値も表示）。\n\n\n\n\n\n\n\nヒント\n\n\n\nAQS の pageviews/per-article を使う\n記事名は日本語のままURLに入れてOK（requestsが自動エンコード）\nAPI章 のコードをベースに改造\n\n\n\n\n\n\n解答例を見る\nimport requests\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\nimport numpy as np\n\nheaders = {\"User-Agent\": \"example.com/lesson\"}\narticle = \"サクラ\"  # 好きな記事に変更（リダイレクト元の「桜」だと別カウントになる点に注意）\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       f\"ja.wikipedia/all-access/user/{article}/daily/20250101/20251231\")\n\ndata = requests.get(url, headers=headers).json()\nviews = np.array([item[\"views\"] for item in data[\"items\"]])\ndates = np.array([item[\"timestamp\"] for item in data[\"items\"]])\n\nmax_i = np.argmax(views)\nprint(f\"最大アクセス日: {dates[max_i]} （{views[max_i]}回）\")\n\nplt.plot(views)\nplt.title(f\"「{article}」の閲覧数（2025年）\")\nplt.xlabel(\"日数\")\nplt.ylabel(\"閲覧数\")\nplt.show()"
+    "text": "演習：好きな記事のPVを可視化\n\n\n好きなWikipedia記事の過去1年間の日別ページビューを取得し、折れ線グラフで描け（最大アクセス日とその値も表示）。\n\n\n\n\n\n\n\nヒント\n\n\n\nAQS の pageviews/per-article を使う\n記事名は日本語のままURLに入れてOK（requestsが自動エンコード）\nAPIでデータ取得の「七夕」のコードをベースに改造\n\n\n\n\n\n\n解答例を見る\nimport requests\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\nimport numpy as np\n\nheaders = {\"User-Agent\": \"example.com/lesson\"}\narticle = \"サクラ\"  # 好きな記事に変更（リダイレクト元の「桜」だと別カウントになる点に注意）\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       f\"ja.wikipedia/all-access/user/{article}/daily/20250101/20251231\")\n\ndata = requests.get(url, headers=headers).json()\nviews = np.array([item[\"views\"] for item in data[\"items\"]])\ndates = np.array([item[\"timestamp\"] for item in data[\"items\"]])\n\nmax_i = np.argmax(views)\nprint(f\"最大アクセス日: {dates[max_i]} （{views[max_i]}回）\")\n\nplt.plot(views)\nplt.title(f\"「{article}」の閲覧数（2025年）\")\nplt.xlabel(\"日数\")\nplt.ylabel(\"閲覧数\")\nplt.show()"
   },
   {
     "objectID": "wiki-api.html#演習カテゴリ内の記事を列挙",
@@ -564,7 +564,7 @@
     "href": "tokyo-api.html#パラメータ",
     "title": "東京都オープンデータAPI",
     "section": "パラメータ",
-    "text": "パラメータ\n\n\n\n\nパラメータ\n説明\n例\n\n\n\n\nlimit\n取得レコード数の上限\n?limit=100\n\n\noffset\n取得開始位置\n?offset=50\n\n\ncolumn\n取得する列の指定\n?column=名称,住所\n\n\nfilter\n条件フィルタ\n?filter=公表_年月日:2021\n\n\n\n\nデフォルトは 100件\n全件欲しいときは limit を大きく設定"
+    "text": "パラメータ\n\n\n\n\nパラメータ\n説明\n例\n\n\n\n\nlimit\n取得レコード数の上限\nparams = {\"limit\": 200}\n\n\noffset\n取得開始位置\nparams = {\"offset\": 50}\n\n\n\n\nデフォルトは 100件 — 全件欲しいときは limit を大きく設定\n取得する 列の絞り込み は、URLではなく POSTのbody で指定する（後述）"
   },
   {
     "objectID": "tokyo-api.html#section-3",
@@ -578,7 +578,7 @@
     "href": "tokyo-api.html#最小テンプレート",
     "title": "東京都オープンデータAPI",
     "section": "最小テンプレート",
-    "text": "最小テンプレート\n\nimport requests\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nparams = {\"limit\": 200}\nheaders = {\"User-Agent\": \"example.com/lesson\"}\nbody = {}\n\nresponse = requests.post(url, params=params, headers=headers, json=body)\ndata = response.json()\n\nprint(data[\"hits\"])\n\n\n\n\n\n\njson={} の意味\n\n\n\n空のJSONボディを送信している\n東京都APIの仕様上必要\n深い意味はないが省略不可"
+    "text": "最小テンプレート\n\nimport requests\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nparams = {\"limit\": 200}\nheaders = {\"User-Agent\": \"example.com/lesson\"}\nbody = {}\n\nresponse = requests.post(url, params=params, headers=headers, json=body)\ndata = response.json()\n\nprint(data[\"hits\"])\n\n\n\n\n\n\njson={} の意味\n\n\n\n空のJSONボディを送信している — 東京都APIの仕様上、省略不可\n省略すると 415（Unsupported Media Type）が返ってくる — 400番台＝リクエスト側のミス、の実例"
   },
   {
     "objectID": "tokyo-api.html#レスポンス構造",
@@ -595,18 +595,11 @@
     "text": "検索条件を指定する"
   },
   {
-    "objectID": "tokyo-api.html#body-で条件指定",
-    "href": "tokyo-api.html#body-で条件指定",
+    "objectID": "tokyo-api.html#列を絞る行を絞る",
+    "href": "tokyo-api.html#列を絞る行を絞る",
     "title": "東京都オープンデータAPI",
-    "section": "body で条件指定",
-    "text": "body で条件指定\n\n\ncolumn — 取得する列を限定\nsearchCondition — フィルタ条件（APIによって対応状況が異なる）\n\n# 列を限定して取得\nbody = {\n    \"column\": [\"西暦（年次）\", \"東京都／人口\"]\n}\n\n# 取得後に Python でフィルタリング\nfiltered = [r for r in data[\"hits\"]\n            if 1950 &lt;= r[\"西暦（年次）\"] &lt;= 2023]"
-  },
-  {
-    "objectID": "tokyo-api.html#比較演算子",
-    "href": "tokyo-api.html#比較演算子",
-    "title": "東京都オープンデータAPI",
-    "section": "比較演算子",
-    "text": "比較演算子\n\n\n\n\n演算子\n意味\n数式\n\n\n\n\ngt\ngreater than\n&gt; より大きい\n\n\nlt\nless than\n&lt; より小さい\n\n\nge\ngreater or equal\n≥ 以上\n\n\nle\nless or equal\n≤ 以下\n\n\n\n\n\n\n\n\n\n覚え方\n\n\n\ng = greater（大きい）\nl = less（小さい）\ne = equal（等しい）"
+    "section": "列を絞る・行を絞る",
+    "text": "列を絞る・行を絞る\n\n\n列 の限定は、POSTのbodyに column を入れる\n行 の絞り込み（期間指定など）は、取得後に Pythonでフィルタ するのが確実\n\n内包表記の if — Pandas入門の条件抽出と同じ発想\n\n\n# 列を限定して取得\nbody = {\n    \"column\": [\"西暦（年次）\", \"東京都／人口\"]\n}\n\n# 取得後に Python でフィルタリング\nfiltered = [r for r in data[\"hits\"]\n            if 1950 &lt;= r[\"西暦（年次）\"] &lt;= 2023]"
   },
   {
     "objectID": "tokyo-api.html#section-5",
@@ -627,7 +620,7 @@
     "href": "tokyo-api.html#人口推移の可視化",
     "title": "東京都オープンデータAPI",
     "section": "人口推移の可視化",
-    "text": "人口推移の可視化\n\n\n\n\n\n\n\n\n\n\n\n戦後復興期から高度経済成長期にかけて 急増\n1970年代からしばらく 横ばい、1990年代後半から再び増加\nこのように まず描く ことで傾向が見える"
+    "text": "人口推移の可視化\n\n\nさっきの filtered から列を取り出して、いつもの plt.plot() に渡すだけ\n\n\n\nコードを見る\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nyears      = np.array([r[\"西暦（年次）\"] for r in filtered])\npopulation = np.array([r[\"東京都／人口\"] for r in filtered])\n\nplt.plot(years, population / 1e6)\nplt.title(\"Tokyo Population 1950-2023\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Population (million)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n戦後復興期から高度経済成長期にかけて 急増\n1970年代からしばらく 横ばい、1990年代後半から再び増加\nこのように まず描く ことで傾向が見える"
   },
   {
     "objectID": "tokyo-api.html#避難所情報品川区",
@@ -648,7 +641,7 @@
     "href": "tokyo-api.html#都営バス運賃",
     "title": "東京都オープンデータAPI",
     "section": "都営バス運賃",
-    "text": "都営バス運賃\n\nimport requests\n\nheaders = {\"User-Agent\": \"example.com/lesson\"}\napi_id = \"t000018d0000000044-3db21a77b0af1c54b411f79604444ca2-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\nbody = {}\n\nresponse = requests.post(url, headers=headers, json=body)\ndata = response.json()\n\nprint(f\"都営バス運賃情報（総件数: {data['total']}件）\")\n\nfor fare_info in data[\"hits\"][:5]:\n    print(\"---\")\n    for key, value in fare_info.items():\n        if key != \"row\":\n            print(f\"{key}: {value}\")\n都営バス運賃情報（総件数: 4件）\n---\n区分: 普通運賃\n大人: 210\n小児: 110\n備考: ICカード利用時\n---\n..."
+    "text": "都営バス運賃\n\nimport requests\n\nheaders = {\"User-Agent\": \"example.com/lesson\"}\napi_id = \"t000018d0000000044-3db21a77b0af1c54b411f79604444ca2-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\nbody = {}\n\nresponse = requests.post(url, headers=headers, json=body)\ndata = response.json()\n\nprint(f\"都営バス運賃情報（総件数: {data['total']}件）\")\n\nfor fare_info in data[\"hits\"][:5]:\n    print(\"---\")\n    for key, value in fare_info.items():\n        if key != \"row\":\n            print(f\"{key}: {value}\")\n都営バス運賃情報（総件数: 4件）\n---\n区分: 一般系統\n大人: 210円（IC 210円）\n小児: 110円（IC 105円）\n備考: 急行バス、直行バスを含む。\n---\n..."
   },
   {
     "objectID": "tokyo-api.html#section-6",
@@ -662,21 +655,28 @@
     "href": "tokyo-api.html#統計分析の例",
     "title": "東京都オープンデータAPI",
     "section": "統計分析の例",
-    "text": "統計分析の例\n\n\n外部APIのデータは型が揃っているとは限らない — 使う前に型を確認すると安全\nisinstance(値, int) で「int型かどうか」を判定できる\n\nimport requests\nimport numpy as np\n\nheaders = {\"User-Agent\": \"example.com/lesson\"}\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nparams = {\"limit\": 200}\nresponse = requests.post(url, params=params, headers=headers, json={})\ndata = response.json()\n\n# 人口を抽出（int型の値だけ使う）\npopulation = [r[\"東京都／人口\"] for r in data[\"hits\"]\n              if isinstance(r.get(\"東京都／人口\"), int)]\npopulation = np.array(population)\n\nprint(f\"平均: {np.mean(population):,.0f}人\")\nprint(f\"最大: {np.max(population):,}人\")\nprint(f\"最小: {np.min(population):,}人\")\nprint(f\"標準偏差: {np.std(population):,.0f}\")\nprint(f\"中央値: {np.median(population):,.0f}人\")\n平均: 7,294,170人\n最大: 14,099,993人\n最小: 859,345人\n標準偏差: 4,567,885\n中央値: 7,189,875人"
+    "text": "統計分析の例\n\n\nhits は list of dict — 内包表記で列を取り出して np.array にすれば、いつもの統計がそのまま使える\n\nimport requests\nimport numpy as np\n\nheaders = {\"User-Agent\": \"example.com/lesson\"}\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nparams = {\"limit\": 200}\nresponse = requests.post(url, params=params, headers=headers, json={})\ndata = response.json()\n\npopulation = np.array([r[\"東京都／人口\"] for r in data[\"hits\"]])\n\nprint(f\"平均: {np.mean(population):,.0f}人\")\nprint(f\"最大: {np.max(population):,}人\")\nprint(f\"最小: {np.min(population):,}人\")\nprint(f\"標準偏差: {np.std(population):,.0f}\")\nprint(f\"中央値: {np.median(population):,.0f}人\")\n平均: 7,294,170人\n最大: 14,099,993人\n最小: 859,345人\n標準偏差: 4,567,885\n中央値: 7,189,875人"
+  },
+  {
+    "objectID": "tokyo-api.html#実データは汚れている",
+    "href": "tokyo-api.html#実データは汚れている",
+    "title": "東京都オープンデータAPI",
+    "section": "実データは汚れている",
+    "text": "実データは汚れている\n\n\n人口の列は綺麗だったが、同じ表の 増減率(%) の列を見ると…\n\nrates_raw = [r[\"東京都／増減率(%)\"] for r in data[\"hits\"]]\nprint(rates_raw[:4])\n['…', '3.26', '5.09', '5.75']\n\n数値が 文字列（\"3.26\"）で入っていて、データがない年は \"…\"\n使うには、\"…\" を除いてから float() で数値に変換する\n\nrates = np.array([float(v) for v in rates_raw if v != \"…\"])\nprint(f\"増減率の平均: {rates.mean():.2f}%\")   # 増減率の平均: 2.10%\n\n\n\n\n\n\n型を確かめてから使う\n\n\n\n外部APIのデータは 型が揃っているとは限らない — 数値のつもりが文字列、欠損が \"…\" などの記号\n集計の前に print(type(値)) や isinstance(値, int) で確認するクセをつける"
   },
   {
     "objectID": "tokyo-api.html#まずは可視化する",
     "href": "tokyo-api.html#まずは可視化する",
     "title": "東京都オープンデータAPI",
     "section": "まずは可視化する",
-    "text": "まずは可視化する\n\n\n数値だけでは傾向がわからない\nvisualize章 の原則：Always plot your data first.\n\n\n\n\n\n\n\n\n\n\n\n右肩上がり — 150年で約16倍に増加\n1940年代に急落 — 戦争による疎開・被害\n2020年代は横ばい — コロナ禍の2021年には減少もあった\n\n\n\n\n\n\n\nこれまでの章が活きる\n\n\n\nlist章 の内包表記で抽出\nnumpy章 の統計関数で集計\nvisualize章 の手法で可視化"
+    "text": "まずは可視化する\n\n\n数値だけでは傾向がわからない\nデータの可視化の大原則：Always plot your data first.\n\n\n\n\n\n\n\n\n\n\n\n右肩上がり — 150年で約16倍に増加\n1940年代に急落 — 戦争による疎開・被害\n2020年代は横ばい — コロナ禍の2021年には減少もあった\n\n\n\n\n\n\n\nこれまでの道具が活きる\n\n\n\nlistあらためての内包表記で抽出\nNumPy入門の統計関数で集計\nデータの可視化・matplotlib入門の手法で可視化"
   },
   {
     "objectID": "tokyo-api.html#まとめ",
     "href": "tokyo-api.html#まとめ",
     "title": "東京都オープンデータAPI",
     "section": "まとめ",
-    "text": "まとめ\n\n\n\n\n\n\n\n\nやりたいこと\nコード\n\n\n\n\n基本アクセス\nrequests.post(url, params=..., headers=..., json={})\n\n\n取得件数指定\nparams = {\"limit\": 200}\n\n\n列の絞り込み\nbody = {\"column\": [\"列名1\", \"列名2\"]}\n\n\n条件フィルタ\nbody = {\"searchCondition\": {...}}\n\n\n全件数確認\ndata[\"total\"]\n\n\nデータ本体\ndata[\"hits\"]（list of dict）\n\n\n\n\n\n\n\n\n\nWikipedia API との違い\n\n\n\nGET ではなく POST\n空でも json={} が必要"
+    "text": "まとめ\n\n\n\n\n\n\n\n\nやりたいこと\nコード\n\n\n\n\n基本アクセス\nrequests.post(url, params=..., headers=..., json={})\n\n\n取得件数指定\nparams = {\"limit\": 200}\n\n\n列の絞り込み\nbody = {\"column\": [\"列名1\", \"列名2\"]}\n\n\n行の絞り込み\n取得後にPythonでフィルタ（内包表記 + if）\n\n\n全件数確認\ndata[\"total\"]\n\n\nデータ本体\ndata[\"hits\"]（list of dict）\n\n\n\n\n\n\n\n\n\nWikipedia API との違い\n\n\n\nGET ではなく POST\n空でも json={} が必要"
   },
   {
     "objectID": "tokyo-api.html#section-7",
@@ -697,7 +697,7 @@
     "href": "tokyo-api.html#演習人口推移の時系列グラフ",
     "title": "東京都オープンデータAPI",
     "section": "演習：人口推移の時系列グラフ",
-    "text": "演習：人口推移の時系列グラフ\n\n\n東京都の人口データを全件取得し、人口推移を折れ線グラフで描け。\n\n\n年と人口を取り出して 折れ線グラフ を描画\n最大値・最小値・平均 をタイトルに表示\n\n\n\n解答例を見る\nimport requests\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nheaders = {\"User-Agent\": \"example.com/lesson\"}\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nparams = {\"limit\": 200}\nresponse = requests.post(url, params=params, headers=headers, json={})\ndata = response.json()\n\nyears = np.array([r[\"西暦（年次）\"] for r in data[\"hits\"]\n                  if isinstance(r.get(\"東京都／人口\"), int)])\npopulation = np.array([r[\"東京都／人口\"] for r in data[\"hits\"]\n                       if isinstance(r.get(\"東京都／人口\"), int)])\n\nplt.figure(figsize=(10, 4))\nplt.plot(years, population / 1e6)\nplt.title(f\"Max={np.max(population):,}, Min={np.min(population):,}, Mean={np.mean(population):,.0f}\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Population (million)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()"
+    "text": "演習：人口推移の時系列グラフ\n\n\n東京都の人口データを全件取得し、人口推移を折れ線グラフで描け。\n\n\n年と人口を取り出して 折れ線グラフ を描画\n最大値・最小値・平均 をタイトルに表示\n\n\n\n解答例を見る\nimport requests\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nheaders = {\"User-Agent\": \"example.com/lesson\"}\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nparams = {\"limit\": 200}\nresponse = requests.post(url, params=params, headers=headers, json={})\ndata = response.json()\n\nyears      = np.array([r[\"西暦（年次）\"] for r in data[\"hits\"]])\npopulation = np.array([r[\"東京都／人口\"] for r in data[\"hits\"]])\n\nplt.figure(figsize=(10, 4))\nplt.plot(years, population / 1e6)\nplt.title(f\"Max={np.max(population):,}, Min={np.min(population):,}, Mean={np.mean(population):,.0f}\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Population (million)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()"
   },
   {
     "objectID": "tokyo-api.html#演習2つのデータセットを比較",
@@ -798,11 +798,11 @@
     "text": "クイズ：どの文字から生まれた？\n\n\n身の回りの「当たり前」も、SCAMPER で読み解ける — それぞれどの文字？\n\n紙ストロー\nカメラ付きスマホ\nセルフレジ\n飲食店のQRコード注文\n\n\n\n\n\n\n\n\n\n答え\n\n\n紙ストロー = S（素材を代用） ／ カメラ付きスマホ = C（結合） ／ セルフレジ = R（店員と客の逆転） ／ QRコード注文 = E（紙メニューと注文係を省く）"
   },
   {
-    "objectID": "scamper.html#演習scamper-7連発",
-    "href": "scamper.html#演習scamper-7連発",
+    "objectID": "scamper.html#演習-scamper-7連発",
+    "href": "scamper.html#演習-scamper-7連発",
     "title": "オズボーンのチェックリスト・SCAMPER",
-    "section": "演習：SCAMPER 7連発",
-    "text": "演習：SCAMPER 7連発\n\n\n身近な文房具・持ち物（ペン・消しゴム・水筒・傘など）を1つ選び、SCAMPER の7視点で1案ずつ、計7案を書き出せ（実現性は問わない）。\n\n\n対象を1つ決める（迷ったら「傘」）\nS→C→A→M→P→E→R の順に、各視点で1案（1案1行）\n7案の中から「意外と売れそう」な1案に星印\n班内で星つきの案だけ共有\n\n\n\n\n\n\n\n質問が発想を引っ張る\n\n\n「思いつかない」は起きない — 質問に答えられないだけ。答えにくい文字（P や R）ほど、出たときの飛距離が大きい"
+    "section": "演習 SCAMPER 7連発",
+    "text": "演習 SCAMPER 7連発\n\n\n身近な文房具・持ち物（ペン・消しゴム・水筒・傘など）を1つ選び、SCAMPER の7視点で1案ずつ、計7案を書き出せ（実現性は問わない）。\n\n\n対象を1つ決める（迷ったら「傘」）\nS→C→A→M→P→E→R の順に、各視点で1案（1案1行）\n7案の中から「意外と売れそう」な1案に星印\n班内で星つきの案だけ共有\n\n\n\n\n\n\n\n質問が発想を引っ張る\n\n\n「思いつかない」は起きない — 質問に答えられないだけ。答えにくい文字（P や R）ほど、出たときの飛距離が大きい"
   },
   {
     "objectID": "scamper.html#まとめ発想法との使い分け",
@@ -823,35 +823,35 @@
     "href": "plotly.html#plotlyとは",
     "title": "Plotly入門",
     "section": "Plotlyとは",
-    "text": "Plotlyとは\n\n\nPlotlyは インタラクティブな可視化 を作るライブラリ\n\n拡大・縮小\nホバーで値を確認\n凡例クリックで表示・非表示\n3Dグラフを回転\n\nmatplotlibと同じく、Pythonから使える\nWebページ上で動くHTMLとして出力できる"
+    "text": "Plotlyとは\n\n\nPlotlyは インタラクティブな可視化 を作るライブラリ\n\n拡大・縮小、ホバーで値を確認\n凡例クリックで表示・非表示\n3Dグラフを回転\n\nmatplotlibと同じく、Pythonから使える\n図は ブラウザで動くHTML として出力される"
+  },
+  {
+    "objectID": "plotly.html#今日やること",
+    "href": "plotly.html#今日やること",
+    "title": "Plotly入門",
+    "section": "今日やること",
+    "text": "今日やること\n\n\n棒グラフ・散布図・折れ線・ヒストグラム・3D散布図を plotly.express で作る\nPandasの集計結果をPlotlyに渡す\n図をHTMLとして保存して共有する\n最後に、世界一有名な「動くグラフ」 を自分の手で再現する\n\n\n\n\n\n\n\nmatplotlibとの「描き比べ」\n\n\n\n散布図・折れ線・ヒストグラムは、matplotlibでも作った 同じ種類の図\n同じ図を別の道具で作りながら、道具ごとの得意・不得意の違い に注目"
   },
   {
     "objectID": "plotly.html#インストール-import",
     "href": "plotly.html#インストール-import",
     "title": "Plotly入門",
     "section": "インストール ＆ import",
-    "text": "インストール ＆ import\n\n\npipからインストール\n\npip install plotly\n\nimportでは、可視化ツールを集めた plotly.express を px として読み込むのが一般的\n\nimport plotly.express as px\n\n\n\n\n\n\nmatplotlibとの違い\n\n\n\nmatplotlib：静的な図に強い\nPlotly：Web上で動かせる図に強い\nどちらが上ではなく、目的で使い分ける"
-  },
-  {
-    "objectID": "plotly.html#この資料で扱うこと",
-    "href": "plotly.html#この資料で扱うこと",
-    "title": "Plotly入門",
-    "section": "この資料で扱うこと",
-    "text": "この資料で扱うこと\n\n\nplotly.express を使ってグラフを作る\nPandasの DataFrame と連携できることを理解\n棒グラフ・散布図・折れ線・ヒストグラム・3D散布図を作る\n最後に 世界一有名な「動くグラフ」 を手で作る\n\n\n\n\n\n\n\nmatplotlibとの「描き比べ」\n\n\n\n散布図・折れ線・ヒストグラムは matplotlibで一度作った図 ばかり\n同じ図を別の道具で作りながら、道具ごとの得意・不得意 を比べよう"
+    "text": "インストール ＆ import\n\nターミナルからインストール：\npip install plotly\n冒頭で import（可視化ツールを集めた plotly.express を px としてインポートするのが一般的）：\nimport plotly.express as px"
   },
   {
     "objectID": "plotly.html#まずdataframeを用意する",
     "href": "plotly.html#まずdataframeを用意する",
     "title": "Plotly入門",
     "section": "まずDataFrameを用意する",
-    "text": "まずDataFrameを用意する\n\n\nPlotlyはPandasの DataFrame と相性がよい\n「どの列をx軸にするか」「どの列をy軸にするか」を列名で指定するだけ\nまずは以下をVS Codeにコピペ\n\n\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"名前\": [\"田中\", \"佐藤\", \"鈴木\", \"高橋\", \"伊藤\"],\n    \"学科\": [\"情報\", \"機械\", \"情報\", \"電気\", \"情報\"],\n    \"点数\": [82, 75, 91, 68, 57],\n})\n\nprint(df)\n\n   名前  学科  点数\n0  田中  情報  82\n1  佐藤  機械  75\n2  鈴木  情報  91\n3  高橋  電気  68\n4  伊藤  情報  57"
+    "text": "まずDataFrameを用意する\n\n\nPlotlyはPandasの DataFrame と相性がよい\n「どの列をx軸に、どの列をy軸にするか」を 列名で指定するだけ\nまずは以下をVS Codeにコピペして実行\n\n\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"名前\": [\"田中\", \"佐藤\", \"鈴木\", \"高橋\", \"伊藤\"],\n    \"学科\": [\"情報\", \"機械\", \"情報\", \"電気\", \"情報\"],\n    \"点数\": [82, 75, 91, 68, 57],\n})\n\nprint(df)\n\n   名前  学科  点数\n0  田中  情報  82\n1  佐藤  機械  75\n2  鈴木  情報  91\n3  高橋  電気  68\n4  伊藤  情報  57"
   },
   {
     "objectID": "plotly.html#棒グラフを作る",
     "href": "plotly.html#棒グラフを作る",
     "title": "Plotly入門",
     "section": "棒グラフを作る",
-    "text": "棒グラフを作る\n\n\npx.bar() で棒グラフを作る\nx= と y= に列名を指定する\nfig.show() で表示する\n\nimport plotly.express as px\n\nfig = px.bar(df, x=\"名前\", y=\"点数\")\nfig.show()"
+    "text": "棒グラフを作る\n\n\npx.bar() に DataFrameと列名 を渡す\nfig.show() を実行すると、ブラウザが開いて 図が表示される\n\nimport plotly.express as px\n\nfig = px.bar(df, x=\"名前\", y=\"点数\")\nfig.show()\n\n\n\n\nできた図は動く：棒にマウスを乗せると値が出る。右上のツールバーでズームや画像保存もできる"
   },
   {
     "objectID": "plotly.html#plotly-expressの基本形",
@@ -865,7 +865,7 @@
     "href": "plotly.html#図にラベルとタイトルをつける",
     "title": "Plotly入門",
     "section": "図にラベルとタイトルをつける",
-    "text": "図にラベルとタイトルをつける\n\n\ntitle= でタイトル\nlabels= で軸ラベルや凡例名を変えられる\nlabels には辞書を渡す\n\nfig = px.bar(\n    df,\n    x=\"名前\",\n    y=\"点数\",\n    title=\"生徒ごとの点数\",\n    labels={\"名前\": \"生徒\", \"点数\": \"得点\"},\n)\nfig.show()"
+    "text": "図にラベルとタイトルをつける\n\n\ntitle= でタイトル\nlabels= には 辞書 を渡す — {列名: 表示したい軸ラベル}\n\n列名はそのまま、表示だけ 変えられる\n\n\nfig = px.bar(\n    df,\n    x=\"名前\",\n    y=\"点数\",\n    title=\"期末試験の結果\",\n    labels={\"名前\": \"生徒名\", \"点数\": \"点数（100点満点）\"},\n)\nfig.show()"
   },
   {
     "objectID": "plotly.html#色分けする",
@@ -886,49 +886,49 @@
     "href": "plotly.html#散布図",
     "title": "Plotly入門",
     "section": "散布図",
-    "text": "散布図\n\n\npx.scatter() で散布図を作る\nx と y に数値列を指定する\nhover_name= に列名を指定すると、ホバー時に名前を表示できる\nデータはPandas回と同じ students.csv（20人）\n\nCSVを data フォルダに置いて以下で読み込み\n\n\n\nimport pandas as pd\n\ndf_scores = pd.read_csv(\"data/students.csv\")\nprint(df_scores.head())\n\n   名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n0  田中  情報   1   80   70   90  85     2\n1  佐藤  機械   1   65   75   85  72     4\n2  鈴木  情報   2   88   91   84  90     1\n3  高橋  電気   2   72   68   76  80     3\n4  伊藤  情報   1   58   57   62  65     6"
+    "text": "散布図\n\n\npx.scatter() で散布図を作る\nデータはPandas入門で使った students.csv（20人×8列）\n\nCSVを data フォルダに置いて以下で読み込み\n\n\n\nimport pandas as pd\nimport plotly.express as px\n\ndf_scores = pd.read_csv(\"data/students.csv\")\nprint(df_scores.head())\n\n   名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n0  田中  情報   1   80   70   90  85     2\n1  佐藤  機械   1   65   75   85  72     4\n2  鈴木  情報   2   88   91   84  90     1\n3  高橋  電気   2   72   68   76  80     3\n4  伊藤  情報   1   58   57   62  65     6"
   },
   {
     "objectID": "plotly.html#散布図のコード",
     "href": "plotly.html#散布図のコード",
     "title": "Plotly入門",
     "section": "散布図のコード",
-    "text": "散布図のコード\n\nfig = px.scatter(\n    df_scores,\n    x=\"数学I\",\n    y=\"英会話\",\n    color=\"学科\",\n    hover_name=\"名前\",\n    title=\"数学Iと英会話の点数\",\n)\nfig.show()\n\n\n\n\n\n\n\n\n\nホバーで点を確認できる\n\n\n\n外れている点にマウスを乗せると 誰なのか その場で分かる\nhover_name= を指定しておくと、点ごとの情報を探索しやすい"
+    "text": "散布図のコード\n\n\nx と y に数値列を指定する\nhover_name= に指定した列が、ホバーしたときの 見出し になる\n\nfig = px.scatter(\n    df_scores,\n    x=\"数学I\",\n    y=\"英会話\",\n    color=\"学科\",\n    hover_name=\"名前\",\n    title=\"数学Iと英会話の点数\",\n)\nfig.show()\n\n\n\n\n\n\n\n\n\n外れた点、誰？\n\n\n\n離れた点にマウスを乗せると 誰なのか その場で分かる\n静止画の散布図では、外れた点の正体はすぐには分からなかった"
   },
   {
-    "objectID": "plotly.html#点のサイズはデータで可変にできる",
-    "href": "plotly.html#点のサイズはデータで可変にできる",
+    "objectID": "plotly.html#点の大きさで3つ目の量を見せる",
+    "href": "plotly.html#点の大きさで3つ目の量を見せる",
     "title": "Plotly入門",
-    "section": "点のサイズはデータで可変にできる",
-    "text": "点のサイズはデータで可変にできる\n\n\nsize= に数値列を指定すると、点の大きさを変えられる\n位置（数学I・英会話）に加えて、欠席日数という別の量を大きさで重ねられる\n大きい点ほど欠席が多い — 成績との関係が見えるか？\n\nfig = px.scatter(\n    df_scores,\n    x=\"数学I\",\n    y=\"英会話\",\n    color=\"学科\",\n    size=\"欠席日数\",\n    hover_name=\"名前\",\n)\nfig.show()"
+    "section": "点の大きさで3つ目の量を見せる",
+    "text": "点の大きさで3つ目の量を見せる\n\n\nsize= に数値列を指定すると、点の大きさが 3つ目の量 になる（今回は欠席日数）\n\nsize_max= は一番大きい点のサイズ\n\n欠席 0日 の点は大きさ0で消えてしまう — できた fig は fig.update_〜() 系のメソッドで微調整できるので、sizemin で最小の大きさを決めておく\n\nfig = px.scatter(\n    df_scores,\n    x=\"数学I\",\n    y=\"英会話\",\n    color=\"学科\",\n    size=\"欠席日数\",\n    size_max=40,\n    hover_name=\"名前\",\n)\nfig.update_traces(marker=dict(sizemin=4))  # 欠席0日の点も見えるように\nfig.show()\n\n\n\n\n大きい点ほど欠席が多い — 成績との関係が見えるか？"
   },
   {
     "objectID": "plotly.html#折れ線グラフ",
     "href": "plotly.html#折れ線グラフ",
     "title": "Plotly入門",
     "section": "折れ線グラフ",
-    "text": "折れ線グラフ\n\n\npx.line() で折れ線グラフを作る\n時間変化や順序のあるデータに向いている\n題材は可視化編の 東京150年の年平均気温（気象庁）\n\nデータ：tokyo_temp_annual.csv（data フォルダに置く）\n\n\n\nimport pandas as pd\n\ndf_temp = pd.read_csv(\"data/tokyo_temp_annual.csv\")\nprint(df_temp.head())\n\n   year  temp\n0  1876  13.6\n1  1877  14.2\n2  1878  13.8\n3  1879  14.6\n4  1880  14.1"
+    "text": "折れ線グラフ\n\n\npx.line() で折れ線グラフを作る\n時間変化や順序のあるデータに向いている\n題材はデータの可視化でも見た 東京150年の年平均気温（気象庁）\n\ntokyo_temp_annual.csv を data フォルダに置く\n\n\n\nimport pandas as pd\nimport plotly.express as px\n\ndf_temp = pd.read_csv(\"data/tokyo_temp_annual.csv\")\nprint(df_temp.head())\n\n   year  temp\n0  1876  13.6\n1  1877  14.2\n2  1878  13.8\n3  1879  14.6\n4  1880  14.1"
   },
   {
     "objectID": "plotly.html#折れ線グラフのコード",
     "href": "plotly.html#折れ線グラフのコード",
     "title": "Plotly入門",
     "section": "折れ線グラフのコード",
-    "text": "折れ線グラフのコード\n\nfig = px.line(df_temp, x=\"year\", y=\"temp\", markers=True)\nfig.show()\n\n\n\n\n\n\n\n\n\n自分の指でチェリーピックしてみる\n\n\n\nドラッグで2006〜2017年あたりを選択 してズーム →「寒冷化」に見える\n可視化編の騙しグラフは、この 切り取り と同じ操作だった\nダブルクリックで全体に戻る — 全体を確認するクセをつける"
+    "text": "折れ線グラフのコード\n\n\nmarkers=True で点＋線（matplotlibの \"o-\" と同じ役目）\n軸ラベルには 列名がそのまま 入る（変えたければ labels=）\n\nfig = px.line(df_temp, x=\"year\", y=\"temp\", markers=True)\nfig.show()\n\n\n\n\n\n\n\n\n\n自分の指でチェリーピックしてみる\n\n\n\nドラッグで2006〜2017年あたりを選択 してズーム →「寒冷化」に見える\n「期間のチェリーピック」で見た 切り取り が、指一本でできてしまう\nダブルクリックで全体に戻る — 全体を確認するクセをつける"
   },
   {
     "objectID": "plotly.html#ズームアウト80万年の気温",
     "href": "plotly.html#ズームアウト80万年の気温",
     "title": "Plotly入門",
     "section": "ズームアウト：80万年の気温",
-    "text": "ズームアウト：80万年の気温\n\n\n南極の氷から復元した気温 — 80万年前まで遡れる（EPICA Dome C）。縦軸 0℃＝現在の水準（直近1000年の平均）、マイナスほど寒い\nドラッグでズーム → 氷期と間氷期を 約10℃も往復。東京150年の変化は、この巨大なリズムのごく一部\n同じ「気温」でも 見せるスパンで物語が変わる\nデータ：epica_temp.csv（data フォルダに置く）\n\ndf_temp_long = pd.read_csv(\"data/epica_temp.csv\")\ndf_temp_long[\"万年前\"] = df_temp_long[\"age_kyr_bp\"] / 10  # 千年 → 万年 で読みやすく\n\nfig = px.line(df_temp_long, x=\"万年前\", y=\"temp_anomaly_c\")\nfig.show()"
+    "text": "ズームアウト：80万年の気温\n\n\n南極の氷から復元した気温（EPICA Dome C）— 80万年前 まで遡れる\n縦軸は現在との気温差：0℃＝現在の水準（直近1000年の平均）、マイナスほど寒い\nepica_temp.csv を data フォルダに置く\n\ndf_ice = pd.read_csv(\"data/epica_temp.csv\")\ndf_ice[\"万年前\"] = df_ice[\"age_kyr_bp\"] / 10  # 千年前 → 万年前\n\nfig = px.line(df_ice, x=\"万年前\", y=\"temp_anomaly_c\")\nfig.update_xaxes(autorange=\"reversed\")  # 昔を左、現在を右に\nfig.show()\n\n\n\n\nドラッグでズーム：氷期と間氷期のあいだを 10℃以上 も往復している\n東京150年の変化は、この巨大なリズムの 右端のごく一部\n同じ「気温」でも、見せるスパンで物語が変わる"
   },
   {
     "objectID": "plotly.html#ヒストグラム",
     "href": "plotly.html#ヒストグラム",
     "title": "Plotly入門",
     "section": "ヒストグラム",
-    "text": "ヒストグラム\n\n\npx.histogram() で分布を見られる\nnbins= で区間の数を指定する\n同じ150年の気温データ — 折れ線は 変化、ヒストグラムは 分布 を見せる\n\nfig = px.histogram(df_temp, x=\"temp\", nbins=20)\nfig.show()\n\n\n\n\n棒にマウスを乗せると どの気温帯が何年分か まで分かる"
+    "text": "ヒストグラム\n\n\npx.histogram() で 分布 を見られる\nnbins= は区間（ビン）の数 — ビンの数で分布の見え方が化けるのは、matplotlibのときと同じ\n同じ150年の気温データ — 折れ線は 変化、ヒストグラムは 分布 を見せる\n\nfig = px.histogram(df_temp, x=\"temp\", nbins=20)\nfig.show()\n\n\n\n\n棒にマウスを乗せると どの気温帯が何年分か まで分かる"
   },
   {
     "objectID": "plotly.html#section-2",
@@ -942,28 +942,35 @@
     "href": "plotly.html#学科ごとの平均点を計算",
     "title": "Plotly入門",
     "section": "学科ごとの平均点を計算",
-    "text": "学科ごとの平均点を計算\n\n\nPandasで集計してからPlotlyで可視化する\nPandas入門と同じ data/students.csv を使う\ngroupby() の結果は Series\nPlotlyに渡すため、いったん reset_index() でDataFrameに戻す\n\n\nimport pandas as pd\n\ndf_students = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\n\ndf_students[\"平均点\"] = df_students[subjects].mean(axis=1)\navg = df_students.groupby(\"学科\")[\"平均点\"].mean()\nprint(avg)\n\n学科\n情報    80.062500\n機械    71.625000\n電気    77.583333\nName: 平均点, dtype: float64"
+    "text": "学科ごとの平均点を計算\n\n\nPandas入門の groupby() の復習 — students.csv で学科ごとの平均点を出す\ngroupby() の結果は Series（index が学科、values が平均点）\n\n\nimport pandas as pd\n\ndf_students = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\n\ndf_students[\"平均点\"] = df_students[subjects].mean(axis=1)\navg = df_students.groupby(\"学科\")[\"平均点\"].mean()\nprint(avg)\n\n学科\n情報    80.062500\n機械    71.625000\n電気    77.583333\nName: 平均点, dtype: float64\n\n\n\nただしPlotly Expressの基本形は DataFrame + 列名 — Series のままでは渡しにくい"
   },
   {
     "objectID": "plotly.html#seriesをdataframeに戻す",
     "href": "plotly.html#seriesをdataframeに戻す",
     "title": "Plotly入門",
     "section": "SeriesをDataFrameに戻す",
-    "text": "SeriesをDataFrameに戻す\n\n\nreset_index() で、indexを普通の列に戻せる\nPlotly ExpressはDataFrame + 列名指定が書きやすい\n\n\nimport pandas as pd\n\ndf_students = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf_students[\"平均点\"] = df_students[subjects].mean(axis=1)\navg = df_students.groupby(\"学科\")[\"平均点\"].mean()\n\navg_df = avg.reset_index()\nprint(avg_df)\n\n   学科        平均点\n0  情報  80.062500\n1  機械  71.625000\n2  電気  77.583333\n\n\nfig = px.bar(avg_df, x=\"学科\", y=\"平均点\")\nfig.show()"
+    "text": "SeriesをDataFrameに戻す\n\n\nreset_index() で、index を普通の列に戻した DataFrame が得られる\n\n\nimport pandas as pd\nimport plotly.express as px\n\ndf_students = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf_students[\"平均点\"] = df_students[subjects].mean(axis=1)\navg = df_students.groupby(\"学科\")[\"平均点\"].mean()\n\navg_df = avg.reset_index()\nprint(avg_df)\n\n   学科        平均点\n0  情報  80.062500\n1  機械  71.625000\n2  電気  77.583333\n\n\n\n学科 と 平均点 の 2列のDataFrame になった — これで x=、y= に列名で渡せる"
   },
   {
     "objectID": "plotly.html#集計結果をplotlyで可視化",
     "href": "plotly.html#集計結果をplotlyで可視化",
     "title": "Plotly入門",
     "section": "集計結果をPlotlyで可視化",
-    "text": "集計結果をPlotlyで可視化\n\n\n\n\n\n\n\n\n\n\nPlotly Expressに渡しやすい形\n\n\n\ngroupby() の結果は Series\nreset_index() でDataFrameに戻すと、x=\"学科\"、y=\"平均点\" のように列名で指定できる"
+    "text": "集計結果をPlotlyで可視化\n\n\ny軸は update_yaxes(range=[最小, 最大]) で固定できる — 平均点なら 0点〜満点 で正直に見せる\nmatplotlibでは plt.ylim(0, 100) と書いた、それのPlotly版\n\nfig = px.bar(avg_df, x=\"学科\", y=\"平均点\")\nfig.update_yaxes(range=[0, 100])  # 棒グラフは0から見せる\nfig.show()"
   },
   {
-    "objectID": "plotly.html#そのままdataframeを作る方法",
-    "href": "plotly.html#そのままdataframeを作る方法",
+    "objectID": "plotly.html#そのままdataframeで受け取る",
+    "href": "plotly.html#そのままdataframeで受け取る",
     "title": "Plotly入門",
-    "section": "そのままDataFrameを作る方法",
-    "text": "そのままDataFrameを作る方法\n\n\ngroupby(..., as_index=False) とすると、最初からDataFrameで結果を受け取れる\nPlotlyで使う場合はこちらも便利\n\n\nimport pandas as pd\n\ndf_students = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf_students[\"平均点\"] = df_students[subjects].mean(axis=1)\n\navg_df = df_students.groupby(\"学科\", as_index=False)[\"平均点\"].mean()\nprint(avg_df)\n\n   学科        平均点\n0  情報  80.062500\n1  機械  71.625000\n2  電気  77.583333\n\n\nfig = px.bar(avg_df, x=\"学科\", y=\"平均点\")\nfig.show()"
+    "section": "そのままDataFrameで受け取る",
+    "text": "そのままDataFrameで受け取る\n\n\ngroupby(..., as_index=False) とすると、最初から DataFrame で結果を受け取れる\nPlotlyに渡す前提なら、reset_index() が要らないこちらが1行短い\n\n\nimport pandas as pd\n\ndf_students = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf_students[\"平均点\"] = df_students[subjects].mean(axis=1)\n\navg_df = df_students.groupby(\"学科\", as_index=False)[\"平均点\"].mean()\nprint(avg_df)\n\n   学科        平均点\n0  情報  80.062500\n1  機械  71.625000\n2  電気  77.583333"
+  },
+  {
+    "objectID": "plotly.html#演習学科ごとの平均点をplotlyで描く",
+    "href": "plotly.html#演習学科ごとの平均点をplotlyで描く",
+    "title": "Plotly入門",
+    "section": "演習：学科ごとの平均点をPlotlyで描く",
+    "text": "演習：学科ごとの平均点をPlotlyで描く\n\n\nPandas入門でmatplotlibを使って描いた「学科ごとの平均点」の棒グラフを、Plotlyで描き直せ。\n\n\nstudents.csv をダウンロードして data フォルダに置く（配置済みならそのまま）\npd.read_csv() で読み込み、4科目の平均点の列を追加\ngroupby(\"学科\", as_index=False) で学科ごとの平均点を集計\npx.bar() で棒グラフを描く（color=\"学科\" で色分け、y軸は 0〜100 に固定）\n\n\n\n解答例を見る\nimport pandas as pd\nimport plotly.express as px\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\n\ndf[\"平均点\"] = df[subjects].mean(axis=1)\navg_df = df.groupby(\"学科\", as_index=False)[\"平均点\"].mean()\n\nfig = px.bar(\n    avg_df,\n    x=\"学科\",\n    y=\"平均点\",\n    color=\"学科\",\n    title=\"学科ごとの平均点\",\n)\nfig.update_yaxes(range=[0, 100])\nfig.show()"
   },
   {
     "objectID": "plotly.html#section-3",
@@ -977,70 +984,63 @@
     "href": "plotly.html#d散布図",
     "title": "Plotly入門",
     "section": "3D散布図",
-    "text": "3D散布図\n\n\npx.scatter_3d() で3D散布図を作れる\nWeb上ではドラッグして回転できる\n3つの数値列の関係を見るときに使う\ndata/students.csv の3科目（数学I・英会話・物理）を使う\n\n\nimport pandas as pd\n\ndf_3d = pd.read_csv(\"data/students.csv\")\nprint(df_3d.head())\n\n   名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n0  田中  情報   1   80   70   90  85     2\n1  佐藤  機械   1   65   75   85  72     4\n2  鈴木  情報   2   88   91   84  90     1\n3  高橋  電気   2   72   68   76  80     3\n4  伊藤  情報   1   58   57   62  65     6"
-  },
-  {
-    "objectID": "plotly.html#d散布図を作る",
-    "href": "plotly.html#d散布図を作る",
-    "title": "Plotly入門",
-    "section": "3D散布図を作る",
-    "text": "3D散布図を作る\n\nfig = px.scatter_3d(\n    df_3d,\n    x=\"数学I\",\n    y=\"英会話\",\n    z=\"物理\",\n    color=\"学科\",\n    hover_name=\"名前\",\n)\nfig.show()\n\n\n\n\n\n\n\n\n\nmatplotlibにも3Dはある（参考）\n\n\n\nmatplotlibでも3D図は作れる\nPlotlyはブラウザ上で回転・ズーム・ホバー表示を扱いやすい\n点の情報を見ながら探索したい3D散布図ではPlotlyが向いている"
+    "text": "3D散布図\n\n\npx.scatter_3d() に x・y・z の 3つの数値列 を渡す\nドラッグで回転、ホバーで名前 — 3科目（数学I・英会話・物理）の関係を探索できる\n\nimport pandas as pd\nimport plotly.express as px\n\ndf_3d = pd.read_csv(\"data/students.csv\")\n\nfig = px.scatter_3d(\n    df_3d,\n    x=\"数学I\",\n    y=\"英会話\",\n    z=\"物理\",\n    color=\"学科\",\n    hover_name=\"名前\",\n)\nfig.show()\n\n\n\n\n\n\n\n\n\n3Dは「回せる道具」で\n\n\n\nmatplotlibでも3D図は作れるが、視点を動かせない3Dは読みにくい\n回転・ズーム・ホバーで探索できるPlotlyは、3D散布図と相性がよい"
   },
   {
     "objectID": "plotly.html#htmlとして保存する",
     "href": "plotly.html#htmlとして保存する",
     "title": "Plotly入門",
     "section": "HTMLとして保存する",
-    "text": "HTMLとして保存する\n\n\nPlotlyの図は write_html() でHTMLとして保存できる\nブラウザで開けるので、相手に共有しやすい\n\nfig.write_html(\"graph.html\")\n\n何も指定しないと Plotly本体ごと HTMLに埋め込まれる（約4MB）\n\nファイルは重いが、ネットがなくても動く\n\nここまで触ってきた動くグラフも、こうして保存したHTMLの埋め込み\n\n\n\n\n\n\n\ninclude_plotlyjs で本体の置き場所を選べる\n\n\n\n\n\n\n\n\n\n\n指定\nHTMLのサイズ\n閲覧時のネット\n\n\n\n\n（指定なし）\n重い（約4MB）\n不要\n\n\n\"cdn\"\n軽い\n必要\n\n\n\"directory\"\n軽い（plotly.min.js を同じフォルダに書き出す）\n不要\n\n\n\nネットのない場所でも動かしたい資料は、指定なし か \"directory\" を選ぶ"
+    "text": "HTMLとして保存する\n\n\nPlotlyの図は write_html() でHTMLとして保存できる\nブラウザさえあれば誰でも開ける — 動くまま 共有できる\n\nfig.write_html(\"graph.html\")\n\n何も指定しないと Plotly本体ごと HTMLに埋め込まれる（約4MB）\n\nファイルは重いが、ネットがなくても動く\n\nここまで触ってきた動くグラフも、こうして保存したHTMLの埋め込み\n\n\n\n\n\n\n\ninclude_plotlyjs で本体の置き場所を選べる\n\n\n\n\n\n\n\n\n\n\n指定\nHTMLのサイズ\n閲覧時のネット\n\n\n\n\n（指定なし）\n重い（約4MB）\n不要\n\n\n\"cdn\"\n軽い\n必要\n\n\n\"directory\"\n軽い（plotly.min.js を同じフォルダに書き出す）\n不要\n\n\n\nネットのない場所でも動かしたい資料は、指定なし か \"directory\" を選ぶ"
   },
   {
     "objectID": "plotly.html#matplotlibとplotlyの使い分け",
     "href": "plotly.html#matplotlibとplotlyの使い分け",
     "title": "Plotly入門",
     "section": "matplotlibとPlotlyの使い分け",
-    "text": "matplotlibとPlotlyの使い分け\n\n\n\n\n目的\n向いている道具\n\n\n\n\nレポートに貼る静止画\nmatplotlib\n\n\n論文・印刷用の細かい調整\nmatplotlib\n\n\nホバーで値を見たい\nPlotly\n\n\n拡大して細部を見たい\nPlotly\n\n\nWebページで共有したい\nPlotly\n\n\nWebページで3Dを回して見たい\nPlotly\n\n\n\n\nまずはmatplotlibで基本を覚える\nWebで動かしたいときにPlotlyを使う"
+    "text": "matplotlibとPlotlyの使い分け\n\n\n\n\n目的\n向いている道具\n\n\n\n\nレポートに貼る静止画\nmatplotlib\n\n\n論文・印刷用の細かい調整\nmatplotlib\n\n\nホバーで値を見たい\nPlotly\n\n\n拡大して細部を見たい\nPlotly\n\n\nWebページで共有したい\nPlotly\n\n\n3Dを回して見たい\nPlotly\n\n\n\n\nどちらが上ではなく、目的で使い分ける\nまずはmatplotlibで基本、Webで動かしたいときにPlotly"
   },
   {
     "objectID": "plotly.html#section-4",
     "href": "plotly.html#section-4",
     "title": "Plotly入門",
     "section": "",
-    "text": "演習：Gapminder “Wealth & Health of Nations”を自分で可視化"
+    "text": "世界一有名な「動くグラフ」"
   },
   {
     "objectID": "plotly.html#gapminder-wealth-health-of-nations",
     "href": "plotly.html#gapminder-wealth-health-of-nations",
     "title": "Plotly入門",
     "section": "Gapminder “Wealth & Health of Nations”",
-    "text": "Gapminder “Wealth & Health of Nations”\n\n\n可視化編の実例集で見た、有名な「動くグラフ」\n\n横軸：1人あたりGDP、縦軸：平均寿命、バブルの大きさ：人口\n\nPlotlyには このデータが同梱 されている\n\n\nimport plotly.express as px\n\ngap = px.data.gapminder()\nprint(gap.head())\nprint(gap.shape)\n\n       country continent  year  lifeExp       pop   gdpPercap iso_alpha  \\\n0  Afghanistan      Asia  1952   28.801   8425333  779.445314       AFG   \n1  Afghanistan      Asia  1957   30.332   9240934  820.853030       AFG   \n2  Afghanistan      Asia  1962   31.997  10267083  853.100710       AFG   \n3  Afghanistan      Asia  1967   34.020  11537966  836.197138       AFG   \n4  Afghanistan      Asia  1972   36.088  13079460  739.981106       AFG   \n\n   iso_num  \n0        4  \n1        4  \n2        4  \n3        4  \n4        4  \n(1704, 8)\n\n\n\n142カ国 × 12時点（1952〜2007年） の実データ"
+    "text": "Gapminder “Wealth & Health of Nations”\n\n\nデータの可視化の実例集で見た 有名な「動くグラフ」\n\n横軸：1人あたりGDP、縦軸：平均寿命、バブルの大きさ：人口\n\nPlotlyには このデータが同梱 されている — ダウンロード不要\n\n\nimport plotly.express as px\n\ngap = px.data.gapminder()\nprint(gap.head())\nprint(gap.shape)\n\n       country continent  year  lifeExp       pop   gdpPercap iso_alpha  \\\n0  Afghanistan      Asia  1952   28.801   8425333  779.445314       AFG   \n1  Afghanistan      Asia  1957   30.332   9240934  820.853030       AFG   \n2  Afghanistan      Asia  1962   31.997  10267083  853.100710       AFG   \n3  Afghanistan      Asia  1967   34.020  11537966  836.197138       AFG   \n4  Afghanistan      Asia  1972   36.088  13079460  739.981106       AFG   \n\n   iso_num  \n0        4  \n1        4  \n2        4  \n3        4  \n4        4  \n(1704, 8)\n\n\n\n142カ国 × 12時点（1952〜2007年、5年おき） の実データ"
   },
   {
     "objectID": "plotly.html#まず1年分だけ描いてみる",
     "href": "plotly.html#まず1年分だけ描いてみる",
     "title": "Plotly入門",
     "section": "まず1年分だけ描いてみる",
-    "text": "まず1年分だけ描いてみる\n\n\nここまでと同じ x, y, size, color, hover_name だけで散布図を作る\nyear 列で絞れば、1年分だけを取り出せる\n\ngap_1952 = gap[gap[\"year\"] == 1952]\n\nfig = px.scatter(\n    gap_1952,\n    x=\"gdpPercap\",\n    y=\"lifeExp\",\n    size=\"pop\",\n    color=\"continent\",\n    hover_name=\"country\",\n)\nfig.show()\n\n\n\n\nGDPは数百〜10万ドル超まで桁違いに広がり、ほとんどの国が左端に固まって見える"
+    "text": "まず1年分だけ描いてみる\n\n\ngap[gap[\"year\"] == 1952] で1952年の行だけに絞る（Pandasの条件抽出）\nあとは ここまでと同じ x, y, size, color, hover_name\n\ngap_1952 = gap[gap[\"year\"] == 1952]\n\nfig = px.scatter(\n    gap_1952,\n    x=\"gdpPercap\",\n    y=\"lifeExp\",\n    size=\"pop\",\n    size_max=55,\n    color=\"continent\",\n    hover_name=\"country\",\n)\nfig.show()\n\n\n\n\nGDPは数百〜10万ドル超まで桁違いに広がり、ほとんどの国が左端に固まって見える"
   },
   {
-    "objectID": "plotly.html#動くバブルチャートを簡単コーディング",
-    "href": "plotly.html#動くバブルチャートを簡単コーディング",
+    "objectID": "plotly.html#peek-gapminder-code",
+    "href": "plotly.html#peek-gapminder-code",
     "title": "Plotly入門",
-    "section": "動くバブルチャートを簡単コーディング",
-    "text": "動くバブルチャートを簡単コーディング\n\n\nyear で絞る代わりに animation_frame=\"year\" を渡すと、年ごとのコマがアニメーションになる\nGDPの桁が国によって大きく違うので log_x=True で対数軸にする（さっきの偏りを解消）\n\nfig = px.scatter(\n    gap,\n    x=\"gdpPercap\",\n    y=\"lifeExp\",\n    size=\"pop\",\n    color=\"continent\",\n    hover_name=\"country\",\n    log_x=True,\n    size_max=55,\n    animation_frame=\"year\",\n)\nfig.show()\n\n\n\n\n▶ を押す と55年分の世界が動く（カーソルを合わせると国名が出る）"
+    "section": "動くバブルチャートにする",
+    "text": "動くバブルチャートにする\n\n\nさっきのコードから変えるのは 3か所 だけ：\n\n絞り込みをやめて gap 全体 を渡す\nanimation_frame=\"year\" — year の値ごとにコマを作って動かす\nlog_x=True — 横軸を対数軸（log scale）にして、左端の団子を解消\n\n\nfig = px.scatter(\n    gap,\n    x=\"gdpPercap\",\n    y=\"lifeExp\",\n    size=\"pop\",\n    size_max=55,\n    color=\"continent\",\n    hover_name=\"country\",\n    log_x=True,\n    animation_frame=\"year\",\n)\nfig.show()\n\n\n\n\n▶ を押す と55年分の世界が動く。気になるバブルにマウスを乗せると国名が出る"
   },
   {
-    "objectID": "plotly.html#演習学科ごとの平均点をplotlyで描く",
-    "href": "plotly.html#演習学科ごとの平均点をplotlyで描く",
+    "objectID": "plotly.html#tweak-世界の55年を操る",
+    "href": "plotly.html#tweak-世界の55年を操る",
     "title": "Plotly入門",
-    "section": "演習：学科ごとの平均点をPlotlyで描く",
-    "text": "演習：学科ごとの平均点をPlotlyで描く\n\n\nstudents.csv の学科ごとの平均点を、Plotlyの棒グラフで描け。\n\n\ndata/students.csv を読み込み、4科目の平均点の列を追加\ngroupby(\"学科\", as_index=False) で学科ごとの平均点を集計\npx.bar() で棒グラフを描く（color=\"学科\" で色分け、y軸は 0〜100）\n\n\n\n解答例を見る\nimport pandas as pd\nimport plotly.express as px\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\n\ndf[\"平均点\"] = df[subjects].mean(axis=1)\navg_df = df.groupby(\"学科\", as_index=False)[\"平均点\"].mean()\n\nfig = px.bar(\n    avg_df,\n    x=\"学科\",\n    y=\"平均点\",\n    color=\"学科\",\n    title=\"学科ごとの平均点\",\n)\nfig.update_yaxes(range=[0, 100])\nfig.show()"
+    "section": "Tweak 世界の55年を操る",
+    "text": "Tweak 世界の55年を操る\n\n\nさっきのコード を1か所ずつ変えて実行\n\n\n\n\n\nやりたいこと\nコード\n\n\n\n\n対数軸をやめる\nlog_x=True を消す\n\n\nバブルを大きく\nsize_max=100\n\n\n大陸ごとに分ける\nfacet_col=\"continent\" を足す\n\n\n\n\n\n\n\n\n\n\n予想してから試す\n\n\n\nlog_x=True を消すと、ほとんどの国はどこに固まる？（1952年の図がヒント）"
   },
   {
     "objectID": "plotly.html#まとめ",
     "href": "plotly.html#まとめ",
     "title": "Plotly入門",
     "section": "まとめ",
-    "text": "まとめ\n\n\nPlotlyは インタラクティブな可視化 に強い\nplotly.express は短いコードで書ける\n基本形は px.bar(df, x=\"列名\", y=\"列名\")\n色分けは color=\nホバー表示は hover_name=\nPandasの集計結果は、DataFrameにしてからPlotlyに渡すと分かりやすい\nHTMLとして保存して、Webページに埋め込める\n\n\n\n\n\n\n\n道具は揃った\n\n\n\n描く道具（matplotlib / Plotly）と表を扱う道具（Pandas）が揃った\n次回は 材料の調達：世界中の人がいま何を見ているかをAPIで取得"
+    "text": "まとめ\n\n\nPlotlyは インタラクティブな可視化：ズーム・ホバー・凡例クリック・回転\n基本形は px.グラフの種類(df, x=\"列名\", y=\"列名\")\n色分けは color=、点の大きさは size=、ホバーの見出しは hover_name=\nアニメーションは animation_frame=\nPandasの集計結果は DataFrame + 列名 にしてから渡す（as_index=False か reset_index()）\nwrite_html() でHTMLとして保存して、動くまま共有できる\n\n\n\n\n\n\n\n道具は揃った\n\n\n\n表を扱う道具（Pandas）と描く道具（matplotlib / Plotly）が揃った\n次回は 材料 の調達：世界中の人がいま何を見ているかをAPIで取得"
   },
   {
     "objectID": "pandas.html#section",
@@ -1239,11 +1239,11 @@
     "text": "複数条件で抽出する\n\n\n複数条件は & でつなぐ\nそれぞれの条件を丸括弧で囲む\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df[\n    (df[\"学科\"] == \"情報\")\n    & (df[\"数学I\"] &gt;= 80)\n])\n\n    名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n2   鈴木  情報   2   88   91   84  90     1\n10  吉田  情報   3   83   86   91  89     1\n16  木村  情報   1   92   89   94  91     0\n19  斎藤  情報   3   77   93   85  90     1\n\n\n\n\n\n\n\n\nand ではなく &\n\n\n\nPandasの条件抽出では and ではなく &\n条件ごとに丸括弧をつける\nこの書き方は最初だけ少し変だが、よく使う"
   },
   {
-    "objectID": "pandas.html#tweakand-と-or-で絞ると広がる",
-    "href": "pandas.html#tweakand-と-or-で絞ると広がる",
+    "objectID": "pandas.html#tweak-and-と-or-で絞ると広がる",
+    "href": "pandas.html#tweak-and-と-or-で絞ると広がる",
     "title": "Pandas入門",
-    "section": "Tweak：AND と OR で「絞る」と「広がる」",
-    "text": "Tweak：AND と OR で「絞る」と「広がる」\n\n\n前ページのコード を1か所ずつ変えて実行\n\n\n\n条件式だけ実行する（df[...] を外す）→ 各行に True/False が返る\n& を | にする（「両方」→「どちらか一方」で残る行が増える）\n数学Iの基準を反転する（80点未満）\n英会話も80点以上、と条件を足す"
+    "section": "Tweak AND と OR で「絞る」と「広がる」",
+    "text": "Tweak AND と OR で「絞る」と「広がる」\n\n\n前ページのコード を1か所ずつ変えて実行\n\n\n\n条件式だけ実行する（df[...] を外す）→ 各行に True/False が返る\n& を | にする（「両方」→「どちらか一方」で残る行が増える）\n数学Iの基準を反転する（80点未満）\n英会話も80点以上、と条件を足す"
   },
   {
     "objectID": "pandas.html#列を追加する",
@@ -1288,11 +1288,11 @@
     "text": "groupbyの結果を確認\n\n\ngroupbyの結果も Series\nindex が学科名\nvalues が平均点\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\navg = df.groupby(\"学科\")[\"平均点\"].mean()\n\nprint(type(avg))\nprint(avg.index)\nprint(avg.values)\n\n&lt;class 'pandas.core.series.Series'&gt;\nIndex(['情報', '機械', '電気'], dtype='object', name='学科')\n[80.0625     71.625      77.58333333]\n\n\n\n\n\n\n\n\ngroupbyの結果\n\n\ngroupby の結果も Series\nindex  が「学科」\nvalues が「平均点」"
   },
   {
-    "objectID": "pandas.html#tweakgroupby-は分ける-集計する列-集計方法",
-    "href": "pandas.html#tweakgroupby-は分ける-集計する列-集計方法",
+    "objectID": "pandas.html#tweak-groupby-は分ける-集計する列-集計方法",
+    "href": "pandas.html#tweak-groupby-は分ける-集計する列-集計方法",
     "title": "Pandas入門",
-    "section": "Tweak：groupby は「分ける × 集計する列 × 集計方法」",
-    "text": "Tweak：groupby は「分ける × 集計する列 × 集計方法」\n\n\nさっきのコード を1か所ずつ変えて実行\n\n\n\n学年でgroupbyする\n集計する列を欠席日数にする\n集計を最大値にする"
+    "section": "Tweak groupby は「分ける × 集計する列 × 集計方法」",
+    "text": "Tweak groupby は「分ける × 集計する列 × 集計方法」\n\n\nさっきのコード を1か所ずつ変えて実行\n\n\n\n学年でgroupbyする\n集計する列を欠席日数にする\n集計を最大値にする"
   },
   {
     "objectID": "pandas.html#matplotlibで棒グラフにする",
@@ -1355,7 +1355,7 @@
     "href": "nicegui.html#niceguipythonだけで-spa",
     "title": "NiceGUIで作るSPAモック",
     "section": "NiceGUI：Pythonだけで SPA",
-    "text": "NiceGUI：Pythonだけで SPA\n\n\nNiceGUI（nicegui.io）= Pythonだけ でSPAを作れるフレームワーク\n\nフロントエンド（ブラウザ側）には Vue が使われている\nバックエンドには FastAPI（Pythonの定番APIフレームワーク）を内包 — のちほど API側 でも活躍する\n\nインストールは1行\n\npip install nicegui"
+    "text": "NiceGUI：Pythonだけで SPA\n\n\nNiceGUI（nicegui.io）= Pythonだけ でSPAを作れるフレームワーク\n\nフロントエンド（ブラウザ側）には Vue が使われている\nバックエンドには FastAPI（Pythonの定番APIフレームワーク）を内包 — のちほど自作API+SPAでも活躍する\n\nインストールは1行\n\npip install nicegui"
   },
   {
     "objectID": "nicegui.html#ボタンを押すと何が起きているか",
@@ -1376,7 +1376,7 @@
     "href": "nicegui.html#最初の一歩hello-world",
     "title": "NiceGUIで作るSPAモック",
     "section": "最初の一歩：Hello World",
-    "text": "最初の一歩：Hello World\n\nfrom nicegui import ui\n\nui.label(\"Hello, NiceGUI!\")\nui.run()\n\n実行するとターミナルにURLが出る — Ctrl+クリックでブラウザが開く\n\nNiceGUI ready to go on http://localhost:8080\n\n\n\n\n\n\n\n\n関数\n機能\n補足\n\n\n\n\nui.label(text)\n文字列を表示\n\n\n\nui.run()\nNiceGUIを起動（裏でFastAPIが立ち上がり画面を組み立てる）\n部品をすべて書いた いちばん最後に1回だけ 書く"
+    "text": "最初の一歩：Hello World\n\nfrom nicegui import ui\n\nui.label(\"Hello, NiceGUI!\")\nui.run()\n\n実行すると ブラウザが自動で開く（開かないときはターミナルのURLをCtrl+クリック）\n\nNiceGUI ready to go on http://localhost:8080\n\n\n\n\n\n\n\n\n関数\n機能\n補足\n\n\n\n\nui.label(text)\n文字列を表示\n\n\n\nui.run()\nNiceGUIを起動（裏でFastAPIが立ち上がり画面を組み立てる）\n部品をすべて書いた いちばん最後に1回だけ 書く"
   },
   {
     "objectID": "nicegui.html#ボタンとコールバック関数",
@@ -1390,7 +1390,7 @@
     "href": "nicegui.html#部品は上から順に並ぶだけ",
     "title": "NiceGUIで作るSPAモック",
     "section": "部品は「上から順に」並ぶだけ",
-    "text": "部品は「上から順に」並ぶだけ\n\nfrom nicegui import ui\n\nui.label(\"A\")\nui.label(\"B\")\nui.button(\"ボタン\")\nui.run()\n\n何も指定しなければ、部品は 書いた順に上から縦に 並ぶだけ\n「横に並べたい」「カードでまとめたい」——そのためには部品を入れる 箱 が要る\n\nこの箱を コンテナ（container）と呼ぶ\nコンテナの使い方が、NiceGUIで いちばんつまずきやすい ところ。ここから数枚かけてゆっくり見る"
+    "text": "部品は「上から順に」並ぶだけ\n\nfrom nicegui import ui\n\nui.label(\"A\")\nui.label(\"B\")\nui.button(\"ボタン\")\nui.run()\n\n何も指定しなければ、部品は 書いた順に上から縦に 並ぶだけ\n「横に並べたい」「カードでまとめたい」——そのためには部品を入れる 箱 が要る\n\nこの箱を コンテナ（container）と呼ぶ\nコンテナの使い方が、NiceGUIで いちばんつまずきやすい ところ"
   },
   {
     "objectID": "nicegui.html#with-いまからこの箱に入れる",
@@ -1421,11 +1421,11 @@
     "text": "コンテナの種類\n\n\n\n\nレイアウト系\nインタラクティブ系\n\n\n\n\nui.column() — 縦に並べる\nui.expansion() — 開閉できる折りたたみ\n\n\nui.row() — 横に並べる\nui.dialog() — ポップアップ\n\n\nui.grid() — 格子状に配置\nui.menu() — メニュー\n\n\nui.card() — カード型の枠"
   },
   {
-    "objectID": "nicegui.html#tweakwith-で実験",
-    "href": "nicegui.html#tweakwith-で実験",
+    "objectID": "nicegui.html#tweak-with-で実験",
+    "href": "nicegui.html#tweak-with-で実験",
     "title": "NiceGUIで作るSPAモック",
-    "section": "Tweak：with で実験",
-    "text": "Tweak：with で実験\n\n\nこの土台を保存して、下の表を 1つずつ 試す\n\nfrom nicegui import ui\n\nbox = ui.column()\n\nwith box:\n    ui.label(\"A\")\n    ui.label(\"B\")\n\nui.label(\"C\")\nui.run()\n\n\n\n\n\n\n\n\nやってみる\n予想すること\n\n\n\n\nui.label(\"C\") を with box: の中へ移動\nCはどこに出る？\n\n\nui.column() を ui.row() に変更\n並ぶ向きは？ Cの位置は？\n\n\nwith box: をもう1つ書き足して ui.label(\"D\")\nDは箱に入る？\n\n\nwith box: の中に with ui.card(): を作って ui.label(\"E\")\nEはどんな見た目で出る？\n\n\n\n\n\n\n\n\n\n\n声に出して予想してから保存\n\n\n「Cは箱の中だから…Bの下」と言ってから保存する。外れたときに with の理解が一段深くなる"
+    "section": "Tweak with で実験",
+    "text": "Tweak with で実験\n\n\nこの土台を保存して、下の表を 1つずつ 試す\n\nfrom nicegui import ui\n\nbox = ui.column()\n\nwith box:\n    ui.label(\"A\")\n    ui.label(\"B\")\n\nui.label(\"C\")\nui.run()\n\n\n\n\n\n\n\n\nやってみる\n予想すること\n\n\n\n\nui.label(\"C\") を with box: の中へ移動\nCはどこに出る？\n\n\nui.column() を ui.row() に変更\n並ぶ向きは？ Cの位置は？\n\n\nwith box: をもう1つ書き足して ui.label(\"D\")\nDは箱に入る？\n\n\nwith box: の中に with ui.card(): を作って ui.label(\"E\")\nEはどんな見た目で出る？\n\n\n\n\n\n\n\n\n\n\n声に出して予想してから保存\n\n\n「Cは箱の中だから…Bの下」と言ってから保存する。外れたときに with の理解が一段深くなる"
   },
   {
     "objectID": "nicegui.html#コンテナを操作するメソッド",
@@ -1453,28 +1453,28 @@
     "href": "nicegui.html#入力フォーム",
     "title": "NiceGUIで作るSPAモック",
     "section": "入力フォーム",
-    "text": "入力フォーム\n\nfrom nicegui import ui\n\ndef add_item():\n    name = name_input.value\n    items.append(name)\n    with list_view:        # withでくくると、その場でコンテナに追加される\n        ui.label(name)\n\nname_input = ui.input(\"name\")\nui.button(\"add\", on_click=add_item)\n\nitems = []\nlist_view = ui.column()\nui.run()\n\nui.input() の入力値は .value で取り出す\n「入力 → ボタン → 一覧に追加」— ほぼすべてのアプリの基本形"
+    "text": "入力フォーム\n\nfrom nicegui import ui\n\ndef add_item():\n    name = name_input.value\n    items.append(name)\n    with list_view:        # withでくくると、その場でコンテナに追加される\n        ui.label(name)\n\nitems = []\nname_input = ui.input(\"name\")\nui.button(\"add\", on_click=add_item)\n\nlist_view = ui.column()\nui.run()\n\nui.input() の入力値は .value で取り出す\n「入力 → ボタン → 一覧に追加」— ほぼすべてのアプリの基本形"
   },
   {
-    "objectID": "nicegui.html#演習土台コードを動かす",
-    "href": "nicegui.html#演習土台コードを動かす",
+    "objectID": "nicegui.html#演習-土台コードを動かす",
+    "href": "nicegui.html#演習-土台コードを動かす",
     "title": "NiceGUIで作るSPAモック",
-    "section": "演習：土台コードを動かす",
-    "text": "演習：土台コードを動かす\n\n\n次の土台コードを main.py として保存・実行し、名前を追加できることを確かめよ。\n\nfrom nicegui import ui\n\ndef add_item():\n    name = name_input.value\n    if not name:\n        return\n    items.append(name)\n\n    with list_view:\n        ui.label(name)\n\nitems = []\nname_input = ui.input(\"名前\")\nui.button(\"追加\", on_click=add_item)\n\nlist_view = ui.column().classes(\"gap-2\")\n\nui.run()\n\nここからの Tweak は、すべてこのコードの改造"
+    "section": "演習 土台コードを動かす",
+    "text": "演習 土台コードを動かす\n\n\n次の土台コードを main.py として保存・実行し、名前を追加できることを確かめよ。\n\nfrom nicegui import ui\n\ndef add_item():\n    name = name_input.value\n    if not name:\n        return\n    items.append(name)\n\n    with list_view:\n        ui.label(name)\n\nitems = []\nname_input = ui.input(\"名前\")\nui.button(\"追加\", on_click=add_item)\n\nlist_view = ui.column().classes(\"gap-2\")\n\nui.run()\n\n土台コードの新顔は if not name: return — 空文字のまま押されたら 何も追加せずに抜ける（入力チェックの定番）\nここからの Tweak は、すべてこのコードの改造"
   },
   {
-    "objectID": "nicegui.html#tweak見た目を改造する",
-    "href": "nicegui.html#tweak見た目を改造する",
+    "objectID": "nicegui.html#tweak-見た目を改造する",
+    "href": "nicegui.html#tweak-見た目を改造する",
     "title": "NiceGUIで作るSPAモック",
-    "section": "Tweak：見た目を改造する",
-    "text": "Tweak：見た目を改造する\n\n\n土台コードを 1か所ずつ変えて保存 — オートリロードが即座に見せてくれる\n\n\n\n\n\n\n\n\n\nやりたいこと\nヒント\n\n\n\n\n項目を横に並べる\nlist_view を ui.row() に\n\n\n各項目をカードにする\nadd_item の中で card = ui.card() を作り、with card: に ui.label\n\n\nカードの間隔を広げる\nlist_view に .classes(\"gap-4\")\n\n\nカードの背景を薄いグレーに\nカードに .classes(\"bg-gray-100\")\n\n\nカードの角を丸くする\nカードに .classes(\"bg-gray-100 rounded-lg\")（スペース区切りで追加）\n\n\n\n\n\n\n\n\n\n\n予想してから保存する\n\n\n変える前に「どう変わるはず」と言ってから保存する。予想と違ったら、それが一番の学び"
+    "section": "Tweak 見た目を改造する",
+    "text": "Tweak 見た目を改造する\n\n\n土台コードを 1か所ずつ変えて保存 — オートリロードが即座に見せてくれる\n\n\n\n\n\n\n\n\n\nやりたいこと\nヒント\n\n\n\n\n項目を横に並べる\nlist_view を ui.row() に\n\n\n各項目をカードにする\nadd_item の中で card = ui.card() を作り、with card: に ui.label\n\n\nカードの間隔を広げる\nlist_view に .classes(\"gap-4\")\n\n\nカードの背景を薄いグレーに\nカードに .classes(\"bg-gray-100\")\n\n\nカードの角を丸くする\nカードに .classes(\"bg-gray-100 rounded-lg\")（スペース区切りで追加）\n\n\n\n\n\n\n\n\n\n\n予想してから保存する\n\n\n変える前に「どう変わるはず」と言ってから保存する。予想と違ったら、それが一番の学び"
   },
   {
-    "objectID": "nicegui.html#tweak削除機能を付ける",
-    "href": "nicegui.html#tweak削除機能を付ける",
+    "objectID": "nicegui.html#tweak-削除機能を付ける",
+    "href": "nicegui.html#tweak-削除機能を付ける",
     "title": "NiceGUIで作るSPAモック",
-    "section": "Tweak：削除機能を付ける",
-    "text": "Tweak：削除機能を付ける\n\n\n\n\n\n\n\n\n\nやりたいこと\nヒント\n\n\n\n\n「全部削除」ボタンを追加\nコールバックの中で list_view.clear()\n\n\nカードごとの×ボタン\nwith card: の中に ui.button(\"×\", on_click=card.delete) — メソッドもコールバックとして渡せる\n\n\n\n\n\n\n解答例を表示\nfrom nicegui import ui\n\n\ndef add_item():\n    name = name_input.value\n    if not name:\n        return\n    items.append(name)\n\n    with list_view:\n        card = ui.card().classes(\"bg-gray-100 rounded-lg\")\n        with card:\n            with ui.row():\n                ui.label(name)\n                ui.button(\"×\", on_click=card.delete).classes(\"text-red-500\")\n\n\ndef clear_all():\n    list_view.clear()\n    ui.notify(\"全部削除しました\")\n\n\nitems = []\nname_input = ui.input(\"名前\")\nui.button(\"追加\", on_click=add_item)\nui.button(\"全部削除\", on_click=clear_all)\n\nlist_view = ui.row().classes(\"gap-4\")\n\nui.run()"
+    "section": "Tweak 削除機能を付ける",
+    "text": "Tweak 削除機能を付ける\n\n\n\n\n\n\n\n\n\nやりたいこと\nヒント\n\n\n\n\n「全部削除」ボタンを追加\nコールバックの中で list_view.clear()\n\n\nカードごとの×ボタン\nwith card: の中に ui.button(\"×\", on_click=card.delete) — メソッドもコールバックとして渡せる\n\n\n\n\n\n\n解答例を表示\nfrom nicegui import ui\n\n\ndef add_item():\n    name = name_input.value\n    if not name:\n        return\n    items.append(name)\n\n    with list_view:\n        card = ui.card().classes(\"bg-gray-100 rounded-lg\")\n        with card:\n            with ui.row():\n                ui.label(name)\n                ui.button(\"×\", on_click=card.delete).classes(\"text-red-500\")\n\n\ndef clear_all():\n    list_view.clear()\n    ui.notify(\"全部削除しました\")\n\n\nitems = []\nname_input = ui.input(\"名前\")\nui.button(\"追加\", on_click=add_item)\nui.button(\"全部削除\", on_click=clear_all)\n\nlist_view = ui.row().classes(\"gap-4\")\n\nui.run()"
   },
   {
     "objectID": "nicegui.html#まとめ",
@@ -1701,18 +1701,18 @@
     "text": "今日使う基本操作は5つだけ\n\n\n\n\nキー\n操作\n\n\n\n\nF\nFrame（画面の枠）を置く\n\n\nR\n四角形（ボタンやカード）\n\n\nT\nテキスト（タイトルやラベル）\n\n\nShift + A\nAuto Layout（自動整列）\n\n\nAlt + ドラッグ\nコピー\n\n\n\n\n\n\n\n\n\n迷ったら左上のツールバー\n\n\nキーを忘れてもツールバーから選べる。まずは F・R・T の3つで大半の画面が作れる"
   },
   {
-    "objectID": "figma.html#演習まず1画面作る",
-    "href": "figma.html#演習まず1画面作る",
+    "objectID": "figma.html#演習-まず1画面作る",
+    "href": "figma.html#演習-まず1画面作る",
     "title": "Figmaでワイヤーフレーム",
-    "section": "演習：まず1画面作る",
-    "text": "演習：まず1画面作る\n\n\n「今日の予定を見る画面（Home）」を Figma で1画面作れ。\n\n\nfigma.com にログインして新規デザインファイルを作成\nF キー → 右パネルから iPhone サイズの Frame を置く\n左上に T で「Home」とタイトルを置く\nR の四角形でカード（Today’s Tasks）\n四角を3つ並べてクイックメニュー（Quick Actions）\n\n\n\n\n\n\n\nきれいさは要らない\n\n\nグレーの四角と黒い文字だけでよい。置く・並べる・名前を付ける が今日の全部"
+    "section": "演習 まず1画面作る",
+    "text": "演習 まず1画面作る\n\n\n「今日の予定を見る画面（Home）」を Figma で1画面作れ。\n\n\nfigma.com にログインして新規デザインファイルを作成\nF キー → 右パネルから iPhone サイズの Frame を置く\n左上に T で「Home」とタイトルを置く\nR の四角形でカード（Today’s Tasks）\n四角を3つ並べてクイックメニュー（Quick Actions）\n\n\n\n\n\n\n\nきれいさは要らない\n\n\nグレーの四角と黒い文字だけでよい。置く・並べる・名前を付ける が今日の全部"
   },
   {
-    "objectID": "figma.html#演習3画面のワイヤーフレーム",
-    "href": "figma.html#演習3画面のワイヤーフレーム",
+    "objectID": "figma.html#演習-3画面のワイヤーフレーム",
+    "href": "figma.html#演習-3画面のワイヤーフレーム",
     "title": "Figmaでワイヤーフレーム",
-    "section": "演習：3画面のワイヤーフレーム",
-    "text": "演習：3画面のワイヤーフレーム\n\n\n\n\n\n\n\nホーム → タスク一覧 → 追加フォーム の3画面ワイヤーフレームを作れ（上図がゴールの目安）。\n\n\nキャンバスに iPhone Frame を横並びで3つ置く\nホーム — タイトル・カード・クイックメニュー・下タブ（◯3つ）\nタスク一覧 — タイトル・リストアイテム5つ・右下に「＋」ボタン\n追加フォーム — Title・Detail・Category の入力欄と Save ボタン"
+    "section": "演習 3画面のワイヤーフレーム",
+    "text": "演習 3画面のワイヤーフレーム\n\n\n\n\n\n\n\nホーム → タスク一覧 → 追加フォーム の3画面ワイヤーフレームを作れ（上図がゴールの目安）。\n\n\nキャンバスに iPhone Frame を横並びで3つ置く\nホーム — タイトル・カード・クイックメニュー・下タブ（◯3つ）\nタスク一覧 — タイトル・リストアイテム5つ・右下に「＋」ボタン\n追加フォーム — Title・Detail・Category の入力欄と Save ボタン"
   },
   {
     "objectID": "figma.html#よくある画面パターン",
@@ -1722,11 +1722,11 @@
     "text": "よくある画面パターン\n\n\n\n\n\n\n\n\n系統\n定番の部品\n\n\n\n\nホーム系\nカード表示・サマリー情報・クイックリンク\n\n\n一覧系（List）\nタイトル + サブ情報、「＞」で詳細へ\n\n\n詳細系（Detail）\nタイトル・説明、編集／削除ボタン\n\n\n入力系（Form）\nテキスト欄・日付選択・Save / Cancel\n\n\nナビゲーション系\n下タブ（Tab bar）・ハンバーガーメニュー・「＋」の丸ボタン（FAB）\n\n\n\n\n世の中のアプリは、ほぼこのパターンの 組み合わせ でできている\n\n手元のスマホのアプリを開いて、どのパターンか 分解して見る クセをつける"
   },
   {
-    "objectID": "figma.html#演習自分のアプリの画面を作る",
-    "href": "figma.html#演習自分のアプリの画面を作る",
+    "objectID": "figma.html#演習-自分のアプリの画面を作る",
+    "href": "figma.html#演習-自分のアプリの画面を作る",
     "title": "Figmaでワイヤーフレーム",
-    "section": "演習：自分のアプリの画面を作る",
-    "text": "演習：自分のアプリの画面を作る\n\n\nペイオフマトリクスで「すぐやるべき」に選んだ自分のアプリ案について、3画面以上のワイヤーフレームを作り、Prototype機能で画面をつなげ。\n\n\n必要な画面を 3つだけ 決める（欲張らない — 増やすのはいつでもできる）\n前ページのUIパターンから部品を選ぶ\n各画面に配置\nPrototype タブでボタンと画面を矢印でつなぐ → 再生ボタンで 動くアプリのように試す\n\n\n\n\n\n\n\nここで作った3画面が実装の設計図になる\n\n\nこの後の NiceGUI では、このワイヤーフレームを 本物のコード にしていく"
+    "section": "演習 自分のアプリの画面を作る",
+    "text": "演習 自分のアプリの画面を作る\n\n\nペイオフマトリクスで「すぐやるべき」に選んだ自分のアプリ案について、3画面以上のワイヤーフレームを作り、Prototype機能で画面をつなげ。\n\n\n必要な画面を 3つだけ 決める（欲張らない — 増やすのはいつでもできる）\n前ページのUIパターンから部品を選ぶ\n各画面に配置\nPrototype タブでボタンと画面を矢印でつなぐ → 再生ボタンで 動くアプリのように試す\n\n\n\n\n\n\n\nここで作った3画面が実装の設計図になる\n\n\nこの後の NiceGUI では、このワイヤーフレームを 本物のコード にしていく"
   },
   {
     "objectID": "convergence.html#section",
@@ -1785,11 +1785,11 @@
     "text": "KJ法を使う場面と道具\n\n\n使う場面\n\n実験・プロジェクトテーマの 問題構造の分析\nアイデアソンやチーム開発の 要件整理\nフィールド調査のまとめ（観察 → 洞察）\n\n\n\n\n\n\n\n\n\nツール\n活用法\n\n\n\n\n付箋 + 模造紙\nアナログKJ法の基本スタイル。物理的に動かせる強さ\n\n\nMiro などのオンラインホワイトボード\nデジタル親和図。離れていても同時にグループ化できる"
   },
   {
-    "objectID": "convergence.html#演習kj法",
-    "href": "convergence.html#演習kj法",
+    "objectID": "convergence.html#演習-kj法",
+    "href": "convergence.html#演習-kj法",
     "title": "収束技法（KJ法・アイデアマップ）",
-    "section": "演習：KJ法",
-    "text": "演習：KJ法\n\n\n発想法の演習で出した付箋（ブレスト・635法の全案）をKJ法で整理し、模造紙1枚の「KJ図」に仕上げよ。\n\n\n付箋を全部テーブルに広げる（名前は書かない・消す）\n近い意味の付箋を寄せてグループ化（3〜7枚 目安、無理に全部入れない）\n各グループに中見出し（短いフレーズ）\nグループ間の関係を矢印で記入（原因→結果、手段→目的）\n図全体を1文で要約して余白に記入\n\n\n\n\n\n\n\n先に見出しを作らない\n\n\n「勉強系」「生活系」のような 箱を先に決めて仕分ける のはKJ法ではない。 カードを読んで、寄ってきたかたまりに後から名前を付ける"
+    "section": "演習 KJ法",
+    "text": "演習 KJ法\n\n\n発想法の演習で出した付箋（ブレスト・635法の全案）をKJ法で整理し、模造紙1枚の「KJ図」に仕上げよ。\n\n\n付箋を全部テーブルに広げる（名前は書かない・消す）\n近い意味の付箋を寄せてグループ化（3〜7枚 目安、無理に全部入れない）\n各グループに中見出し（短いフレーズ）\nグループ間の関係を矢印で記入（原因→結果、手段→目的）\n図全体を1文で要約して余白に記入\n\n\n\n\n\n\n\n先に見出しを作らない\n\n\n「勉強系」「生活系」のような 箱を先に決めて仕分ける のはKJ法ではない。 カードを読んで、寄ってきたかたまりに後から名前を付ける"
   },
   {
     "objectID": "convergence.html#section-1",
@@ -1827,11 +1827,11 @@
     "text": "マインドマップ vs KJ法\n\n\n\n\n\nマインドマップ\nKJ法\n\n\n\n\n発案者\nトニー・ブザン（英国）\n川喜田二郎（日本）\n\n\n目的\n個人 の思考整理・発想\nチーム のアイデア統合・構造化\n\n\n構造\n放射型（中心 → 枝）\n集合型（カード → グループ）\n\n\n思考タイプ\n発散 + 整理の中間\n収束（意味づけ）\n\n\n使う場面\nノート・構想・自己分析\nチーム発表・レポート構造\n\n\n\n\n\n\n\n\n\n使い分けの目安\n\n\n1人なら マインドマップ、チームなら KJ法。個人で枝を広げてから、チームで付箋にして持ち寄る合わせ技も定番"
   },
   {
-    "objectID": "convergence.html#演習アイデアマップ",
-    "href": "convergence.html#演習アイデアマップ",
+    "objectID": "convergence.html#演習-アイデアマップ",
+    "href": "convergence.html#演習-アイデアマップ",
     "title": "収束技法（KJ法・アイデアマップ）",
-    "section": "演習：アイデアマップ",
-    "text": "演習：アイデアマップ\n\n\n「自分のアプリのアイデア」を中心に置き、第一枝4本以上・第二枝まで含めて20ノード以上のアイデアマップを紙1枚に描け（色は3色以上）。\n\n\nA4を横置きにして中心にテーマを描く（絵があるとよい）\n第一枝：「誰が使う」「何ができる」「画面」「データ」など4本以上\n各枝に第二枝を2本以上\n描き終えたら俯瞰し、離れた枝同士のつながり を点線で1本以上引く\n\n\n\n\n\n\n\nこの地図は最終課題まで使う\n\n\nここで描いたマップが、ワイヤーフレーム（Figma）と実装（NiceGUI）の設計図の種になる"
+    "section": "演習 アイデアマップ",
+    "text": "演習 アイデアマップ\n\n\n「自分のアプリのアイデア」を中心に置き、第一枝4本以上・第二枝まで含めて20ノード以上のアイデアマップを紙1枚に描け（色は3色以上）。\n\n\nA4を横置きにして中心にテーマを描く（絵があるとよい）\n第一枝：「誰が使う」「何ができる」「画面」「データ」など4本以上\n各枝に第二枝を2本以上\n描き終えたら俯瞰し、離れた枝同士のつながり を点線で1本以上引く\n\n\n\n\n\n\n\nこの地図は最終課題まで使う\n\n\nここで描いたマップが、ワイヤーフレーム（Figma）と実装（NiceGUI）の設計図の種になる"
   },
   {
     "objectID": "convergence.html#発散から収束へ全体の流れ",
@@ -1852,14 +1852,14 @@
     "href": "api.html#ここまでで揃った道具",
     "title": "APIでデータ取得",
     "section": "ここまでで揃った「道具」",
-    "text": "ここまでで揃った「道具」\n\n\nデータを置く — 変数、コレクション（list / dict / tuple）\nデータを計算する — NumPy（ベクトル・行列・統計）\nデータを見る — matplotlib（散布図、折れ線、subplot）\n\n\n\n\n\n\n\nここからは「材料」\n\n\n\n道具だけでは何もできない\n入力データ（材料）を仕入れる必要がある\n一番手っ取り早い仕入れ先は Web"
+    "text": "ここまでで揃った「道具」\n\n\nデータを置く — 変数、コレクション（list / dict / tuple）\nデータを計算する — NumPy（ベクトル・行列・統計）\n表で扱う — Pandas（read_csv、groupby）\nデータを見る — matplotlib（静止画）、Plotly（動くグラフ）\n\n\n\n\n\n\n\nここからは「材料」\n\n\n\n道具だけでは何もできない\n入力データ（材料）を仕入れる必要がある\n一番手っ取り早い仕入れ先は Web"
   },
   {
     "objectID": "api.html#本授業の最終目標",
     "href": "api.html#本授業の最終目標",
     "title": "APIでデータ取得",
     "section": "本授業の最終目標",
-    "text": "本授業の最終目標\n\n\nなにかのデータ群を処理して\n役に立つ、もしくは興味深い 出力やサービスのモックを作る\n今回はその第一歩として Webからデータを取ってくる ことをやる"
+    "text": "本授業の最終目標\n\n\nなにかのデータ群を処理して\n役に立つ、もしくは興味深い 出力やサービスのモックを作る\n道具は揃った — 今日はその第一歩として、材料 = 入力データ をWebから取ってくる"
   },
   {
     "objectID": "api.html#section-1",
@@ -1950,7 +1950,7 @@
     "href": "api.html#余談手動で-json-dict",
     "title": "APIでデータ取得",
     "section": "（余談）手動で JSON → dict",
-    "text": "（余談）手動で JSON → dict\n\n\n標準ライブラリ json で同じことができる\npip 不要\n\nimport requests\nimport json\n\nresponse = requests.get(url, headers=headers)\nres_dict = json.loads(response.text)\nprint(type(res_dict), res_dict)\n# &lt;class 'dict'&gt; {'items': [{'project': 'ja.wikipedia', ...\n\n\n\n\n\n\n普段は .json() でOK\n\n\n\nrequests が内部でやってくれているだけ\n「中で何をしているか」を知っておくと エラー時に強い"
+    "text": "（余談）手動で JSON → dict\n\n\n標準ライブラリ json で同じことができる\npip 不要\n\nimport requests\nimport json\n\nurl = \"https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia/all-access/2025/06/27\"\nheaders = {\"User-Agent\": \"example.com/lesson\"}\n\nresponse = requests.get(url, headers=headers)\nres_dict = json.loads(response.text)\nprint(type(res_dict), res_dict)\n# &lt;class 'dict'&gt; {'items': [{'project': 'ja.wikipedia', ...\n\n\n\n\n\n\n普段は .json() でOK\n\n\n\nrequests が内部でやってくれているだけ\n「中で何をしているか」を知っておくと エラー時に強い"
   },
   {
     "objectID": "api.html#section-3",
@@ -1999,21 +1999,21 @@
     "href": "api.html#peek-tanabata",
     "title": "APIでデータ取得",
     "section": "「七夕」のページビューを取得する",
-    "text": "「七夕」のページビューを取得する\n\n\n記事「七夕」の 2025年まるごと1年分 の日別アクセス数を取り、統計量を出す\n\nimport requests\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia/all-access/user/\"\n       \"七夕/daily/20250101/20251231\")\nheaders = {\"User-Agent\": \"example.com/lesson\"}\n\nresponse = requests.get(url, headers=headers)\ndata = response.json()\n\n# data[\"items\"] は list of dict\nviews = np.array([item[\"views\"]     for item in data[\"items\"]])\ndates = np.array([item[\"timestamp\"] for item in data[\"items\"]])\n\nprint(f\"日数:   {len(views)}\")\nprint(f\"最大:   {views.max()}回\")\nprint(f\"最小:   {views.min()}回\")\nprint(f\"平均:   {views.mean():.1f}回\")\nprint(f\"中央値: {np.median(views):.0f}回\")\n日数:   365\n最大:   47656回\n最小:   58回\n平均:   467.6回\n中央値: 154回\n\n最大が中央値の約300倍。平均と中央値も大きくズレている\n可視化編でやった「右に引っ張られた平均」の匂い — なにかがおかしい"
+    "text": "「七夕」のページビューを取得する\n\n\n記事「七夕」の 2025年まるごと1年分 の日別アクセス数を取り、統計量を出す\n\nimport requests\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia/all-access/user/\"\n       \"七夕/daily/20250101/20251231\")\nheaders = {\"User-Agent\": \"example.com/lesson\"}\n\nresponse = requests.get(url, headers=headers)\ndata = response.json()\n\n# data[\"items\"] は list of dict\nviews = np.array([item[\"views\"] for item in data[\"items\"]])\n\nprint(f\"日数:   {len(views)}\")\nprint(f\"最大:   {views.max()}回\")\nprint(f\"最小:   {views.min()}回\")\nprint(f\"平均:   {views.mean():.1f}回\")\nprint(f\"中央値: {np.median(views):.0f}回\")\n\n\n日数:   365\n最大:   47656回\n最小:   58回\n平均:   467.6回\n中央値: 154回\n\n\n\n最大が中央値の約300倍。平均と中央値も大きくズレている\nデータの可視化でやった「右に引っ張られた平均」の匂い — なにかがおかしい"
   },
   {
-    "objectID": "api.html#過去の章が一気に効いてくる",
-    "href": "api.html#過去の章が一気に効いてくる",
+    "objectID": "api.html#過去の資料が一気に効いてくる",
+    "href": "api.html#過去の資料が一気に効いてくる",
     "title": "APIでデータ取得",
-    "section": "過去の章が一気に効いてくる",
-    "text": "過去の章が一気に効いてくる\n\n\ndata[\"items\"] は list of dict（dict章 でやった形）\n内包表記でフィールド抽出（list章）\nnp.array() で ndarray 化（numpy章）\nnp.mean / np.var で統計量\nここで初登場：np.argmax / argmin — 最大・最小の位置（インデックス）を返す（値ではない点に注意）\n\n\n\n\n\n\n\n値もインデックスも両方欲しいとき\n\n\n\nmax_i = np.argmax(views) で index を得てから\nviews[max_i] で値、dates[max_i] で対応する日付\n同じ index で並ぶ配列同士をリンクさせる のはNumPy/データ処理の頻出パターン"
+    "section": "過去の資料が一気に効いてくる",
+    "text": "過去の資料が一気に効いてくる\n\n\ndata[\"items\"] は list of dict（dictあらためてでやった形）\n内包表記でフィールド抽出（listあらためて）\nnp.array() で ndarray 化 → .max() / .mean() / np.median() で統計量（NumPy入門）\n新しいのは requests.get() の1往復だけ — あとは全部、手持ちの道具"
   },
   {
-    "objectID": "api.html#まとめ",
-    "href": "api.html#まとめ",
+    "objectID": "api.html#requests早見表",
+    "href": "api.html#requests早見表",
     "title": "APIでデータ取得",
-    "section": "まとめ",
-    "text": "まとめ\n\n\n\n\n\n\n\n\nやりたいこと\nコード\n\n\n\n\nアクセス\nrequests.get(url, headers=...)\n\n\n状態確認\nresponse.status_code（200 = OK）\n\n\n本文(str)\nresponse.text\n\n\nJSON → dict\nresponse.json()\n\n\nヘッダー\nresponse.headers\n\n\nUser-Agent\nheaders={\"User-Agent\": \"...\"}\n\n\n値の集計\nnp.array([d[\"views\"] for d in items]) → mean/var/argmax\n\n\n\n\nWeb から取った dict は今まで通り for / items() / np.array() で処理できる"
+    "section": "requests早見表",
+    "text": "requests早見表\n\n\n\n\nやりたいこと\nコード\n\n\n\n\nアクセス\nrequests.get(url, headers=...)\n\n\n状態確認\nresponse.status_code（200 = OK）\n\n\n本文(str)\nresponse.text\n\n\nJSON → dict\nresponse.json()\n\n\nヘッダー\nresponse.headers\n\n\nUser-Agent\nheaders={\"User-Agent\": \"...\"}\n\n\n値の集計\nnp.array([d[\"views\"] for d in items]) → .mean() など\n\n\n\n\nWeb から取った dict は今まで通り for / items() / np.array() で処理できる"
   },
   {
     "objectID": "api.html#section-5",
@@ -2027,7 +2027,21 @@
     "href": "api.html#演習desktop-と-mobile-web-の比較",
     "title": "APIでデータ取得",
     "section": "演習：desktop と mobile-web の比較",
-    "text": "演習：desktop と mobile-web の比較\n\n\n「七夕」の2025年1年分のページビューを desktop と mobile-web の両方で取得し、どちらでよく読まれているかを統計量で比較せよ。\n\n\naccess を desktop / mobile-web に切り替えて、同じ期間（2025/01/01 – 2025/12/31）で APIを2回呼ぶ\nそれぞれの 最大・最小・平均・分散 を表示\n結果は捨てずに取っておく — 次回、このデータをグラフで比較する\n\n\n\n\n\n\n\nヒント\n\n\n\n取得結果を views_desktop と views_mobile_web に分けて入れる\n同じ headers を使い回せる\n関数化すると重複が消えてスッキリ\n\n\n\n\n\n\n解答例を見る\nimport requests\nimport numpy as np\n\nheaders = {\"User-Agent\": \"example.com/lesson\"}\nbase = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n        \"ja.wikipedia/{access}/user/七夕/daily/20250101/20251231\")\n\ndef fetch_views(access):\n    url = base.format(access=access)\n    data = requests.get(url, headers=headers).json()\n    return np.array([item[\"views\"] for item in data[\"items\"]])\n\nviews_desktop    = fetch_views(\"desktop\")\nviews_mobile_web = fetch_views(\"mobile-web\")\n\nfor name, views in [(\"desktop\", views_desktop), (\"mobile-web\", views_mobile_web)]:\n    print(f\"{name}: 最大={views.max()} 最小={views.min()} \"\n          f\"平均={views.mean():.1f} 分散={views.var():.1f}\")"
+    "text": "演習：desktop と mobile-web の比較\n\n\n「七夕」の2025年1年分のページビューを desktop と mobile-web の両方で取得し、どちらでよく読まれているかを統計量で比較せよ。\n\n\naccess を desktop / mobile-web に切り替えて、同じ期間（2025/01/01 – 2025/12/31）で APIを2回呼ぶ\nそれぞれの 最大・最小・平均・分散 を表示\n書いたコードはファイルごと保存しておく — APIデータを可視化するで、このデータをグラフにして比較する\n\n\n\n\n\n\n\nヒント\n\n\n\n取得結果を views_desktop と views_mobile_web に分けて入れる\n同じ headers を使い回せる\n関数化すると重複が消えてスッキリ\n\n\n\n\n\n\n解答例を見る\nimport requests\nimport numpy as np\n\nheaders = {\"User-Agent\": \"example.com/lesson\"}\n\ndef fetch_views(access):\n    url = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n           f\"ja.wikipedia/{access}/user/七夕/daily/20250101/20251231\")\n    data = requests.get(url, headers=headers).json()\n    return np.array([item[\"views\"] for item in data[\"items\"]])\n\nviews_desktop    = fetch_views(\"desktop\")\nviews_mobile_web = fetch_views(\"mobile-web\")\n\nfor name, views in [(\"desktop\", views_desktop), (\"mobile-web\", views_mobile_web)]:\n    print(f\"{name}: 最大={views.max()} 最小={views.min()} \"\n          f\"平均={views.mean():.1f} 分散={views.var():.1f}\")"
+  },
+  {
+    "objectID": "api.html#まとめ",
+    "href": "api.html#まとめ",
+    "title": "APIでデータ取得",
+    "section": "まとめ",
+    "text": "まとめ\n\n\n道具→材料 へ：今回は Web から材料を仕入れた\nrequests で アクセス、.text / .json() / .headers で 取り出す\nAPI / エンドポイント / パラメータ の概念\nWikipedia Pageviews API で 実データを取得、NumPy で 集計"
+  },
+  {
+    "objectID": "api.html#次回予告",
+    "href": "api.html#次回予告",
+    "title": "APIでデータ取得",
+    "section": "次回予告",
+    "text": "次回予告\n\n\n「七夕」の閲覧数、最大が中央値の300倍 — なにかがおかしい\n統計量だけでは、これ以上なにも分からない\n次回、大原則の出番：Always plot your data first.\n\n描けば、山の 正体 と 日付 が分かる\nそしてデータの可視化の冒頭で見せた 謎の図の正体も明かされる"
   },
   {
     "objectID": "api.html#section-6",
@@ -2042,20 +2056,6 @@
     "title": "APIでデータ取得",
     "section": "実際のブラウザのUser-Agent",
     "text": "実際のブラウザのUser-Agent\n\n\n普段ブラウザでWebを見るときも 裏でヘッダーが飛んでいる\nサーバはこの値を見て PC / スマホ / OS / ブラウザ を判別している\nレスポンシブやリダイレクトの分岐に使われる\n\n\n\n\n\n\n\n\nブラウザ\nUser-Agent\n\n\n\n\nChrome (Windows)\nMozilla/5.0 (Windows NT 10.0; Win64; x64) ... Chrome/119.0.0.0 Safari/537.36\n\n\nChrome (Mac)\nMozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) ... Chrome/119.0.0.0 Safari/537.36\n\n\niOS Safari (iPhone)\nMozilla/5.0 (iPhone; CPU iPhone OS 17_1 like Mac OS X) ... Mobile/15E148 Safari/604.1\n\n\niOS Safari (iPad)\nMozilla/5.0 (iPad; CPU OS 17_1 like Mac OS X) ... Mobile/15E148 Safari/604.1"
-  },
-  {
-    "objectID": "api.html#ここまでの流れ",
-    "href": "api.html#ここまでの流れ",
-    "title": "APIでデータ取得",
-    "section": "ここまでの流れ",
-    "text": "ここまでの流れ\n\n\n道具→材料 へ：今回は Web から材料を仕入れた\nrequests で アクセス、.text / .json() / .headers で 取り出す\nAPI / エンドポイント / パラメータ の概念\nWikipedia Pageviews API で 実データを取得、NumPy で 集計"
-  },
-  {
-    "objectID": "api.html#次回予告",
-    "href": "api.html#次回予告",
-    "title": "APIでデータ取得",
-    "section": "次回予告",
-    "text": "次回予告\n\n\n「七夕」の閲覧数、最大が中央値の300倍 — なにかがおかしい\n統計量だけでは、これ以上なにも分からない\n次回、大原則の出番：Always plot your data first.\n\n描けば、山の 正体 と 日付 が分かる\nそして可視化編の冒頭で見せた 謎の図 の正体も明かされる"
   },
   {
     "objectID": "api.html#参考リンク",
@@ -2104,7 +2104,7 @@
     "href": "api-spa.html#データファイルを用意する",
     "title": "自作API+SPA",
     "section": "データファイルを用意する",
-    "text": "データファイルを用意する\n\n\n実際のアプリは、データをファイルやデータベースから取得する — まずはJSONファイルから\nquestions.json をダウンロードして main.py と同じフォルダに置く（中身は自作してもよい）\n\n{\n  \"title\": \"あなたにぴったりの職業診断\",\n  \"questions\": [\n    {\"id\": 1, \"text\": \"休日は何をしたい？\",\n     \"choices\": [\"外で遊ぶ\", \"家でゆっくり\", \"友達と集まる\"]},\n    {\"id\": 2, \"text\": \"得意なことは？\",\n     \"choices\": [\"計算\", \"絵を描く\", \"話すこと\"]}\n  ],\n  \"results\": {\n    \"A\": \"あなたは営業職タイプ！人と話すのが得意です。\",\n    \"B\": \"あなたはデザイナータイプ！創造力が豊かです。\"\n  }\n}"
+    "text": "データファイルを用意する\n\n\n実際のアプリは、データをファイルやデータベースから取得する — まずはJSONファイルから\nquestions.json をダウンロードして main.py と同じフォルダに置く（中身は自作してもよい）\n\n{\n  \"title\": \"あなたにぴったりの職業診断\",\n  \"questions\": [\n    {\"id\": 1, \"text\": \"休日は何をしたい？\",\n     \"choices\": [\"外で遊ぶ\", \"家でゆっくり\", \"友達と集まる\"]},\n    {\"id\": 2, \"text\": \"得意なことは？\",\n     \"choices\": [\"計算\", \"絵を描く\", \"話すこと\"]},\n    ...\n  ],\n  \"results\": {\n    \"A\": \"あなたは営業職タイプ！人と話すのが得意です。\",\n    \"B\": \"あなたはデザイナータイプ！創造力が豊かです。\",\n    ...\n  }\n}\n\n抜粋 — 実物は質問3問（id: 1〜3）、結果A〜C"
   },
   {
     "objectID": "api-spa.html#エンドポイントでファイルを読む",
@@ -2135,25 +2135,25 @@
     "text": "本当にHTTPで取りに行く\n\n\n直接呼び出しは手軽だが、データは HTTPを通っていない（API利用の練習としてはショートカット）\nhttpx（NiceGUIが同梱するHTTPクライアント）を使うと、自分のAPIに 本物のリクエスト を送れる\n\nfrom nicegui import ui, app\nimport json\nimport httpx\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\nasync def load_questions():\n    async with httpx.AsyncClient() as client:\n        response = await client.get(\"http://localhost:8080/api/questions\")\n    data = response.json()\n    ui.label(data[\"title\"]).classes(\"text-2xl font-bold\")\n\nui.button(\"HTTPで読み込む\", on_click=load_questions)\nui.run()\n\nasync def + await は「通信を 待つ間、画面を止めない」ための書き方\n\nコールバックは async な関数でもそのまま登録できる\n\n\n\n\n\n\n\n\nここで requests を使ってはいけない\n\n\nrequests.get() は応答を 待つ間プログラム全体を止める。相手が自分自身のサーバーだと、止まっている本人は応答を返せない — アプリごとフリーズする。自分のAPIを呼ぶときは httpx + await 一択"
   },
   {
-    "objectID": "api-spa.html#演習土台コードを動かす",
-    "href": "api-spa.html#演習土台コードを動かす",
+    "objectID": "api-spa.html#演習-土台コードを動かす",
+    "href": "api-spa.html#演習-土台コードを動かす",
     "title": "自作API+SPA",
-    "section": "演習：土台コードを動かす",
-    "text": "演習：土台コードを動かす\n\n\n土台コードと questions.json を同じフォルダに置いて実行し、ボタンで質問一覧が表示されることを確かめよ。\n\nfrom nicegui import ui, app\nimport json\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        data = json.load(f)\n    return data\n\ncontainer = ui.column().classes(\"w-full gap-4 p-4\")\n\ndef load_data():\n    container.clear()               # 前の表示を消してから\n    data = get_questions()          # 取り直して\n    with container:                 # 表示し直す\n        ui.label(data[\"title\"]).classes(\"text-3xl font-bold mb-4\")\n        for question in data[\"questions\"]:\n            with ui.card().classes(\"w-full\"):\n                ui.label(f\"Q{question['id']}: {question['text']}\").classes(\"font-bold text-lg\")\n                for choice in question[\"choices\"]:\n                    ui.label(f\"・{choice}\").classes(\"ml-4\")\n\nui.button(\"質問を読み込む\", on_click=load_data).classes(\"bg-blue-500 text-white p-3 rounded-lg\")\n\nui.run()"
+    "section": "演習 土台コードを動かす",
+    "text": "演習 土台コードを動かす\n\n\n土台コードと questions.json を同じフォルダに置いて実行し、ボタンで質問一覧が表示されることを確かめよ。\n\nfrom nicegui import ui, app\nimport json\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        data = json.load(f)\n    return data\n\ncontainer = ui.column().classes(\"w-full gap-4 p-4\")\n\ndef load_data():\n    container.clear()               # 前の表示を消してから\n    data = get_questions()          # 取り直して\n    with container:                 # 表示し直す\n        ui.label(data[\"title\"]).classes(\"text-3xl font-bold mb-4\")\n        for question in data[\"questions\"]:\n            with ui.card().classes(\"w-full\"):\n                ui.label(f\"Q{question['id']}: {question['text']}\").classes(\"font-bold text-lg\")\n                for choice in question[\"choices\"]:\n                    ui.label(f\"・{choice}\").classes(\"ml-4\")\n\nui.button(\"質問を読み込む\", on_click=load_data).classes(\"bg-blue-500 text-white p-3 rounded-lg\")\n\nui.run()"
   },
   {
-    "objectID": "api-spa.html#演習エンドポイントを増やす",
-    "href": "api-spa.html#演習エンドポイントを増やす",
+    "objectID": "api-spa.html#演習-エンドポイントを増やす",
+    "href": "api-spa.html#演習-エンドポイントを増やす",
     "title": "自作API+SPA",
-    "section": "演習：エンドポイントを増やす",
-    "text": "演習：エンドポイントを増やす\n\n\n土台コードに次の3つの機能を追加せよ（上から順に。各問、ブラウザでURLを直接開いて動作確認すること）。\n\n\n/api/results エンドポイントを追加し、results 部分だけを返す\n/api/questions/1 のように IDを指定した質問だけ 返す — URLの一部は変数として受け取れる：\n\n@app.get(\"/api/questions/{question_id}\")\ndef get_question(question_id: int):\n    ...\n\n存在しないIDが指定されたら {\"error\": \"Not found\"} を返す（if で判定）\n\n\n\n\n\n\n\n動作確認もGETなら簡単\n\n\nGETのAPIは URLをブラウザで開くだけ でテストできる。/api/questions/1 と /api/questions/999 の両方を開いて比べる"
+    "section": "演習 エンドポイントを増やす",
+    "text": "演習 エンドポイントを増やす\n\n\n土台コードに次の3つの機能を追加せよ（上から順に。各問、ブラウザでURLを直接開いて動作確認すること）。\n\n\n/api/results エンドポイントを追加し、results 部分だけを返す\n/api/questions/1 のように IDを指定した質問だけ 返す — URLの一部は変数として受け取れる：\n\n@app.get(\"/api/questions/{question_id}\")\ndef get_question(question_id: int):\n    ...\n\nquestion_id: int の : int は 型ヒント — FastAPIはこれを見て、URL内の文字を自動で数値に変換してくれる\n\n\n存在しないIDが指定されたら {\"error\": \"Not found\"} を返す（if で判定）\n\n\n\n\n\n\n\n動作確認もGETなら簡単\n\n\nGETのAPIは URLをブラウザで開くだけ でテストできる。/api/questions/1 と /api/questions/999 の両方を開いて比べる"
   },
   {
-    "objectID": "api-spa.html#演習データが変わったら",
-    "href": "api-spa.html#演習データが変わったら",
+    "objectID": "api-spa.html#演習-データが変わったら",
+    "href": "api-spa.html#演習-データが変わったら",
     "title": "自作API+SPA",
-    "section": "演習：データが変わったら",
-    "text": "演習：データが変わったら\n\n\nアプリを起動したまま questions.json に質問を1問書き足して保存し、「質問を読み込む」ボタンだけで新しい質問が表示されることを確かめよ。\n\n\nアプリを起動して質問を表示しておく\nquestions.json に id: 4 の質問を追加して保存\nブラウザの再読み込みは せず、ボタンだけ押す（container.clear() → 再取得の効果）\n\n\n\nエンドポイント追加の解答例を表示\nfrom nicegui import ui, app\nimport json\n\ndef read_data():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    return read_data()\n\n@app.get(\"/api/results\")\ndef get_results():\n    return read_data()[\"results\"]\n\n@app.get(\"/api/questions/{question_id}\")\ndef get_question(question_id: int):\n    for question in read_data()[\"questions\"]:\n        if question[\"id\"] == question_id:\n            return question\n    return {\"error\": \"Not found\"}\n\nui.label(\"診断アプリAPI\")\nui.run()"
+    "section": "演習 データが変わったら",
+    "text": "演習 データが変わったら\n\n\nアプリを起動したまま questions.json に質問を1問書き足して保存し、「質問を読み込む」ボタンだけで新しい質問が表示されることを確かめよ。\n\n\nアプリを起動して質問を表示しておく\nquestions.json に id: 4 の質問を追加して保存\nブラウザの再読み込みは せず、ボタンだけ押す（container.clear() → 再取得の効果）\n\n\n\nエンドポイント追加の解答例を表示\nfrom nicegui import ui, app\nimport json\n\ndef read_data():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    return read_data()\n\n@app.get(\"/api/results\")\ndef get_results():\n    return read_data()[\"results\"]\n\n@app.get(\"/api/questions/{question_id}\")\ndef get_question(question_id: int):\n    for question in read_data()[\"questions\"]:\n        if question[\"id\"] == question_id:\n            return question\n    return {\"error\": \"Not found\"}\n\nui.label(\"診断アプリAPI\")\nui.run()"
   },
   {
     "objectID": "api-spa.html#まとめ",
@@ -2174,28 +2174,28 @@
     "href": "api-viz.html#なにかがおかしいところまで来た",
     "title": "APIデータを可視化する",
     "section": "「なにかがおかしい」ところまで来た",
-    "text": "「なにかがおかしい」ところまで来た\n\n\n前回：記事「七夕」の 2025年まるごと1年分 の日別アクセス数を取得した\n\nimport requests\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia/all-access/user/\"\n       \"七夕/daily/20250101/20251231\")\nheaders = {\"User-Agent\": \"example.com/lesson\"}\n\nresponse = requests.get(url, headers=headers)\ndata = response.json()\n\nviews = np.array([item[\"views\"]     for item in data[\"items\"]])\ndates = np.array([item[\"timestamp\"] for item in data[\"items\"]])\n\n\n\n統計量\n値\n\n\n\n\n最大\n47,656回\n\n\n最小\n58回\n\n\n平均\n467.6回\n\n\n中央値\n154回\n\n\n\n\n最大が中央値の約300倍。平均と中央値も大きくズレている\n統計量だけでは、これ以上なにも分からない — では、どうする？"
+    "text": "「なにかがおかしい」ところまで来た\n\n\n前回：記事「七夕」の 2025年まるごと1年分 の日別アクセス数を取得した\n\nimport requests\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia/all-access/user/\"\n       \"七夕/daily/20250101/20251231\")\nheaders = {\"User-Agent\": \"example.com/lesson\"}\n\nresponse = requests.get(url, headers=headers)\ndata = response.json()\n\nviews = np.array([item[\"views\"] for item in data[\"items\"]])\n\n\n\n統計量\n値\n\n\n\n\n最大\n47,656回\n\n\n最小\n58回\n\n\n平均\n467.6回\n\n\n中央値\n154回\n\n\n\n\n最大が中央値の約300倍。平均と中央値も大きくズレている\n統計量だけでは、これ以上なにも分からない — では、どうする？"
   },
   {
     "objectID": "api-viz.html#まずは可視化する",
     "href": "api-viz.html#まずは可視化する",
     "title": "APIデータを可視化する",
     "section": "まずは可視化する",
-    "text": "まずは可視化する\n\n\n数値だけでは見落とすので まず描く — 可視化章 の大原則\n同じURL/ヘッダーで取得したあと plt.plot(views) するだけ\n\n\n\n\n\n\n\n\n\n\n\n\nコードを見る\nimport requests\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia/all-access/user/\"\n       \"七夕/daily/20250101/20251231\")\nheaders = {\"User-Agent\": \"example.com/lesson\"}\nresponse = requests.get(url, headers=headers)\ndata = response.json()\n\nviews = np.array([item[\"views\"] for item in data[\"items\"]])\n\nplt.plot(views)\nplt.title(\"「七夕」の閲覧数（2025年）\")\nplt.xlabel(\"日数\")\nplt.ylabel(\"閲覧数\")\nplt.show()\n\n\n\n\n\n\n\n\n\n1日だけ突出している\n\n\n\nほぼ平坦な中、1日だけ大きな山 — 数値だけ見ていると気づけない（アンスコムの教訓と同じ）\nそして見覚えがあるはず：可視化編の冒頭で見せた謎の図は、実はこのデータ"
+    "text": "まずは可視化する\n\n\n数値だけでは見落とすので まず描く — データの可視化の大原則\n同じURL/ヘッダーで取得したあと plt.plot(views) するだけ\n\n\n\n\n\n\n\n\n\n\n\n\nコードを見る\nimport requests\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia/all-access/user/\"\n       \"七夕/daily/20250101/20251231\")\nheaders = {\"User-Agent\": \"example.com/lesson\"}\nresponse = requests.get(url, headers=headers)\ndata = response.json()\n\nviews = np.array([item[\"views\"] for item in data[\"items\"]])\n\nplt.plot(views)\nplt.title(\"「七夕」の閲覧数（2025年）\")\nplt.xlabel(\"日数\")\nplt.ylabel(\"閲覧数\")\nplt.show()\n\n\n\n\n\n\n\n\n\n1日だけ突出している\n\n\n\nほぼ平坦な中、1日だけ大きな山 — 数値だけ見ていると気づけない（アンスコムの教訓と同じ）\nそして見覚えがあるはず：データの可視化の冒頭で見せた 謎の図は、実はこのデータ"
   },
   {
     "objectID": "api-viz.html#山の正体いつを特定する",
     "href": "api-viz.html#山の正体いつを特定する",
     "title": "APIデータを可視化する",
     "section": "山の正体：「いつ」を特定する",
-    "text": "山の正体：「いつ」を特定する\n\n\n山の 高さ は max()。知りたいのは 「いつ」\nnp.argmax() で インデックス を取り、同じインデックスで dates を引く\n\nmax_i = np.argmax(views)\nprint(f\"{dates[max_i]} に {views[max_i]} 回\")\n\n\n\n\n\n\nクイズ\n\n\n記事は「七夕」。47,656回も読まれたその1日は、何月何日だと思う？\n\n\n\n\n2025070700 に 47656 回\n\n2025年7月7日 — 七夕の当日\nみんな、行事の当日にその行事を調べる\n\n「七夕って何の日？」「短冊はなぜ？」— 検索が記事に殺到する\n\n1年分の人間の行動が、API経由の数列ひとつに写っている"
+    "text": "山の正体：「いつ」を特定する\n\n\n山の 高さ は views.max()。知りたいのは 「いつ」\nitem[\"timestamp\"] も同じ内包表記で取り出すと、views と 同じインデックスで並ぶ 日付の配列ができる\nnp.argmax() は最大値の インデックス を返す（値ではない点に注意）— そのインデックスで dates を引く\n\ndates = np.array([item[\"timestamp\"] for item in data[\"items\"]])\n\nmax_i = np.argmax(views)\nprint(f\"{dates[max_i]} に {views[max_i]} 回\")\n\n\n\n\n\n\nクイズ\n\n\n記事は「七夕」。47,656回も読まれたその1日は、何月何日だと思う？\n\n\n\n\n2025070700 に 47656 回\n\n2025年7月7日 — 七夕の当日\nみんな、行事の当日にその行事を調べる\n\n「七夕って何の日？」「短冊はなぜ？」— 検索が記事に殺到する\n\n1年分の人間の行動が、API経由の数列ひとつに写っている"
   },
   {
     "objectID": "api-viz.html#よく見るともう一つ山がある",
     "href": "api-viz.html#よく見るともう一つ山がある",
     "title": "APIデータを可視化する",
     "section": "よく見ると、もう一つ山がある",
-    "text": "よく見ると、もう一つ山がある\n\n\n\n\n\n\n\n\n\n\n\ny軸を拡大すると、8月29日にも小さな山（2,291回）— 七夕でもないのに、なぜ？"
+    "text": "よく見ると、もう一つ山がある\n\n\n\n\n\n\n\n\n\n\n\ny軸を拡大すると、8月29日にも小さな山（2,291回）— 七夕でもないのに、なぜ？\n自分のグラフでも plt.ylim(0, 3000) を足せば、同じ「足元の拡大」ができる"
   },
   {
     "objectID": "api-viz.html#小さな異変の発見と解釈",
@@ -2223,7 +2223,7 @@
     "href": "api-viz.html#演習1枚のグラフに2本の折れ線",
     "title": "APIデータを可視化する",
     "section": "演習：1枚のグラフに2本の折れ線",
-    "text": "演習：1枚のグラフに2本の折れ線\n\n\n前回の演習で取得した views_desktop と views_mobile_web を、同じグラフに重ねて比較せよ。\n\n\nplt.plot() を2回呼ぶ — それだけで重なる\nグラフの タイトルに max / min / mean を表示\n\n\n\n\n\n\n\nやってはいけない\n\n\n\n軸を揃えず2枚並べる → 比較しづらい\n軸の範囲を片方だけ狭める → 印象操作（matplotlib章 の「y軸の罠」参照）\n\n\n\n\n\n\n解答例を見る\nimport requests\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\nimport numpy as np\n\nheaders = {\"User-Agent\": \"example.com/lesson\"}\narticle = \"七夕\"\nbase = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n        f\"ja.wikipedia/{{access}}/user/{article}/daily/20250101/20251231\")\n\ndef fetch_views(access):\n    url = base.format(access=access)\n    data = requests.get(url, headers=headers).json()\n    return np.array([item[\"views\"] for item in data[\"items\"]])\n\nviews_desktop    = fetch_views(\"desktop\")\nviews_mobile_web = fetch_views(\"mobile-web\")\n\nplt.plot(views_desktop,    label=\"desktop\")\nplt.plot(views_mobile_web, label=\"mobile-web\")\nplt.legend()\n\ntitle = (f\"desktop: max={views_desktop.max()}, mean={views_desktop.mean():.1f}  \"\n         f\"mobile: max={views_mobile_web.max()}, mean={views_mobile_web.mean():.1f}\")\nplt.title(title)\nplt.xlabel(\"日数\")\nplt.ylabel(\"閲覧数\")\nplt.show()"
+    "text": "演習：1枚のグラフに2本の折れ線\n\n\n前回の演習で取得した views_desktop と views_mobile_web を、同じグラフに重ねて比較せよ。\n\n\nplt.plot() を2回呼ぶ — それだけで重なる\nグラフの タイトルに max / min / mean を表示\n\n\n\n\n\n\n\nやってはいけない\n\n\n\n軸を揃えず2枚並べる → 比較しづらい\n軸の範囲を片方だけ狭める → 印象操作（matplotlib入門の「軸の範囲で印象を操る」でやった罠）\n\n\n\n\n\n\n解答例を見る\nimport requests\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\nimport numpy as np\n\nheaders = {\"User-Agent\": \"example.com/lesson\"}\n\ndef fetch_views(access):\n    url = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n           f\"ja.wikipedia/{access}/user/七夕/daily/20250101/20251231\")\n    data = requests.get(url, headers=headers).json()\n    return np.array([item[\"views\"] for item in data[\"items\"]])\n\nviews_desktop    = fetch_views(\"desktop\")\nviews_mobile_web = fetch_views(\"mobile-web\")\n\nplt.plot(views_desktop,    label=\"desktop\")\nplt.plot(views_mobile_web, label=\"mobile-web\")\nplt.legend()\n\ntitle = (f\"desktop: max={views_desktop.max()} min={views_desktop.min()} mean={views_desktop.mean():.1f}\\n\"\n         f\"mobile-web: max={views_mobile_web.max()} min={views_mobile_web.min()} mean={views_mobile_web.mean():.1f}\")\nplt.title(title)\nplt.xlabel(\"日数\")\nplt.ylabel(\"閲覧数\")\nplt.show()"
   },
   {
     "objectID": "api-viz.html#演習富士山には山があるか",
@@ -2636,7 +2636,7 @@
     "href": "final-project.html#テンプレート全文",
     "title": "最終課題",
     "section": "テンプレート全文",
-    "text": "テンプレート全文\n\n\nテンプレートと data.json を同じフォルダに置いて実行し、3画面が遷移すること・「データ読み込み」でJSONのタイトルが出ることを確かめてから改造を始めよ。\n\n\n\n\n\n\n\nasync / await は「待つ間、画面を止めない」書き方\n\n\nテンプレートでは、HTTP通信をする load_data だけが async def（自作API+SPA で扱った形）。 改造で自分の関数を足すときは、通信しない関数なら普通の def でよい\n\n\n\n\n\nテンプレート（API版）を表示\n\"\"\"\nNiceGUI SPA テンプレート（API版）\n\n3画面構成：トップ → メイン → 結果\nJSONデータを自作APIからHTTP経由で取得して表示します。\n\"\"\"\n\nfrom nicegui import ui, app\nimport json\nimport httpx\n\n# ========================================\n# APIエンドポイント\n# ========================================\n@app.get(\"/api/data\")\ndef get_data():\n    with open(\"data.json\", \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\n# ========================================\n# 画面切り替え\n# ========================================\ndef show_screen(screen_name):\n    top_screen.set_visibility(screen_name == \"top\")\n    main_screen.set_visibility(screen_name == \"main\")\n    result_screen.set_visibility(screen_name == \"result\")\n\n# ========================================\n# 1. トップ画面\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as top_screen:\n    ui.label(\"アプリタイトル\").classes(\"text-4xl font-bold\")\n    ui.button(\"スタート\", on_click=lambda: show_screen(\"main\")).classes(\"bg-blue-500 text-white p-4 rounded-lg\")\n\n# ========================================\n# 2. メイン画面\n# ========================================\nwith ui.column().classes(\"w-full min-h-screen items-center p-8 gap-4\") as main_screen:\n    ui.label(\"メイン画面\").classes(\"text-3xl font-bold\")\n\n    # JSONデータを表示するコンテナ\n    content = ui.column().classes(\"gap-2\")\n\n    async def load_data():\n        content.clear()\n        # 自作APIにHTTPリクエストを送ってデータを取得\n        async with httpx.AsyncClient() as client:\n            response = await client.get(\"http://localhost:8080/api/data\")\n        data = response.json()\n\n        # TODO: ここでdataの内容を表示する\n        with content:\n            ui.label(f\"タイトル: {data['title']}\")\n\n    ui.button(\"データ読み込み\", on_click=load_data).classes(\"bg-green-500 text-white p-2 rounded\")\n    ui.button(\"結果へ\", on_click=lambda: show_screen(\"result\")).classes(\"bg-purple-500 text-white p-4 rounded-lg mt-4\")\n\n# ========================================\n# 3. 結果画面\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as result_screen:\n    ui.label(\"結果画面\").classes(\"text-3xl font-bold\")\n    ui.label(\"ここに結果を表示\")\n    ui.button(\"もう一度\", on_click=lambda: show_screen(\"top\")).classes(\"bg-blue-500 text-white p-4 rounded-lg\")\n\n# ========================================\n# 初期表示\n# ========================================\nshow_screen(\"top\")\n\nui.run()\n\n\n\n\nテンプレート（簡単版・lambdaなし）を表示\n\"\"\"\nNiceGUI SPA テンプレート（少し簡単版）\n\n3画面構成：トップ → メイン → 結果\nlambdaを使わず、画面ごとの関数で切り替えます。\n\"\"\"\n\nfrom nicegui import ui, app\nimport json\nimport httpx\n\n# ========================================\n# APIエンドポイント\n# ========================================\n@app.get(\"/api/data\")\ndef get_data():\n    import pathlib\n    with open(pathlib.Path(__file__).parent / \"data.json\", \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\ndef show_top():\n    top_screen.set_visibility(True)\n    main_screen.set_visibility(False)\n    result_screen.set_visibility(False)\n\ndef show_main():\n    top_screen.set_visibility(False)\n    main_screen.set_visibility(True)\n    result_screen.set_visibility(False)\n\ndef show_result():\n    top_screen.set_visibility(False)\n    main_screen.set_visibility(False)\n    result_screen.set_visibility(True)\n\n# ========================================\n# 1. トップ画面\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as top_screen:\n    ui.label(\"アプリタイトル\").classes(\"text-4xl font-bold\")\n    ui.button(\"スタート\", on_click=show_main)\n\n# ========================================\n# 2. メイン画面\n# ========================================\nwith ui.column().classes(\"w-full min-h-screen items-center p-8 gap-4\") as main_screen:\n    ui.label(\"メイン画面\").classes(\"text-3xl font-bold\")\n\n    # JSONデータを表示するコンテナ\n    content = ui.column().classes(\"gap-2\")\n\n    async def load_data():\n        content.clear()\n        # 自作APIにHTTPリクエストを送ってデータを取得\n        async with httpx.AsyncClient() as client:\n            response = await client.get(\"http://localhost:8080/api/data\")\n        data = response.json()\n\n        # TODO: ここでdataの内容を表示する\n        with content:\n            ui.label(f\"タイトル: {data['title']}\")\n\n    ui.button(\"データ読み込み\", on_click=load_data).classes(\"bg-green-500 text-white p-2 rounded\")\n    ui.button(\"結果へ\", on_click=show_result)\n\n# ========================================\n# 3. 結果画面\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as result_screen:\n    ui.label(\"結果画面\").classes(\"text-3xl font-bold\")\n    ui.label(\"ここに結果を表示\")\n    ui.button(\"もう一度\", on_click=show_top)\n\n# ========================================\n# 初期表示\n# ========================================\nshow_top()\n\nui.run()"
+    "text": "テンプレート全文\n\n\nテンプレートと data.json を同じフォルダに置いて実行し、3画面が遷移すること・「データ読み込み」でJSONのタイトルが出ることを確かめてから改造を始めよ。\n\n\nテンプレートの Path(__file__).parent は「この .py があるフォルダ」の意味 — どこから実行しても隣の data.json を見つけられる（「自分のPCでは動いたのに」事故の予防）\n\n\n\n\n\n\n\nasync / await は「待つ間、画面を止めない」書き方\n\n\nテンプレートでは、HTTP通信をする load_data だけが async def（自作API+SPA で扱った形）。 改造で自分の関数を足すときは、通信しない関数なら普通の def でよい\n\n\n\n\n\nテンプレート（API版）を表示\n\"\"\"\nNiceGUI SPA テンプレート（API版）\n\n3画面構成：トップ → メイン → 結果\nJSONデータを自作APIからHTTP経由で取得して表示します。\n\"\"\"\n\nfrom nicegui import ui, app\nfrom pathlib import Path\nimport json\nimport httpx\n\nDATA_FILE = Path(__file__).parent / \"data.json\"   # この .py と同じフォルダの data.json\n\n# ========================================\n# APIエンドポイント\n# ========================================\n@app.get(\"/api/data\")\ndef get_data():\n    with open(DATA_FILE, \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\n# ========================================\n# 画面切り替え\n# ========================================\ndef show_screen(screen_name):\n    top_screen.set_visibility(screen_name == \"top\")\n    main_screen.set_visibility(screen_name == \"main\")\n    result_screen.set_visibility(screen_name == \"result\")\n\n# ========================================\n# 1. トップ画面\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as top_screen:\n    ui.label(\"アプリタイトル\").classes(\"text-4xl font-bold\")\n    ui.button(\"スタート\", on_click=lambda: show_screen(\"main\")).classes(\"bg-blue-500 text-white p-4 rounded-lg\")\n\n# ========================================\n# 2. メイン画面\n# ========================================\nwith ui.column().classes(\"w-full min-h-screen items-center p-8 gap-4\") as main_screen:\n    ui.label(\"メイン画面\").classes(\"text-3xl font-bold\")\n\n    # JSONデータを表示するコンテナ\n    content = ui.column().classes(\"gap-2\")\n\n    async def load_data():\n        content.clear()\n        # 自作APIにHTTPリクエストを送ってデータを取得\n        async with httpx.AsyncClient() as client:\n            response = await client.get(\"http://localhost:8080/api/data\")\n        data = response.json()\n\n        # TODO: ここでdataの内容を表示する\n        with content:\n            ui.label(f\"タイトル: {data['title']}\")\n\n    ui.button(\"データ読み込み\", on_click=load_data).classes(\"bg-green-500 text-white p-2 rounded\")\n    ui.button(\"結果へ\", on_click=lambda: show_screen(\"result\")).classes(\"bg-purple-500 text-white p-4 rounded-lg mt-4\")\n\n# ========================================\n# 3. 結果画面\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as result_screen:\n    ui.label(\"結果画面\").classes(\"text-3xl font-bold\")\n    ui.label(\"ここに結果を表示\")\n    ui.button(\"もう一度\", on_click=lambda: show_screen(\"top\")).classes(\"bg-blue-500 text-white p-4 rounded-lg\")\n\n# ========================================\n# 初期表示\n# ========================================\nshow_screen(\"top\")\n\nui.run()\n\n\n\n\nテンプレート（簡単版・lambdaなし）を表示\n\"\"\"\nNiceGUI SPA テンプレート（少し簡単版）\n\n3画面構成：トップ → メイン → 結果\nlambdaを使わず、画面ごとの関数で切り替えます。\n\"\"\"\n\nfrom nicegui import ui, app\nfrom pathlib import Path\nimport json\nimport httpx\n\nDATA_FILE = Path(__file__).parent / \"data.json\"   # この .py と同じフォルダの data.json\n\n# ========================================\n# APIエンドポイント\n# ========================================\n@app.get(\"/api/data\")\ndef get_data():\n    with open(DATA_FILE, \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\ndef show_top():\n    top_screen.set_visibility(True)\n    main_screen.set_visibility(False)\n    result_screen.set_visibility(False)\n\ndef show_main():\n    top_screen.set_visibility(False)\n    main_screen.set_visibility(True)\n    result_screen.set_visibility(False)\n\ndef show_result():\n    top_screen.set_visibility(False)\n    main_screen.set_visibility(False)\n    result_screen.set_visibility(True)\n\n# ========================================\n# 1. トップ画面\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as top_screen:\n    ui.label(\"アプリタイトル\").classes(\"text-4xl font-bold\")\n    ui.button(\"スタート\", on_click=show_main)\n\n# ========================================\n# 2. メイン画面\n# ========================================\nwith ui.column().classes(\"w-full min-h-screen items-center p-8 gap-4\") as main_screen:\n    ui.label(\"メイン画面\").classes(\"text-3xl font-bold\")\n\n    # JSONデータを表示するコンテナ\n    content = ui.column().classes(\"gap-2\")\n\n    async def load_data():\n        content.clear()\n        # 自作APIにHTTPリクエストを送ってデータを取得\n        async with httpx.AsyncClient() as client:\n            response = await client.get(\"http://localhost:8080/api/data\")\n        data = response.json()\n\n        # TODO: ここでdataの内容を表示する\n        with content:\n            ui.label(f\"タイトル: {data['title']}\")\n\n    ui.button(\"データ読み込み\", on_click=load_data).classes(\"bg-green-500 text-white p-2 rounded\")\n    ui.button(\"結果へ\", on_click=show_result)\n\n# ========================================\n# 3. 結果画面\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as result_screen:\n    ui.label(\"結果画面\").classes(\"text-3xl font-bold\")\n    ui.label(\"ここに結果を表示\")\n    ui.button(\"もう一度\", on_click=show_top)\n\n# ========================================\n# 初期表示\n# ========================================\nshow_top()\n\nui.run()"
   },
   {
     "objectID": "final-project.html#進め方のおすすめ",
@@ -2702,11 +2702,11 @@
     "text": "ブレストの進め方\n\n\n司会（ファシリテーター、facilitator）がテーマを発表\n思いついた人からどんどん口に出す\n出た案は すべて書き留める（ホワイトボード・付箋）\nある程度出たら、整理・分類へ（→ 収束技法）\n\n\n得意・不得意がはっきりある方法でもある\n\n会話で盛り上がると発想が 連鎖する\n話すのが苦手な人は参加しにくい — その弱点を消すのが後述の 635法"
   },
   {
-    "objectID": "ideation.html#演習ブレスト",
-    "href": "ideation.html#演習ブレスト",
+    "objectID": "ideation.html#演習-ブレスト",
+    "href": "ideation.html#演習-ブレスト",
     "title": "発想法（発散思考）",
-    "section": "演習：ブレスト",
-    "text": "演習：ブレスト\n\n\n4〜5人組でテーマを1つ選び、10分間ブレストせよ。出た案はすべて付箋に書き残すこと（1枚1案）。\n\n\n\n\n\nテーマ\n\n\n\n\nA\n学校の新しいマスコットキャラ\n\n\nB\n新しい未来の靴\n\n\nC\n新しい宇宙人の形\n\n\nD\n教室をもっと快適にする方法\n\n\n\n\n\n\n\n\n\n4つのルールを貼り出しておく\n\n\n批判厳禁・自由奔放・質より量・便乗歓迎 — 途中で誰かが批判を始めたら、指差して止めてよい"
+    "section": "演習 ブレスト",
+    "text": "演習 ブレスト\n\n\n4〜5人組でテーマを1つ選び、10分間ブレストせよ。出た案はすべて付箋に書き残すこと（1枚1案）。\n\n\n\n\n\nテーマ\n\n\n\n\nA\n学校の新しいマスコットキャラ\n\n\nB\n新しい未来の靴\n\n\nC\n新しい宇宙人の形\n\n\nD\n教室をもっと快適にする方法\n\n\n\n\n\n\n\n\n\n4つのルールを貼り出しておく\n\n\n批判厳禁・自由奔放・質より量・便乗歓迎 — 途中で誰かが批判を始めたら、指差して止めてよい"
   },
   {
     "objectID": "ideation.html#section-2",
@@ -2730,11 +2730,11 @@
     "text": "クレイジー8の進め方\n\n\nA4用紙を3回折って8つの枠を作る\nテーマを決める（例：「未来の教室の机」）\nタイマーを 8分 にセット（1枠 = 1分）\n各枠に1アイデアずつスケッチ — 絵・図・文字なんでもOK\n8分後、全員で共有して気になる案をピックアップ\n\n\n\n\n\n\n\n「8個」は追い詰めるための数\n\n\n最初の4つは誰でも思いつく普通の案。後半4つを絞り出すとき に飛躍が出る。 うまく描こうとしない — 線と矢印だけで十分伝わる"
   },
   {
-    "objectID": "ideation.html#演習クレイジー4",
-    "href": "ideation.html#演習クレイジー4",
+    "objectID": "ideation.html#演習-クレイジー4",
+    "href": "ideation.html#演習-クレイジー4",
     "title": "発想法（発散思考）",
-    "section": "演習：クレイジー4",
-    "text": "演習：クレイジー4\n\n\nブレストで使ったテーマのまま、紙を2回折って 4枠・4分 のクレイジー4を実施せよ（1枠1分、絵でも文字でも可）。\n\n\nA4用紙を2回折って4枠を作る\nタイマーを4分にセット\n1枠1分でスケッチ\n終わったら班内で見せ合い、「これは化けそう」な1枚 に星印\n\n\n\n\n\n\n\n予想してから試す\n\n\n自分の「4枚目」が1枚目より面白くなっているか、あとで見比べてみる"
+    "section": "演習 クレイジー4",
+    "text": "演習 クレイジー4\n\n\nブレストで使ったテーマのまま、紙を2回折って 4枠・4分 のクレイジー4を実施せよ（1枠1分、絵でも文字でも可）。\n\n\nA4用紙を2回折って4枠を作る\nタイマーを4分にセット\n1枠1分でスケッチ\n終わったら班内で見せ合い、「これは化けそう」な1枚 に星印\n\n\n\n\n\n\n\n予想してから試す\n\n\n自分の「4枚目」が1枚目より面白くなっているか、あとで見比べてみる"
   },
   {
     "objectID": "ideation.html#section-3",
@@ -2765,11 +2765,11 @@
     "text": "クイズ：30分で何案出る？\n\n\n6人 × 3案 × 5分を6巡すると——\n\n\n\n\n\n\n\n\n答え：108案\n\n\n6人 × 3案 × 6巡 = 108案（約30分）。 ブレストで108案は、まず出ない\n\n\n\n\n\n\n話す必要がないので 全員が平等に 出せる\n発言が苦手でも紙の上なら書ける\n「静かに集中して考えたい」チームに向く\n\n\n\n\n\n\n\n\n\n「5分」は実は誤解から広まった\n\n\n考案者 Bernd Rohrbach の原案は「3案 × 5回 発展させる」だったが、のちに「5分」と混同されて広まった（川路 2024）"
   },
   {
-    "objectID": "ideation.html#演習635法",
-    "href": "ideation.html#演習635法",
+    "objectID": "ideation.html#演習-635法",
+    "href": "ideation.html#演習-635法",
     "title": "発想法（発散思考）",
-    "section": "演習：635法",
-    "text": "演習：635法\n\n\n6人組（足りなければ4〜5人）でテーマを1つ選び、635法を3巡実施せよ。1巡5分、1巡につき3案。\n\n\n\n\n\nテーマ\n\nテーマ\n\n\n\n\nE\n学校をもっと楽しくするには\nK\nスマホで勉強を楽しくするには\n\n\nF\n教室の暑さ・寒さを解決する方法\nL\n未来の授業スタイル\n\n\nG\n昼休みをもっと充実させる方法\nM\n学校の新しいロゴデザイン\n\n\nH\n勉強の「やる気が出る」工夫\nN\n新しい部活動\n\n\nI\n楽しくテスト勉強をする方法\nO\n「未来のノート」のデザイン\n\n\nJ\n授業中に眠くならない方法\nP\n1日をもっと便利にするアプリ\n\n\n\n\n\n\n\n\n\n上の行を読んでから書く\n\n\n白紙に書くのは1巡目だけ。2巡目からは 前の人の案を育てる のが635法の本体"
+    "section": "演習 635法",
+    "text": "演習 635法\n\n\n6人組（足りなければ4〜5人）でテーマを1つ選び、635法を3巡実施せよ。1巡5分、1巡につき3案。\n\n\n\n\n\nテーマ\n\nテーマ\n\n\n\n\nE\n学校をもっと楽しくするには\nK\nスマホで勉強を楽しくするには\n\n\nF\n教室の暑さ・寒さを解決する方法\nL\n未来の授業スタイル\n\n\nG\n昼休みをもっと充実させる方法\nM\n学校の新しいロゴデザイン\n\n\nH\n勉強の「やる気が出る」工夫\nN\n新しい部活動\n\n\nI\n楽しくテスト勉強をする方法\nO\n「未来のノート」のデザイン\n\n\nJ\n授業中に眠くならない方法\nP\n1日をもっと便利にするアプリ\n\n\n\n\n\n\n\n\n\n上の行を読んでから書く\n\n\n白紙に書くのは1巡目だけ。2巡目からは 前の人の案を育てる のが635法の本体"
   },
   {
     "objectID": "ideation.html#まとめ3つの発想法",
@@ -2905,11 +2905,11 @@
     "text": "点に線を付け足す\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nmonths = np.arange(1, 13)\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\nplt.plot(months, temp_2024, \"o-\")   # 点＋線\nplt.show()\n\n\n\n\n\n\n\n\n\n第3引数を 省略すると折れ線\n\"o-\" だと 点＋線\n月ごとの つながり（連続的な変化）が見えるようになった"
   },
   {
-    "objectID": "matplotlib.html#tweak線の見た目",
-    "href": "matplotlib.html#tweak線の見た目",
+    "objectID": "matplotlib.html#tweak-線の見た目",
+    "href": "matplotlib.html#tweak-線の見た目",
     "title": "matplotlib入門",
-    "section": "Tweak：線の見た目",
-    "text": "Tweak：線の見た目\n\n\nさっきのコード の \"o-\" を 書き換えて実行\n\n\n\n\n\nやりたいこと\nコード\n\n\n\n\n線だけにする（点を消す）\n\"-\"\n\n\n点だけにする（線を消す）\n\"o\"\n\n\n破線にする\n\"--\"\n\n\n\n\n\n\n\n\n\n\nここで質問\n\n\n\n一点鎖線（─・─・）にするには、どう書くと思う？\n\n答え：線の早見表"
+    "section": "Tweak 線の見た目",
+    "text": "Tweak 線の見た目\n\n\nさっきのコード の \"o-\" を 書き換えて実行\n\n\n\n\n\nやりたいこと\nコード\n\n\n\n\n線だけにする（点を消す）\n\"-\"\n\n\n点だけにする（線を消す）\n\"o\"\n\n\n破線にする\n\"--\"\n\n\n\n\n\n\n\n\n\n\nここで質問\n\n\n\n一点鎖線（─・─・）にするには、どう書くと思う？\n\n答え：線の早見表"
   },
   {
     "objectID": "matplotlib.html#演習二次関数を描く",
@@ -2926,11 +2926,11 @@
     "text": "2本目を重ねる・凡例をつける\n\n\nplt.plot() を 2回呼ぶと重ね描き になる\nどの線が何かを示すために凡例も書ける\n\nplot関数に引数：label=\nその後plt.legend()を呼ぶ\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nmonths = np.arange(1, 13)\ntemp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\nplt.plot(months, temp_1900, \"o-\", label=\"1900年\")   # 凡例ラベル\nplt.plot(months, temp_2024, \"o-\", label=\"2024年\")\nplt.legend()                                         # 凡例を表示\nplt.show()\n\n\n\n\n\n\n\n\n\n重ねた瞬間、124年分の差 が一目で見える\n\n2024年の冬は1900年の春なみ、夏は ほぼ全月で上"
   },
   {
-    "objectID": "matplotlib.html#tweak凡例",
-    "href": "matplotlib.html#tweak凡例",
+    "objectID": "matplotlib.html#tweak-凡例",
+    "href": "matplotlib.html#tweak-凡例",
     "title": "matplotlib入門",
-    "section": "Tweak：凡例",
-    "text": "Tweak：凡例\n\n\n前のスライドのコード を 1か所だけ変えて実行\n\n\n\n凡例の文字を変える\n片方だけ凡例から消す\n凡例ごと消す\n\n\n\n\n\n\n\n\n予想してから試す\n\n\n\nplt.legend() を 2本の plt.plot より前の行 に動かすと、凡例はどうなる？\nまず予想 → 実行して確かめる（順番が関係する？）"
+    "section": "Tweak 凡例",
+    "text": "Tweak 凡例\n\n\n前のスライドのコード を 1か所だけ変えて実行\n\n\n\n凡例の文字を変える\n片方だけ凡例から消す\n凡例ごと消す\n\n\n\n\n\n\n\n\n予想してから試す\n\n\n\nplt.legend() を 2本の plt.plot より前の行 に動かすと、凡例はどうなる？\nまず予想 → 実行して確かめる（順番が関係する？）"
   },
   {
     "objectID": "matplotlib.html#ラベルグリッドタイトル",
@@ -2947,11 +2947,11 @@
     "text": "表示範囲の指定（xlim / ylim）\n\n\nplt.xlim(a, b) / plt.ylim(a, b) で軸の範囲を固定\n何も指定しないと データの範囲＋少し余白 が自動で選ばれる\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nmonths = np.arange(1, 13)\ntemp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\nplt.plot(months, temp_1900, \"o-\", label=\"1900年\")\nplt.plot(months, temp_2024, \"o-\", label=\"2024年\")\nplt.legend()\nplt.xlim(1, 12)        # x軸: 1〜12月\nplt.ylim(0, 35)        # y軸: あえて0から見せる\nplt.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ny軸の罠（描く側の責任）\n\n\n\n範囲をデータに合わせると 小さな変化が大きく見える\n比較するグラフは y軸を揃える か 0から見せる のが原則"
   },
   {
-    "objectID": "matplotlib.html#tweak軸の範囲で印象を操る",
-    "href": "matplotlib.html#tweak軸の範囲で印象を操る",
+    "objectID": "matplotlib.html#tweak-軸の範囲で印象を操る",
+    "href": "matplotlib.html#tweak-軸の範囲で印象を操る",
     "title": "matplotlib入門",
-    "section": "Tweak：軸の範囲で印象を操る",
-    "text": "Tweak：軸の範囲で印象を操る\n\n\nさっきのコード の軸だけ変えて実行 — 同じデータでも印象がどう動くか\n\n\n\n\n\nやりたいこと\nコード\n\n\n\n\n差を誇張する\nplt.ylim(15, 30)\n\n\n夏だけ切り取る\nplt.xlim(6, 9)\n\n\n\n\n\n\n\n\n\n\n予想してから試す\n\n\n\nplt.ylim(...) の行を 消す（自動範囲）と、y軸の下限は 0 になる？"
+    "section": "Tweak 軸の範囲で印象を操る",
+    "text": "Tweak 軸の範囲で印象を操る\n\n\nさっきのコード の軸だけ変えて実行 — 同じデータでも印象がどう動くか\n\n\n\n\n\nやりたいこと\nコード\n\n\n\n\n差を誇張する\nplt.ylim(15, 30)\n\n\n夏だけ切り取る\nplt.xlim(6, 9)\n\n\n\n\n\n\n\n\n\n\n予想してから試す\n\n\n\nplt.ylim(...) の行を 消す（自動範囲）と、y軸の下限は 0 になる？"
   },
   {
     "objectID": "matplotlib.html#複数のグラフを並べるsubplot",
@@ -2989,11 +2989,11 @@
     "text": "ヒストグラム：所得分布の可視化\n\n\n前回の厚労省の所得分布は ヒストグラム（区間ごとに数えるグラフ）だった\n同じような構造の図を、ある会社の社員29人の年収で再現したとする\n\nplt.hist(x, bins=区間の数) で描ける\nplt.axvline(値) で 縦線、np.median(x) で 中央値\n\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nincome = np.array([\n    280, 310, 330, 350, 360, 380, 400, 410, 430, 450, 470, 500, 520, 450, 470, 500, 520, 550, 600, 650, 700, 760, 900, 950, 1100, 1260, 3100, 3000, 3200\n])\n\nmean_income = income.mean()\nmedian_income = np.median(income)\n\nplt.hist(income, bins=20, edgecolor=\"white\")\nplt.axvline(mean_income, color=\"red\", linewidth=2, label=f\"平均 ({mean_income:,.0f})\")\nplt.axvline(median_income, color=\"blue\", linewidth=2, label=f\"中央値 ({median_income:,.0f})\")\nplt.xlabel(\"年収（万円）\")\nplt.ylabel(\"人数\")\nplt.title(\"年収のような右に長い分布\")\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n「平均年収824万円の会社」\n\n\n\nこの会社は求人票に「平均年収824万円」と 正直に 書ける — 読んだ人はそのくらいもらえると錯覚する\nでも中央値は 500万円 — 半分の人は500万以下\n描けば誰でも分かる"
   },
   {
-    "objectID": "matplotlib.html#tweakビンの数で分布が化ける",
-    "href": "matplotlib.html#tweakビンの数で分布が化ける",
+    "objectID": "matplotlib.html#tweak-ビンの数で分布が化ける",
+    "href": "matplotlib.html#tweak-ビンの数で分布が化ける",
     "title": "matplotlib入門",
-    "section": "Tweak：ビンの数で分布が化ける",
-    "text": "Tweak：ビンの数で分布が化ける\n\n\nさっきのコード の bins だけ変えて実行 — 同じ29人なのに形が変わる\n\n\n\n\n\nやりたいこと\nコード\n\n\n\n\n粗く刻む\n5\n\n\n細かく刻む\n50\n\n\n\n\n\n\n\n\n\n\n予想してから試す\n\n\n\nbins=5 にすると、右に長く伸びる 高年収の外れ値 の山は見える？消える？\nまず予想 → 実行して確かめる（軸の範囲と同じで、ビンの切り方も印象を動かす）"
+    "section": "Tweak ビンの数で分布が化ける",
+    "text": "Tweak ビンの数で分布が化ける\n\n\nさっきのコード の bins だけ変えて実行 — 同じ29人なのに形が変わる\n\n\n\n\n\nやりたいこと\nコード\n\n\n\n\n粗く刻む\n5\n\n\n細かく刻む\n50\n\n\n\n\n\n\n\n\n\n\n予想してから試す\n\n\n\nbins=5 にすると、右に長く伸びる 高年収の外れ値 の山は見える？消える？\nまず予想 → 実行して確かめる（軸の範囲と同じで、ビンの切り方も印象を動かす）"
   },
   {
     "objectID": "matplotlib.html#plt早見表",
@@ -3028,7 +3028,7 @@
     "href": "matplotlib.html#まとめ",
     "title": "matplotlib入門",
     "section": "まとめ",
-    "text": "まとめ\n\n\nmatplotlib：「東京は暑くなったのか」を1枚のグラフに育てた\n\n点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲\n散布図で150年、ヒストグラムで分布\n\n装飾の優先順位：軸ラベル・凡例・タイトル — 揃っていない図は資料に載せない\n可視化編の謎（1日だけの大きな山）は API編で回収する"
+    "text": "まとめ\n\n\nmatplotlib：「東京は暑くなったのか」を1枚のグラフに育てた\n\n点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲\n散布図で150年、ヒストグラムで分布\n\n装飾の優先順位：軸ラベル・凡例・タイトル — 揃っていない図は資料に載せない\nデータの可視化の冒頭の謎（1日だけの大きな山）の正体は、APIデータを可視化するで明かされる"
   },
   {
     "objectID": "matplotlib.html#参考リンク",
@@ -3105,7 +3105,7 @@
     "href": "numpy.html#本当に速いの-100万要素で実測",
     "title": "NumPy入門",
     "section": "本当に速いの？ — 100万要素で実測",
-    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 53.2 ミリ秒\nndarray:          0.45 ミリ秒\n→ 約 118 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
+    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 31.7 ミリ秒\nndarray:          0.59 ミリ秒\n→ 約 54 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
   },
   {
     "objectID": "numpy.html#その他長さやアクセス方法",
@@ -3227,11 +3227,11 @@
     "text": "実践例：アプリ案10個を配置すると\n\n\n\n\n\n\n\n\n\n\n\n4人チームで作る想定で配置した例\n\n左上の4つ（時間割・課題リスト・食堂メニュー・教室空き）から着手\n右上は 2番手として計画 ／ 右下（3D校舎ツアー）は カット"
   },
   {
-    "objectID": "payoff-matrix.html#演習ペイオフマトリクス",
-    "href": "payoff-matrix.html#演習ペイオフマトリクス",
+    "objectID": "payoff-matrix.html#演習-ペイオフマトリクス",
+    "href": "payoff-matrix.html#演習-ペイオフマトリクス",
     "title": "ペイオフマトリクス",
-    "section": "演習：ペイオフマトリクス",
-    "text": "演習：ペイオフマトリクス\n\n\n次の12案を4象限に分類せよ（模造紙に2軸を描き、付箋1枚1案で配置。チームで議論して動かすこと）。\n\n\n\n\n\nアイデア\n\nアイデア\n\n\n\n\n1\n時間割表示（手動入力）\n7\nサークル活動の連絡ツール\n\n\n2\n課題管理 + 締切通知\n8\nテスト範囲の共有掲示板\n\n\n3\n食堂の今日のメニュー表示\n9\n落とし物掲示板\n\n\n4\n食堂の混雑予測AI\n10\n出席管理システム\n\n\n5\n教室の空き状況確認（手動入力）\n11\nAR校内ナビゲーション\n\n\n6\n図書館の蔵書検索\n12\n学校の歴史紹介ページ\n\n\n\n\n模造紙に「手間 →」「効果 ↑」の2軸と十字線\n12案を付箋にして、議論しながら配置（1案30秒 で仮置き → あとで動かす）\n「すぐやるべき」に入った案から 上位3つ に順位を付ける\n「後回し」に入った案について、カットの理由を1行 ずつ書く\n\n\n\n\n\n\n\nKJ法の付箋がそのまま使える\n\n\n前回KJ法でグループ化した付箋の「中見出し」を12案の代わりに置けば、自分たちのアイデアの優先順位が決まる"
+    "section": "演習 ペイオフマトリクス",
+    "text": "演習 ペイオフマトリクス\n\n\n次の12案を4象限に分類せよ（模造紙に2軸を描き、付箋1枚1案で配置。チームで議論して動かすこと）。\n\n\n\n\n\nアイデア\n\nアイデア\n\n\n\n\n1\n時間割表示（手動入力）\n7\nサークル活動の連絡ツール\n\n\n2\n課題管理 + 締切通知\n8\nテスト範囲の共有掲示板\n\n\n3\n食堂の今日のメニュー表示\n9\n落とし物掲示板\n\n\n4\n食堂の混雑予測AI\n10\n出席管理システム\n\n\n5\n教室の空き状況確認（手動入力）\n11\nAR校内ナビゲーション\n\n\n6\n図書館の蔵書検索\n12\n学校の歴史紹介ページ\n\n\n\n\n模造紙に「手間 →」「効果 ↑」の2軸と十字線\n12案を付箋にして、議論しながら配置（1案30秒 で仮置き → あとで動かす）\n「すぐやるべき」に入った案から 上位3つ に順位を付ける\n「後回し」に入った案について、カットの理由を1行 ずつ書く\n\n\n\n\n\n\n\nKJ法の付箋がそのまま使える\n\n\n前回KJ法でグループ化した付箋の「中見出し」を12案の代わりに置けば、自分たちのアイデアの優先順位が決まる"
   },
   {
     "objectID": "payoff-matrix.html#まとめ評価は厳密さより速さ",
@@ -3521,8 +3521,8 @@
     "text": "情報可視化とは？\n\n\nデータや情報がもつ 関係性 や 特徴 を、視覚的に見て理解できるようにすること\n\n見えないものを 「見える」化\n人間の 視覚・直感・経験 で共通に扱えるようにする\n\n情報視覚化ともいう\n\nInformation Visualization\nData Visualization\n\n\n\n\n\n\n\n\nなぜ「見る」のか\n\n\n\n数字の表を眺めても気づけないパターン（外れ値、相関、周期性、クラスタ）が見える\n図示は最強の前処理"
   },
   {
-    "objectID": "visualize.html#この授業のゴール",
-    "href": "visualize.html#この授業のゴール",
+    "objectID": "visualize.html#peek-mystery",
+    "href": "visualize.html#peek-mystery",
     "title": "データの可視化",
     "section": "この授業のゴール",
     "text": "この授業のゴール\n\n\nあるWikipediaページの 2025年・1年分の閲覧数 を可視化\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nノート\n\n\n\nほぼ平坦なのに 1日だけ大きな山（最大47,656回、ふだんの約300倍）\nこの日、何があった？"
@@ -3721,7 +3721,7 @@
     "href": "visualize.html#まとめ",
     "title": "データの可視化",
     "section": "まとめ",
-    "text": "まとめ\n\n\n可視化の歴史：\n\nプレイフェア — 棒・折れ線・円グラフを発明\nスノウ — コレラ地図で因果関係を視覚的に立証\n\n大原則：Always plot your data first.\n\n平均所得524万円 ≠ 真ん中（中央値405万円）\nアンスコム・Datasaurus — 統計量は形を捨てている\n\nグラフはウソをつく：y軸切断・期間チェリーピック — 騙されない側になる\n冒頭の謎（1日だけの大きな山）は API編で回収する"
+    "text": "まとめ\n\n\n可視化の歴史：\n\nプレイフェア — 棒・折れ線・円グラフを発明\nスノウ — コレラ地図で因果関係を視覚的に立証\n\n大原則：Always plot your data first.\n\n平均所得524万円 ≠ 真ん中（中央値405万円）\nアンスコム・Datasaurus — 統計量は形を捨てている\n\nグラフはウソをつく：y軸切断・期間チェリーピック — 騙されない側になる\n冒頭の謎（1日だけの大きな山）の正体は、APIデータを可視化するで明かされる"
   },
   {
     "objectID": "visualize.html#次回予告",

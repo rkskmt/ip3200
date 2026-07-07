@@ -228,7 +228,8 @@ rkskmt
 <ul>
 <li><strong>データを置く</strong> — 変数、コレクション（list / dict / tuple）</li>
 <li><strong>データを計算する</strong> — NumPy（ベクトル・行列・統計）</li>
-<li><strong>データを見る</strong> — matplotlib（散布図、折れ線、subplot）</li>
+<li><strong>表で扱う</strong> — Pandas（read_csv、groupby）</li>
+<li><strong>データを見る</strong> — matplotlib（静止画）、Plotly（動くグラフ）</li>
 </ul>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -255,7 +256,7 @@ rkskmt
 <ul>
 <li>なにかのデータ群を処理して</li>
 <li><strong>役に立つ、もしくは興味深い</strong> 出力やサービスのモックを作る</li>
-<li>今回はその第一歩として <strong>Webからデータを取ってくる</strong> ことをやる</li>
+<li>道具は揃った — 今日はその第一歩として、<strong>材料 = 入力データ</strong> をWebから取ってくる</li>
 </ul>
 </div>
 </section>
@@ -280,9 +281,9 @@ rkskmt
 </div>
 </section>
 <section id="webアクセスの正体リクエストとレスポンス" class="slide level2">
-<h2>Webアクセスの正体<span class="fw-colon">：</span>リクエストとレスポンス</h2>
+<h2>Webアクセスの正体：リクエストとレスポンス</h2>
 <div class="slide-body">
-<div id="784bc7bc" class="cell" data-execution_count="1">
+<div id="2dd3c950" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -395,7 +396,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="ef308d63" class="cell" data-execution_count="2">
+<div id="38fe97d4" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -474,7 +475,7 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>例<span class="fw-colon">：</span>ヘッダーの中身</strong></p>
+<p><strong>例：ヘッダーの中身</strong></p>
 </div>
 <div class="callout-content">
 <ul>
@@ -559,7 +560,7 @@ rkskmt
 <ul>
 <li><code>.json()</code> は <strong>このテキストを dict に変換</strong> するメソッド</li>
 </ul>
-<div id="dad66a6f" class="cell" data-execution_count="3">
+<div id="296840cf" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -580,10 +581,13 @@ rkskmt
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb10-2"><a></a><span class="im">import</span> json</span>
 <span id="cb10-3"><a></a></span>
-<span id="cb10-4"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
-<span id="cb10-5"><a></a>res_dict <span class="op">=</span> json.loads(response.text)</span>
-<span id="cb10-6"><a></a><span class="bu">print</span>(<span class="bu">type</span>(res_dict), res_dict)</span>
-<span id="cb10-7"><a></a><span class="co"># &lt;class 'dict'&gt; {'items': [{'project': 'ja.wikipedia', ...</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-4"><a></a>url <span class="op">=</span> <span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia/all-access/2025/06/27"</span></span>
+<span id="cb10-5"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
+<span id="cb10-6"><a></a></span>
+<span id="cb10-7"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
+<span id="cb10-8"><a></a>res_dict <span class="op">=</span> json.loads(response.text)</span>
+<span id="cb10-9"><a></a><span class="bu">print</span>(<span class="bu">type</span>(res_dict), res_dict)</span>
+<span id="cb10-10"><a></a><span class="co"># &lt;class 'dict'&gt; {'items': [{'project': 'ja.wikipedia', ...</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -637,7 +641,7 @@ rkskmt
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a></a>https://wikimedia.org/api/rest_v1/metrics/pageviews/top/</span>
 <span id="cb11-2"><a></a>    {プロジェクト} / {アクセス方法} / {日付}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="bccbef49" class="cell" data-execution_count="4">
+<div id="b82e5d6f" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -708,7 +712,7 @@ rkskmt
 </div>
 </section>
 <section id="別のエンドポイントper-article" class="slide level2">
-<h2>別のエンドポイント<span class="fw-colon">：</span>per-article</h2>
+<h2>別のエンドポイント：per-article</h2>
 <div class="slide-body">
 <ul>
 <li>特定の記事の、任意の期間のアクセス数（日単位 / 月単位）を返す</li>
@@ -774,62 +778,43 @@ rkskmt
 <span id="cb13-10"><a></a>data <span class="op">=</span> response.json()</span>
 <span id="cb13-11"><a></a></span>
 <span id="cb13-12"><a></a><span class="co"># data["items"] は list of dict</span></span>
-<span id="cb13-13"><a></a>views <span class="op">=</span> np.array([item[<span class="st">"views"</span>]     <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
-<span id="cb13-14"><a></a>dates <span class="op">=</span> np.array([item[<span class="st">"timestamp"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
-<span id="cb13-15"><a></a></span>
-<span id="cb13-16"><a></a><span class="bu">print</span>(<span class="ss">f"日数:   </span><span class="sc">{</span><span class="bu">len</span>(views)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-17"><a></a><span class="bu">print</span>(<span class="ss">f"最大:   </span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">回"</span>)</span>
-<span id="cb13-18"><a></a><span class="bu">print</span>(<span class="ss">f"最小:   </span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss">回"</span>)</span>
-<span id="cb13-19"><a></a><span class="bu">print</span>(<span class="ss">f"平均:   </span><span class="sc">{</span>views<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">回"</span>)</span>
-<span id="cb13-20"><a></a><span class="bu">print</span>(<span class="ss">f"中央値: </span><span class="sc">{</span>np<span class="sc">.</span>median(views)<span class="sc">:.0f}</span><span class="ss">回"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a></a>日数:   365</span>
-<span id="cb14-2"><a></a>最大:   47656回</span>
-<span id="cb14-3"><a></a>最小:   58回</span>
-<span id="cb14-4"><a></a>平均:   467.6回</span>
-<span id="cb14-5"><a></a>中央値: 154回</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-13"><a></a>views <span class="op">=</span> np.array([item[<span class="st">"views"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
+<span id="cb13-14"><a></a></span>
+<span id="cb13-15"><a></a><span class="bu">print</span>(<span class="ss">f"日数:   </span><span class="sc">{</span><span class="bu">len</span>(views)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-16"><a></a><span class="bu">print</span>(<span class="ss">f"最大:   </span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">回"</span>)</span>
+<span id="cb13-17"><a></a><span class="bu">print</span>(<span class="ss">f"最小:   </span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss">回"</span>)</span>
+<span id="cb13-18"><a></a><span class="bu">print</span>(<span class="ss">f"平均:   </span><span class="sc">{</span>views<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">回"</span>)</span>
+<span id="cb13-19"><a></a><span class="bu">print</span>(<span class="ss">f"中央値: </span><span class="sc">{</span>np<span class="sc">.</span>median(views)<span class="sc">:.0f}</span><span class="ss">回"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="a5def704" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-stdout">
+<pre><code>日数:   365
+最大:   47656回
+最小:   58回
+平均:   467.6回
+中央値: 154回</code></pre>
+</div>
+</div>
 <ul>
 <li><strong>最大が中央値の約300倍</strong>。平均と中央値も大きくズレている</li>
-<li>可視化編でやった「<a href="./visualize.html#peek-income" class="peek">右に引っ張られた平均</a>」の匂い — <strong>なにかがおかしい</strong></li>
+<li><a href="./visualize.html">データの可視化</a>でやった「<a href="./visualize.html#peek-income" class="peek">右に引っ張られた平均</a>」の匂い — <strong>なにかがおかしい</strong></li>
 </ul>
 </div>
 </section>
-<section id="過去の章が一気に効いてくる" class="slide level2">
-<h2>過去の章が一気に効いてくる</h2>
+<section id="過去の資料が一気に効いてくる" class="slide level2">
+<h2>過去の資料が一気に効いてくる</h2>
 <div class="slide-body">
 <ul>
-<li><code>data["items"]</code> は <strong>list of dict</strong>（<a href="./dict.html">dict章</a> でやった形）</li>
-<li>内包表記でフィールド抽出（<a href="./list.html">list章</a>）</li>
-<li><code>np.array()</code> で <code>ndarray</code> 化（<a href="./numpy.html">numpy章</a>）</li>
-<li><code>np.mean / np.var</code> で統計量</li>
-<li><strong>ここで初登場</strong><span class="fw-colon">：</span><code>np.argmax / argmin</code> — 最大・最小の位置（<strong>インデックス</strong>）を返す（値ではない点に注意）</li>
+<li><code>data["items"]</code> は <strong>list of dict</strong>（<a href="./dict.html">dictあらためて</a>でやった形）</li>
+<li>内包表記でフィールド抽出（<a href="./list.html">listあらためて</a>）</li>
+<li><code>np.array()</code> で <code>ndarray</code> 化 → <code>.max()</code> / <code>.mean()</code> / <code>np.median()</code> で統計量（<a href="./numpy.html">NumPy入門</a>）</li>
+<li>新しいのは <code>requests.get()</code> の1往復だけ — <strong>あとは全部、手持ちの道具</strong></li>
 </ul>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>値もインデックスも両方欲しいとき</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li><code>max_i = np.argmax(views)</code> で index を得てから</li>
-<li><code>views[max_i]</code> で値、<code>dates[max_i]</code> で対応する日付</li>
-<li><strong>同じ index で並ぶ配列同士をリンクさせる</strong> のはNumPy/データ処理の頻出パターン</li>
-</ul>
-</div>
-</div>
-</div>
 </div>
 </section>
-<section id="まとめ" class="slide level2">
-<h2>まとめ</h2>
+<section id="requests早見表" class="slide level2">
+<h2>requests早見表</h2>
 <div class="slide-body">
 <table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>やりたいこと</th>
@@ -863,7 +848,7 @@ rkskmt
 </tr>
 <tr class="odd">
 <td>値の集計</td>
-<td><code>np.array([d["views"] for d in items])</code> → <code>mean/var/argmax</code></td>
+<td><code>np.array([d["views"] for d in items])</code> → <code>.mean()</code> など</td>
 </tr>
 </tbody>
 </table>
@@ -879,7 +864,7 @@ rkskmt
 </div>
 </section>
 <section id="演習desktop-と-mobile-web-の比較" class="slide level2 badge-practice scrollable">
-<h2>演習<span class="fw-colon">：</span>desktop と mobile-web の比較</h2>
+<h2>演習：desktop と mobile-web の比較</h2>
 <div class="slide-body">
 <div class="prompt">
 <p>「七夕」の2025年1年分のページビューを <code>desktop</code> と <code>mobile-web</code> の両方で取得し、<strong>どちらでよく読まれているか</strong>を統計量で比較せよ。</p>
@@ -887,7 +872,7 @@ rkskmt
 <ol type="1">
 <li><code>access</code> を <code>desktop</code> / <code>mobile-web</code> に切り替えて、同じ期間（2025/01/01 – 2025/12/31）で <strong>APIを2回呼ぶ</strong></li>
 <li>それぞれの <strong>最大・最小・平均・分散</strong> を表示</li>
-<li>結果は捨てずに取っておく — <strong>次回、このデータをグラフで比較する</strong></li>
+<li>書いたコードはファイルごと保存しておく — <a href="./api-viz.html">APIデータを可視化する</a>で、このデータをグラフにして比較する</li>
 </ol>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -906,29 +891,53 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="b7ec3048" class="cell" data-execution_count="5">
+<div id="f5f14965" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb15-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-3"><a></a></span>
 <span id="cb15-4"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
-<span id="cb15-5"><a></a>base <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"</span></span>
-<span id="cb15-6"><a></a>        <span class="st">"ja.wikipedia/</span><span class="sc">{access}</span><span class="st">/user/七夕/daily/20250101/20251231"</span>)</span>
-<span id="cb15-7"><a></a></span>
-<span id="cb15-8"><a></a><span class="kw">def</span> fetch_views(access):</span>
-<span id="cb15-9"><a></a>    url <span class="op">=</span> base.<span class="bu">format</span>(access<span class="op">=</span>access)</span>
-<span id="cb15-10"><a></a>    data <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers).json()</span>
-<span id="cb15-11"><a></a>    <span class="cf">return</span> np.array([item[<span class="st">"views"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
-<span id="cb15-12"><a></a></span>
-<span id="cb15-13"><a></a>views_desktop    <span class="op">=</span> fetch_views(<span class="st">"desktop"</span>)</span>
-<span id="cb15-14"><a></a>views_mobile_web <span class="op">=</span> fetch_views(<span class="st">"mobile-web"</span>)</span>
-<span id="cb15-15"><a></a></span>
-<span id="cb15-16"><a></a><span class="cf">for</span> name, views <span class="kw">in</span> [(<span class="st">"desktop"</span>, views_desktop), (<span class="st">"mobile-web"</span>, views_mobile_web)]:</span>
-<span id="cb15-17"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: 最大=</span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss"> 最小=</span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss"> "</span></span>
-<span id="cb15-18"><a></a>          <span class="ss">f"平均=</span><span class="sc">{</span>views<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss"> 分散=</span><span class="sc">{</span>views<span class="sc">.</span>var()<span class="sc">:.1f}</span><span class="ss">"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-5"><a></a></span>
+<span id="cb15-6"><a></a><span class="kw">def</span> fetch_views(access):</span>
+<span id="cb15-7"><a></a>    url <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"</span></span>
+<span id="cb15-8"><a></a>           <span class="ss">f"ja.wikipedia/</span><span class="sc">{</span>access<span class="sc">}</span><span class="ss">/user/七夕/daily/20250101/20251231"</span>)</span>
+<span id="cb15-9"><a></a>    data <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers).json()</span>
+<span id="cb15-10"><a></a>    <span class="cf">return</span> np.array([item[<span class="st">"views"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
+<span id="cb15-11"><a></a></span>
+<span id="cb15-12"><a></a>views_desktop    <span class="op">=</span> fetch_views(<span class="st">"desktop"</span>)</span>
+<span id="cb15-13"><a></a>views_mobile_web <span class="op">=</span> fetch_views(<span class="st">"mobile-web"</span>)</span>
+<span id="cb15-14"><a></a></span>
+<span id="cb15-15"><a></a><span class="cf">for</span> name, views <span class="kw">in</span> [(<span class="st">"desktop"</span>, views_desktop), (<span class="st">"mobile-web"</span>, views_mobile_web)]:</span>
+<span id="cb15-16"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: 最大=</span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss"> 最小=</span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss"> "</span></span>
+<span id="cb15-17"><a></a>          <span class="ss">f"平均=</span><span class="sc">{</span>views<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss"> 分散=</span><span class="sc">{</span>views<span class="sc">.</span>var()<span class="sc">:.1f}</span><span class="ss">"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
+</div>
+</section>
+<section id="まとめ" class="slide level2">
+<h2>まとめ</h2>
+<div class="slide-body">
+<ul>
+<li><strong>道具→材料</strong> へ：今回は Web から材料を仕入れた</li>
+<li><code>requests</code> で <strong>アクセス</strong>、<code>.text / .json() / .headers</code> で <strong>取り出す</strong></li>
+<li><strong>API / エンドポイント / パラメータ</strong> の概念</li>
+<li>Wikipedia Pageviews API で <strong>実データを取得</strong>、NumPy で <strong>集計</strong></li>
+</ul>
+</div>
+</section>
+<section id="次回予告" class="slide level2">
+<h2>次回予告</h2>
+<div class="slide-body">
+<ul>
+<li>「七夕」の閲覧数、<strong>最大が中央値の300倍</strong> — なにかがおかしい</li>
+<li>統計量だけでは、これ以上なにも分からない</li>
+<li>次回、大原則の出番：<span class="hl">Always plot your data first.</span>
+<ul>
+<li>描けば、山の <strong>正体</strong> と <strong>日付</strong> が分かる</li>
+<li>そして<a href="./visualize.html#peek-mystery" class="peek">データの可視化の冒頭で見せた <strong>謎の図</strong></a>の正体も明かされる</li>
+</ul></li>
+</ul>
 </div>
 </section>
 <section id="section-6" class="slide level2 center break-slide" data-background-color="white">
@@ -975,31 +984,6 @@ rkskmt
 </tr>
 </tbody>
 </table>
-</div>
-</section>
-<section id="ここまでの流れ" class="slide level2">
-<h2>ここまでの流れ</h2>
-<div class="slide-body">
-<ul>
-<li><strong>道具→材料</strong> へ<span class="fw-colon">：</span>今回は Web から材料を仕入れた</li>
-<li><code>requests</code> で <strong>アクセス</strong>、<code>.text / .json() / .headers</code> で <strong>取り出す</strong></li>
-<li><strong>API / エンドポイント / パラメータ</strong> の概念</li>
-<li>Wikipedia Pageviews API で <strong>実データを取得</strong>、NumPy で <strong>集計</strong></li>
-</ul>
-</div>
-</section>
-<section id="次回予告" class="slide level2">
-<h2>次回予告</h2>
-<div class="slide-body">
-<ul>
-<li>「七夕」の閲覧数、<strong>最大が中央値の300倍</strong> — なにかがおかしい</li>
-<li>統計量だけでは、これ以上なにも分からない</li>
-<li>次回、大原則の出番<span class="fw-colon">：</span><span class="hl">Always plot your data first.</span>
-<ul>
-<li>描けば、山の <strong>正体</strong> と <strong>日付</strong> が分かる</li>
-<li>そして可視化編の冒頭で見せた <strong>謎の図</strong> の正体も明かされる</li>
-</ul></li>
-</ul>
 </div>
 </section>
 <section id="参考リンク" class="slide level2">

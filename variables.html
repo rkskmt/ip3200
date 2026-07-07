@@ -217,7 +217,7 @@ rkskmt
 
 </section>
 <section id="事件関数に渡しただけなのに" class="slide level2">
-<h2>事件<span class="fw-colon">：</span>関数に渡しただけなのに</h2>
+<h2>事件：関数に渡しただけなのに</h2>
 <div class="slide-body">
 <p>成績データの「2倍にしたコピー」を作ろうとした。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="kw">def</span> double_all(data):</span>
@@ -287,7 +287,7 @@ rkskmt
 <li><code>1</code> や <code>"1"</code> は<strong>リテラル（直接記述できる値）</strong></li>
 <li><code>a</code> は値ではなく<strong>変数</strong>として認識される</li>
 </ul>
-<div id="fb3ef264" class="cell" data-execution_count="1">
+<div id="130d9e59" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -310,8 +310,8 @@ rkskmt
 <ul>
 <li>文字（a-z, A-Z）またはアンダースコア（_）で<strong>始まる</strong>
 <ul>
-<li>つまり数字始まりはダメ（NG例<span class="fw-colon">：</span> 3200scores ）</li>
-<li>終わるのはOK（例<span class="fw-colon">：</span>scores_of_3200）</li>
+<li>つまり数字始まりはダメ（NG例： 3200scores ）</li>
+<li>終わるのはOK（例：scores_of_3200）</li>
 </ul></li>
 <li>2文字目以降が文字、数字（0-9）、アンダースコアであること</li>
 <li>予約語（<strong><code>if</code> / <code>for</code> / <code>while</code></strong> など）ではないこと</li>
@@ -351,7 +351,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="180808a7" class="cell" data-execution_count="2">
+<div id="717e43dc" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -381,12 +381,12 @@ rkskmt
 <span id="cb6-8"><a></a><span class="bu">print</span>(a12) <span class="co"># ??? （同じアドレスを指しているはずだが？）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <ul>
-<li>結果<span class="fw-colon">：</span> <strong>12</strong></li>
+<li>結果： <strong>12</strong></li>
 <li><code>a11 = 13</code> は「11 だった場所に 13 を書き込む」<strong>ではない</strong> — <strong>看板の掛け替え</strong></li>
 <li>代入 <code>x = ...</code> は<strong>常に掛け替え</strong>。共有していたのは3行目から5行目までの一瞬だけ</li>
 <li>5行目以降、共有していた場所を指すのは a12 だけになる</li>
 </ul>
-<div id="41ae7e52" class="cell" data-execution_count="3">
+<div id="45ecd194" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -409,11 +409,11 @@ rkskmt
 <span id="cb7-5"><a></a><span class="bu">print</span>(odd2) <span class="co"># ???</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <ul>
-<li>結果<span class="fw-colon">：</span> <strong>[9, 7]</strong></li>
+<li>結果： <strong>[9, 7]</strong></li>
 <li><code>odd1[0] = 9</code> は看板の掛け替え<strong>ではない</strong> — 指している先の<strong>中身の変更</strong></li>
 <li>看板は2枚とも同じリストを指したまま → <code>odd2</code> から見ても変わる</li>
 </ul>
-<div id="cd812bff" class="cell" data-execution_count="4">
+<div id="adc538aa" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -426,7 +426,7 @@ rkskmt
 </div>
 </section>
 <section id="クイズどっちなら-odd2-は無事" class="slide level2">
-<h2>クイズ<span class="fw-colon">：</span>どっちなら odd2 は無事？</h2>
+<h2>クイズ：どっちなら odd2 は無事？</h2>
 <div class="slide-body">
 <p>ほぼ同じに見える2つのコード。<code>print(odd2)</code> は何と出る？</p>
 <div class="columns">
@@ -445,10 +445,10 @@ rkskmt
 </div></div>
 <div class="fragment">
 <ul>
-<li>A<span class="fw-colon">：</span> <strong>[1, 3]</strong> — <code>odd1 = [9, 7]</code> は<strong>看板の掛け替え</strong>。odd2 は無傷</li>
-<li>B<span class="fw-colon">：</span> <strong>[9, 7]</strong> — <code>odd1[0] = 9</code> は<strong>中身の変更</strong>。odd2 も巻き込まれる</li>
+<li>A： <strong>[1, 3]</strong> — <code>odd1 = [9, 7]</code> は<strong>看板の掛け替え</strong>。odd2 は無傷</li>
+<li>B： <strong>[9, 7]</strong> — <code>odd1[0] = 9</code> は<strong>中身の変更</strong>。odd2 も巻き込まれる</li>
 </ul>
-<div id="fba8de19" class="cell" data-execution_count="5">
+<div id="e3d67be5" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -530,7 +530,7 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>豆知識<span class="fw-colon">：</span>小さい整数は使い回される</strong></p>
+<p><strong>豆知識：小さい整数は使い回される</strong></p>
 </div>
 <div class="callout-content">
 <ul>
@@ -563,7 +563,7 @@ rkskmt
 </div>
 </section>
 <section id="同じ場所を直接聞くis-演算子" class="slide level2">
-<h2>「同じ場所？」を直接聞く<span class="fw-colon">：</span><code>is</code> 演算子</h2>
+<h2>「同じ場所？」を直接聞く：<code>is</code> 演算子</h2>
 <div class="slide-body">
 <ul>
 <li><code>id() == id()</code> を毎回書くのは回りくどい — <strong><code>is</code></strong> で直接聞ける</li>
@@ -585,13 +585,13 @@ rkskmt
 <div class="slide-body">
 <p>値（オブジェクト）は2種類に分かれる</p>
 <ul>
-<li><strong>イミュータブル（<span class="en">immutable</span>）</strong><span class="fw-colon">：</span>中身を変更する手段が<strong>存在しない</strong>型
+<li><strong>イミュータブル（<span class="en">immutable</span>）</strong>：中身を変更する手段が<strong>存在しない</strong>型
 <ul>
 <li>int str bool tuple 等</li>
 <li>「変えた」ように見える操作も、すべて<strong>新しい値への掛け替え</strong>（ルール1）</li>
 <li>だからアドレスを意識しなくても事故が起きない</li>
 </ul></li>
-<li><strong>ミュータブル（<span class="en">mutable</span>）</strong><span class="fw-colon">：</span>中身を<strong>その場で変更できる</strong>型（ルール2が使える）
+<li><strong>ミュータブル（<span class="en">mutable</span>）</strong>：中身を<strong>その場で変更できる</strong>型（ルール2が使える）
 <ul>
 <li>list、dict 等</li>
 <li>看板を何枚立てても実体は1つ — <strong>共有に気づかないと事故になる</strong></li>
@@ -622,7 +622,7 @@ rkskmt
 </div>
 </section>
 <section id="事件の解決冒頭のコードに戻る" class="slide level2">
-<h2>事件の解決<span class="fw-colon">：</span>冒頭のコードに戻る</h2>
+<h2>事件の解決：冒頭のコードに戻る</h2>
 <div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="kw">def</span> double_all(data):</span>
 <span id="cb13-2"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(data)):</span>
@@ -636,9 +636,9 @@ rkskmt
 <ul>
 <li>関数に渡しても<strong>コピーは起きない</strong>。引数 <code>data</code> は <code>scores</code> と同じリストを指す看板（ルール1）</li>
 <li>中で <code>data[i] = ...</code> と<strong>中身を変更</strong>したので（ルール2）、<code>scores</code> から見ても壊れていた</li>
-<li>約束どおり、<strong>図1枚</strong>で説明できる<span class="fw-colon">：</span></li>
+<li>約束どおり、<strong>図1枚</strong>で説明できる：</li>
 </ul>
-<div id="cdad1abb" class="cell" data-execution_count="6">
+<div id="f2a80a4a" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -650,7 +650,7 @@ rkskmt
 </div>
 </section>
 <section id="ミュータブルの罠を回避するコピー" class="slide level2">
-<h2>ミュータブルの罠を回避する<span class="fw-colon">：</span>コピー</h2>
+<h2>ミュータブルの罠を回避する：コピー</h2>
 <div class="slide-body">
 <ul>
 <li>リストを<strong>別のアドレスに新たに複製</strong>したいときは <code>.copy()</code> を使う
@@ -658,7 +658,7 @@ rkskmt
 <li>「この場面を残したい」ときにセーブデータを別スロットへコピーするイメージ</li>
 <li>単に <code>=</code> で代入しても複製されない（看板が増えるだけ）</li>
 </ul></li>
-<li>冒頭の事故も、<strong>渡す側の1行</strong>で防げる<span class="fw-colon">：</span></li>
+<li>冒頭の事故も、<strong>渡す側の1行</strong>で防げる：</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>result <span class="op">=</span> double_all(scores.copy())   <span class="co"># 複製を渡す → scores は無傷</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>odd1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>]</span>
@@ -677,7 +677,7 @@ rkskmt
 <span id="cb15-14"><a></a><span class="co"># （参考）全スライス [:] でも同じ結果</span></span>
 <span id="cb15-15"><a></a>odd4 <span class="op">=</span> odd1[:]</span>
 <span id="cb15-16"><a></a><span class="bu">print</span>(<span class="bu">id</span>(odd1) <span class="op">==</span> <span class="bu">id</span>(odd4))  <span class="co"># False（別アドレス）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="0408a5a2" class="cell" data-execution_count="7">
+<div id="f51d8a36" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -695,7 +695,7 @@ rkskmt
 <p>「箱ではなく看板」の変数モデルを、次の4つの実験で確かめよ。</p>
 </div>
 <ol type="1">
-<li><p><strong>紙に看板図を描く</strong><span class="fw-colon">：</span>次のコードを1行ずつ、看板と矢印で描きながら追い、最後の出力を<strong>予想してから</strong>実行して答え合わせ</p>
+<li><p><strong>紙に看板図を描く</strong>：次のコードを1行ずつ、看板と矢印で描きながら追い、最後の出力を<strong>予想してから</strong>実行して答え合わせ</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>]</span>
 <span id="cb16-2"><a></a>b <span class="op">=</span> a</span>
 <span id="cb16-3"><a></a>a.append(<span class="dv">3</span>)   <span class="co"># 掛け替え？ 中身の変更？</span></span>
@@ -707,7 +707,7 @@ rkskmt
 <li><p><code>list</code> と同じようにアクセスできる <code>str</code> は、ミュータブルかイミュータブルかを確認</p></li>
 <li><p>上記の例で <code>odd1[0]</code> のアドレスがどうなるかを確認（<code>list</code> はミュータブルだが、<code>list</code> の要素は <code>int</code> なのでイミュータブルのはず）</p></li>
 </ol>
-<div id="e6e0a8e8" class="cell" data-execution_count="8">
+<div id="603dfbf6" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>]</span>
@@ -751,8 +751,8 @@ rkskmt
 <div class="slide-body">
 <ul>
 <li>変数は値そのものではなく、<strong>値が置かれたアドレスを指す看板</strong></li>
-<li><strong>ルール1</strong><span class="fw-colon">：</span>代入 <code>x = ...</code> は型に関係なく<strong>常に看板の掛け替え</strong>。コピーは起きない</li>
-<li><strong>ルール2</strong><span class="fw-colon">：</span><strong>ミュータブル</strong>（list / dict 等）だけが<strong>中身をその場で変更</strong>できる — 共有中の変更は全員に見える</li>
+<li><strong>ルール1</strong>：代入 <code>x = ...</code> は型に関係なく<strong>常に看板の掛け替え</strong>。コピーは起きない</li>
+<li><strong>ルール2</strong>：<strong>ミュータブル</strong>（list / dict 等）だけが<strong>中身をその場で変更</strong>できる — 共有中の変更は全員に見える</li>
 <li>イミュータブル（int / str / bool / tuple 等）は中身を変える手段がないので事故が起きない</li>
 <li>事故を防ぐには <strong><code>.copy()</code></strong> で別の実体を渡す。確認の道具は <strong><code>id()</code></strong>（住所）と <strong><code>is</code></strong>（同じ場所か）</li>
 </ul>

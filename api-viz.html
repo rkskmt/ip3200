@@ -226,7 +226,7 @@ rkskmt
 <h2>「なにかがおかしい」ところまで来た</h2>
 <div class="slide-body">
 <ul>
-<li>前回<span class="fw-colon">：</span><a href="./api.html#peek-tanabata" class="peek">記事「七夕」の <strong>2025年まるごと1年分</strong> の日別アクセス数を取得した</a></li>
+<li>前回：<a href="./api.html#peek-tanabata" class="peek">記事「七夕」の <strong>2025年まるごと1年分</strong> の日別アクセス数を取得した</a></li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb1-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -239,8 +239,7 @@ rkskmt
 <span id="cb1-9"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
 <span id="cb1-10"><a></a>data <span class="op">=</span> response.json()</span>
 <span id="cb1-11"><a></a></span>
-<span id="cb1-12"><a></a>views <span class="op">=</span> np.array([item[<span class="st">"views"</span>]     <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
-<span id="cb1-13"><a></a>dates <span class="op">=</span> np.array([item[<span class="st">"timestamp"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-12"><a></a>views <span class="op">=</span> np.array([item[<span class="st">"views"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -277,10 +276,10 @@ rkskmt
 <h2>まずは可視化する</h2>
 <div class="slide-body">
 <ul>
-<li>数値だけでは見落とすので <strong>まず描く</strong> — <a href="./visualize.html">可視化章</a> の大原則</li>
+<li>数値だけでは見落とすので <strong>まず描く</strong> — <a href="./visualize.html">データの可視化</a>の大原則</li>
 <li>同じURL/ヘッダーで取得したあと <code>plt.plot(views)</code> するだけ</li>
 </ul>
-<div id="aea45c5a" class="cell" data-execution_count="1">
+<div id="94a4c8da" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -289,7 +288,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="14dae60b" class="cell" data-execution_count="2">
+<div id="ec7f5994" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> requests</span>
@@ -325,7 +324,7 @@ rkskmt
 <div class="callout-content">
 <ul>
 <li>ほぼ平坦な中、<strong>1日だけ大きな山</strong> — <strong>数値だけ見ていると気づけない</strong>（アンスコムの教訓と同じ）</li>
-<li>そして見覚えがあるはず<span class="fw-colon">：</span><strong>可視化編の冒頭で見せた謎の図は、実はこのデータ</strong></li>
+<li>そして見覚えがあるはず：<a href="./visualize.html#peek-mystery" class="peek">データの可視化の冒頭で見せた <strong>謎の図</strong></a>は、実はこのデータ</li>
 </ul>
 </div>
 </div>
@@ -334,14 +333,17 @@ rkskmt
 </div>
 </section>
 <section id="山の正体いつを特定する" class="slide level2">
-<h2>山の正体<span class="fw-colon">：</span>「いつ」を特定する</h2>
+<h2>山の正体：「いつ」を特定する</h2>
 <div class="slide-body">
 <ul>
-<li>山の <strong>高さ</strong> は <code>max()</code>。知りたいのは <strong>「いつ」</strong></li>
-<li><code>np.argmax()</code> で <strong>インデックス</strong> を取り、同じインデックスで <code>dates</code> を引く</li>
+<li>山の <strong>高さ</strong> は <code>views.max()</code>。知りたいのは <strong>「いつ」</strong></li>
+<li><code>item["timestamp"]</code> も同じ内包表記で取り出すと、<code>views</code> と <strong>同じインデックスで並ぶ</strong> 日付の配列ができる</li>
+<li><code>np.argmax()</code> は最大値の <strong>インデックス</strong> を返す（値ではない点に注意）— そのインデックスで <code>dates</code> を引く</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>max_i <span class="op">=</span> np.argmax(views)</span>
-<span id="cb3-2"><a></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>dates[max_i]<span class="sc">}</span><span class="ss"> に </span><span class="sc">{</span>views[max_i]<span class="sc">}</span><span class="ss"> 回"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>dates <span class="op">=</span> np.array([item[<span class="st">"timestamp"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a>max_i <span class="op">=</span> np.argmax(views)</span>
+<span id="cb3-4"><a></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>dates[max_i]<span class="sc">}</span><span class="ss"> に </span><span class="sc">{</span>views[max_i]<span class="sc">}</span><span class="ss"> 回"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -371,7 +373,7 @@ rkskmt
 <section id="よく見るともう一つ山がある" class="slide level2">
 <h2>よく見ると、もう一つ山がある</h2>
 <div class="slide-body">
-<div id="45190edc" class="cell" data-execution_count="3">
+<div id="fbd3d271" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -382,6 +384,7 @@ rkskmt
 </div>
 <ul>
 <li>y軸を拡大すると、<strong>8月29日にも小さな山</strong>（2,291回）— 七夕でもないのに、なぜ？</li>
+<li>自分のグラフでも <code>plt.ylim(0, 3000)</code> を足せば、同じ「足元の拡大」ができる</li>
 </ul>
 </div>
 </section>
@@ -396,7 +399,7 @@ rkskmt
 </div>
 <div class="fragment">
 <ul>
-<li>正体<span class="fw-colon">：</span><strong>伝統的七夕</strong> — 旧暦7月7日にあたる日（2025年は8月29日）
+<li>正体：<strong>伝統的七夕</strong> — 旧暦7月7日にあたる日（2025年は8月29日）
 <ul>
 <li>国立天文台が毎年発表している。7月7日は梅雨だが、<strong>旧暦の七夕は夏空で天の川が見える</strong></li>
 </ul></li>
@@ -447,7 +450,7 @@ rkskmt
 </div>
 </section>
 <section id="演習1枚のグラフに2本の折れ線" class="slide level2 badge-practice scrollable">
-<h2>演習<span class="fw-colon">：</span>1枚のグラフに2本の折れ線</h2>
+<h2>演習：1枚のグラフに2本の折れ線</h2>
 <div class="slide-body">
 <div class="prompt">
 <p>前回の演習で取得した <code>views_desktop</code> と <code>views_mobile_web</code> を、<strong>同じグラフに重ねて</strong>比較せよ。</p>
@@ -467,12 +470,12 @@ rkskmt
 <div class="callout-content">
 <ul>
 <li>軸を揃えず2枚並べる → 比較しづらい</li>
-<li>軸の範囲を片方だけ狭める → 印象操作（<a href="./matplotlib.html">matplotlib章</a> の「y軸の罠」参照）</li>
+<li>軸の範囲を片方だけ狭める → 印象操作（<a href="./matplotlib.html">matplotlib入門</a>の「軸の範囲で印象を操る」でやった罠）</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="1dd5f128" class="cell" data-execution_count="5">
+<div id="0c82d384" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> requests</span>
@@ -481,43 +484,41 @@ rkskmt
 <span id="cb5-4"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-5"><a></a></span>
 <span id="cb5-6"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
-<span id="cb5-7"><a></a>article <span class="op">=</span> <span class="st">"七夕"</span></span>
-<span id="cb5-8"><a></a>base <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"</span></span>
-<span id="cb5-9"><a></a>        <span class="ss">f"ja.wikipedia/</span><span class="ch">{{</span><span class="ss">access</span><span class="ch">}}</span><span class="ss">/user/</span><span class="sc">{</span>article<span class="sc">}</span><span class="ss">/daily/20250101/20251231"</span>)</span>
-<span id="cb5-10"><a></a></span>
-<span id="cb5-11"><a></a><span class="kw">def</span> fetch_views(access):</span>
-<span id="cb5-12"><a></a>    url <span class="op">=</span> base.<span class="bu">format</span>(access<span class="op">=</span>access)</span>
-<span id="cb5-13"><a></a>    data <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers).json()</span>
-<span id="cb5-14"><a></a>    <span class="cf">return</span> np.array([item[<span class="st">"views"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
-<span id="cb5-15"><a></a></span>
-<span id="cb5-16"><a></a>views_desktop    <span class="op">=</span> fetch_views(<span class="st">"desktop"</span>)</span>
-<span id="cb5-17"><a></a>views_mobile_web <span class="op">=</span> fetch_views(<span class="st">"mobile-web"</span>)</span>
-<span id="cb5-18"><a></a></span>
-<span id="cb5-19"><a></a>plt.plot(views_desktop,    label<span class="op">=</span><span class="st">"desktop"</span>)</span>
-<span id="cb5-20"><a></a>plt.plot(views_mobile_web, label<span class="op">=</span><span class="st">"mobile-web"</span>)</span>
-<span id="cb5-21"><a></a>plt.legend()</span>
-<span id="cb5-22"><a></a></span>
-<span id="cb5-23"><a></a>title <span class="op">=</span> (<span class="ss">f"desktop: max=</span><span class="sc">{</span>views_desktop<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">, mean=</span><span class="sc">{</span>views_desktop<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">  "</span></span>
-<span id="cb5-24"><a></a>         <span class="ss">f"mobile: max=</span><span class="sc">{</span>views_mobile_web<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">, mean=</span><span class="sc">{</span>views_mobile_web<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">"</span>)</span>
-<span id="cb5-25"><a></a>plt.title(title)</span>
-<span id="cb5-26"><a></a>plt.xlabel(<span class="st">"日数"</span>)</span>
-<span id="cb5-27"><a></a>plt.ylabel(<span class="st">"閲覧数"</span>)</span>
-<span id="cb5-28"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-7"><a></a></span>
+<span id="cb5-8"><a></a><span class="kw">def</span> fetch_views(access):</span>
+<span id="cb5-9"><a></a>    url <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"</span></span>
+<span id="cb5-10"><a></a>           <span class="ss">f"ja.wikipedia/</span><span class="sc">{</span>access<span class="sc">}</span><span class="ss">/user/七夕/daily/20250101/20251231"</span>)</span>
+<span id="cb5-11"><a></a>    data <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers).json()</span>
+<span id="cb5-12"><a></a>    <span class="cf">return</span> np.array([item[<span class="st">"views"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
+<span id="cb5-13"><a></a></span>
+<span id="cb5-14"><a></a>views_desktop    <span class="op">=</span> fetch_views(<span class="st">"desktop"</span>)</span>
+<span id="cb5-15"><a></a>views_mobile_web <span class="op">=</span> fetch_views(<span class="st">"mobile-web"</span>)</span>
+<span id="cb5-16"><a></a></span>
+<span id="cb5-17"><a></a>plt.plot(views_desktop,    label<span class="op">=</span><span class="st">"desktop"</span>)</span>
+<span id="cb5-18"><a></a>plt.plot(views_mobile_web, label<span class="op">=</span><span class="st">"mobile-web"</span>)</span>
+<span id="cb5-19"><a></a>plt.legend()</span>
+<span id="cb5-20"><a></a></span>
+<span id="cb5-21"><a></a>title <span class="op">=</span> (<span class="ss">f"desktop: max=</span><span class="sc">{</span>views_desktop<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss"> min=</span><span class="sc">{</span>views_desktop<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss"> mean=</span><span class="sc">{</span>views_desktop<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb5-22"><a></a>         <span class="ss">f"mobile-web: max=</span><span class="sc">{</span>views_mobile_web<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss"> min=</span><span class="sc">{</span>views_mobile_web<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss"> mean=</span><span class="sc">{</span>views_mobile_web<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">"</span>)</span>
+<span id="cb5-23"><a></a>plt.title(title)</span>
+<span id="cb5-24"><a></a>plt.xlabel(<span class="st">"日数"</span>)</span>
+<span id="cb5-25"><a></a>plt.ylabel(<span class="st">"閲覧数"</span>)</span>
+<span id="cb5-26"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
 </section>
 <section id="演習富士山には山があるか" class="slide level2 badge-practice">
-<h2>演習<span class="fw-colon">：</span>富士山には山があるか</h2>
+<h2>演習：富士山には山があるか</h2>
 <div class="slide-body">
 <div class="prompt">
 <p>「七夕」のコードの<strong>記事名を <code>富士山</code> に変えるだけ</strong>で2025年1年分を取得して描き、次の問いに答えよ。</p>
 </div>
 <ul>
-<li>問い<span class="fw-colon">：</span>七夕のような <strong>鋭い山（スパイク）</strong> はあるか？</li>
-<li>問い<span class="fw-colon">：</span>スパイクがないなら、<strong>何が見えるか</strong>？ 自分の言葉で説明せよ</li>
+<li>問い：七夕のような <strong>鋭い山（スパイク）</strong> はあるか？</li>
+<li>問い：スパイクがないなら、<strong>何が見えるか</strong>？ 自分の言葉で説明せよ</li>
 </ul>
-<div id="915254c8" class="cell" data-execution_count="6">
+<div id="6b12c827" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> requests</span>
@@ -542,7 +543,7 @@ rkskmt
 </details>
 </div>
 <div class="fragment">
-<div id="b378f4b1" class="cell" data-execution_count="7">
+<div id="d2e745e4" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -559,7 +560,7 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>種明かし<span class="fw-colon">：</span>針はない。でも「波」がある</strong></p>
+<p><strong>種明かし：針はない。でも「波」がある</strong></p>
 </div>
 <div class="callout-content">
 <ul>
@@ -580,8 +581,8 @@ rkskmt
 <h2>ここまでの流れ</h2>
 <div class="slide-body">
 <ul>
-<li>前回<span class="fw-colon">：</span><code>requests</code> で <strong>取得</strong>、NumPy で <strong>集計</strong> —「なにかがおかしい」</li>
-<li>今回<span class="fw-colon">：</span>matplotlib で <strong>可視化</strong> — 山の正体（7/7と8/29）を突き止めた</li>
+<li>前回：<code>requests</code> で <strong>取得</strong>、NumPy で <strong>集計</strong> —「なにかがおかしい」</li>
+<li>今回：matplotlib で <strong>可視化</strong> — 山の正体（7/7と8/29）を突き止めた</li>
 <li>統計量 → 違和感 → 図 → 発見、という <strong>データ分析の基本サイクル</strong> を一周した</li>
 </ul>
 </div>

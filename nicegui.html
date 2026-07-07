@@ -268,13 +268,13 @@ rkskmt
 </div>
 </section>
 <section id="niceguipythonだけで-spa" class="slide level2">
-<h2>NiceGUI<span class="fw-colon">：</span>Pythonだけで SPA</h2>
+<h2>NiceGUI：Pythonだけで SPA</h2>
 <div class="slide-body">
 <ul>
 <li><strong>NiceGUI</strong>（<a href="https://nicegui.io/">nicegui.io</a>）= <span class="hl">Pythonだけ</span> でSPAを作れるフレームワーク
 <ul>
 <li>フロントエンド（ブラウザ側）には <strong>Vue</strong> が使われている</li>
-<li>バックエンドには <strong>FastAPI</strong>（Pythonの定番APIフレームワーク）を内包 — のちほど <a href="./api-spa.html">API側</a> でも活躍する</li>
+<li>バックエンドには <strong>FastAPI</strong>（Pythonの定番APIフレームワーク）を内包 — のちほど<a href="./api-spa.html">自作API+SPA</a>でも活躍する</li>
 </ul></li>
 <li>インストールは1行</li>
 </ul>
@@ -295,7 +295,7 @@ rkskmt
 </div>
 </section>
 <section id="保存するだけで反映オートリロード" class="slide level2">
-<h2>保存するだけで反映<span class="fw-colon">：</span>オートリロード</h2>
+<h2>保存するだけで反映：オートリロード</h2>
 <div class="slide-body">
 <ul>
 <li>NiceGUIは、ファイルを保存すると <strong>サーバーが自動再起動し、ブラウザも自動更新</strong> される
@@ -329,14 +329,14 @@ rkskmt
 </div>
 </section>
 <section id="最初の一歩hello-world" class="slide level2">
-<h2>最初の一歩<span class="fw-colon">：</span>Hello World</h2>
+<h2>最初の一歩：Hello World</h2>
 <div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">from</span> nicegui <span class="im">import</span> ui</span>
 <span id="cb2-2"><a></a></span>
 <span id="cb2-3"><a></a>ui.label(<span class="st">"Hello, NiceGUI!"</span>)</span>
 <span id="cb2-4"><a></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li>実行するとターミナルにURLが出る — Ctrl+クリックでブラウザが開く</li>
+<li>実行すると <strong>ブラウザが自動で開く</strong>（開かないときはターミナルのURLをCtrl+クリック）</li>
 </ul>
 <pre><code>NiceGUI ready to go on http://localhost:8080</code></pre>
 <table class="caption-top">
@@ -413,7 +413,7 @@ rkskmt
 <li>「横に並べたい」「カードでまとめたい」——そのためには部品を入れる <strong>箱</strong> が要る
 <ul>
 <li>この箱を <strong>コンテナ</strong>（<span class="en">container</span>）と呼ぶ</li>
-<li>コンテナの使い方が、NiceGUIで <span class="hl">いちばんつまずきやすい</span> ところ。ここから数枚かけてゆっくり見る</li>
+<li>コンテナの使い方が、NiceGUIで <span class="hl">いちばんつまずきやすい</span> ところ</li>
 </ul></li>
 </ul>
 </div>
@@ -473,7 +473,7 @@ rkskmt
 </div>
 </section>
 <section id="箱の中に箱入れ子" class="slide level2">
-<h2>箱の中に箱<span class="fw-colon">：</span>入れ子</h2>
+<h2>箱の中に箱：入れ子</h2>
 <div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">from</span> nicegui <span class="im">import</span> ui</span>
 <span id="cb8-2"><a></a></span>
@@ -525,8 +525,8 @@ rkskmt
 </table>
 </div>
 </section>
-<section id="tweakwith-で実験" class="slide level2 badge-practice">
-<h2><strong>Tweak</strong><span class="fw-colon">：</span><code>with</code> で実験</h2>
+<section id="tweak-with-で実験" class="slide level2 badge-practice">
+<h2><strong>Tweak</strong> <code>with</code> で実験</h2>
 <div class="slide-body">
 <ul>
 <li>この土台を保存して、下の表を <strong>1つずつ</strong> 試す</li>
@@ -643,7 +643,7 @@ rkskmt
 </div>
 </section>
 <section id="見た目を変える.classes" class="slide level2">
-<h2>見た目を変える<span class="fw-colon">：</span><code>.classes()</code></h2>
+<h2>見た目を変える：<code>.classes()</code></h2>
 <div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">from</span> nicegui <span class="im">import</span> ui</span>
 <span id="cb10-2"><a></a></span>
@@ -720,10 +720,10 @@ rkskmt
 <span id="cb11-6"><a></a>    <span class="cf">with</span> list_view:        <span class="co"># withでくくると、その場でコンテナに追加される</span></span>
 <span id="cb11-7"><a></a>        ui.label(name)</span>
 <span id="cb11-8"><a></a></span>
-<span id="cb11-9"><a></a>name_input <span class="op">=</span> ui.<span class="bu">input</span>(<span class="st">"name"</span>)</span>
-<span id="cb11-10"><a></a>ui.button(<span class="st">"add"</span>, on_click<span class="op">=</span>add_item)</span>
-<span id="cb11-11"><a></a></span>
-<span id="cb11-12"><a></a>items <span class="op">=</span> []</span>
+<span id="cb11-9"><a></a>items <span class="op">=</span> []</span>
+<span id="cb11-10"><a></a>name_input <span class="op">=</span> ui.<span class="bu">input</span>(<span class="st">"name"</span>)</span>
+<span id="cb11-11"><a></a>ui.button(<span class="st">"add"</span>, on_click<span class="op">=</span>add_item)</span>
+<span id="cb11-12"><a></a></span>
 <span id="cb11-13"><a></a>list_view <span class="op">=</span> ui.column()</span>
 <span id="cb11-14"><a></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
@@ -732,8 +732,8 @@ rkskmt
 </ul>
 </div>
 </section>
-<section id="演習土台コードを動かす" class="slide level2 badge-practice">
-<h2><strong>演習</strong><span class="fw-colon">：</span>土台コードを動かす</h2>
+<section id="演習-土台コードを動かす" class="slide level2 badge-practice">
+<h2><strong>演習</strong> 土台コードを動かす</h2>
 <div class="slide-body">
 <div class="prompt">
 <p>次の土台コードを <code>main.py</code> として保存・実行し、名前を追加できることを確かめよ。</p>
@@ -757,12 +757,13 @@ rkskmt
 <span id="cb12-17"><a></a></span>
 <span id="cb12-18"><a></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
+<li>土台コードの新顔は <code>if not name: return</code> — 空文字のまま押されたら <strong>何も追加せずに抜ける</strong>（入力チェックの定番）</li>
 <li>ここからの <strong>Tweak</strong> は、すべてこのコードの改造</li>
 </ul>
 </div>
 </section>
-<section id="tweak見た目を改造する" class="slide level2 badge-practice">
-<h2><strong>Tweak</strong><span class="fw-colon">：</span>見た目を改造する</h2>
+<section id="tweak-見た目を改造する" class="slide level2 badge-practice">
+<h2><strong>Tweak</strong> 見た目を改造する</h2>
 <div class="slide-body">
 <ul>
 <li>土台コードを <strong>1か所ずつ変えて保存</strong> — オートリロードが即座に見せてくれる</li>
@@ -818,8 +819,8 @@ rkskmt
 </div>
 </div>
 </section>
-<section id="tweak削除機能を付ける" class="slide level2 badge-practice">
-<h2><strong>Tweak</strong><span class="fw-colon">：</span>削除機能を付ける</h2>
+<section id="tweak-削除機能を付ける" class="slide level2 badge-practice">
+<h2><strong>Tweak</strong> 削除機能を付ける</h2>
 <div class="slide-body">
 <div class="tweak">
 <table class="caption-top">
@@ -845,7 +846,7 @@ rkskmt
 </tbody>
 </table>
 </div>
-<div id="d741df6b" class="cell" data-execution_count="1">
+<div id="08a1fd59" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答例を表示</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">from</span> nicegui <span class="im">import</span> ui</span>
