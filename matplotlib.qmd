@@ -155,7 +155,7 @@ plt.show()
 - 月ごとの **つながり**（連続的な変化）が見えるようになった
 
 
-## **Tweak**：線の見た目 {.badge-practice}
+## **Tweak** 線の見た目 {.badge-practice}
 
 - [さっきのコード](#peek-line-code){.peek} の `"o-"` を **書き換えて実行**
 
@@ -236,7 +236,7 @@ plt.show()
    - 2024年の冬は1900年の春なみ、夏は **ほぼ全月で上**
 
 
-## **Tweak**：凡例 {.badge-practice}
+## **Tweak** 凡例 {.badge-practice}
 
 - [前のスライドのコード](#peek-legend-code){.peek} を **1か所だけ変えて**実行
 
@@ -320,7 +320,7 @@ plt.show()
 :::
 
 
-## **Tweak**：軸の範囲で印象を操る {.badge-practice}
+## **Tweak** 軸の範囲で印象を操る {.badge-practice}
 
 - [さっきのコード](#peek-axis-code){.peek} の軸だけ変えて実行 — 同じデータでも印象がどう動くか
 
@@ -490,7 +490,7 @@ plt.show()
 :::
 
 
-## **Tweak**：ビンの数で分布が化ける {.badge-practice}
+## **Tweak** ビンの数で分布が化ける {.badge-practice}
 
 - [さっきのコード](#peek-hist-code){.peek} の `bins` だけ変えて実行 — 同じ29人なのに形が変わる
 
@@ -651,7 +651,7 @@ plt.show()
    - 点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲
    - 散布図で150年、ヒストグラムで分布
 - 装飾の優先順位：**軸ラベル・凡例・タイトル** — 揃っていない図は資料に載せない
-- **可視化編の謎**（1日だけの大きな山）は **API編で回収する**
+- [データの可視化の冒頭の謎](visualize.qmd#peek-mystery){.peek}（1日だけの大きな山）の正体は、[APIデータを可視化する](api-viz.qmd)で明かされる
 
 ## 参考リンク
 

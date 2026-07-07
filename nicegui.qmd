@@ -38,7 +38,7 @@ subtitle: "PythonだけでWebアプリを動かす"
 
 - **NiceGUI**（[nicegui.io](https://nicegui.io/)）= ==Pythonだけ== でSPAを作れるフレームワーク
    - フロントエンド（ブラウザ側）には **Vue** が使われている
-   - バックエンドには **FastAPI**（Pythonの定番APIフレームワーク）を内包 — のちほど [API側](api-spa.qmd) でも活躍する
+   - バックエンドには **FastAPI**（Pythonの定番APIフレームワーク）を内包 — のちほど[自作API+SPA](api-spa.qmd)でも活躍する
 - インストールは1行
 
 ```bash
@@ -103,7 +103,7 @@ ui.label("Hello, NiceGUI!")
 ui.run()
 ```
 
-- 実行するとターミナルにURLが出る — Ctrl+クリックでブラウザが開く
+- 実行すると **ブラウザが自動で開く**（開かないときはターミナルのURLをCtrl+クリック）
 
 ```
 NiceGUI ready to go on http://localhost:8080
@@ -151,7 +151,7 @@ ui.run()
 - 何も指定しなければ、部品は ==書いた順に上から縦に== 並ぶだけ
 - 「横に並べたい」「カードでまとめたい」——そのためには部品を入れる **箱** が要る
    - この箱を **コンテナ**（[container]{.en}）と呼ぶ
-   - コンテナの使い方が、NiceGUIで ==いちばんつまずきやすい== ところ。ここから数枚かけてゆっくり見る
+   - コンテナの使い方が、NiceGUIで ==いちばんつまずきやすい== ところ
 
 
 ## `with` = 「いまからこの箱に入れる」
@@ -241,7 +241,7 @@ R: ui.row {
 | `ui.card()` — カード型の枠 | |
 
 
-## **Tweak**：`with` で実験 {.badge-practice}
+## **Tweak** `with` で実験 {.badge-practice}
 
 - この土台を保存して、下の表を **1つずつ** 試す
 
@@ -333,10 +333,10 @@ def add_item():
     with list_view:        # withでくくると、その場でコンテナに追加される
         ui.label(name)
 
+items = []
 name_input = ui.input("name")
 ui.button("add", on_click=add_item)
 
-items = []
 list_view = ui.column()
 ui.run()
 ```
@@ -345,7 +345,7 @@ ui.run()
 - 「入力 → ボタン → 一覧に追加」— ==ほぼすべてのアプリの基本形==
 
 
-## **演習**：土台コードを動かす {.badge-practice}
+## **演習** 土台コードを動かす {.badge-practice}
 
 ::: {.prompt}
 次の土台コードを `main.py` として保存・実行し、名前を追加できることを確かめよ。
@@ -372,10 +372,11 @@ list_view = ui.column().classes("gap-2")
 ui.run()
 ```
 
+- 土台コードの新顔は `if not name: return` — 空文字のまま押されたら **何も追加せずに抜ける**（入力チェックの定番）
 - ここからの **Tweak** は、すべてこのコードの改造
 
 
-## **Tweak**：見た目を改造する {.badge-practice}
+## **Tweak** 見た目を改造する {.badge-practice}
 
 - 土台コードを **1か所ずつ変えて保存** — オートリロードが即座に見せてくれる
 
@@ -395,7 +396,7 @@ ui.run()
 :::
 
 
-## **Tweak**：削除機能を付ける {.badge-practice}
+## **Tweak** 削除機能を付ける {.badge-practice}
 
 ::: {.tweak}
 | やりたいこと | ヒント |

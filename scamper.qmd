@@ -136,7 +136,7 @@ subtitle: "質問リストで強制的に発想する"
 :::
 
 
-## **演習**：SCAMPER 7連発 {.badge-practice}
+## **演習** SCAMPER 7連発 {.badge-practice}
 
 ::: {.prompt}
 身近な文房具・持ち物（ペン・消しゴム・水筒・傘など）を1つ選び、SCAMPER の7視点で1案ずつ、計7案を書き出せ（実現性は問わない）。

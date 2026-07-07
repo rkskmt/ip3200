@@ -114,13 +114,11 @@ https://service.api.metro.tokyo.lg.jp/api/t000003d2000000236-c054eb26d9e9721642b
 
 | パラメータ | 説明 | 例 |
 |---|---|---|
-| `limit` | 取得レコード数の上限 | `?limit=100` |
-| `offset` | 取得開始位置 | `?offset=50` |
-| `column` | 取得する列の指定 | `?column=名称,住所` |
-| `filter` | 条件フィルタ | `?filter=公表_年月日:2021` |
+| `limit` | 取得レコード数の上限 | `params = {"limit": 200}` |
+| `offset` | 取得開始位置 | `params = {"offset": 50}` |
 
-- デフォルトは **100件**
-- 全件欲しいときは `limit` を大きく設定
+- デフォルトは **100件** — 全件欲しいときは `limit` を大きく設定
+- 取得する **列の絞り込み** は、URLではなく **POSTのbody** で指定する（後述）
 
 
 ## {background-color="white" .center .break-slide}
@@ -150,9 +148,8 @@ print(data["hits"])
 
 ::: {.callout-note}
 ## `json={}` の意味
-- 空のJSONボディを送信している
-- 東京都APIの仕様上必要
-- 深い意味はないが省略不可
+- 空のJSONボディを送信している — 東京都APIの仕様上、省略不可
+- 省略すると **415**（Unsupported Media Type）が返ってくる — 400番台＝リクエスト側のミス、の実例
 :::
 
 
@@ -189,10 +186,11 @@ print(data["hits"])
 :::
 
 
-## body で条件指定
+## 列を絞る・行を絞る
 
-- `column` — 取得する列を限定
-- `searchCondition` — フィルタ条件（APIによって対応状況が異なる）
+- **列** の限定は、POSTのbodyに `column` を入れる
+- **行** の絞り込み（期間指定など）は、取得後に **Pythonでフィルタ** するのが確実
+   - 内包表記の `if` — [Pandas入門](pandas.qmd)の条件抽出と同じ発想
 
 ```python
 # 列を限定して取得
@@ -204,23 +202,6 @@ body = {
 filtered = [r for r in data["hits"]
             if 1950 <= r["西暦（年次）"] <= 2023]
 ```
-
-
-## 比較演算子
-
-| 演算子 | 意味 | 数式 |
-|---|---|---|
-| `gt` | greater than | `>` より大きい |
-| `lt` | less than | `<` より小さい |
-| `ge` | greater or equal | `≥` 以上 |
-| `le` | less or equal | `≤` 以下 |
-
-::: {.callout-tip}
-## 覚え方
-- **g** = greater（大きい）
-- **l** = less（小さい）
-- **e** = equal（等しい）
-:::
 
 
 ## {background-color="white" .center .break-slide}
@@ -265,6 +246,28 @@ for record in filtered[:5]:
 
 
 ## 人口推移の可視化
+
+- さっきの `filtered` から列を取り出して、いつもの `plt.plot()` に渡すだけ
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "コードを見る"
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+years      = np.array([r["西暦（年次）"] for r in filtered])
+population = np.array([r["東京都／人口"] for r in filtered])
+
+plt.plot(years, population / 1e6)
+plt.title("Tokyo Population 1950-2023")
+plt.xlabel("Year")
+plt.ylabel("Population (million)")
+plt.grid(True, linestyle="--", alpha=0.5)
+plt.show()
+```
 
 ```{python}
 #| echo: false
@@ -389,10 +392,10 @@ for fare_info in data["hits"][:5]:
 ```text
 都営バス運賃情報（総件数: 4件）
 ---
-区分: 普通運賃
-大人: 210
-小児: 110
-備考: ICカード利用時
+区分: 一般系統
+大人: 210円（IC 210円）
+小児: 110円（IC 105円）
+備考: 急行バス、直行バスを含む。
 ---
 ...
 ```
@@ -407,8 +410,7 @@ NumPyで統計処理
 
 ## 統計分析の例
 
-- 外部APIのデータは型が揃っているとは限らない — 使う前に型を確認すると安全
-- `isinstance(値, int)` で「int型かどうか」を判定できる
+- `hits` は **list of dict** — 内包表記で列を取り出して `np.array` にすれば、いつもの統計がそのまま使える
 
 ```python
 import requests
@@ -422,10 +424,7 @@ params = {"limit": 200}
 response = requests.post(url, params=params, headers=headers, json={})
 data = response.json()
 
-# 人口を抽出（int型の値だけ使う）
-population = [r["東京都／人口"] for r in data["hits"]
-              if isinstance(r.get("東京都／人口"), int)]
-population = np.array(population)
+population = np.array([r["東京都／人口"] for r in data["hits"]])
 
 print(f"平均: {np.mean(population):,.0f}人")
 print(f"最大: {np.max(population):,}人")
@@ -443,10 +442,38 @@ print(f"中央値: {np.median(population):,.0f}人")
 ```
 
 
+## 実データは汚れている
+
+- 人口の列は綺麗だったが、同じ表の **増減率(%)** の列を見ると…
+
+```python
+rates_raw = [r["東京都／増減率(%)"] for r in data["hits"]]
+print(rates_raw[:4])
+```
+
+```text
+['…', '3.26', '5.09', '5.75']
+```
+
+- 数値が **文字列**（`"3.26"`）で入っていて、データがない年は `"…"`
+- 使うには、`"…"` を除いてから `float()` で数値に変換する
+
+```python
+rates = np.array([float(v) for v in rates_raw if v != "…"])
+print(f"増減率の平均: {rates.mean():.2f}%")   # 増減率の平均: 2.10%
+```
+
+::: {.callout-tip}
+## 型を確かめてから使う
+- 外部APIのデータは **型が揃っているとは限らない** — 数値のつもりが文字列、欠損が `"…"` などの記号
+- 集計の前に `print(type(値))` や `isinstance(値, int)` で確認するクセをつける
+:::
+
+
 ## まずは可視化する
 
 - 数値だけでは傾向がわからない
-- [visualize章](visualize.qmd) の原則：**Always plot your data first.**
+- [データの可視化](visualize.qmd)の大原則：**Always plot your data first.**
 
 ```{python}
 #| echo: false
@@ -474,10 +501,10 @@ plt.show()
 - **2020年代は横ばい** — コロナ禍の2021年には減少もあった
 
 ::: {.callout-tip}
-## これまでの章が活きる
-- [list章](list.qmd) の内包表記で抽出
-- [numpy章](numpy.qmd) の統計関数で集計
-- [visualize章](visualize.qmd) の手法で可視化
+## これまでの道具が活きる
+- [listあらためて](list.qmd)の内包表記で抽出
+- [NumPy入門](numpy.qmd)の統計関数で集計
+- [データの可視化](visualize.qmd)・[matplotlib入門](matplotlib.qmd)の手法で可視化
 :::
 
 
@@ -488,7 +515,7 @@ plt.show()
 | 基本アクセス | `requests.post(url, params=..., headers=..., json={})` |
 | 取得件数指定 | `params = {"limit": 200}` |
 | 列の絞り込み | `body = {"column": ["列名1", "列名2"]}` |
-| 条件フィルタ | `body = {"searchCondition": {...}}` |
+| 行の絞り込み | 取得後にPythonでフィルタ（内包表記 + `if`） |
 | 全件数確認 | `data["total"]` |
 | データ本体 | `data["hits"]`（list of dict） |
 
@@ -565,10 +592,8 @@ params = {"limit": 200}
 response = requests.post(url, params=params, headers=headers, json={})
 data = response.json()
 
-years = np.array([r["西暦（年次）"] for r in data["hits"]
-                  if isinstance(r.get("東京都／人口"), int)])
-population = np.array([r["東京都／人口"] for r in data["hits"]
-                       if isinstance(r.get("東京都／人口"), int)])
+years      = np.array([r["西暦（年次）"] for r in data["hits"]])
+population = np.array([r["東京都／人口"] for r in data["hits"]])
 
 plt.figure(figsize=(10, 4))
 plt.plot(years, population / 1e6)

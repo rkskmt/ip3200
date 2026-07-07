@@ -79,7 +79,7 @@ subtitle: "コードを書く前に、画面を設計する"
 :::
 
 
-## **演習**：まず1画面作る {.badge-practice}
+## **演習** まず1画面作る {.badge-practice}
 
 ::: {.prompt}
 「今日の予定を見る画面（Home）」を Figma で1画面作れ。
@@ -97,7 +97,7 @@ subtitle: "コードを書く前に、画面を設計する"
 :::
 
 
-## **演習**：3画面のワイヤーフレーム {.badge-practice}
+## **演習** 3画面のワイヤーフレーム {.badge-practice}
 
 ![](imgs/figma/three_screen_example.png){width="78%" fig-align="center"}
 
@@ -125,7 +125,7 @@ subtitle: "コードを書く前に、画面を設計する"
    - 手元のスマホのアプリを開いて、どのパターンか **分解して見る** クセをつける
 
 
-## **演習**：自分のアプリの画面を作る {.badge-practice}
+## **演習** 自分のアプリの画面を作る {.badge-practice}
 
 ::: {.prompt}
 ペイオフマトリクスで「すぐやるべき」に選んだ自分のアプリ案について、3画面以上のワイヤーフレームを作り、Prototype機能で画面をつなげ。

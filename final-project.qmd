@@ -158,6 +158,8 @@ lambdaを避けたい人は、`def show_main(): ...` を画面の数だけ書く
 テンプレートと `data.json` を同じフォルダに置いて実行し、3画面が遷移すること・「データ読み込み」でJSONのタイトルが出ることを確かめてから改造を始めよ。
 :::
 
+- テンプレートの `Path(__file__).parent` は「**この .py があるフォルダ**」の意味 — どこから実行しても隣の `data.json` を見つけられる（「自分のPCでは動いたのに」事故の予防）
+
 ::: {.callout-note}
 ## `async` / `await` は「待つ間、画面を止めない」書き方
 テンプレートでは、HTTP通信をする `load_data` だけが `async def`（[自作API+SPA](api-spa.qmd) で扱った形）。
@@ -177,15 +179,18 @@ JSONデータを自作APIからHTTP経由で取得して表示します。
 """
 
 from nicegui import ui, app
+from pathlib import Path
 import json
 import httpx
+
+DATA_FILE = Path(__file__).parent / "data.json"   # この .py と同じフォルダの data.json
 
 # ========================================
 # APIエンドポイント
 # ========================================
 @app.get("/api/data")
 def get_data():
-    with open("data.json", "r", encoding="utf-8") as f:
+    with open(DATA_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
 
 # ========================================
@@ -255,16 +260,18 @@ lambdaを使わず、画面ごとの関数で切り替えます。
 """
 
 from nicegui import ui, app
+from pathlib import Path
 import json
 import httpx
+
+DATA_FILE = Path(__file__).parent / "data.json"   # この .py と同じフォルダの data.json
 
 # ========================================
 # APIエンドポイント
 # ========================================
 @app.get("/api/data")
 def get_data():
-    import pathlib
-    with open(pathlib.Path(__file__).parent / "data.json", "r", encoding="utf-8") as f:
+    with open(DATA_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
 
 def show_top():

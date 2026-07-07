@@ -25,8 +25,7 @@ headers = {"User-Agent": "example.com/lesson"}
 response = requests.get(url, headers=headers)
 data = response.json()
 
-views = np.array([item["views"]     for item in data["items"]])
-dates = np.array([item["timestamp"] for item in data["items"]])
+views = np.array([item["views"] for item in data["items"]])
 ```
 
 | 統計量 | 値 |
@@ -42,7 +41,7 @@ dates = np.array([item["timestamp"] for item in data["items"]])
 
 ## まずは可視化する
 
-- 数値だけでは見落とすので **まず描く** — [可視化章](visualize.qmd) の大原則
+- 数値だけでは見落とすので **まず描く** — [データの可視化](visualize.qmd)の大原則
 - 同じURL/ヘッダーで取得したあと `plt.plot(views)` するだけ
 
 ```{python}
@@ -93,16 +92,19 @@ plt.show()
 ::: {.callout-note .fragment}
 ## 1日だけ突出している
 - ほぼ平坦な中、**1日だけ大きな山** — **数値だけ見ていると気づけない**（アンスコムの教訓と同じ）
-- そして見覚えがあるはず：**可視化編の冒頭で見せた謎の図は、実はこのデータ**
+- そして見覚えがあるはず：[データの可視化の冒頭で見せた **謎の図**](visualize.qmd#peek-mystery){.peek}は、実はこのデータ
 :::
 
 
 ## 山の正体：「いつ」を特定する
 
-- 山の **高さ** は `max()`。知りたいのは **「いつ」**
-- `np.argmax()` で **インデックス** を取り、同じインデックスで `dates` を引く
+- 山の **高さ** は `views.max()`。知りたいのは **「いつ」**
+- `item["timestamp"]` も同じ内包表記で取り出すと、`views` と **同じインデックスで並ぶ** 日付の配列ができる
+- `np.argmax()` は最大値の **インデックス** を返す（値ではない点に注意）— そのインデックスで `dates` を引く
 
 ```python
+dates = np.array([item["timestamp"] for item in data["items"]])
+
 max_i = np.argmax(views)
 print(f"{dates[max_i]} に {views[max_i]} 回")
 ```
@@ -149,6 +151,7 @@ plt.show()
 ```
 
 - y軸を拡大すると、**8月29日にも小さな山**（2,291回）— 七夕でもないのに、なぜ？
+- 自分のグラフでも `plt.ylim(0, 3000)` を足せば、同じ「足元の拡大」ができる
 
 
 ## 小さな異変の発見と解釈 {.badge-important}
@@ -216,7 +219,7 @@ fig.write_html("iframes/plotly_tanabata.html", include_plotlyjs="directory")
 ::: {.callout-warning}
 ## やってはいけない
 - 軸を揃えず2枚並べる → 比較しづらい
-- 軸の範囲を片方だけ狭める → 印象操作（[matplotlib章](matplotlib.qmd) の「y軸の罠」参照）
+- 軸の範囲を片方だけ狭める → 印象操作（[matplotlib入門](matplotlib.qmd)の「軸の範囲で印象を操る」でやった罠）
 :::
 
 ```{python}
@@ -230,12 +233,10 @@ import japanize_matplotlib
 import numpy as np
 
 headers = {"User-Agent": "example.com/lesson"}
-article = "七夕"
-base = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
-        f"ja.wikipedia/{{access}}/user/{article}/daily/20250101/20251231")
 
 def fetch_views(access):
-    url = base.format(access=access)
+    url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
+           f"ja.wikipedia/{access}/user/七夕/daily/20250101/20251231")
     data = requests.get(url, headers=headers).json()
     return np.array([item["views"] for item in data["items"]])
 
@@ -246,8 +247,8 @@ plt.plot(views_desktop,    label="desktop")
 plt.plot(views_mobile_web, label="mobile-web")
 plt.legend()
 
-title = (f"desktop: max={views_desktop.max()}, mean={views_desktop.mean():.1f}  "
-         f"mobile: max={views_mobile_web.max()}, mean={views_mobile_web.mean():.1f}")
+title = (f"desktop: max={views_desktop.max()} min={views_desktop.min()} mean={views_desktop.mean():.1f}\n"
+         f"mobile-web: max={views_mobile_web.max()} min={views_mobile_web.min()} mean={views_mobile_web.mean():.1f}")
 plt.title(title)
 plt.xlabel("日数")
 plt.ylabel("閲覧数")

@@ -546,7 +546,7 @@ print(df[
 :::
 
 
-## **Tweak**：AND と OR で「絞る」と「広がる」 {.badge-practice}
+## **Tweak** AND と OR で「絞る」と「広がる」 {.badge-practice}
 
 - [前ページのコード](#peek-and-or-code){.peek} を1か所ずつ変えて実行
 
@@ -692,7 +692,7 @@ values が「平均点」
 :::
 
 
-## **Tweak**：groupby は「分ける × 集計する列 × 集計方法」 {.badge-practice}
+## **Tweak** groupby は「分ける × 集計する列 × 集計方法」 {.badge-practice}
 
 - [さっきのコード](#peek-groupby-code){.peek} を1か所ずつ変えて実行
 

@@ -6,9 +6,8 @@ lightbox: auto
 
 ## このスライドの位置づけ
 
-- これは **リファレンス（参照資料）** です
-- 全部覚える必要はない — **必要なときに引く**
-- [API章](api.qmd) で基本を学んでから参照すること
+- これは **リファレンス（参照資料）** — 全部覚える必要はない、**必要なときに引く**
+- 前提知識は[APIでデータ取得](api.qmd)（requests、エンドポイント、User-Agent）
 
 ::: {.callout-tip}
 ## 使い方
@@ -47,7 +46,7 @@ D -> J
 
 | 色 | API | 用途 | 例 |
 |---|---|---|---|
-| 緑 | **AQS** | ページビュー統計 | [API章](api.qmd) で使用 |
+| 緑 | **AQS** | ページビュー統計 | [APIでデータ取得](api.qmd)で使用 |
 | 青 | **REST API v1** | 概要をサクッと | `/page/summary/桜` |
 | 橙 | **Action API** | 検索・カテゴリ・履歴 | `action=query&list=search` |
 | 桃 | **Wikidata** | 機械可読な構造化データ | `entities/items/Q1490` |
@@ -208,7 +207,7 @@ Analytics Query Service（AQS）
 https://wikimedia.org/api/rest_v1/metrics/
 ```
 
-- [API章](api.qmd) で使ったのはこれ
+- [APIでデータ取得](api.qmd)で使ったのはこれ
 - 例：「桜」の2024年3月の日別アクセス数
 
 ```text
@@ -348,9 +347,8 @@ print(data["query"]["pages"])
 
 ```python
 for page_id, page_info in data["query"]["pages"].items():
-    if "pageprops" in page_info:
-        wikidata_id = page_info["pageprops"].get("wikibase_item")
-        print(f"Wikidata ID: {wikidata_id}")  # Q1490
+    wikidata_id = page_info["pageprops"]["wikibase_item"]
+    print(f"Wikidata ID: {wikidata_id}")  # Q1490
 ```
 
 
@@ -390,6 +388,10 @@ for item in results:
 - `formatversion: 2` を付けると、`pages` が「ページIDをキーにした辞書」ではなく **リスト** で返る — ループで素直に回せる
 
 ```python
+import requests
+
+headers = {"User-Agent": "example.com/lesson"}
+
 detail_params = {
     "action": "query",
     "prop": "extracts|info|images",
@@ -405,19 +407,23 @@ r = requests.get("https://ja.wikipedia.org/w/api.php",
 pages = r.json()["query"]["pages"]
 
 for page in pages:
-    print(f"タイトル: {page.get('title')}")
-    print(f"概要: {page.get('extract', '')[:100]}...")
+    print(f"タイトル: {page['title']}")
+    print(f"概要: {page['extract'][:100]}...")
 ```
 
 
 ## Action API：カテゴリ + ランダム
 
 ```python
+import requests
+
+headers = {"User-Agent": "example.com/lesson"}
+
 # カテゴリメンバー
 cats_params = {
     "action": "query",
     "list": "categorymembers",
-    "cmtitle": "Category:日本の桜",
+    "cmtitle": "Category:桜",
     "format": "json",
     "cmlimit": 10
 }
@@ -533,7 +539,7 @@ for item in r.json()["items"][0]["results"]:
 ## ヒント
 - AQS の `pageviews/per-article` を使う
 - 記事名は日本語のままURLに入れてOK（requestsが自動エンコード）
-- [API章](api.qmd) のコードをベースに改造
+- [APIでデータ取得の「七夕」のコード](api.qmd#peek-tanabata){.peek}をベースに改造
 :::
 
 ```{python}

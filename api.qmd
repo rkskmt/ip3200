@@ -13,7 +13,8 @@ subtitle: "Webから材料を仕入れる"
 
 - **データを置く** — 変数、コレクション（list / dict / tuple）
 - **データを計算する** — NumPy（ベクトル・行列・統計）
-- **データを見る** — matplotlib（散布図、折れ線、subplot）
+- **表で扱う** — Pandas（read_csv、groupby）
+- **データを見る** — matplotlib（静止画）、Plotly（動くグラフ）
 
 ::: {.callout-tip}
 ## ここからは「材料」
@@ -26,7 +27,7 @@ subtitle: "Webから材料を仕入れる"
 
 - なにかのデータ群を処理して
 - **役に立つ、もしくは興味深い** 出力やサービスのモックを作る
-- 今回はその第一歩として **Webからデータを取ってくる** ことをやる
+- 道具は揃った — 今日はその第一歩として、**材料 = 入力データ** をWebから取ってくる
 
 
 ## {background-color="white" .center .break-slide}
@@ -301,6 +302,9 @@ plt.show()
 import requests
 import json
 
+url = "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia/all-access/2025/06/27"
+headers = {"User-Agent": "example.com/lesson"}
+
 response = requests.get(url, headers=headers)
 res_dict = json.loads(response.text)
 print(type(res_dict), res_dict)
@@ -428,8 +432,7 @@ response = requests.get(url, headers=headers)
 data = response.json()
 
 # data["items"] は list of dict
-views = np.array([item["views"]     for item in data["items"]])
-dates = np.array([item["timestamp"] for item in data["items"]])
+views = np.array([item["views"] for item in data["items"]])
 
 print(f"日数:   {len(views)}")
 print(f"最大:   {views.max()}回")
@@ -438,35 +441,34 @@ print(f"平均:   {views.mean():.1f}回")
 print(f"中央値: {np.median(views):.0f}回")
 ```
 
-```text
-日数:   365
-最大:   47656回
-最小:   58回
-平均:   467.6回
-中央値: 154回
+```{python}
+#| echo: false
+# Reproduce the live-API output from the committed CSV (same query, fetched once)
+import numpy as np
+
+views = np.loadtxt("data/tanabata_pageviews_2025.csv", delimiter=",",
+                   skiprows=1, usecols=1).astype(int)
+
+print(f"日数:   {len(views)}")
+print(f"最大:   {views.max()}回")
+print(f"最小:   {views.min()}回")
+print(f"平均:   {views.mean():.1f}回")
+print(f"中央値: {np.median(views):.0f}回")
 ```
 
 - **最大が中央値の約300倍**。平均と中央値も大きくズレている
-- 可視化編でやった「[右に引っ張られた平均](visualize.qmd#peek-income){.peek}」の匂い — **なにかがおかしい**
+- [データの可視化](visualize.qmd)でやった「[右に引っ張られた平均](visualize.qmd#peek-income){.peek}」の匂い — **なにかがおかしい**
 
 
-## 過去の章が一気に効いてくる
+## 過去の資料が一気に効いてくる
 
-- `data["items"]` は **list of dict**（[dict章](dict.qmd) でやった形）
-- 内包表記でフィールド抽出（[list章](list.qmd)）
-- `np.array()` で `ndarray` 化（[numpy章](numpy.qmd)）
-- `np.mean / np.var` で統計量
-- **ここで初登場**：`np.argmax / argmin` — 最大・最小の位置（**インデックス**）を返す（値ではない点に注意）
-
-::: {.callout-tip}
-## 値もインデックスも両方欲しいとき
-- `max_i = np.argmax(views)` で index を得てから
-- `views[max_i]` で値、`dates[max_i]` で対応する日付
-- **同じ index で並ぶ配列同士をリンクさせる** のはNumPy/データ処理の頻出パターン
-:::
+- `data["items"]` は **list of dict**（[dictあらためて](dict.qmd)でやった形）
+- 内包表記でフィールド抽出（[listあらためて](list.qmd)）
+- `np.array()` で `ndarray` 化 → `.max()` / `.mean()` / `np.median()` で統計量（[NumPy入門](numpy.qmd)）
+- 新しいのは `requests.get()` の1往復だけ — **あとは全部、手持ちの道具**
 
 
-## まとめ
+## requests早見表
 
 | やりたいこと | コード |
 |---|---|
@@ -476,7 +478,7 @@ print(f"中央値: {np.median(views):.0f}回")
 | JSON → dict | `response.json()` |
 | ヘッダー | `response.headers` |
 | User-Agent | `headers={"User-Agent": "..."}` |
-| 値の集計 | `np.array([d["views"] for d in items])` → `mean/var/argmax` |
+| 値の集計 | `np.array([d["views"] for d in items])` → `.mean()` など |
 
 - Web から取った dict は今まで通り `for` / `items()` / `np.array()` で処理できる
 
@@ -496,7 +498,7 @@ print(f"中央値: {np.median(views):.0f}回")
 
 1. `access` を `desktop` / `mobile-web` に切り替えて、同じ期間（2025/01/01 – 2025/12/31）で **APIを2回呼ぶ**
 2. それぞれの **最大・最小・平均・分散** を表示
-3. 結果は捨てずに取っておく — **次回、このデータをグラフで比較する**
+3. 書いたコードはファイルごと保存しておく — [APIデータを可視化する](api-viz.qmd)で、このデータをグラフにして比較する
 
 ::: {.callout-tip}
 ## ヒント
@@ -514,11 +516,10 @@ import requests
 import numpy as np
 
 headers = {"User-Agent": "example.com/lesson"}
-base = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
-        "ja.wikipedia/{access}/user/七夕/daily/20250101/20251231")
 
 def fetch_views(access):
-    url = base.format(access=access)
+    url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
+           f"ja.wikipedia/{access}/user/七夕/daily/20250101/20251231")
     data = requests.get(url, headers=headers).json()
     return np.array([item["views"] for item in data["items"]])
 
@@ -529,6 +530,23 @@ for name, views in [("desktop", views_desktop), ("mobile-web", views_mobile_web)
     print(f"{name}: 最大={views.max()} 最小={views.min()} "
           f"平均={views.mean():.1f} 分散={views.var():.1f}")
 ```
+
+
+## まとめ
+
+- **道具→材料** へ：今回は Web から材料を仕入れた
+- `requests` で **アクセス**、`.text / .json() / .headers` で **取り出す**
+- **API / エンドポイント / パラメータ** の概念
+- Wikipedia Pageviews API で **実データを取得**、NumPy で **集計**
+
+
+## 次回予告
+
+- 「七夕」の閲覧数、**最大が中央値の300倍** — なにかがおかしい
+- 統計量だけでは、これ以上なにも分からない
+- 次回、大原則の出番：==Always plot your data first.==
+   - 描けば、山の **正体** と **日付** が分かる
+   - そして[データの可視化の冒頭で見せた **謎の図**](visualize.qmd#peek-mystery){.peek}の正体も明かされる
 
 
 ## {background-color="white" .center .break-slide}
@@ -550,23 +568,6 @@ for name, views in [("desktop", views_desktop), ("mobile-web", views_mobile_web)
 | Chrome (Mac) | `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) ... Chrome/119.0.0.0 Safari/537.36` |
 | iOS Safari (iPhone) | `Mozilla/5.0 (iPhone; CPU iPhone OS 17_1 like Mac OS X) ... Mobile/15E148 Safari/604.1` |
 | iOS Safari (iPad) | `Mozilla/5.0 (iPad; CPU OS 17_1 like Mac OS X) ... Mobile/15E148 Safari/604.1` |
-
-
-## ここまでの流れ
-
-- **道具→材料** へ：今回は Web から材料を仕入れた
-- `requests` で **アクセス**、`.text / .json() / .headers` で **取り出す**
-- **API / エンドポイント / パラメータ** の概念
-- Wikipedia Pageviews API で **実データを取得**、NumPy で **集計**
-
-
-## 次回予告
-
-- 「七夕」の閲覧数、**最大が中央値の300倍** — なにかがおかしい
-- 統計量だけでは、これ以上なにも分からない
-- 次回、大原則の出番：==Always plot your data first.==
-   - 描けば、山の **正体** と **日付** が分かる
-   - そして可視化編の冒頭で見せた **謎の図** の正体も明かされる
 
 
 ## 参考リンク
