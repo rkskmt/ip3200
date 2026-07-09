@@ -1,159 +1,18 @@
-## セットアップ
+# 情報処理（IP3200）授業スライド
 
-### 必要なもの
+Quarto + reveal.js による授業スライド集。
 
-- [Quarto](https://quarto.org/docs/get-started/) (>= 1.8)
-- conda (Miniconda / Anaconda)
+🔗 **ライブ版 → https://rkskmt.github.io/ip3200/**
 
-### ワンコマンドセットアップ
+ビルド・デプロイ・執筆ガイド・記法は [`doc/`](doc/) を参照。
 
-```bash
-python setup.py
-conda activate IP3200
-```
+- [doc/build.md](doc/build.md) — セットアップ・プレビュー・ビルド
+- [doc/deploy.md](doc/deploy.md) — GitHub Pages へのデプロイ
+- [doc/slide-notation.md](doc/slide-notation.md) — 画像引用・オーバーレイ記法
+- [doc/engaging-lecture-design.md](doc/engaging-lecture-design.md) — 講義設計の装置
+- [doc/troubleshooting.md](doc/troubleshooting.md) — CSS/テーマ変更時の注意
+- [doc/handout.md](doc/handout.md) — 配布用PDF（著者向け）
 
-`setup.py` が以下をまとめて行う：
-- conda 環境 `IP3200` の作成（Python 3.12 + NumPy, Matplotlib, japanize-matplotlib）
-- `QUARTO_PYTHON` 自動設定の activate フック
-- MathJax 2 のダウンロード（`libs/mathjax/`）
+---
 
-MathJax だけ再取得したい場合：
-
-```bash
-python setup.py --mathjax-only
-```
-
-VSCode でこのフォルダを開けば Python 環境は自動で設定される。ターミナルで直接作業する場合は `conda activate IP3200` を実行すること。
-
-### ローカルプレビュー
-
-```bash
-quarto preview --port 4321
-```
-
-ブラウザで `http://localhost:4321` が開く。ファイルを保存するとホットリロードされる。
-
-### ビルド・デプロイ
-
-```bash
-quarto render            # _site/ に出力
-quarto publish gh-pages  # GitHub Pages へデプロイ
-```
-
-## 配布用PDF（ハンドアウト・著者向け）
-
-各回スライドを配布用PDF（ハンドアウト形式 — 1スライド1ページではなく実際の高さで流し込み、コード全行・図も完全表示）にできる。**著者が手作業で作る**もので、学生のビルドには不要（ビルド自体に chromium 依存を持ち込まない）。
-
-### 必要なもの（初回のみ）
-
-- **PDF化ツール `qmd2pdf`**：テーマ repo [`quarto-cleanslidekit-revealjs`](https://github.com/rkskmt/quarto-cleanslidekit-revealjs) の `tools/qmd2pdf`。このrepoの隣に clone しておく（例：`../quarto-cleanslidekit-revealjs`）。
-- **Chromium**（HTMLをブラウザ印刷してPDF化するため）：`quarto install chromium`（一度だけ。`~/.local/share/quarto/chromium` に入り、ツールが自動検出する）
-- **node**（ツールが使う一時ローカルサーバ用）
-
-### 生成
-
-```bash
-quarto render                                   # まず _site/ をビルド
-TOOL=../quarto-cleanslidekit-revealjs/tools/qmd2pdf
-for f in _site/*.html; do
-  name=$(basename "${f%.html}"); [ "$name" = index ] && continue
-  "$TOOL" "$f" --no-render -o "pdf/$name.pdf"
-done
-```
-
-`pdf/*.pdf` が出力される。`index.qmd` は各回に `[PDF](pdf/<name>.pdf)` のリンクを張ってあり、`_quarto.yml` の `resources: pdf/**` で `_site/` にコピーされて配信される。1枚=1ページ版が要るときは `--mode slides`。
-
-### 公開と更新
-
-- `pdf/` は **`.gitignore`**（生成物なので git には入れない）。`quarto publish gh-pages` 時に手元の `pdf/` が `_site/` 経由で公開サイトへ載る。
-- スライドを直したら、その回だけ再生成して publish すればよい（毎回全部作る必要はない）。
-
-## ファイル構成
-
-```
-_quarto.yml       サイト設定・resources
-_metadata.yaml    スライド共通設定（cleanslidekit-revealjs 形式・d2/lightbox フィルタ）
-environment.yml   conda 環境定義
-index.qmd         トップページ（リンク一覧）
-*.qmd             各回のスライド
-data/             講義で使うデータ（CSV。スライドからDLリンクを張る）
-imgs/             画像ファイル
-pdf/              配布用ハンドアウトPDF（生成物・gitignore、上記参照）
-doc/              執筆ガイド・トラブルシュート
-_extensions/      Quarto 拡張（cleanslidekit テーマ＝CSS/UI JS/Lua フィルタ同梱、d2、lightbox）
-```
-
-Lua フィルタ（`hl.lua`・`cite-image.lua` 等）は cleanslidekit 拡張に同梱されている（ルート直下には置かない）。
-
-## スライドの書き方
-
-### 基本ルール
-
-- スライド区切りは `##`（`---` は使わない）
-- 本文はバレットポイントで書く（地の文は避ける）
-- 重要概念は Quarto callout（`.callout-note`, `.callout-tip`, `.callout-warning`）を使う
-
-### 新しいスライドを追加する
-
-1. `xxx.qmd` を作成
-2. `index.qmd` にリンクを追加
-
-ナビゲーションは `index.qmd` のみ（全ページが revealjs スライドのため、`_quarto.yml` の navbar は表示されない。navbar は置かない）。
-
-### インラインコード（バッククォート）
-
-本文中の `` `code` `` は **太字・青（`#005cc5`）・等幅** で表示される。  
-コードブロックのシンタックスハイライトと同系色。
-
-```markdown
-NumPy では `@` が内積の演算子
-```
-
-### ハイライトマーカー（`==text==`）
-
-`hl.lua` フィルタにより、`==text==` と書くと縁取り付きのハイライト表示になる。  
-バッククォートのインラインコードとは別のスタイル（白文字＋シアン縁取り）。
-
-```markdown
-NumPy では ==@== が内積の演算子
-```
-
-**制約:**
-
-- 中身に空白は含められない（`==` と `==` の間に空白があるとマッチしない）
-- スペースを含む場合は `[a @ b]{.hl}` と書く
-
-### D2 図（ダイアグラム）
-
-コードブロックで `.d2` を指定すると図が描画される（quarto-d2 拡張。`d2` バイナリは `environment.yml` で導入済み）。
-
-````markdown
-```{.d2 sketch="true" width="80%"}
-A -> B: ラベル
-```
-````
-
-クリックで拡大したい図は lightbox が効く（`lightbox: auto` 設定済み）。Mermaid は使わない（D2 に移行済み）。
-
-### Matplotlib で日本語
-
-```python
-import japanize_matplotlib  # これだけでOK
-```
-
-`rcParams['font.family']` は使わない（動作が不安定）。
-
-### 数式の `\vec{}` の高さ揃え
-
-`\vec{a}` と `\vec{b}` で矢印の高さが揃わない問題の対処：
-
-```latex
-\vec{\vphantom{b}a}   ← b と高さが揃う
-```
-
-## 参考ドキュメント
-
-- [doc/slide-notation.md](doc/slide-notation.md) — 画像引用・オーバーレイ表記
-- [doc/engaging-lecture-design.md](doc/engaging-lecture-design.md) — 講義設計の装置（コールドオープン、クイズ→めくり等）
-- [doc/deploy.md](doc/deploy.md) — GitHub Pages デプロイ手順
-- [doc/troubleshooting.md](doc/troubleshooting.md) — CSS変更時の注意点（編集すべき custom.css の場所、Pandoc vs reveal の層）
+スライドテーマは [cleanslidekit-revealjs](https://github.com/rkskmt/quarto-cleanslidekit-revealjs)（MIT）。
