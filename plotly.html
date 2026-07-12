@@ -278,7 +278,7 @@ rkskmt
 <li>「どの列をx軸に、どの列をy軸にするか」を <strong>列名で指定するだけ</strong></li>
 <li>まずは以下をVS Codeにコピペして実行</li>
 </ul>
-<div id="08b7c942" class="cell" data-execution_count="1">
+<div id="32696252" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a></a></span>
 <span id="cb3-3"><a></a>df <span class="op">=</span> pd.DataFrame({</span>
@@ -437,7 +437,7 @@ rkskmt
 <li>CSVを <code>data</code> フォルダに置いて以下で読み込み</li>
 </ul></li>
 </ul>
-<div id="0af88a45" class="cell" data-execution_count="5">
+<div id="86344f2e" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb9-2"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb9-3"><a></a></span>
@@ -531,7 +531,7 @@ rkskmt
 <li><a href="data/tokyo_temp_annual.csv">tokyo_temp_annual.csv</a> を <code>data</code> フォルダに置く</li>
 </ul></li>
 </ul>
-<div id="315fac5a" class="cell" data-execution_count="8">
+<div id="36c231a4" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb13-2"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb13-3"><a></a></span>
@@ -634,7 +634,7 @@ rkskmt
 <li><a href="./pandas.html">Pandas入門</a>の <code>groupby()</code> の復習 — <a href="data/students.csv">students.csv</a> で学科ごとの平均点を出す</li>
 <li><code>groupby()</code> の結果は <code>Series</code>（<code>index</code> が学科、<code>values</code> が平均点）</li>
 </ul>
-<div id="6dfd9360" class="cell" data-execution_count="12">
+<div id="d535c874" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb18-2"><a></a></span>
 <span id="cb18-3"><a></a>df_students <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
@@ -662,7 +662,7 @@ Name: 平均点, dtype: float64</code></pre>
 <ul>
 <li><code>reset_index()</code> で、<code>index</code> を普通の列に戻した <strong>DataFrame</strong> が得られる</li>
 </ul>
-<div id="d464c93b" class="cell" data-execution_count="13">
+<div id="1672df6e" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb20-2"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb20-3"><a></a></span>
@@ -707,7 +707,7 @@ Name: 平均点, dtype: float64</code></pre>
 <li><code>groupby(..., as_index=False)</code> とすると、最初から <strong>DataFrame</strong> で結果を受け取れる</li>
 <li>Plotlyに渡す前提なら、<code>reset_index()</code> が要らないこちらが1行短い</li>
 </ul>
-<div id="b1cb2673" class="cell" data-execution_count="15">
+<div id="933fc221" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb23-2"><a></a></span>
 <span id="cb23-3"><a></a>df_students <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
@@ -737,7 +737,7 @@ Name: 平均点, dtype: float64</code></pre>
 <li><code>groupby("学科", as_index=False)</code> で学科ごとの平均点を集計</li>
 <li><code>px.bar()</code> で棒グラフを描く（<code>color="学科"</code> で色分け、y軸は <code>0</code>〜<code>100</code> に固定）</li>
 </ol>
-<div id="8d215e92" class="cell" data-execution_count="16">
+<div id="41262e21" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -930,7 +930,7 @@ Name: 平均点, dtype: float64</code></pre>
 </ul></li>
 <li>Plotlyには <strong>このデータが同梱</strong> されている — ダウンロード不要</li>
 </ul>
-<div id="6374efd0" class="cell" data-execution_count="18">
+<div id="be1760de" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb28-2"><a></a></span>
 <span id="cb28-3"><a></a>gap <span class="op">=</span> px.data.gapminder()</span>
