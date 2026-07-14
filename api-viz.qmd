@@ -9,20 +9,24 @@ subtitle: "1年分の閲覧数の謎を解く"
 前回のあらすじ
 :::
 
-## 「なにかがおかしい」ところまで来た
+## 大きな山を見つけた
 
 - 前回：[記事「七夕」の **2025年まるごと1年分** の日別アクセス数を取得した](api.qmd#peek-tanabata){.peek}
+- 最大が中央値の約280倍という違和感から、最後に折れ線を描いた
 
 ```python
 import requests
 import numpy as np
 
 url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
-       "ja.wikipedia/all-access/user/"
+       "ja.wikipedia.org/all-access/all-agents/"
        "七夕/daily/20250101/20251231")
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 
 response = requests.get(url, headers=headers)
+response.raise_for_status()
 data = response.json()
 
 views = np.array([item["views"] for item in data["items"]])
@@ -30,19 +34,19 @@ views = np.array([item["views"] for item in data["items"]])
 
 | 統計量 | 値 |
 |---|---|
-| 最大 | **47,656回** |
-| 最小 | 58回 |
-| 平均 | 467.6回 |
-| 中央値 | 154回 |
+| 最大 | **52,168回** |
+| 最小 | 88回 |
+| 平均 | 539.1回 |
+| 中央値 | 187回 |
 
-- **最大が中央値の約300倍**。平均と中央値も大きくズレている
-- 統計量だけでは、これ以上なにも分からない — では、どうする？
+- **最大が中央値の約280倍**。平均と中央値も大きくズレている
+- グラフには **1日だけの大きな山** — では、いつ？ なぜ？
 
 
-## まずは可視化する
+## 前回の最後に描いたグラフ
 
 - 数値だけでは見落とすので **まず描く** — [データの可視化](visualize.qmd)の大原則
-- 同じURL/ヘッダーで取得したあと `plt.plot(views)` するだけ
+- APIから取得した `views` を、そのまま `plt.plot()` に渡した結果
 
 ```{python}
 #| echo: false
@@ -74,10 +78,13 @@ import japanize_matplotlib
 import numpy as np
 
 url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
-       "ja.wikipedia/all-access/user/"
+       "ja.wikipedia.org/all-access/all-agents/"
        "七夕/daily/20250101/20251231")
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 response = requests.get(url, headers=headers)
+response.raise_for_status()
 data = response.json()
 
 views = np.array([item["views"] for item in data["items"]])
@@ -111,18 +118,18 @@ print(f"{dates[max_i]} に {views[max_i]} 回")
 
 ::: {.callout-important}
 ## クイズ
-記事は「七夕」。47,656回も読まれた**その1日**は、何月何日だと思う？
+記事は「七夕」。52,168回も読まれた**その1日**は、何月何日だと思う？
 :::
 
 ::: {.fragment}
 ```text
-2025070700 に 47656 回
+2025070700 に 52168 回
 ```
 
 - **2025年7月7日 — 七夕の当日**
-- みんな、**行事の当日にその行事を調べる**
+- 誰もが、**行事の当日にその行事を調べる**
    - 「七夕って何の日？」「短冊はなぜ？」— 検索が記事に殺到する
-- 1年分の人間の行動が、API経由の数列ひとつに写っている
+- Wikipediaが読まれるタイミングが、API経由の数列ひとつに写っている
 :::
 
 
@@ -150,11 +157,11 @@ plt.tight_layout()
 plt.show()
 ```
 
-- y軸を拡大すると、**8月29日にも小さな山**（2,291回）— 七夕でもないのに、なぜ？
+- y軸を拡大すると、**8月29日にも小さな山**（2,603回）— 七夕でもないのに、なぜ？
 - 自分のグラフでも `plt.ylim(0, 3000)` を足せば、同じ「足元の拡大」ができる
 
 
-## 小さな異変の発見と解釈 {.badge-important}
+## 8月29日の山の正体 {.badge-important}
 
 - 小さな山の正体は？ **グラフをドラッグで拡大**して確かめよう
 
@@ -210,16 +217,17 @@ fig.write_html("iframes/plotly_tanabata.html", include_plotlyjs="directory")
 ## 演習：1枚のグラフに2本の折れ線 {.badge-practice}
 
 ::: {.prompt}
-前回の演習で取得した `views_desktop` と `views_mobile_web` を、**同じグラフに重ねて**比較せよ。
+「七夕」の2025年1年分を `desktop` と `mobile-web` で取得し、**同じグラフに重ねて**比較せよ。
 :::
 
-1. `plt.plot()` を2回呼ぶ — それだけで重なる
-2. グラフの **タイトルに max / min / mean** を表示
+1. `access` を切り替えて、2つの閲覧数配列を取得
+2. `plt.plot()` を2回呼び、凡例つきで重ね描き
+3. グラフのタイトルに **max / min / mean** を表示
 
 ::: {.callout-warning}
 ## やってはいけない
 - 軸を揃えず2枚並べる → 比較しづらい
-- 軸の範囲を片方だけ狭める → 印象操作（[matplotlib入門](matplotlib.qmd)の「軸の範囲で印象を操る」でやった罠）
+- 軸の範囲を片方だけ狭める → 印象操作（[matplotlib入門](matplotlib.qmd)「軸の範囲で印象を操る」の罠）
 :::
 
 ```{python}
@@ -232,12 +240,16 @@ import matplotlib.pyplot as plt
 import japanize_matplotlib
 import numpy as np
 
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 
 def fetch_views(access):
     url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
-           f"ja.wikipedia/{access}/user/七夕/daily/20250101/20251231")
-    data = requests.get(url, headers=headers).json()
+           f"ja.wikipedia.org/{access}/all-agents/七夕/daily/20250101/20251231")
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+    data = response.json()
     return np.array([item["views"] for item in data["items"]])
 
 views_desktop    = fetch_views("desktop")
@@ -276,10 +288,13 @@ import japanize_matplotlib
 import numpy as np
 
 url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
-       "ja.wikipedia/all-access/user/"
+       "ja.wikipedia.org/all-access/all-agents/"
        "富士山/daily/20250101/20251231")
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 response = requests.get(url, headers=headers)
+response.raise_for_status()
 data = response.json()
 
 views = np.array([item["views"] for item in data["items"]])
@@ -317,19 +332,12 @@ plt.show()
 - 七夕のような数百倍のスパイクは **ない**（最大でも中央値の約3倍）
 - 代わりに **8月（登山シーズン）と1〜2月** が高い、ゆるやかな波
    - 夏が高いのは分かる。**冬はなぜ高い？** — 考えてみよう
-- ==スパイクだけが発見ではない==。波（季節性）も、データが教えてくれる人間の行動
+- ==スパイクだけが発見ではない==。波（季節性）も、データが教えてくれる関心の動き
 :::
-
-
-## ここまでの流れ
-
-- 前回：`requests` で **取得**、NumPy で **集計** —「なにかがおかしい」
-- 今回：matplotlib で **可視化** — 山の正体（7/7と8/29）を突き止めた
-- 統計量 → 違和感 → 図 → 発見、という **データ分析の基本サイクル** を一周した
 
 
 ## 参考リンク
 
-- [Wikimedia REST API](https://wikimedia.org/api/rest_v1/)
-- [Pageviews API ドキュメント](https://www.mediawiki.org/wiki/Wikimedia_REST_API)
+- [Wikimedia Analytics API](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/)
+- [Page metrics examples](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/examples/page-metrics.html)
 - [国立天文台「伝統的七夕」](https://www.nao.ac.jp/astro/basic/traditional-tanabata.html)

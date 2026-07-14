@@ -211,7 +211,7 @@ https://wikimedia.org/api/rest_v1/metrics/
 - 例：「桜」の2024年3月の日別アクセス数
 
 ```text
-https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/ja.wikipedia/all-access/all-agents/桜/daily/20240301/20240331
+https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/ja.wikipedia.org/all-access/all-agents/桜/daily/20240301/20240331
 ```
 
 
@@ -227,7 +227,7 @@ https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/ja.wikipedia/all
 pageviews/per-article/{project}/{access}/{agent}/{article}/{granularity}/{start}/{end}
 ```
 
-例：`pageviews/per-article/ja.wikipedia/all-access/user/東京/daily/20240101/20240131`
+例：`pageviews/per-article/ja.wikipedia.org/all-access/all-agents/東京/daily/20240101/20240131`
 
 **aggregate** — プロジェクト全体PV（2015年7月〜）
 
@@ -235,7 +235,7 @@ pageviews/per-article/{project}/{access}/{agent}/{article}/{granularity}/{start}
 pageviews/aggregate/{project}/{access}/{agent}/{granularity}/{start}/{end}
 ```
 
-例：`pageviews/aggregate/ja.wikipedia/all-access/user/daily/20240101/20240131`
+例：`pageviews/aggregate/ja.wikipedia.org/all-access/all-agents/daily/20240101/20240131`
 
 **top** — 人気記事ランキング（2015年7月〜）
 
@@ -243,7 +243,7 @@ pageviews/aggregate/{project}/{access}/{agent}/{granularity}/{start}/{end}
 pageviews/top/{project}/{access}/{year}/{month}/{day}
 ```
 
-例：`pageviews/top/ja.wikipedia/all-access/2024/06/01`
+例：`pageviews/top/ja.wikipedia.org/all-access/2024/06/01`
 
 ### その他統計
 
@@ -253,7 +253,7 @@ pageviews/top/{project}/{access}/{year}/{month}/{day}
 unique-devices/{project}/{access-site}/{granularity}/{start}/{end}
 ```
 
-例：`unique-devices/ja.wikipedia/all-sites/daily/20240101/20240131`
+例：`unique-devices/ja.wikipedia.org/all-sites/daily/20240101/20240131`
 
 **edits** — 編集統計（2001年1月〜）
 
@@ -261,7 +261,7 @@ unique-devices/{project}/{access-site}/{granularity}/{start}/{end}
 edits/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}
 ```
 
-例：`edits/aggregate/ja.wikipedia/all-editor-types/all-page-types/daily/20240101/20240131`
+例：`edits/aggregate/ja.wikipedia.org/all-editor-types/all-page-types/daily/20240101/20240131`
 
 **registered-users** — 新規ユーザー登録（2001年1月〜）
 
@@ -269,7 +269,7 @@ edits/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}
 registered-users/new/{project}/{granularity}/{start}/{end}
 ```
 
-例：`registered-users/new/ja.wikipedia/daily/20240101/20240131`
+例：`registered-users/new/ja.wikipedia.org/daily/20240101/20240131`
 
 :::
 
@@ -320,7 +320,9 @@ https://www.wikidata.org/w/rest.php/wikibase/v1/entities/items/Q1490
 ```python
 import requests
 
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 
 params = {
     "action": "query",
@@ -364,7 +366,9 @@ for page_id, page_info in data["query"]["pages"].items():
 ```python
 import requests
 
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 
 # 検索：「桜」で5件
 search_params = {
@@ -390,7 +394,9 @@ for item in results:
 ```python
 import requests
 
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 
 detail_params = {
     "action": "query",
@@ -417,7 +423,9 @@ for page in pages:
 ```python
 import requests
 
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 
 # カテゴリメンバー
 cats_params = {
@@ -450,7 +458,9 @@ for p in r.json()["query"]["random"]:
 ```python
 import requests
 
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 
 # 記事概要（タイトル、要約、画像URL）
 response = requests.get(
@@ -473,11 +483,13 @@ if "thumbnail" in data:
 ```python
 import requests
 
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 
 # 人気記事ランキング
 url = ("https://wikimedia.org/api/rest_v1/metrics/"
-       "pageviews/top/ja.wikipedia/all-access/2024/03/15")
+       "pageviews/top/ja.wikipedia.org/all-access/2024/03/15")
 r = requests.get(url, headers=headers)
 articles = r.json()["items"][0]["articles"][:5]
 for a in articles:
@@ -485,7 +497,7 @@ for a in articles:
 
 # 編集統計
 url = ("https://wikimedia.org/api/rest_v1/metrics/"
-       "edits/aggregate/ja.wikipedia/all-editor-types/"
+       "edits/aggregate/ja.wikipedia.org/all-editor-types/"
        "all-page-types/monthly/20240101/20240331")
 r = requests.get(url, headers=headers)
 for item in r.json()["items"][0]["results"]:
@@ -500,26 +512,17 @@ for item in r.json()["items"][0]["results"]:
 :::
 
 
-## ページビュー分析の観点
+## 形を予想してから取りに行く
 
-| 観点 | 説明 |
-|---|---|
-| **粒度** | 時間別 / 日別 / 月別 |
-| **アクセス種別** | desktop / mobile-web / mobile-app |
-| **エージェント** | user（人間）/ spider / automated |
+ページビューのグラフは、大きく2つの型に分かれる（[APIデータを可視化する](api-viz.qmd)で両方見た）。
 
+| 型 | 形 | きっかけ |
+|---|---|---|
+| **スパイク型** | 1日だけの鋭い山 | 行事の当日・事件・訃報・テレビ放送（七夕の7/7） |
+| **波型** | ゆるやかな季節の波 | 季節もの（富士山の夏の登山シーズン） |
 
-## 分析のアイデア
-
-- **季節性の検出**
-   - 「桜」は春にアクセス増
-   - 「クリスマス」「花火」などの季節語
-- **ニュースイベントとの相関**
-   - 事件・事故・訃報で急増
-   - テレビ放送やSNSバズ
-- **言語版比較**
-   - 同じ記事の日本語版 vs 英語版
-   - 地域による関心の違い
+- 「桜」「クリスマス」「オリンピック」はどちらの型になりそう？ — **予想してから**、次の演習のコードで確かめる
+- 同じ記事の **日本語版 vs 英語版** で形を比べるのも面白い（地域で関心が違う）
 
 
 ## {background-color="white" .center .break-slide}
@@ -552,12 +555,16 @@ import matplotlib.pyplot as plt
 import japanize_matplotlib
 import numpy as np
 
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 article = "サクラ"  # 好きな記事に変更（リダイレクト元の「桜」だと別カウントになる点に注意）
 url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
-       f"ja.wikipedia/all-access/user/{article}/daily/20250101/20251231")
+       f"ja.wikipedia.org/all-access/all-agents/{article}/daily/20250101/20251231")
 
-data = requests.get(url, headers=headers).json()
+response = requests.get(url, headers=headers)
+response.raise_for_status()
+data = response.json()
 views = np.array([item["views"] for item in data["items"]])
 dates = np.array([item["timestamp"] for item in data["items"]])
 
@@ -592,7 +599,9 @@ Action API で**好きなカテゴリ**に属する記事を10件取得し、各
 #| code-summary: "解答例を見る"
 import requests
 
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 params = {
     "action": "query",
     "list": "categorymembers",
@@ -620,7 +629,9 @@ REST API v1 の `/page/summary/{title}` で好きな記事の **タイトル・�
 #| code-summary: "解答例を見る"
 import requests
 
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 title = "東京タワー"  # 好きな記事に変更
 
 response = requests.get(

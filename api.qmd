@@ -3,57 +3,60 @@ title: "APIでデータ取得"
 subtitle: "Webから材料を仕入れる"
 ---
 
-## {background-color="white" .center .break-slide}
-
-::: {.break-title}
-道具から材料へ
-:::
-
-## ここまでで揃った「道具」
-
-- **データを置く** — 変数、コレクション（list / dict / tuple）
-- **データを計算する** — NumPy（ベクトル・行列・統計）
-- **表で扱う** — Pandas（read_csv、groupby）
-- **データを見る** — matplotlib（静止画）、Plotly（動くグラフ）
-
-::: {.callout-tip}
-## ここからは「材料」
-- 道具だけでは何もできない
-- **入力データ**（材料）を仕入れる必要がある
-- 一番手っ取り早い仕入れ先は **Web**
-:::
-
-## 本授業の最終目標
-
-- なにかのデータ群を処理して
-- **役に立つ、もしくは興味深い** 出力やサービスのモックを作る
-- 道具は揃った — 今日はその第一歩として、**材料 = 入力データ** をWebから取ってくる
-
-
-## {background-color="white" .center .break-slide}
-
-::: {.break-title}
-Webへアクセス（requests）
-:::
-
-
 ## requests ライブラリ
 
-- PythonでWebにアクセスする **定番ライブラリ**
-- 標準ライブラリではないので pip でインストール
+PythonでWebにアクセスするための定番ライブラリ（[公式ドキュメント](https://requests.readthedocs.io/)）。標準ライブラリではないため、最初にインストールする。
+
+#### インストール
 
 ```shell
 pip install requests
 ```
 
-- コード冒頭でいつもどおり import
+#### コード冒頭でimport
 
 ```python
 import requests
 ```
 
 
-## Webアクセスの正体：リクエストとレスポンス
+## ブラウザは何を受け取っている？
+
+ブラウザで <https://www.python.org/> を開くと、完成したWebページが見える。
+
+::: {.callout-important}
+## クイズ
+サーバから届くのは、完成した画面？ それとも画面を作るためのデータ？
+:::
+
+
+## 同じURLをPythonで開く
+
+| コード | 役割 |
+|---|---|
+| `requests.get(url)` | ブラウザと同じURLへアクセス |
+| `response.text` | 応答の本文（body）を取得 |
+
+```python
+import requests
+
+url = "https://www.python.org/"
+response = requests.get(url)
+print(response.text)
+```
+
+```html
+<!doctype html>
+<html lang="en">
+  ...
+```
+
+::: {.caption-note}
+**受信したbody：** 完成した画面ではなくHTMLテキスト。ブラウザはこれを読み、CSSや画像も追加取得して画面を組み立てる
+:::
+
+
+## Webアクセスの正体：リクエスト（[request]{.en}）とレスポンス（[response]{.en}）
 
 ```{python}
 #| echo: false
@@ -63,7 +66,7 @@ import japanize_matplotlib
 
 fig, ax = plt.subplots(figsize=(10, 3.0))
 ax.set_xlim(0, 10); ax.set_ylim(0, 4); ax.axis("off")
-ax.text(1.5, 2.0, "あなたの\nPython\n（requests）", ha="center", va="center",
+ax.text(1.5, 2.0, "Pythonプログラム\n（requests）", ha="center", va="center",
         fontsize=12, fontweight="bold",
         bbox={"boxstyle": "round,pad=0.6", "fc": "#d6eaf8", "ec": "#2471a3", "lw": 2})
 ax.text(8.5, 2.0, "Webサーバ\n（www.python.org\nなど）", ha="center", va="center",
@@ -83,168 +86,184 @@ plt.tight_layout()
 plt.show()
 ```
 
-- Webアクセスは、つねにこの **1往復**
-- この往復を `requests.get()` が1行でやってくれる
-- 返事は3点セット — **状態（コード）・メタ情報（ヘッダー）・本文** を順に見ていく
-
-
-## 一番シンプルな使い方
-
-- `requests.get(url)` で **指定URLにアクセス**
-- 戻り値の `response` を print すると **状態コード** が見える
-
-```python
-import requests
-
-response = requests.get("https://www.python.org/")
-print(response)   # <Response [200]>
-```
-
 ::: {.callout-note}
-## 200 とは？
-- HTTPの応答コードで **「正常に取得できた」** の意味
-- とりあえず **「200か否か」** だけ判断できればOK
+## 1つのURLにつき1往復
+`requests.get()`は、1つのURLとのrequest → responseを実行する。ブラウザはHTML・CSS・画像ごとにこの往復を繰り返す。responseは **status code・headers・body** の3点セット。
 :::
 
 
-## HTTPステータスコード（普段あなたも見ている）
+## サーバへ送信した情報 {#peek-simple-request}
 
-- ネットを使っていれば **すでに目にしている** 番号たち — その意味を知る
+実行後も `response.request` に、実際に送信したリクエストが残っている。
 
-| コード | 意味 | どんなときに出るか（普段の遭遇） | 対処 |
-|---|---|---|---|
-| **200** | OK | 正常に表示・取得できた（普段は気づかない） | そのまま処理を続行 |
-| 403 | Forbidden | アクセスを拒否された（権限がない・弾かれた） | 権限・ヘッダーを確認 |
-| 404 | Not Found | リンク切れ・URLの打ち間違いで出る定番のページ | URL・記事名を確認 |
-| 500 | Internal Server Error | **サイト側が落ちている**・不具合（自分は悪くない） | 時間をおいて再試行 |
+```python
+import requests
 
-- 全部覚える必要なし
-- **200番台 = 成功、400番台 = リクエスト側のミス、500番台 = サーバ側のミス** くらいの感覚
+url = "https://www.python.org/"
+response = requests.get(url)
+print(response.request.method)
+print(response.request.url)
+print(response.request.headers)
+```
 
-::: {.callout-note}
-## 「403」はこのあとすぐ出会う
-- 次のWikipedia APIは **User-Agentを付けないと弾かれる** — それがこの403
-- 「アクセス拒否」はエラーではなく、**サーバからの正しい返事**
+::: {.caption-note}
+**送信内容：** methodは取得を表す `GET`、URLは送信先、request headersは `User-Agent` などの付加情報
 :::
 
-```{python}
-#| echo: false
-#| fig-align: center
-fig, ax = plt.subplots(figsize=(10, 2.0))
-ax.set_xlim(0, 10); ax.set_ylim(0, 2.2); ax.axis("off")
-bands = [(0.2, "#d5f5e3", "#1e8449", "200番台：成功", "200 OK"),
-         (3.6, "#fdebd0", "#b9770e", "400番台：リクエスト側のミス", "403 / 404"),
-         (7.0, "#fadbd8", "#943126", "500番台：サーバ側のミス", "500 / 503")]
-for x0, fc, ec, title, examples in bands:
-    ax.add_patch(plt.Rectangle((x0, 0.3), 2.8, 1.6, fc=fc, ec=ec, lw=2))
-    ax.text(x0 + 1.4, 1.45, title, ha="center", fontsize=11, fontweight="bold",
-            color=ec)
-    ax.text(x0 + 1.4, 0.75, examples, ha="center", fontsize=11, color=ec,
-            family="monospace")
-plt.tight_layout()
-plt.show()
-```
 
+## サーバから返ってきた情報
 
-## response の中身
-
-- 取得した内容は **プロパティ** で取り出せる
-
-| プロパティ | 型 | 説明 |
-|---|---|---|
-| `.status_code` | `int` | 状態コード（`200` = OK） |
-| `.text` | `str` | 本文を文字列で取得 |
-| `.json()` | `dict` | 本文がJSONなら dict として取得 |
-| `.headers` | dict風 | ヘッダーを辞書風に取得 |
-
-
-## .text で本文を取得
-
-- HTMLがそのまま str で返ってくる
+レスポンスは **status code・response headers・body** の3点セット。今度は3つとも表示して、body以外に何が届いているかを確認する。
 
 ```python
 import requests
 
-response = requests.get("https://www.python.org/")
-print(response.text)    # HTMLの中身
-```
-
-
-## .headers でメタデータを取得
-
-- ヘッダーは **本文と別についてくる情報**
-- 応答時刻、サーバ情報、本文のバイト長、コンテンツ種別 など
-
-```python
-import requests
-
-response = requests.get("https://www.python.org/")
+url = "https://www.python.org/"
+response = requests.get(url)
+print(response.status_code)
 print(response.headers)
+print(response.text)
 ```
 
-::: {.callout-note}
-## 例：ヘッダーの中身
-- 全部覚える必要なし
-- 「本文の他にもこういう情報をやり取りしてるんだな」くらいでOK
-
-```text
-{
-  "Date": "Mon, 30 Jun 2025 05:00:33 GMT",
-  "Server": "Apache",
-  "Content-Length": "73439",
-  "Content-Type": "text/html",
-  ...
-}
-```
+::: {.caption-note}
+**受信したheaders：** `Content-Type: text/html` はbodyがHTMLであることを示す。ほかにも `Date`、`Server`、`Content-Length` などが届く
 :::
+
+
+## HTTPステータスコード — 404の正体
+
+- 存在しないページを開くと「**404 Not Found**」と表示される — この404が **status code**
+- さっき `print(response.status_code)` が表示した `200` も、同じstatus code
+- サーバは処理の結果を、毎回3桁の番号で応答に含めている
+
+| コード | 意味 |
+|---|---|
+| **200 OK** | 正常に取得できた |
+| **403 Forbidden** | アクセスを拒否した（権限・認証・ヘッダーなど） |
+| **404 Not Found** | 指定したものが見つからない |
+| **500 Internal Server Error** | サーバ側で処理に失敗した |
+
+
+## 先頭の数字で5系統に分かれる
+
+| 系統 | 意味 | 例 |
+|---|---|---|
+| **1xx** | 処理の途中経過を伝える | 100 Continue |
+| **2xx** | リクエストに成功した | 200 OK |
+| **3xx** | 別のURLへ案内する | 301 Moved Permanently |
+| **4xx** | リクエストを受け付けられない | 403 Forbidden / 404 Not Found |
+| **5xx** | サーバ側で処理に失敗した | 500 Internal Server Error |
+
+::: {.caption-note}
+**読み方：** 先頭1桁が大分類、残り2桁が詳しい理由
+:::
+
+
+## **Tweak** URLを変えて応答を比べる {.badge-practice}
+
+1. [さっきのコード](#peek-simple-request){.peek}の `url` を下表の値に変更
+2. 実行するたびに、以下を `print` して確認
+  - `response.status_code`
+  - `response.headers["Content-Type"]`
+
+::: {.tweak}
+| 取得するもの | `url` |
+|---|---|
+| Webページ | `"https://www.python.org/"` |
+| タブのアイコン | `"https://www.python.org/favicon.ico"` |
+:::
+
+::: {.callout-tip}
+## 種明かし：status codeは同じ、Content-Typeだけ違う
+どちらも成功なのでstatus codeは `200`。一方、`Content-Type`はWebページが `text/html`、アイコンが `image/x-icon`。ブラウザは別々のURLへGETし、受け取った部品を組み合わせて画面を作る。
+:::
+
+
+## 失敗したまま先へ進まない
+
+- 404や500が返っても、プログラムは止まらない — エラー応答の入った `response` のまま、次の行へ進んでしまう
+- `response.raise_for_status()` は、status codeが400番台・500番台なら **その場でエラーを出して止める**
+- APIではbodyを処理する **前** に呼ぶのが定石
 
 
 ## {background-color="white" .center .break-slide}
 
 ::: {.break-title}
-Wikipedia の統計APIに触れる
+HTMLからJSONへ
 :::
 
 
-## Wikipedia Pageviews API
+## Wikimedia Analytics API
 
-- Wikipedia財団が公開している **ページビュー統計** のAPI
-- まずは「2025/6/27 にアクセス数が多かった記事ランキング」を取ってみる
+Wikimedia Foundationが公開している、ページビュー統計のAPI。
+
+#### ブラウザで開く
+
+<https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia.org/all-access/2025/06/27>
+
+2025年6月27日の記事ランキングが、画面ではなく **JSONテキスト** で表示される。
+
+::: {.callout-tip}
+## 通信の仕組みは同じ
+Python.orgもWikipedia APIも、URLへGETしてresponseを受け取る。違うのは、response bodyが **HTMLかJSONか**。
+:::
+
+
+## PythonからAPIへアクセス {#peek-top-response}
+
+status code・response headers・bodyを、さっきと同じ順番で確認する。
 
 ```python
 import requests
 
-url = "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia/all-access/2025/06/27"
-headers = {"User-Agent": "example.com/lesson"}
+url = "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia.org/all-access/2025/06/27"
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 
 response = requests.get(url, headers=headers)
-data = response.json()
-print(data, type(data))
+print(response.status_code)
+print(response.headers)
+print(response.text)
 ```
 
 
-## ヘッダーを送る理由
+## User-Agentでプログラムの情報を伝える
 
-- Wikipedia の API は **User-Agent がないと403で拒否される**
-- 本来はChromeなどブラウザ名を入れる場所
-- 今回は教育目的を示す架空のもの `example.com/lesson` を使う
+Wikimedia APIでは、**プログラム名・版・連絡先**を含むUser-Agentをrequest headerに指定する（[アクセス方針](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/documentation/access-policy.html)）。
+
+```text
+IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)
+```
 
 ::: {.callout-warning}
-## ヘッダーなしだと
-- アクセス拒否でデータが取れない
-- 「公開API」でもヘッダー必須なケースは多い
-- API使用前にドキュメントで **必須ヘッダーを確認** する習慣を
+## requestsの既定値では情報が足りない
+`headers=`を省略すると、requestsは `python-requests/...` を送る。これだけではプログラムや連絡先を特定できず、Wikimediaでは拒否されることがある。API使用前に[User-Agent Policy](https://foundation.wikimedia.org/wiki/Policy:Wikimedia_Foundation_User-Agent_Policy/en)で **必須ヘッダーと書式を確認**する。
+:::
+
+
+## WebページとAPIは同じHTTP
+
+| | Webページ | API |
+|---|---|---|
+| リクエスト | URLへGET | URLへGET |
+| status code | `200` | `200` |
+| Content-Type | `text/html` | `application/json` |
+| body | HTMLテキスト | JSONテキスト |
+| 受け取ったあと | ブラウザが画面を描く | Pythonがデータとして処理 |
+
+::: {.callout-note}
+## APIの正体
+APIは、プログラムが扱いやすいbodyを返すURL。通信方法はWebページと変わらない。
 :::
 
 
 
 ## JSON とは
 
-- **JavaScript Object Notation** の略
-- 「ある文法に従って書かれた **ただのテキスト**」
-- CSVも仲間（カンマ区切りの構造化テキスト）
-- **Webの世界ではデファクトスタンダード**
-- まず名前を覚える
+[**J**ava**S**cript **O**bject **N**otation]{.en} の略。CSVと同じ構造化テキストの一種で、Webではデータ交換の標準形式として使われる。
+
+#### 受け取ったbody
 
 ```python
 print(response.text)   # 中身は生のJSONテキスト
@@ -255,7 +274,9 @@ print(response.text)   # 中身は生のJSONテキスト
            "year":"2025","month":"06", ...}]}
 ```
 
-- `.json()` は **このテキストを dict に変換** するメソッド
+#### Pythonの値に変換
+
+`.json()` はJSONテキストをPythonの値へ変換する。このAPIでは一番外側が `dict`。
 
 ```{python}
 #| echo: false
@@ -293,109 +314,81 @@ plt.show()
 ```
 
 
-## （余談）手動で JSON → dict
+## JSONをPythonの値に変換する {#peek-top-api}
 
-- 標準ライブラリ `json` で同じことができる
-- pip 不要
+`raise_for_status()` で失敗していないことを確かめてから、`.json()` でJSONテキストをdict / listの入れ子へ変換する。
 
 ```python
 import requests
-import json
 
-url = "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia/all-access/2025/06/27"
-headers = {"User-Agent": "example.com/lesson"}
+url = "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia.org/all-access/2025/06/27"
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 
 response = requests.get(url, headers=headers)
-res_dict = json.loads(response.text)
-print(type(res_dict), res_dict)
-# <class 'dict'> {'items': [{'project': 'ja.wikipedia', ...
+response.raise_for_status()
+data = response.json()
+
+articles = data["items"][0]["articles"]
+for article in articles[:5]:
+    print(article["rank"], article["article"], article["views"])
 ```
 
-::: {.callout-tip}
-## 普段は `.json()` でOK
-- `requests` が内部でやってくれているだけ
-- 「中で何をしているか」を知っておくと **エラー時に強い**
+::: {.caption-note}
+**実行結果：** `data` はdictとlistの入れ子。ループでは上位5件の記事名と閲覧数が表示される
 :::
 
 
-## {background-color="white" .center .break-slide}
+## APIの窓口をURLで指定する
 
-::: {.break-title}
-APIとエンドポイントの構造
-:::
+| 用語 | 意味 |
+|---|---|
+| **API** | データ取得などのために公開された仕組み |
+| **エンドポイント** | APIの中の、具体的な処理を呼ぶ個別のURL |
 
+#### Wikimediaのランキング用エンドポイント
 
-## API と エンドポイント
-
-- **API**（**A**pplication **P**rogramming **I**nterface）
-   - データ取得などのために公開された「窓口」
-- **エンドポイント**
-   - API の中の、具体的な処理を呼ぶ **個別のURL**
-- 例
-   - `https://wikimedia.org/api/` 配下が API
-   - `/metrics/pageviews/top/...` がエンドポイントのひとつ
-
-
-## URLにパラメータが埋め込まれている
-
-- エンドポイントの一部に **値を直接埋め込む** タイプ
-- 今回のAPIだと…
+条件をURLに埋め込む。
 
 ```text
 https://wikimedia.org/api/rest_v1/metrics/pageviews/top/
     {プロジェクト} / {アクセス方法} / {日付}
 ```
 
-```{python}
-#| echo: false
-#| fig-align: center
-fig, ax = plt.subplots(figsize=(12.5, 2.4))
-ax.set_xlim(0, 100); ax.set_ylim(0, 5); ax.axis("off")
-segments = [
-    ("https://wikimedia.org/api/rest_v1", "#eaecee", "#5d6d7e", "APIの入口（共通）"),
-    ("/metrics/pageviews/top", "#d6eaf8", "#2471a3", "エンドポイント\n（top ランキング）"),
-    ("/ja.wikipedia", "#d5f5e3", "#1e8449", "プロジェクト"),
-    ("/all-access", "#fdebd0", "#b9770e", "アクセス方法"),
-    ("/2025/06/27", "#e8daef", "#6c3483", "日付"),
-]
-x = 1.0
-char_w = 0.95
-for text, fc, ec, label in segments:
-    w = len(text) * char_w
-    ax.add_patch(plt.Rectangle((x, 2.4), w, 1.4, fc=fc, ec=ec, lw=1.8))
-    ax.text(x + w / 2, 3.1, text, ha="center", va="center", fontsize=10.5,
-            family="monospace", color="#1c2833")
-    ax.text(x + w / 2, 1.9, label, ha="center", va="top", fontsize=10,
-            color=ec, fontweight="bold")
-    x += w
-plt.tight_layout()
-plt.show()
-```
-
 | パラメータ | 例の値 | 意味 | 他の選択肢 |
 |---|---|---|---|
-| プロジェクト | ja.wikipedia | 日本語Wikipedia | en.wikipedia, commons.wikimedia など |
+| プロジェクト | ja.wikipedia.org | 日本語Wikipedia | en.wikipedia.org, commons.wikimedia.org など |
 | アクセス方法 | all-access | 全アクセス | desktop, mobile-app, mobile-web |
 | 日付 | 2025/06/27 | 指定日 | YYYY/MM/DD の任意の日付 |
 
 ::: {.callout-note}
-## 覚える必要はない
-- API ごとにURL構造はバラバラ
-- 使うときに **公式ドキュメントを見る** のが正解
-- [Wikimedia REST API ドキュメント](https://wikimedia.org/api/rest_v1/)
+## URL構造はAPIごとに異なる
+利用時は[公式ドキュメント](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/)で、エンドポイントとパラメータを確認する。
 :::
 
 
-## {background-color="white" .center .break-slide}
+## **Tweak** ランキングの条件を変える {.badge-practice}
 
-::: {.break-title}
-個別ページのアクセス推移を取る
+[ランキング取得コード](#peek-top-api){.peek}を1か所ずつ変えて実行する。
+
+::: {.tweak}
+| やりたいこと | 変える場所 |
+|---|---|
+| 2025年の自分の誕生日（月日）のランキング | URL末尾の日付 |
+| 英語版Wikipediaのランキング | `ja.wikipedia.org` → `en.wikipedia.org` |
+| 上位10件を表示 | `articles[:5]` → `articles[:10]` |
+:::
+
+::: {.callout-tip}
+## 予想してから試す
+誕生日当日の1位は、事件・行事・人物のどれだと思う？
 :::
 
 
-## 別のエンドポイント：per-article
+## 別の窓口：記事ごとの閲覧数
 
-- 特定の記事の、任意の期間のアクセス数（日単位 / 月単位）を返す
+特定の記事について、任意の期間のアクセス数を日単位または月単位で返す（[公式例](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/examples/page-metrics.html)）。
 
 ```text
 https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/
@@ -403,13 +396,11 @@ https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/
 ```
 
 
-## per-article のパラメータ
-
 | パラメータ | 選択肢 |
 |---|---|
-| **project** | ja.wikipedia など |
+| **project** | ja.wikipedia.org など |
 | **access** | all-access / desktop / mobile-app / mobile-web |
-| **agent** | all-agents / **user** / spider / automated |
+| **agent** | **all-agents** / spider / automated |
 | **article** | 任意の記事名（スペースは `_`） |
 | **granularity** | daily / monthly |
 | **start** / **end** | YYYYMMDD 形式 |
@@ -417,18 +408,21 @@ https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/
 
 ## 「七夕」のページビューを取得する {#peek-tanabata}
 
-- 記事「七夕」の **2025年まるごと1年分** の日別アクセス数を取り、統計量を出す
+記事「七夕」の **2025年まるごと1年分** の日別アクセス数を取得し、統計量を出す。
 
 ```python
 import requests
 import numpy as np
 
 url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
-       "ja.wikipedia/all-access/user/"
+       "ja.wikipedia.org/all-access/all-agents/"
        "七夕/daily/20250101/20251231")
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 
 response = requests.get(url, headers=headers)
+response.raise_for_status()
 data = response.json()
 
 # data["items"] は list of dict
@@ -456,97 +450,40 @@ print(f"平均:   {views.mean():.1f}回")
 print(f"中央値: {np.median(views):.0f}回")
 ```
 
-- **最大が中央値の約300倍**。平均と中央値も大きくズレている
-- [データの可視化](visualize.qmd)でやった「[右に引っ張られた平均](visualize.qmd#peek-income){.peek}」の匂い — **なにかがおかしい**
+::: {.callout-important}
+## 最大は中央値の約280倍
+突出した1日に平均が引っ張られ、中央値との差が大きく開いた。
+:::
 
 
-## 過去の資料が一気に効いてくる
+## **Tweak** どの端末で読まれた？ {.badge-practice}
 
-- `data["items"]` は **list of dict**（[dictあらためて](dict.qmd)でやった形）
-- 内包表記でフィールド抽出（[listあらためて](list.qmd)）
-- `np.array()` で `ndarray` 化 → `.max()` / `.mean()` / `np.median()` で統計量（[NumPy入門](numpy.qmd)）
-- 新しいのは `requests.get()` の1往復だけ — **あとは全部、手持ちの道具**
+[七夕の取得コード](#peek-tanabata){.peek}の `all-access` だけ変えて実行する。
 
-
-## requests早見表
-
-| やりたいこと | コード |
+::: {.tweak}
+| 取得するアクセス | URLに入れる値 |
 |---|---|
-| アクセス | `requests.get(url, headers=...)` |
-| 状態確認 | `response.status_code`（200 = OK） |
-| 本文(str) | `response.text` |
-| JSON → dict | `response.json()` |
-| ヘッダー | `response.headers` |
-| User-Agent | `headers={"User-Agent": "..."}` |
-| 値の集計 | `np.array([d["views"] for d in items])` → `.mean()` など |
-
-- Web から取った dict は今まで通り `for` / `items()` / `np.array()` で処理できる
-
-
-## {background-color="white" .center .break-slide}
-
-::: {.break-title}
-演習
+| PCブラウザ | `desktop` |
+| スマートフォンのブラウザ | `mobile-web` |
 :::
-
-
-## 演習：desktop と mobile-web の比較 {.badge-practice}
-
-::: {.prompt}
-「七夕」の2025年1年分のページビューを `desktop` と `mobile-web` の両方で取得し、**どちらでよく読まれているか**を統計量で比較せよ。
-:::
-
-1. `access` を `desktop` / `mobile-web` に切り替えて、同じ期間（2025/01/01 – 2025/12/31）で **APIを2回呼ぶ**
-2. それぞれの **最大・最小・平均・分散** を表示
-3. 書いたコードはファイルごと保存しておく — [APIデータを可視化する](api-viz.qmd)で、このデータをグラフにして比較する
 
 ::: {.callout-tip}
-## ヒント
-- 取得結果を `views_desktop` と `views_mobile_web` に分けて入れる
-- 同じ `headers` を使い回せる
-- 関数化すると重複が消えてスッキリ
+## 予想してから試す
+平均閲覧数はどちらが大きい？ 差は何倍くらいになる？
 :::
-
-```{python}
-#| echo: true
-#| eval: false
-#| code-fold: true
-#| code-summary: "解答例を見る"
-import requests
-import numpy as np
-
-headers = {"User-Agent": "example.com/lesson"}
-
-def fetch_views(access):
-    url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
-           f"ja.wikipedia/{access}/user/七夕/daily/20250101/20251231")
-    data = requests.get(url, headers=headers).json()
-    return np.array([item["views"] for item in data["items"]])
-
-views_desktop    = fetch_views("desktop")
-views_mobile_web = fetch_views("mobile-web")
-
-for name, views in [("desktop", views_desktop), ("mobile-web", views_mobile_web)]:
-    print(f"{name}: 最大={views.max()} 最小={views.min()} "
-          f"平均={views.mean():.1f} 分散={views.var():.1f}")
-```
 
 
 ## まとめ
 
-- **道具→材料** へ：今回は Web から材料を仕入れた
-- `requests` で **アクセス**、`.text / .json() / .headers` で **取り出す**
-- **API / エンドポイント / パラメータ** の概念
-- Wikipedia Pageviews API で **実データを取得**、NumPy で **集計**
+- ブラウザの裏側もPythonも、HTTPの **request → response** の1往復
+- responseは **status code・headers・body** の3点セット
+- WebページのbodyはHTML、APIのbodyはJSON — 通信の仕組みは同じ
+- JSONをdict / listへ変換し、必要な値を取り出す
+- APIの個別URLが **エンドポイント**、URL内の条件が **パラメータ**
 
+#### 参照
 
-## 次回予告
-
-- 「七夕」の閲覧数、**最大が中央値の300倍** — なにかがおかしい
-- 統計量だけでは、これ以上なにも分からない
-- 次回、大原則の出番：==Always plot your data first.==
-   - 描けば、山の **正体** と **日付** が分かる
-   - そして[データの可視化の冒頭で見せた **謎の図**](visualize.qmd#peek-mystery){.peek}の正体も明かされる
+[requests早見表](#peek-requests-cheatsheet){.peek}
 
 
 ## {background-color="white" .center .break-slide}
@@ -556,23 +493,49 @@ for name, views in [("desktop", views_desktop), ("mobile-web", views_mobile_web)
 :::
 
 
-## 実際のブラウザのUser-Agent
+## requests早見表 {#peek-requests-cheatsheet}
 
-- 普段ブラウザでWebを見るときも **裏でヘッダーが飛んでいる**
-- サーバはこの値を見て **PC / スマホ / OS / ブラウザ** を判別している
-- レスポンシブやリダイレクトの分岐に使われる
-
-| ブラウザ | User-Agent |
+| やりたいこと | コード |
 |---|---|
-| Chrome (Windows) | `Mozilla/5.0 (Windows NT 10.0; Win64; x64) ... Chrome/119.0.0.0 Safari/537.36` |
-| Chrome (Mac) | `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) ... Chrome/119.0.0.0 Safari/537.36` |
-| iOS Safari (iPhone) | `Mozilla/5.0 (iPhone; CPU iPhone OS 17_1 like Mac OS X) ... Mobile/15E148 Safari/604.1` |
-| iOS Safari (iPad) | `Mozilla/5.0 (iPad; CPU OS 17_1 like Mac OS X) ... Mobile/15E148 Safari/604.1` |
+| アクセス | `requests.get(url, headers=...)` |
+| 状態確認 | `response.status_code`（200 = OK） |
+| 失敗なら停止 | `response.raise_for_status()` |
+| 送ったヘッダー | `response.request.headers` |
+| 返ったヘッダー | `response.headers` |
+| body（str） | `response.text` |
+| JSON → Python | `response.json()` |
+| User-Agent | `headers={"User-Agent": "..."}` |
 
 
-## 参考リンク
+## User-Agentは「自己申告の名札」
 
-- [requests Documentation](https://requests.readthedocs.io/)
-- [Wikimedia REST API](https://wikimedia.org/api/rest_v1/)
-- [Pageviews API ドキュメント](https://www.mediawiki.org/wiki/Wikimedia_REST_API)
-- [HTTPステータスコード一覧 (MDN)](https://developer.mozilla.org/ja/docs/Web/HTTP/Status)
+User-Agentは、アクセス元ソフトウェアがHTTPリクエストで送る **自己申告の名札**。互換性のための古い名前や固定値が多く、OS・CPU・端末名が実際の環境と一致するとは限らない。
+
+#### Chromeの例
+
+見やすいように改行しているが、実際のヘッダー値は1行。
+
+```text
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
+AppleWebKit/537.36 (KHTML, like Gecko)
+Chrome/<major>.0.0.0 Safari/537.36
+```
+
+::: {.caption-note}
+**この文字列の読み方：** [ChromeのUser-Agent削減](https://www.chromium.org/updates/ua-reduction/)と歴史的な互換性のため、古いOS・CPU名や複数ブラウザ名が共存する。正確な端末情報ではなく、ソフトウェアが名乗る識別子。
+:::
+
+
+## ブラウザとPythonは名乗り方が違う
+
+| アクセス元 | User-Agent |
+|---|---|
+| ブラウザ | ブラウザが自動で送る |
+| requestsの既定値 | `python-requests/バージョン` — 用途や連絡先は分からない |
+| 自分で名乗るUser-Agent | `IP3200-lecture/1.0 (連絡先URL)` — 用途と連絡先が分かる |
+
+::: {.callout-warning}
+## User-Agentを判断材料にしない
+- APIスクリプト：ブラウザの値をコピーせず、規約に従ってアプリ名・版・連絡先を示す
+- Webページ：端末を決めつけず、レスポンシブデザインや機能検出を使う
+:::

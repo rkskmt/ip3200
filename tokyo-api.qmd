@@ -3,6 +3,23 @@ title: "東京都オープンデータAPI"
 subtitle: "自治体データを活用する"
 ---
 
+## 東京都の人口、150年前は？
+
+- 2023年の東京都の人口は **14,099,993人** — 約1410万人
+- では **明治5年（1872年）**、東京には何人いた？
+
+::: {.callout-important}
+## クイズ
+今の半分？ 3分の1？ 10分の1？ — 予想してから、めくる
+:::
+
+::: {.fragment}
+- 答え：**859,345人** — 今の約 **16分の1**
+- しかも1872年から **毎年の値が152年分**、誰でも取れる形で公開されている
+- 出どころは **東京都オープンデータAPI** — この152年分を、Pythonで取り寄せる
+:::
+
+
 ## {background-color="white" .center .break-slide}
 
 ::: {.break-title}
@@ -128,7 +145,7 @@ https://service.api.metro.tokyo.lg.jp/api/t000003d2000000236-c054eb26d9e9721642b
 :::
 
 
-## 最小テンプレート
+## 最小テンプレート {#peek-tokyo-template}
 
 ```python
 import requests
@@ -137,7 +154,9 @@ api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
 params = {"limit": 200}
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 body = {}
 
 response = requests.post(url, params=params, headers=headers, json=body)
@@ -207,16 +226,18 @@ filtered = [r for r in data["hits"]
 ## {background-color="white" .center .break-slide}
 
 ::: {.break-title}
-実用サンプル
+人口152年分を取り寄せる
 :::
 
 
-## 東京都人口（期間指定）
+## 東京都人口（期間指定） {#peek-population}
 
 ```python
 import requests
 
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
@@ -245,169 +266,6 @@ for record in filtered[:5]:
 ```
 
 
-## 人口推移の可視化
-
-- さっきの `filtered` から列を取り出して、いつもの `plt.plot()` に渡すだけ
-
-```{python}
-#| echo: true
-#| eval: false
-#| code-fold: true
-#| code-summary: "コードを見る"
-import numpy as np
-import matplotlib.pyplot as plt
-import japanize_matplotlib
-
-years      = np.array([r["西暦（年次）"] for r in filtered])
-population = np.array([r["東京都／人口"] for r in filtered])
-
-plt.plot(years, population / 1e6)
-plt.title("Tokyo Population 1950-2023")
-plt.xlabel("Year")
-plt.ylabel("Population (million)")
-plt.grid(True, linestyle="--", alpha=0.5)
-plt.show()
-```
-
-```{python}
-#| echo: false
-#| fig-align: center
-import numpy as np
-import matplotlib.pyplot as plt
-import japanize_matplotlib
-
-pop = np.loadtxt("data/tokyo_population.csv", delimiter=",", skiprows=1)
-mask = pop[:, 0] >= 1950
-years, population = pop[mask, 0], pop[mask, 1]
-
-fig, ax = plt.subplots(figsize=(6, 3))
-ax.plot(years, population / 1e6, color="#2266CC", linewidth=1.2)
-ax.set_title("Tokyo Population 1950-2023")
-ax.set_xlabel("Year")
-ax.set_ylabel("Population (million)")
-ax.grid(True, linestyle="--", alpha=0.5)
-plt.tight_layout()
-plt.show()
-```
-
-- 戦後復興期から高度経済成長期にかけて **急増**
-- 1970年代からしばらく **横ばい**、1990年代後半から再び増加
-- このように **まず描く** ことで傾向が見える
-
-
-## 避難所情報（品川区）
-
-```python
-import requests
-
-headers = {"User-Agent": "example.com/lesson"}
-api_id = "t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0"
-url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
-
-params = {"limit": 5}
-body = {}
-
-response = requests.post(url, params=params, headers=headers, json=body)
-data = response.json()
-
-print(f"品川区の避難所情報（総件数: {data['total']}件）")
-
-for facility in data["hits"]:
-    print("---")
-    for key, value in facility.items():
-        if key != "row":
-            print(f"{key}: {value}")
-```
-
-```text
-品川区の避難所情報（総件数: 25件）
----
-名称: 品川区立第一日野小学校
-緯度: 35.6234...
-経度: 139.7312...
----
-...
-```
-
-
-## 避難所リスト（東京都全域）
-
-```python
-import requests
-
-headers = {"User-Agent": "example.com/lesson"}
-api_id = "t000003d0000000093-0af9bfa497bc7be6ef83e5bfd1fdcfc6-0"
-url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
-
-params = {"limit": 5}
-body = {}
-
-response = requests.post(url, params=params, headers=headers, json=body)
-data = response.json()
-
-print(f"東京都の避難所（総件数: {data['total']}件）")
-for shelter in data["hits"]:
-    print(f"施設名: {shelter['避難所_施設名称']}")
-    print(f"住所: {shelter['所在地住所']}")
-    print(f"区市町村: {shelter['指定市区町村名']}")
-    print("---")
-```
-
-```text
-東京都の避難所（総件数: 2636件）
-施設名: お茶の水小学校
-住所: 東京都千代田区神田猿楽町1-1-1
-区市町村: 千代田区
----
-施設名: 都立一橋高校
-住所: 東京都千代田区東神田1-12-13
-区市町村: 千代田区
----
-...
-```
-
-
-## 都営バス運賃
-
-```python
-import requests
-
-headers = {"User-Agent": "example.com/lesson"}
-api_id = "t000018d0000000044-3db21a77b0af1c54b411f79604444ca2-0"
-url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
-body = {}
-
-response = requests.post(url, headers=headers, json=body)
-data = response.json()
-
-print(f"都営バス運賃情報（総件数: {data['total']}件）")
-
-for fare_info in data["hits"][:5]:
-    print("---")
-    for key, value in fare_info.items():
-        if key != "row":
-            print(f"{key}: {value}")
-```
-
-```text
-都営バス運賃情報（総件数: 4件）
----
-区分: 一般系統
-大人: 210円（IC 210円）
-小児: 110円（IC 105円）
-備考: 急行バス、直行バスを含む。
----
-...
-```
-
-
-## {background-color="white" .center .break-slide}
-
-::: {.break-title}
-NumPyで統計処理
-:::
-
-
 ## 統計分析の例
 
 - `hits` は **list of dict** — 内包表記で列を取り出して `np.array` にすれば、いつもの統計がそのまま使える
@@ -416,7 +274,9 @@ NumPyで統計処理
 import requests
 import numpy as np
 
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
@@ -440,6 +300,134 @@ print(f"中央値: {np.median(population):,.0f}人")
 標準偏差: 4,567,885
 中央値: 7,189,875人
 ```
+
+
+## どんな形で増えた？
+
+- 最小 **859,345人**（1872年）から最大 **14,099,993人**（2023年）へ — 間の152個の点は、どうつながっている？
+- [データの可視化](visualize.qmd)の大原則 — *Always plot your data first.*
+
+::: {.callout-important}
+## クイズ
+150年分の折れ線は、どんな形？ まっすぐ右肩上がり？ 途中に事件はある？ — 手で描いてみてから、めくる
+:::
+
+::: {.fragment}
+```{python}
+#| echo: false
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+pop = np.loadtxt("data/tokyo_population.csv", delimiter=",", skiprows=1)
+years, population = pop[:, 0], pop[:, 1]
+
+fig, ax = plt.subplots(figsize=(7, 2.9))
+ax.plot(years, population / 1e6, color="#2266CC", linewidth=1.2)
+ax.fill_between(years, population / 1e6, alpha=0.3, color="#2266CC")
+ax.set_title("Tokyo Population 1872-2023")
+ax.set_xlabel("Year")
+ax.set_ylabel("Population (million)")
+ax.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+- 右肩上がり — ただし **一直線ではない**。1960年代までの急増、1970〜90年代の横ばい、2000年代の再増加
+- そして **深い谷が1つ**
+:::
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "コードを見る"
+import requests
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
+api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
+url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
+
+params = {"limit": 200}
+body = {"column": ["西暦（年次）", "東京都／人口"]}
+
+response = requests.post(url, params=params, headers=headers, json=body)
+response.raise_for_status()
+data = response.json()
+
+years      = np.array([r["西暦（年次）"] for r in data["hits"]])
+population = np.array([r["東京都／人口"] for r in data["hits"]])
+
+plt.plot(years, population / 1e6)
+plt.title("Tokyo Population 1872-2023")
+plt.xlabel("Year")
+plt.ylabel("Population (million)")
+plt.grid(True, linestyle="--", alpha=0.5)
+plt.show()
+```
+
+
+## 谷の正体
+
+- 谷の底は **1945年**：7,271,001人（1944年）→ **3,488,284人** — 1年で **378万人減、ほぼ半減**
+
+::: {.callout-important}
+## クイズ
+1945年の東京で何が起きた？ いなくなった人は、いつ戻った？
+:::
+
+::: {.fragment}
+- **空襲と疎開** — 戦争末期、東京から人が離れた
+- 戻りも速い：1946年に **+69万人**、1947年に **+82万人**。5年後の1950年には600万人台まで回復
+- 歴史の教科書の出来事が、==数列にそのまま刻まれている==
+:::
+
+
+## 足元を拡大する
+
+- 全体の図では、直近10年は「なだらかな右肩上がり」にしか見えない
+- [「七夕」の8月29日を見つけたとき](api-viz.qmd)と同じ手 — **軸の範囲を絞って足元を拡大** する
+- さっきのグラフに `plt.xlim(2018, 2024)` と `plt.ylim(13.85, 14.15)` を足すだけ
+
+```{python}
+#| echo: false
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+pop = np.loadtxt("data/tokyo_population.csv", delimiter=",", skiprows=1)
+years, population = pop[:, 0], pop[:, 1]
+
+fig, ax = plt.subplots(figsize=(7, 2.9))
+ax.plot(years, population / 1e6, color="#2266CC", linewidth=1.2, marker="o", markersize=4)
+ax.set_xlim(2018, 2024)
+ax.set_ylim(13.85, 14.15)
+ax.annotate("2021", xy=(2021, 14011487 / 1e6), xytext=(2021.6, 13.96),
+            color="#CC4444", arrowprops={"arrowstyle": "->", "color": "#CC4444"})
+ax.set_title("Tokyo Population 2018-2023")
+ax.set_xlabel("Year")
+ax.set_ylabel("Population (million)")
+ax.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+::: {.callout-important}
+## クイズ
+2021年だけ人口が減っている（**−36,107人**）。何があった年？
+:::
+
+::: {.fragment}
+- **コロナ禍** — テレワークと転出で、人口が **1995年以来26年ぶり** に減った
+- ==ズームしないと見えない発見がある== — 伝統的七夕のときと同じ
+:::
 
 
 ## 実データは汚れている
@@ -470,41 +458,67 @@ print(f"増減率の平均: {rates.mean():.2f}%")   # 増減率の平均: 2.10%
 :::
 
 
-## まずは可視化する
+## {background-color="white" .center .break-slide}
 
-- 数値だけでは傾向がわからない
-- [データの可視化](visualize.qmd)の大原則：**Always plot your data first.**
+::: {.break-title}
+知らないデータを覗く
+:::
 
-```{python}
-#| echo: false
-#| fig-align: center
-import numpy as np
-import matplotlib.pyplot as plt
-import japanize_matplotlib
 
-pop = np.loadtxt("data/tokyo_population.csv", delimiter=",", skiprows=1)
-years, population = pop[:, 0], pop[:, 1]
+## 別の窓口、同じテンプレート {#peek-shinagawa}
 
-fig, ax = plt.subplots(figsize=(7, 3))
-ax.plot(years, population / 1e6, color="#2266CC", linewidth=1.2)
-ax.fill_between(years, population / 1e6, alpha=0.3, color="#2266CC")
-ax.set_title("Tokyo Population 1872-2023")
-ax.set_xlabel("Year")
-ax.set_ylabel("Population (million)")
-ax.grid(True, linestyle="--", alpha=0.5)
-plt.tight_layout()
-plt.show()
+- `api_id` を差し替えるだけで、届くデータが変わる — 通信部分のコードはそのまま
+- 列名が分からないデータは、`for key, value in row.items():` で **全列を覗く** のが最初の一歩
+
+```python
+import requests
+
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
+api_id = "t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0"  # 品川区の避難所
+url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
+
+params = {"limit": 5}
+body = {}
+
+response = requests.post(url, params=params, headers=headers, json=body)
+data = response.json()
+
+print(f"品川区の避難所情報（総件数: {data['total']}件）")
+
+for facility in data["hits"]:
+    print("---")
+    for key, value in facility.items():
+        if key != "row":
+            print(f"{key}: {value}")
 ```
 
-- **右肩上がり** — 150年で約16倍に増加
-- **1940年代に急落** — 戦争による疎開・被害
-- **2020年代は横ばい** — コロナ禍の2021年には減少もあった
+```text
+品川区の避難所情報（総件数: 25件）
+---
+名称: 南大井シルバーセンター
+緯度: 35.5916187
+経度: 139.7342376
+---
+...
+```
+
+
+## **Tweak** api_idを差し替える {.badge-practice}
+
+[品川区のコード](#peek-shinagawa){.peek}の `api_id` だけ差し替えて実行する。
+
+::: {.tweak}
+| データ | `api_id` |
+|---|---|
+| 避難所（東京都全域） | `t000003d0000000093-0af9bfa497bc7be6ef83e5bfd1fdcfc6-0` |
+| 都営バスの運賃 | `t000018d0000000044-3db21a77b0af1c54b411f79604444ca2-0` |
+:::
 
 ::: {.callout-tip}
-## これまでの道具が活きる
-- [listあらためて](list.qmd)の内包表記で抽出
-- [NumPy入門](numpy.qmd)の統計関数で集計
-- [データの可視化](visualize.qmd)・[matplotlib入門](matplotlib.qmd)の手法で可視化
+## 予想してから試す
+`total` はそれぞれ何件くらいだと思う？（品川区の避難所は25件だった）— 桁を予想してから実行
 :::
 
 
@@ -517,7 +531,7 @@ plt.show()
 | 列の絞り込み | `body = {"column": ["列名1", "列名2"]}` |
 | 行の絞り込み | 取得後にPythonでフィルタ（内包表記 + `if`） |
 | 全件数確認 | `data["total"]` |
-| データ本体 | `data["hits"]`（list of dict） |
+| 全列を覗く | `for key, value in row.items():` |
 
 ::: {.callout-warning}
 ## Wikipedia API との違い
@@ -554,7 +568,9 @@ plt.show()
 #| code-summary: "解答例を見る（品川区の例 — apiIdは検索ページで差し替え）"
 import requests
 
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 api_id = "t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0"  # 品川区の避難所
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
@@ -565,14 +581,15 @@ print(f"避難所の件数: {data['total']}件")
 ```
 
 
-## 演習：人口推移の時系列グラフ {.badge-practice}
+## 演習：東京一極集中はいつから？ {.badge-practice}
 
 ::: {.prompt}
-東京都の人口データを**全件**取得し、人口推移を折れ線グラフで描け。
+人口データの **「東京都／対全国比(%)」** を全期間ぶん取得して折れ線グラフに描き、日本の人口の **1割** を最初に超えた年を答えよ。
 :::
 
-1. 年と人口を取り出して **折れ線グラフ** を描画
-2. **最大値・最小値・平均** をタイトルに表示
+1. `body` の `column` で「西暦（年次）」と「東京都／対全国比(%)」の2列を取得
+2. 値は文字列で、全国値が未公表の年は `""`（空文字）が入っている。`"…"` と `""` の行を除いてから `float()` で変換 — 増減率のときと同じ下ごしらえ
+3. 折れ線グラフに描き、10%を最初に超えた年を確認
 
 ```{python}
 #| echo: true
@@ -580,29 +597,70 @@ print(f"避難所の件数: {data['total']}件")
 #| code-fold: true
 #| code-summary: "解答例を見る"
 import requests
-import numpy as np
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
 params = {"limit": 200}
-response = requests.post(url, params=params, headers=headers, json={})
+body = {"column": ["西暦（年次）", "東京都／対全国比(%)"]}
+
+response = requests.post(url, params=params, headers=headers, json=body)
+response.raise_for_status()
 data = response.json()
 
-years      = np.array([r["西暦（年次）"] for r in data["hits"]])
-population = np.array([r["東京都／人口"] for r in data["hits"]])
+# 全国値が未公表の年（""）と欠損（"…"）を除いて数値化
+rows = [r for r in data["hits"] if r["東京都／対全国比(%)"] not in ("…", "")]
+years  = [r["西暦（年次）"] for r in rows]
+shares = [float(r["東京都／対全国比(%)"]) for r in rows]
 
-plt.figure(figsize=(10, 4))
-plt.plot(years, population / 1e6)
-plt.title(f"Max={np.max(population):,}, Min={np.min(population):,}, Mean={np.mean(population):,.0f}")
+over10 = [y for y, s in zip(years, shares) if s >= 10]
+print(f"最初に10%を超えた年: {over10[0]}年")
+
+plt.plot(years, shares)
+plt.title("Tokyo Share of Japan Population")
 plt.xlabel("Year")
-plt.ylabel("Population (million)")
+plt.ylabel("Share (%)")
 plt.grid(True, linestyle="--", alpha=0.5)
 plt.show()
 ```
+
+::: {.fragment}
+```{python}
+#| echo: false
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+share = np.loadtxt("data/tokyo_population_share.csv", delimiter=",", skiprows=1)
+years, shares = share[:, 0], share[:, 1]
+
+fig, ax = plt.subplots(figsize=(7, 2.9))
+ax.plot(years, shares, color="#1e8449", linewidth=1.2)
+ax.annotate("1940: 10.2%", xy=(1940, 10.22), xytext=(1898, 10.8), color="#555555",
+            arrowprops={"arrowstyle": "->", "color": "#888888"})
+ax.annotate("1945: 4.8%", xy=(1945, 4.83), xytext=(1957, 4.2), color="#CC4444",
+            arrowprops={"arrowstyle": "->", "color": "#CC4444"})
+ax.set_title("Tokyo Share of Japan Population")
+ax.set_xlabel("Year")
+ax.set_ylabel("Share (%)")
+ax.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+::: {.callout-note}
+## 種明かし：一極集中は戦前に始まっていた
+- 1872年は **2.5%**（40人に1人）。最初に10%を超えたのは **1940年** — 戦前にすでに「1割が東京」
+- 1945年に **4.8%** へ急落（人口の谷と同じ理由）し、1959年に再び10%へ
+- 2022年は **11.2%** — 日本人の **約9人に1人** が東京都民
+:::
+:::
 
 
 ## 演習：2つのデータセットを比較 {.badge-practice}
@@ -621,7 +679,9 @@ plt.show()
 import requests
 import numpy as np
 
-headers = {"User-Agent": "example.com/lesson"}
+headers = {
+    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+}
 api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
@@ -651,6 +711,10 @@ print(f"戦後（1946〜）: {len(postwar)}年分 平均 {postwar.mean():,.0f}�
 | **交通** | 駐輪場検索、バス運賃計算、駅の乗降客数分析 |
 | **生活** | 公衆トイレマップ、公共施設案内、子育て支援制度 |
 | **研究** | 人口動態分析、地価変動追跡、行政サービス利用調査 |
+
+#### 探してみる
+
+[API検索ページ](https://spec.api.metro.tokyo.lg.jp/spec/search)で自分の住む区市町村を検索し、見つけたデータを1つ、隣の人に30秒で紹介する（何のデータ？ 何件？ どの列が面白そう？）
 
 
 ## 関連リソース
