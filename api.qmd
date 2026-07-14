@@ -132,7 +132,8 @@ print(response.text)
 
 ## HTTPステータスコード — 404の正体
 
-- 存在しないページを開くと「**404 Not Found**」と表示される — この404が **status code**
+- 存在しないページを開くと「**404 Not Found**」と表示される
+   - この404が **status code**
 - さっき `print(response.status_code)` が表示した `200` も、同じstatus code
 - サーバは処理の結果を、毎回3桁の番号で応答に含めている
 
@@ -181,7 +182,8 @@ print(response.text)
 
 ## 失敗したまま先へ進まない
 
-- 404や500が返っても、プログラムは止まらない — エラー応答の入った `response` のまま、次の行へ進んでしまう
+- 404や500が返っても、プログラムは止まらない
+   - エラー応答の入った `response` のまま、次の行へ進んでしまう
 - `response.raise_for_status()` は、status codeが400番台・500番台なら **その場でエラーを出して止める**
 - APIではbodyを処理する **前** に呼ぶのが定石
 
