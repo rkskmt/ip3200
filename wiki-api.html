@@ -220,7 +220,10 @@ rkskmt
 <h2>このスライドの位置づけ</h2>
 <div class="slide-body">
 <ul>
-<li>これは <strong>リファレンス（参照資料）</strong> — 全部覚える必要はない、<strong>必要なときに引く</strong></li>
+<li>これは <strong>リファレンス（参照資料）</strong>
+<ul>
+<li>全部覚える必要はない。<strong>必要なときに引く</strong></li>
+</ul></li>
 <li>前提知識は<a href="./api.html">APIでデータ取得</a>（requests、エンドポイント、User-Agent）</li>
 </ul>
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -661,7 +664,7 @@ rkskmt
 <li><a href="./api.html">APIでデータ取得</a>で使ったのはこれ</li>
 <li>例：「桜」の2024年3月の日別アクセス数</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a></a>https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/ja.wikipedia/all-access/all-agents/桜/daily/20240301/20240331</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a></a>https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/ja.wikipedia.org/all-access/all-agents/桜/daily/20240301/20240331</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="aqsエンドポイント" class="slide level2">
@@ -673,24 +676,24 @@ rkskmt
 <div id="tabset-3-1">
 <p><strong>per-article</strong> — 記事別PV（2015年7月〜）</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a></a>pageviews/per-article/{project}/{access}/{agent}/{article}/{granularity}/{start}/{end}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>例：<code>pageviews/per-article/ja.wikipedia/all-access/user/東京/daily/20240101/20240131</code></p>
+<p>例：<code>pageviews/per-article/ja.wikipedia.org/all-access/all-agents/東京/daily/20240101/20240131</code></p>
 <p><strong>aggregate</strong> — プロジェクト全体PV（2015年7月〜）</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a></a>pageviews/aggregate/{project}/{access}/{agent}/{granularity}/{start}/{end}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>例：<code>pageviews/aggregate/ja.wikipedia/all-access/user/daily/20240101/20240131</code></p>
+<p>例：<code>pageviews/aggregate/ja.wikipedia.org/all-access/all-agents/daily/20240101/20240131</code></p>
 <p><strong>top</strong> — 人気記事ランキング（2015年7月〜）</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a></a>pageviews/top/{project}/{access}/{year}/{month}/{day}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>例：<code>pageviews/top/ja.wikipedia/all-access/2024/06/01</code></p>
+<p>例：<code>pageviews/top/ja.wikipedia.org/all-access/2024/06/01</code></p>
 </div>
 <div id="tabset-3-2">
 <p><strong>unique-devices</strong> — ユニークデバイス数（2016年1月〜）</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a></a>unique-devices/{project}/{access-site}/{granularity}/{start}/{end}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>例：<code>unique-devices/ja.wikipedia/all-sites/daily/20240101/20240131</code></p>
+<p>例：<code>unique-devices/ja.wikipedia.org/all-sites/daily/20240101/20240131</code></p>
 <p><strong>edits</strong> — 編集統計（2001年1月〜）</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a></a>edits/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>例：<code>edits/aggregate/ja.wikipedia/all-editor-types/all-page-types/daily/20240101/20240131</code></p>
+<p>例：<code>edits/aggregate/ja.wikipedia.org/all-editor-types/all-page-types/daily/20240101/20240131</code></p>
 <p><strong>registered-users</strong> — 新規ユーザー登録（2001年1月〜）</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a></a>registered-users/new/{project}/{granularity}/{start}/{end}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>例：<code>registered-users/new/ja.wikipedia/daily/20240101/20240131</code></p>
+<p>例：<code>registered-users/new/ja.wikipedia.org/daily/20240101/20240131</code></p>
 </div>
 </div>
 </div>
@@ -781,19 +784,21 @@ rkskmt
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb15-2"><a></a></span>
-<span id="cb15-3"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
-<span id="cb15-4"><a></a></span>
-<span id="cb15-5"><a></a>params <span class="op">=</span> {</span>
-<span id="cb15-6"><a></a>    <span class="st">"action"</span>: <span class="st">"query"</span>,</span>
-<span id="cb15-7"><a></a>    <span class="st">"prop"</span>: <span class="st">"pageprops"</span>,</span>
-<span id="cb15-8"><a></a>    <span class="st">"titles"</span>: <span class="st">"東京都"</span>,</span>
-<span id="cb15-9"><a></a>    <span class="st">"format"</span>: <span class="st">"json"</span></span>
-<span id="cb15-10"><a></a>}</span>
-<span id="cb15-11"><a></a>response <span class="op">=</span> requests.get(<span class="st">"https://ja.wikipedia.org/w/api.php"</span>,</span>
-<span id="cb15-12"><a></a>                        params<span class="op">=</span>params, headers<span class="op">=</span>headers)</span>
-<span id="cb15-13"><a></a>data <span class="op">=</span> response.json()</span>
-<span id="cb15-14"><a></a></span>
-<span id="cb15-15"><a></a><span class="bu">print</span>(data[<span class="st">"query"</span>][<span class="st">"pages"</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-3"><a></a>headers <span class="op">=</span> {</span>
+<span id="cb15-4"><a></a>    <span class="st">"User-Agent"</span>: <span class="st">"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"</span></span>
+<span id="cb15-5"><a></a>}</span>
+<span id="cb15-6"><a></a></span>
+<span id="cb15-7"><a></a>params <span class="op">=</span> {</span>
+<span id="cb15-8"><a></a>    <span class="st">"action"</span>: <span class="st">"query"</span>,</span>
+<span id="cb15-9"><a></a>    <span class="st">"prop"</span>: <span class="st">"pageprops"</span>,</span>
+<span id="cb15-10"><a></a>    <span class="st">"titles"</span>: <span class="st">"東京都"</span>,</span>
+<span id="cb15-11"><a></a>    <span class="st">"format"</span>: <span class="st">"json"</span></span>
+<span id="cb15-12"><a></a>}</span>
+<span id="cb15-13"><a></a>response <span class="op">=</span> requests.get(<span class="st">"https://ja.wikipedia.org/w/api.php"</span>,</span>
+<span id="cb15-14"><a></a>                        params<span class="op">=</span>params, headers<span class="op">=</span>headers)</span>
+<span id="cb15-15"><a></a>data <span class="op">=</span> response.json()</span>
+<span id="cb15-16"><a></a></span>
+<span id="cb15-17"><a></a><span class="bu">print</span>(data[<span class="st">"query"</span>][<span class="st">"pages"</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="caption-note">
 <p><code>pages</code> は <strong>ページIDをキーにした辞書</strong>（例：<code>{"774362": {"title": "東京都", "pageprops": {...}}}</code>）</p>
 </div>
@@ -822,51 +827,55 @@ rkskmt
 <div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb17-2"><a></a></span>
-<span id="cb17-3"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
-<span id="cb17-4"><a></a></span>
-<span id="cb17-5"><a></a><span class="co"># 検索：「桜」で5件</span></span>
-<span id="cb17-6"><a></a>search_params <span class="op">=</span> {</span>
-<span id="cb17-7"><a></a>    <span class="st">"action"</span>: <span class="st">"query"</span>,</span>
-<span id="cb17-8"><a></a>    <span class="st">"list"</span>: <span class="st">"search"</span>,</span>
-<span id="cb17-9"><a></a>    <span class="st">"srsearch"</span>: <span class="st">"桜"</span>,</span>
-<span id="cb17-10"><a></a>    <span class="st">"format"</span>: <span class="st">"json"</span>,</span>
-<span id="cb17-11"><a></a>    <span class="st">"srlimit"</span>: <span class="dv">5</span></span>
-<span id="cb17-12"><a></a>}</span>
-<span id="cb17-13"><a></a>r <span class="op">=</span> requests.get(<span class="st">"https://ja.wikipedia.org/w/api.php"</span>,</span>
-<span id="cb17-14"><a></a>                 params<span class="op">=</span>search_params, headers<span class="op">=</span>headers)</span>
-<span id="cb17-15"><a></a>results <span class="op">=</span> r.json()[<span class="st">"query"</span>][<span class="st">"search"</span>]</span>
-<span id="cb17-16"><a></a></span>
-<span id="cb17-17"><a></a><span class="cf">for</span> item <span class="kw">in</span> results:</span>
-<span id="cb17-18"><a></a>    <span class="bu">print</span>(<span class="ss">f"- </span><span class="sc">{</span>item[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-3"><a></a>headers <span class="op">=</span> {</span>
+<span id="cb17-4"><a></a>    <span class="st">"User-Agent"</span>: <span class="st">"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"</span></span>
+<span id="cb17-5"><a></a>}</span>
+<span id="cb17-6"><a></a></span>
+<span id="cb17-7"><a></a><span class="co"># 検索：「桜」で5件</span></span>
+<span id="cb17-8"><a></a>search_params <span class="op">=</span> {</span>
+<span id="cb17-9"><a></a>    <span class="st">"action"</span>: <span class="st">"query"</span>,</span>
+<span id="cb17-10"><a></a>    <span class="st">"list"</span>: <span class="st">"search"</span>,</span>
+<span id="cb17-11"><a></a>    <span class="st">"srsearch"</span>: <span class="st">"桜"</span>,</span>
+<span id="cb17-12"><a></a>    <span class="st">"format"</span>: <span class="st">"json"</span>,</span>
+<span id="cb17-13"><a></a>    <span class="st">"srlimit"</span>: <span class="dv">5</span></span>
+<span id="cb17-14"><a></a>}</span>
+<span id="cb17-15"><a></a>r <span class="op">=</span> requests.get(<span class="st">"https://ja.wikipedia.org/w/api.php"</span>,</span>
+<span id="cb17-16"><a></a>                 params<span class="op">=</span>search_params, headers<span class="op">=</span>headers)</span>
+<span id="cb17-17"><a></a>results <span class="op">=</span> r.json()[<span class="st">"query"</span>][<span class="st">"search"</span>]</span>
+<span id="cb17-18"><a></a></span>
+<span id="cb17-19"><a></a><span class="cf">for</span> item <span class="kw">in</span> results:</span>
+<span id="cb17-20"><a></a>    <span class="bu">print</span>(<span class="ss">f"- </span><span class="sc">{</span>item[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="action-apiページ詳細" class="slide level2">
 <h2>Action API：ページ詳細</h2>
 <div class="slide-body">
 <ul>
-<li><code>formatversion: 2</code> を付けると、<code>pages</code> が「ページIDをキーにした辞書」ではなく <strong>リスト</strong> で返る — ループで素直に回せる</li>
+<li><code>formatversion: 2</code> を付けると、<code>pages</code> が「ページIDをキーにした辞書」ではなく <strong>リスト</strong> で返る（ループで素直に回せる）</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb18-2"><a></a></span>
-<span id="cb18-3"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
-<span id="cb18-4"><a></a></span>
-<span id="cb18-5"><a></a>detail_params <span class="op">=</span> {</span>
-<span id="cb18-6"><a></a>    <span class="st">"action"</span>: <span class="st">"query"</span>,</span>
-<span id="cb18-7"><a></a>    <span class="st">"prop"</span>: <span class="st">"extracts|info|images"</span>,</span>
-<span id="cb18-8"><a></a>    <span class="st">"titles"</span>: <span class="st">"桜"</span>,</span>
-<span id="cb18-9"><a></a>    <span class="st">"format"</span>: <span class="st">"json"</span>,</span>
-<span id="cb18-10"><a></a>    <span class="st">"formatversion"</span>: <span class="dv">2</span>,   <span class="co"># JSONが扱いやすくなる</span></span>
-<span id="cb18-11"><a></a>    <span class="st">"exintro"</span>: <span class="va">True</span>,      <span class="co"># 導入部分のみ</span></span>
-<span id="cb18-12"><a></a>    <span class="st">"explaintext"</span>: <span class="va">True</span>,  <span class="co"># HTMLタグ除去</span></span>
-<span id="cb18-13"><a></a>    <span class="st">"redirects"</span>: <span class="va">True</span>     <span class="co"># リダイレクト自動追従</span></span>
-<span id="cb18-14"><a></a>}</span>
-<span id="cb18-15"><a></a>r <span class="op">=</span> requests.get(<span class="st">"https://ja.wikipedia.org/w/api.php"</span>,</span>
-<span id="cb18-16"><a></a>                 params<span class="op">=</span>detail_params, headers<span class="op">=</span>headers)</span>
-<span id="cb18-17"><a></a>pages <span class="op">=</span> r.json()[<span class="st">"query"</span>][<span class="st">"pages"</span>]</span>
-<span id="cb18-18"><a></a></span>
-<span id="cb18-19"><a></a><span class="cf">for</span> page <span class="kw">in</span> pages:</span>
-<span id="cb18-20"><a></a>    <span class="bu">print</span>(<span class="ss">f"タイトル: </span><span class="sc">{</span>page[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb18-21"><a></a>    <span class="bu">print</span>(<span class="ss">f"概要: </span><span class="sc">{</span>page[<span class="st">'extract'</span>][:<span class="dv">100</span>]<span class="sc">}</span><span class="ss">..."</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-3"><a></a>headers <span class="op">=</span> {</span>
+<span id="cb18-4"><a></a>    <span class="st">"User-Agent"</span>: <span class="st">"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"</span></span>
+<span id="cb18-5"><a></a>}</span>
+<span id="cb18-6"><a></a></span>
+<span id="cb18-7"><a></a>detail_params <span class="op">=</span> {</span>
+<span id="cb18-8"><a></a>    <span class="st">"action"</span>: <span class="st">"query"</span>,</span>
+<span id="cb18-9"><a></a>    <span class="st">"prop"</span>: <span class="st">"extracts|info|images"</span>,</span>
+<span id="cb18-10"><a></a>    <span class="st">"titles"</span>: <span class="st">"桜"</span>,</span>
+<span id="cb18-11"><a></a>    <span class="st">"format"</span>: <span class="st">"json"</span>,</span>
+<span id="cb18-12"><a></a>    <span class="st">"formatversion"</span>: <span class="dv">2</span>,   <span class="co"># JSONが扱いやすくなる</span></span>
+<span id="cb18-13"><a></a>    <span class="st">"exintro"</span>: <span class="va">True</span>,      <span class="co"># 導入部分のみ</span></span>
+<span id="cb18-14"><a></a>    <span class="st">"explaintext"</span>: <span class="va">True</span>,  <span class="co"># HTMLタグ除去</span></span>
+<span id="cb18-15"><a></a>    <span class="st">"redirects"</span>: <span class="va">True</span>     <span class="co"># リダイレクト自動追従</span></span>
+<span id="cb18-16"><a></a>}</span>
+<span id="cb18-17"><a></a>r <span class="op">=</span> requests.get(<span class="st">"https://ja.wikipedia.org/w/api.php"</span>,</span>
+<span id="cb18-18"><a></a>                 params<span class="op">=</span>detail_params, headers<span class="op">=</span>headers)</span>
+<span id="cb18-19"><a></a>pages <span class="op">=</span> r.json()[<span class="st">"query"</span>][<span class="st">"pages"</span>]</span>
+<span id="cb18-20"><a></a></span>
+<span id="cb18-21"><a></a><span class="cf">for</span> page <span class="kw">in</span> pages:</span>
+<span id="cb18-22"><a></a>    <span class="bu">print</span>(<span class="ss">f"タイトル: </span><span class="sc">{</span>page[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-23"><a></a>    <span class="bu">print</span>(<span class="ss">f"概要: </span><span class="sc">{</span>page[<span class="st">'extract'</span>][:<span class="dv">100</span>]<span class="sc">}</span><span class="ss">..."</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="action-apiカテゴリ-ランダム" class="slide level2">
@@ -874,31 +883,33 @@ rkskmt
 <div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb19-2"><a></a></span>
-<span id="cb19-3"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
-<span id="cb19-4"><a></a></span>
-<span id="cb19-5"><a></a><span class="co"># カテゴリメンバー</span></span>
-<span id="cb19-6"><a></a>cats_params <span class="op">=</span> {</span>
-<span id="cb19-7"><a></a>    <span class="st">"action"</span>: <span class="st">"query"</span>,</span>
-<span id="cb19-8"><a></a>    <span class="st">"list"</span>: <span class="st">"categorymembers"</span>,</span>
-<span id="cb19-9"><a></a>    <span class="st">"cmtitle"</span>: <span class="st">"Category:桜"</span>,</span>
-<span id="cb19-10"><a></a>    <span class="st">"format"</span>: <span class="st">"json"</span>,</span>
-<span id="cb19-11"><a></a>    <span class="st">"cmlimit"</span>: <span class="dv">10</span></span>
-<span id="cb19-12"><a></a>}</span>
-<span id="cb19-13"><a></a>r <span class="op">=</span> requests.get(<span class="st">"https://ja.wikipedia.org/w/api.php"</span>,</span>
-<span id="cb19-14"><a></a>                 params<span class="op">=</span>cats_params, headers<span class="op">=</span>headers)</span>
-<span id="cb19-15"><a></a>members <span class="op">=</span> r.json()[<span class="st">"query"</span>][<span class="st">"categorymembers"</span>]</span>
-<span id="cb19-16"><a></a><span class="cf">for</span> m <span class="kw">in</span> members:</span>
-<span id="cb19-17"><a></a>    <span class="bu">print</span>(<span class="ss">f"- </span><span class="sc">{</span>m[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb19-18"><a></a></span>
-<span id="cb19-19"><a></a><span class="co"># ランダム記事</span></span>
-<span id="cb19-20"><a></a>rnd_params <span class="op">=</span> {</span>
-<span id="cb19-21"><a></a>    <span class="st">"action"</span>: <span class="st">"query"</span>, <span class="st">"list"</span>: <span class="st">"random"</span>,</span>
-<span id="cb19-22"><a></a>    <span class="st">"rnnamespace"</span>: <span class="dv">0</span>, <span class="st">"rnlimit"</span>: <span class="dv">3</span>, <span class="st">"format"</span>: <span class="st">"json"</span></span>
-<span id="cb19-23"><a></a>}</span>
-<span id="cb19-24"><a></a>r <span class="op">=</span> requests.get(<span class="st">"https://ja.wikipedia.org/w/api.php"</span>,</span>
-<span id="cb19-25"><a></a>                 params<span class="op">=</span>rnd_params, headers<span class="op">=</span>headers)</span>
-<span id="cb19-26"><a></a><span class="cf">for</span> p <span class="kw">in</span> r.json()[<span class="st">"query"</span>][<span class="st">"random"</span>]:</span>
-<span id="cb19-27"><a></a>    <span class="bu">print</span>(<span class="ss">f"- </span><span class="sc">{</span>p[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-3"><a></a>headers <span class="op">=</span> {</span>
+<span id="cb19-4"><a></a>    <span class="st">"User-Agent"</span>: <span class="st">"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"</span></span>
+<span id="cb19-5"><a></a>}</span>
+<span id="cb19-6"><a></a></span>
+<span id="cb19-7"><a></a><span class="co"># カテゴリメンバー</span></span>
+<span id="cb19-8"><a></a>cats_params <span class="op">=</span> {</span>
+<span id="cb19-9"><a></a>    <span class="st">"action"</span>: <span class="st">"query"</span>,</span>
+<span id="cb19-10"><a></a>    <span class="st">"list"</span>: <span class="st">"categorymembers"</span>,</span>
+<span id="cb19-11"><a></a>    <span class="st">"cmtitle"</span>: <span class="st">"Category:桜"</span>,</span>
+<span id="cb19-12"><a></a>    <span class="st">"format"</span>: <span class="st">"json"</span>,</span>
+<span id="cb19-13"><a></a>    <span class="st">"cmlimit"</span>: <span class="dv">10</span></span>
+<span id="cb19-14"><a></a>}</span>
+<span id="cb19-15"><a></a>r <span class="op">=</span> requests.get(<span class="st">"https://ja.wikipedia.org/w/api.php"</span>,</span>
+<span id="cb19-16"><a></a>                 params<span class="op">=</span>cats_params, headers<span class="op">=</span>headers)</span>
+<span id="cb19-17"><a></a>members <span class="op">=</span> r.json()[<span class="st">"query"</span>][<span class="st">"categorymembers"</span>]</span>
+<span id="cb19-18"><a></a><span class="cf">for</span> m <span class="kw">in</span> members:</span>
+<span id="cb19-19"><a></a>    <span class="bu">print</span>(<span class="ss">f"- </span><span class="sc">{</span>m[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb19-20"><a></a></span>
+<span id="cb19-21"><a></a><span class="co"># ランダム記事</span></span>
+<span id="cb19-22"><a></a>rnd_params <span class="op">=</span> {</span>
+<span id="cb19-23"><a></a>    <span class="st">"action"</span>: <span class="st">"query"</span>, <span class="st">"list"</span>: <span class="st">"random"</span>,</span>
+<span id="cb19-24"><a></a>    <span class="st">"rnnamespace"</span>: <span class="dv">0</span>, <span class="st">"rnlimit"</span>: <span class="dv">3</span>, <span class="st">"format"</span>: <span class="st">"json"</span></span>
+<span id="cb19-25"><a></a>}</span>
+<span id="cb19-26"><a></a>r <span class="op">=</span> requests.get(<span class="st">"https://ja.wikipedia.org/w/api.php"</span>,</span>
+<span id="cb19-27"><a></a>                 params<span class="op">=</span>rnd_params, headers<span class="op">=</span>headers)</span>
+<span id="cb19-28"><a></a><span class="cf">for</span> p <span class="kw">in</span> r.json()[<span class="st">"query"</span>][<span class="st">"random"</span>]:</span>
+<span id="cb19-29"><a></a>    <span class="bu">print</span>(<span class="ss">f"- </span><span class="sc">{</span>p[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="rest-api-v1概要取得" class="slide level2">
@@ -906,19 +917,21 @@ rkskmt
 <div class="slide-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb20-2"><a></a></span>
-<span id="cb20-3"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
-<span id="cb20-4"><a></a></span>
-<span id="cb20-5"><a></a><span class="co"># 記事概要（タイトル、要約、画像URL）</span></span>
-<span id="cb20-6"><a></a>response <span class="op">=</span> requests.get(</span>
-<span id="cb20-7"><a></a>    <span class="st">"https://ja.wikipedia.org/api/rest_v1/page/summary/桜"</span>,</span>
-<span id="cb20-8"><a></a>    headers<span class="op">=</span>headers</span>
-<span id="cb20-9"><a></a>)</span>
-<span id="cb20-10"><a></a>data <span class="op">=</span> response.json()</span>
-<span id="cb20-11"><a></a></span>
-<span id="cb20-12"><a></a><span class="bu">print</span>(<span class="ss">f"タイトル: </span><span class="sc">{</span>data[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb20-13"><a></a><span class="bu">print</span>(<span class="ss">f"概要: </span><span class="sc">{</span>data[<span class="st">'extract'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb20-14"><a></a><span class="cf">if</span> <span class="st">"thumbnail"</span> <span class="kw">in</span> data:</span>
-<span id="cb20-15"><a></a>    <span class="bu">print</span>(<span class="ss">f"画像: </span><span class="sc">{</span>data[<span class="st">'thumbnail'</span>][<span class="st">'source'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-3"><a></a>headers <span class="op">=</span> {</span>
+<span id="cb20-4"><a></a>    <span class="st">"User-Agent"</span>: <span class="st">"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"</span></span>
+<span id="cb20-5"><a></a>}</span>
+<span id="cb20-6"><a></a></span>
+<span id="cb20-7"><a></a><span class="co"># 記事概要（タイトル、要約、画像URL）</span></span>
+<span id="cb20-8"><a></a>response <span class="op">=</span> requests.get(</span>
+<span id="cb20-9"><a></a>    <span class="st">"https://ja.wikipedia.org/api/rest_v1/page/summary/桜"</span>,</span>
+<span id="cb20-10"><a></a>    headers<span class="op">=</span>headers</span>
+<span id="cb20-11"><a></a>)</span>
+<span id="cb20-12"><a></a>data <span class="op">=</span> response.json()</span>
+<span id="cb20-13"><a></a></span>
+<span id="cb20-14"><a></a><span class="bu">print</span>(<span class="ss">f"タイトル: </span><span class="sc">{</span>data[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb20-15"><a></a><span class="bu">print</span>(<span class="ss">f"概要: </span><span class="sc">{</span>data[<span class="st">'extract'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb20-16"><a></a><span class="cf">if</span> <span class="st">"thumbnail"</span> <span class="kw">in</span> data:</span>
+<span id="cb20-17"><a></a>    <span class="bu">print</span>(<span class="ss">f"画像: </span><span class="sc">{</span>data[<span class="st">'thumbnail'</span>][<span class="st">'source'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="aqs人気記事-編集統計" class="slide level2">
@@ -929,23 +942,25 @@ rkskmt
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb21-2"><a></a></span>
-<span id="cb21-3"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
-<span id="cb21-4"><a></a></span>
-<span id="cb21-5"><a></a><span class="co"># 人気記事ランキング</span></span>
-<span id="cb21-6"><a></a>url <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/"</span></span>
-<span id="cb21-7"><a></a>       <span class="st">"pageviews/top/ja.wikipedia/all-access/2024/03/15"</span>)</span>
-<span id="cb21-8"><a></a>r <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
-<span id="cb21-9"><a></a>articles <span class="op">=</span> r.json()[<span class="st">"items"</span>][<span class="dv">0</span>][<span class="st">"articles"</span>][:<span class="dv">5</span>]</span>
-<span id="cb21-10"><a></a><span class="cf">for</span> a <span class="kw">in</span> articles:</span>
-<span id="cb21-11"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>a[<span class="st">'rank'</span>]<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>a[<span class="st">'article'</span>]<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>a[<span class="st">'views'</span>]<span class="sc">:,}</span><span class="ss"> views)"</span>)</span>
-<span id="cb21-12"><a></a></span>
-<span id="cb21-13"><a></a><span class="co"># 編集統計</span></span>
-<span id="cb21-14"><a></a>url <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/"</span></span>
-<span id="cb21-15"><a></a>       <span class="st">"edits/aggregate/ja.wikipedia/all-editor-types/"</span></span>
-<span id="cb21-16"><a></a>       <span class="st">"all-page-types/monthly/20240101/20240331"</span>)</span>
-<span id="cb21-17"><a></a>r <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
-<span id="cb21-18"><a></a><span class="cf">for</span> item <span class="kw">in</span> r.json()[<span class="st">"items"</span>][<span class="dv">0</span>][<span class="st">"results"</span>]:</span>
-<span id="cb21-19"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>item[<span class="st">'timestamp'</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>item[<span class="st">'edits'</span>]<span class="sc">:,}</span><span class="ss"> edits"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-3"><a></a>headers <span class="op">=</span> {</span>
+<span id="cb21-4"><a></a>    <span class="st">"User-Agent"</span>: <span class="st">"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"</span></span>
+<span id="cb21-5"><a></a>}</span>
+<span id="cb21-6"><a></a></span>
+<span id="cb21-7"><a></a><span class="co"># 人気記事ランキング</span></span>
+<span id="cb21-8"><a></a>url <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/"</span></span>
+<span id="cb21-9"><a></a>       <span class="st">"pageviews/top/ja.wikipedia.org/all-access/2024/03/15"</span>)</span>
+<span id="cb21-10"><a></a>r <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
+<span id="cb21-11"><a></a>articles <span class="op">=</span> r.json()[<span class="st">"items"</span>][<span class="dv">0</span>][<span class="st">"articles"</span>][:<span class="dv">5</span>]</span>
+<span id="cb21-12"><a></a><span class="cf">for</span> a <span class="kw">in</span> articles:</span>
+<span id="cb21-13"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>a[<span class="st">'rank'</span>]<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>a[<span class="st">'article'</span>]<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>a[<span class="st">'views'</span>]<span class="sc">:,}</span><span class="ss"> views)"</span>)</span>
+<span id="cb21-14"><a></a></span>
+<span id="cb21-15"><a></a><span class="co"># 編集統計</span></span>
+<span id="cb21-16"><a></a>url <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/"</span></span>
+<span id="cb21-17"><a></a>       <span class="st">"edits/aggregate/ja.wikipedia.org/all-editor-types/"</span></span>
+<span id="cb21-18"><a></a>       <span class="st">"all-page-types/monthly/20240101/20240331"</span>)</span>
+<span id="cb21-19"><a></a>r <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
+<span id="cb21-20"><a></a><span class="cf">for</span> item <span class="kw">in</span> r.json()[<span class="st">"items"</span>][<span class="dv">0</span>][<span class="st">"results"</span>]:</span>
+<span id="cb21-21"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>item[<span class="st">'timestamp'</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>item[<span class="st">'edits'</span>]<span class="sc">:,}</span><span class="ss"> edits"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="section-6" class="slide level2 center break-slide" data-background-color="white">
@@ -954,52 +969,42 @@ rkskmt
 <p>統計データの活用</p>
 </div>
 </section>
-<section id="ページビュー分析の観点" class="slide level2">
-<h2>ページビュー分析の観点</h2>
+<section id="形を予想してから取りに行く" class="slide level2">
+<h2>形を予想してから取りに行く</h2>
 <div class="slide-body">
+<p>ページビューのグラフは、大きく2つの型に分かれる（<a href="./api-viz.html">APIデータを可視化する</a>で両方見た）。</p>
 <table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>観点</th>
-<th>説明</th>
+<th>型</th>
+<th>形</th>
+<th>きっかけ</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>粒度</strong></td>
-<td>時間別 / 日別 / 月別</td>
+<td><strong>スパイク型</strong></td>
+<td>1日だけの鋭い山</td>
+<td>行事の当日・事件・訃報・テレビ放送（七夕の7/7）</td>
 </tr>
 <tr class="even">
-<td><strong>アクセス種別</strong></td>
-<td>desktop / mobile-web / mobile-app</td>
-</tr>
-<tr class="odd">
-<td><strong>エージェント</strong></td>
-<td>user（人間）/ spider / automated</td>
+<td><strong>波型</strong></td>
+<td>ゆるやかな季節の波</td>
+<td>季節もの（富士山の夏の登山シーズン）</td>
 </tr>
 </tbody>
 </table>
-</div>
-</section>
-<section id="分析のアイデア" class="slide level2">
-<h2>分析のアイデア</h2>
-<div class="slide-body">
 <ul>
-<li><strong>季節性の検出</strong>
+<li>「桜」「クリスマス」「オリンピック」はどちらの型になりそう？
 <ul>
-<li>「桜」は春にアクセス増</li>
-<li>「クリスマス」「花火」などの季節語</li>
+<li><strong>予想してから</strong>、次の演習のコードで確かめる</li>
 </ul></li>
-<li><strong>ニュースイベントとの相関</strong>
-<ul>
-<li>事件・事故・訃報で急増</li>
-<li>テレビ放送やSNSバズ</li>
-</ul></li>
-<li><strong>言語版比較</strong>
-<ul>
-<li>同じ記事の日本語版 vs 英語版</li>
-<li>地域による関心の違い</li>
-</ul></li>
+<li>同じ記事の <strong>日本語版 vs 英語版</strong> で形を比べるのも面白い（地域で関心が違う）</li>
 </ul>
 </div>
 </section>
@@ -1032,7 +1037,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="9f60d4c1" class="cell" data-execution_count="1">
+<div id="5a7f4fb2" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="im">import</span> requests</span>
@@ -1040,23 +1045,27 @@ rkskmt
 <span id="cb22-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
 <span id="cb22-4"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb22-5"><a></a></span>
-<span id="cb22-6"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
-<span id="cb22-7"><a></a>article <span class="op">=</span> <span class="st">"サクラ"</span>  <span class="co"># 好きな記事に変更（リダイレクト元の「桜」だと別カウントになる点に注意）</span></span>
-<span id="cb22-8"><a></a>url <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"</span></span>
-<span id="cb22-9"><a></a>       <span class="ss">f"ja.wikipedia/all-access/user/</span><span class="sc">{</span>article<span class="sc">}</span><span class="ss">/daily/20250101/20251231"</span>)</span>
-<span id="cb22-10"><a></a></span>
-<span id="cb22-11"><a></a>data <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers).json()</span>
-<span id="cb22-12"><a></a>views <span class="op">=</span> np.array([item[<span class="st">"views"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
-<span id="cb22-13"><a></a>dates <span class="op">=</span> np.array([item[<span class="st">"timestamp"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
-<span id="cb22-14"><a></a></span>
-<span id="cb22-15"><a></a>max_i <span class="op">=</span> np.argmax(views)</span>
-<span id="cb22-16"><a></a><span class="bu">print</span>(<span class="ss">f"最大アクセス日: </span><span class="sc">{</span>dates[max_i]<span class="sc">}</span><span class="ss"> （</span><span class="sc">{</span>views[max_i]<span class="sc">}</span><span class="ss">回）"</span>)</span>
-<span id="cb22-17"><a></a></span>
-<span id="cb22-18"><a></a>plt.plot(views)</span>
-<span id="cb22-19"><a></a>plt.title(<span class="ss">f"「</span><span class="sc">{</span>article<span class="sc">}</span><span class="ss">」の閲覧数（2025年）"</span>)</span>
-<span id="cb22-20"><a></a>plt.xlabel(<span class="st">"日数"</span>)</span>
-<span id="cb22-21"><a></a>plt.ylabel(<span class="st">"閲覧数"</span>)</span>
-<span id="cb22-22"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-6"><a></a>headers <span class="op">=</span> {</span>
+<span id="cb22-7"><a></a>    <span class="st">"User-Agent"</span>: <span class="st">"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"</span></span>
+<span id="cb22-8"><a></a>}</span>
+<span id="cb22-9"><a></a>article <span class="op">=</span> <span class="st">"サクラ"</span>  <span class="co"># 好きな記事に変更（リダイレクト元の「桜」だと別カウントになる点に注意）</span></span>
+<span id="cb22-10"><a></a>url <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"</span></span>
+<span id="cb22-11"><a></a>       <span class="ss">f"ja.wikipedia.org/all-access/all-agents/</span><span class="sc">{</span>article<span class="sc">}</span><span class="ss">/daily/20250101/20251231"</span>)</span>
+<span id="cb22-12"><a></a></span>
+<span id="cb22-13"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
+<span id="cb22-14"><a></a>response.raise_for_status()</span>
+<span id="cb22-15"><a></a>data <span class="op">=</span> response.json()</span>
+<span id="cb22-16"><a></a>views <span class="op">=</span> np.array([item[<span class="st">"views"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
+<span id="cb22-17"><a></a>dates <span class="op">=</span> np.array([item[<span class="st">"timestamp"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
+<span id="cb22-18"><a></a></span>
+<span id="cb22-19"><a></a>max_i <span class="op">=</span> np.argmax(views)</span>
+<span id="cb22-20"><a></a><span class="bu">print</span>(<span class="ss">f"最大アクセス日: </span><span class="sc">{</span>dates[max_i]<span class="sc">}</span><span class="ss"> （</span><span class="sc">{</span>views[max_i]<span class="sc">}</span><span class="ss">回）"</span>)</span>
+<span id="cb22-21"><a></a></span>
+<span id="cb22-22"><a></a>plt.plot(views)</span>
+<span id="cb22-23"><a></a>plt.title(<span class="ss">f"「</span><span class="sc">{</span>article<span class="sc">}</span><span class="ss">」の閲覧数（2025年）"</span>)</span>
+<span id="cb22-24"><a></a>plt.xlabel(<span class="st">"日数"</span>)</span>
+<span id="cb22-25"><a></a>plt.ylabel(<span class="st">"閲覧数"</span>)</span>
+<span id="cb22-26"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -1071,23 +1080,25 @@ rkskmt
 <span id="cb23-2"><a></a><span class="co"># Category:日本の城</span></span>
 <span id="cb23-3"><a></a><span class="co"># Category:東京都の鉄道駅</span></span>
 <span id="cb23-4"><a></a><span class="co"># Category:日本のアニメ映画</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="91a372df" class="cell" data-execution_count="2">
+<div id="334829c8" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb24-2"><a></a></span>
-<span id="cb24-3"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
-<span id="cb24-4"><a></a>params <span class="op">=</span> {</span>
-<span id="cb24-5"><a></a>    <span class="st">"action"</span>: <span class="st">"query"</span>,</span>
-<span id="cb24-6"><a></a>    <span class="st">"list"</span>: <span class="st">"categorymembers"</span>,</span>
-<span id="cb24-7"><a></a>    <span class="st">"cmtitle"</span>: <span class="st">"Category:日本の城"</span>,  <span class="co"># 好きなカテゴリに変更</span></span>
-<span id="cb24-8"><a></a>    <span class="st">"cmlimit"</span>: <span class="dv">10</span>,</span>
-<span id="cb24-9"><a></a>    <span class="st">"format"</span>: <span class="st">"json"</span>,</span>
-<span id="cb24-10"><a></a>}</span>
-<span id="cb24-11"><a></a>r <span class="op">=</span> requests.get(<span class="st">"https://ja.wikipedia.org/w/api.php"</span>,</span>
-<span id="cb24-12"><a></a>                 params<span class="op">=</span>params, headers<span class="op">=</span>headers)</span>
-<span id="cb24-13"><a></a><span class="cf">for</span> m <span class="kw">in</span> r.json()[<span class="st">"query"</span>][<span class="st">"categorymembers"</span>]:</span>
-<span id="cb24-14"><a></a>    <span class="bu">print</span>(m[<span class="st">"title"</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb24-3"><a></a>headers <span class="op">=</span> {</span>
+<span id="cb24-4"><a></a>    <span class="st">"User-Agent"</span>: <span class="st">"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"</span></span>
+<span id="cb24-5"><a></a>}</span>
+<span id="cb24-6"><a></a>params <span class="op">=</span> {</span>
+<span id="cb24-7"><a></a>    <span class="st">"action"</span>: <span class="st">"query"</span>,</span>
+<span id="cb24-8"><a></a>    <span class="st">"list"</span>: <span class="st">"categorymembers"</span>,</span>
+<span id="cb24-9"><a></a>    <span class="st">"cmtitle"</span>: <span class="st">"Category:日本の城"</span>,  <span class="co"># 好きなカテゴリに変更</span></span>
+<span id="cb24-10"><a></a>    <span class="st">"cmlimit"</span>: <span class="dv">10</span>,</span>
+<span id="cb24-11"><a></a>    <span class="st">"format"</span>: <span class="st">"json"</span>,</span>
+<span id="cb24-12"><a></a>}</span>
+<span id="cb24-13"><a></a>r <span class="op">=</span> requests.get(<span class="st">"https://ja.wikipedia.org/w/api.php"</span>,</span>
+<span id="cb24-14"><a></a>                 params<span class="op">=</span>params, headers<span class="op">=</span>headers)</span>
+<span id="cb24-15"><a></a><span class="cf">for</span> m <span class="kw">in</span> r.json()[<span class="st">"query"</span>][<span class="st">"categorymembers"</span>]:</span>
+<span id="cb24-16"><a></a>    <span class="bu">print</span>(m[<span class="st">"title"</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -1098,24 +1109,26 @@ rkskmt
 <div class="prompt">
 <p>REST API v1 の <code>/page/summary/{title}</code> で好きな記事の <strong>タイトル・概要・サムネイルURL</strong> を取得して表示せよ。</p>
 </div>
-<div id="b1dd68cc" class="cell" data-execution_count="3">
+<div id="2c346b72" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb25-2"><a></a></span>
-<span id="cb25-3"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
-<span id="cb25-4"><a></a>title <span class="op">=</span> <span class="st">"東京タワー"</span>  <span class="co"># 好きな記事に変更</span></span>
-<span id="cb25-5"><a></a></span>
-<span id="cb25-6"><a></a>response <span class="op">=</span> requests.get(</span>
-<span id="cb25-7"><a></a>    <span class="ss">f"https://ja.wikipedia.org/api/rest_v1/page/summary/</span><span class="sc">{</span>title<span class="sc">}</span><span class="ss">"</span>,</span>
-<span id="cb25-8"><a></a>    headers<span class="op">=</span>headers</span>
-<span id="cb25-9"><a></a>)</span>
-<span id="cb25-10"><a></a>data <span class="op">=</span> response.json()</span>
-<span id="cb25-11"><a></a></span>
-<span id="cb25-12"><a></a><span class="bu">print</span>(<span class="ss">f"タイトル: </span><span class="sc">{</span>data[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb25-13"><a></a><span class="bu">print</span>(<span class="ss">f"概要: </span><span class="sc">{</span>data[<span class="st">'extract'</span>][:<span class="dv">100</span>]<span class="sc">}</span><span class="ss">..."</span>)</span>
-<span id="cb25-14"><a></a><span class="cf">if</span> <span class="st">"thumbnail"</span> <span class="kw">in</span> data:</span>
-<span id="cb25-15"><a></a>    <span class="bu">print</span>(<span class="ss">f"画像: </span><span class="sc">{</span>data[<span class="st">'thumbnail'</span>][<span class="st">'source'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb25-3"><a></a>headers <span class="op">=</span> {</span>
+<span id="cb25-4"><a></a>    <span class="st">"User-Agent"</span>: <span class="st">"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"</span></span>
+<span id="cb25-5"><a></a>}</span>
+<span id="cb25-6"><a></a>title <span class="op">=</span> <span class="st">"東京タワー"</span>  <span class="co"># 好きな記事に変更</span></span>
+<span id="cb25-7"><a></a></span>
+<span id="cb25-8"><a></a>response <span class="op">=</span> requests.get(</span>
+<span id="cb25-9"><a></a>    <span class="ss">f"https://ja.wikipedia.org/api/rest_v1/page/summary/</span><span class="sc">{</span>title<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb25-10"><a></a>    headers<span class="op">=</span>headers</span>
+<span id="cb25-11"><a></a>)</span>
+<span id="cb25-12"><a></a>data <span class="op">=</span> response.json()</span>
+<span id="cb25-13"><a></a></span>
+<span id="cb25-14"><a></a><span class="bu">print</span>(<span class="ss">f"タイトル: </span><span class="sc">{</span>data[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb25-15"><a></a><span class="bu">print</span>(<span class="ss">f"概要: </span><span class="sc">{</span>data[<span class="st">'extract'</span>][:<span class="dv">100</span>]<span class="sc">}</span><span class="ss">..."</span>)</span>
+<span id="cb25-16"><a></a><span class="cf">if</span> <span class="st">"thumbnail"</span> <span class="kw">in</span> data:</span>
+<span id="cb25-17"><a></a>    <span class="bu">print</span>(<span class="ss">f"画像: </span><span class="sc">{</span>data[<span class="st">'thumbnail'</span>][<span class="st">'source'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>

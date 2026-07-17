@@ -105,6 +105,27 @@
     margin: 12px;
     border-radius: 5px;
 }
+/* Editorial in-slide divider for code, examples, and short local sections.
+   h3 remains the strong blue divider. h4 uses one accent edge and a hairline
+   instead of a filled box, preserving hierarchy without looking like a button
+   or a stacked PowerPoint banner. */
+.reveal h4 {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    font-size: 1.9rem;
+    line-height: 1.2;
+    color: #24566a;
+    background: transparent;
+    border: 0;
+    border-left: 9px solid #107895;
+    border-bottom: 1px solid #c9d8de;
+    border-radius: 0;
+    padding: 0.08em 0.55em 0.18em;
+    margin: 1.05em 0 0.35em;
+}
 .reveal .slide-body-heading {
     font-style: normal !important;
     font-weight: bold !important;
@@ -463,10 +484,15 @@ table td:first-child {
 /* Search button (created by search-ui.js at top:54px) moved to the bottom-right
    so the top-right corner is reserved for the badge. */
 #search-btn { top: auto !important; bottom: 14px !important; }
+/* Quarto's footer spans the viewport by default. Shrink-wrap the navigation so
+   the invisible remainder cannot intercept controls on a scrolled slide. */
 .reveal > .footer {
   display: flex !important;
   align-items: center;
   justify-content: center;
+  left: 50%;
+  width: fit-content;
+  transform: translateX(-50%);
   padding: 0 16px;
   height: auto !important;
   overflow: visible !important;

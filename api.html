@@ -216,74 +216,73 @@ rkskmt
 </div>
 
 </section>
-<section id="section" class="slide level2 center break-slide" data-background-color="white">
-<h2></h2>
-<div class="break-title">
-<p>道具から材料へ</p>
+<section id="requests-ライブラリ" class="slide level2">
+<h2>requests ライブラリ</h2>
+<div class="slide-body">
+<p>PythonでWebにアクセスするための定番ライブラリ（<a href="https://requests.readthedocs.io/">公式ドキュメント</a>）。標準ライブラリではないため、最初にインストールする。</p>
+<h4 id="インストール">インストール</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>pip install requests</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<h4 id="コード冒頭でimport">コード冒頭でimport</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> requests</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="ここまでで揃った道具" class="slide level2">
-<h2>ここまでで揃った「道具」</h2>
+<section id="ブラウザは何を受け取っている" class="slide level2">
+<h2>ブラウザは何を受け取っている？</h2>
 <div class="slide-body">
-<ul>
-<li><strong>データを置く</strong> — 変数、コレクション（list / dict / tuple）</li>
-<li><strong>データを計算する</strong> — NumPy（ベクトル・行列・統計）</li>
-<li><strong>表で扱う</strong> — Pandas（read_csv、groupby）</li>
-<li><strong>データを見る</strong> — matplotlib（静止画）、Plotly（動くグラフ）</li>
-</ul>
-<div class="callout callout-tip callout-titled callout-style-default">
+<p>ブラウザで <a href="https://www.python.org/" class="uri">https://www.python.org/</a> を開くと、完成したWebページが見える。</p>
+<div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>ここからは「材料」</strong></p>
+<p><strong>クイズ</strong></p>
 </div>
 <div class="callout-content">
-<ul>
-<li>道具だけでは何もできない</li>
-<li><strong>入力データ</strong>（材料）を仕入れる必要がある</li>
-<li>一番手っ取り早い仕入れ先は <strong>Web</strong></li>
-</ul>
+<p>サーバから届くのは、完成した画面？ それとも画面を作るためのデータ？</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="本授業の最終目標" class="slide level2">
-<h2>本授業の最終目標</h2>
+<section id="同じurlをpythonで開く" class="slide level2">
+<h2>同じURLをPythonで開く</h2>
 <div class="slide-body">
-<ul>
-<li>なにかのデータ群を処理して</li>
-<li><strong>役に立つ、もしくは興味深い</strong> 出力やサービスのモックを作る</li>
-<li>道具は揃った — 今日はその第一歩として、<strong>材料 = 入力データ</strong> をWebから取ってくる</li>
-</ul>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>コード</th>
+<th>役割</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>requests.get(url)</code></td>
+<td>ブラウザと同じURLへアクセス</td>
+</tr>
+<tr class="even">
+<td><code>response.text</code></td>
+<td>応答の本文（body）を取得</td>
+</tr>
+</tbody>
+</table>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a>url <span class="op">=</span> <span class="st">"https://www.python.org/"</span></span>
+<span id="cb3-4"><a></a>response <span class="op">=</span> requests.get(url)</span>
+<span id="cb3-5"><a></a><span class="bu">print</span>(response.text)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb4-1"><a></a><span class="dt">&lt;!doctype</span> html<span class="dt">&gt;</span></span>
+<span id="cb4-2"><a></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">"en"</span><span class="dt">&gt;</span></span>
+<span id="cb4-3"><a></a>  ...</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="caption-note">
+<p><strong>受信したbody：</strong> 完成した画面ではなくHTMLテキスト。ブラウザはこれを読み、CSSや画像も追加取得して画面を組み立てる</p>
+</div>
 </div>
 </section>
-<section id="section-1" class="slide level2 center break-slide" data-background-color="white">
-<h2></h2>
-<div class="break-title">
-<p>Webへアクセス（requests）</p>
-</div>
-</section>
-<section id="requests-ライブラリ" class="slide level2">
-<h2>requests ライブラリ</h2>
+<section id="webアクセスの正体リクエストrequestとレスポンスresponse" class="slide level2">
+<h2>Webアクセスの正体：リクエスト（<span class="en">request</span>）とレスポンス（<span class="en">response</span>）</h2>
 <div class="slide-body">
-<ul>
-<li>PythonでWebにアクセスする <strong>定番ライブラリ</strong></li>
-<li>標準ライブラリではないので pip でインストール</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>pip install requests</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>コード冒頭でいつもどおり import</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> requests</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="webアクセスの正体リクエストとレスポンス" class="slide level2">
-<h2>Webアクセスの正体：リクエストとレスポンス</h2>
-<div class="slide-body">
-<div id="04bc3111" class="cell" data-execution_count="1">
+<div id="19ab0a66" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -292,253 +291,314 @@ rkskmt
 </div>
 </div>
 </div>
-<ul>
-<li>Webアクセスは、つねにこの <strong>1往復</strong></li>
-<li>この往復を <code>requests.get()</code> が1行でやってくれる</li>
-<li>返事は3点セット — <strong>状態（コード）・メタ情報（ヘッダー）・本文</strong> を順に見ていく</li>
-</ul>
-</div>
-</section>
-<section id="一番シンプルな使い方" class="slide level2">
-<h2>一番シンプルな使い方</h2>
-<div class="slide-body">
-<ul>
-<li><code>requests.get(url)</code> で <strong>指定URLにアクセス</strong></li>
-<li>戻り値の <code>response</code> を print すると <strong>状態コード</strong> が見える</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a>response <span class="op">=</span> requests.get(<span class="st">"https://www.python.org/"</span>)</span>
-<span id="cb3-4"><a></a><span class="bu">print</span>(response)   <span class="co"># &lt;Response [200]&gt;</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>200 とは？</strong></p>
+<p><strong>1つのURLにつき1往復</strong></p>
 </div>
 <div class="callout-content">
-<ul>
-<li>HTTPの応答コードで <strong>「正常に取得できた」</strong> の意味</li>
-<li>とりあえず <strong>「200か否か」</strong> だけ判断できればOK</li>
-</ul>
+<p><code>requests.get()</code>は、1つのURLとのrequest → responseを実行する。ブラウザはHTML・CSS・画像ごとにこの往復を繰り返す。responseは <strong>status code・headers・body</strong> の3点セット。</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="httpステータスコード普段あなたも見ている" class="slide level2">
-<h2>HTTPステータスコード（普段あなたも見ている）</h2>
+<section id="peek-simple-request" class="slide level2">
+<h2>サーバへ送信した情報</h2>
+<div class="slide-body">
+<p>実行後も <code>response.request</code> に、実際に送信したリクエストが残っている。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a>url <span class="op">=</span> <span class="st">"https://www.python.org/"</span></span>
+<span id="cb5-4"><a></a>response <span class="op">=</span> requests.get(url)</span>
+<span id="cb5-5"><a></a><span class="bu">print</span>(response.request.method)</span>
+<span id="cb5-6"><a></a><span class="bu">print</span>(response.request.url)</span>
+<span id="cb5-7"><a></a><span class="bu">print</span>(response.request.headers)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="caption-note">
+<p><strong>送信内容：</strong> methodは取得を表す <code>GET</code>、URLは送信先、request headersは <code>User-Agent</code> などの付加情報</p>
+</div>
+</div>
+</section>
+<section id="サーバから返ってきた情報" class="slide level2">
+<h2>サーバから返ってきた情報</h2>
+<div class="slide-body">
+<p>レスポンスは <strong>status code・response headers・body</strong> の3点セット。今度は3つとも表示して、body以外に何が届いているかを確認する。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb6-2"><a></a></span>
+<span id="cb6-3"><a></a>url <span class="op">=</span> <span class="st">"https://www.python.org/"</span></span>
+<span id="cb6-4"><a></a>response <span class="op">=</span> requests.get(url)</span>
+<span id="cb6-5"><a></a><span class="bu">print</span>(response.status_code)</span>
+<span id="cb6-6"><a></a><span class="bu">print</span>(response.headers)</span>
+<span id="cb6-7"><a></a><span class="bu">print</span>(response.text)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="caption-note">
+<p><strong>受信したheaders：</strong> <code>Content-Type: text/html</code> はbodyがHTMLであることを示す。ほかにも <code>Date</code>、<code>Server</code>、<code>Content-Length</code> などが届く</p>
+</div>
+</div>
+</section>
+<section id="httpステータスコード-404の正体" class="slide level2">
+<h2>HTTPステータスコード — 404の正体</h2>
 <div class="slide-body">
 <ul>
-<li>ネットを使っていれば <strong>すでに目にしている</strong> 番号たち — その意味を知る</li>
+<li>存在しないページを開くと「<strong>404 Not Found</strong>」と表示される
+<ul>
+<li>この404が <strong>status code</strong></li>
+</ul></li>
+<li>さっき <code>print(response.status_code)</code> が表示した <code>200</code> も、同じstatus code</li>
+<li>サーバは処理の結果を、毎回3桁の番号で応答に含めている</li>
 </ul>
 <table class="caption-top">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>コード</th>
 <th>意味</th>
-<th>どんなときに出るか（普段の遭遇）</th>
-<th>対処</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>200</strong></td>
-<td>OK</td>
-<td>正常に表示・取得できた（普段は気づかない）</td>
-<td>そのまま処理を続行</td>
+<td><strong>200 OK</strong></td>
+<td>正常に取得できた</td>
 </tr>
 <tr class="even">
-<td>403</td>
-<td>Forbidden</td>
-<td>アクセスを拒否された（権限がない・弾かれた）</td>
-<td>権限・ヘッダーを確認</td>
+<td><strong>403 Forbidden</strong></td>
+<td>アクセスを拒否した（権限・認証・ヘッダーなど）</td>
 </tr>
 <tr class="odd">
-<td>404</td>
-<td>Not Found</td>
-<td>リンク切れ・URLの打ち間違いで出る定番のページ</td>
-<td>URL・記事名を確認</td>
+<td><strong>404 Not Found</strong></td>
+<td>指定したものが見つからない</td>
 </tr>
 <tr class="even">
-<td>500</td>
-<td>Internal Server Error</td>
-<td><strong>サイト側が落ちている</strong>・不具合（自分は悪くない）</td>
-<td>時間をおいて再試行</td>
+<td><strong>500 Internal Server Error</strong></td>
+<td>サーバ側で処理に失敗した</td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li>全部覚える必要なし</li>
-<li><strong>200番台 = 成功、400番台 = リクエスト側のミス、500番台 = サーバ側のミス</strong> くらいの感覚</li>
-</ul>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<p><strong>「403」はこのあとすぐ出会う</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>次のWikipedia APIは <strong>User-Agentを付けないと弾かれる</strong> — それがこの403</li>
-<li>「アクセス拒否」はエラーではなく、<strong>サーバからの正しい返事</strong></li>
-</ul>
-</div>
-</div>
-</div>
-<div id="04637535" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="api_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="api_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="950" height="182"></a></p>
-</figure>
-</div>
-</div>
+</section>
+<section id="先頭の数字で5系統に分かれる" class="slide level2">
+<h2>先頭の数字で5系統に分かれる</h2>
+<div class="slide-body">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>系統</th>
+<th>意味</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1xx</strong></td>
+<td>処理の途中経過を伝える</td>
+<td>100 Continue</td>
+</tr>
+<tr class="even">
+<td><strong>2xx</strong></td>
+<td>リクエストに成功した</td>
+<td>200 OK</td>
+</tr>
+<tr class="odd">
+<td><strong>3xx</strong></td>
+<td>別のURLへ案内する</td>
+<td>301 Moved Permanently</td>
+</tr>
+<tr class="even">
+<td><strong>4xx</strong></td>
+<td>リクエストを受け付けられない</td>
+<td>403 Forbidden / 404 Not Found</td>
+</tr>
+<tr class="odd">
+<td><strong>5xx</strong></td>
+<td>サーバ側で処理に失敗した</td>
+<td>500 Internal Server Error</td>
+</tr>
+</tbody>
+</table>
+<div class="caption-note">
+<p><strong>読み方：</strong> 先頭1桁が大分類、残り2桁が詳しい理由</p>
 </div>
 </div>
 </section>
-<section id="response-の中身" class="slide level2">
-<h2>response の中身</h2>
+<section id="tweak-urlを変えて応答を比べる" class="slide level2 badge-practice scrollable">
+<h2><strong>Tweak</strong> URLを変えて応答を比べる</h2>
 <div class="slide-body">
+<ol type="1">
+<li><a href="#/peek-simple-request" class="peek">さっきのコード</a>の <code>url</code> を下表の値に変更</li>
+<li>実行するたびに、以下を <code>print</code> して確認</li>
+</ol>
 <ul>
-<li>取得した内容は <strong>プロパティ</strong> で取り出せる</li>
+<li><code>response.status_code</code></li>
+<li><code>response.headers["Content-Type"]</code></li>
 </ul>
+<div class="tweak">
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>プロパティ</th>
-<th>型</th>
-<th>説明</th>
+<th>取得するもの</th>
+<th><code>url</code></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>.status_code</code></td>
-<td><code>int</code></td>
-<td>状態コード（<code>200</code> = OK）</td>
+<td>Webページ</td>
+<td><code>"https://www.python.org/"</code></td>
 </tr>
 <tr class="even">
-<td><code>.text</code></td>
-<td><code>str</code></td>
-<td>本文を文字列で取得</td>
-</tr>
-<tr class="odd">
-<td><code>.json()</code></td>
-<td><code>dict</code></td>
-<td>本文がJSONなら dict として取得</td>
-</tr>
-<tr class="even">
-<td><code>.headers</code></td>
-<td>dict風</td>
-<td>ヘッダーを辞書風に取得</td>
+<td>タブのアイコン</td>
+<td><code>"https://www.python.org/favicon.ico"</code></td>
 </tr>
 </tbody>
 </table>
 </div>
-</section>
-<section id="text-で本文を取得" class="slide level2">
-<h2>.text で本文を取得</h2>
-<div class="slide-body">
-<ul>
-<li>HTMLがそのまま str で返ってくる</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a>response <span class="op">=</span> requests.get(<span class="st">"https://www.python.org/"</span>)</span>
-<span id="cb4-4"><a></a><span class="bu">print</span>(response.text)    <span class="co"># HTMLの中身</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="headers-でメタデータを取得" class="slide level2">
-<h2>.headers でメタデータを取得</h2>
-<div class="slide-body">
-<ul>
-<li>ヘッダーは <strong>本文と別についてくる情報</strong></li>
-<li>応答時刻、サーバ情報、本文のバイト長、コンテンツ種別 など</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a>response <span class="op">=</span> requests.get(<span class="st">"https://www.python.org/"</span>)</span>
-<span id="cb5-4"><a></a><span class="bu">print</span>(response.headers)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>例：ヘッダーの中身</strong></p>
+<p><strong>種明かし：status codeは同じ、Content-Typeだけ違う</strong></p>
 </div>
 <div class="callout-content">
-<ul>
-<li>全部覚える必要なし</li>
-<li>「本文の他にもこういう情報をやり取りしてるんだな」くらいでOK</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a></a>{</span>
-<span id="cb6-2"><a></a>  "Date": "Mon, 30 Jun 2025 05:00:33 GMT",</span>
-<span id="cb6-3"><a></a>  "Server": "Apache",</span>
-<span id="cb6-4"><a></a>  "Content-Length": "73439",</span>
-<span id="cb6-5"><a></a>  "Content-Type": "text/html",</span>
-<span id="cb6-6"><a></a>  ...</span>
-<span id="cb6-7"><a></a>}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>どちらも成功なのでstatus codeは <code>200</code>。一方、<code>Content-Type</code>はWebページが <code>text/html</code>、アイコンが <code>image/x-icon</code>。ブラウザは別々のURLへGETし、受け取った部品を組み合わせて画面を作る。</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="section-2" class="slide level2 center break-slide" data-background-color="white">
+<section id="失敗したまま先へ進まない" class="slide level2">
+<h2>失敗したまま先へ進まない</h2>
+<div class="slide-body">
+<ul>
+<li>404や500が返っても、プログラムは止まらない
+<ul>
+<li>エラー応答の入った <code>response</code> のまま、次の行へ進んでしまう</li>
+</ul></li>
+<li><code>response.raise_for_status()</code> は、status codeが400番台・500番台なら <strong>その場でエラーを出して止める</strong></li>
+<li>APIではbodyを処理する <strong>前</strong> に呼ぶのが定石</li>
+</ul>
+</div>
+</section>
+<section id="section" class="slide level2 center break-slide" data-background-color="white">
 <h2></h2>
 <div class="break-title">
-<p>Wikipedia の統計APIに触れる</p>
+<p>HTMLからJSONへ</p>
 </div>
 </section>
-<section id="wikipedia-pageviews-api" class="slide level2">
-<h2>Wikipedia Pageviews API</h2>
+<section id="wikimedia-analytics-api" class="slide level2">
+<h2>Wikimedia Analytics API</h2>
 <div class="slide-body">
-<ul>
-<li>Wikipedia財団が公開している <strong>ページビュー統計</strong> のAPI</li>
-<li>まずは「2025/6/27 にアクセス数が多かった記事ランキング」を取ってみる</li>
-</ul>
+<p>Wikimedia Foundationが公開している、ページビュー統計のAPI。</p>
+<h4 id="ブラウザで開く">ブラウザで開く</h4>
+<p><a href="https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia.org/all-access/2025/06/27" class="uri">https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia.org/all-access/2025/06/27</a></p>
+<p>2025年6月27日の記事ランキングが、画面ではなく <strong>JSONテキスト</strong> で表示される。</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>通信の仕組みは同じ</strong></p>
+</div>
+<div class="callout-content">
+<p>Python.orgもWikipedia APIも、URLへGETしてresponseを受け取る。違うのは、response bodyが <strong>HTMLかJSONか</strong>。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="peek-top-response" class="slide level2">
+<h2>PythonからAPIへアクセス</h2>
+<div class="slide-body">
+<p>status code・response headers・bodyを、さっきと同じ順番で確認する。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a>url <span class="op">=</span> <span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia/all-access/2025/06/27"</span></span>
-<span id="cb7-4"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
-<span id="cb7-5"><a></a></span>
-<span id="cb7-6"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
-<span id="cb7-7"><a></a>data <span class="op">=</span> response.json()</span>
-<span id="cb7-8"><a></a><span class="bu">print</span>(data, <span class="bu">type</span>(data))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-3"><a></a>url <span class="op">=</span> <span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia.org/all-access/2025/06/27"</span></span>
+<span id="cb7-4"><a></a>headers <span class="op">=</span> {</span>
+<span id="cb7-5"><a></a>    <span class="st">"User-Agent"</span>: <span class="st">"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"</span></span>
+<span id="cb7-6"><a></a>}</span>
+<span id="cb7-7"><a></a></span>
+<span id="cb7-8"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
+<span id="cb7-9"><a></a><span class="bu">print</span>(response.status_code)</span>
+<span id="cb7-10"><a></a><span class="bu">print</span>(response.headers)</span>
+<span id="cb7-11"><a></a><span class="bu">print</span>(response.text)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="ヘッダーを送る理由" class="slide level2">
-<h2>ヘッダーを送る理由</h2>
+<section id="user-agentでプログラムの情報を伝える" class="slide level2">
+<h2>User-Agentでプログラムの情報を伝える</h2>
 <div class="slide-body">
-<ul>
-<li>Wikipedia の API は <strong>User-Agent がないと403で拒否される</strong></li>
-<li>本来はChromeなどブラウザ名を入れる場所</li>
-<li>今回は教育目的を示す架空のもの <code>example.com/lesson</code> を使う</li>
-</ul>
+<p>Wikimedia APIでは、<strong>プログラム名・版・連絡先</strong>を含むUser-Agentをrequest headerに指定する（<a href="https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/documentation/access-policy.html">アクセス方針</a>）。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a></a>IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>ヘッダーなしだと</strong></p>
+<p><strong>requestsの既定値では情報が足りない</strong></p>
 </div>
 <div class="callout-content">
-<ul>
-<li>アクセス拒否でデータが取れない</li>
-<li>「公開API」でもヘッダー必須なケースは多い</li>
-<li>API使用前にドキュメントで <strong>必須ヘッダーを確認</strong> する習慣を</li>
-</ul>
+<p><code>headers=</code>を省略すると、requestsは <code>python-requests/...</code> を送る。これだけではプログラムや連絡先を特定できず、Wikimediaでは拒否されることがある。API使用前に<a href="https://foundation.wikimedia.org/wiki/Policy:Wikimedia_Foundation_User-Agent_Policy/en">User-Agent Policy</a>で <strong>必須ヘッダーと書式を確認</strong>する。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="webページとapiは同じhttp" class="slide level2">
+<h2>WebページとAPIは同じHTTP</h2>
+<div class="slide-body">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>Webページ</th>
+<th>API</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>リクエスト</td>
+<td>URLへGET</td>
+<td>URLへGET</td>
+</tr>
+<tr class="even">
+<td>status code</td>
+<td><code>200</code></td>
+<td><code>200</code></td>
+</tr>
+<tr class="odd">
+<td>Content-Type</td>
+<td><code>text/html</code></td>
+<td><code>application/json</code></td>
+</tr>
+<tr class="even">
+<td>body</td>
+<td>HTMLテキスト</td>
+<td>JSONテキスト</td>
+</tr>
+<tr class="odd">
+<td>受け取ったあと</td>
+<td>ブラウザが画面を描く</td>
+<td>Pythonがデータとして処理</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>APIの正体</strong></p>
+</div>
+<div class="callout-content">
+<p>APIは、プログラムが扱いやすいbodyを返すURL。通信方法はWebページと変わらない。</p>
 </div>
 </div>
 </div>
@@ -547,109 +607,72 @@ rkskmt
 <section id="json-とは" class="slide level2">
 <h2>JSON とは</h2>
 <div class="slide-body">
-<ul>
-<li><strong>JavaScript Object Notation</strong> の略</li>
-<li>「ある文法に従って書かれた <strong>ただのテキスト</strong>」</li>
-<li>CSVも仲間（カンマ区切りの構造化テキスト）</li>
-<li><strong>Webの世界ではデファクトスタンダード</strong></li>
-<li>まず名前を覚える</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="bu">print</span>(response.text)   <span class="co"># 中身は生のJSONテキスト</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a></a>{"items":[{"project":"ja.wikipedia","access":"all-access",</span>
-<span id="cb9-2"><a></a>           "year":"2025","month":"06", ...}]}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li><code>.json()</code> は <strong>このテキストを dict に変換</strong> するメソッド</li>
-</ul>
-<div id="27c0f593" class="cell" data-execution_count="3">
+<p><span class="en"><strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation</span> の略。CSVと同じ構造化テキストの一種で、Webではデータ交換の標準形式として使われる。</p>
+<h4 id="受け取ったbody">受け取ったbody</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="bu">print</span>(response.text)   <span class="co"># 中身は生のJSONテキスト</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a></a>{"items":[{"project":"ja.wikipedia","access":"all-access",</span>
+<span id="cb10-2"><a></a>           "year":"2025","month":"06", ...}]}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<h4 id="pythonの値に変換">Pythonの値に変換</h4>
+<p><code>.json()</code> はJSONテキストをPythonの値へ変換する。このAPIでは一番外側が <code>dict</code>。</p>
+<div id="3b9cda6e" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="api_files/figure-revealjs/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="api_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="1094" height="317"></a></p>
+<p><a href="api_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="api_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="1094" height="317"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="余談手動で-json-dict" class="slide level2">
-<h2>（余談）手動で JSON → dict</h2>
+<section id="peek-top-api" class="slide level2">
+<h2>JSONをPythonの値に変換する</h2>
 <div class="slide-body">
-<ul>
-<li>標準ライブラリ <code>json</code> で同じことができる</li>
-<li>pip 不要</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb10-2"><a></a><span class="im">import</span> json</span>
-<span id="cb10-3"><a></a></span>
-<span id="cb10-4"><a></a>url <span class="op">=</span> <span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia/all-access/2025/06/27"</span></span>
-<span id="cb10-5"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
-<span id="cb10-6"><a></a></span>
-<span id="cb10-7"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
-<span id="cb10-8"><a></a>res_dict <span class="op">=</span> json.loads(response.text)</span>
-<span id="cb10-9"><a></a><span class="bu">print</span>(<span class="bu">type</span>(res_dict), res_dict)</span>
-<span id="cb10-10"><a></a><span class="co"># &lt;class 'dict'&gt; {'items': [{'project': 'ja.wikipedia', ...</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>普段は <code>.json()</code> でOK</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li><code>requests</code> が内部でやってくれているだけ</li>
-<li>「中で何をしているか」を知っておくと <strong>エラー時に強い</strong></li>
-</ul>
-</div>
-</div>
+<p><code>raise_for_status()</code> で失敗していないことを確かめてから、<code>.json()</code> でJSONテキストをdict / listの入れ子へ変換する。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb11-2"><a></a></span>
+<span id="cb11-3"><a></a>url <span class="op">=</span> <span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia.org/all-access/2025/06/27"</span></span>
+<span id="cb11-4"><a></a>headers <span class="op">=</span> {</span>
+<span id="cb11-5"><a></a>    <span class="st">"User-Agent"</span>: <span class="st">"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"</span></span>
+<span id="cb11-6"><a></a>}</span>
+<span id="cb11-7"><a></a></span>
+<span id="cb11-8"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
+<span id="cb11-9"><a></a>response.raise_for_status()</span>
+<span id="cb11-10"><a></a>data <span class="op">=</span> response.json()</span>
+<span id="cb11-11"><a></a></span>
+<span id="cb11-12"><a></a>articles <span class="op">=</span> data[<span class="st">"items"</span>][<span class="dv">0</span>][<span class="st">"articles"</span>]</span>
+<span id="cb11-13"><a></a><span class="cf">for</span> article <span class="kw">in</span> articles[:<span class="dv">5</span>]:</span>
+<span id="cb11-14"><a></a>    <span class="bu">print</span>(article[<span class="st">"rank"</span>], article[<span class="st">"article"</span>], article[<span class="st">"views"</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="caption-note">
+<p><strong>実行結果：</strong> <code>data</code> はdictとlistの入れ子。ループでは上位5件の記事名と閲覧数が表示される</p>
 </div>
 </div>
 </section>
-<section id="section-3" class="slide level2 center break-slide" data-background-color="white">
-<h2></h2>
-<div class="break-title">
-<p>APIとエンドポイントの構造</p>
-</div>
-</section>
-<section id="api-と-エンドポイント" class="slide level2">
-<h2>API と エンドポイント</h2>
+<section id="apiの窓口をurlで指定する" class="slide level2">
+<h2>APIの窓口をURLで指定する</h2>
 <div class="slide-body">
-<ul>
-<li><strong>API</strong>（<strong>A</strong>pplication <strong>P</strong>rogramming <strong>I</strong>nterface）
-<ul>
-<li>データ取得などのために公開された「窓口」</li>
-</ul></li>
-<li><strong>エンドポイント</strong>
-<ul>
-<li>API の中の、具体的な処理を呼ぶ <strong>個別のURL</strong></li>
-</ul></li>
-<li>例
-<ul>
-<li><code>https://wikimedia.org/api/</code> 配下が API</li>
-<li><code>/metrics/pageviews/top/...</code> がエンドポイントのひとつ</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="urlにパラメータが埋め込まれている" class="slide level2">
-<h2>URLにパラメータが埋め込まれている</h2>
-<div class="slide-body">
-<ul>
-<li>エンドポイントの一部に <strong>値を直接埋め込む</strong> タイプ</li>
-<li>今回のAPIだと…</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a></a>https://wikimedia.org/api/rest_v1/metrics/pageviews/top/</span>
-<span id="cb11-2"><a></a>    {プロジェクト} / {アクセス方法} / {日付}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="1e3950b6" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="api_files/figure-revealjs/cell-5-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="api_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="1190" height="221"></a></p>
-</figure>
-</div>
-</div>
-</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>用語</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>API</strong></td>
+<td>データ取得などのために公開された仕組み</td>
+</tr>
+<tr class="even">
+<td><strong>エンドポイント</strong></td>
+<td>APIの中の、具体的な処理を呼ぶ個別のURL</td>
+</tr>
+</tbody>
+</table>
+<h4 id="wikimediaのランキング用エンドポイント">Wikimediaのランキング用エンドポイント</h4>
+<p>条件をURLに埋め込む。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a></a>https://wikimedia.org/api/rest_v1/metrics/pageviews/top/</span>
+<span id="cb12-2"><a></a>    {プロジェクト} / {アクセス方法} / {日付}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="caption-top">
 <colgroup>
 <col style="width: 25%">
@@ -668,9 +691,9 @@ rkskmt
 <tbody>
 <tr class="odd">
 <td>プロジェクト</td>
-<td>ja.wikipedia</td>
+<td>ja.wikipedia.org</td>
 <td>日本語Wikipedia</td>
-<td>en.wikipedia, commons.wikimedia など</td>
+<td>en.wikipedia.org, commons.wikimedia.org など</td>
 </tr>
 <tr class="even">
 <td>アクセス方法</td>
@@ -692,38 +715,68 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>覚える必要はない</strong></p>
+<p><strong>URL構造はAPIごとに異なる</strong></p>
 </div>
 <div class="callout-content">
-<ul>
-<li>API ごとにURL構造はバラバラ</li>
-<li>使うときに <strong>公式ドキュメントを見る</strong> のが正解</li>
-<li><a href="https://wikimedia.org/api/rest_v1/">Wikimedia REST API ドキュメント</a></li>
-</ul>
+<p>利用時は<a href="https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/">公式ドキュメント</a>で、エンドポイントとパラメータを確認する。</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="section-4" class="slide level2 center break-slide" data-background-color="white">
-<h2></h2>
-<div class="break-title">
-<p>個別ページのアクセス推移を取る</p>
-</div>
-</section>
-<section id="別のエンドポイントper-article" class="slide level2">
-<h2>別のエンドポイント：per-article</h2>
+<section id="tweak-ランキングの条件を変える" class="slide level2 badge-practice">
+<h2><strong>Tweak</strong> ランキングの条件を変える</h2>
 <div class="slide-body">
-<ul>
-<li>特定の記事の、任意の期間のアクセス数（日単位 / 月単位）を返す</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a></a>https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/</span>
-<span id="cb12-2"><a></a>    {project} / {access} / {agent} / {article} / {granularity} / {start} / {end}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p><a href="#/peek-top-api" class="peek">ランキング取得コード</a>を1か所ずつ変えて実行する。</p>
+<div class="tweak">
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>やりたいこと</th>
+<th>変える場所</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2025年の自分の誕生日（月日）のランキング</td>
+<td>URL末尾の日付</td>
+</tr>
+<tr class="even">
+<td>英語版Wikipediaのランキング</td>
+<td><code>ja.wikipedia.org</code> → <code>en.wikipedia.org</code></td>
+</tr>
+<tr class="odd">
+<td>上位10件を表示</td>
+<td><code>articles[:5]</code> → <code>articles[:10]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>予想してから試す</strong></p>
+</div>
+<div class="callout-content">
+<p>誕生日当日の1位は、事件・行事・人物のどれだと思う？</p>
+</div>
+</div>
+</div>
 </div>
 </section>
-<section id="per-article-のパラメータ" class="slide level2">
-<h2>per-article のパラメータ</h2>
+<section id="別の窓口記事ごとの閲覧数" class="slide level2">
+<h2>別の窓口：記事ごとの閲覧数</h2>
 <div class="slide-body">
+<p>特定の記事について、任意の期間のアクセス数を日単位または月単位で返す（<a href="https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/examples/page-metrics.html">公式例</a>）。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a></a>https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/</span>
+<span id="cb13-2"><a></a>    {project} / {access} / {agent} / {article} / {granularity} / {start} / {end}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -734,7 +787,7 @@ rkskmt
 <tbody>
 <tr class="odd">
 <td><strong>project</strong></td>
-<td>ja.wikipedia など</td>
+<td>ja.wikipedia.org など</td>
 </tr>
 <tr class="even">
 <td><strong>access</strong></td>
@@ -742,7 +795,7 @@ rkskmt
 </tr>
 <tr class="odd">
 <td><strong>agent</strong></td>
-<td>all-agents / <strong>user</strong> / spider / automated</td>
+<td><strong>all-agents</strong> / spider / automated</td>
 </tr>
 <tr class="even">
 <td><strong>article</strong></td>
@@ -763,55 +816,113 @@ rkskmt
 <section id="peek-tanabata" class="slide level2">
 <h2>「七夕」のページビューを取得する</h2>
 <div class="slide-body">
-<ul>
-<li>記事「七夕」の <strong>2025年まるごと1年分</strong> の日別アクセス数を取り、統計量を出す</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb13-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb13-3"><a></a></span>
-<span id="cb13-4"><a></a>url <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"</span></span>
-<span id="cb13-5"><a></a>       <span class="st">"ja.wikipedia/all-access/user/"</span></span>
-<span id="cb13-6"><a></a>       <span class="st">"七夕/daily/20250101/20251231"</span>)</span>
-<span id="cb13-7"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
-<span id="cb13-8"><a></a></span>
-<span id="cb13-9"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
-<span id="cb13-10"><a></a>data <span class="op">=</span> response.json()</span>
-<span id="cb13-11"><a></a></span>
-<span id="cb13-12"><a></a><span class="co"># data["items"] は list of dict</span></span>
-<span id="cb13-13"><a></a>views <span class="op">=</span> np.array([item[<span class="st">"views"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
-<span id="cb13-14"><a></a></span>
-<span id="cb13-15"><a></a><span class="bu">print</span>(<span class="ss">f"日数:   </span><span class="sc">{</span><span class="bu">len</span>(views)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-16"><a></a><span class="bu">print</span>(<span class="ss">f"最大:   </span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">回"</span>)</span>
-<span id="cb13-17"><a></a><span class="bu">print</span>(<span class="ss">f"最小:   </span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss">回"</span>)</span>
-<span id="cb13-18"><a></a><span class="bu">print</span>(<span class="ss">f"平均:   </span><span class="sc">{</span>views<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">回"</span>)</span>
-<span id="cb13-19"><a></a><span class="bu">print</span>(<span class="ss">f"中央値: </span><span class="sc">{</span>np<span class="sc">.</span>median(views)<span class="sc">:.0f}</span><span class="ss">回"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="911e119f" class="cell" data-execution_count="5">
+<p>記事「七夕」の <strong>2025年まるごと1年分</strong> の日別アクセス数を取得し、統計量を出す。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb14-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb14-3"><a></a></span>
+<span id="cb14-4"><a></a>url <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"</span></span>
+<span id="cb14-5"><a></a>       <span class="st">"ja.wikipedia.org/all-access/all-agents/"</span></span>
+<span id="cb14-6"><a></a>       <span class="st">"七夕/daily/20250101/20251231"</span>)</span>
+<span id="cb14-7"><a></a>headers <span class="op">=</span> {</span>
+<span id="cb14-8"><a></a>    <span class="st">"User-Agent"</span>: <span class="st">"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"</span></span>
+<span id="cb14-9"><a></a>}</span>
+<span id="cb14-10"><a></a></span>
+<span id="cb14-11"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
+<span id="cb14-12"><a></a>response.raise_for_status()</span>
+<span id="cb14-13"><a></a>data <span class="op">=</span> response.json()</span>
+<span id="cb14-14"><a></a></span>
+<span id="cb14-15"><a></a><span class="co"># data["items"] は list of dict</span></span>
+<span id="cb14-16"><a></a>views <span class="op">=</span> np.array([item[<span class="st">"views"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
+<span id="cb14-17"><a></a></span>
+<span id="cb14-18"><a></a><span class="bu">print</span>(<span class="ss">f"日数:   </span><span class="sc">{</span><span class="bu">len</span>(views)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb14-19"><a></a><span class="bu">print</span>(<span class="ss">f"最大:   </span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">回"</span>)</span>
+<span id="cb14-20"><a></a><span class="bu">print</span>(<span class="ss">f"最小:   </span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss">回"</span>)</span>
+<span id="cb14-21"><a></a><span class="bu">print</span>(<span class="ss">f"平均:   </span><span class="sc">{</span>views<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">回"</span>)</span>
+<span id="cb14-22"><a></a><span class="bu">print</span>(<span class="ss">f"中央値: </span><span class="sc">{</span>np<span class="sc">.</span>median(views)<span class="sc">:.0f}</span><span class="ss">回"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="8f4d5698" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>日数:   365
-最大:   47656回
-最小:   58回
-平均:   467.6回
-中央値: 154回</code></pre>
+最大:   52168回
+最小:   88回
+平均:   539.1回
+中央値: 187回</code></pre>
 </div>
 </div>
-<ul>
-<li><strong>最大が中央値の約300倍</strong>。平均と中央値も大きくズレている</li>
-<li><a href="./visualize.html">データの可視化</a>でやった「<a href="./visualize.html#peek-income" class="peek">右に引っ張られた平均</a>」の匂い — <strong>なにかがおかしい</strong></li>
-</ul>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>最大は中央値の約280倍</strong></p>
+</div>
+<div class="callout-content">
+<p>突出した1日に平均が引っ張られ、中央値との差が大きく開いた。</p>
+</div>
+</div>
+</div>
 </div>
 </section>
-<section id="過去の資料が一気に効いてくる" class="slide level2">
-<h2>過去の資料が一気に効いてくる</h2>
+<section id="tweak-どの端末で読まれた" class="slide level2 badge-practice">
+<h2><strong>Tweak</strong> どの端末で読まれた？</h2>
+<div class="slide-body">
+<p><a href="#/peek-tanabata" class="peek">七夕の取得コード</a>の <code>all-access</code> だけ変えて実行する。</p>
+<div class="tweak">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>取得するアクセス</th>
+<th>URLに入れる値</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PCブラウザ</td>
+<td><code>desktop</code></td>
+</tr>
+<tr class="even">
+<td>スマートフォンのブラウザ</td>
+<td><code>mobile-web</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>予想してから試す</strong></p>
+</div>
+<div class="callout-content">
+<p>平均閲覧数はどちらが大きい？ 差は何倍くらいになる？</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="まとめ" class="slide level2">
+<h2>まとめ</h2>
 <div class="slide-body">
 <ul>
-<li><code>data["items"]</code> は <strong>list of dict</strong>（<a href="./dict.html">dictあらためて</a>でやった形）</li>
-<li>内包表記でフィールド抽出（<a href="./list.html">listあらためて</a>）</li>
-<li><code>np.array()</code> で <code>ndarray</code> 化 → <code>.max()</code> / <code>.mean()</code> / <code>np.median()</code> で統計量（<a href="./numpy.html">NumPy入門</a>）</li>
-<li>新しいのは <code>requests.get()</code> の1往復だけ — <strong>あとは全部、手持ちの道具</strong></li>
+<li>ブラウザの裏側もPythonも、HTTPの <strong>request → response</strong> の1往復</li>
+<li>responseは <strong>status code・headers・body</strong> の3点セット</li>
+<li>WebページのbodyはHTML、APIのbodyはJSON — 通信の仕組みは同じ</li>
+<li>JSONをdict / listへ変換し、必要な値を取り出す</li>
+<li>APIの個別URLが <strong>エンドポイント</strong>、URL内の条件が <strong>パラメータ</strong></li>
 </ul>
+<h4 id="参照">参照</h4>
+<p><a href="#/peek-requests-cheatsheet" class="peek">requests早見表</a></p>
 </div>
 </section>
-<section id="requests早見表" class="slide level2">
+<section id="section-1" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>付録</p>
+</div>
+</section>
+<section id="peek-requests-cheatsheet" class="slide level2">
 <h2>requests早見表</h2>
 <div class="slide-body">
 <table class="caption-top">
@@ -831,129 +942,50 @@ rkskmt
 <td><code>response.status_code</code>（200 = OK）</td>
 </tr>
 <tr class="odd">
-<td>本文(str)</td>
-<td><code>response.text</code></td>
+<td>失敗なら停止</td>
+<td><code>response.raise_for_status()</code></td>
 </tr>
 <tr class="even">
-<td>JSON → dict</td>
-<td><code>response.json()</code></td>
+<td>送ったヘッダー</td>
+<td><code>response.request.headers</code></td>
 </tr>
 <tr class="odd">
-<td>ヘッダー</td>
+<td>返ったヘッダー</td>
 <td><code>response.headers</code></td>
+</tr>
+<tr class="even">
+<td>body（str）</td>
+<td><code>response.text</code></td>
+</tr>
+<tr class="odd">
+<td>JSON → Python</td>
+<td><code>response.json()</code></td>
 </tr>
 <tr class="even">
 <td>User-Agent</td>
 <td><code>headers={"User-Agent": "..."}</code></td>
 </tr>
-<tr class="odd">
-<td>値の集計</td>
-<td><code>np.array([d["views"] for d in items])</code> → <code>.mean()</code> など</td>
-</tr>
 </tbody>
 </table>
-<ul>
-<li>Web から取った dict は今まで通り <code>for</code> / <code>items()</code> / <code>np.array()</code> で処理できる</li>
-</ul>
 </div>
 </section>
-<section id="section-5" class="slide level2 center break-slide" data-background-color="white">
-<h2></h2>
-<div class="break-title">
-<p>演習</p>
-</div>
-</section>
-<section id="演習desktop-と-mobile-web-の比較" class="slide level2 badge-practice scrollable">
-<h2>演習：desktop と mobile-web の比較</h2>
+<section id="user-agentは自己申告の名札" class="slide level2">
+<h2>User-Agentは「自己申告の名札」</h2>
 <div class="slide-body">
-<div class="prompt">
-<p>「七夕」の2025年1年分のページビューを <code>desktop</code> と <code>mobile-web</code> の両方で取得し、<strong>どちらでよく読まれているか</strong>を統計量で比較せよ。</p>
-</div>
-<ol type="1">
-<li><code>access</code> を <code>desktop</code> / <code>mobile-web</code> に切り替えて、同じ期間（2025/01/01 – 2025/12/31）で <strong>APIを2回呼ぶ</strong></li>
-<li>それぞれの <strong>最大・最小・平均・分散</strong> を表示</li>
-<li>書いたコードはファイルごと保存しておく — <a href="./api-viz.html">APIデータを可視化する</a>で、このデータをグラフにして比較する</li>
-</ol>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>ヒント</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>取得結果を <code>views_desktop</code> と <code>views_mobile_web</code> に分けて入れる</li>
-<li>同じ <code>headers</code> を使い回せる</li>
-<li>関数化すると重複が消えてスッキリ</li>
-</ul>
-</div>
-</div>
-</div>
-<div id="9198fd19" class="cell" data-execution_count="6">
-<details class="code-fold">
-<summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb15-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb15-3"><a></a></span>
-<span id="cb15-4"><a></a>headers <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"example.com/lesson"</span>}</span>
-<span id="cb15-5"><a></a></span>
-<span id="cb15-6"><a></a><span class="kw">def</span> fetch_views(access):</span>
-<span id="cb15-7"><a></a>    url <span class="op">=</span> (<span class="st">"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"</span></span>
-<span id="cb15-8"><a></a>           <span class="ss">f"ja.wikipedia/</span><span class="sc">{</span>access<span class="sc">}</span><span class="ss">/user/七夕/daily/20250101/20251231"</span>)</span>
-<span id="cb15-9"><a></a>    data <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers).json()</span>
-<span id="cb15-10"><a></a>    <span class="cf">return</span> np.array([item[<span class="st">"views"</span>] <span class="cf">for</span> item <span class="kw">in</span> data[<span class="st">"items"</span>]])</span>
-<span id="cb15-11"><a></a></span>
-<span id="cb15-12"><a></a>views_desktop    <span class="op">=</span> fetch_views(<span class="st">"desktop"</span>)</span>
-<span id="cb15-13"><a></a>views_mobile_web <span class="op">=</span> fetch_views(<span class="st">"mobile-web"</span>)</span>
-<span id="cb15-14"><a></a></span>
-<span id="cb15-15"><a></a><span class="cf">for</span> name, views <span class="kw">in</span> [(<span class="st">"desktop"</span>, views_desktop), (<span class="st">"mobile-web"</span>, views_mobile_web)]:</span>
-<span id="cb15-16"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: 最大=</span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss"> 最小=</span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss"> "</span></span>
-<span id="cb15-17"><a></a>          <span class="ss">f"平均=</span><span class="sc">{</span>views<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss"> 分散=</span><span class="sc">{</span>views<span class="sc">.</span>var()<span class="sc">:.1f}</span><span class="ss">"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<p>User-Agentは、アクセス元ソフトウェアがHTTPリクエストで送る <strong>自己申告の名札</strong>。互換性のための古い名前や固定値が多く、OS・CPU・端末名が実際の環境と一致するとは限らない。</p>
+<h4 id="chromeの例">Chromeの例</h4>
+<p>見やすいように改行しているが、実際のヘッダー値は1行。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a></a>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)</span>
+<span id="cb16-2"><a></a>AppleWebKit/537.36 (KHTML, like Gecko)</span>
+<span id="cb16-3"><a></a>Chrome/&lt;major&gt;.0.0.0 Safari/537.36</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="caption-note">
+<p><strong>この文字列の読み方：</strong> <a href="https://www.chromium.org/updates/ua-reduction/">ChromeのUser-Agent削減</a>と歴史的な互換性のため、古いOS・CPU名や複数ブラウザ名が共存する。正確な端末情報ではなく、ソフトウェアが名乗る識別子。</p>
 </div>
 </div>
 </section>
-<section id="まとめ" class="slide level2">
-<h2>まとめ</h2>
+<section id="ブラウザとpythonは名乗り方が違う" class="slide level2">
+<h2>ブラウザとPythonは名乗り方が違う</h2>
 <div class="slide-body">
-<ul>
-<li><strong>道具→材料</strong> へ：今回は Web から材料を仕入れた</li>
-<li><code>requests</code> で <strong>アクセス</strong>、<code>.text / .json() / .headers</code> で <strong>取り出す</strong></li>
-<li><strong>API / エンドポイント / パラメータ</strong> の概念</li>
-<li>Wikipedia Pageviews API で <strong>実データを取得</strong>、NumPy で <strong>集計</strong></li>
-</ul>
-</div>
-</section>
-<section id="次回予告" class="slide level2">
-<h2>次回予告</h2>
-<div class="slide-body">
-<ul>
-<li>「七夕」の閲覧数、<strong>最大が中央値の300倍</strong> — なにかがおかしい</li>
-<li>統計量だけでは、これ以上なにも分からない</li>
-<li>次回、大原則の出番：<span class="hl">Always plot your data first.</span>
-<ul>
-<li>描けば、山の <strong>正体</strong> と <strong>日付</strong> が分かる</li>
-<li>そして<a href="./visualize.html#peek-mystery" class="peek">データの可視化の冒頭で見せた <strong>謎の図</strong></a>の正体も明かされる</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="section-6" class="slide level2 center break-slide" data-background-color="white">
-<h2></h2>
-<div class="break-title">
-<p>付録</p>
-</div>
-</section>
-<section id="実際のブラウザのuser-agent" class="slide level2">
-<h2>実際のブラウザのUser-Agent</h2>
-<div class="slide-body">
-<ul>
-<li>普段ブラウザでWebを見るときも <strong>裏でヘッダーが飛んでいる</strong></li>
-<li>サーバはこの値を見て <strong>PC / スマホ / OS / ブラウザ</strong> を判別している</li>
-<li>レスポンシブやリダイレクトの分岐に使われる</li>
-</ul>
 <table class="caption-top">
 <colgroup>
 <col style="width: 50%">
@@ -961,40 +993,41 @@ rkskmt
 </colgroup>
 <thead>
 <tr class="header">
-<th>ブラウザ</th>
+<th>アクセス元</th>
 <th>User-Agent</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Chrome (Windows)</td>
-<td><code>Mozilla/5.0 (Windows NT 10.0; Win64; x64) ... Chrome/119.0.0.0 Safari/537.36</code></td>
+<td>ブラウザ</td>
+<td>ブラウザが自動で送る</td>
 </tr>
 <tr class="even">
-<td>Chrome (Mac)</td>
-<td><code>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) ... Chrome/119.0.0.0 Safari/537.36</code></td>
+<td>requestsの既定値</td>
+<td><code>python-requests/バージョン</code> — 用途や連絡先は分からない</td>
 </tr>
 <tr class="odd">
-<td>iOS Safari (iPhone)</td>
-<td><code>Mozilla/5.0 (iPhone; CPU iPhone OS 17_1 like Mac OS X) ... Mobile/15E148 Safari/604.1</code></td>
-</tr>
-<tr class="even">
-<td>iOS Safari (iPad)</td>
-<td><code>Mozilla/5.0 (iPad; CPU OS 17_1 like Mac OS X) ... Mobile/15E148 Safari/604.1</code></td>
+<td>自分で名乗るUser-Agent</td>
+<td><code>IP3200-lecture/1.0 (連絡先URL)</code> — 用途と連絡先が分かる</td>
 </tr>
 </tbody>
 </table>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-</section>
-<section id="参考リンク" class="slide level2">
-<h2>参考リンク</h2>
-<div class="slide-body">
+<p><strong>User-Agentを判断材料にしない</strong></p>
+</div>
+<div class="callout-content">
 <ul>
-<li><a href="https://requests.readthedocs.io/">requests Documentation</a></li>
-<li><a href="https://wikimedia.org/api/rest_v1/">Wikimedia REST API</a></li>
-<li><a href="https://www.mediawiki.org/wiki/Wikimedia_REST_API">Pageviews API ドキュメント</a></li>
-<li><a href="https://developer.mozilla.org/ja/docs/Web/HTTP/Status">HTTPステータスコード一覧 (MDN)</a></li>
+<li>APIスクリプト：ブラウザの値をコピーせず、規約に従ってアプリ名・版・連絡先を示す</li>
+<li>Webページ：端末を決めつけず、レスポンシブデザインや機能検出を使う</li>
 </ul>
+</div>
+</div>
+</div>
 
 
 <div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
