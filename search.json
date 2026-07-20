@@ -494,7 +494,7 @@
     "href": "tokyo-api.html#東京都の人口150年前は",
     "title": "東京都オープンデータAPI",
     "section": "東京都の人口、150年前は？",
-    "text": "東京都の人口、150年前は？\n\n\n2023年の東京都の人口は 14,099,993人（約1410万人）\nでは 明治5年（1872年）、東京には何人いた？\n\n\n\n\n\n\n\nクイズ\n\n\n今の半分？ 3分の1？ 10分の1？ — 予想してから、めくる\n\n\n\n\n\n答え：859,345人\n\n今の約 16分の1\n\nしかも1872年から 毎年の値が152年分、誰でも取れる形で公開されている\n出どころの 東京都オープンデータAPI から、この152年分をPythonで取り寄せる"
+    "text": "東京都の人口、150年前は？\n\n\n2023年の東京都の人口は 14,099,993人（約1410万人）\nでは 明治5年（1872年）、東京には何人いた？\n\n\n\n\n\n\n\nここで質問\n\n\n今の半分？ 3分の1？ 10分の1？ — 予想してから、めくる\n\n\n\n\n\n答え：859,345人\n\n今の約 16分の1\n\nしかも1872年から 毎年の値が152年分、誰でも取れる形で公開されている\n出どころの 東京都オープンデータAPI から、この152年分をPythonで取り寄せる"
   },
   {
     "objectID": "tokyo-api.html#section",
@@ -627,21 +627,21 @@
     "href": "tokyo-api.html#どんな形で増えた",
     "title": "東京都オープンデータAPI",
     "section": "どんな形で増えた？",
-    "text": "どんな形で増えた？\n\n\n最小 859,345人（1872年）から最大 14,099,993人（2023年）まで、152個の値が並んでいる\nデータの可視化の大原則 — Always plot your data first.\n\n\n\n\n\n\n\nクイズ\n\n\n150年分の折れ線は、どんな形？ まっすぐ右肩上がり？ 途中に事件はある？ — 手で描いてみてから、めくる\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n右肩上がり — ただし 一直線ではない\n\n1960年代までの急増、1970〜90年代の横ばい、2000年代の再増加\n\nそして 深い谷が1つ\n\n\n\n\nコードを見る\nimport requests\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nparams = {\"limit\": 200}\nbody = {\"column\": [\"西暦（年次）\", \"東京都／人口\"]}\n\nresponse = requests.post(url, params=params, headers=headers, json=body)\nresponse.raise_for_status()\ndata = response.json()\n\nyears      = np.array([r[\"西暦（年次）\"] for r in data[\"hits\"]])\npopulation = np.array([r[\"東京都／人口\"] for r in data[\"hits\"]])\n\nplt.plot(years, population / 1e6)\nplt.title(\"Tokyo Population 1872-2023\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Population (million)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()"
+    "text": "どんな形で増えた？\n\n\n最小 859,345人（1872年）から最大 14,099,993人（2023年）まで、152個の値が並んでいる\nデータの可視化の大原則 — Always plot your data first.\n\n\n\n\n\n\n\nここで質問\n\n\n150年分の折れ線は、どんな形？ まっすぐ右肩上がり？ 途中に事件はある？ — 手で描いてみてから、めくる\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n右肩上がり — ただし 一直線ではない\n\n1960年代までの急増、1970〜90年代の横ばい、2000年代の再増加\n\nそして 深い谷が1つ\n\n\n\n\nコードを見る\nimport requests\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nparams = {\"limit\": 200}\nbody = {\"column\": [\"西暦（年次）\", \"東京都／人口\"]}\n\nresponse = requests.post(url, params=params, headers=headers, json=body)\nresponse.raise_for_status()\ndata = response.json()\n\nyears      = np.array([r[\"西暦（年次）\"] for r in data[\"hits\"]])\npopulation = np.array([r[\"東京都／人口\"] for r in data[\"hits\"]])\n\nplt.plot(years, population / 1e6)\nplt.title(\"Tokyo Population 1872-2023\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Population (million)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()"
   },
   {
     "objectID": "tokyo-api.html#谷の正体",
     "href": "tokyo-api.html#谷の正体",
     "title": "東京都オープンデータAPI",
     "section": "谷の正体",
-    "text": "谷の正体\n\n\n谷の底は 1945年：7,271,001人（1944年）→ 3,488,284人\n\n1年で 378万人減、ほぼ半減\n\n\n\n\n\n\n\n\nクイズ\n\n\n1945年の東京で何が起きた？ いなくなった人は、いつ戻った？\n\n\n\n\n\n空襲と疎開 — 戦争末期、東京から人が離れた\n戻りも速い：1946年に +69万人、1947年に +82万人。5年後の1950年には600万人台まで回復\n歴史の教科書の出来事が、数列にそのまま刻まれている"
+    "text": "谷の正体\n\n\n谷の底は 1945年：7,271,001人（1944年）→ 3,488,284人\n\n1年で 378万人減、ほぼ半減\n\n\n\n\n\n\n\n\nここで質問\n\n\n1945年の東京で何が起きた？ いなくなった人は、いつ戻った？\n\n\n\n\n\n空襲と疎開 — 戦争末期、東京から人が離れた\n戻りも速い：1946年に +69万人、1947年に +82万人。5年後の1950年には600万人台まで回復\n歴史の教科書の出来事が、数列にそのまま刻まれている"
   },
   {
     "objectID": "tokyo-api.html#足元を拡大する",
     "href": "tokyo-api.html#足元を拡大する",
     "title": "東京都オープンデータAPI",
     "section": "足元を拡大する",
-    "text": "足元を拡大する\n\n\n全体の図では、直近10年は「なだらかな右肩上がり」にしか見えない\n「七夕」の8月29日を見つけたときと同じ手 — 軸の範囲を絞って足元を拡大 する\nさっきのグラフに plt.xlim(2018, 2024) と plt.ylim(13.85, 14.15) を足すだけ\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nクイズ\n\n\n2021年だけ人口が減っている（−36,107人）。何があった年？\n\n\n\n\n\nコロナ禍 — テレワークと転出で、人口が 1995年以来26年ぶり に減った\nズームしないと見えない発見がある（伝統的七夕のときと同じ）"
+    "text": "足元を拡大する\n\n\n全体の図では、直近10年は「なだらかな右肩上がり」にしか見えない\n「七夕」の8月29日を見つけたときと同じ手 — 軸の範囲を絞って足元を拡大 する\nさっきのグラフに plt.xlim(2018, 2024) と plt.ylim(13.85, 14.15) を足すだけ\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nここで質問\n\n\n2021年だけ人口が減っている（−36,107人）。何があった年？\n\n\n\n\n\nコロナ禍 — テレワークと転出で、人口が 1995年以来26年ぶり に減った\nズームしないと見えない発見がある（伝統的七夕のときと同じ）"
   },
   {
     "objectID": "tokyo-api.html#実データは汚れている",
@@ -697,7 +697,7 @@
     "href": "tokyo-api.html#演習東京一極集中はいつから",
     "title": "東京都オープンデータAPI",
     "section": "演習：東京一極集中はいつから？",
-    "text": "演習：東京一極集中はいつから？\n\n\n人口データの 「東京都／対全国比(%)」 を全期間ぶん取得して折れ線グラフに描き、日本の人口の 1割 を最初に超えた年を答えよ。\n\n\nbody の column で「西暦（年次）」と「東京都／対全国比(%)」の2列を取得\n値は文字列で、全国値が未公表の年は \"\"（空文字）が入っている。\"…\" と \"\" の行を除いてから float() で変換 — 増減率のときと同じ下ごしらえ\n折れ線グラフに描き、10%を最初に超えた年を確認\n\n\n\n解答例を見る\nimport requests\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nparams = {\"limit\": 200}\nbody = {\"column\": [\"西暦（年次）\", \"東京都／対全国比(%)\"]}\n\nresponse = requests.post(url, params=params, headers=headers, json=body)\nresponse.raise_for_status()\ndata = response.json()\n\n# 全国値が未公表の年（\"\"）と欠損（\"…\"）を除いて数値化\nrows = [r for r in data[\"hits\"] if r[\"東京都／対全国比(%)\"] not in (\"…\", \"\")]\nyears  = [r[\"西暦（年次）\"] for r in rows]\nshares = [float(r[\"東京都／対全国比(%)\"]) for r in rows]\n\nover10 = [y for y, s in zip(years, shares) if s &gt;= 10]\nprint(f\"最初に10%を超えた年: {over10[0]}年\")\n\nplt.plot(years, shares)\nplt.title(\"Tokyo Share of Japan Population\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Share (%)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n種明かし：一極集中は戦前に始まっていた\n\n\n\n1872年は 2.5%（40人に1人）\n最初に10%を超えたのは 1940年\n\n戦前にすでに「1割が東京」だった\n\n1945年に 4.8% へ急落（人口の谷と同じ理由）し、1959年に再び10%へ\n2022年は 11.2%\n\n日本人の 約9人に1人 が東京都民"
+    "text": "演習：東京一極集中はいつから？\n\n\n人口データの 「東京都／対全国比(%)」 を全期間ぶん取得して折れ線グラフに描き、日本の人口の 1割 を最初に超えた年を答えよ。\n\n\nbody の column で「西暦（年次）」と「東京都／対全国比(%)」の2列を取得\n値は文字列で、全国値が未公表の年は \"\"（空文字）が入っている。\"…\" と \"\" の行を除いてから float() で変換 — 増減率のときと同じ下ごしらえ\n折れ線グラフに描き、10%を最初に超えた年を確認\n\n\n\n解答例を見る\nimport requests\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nparams = {\"limit\": 200}\nbody = {\"column\": [\"西暦（年次）\", \"東京都／対全国比(%)\"]}\n\nresponse = requests.post(url, params=params, headers=headers, json=body)\nresponse.raise_for_status()\ndata = response.json()\n\n# 全国値が未公表の年（\"\"）と欠損（\"…\"）を除いて数値化\nrows = [r for r in data[\"hits\"] if r[\"東京都／対全国比(%)\"] not in (\"…\", \"\")]\nyears  = [r[\"西暦（年次）\"] for r in rows]\nshares = [float(r[\"東京都／対全国比(%)\"]) for r in rows]\n\nover10 = [y for y, s in zip(years, shares) if s &gt;= 10]\nprint(f\"最初に10%を超えた年: {over10[0]}年\")\n\nplt.plot(years, shares)\nplt.title(\"Tokyo Share of Japan Population\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Share (%)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n一極集中は戦前に始まっていた\n\n\n\n1872年は 2.5%（40人に1人）\n最初に10%を超えたのは 1940年\n\n戦前にすでに「1割が東京」だった\n\n1945年に 4.8% へ急落（人口の谷と同じ理由）し、1959年に再び10%へ\n2022年は 11.2%\n\n日本人の 約9人に1人 が東京都民"
   },
   {
     "objectID": "tokyo-api.html#演習2つのデータセットを比較",
@@ -735,11 +735,11 @@
     "text": "「今あるもの」から発想する"
   },
   {
-    "objectID": "scamper.html#クイズ回転寿司はどこから来た",
-    "href": "scamper.html#クイズ回転寿司はどこから来た",
+    "objectID": "scamper.html#質問回転寿司はどこから来た",
+    "href": "scamper.html#質問回転寿司はどこから来た",
     "title": "オズボーンのチェックリスト・SCAMPER",
-    "section": "クイズ：回転寿司はどこから来た？",
-    "text": "クイズ：回転寿司はどこから来た？\n\n\n写真: Alberto Carrasco Casado, CC BY 2.0, via Wikimedia Commons\n\n\n\n1958年、大阪の寿司店主・白石義明 が考案\n寿司とはまったく関係ない ある工場 を見学して思いついた——どこ？\n\n\n\n\n\n\n\n\n答え：ビール工場\n\n\n瓶ビールを運ぶ ベルトコンベア を見て「寿司を回せばいい」—— 他分野の仕組みを取り入れる、のちに言う 応用（Adapt） の教科書的な例"
+    "section": "質問：回転寿司はどこから来た？",
+    "text": "質問：回転寿司はどこから来た？\n\n\n写真: Alberto Carrasco Casado, CC BY 2.0, via Wikimedia Commons\n\n\n\n1958年、大阪の寿司店主・白石義明 が考案\n寿司とはまったく関係ない ある工場 を見学して思いついた——どこ？\n\n\n\n\n\n\n\n\n答え：ビール工場\n\n\n瓶ビールを運ぶ ベルトコンベア を見て「寿司を回せばいい」—— 他分野の仕組みを取り入れる、のちに言う 応用（Adapt） の教科書的な例"
   },
   {
     "objectID": "scamper.html#ゼロから考えない",
@@ -770,11 +770,11 @@
     "text": "チェックリスト9項目（後半）\n\n\n\n\n\n\n\n\n\n\nNo\n視点\n質問\n例\n\n\n\n\n6\n代用（Substitute）\n別の素材・手段で代えられないか？\nプラスチックの代わりに紙ストロー\n\n\n7\n再配置（Rearrange）\n並び・順番・配置を変えたら？\n工場ラインの配置換えで効率アップ\n\n\n8\n逆転（Reverse）\n逆にしたらどうなる？\n「買う」→「借りる」のサブスク\n\n\n9\n結合（Combine）\n組み合わせたら新しくならないか？\n時計 + スマホ = スマートウォッチ"
   },
   {
-    "objectID": "scamper.html#クイズウォークマンはどの視点",
-    "href": "scamper.html#クイズウォークマンはどの視点",
+    "objectID": "scamper.html#質問ウォークマンはどの視点",
+    "href": "scamper.html#質問ウォークマンはどの視点",
     "title": "オズボーンのチェックリスト・SCAMPER",
-    "section": "クイズ：ウォークマンはどの視点？",
-    "text": "クイズ：ウォークマンはどの視点？\n\n\n写真: Anna Gerdén, CC BY-SA 3.0, via Wikimedia Commons\n\n\n\n1979年、ソニーの初代ウォークマン TPS-L2\nベースは記者用の録音機「プレスマン」——9項目のどれで生まれた？\n\n\n\n\n\n\n\n\n答え：縮小 — というより「省いた」\n\n\n録音機から 録音機能とスピーカーを削除、再生とヘッドホンだけ残した。 「省く」はチェックリストでは「縮小」の一部だが、あまりに強力なので——次のSCAMPERで 独立項目に昇格 する"
+    "section": "質問：ウォークマンはどの視点？",
+    "text": "質問：ウォークマンはどの視点？\n\n\n写真: Anna Gerdén, CC BY-SA 3.0, via Wikimedia Commons\n\n\n\n1979年、ソニーの初代ウォークマン TPS-L2\nベースは記者用の録音機「プレスマン」——9項目のどれで生まれた？\n\n\n\n\n\n\n\n\n答え：縮小 — というより「省いた」\n\n\n録音機から 録音機能とスピーカーを削除、再生とヘッドホンだけ残した。 「省く」はチェックリストでは「縮小」の一部だが、あまりに強力なので——次のSCAMPERで 独立項目に昇格 する"
   },
   {
     "objectID": "scamper.html#scamper法",
@@ -791,11 +791,11 @@
     "text": "9項目からどう変わったか\n\n\n\n\n\n\n\n\n変更\n内容\n\n\n\n\n統合\n縮小 と 変更 → 「M（Modify / Magnify）」に吸収。拡大も縮小も「修正」の一種として扱う\n\n\n統合\n逆転 と 再配置 → 「R（Reverse / Rearrange）」に一本化\n\n\n昇格\n省く（Eliminate） が独立項目に。ウォークマンも QRコードメニューも「E」の産物\n\n\n\n\n中身は同じ発想の道具 — 7文字で暗記できる ようにしたのが SCAMPER の価値\n\n迷ったら「スキャンパー」と唱えて S→C→A→M→P→E→R の順に質問する"
   },
   {
-    "objectID": "scamper.html#クイズどの文字から生まれた",
-    "href": "scamper.html#クイズどの文字から生まれた",
+    "objectID": "scamper.html#質問どの文字から生まれた",
+    "href": "scamper.html#質問どの文字から生まれた",
     "title": "オズボーンのチェックリスト・SCAMPER",
-    "section": "クイズ：どの文字から生まれた？",
-    "text": "クイズ：どの文字から生まれた？\n\n\n身の回りの「当たり前」も、SCAMPER で読み解ける — それぞれどの文字？\n\n紙ストロー\nカメラ付きスマホ\nセルフレジ\n飲食店のQRコード注文\n\n\n\n\n\n\n\n\n\n答え\n\n\n紙ストロー = S（素材を代用） ／ カメラ付きスマホ = C（結合） ／ セルフレジ = R（店員と客の逆転） ／ QRコード注文 = E（紙メニューと注文係を省く）"
+    "section": "質問：どの文字から生まれた？",
+    "text": "質問：どの文字から生まれた？\n\n\n身の回りの「当たり前」も、SCAMPER で読み解ける — それぞれどの文字？\n\n紙ストロー\nカメラ付きスマホ\nセルフレジ\n飲食店のQRコード注文\n\n\n\n\n\n\n\n\n\n答え\n\n\n紙ストロー = S（素材を代用） ／ カメラ付きスマホ = C（結合） ／ セルフレジ = R（店員と客の逆転） ／ QRコード注文 = E（紙メニューと注文係を省く）"
   },
   {
     "objectID": "scamper.html#演習-scamper-7連発",
@@ -1064,11 +1064,11 @@
     "text": "今回のゴール\n\n\nDataFrame / Series / index / columns を理解する\n集計結果を matplotlibで可視化 できるようにする"
   },
   {
-    "objectID": "pandas.html#クイズ田中さんの数学iの点は",
-    "href": "pandas.html#クイズ田中さんの数学iの点は",
+    "objectID": "pandas.html#質問田中さんの数学iの点は",
+    "href": "pandas.html#質問田中さんの数学iの点は",
     "title": "Pandas入門",
-    "section": "クイズ：田中さんの数学Iの点は？",
-    "text": "クイズ：田中さんの数学Iの点は？\n\n\n2人の生徒（田中・佐藤）の3科目（現代文・数学I・英会話）の点数がある\n\nimport numpy as np\n\narr = np.array([\n    [80, 70, 90],\n    [65, 75, 85],\n])\n\n「田中さんの数学Iの点」を取り出すコードを書け\n\n\n\n\n\n\n\n\n答え：arr[0, 1] …… で合ってる？自信ある？\n\n\n\n田中さんが0行目、数学Iが1列目という情報は 配列のどこにも書いていない\n取り出した 70 も、画面に出るのはただの数字 — 何の70点か分からない\n計算はNumPyで十分。困るのは 意味（名前）の管理\n表に 名前 をつけたもの、それが今日の DataFrame"
+    "section": "質問：田中さんの数学Iの点は？",
+    "text": "質問：田中さんの数学Iの点は？\n\n\n2人の生徒（田中・佐藤）の3科目（現代文・数学I・英会話）の点数がある\n\nimport numpy as np\n\narr = np.array([\n    [80, 70, 90],\n    [65, 75, 85],\n])\n\n「田中さんの数学Iの点」を取り出すコードを書け\n\n\n\n\n\n\n\n\n答え：arr[0, 1] …… で合ってる？自信ある？\n\n\n\n田中さんが0行目、数学Iが1列目という情報は 配列のどこにも書いていない\n取り出した 70 も、画面に出るのはただの数字 — 何の70点か分からない\n計算はNumPyで十分。困るのは 意味（名前）の管理\n表に 名前 をつけたもの、それが今日の DataFrame"
   },
   {
     "objectID": "pandas.html#dataframeとは",
@@ -1841,193 +1841,242 @@
     "text": "発散から収束へ：全体の流れ\n\n\n\n量を出す（発散）→ 見える化（マップ）→ 構造化（KJ法）ときて、最後は どれをやるか決める\n\n次は ペイオフマトリクス で 優先順位 を付ける"
   },
   {
-    "objectID": "api.html#requests-ライブラリ",
-    "href": "api.html#requests-ライブラリ",
-    "title": "APIでデータ取得",
-    "section": "requests ライブラリ",
-    "text": "requests ライブラリ\n\nPythonでWebにアクセスするための定番ライブラリ（公式ドキュメント）。標準ライブラリではないため、最初にインストールする。\nインストール\npip install requests\nコード冒頭でimport\nimport requests"
+    "objectID": "api.html#webブラウザで受け取っている情報",
+    "href": "api.html#webブラウザで受け取っている情報",
+    "title": "はじめてのAPI",
+    "section": "Webブラウザで受け取っている情報",
+    "text": "Webブラウザで受け取っている情報\n\n普段、Webブラウザで URL（例：https://xxx.ac.jp/）を入力してEnterキーを押すと、デザインされたWebページ、つまり、ただのテキストではなく、画像など含めてデザインされたもの（レンダリングされたページ）が見えますよね？\nここで質問\nWebブラウザにサーバから送信されるのは、以下のどちら？\n\nレンダリング済みの画面？\nレンダリングに必要なデータ群？"
   },
   {
-    "objectID": "api.html#ブラウザは何を受け取っている",
-    "href": "api.html#ブラウザは何を受け取っている",
-    "title": "APIでデータ取得",
-    "section": "ブラウザは何を受け取っている？",
-    "text": "ブラウザは何を受け取っている？\n\nブラウザで https://www.python.org/ を開くと、完成したWebページが見える。\n\n\n\n\n\n\nクイズ\n\n\nサーバから届くのは、完成した画面？ それとも画面を作るためのデータ？"
+    "objectID": "api.html#ハイパーリンク",
+    "href": "api.html#ハイパーリンク",
+    "title": "はじめてのAPI",
+    "section": "ハイパーリンク",
+    "text": "ハイパーリンク\nコンピュータもインターネットもまだない1945年に、その後の世界を方向づける論文が発表される\n\nヴァネバー・ブッシュ（Vannevar Bush）の「As We May Think」\n\n戦時中に米国の科学研究全体を束ねた人物が、終戦の年に発表した未来予想\n\n問題意識：記録が増えすぎて、保存はできるが、整理・検索が難しくなった\nその問題に対する解として構想した機械が memex\n\nあらゆる資料を人の連想のように資料から資料へたどれるマシン（ただし構想どまり）\n\n文章同士に紐帯（リンク）をつける構想は、その後ハイパーテキスト（Hypertext）として成立\n\nこのハイパーテキストのリンクがハイパーリンク（Hyperlink）\n\n\n\n\n出典: Life 1945年9月10日号・Wikimedia Commons（パブリックドメイン）\n\n\n\nLife誌掲載版の扉絵。額の小型カメラで見たものをそのまま記録する「未来の科学者」——考える仕事を機械に手伝わせる、という特集の顔\n\n\n\n\n\n\n\nハイパーリンクと名付けられたのは1960年代\n\n\nテッド・ネルソン（Ted Nelson）が、memexの構想を発展させて名づけた。"
   },
   {
-    "objectID": "api.html#同じurlをpythonで開く",
-    "href": "api.html#同じurlをpythonで開く",
-    "title": "APIでデータ取得",
-    "section": "同じURLをPythonで開く",
-    "text": "同じURLをPythonで開く\n\n\n\n\nコード\n役割\n\n\n\n\nrequests.get(url)\nブラウザと同じURLへアクセス\n\n\nresponse.text\n応答の本文（body）を取得\n\n\n\nimport requests\n\nurl = \"https://www.python.org/\"\nresponse = requests.get(url)\nprint(response.text)\n&lt;!doctype html&gt;\n&lt;html lang=\"en\"&gt;\n  ...\n\n受信したbody： 完成した画面ではなくHTMLテキスト。ブラウザはこれを読み、CSSや画像も追加取得して画面を組み立てる"
+    "objectID": "api.html#ハイパーリンクは疎結合",
+    "href": "api.html#ハイパーリンクは疎結合",
+    "title": "はじめてのAPI",
+    "section": "ハイパーリンクは疎結合",
+    "text": "ハイパーリンクは疎結合\n\n\nHyperlinkは、文書の中に他の文書のアドレス（URLなど）だけを書く\n相手の文書を取り込まないし、相手の許可も要らない\n\n有向グラフ（directed graph）を作るだけ\n\nこのゆるいつなぎ方を疎結合（loose coupling）と呼ぶ\n壊れにくく、誰にも断らずに広げられるため、後日World Wide Webとして爆発的に普及"
   },
   {
-    "objectID": "api.html#webアクセスの正体リクエストrequestとレスポンスresponse",
-    "href": "api.html#webアクセスの正体リクエストrequestとレスポンスresponse",
-    "title": "APIでデータ取得",
-    "section": "Webアクセスの正体：リクエスト（request）とレスポンス（response）",
-    "text": "Webアクセスの正体：リクエスト（request）とレスポンス（response）\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n1つのURLにつき1往復\n\n\nrequests.get()は、1つのURLとのrequest → responseを実行する。ブラウザはHTML・CSS・画像ごとにこの往復を繰り返す。responseは status code・headers・body の3点セット。"
+    "objectID": "api.html#htmlhypertextの１つの実装例",
+    "href": "api.html#htmlhypertextの１つの実装例",
+    "title": "はじめてのAPI",
+    "section": "HTML：Hypertextの１つの実装例",
+    "text": "HTML：Hypertextの１つの実装例\n\n\nハイパーテキストは概念であって実装と仕様は未決定であった\n具体的にHypertext、Hyperlinkを実装したのがティム・バーナーズ＝リー（Tim Berners-Lee）\n\nタグ（&lt;...&gt;）でテキストに参照を書き込むHTML（HyperText Markup Language）を提案\n1991年にHypertextのセットであるWWWとともに公開した。\n\n\n&lt;h1&gt; HTMLの例 &lt;/h1&gt;\n&lt;p&gt;ハイパーリンクはこんな感じで書く&lt;a href=\"next.html\"&gt;次のページ&lt;/a&gt;へ&lt;/p&gt;\n&lt;img src=\"logo.png\"&gt;\n\nhref・src に書いたURLがハイパーリンク。&lt;a&gt; は読者がたどる参照、&lt;img&gt; は画像をその場に埋め込む参照\n\n\n\n\n\n\n\nHypertext ≠ HTML\n\n\n\n例えば、PDFの中のリンクも、Markdownの [表示テキスト](URL) も、Hypertextの別実装\nもっと便利な実装を作ることは可能"
+  },
+  {
+    "objectID": "api.html#webブラウザ-htmlを閲覧するためのアプリ",
+    "href": "api.html#webブラウザ-htmlを閲覧するためのアプリ",
+    "title": "はじめてのAPI",
+    "section": "Webブラウザ – HTMLを閲覧するためのアプリ",
+    "text": "Webブラウザ – HTMLを閲覧するためのアプリ\n\nWebブラウザの仕事（大きく２つ）\n\nHTMLを取得する\n\nローカルにあるHTMLファイルを読み込む\nネット（WWW）にあるHTMLを通信して取得（ローカルにキャッシュとして保存）\n\n読み込んだHTMLを解釈して、その命令通りに画面に描画する\n\n画面に描画することをレンダリング（rendering）という\n\n\n\n\n\n\n\n\n「Webブラウザ＝インターネット」ではない\n\n\n\nローカルに保存した .html ファイルは、ネットにつながなくても開ける\nメモ帳で前のページの3行を page.html と保存し、ダブルクリックすれば確かめられる"
+  },
+  {
+    "objectID": "api.html#http-htmlを通信で取り寄せる取り決め",
+    "href": "api.html#http-htmlを通信で取り寄せる取り決め",
+    "title": "はじめてのAPI",
+    "section": "HTTP – HTMLを通信で取り寄せる取り決め",
+    "text": "HTTP – HTMLを通信で取り寄せる取り決め\n\nローカルのHTMLファイルはダブルクリックで開ける。では、どこかのマシン（サーバ）にあるHTMLはどうやって申請すれば取り寄せられる？この取り寄せのための窓口との申請フォームや窓口の応答マニュアル「こう頼まれたら、こう返す」という手順の取り決めがプロトコル（protocol）\n\nHTTP（HyperText Transfer Protocol）は、その名のとおり、ハイパーテキストを転送するためのプロトコル\nURLの先頭にある http://・https:// は「HTTPで取り寄せますよ」という宣言\n\ns は通信を暗号化する版"
+  },
+  {
+    "objectID": "api.html#webサーバ-httpでhtmlを戻すサーバ用アプリ",
+    "href": "api.html#webサーバ-httpでhtmlを戻すサーバ用アプリ",
+    "title": "はじめてのAPI",
+    "section": "Webサーバ – HTTPでHTMLを戻すサーバ用アプリ",
+    "text": "Webサーバ – HTTPでHTMLを戻すサーバ用アプリ\n\n\nネットにはHTML（とその付属ファイル）を沢山保存していて、HTTPで申請されると送り返してくれる専用のコンピュータがある\n\nこのコンピュータがサーバ\n\n情報をserveするからserver\nサーバは別名ホスト（host）と呼ばれる\n要求するWebブラウザはクライアント（client）ともいう\n\nHTTP用のサーバは、特に Webサーバ や httpd などと呼ばれる"
+  },
+  {
+    "objectID": "api.html#section",
+    "href": "api.html#section",
+    "title": "はじめてのAPI",
+    "section": "",
+    "text": "PythonでWebサーバに向かってHTTPを話す"
+  },
+  {
+    "objectID": "api.html#準備-requests-ライブラリ",
+    "href": "api.html#準備-requests-ライブラリ",
+    "title": "はじめてのAPI",
+    "section": "【準備】 requests ライブラリ",
+    "text": "【準備】 requests ライブラリ\n\n\nrequestsはPythonでWebにアクセスするための定番ライブラリ（公式ドキュメント）。\n標準ライブラリではないためインストールが必要\n\nインストール\npip install requests\nimport\nimport requests"
+  },
+  {
+    "objectID": "api.html#requestsを使ってhttpで要求する",
+    "href": "api.html#requestsを使ってhttpで要求する",
+    "title": "はじめてのAPI",
+    "section": "requestsを使ってHTTPで要求する",
+    "text": "requestsを使ってHTTPで要求する\n\nWebブラウザを使わずにHTTPで生のHTMLを要求\n\nrequestsはHTTP・HTTPS専用のライブラリ\n引数にURLを渡すだけで、Webサーバの応答が戻り値に来る\nこの受信内容（テキスト）をprintで確認\n\nimport requests\n\nurl = \"https://www.python.org/\" # 見たいページ（何でも可）\nresponse = requests.get(url) # WebサーバにそのURLの情報の送信を要求\n\nprint(response.text) # 返信内容（str）\n応答内容（長いstr）\n&lt;!doctype html&gt;\n&lt;html lang=\"en\"&gt;\n  ...\n\n\n\nコード\n役割\n\n\n\n\nrequests.get(url)\nブラウザと同じURLへアクセス\n\n\nresponse.text\n応答の本文（body）を取得"
+  },
+  {
+    "objectID": "api.html#webサーバとrequests間で行われたやりとり",
+    "href": "api.html#webサーバとrequests間で行われたやりとり",
+    "title": "はじめてのAPI",
+    "section": "Webサーバとrequests間で行われたやりとり",
+    "text": "Webサーバとrequests間で行われたやりとり\n\nリクエスト（request）とレスポンス（response）\n\nリクエスト：サーバに返信を要求すること\nレスポンス：リクエストに対するサーバの返信"
+  },
+  {
+    "objectID": "api.html#リクエストとレスポンスは1往復",
+    "href": "api.html#リクエストとレスポンスは1往復",
+    "title": "はじめてのAPI",
+    "section": "リクエストとレスポンスは1往復",
+    "text": "リクエストとレスポンスは1往復\n\n\nrequests.get()は、1つのURLとのrequest → responseを実行する\nしかし、HTMLの中には、ハイパーリンク（Hyperlink）として画像（アイコンも含む）やCSS（表示スタイル用の専用言語）のURLが入っていることが多い\nWebブラウザは、根元のHTMLを読むと、それをパース（parse・分解→解釈すること）する\nパースされた中に、ハイパーリンクとしてURLが記述されていると、Webブラウザは、さらにその個数分のHTTPリクエストを改めて送る\nWebサーバはそれらも改めて返答する\n\nテキストとは限らない。例えば、画像だったらバイナリファイル"
   },
   {
     "objectID": "api.html#peek-simple-request",
     "href": "api.html#peek-simple-request",
-    "title": "APIでデータ取得",
-    "section": "サーバへ送信した情報",
-    "text": "サーバへ送信した情報\n\n実行後も response.request に、実際に送信したリクエストが残っている。\nimport requests\n\nurl = \"https://www.python.org/\"\nresponse = requests.get(url)\nprint(response.request.method)\nprint(response.request.url)\nprint(response.request.headers)\n\n送信内容： methodは取得を表す GET、URLは送信先、request headersは User-Agent などの付加情報"
+    "title": "はじめてのAPI",
+    "section": "サーバへ送信した情報の確認",
+    "text": "サーバへ送信した情報の確認\n\nresponse.request には、サーバの応答だけではなく、送信したリクエストも残っている。\nimport requests\n\nurl = \"https://www.python.org/\"\nresponse = requests.get(url)\nprint(response.request.method)\nprint(response.request.url)\nprint(response.request.headers)\n\n送信内容： methodは取得を表す GET、URLは送信先、request headersは User-Agent などの付加情報"
   },
   {
-    "objectID": "api.html#サーバから返ってきた情報",
-    "href": "api.html#サーバから返ってきた情報",
-    "title": "APIでデータ取得",
-    "section": "サーバから返ってきた情報",
-    "text": "サーバから返ってきた情報\n\nレスポンスは status code・response headers・body の3点セット。今度は3つとも表示して、body以外に何が届いているかを確認する。\nimport requests\n\nurl = \"https://www.python.org/\"\nresponse = requests.get(url)\nprint(response.status_code)\nprint(response.headers)\nprint(response.text)\n\n受信したheaders： Content-Type: text/html はbodyがHTMLであることを示す。ほかにも Date、Server、Content-Length などが届く"
+    "objectID": "api.html#サーバからの応答を確認",
+    "href": "api.html#サーバからの応答を確認",
+    "title": "はじめてのAPI",
+    "section": "サーバからの応答を確認",
+    "text": "サーバからの応答を確認\n\nレスポンスは\n\nstatus code （３桁の数字）\nresponse headers （サーバがつけるメタデータ）\nbody （本文）\n\nの3点セット。これらを表示して、body以外に何が届いているかを確認する。\nimport requests\n\nurl = \"https://www.python.org/\"\nresponse = requests.get(url)\nprint(response.status_code)\nprint(response.headers)\nprint(response.text) # 本文。bodyのこと\n応答内容（status code → headers → body の順に表示される）\n200\n{'Connection': 'keep-alive', 'Content-Length': '11754', ..., 'server': 'nginx', ..., 'content-type': 'text/html; charset=utf-8', ..., 'Date': 'Mon, 20 Jul 2026 16:03:22 GMT', ...}\n&lt;!doctype html&gt;\n&lt;html class=\"no-js\" lang=\"en\" dir=\"ltr\"&gt;\n  ...\n\n1行目 が status code（200）。2行目の辞書 が response headers——応答には本文だけでなく、サーバがつけた 名前: 値 の付加情報がこうして必ず一緒に届く。content-type: text/html は「bodyはHTML」の意味。3行目以降 が body"
   },
   {
-    "objectID": "api.html#httpステータスコード-404の正体",
-    "href": "api.html#httpステータスコード-404の正体",
-    "title": "APIでデータ取得",
-    "section": "HTTPステータスコード — 404の正体",
-    "text": "HTTPステータスコード — 404の正体\n\n\n存在しないページを開くと「404 Not Found」と表示される\n\nこの404が status code\n\nさっき print(response.status_code) が表示した 200 も、同じstatus code\nサーバは処理の結果を、毎回3桁の番号で応答に含めている\n\n\n\n\nコード\n意味\n\n\n\n\n200 OK\n正常に取得できた\n\n\n403 Forbidden\nアクセスを拒否した（権限・認証・ヘッダーなど）\n\n\n404 Not Found\n指定したものが見つからない\n\n\n500 Internal Server Error\nサーバ側で処理に失敗した"
+    "objectID": "api.html#httpステータスコード",
+    "href": "api.html#httpステータスコード",
+    "title": "はじめてのAPI",
+    "section": "HTTPステータスコード",
+    "text": "HTTPステータスコード\n\n\n存在しないページを開くと「404 Not Found」と表示される\n\nこの404が status code\n\nprint(response.status_code) が表示した 200 も、同じstatus code\nサーバは処理の結果を、毎回3桁の番号で応答している\n\n\n\n\nコード\n意味\n\n\n\n\n200 OK\n正常に取得できた\n\n\n403 Forbidden\nアクセスを拒否した（権限・認証・ヘッダーなど）\n\n\n404 Not Found\n指定したものが見つからない\n\n\n500 Internal Server Error\nサーバ側で処理に失敗した"
   },
   {
     "objectID": "api.html#先頭の数字で5系統に分かれる",
     "href": "api.html#先頭の数字で5系統に分かれる",
-    "title": "APIでデータ取得",
+    "title": "はじめてのAPI",
     "section": "先頭の数字で5系統に分かれる",
     "text": "先頭の数字で5系統に分かれる\n\n\n\n\n\n\n\n\n\n系統\n意味\n例\n\n\n\n\n1xx\n処理の途中経過を伝える\n100 Continue\n\n\n2xx\nリクエストに成功した\n200 OK\n\n\n3xx\n別のURLへ案内する\n301 Moved Permanently\n\n\n4xx\nリクエストを受け付けられない\n403 Forbidden / 404 Not Found\n\n\n5xx\nサーバ側で処理に失敗した\n500 Internal Server Error\n\n\n\n\n読み方： 先頭1桁が大分類、残り2桁が詳しい理由"
   },
   {
     "objectID": "api.html#tweak-urlを変えて応答を比べる",
     "href": "api.html#tweak-urlを変えて応答を比べる",
-    "title": "APIでデータ取得",
+    "title": "はじめてのAPI",
     "section": "Tweak URLを変えて応答を比べる",
-    "text": "Tweak URLを変えて応答を比べる\n\n\nさっきのコードの url を下表の値に変更\n実行するたびに、以下を print して確認\n\n\nresponse.status_code\nresponse.headers[\"Content-Type\"]\n\n\n\n\n\n取得するもの\nurl\n\n\n\n\nWebページ\n\"https://www.python.org/\"\n\n\nタブのアイコン\n\"https://www.python.org/favicon.ico\"\n\n\n\n\n\n\n\n\n\n\n種明かし：status codeは同じ、Content-Typeだけ違う\n\n\nどちらも成功なのでstatus codeは 200。一方、Content-TypeはWebページが text/html、アイコンが image/x-icon。ブラウザは別々のURLへGETし、受け取った部品を組み合わせて画面を作る。"
+    "text": "Tweak URLを変えて応答を比べる\n\n\nさっきのコードの url を下表の値に変更\n実行するたびに、以下を print して確認\n\n\nresponse.status_code\nresponse.headers[\"Content-Type\"]\n\n\n\n\n\n取得するもの\nurl\n\n\n\n\nWebページ\n\"https://www.python.org/\"\n\n\nタブのアイコン\n\"https://www.python.org/favicon.ico\"\n\n\n\n\n\n\n\n\n\n\nstatus codeは同じ、Content-Typeだけ違う\n\n\n\nどちらも成功なのでstatus codeは 200\n一方、Content-TypeはWebページが text/html、アイコンが image/x-icon\nブラウザは別々のURLへGETし、受け取った部品を組み合わせて画面を作る"
   },
   {
-    "objectID": "api.html#失敗したまま先へ進まない",
-    "href": "api.html#失敗したまま先へ進まない",
-    "title": "APIでデータ取得",
-    "section": "失敗したまま先へ進まない",
-    "text": "失敗したまま先へ進まない\n\n\n404や500が返っても、プログラムは止まらない\n\nエラー応答の入った response のまま、次の行へ進んでしまう\n\nresponse.raise_for_status() は、status codeが400番台・500番台なら その場でエラーを出して止める\nAPIではbodyを処理する 前 に呼ぶのが定石"
-  },
-  {
-    "objectID": "api.html#section",
-    "href": "api.html#section",
-    "title": "APIでデータ取得",
-    "section": "",
-    "text": "HTMLからJSONへ"
-  },
-  {
-    "objectID": "api.html#wikimedia-analytics-api",
-    "href": "api.html#wikimedia-analytics-api",
-    "title": "APIでデータ取得",
-    "section": "Wikimedia Analytics API",
-    "text": "Wikimedia Analytics API\n\nWikimedia Foundationが公開している、ページビュー統計のAPI。\nブラウザで開く\nhttps://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia.org/all-access/2025/06/27\n2025年6月27日の記事ランキングが、画面ではなく JSONテキスト で表示される。\n\n\n\n\n\n\n通信の仕組みは同じ\n\n\nPython.orgもWikipedia APIも、URLへGETしてresponseを受け取る。違うのは、response bodyが HTMLかJSONか。"
-  },
-  {
-    "objectID": "api.html#peek-top-response",
-    "href": "api.html#peek-top-response",
-    "title": "APIでデータ取得",
-    "section": "PythonからAPIへアクセス",
-    "text": "PythonからAPIへアクセス\n\nstatus code・response headers・bodyを、さっきと同じ順番で確認する。\nimport requests\n\nurl = \"https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia.org/all-access/2025/06/27\"\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\n\nresponse = requests.get(url, headers=headers)\nprint(response.status_code)\nprint(response.headers)\nprint(response.text)"
-  },
-  {
-    "objectID": "api.html#user-agentでプログラムの情報を伝える",
-    "href": "api.html#user-agentでプログラムの情報を伝える",
-    "title": "APIでデータ取得",
-    "section": "User-Agentでプログラムの情報を伝える",
-    "text": "User-Agentでプログラムの情報を伝える\n\nWikimedia APIでは、プログラム名・版・連絡先を含むUser-Agentをrequest headerに指定する（アクセス方針）。\nIP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\n\n\n\n\n\n\nrequestsの既定値では情報が足りない\n\n\nheaders=を省略すると、requestsは python-requests/... を送る。これだけではプログラムや連絡先を特定できず、Wikimediaでは拒否されることがある。API使用前にUser-Agent Policyで 必須ヘッダーと書式を確認する。"
-  },
-  {
-    "objectID": "api.html#webページとapiは同じhttp",
-    "href": "api.html#webページとapiは同じhttp",
-    "title": "APIでデータ取得",
-    "section": "WebページとAPIは同じHTTP",
-    "text": "WebページとAPIは同じHTTP\n\n\n\n\n\nWebページ\nAPI\n\n\n\n\nリクエスト\nURLへGET\nURLへGET\n\n\nstatus code\n200\n200\n\n\nContent-Type\ntext/html\napplication/json\n\n\nbody\nHTMLテキスト\nJSONテキスト\n\n\n受け取ったあと\nブラウザが画面を描く\nPythonがデータとして処理\n\n\n\n\n\n\n\n\n\nAPIの正体\n\n\nAPIは、プログラムが扱いやすいbodyを返すURL。通信方法はWebページと変わらない。"
-  },
-  {
-    "objectID": "api.html#json-とは",
-    "href": "api.html#json-とは",
-    "title": "APIでデータ取得",
-    "section": "JSON とは",
-    "text": "JSON とは\n\nJavaScript Object Notation の略。CSVと同じ構造化テキストの一種で、Webではデータ交換の標準形式として使われる。\n受け取ったbody\nprint(response.text)   # 中身は生のJSONテキスト\n{\"items\":[{\"project\":\"ja.wikipedia\",\"access\":\"all-access\",\n           \"year\":\"2025\",\"month\":\"06\", ...}]}\nPythonの値に変換\n.json() はJSONテキストをPythonの値へ変換する。このAPIでは一番外側が dict。"
-  },
-  {
-    "objectID": "api.html#peek-top-api",
-    "href": "api.html#peek-top-api",
-    "title": "APIでデータ取得",
-    "section": "JSONをPythonの値に変換する",
-    "text": "JSONをPythonの値に変換する\n\nraise_for_status() で失敗していないことを確かめてから、.json() でJSONテキストをdict / listの入れ子へ変換する。\nimport requests\n\nurl = \"https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia.org/all-access/2025/06/27\"\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\n\nresponse = requests.get(url, headers=headers)\nresponse.raise_for_status()\ndata = response.json()\n\narticles = data[\"items\"][0][\"articles\"]\nfor article in articles[:5]:\n    print(article[\"rank\"], article[\"article\"], article[\"views\"])\n\n実行結果： data はdictとlistの入れ子。ループでは上位5件の記事名と閲覧数が表示される"
-  },
-  {
-    "objectID": "api.html#apiの窓口をurlで指定する",
-    "href": "api.html#apiの窓口をurlで指定する",
-    "title": "APIでデータ取得",
-    "section": "APIの窓口をURLで指定する",
-    "text": "APIの窓口をURLで指定する\n\n\n\n\n用語\n意味\n\n\n\n\nAPI\nデータ取得などのために公開された仕組み\n\n\nエンドポイント\nAPIの中の、具体的な処理を呼ぶ個別のURL\n\n\n\nWikimediaのランキング用エンドポイント\n条件をURLに埋め込む。\nhttps://wikimedia.org/api/rest_v1/metrics/pageviews/top/\n    {プロジェクト} / {アクセス方法} / {日付}\n\n\n\n\n\n\n\n\n\nパラメータ\n例の値\n意味\n他の選択肢\n\n\n\n\nプロジェクト\nja.wikipedia.org\n日本語Wikipedia\nen.wikipedia.org, commons.wikimedia.org など\n\n\nアクセス方法\nall-access\n全アクセス\ndesktop, mobile-app, mobile-web\n\n\n日付\n2025/06/27\n指定日\nYYYY/MM/DD の任意の日付\n\n\n\n\n\n\n\n\n\nURL構造はAPIごとに異なる\n\n\n利用時は公式ドキュメントで、エンドポイントとパラメータを確認する。"
-  },
-  {
-    "objectID": "api.html#tweak-ランキングの条件を変える",
-    "href": "api.html#tweak-ランキングの条件を変える",
-    "title": "APIでデータ取得",
-    "section": "Tweak ランキングの条件を変える",
-    "text": "Tweak ランキングの条件を変える\n\nランキング取得コードを1か所ずつ変えて実行する。\n\n\n\n\n\n\n\n\nやりたいこと\n変える場所\n\n\n\n\n2025年の自分の誕生日（月日）のランキング\nURL末尾の日付\n\n\n英語版Wikipediaのランキング\nja.wikipedia.org → en.wikipedia.org\n\n\n上位10件を表示\narticles[:5] → articles[:10]\n\n\n\n\n\n\n\n\n\n\n予想してから試す\n\n\n誕生日当日の1位は、事件・行事・人物のどれだと思う？"
-  },
-  {
-    "objectID": "api.html#別の窓口記事ごとの閲覧数",
-    "href": "api.html#別の窓口記事ごとの閲覧数",
-    "title": "APIでデータ取得",
-    "section": "別の窓口：記事ごとの閲覧数",
-    "text": "別の窓口：記事ごとの閲覧数\n\n特定の記事について、任意の期間のアクセス数を日単位または月単位で返す（公式例）。\nhttps://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\n    {project} / {access} / {agent} / {article} / {granularity} / {start} / {end}\n\n\n\nパラメータ\n選択肢\n\n\n\n\nproject\nja.wikipedia.org など\n\n\naccess\nall-access / desktop / mobile-app / mobile-web\n\n\nagent\nall-agents / spider / automated\n\n\narticle\n任意の記事名（スペースは _）\n\n\ngranularity\ndaily / monthly\n\n\nstart / end\nYYYYMMDD 形式"
-  },
-  {
-    "objectID": "api.html#peek-tanabata",
-    "href": "api.html#peek-tanabata",
-    "title": "APIでデータ取得",
-    "section": "「七夕」のページビューを取得する",
-    "text": "「七夕」のページビューを取得する\n\n記事「七夕」の 2025年まるごと1年分 の日別アクセス数を取得し、統計量を出す。\nimport requests\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia.org/all-access/all-agents/\"\n       \"七夕/daily/20250101/20251231\")\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\n\nresponse = requests.get(url, headers=headers)\nresponse.raise_for_status()\ndata = response.json()\n\n# data[\"items\"] は list of dict\nviews = np.array([item[\"views\"] for item in data[\"items\"]])\n\nprint(f\"日数:   {len(views)}\")\nprint(f\"最大:   {views.max()}回\")\nprint(f\"最小:   {views.min()}回\")\nprint(f\"平均:   {views.mean():.1f}回\")\nprint(f\"中央値: {np.median(views):.0f}回\")\n\n\n日数:   365\n最大:   52168回\n最小:   88回\n平均:   539.1回\n中央値: 187回\n\n\n\n\n\n\n\n\n最大は中央値の約280倍\n\n\n突出した1日に平均が引っ張られ、中央値との差が大きく開いた。"
-  },
-  {
-    "objectID": "api.html#tweak-どの端末で読まれた",
-    "href": "api.html#tweak-どの端末で読まれた",
-    "title": "APIでデータ取得",
-    "section": "Tweak どの端末で読まれた？",
-    "text": "Tweak どの端末で読まれた？\n\n七夕の取得コードの all-access だけ変えて実行する。\n\n\n\n\n取得するアクセス\nURLに入れる値\n\n\n\n\nPCブラウザ\ndesktop\n\n\nスマートフォンのブラウザ\nmobile-web\n\n\n\n\n\n\n\n\n\n\n予想してから試す\n\n\n平均閲覧数はどちらが大きい？ 差は何倍くらいになる？"
-  },
-  {
-    "objectID": "api.html#まとめ",
-    "href": "api.html#まとめ",
-    "title": "APIでデータ取得",
-    "section": "まとめ",
-    "text": "まとめ\n\n\nブラウザの裏側もPythonも、HTTPの request → response の1往復\nresponseは status code・headers・body の3点セット\nWebページのbodyはHTML、APIのbodyはJSON — 通信の仕組みは同じ\nJSONをdict / listへ変換し、必要な値を取り出す\nAPIの個別URLが エンドポイント、URL内の条件が パラメータ\n\n参照\nrequests早見表"
+    "objectID": "api.html#httpヘッダー",
+    "href": "api.html#httpヘッダー",
+    "title": "はじめてのAPI",
+    "section": "HTTPヘッダー",
+    "text": "HTTPヘッダー\n\n\nヘッダーは、リクエストとレスポンスの両方につく 名前: 値 形式のメタデータ\n実際の通信では1行に1つずつ並ぶテキストで、requestsはそれをdictにしている\n\n\n\n\n\n\n\n\n\nヘッダー\n実際の値\n意味\n\n\n\n\ncontent-type\ntext/html; charset=utf-8\nbodyの種類と文字コード。ブラウザはこれで描き方を決める\n\n\nContent-Length\n11754\nbodyの大きさ（バイト数）\n\n\ncontent-encoding\ngzip\nbodyの圧縮方式（requestsが自動で解凍）\n\n\nDate\nMon, 20 Jul 2026 16:03:22 GMT\nサーバが応答を作った日時（世界標準時）\n\n\nserver\nnginx\nサーバ側ソフトウェアの名乗り\n\n\nConnection\nkeep-alive\nこの接続を次の往復にも使い回すという宣言\n\n\nX-Cache\nMISS, HIT, HIT\nX- で始まる名前は標準外の独自ヘッダー（これはキャッシュに当たったかの記録）\n\n\n\n\nヘッダーの名前は大文字小文字を区別しない。content-type と Content-Type は同じヘッダー\n\n\n\n\n\n\n\nリクエスト側にもヘッダーがある\n\n\nさっき response.request.headers に出てきた User-Agent: python-requests/... がその例。「誰が頼んでいるか」の名乗りで、このあとAPIを使うときに自分で設定する場面が出てくる。"
   },
   {
     "objectID": "api.html#section-1",
     "href": "api.html#section-1",
-    "title": "APIでデータ取得",
+    "title": "はじめてのAPI",
+    "section": "",
+    "text": "HTMLではなくJSONをホストするサーバ"
+  },
+  {
+    "objectID": "api.html#apiとは",
+    "href": "api.html#apiとは",
+    "title": "はじめてのAPI",
+    "section": "APIとは",
+    "text": "APIとは\n\n\nインターフェース（interface）＝ 何かと何かが接する界面のこと\nその界面をHTTPとするものが Web API\n\nURLでリクエストすると、ブラウザ用のHTMLではなく 生のデータを返す\nAPI（Application Programming Interface）\n\nアプリはほぼすべてAPIのクライアント\n\n天気アプリも乗換案内も、裏でAPIに問い合わせている"
+  },
+  {
+    "objectID": "api.html#今回利用するapi",
+    "href": "api.html#今回利用するapi",
+    "title": "はじめてのAPI",
+    "section": "今回利用するAPI",
+    "text": "今回利用するAPI\n\nWikimedia Analytics API\nWikimedia Foundationが公開している、ページビュー統計のAPI\n一旦、以下のURLをブラウザで開いてみよう\nhttps://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia.org/all-access/2025/06/27\n2025年6月27日の記事ランキングが、画面ではなく JSONテキスト で表示される。\n\n\n\n\n\n\n通信の仕組みは同じ\n\n\nPython.orgもWikipedia APIも、URLへGETしてresponseを受け取る。違うのは、response bodyが HTMLかJSONか。"
+  },
+  {
+    "objectID": "api.html#wikimedia-apiはヘッダーが必要",
+    "href": "api.html#wikimedia-apiはヘッダーが必要",
+    "title": "はじめてのAPI",
+    "section": "Wikimedia APIはヘッダーが必要",
+    "text": "Wikimedia APIはヘッダーが必要\n\n\nWikimedia APIでは、プログラム名・版・連絡先を含む情報を送る必要がある（アクセス方針）\nこの情報をUser-Agentをrequest headerに指定してrequestsで送信する\n\nここでは、仮に以下の情報を送ることとする\n\n\nIP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+  },
+  {
+    "objectID": "api.html#peek-top-response",
+    "href": "api.html#peek-top-response",
+    "title": "はじめてのAPI",
+    "section": "requestにヘッダーをつけてAPIを叩く（要求する）",
+    "text": "requestにヘッダーをつけてAPIを叩く（要求する）\n\n\n以下を動かすと返ってきたテキストはdictみたいなstr\nこのstrは、JSON（JavaScript Object Notation）という形式\n\nimport requests\n\nurl = \"https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia.org/all-access/2025/06/27\"\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\n\nresponse = requests.get(url, headers=headers)\nprint(response.status_code)\nprint(response.headers)\nprint(response.text)"
+  },
+  {
+    "objectID": "api.html#json-とは",
+    "href": "api.html#json-とは",
+    "title": "はじめてのAPI",
+    "section": "JSON とは",
+    "text": "JSON とは\n\n\nJavaScript Object Notation\nCSVと同じ構造化テキストの一種で、Webではデータ交換の標準形式として使われる。\n\nbodyのテキストの中身\nprint(response.text)   # 中身は生のJSONテキスト\n{\"items\":[{\"project\":\"ja.wikipedia\",\"access\":\"all-access\",\n           \"year\":\"2025\",\"month\":\"06\", ...}]}\nJSON形式のstrをdictに変換する方法\n\nimport json # 標準ライブラリ\n\nres_dict = json.loads(response.text) # これでdictになる\nprint(type(res_dict), res_dict)"
+  },
+  {
+    "objectID": "api.html#peek-top-api",
+    "href": "api.html#peek-top-api",
+    "title": "はじめてのAPI",
+    "section": ".json()という便利関数",
+    "text": ".json()という便利関数\n\nいちいちjsonライブラリで変換しなくても response.json() でdictが返る\nimport requests\n\nurl = \"https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia.org/all-access/2025/06/27\"\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\n\nresponse = requests.get(url, headers=headers)\ndata = response.json()\n\narticles = data[\"items\"][0][\"articles\"]\nfor article in articles[:5]:\n    print(article[\"rank\"], article[\"article\"], article[\"views\"])"
+  },
+  {
+    "objectID": "api.html#エンドポイント",
+    "href": "api.html#エンドポイント",
+    "title": "はじめてのAPI",
+    "section": "エンドポイント",
+    "text": "エンドポイント\n\nAPIでは、エンドポイント（endpoint）という用語がよく出てきます。\n\n\n\n用語\n意味\n\n\n\n\nAPI\nデータ取得などのために公開された仕組み\n\n\nエンドポイント\nAPIの中の、具体的な処理を呼ぶ個別のURL\n\n\n\nWikimediaのランキング用エンドポイント\n条件をURLに埋め込む。\nhttps://wikimedia.org/api/rest_v1/metrics/pageviews/top/\n    {プロジェクト} / {アクセス方法} / {日付}\n\n\n\n\n\n\n\n\n\nパラメータ\n例の値\n意味\n他の選択肢\n\n\n\n\nプロジェクト\nja.wikipedia.org\n日本語Wikipedia\nen.wikipedia.org, commons.wikimedia.org など\n\n\nアクセス方法\nall-access\n全アクセス\ndesktop, mobile-app, mobile-web\n\n\n日付\n2025/06/27\n指定日\nYYYY/MM/DD の任意の日付\n\n\n\n\n\n\n\n\n\nURL構造はAPIごとに異なる\n\n\n利用時は公式ドキュメントで、エンドポイントとパラメータを確認"
+  },
+  {
+    "objectID": "api.html#tweak-ランキングの条件を変える",
+    "href": "api.html#tweak-ランキングの条件を変える",
+    "title": "はじめてのAPI",
+    "section": "Tweak ランキングの条件を変える",
+    "text": "Tweak ランキングの条件を変える\n\nランキング取得コードを1か所ずつ変えて実行する。\n\n\n\n\n\n\n\n\nやりたいこと\n変える場所\n\n\n\n\n2025年の自分の誕生日（月日）のランキング\nURL末尾の日付\n\n\n英語版Wikipediaのランキング\nja.wikipedia.org → en.wikipedia.org\n\n\n上位10件を表示\narticles[:5] → articles[:10]\n\n\n\n\n\n\n\n\n\n\n予想してから試す\n\n\n誕生日当日の1位は、事件・行事・人物のどれだと思う？"
+  },
+  {
+    "objectID": "api.html#記事ごとの閲覧数を返すエンドポイント",
+    "href": "api.html#記事ごとの閲覧数を返すエンドポイント",
+    "title": "はじめてのAPI",
+    "section": "記事ごとの閲覧数を返すエンドポイント",
+    "text": "記事ごとの閲覧数を返すエンドポイント\n\n以下のエンドポイントは、特定の記事について、任意の期間のアクセス数を日単位または月単位で返す（公式例）。\nhttps://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\n    {project} / {access} / {agent} / {article} / {granularity} / {start} / {end}\n\n\n\nパラメータ\n選択肢\n\n\n\n\nproject\nja.wikipedia.org など\n\n\naccess\nall-access / desktop / mobile-app / mobile-web\n\n\nagent\nall-agents / user / spider / automated\n\n\narticle\n任意の記事名（スペースは _）\n\n\ngranularity\ndaily / monthly\n\n\nstart / end\nYYYYMMDD 形式"
+  },
+  {
+    "objectID": "api.html#peek-tanabata",
+    "href": "api.html#peek-tanabata",
+    "title": "はじめてのAPI",
+    "section": "「七夕」のページビューを取得",
+    "text": "「七夕」のページビューを取得\n\n「七夕」というWikipediaの記事に対する 1年分（2025年） の日別アクセス数を取得し、統計量を出す例\nimport requests\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia.org/all-access/all-agents/\"\n       \"七夕/daily/20250101/20251231\")\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\n\nresponse = requests.get(url, headers=headers)\ndata = response.json()\n\n# data[\"items\"] は list of dict\nviews = np.array([item[\"views\"] for item in data[\"items\"]])\n\nprint(f\"日数:   {len(views)}\")\nprint(f\"最大:   {views.max()}回\")\nprint(f\"最小:   {views.min()}回\")\nprint(f\"平均:   {views.mean():.1f}回\")\nprint(f\"中央値: {np.median(views):.0f}回\")\n\n\n日数:   365\n最大:   52168回\n最小:   88回\n平均:   539.1回\n中央値: 187回\n\n\n\n\n\n\n\n\n最大は中央値の約280倍\n\n\n突出した1日に平均が引っ張られ、中央値との差が大きく開いた。"
+  },
+  {
+    "objectID": "api.html#tweak-どの端末で読まれた",
+    "href": "api.html#tweak-どの端末で読まれた",
+    "title": "はじめてのAPI",
+    "section": "Tweak どの端末で読まれた？",
+    "text": "Tweak どの端末で読まれた？\n\n七夕の取得コードの all-access と all-agents を変えて実行する（all-agents → user で、botを除いた人間の閲覧だけになる）。\n\n\n\n\n取得するもの\nURLに入れる値\n\n\n\n\nPCで読んだ人\ndesktop / user\n\n\nスマホのブラウザで読んだ人\nmobile-web / user\n\n\n\n\n\n\n\n\n\n\n予想してから試す\n\n\nPCとスマホ、人はどちらで多く読んでいる？ 平均をとって比べると、差は何倍くらい？\n\n\n\n\n\n\n\n\n\nmobile-web（スマホのブラウザ）を試すと404が返ることがある\n\n\nこのAPIは、該当データが0件（または未収録）の場合も404で返す（公式のトラブルシューティング）。しかも同じURLでも通ったり404になったりする。404が返ってきたら response.status_code を確認する——応答が成功時と違うことを自分の目で確かめるのが、エラーへの第一歩。"
+  },
+  {
+    "objectID": "api.html#まとめ",
+    "href": "api.html#まとめ",
+    "title": "はじめてのAPI",
+    "section": "まとめ",
+    "text": "まとめ\n\n\nブラウザの裏側もPythonも、HTTPの request → response の1往復\nresponseは status code・headers・body の3点セット\nWebページのbodyはHTML、APIのbodyはJSON — 通信の仕組みは同じ\nJSONをdict / listへ変換し、必要な値を取り出す\nAPIの個別URLが エンドポイント、URL内の条件が パラメータ\n\n参照\nrequests早見表"
+  },
+  {
+    "objectID": "api.html#section-2",
+    "href": "api.html#section-2",
+    "title": "はじめてのAPI",
     "section": "",
     "text": "付録"
   },
   {
     "objectID": "api.html#peek-requests-cheatsheet",
     "href": "api.html#peek-requests-cheatsheet",
-    "title": "APIでデータ取得",
+    "title": "はじめてのAPI",
     "section": "requests早見表",
-    "text": "requests早見表\n\n\n\n\nやりたいこと\nコード\n\n\n\n\nアクセス\nrequests.get(url, headers=...)\n\n\n状態確認\nresponse.status_code（200 = OK）\n\n\n失敗なら停止\nresponse.raise_for_status()\n\n\n送ったヘッダー\nresponse.request.headers\n\n\n返ったヘッダー\nresponse.headers\n\n\nbody（str）\nresponse.text\n\n\nJSON → Python\nresponse.json()\n\n\nUser-Agent\nheaders={\"User-Agent\": \"...\"}"
+    "text": "requests早見表\n\n\n\n\nやりたいこと\nコード\n\n\n\n\nアクセス\nrequests.get(url, headers=...)\n\n\n状態確認\nresponse.status_code（200 = OK）\n\n\n送ったヘッダー\nresponse.request.headers\n\n\n返ったヘッダー\nresponse.headers\n\n\nbody（str）\nresponse.text\n\n\nJSON → Python\nresponse.json()\n\n\nUser-Agent\nheaders={\"User-Agent\": \"...\"}"
   },
   {
     "objectID": "api.html#user-agentは自己申告の名札",
     "href": "api.html#user-agentは自己申告の名札",
-    "title": "APIでデータ取得",
+    "title": "はじめてのAPI",
     "section": "User-Agentは「自己申告の名札」",
     "text": "User-Agentは「自己申告の名札」\n\nUser-Agentは、アクセス元ソフトウェアがHTTPリクエストで送る 自己申告の名札。互換性のための古い名前や固定値が多く、OS・CPU・端末名が実際の環境と一致するとは限らない。\nChromeの例\n見やすいように改行しているが、実際のヘッダー値は1行。\nMozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)\nAppleWebKit/537.36 (KHTML, like Gecko)\nChrome/&lt;major&gt;.0.0.0 Safari/537.36\n\nこの文字列の読み方： ChromeのUser-Agent削減と歴史的な互換性のため、古いOS・CPU名や複数ブラウザ名が共存する。正確な端末情報ではなく、ソフトウェアが名乗る識別子。"
-  },
-  {
-    "objectID": "api.html#ブラウザとpythonは名乗り方が違う",
-    "href": "api.html#ブラウザとpythonは名乗り方が違う",
-    "title": "APIでデータ取得",
-    "section": "ブラウザとPythonは名乗り方が違う",
-    "text": "ブラウザとPythonは名乗り方が違う\n\n\n\n\n\n\n\n\nアクセス元\nUser-Agent\n\n\n\n\nブラウザ\nブラウザが自動で送る\n\n\nrequestsの既定値\npython-requests/バージョン — 用途や連絡先は分からない\n\n\n自分で名乗るUser-Agent\nIP3200-lecture/1.0 (連絡先URL) — 用途と連絡先が分かる\n\n\n\n\n\n\n\n\n\nUser-Agentを判断材料にしない\n\n\n\nAPIスクリプト：ブラウザの値をコピーせず、規約に従ってアプリ名・版・連絡先を示す\nWebページ：端末を決めつけず、レスポンシブデザインや機能検出を使う"
   },
   {
     "objectID": "api-spa.html#section",
@@ -2130,77 +2179,84 @@
   {
     "objectID": "api-viz.html#section",
     "href": "api-viz.html#section",
-    "title": "APIデータを可視化する",
+    "title": "APIからのデータを可視化する",
     "section": "",
     "text": "前回のあらすじ"
   },
   {
     "objectID": "api-viz.html#大きな山を見つけた",
     "href": "api-viz.html#大きな山を見つけた",
-    "title": "APIデータを可視化する",
+    "title": "APIからのデータを可視化する",
     "section": "大きな山を見つけた",
-    "text": "大きな山を見つけた\n\n\n前回：記事「七夕」の 2025年まるごと1年分 の日別アクセス数を取得した\n最大が中央値の約280倍という違和感から、最後に折れ線を描いた\n\nimport requests\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia.org/all-access/all-agents/\"\n       \"七夕/daily/20250101/20251231\")\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\n\nresponse = requests.get(url, headers=headers)\nresponse.raise_for_status()\ndata = response.json()\n\nviews = np.array([item[\"views\"] for item in data[\"items\"]])\n\n\n\n統計量\n値\n\n\n\n\n最大\n52,168回\n\n\n最小\n88回\n\n\n平均\n539.1回\n\n\n中央値\n187回\n\n\n\n\n最大が中央値の約280倍。平均と中央値も大きくズレている\nグラフには 1日だけの大きな山 — では、いつ？ なぜ？"
+    "text": "大きな山を見つけた\n\n\n前回：記事「七夕」の 2025年まるごと1年分 の日別アクセス数を取得した\n最大が中央値の約280倍という違和感から、最後に折れ線を描いた\n\nimport requests\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia.org/all-access/all-agents/\"\n       \"七夕/daily/20250101/20251231\")\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\n\nresponse = requests.get(url, headers=headers)\ndata = response.json()\n\nviews = np.array([item[\"views\"] for item in data[\"items\"]])\n\n\n\n統計量\n値\n\n\n\n\n最大\n52,168回\n\n\n最小\n88回\n\n\n平均\n539.1回\n\n\n中央値\n187回\n\n\n\n\n最大が中央値の約280倍。平均と中央値も大きくズレている\nグラフには 1日だけの大きな山 — では、いつ？ なぜ？"
   },
   {
     "objectID": "api-viz.html#前回の最後に描いたグラフ",
     "href": "api-viz.html#前回の最後に描いたグラフ",
-    "title": "APIデータを可視化する",
+    "title": "APIからのデータを可視化する",
     "section": "前回の最後に描いたグラフ",
-    "text": "前回の最後に描いたグラフ\n\n\n数値だけでは見落とすので まず描く — データの可視化の大原則\nAPIから取得した views を、そのまま plt.plot() に渡した結果\n\n\n\n\n\n\n\n\n\n\n\n\nコードを見る\nimport requests\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia.org/all-access/all-agents/\"\n       \"七夕/daily/20250101/20251231\")\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\nresponse = requests.get(url, headers=headers)\nresponse.raise_for_status()\ndata = response.json()\n\nviews = np.array([item[\"views\"] for item in data[\"items\"]])\n\nplt.plot(views)\nplt.title(\"「七夕」の閲覧数（2025年）\")\nplt.xlabel(\"日数\")\nplt.ylabel(\"閲覧数\")\nplt.show()\n\n\n\n\n\n\n\n\n\n1日だけ突出している\n\n\n\nほぼ平坦な中、1日だけ大きな山\n\n数値だけ見ていると気づけない（アンスコムの教訓と同じ）\n\nそして見覚えがあるはず：データの可視化の冒頭で見せた 謎の図は、実はこのデータ"
+    "text": "前回の最後に描いたグラフ\n\n\n数値だけでは見落とすので まず描く — データの可視化の大原則\nAPIから取得した views を、そのまま plt.plot() に渡した結果\n\n\n\n\n\n\n\n\n\n\n\n\nコードを見る\nimport requests\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia.org/all-access/all-agents/\"\n       \"七夕/daily/20250101/20251231\")\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\nresponse = requests.get(url, headers=headers)\ndata = response.json()\n\nviews = np.array([item[\"views\"] for item in data[\"items\"]])\n\nplt.plot(views)\nplt.title(\"「七夕」の閲覧数（2025年）\")\nplt.xlabel(\"日数\")\nplt.ylabel(\"閲覧数\")\nplt.show()\n\n\n\n\n\n\n\n\n\n1日だけ突出している\n\n\n\nほぼ平坦な中、1日だけ大きな山（ピーク）\n\n数値だけ見ていると気づけない（アンスコムの教訓と同じ）\n\nそして見覚えがあるはず：データの可視化の冒頭で見せた 謎の図は、実はこのデータ"
   },
   {
-    "objectID": "api-viz.html#山の正体いつを特定する",
-    "href": "api-viz.html#山の正体いつを特定する",
-    "title": "APIデータを可視化する",
-    "section": "山の正体：「いつ」を特定する",
-    "text": "山の正体：「いつ」を特定する\n\n\n山の 高さ は views.max()。知りたいのは 「いつ」\nitem[\"timestamp\"] も同じ内包表記で取り出すと、views と 同じインデックスで並ぶ 日付の配列ができる\nnp.argmax() は最大値の インデックス を返す（値ではない点に注意）— そのインデックスで dates を引く\n\ndates = np.array([item[\"timestamp\"] for item in data[\"items\"]])\n\nmax_i = np.argmax(views)\nprint(f\"{dates[max_i]} に {views[max_i]} 回\")\n\n\n\n\n\n\nクイズ\n\n\n記事は「七夕」。52,168回も読まれたその1日は、何月何日だと思う？\n\n\n\n\n2025070700 に 52168 回\n\n2025年7月7日 — 七夕の当日\n誰もが、行事の当日にその行事を調べる\n\n「七夕って何の日？」「短冊はなぜ？」— 検索が記事に殺到する\n\nWikipediaが読まれるタイミングが、API経由の数列ひとつに写っている"
+    "objectID": "api-viz.html#ピークのいつを特定する",
+    "href": "api-viz.html#ピークのいつを特定する",
+    "title": "APIからのデータを可視化する",
+    "section": "ピークの「いつ」を特定する",
+    "text": "ピークの「いつ」を特定する\n\n\n山の 高さ は views.max()。知りたいのは 「いつ」\nitem[\"timestamp\"] も同じ内包表記で取り出すと、views と 同じインデックスで並ぶ 日付の配列ができる\nnp.argmax() は最大値の インデックス を返す（値ではない点に注意）— そのインデックスで dates を引く\n\ndates = np.array([item[\"timestamp\"] for item in data[\"items\"]])\n\nmax_i = np.argmax(views)\nprint(f\"{dates[max_i]} に {views[max_i]} 回\")\n\n\n\n\n\n\nここで質問\n\n\n記事は「七夕」。52,168回も読まれたその1日は、何月何日だと思う？\n\n\n\n\n2025070700 に 52168 回\n\n2025年7月7日 — 七夕の当日\n誰もが、行事の当日にその行事を調べる\n\n「七夕って何の日？」「短冊はなぜ？」— 検索が記事に殺到する\n\nWikipediaが読まれるタイミングが、API経由の数列ひとつに写っている"
+  },
+  {
+    "objectID": "api-viz.html#plotlyでも書いてみる",
+    "href": "api-viz.html#plotlyでも書いてみる",
+    "title": "APIからのデータを可視化する",
+    "section": "plotlyでも書いてみる",
+    "text": "plotlyでも書いてみる\n\n\npltだけではなく、plotlyでも可視化する\n\nPlotly入門\n\ndata[\"items\"]は、pd.DataFrame() に渡すとそのままdfになる\n\nimport pandas as pd\nimport plotly.express as px\n\ndf = pd.DataFrame(data[\"items\"]) # dictのlistをdfへ\ndf[\"date\"] = pd.to_datetime(df[\"timestamp\"], format=\"%Y%m%d%H\")\n\nfig = px.line(df, x=\"date\", y=\"views\")\nfig.show()"
   },
   {
     "objectID": "api-viz.html#よく見るともう一つ山がある",
     "href": "api-viz.html#よく見るともう一つ山がある",
-    "title": "APIデータを可視化する",
+    "title": "APIからのデータを可視化する",
     "section": "よく見ると、もう一つ山がある",
-    "text": "よく見ると、もう一つ山がある\n\n\n\n\n\n\n\n\n\n\n\ny軸を拡大すると、8月29日にも小さな山（2,603回）— 七夕でもないのに、なぜ？\n自分のグラフでも plt.ylim(0, 3000) を足せば、同じ「足元の拡大」ができる"
+    "text": "よく見ると、もう一つ山がある\n\n\n7/7の山が大きすぎて、ほかの日は足元で平らに見える\n動くグラフなら確かめられる：山の足元をドラッグで拡大（ダブルクリックで全体に戻る）\n\n\n\n\n\n\n8月29日にも小さな山（2,603回）— 七夕でもないのに、なぜ？"
   },
   {
-    "objectID": "api-viz.html#月29日の山の正体",
-    "href": "api-viz.html#月29日の山の正体",
-    "title": "APIデータを可視化する",
-    "section": "8月29日の山の正体",
-    "text": "8月29日の山の正体\n\n\n小さな山の正体は？ グラフをドラッグで拡大して確かめよう\n\n\n\n\n\n\n正体：伝統的七夕 — 旧暦7月7日にあたる日（2025年は8月29日）\n\n国立天文台が毎年発表している。7月7日は梅雨だが、旧暦の七夕は夏空で天の川が見える\n\nズームしないと見えない発見もある\n\n軸の範囲は「正直さ」だけでなく「発見」の道具でもある"
+    "objectID": "api-viz.html#月29日の山の原因",
+    "href": "api-viz.html#月29日の山の原因",
+    "title": "APIからのデータを可視化する",
+    "section": "8月29日の山の原因",
+    "text": "8月29日の山の原因\n\n\n正体：伝統的七夕 — 旧暦7月7日にあたる日（2025年は8月29日）\n\n国立天文台が毎年発表している。7月7日は梅雨だが、旧暦の七夕は夏空で天の川が見える\n\nズームしないと見えない発見もある\n\n軸の範囲は「正直さ」だけでなく「発見」の道具でもある"
   },
   {
     "objectID": "api-viz.html#まとめ",
     "href": "api-viz.html#まとめ",
-    "title": "APIデータを可視化する",
+    "title": "APIからのデータを可視化する",
     "section": "まとめ",
-    "text": "まとめ\n\n\n\n\nやりたいこと\nコード\n\n\n\n\nまず描く\nplt.plot(views)\n\n\n最大値の位置\nmax_i = np.argmax(views)\n\n\n位置から日付\ndates[max_i]（同じindexの配列をリンク）\n\n\n足元を拡大\nplt.ylim(0, 3000)\n\n\n\n\n統計量で「おかしい」と気づき、図で正体を突き止める\n大原則 Always plot your data first. は API由来のデータ にもそのまま効く"
+    "text": "まとめ\n\n\n\n\nやりたいこと\nコード\n\n\n\n\nまず描く\nplt.plot(views)\n\n\n最大値の位置\nmax_i = np.argmax(views)\n\n\n位置から日付\ndates[max_i]（同じindexの配列をリンク）\n\n\n表にして動くグラフ\npd.DataFrame(data[\"items\"]) → px.line()\n\n\n\n\n統計量で「おかしい」と気づき、図で正体を突き止める\n大原則 Always plot your data first. は API由来のデータ にもそのまま効く"
   },
   {
     "objectID": "api-viz.html#section-1",
     "href": "api-viz.html#section-1",
-    "title": "APIデータを可視化する",
+    "title": "APIからのデータを可視化する",
     "section": "",
     "text": "演習"
   },
   {
-    "objectID": "api-viz.html#演習1枚のグラフに2本の折れ線",
-    "href": "api-viz.html#演習1枚のグラフに2本の折れ線",
-    "title": "APIデータを可視化する",
-    "section": "演習：1枚のグラフに2本の折れ線",
-    "text": "演習：1枚のグラフに2本の折れ線\n\n\n「七夕」の2025年1年分を desktop と mobile-web で取得し、同じグラフに重ねて比較せよ。\n\n\naccess を切り替えて、2つの閲覧数配列を取得\nplt.plot() を2回呼び、凡例つきで重ね描き\nグラフのタイトルに max / min / mean を表示\n\n\n\n\n\n\n\nやってはいけない\n\n\n\n軸を揃えず2枚並べる → 比較しづらい\n軸の範囲を片方だけ狭める → 印象操作（matplotlib入門「軸の範囲で印象を操る」の罠）\n\n\n\n\n\n\n解答例を見る\nimport requests\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\nimport numpy as np\n\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\n\ndef fetch_views(access):\n    url = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n           f\"ja.wikipedia.org/{access}/all-agents/七夕/daily/20250101/20251231\")\n    response = requests.get(url, headers=headers)\n    response.raise_for_status()\n    data = response.json()\n    return np.array([item[\"views\"] for item in data[\"items\"]])\n\nviews_desktop    = fetch_views(\"desktop\")\nviews_mobile_web = fetch_views(\"mobile-web\")\n\nplt.plot(views_desktop,    label=\"desktop\")\nplt.plot(views_mobile_web, label=\"mobile-web\")\nplt.legend()\n\ntitle = (f\"desktop: max={views_desktop.max()} min={views_desktop.min()} mean={views_desktop.mean():.1f}\\n\"\n         f\"mobile-web: max={views_mobile_web.max()} min={views_mobile_web.min()} mean={views_mobile_web.mean():.1f}\")\nplt.title(title)\nplt.xlabel(\"日数\")\nplt.ylabel(\"閲覧数\")\nplt.show()"
+    "objectID": "api-viz.html#演習a1枚のグラフに2本の折れ線",
+    "href": "api-viz.html#演習a1枚のグラフに2本の折れ線",
+    "title": "APIからのデータを可視化する",
+    "section": "演習A：1枚のグラフに2本の折れ線",
+    "text": "演習A：1枚のグラフに2本の折れ線\n\n\n「七夕」の2025年1年分を、人間の閲覧（user）に絞って desktop と mobile-web で取得し、日付をx軸にして同じグラフに重ねて比較せよ。\n\n\nURLの all-agents を user に変更\naccess を切り替えて、2つの応答を取得\nそれぞれ pd.DataFrame(data[\"items\"]) で表にし、timestamp から日付列を作成\nplt.plot(日付, views) を2回呼び、凡例つきで重ね描き\nグラフのタイトルに max / min / mean を表示\n\n\n\n\n\n\n\nURLの all-agents の意味\n\n\nこの部分は誰の閲覧を数えるかの指定。all-agents はbot・クローラー込み、user は人間だけ。「人がどの端末で読んだか」を聞くなら user が正しい。\n\n\n\n\n\n\n\n\n\n禁止事項\n\n\n\n軸を揃えず2枚並べる → 比較しづらい\n軸の範囲を片方だけ狭める → 印象操作（matplotlib入門「軸の範囲で印象を操る」の罠）\n2本を配列の位置で重ねる → このAPIは閲覧数0の日を応答から省くことがあり、2つの応答の日数と並びが一致する保証はない。時系列は日付で対応づける\n\n\n\n\n\n\n解答例を見る\nimport requests\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\n\ndef fetch_df(access):\n    url = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n           f\"ja.wikipedia.org/{access}/user/七夕/daily/20250101/20251231\")\n    response = requests.get(url, headers=headers)\n    df = pd.DataFrame(response.json()[\"items\"])\n    df[\"date\"] = pd.to_datetime(df[\"timestamp\"], format=\"%Y%m%d%H\")\n    return df\n\ndf_desktop = fetch_df(\"desktop\")\ndf_mobile  = fetch_df(\"mobile-web\")\n\nplt.plot(df_desktop[\"date\"], df_desktop[\"views\"], label=\"desktop\")\nplt.plot(df_mobile[\"date\"],  df_mobile[\"views\"],  label=\"mobile-web\")\nplt.legend()\n\ntitle = (f\"desktop: max={df_desktop['views'].max()} min={df_desktop['views'].min()} mean={df_desktop['views'].mean():.1f}\\n\"\n         f\"mobile-web: max={df_mobile['views'].max()} min={df_mobile['views'].min()} mean={df_mobile['views'].mean():.1f}\")\nplt.title(title)\nplt.xlabel(\"日付\")\nplt.ylabel(\"閲覧数\")\nplt.show()"
   },
   {
-    "objectID": "api-viz.html#演習富士山には山があるか",
-    "href": "api-viz.html#演習富士山には山があるか",
-    "title": "APIデータを可視化する",
-    "section": "演習：富士山には山があるか",
-    "text": "演習：富士山には山があるか\n\n\n「七夕」のコードの記事名を 富士山 に変えるだけで2025年1年分を取得して描き、次の問いに答えよ。\n\n\n問い：七夕のような 鋭い山（スパイク） はあるか？\n問い：スパイクがないなら、何が見えるか？ 自分の言葉で説明せよ\n\n\n\n解答例を見る\nimport requests\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia.org/all-access/all-agents/\"\n       \"富士山/daily/20250101/20251231\")\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\nresponse = requests.get(url, headers=headers)\nresponse.raise_for_status()\ndata = response.json()\n\nviews = np.array([item[\"views\"] for item in data[\"items\"]])\n\nplt.plot(views)\nplt.title(\"「富士山」の閲覧数（2025年）\")\nplt.xlabel(\"日数\")\nplt.ylabel(\"閲覧数\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n種明かし：針はない。でも「波」がある\n\n\n\n七夕のような数百倍のスパイクは ない（最大でも中央値の約3倍）\n代わりに 8月（登山シーズン）と1〜2月 が高い、ゆるやかな波\n\n夏が高いのは分かる。冬はなぜ高い？\n\nスパイクだけが発見ではない。波（季節性）も、データが教えてくれる関心の動き"
+    "objectID": "api-viz.html#演習b富士山には山があるか",
+    "href": "api-viz.html#演習b富士山には山があるか",
+    "title": "APIからのデータを可視化する",
+    "section": "演習B：富士山には山があるか",
+    "text": "演習B：富士山には山があるか\n\n\n「七夕」のコードの記事名を 富士山 に変えるだけで2025年1年分を取得して描き、次の問いに答えよ。\n\n\n問い：七夕のような 鋭い山（スパイク） はあるか？\n問い：スパイクがないなら、何が見えるか？ 自分の言葉で説明せよ\n\n\n\n解答例を見る\nimport requests\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia.org/all-access/all-agents/\"\n       \"富士山/daily/20250101/20251231\")\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\nresponse = requests.get(url, headers=headers)\ndata = response.json()\n\nviews = np.array([item[\"views\"] for item in data[\"items\"]])\n\nplt.plot(views)\nplt.title(\"「富士山」の閲覧数（2025年）\")\nplt.xlabel(\"日数\")\nplt.ylabel(\"閲覧数\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n針はない。でも「波」がある\n\n\n\n七夕のような数百倍のスパイクは ない（最大でも中央値の約3倍）\n代わりに 8月（登山シーズン）と1〜2月 が高い、ゆるやかな波\n\n夏が高いのは分かる。冬はなぜ高い？\n\nスパイクだけが発見ではない。波（季節性）も、データが教えてくれる関心の動き"
   },
   {
     "objectID": "api-viz.html#参考リンク",
     "href": "api-viz.html#参考リンク",
-    "title": "APIデータを可視化する",
+    "title": "APIからのデータを可視化する",
     "section": "参考リンク",
     "text": "参考リンク\n\n\nWikimedia Analytics API\nPage metrics examples\n国立天文台「伝統的七夕」"
   },
@@ -2716,11 +2772,11 @@
     "text": "635法のワークシート\n\n\n\n\n\n案1\n案2\n案3\n\n\n\n\n1巡目（自分）\n通学かばんを軽くする\n…\n…\n\n\n2巡目（隣の人）\n↑を発展：教科書は学校置き\n…\n…\n\n\n3巡目\n…\n…\n…\n\n\n4巡目\n…\n…\n…\n\n\n5巡目\n…\n…\n…\n\n\n6巡目\n…\n…\n…\n\n\n\n\n上の行の案を見て、発展させても、まったく別の案でもよい"
   },
   {
-    "objectID": "ideation.html#クイズ30分で何案出る",
-    "href": "ideation.html#クイズ30分で何案出る",
+    "objectID": "ideation.html#質問30分で何案出る",
+    "href": "ideation.html#質問30分で何案出る",
     "title": "発想法（発散思考）",
-    "section": "クイズ：30分で何案出る？",
-    "text": "クイズ：30分で何案出る？\n\n\n6人 × 3案 × 5分を6巡すると——\n\n\n\n\n\n\n\n\n答え：108案\n\n\n6人 × 3案 × 6巡 = 108案（約30分）。 ブレストで108案は、まず出ない\n\n\n\n\n\n\n話す必要がないので 全員が平等に 出せる\n発言が苦手でも紙の上なら書ける\n「静かに集中して考えたい」チームに向く\n\n\n\n\n\n\n\n\n\n「5分」は実は誤解から広まった\n\n\n考案者 Bernd Rohrbach の原案は「3案 × 5回 発展させる」だったが、のちに「5分」と混同されて広まった（川路 2024）"
+    "section": "質問：30分で何案出る？",
+    "text": "質問：30分で何案出る？\n\n\n6人 × 3案 × 5分を6巡すると——\n\n\n\n\n\n\n\n\n答え：108案\n\n\n6人 × 3案 × 6巡 = 108案（約30分）。 ブレストで108案は、まず出ない\n\n\n\n\n\n\n話す必要がないので 全員が平等に 出せる\n発言が苦手でも紙の上なら書ける\n「静かに集中して考えたい」チームに向く\n\n\n\n\n\n\n\n\n\n「5分」は実は誤解から広まった\n\n\n考案者 Bernd Rohrbach の原案は「3案 × 5回 発展させる」だったが、のちに「5分」と混同されて広まった（川路 2024）"
   },
   {
     "objectID": "ideation.html#演習-635法",
@@ -3063,7 +3119,7 @@
     "href": "numpy.html#本当に速いの-100万要素で実測",
     "title": "NumPy入門",
     "section": "本当に速いの？ — 100万要素で実測",
-    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 27.2 ミリ秒\nndarray:          0.35 ミリ秒\n→ 約 78 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
+    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 23.5 ミリ秒\nndarray:          0.29 ミリ秒\n→ 約 82 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
   },
   {
     "objectID": "numpy.html#その他長さやアクセス方法",
@@ -3395,18 +3451,18 @@
     "text": "リストの代入（罠）\n\n数値でやった操作をリストでやると…\nodd1 = [1, 3]\nodd2 = [5, 7]\nodd1 = odd2\nodd1[0] = 9\nprint(odd2) # ???\n\n\n結果： [9, 7]\nodd1[0] = 9 は看板の掛け替えではない — 指している先の中身の変更\n看板は2枚とも同じリストを指したまま → odd2 から見ても変わる"
   },
   {
-    "objectID": "variables.html#クイズどっちなら-odd2-は無事",
-    "href": "variables.html#クイズどっちなら-odd2-は無事",
+    "objectID": "variables.html#質問どっちなら-odd2-は無事",
+    "href": "variables.html#質問どっちなら-odd2-は無事",
     "title": "変数と代入",
-    "section": "クイズ：どっちなら odd2 は無事？",
-    "text": "クイズ：どっちなら odd2 は無事？\n\nほぼ同じに見える2つのコード。print(odd2) は何と出る？\n\n\n# A\nodd1 = [1, 3]\nodd2 = odd1\nodd1 = [9, 7]\nprint(odd2)  # ???\n\n# B\nodd1 = [1, 3]\nodd2 = odd1\nodd1[0] = 9\nprint(odd2)  # ???\n\n\n\nA： [1, 3] — odd1 = [9, 7] は看板の掛け替え。odd2 は無傷\nB： [9, 7] — odd1[0] = 9 は中身の変更。odd2 も巻き込まれる"
+    "section": "質問：どっちなら odd2 は無事？",
+    "text": "質問：どっちなら odd2 は無事？\n\nほぼ同じに見える2つのコード。print(odd2) は何と出る？\n\n\n# A\nodd1 = [1, 3]\nodd2 = odd1\nodd1 = [9, 7]\nprint(odd2)  # ???\n\n# B\nodd1 = [1, 3]\nodd2 = odd1\nodd1[0] = 9\nprint(odd2)  # ???\n\n\n\nA： [1, 3] — odd1 = [9, 7] は看板の掛け替え。odd2 は無傷\nB： [9, 7] — odd1[0] = 9 は中身の変更。odd2 も巻き込まれる"
   },
   {
     "objectID": "variables.html#ルールは2本だけ",
     "href": "variables.html#ルールは2本だけ",
     "title": "変数と代入",
     "section": "ルールは2本だけ",
-    "text": "ルールは2本だけ\n\n\n\n\n\n\n\n\n\n\n操作\n何が起きる\n\n\n\n\nルール1\nx = ...（代入）\n看板の掛け替え。型に関係なく常に。コピーは起きない\n\n\nルール2\nx[0] = ... や .append()\n指している先の中身を変更。できるのはミュータブルだけ\n\n\n\n\n「リストだけ変な動きをする」のではない — リストは起こせる操作（ルール2）が1つ多いだけ\n迷ったら「これは掛け替え？　中身の変更？」と聞けば、すべてのクイズが解ける\n\n\n\n\n\n\n\nヒント\n\n\nこの2本で、冒頭の事件も説明できる。あと少し道具（id()）を足してから戻ろう。"
+    "text": "ルールは2本だけ\n\n\n\n\n\n\n\n\n\n\n操作\n何が起きる\n\n\n\n\nルール1\nx = ...（代入）\n看板の掛け替え。型に関係なく常に。コピーは起きない\n\n\nルール2\nx[0] = ... や .append()\n指している先の中身を変更。できるのはミュータブルだけ\n\n\n\n\n「リストだけ変な動きをする」のではない — リストは起こせる操作（ルール2）が1つ多いだけ\n迷ったら「これは掛け替え？　中身の変更？」と聞けば、すべての問いに答えられる\n\n\n\n\n\n\n\nヒント\n\n\nこの2本で、冒頭の事件も説明できる。あと少し道具（id()）を足してから戻ろう。"
   },
   {
     "objectID": "variables.html#id-で住所を確認数値",
@@ -3549,11 +3605,11 @@
     "text": "“Always plot your data first.”\n\n\nあらゆるデータは、まず最初に「見て」みる\n\n\n平均や分散などの 統計量だけでは騙される\n図にしてはじめて気づける構造がある\nデータ分析の最初の一手は 常にプロット"
   },
   {
-    "objectID": "visualize.html#クイズ平均所得-524万円",
-    "href": "visualize.html#クイズ平均所得-524万円",
+    "objectID": "visualize.html#質問平均所得-524万円",
+    "href": "visualize.html#質問平均所得-524万円",
     "title": "データの可視化",
-    "section": "クイズ：「平均所得 524万円」",
-    "text": "クイズ：「平均所得 524万円」\n\n\n厚生労働省の調査：日本の1世帯当たり 平均所得は 524万2千円（2022年）\nでは、所得が平均以下 の世帯は全体のどれくらい？\n\n「平均」なんだから、だいたい半分（50%）……？"
+    "section": "質問：「平均所得 524万円」",
+    "text": "質問：「平均所得 524万円」\n\n\n厚生労働省の調査：日本の1世帯当たり 平均所得は 524万2千円（2022年）\nでは、所得が平均以下 の世帯は全体のどれくらい？\n\n「平均」なんだから、だいたい半分（50%）……？"
   },
   {
     "objectID": "visualize.html#peek-income",
@@ -3686,7 +3742,7 @@
     "href": "visualize.html#次回予告",
     "title": "データの可視化",
     "section": "次回予告",
-    "text": "次回予告\n\n\n今日は「見る」「見抜く」 — 読む側 の話だけだった\n次回は 描く側 へ：matplotlib を使う\n\nクイズに出た 東京の気温 を、自分の手で描いて確かめる\n1枚のグラフを「資料に載せられるレベル」まで 育てる"
+    "text": "次回予告\n\n\n今日は「見る」「見抜く」 — 読む側 の話だけだった\n次回は 描く側 へ：matplotlib を使う\n\n質問に出た 東京の気温 を、自分の手で描いて確かめる\n1枚のグラフを「資料に載せられるレベル」まで 育てる"
   },
   {
     "objectID": "visualize.html#参考リンク",
