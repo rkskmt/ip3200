@@ -494,8 +494,8 @@ Python.orgもWikipedia APIも、URLへGETしてresponseを受け取る。違う�
 
 
 - Wikimedia APIでは、**プログラム名・版・連絡先**を含む情報を送る必要がある（[アクセス方針](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/documentation/access-policy.html)）
-- この情報をUser-Agentをrequest headerに指定してrequestsで送信する
-   - ここでは、仮に以下の情報を送ることとする
+- この情報をUser-Agentとしてrequest headerに指定してrequestsで送信
+   - ここでは、仮に以下の情報を送る
 
 ```text
 IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)
