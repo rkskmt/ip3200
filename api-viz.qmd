@@ -1,6 +1,6 @@
 ---
-title: "APIデータを可視化する"
-subtitle: "1年分の閲覧数の謎を解く"
+title: "APIからのデータを可視化する"
+subtitle: "APIからとったjsonを可視化"
 ---
 
 ## {background-color="white" .center .break-slide}
@@ -26,7 +26,6 @@ headers = {
 }
 
 response = requests.get(url, headers=headers)
-response.raise_for_status()
 data = response.json()
 
 views = np.array([item["views"] for item in data["items"]])
@@ -84,7 +83,6 @@ headers = {
     "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
 }
 response = requests.get(url, headers=headers)
-response.raise_for_status()
 data = response.json()
 
 views = np.array([item["views"] for item in data["items"]])
@@ -98,13 +96,13 @@ plt.show()
 
 ::: {.callout-note .fragment}
 ## 1日だけ突出している
-- ほぼ平坦な中、**1日だけ大きな山**
+- ほぼ平坦な中、**1日だけ大きな山（ピーク）**
    - **数値だけ見ていると気づけない**（アンスコムの教訓と同じ）
 - そして見覚えがあるはず：[データの可視化の冒頭で見せた **謎の図**](visualize.qmd#peek-mystery){.peek}は、実はこのデータ
 :::
 
 
-## 山の正体：「いつ」を特定する
+## ピークの「いつ」を特定する
 
 - 山の **高さ** は `views.max()`。知りたいのは **「いつ」**
 - `item["timestamp"]` も同じ内包表記で取り出すと、`views` と **同じインデックスで並ぶ** 日付の配列ができる
@@ -118,7 +116,7 @@ print(f"{dates[max_i]} に {views[max_i]} 回")
 ```
 
 ::: {.callout-important}
-## クイズ
+## ここで質問
 記事は「七夕」。52,168回も読まれた**その1日**は、何月何日だと思う？
 :::
 
@@ -134,40 +132,22 @@ print(f"{dates[max_i]} に {views[max_i]} 回")
 :::
 
 
-## よく見ると、もう一つ山がある
+## plotlyでも書いてみる
 
-```{python}
-#| echo: false
-#| fig-align: center
-import numpy as np
-import matplotlib.pyplot as plt
-import japanize_matplotlib
+- pltだけではなく、plotlyでも可視化する
+   - [Plotly入門](plotly.qmd) 
+- `data["items"]`は、`pd.DataFrame()` に渡すと**そのままdfになる**
 
-data = np.loadtxt("data/tanabata_pageviews_2025.csv", delimiter=",", skiprows=1)
-views = data[:, 1]
+```python
+import pandas as pd
+import plotly.express as px
 
-fig, ax = plt.subplots(figsize=(7, 3))
-ax.plot(views, color="#2266CC", linewidth=1)
-ax.set_ylim(0, 3000)        # 大きな山の「足元」を拡大
-ax.annotate("7/7（軸の外まで続く）", xy=(187, 2800), color="#CC4444", ha="center")
-ax.annotate("8/29 ←これは何？", xy=(240, 2400), color="#2266CC", ha="left")
-ax.set_xlabel("日数")
-ax.set_ylabel("閲覧数")
-ax.grid(True, linestyle="--", alpha=0.5)
-plt.tight_layout()
-plt.show()
+df = pd.DataFrame(data["items"]) # dictのlistをdfへ
+df["date"] = pd.to_datetime(df["timestamp"], format="%Y%m%d%H")
+
+fig = px.line(df, x="date", y="views")
+fig.show()
 ```
-
-- y軸を拡大すると、**8月29日にも小さな山**（2,603回）— 七夕でもないのに、なぜ？
-- 自分のグラフでも `plt.ylim(0, 3000)` を足せば、同じ「足元の拡大」ができる
-
-
-## 8月29日の山の正体 {.badge-important}
-
-- 小さな山の正体は？ **グラフをドラッグで拡大**して確かめよう
-
-::: {.plotly-iframe src="iframes/plotly_tanabata.html" height="340"}
-:::
 
 ```{python}
 #| echo: false
@@ -175,11 +155,34 @@ plt.show()
 import pandas as pd
 import plotly.express as px
 
-df = pd.read_csv("data/tanabata_pageviews_2025.csv")
-df["date"] = pd.to_datetime(df["date"], format="%Y%m%d")
+df_pv = pd.read_csv("data/tanabata_pageviews_2025.csv")
+df_pv["date"] = pd.to_datetime(df_pv["date"], format="%Y%m%d")
+
+fig = px.line(df_pv, x="date", y="views")
+fig.update_layout(width=900, height=340, margin=dict(l=20, r=20, t=30, b=20))
+fig.write_html("iframes/plotly_tanabata_intro.html", include_plotlyjs="directory")
+```
+
+::: {.plotly-iframe src="iframes/plotly_tanabata_intro.html" height="340"}
+:::
+
+
+## よく見ると、もう一つ山がある
+
+- 7/7の山が大きすぎて、ほかの日は**足元で平ら**に見える
+- 動くグラフなら確かめられる：**山の足元をドラッグで拡大**（ダブルクリックで全体に戻る）
+
+::: {.plotly-iframe src="iframes/plotly_tanabata.html" height="340"}
+:::
+
+```{python}
+#| echo: false
+#| output: false
+df_tan = pd.read_csv("data/tanabata_pageviews_2025.csv")
+df_tan["date"] = pd.to_datetime(df_tan["date"], format="%Y%m%d")
 
 fig = px.line(
-    df, x="date", y="views",
+    df_tan, x="date", y="views",
     title="「七夕」の閲覧数（2025年）— ズームで小さな山を探そう",
     labels={"date": "日付", "views": "閲覧数"},
 )
@@ -189,11 +192,16 @@ fig.write_html("iframes/plotly_tanabata.html", include_plotlyjs="directory")
 ```
 
 ::: {.fragment}
+- **8月29日にも小さな山**（2,603回）— 七夕でもないのに、なぜ？
+:::
+
+
+## 8月29日の山の原因 {.badge-important}
+
 - 正体：**伝統的七夕** — 旧暦7月7日にあたる日（2025年は8月29日）
    - 国立天文台が毎年発表している。7月7日は梅雨だが、**旧暦の七夕は夏空で天の川が見える**
 - ==ズームしないと見えない発見もある==
    - 軸の範囲は「正直さ」だけでなく「発見」の道具でもある
-:::
 
 
 ## まとめ
@@ -203,7 +211,7 @@ fig.write_html("iframes/plotly_tanabata.html", include_plotlyjs="directory")
 | まず描く | `plt.plot(views)` |
 | 最大値の位置 | `max_i = np.argmax(views)` |
 | 位置から日付 | `dates[max_i]`（同じindexの配列をリンク） |
-| 足元を拡大 | `plt.ylim(0, 3000)` |
+| 表にして動くグラフ | `pd.DataFrame(data["items"])` → `px.line()` |
 
 - 統計量で「おかしい」と気づき、**図で正体を突き止める**
 - 大原則 *Always plot your data first.* は **API由来のデータ** にもそのまま効く
@@ -216,20 +224,28 @@ fig.write_html("iframes/plotly_tanabata.html", include_plotlyjs="directory")
 :::
 
 
-## 演習：1枚のグラフに2本の折れ線 {.badge-practice}
+## 演習A：1枚のグラフに2本の折れ線 {.badge-practice}
 
 ::: {.prompt}
-「七夕」の2025年1年分を `desktop` と `mobile-web` で取得し、**同じグラフに重ねて**比較せよ。
+「七夕」の2025年1年分を、**人間の閲覧**（`user`）に絞って `desktop` と `mobile-web` で取得し、**日付をx軸にして同じグラフに重ねて**比較せよ。
 :::
 
-1. `access` を切り替えて、2つの閲覧数配列を取得
-2. `plt.plot()` を2回呼び、凡例つきで重ね描き
-3. グラフのタイトルに **max / min / mean** を表示
+0. URLの `all-agents` を `user` に変更
+1. `access` を切り替えて、2つの応答を取得
+2. それぞれ `pd.DataFrame(data["items"])` で表にし、`timestamp` から日付列を作成
+3. `plt.plot(日付, views)` を2回呼び、凡例つきで重ね描き
+4. グラフのタイトルに **max / min / mean** を表示
+
+::: {.callout-note}
+## URLの `all-agents` の意味
+この部分は**誰の閲覧を数えるか**の指定。`all-agents` はbot・クローラー込み、`user` は**人間だけ**。「人がどの端末で読んだか」を聞くなら `user` が正しい。
+:::
 
 ::: {.callout-warning}
-## やってはいけない
+## 禁止事項
 - 軸を揃えず2枚並べる → 比較しづらい
 - 軸の範囲を片方だけ狭める → 印象操作（[matplotlib入門](matplotlib.qmd)「軸の範囲で印象を操る」の罠）
+- 2本を**配列の位置**で重ねる → このAPIは閲覧数0の日を応答から省くことがあり、2つの応答の日数と並びが一致する保証はない。**時系列は日付で対応づける**
 :::
 
 ```{python}
@@ -238,39 +254,39 @@ fig.write_html("iframes/plotly_tanabata.html", include_plotlyjs="directory")
 #| code-fold: true
 #| code-summary: "解答例を見る"
 import requests
+import pandas as pd
 import matplotlib.pyplot as plt
 import japanize_matplotlib
-import numpy as np
 
 headers = {
     "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
 }
 
-def fetch_views(access):
+def fetch_df(access):
     url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
-           f"ja.wikipedia.org/{access}/all-agents/七夕/daily/20250101/20251231")
+           f"ja.wikipedia.org/{access}/user/七夕/daily/20250101/20251231")
     response = requests.get(url, headers=headers)
-    response.raise_for_status()
-    data = response.json()
-    return np.array([item["views"] for item in data["items"]])
+    df = pd.DataFrame(response.json()["items"])
+    df["date"] = pd.to_datetime(df["timestamp"], format="%Y%m%d%H")
+    return df
 
-views_desktop    = fetch_views("desktop")
-views_mobile_web = fetch_views("mobile-web")
+df_desktop = fetch_df("desktop")
+df_mobile  = fetch_df("mobile-web")
 
-plt.plot(views_desktop,    label="desktop")
-plt.plot(views_mobile_web, label="mobile-web")
+plt.plot(df_desktop["date"], df_desktop["views"], label="desktop")
+plt.plot(df_mobile["date"],  df_mobile["views"],  label="mobile-web")
 plt.legend()
 
-title = (f"desktop: max={views_desktop.max()} min={views_desktop.min()} mean={views_desktop.mean():.1f}\n"
-         f"mobile-web: max={views_mobile_web.max()} min={views_mobile_web.min()} mean={views_mobile_web.mean():.1f}")
+title = (f"desktop: max={df_desktop['views'].max()} min={df_desktop['views'].min()} mean={df_desktop['views'].mean():.1f}\n"
+         f"mobile-web: max={df_mobile['views'].max()} min={df_mobile['views'].min()} mean={df_mobile['views'].mean():.1f}")
 plt.title(title)
-plt.xlabel("日数")
+plt.xlabel("日付")
 plt.ylabel("閲覧数")
 plt.show()
 ```
 
 
-## 演習：富士山には山があるか {.badge-practice}
+## 演習B：富士山には山があるか {.badge-practice}
 
 ::: {.prompt}
 「七夕」のコードの**記事名を `富士山` に変えるだけ**で2025年1年分を取得して描き、次の問いに答えよ。
@@ -296,7 +312,6 @@ headers = {
     "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
 }
 response = requests.get(url, headers=headers)
-response.raise_for_status()
 data = response.json()
 
 views = np.array([item["views"] for item in data["items"]])
@@ -330,13 +345,12 @@ plt.show()
 :::
 
 ::: {.callout-note .fragment}
-## 種明かし：針はない。でも「波」がある
+## 針はない。でも「波」がある
 - 七夕のような数百倍のスパイクは **ない**（最大でも中央値の約3倍）
 - 代わりに **8月（登山シーズン）と1〜2月** が高い、ゆるやかな波
    - 夏が高いのは分かる。**冬はなぜ高い？**
 - ==スパイクだけが発見ではない==。波（季節性）も、データが教えてくれる関心の動き
 :::
-
 
 ## 参考リンク
 

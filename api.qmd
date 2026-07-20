@@ -1,11 +1,191 @@
 ---
-title: "APIでデータ取得"
-subtitle: "Webから材料を仕入れる"
+title: "はじめてのAPI"
+subtitle: "データをWeb経由で取得する"
 ---
 
-## requests ライブラリ
 
-PythonでWebにアクセスするための定番ライブラリ（[公式ドキュメント](https://requests.readthedocs.io/)）。標準ライブラリではないため、最初にインストールする。
+## Webブラウザで受け取っている情報
+
+普段、Webブラウザで URL（例：`https://xxx.ac.jp/`）を入力してEnterキーを押すと、デザインされたWebページ、つまり、ただのテキストではなく、画像など含めてデザインされたもの（レンダリングされたページ）が見えますよね？
+
+#### ここで質問
+Webブラウザにサーバから送信されるのは、以下のどちら？
+
+- レンダリング済みの画面？
+- レンダリングに必要なデータ群？
+
+
+
+
+
+
+## ハイパーリンク
+
+コンピュータもインターネットもまだない1945年に、その後の世界を方向づける論文が発表される
+
+- ヴァネバー・ブッシュ（[Vannevar Bush]{.en}）の「[As We May Think]{.en}」
+   - 戦時中に米国の科学研究全体を束ねた人物が、終戦の年に発表した未来予想
+- 問題意識：記録が増えすぎて、**保存はできるが、整理・検索が難しくなった**
+- その問題に対する解として構想した機械が **memex**
+   - あらゆる資料を人の**連想**のように資料から資料へたどれるマシン（ただし構想どまり）
+- 文章同士に紐帯（リンク）をつける構想は、その後ハイパーテキスト（[Hypertext]{.en}）として成立
+   - このハイパーテキストのリンクがハイパーリンク（[Hyperlink]{.en}）
+
+
+::: {.fig-cite src="imgs/memex_life1945.jpg" height="320px"}
+
+::: {.cite}
+出典: Life 1945年9月10日号・[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:The_Memex_%283002477109%29.jpg)（パブリックドメイン）
+:::
+
+:::
+
+::: {.caption-note}
+Life誌掲載版の扉絵。額の小型カメラで見たものをそのまま記録する「未来の科学者」——考える仕事を機械に手伝わせる、という特集の顔
+:::
+
+::: {.callout-note}
+## ハイパーリンクと名付けられたのは1960年代
+テッド・ネルソン（[Ted Nelson]{.en}）が、memexの構想を発展させて名づけた。
+:::
+## ハイパーリンクは疎結合
+
+- [Hyperlink]{.en}は、文書の中に**他の文書のアドレス（URLなど）だけ**を書く
+- 相手の文書を取り込まないし、相手の許可も要らない
+  - 有向グラフ（[directed graph]{.en}）を作るだけ
+- このゆるいつなぎ方を**疎結合**（[loose coupling]{.en}）と呼ぶ
+- 壊れにくく、誰にも断らずに広げられるため、後日[World Wide Web]{.en}として爆発的に普及
+
+```{python}
+#| echo: false
+#| fig-align: center
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+fig, ax = plt.subplots(figsize=(11, 4.6))
+ax.set_xlim(0, 11); ax.set_ylim(0, 5.6); ax.axis("off")
+
+def doc(x, y, label, dead=False):
+    if dead:
+        ax.text(x, y, label, ha="center", va="center", fontsize=10.5,
+                color="#95a5a6",
+                bbox={"boxstyle": "round,pad=0.5", "fc": "white",
+                      "ec": "#95a5a6", "lw": 1.6, "ls": "--"})
+    else:
+        ax.text(x, y, label, ha="center", va="center", fontsize=10.5,
+                fontweight="bold", color="#34495e",
+                bbox={"boxstyle": "round,pad=0.5", "fc": "#eaf2f8",
+                      "ec": "#2471a3", "lw": 1.8})
+
+def link(x1, y1, x2, y2, broken=False):
+    color = "#c0392b" if broken else "#7f8c8d"
+    ls = "--" if broken else "-"
+    ax.annotate("", xy=(x2, y2), xytext=(x1, y1),
+                arrowprops={"arrowstyle": "->", "color": color, "lw": 1.8, "ls": ls})
+    if broken:
+        mx, my = (x1 + x2) / 2, (y1 + y2) / 2
+        ax.text(mx, my, "×", ha="center", va="center", fontsize=26,
+                fontweight="bold", color="#c0392b")
+
+doc(1.2, 4.4, "文書A")
+doc(1.2, 1.3, "文書B")
+doc(4.6, 2.9, "文書C")
+doc(7.6, 4.5, "文書D")
+doc(7.6, 1.2, "文書E")
+doc(10.0, 2.9, "消えた文書", dead=True)
+
+link(1.85, 4.25, 3.95, 3.15)
+link(1.85, 1.45, 3.95, 2.6)
+link(5.25, 3.25, 6.95, 4.3)
+link(5.25, 2.55, 6.95, 1.4)
+link(7.6, 1.75, 7.6, 3.95)
+link(8.3, 4.2, 9.6, 3.35, broken=True)
+
+ax.text(9.1, 4.55, "リンク切れになるだけ", ha="center", fontsize=10.5,
+        fontweight="bold", color="#c0392b")
+ax.text(9.1, 4.2, "（文書Dも、残りの網も無事）", ha="center", fontsize=9.5,
+        color="#c0392b")
+ax.text(2.9, 3.95, "参照＝相手のアドレスを\n書いておくだけ", ha="center", fontsize=9.5,
+        color="#2471a3", multialignment="left")
+
+plt.tight_layout()
+plt.show()
+```
+
+
+
+
+## HTML：Hypertextの１つの実装例
+
+- ハイパーテキストは概念であって実装と仕様は未決定であった
+- 具体的に[Hypertext]{.en}、[Hyperlink]{.en}を実装したのがティム・バーナーズ＝リー（[Tim Berners-Lee]{.en}）
+  - タグ（`<...>`）でテキストに参照を書き込む**HTML**（[**H**yper**T**ext **M**arkup **L**anguage]{.en}）を提案
+  - 1991年にHypertextのセットであるWWWとともに公開した。
+
+```html
+<h1> HTMLの例 </h1>
+<p>ハイパーリンクはこんな感じで書く<a href="next.html">次のページ</a>へ</p>
+<img src="logo.png">
+```
+
+::: {.caption-note}
+`href`・`src` に書いたURLがハイパーリンク。`<a>` は読者がたどる参照、`<img>` は画像をその場に埋め込む参照
+:::
+
+::: {.callout-tip}
+## Hypertext ≠ HTML
+- 例えば、PDFの中のリンクも、Markdownの `[表示テキスト](URL)` も、[Hypertext]{.en}の別実装
+- もっと便利な実装を作ることは可能
+:::
+
+
+## Webブラウザ -- HTMLを閲覧するためのアプリ
+
+#### Webブラウザの仕事（大きく２つ）
+
+1. HTMLを取得する
+   a. ローカルにあるHTMLファイルを読み込む
+   b. ネット（WWW）にあるHTMLを通信して取得（ローカルにキャッシュとして保存）
+2. 読み込んだHTMLを解釈して、その命令通りに画面に描画する
+   - 画面に描画することを**レンダリング**（[rendering]{.en}）という
+
+::: {.callout-note}
+## 「Webブラウザ＝インターネット」ではない
+- ローカルに保存した `.html` ファイルは、ネットにつながなくても開ける
+- メモ帳で前のページの3行を `page.html` と保存し、ダブルクリックすれば確かめられる
+:::
+
+
+## HTTP -- HTMLを通信で取り寄せる取り決め
+
+ローカルのHTMLファイルはダブルクリックで開ける。では、どこかのマシン（サーバ）にあるHTMLはどうやって申請すれば取り寄せられる？この取り寄せのための窓口との申請フォームや窓口の応答マニュアル「こう頼まれたら、こう返す」という手順の取り決めが**プロトコル**（[protocol]{.en}）
+
+- HTTP（[**H**yper**T**ext **T**ransfer **P**rotocol]{.en}）は、その名のとおり、ハイパーテキストを転送するためのプロトコル
+- URLの先頭にある `http://`・`https://` は「HTTPで取り寄せますよ」という宣言
+   - `s` は通信を暗号化する版
+
+## Webサーバ -- HTTPでHTMLを戻すサーバ用アプリ
+
+- ネットにはHTML（とその付属ファイル）を沢山保存していて、HTTPで申請されると送り返してくれる専用のコンピュータがある
+   - このコンピュータがサーバ
+      - 情報を[serve]{.en}するから[server]{.en}
+      - サーバは別名ホスト（[host]{.en}）と呼ばれる
+      - 要求するWebブラウザはクライアント（[client]{.en}）ともいう
+   - HTTP用のサーバは、特に **Webサーバ** や **httpd** などと呼ばれる
+
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+PythonでWebサーバに向かってHTTPを話す
+:::
+
+
+## 【準備】 requests ライブラリ
+
+- requestsはPythonでWebにアクセスするための定番ライブラリ（[公式ドキュメント](https://requests.readthedocs.io/)）。
+- 標準ライブラリではないためインストールが必要
 
 #### インストール
 
@@ -13,37 +193,33 @@ PythonでWebにアクセスするための定番ライブラリ（[公式ドキ�
 pip install requests
 ```
 
-#### コード冒頭でimport
+
+#### import
 
 ```python
 import requests
 ```
 
+## requestsを使ってHTTPで要求する
 
-## ブラウザは何を受け取っている？
-
-ブラウザで <https://www.python.org/> を開くと、完成したWebページが見える。
-
-::: {.callout-important}
-## クイズ
-サーバから届くのは、完成した画面？ それとも画面を作るためのデータ？
-:::
-
-
-## 同じURLをPythonで開く
-
-| コード | 役割 |
-|---|---|
-| `requests.get(url)` | ブラウザと同じURLへアクセス |
-| `response.text` | 応答の本文（body）を取得 |
+#### Webブラウザを使わずにHTTPで生のHTMLを要求
+- requestsはHTTP・HTTPS専用のライブラリ
+- 引数にURLを渡すだけで、Webサーバの応答が戻り値に来る
+- この受信内容（テキスト）をprintで確認
 
 ```python
 import requests
 
-url = "https://www.python.org/"
-response = requests.get(url)
-print(response.text)
+url = "https://www.python.org/" # 見たいページ（何でも可）
+response = requests.get(url) # WebサーバにそのURLの情報の送信を要求
+
+print(response.text) # 返信内容（str）
+
 ```
+
+
+
+#### 応答内容（長いstr）
 
 ```html
 <!doctype html>
@@ -51,12 +227,22 @@ print(response.text)
   ...
 ```
 
-::: {.caption-note}
-**受信したbody：** 完成した画面ではなくHTMLテキスト。ブラウザはこれを読み、CSSや画像も追加取得して画面を組み立てる
-:::
+
+| コード | 役割 |
+|---|---|
+| `requests.get(url)` | ブラウザと同じURLへアクセス |
+| `response.text` | 応答の本文（body）を取得 |
 
 
-## Webアクセスの正体：リクエスト（[request]{.en}）とレスポンス（[response]{.en}）
+
+
+
+
+## Webサーバとrequests間で行われたやりとり
+
+#### リクエスト（[request]{.en}）とレスポンス（[response]{.en}）
+- リクエスト：サーバに返信を要求すること
+- レスポンス：リクエストに対するサーバの返信
 
 ```{python}
 #| echo: false
@@ -86,15 +272,57 @@ plt.tight_layout()
 plt.show()
 ```
 
-::: {.callout-note}
-## 1つのURLにつき1往復
-`requests.get()`は、1つのURLとのrequest → responseを実行する。ブラウザはHTML・CSS・画像ごとにこの往復を繰り返す。responseは **status code・headers・body** の3点セット。
-:::
+## リクエストとレスポンスは1往復
+
+- `requests.get()`は、1つのURLとのrequest → responseを実行する
+- しかし、HTMLの中には、ハイパーリンク（[Hyperlink]{.en}）として画像（アイコンも含む）やCSS（表示スタイル用の専用言語）のURLが入っていることが多い
+- Webブラウザは、根元のHTMLを読むと、それをパース（[parse]{.en}・分解→解釈すること）する
+- パースされた中に、ハイパーリンクとしてURLが記述されていると、Webブラウザは、さらにその個数分のHTTPリクエストを改めて送る
+- Webサーバはそれらも改めて返答する
+  - テキストとは限らない。例えば、画像だったらバイナリファイル
+
+```{python}
+#| echo: false
+#| fig-align: center
+fig, ax = plt.subplots(figsize=(11, 5.6))
+ax.set_xlim(0, 11); ax.set_ylim(0, 10.8); ax.axis("off")
+
+ax.text(2.0, 10.0, "Webブラウザ", ha="center", va="center",
+        fontsize=12, fontweight="bold",
+        bbox={"boxstyle": "round,pad=0.5", "fc": "#d6eaf8", "ec": "#2471a3", "lw": 2})
+ax.text(9.0, 10.0, "Webサーバ", ha="center", va="center",
+        fontsize=12, fontweight="bold",
+        bbox={"boxstyle": "round,pad=0.5", "fc": "#d5f5e3", "ec": "#1e8449", "lw": 2})
+ax.plot([2.0, 2.0], [0.4, 9.4], color="#95a5a6", lw=1.2, ls="--", zorder=0)
+ax.plot([9.0, 9.0], [0.4, 9.4], color="#95a5a6", lw=1.2, ls="--", zorder=0)
+
+def exchange(y, req, res, what):
+    ax.annotate("", xy=(8.85, y), xytext=(2.15, y),
+                arrowprops={"arrowstyle": "->", "color": "#2471a3", "lw": 2.2})
+    ax.text(5.5, y + 0.12, req, ha="center", va="bottom", fontsize=10.5,
+            color="#2471a3", fontweight="bold")
+    ax.annotate("", xy=(2.15, y - 1.0), xytext=(8.85, y - 1.0),
+                arrowprops={"arrowstyle": "->", "color": "#1e8449", "lw": 2.2})
+    ax.text(5.5, y - 0.88, res, ha="center", va="bottom", fontsize=10.5,
+            color="#1e8449", fontweight="bold")
+    ax.text(0.85, y - 0.5, what, ha="center", va="center", fontsize=10,
+            fontweight="bold", color="#34495e")
+
+exchange(8.9, "リクエスト：GET ページのURL", "レスポンス：HTML（テキスト）", "根元の\nHTML")
+ax.text(2.35, 6.6, "HTMLをパース →\n記述されたURLを発見\n（style.css、logo.png）",
+        ha="left", va="center", fontsize=9.5, multialignment="left",
+        bbox={"boxstyle": "round,pad=0.45", "fc": "#fef9e7", "ec": "#b7950b", "lw": 1.6})
+exchange(5.0, "リクエスト：GET style.css", "レスポンス：CSS（テキスト）", "表示\nスタイル")
+exchange(2.4, "リクエスト：GET logo.png", "レスポンス：画像（バイナリ）", "画像")
+
+plt.tight_layout()
+plt.show()
+```
 
 
-## サーバへ送信した情報 {#peek-simple-request}
+## サーバへ送信した情報の確認 {#peek-simple-request}
 
-実行後も `response.request` に、実際に送信したリクエストが残っている。
+ `response.request` には、サーバの応答だけではなく、送信したリクエストも残っている。
 
 ```python
 import requests
@@ -111,9 +339,15 @@ print(response.request.headers)
 :::
 
 
-## サーバから返ってきた情報
+## サーバからの応答を確認
 
-レスポンスは **status code・response headers・body** の3点セット。今度は3つとも表示して、body以外に何が届いているかを確認する。
+レスポンスは 
+
+- **status code** （３桁の数字）
+- **response headers** （サーバがつけるメタデータ）
+- **body**  （本文）
+
+の3点セット。これらを表示して、body以外に何が届いているかを確認する。
 
 ```python
 import requests
@@ -122,20 +356,30 @@ url = "https://www.python.org/"
 response = requests.get(url)
 print(response.status_code)
 print(response.headers)
-print(response.text)
+print(response.text) # 本文。bodyのこと
+```
+
+#### 応答内容（status code → headers → body の順に表示される）
+
+```text
+200
+{'Connection': 'keep-alive', 'Content-Length': '11754', ..., 'server': 'nginx', ..., 'content-type': 'text/html; charset=utf-8', ..., 'Date': 'Mon, 20 Jul 2026 16:03:22 GMT', ...}
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  ...
 ```
 
 ::: {.caption-note}
-**受信したheaders：** `Content-Type: text/html` はbodyがHTMLであることを示す。ほかにも `Date`、`Server`、`Content-Length` などが届く
+**1行目** が status code（`200`）。**2行目の辞書** が response headers——応答には本文だけでなく、サーバがつけた `名前: 値` の付加情報がこうして必ず一緒に届く。`content-type: text/html` は「bodyはHTML」の意味。**3行目以降** が body
 :::
 
 
-## HTTPステータスコード — 404の正体
+## HTTPステータスコード
 
 - 存在しないページを開くと「**404 Not Found**」と表示される
    - この404が **status code**
-- さっき `print(response.status_code)` が表示した `200` も、同じstatus code
-- サーバは処理の結果を、毎回3桁の番号で応答に含めている
+- `print(response.status_code)` が表示した `200` も、同じstatus code
+- サーバは処理の結果を、毎回3桁の番号で応答している
 
 | コード | 意味 |
 |---|---|
@@ -175,31 +419,64 @@ print(response.text)
 :::
 
 ::: {.callout-tip}
-## 種明かし：status codeは同じ、Content-Typeだけ違う
-どちらも成功なのでstatus codeは `200`。一方、`Content-Type`はWebページが `text/html`、アイコンが `image/x-icon`。ブラウザは別々のURLへGETし、受け取った部品を組み合わせて画面を作る。
+## status codeは同じ、Content-Typeだけ違う
+- どちらも成功なのでstatus codeは `200`
+- 一方、`Content-Type`はWebページが `text/html`、アイコンが `image/x-icon`
+- ブラウザは別々のURLへGETし、受け取った部品を組み合わせて画面を作る
 :::
 
 
-## 失敗したまま先へ進まない
+## HTTPヘッダー
 
-- 404や500が返っても、プログラムは止まらない
-   - エラー応答の入った `response` のまま、次の行へ進んでしまう
-- `response.raise_for_status()` は、status codeが400番台・500番台なら **その場でエラーを出して止める**
-- APIではbodyを処理する **前** に呼ぶのが定石
+- ヘッダーは、リクエストとレスポンスの両方につく `名前: 値` 形式のメタデータ
+- 実際の通信では1行に1つずつ並ぶテキストで、requestsはそれをdictにしている
+
+| ヘッダー | 実際の値 | 意味 |
+|---|---|---|
+| `content-type` | `text/html; charset=utf-8` | bodyの種類と文字コード。ブラウザはこれで描き方を決める |
+| `Content-Length` | `11754` | bodyの大きさ（バイト数） |
+| `content-encoding` | `gzip` | bodyの圧縮方式（requestsが自動で解凍） |
+| `Date` | `Mon, 20 Jul 2026 16:03:22 GMT` | サーバが応答を作った日時（世界標準時） |
+| `server` | `nginx` | サーバ側ソフトウェアの名乗り |
+| `Connection` | `keep-alive` | この接続を次の往復にも使い回すという宣言 |
+| `X-Cache` | `MISS, HIT, HIT` | `X-` で始まる名前は標準外の独自ヘッダー（これはキャッシュに当たったかの記録） |
+
+::: {.caption-note}
+ヘッダーの名前は**大文字小文字を区別しない**。`content-type` と `Content-Type` は同じヘッダー
+:::
+
+::: {.callout-note}
+## リクエスト側にもヘッダーがある
+さっき `response.request.headers` に出てきた `User-Agent: python-requests/...` がその例。「誰が頼んでいるか」の名乗りで、このあとAPIを使うときに自分で設定する場面が出てくる。
+:::
 
 
 ## {background-color="white" .center .break-slide}
 
 ::: {.break-title}
-HTMLからJSONへ
+HTMLではなくJSONをホストするサーバ
 :::
 
 
-## Wikimedia Analytics API
+## APIとは
 
-Wikimedia Foundationが公開している、ページビュー統計のAPI。
+- インターフェース（[interface]{.en}）＝ 何かと何かが接する界面のこと
+- その界面をHTTPとするものが **Web API**
+   - URLでリクエストすると、ブラウザ用のHTMLではなく **生のデータ**を返す
+   - **API**（[**A**pplication **P**rogramming **I**nterface]{.en}）
+- アプリはほぼすべてAPIのクライアント
+   - 天気アプリも乗換案内も、裏でAPIに問い合わせている
 
-#### ブラウザで開く
+
+## 今回利用するAPI
+
+
+#### Wikimedia Analytics API
+
+Wikimedia Foundationが公開している、ページビュー統計のAPI
+
+
+#### 一旦、以下のURLをブラウザで開いてみよう
 
 <https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia.org/all-access/2025/06/27>
 
@@ -211,9 +488,24 @@ Python.orgもWikipedia APIも、URLへGETしてresponseを受け取る。違う�
 :::
 
 
-## PythonからAPIへアクセス {#peek-top-response}
 
-status code・response headers・bodyを、さっきと同じ順番で確認する。
+
+## Wikimedia APIはヘッダーが必要
+
+
+- Wikimedia APIでは、**プログラム名・版・連絡先**を含む情報を送る必要がある（[アクセス方針](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/documentation/access-policy.html)）
+- この情報をUser-Agentをrequest headerに指定してrequestsで送信する
+   - ここでは、仮に以下の情報を送ることとする
+
+```text
+IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)
+```
+
+
+## requestにヘッダーをつけてAPIを叩く（要求する） {#peek-top-response}
+
+- 以下を動かすと返ってきたテキストはdictみたいなstr
+- このstrは、JSON（[**J**ava**S**cript **O**bject **N**otation]{.en}）という形式
 
 ```python
 import requests
@@ -230,42 +522,12 @@ print(response.text)
 ```
 
 
-## User-Agentでプログラムの情報を伝える
-
-Wikimedia APIでは、**プログラム名・版・連絡先**を含むUser-Agentをrequest headerに指定する（[アクセス方針](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/documentation/access-policy.html)）。
-
-```text
-IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)
-```
-
-::: {.callout-warning}
-## requestsの既定値では情報が足りない
-`headers=`を省略すると、requestsは `python-requests/...` を送る。これだけではプログラムや連絡先を特定できず、Wikimediaでは拒否されることがある。API使用前に[User-Agent Policy](https://foundation.wikimedia.org/wiki/Policy:Wikimedia_Foundation_User-Agent_Policy/en)で **必須ヘッダーと書式を確認**する。
-:::
-
-
-## WebページとAPIは同じHTTP
-
-| | Webページ | API |
-|---|---|---|
-| リクエスト | URLへGET | URLへGET |
-| status code | `200` | `200` |
-| Content-Type | `text/html` | `application/json` |
-| body | HTMLテキスト | JSONテキスト |
-| 受け取ったあと | ブラウザが画面を描く | Pythonがデータとして処理 |
-
-::: {.callout-note}
-## APIの正体
-APIは、プログラムが扱いやすいbodyを返すURL。通信方法はWebページと変わらない。
-:::
-
-
-
 ## JSON とは
 
-[**J**ava**S**cript **O**bject **N**otation]{.en} の略。CSVと同じ構造化テキストの一種で、Webではデータ交換の標準形式として使われる。
+- [**J**ava**S**cript **O**bject **N**otation]{.en} 
+- CSVと同じ構造化テキストの一種で、Webではデータ交換の標準形式として使われる。
 
-#### 受け取ったbody
+#### bodyのテキストの中身
 
 ```python
 print(response.text)   # 中身は生のJSONテキスト
@@ -276,9 +538,16 @@ print(response.text)   # 中身は生のJSONテキスト
            "year":"2025","month":"06", ...}]}
 ```
 
-#### Pythonの値に変換
+#### JSON形式のstrをdictに変換する方法
 
-`.json()` はJSONテキストをPythonの値へ変換する。このAPIでは一番外側が `dict`。
+```python
+
+import json # 標準ライブラリ
+
+res_dict = json.loads(response.text) # これでdictになる
+print(type(res_dict), res_dict)
+
+```
 
 ```{python}
 #| echo: false
@@ -297,7 +566,7 @@ ax.text(2.1, 4.6, "JSON：ただのテキスト（str）", ha="center", fontsize
         fontweight="bold", color="#b7950b")
 ax.annotate("", xy=(6.0, 2.5), xytext=(4.4, 2.5),
             arrowprops={"arrowstyle": "->", "color": "#34495e", "lw": 2.5})
-ax.text(5.2, 2.9, ".json()", ha="center", fontsize=12, family="monospace",
+ax.text(5.2, 2.9, "json.loads()", ha="center", fontsize=11, family="monospace",
         fontweight="bold", color="#34495e")
 ax.add_patch(plt.Rectangle((6.3, 0.5), 4.9, 3.6, fc="#eaf2f8", ec="#2471a3", lw=2))
 ax.text(6.55, 3.7, "dict", fontsize=11, fontweight="bold", color="#2471a3")
@@ -316,9 +585,9 @@ plt.show()
 ```
 
 
-## JSONをPythonの値に変換する {#peek-top-api}
+## .json()という便利関数 {#peek-top-api}
 
-`raise_for_status()` で失敗していないことを確かめてから、`.json()` でJSONテキストをdict / listの入れ子へ変換する。
+いちいちjsonライブラリで変換しなくても `response.json()` でdictが返る
 
 ```python
 import requests
@@ -329,7 +598,6 @@ headers = {
 }
 
 response = requests.get(url, headers=headers)
-response.raise_for_status()
 data = response.json()
 
 articles = data["items"][0]["articles"]
@@ -337,12 +605,10 @@ for article in articles[:5]:
     print(article["rank"], article["article"], article["views"])
 ```
 
-::: {.caption-note}
-**実行結果：** `data` はdictとlistの入れ子。ループでは上位5件の記事名と閲覧数が表示される
-:::
 
+## エンドポイント
 
-## APIの窓口をURLで指定する
+APIでは、**エンドポイント**（[endpoint]{.en}）という用語がよく出てきます。
 
 | 用語 | 意味 |
 |---|---|
@@ -366,7 +632,7 @@ https://wikimedia.org/api/rest_v1/metrics/pageviews/top/
 
 ::: {.callout-note}
 ## URL構造はAPIごとに異なる
-利用時は[公式ドキュメント](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/)で、エンドポイントとパラメータを確認する。
+利用時は[公式ドキュメント](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/)で、エンドポイントとパラメータを確認
 :::
 
 
@@ -388,9 +654,9 @@ https://wikimedia.org/api/rest_v1/metrics/pageviews/top/
 :::
 
 
-## 別の窓口：記事ごとの閲覧数
+## 記事ごとの閲覧数を返すエンドポイント
 
-特定の記事について、任意の期間のアクセス数を日単位または月単位で返す（[公式例](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/examples/page-metrics.html)）。
+以下のエンドポイントは、特定の記事について、任意の期間のアクセス数を日単位または月単位で返す（[公式例](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/examples/page-metrics.html)）。
 
 ```text
 https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/
@@ -402,15 +668,15 @@ https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/
 |---|---|
 | **project** | ja.wikipedia.org など |
 | **access** | all-access / desktop / mobile-app / mobile-web |
-| **agent** | **all-agents** / spider / automated |
+| **agent** | **all-agents** / user / spider / automated |
 | **article** | 任意の記事名（スペースは `_`） |
 | **granularity** | daily / monthly |
 | **start** / **end** | YYYYMMDD 形式 |
 
 
-## 「七夕」のページビューを取得する {#peek-tanabata}
+## 「七夕」のページビューを取得 {#peek-tanabata}
 
-記事「七夕」の **2025年まるごと1年分** の日別アクセス数を取得し、統計量を出す。
+「七夕」というWikipediaの記事に対する **1年分（2025年）** の日別アクセス数を取得し、統計量を出す例
 
 ```python
 import requests
@@ -424,7 +690,6 @@ headers = {
 }
 
 response = requests.get(url, headers=headers)
-response.raise_for_status()
 data = response.json()
 
 # data["items"] は list of dict
@@ -460,18 +725,23 @@ print(f"中央値: {np.median(views):.0f}回")
 
 ## **Tweak** どの端末で読まれた？ {.badge-practice}
 
-[七夕の取得コード](#peek-tanabata){.peek}の `all-access` だけ変えて実行する。
+[七夕の取得コード](#peek-tanabata){.peek}の `all-access` と `all-agents` を変えて実行する（`all-agents` → `user` で、botを除いた**人間の閲覧**だけになる）。
 
 ::: {.tweak}
-| 取得するアクセス | URLに入れる値 |
+| 取得するもの | URLに入れる値 |
 |---|---|
-| PCブラウザ | `desktop` |
-| スマートフォンのブラウザ | `mobile-web` |
+| PCで読んだ人 | `desktop` / `user` |
+| スマホのブラウザで読んだ人 | `mobile-web` / `user` |
 :::
 
 ::: {.callout-tip}
 ## 予想してから試す
-平均閲覧数はどちらが大きい？ 差は何倍くらいになる？
+PCとスマホ、人はどちらで多く読んでいる？ 平均をとって比べると、差は何倍くらい？
+:::
+
+::: {.callout-note}
+## `mobile-web`（スマホのブラウザ）を試すと404が返ることがある
+このAPIは、**該当データが0件（または未収録）の場合も404で返す**（[公式のトラブルシューティング](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/documentation/troubleshooting.html)）。しかも同じURLでも通ったり404になったりする。404が返ってきたら `response.status_code` を確認する——**応答が成功時と違うことを自分の目で確かめる**のが、エラーへの第一歩。
 :::
 
 
@@ -501,7 +771,6 @@ print(f"中央値: {np.median(views):.0f}回")
 |---|---|
 | アクセス | `requests.get(url, headers=...)` |
 | 状態確認 | `response.status_code`（200 = OK） |
-| 失敗なら停止 | `response.raise_for_status()` |
 | 送ったヘッダー | `response.request.headers` |
 | 返ったヘッダー | `response.headers` |
 | body（str） | `response.text` |
@@ -527,17 +796,3 @@ Chrome/<major>.0.0.0 Safari/537.36
 **この文字列の読み方：** [ChromeのUser-Agent削減](https://www.chromium.org/updates/ua-reduction/)と歴史的な互換性のため、古いOS・CPU名や複数ブラウザ名が共存する。正確な端末情報ではなく、ソフトウェアが名乗る識別子。
 :::
 
-
-## ブラウザとPythonは名乗り方が違う
-
-| アクセス元 | User-Agent |
-|---|---|
-| ブラウザ | ブラウザが自動で送る |
-| requestsの既定値 | `python-requests/バージョン` — 用途や連絡先は分からない |
-| 自分で名乗るUser-Agent | `IP3200-lecture/1.0 (連絡先URL)` — 用途と連絡先が分かる |
-
-::: {.callout-warning}
-## User-Agentを判断材料にしない
-- APIスクリプト：ブラウザの値をコピーせず、規約に従ってアプリ名・版・連絡先を示す
-- Webページ：端末を決めつけず、レスポンシブデザインや機能検出を使う
-:::
