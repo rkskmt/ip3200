@@ -280,7 +280,7 @@ rkskmt
 <li>このゆるいつなぎ方を<strong>疎結合</strong>（<span class="en">loose coupling</span>）と呼ぶ</li>
 <li>壊れにくく、誰にも断らずに広げられるため、後日<span class="en">World Wide Web</span>として爆発的に普及</li>
 </ul>
-<div id="1dffaf3b" class="cell" data-execution_count="1">
+<div id="1e30b1b2" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -455,7 +455,7 @@ rkskmt
 <li>リクエスト：サーバに返信を要求すること</li>
 <li>レスポンス：リクエストに対するサーバの返信</li>
 </ul>
-<div id="24bd244f" class="cell" data-execution_count="2">
+<div id="94596964" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -479,7 +479,7 @@ rkskmt
 <li>テキストとは限らない。例えば、画像だったらバイナリファイル</li>
 </ul></li>
 </ul>
-<div id="479adbad" class="cell" data-execution_count="3">
+<div id="02abb294" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -799,9 +799,9 @@ rkskmt
 <div class="slide-body">
 <ul>
 <li>Wikimedia APIでは、<strong>プログラム名・版・連絡先</strong>を含む情報を送る必要がある（<a href="https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/documentation/access-policy.html">アクセス方針</a>）</li>
-<li>この情報をUser-Agentをrequest headerに指定してrequestsで送信する
+<li>この情報をUser-Agentとしてrequest headerに指定してrequestsで送信
 <ul>
-<li>ここでは、仮に以下の情報を送ることとする</li>
+<li>ここでは、仮に以下の情報を送る</li>
 </ul></li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a></a>IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
@@ -844,7 +844,7 @@ rkskmt
 <span id="cb13-3"><a></a></span>
 <span id="cb13-4"><a></a>res_dict <span class="op">=</span> json.loads(response.text) <span class="co"># これでdictになる</span></span>
 <span id="cb13-5"><a></a><span class="bu">print</span>(<span class="bu">type</span>(res_dict), res_dict)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="60991a0c" class="cell" data-execution_count="4">
+<div id="c7756c2d" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1065,7 +1065,7 @@ rkskmt
 <span id="cb17-19"><a></a><span class="bu">print</span>(<span class="ss">f"最小:   </span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss">回"</span>)</span>
 <span id="cb17-20"><a></a><span class="bu">print</span>(<span class="ss">f"平均:   </span><span class="sc">{</span>views<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">回"</span>)</span>
 <span id="cb17-21"><a></a><span class="bu">print</span>(<span class="ss">f"中央値: </span><span class="sc">{</span>np<span class="sc">.</span>median(views)<span class="sc">:.0f}</span><span class="ss">回"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="b7f46459" class="cell" data-execution_count="5">
+<div id="0618e167" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>日数:   365
 最大:   52168回

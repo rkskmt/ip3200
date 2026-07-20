@@ -1992,7 +1992,7 @@
     "href": "api.html#wikimedia-apiはヘッダーが必要",
     "title": "はじめてのAPI",
     "section": "Wikimedia APIはヘッダーが必要",
-    "text": "Wikimedia APIはヘッダーが必要\n\n\nWikimedia APIでは、プログラム名・版・連絡先を含む情報を送る必要がある（アクセス方針）\nこの情報をUser-Agentをrequest headerに指定してrequestsで送信する\n\nここでは、仮に以下の情報を送ることとする\n\n\nIP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
+    "text": "Wikimedia APIはヘッダーが必要\n\n\nWikimedia APIでは、プログラム名・版・連絡先を含む情報を送る必要がある（アクセス方針）\nこの情報をUser-Agentとしてrequest headerに指定してrequestsで送信\n\nここでは、仮に以下の情報を送る\n\n\nIP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
   },
   {
     "objectID": "api.html#peek-top-response",
@@ -2223,7 +2223,7 @@
     "href": "api-viz.html#月29日の山の原因",
     "title": "APIからのデータを可視化する",
     "section": "8月29日の山の原因",
-    "text": "8月29日の山の原因\n\n\n正体：伝統的七夕 — 旧暦7月7日にあたる日（2025年は8月29日）\n\n国立天文台が毎年発表している。7月7日は梅雨だが、旧暦の七夕は夏空で天の川が見える\n\nズームしないと見えない発見もある\n\n軸の範囲は「正直さ」だけでなく「発見」の道具でもある"
+    "text": "8月29日の山の原因\n\n\n伝統的七夕 — 旧暦7月7日にあたる日（2025年は8月29日）\n\n国立天文台が毎年発表している。7月7日は梅雨だが、旧暦の七夕は夏空で天の川が見える\n\nズームしないと見えない発見もある\n\n軸の範囲は「正直さ」だけでなく「発見」の道具でもある"
   },
   {
     "objectID": "api-viz.html#まとめ",
@@ -3119,7 +3119,7 @@
     "href": "numpy.html#本当に速いの-100万要素で実測",
     "title": "NumPy入門",
     "section": "本当に速いの？ — 100万要素で実測",
-    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 23.5 ミリ秒\nndarray:          0.29 ミリ秒\n→ 約 82 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
+    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 22.9 ミリ秒\nndarray:          0.28 ミリ秒\n→ 約 82 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
   },
   {
     "objectID": "numpy.html#その他長さやアクセス方法",
