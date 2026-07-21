@@ -115,7 +115,7 @@ https://ja.wikipedia.org/w/api.php?action=query&list=search&srsearch=桜&format=
 | エンドポイント | 説明 | パラメータ例 |
 |---|---|---|
 | `action=query&list=search` | 記事検索 | `srsearch=桜&srlimit=10` |
-| `action=query&list=opensearch` | オートコンプリート | `search=桜&limit=8` |
+| `action=opensearch` | オートコンプリート | `search=桜&limit=8` |
 | `action=query&list=random` | ランダムページ | `rnlimit=10&rnnamespace=0` |
 
 ### ページ情報
@@ -178,8 +178,8 @@ https://ja.wikipedia.org/api/rest_v1/page/summary/桜
 |---|---|---|
 | `/page/summary/{title}` | ページ概要 | JSON |
 | `/page/html/{title}` | HTMLコンテンツ | HTML |
-| `/page/mobile-sections/{title}` | モバイル用セクション | JSON |
-| `/page/media/{title}` | メディアファイル | JSON |
+| `/page/mobile-html/{title}` | モバイル用HTML | HTML |
+| `/page/media-list/{title}` | メディアファイル一覧 | JSON |
 | `/page/pdf/{title}` | PDF生成 | PDF |
 | `/page/random/summary` | ランダム概要 | JSON |
 
@@ -190,7 +190,7 @@ https://ja.wikipedia.org/api/rest_v1/page/summary/桜
 | `/transform/wikitext/to/html` | Wikitext→HTML | HTML |
 | `/transform/html/to/wikitext` | HTML→Wikitext | Text |
 | `/feed/featured/{year}/{month}/{day}` | 注目記事 | JSON |
-| `/feed/onthisday/{type}/{month}/{day}` | 今日は何の日 | JSON |
+| `/feed/onthisday/{type}/{month}/{day}` | 今日は何の日（日本語版は未対応） | JSON |
 
 :::
 
@@ -236,7 +236,7 @@ pageviews/per-article/{project}/{access}/{agent}/{article}/{granularity}/{start}
 pageviews/aggregate/{project}/{access}/{agent}/{granularity}/{start}/{end}
 ```
 
-例：`pageviews/aggregate/ja.wikipedia.org/all-access/all-agents/daily/20240101/20240131`
+例：`pageviews/aggregate/ja.wikipedia.org/all-access/all-agents/daily/2024010100/2024013100`（aggregate だけ日付は `YYYYMMDDHH` の**10桁**）
 
 **top** — 人気記事ランキング（2015年7月〜）
 
@@ -248,13 +248,13 @@ pageviews/top/{project}/{access}/{year}/{month}/{day}
 
 ### その他統計
 
-**unique-devices** — ユニークデバイス数（2016年1月〜）
+**unique-devices** — ユニークデバイス数（2016年1月〜。ただしデータ欠落期間があり、範囲に欠落を含むと404になる）
 
 ```text
 unique-devices/{project}/{access-site}/{granularity}/{start}/{end}
 ```
 
-例：`unique-devices/ja.wikipedia.org/all-sites/daily/20240101/20240131`
+例：`unique-devices/ja.wikipedia.org/all-sites/daily/20250101/20250131`
 
 **edits** — 編集統計（2001年1月〜）
 
