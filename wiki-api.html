@@ -422,7 +422,7 @@ rkskmt
 <td><code>srsearch=桜&amp;srlimit=10</code></td>
 </tr>
 <tr class="even">
-<td><code>action=query&amp;list=opensearch</code></td>
+<td><code>action=opensearch</code></td>
 <td>オートコンプリート</td>
 <td><code>search=桜&amp;limit=8</code></td>
 </tr>
@@ -591,13 +591,13 @@ rkskmt
 <td>HTML</td>
 </tr>
 <tr class="odd">
-<td><code>/page/mobile-sections/{title}</code></td>
-<td>モバイル用セクション</td>
-<td>JSON</td>
+<td><code>/page/mobile-html/{title}</code></td>
+<td>モバイル用HTML</td>
+<td>HTML</td>
 </tr>
 <tr class="even">
-<td><code>/page/media/{title}</code></td>
-<td>メディアファイル</td>
+<td><code>/page/media-list/{title}</code></td>
+<td>メディアファイル一覧</td>
 <td>JSON</td>
 </tr>
 <tr class="odd">
@@ -615,6 +615,11 @@ rkskmt
 </div>
 <div id="tabset-2-2">
 <table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>エンドポイント</th>
@@ -640,7 +645,7 @@ rkskmt
 </tr>
 <tr class="even">
 <td><code>/feed/onthisday/{type}/{month}/{day}</code></td>
-<td>今日は何の日</td>
+<td>今日は何の日（日本語版は未対応）</td>
 <td>JSON</td>
 </tr>
 </tbody>
@@ -679,15 +684,15 @@ rkskmt
 <p>例：<code>pageviews/per-article/ja.wikipedia.org/all-access/all-agents/東京/daily/20240101/20240131</code></p>
 <p><strong>aggregate</strong> — プロジェクト全体PV（2015年7月〜）</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a></a>pageviews/aggregate/{project}/{access}/{agent}/{granularity}/{start}/{end}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>例：<code>pageviews/aggregate/ja.wikipedia.org/all-access/all-agents/daily/20240101/20240131</code></p>
+<p>例：<code>pageviews/aggregate/ja.wikipedia.org/all-access/all-agents/daily/2024010100/2024013100</code>（aggregate だけ日付は <code>YYYYMMDDHH</code> の<strong>10桁</strong>）</p>
 <p><strong>top</strong> — 人気記事ランキング（2015年7月〜）</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a></a>pageviews/top/{project}/{access}/{year}/{month}/{day}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p>例：<code>pageviews/top/ja.wikipedia.org/all-access/2024/06/01</code></p>
 </div>
 <div id="tabset-3-2">
-<p><strong>unique-devices</strong> — ユニークデバイス数（2016年1月〜）</p>
+<p><strong>unique-devices</strong> — ユニークデバイス数（2016年1月〜。ただしデータ欠落期間があり、範囲に欠落を含むと404になる）</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a></a>unique-devices/{project}/{access-site}/{granularity}/{start}/{end}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>例：<code>unique-devices/ja.wikipedia.org/all-sites/daily/20240101/20240131</code></p>
+<p>例：<code>unique-devices/ja.wikipedia.org/all-sites/daily/20250101/20250131</code></p>
 <p><strong>edits</strong> — 編集統計（2001年1月〜）</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a></a>edits/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p>例：<code>edits/aggregate/ja.wikipedia.org/all-editor-types/all-page-types/daily/20240101/20240131</code></p>
@@ -1037,7 +1042,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="914059fc" class="cell" data-execution_count="1">
+<div id="e74c632a" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="im">import</span> requests</span>
@@ -1080,7 +1085,7 @@ rkskmt
 <span id="cb23-2"><a></a><span class="co"># Category:日本の城</span></span>
 <span id="cb23-3"><a></a><span class="co"># Category:東京都の鉄道駅</span></span>
 <span id="cb23-4"><a></a><span class="co"># Category:日本のアニメ映画</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="c2c5d1b0" class="cell" data-execution_count="2">
+<div id="925d1609" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="im">import</span> requests</span>
@@ -1109,7 +1114,7 @@ rkskmt
 <div class="prompt">
 <p>REST API v1 の <code>/page/summary/{title}</code> で好きな記事の <strong>タイトル・概要・サムネイルURL</strong> を取得して表示せよ。</p>
 </div>
-<div id="d5c508db" class="cell" data-execution_count="3">
+<div id="f68ada08" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="im">import</span> requests</span>
