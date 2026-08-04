@@ -74,6 +74,9 @@ subtitle: "自治体データを活用する"
 
 ## 配っても、減らない
 
+:::: {.columns}
+
+::: {.column width="62%"}
 - 「**魔法のおなべ**」（[*The Magic Cauldron*]{.en}、[全文](https://cruel.org/freeware/magicpot.html)）は、オープンソースの **経済学**
 
 ::: {.callout-important}
@@ -87,6 +90,25 @@ subtitle: "自治体データを活用する"
 - 売り物は別に作れる：サポート、ハードウェア、ブランド、コンテンツ
 - **データも非競合** — 配っても都のデータは減らず、使われた分だけ価値が生まれる
 :::
+:::
+
+::: {.column width="38%"}
+
+::: {.fig-cite src="imgs/waterhouse_magic_circle.jpg" height="480px"}
+
+::: {.cite}
+絵: John William Waterhouse, Public domain, via Wikimedia Commons
+:::
+
+:::
+
+::: {.caption-note}
+比喩の元ネタは、ウェールズ神話の女神 **ケリドウェン** の大釜（絵は別の魔女）
+:::
+
+:::
+
+::::
 
 
 ## 身近なオープンデータ活用例
