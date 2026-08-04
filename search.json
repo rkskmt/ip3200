@@ -494,14 +494,14 @@
     "href": "tokyo-api.html#東京都の人口150年前は",
     "title": "東京都オープンデータAPI",
     "section": "東京都の人口、150年前は？",
-    "text": "東京都の人口、150年前は？\n\n\n2023年の東京都の人口は 14,099,993人（約1410万人）\nでは 明治5年（1872年）、東京には何人いた？\n\n\n\n\n\n\n\nここで質問\n\n\n今の半分？ 3分の1？ 10分の1？ — 予想してから、めくる\n\n\n\n\n\n答え：859,345人\n\n今の約 16分の1\n\nしかも1872年から 毎年の値が152年分、誰でも取れる形で公開されている\n出どころの 東京都オープンデータAPI から、この152年分をPythonで取り寄せる"
+    "text": "東京都の人口、150年前は？\n\n\n2023年の東京都の人口は 14,099,993人（約1410万人）\n\n\n\n\n\n\n\n問題：明治5年（1872年）、東京には何人いた？\n\n\n今の半分？ 3分の1？ 10分の1？\n\n\n\n\n\n答え：859,345人\n\n今の約 16分の1\n\nしかも1872年から 152年分、毎年の人口が誰でも取れる形で公開されている\n\n東京都オープンデータAPI"
   },
   {
     "objectID": "tokyo-api.html#section",
     "href": "tokyo-api.html#section",
     "title": "東京都オープンデータAPI",
     "section": "",
-    "text": "なぜオープンデータか"
+    "text": "オープンデータか"
   },
   {
     "objectID": "tokyo-api.html#オープンデータとは",
@@ -511,11 +511,18 @@
     "text": "オープンデータとは\n\n\n政府・自治体が 誰でも自由に使える形式 で公開するデータ\n商用・非商用問わず 二次利用可能\n機械可読（CSV, JSON, API）で提供\n\n\n\n\n\n\n\n意義\n\n\n\n透明性：行政の活動を市民が検証できる\nイノベーション：民間がデータを活用してサービス開発\n効率化：データに基づく政策立案（EBPM: Evidence-Based Policy Making）"
   },
   {
+    "objectID": "tokyo-api.html#オープンの源流",
+    "href": "tokyo-api.html#オープンの源流",
+    "title": "東京都オープンデータAPI",
+    "section": "「オープン」の源流",
+    "text": "「オープン」の源流\n\n\n\n\n\n書影: O’Reilly Media, via Wikipedia\n\n\n全文を読む（山形浩生 訳）\n\n\n「オープン」の源流は ソフトウェア\n\nオープンソース：コードを公開し、誰でも使える・直せるようにする\n\n古典『伽藍とバザール』（The Cathedral and the Bazaar、1999）\n\n伽藍（＝大聖堂）方式：専門家だけで 閉じて 作る\nバザール方式：全部公開して、大勢で作る\n主張は バザールの勝ち（証拠は Linux）\n\nオープンデータは、この「オープン」を 行政データ に広げたもの"
+  },
+  {
     "objectID": "tokyo-api.html#身近なオープンデータ活用例",
     "href": "tokyo-api.html#身近なオープンデータ活用例",
     "title": "東京都オープンデータAPI",
     "section": "身近なオープンデータ活用例",
-    "text": "身近なオープンデータ活用例\n\n\n\n\nサービス\n使用データ\n\n\n\n\n乗換案内アプリ\n公共交通の時刻表・遅延情報\n\n\n防災アプリ\n避難所・ハザードマップ\n\n\n不動産サイト\n地価公示・用途地域\n\n\n天気予報\n気象庁の観測データ\n\n\n\n\nすでに使っている — 意識していないだけ\n自分でもAPIを叩けば 同じデータ が手に入る"
+    "text": "身近なオープンデータ活用例\n\n\n\n\nサービス\n使用データ\n\n\n\n\n乗換案内アプリ\n公共交通の時刻表・遅延情報\n\n\n防災アプリ\n避難所・ハザードマップ\n\n\n不動産サイト\n地価公示・用途地域\n\n\n天気予報\n気象庁の観測データ\n\n\n\n\n実は意識せずに日常的に使用している\n自分でもAPIを叩けば 同じデータ が手に入る\n\n登録が必要な場合もある"
   },
   {
     "objectID": "tokyo-api.html#section-1",
@@ -529,21 +536,21 @@
     "href": "tokyo-api.html#概要",
     "title": "東京都オープンデータAPI",
     "section": "概要",
-    "text": "概要\n\n\n東京都オープンデータカタログサイト の一部データをAPI提供\nユーザ登録 不要 — 誰でもすぐに利用可能\n掲載データ約54,000件のうち、CSV約35,000件がAPI対応\n\n\n\n\n項目\n内容\n\n\n\n\n認証\n不要\n\n\nレート制限\n明示なし（常識的な範囲で）\n\n\nデータ形式\nJSON / XML\n\n\nCORS\n対応済み"
+    "text": "概要\n\n\n東京都オープンデータカタログサイト の一部データをAPI提供\nユーザ登録不要 — 誰でもすぐに利用可能\n掲載データ約54,000件のうち、CSV約35,000件がAPI対応\n\n\n\n\n項目\n内容\n\n\n\n\n認証\n不要\n\n\nレート制限\n明示なし（常識的な範囲で）\n\n\nデータ形式\nJSON / XML\n\n\nCORS\n対応済み"
   },
   {
     "objectID": "tokyo-api.html#wikipedia-apiとの違い",
     "href": "tokyo-api.html#wikipedia-apiとの違い",
     "title": "東京都オープンデータAPI",
     "section": "Wikipedia APIとの違い",
-    "text": "Wikipedia APIとの違い\n\n\n\n\n\nWikipedia API\n東京都API\n\n\n\n\nHTTPメソッド\nGET\nPOST\n\n\nデータ内容\n百科事典・統計\n行政・地理・施設\n\n\n更新頻度\nリアルタイム〜日次\n不定期（年次も多い）\n\n\n\n\n\n\n\n\n\n重要：POSTでアクセス\n\n\n\nWikipedia API は requests.get()\n東京都API は requests.post()\n間違えると動かない"
+    "text": "Wikipedia APIとの違い\n\n\n\n\n\nWikipedia API\n東京都API\n\n\n\n\nHTTPメソッド\nGET\nPOST\n\n\nデータ内容\n百科事典・統計\n行政・地理・施設\n\n\n更新頻度\nリアルタイム〜日次\n不定期（年次も多い）\n\n\n\n\n\n\n\n\n\n重要：今回はGETではなくPOST\n\n\n\nWikipedia API は requests.get()\n東京都API は requests.post()"
   },
   {
     "objectID": "tokyo-api.html#section-2",
     "href": "tokyo-api.html#section-2",
     "title": "東京都オープンデータAPI",
     "section": "",
-    "text": "APIの構造"
+    "text": "東京都オープンデータAPIの構造"
   },
   {
     "objectID": "tokyo-api.html#基本url",
@@ -557,14 +564,14 @@
     "href": "tokyo-api.html#apiのidを探す",
     "title": "東京都オープンデータAPI",
     "section": "APIのIDを探す",
-    "text": "APIのIDを探す\n\n\nAPI検索ページ でキーワード検索\n欲しいデータの apiId をコピーして使う\n\n\n\n\n\n\n\n探し方のコツ\n\n\n\n「避難所」「駐輪場」「人口」などキーワードで検索\n区市町村名で絞り込み可能\n詳細ページで apiId と列名を確認"
+    "text": "APIのIDを探す\n\n\nAPI検索ページ でキーワード検索\n欲しいデータの apiId をコピーして使う\n\n\n\n\n\n\n\n探し方のコツ\n\n\n\n「避難所」「駐輪場」「人口」などキーワードで検索\n区市町村名で絞り込み可能\n詳細ページで apiId と列名を確認\n\n\n\n\nただし、リンク切れや内容がないことも多いため確認が必要"
   },
   {
     "objectID": "tokyo-api.html#パラメータ",
     "href": "tokyo-api.html#パラメータ",
     "title": "東京都オープンデータAPI",
     "section": "パラメータ",
-    "text": "パラメータ\n\n\n\n\nパラメータ\n説明\n例\n\n\n\n\nlimit\n取得レコード数の上限\nparams = {\"limit\": 200}\n\n\noffset\n取得開始位置\nparams = {\"offset\": 50}\n\n\n\n\nデフォルトは 100件\n\n全件欲しいときは limit を大きく設定\n\n取得する 列の絞り込み は、URLではなく POSTのbody で指定する（後述）"
+    "text": "パラメータ\n\n\n\n\nパラメータ\n説明\n例\n\n\n\n\nlimit\n取得レコード数の上限\nparams = {\"limit\": 200}\n\n\noffset\n取得開始位置\nparams = {\"offset\": 50}\n\n\n\n\nデフォルトは 100件\n\n全件欲しいときは limit を大きく設定\n\n後で自分でフィルタリングすればよい\n\n\n取得する 列の絞り込み は、URLではなく POSTのbody で指定する（後述）"
   },
   {
     "objectID": "tokyo-api.html#section-3",
@@ -627,14 +634,14 @@
     "href": "tokyo-api.html#どんな形で増えた",
     "title": "東京都オープンデータAPI",
     "section": "どんな形で増えた？",
-    "text": "どんな形で増えた？\n\n\n最小 859,345人（1872年）から最大 14,099,993人（2023年）まで、152個の値が並んでいる\nデータの可視化の大原則 — Always plot your data first.\n\n\n\n\n\n\n\nここで質問\n\n\n150年分の折れ線は、どんな形？ まっすぐ右肩上がり？ 途中に事件はある？ — 手で描いてみてから、めくる\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n右肩上がり — ただし 一直線ではない\n\n1960年代までの急増、1970〜90年代の横ばい、2000年代の再増加\n\nそして 深い谷が1つ\n\n\n\n\nコードを見る\nimport requests\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nparams = {\"limit\": 200}\nbody = {\"column\": [\"西暦（年次）\", \"東京都／人口\"]}\n\nresponse = requests.post(url, params=params, headers=headers, json=body)\nresponse.raise_for_status()\ndata = response.json()\n\nyears      = np.array([r[\"西暦（年次）\"] for r in data[\"hits\"]])\npopulation = np.array([r[\"東京都／人口\"] for r in data[\"hits\"]])\n\nplt.plot(years, population / 1e6)\nplt.title(\"Tokyo Population 1872-2023\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Population (million)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()"
+    "text": "どんな形で増えた？\n\n\n最小 859,345人（1872年）から最大 14,099,993人（2023年）まで、152個の値が並んでいる\nデータの可視化の大原則 — Always plot your data first.\n\n\n\n\n\n\n\nここで質問\n\n\n150年分の折れ線は、どんな形？ まっすぐ右肩上がり？ 途中に事件はある？ — 手で描いてみてから、めくる\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n右肩上がり — ただし 一直線ではない\n\n1960年代までの急増、1970〜90年代の横ばい、2000年代の再増加\n\n深い谷が1つ\n\n\n\n\nコードを見る\nimport requests\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nparams = {\"limit\": 200}\nbody = {\"column\": [\"西暦（年次）\", \"東京都／人口\"]}\n\nresponse = requests.post(url, params=params, headers=headers, json=body)\nresponse.raise_for_status()\ndata = response.json()\n\nyears      = np.array([r[\"西暦（年次）\"] for r in data[\"hits\"]])\npopulation = np.array([r[\"東京都／人口\"] for r in data[\"hits\"]])\n\nplt.plot(years, population / 1e6)\nplt.title(\"Tokyo Population 1872-2023\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Population (million)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()"
   },
   {
-    "objectID": "tokyo-api.html#谷の正体",
-    "href": "tokyo-api.html#谷の正体",
+    "objectID": "tokyo-api.html#何があった",
+    "href": "tokyo-api.html#何があった",
     "title": "東京都オープンデータAPI",
-    "section": "谷の正体",
-    "text": "谷の正体\n\n\n谷の底は 1945年：7,271,001人（1944年）→ 3,488,284人\n\n1年で 378万人減、ほぼ半減\n\n\n\n\n\n\n\n\nここで質問\n\n\n1945年の東京で何が起きた？ いなくなった人は、いつ戻った？\n\n\n\n\n\n空襲と疎開 — 戦争末期、東京から人が離れた\n戻りも速い：1946年に +69万人、1947年に +82万人。5年後の1950年には600万人台まで回復\n歴史の教科書の出来事が、数列にそのまま刻まれている"
+    "section": "何があった",
+    "text": "何があった\n\n\n谷の底は 1945年：7,271,001人（1944年）→ 3,488,284人\n\n1年で 378万人減、ほぼ半減\n\n\n\n\n\n\n\n\nここで質問\n\n\n1945年の東京で何が起きた？ いなくなった人は、いつ戻った？\n\n\n\n\n\n空襲と疎開 — 戦争末期、東京から人が離れた\n戻りも速い：1946年に +69万人、1947年に +82万人。5年後の1950年には600万人台まで回復\n歴史の教科書の出来事が、数列にそのまま刻まれている"
   },
   {
     "objectID": "tokyo-api.html#足元を拡大する",
@@ -3119,7 +3126,7 @@
     "href": "numpy.html#本当に速いの-100万要素で実測",
     "title": "NumPy入門",
     "section": "本当に速いの？ — 100万要素で実測",
-    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 22.1 ミリ秒\nndarray:          0.25 ミリ秒\n→ 約 88 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
+    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 22.9 ミリ秒\nndarray:          0.28 ミリ秒\n→ 約 81 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
   },
   {
     "objectID": "numpy.html#その他長さやアクセス方法",

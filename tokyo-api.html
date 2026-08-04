@@ -221,7 +221,6 @@ rkskmt
 <div class="slide-body">
 <ul>
 <li>2023年の東京都の人口は <strong>14,099,993人</strong>（約1410万人）</li>
-<li>では <strong>明治5年（1872年）</strong>、東京には何人いた？</li>
 </ul>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -229,10 +228,10 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>ここで質問</strong></p>
+<p><strong>問題：<strong>明治5年（1872年）</strong>、東京には何人いた？</strong></p>
 </div>
 <div class="callout-content">
-<p>今の半分？ 3分の1？ 10分の1？ — 予想してから、めくる</p>
+<p>今の半分？ 3分の1？ 10分の1？</p>
 </div>
 </div>
 </div>
@@ -242,8 +241,10 @@ rkskmt
 <ul>
 <li>今の約 <strong>16分の1</strong></li>
 </ul></li>
-<li>しかも1872年から <strong>毎年の値が152年分</strong>、誰でも取れる形で公開されている</li>
-<li>出どころの <strong>東京都オープンデータAPI</strong> から、この152年分をPythonで取り寄せる</li>
+<li>しかも1872年から <strong>152年分</strong>、毎年の人口が誰でも取れる形で公開されている
+<ul>
+<li><strong>東京都オープンデータAPI</strong></li>
+</ul></li>
 </ul>
 </div>
 </div>
@@ -251,7 +252,7 @@ rkskmt
 <section id="section" class="slide level2 center break-slide" data-background-color="white">
 <h2></h2>
 <div class="break-title">
-<p>なぜオープンデータか</p>
+<p>オープンデータか</p>
 </div>
 </section>
 <section id="オープンデータとは" class="slide level2">
@@ -279,6 +280,34 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
+</section>
+<section id="オープンの源流" class="slide level2">
+<h2>「オープン」の源流</h2>
+<div class="slide-body">
+<div class="columns">
+<div class="column" style="width:38%;">
+<div class="fig-cite" style="background-image: url('imgs/cathedral_bazaar_cover.jpg'); height: 300px;">
+<div class="cite">
+<p>書影: O’Reilly Media, via Wikipedia</p>
+</div>
+</div>
+<p><a href="https://cruel.org/freeware/cathedral.html">全文を読む（山形浩生 訳）</a></p>
+</div><div class="column" style="width:62%;">
+<ul>
+<li>「オープン」の源流は <strong>ソフトウェア</strong>
+<ul>
+<li><strong>オープンソース</strong>：コードを公開し、誰でも使える・直せるようにする</li>
+</ul></li>
+<li>古典『<strong>伽藍とバザール</strong>』（<span class="en"><em>The Cathedral and the Bazaar</em></span>、1999）
+<ul>
+<li>伽藍（＝大聖堂）方式：専門家だけで <strong>閉じて</strong> 作る</li>
+<li>バザール方式：<strong>全部公開して</strong>、大勢で作る</li>
+<li>主張は <span class="hl">バザールの勝ち</span>（証拠は Linux）</li>
+</ul></li>
+<li>オープンデータは、この「オープン」を <strong>行政データ</strong> に広げたもの</li>
+</ul>
+</div></div>
 </div>
 </section>
 <section id="身近なオープンデータ活用例" class="slide level2">
@@ -311,8 +340,11 @@ rkskmt
 </tbody>
 </table>
 <ul>
-<li><strong>すでに使っている</strong> — 意識していないだけ</li>
-<li>自分でもAPIを叩けば <strong>同じデータ</strong> が手に入る</li>
+<li>実は意識せずに日常的に使用している</li>
+<li>自分でもAPIを叩けば <strong>同じデータ</strong> が手に入る
+<ul>
+<li>登録が必要な場合もある</li>
+</ul></li>
 </ul>
 </div>
 </section>
@@ -327,7 +359,7 @@ rkskmt
 <div class="slide-body">
 <ul>
 <li><strong>東京都オープンデータカタログサイト</strong> の一部データをAPI提供</li>
-<li>ユーザ登録 <strong>不要</strong> — 誰でもすぐに利用可能</li>
+<li><strong>ユーザ登録不要</strong> — 誰でもすぐに利用可能</li>
 <li>掲載データ約54,000件のうち、CSV約35,000件がAPI対応</li>
 </ul>
 <table class="caption-top">
@@ -393,13 +425,12 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>重要：POSTでアクセス</strong></p>
+<p><strong>重要：今回はGETではなくPOST</strong></p>
 </div>
 <div class="callout-content">
 <ul>
 <li>Wikipedia API は <code>requests.get()</code></li>
 <li>東京都API は <code>requests.post()</code></li>
-<li>間違えると動かない</li>
 </ul>
 </div>
 </div>
@@ -409,7 +440,7 @@ rkskmt
 <section id="section-2" class="slide level2 center break-slide" data-background-color="white">
 <h2></h2>
 <div class="break-title">
-<p>APIの構造</p>
+<p>東京都オープンデータAPIの構造</p>
 </div>
 </section>
 <section id="基本url" class="slide level2">
@@ -448,6 +479,7 @@ rkskmt
 </div>
 </div>
 </div>
+<h4 id="ただしリンク切れや内容がないことも多いため確認が必要">ただし、リンク切れや内容がないことも多いため確認が必要</h4>
 </div>
 </section>
 <section id="パラメータ" class="slide level2">
@@ -477,7 +509,10 @@ rkskmt
 <ul>
 <li>デフォルトは <strong>100件</strong>
 <ul>
-<li>全件欲しいときは <code>limit</code> を大きく設定</li>
+<li>全件欲しいときは <code>limit</code> を大きく設定
+<ul>
+<li>後で自分でフィルタリングすればよい</li>
+</ul></li>
 </ul></li>
 <li>取得する <strong>列の絞り込み</strong> は、URLではなく <strong>POSTのbody</strong> で指定する（後述）</li>
 </ul>
@@ -675,7 +710,7 @@ rkskmt
 </div>
 </div>
 <div class="fragment">
-<div id="ff62c058" class="cell" data-execution_count="1">
+<div id="57cc2178" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -689,10 +724,10 @@ rkskmt
 <ul>
 <li>1960年代までの急増、1970〜90年代の横ばい、2000年代の再増加</li>
 </ul></li>
-<li>そして <strong>深い谷が1つ</strong></li>
+<li><strong>深い谷が1つ</strong></li>
 </ul>
 </div>
-<div id="0e0ea538" class="cell" data-execution_count="2">
+<div id="86fc4519" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> requests</span>
@@ -726,8 +761,8 @@ rkskmt
 </div>
 </div>
 </section>
-<section id="谷の正体" class="slide level2">
-<h2>谷の正体</h2>
+<section id="何があった" class="slide level2">
+<h2>何があった</h2>
 <div class="slide-body">
 <ul>
 <li>谷の底は <strong>1945年</strong>：7,271,001人（1944年）→ <strong>3,488,284人</strong>
@@ -765,7 +800,7 @@ rkskmt
 <li><a href="./api-viz.html">「七夕」の8月29日を見つけたとき</a>と同じ手 — <strong>軸の範囲を絞って足元を拡大</strong> する</li>
 <li>さっきのグラフに <code>plt.xlim(2018, 2024)</code> と <code>plt.ylim(13.85, 14.15)</code> を足すだけ</li>
 </ul>
-<div id="f69287b8" class="cell" data-execution_count="3">
+<div id="25bbfa03" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1007,7 +1042,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="46063a59" class="cell" data-execution_count="4">
+<div id="bc6b7384" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>解答例を見る（品川区の例 — apiIdは検索ページで差し替え）</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="im">import</span> requests</span>
@@ -1037,7 +1072,7 @@ rkskmt
 <li>値は文字列で、全国値が未公表の年は <code>""</code>（空文字）が入っている。<code>"…"</code> と <code>""</code> の行を除いてから <code>float()</code> で変換 — 増減率のときと同じ下ごしらえ</li>
 <li>折れ線グラフに描き、10%を最初に超えた年を確認</li>
 </ol>
-<div id="6eac2180" class="cell" data-execution_count="5">
+<div id="0b2a3c74" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="im">import</span> requests</span>
@@ -1074,7 +1109,7 @@ rkskmt
 </details>
 </div>
 <div class="fragment">
-<div id="477bb67f" class="cell" data-execution_count="6">
+<div id="7b80f01a" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1119,7 +1154,7 @@ rkskmt
 <ul>
 <li>（発展）同じグラフに重ねて描画</li>
 </ul>
-<div id="1826477c" class="cell" data-execution_count="7">
+<div id="a9149e0b" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>解答例を見る（戦前と戦後の人口を比較する例）</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> requests</span>
