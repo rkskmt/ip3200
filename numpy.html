@@ -423,7 +423,7 @@ rkskmt
 <li>「for文が不要なため非常に高速」— 何倍くらい違うと思う？</li>
 </ul>
 <div class="fragment">
-<div id="9cae27a5" class="cell" data-execution_count="1">
+<div id="a92fe64d" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>計測コードを表示</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> time</span>
@@ -450,12 +450,12 @@ rkskmt
 <span id="cb10-22"><a></a><span class="bu">print</span>(<span class="ss">f"→ 約 </span><span class="sc">{</span>t_list <span class="op">/</span> t_arr<span class="sc">:.0f}</span><span class="ss"> 倍速い"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>list（内包表記）: 22.9 ミリ秒
-ndarray:          0.28 ミリ秒
-→ 約 81 倍速い</code></pre>
+<pre><code>list（内包表記）: 22.8 ミリ秒
+ndarray:          0.26 ミリ秒
+→ 約 89 倍速い</code></pre>
 </div>
 </div>
-<div id="8374b042" class="cell" data-execution_count="2">
+<div id="0b02dc3f" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -528,7 +528,7 @@ ndarray:          0.28 ミリ秒
 <span id="cb13-14"><a></a><span class="co"># 転置（transpose）</span></span>
 <span id="cb13-15"><a></a><span class="bu">print</span>(A.T)</span>
 <span id="cb13-16"><a></a><span class="bu">print</span>(B.T)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="c25686ef" class="cell" data-execution_count="3">
+<div id="0c249032" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -573,7 +573,7 @@ ndarray:          0.28 ミリ秒
 <span id="cb15-5"><a></a></span>
 <span id="cb15-6"><a></a><span class="bu">print</span>(np.mean(data, axis<span class="op">=</span><span class="dv">0</span>))  <span class="co"># 列ごと（各科目の平均）</span></span>
 <span id="cb15-7"><a></a><span class="bu">print</span>(np.mean(data, axis<span class="op">=</span><span class="dv">1</span>))  <span class="co"># 行ごと（各生徒の平均）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="0755c01e" class="cell" data-execution_count="4">
+<div id="1fe311c2" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -597,7 +597,7 @@ ndarray:          0.28 ミリ秒
 <span id="cb16-4"><a></a></span>
 <span id="cb16-5"><a></a><span class="bu">print</span>(scores <span class="op">&gt;=</span> <span class="dv">85</span>)           <span class="co"># True/False</span></span>
 <span id="cb16-6"><a></a><span class="bu">print</span>(scores[scores <span class="op">&gt;=</span> <span class="dv">85</span>])   <span class="co"># 85点以上のデータ</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="a4e930b9" class="cell" data-execution_count="5">
+<div id="57e8661e" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -624,7 +624,7 @@ ndarray:          0.28 ミリ秒
 <li>100以上400以下のランダムな整数１つ</li>
 <li>0以上1未満のランダムな数１つ</li>
 </ol>
-<div id="3ee4038b" class="cell" data-execution_count="6">
+<div id="340c6444" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -656,7 +656,7 @@ ndarray:          0.28 ミリ秒
 <li><code>li = [0.1, 0.2, 0.3]</code> でも同様に全要素の型を表示</li>
 <li>これもNumPyの配列 <code>arr2</code> に変換し、要素の型を表示</li>
 </ol>
-<div id="ffd9a827" class="cell" data-execution_count="7">
+<div id="48f4dfe6" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
