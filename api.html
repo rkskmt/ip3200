@@ -193,6 +193,50 @@
   </style>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="custom.css">
+  <script>
+  // MathJax v2's HTML-CSS renderer (Quarto hardcodes config=TeX-AMS_HTML-full)
+  // measures glyph widths in the live DOM, so when its TeX webfonts arrive
+  // after typesetting (VSCode webviews, high-DPI Windows, slow networks) the
+  // repaint leaves inline math wider than its reserved box and it overpaints
+  // the neighboring text. The CommonHTML renderer lays out from built-in
+  // metric tables and has no such race. Quarto offers no knob for this, so
+  // trap the Reveal global (reveal.js loads later, in <body>) and rewrite
+  // the math config before Reveal.initialize hands it to the math plugin.
+  //
+  // CommonHTML still sizes math by measuring an ex-height probe in the
+  // DOM next to each equation (matchFontHeight). reveal.css keeps every
+  // section display:none until Reveal's first layout, so when MathJax
+  // loads fast (warm HTTP cache) the initial whole-deck typeset runs
+  // against hidden slides: the probe measures 0, MathJax substitutes
+  // the 16px-body default ex but keeps the real 32px font-size, and
+  // every equation renders at ~50-61% — permanently, because MathJax
+  // never re-typesets processed math. A fixed scale with
+  // matchFontHeight off removes the DOM measurement entirely (which
+  // also fixes math inside collapsed code-fold / callout bodies —
+  // those always measured hidden). 127% is what the measurement
+  // itself yields for this theme's fonts when it works; retune it if
+  // the body font ever changes.
+  (function () {
+    var reveal;
+    Object.defineProperty(window, "Reveal", {
+      configurable: true,
+      get: function () { return reveal; },
+      set: function (value) {
+        reveal = value;
+        if (!value || typeof value.initialize !== "function" || value.__cskCHTML) return;
+        value.__cskCHTML = true;
+        var initialize = value.initialize;
+        value.initialize = function (config) {
+          if (config && config.math && typeof config.math.config === "string") {
+            config.math.config = config.math.config.replace("_HTML", "_CHTML");
+            config.math.CommonHTML = { scale: 127, matchFontHeight: false };
+          }
+          return initialize.call(this, config);
+        };
+      }
+    });
+  })();
+  </script>
   <script src="slide-ui.js" defer=""></script>
   <script src="search-ui.js" defer=""></script>
   <script src="peek-ui.js" defer=""></script>
@@ -280,7 +324,7 @@ rkskmt
 <li>このゆるいつなぎ方を<strong>疎結合</strong>（<span class="en">loose coupling</span>）と呼ぶ</li>
 <li>壊れにくく、誰にも断らずに広げられるため、後日<span class="en">World Wide Web</span>として爆発的に普及</li>
 </ul>
-<div id="54dee8d1" class="cell" data-execution_count="1">
+<div id="401f4598" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -455,7 +499,7 @@ rkskmt
 <li>リクエスト：サーバに返信を要求すること</li>
 <li>レスポンス：リクエストに対するサーバの返信</li>
 </ul>
-<div id="99f0ade1" class="cell" data-execution_count="2">
+<div id="d4c6c393" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -479,7 +523,7 @@ rkskmt
 <li>テキストとは限らない。例えば、画像だったらバイナリファイル</li>
 </ul></li>
 </ul>
-<div id="c50ea134" class="cell" data-execution_count="3">
+<div id="62976cf4" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -844,7 +888,7 @@ rkskmt
 <span id="cb13-3"><a></a></span>
 <span id="cb13-4"><a></a>res_dict <span class="op">=</span> json.loads(response.text) <span class="co"># これでdictになる</span></span>
 <span id="cb13-5"><a></a><span class="bu">print</span>(<span class="bu">type</span>(res_dict), res_dict)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="8c241202" class="cell" data-execution_count="4">
+<div id="4b674bcd" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1065,7 +1109,7 @@ rkskmt
 <span id="cb17-19"><a></a><span class="bu">print</span>(<span class="ss">f"最小:   </span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss">回"</span>)</span>
 <span id="cb17-20"><a></a><span class="bu">print</span>(<span class="ss">f"平均:   </span><span class="sc">{</span>views<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">回"</span>)</span>
 <span id="cb17-21"><a></a><span class="bu">print</span>(<span class="ss">f"中央値: </span><span class="sc">{</span>np<span class="sc">.</span>median(views)<span class="sc">:.0f}</span><span class="ss">回"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="e6890d25" class="cell" data-execution_count="5">
+<div id="12a06272" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>日数:   365
 最大:   52168回

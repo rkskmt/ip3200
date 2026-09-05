@@ -190,6 +190,50 @@
   </style>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="custom.css">
+  <script>
+  // MathJax v2's HTML-CSS renderer (Quarto hardcodes config=TeX-AMS_HTML-full)
+  // measures glyph widths in the live DOM, so when its TeX webfonts arrive
+  // after typesetting (VSCode webviews, high-DPI Windows, slow networks) the
+  // repaint leaves inline math wider than its reserved box and it overpaints
+  // the neighboring text. The CommonHTML renderer lays out from built-in
+  // metric tables and has no such race. Quarto offers no knob for this, so
+  // trap the Reveal global (reveal.js loads later, in <body>) and rewrite
+  // the math config before Reveal.initialize hands it to the math plugin.
+  //
+  // CommonHTML still sizes math by measuring an ex-height probe in the
+  // DOM next to each equation (matchFontHeight). reveal.css keeps every
+  // section display:none until Reveal's first layout, so when MathJax
+  // loads fast (warm HTTP cache) the initial whole-deck typeset runs
+  // against hidden slides: the probe measures 0, MathJax substitutes
+  // the 16px-body default ex but keeps the real 32px font-size, and
+  // every equation renders at ~50-61% — permanently, because MathJax
+  // never re-typesets processed math. A fixed scale with
+  // matchFontHeight off removes the DOM measurement entirely (which
+  // also fixes math inside collapsed code-fold / callout bodies —
+  // those always measured hidden). 127% is what the measurement
+  // itself yields for this theme's fonts when it works; retune it if
+  // the body font ever changes.
+  (function () {
+    var reveal;
+    Object.defineProperty(window, "Reveal", {
+      configurable: true,
+      get: function () { return reveal; },
+      set: function (value) {
+        reveal = value;
+        if (!value || typeof value.initialize !== "function" || value.__cskCHTML) return;
+        value.__cskCHTML = true;
+        var initialize = value.initialize;
+        value.initialize = function (config) {
+          if (config && config.math && typeof config.math.config === "string") {
+            config.math.config = config.math.config.replace("_HTML", "_CHTML");
+            config.math.CommonHTML = { scale: 127, matchFontHeight: false };
+          }
+          return initialize.call(this, config);
+        };
+      }
+    });
+  })();
+  </script>
   <script src="slide-ui.js" defer=""></script>
   <script src="search-ui.js" defer=""></script>
   <script src="peek-ui.js" defer=""></script>
@@ -239,9 +283,9 @@ rkskmt
 <h3 id="ショートカットの場合4手順">ショートカットの場合（4手順）</h3>
 <ol type="1">
 <li>Shiftキーを押しながら矢印キーで選択範囲を指定する</li>
-<li>Ctrl+C キーでコピーバッファに格納</li>
+<li>Ctrl+c キーでコピーバッファに格納</li>
 <li>ペーストしたい位置に矢印キーで移動</li>
-<li>Ctrl+Vでペースト</li>
+<li>Ctrl+vでペースト</li>
 </ol>
 <p><strong>手順が半分</strong>になり、キーボードから手を離す必要もない。</p>
 <p>スピードが倍化したとして、人生のトータルコピペ数を考えると馬鹿にならない差になる。</p>
@@ -257,6 +301,19 @@ rkskmt
 <li><strong>Alt</strong> キー（オルタナティブの略なので「オルト」と読む）</li>
 <li><strong>Win</strong> キー（Windowsキー）</li>
 </ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>表記について</strong></p>
+</div>
+<div class="callout-content">
+<p>本資料では英字キーを <code>Ctrl + c</code> のように<strong>小文字</strong>で書く。大文字はShiftを押して出す文字と紛れるため（例：<code>&gt;</code> は実際には <code>Shift + .</code>）。</p>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="基本ショートカット" class="slide level2">
@@ -281,32 +338,32 @@ rkskmt
 </tr>
 <tr class="even">
 <td>すべて選択</td>
-<td>Ctrl + A</td>
-<td>Cmd + A</td>
+<td>Ctrl + a</td>
+<td>Cmd + a</td>
 <td>allのa</td>
 </tr>
 <tr class="odd">
 <td>コピー</td>
-<td>Ctrl + C</td>
-<td>Cmd + C</td>
+<td>Ctrl + c</td>
+<td>Cmd + c</td>
 <td>copyのc</td>
 </tr>
 <tr class="even">
 <td>カット（切り取り）</td>
-<td>Ctrl + X</td>
-<td>Cmd + X</td>
+<td>Ctrl + x</td>
+<td>Cmd + x</td>
 <td>由来不明</td>
 </tr>
 <tr class="odd">
 <td>ペースト</td>
-<td>Ctrl + V</td>
-<td>Cmd + V</td>
+<td>Ctrl + v</td>
+<td>Cmd + v</td>
 <td>v の形が挿入場所を表している</td>
 </tr>
 <tr class="even">
 <td>Undo（やり直し）</td>
-<td>Ctrl + Z</td>
-<td>Cmd + Z</td>
+<td>Ctrl + z</td>
+<td>Cmd + z</td>
 <td>諸説あり</td>
 </tr>
 </tbody>
@@ -397,7 +454,7 @@ rkskmt
 <p><strong>Mac（参考）</strong></p>
 </div>
 <div class="callout-content">
-<p>全画面化=Ctrl+Cmd+F、かな→半角=英数キー、ウィンドウを閉じる=Cmd+W</p>
+<p>全画面化=Ctrl+Cmd+f、かな→半角=英数キー、ウィンドウを閉じる=Cmd+w</p>
 </div>
 </div>
 </div>
@@ -418,17 +475,17 @@ rkskmt
 <tbody>
 <tr class="odd">
 <td>コピーバッファを開く</td>
-<td>Win + V</td>
+<td>Win + v</td>
 <td>非常に便利</td>
 </tr>
 <tr class="even">
 <td>スクリーンショット</td>
-<td>Win + Shift + S</td>
+<td>Win + Shift + s</td>
 <td>スクリーンショットのs</td>
 </tr>
 <tr class="odd">
 <td>デスクトップを表示</td>
-<td>Win + D</td>
+<td>Win + d</td>
 <td>デスクトップのd</td>
 </tr>
 <tr class="even">
@@ -475,20 +532,20 @@ rkskmt
 <tbody>
 <tr class="odd">
 <td>検索</td>
-<td>Ctrl + F</td>
-<td>Cmd + F</td>
+<td>Ctrl + f</td>
+<td>Cmd + f</td>
 <td></td>
 </tr>
 <tr class="even">
 <td>Redo（リドゥ）</td>
-<td>Ctrl + Y</td>
-<td>Cmd + Shift + Z</td>
+<td>Ctrl + y</td>
+<td>Cmd + Shift + z</td>
 <td>Undoの逆</td>
 </tr>
 <tr class="odd">
 <td>新しく始める</td>
-<td>Ctrl + N</td>
-<td>Cmd + N</td>
+<td>Ctrl + n</td>
+<td>Cmd + n</td>
 <td>Newのn</td>
 </tr>
 <tr class="even">
@@ -535,14 +592,14 @@ rkskmt
 </tr>
 <tr class="even">
 <td>行をコピー</td>
-<td>Ctrl + C</td>
-<td>Cmd + C</td>
+<td>Ctrl + c</td>
+<td>Cmd + c</td>
 <td><strong>選択なしで押すと行ごとコピー</strong></td>
 </tr>
 <tr class="odd">
 <td>行を切り取り</td>
-<td>Ctrl + X</td>
-<td>Cmd + X</td>
+<td>Ctrl + x</td>
+<td>Cmd + x</td>
 <td><strong>選択なしで押すと行ごと切り取り</strong></td>
 </tr>
 <tr class="even">
@@ -616,7 +673,7 @@ rkskmt
 <span id="cb4-5"><a></a>    <span class="bu">print</span>(<span class="st">"不合格"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>ヒント</strong>：</p>
 <ul>
-<li>行の移動は <strong>Alt + ↑↓</strong> または <strong>Ctrl+X → Ctrl+V</strong></li>
+<li>行の移動は <strong>Alt + ↑↓</strong> または <strong>Ctrl+x → Ctrl+v</strong></li>
 <li>字下げは <strong>Ctrl + ]</strong>、戻すは <strong>Ctrl + [</strong></li>
 </ul>
 </div>
@@ -688,8 +745,8 @@ rkskmt
 <div class="slide-body">
 <ul>
 <li>ショートカットキーは<strong>手順を半分</strong>にし、生涯の作業時間を大幅に削減できる</li>
-<li><code>Ctrl+C/V/Z/A</code> などの基本ショートカットはほぼ全アプリで共通</li>
-<li><strong>Win+V</strong>（クリップボード履歴）・<strong>Win+Shift+S</strong>（スクリーンショット）も覚えておくと便利</li>
+<li><code>Ctrl+c/v/z/a</code> などの基本ショートカットはほぼ全アプリで共通</li>
+<li><strong>Win+v</strong>（クリップボード履歴）・<strong>Win+Shift+s</strong>（スクリーンショット）も覚えておくと便利</li>
 <li>VS Code では <strong>Alt+↑↓</strong>（行移動）・<strong>Ctrl+/</strong>（コメントアウト）・<strong>F5</strong>（実行）が特に役立つ</li>
 </ul>
 

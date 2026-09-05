@@ -105,27 +105,6 @@
     margin: 12px;
     border-radius: 5px;
 }
-/* Editorial in-slide divider for code, examples, and short local sections.
-   h3 remains the strong blue divider. h4 uses one accent edge and a hairline
-   instead of a filled box, preserving hierarchy without looking like a button
-   or a stacked PowerPoint banner. */
-.reveal h4 {
-    display: block;
-    box-sizing: border-box;
-    width: 100%;
-    font-style: normal !important;
-    font-weight: 700 !important;
-    font-size: 1.9rem;
-    line-height: 1.2;
-    color: #24566a;
-    background: transparent;
-    border: 0;
-    border-left: 9px solid #107895;
-    border-bottom: 1px solid #c9d8de;
-    border-radius: 0;
-    padding: 0.08em 0.55em 0.18em;
-    margin: 1.05em 0 0.35em;
-}
 .reveal .slide-body-heading {
     font-style: normal !important;
     font-weight: bold !important;
@@ -270,6 +249,19 @@ table {
   padding-left: 0.7em;
   padding-right: 0.7em;
 }
+/* Compact markdown table: natural width, centered — the global table
+   {width:100%} stretches small matrices (e.g. a 2x2 confusion matrix) across
+   the slide with huge gaps. Wrap the table in ::: {.table-compact}. */
+.table-compact table {
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.table-compact table th,
+.table-compact table td {
+  padding-left: 0.7em;
+  padding-right: 0.7em;
+}
 table tbody {
   border-bottom: none !important;
 }
@@ -304,6 +296,25 @@ table td:first-child {
 }
 .reveal .prompt p + p {
   margin-top: 0.4em;
+}
+/* Takeaway — one large key message placed after a slide's supporting content.
+   It stays in normal flow (not pinned to the viewport) so it cannot overlap a
+   tall formula, figure, or list. Usage: ::: {.takeaway} Key message ::: */
+.reveal .takeaway {
+  width: 94%;
+  margin: 0.8em auto 0;
+  padding: 0.55em 1em;
+  box-sizing: border-box;
+  border: 2px solid #29a8e0;
+  border-radius: 16px;
+  background: #fff;
+  text-align: center;
+  font-size: 2.2rem;
+  line-height: 1.4;
+}
+.reveal .takeaway p {
+  margin: 0;
+  line-height: 1.4;
 }
 .tweak {
   width: fit-content;

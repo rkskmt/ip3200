@@ -550,7 +550,7 @@
     "href": "tokyo-api.html#wikipedia-apiとの違い",
     "title": "東京都オープンデータAPI",
     "section": "Wikipedia APIとの違い",
-    "text": "Wikipedia APIとの違い\n\n\n\n\n\nWikipedia API\n東京都API\n\n\n\n\nHTTPメソッド\nGET\nPOST\n\n\nデータ内容\n百科事典・統計\n行政・地理・施設\n\n\n更新頻度\nリアルタイム〜日次\n不定期（年次も多い）\n\n\n\n\n\n\n\n\n\n重要：今回はGETではなくPOST\n\n\n\nWikipedia API は requests.get()\n東京都API は requests.post()"
+    "text": "Wikipedia APIとの違い\n\n\n\n\n\nWikipedia API\n東京都API\n\n\n\n\nHTTPメソッド\nGET\nPOST\n\n\nUser-Agent\n必須\n不要\n\n\nデータ内容\n百科事典・統計\n行政・地理・施設\n\n\n更新頻度\nリアルタイム〜日次\n不定期（年次も多い）\n\n\n\n\n\n\n\n\n\n重要：今回はGETではなくPOST\n\n\n\nWikipedia API は requests.get()\n東京都API は requests.post()"
   },
   {
     "objectID": "tokyo-api.html#section-2",
@@ -574,13 +574,6 @@
     "text": "APIのIDを探す\n\n\nAPI検索ページ でキーワード検索\n欲しいデータの apiId をコピーして使う\n\n\n\n\n\n\n\n探し方のコツ\n\n\n\n「避難所」「駐輪場」「人口」などキーワードで検索\n区市町村名で絞り込み可能\n詳細ページで apiId と列名を確認\n\n\n\n\nただし、リンク切れや内容がないことも多いため確認が必要"
   },
   {
-    "objectID": "tokyo-api.html#パラメータ",
-    "href": "tokyo-api.html#パラメータ",
-    "title": "東京都オープンデータAPI",
-    "section": "パラメータ",
-    "text": "パラメータ\n\n\n\n\nパラメータ\n説明\n例\n\n\n\n\nlimit\n取得レコード数の上限\nparams = {\"limit\": 200}\n\n\noffset\n取得開始位置\nparams = {\"offset\": 50}\n\n\n\n\nデフォルトは 100件\n\n全件欲しいときは limit を大きく設定\n\n後で自分でフィルタリングすればよい\n\n\n取得する 列の絞り込み は、URLではなく POSTのbody で指定する（後述）"
-  },
-  {
     "objectID": "tokyo-api.html#section-3",
     "href": "tokyo-api.html#section-3",
     "title": "東京都オープンデータAPI",
@@ -591,57 +584,71 @@
     "objectID": "tokyo-api.html#peek-tokyo-template",
     "href": "tokyo-api.html#peek-tokyo-template",
     "title": "東京都オープンデータAPI",
-    "section": "最小テンプレート",
-    "text": "最小テンプレート\n\nimport requests\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nparams = {\"limit\": 200}\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\nbody = {}\n\nresponse = requests.post(url, params=params, headers=headers, json=body)\ndata = response.json()\n\nprint(data[\"hits\"])\n\n\n\n\n\n\njson={} の意味\n\n\n\n空のJSONボディを送信している（東京都APIの仕様上、省略不可）\n省略すると 415（Unsupported Media Type）が返ってくる\n\n400番台＝リクエスト側のミス、の実例"
+    "section": "まず、何もなしで呼ぶ",
+    "text": "まず、何もなしで呼ぶ\n\n\nパラメータも条件も付けず、空のオブジェクト 「{}」 を POSTする\n\nGETではない\n\n\nimport requests\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, json={})\ndata = response.json()\n\nprint(data)\n{'total': 152, 'subtotal': 100, 'limit': None, 'offset': None, 'metadata': {'apiId': 't000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0', 'title': '人口の動き（令和５年中） 参考表４　人口の推移（東京都、全国）(明治５～令和５年)', 'datasetId': 't000003d2000000236', ...（2万文字以上つづく）\n\n\n\n\n\n\njson={} は必須\n\n\n\n空のJSONボディ送信が必須（東京都APIの仕様）\n仮に省略すると 415（Unsupported Media Type）が返ってくる"
   },
   {
-    "objectID": "tokyo-api.html#レスポンス構造",
-    "href": "tokyo-api.html#レスポンス構造",
+    "objectID": "tokyo-api.html#長いレスポンスデータの解析方法-i",
+    "href": "tokyo-api.html#長いレスポンスデータの解析方法-i",
     "title": "東京都オープンデータAPI",
-    "section": "レスポンス構造",
-    "text": "レスポンス構造\n\n{\n  \"total\": 152,\n  \"subtotal\": 152,\n  \"limit\": 200,\n  \"offset\": null,\n  \"metadata\": {\n    \"apiId\": \"API識別子\",\n    \"title\": \"データタイトル\",\n    \"version\": \"1.0.7\"\n  },\n  \"hits\": [\n    {\"row\": 1, \"和暦（年次）\": \"明治5\", \"西暦（年次）\": 1872, \"東京都／人口\": 859345},\n    {\"row\": 2, \"和暦（年次）\": \"明治6\", \"西暦（年次）\": 1873, \"東京都／人口\": 887322},\n    ...\n  ]\n}\n\ntotal — 全件数\nmetadata — データセットの情報\nhits — 実際のデータ本体（list of dict）"
+    "section": "長いレスポンスデータの解析方法 I",
+    "text": "長いレスポンスデータの解析方法 I\n\n手順１： まずkeysをみて全体の構造を確認\n\nレスポンスはマシン用なので人間はパッと見ではわかりにくい\n\nそこで、一旦 レスポンスのdictのキーを表示してみる\n\n\nprint(data.keys())\ndict_keys(['total', 'subtotal', 'limit', 'offset', 'metadata', 'hits'])\n手順２： キーの下を深堀り\n\n大分見通しがよくなった\n意外にもルートのキーは6個だけ\n\n各キーの下に情報が連なっている構造\n\nでは、各キーの下をみていって何があるのかを理解しよう\n\n\nfor key, datum in data.items():\n    print(key, type(datum), datum)\n    print(\"\")\n    print(\"---------------------\")\n    print(\"\")"
+  },
+  {
+    "objectID": "tokyo-api.html#長いレスポンスデータの解析方法-ii",
+    "href": "tokyo-api.html#長いレスポンスデータの解析方法-ii",
+    "title": "東京都オープンデータAPI",
+    "section": "長いレスポンスデータの解析方法 II",
+    "text": "長いレスポンスデータの解析方法 II\n\n手順3： 重要キーの同定\ntotal &lt;class 'int'&gt; 152\n\n---------------------\n\nsubtotal &lt;class 'int'&gt; 100\n\n---------------------\n\nlimit &lt;class 'NoneType'&gt; None\n\n---------------------\n\noffset &lt;class 'NoneType'&gt; None\n\n---------------------\n\nmetadata &lt;class 'dict'&gt; {'apiId': 't000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0', 'title': '人口の動き（令和５...（略）\n\n---------------------\n\nhits &lt;class 'list'&gt; [{'row': 1, '和暦（年次）': '明治5', '西暦（年次）': 1872, '東京都／人口補足': ' ', '東京都／人口': 859345, ...（略）\n\n---------------------\n\nキーmetadata はデータセットの情報っぽい\n\nメタデータはデータのデータ\n\nキーtotal はデータの総件数っぽい\nどうも重要そうなのはhitsっぽい\n\n正解：東京都APIの仕様では、hits にデータ本体があることになっている\n\n\n手順4： 重要キーの深堀り\n\nhitsには大量のデータがlistで格納されていることがわかった\nよって、最初の１件目を出力して実データをみることができそう\n\nprint(data[\"hits\"][0])\n{'row': 1, '和暦（年次）': '明治5', '西暦（年次）': 1872, '東京都／人口補足': ' ', '東京都／人口': 859345, '東京都／増減': '…', '東京都／増減率(%)': '…', '東京都／対全国比(%)': '2.47', '全国／人口補足': '', '全国／人口(千人)': '34806', '全国／増減(千人)': '…', '全国／増減率(%)': '…'}\n\n1件目＝明治5年（1872年）、人口 859,345人"
   },
   {
     "objectID": "tokyo-api.html#section-4",
     "href": "tokyo-api.html#section-4",
     "title": "東京都オープンデータAPI",
     "section": "",
-    "text": "検索条件を指定する"
+    "text": "hits を DataFrame にする"
   },
   {
-    "objectID": "tokyo-api.html#列を絞る行を絞る",
-    "href": "tokyo-api.html#列を絞る行を絞る",
+    "objectID": "tokyo-api.html#hits-は-dataframe-にそのまま入る",
+    "href": "tokyo-api.html#hits-は-dataframe-にそのまま入る",
     "title": "東京都オープンデータAPI",
-    "section": "列を絞る・行を絞る",
-    "text": "列を絞る・行を絞る\n\n\n列 の限定は、POSTのbodyに column を入れる\n行 の絞り込み（期間指定など）は、取得後に Pythonでフィルタ するのが確実\n\n内包表記の if — Pandas入門の条件抽出と同じ発想\n\n\n# 列を限定して取得\nbody = {\n    \"column\": [\"西暦（年次）\", \"東京都／人口\"]\n}\n\n# 取得後に Python でフィルタリング\nfiltered = [r for r in data[\"hits\"]\n            if 1950 &lt;= r[\"西暦（年次）\"] &lt;= 2023]"
+    "section": "hits は DataFrame にそのまま入る",
+    "text": "hits は DataFrame にそのまま入る\n\n\nhits は list of dict — pd.DataFrame() に そのまま渡せる（キーが列名になる）\nさっきの data に続けて：\n\nimport pandas as pd\n\ndf = pd.DataFrame(data[\"hits\"])\nprint(df.columns)\nIndex(['row', '和暦（年次）', '西暦（年次）', '東京都／人口補足', '東京都／人口', '東京都／増減', '東京都／増減率(%)',\n       '東京都／対全国比(%)', '全国／人口補足', '全国／人口(千人)', '全国／増減(千人)', '全国／増減率(%)'],\n      dtype='object')\n\n知らないデータは、まず列名の確認から — Pandas入門\n\n人口だけかと思ったら、増減率・対全国比・全国の人口まで 12列 あった\nrow はAPIが付ける行番号\n\n使う列は、この中から選ぶ"
+  },
+  {
+    "objectID": "tokyo-api.html#pandasなので絞り込みも楽",
+    "href": "tokyo-api.html#pandasなので絞り込みも楽",
+    "title": "東京都オープンデータAPI",
+    "section": "Pandasなので絞り込みも楽",
+    "text": "Pandasなので絞り込みも楽\n\n\n列 の絞り込み（西暦（年次）など）\n\nDFやSeriesなどのサブセットにする\n\n行 の絞り込み（期間指定など）\n\n条件にあう行の抽出\n\n\n# 列：使う列だけ選ぶ\npop = df[[\"西暦（年次）\", \"東京都／人口\"]]\n\n# 行：受け取ってから、条件抽出で絞る\nrecent = df[df[\"西暦（年次）\"] &gt;= 1950]\n\n\n\n\n\n\n（参考）jsonでPOSTすれば列の絞り込みがAPI上で可能\n\n\n\n実は、bodyに column というキーでPOSTすれば絞られた状態で戻る — 必要な列だけ受け取れる\n\nbody = {\"column\": [\"西暦（年次）\", \"東京都／人口\"]}\nresponse = requests.post(url, json=body)"
   },
   {
     "objectID": "tokyo-api.html#section-5",
     "href": "tokyo-api.html#section-5",
     "title": "東京都オープンデータAPI",
     "section": "",
-    "text": "人口152年分を取り寄せる"
+    "text": "東京都の人口の推移を分析"
   },
   {
     "objectID": "tokyo-api.html#peek-population",
     "href": "tokyo-api.html#peek-population",
     "title": "東京都オープンデータAPI",
     "section": "東京都人口（期間指定）",
-    "text": "東京都人口（期間指定）\n\nimport requests\n\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nparams = {\"limit\": 200}\nbody = {\"column\": [\"西暦（年次）\", \"東京都／人口\"]}\n\nresponse = requests.post(url, params=params, headers=headers, json=body)\ndata = response.json()\n\n# Python でフィルタリング\nfiltered = [r for r in data[\"hits\"]\n            if 1950 &lt;= r[\"西暦（年次）\"] &lt;= 2023]\n\nprint(f\"総件数: {len(filtered)}\")\nfor record in filtered[:5]:\n    print(f\"{record['西暦（年次）']}年: {record['東京都／人口']:,}人\")\n総件数: 74\n1950年: 6,277,500人\n1951年: 6,712,494人\n1952年: 7,108,749人\n1953年: 7,468,907人\n1954年: 7,773,648人"
+    "text": "東京都人口（期間指定）\n\n\n1960年代以降だけに絞って、高度経済成長期の東京を見る\n列を選んでから、行を条件抽出 — さっきの2つの道具をそのまま使う\n\nimport requests\nimport pandas as pd\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\npop = df[[\"西暦（年次）\", \"東京都／人口\"]]\nsixties = pop[pop[\"西暦（年次）\"] &gt;= 1960]\n\nprint(sixties)\n    西暦（年次）    東京都／人口\n88    1960   9683802\n89    1961   9936970\n90    1962  10180203\n91    1963  10432526\n92    1964  10639361\n93    1965  10869244\n94    1966  10973070\n95    1967  11104969\n96    1968  11251775\n97    1969  11340417\n98    1970  11408071\n99    1971  11521226\n1000万人を超えたのはいつ？\n\n出力を眺めると、1962年 に1000万人を超えている"
   },
   {
     "objectID": "tokyo-api.html#統計分析の例",
     "href": "tokyo-api.html#統計分析の例",
     "title": "東京都オープンデータAPI",
     "section": "統計分析の例",
-    "text": "統計分析の例\n\n\nhits は list of dict\n\n内包表記で列を取り出して np.array にすれば、いつもの統計がそのまま使える\n\n\nimport requests\nimport numpy as np\n\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nparams = {\"limit\": 200}\nresponse = requests.post(url, params=params, headers=headers, json={})\ndata = response.json()\n\npopulation = np.array([r[\"東京都／人口\"] for r in data[\"hits\"]])\n\nprint(f\"平均: {np.mean(population):,.0f}人\")\nprint(f\"最大: {np.max(population):,}人\")\nprint(f\"最小: {np.min(population):,}人\")\nprint(f\"標準偏差: {np.std(population):,.0f}\")\nprint(f\"中央値: {np.median(population):,.0f}人\")\n平均: 7,294,170人\n最大: 14,099,993人\n最小: 859,345人\n標準偏差: 4,567,885\n中央値: 7,189,875人"
+    "text": "統計分析の例\n\n\n列を取り出せば Series — .mean() と同じ形で .max() .std() .median() も使える\n\nいつもの統計がそのまま使える\n\n\nimport requests\nimport pandas as pd\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\npopulation = df[\"東京都／人口\"]\n\nprint(f\"平均: {population.mean():,.0f}人\")\nprint(f\"最大: {population.max():,}人\")\nprint(f\"最小: {population.min():,}人\")\nprint(f\"標準偏差: {population.std():,.0f}\")\nprint(f\"中央値: {population.median():,.0f}人\")\n平均: 4,623,763人\n最大: 11,521,226人\n最小: 859,345人\n標準偏差: 3,257,045\n中央値: 3,765,064人"
   },
   {
     "objectID": "tokyo-api.html#どんな形で増えた",
     "href": "tokyo-api.html#どんな形で増えた",
     "title": "東京都オープンデータAPI",
     "section": "どんな形で増えた？",
-    "text": "どんな形で増えた？\n\n\n最小 859,345人（1872年）から最大 14,099,993人（2023年）まで、152個の値が並んでいる\nデータの可視化の大原則 — Always plot your data first.\n\n\n\n\n\n\n\nここで質問\n\n\n150年分の折れ線は、どんな形？ まっすぐ右肩上がり？ 途中に事件はある？ — 手で描いてみてから、めくる\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n右肩上がり — ただし 一直線ではない\n\n1960年代までの急増、1970〜90年代の横ばい、2000年代の再増加\n\n深い谷が1つ\n\n\n\n\nコードを見る\nimport requests\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nparams = {\"limit\": 200}\nbody = {\"column\": [\"西暦（年次）\", \"東京都／人口\"]}\n\nresponse = requests.post(url, params=params, headers=headers, json=body)\nresponse.raise_for_status()\ndata = response.json()\n\nyears      = np.array([r[\"西暦（年次）\"] for r in data[\"hits\"]])\npopulation = np.array([r[\"東京都／人口\"] for r in data[\"hits\"]])\n\nplt.plot(years, population / 1e6)\nplt.title(\"Tokyo Population 1872-2023\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Population (million)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()"
+    "text": "どんな形で増えた？\n\n\n最小 859,345人（1872年）から最大 11,521,226人（1971年）まで、100個の値が並んでいる\nデータの可視化の大原則 — Always plot your data first.\n\n\n\n\n\n\n\nここで質問\n\n\n100年分の折れ線は、どんな形？ まっすぐ右肩上がり？ 途中に事件はある？ — 手で描いてみてから、めくる\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n右肩上がり — ただし 一直線ではない\n\n明治・大正のゆるやかな伸び、昭和以降の加速\n\n深い谷が1つ\n\n\n\n\nコードを見る\nimport requests\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\n\nplt.plot(df[\"西暦（年次）\"], df[\"東京都／人口\"] / 1e6)\nplt.title(\"Tokyo Population 1872-1971\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Population (million)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()"
   },
   {
     "objectID": "tokyo-api.html#何があった",
@@ -651,18 +658,11 @@
     "text": "何があった\n\n\n谷の底は 1945年：7,271,001人（1944年）→ 3,488,284人\n\n1年で 378万人減、ほぼ半減\n\n\n\n\n\n\n\n\nここで質問\n\n\n1945年の東京で何が起きた？ いなくなった人は、いつ戻った？\n\n\n\n\n\n空襲と疎開 — 戦争末期、東京から人が離れた\n戻りも速い：1946年に +69万人、1947年に +82万人。5年後の1950年には600万人台まで回復\n歴史の教科書の出来事が、数列にそのまま刻まれている"
   },
   {
-    "objectID": "tokyo-api.html#足元を拡大する",
-    "href": "tokyo-api.html#足元を拡大する",
-    "title": "東京都オープンデータAPI",
-    "section": "足元を拡大する",
-    "text": "足元を拡大する\n\n\n全体の図では、直近10年は「なだらかな右肩上がり」にしか見えない\n「七夕」の8月29日を見つけたときと同じ手 — 軸の範囲を絞って足元を拡大 する\nさっきのグラフに plt.xlim(2018, 2024) と plt.ylim(13.85, 14.15) を足すだけ\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nここで質問\n\n\n2021年だけ人口が減っている（−36,107人）。何があった年？\n\n\n\n\n\nコロナ禍 — テレワークと転出で、人口が 1995年以来26年ぶり に減った\nズームしないと見えない発見がある（伝統的七夕のときと同じ）"
-  },
-  {
     "objectID": "tokyo-api.html#実データは汚れている",
     "href": "tokyo-api.html#実データは汚れている",
     "title": "東京都オープンデータAPI",
     "section": "実データは汚れている",
-    "text": "実データは汚れている\n\n\n人口の列は綺麗だったが、同じ表の 増減率(%) の列を見ると…\n\nrates_raw = [r[\"東京都／増減率(%)\"] for r in data[\"hits\"]]\nprint(rates_raw[:4])\n['…', '3.26', '5.09', '5.75']\n\n数値が 文字列（\"3.26\"）で入っていて、データがない年は \"…\"\n使うには、\"…\" を除いてから float() で数値に変換する\n\nrates = np.array([float(v) for v in rates_raw if v != \"…\"])\nprint(f\"増減率の平均: {rates.mean():.2f}%\")   # 増減率の平均: 2.10%\n\n\n\n\n\n\n型を確かめてから使う\n\n\n\n外部APIのデータは 型が揃っているとは限らない\n\n数値のつもりが文字列、欠損が \"…\" などの記号\n\n集計の前に print(type(値)) や isinstance(値, int) で確認するクセをつける"
+    "text": "実データは汚れている\n\n\n人口の列は綺麗だったが、統計分析のときの df で、同じ表の 増減率(%) の列を見ると…\n\nprint(df[\"東京都／増減率(%)\"])\n0        …\n1     3.26\n2     5.09\n3     5.75\n4      4.2\n      ...\n95     1.2\n96    1.32\n97    0.79\n98     0.6\n99    0.99\nName: 東京都／増減率(%), Length: 100, dtype: object\n\n末尾の dtype: object に注目 — 数値の列なら int64 / float64 になる\n\n数値が 文字列（\"3.26\"）で入っていて、データがない1872年は \"…\"\n\n条件抽出で \"…\" の行を除き、.astype(float) で 列ごと数値に変換（float() の列版）\n\nclean = df[df[\"東京都／増減率(%)\"] != \"…\"]\nrates = clean[\"東京都／増減率(%)\"].astype(float)\n\nprint(f\"増減率の平均: {rates.mean():.2f}%\")   # 増減率の平均: 2.99%\n\n\n\n\n\n\ndtype を確かめてから使う\n\n\n\n外部APIのデータは 型が揃っているとは限らない\n\n数値のつもりが文字列、欠損が \"…\" などの記号\n\nSeries を print すると末尾に dtype が出る — 集計の前に見るクセをつける"
   },
   {
     "objectID": "tokyo-api.html#section-6",
@@ -676,7 +676,7 @@
     "href": "tokyo-api.html#peek-shinagawa",
     "title": "東京都オープンデータAPI",
     "section": "別の窓口、同じテンプレート",
-    "text": "別の窓口、同じテンプレート\n\n\napi_id を差し替えるだけで、届くデータが変わる（通信部分のコードはそのまま）\n列名が分からないデータは、for key, value in row.items(): で 全列を覗く のが最初の一歩\n\nimport requests\n\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\napi_id = \"t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0\"  # 品川区の避難所\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nparams = {\"limit\": 5}\nbody = {}\n\nresponse = requests.post(url, params=params, headers=headers, json=body)\ndata = response.json()\n\nprint(f\"品川区の避難所情報（総件数: {data['total']}件）\")\n\nfor facility in data[\"hits\"]:\n    print(\"---\")\n    for key, value in facility.items():\n        if key != \"row\":\n            print(f\"{key}: {value}\")\n品川区の避難所情報（総件数: 25件）\n---\n名称: 南大井シルバーセンター\n緯度: 35.5916187\n経度: 139.7342376\n---\n..."
+    "text": "別の窓口、同じテンプレート\n\n\napi_id を差し替えるだけで、届くデータが変わる（通信部分のコードはそのまま）\n知らないデータでも手順は同じ — DataFrameにして、まず列名\n\nimport requests\nimport pandas as pd\n\napi_id = \"t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0\"  # 品川区の避難所\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\n\nprint(f\"品川区の避難所（総件数: {data['total']}件）\")\nprint(df.columns)\nprint(df)\n品川区の避難所（総件数: 25件）\nIndex(['row', '名称', '緯度', '経度'], dtype='object')\n    row                        名称         緯度          経度\n0     1               南大井シルバーセンター  35.591619  139.734238\n1     2  春光福祉会　特別養護老人ホーム「ロイヤルサニー」  35.599962  139.722470\n2     3     さくら会老人保健施設「ケアセンター南大井」  35.594534  139.733675\n3     4               西大井シルバーセンター  35.600898  139.723070\n4     5                  八潮児童センター  35.599807  139.751633\n..."
   },
   {
     "objectID": "tokyo-api.html#tweak-api_idを差し替える",
@@ -690,7 +690,7 @@
     "href": "tokyo-api.html#まとめ",
     "title": "東京都オープンデータAPI",
     "section": "まとめ",
-    "text": "まとめ\n\n\n\n\n\n\n\n\nやりたいこと\nコード\n\n\n\n\n基本アクセス\nrequests.post(url, params=..., headers=..., json={})\n\n\n取得件数指定\nparams = {\"limit\": 200}\n\n\n列の絞り込み\nbody = {\"column\": [\"列名1\", \"列名2\"]}\n\n\n行の絞り込み\n取得後にPythonでフィルタ（内包表記 + if）\n\n\n全件数確認\ndata[\"total\"]\n\n\n全列を覗く\nfor key, value in row.items():\n\n\n\n\n\n\n\n\n\nWikipedia API との違い\n\n\n\nGET ではなく POST\n空でも json={} が必要"
+    "text": "まとめ\n\n\n\n\nやりたいこと\nコード\n\n\n\n\n基本アクセス\nrequests.post(url, json={})\n\n\n列の絞り込み（API側）\nbody = {\"column\": [\"列名1\", \"列名2\"]}\n\n\nDataFrame化\ndf = pd.DataFrame(data[\"hits\"])\n\n\n列名の確認\nprint(df.columns)\n\n\n行の絞り込み\n条件抽出 df[df[\"列名\"] &gt;= 値]\n\n\n全件数確認\ndata[\"total\"]\n\n\n\n\n\n\n\n\n\nWikipedia API との違い\n\n\n\nGET ではなく POST\n空でも json={} が必要\nUser-Agent は不要"
   },
   {
     "objectID": "tokyo-api.html#section-7",
@@ -704,21 +704,21 @@
     "href": "tokyo-api.html#演習避難所データの可視化",
     "title": "東京都オープンデータAPI",
     "section": "演習：避難所データの可視化",
-    "text": "演習：避難所データの可視化\n\n\n任意の区市町村の避難所データを取得し、件数を表示せよ。\n\n\n（発展）緯度・経度があれば散布図で地図風にプロット\n\n\n\n\n\n\n\nヒント\n\n\n\nAPI検索ページ で「避難所」を検索\n複数の区のデータを比較しても面白い\n\n\n\n\n\n\n解答例を見る（品川区の例 — apiIdは検索ページで差し替え）\nimport requests\n\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\napi_id = \"t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0\"  # 品川区の避難所\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, headers=headers, json={})\ndata = response.json()\n\nprint(f\"避難所の件数: {data['total']}件\")"
+    "text": "演習：避難所データの可視化\n\n\n任意の区市町村の避難所データを取得し、件数を表示せよ。\n\n\n（発展）緯度・経度があれば散布図で地図風にプロット\n\n\n\n\n\n\n\nヒント\n\n\n\nAPI検索ページ で「避難所」を検索\n複数の区のデータを比較しても面白い\n\n\n\n\n\n\n解答例を見る（品川区の例 — apiIdは検索ページで差し替え）\nimport requests\n\napi_id = \"t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0\"  # 品川区の避難所\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, json={})\ndata = response.json()\n\nprint(f\"避難所の件数: {data['total']}件\")"
   },
   {
     "objectID": "tokyo-api.html#演習東京一極集中はいつから",
     "href": "tokyo-api.html#演習東京一極集中はいつから",
     "title": "東京都オープンデータAPI",
     "section": "演習：東京一極集中はいつから？",
-    "text": "演習：東京一極集中はいつから？\n\n\n人口データの 「東京都／対全国比(%)」 を全期間ぶん取得して折れ線グラフに描き、日本の人口の 1割 を最初に超えた年を答えよ。\n\n\nbody の column で「西暦（年次）」と「東京都／対全国比(%)」の2列を取得\n値は文字列で、全国値が未公表の年は \"\"（空文字）が入っている。\"…\" と \"\" の行を除いてから float() で変換 — 増減率のときと同じ下ごしらえ\n折れ線グラフに描き、10%を最初に超えた年を確認\n\n\n\n解答例を見る\nimport requests\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nparams = {\"limit\": 200}\nbody = {\"column\": [\"西暦（年次）\", \"東京都／対全国比(%)\"]}\n\nresponse = requests.post(url, params=params, headers=headers, json=body)\nresponse.raise_for_status()\ndata = response.json()\n\n# 全国値が未公表の年（\"\"）と欠損（\"…\"）を除いて数値化\nrows = [r for r in data[\"hits\"] if r[\"東京都／対全国比(%)\"] not in (\"…\", \"\")]\nyears  = [r[\"西暦（年次）\"] for r in rows]\nshares = [float(r[\"東京都／対全国比(%)\"]) for r in rows]\n\nover10 = [y for y, s in zip(years, shares) if s &gt;= 10]\nprint(f\"最初に10%を超えた年: {over10[0]}年\")\n\nplt.plot(years, shares)\nplt.title(\"Tokyo Share of Japan Population\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Share (%)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n一極集中は戦前に始まっていた\n\n\n\n1872年は 2.5%（40人に1人）\n最初に10%を超えたのは 1940年\n\n戦前にすでに「1割が東京」だった\n\n1945年に 4.8% へ急落（人口の谷と同じ理由）し、1959年に再び10%へ\n2022年は 11.2%\n\n日本人の 約9人に1人 が東京都民"
+    "text": "演習：東京一極集中はいつから？\n\n\n人口データの 「東京都／対全国比(%)」 を折れ線グラフに描き、日本の人口の 1割 を最初に超えた年を答えよ。\n\n\n人口データを取得し、DataFrameにして列名を確認\n対全国比の値は文字列 — .astype(float) で数値化（増減率のときと同じ下ごしらえ）\n折れ線グラフに描き、10%を最初に超えた年を確認\n\n\n\n解答例を見る\nimport requests\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\nshares = df[\"東京都／対全国比(%)\"].astype(float)\n\nover10 = df[shares &gt;= 10]\nprint(f\"最初に10%を超えた年: {over10['西暦（年次）'].min()}年\")\n\nplt.plot(df[\"西暦（年次）\"], shares)\nplt.title(\"Tokyo Share of Japan Population\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Share (%)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n一極集中は戦前に始まっていた\n\n\n\n1872年は 2.5%（40人に1人）\n最初に10%を超えたのは 1940年\n\n戦前にすでに「1割が東京」だった\n\n1945年に 4.8% へ急落（人口の谷と同じ理由）し、1959年に再び10%へ"
   },
   {
     "objectID": "tokyo-api.html#演習2つのデータセットを比較",
     "href": "tokyo-api.html#演習2つのデータセットを比較",
     "title": "東京都オープンデータAPI",
     "section": "演習：2つのデータセットを比較",
-    "text": "演習：2つのデータセットを比較\n\n\n異なる2つのデータセット（例：2つの区の避難所、戦前と戦後の人口）を取得し、件数や統計量を比較して表示せよ。\n\n\n（発展）同じグラフに重ねて描画\n\n\n\n解答例を見る（戦前と戦後の人口を比較する例）\nimport requests\nimport numpy as np\n\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, params={\"limit\": 200}, headers=headers, json={})\nhits = response.json()[\"hits\"]\n\nprewar  = np.array([r[\"東京都／人口\"] for r in hits if r[\"西暦（年次）\"] &lt;= 1944])\npostwar = np.array([r[\"東京都／人口\"] for r in hits if r[\"西暦（年次）\"] &gt;= 1946])\n\nprint(f\"戦前（〜1944）: {len(prewar)}年分 平均 {prewar.mean():,.0f}人\")\nprint(f\"戦後（1946〜）: {len(postwar)}年分 平均 {postwar.mean():,.0f}人\")"
+    "text": "演習：2つのデータセットを比較\n\n\n異なる2つのデータセット（例：2つの区の避難所、戦前と戦後の人口）を取得し、件数や統計量を比較して表示せよ。\n\n\n（発展）同じグラフに重ねて描画\n\n\n\n解答例を見る（戦前と戦後の人口を比較する例）\nimport requests\nimport pandas as pd\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\nprewar = df[df[\"西暦（年次）\"] &lt;= 1944]\npostwar = df[df[\"西暦（年次）\"] &gt;= 1946]\n\nprint(f\"戦前（〜1944）: {len(prewar)}年分 平均 {prewar['東京都／人口'].mean():,.0f}人\")\nprint(f\"戦後（1946〜）: {len(postwar)}年分 平均 {postwar['東京都／人口'].mean():,.0f}人\")"
   },
   {
     "objectID": "tokyo-api.html#section-8",
@@ -733,6 +733,34 @@
     "title": "東京都オープンデータAPI",
     "section": "アプリケーション例",
     "text": "アプリケーション例\n\n\n\n\n分野\n活用例\n\n\n\n\n防災\n避難所マップ、消火栓・防火水槽の位置、地震被害想定\n\n\n交通\n駐輪場検索、バス運賃計算、駅の乗降客数分析\n\n\n生活\n公衆トイレマップ、公共施設案内、子育て支援制度\n\n\n研究\n人口動態分析、地価変動追跡、行政サービス利用調査\n\n\n\n探してみる\nAPI検索ページで自分の住む区市町村を検索し、見つけたデータを1つ、隣の人に30秒で紹介する（何のデータ？ 何件？ どの列が面白そう？）"
+  },
+  {
+    "objectID": "tokyo-api.html#section-9",
+    "href": "tokyo-api.html#section-9",
+    "title": "東京都オープンデータAPI",
+    "section": "",
+    "text": "（参考）全件を取り寄せる"
+  },
+  {
+    "objectID": "tokyo-api.html#参考あれ件数が足りない",
+    "href": "tokyo-api.html#参考あれ件数が足りない",
+    "title": "東京都オープンデータAPI",
+    "section": "（参考）あれ？件数が足りない？",
+    "text": "（参考）あれ？件数が足りない？\n\n\n本編の人口データ、hits の件数と total をよく見ると：\n\nprint(len(data[\"hits\"]))\nprint(data[\"total\"])\n100\n152\n（参考）よく見るとhits list長とtotalが違う\n\n152年分あるのに、100件しか届いていない\n\n1回に届く件数は、指定しないと先頭100件まで\n\n\n（参考）URLの後ろに ?limit=200 を付ければ全件届く\nresponse = requests.post(url + \"?limit=200\", json={})   # limitはデフォルト100・最大1000\ndata = response.json()\n\nprint(len(data[\"hits\"]))\n152"
+  },
+  {
+    "objectID": "tokyo-api.html#参考1000件を超えたら-ページング",
+    "href": "tokyo-api.html#参考1000件を超えたら-ページング",
+    "title": "東京都オープンデータAPI",
+    "section": "（参考）1,000件を超えたら — ページング",
+    "text": "（参考）1,000件を超えたら — ページング\n\n\n1,000件を超えるデータは、limit を最大にしても1回では取り切れない\nこのとき、東京都APIでは取得開始位置 offset をずらしながら、同じリクエストを繰り返すことになっている\n\nこのようなデータの応答や表示の分割を ページング（paging）という\n\nたとえば total: 2500 のデータなら3回に分ければとれる：\n\n\n\n\n呼び出し\nURLに付ける\n届く範囲\n\n\n\n\n1回目\n?limit=1000&offset=0\n1〜1000件目\n\n\n2回目\n?limit=1000&offset=1000\n1001〜2000件目\n\n\n3回目\n?limit=1000&offset=2000\n2001〜2500件目\n\n\n\n\n毎回の hits をつなげば全件そろう\nWebサービスの「次のページ」「もっと見る」も、裏側はこの仕組み"
+  },
+  {
+    "objectID": "tokyo-api.html#参考全件取って足元を拡大する",
+    "href": "tokyo-api.html#参考全件取って足元を拡大する",
+    "title": "東京都オープンデータAPI",
+    "section": "（参考）全件取って、足元を拡大する",
+    "text": "（参考）全件取って、足元を拡大する\n\n\n本編のグラフは1971年で切れていた — ?limit=200 で 152年全部 を取り直すと、2023年まで伸びる\n「七夕」の8月29日を見つけたときと同じ手 — 軸の範囲を絞って足元を拡大 する\n\nグラフのコードに plt.xlim(2018, 2024) と plt.ylim(13.85, 14.15) を足すだけ\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nここで質問\n\n\n2021年だけ人口が減っている（−36,107人）。何があった年？\n\n\n\n\n\nコロナ禍 — テレワークと転出で、人口が 1995年以来26年ぶり に減った\nズームしないと見えない発見がある（伝統的七夕のときと同じ）"
   },
   {
     "objectID": "tokyo-api.html#関連リソース",
@@ -1383,7 +1411,7 @@
     "href": "nicegui.html#保存するだけで反映オートリロード",
     "title": "NiceGUIで作るSPAモック",
     "section": "保存するだけで反映：オートリロード",
-    "text": "保存するだけで反映：オートリロード\n\n\nNiceGUIは、ファイルを保存すると サーバーが自動再起動し、ブラウザも自動更新 される\n\n最初に1回実行したら、あとは 編集 → 保存 → すぐ確認 の繰り返し\nCtrl+C で止めて実行し直す必要がない\n\n\n\n\n\n\n\n\n\n用語\n意味\n\n\n\n\nオートリロード／ライブリロード\nファイル変更を検知してブラウザを自動リロード\n\n\nホットリロード\nプログラムを再起動せずに変更を反映（Python/FastAPI側）"
+    "text": "保存するだけで反映：オートリロード\n\n\nNiceGUIは、ファイルを保存すると サーバーが自動再起動し、ブラウザも自動更新 される\n\n最初に1回実行したら、あとは 編集 → 保存 → すぐ確認 の繰り返し\nCtrl+c で止めて実行し直す必要がない\n\n\n\n\n\n\n\n\n\n用語\n意味\n\n\n\n\nオートリロード／ライブリロード\nファイル変更を検知してブラウザを自動リロード\n\n\nホットリロード\nプログラムを再起動せずに変更を反映（Python/FastAPI側）"
   },
   {
     "objectID": "nicegui.html#最初の一歩hello-world",
@@ -1712,7 +1740,7 @@
     "href": "figma.html#今日使う基本操作は5つだけ",
     "title": "Figmaでワイヤーフレーム",
     "section": "今日使う基本操作は5つだけ",
-    "text": "今日使う基本操作は5つだけ\n\n\n\n\nキー\n操作\n\n\n\n\nF\nFrame（画面の枠）を置く\n\n\nR\n四角形（ボタンやカード）\n\n\nT\nテキスト（タイトルやラベル）\n\n\nShift + A\nAuto Layout（自動整列）\n\n\nAlt + ドラッグ\nコピー\n\n\n\n\n\n\n\n\n\n迷ったら左上のツールバー\n\n\nキーを忘れてもツールバーから選べる。まずは F・R・T の3つで大半の画面が作れる"
+    "text": "今日使う基本操作は5つだけ\n\n\n\n\nキー\n操作\n\n\n\n\nF\nFrame（画面の枠）を置く\n\n\nR\n四角形（ボタンやカード）\n\n\nT\nテキスト（タイトルやラベル）\n\n\nShift + a\nAuto Layout（自動整列）\n\n\nAlt + ドラッグ\nコピー\n\n\n\n\n\n\n\n\n\n迷ったら左上のツールバー\n\n\nキーを忘れてもツールバーから選べる。まずは F・R・T の3つで大半の画面が作れる"
   },
   {
     "objectID": "figma.html#演習-まず1画面作る",
@@ -3133,7 +3161,7 @@
     "href": "numpy.html#本当に速いの-100万要素で実測",
     "title": "NumPy入門",
     "section": "本当に速いの？ — 100万要素で実測",
-    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 24.0 ミリ秒\nndarray:          0.29 ミリ秒\n→ 約 84 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
+    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 33.1 ミリ秒\nndarray:          0.65 ミリ秒\n→ 約 51 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
   },
   {
     "objectID": "numpy.html#その他長さやアクセス方法",
@@ -3336,21 +3364,21 @@
     "href": "shortcuts.html#例文言を別の場所にコピーしたいとき",
     "title": "ショートカット",
     "section": "例：文言を別の場所にコピーしたいとき",
-    "text": "例：文言を別の場所にコピーしたいとき\n\n\nマウスの場合（8手順）\n\n\nキーボードからマウスに持ち替える\nマウスでコピーしたい文字列を選択する\n右クリック\nコピーを選択\nマウスカーソルをペーストしたい場所にもってきてクリックする\n右クリック\nペーストを選択\nキーボードに手を戻す\n\nショートカットの場合（4手順）\n\nShiftキーを押しながら矢印キーで選択範囲を指定する\nCtrl+C キーでコピーバッファに格納\nペーストしたい位置に矢印キーで移動\nCtrl+Vでペースト\n\n手順が半分になり、キーボードから手を離す必要もない。\nスピードが倍化したとして、人生のトータルコピペ数を考えると馬鹿にならない差になる。"
+    "text": "例：文言を別の場所にコピーしたいとき\n\n\nマウスの場合（8手順）\n\n\nキーボードからマウスに持ち替える\nマウスでコピーしたい文字列を選択する\n右クリック\nコピーを選択\nマウスカーソルをペーストしたい場所にもってきてクリックする\n右クリック\nペーストを選択\nキーボードに手を戻す\n\nショートカットの場合（4手順）\n\nShiftキーを押しながら矢印キーで選択範囲を指定する\nCtrl+c キーでコピーバッファに格納\nペーストしたい位置に矢印キーで移動\nCtrl+vでペースト\n\n手順が半分になり、キーボードから手を離す必要もない。\nスピードが倍化したとして、人生のトータルコピペ数を考えると馬鹿にならない差になる。"
   },
   {
     "objectID": "shortcuts.html#各種キーの名前",
     "href": "shortcuts.html#各種キーの名前",
     "title": "ショートカット",
     "section": "各種キーの名前",
-    "text": "各種キーの名前\n\n覚えておこう。\n\nCtrl キー（コントロール）\nShift キー（シフト）\nAlt キー（オルタナティブの略なので「オルト」と読む）\nWin キー（Windowsキー）"
+    "text": "各種キーの名前\n\n覚えておこう。\n\nCtrl キー（コントロール）\nShift キー（シフト）\nAlt キー（オルタナティブの略なので「オルト」と読む）\nWin キー（Windowsキー）\n\n\n\n\n\n\n\n表記について\n\n\n本資料では英字キーを Ctrl + c のように小文字で書く。大文字はShiftを押して出す文字と紛れるため（例：&gt; は実際には Shift + .）。"
   },
   {
     "objectID": "shortcuts.html#基本ショートカット",
     "href": "shortcuts.html#基本ショートカット",
     "title": "ショートカット",
     "section": "基本ショートカット",
-    "text": "基本ショートカット\n\n以下は、ほぼすべてのアプリケーションで使えるショートカットなので覚えよう。\n\n\n\n\nWindows\nMac\n余談\n\n\n\n\n文字を範囲選択\nShift + 矢印\nShift + 矢印\n上下も使える\n\n\nすべて選択\nCtrl + A\nCmd + A\nallのa\n\n\nコピー\nCtrl + C\nCmd + C\ncopyのc\n\n\nカット（切り取り）\nCtrl + X\nCmd + X\n由来不明\n\n\nペースト\nCtrl + V\nCmd + V\nv の形が挿入場所を表している\n\n\nUndo（やり直し）\nCtrl + Z\nCmd + Z\n諸説あり"
+    "text": "基本ショートカット\n\n以下は、ほぼすべてのアプリケーションで使えるショートカットなので覚えよう。\n\n\n\n\nWindows\nMac\n余談\n\n\n\n\n文字を範囲選択\nShift + 矢印\nShift + 矢印\n上下も使える\n\n\nすべて選択\nCtrl + a\nCmd + a\nallのa\n\n\nコピー\nCtrl + c\nCmd + c\ncopyのc\n\n\nカット（切り取り）\nCtrl + x\nCmd + x\n由来不明\n\n\nペースト\nCtrl + v\nCmd + v\nv の形が挿入場所を表している\n\n\nUndo（やり直し）\nCtrl + z\nCmd + z\n諸説あり"
   },
   {
     "objectID": "shortcuts.html#早速実践",
@@ -3364,28 +3392,28 @@
     "href": "shortcuts.html#応用ショートカットファンクションキー",
     "title": "ショートカット",
     "section": "応用ショートカット：ファンクションキー",
-    "text": "応用ショートカット：ファンクションキー\n\n\nプログラマはファンクションキーをよく使う\n\nFunction（機能）キーを使えるようになろう。\n\n\n\n\n\n\n\n\n\nショートカット\n余談\n\n\n\n\n全画面化\nF11\n\n\n\nかな→半角（ローマ字入力中）\nF10\n\n\n\nウインドウを閉じる\nAlt + F4\n\n\n\nビルド・コンパイル\nF5\n古来からの習わし。詳しくは「VS Codeのショートカット」へ\n\n\n\n\n\n\n\n\n\nMac（参考）\n\n\n全画面化=Ctrl+Cmd+F、かな→半角=英数キー、ウィンドウを閉じる=Cmd+W"
+    "text": "応用ショートカット：ファンクションキー\n\n\nプログラマはファンクションキーをよく使う\n\nFunction（機能）キーを使えるようになろう。\n\n\n\n\n\n\n\n\n\nショートカット\n余談\n\n\n\n\n全画面化\nF11\n\n\n\nかな→半角（ローマ字入力中）\nF10\n\n\n\nウインドウを閉じる\nAlt + F4\n\n\n\nビルド・コンパイル\nF5\n古来からの習わし。詳しくは「VS Codeのショートカット」へ\n\n\n\n\n\n\n\n\n\nMac（参考）\n\n\n全画面化=Ctrl+Cmd+f、かな→半角=英数キー、ウィンドウを閉じる=Cmd+w"
   },
   {
     "objectID": "shortcuts.html#応用ショートカットwindowsキー",
     "href": "shortcuts.html#応用ショートカットwindowsキー",
     "title": "ショートカット",
     "section": "応用ショートカット：Windowsキー",
-    "text": "応用ショートカット：Windowsキー\n\nWindowsキーも重要。\n\n\n\n\nショートカット\n余談\n\n\n\n\nコピーバッファを開く\nWin + V\n非常に便利\n\n\nスクリーンショット\nWin + Shift + S\nスクリーンショットのs\n\n\nデスクトップを表示\nWin + D\nデスクトップのd\n\n\n別ウインドウに切り替え\nWin + Tab\nAlt + Tabも同じような機能\n\n\n\n\n\n\n\n\n\nMac（参考）\n\n\nスクリーンショット=Cmd+Shift+4、ウィンドウ切り替え=Cmd+Tab。クリップボード履歴・デスクトップ表示は標準機能なし。"
+    "text": "応用ショートカット：Windowsキー\n\nWindowsキーも重要。\n\n\n\n\nショートカット\n余談\n\n\n\n\nコピーバッファを開く\nWin + v\n非常に便利\n\n\nスクリーンショット\nWin + Shift + s\nスクリーンショットのs\n\n\nデスクトップを表示\nWin + d\nデスクトップのd\n\n\n別ウインドウに切り替え\nWin + Tab\nAlt + Tabも同じような機能\n\n\n\n\n\n\n\n\n\nMac（参考）\n\n\nスクリーンショット=Cmd+Shift+4、ウィンドウ切り替え=Cmd+Tab。クリップボード履歴・デスクトップ表示は標準機能なし。"
   },
   {
     "objectID": "shortcuts.html#その他の便利なショートカット",
     "href": "shortcuts.html#その他の便利なショートカット",
     "title": "ショートカット",
     "section": "その他の便利なショートカット",
-    "text": "その他の便利なショートカット\n\nアプリケーションによっては実装されていないこともあるが、大抵は共通で使える。\n\n\n\n\n\n\n\n\n\n\nWindows\nMac\n余談\n\n\n\n\n検索\nCtrl + F\nCmd + F\n\n\n\nRedo（リドゥ）\nCtrl + Y\nCmd + Shift + Z\nUndoの逆\n\n\n新しく始める\nCtrl + N\nCmd + N\nNewのn\n\n\n次の場所にフォーカスを進める\nTab\nTab\nブラウザのフォーム入力などで便利\n\n\n前の場所にフォーカスを戻す\nShift + Tab\nShift + Tab\n同上"
+    "text": "その他の便利なショートカット\n\nアプリケーションによっては実装されていないこともあるが、大抵は共通で使える。\n\n\n\n\n\n\n\n\n\n\nWindows\nMac\n余談\n\n\n\n\n検索\nCtrl + f\nCmd + f\n\n\n\nRedo（リドゥ）\nCtrl + y\nCmd + Shift + z\nUndoの逆\n\n\n新しく始める\nCtrl + n\nCmd + n\nNewのn\n\n\n次の場所にフォーカスを進める\nTab\nTab\nブラウザのフォーム入力などで便利\n\n\n前の場所にフォーカスを戻す\nShift + Tab\nShift + Tab\n同上"
   },
   {
     "objectID": "shortcuts.html#vs-codeのショートカット",
     "href": "shortcuts.html#vs-codeのショートカット",
     "title": "ショートカット",
     "section": "VS Codeのショートカット",
-    "text": "VS Codeのショートカット\n\nエディタ上で役立つショートカット。コードを書くときに活用しよう。\n\n\n\n\n\n\n\n\n\n\nWindows\nMac\n説明\n\n\n\n\n実行\nCtrl + F5\nCtrl + F5\nデバッグなしで実行（F5はデバッグ付き）\n\n\n行をコピー\nCtrl + C\nCmd + C\n選択なしで押すと行ごとコピー\n\n\n行を切り取り\nCtrl + X\nCmd + X\n選択なしで押すと行ごと切り取り\n\n\n行を上下に移動\nAlt + ↑ / ↓\nOption + ↑ / ↓\n行の順序を入れ替えるのに便利\n\n\nコメントアウト\nCtrl + /\nCmd + /\nもう一度押すと解除\n\n\n字下げ（インデント）\nCtrl + ] / Ctrl + [\nCmd + ] / Cmd + [\n]で増やす、[で戻す"
+    "text": "VS Codeのショートカット\n\nエディタ上で役立つショートカット。コードを書くときに活用しよう。\n\n\n\n\n\n\n\n\n\n\nWindows\nMac\n説明\n\n\n\n\n実行\nCtrl + F5\nCtrl + F5\nデバッグなしで実行（F5はデバッグ付き）\n\n\n行をコピー\nCtrl + c\nCmd + c\n選択なしで押すと行ごとコピー\n\n\n行を切り取り\nCtrl + x\nCmd + x\n選択なしで押すと行ごと切り取り\n\n\n行を上下に移動\nAlt + ↑ / ↓\nOption + ↑ / ↓\n行の順序を入れ替えるのに便利\n\n\nコメントアウト\nCtrl + /\nCmd + /\nもう一度押すと解除\n\n\n字下げ（インデント）\nCtrl + ] / Ctrl + [\nCmd + ] / Cmd + [\n]で増やす、[で戻す"
   },
   {
     "objectID": "shortcuts.html#演習①vs-codeで日本語入力",
@@ -3399,7 +3427,7 @@
     "href": "shortcuts.html#演習②カットペースト字下げ",
     "title": "ショートカット",
     "section": "演習②：カット＆ペースト＋字下げ",
-    "text": "演習②：カット＆ペースト＋字下げ\n\n\n順序と字下げが崩れた次のコードを、ショートカットだけでゴールの形に直せ。\n\n初期状態：\nscore = int(input())\n    if score &gt;= 60:\nprint(\"不合格\")\n        print(\"合格\")\n    else:\nゴール：\nscore = int(input())\nif score &gt;= 60:\n    print(\"合格\")\nelse:\n    print(\"不合格\")\nヒント：\n\n行の移動は Alt + ↑↓ または Ctrl+X → Ctrl+V\n字下げは Ctrl + ]、戻すは Ctrl + ["
+    "text": "演習②：カット＆ペースト＋字下げ\n\n\n順序と字下げが崩れた次のコードを、ショートカットだけでゴールの形に直せ。\n\n初期状態：\nscore = int(input())\n    if score &gt;= 60:\nprint(\"不合格\")\n        print(\"合格\")\n    else:\nゴール：\nscore = int(input())\nif score &gt;= 60:\n    print(\"合格\")\nelse:\n    print(\"不合格\")\nヒント：\n\n行の移動は Alt + ↑↓ または Ctrl+x → Ctrl+v\n字下げは Ctrl + ]、戻すは Ctrl + ["
   },
   {
     "objectID": "shortcuts.html#演習③コメントアウトでバグを追い詰める",
@@ -3413,7 +3441,7 @@
     "href": "shortcuts.html#まとめ",
     "title": "ショートカット",
     "section": "まとめ",
-    "text": "まとめ\n\n\nショートカットキーは手順を半分にし、生涯の作業時間を大幅に削減できる\nCtrl+C/V/Z/A などの基本ショートカットはほぼ全アプリで共通\nWin+V（クリップボード履歴）・Win+Shift+S（スクリーンショット）も覚えておくと便利\nVS Code では Alt+↑↓（行移動）・Ctrl+/（コメントアウト）・F5（実行）が特に役立つ"
+    "text": "まとめ\n\n\nショートカットキーは手順を半分にし、生涯の作業時間を大幅に削減できる\nCtrl+c/v/z/a などの基本ショートカットはほぼ全アプリで共通\nWin+v（クリップボード履歴）・Win+Shift+s（スクリーンショット）も覚えておくと便利\nVS Code では Alt+↑↓（行移動）・Ctrl+/（コメントアウト）・F5（実行）が特に役立つ"
   },
   {
     "objectID": "variables.html#事件関数に渡しただけなのに",
@@ -3504,7 +3532,7 @@
     "href": "variables.html#ミュータブル-イミュータブル",
     "title": "変数と代入",
     "section": "ミュータブル / イミュータブル",
-    "text": "ミュータブル / イミュータブル\n\n値（オブジェクト）は2種類に分かれる\n\nイミュータブル（immutable）：中身を変更する手段が存在しない型\n\nint str bool tuple 等\n「変えた」ように見える操作も、すべて新しい値への掛け替え（ルール1）\nだからアドレスを意識しなくても事故が起きない\n\nミュータブル（mutable）：中身をその場で変更できる型（ルール2が使える）\n\nlist、dict 等\n看板を何枚立てても実体は1つ — 共有に気づかないと事故になる\n\n\n\n\n\n\n\n\n\n分類\n型\n\n\n\n\nイミュータブル\nint / float / complex / bool / str / tuple / frozenset / bytes / None\n\n\nミュータブル\nlist dict set クラス など"
+    "text": "ミュータブル / イミュータブル\n\n\n\n\n\n\n\n\n分類\n型の例\n\n\n\n\nイミュータブル（immutable）\nint / float / complex / bool / str / tuple / frozenset / bytes\n\n\nミュータブル（mutable）\nlist / dict / set"
   },
   {
     "objectID": "variables.html#事件の解決冒頭のコードに戻る",
@@ -3525,14 +3553,14 @@
     "href": "variables.html#演習",
     "title": "変数と代入",
     "section": "演習",
-    "text": "演習\n\n\n「箱ではなく看板」の変数モデルを、次の4つの実験で確かめよ。\n\n\n紙に看板図を描く：次のコードを1行ずつ、看板と矢印で描きながら追い、最後の出力を予想してから実行して答え合わせ\na = [1, 2]\nb = a\na.append(3)   # 掛け替え？ 中身の変更？\na = [9]       # 掛け替え？ 中身の変更？\nprint(b)      # ???\ndict がミュータブルであることを id()（または is）で確認（dict の書き方は次回詳しく — ここでは次の2行だけ使う）\nd = {\"名前\": \"田中\"}   # dict を作る\nd[\"点数\"] = 80         # キーを指定して中身を変更する\nlist と同じようにアクセスできる str は、ミュータブルかイミュータブルかを確認\n上記の例で odd1[0] のアドレスがどうなるかを確認（list はミュータブルだが、list の要素は int なのでイミュータブルのはず）\n\n\n\n解答例を見る\na = [1, 2]\nb = a\na.append(3)     # 中身の変更（ルール2）→ b からも見える\na = [9]         # 掛け替え（ルール1）→ b は無傷\nprint(b)        # (1) [1, 2, 3]\n\nd = {\"名前\": \"田中\"}\ne = d\nd[\"点数\"] = 80\nprint(e)        # (2) 点数が増えて見える → dict はミュータブル\nprint(d is e)   #     True（同じ場所を指したまま）\n\ns = \"abc\"\n# s[0] = \"x\"    # (3) TypeError → str はイミュータブル（中身を変える手段がない）\n\nodd1 = [9, 3]\nprint(id(odd1[0]))   # (4) 要素が指す int のアドレス\nodd1[0] = 99         #     リスト側の枠が「別の int」を指すだけ（int 自体は不変）\nprint(id(odd1[0]))   #     アドレスが変わっている\n\n\n\n\n\n\n\n\n矢印が動くのを見たいとき\n\n\nPython Tutor にコードを貼ると、看板（名前）と矢印が 1行ごとに動く様子をステップ実行で確認できます。今日の図と同じ世界観です。"
+    "text": "演習\n\n\n「箱ではなく看板」の変数モデルを、次の4つの実験で確かめよ。\n\n\n紙に看板図を描く：次のコードを1行ずつ、看板と矢印で描きながら追い、最後の出力を予想してから実行して答え合わせ\na = [1, 2]\nb = a\na.append(3)   # 掛け替え？ 中身の変更？\na = [9]       # 掛け替え？ 中身の変更？\nprint(b)      # ???\ndict がミュータブルであることを id()（または is）で確認（dict の書き方は次回詳しく — ここでは次の2行だけ使う）\nd = {\"名前\": \"田中\"}   # dict を作る\nd[\"点数\"] = 80         # キーを指定して中身を変更する\nlist と同じようにアクセスできる str は、ミュータブルかイミュータブルかを確認\n上記の例で odd1[0] のアドレスがどうなるかを確認（list はミュータブルだが、list の要素は int なのでイミュータブルのはず）\n\n\n\n解答例を見る\na = [1, 2]\nb = a\na.append(3)     # 中身の変更（ルール2）→ b からも見える\na = [9]         # 掛け替え（ルール1）→ b は無傷\nprint(b)        # (1) [1, 2, 3]\n\nd = {\"名前\": \"田中\"}\ne = d\nd[\"点数\"] = 80\nprint(e)        # (2) 点数が増えて見える → dict はミュータブル\nprint(d is e)   #     True（同じ場所を指したまま）\n\ns = \"abc\"\n# s[0] = \"x\"    # (3) Item assignment raises TypeError\n\nodd1 = [9, 3]\nprint(id(odd1[0]))   # (4) 要素が指す int のアドレス\nodd1[0] = 99         #     The list element now refers to a different int\nprint(id(odd1[0]))   #     アドレスが変わっている\n\n\n\n\n\n\n\n\n矢印が動くのを見たいとき\n\n\nPython Tutor にコードを貼ると、看板（名前）と矢印が 1行ごとに動く様子をステップ実行で確認できます。今日の図と同じ世界観です。"
   },
   {
     "objectID": "variables.html#まとめ",
     "href": "variables.html#まとめ",
     "title": "変数と代入",
     "section": "まとめ",
-    "text": "まとめ\n\n\n変数は値そのものではなく、値が置かれたアドレスを指す看板\nルール1：代入 x = ... は型に関係なく常に看板の掛け替え。コピーは起きない\nルール2：ミュータブル（list / dict 等）だけが中身をその場で変更できる — 共有中の変更は全員に見える\nイミュータブル（int / str / bool / tuple 等）は中身を変える手段がないので事故が起きない\n事故を防ぐには .copy() で別の実体を渡す。確認の道具は id()（住所）と is（同じ場所か）"
+    "text": "まとめ\n\n\n変数は値そのものではなく、値が置かれたアドレスを指す看板\nルール1：代入 x = ... は型に関係なく常に看板の掛け替え。コピーは起きない\nルール2：ミュータブル（list / dict 等）だけが中身をその場で変更できる — 共有中の変更は全員に見える\n事故を防ぐには .copy() で別の実体を渡す。確認の道具は id()（住所）と is（同じ場所か）"
   },
   {
     "objectID": "visualize.html#section",

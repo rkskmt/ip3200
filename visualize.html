@@ -193,6 +193,50 @@
   </style>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="custom.css">
+  <script>
+  // MathJax v2's HTML-CSS renderer (Quarto hardcodes config=TeX-AMS_HTML-full)
+  // measures glyph widths in the live DOM, so when its TeX webfonts arrive
+  // after typesetting (VSCode webviews, high-DPI Windows, slow networks) the
+  // repaint leaves inline math wider than its reserved box and it overpaints
+  // the neighboring text. The CommonHTML renderer lays out from built-in
+  // metric tables and has no such race. Quarto offers no knob for this, so
+  // trap the Reveal global (reveal.js loads later, in <body>) and rewrite
+  // the math config before Reveal.initialize hands it to the math plugin.
+  //
+  // CommonHTML still sizes math by measuring an ex-height probe in the
+  // DOM next to each equation (matchFontHeight). reveal.css keeps every
+  // section display:none until Reveal's first layout, so when MathJax
+  // loads fast (warm HTTP cache) the initial whole-deck typeset runs
+  // against hidden slides: the probe measures 0, MathJax substitutes
+  // the 16px-body default ex but keeps the real 32px font-size, and
+  // every equation renders at ~50-61% — permanently, because MathJax
+  // never re-typesets processed math. A fixed scale with
+  // matchFontHeight off removes the DOM measurement entirely (which
+  // also fixes math inside collapsed code-fold / callout bodies —
+  // those always measured hidden). 127% is what the measurement
+  // itself yields for this theme's fonts when it works; retune it if
+  // the body font ever changes.
+  (function () {
+    var reveal;
+    Object.defineProperty(window, "Reveal", {
+      configurable: true,
+      get: function () { return reveal; },
+      set: function (value) {
+        reveal = value;
+        if (!value || typeof value.initialize !== "function" || value.__cskCHTML) return;
+        value.__cskCHTML = true;
+        var initialize = value.initialize;
+        value.initialize = function (config) {
+          if (config && config.math && typeof config.math.config === "string") {
+            config.math.config = config.math.config.replace("_HTML", "_CHTML");
+            config.math.CommonHTML = { scale: 127, matchFontHeight: false };
+          }
+          return initialize.call(this, config);
+        };
+      }
+    });
+  })();
+  </script>
   <script src="slide-ui.js" defer=""></script>
   <script src="search-ui.js" defer=""></script>
   <script src="peek-ui.js" defer=""></script>
@@ -261,7 +305,7 @@ rkskmt
 <ul>
 <li>あるWikipediaページの <strong>2025年・1年分の閲覧数</strong> を可視化</li>
 </ul>
-<div id="3b7e9778" class="cell" data-execution_count="1">
+<div id="c1ebfc0f" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -500,7 +544,7 @@ rkskmt
 <section id="peek-income" class="slide level2">
 <h2>平均以下の世帯は 62.2%</h2>
 <div class="slide-body">
-<div id="0542effc" class="cell" data-execution_count="3">
+<div id="273f82fa" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -604,7 +648,7 @@ rkskmt
 <li>典型的な普通のデータ</li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="87e186cf" class="cell" data-execution_count="4">
+<div id="7e7d3daf" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -662,7 +706,7 @@ rkskmt
 <li>統計量だけ見ていると「直線で説明できた」と思い込みやすい</li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="ed2c6dc4" class="cell" data-execution_count="5">
+<div id="183bd012" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -721,7 +765,7 @@ rkskmt
 <li>その1点に <strong>回帰直線が引っ張られている</strong></li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="c228d956" class="cell" data-execution_count="6">
+<div id="522bfd1d" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -780,7 +824,7 @@ rkskmt
 <li>同じ条件で測定しすぎていて、<code>x</code> が振れていない</li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="7f91d952" class="cell" data-execution_count="7">
+<div id="3ae4e390" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -833,7 +877,7 @@ rkskmt
 <div class="slide-body">
 <div class="columns">
 <div class="column" style="width:45%;">
-<div id="4dea2e55" class="cell" data-execution_count="8">
+<div id="57089eb5" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -936,7 +980,7 @@ rkskmt
 <p>そのうちの1つを散布図にすると…</p>
 </div><div class="column" style="width:50%;">
 <div class="fragment">
-<div id="9a7d0bcb" class="cell" data-execution_count="9">
+<div id="c1a42b1a" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -952,7 +996,7 @@ rkskmt
 <section id="peek-datasaurus" class="slide level2">
 <h2>Datasaurus Dozen：全13個</h2>
 <div class="slide-body">
-<div id="f4ca6d71" class="cell" data-execution_count="10">
+<div id="c7b5fce8" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1006,7 +1050,7 @@ rkskmt
 <section id="商品bはaより圧倒的に売れている" class="slide level2">
 <h2>商品BはAより圧倒的に売れている？</h2>
 <div class="slide-body">
-<div id="fbd68600" class="cell" data-execution_count="11">
+<div id="cb85d9c1" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1023,7 +1067,7 @@ rkskmt
 <section id="peek-ycut" class="slide level2">
 <h2>トリック：y軸の切断</h2>
 <div class="slide-body">
-<div id="d6437453" class="cell" data-execution_count="12">
+<div id="690da679" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1054,7 +1098,7 @@ rkskmt
 <section id="東京は寒冷化している" class="slide level2">
 <h2>東京は寒冷化している？</h2>
 <div class="slide-body">
-<div id="2ae124c4" class="cell" data-execution_count="13">
+<div id="6e86f0cc" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1072,7 +1116,7 @@ rkskmt
 <section id="peek-cherry" class="slide level2">
 <h2>トリック：期間のチェリーピック</h2>
 <div class="slide-body">
-<div id="f7d99782" class="cell" data-execution_count="14">
+<div id="aace5507" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>

@@ -193,6 +193,50 @@
   </style>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="custom.css">
+  <script>
+  // MathJax v2's HTML-CSS renderer (Quarto hardcodes config=TeX-AMS_HTML-full)
+  // measures glyph widths in the live DOM, so when its TeX webfonts arrive
+  // after typesetting (VSCode webviews, high-DPI Windows, slow networks) the
+  // repaint leaves inline math wider than its reserved box and it overpaints
+  // the neighboring text. The CommonHTML renderer lays out from built-in
+  // metric tables and has no such race. Quarto offers no knob for this, so
+  // trap the Reveal global (reveal.js loads later, in <body>) and rewrite
+  // the math config before Reveal.initialize hands it to the math plugin.
+  //
+  // CommonHTML still sizes math by measuring an ex-height probe in the
+  // DOM next to each equation (matchFontHeight). reveal.css keeps every
+  // section display:none until Reveal's first layout, so when MathJax
+  // loads fast (warm HTTP cache) the initial whole-deck typeset runs
+  // against hidden slides: the probe measures 0, MathJax substitutes
+  // the 16px-body default ex but keeps the real 32px font-size, and
+  // every equation renders at ~50-61% — permanently, because MathJax
+  // never re-typesets processed math. A fixed scale with
+  // matchFontHeight off removes the DOM measurement entirely (which
+  // also fixes math inside collapsed code-fold / callout bodies —
+  // those always measured hidden). 127% is what the measurement
+  // itself yields for this theme's fonts when it works; retune it if
+  // the body font ever changes.
+  (function () {
+    var reveal;
+    Object.defineProperty(window, "Reveal", {
+      configurable: true,
+      get: function () { return reveal; },
+      set: function (value) {
+        reveal = value;
+        if (!value || typeof value.initialize !== "function" || value.__cskCHTML) return;
+        value.__cskCHTML = true;
+        var initialize = value.initialize;
+        value.initialize = function (config) {
+          if (config && config.math && typeof config.math.config === "string") {
+            config.math.config = config.math.config.replace("_HTML", "_CHTML");
+            config.math.CommonHTML = { scale: 127, matchFontHeight: false };
+          }
+          return initialize.call(this, config);
+        };
+      }
+    });
+  })();
+  </script>
   <script src="slide-ui.js" defer=""></script>
   <script src="search-ui.js" defer=""></script>
   <script src="peek-ui.js" defer=""></script>
@@ -287,7 +331,7 @@ rkskmt
 <li><code>1</code> や <code>"1"</code> は<strong>リテラル（直接記述できる値）</strong></li>
 <li><code>a</code> は値ではなく<strong>変数</strong>として認識される</li>
 </ul>
-<div id="18fc5303" class="cell" data-execution_count="1">
+<div id="332ee215" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -351,7 +395,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="6c229b84" class="cell" data-execution_count="2">
+<div id="241adf2f" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -386,7 +430,7 @@ rkskmt
 <li>代入 <code>x = ...</code> は<strong>常に掛け替え</strong>。共有していたのは3行目から5行目までの一瞬だけ</li>
 <li>5行目以降、共有していた場所を指すのは a12 だけになる</li>
 </ul>
-<div id="5b9bbd8c" class="cell" data-execution_count="3">
+<div id="4b5815e6" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -413,7 +457,7 @@ rkskmt
 <li><code>odd1[0] = 9</code> は看板の掛け替え<strong>ではない</strong> — 指している先の<strong>中身の変更</strong></li>
 <li>看板は2枚とも同じリストを指したまま → <code>odd2</code> から見ても変わる</li>
 </ul>
-<div id="765c1ce4" class="cell" data-execution_count="4">
+<div id="ad0ce031" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -448,7 +492,7 @@ rkskmt
 <li>A： <strong>[1, 3]</strong> — <code>odd1 = [9, 7]</code> は<strong>看板の掛け替え</strong>。odd2 は無傷</li>
 <li>B： <strong>[9, 7]</strong> — <code>odd1[0] = 9</code> は<strong>中身の変更</strong>。odd2 も巻き込まれる</li>
 </ul>
-<div id="44329de3" class="cell" data-execution_count="5">
+<div id="2eb32dbc" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -583,20 +627,6 @@ rkskmt
 <section id="ミュータブル-イミュータブル" class="slide level2">
 <h2>ミュータブル / イミュータブル</h2>
 <div class="slide-body">
-<p>値（オブジェクト）は2種類に分かれる</p>
-<ul>
-<li><strong>イミュータブル（<span class="en">immutable</span>）</strong>：中身を変更する手段が<strong>存在しない</strong>型
-<ul>
-<li>int str bool tuple 等</li>
-<li>「変えた」ように見える操作も、すべて<strong>新しい値への掛け替え</strong>（ルール1）</li>
-<li>だからアドレスを意識しなくても事故が起きない</li>
-</ul></li>
-<li><strong>ミュータブル（<span class="en">mutable</span>）</strong>：中身を<strong>その場で変更できる</strong>型（ルール2が使える）
-<ul>
-<li>list、dict 等</li>
-<li>看板を何枚立てても実体は1つ — <strong>共有に気づかないと事故になる</strong></li>
-</ul></li>
-</ul>
 <table class="caption-top">
 <colgroup>
 <col style="width: 50%">
@@ -605,17 +635,17 @@ rkskmt
 <thead>
 <tr class="header">
 <th>分類</th>
-<th>型</th>
+<th>型の例</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>イミュータブル</td>
-<td><strong><code>int</code> / <code>float</code> / <code>complex</code> / <code>bool</code> / <code>str</code> / <code>tuple</code> / <code>frozenset</code> / <code>bytes</code> / <code>None</code></strong></td>
+<td><strong>イミュータブル（<span class="en">immutable</span>）</strong></td>
+<td><code>int</code> / <code>float</code> / <code>complex</code> / <code>bool</code> / <code>str</code> / <code>tuple</code> / <code>frozenset</code> / <code>bytes</code></td>
 </tr>
 <tr class="even">
-<td>ミュータブル</td>
-<td><code>list</code> <code>dict</code> <code>set</code> クラス など</td>
+<td><strong>ミュータブル（<span class="en">mutable</span>）</strong></td>
+<td><code>list</code> / <code>dict</code> / <code>set</code></td>
 </tr>
 </tbody>
 </table>
@@ -638,7 +668,7 @@ rkskmt
 <li>中で <code>data[i] = ...</code> と<strong>中身を変更</strong>したので（ルール2）、<code>scores</code> から見ても壊れていた</li>
 <li>約束どおり、<strong>図1枚</strong>で説明できる：</li>
 </ul>
-<div id="1284088e" class="cell" data-execution_count="6">
+<div id="3d7878c3" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -677,7 +707,7 @@ rkskmt
 <span id="cb15-14"><a></a><span class="co"># （参考）全スライス [:] でも同じ結果</span></span>
 <span id="cb15-15"><a></a>odd4 <span class="op">=</span> odd1[:]</span>
 <span id="cb15-16"><a></a><span class="bu">print</span>(<span class="bu">id</span>(odd1) <span class="op">==</span> <span class="bu">id</span>(odd4))  <span class="co"># False（別アドレス）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="7337766f" class="cell" data-execution_count="7">
+<div id="d33a518a" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -707,7 +737,7 @@ rkskmt
 <li><p><code>list</code> と同じようにアクセスできる <code>str</code> は、ミュータブルかイミュータブルかを確認</p></li>
 <li><p>上記の例で <code>odd1[0]</code> のアドレスがどうなるかを確認（<code>list</code> はミュータブルだが、<code>list</code> の要素は <code>int</code> なのでイミュータブルのはず）</p></li>
 </ol>
-<div id="701ab455" class="cell" data-execution_count="8">
+<div id="da2f3c75" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>]</span>
@@ -723,11 +753,11 @@ rkskmt
 <span id="cb18-11"><a></a><span class="bu">print</span>(d <span class="kw">is</span> e)   <span class="co">#     True（同じ場所を指したまま）</span></span>
 <span id="cb18-12"><a></a></span>
 <span id="cb18-13"><a></a>s <span class="op">=</span> <span class="st">"abc"</span></span>
-<span id="cb18-14"><a></a><span class="co"># s[0] = "x"    # (3) TypeError → str はイミュータブル（中身を変える手段がない）</span></span>
+<span id="cb18-14"><a></a><span class="co"># s[0] = "x"    # (3) Item assignment raises TypeError</span></span>
 <span id="cb18-15"><a></a></span>
 <span id="cb18-16"><a></a>odd1 <span class="op">=</span> [<span class="dv">9</span>, <span class="dv">3</span>]</span>
 <span id="cb18-17"><a></a><span class="bu">print</span>(<span class="bu">id</span>(odd1[<span class="dv">0</span>]))   <span class="co"># (4) 要素が指す int のアドレス</span></span>
-<span id="cb18-18"><a></a>odd1[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">99</span>         <span class="co">#     リスト側の枠が「別の int」を指すだけ（int 自体は不変）</span></span>
+<span id="cb18-18"><a></a>odd1[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">99</span>         <span class="co">#     The list element now refers to a different int</span></span>
 <span id="cb18-19"><a></a><span class="bu">print</span>(<span class="bu">id</span>(odd1[<span class="dv">0</span>]))   <span class="co">#     アドレスが変わっている</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
@@ -753,7 +783,6 @@ rkskmt
 <li>変数は値そのものではなく、<strong>値が置かれたアドレスを指す看板</strong></li>
 <li><strong>ルール1</strong>：代入 <code>x = ...</code> は型に関係なく<strong>常に看板の掛け替え</strong>。コピーは起きない</li>
 <li><strong>ルール2</strong>：<strong>ミュータブル</strong>（list / dict 等）だけが<strong>中身をその場で変更</strong>できる — 共有中の変更は全員に見える</li>
-<li>イミュータブル（int / str / bool / tuple 等）は中身を変える手段がないので事故が起きない</li>
 <li>事故を防ぐには <strong><code>.copy()</code></strong> で別の実体を渡す。確認の道具は <strong><code>id()</code></strong>（住所）と <strong><code>is</code></strong>（同じ場所か）</li>
 </ul>
 
