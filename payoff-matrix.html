@@ -197,11 +197,11 @@ rkskmt
 <section id="section" class="slide level2 center break-slide" data-background-color="white">
 <h2></h2>
 <div class="break-title">
-<p>アイデアを評価して、優先順位を決める</p>
+<p>ペイオフマトリクス</p>
 </div>
 </section>
-<section id="あるある" class="slide level2">
-<h2>あるある</h2>
+<section id="実装する案を選ぶ" class="slide level2">
+<h2>実装する案を選ぶ</h2>
 <div class="slide-body">
 <ul>
 <li>研究テーマを決めるとき、どれも面白そうで <strong>決められない</strong></li>
@@ -215,10 +215,10 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>アイデアは出すほど良い。でも全部は作れない</strong></p>
+<p><strong>優先順位</strong></p>
 </div>
 <div class="callout-content">
-<p>発散（ブレスト）→ 整理（KJ法）ときて、最後に必要なのは <span class="hl">「何から手をつけるか」を決める技術</span></p>
+<p>使える時間と、実現したときの効果を比べて、何から着手するかを決める</p>
 </div>
 </div>
 </div>
@@ -228,18 +228,13 @@ rkskmt
 <h2>Payoff = 見返り</h2>
 <div class="slide-body">
 <ul>
-<li><strong>ペイオフ</strong>（<span class="en">payoff</span>）= 努力や投資に対して得られる <strong>成果・見返り</strong>
-<ul>
-<li><span class="en">pay</span>（支払う・報いる）+ <span class="en">off</span>（完了・結果）</li>
-<li>毎日勉強した payoff = 試験でいい点 ／ 投資した payoff = 利益</li>
-</ul></li>
-<li><strong>ペイオフマトリクス</strong>（<span class="en">Payoff Matrix</span>）は、案を2軸で評価する表
+<li><strong>ペイオフ</strong>（<span class="en">payoff</span>）= 努力や投資に対して得られる <strong>成果・見返り</strong></li>
+<li>この資料の <strong>ペイオフマトリクス</strong>（<span class="en">payoff matrix</span>）は、案を2軸で評価する図
 <ul>
 <li>横軸：どれくらい <strong>手間</strong>（<span class="en">effort</span>）がかかるか</li>
 <li>縦軸：どれくらい <strong>効果</strong>（payoff）があるか</li>
-<li>要するに <span class="hl">「コスパが良いのはどれか」を見える化する図</span></li>
+<li><strong>効果と手間のマトリクス</strong>（<span class="en">impact–effort matrix</span>）とも呼ばれる</li>
 </ul></li>
-<li>無理やり日本語にすると「費用対効果マトリクス」「コスパ分析図」</li>
 </ul>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -247,10 +242,10 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>実際の開発現場でも</strong></p>
+<p><strong>用語の使い分け</strong></p>
 </div>
 <div class="callout-content">
-<p>IT企業では新機能・バグ修正・改善案が毎日生まれるが、エンジニアの時間は有限。 「直感」ではなくこの種の <strong>アイデア評価手法</strong> で開発順を決めている</p>
+<p>ゲーム理論の payoff matrix は、各参加者の選択に対する利得を並べた表を指す。ここでは開発案の優先順位を考える図として使う</p>
 </div>
 </div>
 </div>
@@ -260,10 +255,7 @@ rkskmt
 <h2>題材：学校生活をよくするスマホアプリ</h2>
 <div class="slide-body">
 <ul>
-<li>ここからの題材 — 「学校生活をより良くするスマホアプリ」のアイデアたち
-<ul>
-<li>この題材はこのままワイヤーフレーム・実装・最終課題まで <strong>使い続ける</strong></li>
-</ul></li>
+<li>学校生活をよくするアプリの案について、手間と効果を比較する</li>
 </ul>
 <table class="caption-top">
 <thead>
@@ -301,15 +293,15 @@ rkskmt
 </tr>
 </tbody>
 </table>
-<ul>
-<li>さて、<strong>どれを優先すべきか？</strong> — 直感ではなく、図で決める</li>
-</ul>
+<div class="caption-note">
+<p>同じ案でも、必要な機能や入手できるデータによって手間が変わる</p>
+</div>
 </div>
 </section>
 <section id="マトリクスの構造2軸-4象限" class="slide level2">
 <h2>マトリクスの構造：2軸 → 4象限</h2>
 <div class="slide-body">
-<div id="14d9529b" class="cell" data-execution_count="1">
+<div id="0dc410a7" class="cell fig-medium" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -318,10 +310,9 @@ rkskmt
 </div>
 </div>
 </div>
-<ul>
-<li>各アイデアを「手間」と「効果」で見て、<span class="hl">4つの部屋のどれか</span> に置くだけ</li>
-<li>英語では左上から時計回りに <span class="en">Quick Wins</span> / <span class="en">Big Projects</span> / <span class="en">Time Sinks</span> / <span class="en">Fill-ins</span></li>
-</ul>
+<div class="caption-note">
+<p>左上から時計回りに Quick Wins・Big Projects・Time Sinks・Fill-ins。軸の向きを確認してから配置する</p>
+</div>
 </div>
 </section>
 <section id="つの象限優先度が高い側" class="slide level2">
@@ -336,8 +327,8 @@ rkskmt
 <thead>
 <tr class="header">
 <th></th>
-<th>すぐやるべき ⭐⭐⭐</th>
-<th>時間かかるけど重要 ⭐⭐</th>
+<th>優先して着手</th>
+<th>計画して進める</th>
 </tr>
 </thead>
 <tbody>
@@ -348,8 +339,8 @@ rkskmt
 </tr>
 <tr class="even">
 <td>目安</td>
-<td>1週間以内で作れて、多くの人が使う</td>
-<td>1ヶ月以上かかるが、成功すれば画期的</td>
+<td>既存の技術・データで作れ、利用者の役に立つ</td>
+<td>効果は大きいが、技術の習得やデータ収集が必要</td>
 </tr>
 <tr class="odd">
 <td>方針</td>
@@ -358,13 +349,13 @@ rkskmt
 </tr>
 <tr class="even">
 <td>例</td>
-<td>時間割表示（カレンダー連携なら数日・全員が毎日使う）</td>
-<td>課題管理 + 通知の統合（2〜3ヶ月・課題忘れが消える）</td>
+<td>時間割表示（時間割データがあり、表示だけを作る場合）</td>
+<td>課題管理 + 自動通知（通知の仕組みも作る場合）</td>
 </tr>
 <tr class="odd">
 <td>例</td>
-<td>食堂メニュー表示（献立表を出すだけ・毎日見る）</td>
-<td>食堂混雑予測AI（センサー + 機械学習で数ヶ月）</td>
+<td>食堂メニュー表示（献立表が入手できる場合）</td>
+<td>食堂混雑予測AI（混雑データの収集から必要な場合）</td>
 </tr>
 </tbody>
 </table>
@@ -382,8 +373,8 @@ rkskmt
 <thead>
 <tr class="header">
 <th></th>
-<th>余裕があれば ⭐</th>
-<th>後回し ❌</th>
+<th>余裕があれば</th>
+<th>後回し</th>
 </tr>
 </thead>
 <tbody>
@@ -394,8 +385,8 @@ rkskmt
 </tr>
 <tr class="even">
 <td>目安</td>
-<td>数時間で作れるが、あると嬉しい程度</td>
-<td>1ヶ月以上かかるのにニッチ・代替がある</td>
+<td>簡単に作れるが、解決できる問題は小さい</td>
+<td>手間が大きく、利用者への効果は小さい</td>
 </tr>
 <tr class="odd">
 <td>方針</td>
@@ -404,13 +395,13 @@ rkskmt
 </tr>
 <tr class="even">
 <td>例</td>
-<td>テーマカラー変更（色選択を足すだけ）</td>
-<td>3Dバーチャル校舎ツアー（数ヶ月かけて一度見たら終わり）</td>
+<td>テーマカラー変更（利用者からの要望が少ない場合）</td>
+<td>3D校舎ツアー（既存の案内図で十分な場合）</td>
 </tr>
 <tr class="odd">
 <td>例</td>
-<td>誕生日通知（使う人が限られる）</td>
-<td>AI自動レポート作成（学習にならない・倫理的問題）</td>
+<td>誕生日表示（利用目的との関連が薄い場合）</td>
+<td>独自の画面アニメーション（制作に時間がかかり、操作性も変わらない場合）</td>
 </tr>
 </tbody>
 </table>
@@ -420,10 +411,10 @@ rkskmt
 <h2>使い方の手順</h2>
 <div class="slide-body">
 <ol start="0" type="1">
-<li><strong>リストアップ</strong> — ブレスト・KJ法で残ったアイデアを全部書き出す</li>
-<li><strong>評価軸を確認</strong> — 手間 =（開発時間・技術難易度）、効果 =（使う人数 × 頻度 × 解決の大きさ）</li>
-<li><strong>議論しながら配置</strong> — 付箋をホワイトボードの4象限に貼っていく</li>
-<li><strong>優先順位を決定</strong> — 「すぐやるべき」から着手、「後回し」はカット</li>
+<li><strong>リストアップ</strong>：候補の案を記入</li>
+<li><strong>評価軸の確認</strong>：手間は開発時間・技術難易度、効果は利用人数・頻度・困りごとの改善度で検討</li>
+<li><strong>配置</strong>：理由を話し合いながら、付箋を4象限に配置</li>
+<li><strong>優先順位の決定</strong>：効果が大きく手間が小さい案を優先し、他の案は実施時期や仕様を検討</li>
 </ol>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -435,7 +426,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <ul>
-<li>「自分が使いたい」ではなく <span class="hl">「多くの人が使うか」</span> で判断</li>
+<li>誰の、どの困りごとを解決するかを確認</li>
 <li>技術的難易度は正直に（できそうな気がする ≠ 簡単）</li>
 <li>似たものが世の中に既にないか確認（車輪の再発明を避ける）</li>
 </ul>
@@ -467,9 +458,9 @@ rkskmt
 <td>まず基本機能、拡張は後</td>
 </tr>
 <tr class="even">
-<td><strong>「自分が欲しい」を優先</strong>（自分だけの特殊ツール）</td>
-<td>ユーザーが自分しかいない</td>
-<td>多数の共通の困りごとを解く</td>
+<td><strong>利用者の困りごとを未確認</strong></td>
+<td>想定した機能が必要とされない</td>
+<td>利用者に使う場面を確認</td>
 </tr>
 <tr class="odd">
 <td><strong>全部やろうとする</strong>（10機能を同時進行）</td>
@@ -484,19 +475,41 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>完成しない最大の原因は「欲張り」</strong></p>
+<p><strong>機能を絞る</strong></p>
 </div>
 <div class="callout-content">
-<p>機能を増やす判断は簡単で、減らす判断は難しい。マトリクスは <span class="hl">減らす勇気を出すための道具</span></p>
+<p>期限内に完成させるため、最初に必要な機能と、あとから追加する機能を分ける</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="実践例アプリ案10個を配置すると" class="slide level2">
-<h2>実践例：アプリ案10個を配置すると</h2>
+<section id="配置例の条件" class="slide level2">
+<h2>配置例の条件</h2>
 <div class="slide-body">
-<div id="b5384a11" class="cell" data-execution_count="2">
+<ul>
+<li>4人チームで、時間割などの表示用データは入手済みと仮定</li>
+<li>混雑予測AIはデータ収集から、3D校舎ツアーはモデル制作から必要と仮定</li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>効果の見積もり</strong></p>
+</div>
+<div class="callout-content">
+<p>日常的に使う表示機能の効果は大きく、既存の案内図で足りる校舎ツアーの効果は小さいと仮定する</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="例アプリ案10個の配置" class="slide level2">
+<h2>例：アプリ案10個の配置</h2>
+<div class="slide-body">
+<div id="a8e45525" class="cell fig-medium" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -505,20 +518,16 @@ rkskmt
 </div>
 </div>
 </div>
-<ul>
-<li>4人チームで作る想定で配置した例
-<ul>
-<li>左上の4つ（時間割・課題リスト・食堂メニュー・教室空き）から着手</li>
-<li>右上は <strong>2番手として計画</strong> ／ 右下（3D校舎ツアー）は <strong>カット</strong></li>
-</ul></li>
-</ul>
+<div class="caption-note">
+<p>前ページの条件での配置例（実測値ではない）。左上の4案から着手し、右上は計画、右下は仕様や必要性を見直す</p>
+</div>
 </div>
 </section>
-<section id="演習-ペイオフマトリクス" class="slide level2 badge-practice scrollable">
+<section id="演習-ペイオフマトリクス" class="slide level2 badge-practice">
 <h2><strong>演習</strong> ペイオフマトリクス</h2>
 <div class="slide-body">
 <div class="prompt">
-<p>次の12案を4象限に分類せよ（模造紙に2軸を描き、付箋1枚1案で配置。チームで議論して動かすこと）。</p>
+<p>次の12案を4象限に分類せよ（付箋1枚1案で配置し、チームで理由を議論すること）。</p>
 </div>
 <table class="caption-top">
 <thead>
@@ -568,11 +577,16 @@ rkskmt
 </tr>
 </tbody>
 </table>
+</div>
+</section>
+<section id="ペイオフマトリクス演習の手順" class="slide level2 scrollable">
+<h2>ペイオフマトリクス演習の手順</h2>
+<div class="slide-body">
 <ol start="0" type="1">
 <li>模造紙に「手間 →」「効果 ↑」の2軸と十字線</li>
 <li>12案を付箋にして、議論しながら配置（<strong>1案30秒</strong> で仮置き → あとで動かす）</li>
-<li>「すぐやるべき」に入った案から <strong>上位3つ</strong> に順位を付ける</li>
-<li>「後回し」に入った案について、<strong>カットの理由を1行</strong> ずつ書く</li>
+<li>「すぐやるべき」に入った案の <strong>上位3つ</strong> を選定</li>
+<li>「後回し」に入った案について、<strong>理由を各1行</strong> で記入</li>
 </ol>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -589,14 +603,13 @@ rkskmt
 </div>
 </div>
 </section>
-<section id="まとめ評価は厳密さより速さ" class="slide level2">
-<h2>まとめ：評価は「厳密さ」より「速さ」</h2>
+<section id="まとめ評価の前提を共有する" class="slide level2">
+<h2>まとめ：評価の前提を共有する</h2>
 <div class="slide-body">
 <ul>
-<li><strong>視覚的</strong> — 付箋と2軸だけ。チーム全員で同じ図を見て話せる</li>
-<li><strong>速い</strong> — 10〜30分で大まかな優先順位が出る。詳細な数値計算は不要</li>
-<li><strong>合意を作る</strong> — 一人で決めない。<span class="hl">配置をめぐる議論そのものに価値がある</span></li>
-<li><strong>完璧を目指さない</strong> — 最初の絞り込み用。状況が変われば貼り直す</li>
+<li>手間と効果の2軸で、候補を比較する</li>
+<li>配置の理由と、技術・データ・利用者についての前提を共有する</li>
+<li>条件が変わったら、配置と優先順位を見直す</li>
 </ul>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -612,7 +625,7 @@ rkskmt
 </div>
 </div>
 <ul>
-<li>優先順位が決まったら、次は画面の設計 — <a href="./figma.html">Figmaでワイヤーフレーム</a> へ</li>
+<li>選んだ案の画面設計：<a href="./figma.html">Figmaでワイヤーフレーム</a></li>
 </ul>
 
 

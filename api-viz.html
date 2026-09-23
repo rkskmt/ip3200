@@ -263,7 +263,7 @@ rkskmt
 <section id="section" class="slide level2 center break-slide" data-background-color="white">
 <h2></h2>
 <div class="break-title">
-<p>前回のあらすじ</p>
+<p>前回のおさらい</p>
 </div>
 </section>
 <section id="大きな山を見つけた" class="slide level2">
@@ -326,7 +326,7 @@ rkskmt
 <li>数値だけでは見落とすので <strong>まず描く</strong> — <a href="./visualize.html">データの可視化</a>の大原則</li>
 <li>APIから取得した <code>views</code> を、そのまま <code>plt.plot()</code> に渡した結果</li>
 </ul>
-<div id="95da5392" class="cell" data-execution_count="1">
+<div id="34aa907f" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -335,7 +335,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="91d7fb1b" class="cell" data-execution_count="2">
+<div id="91d08b89" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> requests</span>
@@ -376,7 +376,7 @@ rkskmt
 <ul>
 <li><strong>数値だけ見ていると気づけない</strong>（アンスコムの教訓と同じ）</li>
 </ul></li>
-<li>そして見覚えがあるはず：<a href="./visualize.html#peek-mystery" class="peek">データの可視化の冒頭で見せた <strong>謎の図</strong></a>は、実はこのデータ</li>
+<li><a href="./visualize.html#peek-mystery" class="peek">データの可視化の最初に見せた図</a>も、このデータを描いたもの</li>
 </ul>
 </div>
 </div>
@@ -507,7 +507,7 @@ rkskmt
 </tbody>
 </table>
 <ul>
-<li>統計量で「おかしい」と気づき、<strong>図で正体を突き止める</strong></li>
+<li>統計量で「おかしい」と気づき、<strong>図でどの日が突出しているかを確かめる</strong></li>
 <li>大原則 <em>Always plot your data first.</em> は <strong>API由来のデータ</strong> にもそのまま効く</li>
 </ul>
 </div>
@@ -555,13 +555,13 @@ rkskmt
 <div class="callout-content">
 <ul>
 <li>軸を揃えず2枚並べる → 比較しづらい</li>
-<li>軸の範囲を片方だけ狭める → 印象操作（<a href="./matplotlib.html">matplotlib入門</a>「軸の範囲で印象を操る」の罠）</li>
+<li>軸の範囲を片方だけ狭める → 印象操作（<a href="./matplotlib.html">matplotlib入門</a>の「軸の範囲で印象を操る」）</li>
 <li>2本を<strong>配列の位置</strong>で重ねる → このAPIは閲覧数0の日を応答から省くことがあり、2つの応答の日数と並びが一致する保証はない。<strong>時系列は日付で対応づける</strong></li>
 </ul>
 </div>
 </div>
 </div>
-<div id="3ff980b3" class="cell" data-execution_count="5">
+<div id="47355595" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> requests</span>
@@ -608,7 +608,7 @@ rkskmt
 <li>問い：七夕のような <strong>鋭い山（スパイク）</strong> はあるか？</li>
 <li>問い：スパイクがないなら、<strong>何が見えるか</strong>？ 自分の言葉で説明せよ</li>
 </ul>
-<div id="40bbb668" class="cell" data-execution_count="6">
+<div id="6e1ffdbc" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> requests</span>
@@ -635,7 +635,7 @@ rkskmt
 </details>
 </div>
 <div class="fragment">
-<div id="cd5052b7" class="cell" data-execution_count="7">
+<div id="5173150a" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>

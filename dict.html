@@ -277,7 +277,7 @@ rkskmt
 <div class="slide-body">
 <p><code>{}</code> の中に <code>キー: 値</code> をカンマ区切りで書くと辞書になる。</p>
 <ul>
-<li>キーは重複不可</li>
+<li>同じキーは1つしか持てない（重複して書くと、後に書いた値が残る）</li>
 <li>値は何でもよい</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>, <span class="st">"Takahashi"</span>: <span class="dv">80</span>}</span>
@@ -556,7 +556,7 @@ Takahashiさんは80点です</code></pre>
 <li><strong>Tanaka</strong> さんを <code>del</code> で削除</li>
 <li><code>.values()</code> と <code>sum</code> / <code>len</code> で、全員の <strong>平均点</strong> を表示</li>
 </ol>
-<div id="78a49655" class="cell" data-execution_count="1">
+<div id="ad891d81" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="co"># 1</span></span>
@@ -597,7 +597,7 @@ Takahashiさんは80点です</code></pre>
 </div>
 </div>
 </div>
-<div id="6335aaa7" class="cell" data-execution_count="2">
+<div id="fe5e1560" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="co"># 1</span></span>
@@ -633,7 +633,7 @@ Takahashiさんは80点です</code></pre>
 <li><strong>C さんの3科目合計</strong>を表示</li>
 <li><strong>各学生の平均点</strong>を <code>for</code> 文で順に表示</li>
 </ol>
-<div id="cb3455b8" class="cell" data-execution_count="3">
+<div id="33bc5a6a" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="co"># 1</span></span>

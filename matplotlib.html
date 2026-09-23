@@ -249,7 +249,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">matplotlib入門</h1>
-  <p class="subtitle">1枚のグラフを「育てる」</p>
+  <p class="subtitle">1枚のグラフを仕上げる</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -269,25 +269,15 @@ rkskmt
 <section id="前回のおさらい" class="slide level2">
 <h2>前回のおさらい</h2>
 <div class="slide-body">
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>まず可視化せよ</strong></p>
-</div>
-<div class="callout-content">
-
-</div>
-</div>
-</div>
 <ul>
-<li><strong>見ればわかる。見なければ見逃す</strong> — アンスコム、Datasaurus</li>
-<li>グラフは <strong>ウソをつく</strong> — y軸切断、期間チェリーピック</li>
-<li>ここまでは <span class="hl">読む側</span> の話。今日から <span class="hl">描く側</span> へ
+<li><strong>まず描く</strong>（<em>Always plot your data first.</em>）
 <ul>
-<li>道具は <strong>matplotlib</strong>。1枚のグラフを「資料に載せられるレベル」まで育てる</li>
+<li>統計量だけでは、データの形は分からない（アンスコム、Datasaurus）</li>
+</ul></li>
+<li><strong>描き方で印象が変わる</strong>（y軸の切断、期間のチェリーピック）</li>
+<li>前回はグラフを <span class="hl">読む側</span>、今回は <span class="hl">描く側</span>
+<ul>
+<li>道具は <strong>matplotlib</strong>。1枚のグラフを、資料に載せられる形まで仕上げる</li>
 </ul></li>
 </ul>
 </div>
@@ -318,7 +308,7 @@ rkskmt
 <ul>
 <li>matplotlib は多くの環境で <strong>日本語が文字化け</strong> する</li>
 </ul>
-<div id="8fdc0d26" class="cell" data-execution_count="1">
+<div id="38556b95" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -406,14 +396,14 @@ rkskmt
 </div>
 </div>
 <ul>
-<li>ここから <strong>グラフを育てていく</strong></li>
+<li>ここから、このグラフに <strong>1つずつ手を加えていく</strong></li>
 </ul>
 </div>
 </section>
 <section id="まずは点のプロット" class="slide level2">
 <h2>まずは点のプロット</h2>
 <div class="slide-body">
-<div id="234cc9a7" class="cell" data-execution_count="2">
+<div id="c6ac190d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -443,7 +433,7 @@ rkskmt
 <section id="peek-line-code" class="slide level2">
 <h2>点に線を付け足す</h2>
 <div class="slide-body">
-<div id="3b6b6a69" class="cell" data-execution_count="3">
+<div id="64e4b868" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -545,7 +535,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="91c1099e" class="cell" data-execution_count="4">
+<div id="298a5b6b" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -573,7 +563,7 @@ rkskmt
 <li>その後<code>plt.legend()</code>を呼ぶ</li>
 </ul></li>
 </ul>
-<div id="f5ec59e7" class="cell" data-execution_count="5">
+<div id="f8176dc0" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -641,7 +631,7 @@ rkskmt
 <li><code>plt.title()</code> で <strong>グラフタイトル</strong></li>
 <li><code>plt.grid(True)</code> で <strong>グリッド線</strong></li>
 </ul>
-<div id="f881ecec" class="cell" data-execution_count="6">
+<div id="27e72c87" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -693,7 +683,7 @@ rkskmt
 <li><code>plt.xlim(a, b)</code> / <code>plt.ylim(a, b)</code> で軸の範囲を固定</li>
 <li>何も指定しないと <strong>データの範囲＋少し余白</strong> が自動で選ばれる</li>
 </ul>
-<div id="325f7e8a" class="cell" data-execution_count="7">
+<div id="eebce9f9" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -723,7 +713,7 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>y軸の罠（描く側の責任）</strong></p>
+<p><strong>y軸の範囲は描く側の責任</strong></p>
 </div>
 <div class="callout-content">
 <ul>
@@ -789,7 +779,7 @@ rkskmt
 <div style="text-align:center; font-family:monospace;">
 <p>1 │ 2<br> ─┼─<br> 3 │ 4</p>
 </div>
-<div id="9ba32fda" class="cell" data-execution_count="8">
+<div id="fbc30adf" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb10-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -836,10 +826,10 @@ rkskmt
 </div>
 </div>
 </section>
-<section id="ここまでの成果図は育てる" class="slide level2">
-<h2>ここまでの成果：図は「育てる」</h2>
+<section id="ここまでで仕上げたグラフ" class="slide level2">
+<h2>ここまでで仕上げたグラフ</h2>
 <div class="slide-body">
-<div id="539fdfdd" class="cell" data-execution_count="9">
+<div id="5c2571a2" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -850,7 +840,7 @@ rkskmt
 </div>
 <ul>
 <li><strong>同じデータ</strong>。でも伝わり方は別物</li>
-<li>育てた手順：点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲</li>
+<li>手を加えた順：点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲</li>
 </ul>
 </div>
 </section>
@@ -867,7 +857,7 @@ rkskmt
 <li><code>alpha</code> で <strong>透明度</strong> を指定すると重なりが見やすい</li>
 </ul></li>
 </ul>
-<div id="d2403c9d" class="cell" data-execution_count="10">
+<div id="b6570862" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb11-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -916,7 +906,7 @@ rkskmt
 </ul></li>
 </ul>
 <div class="fig">
-<div id="7b027e69" class="cell" data-execution_count="11">
+<div id="bfde4cfa" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
@@ -1075,11 +1065,11 @@ rkskmt
 </table>
 </div>
 </section>
-<section id="演習謎のデータをプロットせよ" class="slide level2 badge-practice scrollable">
-<h2>演習：謎のデータをプロットせよ</h2>
+<section id="演習datasaurus-のデータを散布図にする" class="slide level2 badge-practice scrollable">
+<h2>演習：Datasaurus のデータを散布図にする</h2>
 <div class="slide-body">
 <div class="prompt">
-<p>前回見た <a href="./visualize.html#peek-datasaurus" class="peek"><strong>Datasaurus Dozen 13個のうちの1つ</strong></a>（恐竜ではない）を散布図にして、統計量（<span class="math inline">\(\bar{x} = 54.27\)</span>、<span class="math inline">\(\bar{y} = 47.84\)</span>、<span class="math inline">\(r = -0.06\)</span>）からは見えない<strong>正体</strong>を確かめよ。</p>
+<p>前回見た <a href="./visualize.html#peek-datasaurus" class="peek"><strong>Datasaurus Dozen 13個のうちの1つ</strong></a>（恐竜ではない）を散布図にして、統計量（<span class="math inline">\(\bar{x} = 54.27\)</span>、<span class="math inline">\(\bar{y} = 47.84\)</span>、<span class="math inline">\(r = -0.06\)</span>）からは分からない<strong>データの形</strong>を確かめよ。</p>
 </div>
 <ol start="0" type="1">
 <li><a href="data/datasaurus_star.csv">datasaurus_star.csv</a> をダウンロードして <code>data/</code> フォルダに置く</li>
@@ -1087,7 +1077,7 @@ rkskmt
 <li><code>data[:, 0]</code> と <code>data[:, 1]</code> で <code>x</code>, <code>y</code> を取り出す</li>
 <li><code>plt.scatter</code> でプロットし、軸ラベル・タイトルをつける</li>
 </ol>
-<div id="45928d83" class="cell" data-execution_count="12">
+<div id="4e0d2ff9" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1148,7 +1138,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="11a51b99" class="cell" data-execution_count="13">
+<div id="d50f63b8" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1203,13 +1193,12 @@ rkskmt
 <h2>まとめ</h2>
 <div class="slide-body">
 <ul>
-<li><strong>matplotlib</strong>：「東京は暑くなったのか」を1枚のグラフに育てた
+<li><strong>matplotlib</strong>：「東京は暑くなったのか」を1枚のグラフにまとめた
 <ul>
 <li>点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲</li>
 <li>散布図で150年、ヒストグラムで分布</li>
 </ul></li>
 <li>装飾の優先順位：<strong>軸ラベル・凡例・タイトル</strong> — 揃っていない図は資料に載せない</li>
-<li><a href="./visualize.html#peek-mystery" class="peek">データの可視化の冒頭の謎</a>（1日だけの大きな山）の正体は、<a href="./api-viz.html">APIデータを可視化する</a>で明かされる</li>
 </ul>
 </div>
 </section>

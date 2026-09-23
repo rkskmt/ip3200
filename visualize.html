@@ -249,7 +249,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">データの可視化</h1>
-  <p class="subtitle">「見る」原則と、騙されないための技術</p>
+  <p class="subtitle">「見る」原則と、誤解を招くグラフの見分け方</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -292,7 +292,6 @@ rkskmt
 <div class="callout-content">
 <ul>
 <li>数字の表を眺めても気づけないパターン（外れ値、相関、周期性、クラスタ）が見える</li>
-<li><strong>図示は最強の前処理</strong></li>
 </ul>
 </div>
 </div>
@@ -300,12 +299,12 @@ rkskmt
 </div>
 </section>
 <section id="peek-mystery" class="slide level2">
-<h2>この授業のゴール</h2>
+<h2>1年分の閲覧数を折れ線にする</h2>
 <div class="slide-body">
 <ul>
 <li>あるWikipediaページの <strong>2025年・1年分の閲覧数</strong> を可視化</li>
 </ul>
-<div id="c1ebfc0f" class="cell" data-execution_count="1">
+<div id="7787e50c" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -523,7 +522,7 @@ rkskmt
 <p><strong>あらゆるデータは、まず最初に「見て」みる</strong></p>
 </blockquote>
 <ul>
-<li>平均や分散などの <strong>統計量だけでは騙される</strong></li>
+<li>平均や分散などの <strong>統計量だけでは、データの形は分からない</strong></li>
 <li>図にしてはじめて気づける構造がある</li>
 <li>データ分析の最初の一手は <strong>常にプロット</strong></li>
 </ul>
@@ -544,7 +543,7 @@ rkskmt
 <section id="peek-income" class="slide level2">
 <h2>平均以下の世帯は 62.2%</h2>
 <div class="slide-body">
-<div id="273f82fa" class="cell" data-execution_count="3">
+<div id="c93e3737" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -628,8 +627,8 @@ rkskmt
 </div>
 <div class="callout-content">
 <ul>
-<li>統計量がここまで揃っているなら、<strong>4つとも似た形になるはず…だよね？</strong></li>
-<li>めくる前に <strong>予想して手で描いてみる</strong></li>
+<li>統計量がここまで揃っていると、<strong>4つとも似た形に思える</strong></li>
+<li>散布図を見る前に、<strong>予想して手で描いてみる</strong></li>
 </ul>
 </div>
 </div>
@@ -648,7 +647,7 @@ rkskmt
 <li>典型的な普通のデータ</li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="7e7d3daf" class="cell" data-execution_count="4">
+<div id="e1129fbe" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -706,7 +705,7 @@ rkskmt
 <li>統計量だけ見ていると「直線で説明できた」と思い込みやすい</li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="183bd012" class="cell" data-execution_count="5">
+<div id="67f9ecb5" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -765,7 +764,7 @@ rkskmt
 <li>その1点に <strong>回帰直線が引っ張られている</strong></li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="522bfd1d" class="cell" data-execution_count="6">
+<div id="01e19bfc" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -824,7 +823,7 @@ rkskmt
 <li>同じ条件で測定しすぎていて、<code>x</code> が振れていない</li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="3ae4e390" class="cell" data-execution_count="7">
+<div id="0eeea8d9" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -877,7 +876,7 @@ rkskmt
 <div class="slide-body">
 <div class="columns">
 <div class="column" style="width:45%;">
-<div id="57089eb5" class="cell" data-execution_count="8">
+<div id="da3d9ae6" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -980,7 +979,7 @@ rkskmt
 <p>そのうちの1つを散布図にすると…</p>
 </div><div class="column" style="width:50%;">
 <div class="fragment">
-<div id="c1a42b1a" class="cell" data-execution_count="9">
+<div id="c9d7e61b" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -996,7 +995,7 @@ rkskmt
 <section id="peek-datasaurus" class="slide level2">
 <h2>Datasaurus Dozen：全13個</h2>
 <div class="slide-body">
-<div id="c7b5fce8" class="cell" data-execution_count="10">
+<div id="20a296dd" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1031,26 +1030,25 @@ rkskmt
 <section id="section-2" class="slide level2 center break-slide" data-background-color="white">
 <h2></h2>
 <div class="break-title">
-<p>グラフはウソをつく</p>
+<p>誤解を招くグラフ</p>
 </div>
 </section>
-<section id="ここまでは正直なグラフの話" class="slide level2">
-<h2>ここまでは「正直なグラフ」の話</h2>
+<section id="描き方で印象が変わる" class="slide level2">
+<h2>描き方で印象が変わる</h2>
 <div class="slide-body">
 <ul>
-<li>アンスコムの教訓：<strong>描かないと、騙される</strong></li>
-<li>もう一つの現実：<strong>描き方しだいで、人を騙せる</strong>
+<li>アンスコムの例：<strong>統計量だけでは、データの形は分からない</strong></li>
+<li>一方、同じデータでも <strong>描き方しだいで違う印象</strong> のグラフになる
 <ul>
-<li>ニュース・広告・プレゼンで毎日使われているテクニック</li>
+<li>ニュース・広告・プレゼンでよく見られる</li>
 </ul></li>
-<li>ここからは <span class="hl">騙されない</span> 練習</li>
 </ul>
 </div>
 </section>
 <section id="商品bはaより圧倒的に売れている" class="slide level2">
 <h2>商品BはAより圧倒的に売れている？</h2>
 <div class="slide-body">
-<div id="cb85d9c1" class="cell" data-execution_count="11">
+<div id="9e4797b4" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1065,9 +1063,9 @@ rkskmt
 </div>
 </section>
 <section id="peek-ycut" class="slide level2">
-<h2>トリック：y軸の切断</h2>
+<h2>y軸の切断</h2>
 <div class="slide-body">
-<div id="690da679" class="cell" data-execution_count="12">
+<div id="bb23995a" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1098,7 +1096,7 @@ rkskmt
 <section id="東京は寒冷化している" class="slide level2">
 <h2>東京は寒冷化している？</h2>
 <div class="slide-body">
-<div id="6e86f0cc" class="cell" data-execution_count="13">
+<div id="f948d163" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1114,9 +1112,9 @@ rkskmt
 </div>
 </section>
 <section id="peek-cherry" class="slide level2">
-<h2>トリック：期間のチェリーピック</h2>
+<h2>期間のチェリーピック</h2>
 <div class="slide-body">
-<div id="aace5507" class="cell" data-execution_count="14">
+<div id="aee5d25c" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1131,13 +1129,14 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>データが本物でも、切り取りでウソがつける</strong></p>
+<p><strong>データが本物でも、切り取り方で印象が変わる</strong></p>
 </div>
 <div class="callout-content">
 <ul>
 <li>150年で見れば気温は <strong>約4℃上昇</strong>（都市化の影響も大きい）</li>
 <li>揺らぎのある時系列は、<strong>都合のいい12年</strong> を選べば逆向きに見せられる</li>
-<li>「<strong>どの範囲を見せるか</strong>」も作為のうち — 全体を確認するクセをつける</li>
+<li>「<strong>どの範囲を見せるか</strong>」も作為のうち</li>
+<li>全体を確認するクセをつける</li>
 </ul>
 </div>
 </div>
@@ -1223,21 +1222,7 @@ rkskmt
 <li>平均所得524万円 ≠ 真ん中（中央値405万円）</li>
 <li>アンスコム・Datasaurus — 統計量は形を捨てている</li>
 </ul></li>
-<li><strong>グラフはウソをつく</strong>：y軸切断・期間チェリーピック — 騙されない側になる</li>
-<li><strong>冒頭の謎</strong>（1日だけの大きな山）の正体は、<a href="./api-viz.html">APIデータを可視化する</a>で明かされる</li>
-</ul>
-</div>
-</section>
-<section id="次回予告" class="slide level2">
-<h2>次回予告</h2>
-<div class="slide-body">
-<ul>
-<li>今日は「見る」「見抜く」 — <span class="hl">読む側</span> の話だけだった</li>
-<li>次回は <span class="hl">描く側</span> へ：<strong>matplotlib</strong> を使う
-<ul>
-<li>質問に出た <strong>東京の気温</strong> を、自分の手で描いて確かめる</li>
-<li>1枚のグラフを「資料に載せられるレベル」まで <strong>育てる</strong></li>
-</ul></li>
+<li><strong>描き方で印象が変わる</strong>：y軸の切断、期間のチェリーピック</li>
 </ul>
 </div>
 </section>

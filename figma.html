@@ -197,19 +197,15 @@ rkskmt
 <section id="section" class="slide level2 center break-slide" data-background-color="white">
 <h2></h2>
 <div class="break-title">
-<p>アプリの「設計図」を作る</p>
+<p>ワイヤーフレーム</p>
 </div>
 </section>
-<section id="いきなりコードを書いてはいけない" class="slide level2">
-<h2>いきなりコードを書いてはいけない</h2>
+<section id="画面の構成を決める" class="slide level2">
+<h2>画面の構成を決める</h2>
 <div class="slide-body">
 <ul>
-<li>優先順位が決まった（<a href="./payoff-matrix.html">ペイオフマトリクス</a>）——次にやるのは実装ではなく <strong>画面の設計</strong></li>
-<li>建築と同じ：家をいきなり建て始める大工はいない。<span class="hl">まず設計図</span>
-<ul>
-<li>画面の設計図のことを <strong>ワイヤーフレーム</strong>（<span class="en">wireframe</span>）と呼ぶ</li>
-<li>「針金（wire）の枠（frame）」— 線と枠だけの、<strong>飾りのない骨組み図</strong></li>
-</ul></li>
+<li><a href="./payoff-matrix.html">ペイオフマトリクス</a> で選んだ案について、必要な画面と部品を決める</li>
+<li><strong>ワイヤーフレーム</strong>（<span class="en">wireframe</span>）：線や枠で、画面の構成・情報の配置を表す図</li>
 </ul>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -217,10 +213,10 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>なぜ白黒の骨組みだけ？</strong></p>
+<p><strong>最初に決めること</strong></p>
 </div>
 <div class="callout-content">
-<p>色やアイコンを作り込むと「きれいかどうか」の話になってしまう。 骨組みだけなら、<span class="hl">何をどこに置くか</span> という <strong>構造の議論</strong> に集中できる</p>
+<p>必要な情報、ボタンの位置、画面間の移動を確認する。色やアイコンの細部はあとで調整する</p>
 </div>
 </div>
 </div>
@@ -233,27 +229,23 @@ rkskmt
 <p>写真: Intel Free Press, CC BY-SA 2.0, via Wikimedia Commons</p>
 </div>
 </div>
-<ul>
-<li>最初の1枚は <strong>紙とペンで十分</strong>。プロも紙のスケッチから始める</li>
-<li>ただし紙には弱点がある — <span class="hl">修正・共有・使い回しがしにくい</span>
-<ul>
-<li>そこで登場するのが専用ツール</li>
-</ul></li>
-</ul>
+<div class="caption-note">
+<p>紙とペンで画面を描いた例。デジタルのツールでは、複製・修正・共有がしやすい</p>
+</div>
 </section>
-<section id="figma画面設計の定番ツール" class="slide level2">
-<h2>Figma：画面設計の定番ツール</h2>
+<section id="figma画面設計のツール" class="slide level2">
+<h2>Figma：画面設計のツール</h2>
 <div class="slide-body">
 <ul>
-<li><strong>Figma</strong>（フィグマ）= アプリ・Webサイトの画面を <strong>設計 → 共有 → 改善 → 試作</strong> まで一気にできるデザインツール
+<li><strong>Figma</strong>（フィグマ）は、アプリ・Webサイトの画面を設計するツール
 <ul>
-<li>ブラウザで動く（インストール不要）・個人利用は無料枠で十分</li>
-<li>Google Docs のように <span class="hl">複数人で同時編集できる</span> のが最大の特徴</li>
+<li>ブラウザで編集できる</li>
+<li>複数人で同じファイルを同時編集できる</li>
 </ul></li>
 <li>実際の開発現場での使われ方
 <ul>
 <li>一般に使われるサービスの <strong>画面設計</strong>（メッセージアプリの新機能、フリマアプリの出品フロー…）</li>
-<li>企画段階の <strong>アイデア検証</strong> — コードを書かずに画面遷移まで試せる</li>
+<li>企画段階の <strong>アイデア検証</strong>（コードを書かずに画面遷移を試す）</li>
 <li>エンジニア・デザイナー・企画が <strong>1つのFigmaファイルを見ながら会話する</strong></li>
 </ul></li>
 </ul>
@@ -292,13 +284,13 @@ rkskmt
 </tr>
 </tbody>
 </table>
-<ul>
-<li>「デザイナー専用」ではない — <span class="hl">画面で会話するすべての職種</span> の共通言語</li>
-</ul>
+<div class="caption-note">
+<p>画面を見ながら、実装する機能や使い方を共有する</p>
+</div>
 </div>
 </section>
-<section id="今日使う基本操作は5つだけ" class="slide level2">
-<h2>今日使う基本操作は5つだけ</h2>
+<section id="基本操作" class="slide level2">
+<h2>基本操作</h2>
 <div class="slide-body">
 <table class="caption-top">
 <thead>
@@ -321,7 +313,7 @@ rkskmt
 <td>テキスト（タイトルやラベル）</td>
 </tr>
 <tr class="even">
-<td><strong>Shift + a</strong></td>
+<td><strong>Shift + A</strong></td>
 <td><span class="en">Auto Layout</span>（自動整列）</td>
 </tr>
 <tr class="odd">
@@ -336,10 +328,10 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>迷ったら左上のツールバー</strong></p>
+<p><strong>ツールバーから選ぶ</strong></p>
 </div>
 <div class="callout-content">
-<p>キーを忘れてもツールバーから選べる。まずは F・R・T の3つで大半の画面が作れる</p>
+<p>Frame・四角形・テキストは <a href="https://help.figma.com/hc/en-us/articles/360041064174-Access-design-tools-from-the-toolbar">画面下のツールバー</a> からも選べる。<a href="https://help.figma.com/hc/en-us/articles/360040451373-Guide-to-auto-layout">Auto Layout</a> は対象を選択して右サイドバーから追加できる</p>
 </div>
 </div>
 </div>
@@ -353,8 +345,8 @@ rkskmt
 </div>
 <ol start="0" type="1">
 <li><a href="https://www.figma.com/">figma.com</a> にログインして新規デザインファイルを作成</li>
-<li><strong>F</strong> キー → 右パネルから iPhone サイズの Frame を置く</li>
-<li>左上に <strong>T</strong> で「Home」とタイトルを置く</li>
+<li><strong>F</strong> キーで、右パネルから iPhone サイズの Frame を配置</li>
+<li><strong>T</strong> で「Home」のタイトルを画面左上に配置</li>
 <li><strong>R</strong> の四角形でカード（Today’s Tasks）</li>
 <li>四角を3つ並べてクイックメニュー（Quick Actions）</li>
 </ol>
@@ -364,31 +356,34 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>きれいさは要らない</strong></p>
+<p><strong>部品の用途を示す</strong></p>
 </div>
 <div class="callout-content">
-<p>グレーの四角と黒い文字だけでよい。<span class="hl">置く・並べる・名前を付ける</span> が今日の全部</p>
+<p>グレーの四角と黒い文字でよい。カードやメニューには、何を表示する場所か分かるラベルを付ける</p>
 </div>
 </div>
+</div>
+</div>
+</section>
+<section id="例3画面のワイヤーフレーム" class="slide level2">
+<h2>例：3画面のワイヤーフレーム</h2>
+<div class="slide-body">
+<div class="fig">
+<p><a href="imgs/figma/three_screen_example.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="imgs/figma/three_screen_example.png" style="width:78.0%"></a></p>
 </div>
 </div>
 </section>
 <section id="演習-3画面のワイヤーフレーム" class="slide level2 badge-practice scrollable">
 <h2><strong>演習</strong> 3画面のワイヤーフレーム</h2>
 <div class="slide-body">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="imgs/figma/three_screen_example.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="imgs/figma/three_screen_example.png" class="quarto-figure quarto-figure-center" style="width:78.0%"></a></p>
-</figure>
-</div>
 <div class="prompt">
-<p>ホーム → タスク一覧 → 追加フォーム の3画面ワイヤーフレームを作れ（上図がゴールの目安）。</p>
+<p>ホーム → タスク一覧 → 追加フォーム の3画面ワイヤーフレームを作れ（前ページの図を目安にすること）。</p>
 </div>
 <ol start="0" type="1">
-<li>キャンバスに iPhone Frame を横並びで3つ置く</li>
-<li><strong>ホーム</strong> — タイトル・カード・クイックメニュー・下タブ（◯3つ）</li>
-<li><strong>タスク一覧</strong> — タイトル・リストアイテム5つ・右下に「＋」ボタン</li>
-<li><strong>追加フォーム</strong> — Title・Detail・Category の入力欄と Save ボタン</li>
+<li>キャンバスに iPhone Frame を横並びで3つ配置</li>
+<li><strong>ホーム</strong>：タイトル・カード・クイックメニュー・下タブ（◯3つ）を配置</li>
+<li><strong>タスク一覧</strong>：タイトル・リストアイテム5つ・右下の「＋」ボタンを配置</li>
+<li><strong>追加フォーム</strong>：Title・Detail・Category の入力欄と Save ボタンを配置</li>
 </ol>
 </div>
 </section>
@@ -425,16 +420,23 @@ rkskmt
 </tr>
 <tr class="odd">
 <td><strong>ナビゲーション系</strong></td>
-<td>下タブ（<span class="en">Tab bar</span>）・ハンバーガーメニュー・「＋」の丸ボタン（<span class="en">FAB</span>）</td>
+<td>下タブ（<span class="en">Tab bar</span>）・ハンバーガーメニュー・操作用の丸ボタン（<span class="en">FAB: Floating Action Button</span>）</td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li>世の中のアプリは、ほぼこのパターンの <span class="hl">組み合わせ</span> でできている
-<ul>
-<li>手元のスマホのアプリを開いて、どのパターンか <strong>分解して見る</strong> クセをつける</li>
-</ul></li>
-</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>手元のアプリと比較する</strong></p>
+</div>
+<div class="callout-content">
+<p>スマホのアプリを1つ開き、ホーム・一覧・詳細・入力のどの画面があるか確認する</p>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="演習-自分のアプリの画面を作る" class="slide level2 badge-practice scrollable">
@@ -444,10 +446,10 @@ rkskmt
 <p>ペイオフマトリクスで「すぐやるべき」に選んだ自分のアプリ案について、3画面以上のワイヤーフレームを作り、Prototype機能で画面をつなげ。</p>
 </div>
 <ol start="0" type="1">
-<li>必要な画面を <strong>3つだけ</strong> 決める（欲張らない — 増やすのはいつでもできる）</li>
-<li>前ページのUIパターンから部品を選ぶ</li>
+<li>最初に作る画面を <strong>3つ</strong> 選定</li>
+<li>前ページのUIパターンから部品を選択</li>
 <li>各画面に配置</li>
-<li>Prototype タブでボタンと画面を矢印でつなぐ → 再生ボタンで <strong>動くアプリのように試す</strong></li>
+<li>Prototype タブでボタンと遷移先の画面を接続し、再生ボタンで動作確認</li>
 </ol>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -455,10 +457,10 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>ここで作った3画面が実装の設計図になる</strong></p>
+<p><strong>設計と実装</strong></p>
 </div>
 <div class="callout-content">
-<p>この後の <a href="./nicegui.html">NiceGUI</a> では、このワイヤーフレームを <strong>本物のコード</strong> にしていく</p>
+<p>このワイヤーフレームを <a href="./final-project.html">最終課題</a> の設計に使う。<a href="./nicegui.html">NiceGUI</a> の部品で配置を作り、データの取得や入力処理を追加する</p>
 </div>
 </div>
 </div>

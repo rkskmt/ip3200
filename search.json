@@ -312,7 +312,7 @@
     "href": "vector_matrix.html#計算の意味行列は点を動かす機械",
     "title": "ベクトルと行列",
     "section": "計算の意味：行列は点を「動かす機械」",
-    "text": "計算の意味：行列は点を「動かす機械」\n\n\nさっきの掛け算、何をしていたのか？ — 行列はベクトル（点）を別の場所へ動かす変換\n形（F）にかけてみると、その正体が見える\n\n\n\n\n\n\n\n\n\n\n\n同じ「行列×ベクトル」でも、行列を変えれば伸ばす・傾ける・回すと動きが変わる\n行列とは「空間そのものをどう変形するか」を表す数の表"
+    "text": "計算の意味：行列は点を「動かす機械」\n\n\nさっきの掛け算は、ベクトル（点）を別の場所へ動かす変換になっている\n形（F）の各点にかけてみると、何をしているかが分かる\n\n\n\n\n\n\n\n\n\n\n\n同じ「行列×ベクトル」でも、行列を変えれば伸ばす・傾ける・回すと動きが変わる\n行列とは「空間そのものをどう変形するか」を表す数の表"
   },
   {
     "objectID": "vector_matrix.html#なぜ回転行列は-cos-と-sin-なのか",
@@ -522,7 +522,7 @@
     "href": "tokyo-api.html#配っても減らない",
     "title": "東京都オープンデータAPI",
     "section": "配っても、減らない",
-    "text": "配っても、減らない\n\n\n\n\n「魔法のおなべ」（The Magic Cauldron、全文）は、オープンソースの 経済学\n\n\n\n\n\n\n\n問い\n\n\nコードを タダで配ったら、作った人はどうやって食べていく？\n\n\n\n\n\nカギは 非競合性（non-rivalry）— パンは食べればなくなるが、コードは コピーしても減らない\n\n使う人・直す人が増えるほど改良が戻ってきて、鍋の中身はむしろ増える\n\n売り物は別に作れる：サポート、ハードウェア、ブランド、コンテンツ\nデータも非競合 — 配っても都のデータは減らず、使われた分だけ価値が生まれる\n\n\n\n\n\n絵: John William Waterhouse, Public domain, via Wikimedia Commons"
+    "text": "配っても、減らない\n\n\n\n\n「魔法のおなべ」（The Magic Cauldron、全文）は、オープンソースの 経済学\n\n\n\n\n\n\n\n問い\n\n\nコードを タダで配ったら、作った人はどうやって食べていく？\n\n\n\n\n\nカギは 非競合性（non-rivalry）— パンは食べればなくなるが、コードは コピーしても減らない\n\n使う人・直す人が増えるほど改良が戻ってきて、鍋の中身はむしろ増える\n\n売り物は別に作れる：サポート、ハードウェア、ブランド、コンテンツ\nデータも非競合：配っても都のデータは減らず、使われた分だけ価値が生まれる\n\n\n\n\n\n絵: John William Waterhouse, Public domain, via Wikimedia Commons"
   },
   {
     "objectID": "tokyo-api.html#身近なオープンデータ活用例",
@@ -543,7 +543,7 @@
     "href": "tokyo-api.html#概要",
     "title": "東京都オープンデータAPI",
     "section": "概要",
-    "text": "概要\n\n\n東京都オープンデータカタログサイト の一部データをAPI提供\nユーザ登録不要 — 誰でもすぐに利用可能\n掲載データ約54,000件のうち、CSV約35,000件がAPI対応\n\n\n\n\n項目\n内容\n\n\n\n\n認証\n不要\n\n\nレート制限\n明示なし（常識的な範囲で）\n\n\nデータ形式\nJSON / XML\n\n\nCORS\n対応済み"
+    "text": "概要\n\n\n東京都オープンデータカタログサイト の一部データをAPI提供\nユーザ登録不要：誰でもすぐに利用可能\n掲載データ約54,000件のうち、CSV約35,000件がAPI対応\n\n\n\n\n項目\n内容\n\n\n\n\n認証\n不要\n\n\nレート制限\n明示なし（常識的な範囲で）\n\n\nデータ形式\nJSON / XML\n\n\nCORS\n対応済み"
   },
   {
     "objectID": "tokyo-api.html#wikipedia-apiとの違い",
@@ -564,14 +564,14 @@
     "href": "tokyo-api.html#基本url",
     "title": "東京都オープンデータAPI",
     "section": "基本URL",
-    "text": "基本URL\n\nhttps://service.api.metro.tokyo.lg.jp/api/{apiId}/{format}\n\n{apiId} — データセットごとに異なるID\n{format} — json または xml\n\n例：東京都人口の推移（JSON）\nhttps://service.api.metro.tokyo.lg.jp/api/t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0/json"
+    "text": "基本URL\n\nhttps://service.api.metro.tokyo.lg.jp/api/{apiId}/{format}\n\n{apiId}：データセットごとに異なるID\n{format}：json または xml\n\n例：東京都人口の推移（JSON）\nhttps://service.api.metro.tokyo.lg.jp/api/t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0/json"
   },
   {
     "objectID": "tokyo-api.html#apiのidを探す",
     "href": "tokyo-api.html#apiのidを探す",
     "title": "東京都オープンデータAPI",
     "section": "APIのIDを探す",
-    "text": "APIのIDを探す\n\n\nAPI検索ページ でキーワード検索\n欲しいデータの apiId をコピーして使う\n\n\n\n\n\n\n\n探し方のコツ\n\n\n\n「避難所」「駐輪場」「人口」などキーワードで検索\n区市町村名で絞り込み可能\n詳細ページで apiId と列名を確認\n\n\n\n\nただし、リンク切れや内容がないことも多いため確認が必要"
+    "text": "APIのIDを探す\n\n\nAPI検索ページ でキーワード検索\n欲しいデータの apiId をコピーして使う\n\n\n\n\n\n\n\n探し方のコツ\n\n\n\n「避難所」「駐輪場」「人口」などキーワードで検索\n区市町村名で絞り込み可能\n詳細ページで apiId と列名を確認\nリンク切れや、中身が空のデータも多い。使う前に確認する"
   },
   {
     "objectID": "tokyo-api.html#section-3",
@@ -602,6 +602,20 @@
     "text": "長いレスポンスデータの解析方法 II\n\n手順3： 重要キーの同定\ntotal &lt;class 'int'&gt; 152\n\n---------------------\n\nsubtotal &lt;class 'int'&gt; 100\n\n---------------------\n\nlimit &lt;class 'NoneType'&gt; None\n\n---------------------\n\noffset &lt;class 'NoneType'&gt; None\n\n---------------------\n\nmetadata &lt;class 'dict'&gt; {'apiId': 't000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0', 'title': '人口の動き（令和５...（略）\n\n---------------------\n\nhits &lt;class 'list'&gt; [{'row': 1, '和暦（年次）': '明治5', '西暦（年次）': 1872, '東京都／人口補足': ' ', '東京都／人口': 859345, ...（略）\n\n---------------------\n\nキーmetadata はデータセットの情報っぽい\n\nメタデータはデータのデータ\n\nキーtotal はデータの総件数っぽい\nどうも重要そうなのはhitsっぽい\n\n正解：東京都APIの仕様では、hits にデータ本体があることになっている\n\n\n手順4： 重要キーの深堀り\n\nhitsには大量のデータがlistで格納されていることがわかった\nよって、最初の１件目を出力して実データをみることができそう\n\nprint(data[\"hits\"][0])\n{'row': 1, '和暦（年次）': '明治5', '西暦（年次）': 1872, '東京都／人口補足': ' ', '東京都／人口': 859345, '東京都／増減': '…', '東京都／増減率(%)': '…', '東京都／対全国比(%)': '2.47', '全国／人口補足': '', '全国／人口(千人)': '34806', '全国／増減(千人)': '…', '全国／増減率(%)': '…'}\n\n1件目＝明治5年（1872年）、人口 859,345人"
   },
   {
+    "objectID": "tokyo-api.html#届いたのは100件だけ",
+    "href": "tokyo-api.html#届いたのは100件だけ",
+    "title": "東京都オープンデータAPI",
+    "section": "届いたのは100件だけ",
+    "text": "届いたのは100件だけ\n\n\nhits の件数を数えて、total と比べる\n\nprint(data[\"total\"])       # 152\nprint(data[\"subtotal\"])    # 100\nprint(len(data[\"hits\"]))   # 100\n\n152件のうち、届いたのは先頭の100件だけ\n\nsubtotal は、実際に届いた件数\n\n東京都APIは、件数を指定しないと1回に100件までしか返さない"
+  },
+  {
+    "objectID": "tokyo-api.html#limit-で全件を受け取る",
+    "href": "tokyo-api.html#limit-で全件を受け取る",
+    "title": "東京都オープンデータAPI",
+    "section": "limit で全件を受け取る",
+    "text": "limit で全件を受け取る\n\n\n1回に受け取る件数は、パラメータ limit で指定する（最大1000件）\nWikipedia API と同じく params= で渡す\n\nimport requests\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, params={\"limit\": 200}, json={})\ndata = response.json()\n\nprint(data[\"subtotal\"])    # 152\nprint(len(data[\"hits\"]))   # 152\n\n以降は、この呼び方で152件すべてを使う"
+  },
+  {
     "objectID": "tokyo-api.html#section-4",
     "href": "tokyo-api.html#section-4",
     "title": "東京都オープンデータAPI",
@@ -613,14 +627,14 @@
     "href": "tokyo-api.html#hits-は-dataframe-にそのまま入る",
     "title": "東京都オープンデータAPI",
     "section": "hits は DataFrame にそのまま入る",
-    "text": "hits は DataFrame にそのまま入る\n\n\nhits は list of dict — pd.DataFrame() に そのまま渡せる（キーが列名になる）\nさっきの data に続けて：\n\nimport pandas as pd\n\ndf = pd.DataFrame(data[\"hits\"])\nprint(df.columns)\nIndex(['row', '和暦（年次）', '西暦（年次）', '東京都／人口補足', '東京都／人口', '東京都／増減', '東京都／増減率(%)',\n       '東京都／対全国比(%)', '全国／人口補足', '全国／人口(千人)', '全国／増減(千人)', '全国／増減率(%)'],\n      dtype='object')\n\n知らないデータは、まず列名の確認から — Pandas入門\n\n人口だけかと思ったら、増減率・対全国比・全国の人口まで 12列 あった\nrow はAPIが付ける行番号\n\n使う列は、この中から選ぶ"
+    "text": "hits は DataFrame にそのまま入る\n\n\nhits は list of dict\npd.DataFrame() に そのまま渡せる（キーが列名になる）\n全件を受け取った data に続けて：\n\nimport pandas as pd\n\ndf = pd.DataFrame(data[\"hits\"])\nprint(df.columns)\nIndex(['row', '和暦（年次）', '西暦（年次）', '東京都／人口補足', '東京都／人口', '東京都／増減', '東京都／増減率(%)',\n       '東京都／対全国比(%)', '全国／人口補足', '全国／人口(千人)', '全国／増減(千人)', '全国／増減率(%)'],\n      dtype='object')\n\n知らないデータは、まず列名を確認する（Pandas入門）\n\n人口のほかに、増減率・対全国比・全国の人口まで 12列 ある\nrow はAPIが付ける行番号\n\n使う列は、この中から選ぶ"
   },
   {
-    "objectID": "tokyo-api.html#pandasなので絞り込みも楽",
-    "href": "tokyo-api.html#pandasなので絞り込みも楽",
+    "objectID": "tokyo-api.html#列と行を絞り込む",
+    "href": "tokyo-api.html#列と行を絞り込む",
     "title": "東京都オープンデータAPI",
-    "section": "Pandasなので絞り込みも楽",
-    "text": "Pandasなので絞り込みも楽\n\n\n列 の絞り込み（西暦（年次）など）\n\nDFやSeriesなどのサブセットにする\n\n行 の絞り込み（期間指定など）\n\n条件にあう行の抽出\n\n\n# 列：使う列だけ選ぶ\npop = df[[\"西暦（年次）\", \"東京都／人口\"]]\n\n# 行：受け取ってから、条件抽出で絞る\nrecent = df[df[\"西暦（年次）\"] &gt;= 1950]\n\n\n\n\n\n\n（参考）jsonでPOSTすれば列の絞り込みがAPI上で可能\n\n\n\n実は、bodyに column というキーでPOSTすれば絞られた状態で戻る — 必要な列だけ受け取れる\n\nbody = {\"column\": [\"西暦（年次）\", \"東京都／人口\"]}\nresponse = requests.post(url, json=body)"
+    "section": "列と行を絞り込む",
+    "text": "列と行を絞り込む\n\n\n列 の絞り込み（西暦（年次）など）\n\n使う列だけを選ぶ\n\n行 の絞り込み（期間指定など）\n\n条件にあう行だけを残す\n\n\n# 列：使う列だけ選ぶ\npop = df[[\"西暦（年次）\", \"東京都／人口\"]]\n\n# 行：受け取ってから、条件抽出で絞る\nrecent = df[df[\"西暦（年次）\"] &gt;= 1950]\n\n\n\n\n\n\n（参考）jsonでPOSTすれば列の絞り込みがAPI上で可能\n\n\n\nbodyに column というキーで列名を渡すと、その列だけが返ってくる\n\nbody = {\"column\": [\"西暦（年次）\", \"東京都／人口\"]}\nresponse = requests.post(url, json=body)"
   },
   {
     "objectID": "tokyo-api.html#section-5",
@@ -634,35 +648,35 @@
     "href": "tokyo-api.html#peek-population",
     "title": "東京都オープンデータAPI",
     "section": "東京都人口（期間指定）",
-    "text": "東京都人口（期間指定）\n\n\n1960年代以降だけに絞って、高度経済成長期の東京を見る\n列を選んでから、行を条件抽出 — さっきの2つの道具をそのまま使う\n\nimport requests\nimport pandas as pd\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\npop = df[[\"西暦（年次）\", \"東京都／人口\"]]\nsixties = pop[pop[\"西暦（年次）\"] &gt;= 1960]\n\nprint(sixties)\n    西暦（年次）    東京都／人口\n88    1960   9683802\n89    1961   9936970\n90    1962  10180203\n91    1963  10432526\n92    1964  10639361\n93    1965  10869244\n94    1966  10973070\n95    1967  11104969\n96    1968  11251775\n97    1969  11340417\n98    1970  11408071\n99    1971  11521226\n1000万人を超えたのはいつ？\n\n出力を眺めると、1962年 に1000万人を超えている"
+    "text": "東京都人口（期間指定）\n\n\n1960年以降に絞って、高度経済成長期からの東京を見る\n列を選んでから、条件抽出で行を絞る\n\nimport requests\nimport pandas as pd\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, params={\"limit\": 200}, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\npop = df[[\"西暦（年次）\", \"東京都／人口\"]]\nsixties = pop[pop[\"西暦（年次）\"] &gt;= 1960]\n\nprint(sixties.head(10))\n    西暦（年次）    東京都／人口\n88    1960   9683802\n89    1961   9936970\n90    1962  10180203\n91    1963  10432526\n92    1964  10639361\n93    1965  10869244\n94    1966  10973070\n95    1967  11104969\n96    1968  11251775\n97    1969  11340417\n1000万人を超えたのはいつ？\n\n出力を眺めると、1962年 に1000万人を超えている"
   },
   {
     "objectID": "tokyo-api.html#統計分析の例",
     "href": "tokyo-api.html#統計分析の例",
     "title": "東京都オープンデータAPI",
     "section": "統計分析の例",
-    "text": "統計分析の例\n\n\n列を取り出せば Series — .mean() と同じ形で .max() .std() .median() も使える\n\nいつもの統計がそのまま使える\n\n\nimport requests\nimport pandas as pd\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\npopulation = df[\"東京都／人口\"]\n\nprint(f\"平均: {population.mean():,.0f}人\")\nprint(f\"最大: {population.max():,}人\")\nprint(f\"最小: {population.min():,}人\")\nprint(f\"標準偏差: {population.std():,.0f}\")\nprint(f\"中央値: {population.median():,.0f}人\")\n平均: 4,623,763人\n最大: 11,521,226人\n最小: 859,345人\n標準偏差: 3,257,045\n中央値: 3,765,064人"
+    "text": "統計分析の例\n\n\n列を取り出すと Series になる\n\n.mean() と同じ形で .max() .std() .median() も使える\n\n\nimport requests\nimport pandas as pd\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, params={\"limit\": 200}, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\npopulation = df[\"東京都／人口\"]\n\nprint(f\"平均: {population.mean():,.0f}人\")\nprint(f\"最大: {population.max():,}人\")\nprint(f\"最小: {population.min():,}人\")\nprint(f\"標準偏差: {population.std():,.0f}\")\nprint(f\"中央値: {population.median():,.0f}人\")\n平均: 7,294,170人\n最大: 14,099,993人\n最小: 859,345人\n標準偏差: 4,582,985\n中央値: 7,189,875人"
   },
   {
     "objectID": "tokyo-api.html#どんな形で増えた",
     "href": "tokyo-api.html#どんな形で増えた",
     "title": "東京都オープンデータAPI",
     "section": "どんな形で増えた？",
-    "text": "どんな形で増えた？\n\n\n最小 859,345人（1872年）から最大 11,521,226人（1971年）まで、100個の値が並んでいる\nデータの可視化の大原則 — Always plot your data first.\n\n\n\n\n\n\n\nここで質問\n\n\n100年分の折れ線は、どんな形？ まっすぐ右肩上がり？ 途中に事件はある？ — 手で描いてみてから、めくる\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n右肩上がり — ただし 一直線ではない\n\n明治・大正のゆるやかな伸び、昭和以降の加速\n\n深い谷が1つ\n\n\n\n\nコードを見る\nimport requests\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\n\nplt.plot(df[\"西暦（年次）\"], df[\"東京都／人口\"] / 1e6)\nplt.title(\"Tokyo Population 1872-1971\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Population (million)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()"
+    "text": "どんな形で増えた？\n\n\n最小 859,345人（1872年）から最大 14,099,993人（2023年）まで、152個の値が並んでいる\nデータの可視化の大原則：Always plot your data first.\n\n\n\n\n\n\n\n質問\n\n\n152年分の折れ線は、どんな形？ まっすぐ右肩上がりか、途中で減った時期があるか、手で描いて予想してみよう\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n右肩上がりだが、一直線ではない\n\n明治・大正はゆるやかに伸び、昭和で加速する\n1970年代から1990年代は、ほぼ横ばい\n\n深い谷が1つ\n\n\n\n\nコードを見る\nimport requests\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, params={\"limit\": 200}, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\n\nplt.plot(df[\"西暦（年次）\"], df[\"東京都／人口\"] / 1e6)\nplt.title(\"Tokyo Population 1872-2023\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Population (million)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()"
   },
   {
     "objectID": "tokyo-api.html#何があった",
     "href": "tokyo-api.html#何があった",
     "title": "東京都オープンデータAPI",
     "section": "何があった",
-    "text": "何があった\n\n\n谷の底は 1945年：7,271,001人（1944年）→ 3,488,284人\n\n1年で 378万人減、ほぼ半減\n\n\n\n\n\n\n\n\nここで質問\n\n\n1945年の東京で何が起きた？ いなくなった人は、いつ戻った？\n\n\n\n\n\n空襲と疎開 — 戦争末期、東京から人が離れた\n戻りも速い：1946年に +69万人、1947年に +82万人。5年後の1950年には600万人台まで回復\n歴史の教科書の出来事が、数列にそのまま刻まれている"
+    "text": "何があった\n\n\n谷の底は 1945年：7,271,001人（1944年）→ 3,488,284人\n\n1年で 378万人減、ほぼ半減\n\n\n\n\n\n\n\n\n質問\n\n\n1945年の東京で何が起きた？ いなくなった人は、いつ戻った？\n\n\n\n\n\n空襲と疎開：戦争末期、東京から人が離れた\n戻りも速い：1946年に +69万人、1947年に +82万人。5年後の1950年には600万人台まで回復"
   },
   {
     "objectID": "tokyo-api.html#実データは汚れている",
     "href": "tokyo-api.html#実データは汚れている",
     "title": "東京都オープンデータAPI",
     "section": "実データは汚れている",
-    "text": "実データは汚れている\n\n\n人口の列は綺麗だったが、統計分析のときの df で、同じ表の 増減率(%) の列を見ると…\n\nprint(df[\"東京都／増減率(%)\"])\n0        …\n1     3.26\n2     5.09\n3     5.75\n4      4.2\n      ...\n95     1.2\n96    1.32\n97    0.79\n98     0.6\n99    0.99\nName: 東京都／増減率(%), Length: 100, dtype: object\n\n末尾の dtype: object に注目 — 数値の列なら int64 / float64 になる\n\n数値が 文字列（\"3.26\"）で入っていて、データがない1872年は \"…\"\n\n条件抽出で \"…\" の行を除き、.astype(float) で 列ごと数値に変換（float() の列版）\n\nclean = df[df[\"東京都／増減率(%)\"] != \"…\"]\nrates = clean[\"東京都／増減率(%)\"].astype(float)\n\nprint(f\"増減率の平均: {rates.mean():.2f}%\")   # 増減率の平均: 2.99%\n\n\n\n\n\n\ndtype を確かめてから使う\n\n\n\n外部APIのデータは 型が揃っているとは限らない\n\n数値のつもりが文字列、欠損が \"…\" などの記号\n\nSeries を print すると末尾に dtype が出る — 集計の前に見るクセをつける"
+    "text": "実データは汚れている\n\n\n人口の列は綺麗だったが、統計分析のときの df で、同じ表の 増減率(%) の列を見ると…\n\nprint(df[\"東京都／増減率(%)\"])\n0          …\n1       3.26\n2       5.09\n3       5.75\n4        4.2\n       ...\n147     0.83\n148     0.31\n149    -0.26\n150     0.21\n151     0.42\nName: 東京都／増減率(%), Length: 152, dtype: object\n\n末尾の dtype: object に注目する。数値の列なら int64 / float64 になるはず\n\n数値が 文字列（\"3.26\"）で入っていて、データがない1872年は \"…\"\n\n条件抽出で \"…\" の行を除き、.astype(float) で 列ごと数値に変換（float() の列版）\n\nclean = df[df[\"東京都／増減率(%)\"] != \"…\"]\nrates = clean[\"東京都／増減率(%)\"].astype(float)\n\nprint(f\"増減率の平均: {rates.mean():.2f}%\")   # 増減率の平均: 2.10%\n\n\n\n\n\n\ndtype を確かめてから使う\n\n\n\n外部APIのデータは 型が揃っているとは限らない\n\n数値のつもりが文字列、欠損が \"…\" などの記号\n\nSeries を print すると末尾に dtype が出る\n集計の前に見るクセをつける"
   },
   {
     "objectID": "tokyo-api.html#section-6",
@@ -676,21 +690,21 @@
     "href": "tokyo-api.html#peek-shinagawa",
     "title": "東京都オープンデータAPI",
     "section": "別の窓口、同じテンプレート",
-    "text": "別の窓口、同じテンプレート\n\n\napi_id を差し替えるだけで、届くデータが変わる（通信部分のコードはそのまま）\n知らないデータでも手順は同じ — DataFrameにして、まず列名\n\nimport requests\nimport pandas as pd\n\napi_id = \"t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0\"  # 品川区の避難所\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\n\nprint(f\"品川区の避難所（総件数: {data['total']}件）\")\nprint(df.columns)\nprint(df)\n品川区の避難所（総件数: 25件）\nIndex(['row', '名称', '緯度', '経度'], dtype='object')\n    row                        名称         緯度          経度\n0     1               南大井シルバーセンター  35.591619  139.734238\n1     2  春光福祉会　特別養護老人ホーム「ロイヤルサニー」  35.599962  139.722470\n2     3     さくら会老人保健施設「ケアセンター南大井」  35.594534  139.733675\n3     4               西大井シルバーセンター  35.600898  139.723070\n4     5                  八潮児童センター  35.599807  139.751633\n..."
+    "text": "別の窓口、同じテンプレート\n\n\napi_id を差し替えるだけで、届くデータが変わる（通信部分のコードはそのまま）\n知らないデータでも手順は同じ：DataFrameにして、まず列名を確認\n\nimport requests\nimport pandas as pd\n\napi_id = \"t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0\"  # 品川区の避難所\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\n\nprint(f\"品川区の避難所（総件数: {data['total']}件）\")\nprint(df.columns)\nprint(df)\n品川区の避難所（総件数: 25件）\nIndex(['row', '名称', '緯度', '経度'], dtype='object')\n    row                        名称         緯度          経度\n0     1               南大井シルバーセンター  35.591619  139.734238\n1     2  春光福祉会　特別養護老人ホーム「ロイヤルサニー」  35.599962  139.722470\n2     3     さくら会老人保健施設「ケアセンター南大井」  35.594534  139.733675\n3     4               西大井シルバーセンター  35.600898  139.723070\n4     5                  八潮児童センター  35.599807  139.751633\n..."
   },
   {
     "objectID": "tokyo-api.html#tweak-api_idを差し替える",
     "href": "tokyo-api.html#tweak-api_idを差し替える",
     "title": "東京都オープンデータAPI",
     "section": "Tweak api_idを差し替える",
-    "text": "Tweak api_idを差し替える\n\n品川区のコードの api_id だけ差し替えて実行する。\n\n\n\n\n\n\n\n\nデータ\napi_id\n\n\n\n\n避難所（東京都全域）\nt000003d0000000093-0af9bfa497bc7be6ef83e5bfd1fdcfc6-0\n\n\n都営バスの運賃\nt000018d0000000044-3db21a77b0af1c54b411f79604444ca2-0\n\n\n\n\n\n\n\n\n\n\n予想してから試す\n\n\ntotal はそれぞれ何件くらいだと思う？（品川区の避難所は25件だった）— 桁を予想してから実行"
+    "text": "Tweak api_idを差し替える\n\n品川区のコードの api_id だけ差し替えて実行する。\n\n\n\n\n\n\n\n\nデータ\napi_id\n\n\n\n\n避難所（東京都全域）\nt000003d0000000093-0af9bfa497bc7be6ef83e5bfd1fdcfc6-0\n\n\n都営バスの運賃\nt000018d0000000044-3db21a77b0af1c54b411f79604444ca2-0\n\n\n\n\n\n\n\n\n\n\n予想してから試す\n\n\ntotal はそれぞれ何件くらいだと思う？ 品川区の避難所は25件だった。桁を予想してから実行しよう"
   },
   {
     "objectID": "tokyo-api.html#まとめ",
     "href": "tokyo-api.html#まとめ",
     "title": "東京都オープンデータAPI",
     "section": "まとめ",
-    "text": "まとめ\n\n\n\n\nやりたいこと\nコード\n\n\n\n\n基本アクセス\nrequests.post(url, json={})\n\n\n列の絞り込み（API側）\nbody = {\"column\": [\"列名1\", \"列名2\"]}\n\n\nDataFrame化\ndf = pd.DataFrame(data[\"hits\"])\n\n\n列名の確認\nprint(df.columns)\n\n\n行の絞り込み\n条件抽出 df[df[\"列名\"] &gt;= 値]\n\n\n全件数確認\ndata[\"total\"]\n\n\n\n\n\n\n\n\n\nWikipedia API との違い\n\n\n\nGET ではなく POST\n空でも json={} が必要\nUser-Agent は不要"
+    "text": "まとめ\n\n\n\n\nやりたいこと\nコード\n\n\n\n\n基本アクセス\nrequests.post(url, json={})\n\n\n件数の指定\nrequests.post(url, params={\"limit\": 200}, json={})\n\n\n列の絞り込み（API側）\nbody = {\"column\": [\"列名1\", \"列名2\"]}\n\n\nDataFrame化\ndf = pd.DataFrame(data[\"hits\"])\n\n\n列名の確認\nprint(df.columns)\n\n\n行の絞り込み\n条件抽出 df[df[\"列名\"] &gt;= 値]\n\n\n全件数の確認\ndata[\"total\"]\n\n\n届いた件数の確認\nlen(data[\"hits\"])\n\n\n\n\n\n\n\n\n\nWikipedia API との違い\n\n\n\nGET ではなく POST\n空でも json={} が必要\nUser-Agent は不要"
   },
   {
     "objectID": "tokyo-api.html#section-7",
@@ -704,21 +718,21 @@
     "href": "tokyo-api.html#演習避難所データの可視化",
     "title": "東京都オープンデータAPI",
     "section": "演習：避難所データの可視化",
-    "text": "演習：避難所データの可視化\n\n\n任意の区市町村の避難所データを取得し、件数を表示せよ。\n\n\n（発展）緯度・経度があれば散布図で地図風にプロット\n\n\n\n\n\n\n\nヒント\n\n\n\nAPI検索ページ で「避難所」を検索\n複数の区のデータを比較しても面白い\n\n\n\n\n\n\n解答例を見る（品川区の例 — apiIdは検索ページで差し替え）\nimport requests\n\napi_id = \"t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0\"  # 品川区の避難所\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, json={})\ndata = response.json()\n\nprint(f\"避難所の件数: {data['total']}件\")"
+    "text": "演習：避難所データの可視化\n\n\n任意の区市町村の避難所データを取得し、件数を表示せよ。\n\n\n（発展）緯度・経度があれば散布図で地図風にプロット\n\n\n\n\n\n\n\nヒント\n\n\n\nAPI検索ページ で「避難所」を検索\n複数の区のデータを比較しても面白い\n\n\n\n\n\n\n解答例を見る（品川区の例。apiIdは検索ページで差し替え）\nimport requests\n\napi_id = \"t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0\"  # 品川区の避難所\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, json={})\ndata = response.json()\n\nprint(f\"避難所の件数: {data['total']}件\")"
   },
   {
     "objectID": "tokyo-api.html#演習東京一極集中はいつから",
     "href": "tokyo-api.html#演習東京一極集中はいつから",
     "title": "東京都オープンデータAPI",
     "section": "演習：東京一極集中はいつから？",
-    "text": "演習：東京一極集中はいつから？\n\n\n人口データの 「東京都／対全国比(%)」 を折れ線グラフに描き、日本の人口の 1割 を最初に超えた年を答えよ。\n\n\n人口データを取得し、DataFrameにして列名を確認\n対全国比の値は文字列 — .astype(float) で数値化（増減率のときと同じ下ごしらえ）\n折れ線グラフに描き、10%を最初に超えた年を確認\n\n\n\n解答例を見る\nimport requests\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\nshares = df[\"東京都／対全国比(%)\"].astype(float)\n\nover10 = df[shares &gt;= 10]\nprint(f\"最初に10%を超えた年: {over10['西暦（年次）'].min()}年\")\n\nplt.plot(df[\"西暦（年次）\"], shares)\nplt.title(\"Tokyo Share of Japan Population\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Share (%)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n一極集中は戦前に始まっていた\n\n\n\n1872年は 2.5%（40人に1人）\n最初に10%を超えたのは 1940年\n\n戦前にすでに「1割が東京」だった\n\n1945年に 4.8% へ急落（人口の谷と同じ理由）し、1959年に再び10%へ"
+    "text": "演習：東京一極集中はいつから？\n\n\n人口データの 「東京都／対全国比(%)」 を折れ線グラフに描き、日本の人口の 1割 を最初に超えた年を答えよ。\n\n\n人口データを取得し、DataFrameにして列名を確認\n対全国比の値は文字列。数値でない値の行を除いてから .astype(float) で数値化（増減率のときと同じ下ごしらえ）\n折れ線グラフに描き、10%を最初に超えた年を確認\n\n\n\n解答例を見る\nimport requests\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, params={\"limit\": 200}, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\nclean = df[df[\"東京都／対全国比(%)\"] != \"\"]   # 2023年は値が空\nshares = clean[\"東京都／対全国比(%)\"].astype(float)\n\nover10 = clean[shares &gt;= 10]\nprint(f\"最初に10%を超えた年: {over10['西暦（年次）'].min()}年\")\n\nplt.plot(clean[\"西暦（年次）\"], shares)\nplt.title(\"Tokyo Share of Japan Population\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Share (%)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n一極集中は戦前に始まっていた\n\n\n\n1872年は 2.5%（40人に1人）\n最初に10%を超えたのは 1940年\n\n戦前にすでに「1割が東京」だった\n\n1945年に 4.8% へ急落（人口の谷と同じ理由）し、1959年に再び10%へ"
   },
   {
     "objectID": "tokyo-api.html#演習2つのデータセットを比較",
     "href": "tokyo-api.html#演習2つのデータセットを比較",
     "title": "東京都オープンデータAPI",
     "section": "演習：2つのデータセットを比較",
-    "text": "演習：2つのデータセットを比較\n\n\n異なる2つのデータセット（例：2つの区の避難所、戦前と戦後の人口）を取得し、件数や統計量を比較して表示せよ。\n\n\n（発展）同じグラフに重ねて描画\n\n\n\n解答例を見る（戦前と戦後の人口を比較する例）\nimport requests\nimport pandas as pd\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\nprewar = df[df[\"西暦（年次）\"] &lt;= 1944]\npostwar = df[df[\"西暦（年次）\"] &gt;= 1946]\n\nprint(f\"戦前（〜1944）: {len(prewar)}年分 平均 {prewar['東京都／人口'].mean():,.0f}人\")\nprint(f\"戦後（1946〜）: {len(postwar)}年分 平均 {postwar['東京都／人口'].mean():,.0f}人\")"
+    "text": "演習：2つのデータセットを比較\n\n\n異なる2つのデータセット（例：2つの区の避難所、戦前と戦後の人口）を取得し、件数や統計量を比較して表示せよ。\n\n\n（発展）同じグラフに重ねて描画\n\n\n\n解答例を見る（戦前と戦後の人口を比較する例）\nimport requests\nimport pandas as pd\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, params={\"limit\": 200}, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\nprewar = df[df[\"西暦（年次）\"] &lt;= 1944]\npostwar = df[df[\"西暦（年次）\"] &gt;= 1946]\n\nprint(f\"戦前（〜1944）: {len(prewar)}年分 平均 {prewar['東京都／人口'].mean():,.0f}人\")\nprint(f\"戦後（1946〜）: {len(postwar)}年分 平均 {postwar['東京都／人口'].mean():,.0f}人\")"
   },
   {
     "objectID": "tokyo-api.html#section-8",
@@ -739,28 +753,21 @@
     "href": "tokyo-api.html#section-9",
     "title": "東京都オープンデータAPI",
     "section": "",
-    "text": "（参考）全件を取り寄せる"
+    "text": "（参考）ページングと拡大表示"
   },
   {
-    "objectID": "tokyo-api.html#参考あれ件数が足りない",
-    "href": "tokyo-api.html#参考あれ件数が足りない",
+    "objectID": "tokyo-api.html#参考1000件を超えるデータはページングで取る",
+    "href": "tokyo-api.html#参考1000件を超えるデータはページングで取る",
     "title": "東京都オープンデータAPI",
-    "section": "（参考）あれ？件数が足りない？",
-    "text": "（参考）あれ？件数が足りない？\n\n\n本編の人口データ、hits の件数と total をよく見ると：\n\nprint(len(data[\"hits\"]))\nprint(data[\"total\"])\n100\n152\n（参考）よく見るとhits list長とtotalが違う\n\n152年分あるのに、100件しか届いていない\n\n1回に届く件数は、指定しないと先頭100件まで\n\n\n（参考）URLの後ろに ?limit=200 を付ければ全件届く\nresponse = requests.post(url + \"?limit=200\", json={})   # limitはデフォルト100・最大1000\ndata = response.json()\n\nprint(len(data[\"hits\"]))\n152"
+    "section": "（参考）1,000件を超えるデータはページングで取る",
+    "text": "（参考）1,000件を超えるデータはページングで取る\n\n\n1,000件を超えるデータは、limit を最大にしても1回では取り切れない\nこのとき、東京都APIでは取得開始位置 offset をずらしながら、同じリクエストを繰り返すことになっている\n\nこのようなデータの応答や表示の分割を ページング（paging）という\n\nたとえば total: 2500 のデータなら3回に分ければとれる：\n\n\n\n\n呼び出し\nparams= に渡す値\n届く範囲\n\n\n\n\n1回目\n{\"limit\": 1000, \"offset\": 0}\n1〜1000件目\n\n\n2回目\n{\"limit\": 1000, \"offset\": 1000}\n1001〜2000件目\n\n\n3回目\n{\"limit\": 1000, \"offset\": 2000}\n2001〜2500件目\n\n\n\n\n毎回の hits をつなげば全件そろう\nWebサービスの「次のページ」「もっと見る」も、裏側はこの仕組み"
   },
   {
-    "objectID": "tokyo-api.html#参考1000件を超えたら-ページング",
-    "href": "tokyo-api.html#参考1000件を超えたら-ページング",
+    "objectID": "tokyo-api.html#参考2018年以降を拡大する",
+    "href": "tokyo-api.html#参考2018年以降を拡大する",
     "title": "東京都オープンデータAPI",
-    "section": "（参考）1,000件を超えたら — ページング",
-    "text": "（参考）1,000件を超えたら — ページング\n\n\n1,000件を超えるデータは、limit を最大にしても1回では取り切れない\nこのとき、東京都APIでは取得開始位置 offset をずらしながら、同じリクエストを繰り返すことになっている\n\nこのようなデータの応答や表示の分割を ページング（paging）という\n\nたとえば total: 2500 のデータなら3回に分ければとれる：\n\n\n\n\n呼び出し\nURLに付ける\n届く範囲\n\n\n\n\n1回目\n?limit=1000&offset=0\n1〜1000件目\n\n\n2回目\n?limit=1000&offset=1000\n1001〜2000件目\n\n\n3回目\n?limit=1000&offset=2000\n2001〜2500件目\n\n\n\n\n毎回の hits をつなげば全件そろう\nWebサービスの「次のページ」「もっと見る」も、裏側はこの仕組み"
-  },
-  {
-    "objectID": "tokyo-api.html#参考全件取って足元を拡大する",
-    "href": "tokyo-api.html#参考全件取って足元を拡大する",
-    "title": "東京都オープンデータAPI",
-    "section": "（参考）全件取って、足元を拡大する",
-    "text": "（参考）全件取って、足元を拡大する\n\n\n本編のグラフは1971年で切れていた — ?limit=200 で 152年全部 を取り直すと、2023年まで伸びる\n「七夕」の8月29日を見つけたときと同じ手 — 軸の範囲を絞って足元を拡大 する\n\nグラフのコードに plt.xlim(2018, 2024) と plt.ylim(13.85, 14.15) を足すだけ\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nここで質問\n\n\n2021年だけ人口が減っている（−36,107人）。何があった年？\n\n\n\n\n\nコロナ禍 — テレワークと転出で、人口が 1995年以来26年ぶり に減った\nズームしないと見えない発見がある（伝統的七夕のときと同じ）"
+    "section": "（参考）2018年以降を拡大する",
+    "text": "（参考）2018年以降を拡大する\n\n\n「七夕」の8月29日を見つけたときと同じく、軸の範囲を絞って 一部を拡大する\n\n人口のグラフのコードに plt.xlim(2018, 2024) と plt.ylim(13.85, 14.15) を足す\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n質問\n\n\n2021年だけ人口が減っている（−36,107人）。何があった年？\n\n\n\n\n\nコロナ禍：テレワークと転出で、人口が 1995年以来26年ぶり に減った"
   },
   {
     "objectID": "tokyo-api.html#関連リソース",
@@ -774,35 +781,35 @@
     "href": "scamper.html#section",
     "title": "オズボーンのチェックリスト・SCAMPER",
     "section": "",
-    "text": "「今あるもの」から発想する"
+    "text": "オズボーンのチェックリスト・SCAMPER"
   },
   {
     "objectID": "scamper.html#質問回転寿司はどこから来た",
     "href": "scamper.html#質問回転寿司はどこから来た",
     "title": "オズボーンのチェックリスト・SCAMPER",
     "section": "質問：回転寿司はどこから来た？",
-    "text": "質問：回転寿司はどこから来た？\n\n\n写真: Alberto Carrasco Casado, CC BY 2.0, via Wikimedia Commons\n\n\n\n1958年、大阪の寿司店主・白石義明 が考案\n寿司とはまったく関係ない ある工場 を見学して思いついた——どこ？\n\n\n\n\n\n\n\n\n答え：ビール工場\n\n\n瓶ビールを運ぶ ベルトコンベア を見て「寿司を回せばいい」—— 他分野の仕組みを取り入れる、のちに言う 応用（Adapt） の教科書的な例"
+    "text": "質問：回転寿司はどこから来た？\n\n白石義明 が開発し、1958年に大阪で回転寿司店を開業\nきっかけは工場の見学。何を作る工場だったか\n\n\n\n写真: Alberto Carrasco Casado, CC BY 2.0, via Wikimedia Commons\n\n\n\n\n\n\n\n\n\n答え：ビール工場\n\n\n瓶ビールを運ぶ ベルトコンベア から着想を得た。 他分野の仕組みを取り入れる 応用（Adapt） の例として考えられる（日本機械学会の解説）"
   },
   {
-    "objectID": "scamper.html#ゼロから考えない",
-    "href": "scamper.html#ゼロから考えない",
+    "objectID": "scamper.html#質問から改良案を考える",
+    "href": "scamper.html#質問から改良案を考える",
     "title": "オズボーンのチェックリスト・SCAMPER",
-    "section": "ゼロから考えない",
-    "text": "ゼロから考えない\n\n\n発想法（ブレスト・635法）は 自由に広げる 道具だった\n\n弱点：手が止まったら終わり。「自由に考えて」が一番難しい\n\n今日の道具は逆のアプローチ——質問リスト（チェックリスト）\n\n「小さくできない？」「逆にしたら？」と 質問に答える形 で強制的に案を出す\n何もないところからではなく、今あるものをどう変えるか を考える\n\n\n\n\n\n\n\n\n強制連想法\n\n\n自由連想（ブレスト）に対して、枠を与えて発想させる方法を 強制連想法 と呼ぶ。 「制約があるほうが出る」ことは意外なほど多い"
+    "section": "質問から改良案を考える",
+    "text": "質問から改良案を考える\n\n\n既存の製品やサービスを1つ選び、質問リスト（チェックリスト）に沿って改良案を出す\n\n「小さくできないか」「逆にしたらどうなるか」\n変える箇所や条件を指定して考える\n\n\n\n\n\n\n\n\n強制連想法\n\n\n自由連想（ブレストなど）に対して、発想の視点や条件を与える方法を 強制連想法（forced association）と呼ぶ"
   },
   {
     "objectID": "scamper.html#オズボーンのチェックリスト",
     "href": "scamper.html#オズボーンのチェックリスト",
     "title": "オズボーンのチェックリスト・SCAMPER",
     "section": "オズボーンのチェックリスト",
-    "text": "オズボーンのチェックリスト\n\n\nブレインストーミング考案者の アレックス・F・オズボーン が作った、発想を広げるための 9つの質問\n\n改善・改良・転用のアイデアを 体系的に 生み出せる\n\n対象（製品・サービス・研究テーマ）を1つ決めて、9つの質問を 順番に全部 ぶつける"
+    "text": "オズボーンのチェックリスト\n\n\nブレインストーミング考案者の アレックス・F・オズボーン が作った、発想を広げるための 9つの質問\n\n改善・改良・転用のアイデアを 体系的に 生み出せる\n\n対象（製品・サービス・研究テーマ）を1つ決めて、9つの質問を順に検討する"
   },
   {
     "objectID": "scamper.html#チェックリスト9項目前半",
     "href": "scamper.html#チェックリスト9項目前半",
     "title": "オズボーンのチェックリスト・SCAMPER",
     "section": "チェックリスト9項目（前半）",
-    "text": "チェックリスト9項目（前半）\n\n\n\n\n\n\n\n\n\n\nNo\n視点\n質問\n例\n\n\n\n\n1\n転用（Put to other uses）\n別の使い方はできないか？\nドローンを農薬散布・測量に転用\n\n\n2\n応用（Adapt）\n他分野の仕組みを取り入れられないか？\nビール工場のコンベア → 回転寿司\n\n\n3\n変更（Modify）\n色・形・意味を変えたら？\n信号ランプをLED化して省電力・長寿命に\n\n\n4\n拡大（Magnify）\n数・範囲・強度・時間を増やせないか？\n電動自転車のバッテリーを大容量化\n\n\n5\n縮小（Minify）\n小さく・軽く・短くできないか？\nモーターを小型化して軽量・高効率に"
+    "text": "チェックリスト9項目（前半）\n\n\n\n\n\n\n\n\n\n\nNo\n視点\n質問\n例\n\n\n\n\n1\n転用（Put to other uses）\n別の使い方はできないか？\nドローンを農薬散布・測量に転用\n\n\n2\n応用（Adapt）\n他分野の仕組みを取り入れられないか？\nビール工場のコンベア → 回転寿司\n\n\n3\n変更（Modify）\n色・形・意味を変えたら？\n信号ランプをLED化して省電力・長寿命に\n\n\n4\n拡大（Magnify）\n数・範囲・強度・時間を増やせないか？\n電動自転車のバッテリーを大容量化\n\n\n5\n縮小（Minify）\n小さく・軽く・短くできないか？\nモーターを小型化して装置を軽くする"
   },
   {
     "objectID": "scamper.html#チェックリスト9項目後半",
@@ -816,42 +823,42 @@
     "href": "scamper.html#質問ウォークマンはどの視点",
     "title": "オズボーンのチェックリスト・SCAMPER",
     "section": "質問：ウォークマンはどの視点？",
-    "text": "質問：ウォークマンはどの視点？\n\n\n写真: Anna Gerdén, CC BY-SA 3.0, via Wikimedia Commons\n\n\n\n1979年、ソニーの初代ウォークマン TPS-L2\nベースは記者用の録音機「プレスマン」——9項目のどれで生まれた？\n\n\n\n\n\n\n\n\n答え：縮小 — というより「省いた」\n\n\n録音機から 録音機能とスピーカーを削除、再生とヘッドホンだけ残した。 「省く」はチェックリストでは「縮小」の一部だが、あまりに強力なので——次のSCAMPERで 独立項目に昇格 する"
+    "text": "質問：ウォークマンはどの視点？\n\n1979年、ソニーの初代ウォークマン TPS-L2\nベースは記者用の録音機「プレスマン」。どの視点から変更点を説明できるか\n\n\n\n写真: Anna Gerdén, CC BY-SA 3.0, via Wikimedia Commons\n\n\n\n\n\n\n\n\n\n答えの例：機能を省く\n\n\n録音機から 録音機能とスピーカーを削除、再生とヘッドホンだけ残した。 SCAMPERでは、このように機能を省く視点を Eliminate として整理する（開発経緯：ソニー）"
   },
   {
     "objectID": "scamper.html#scamper法",
     "href": "scamper.html#scamper法",
     "title": "オズボーンのチェックリスト・SCAMPER",
     "section": "SCAMPER法",
-    "text": "SCAMPER法\n\n\nオズボーンの9項目を、教育学者 ボブ・エバール（Bob Eberle）が 7項目に再編成 した実践版\n7つの視点の頭文字で SCAMPER（スキャンパー）\n\n\n\n\n\n\n\n\n\n\n視点\n質問\n\n\n\n\nS\nSubstitute（代える）\n材料・部品・工程・人を代えられないか？\n\n\nC\nCombine（組み合わせる）\n他のものと組み合わせられないか？\n\n\nA\nAdapt（応用する）\n他分野の考えを取り入れられないか？\n\n\nM\nModify / Magnify（修正・拡大する）\n機能や形を変えたり強化できないか？\n\n\nP\nPut to other uses（転用する）\n別の使い方はできないか？\n\n\nE\nEliminate（省く）\n不要な要素・工程・機能をなくせないか？\n\n\nR\nReverse / Rearrange（逆転・再配置する）\n逆にしたら？ 順番を変えたら？"
+    "text": "SCAMPER法\n\n\nオズボーンの9項目を、教育学者 ボブ・エバール（Bob Eberle）が 7項目に再編成 した実践版\n7つの視点の頭文字で SCAMPER（スキャンパー）\n\n\n\n\n\n\n\n\n\n\n視点\n質問\n\n\n\n\nS\nSubstitute（代える）\n材料・部品・工程・人を代えられないか？\n\n\nC\nCombine（組み合わせる）\n他のものと組み合わせられないか？\n\n\nA\nAdapt（応用する）\n他分野の考えを取り入れられないか？\n\n\nM\nModify / Magnify / Minify（変更・拡大・縮小する）\n機能や形、大きさを変えられないか？\n\n\nP\nPut to other uses（転用する）\n別の使い方はできないか？\n\n\nE\nEliminate（省く）\n不要な要素・工程・機能をなくせないか？\n\n\nR\nReverse / Rearrange（逆転・再配置する）\n逆にしたら？ 順番を変えたら？"
   },
   {
     "objectID": "scamper.html#項目からどう変わったか",
     "href": "scamper.html#項目からどう変わったか",
     "title": "オズボーンのチェックリスト・SCAMPER",
     "section": "9項目からどう変わったか",
-    "text": "9項目からどう変わったか\n\n\n\n\n\n\n\n\n変更\n内容\n\n\n\n\n統合\n縮小 と 変更 → 「M（Modify / Magnify）」に吸収。拡大も縮小も「修正」の一種として扱う\n\n\n統合\n逆転 と 再配置 → 「R（Reverse / Rearrange）」に一本化\n\n\n昇格\n省く（Eliminate） が独立項目に。ウォークマンも QRコードメニューも「E」の産物\n\n\n\n\n中身は同じ発想の道具 — 7文字で暗記できる ようにしたのが SCAMPER の価値\n\n迷ったら「スキャンパー」と唱えて S→C→A→M→P→E→R の順に質問する"
+    "text": "9項目からどう変わったか\n\n\n\n\n変更\n内容\n\n\n\n\n統合\n変更・拡大・縮小 を「M」にまとめる\n\n\n統合\n逆転 と 再配置 → 「R（Reverse / Rearrange）」に一本化\n\n\n独立\n省く（Eliminate） を1項目として扱う\n\n\n\n\n7つの視点を頭文字でまとめたものが SCAMPER（項目の説明：IxDF）"
   },
   {
-    "objectID": "scamper.html#質問どの文字から生まれた",
-    "href": "scamper.html#質問どの文字から生まれた",
+    "objectID": "scamper.html#質問どの視点で説明できるか",
+    "href": "scamper.html#質問どの視点で説明できるか",
     "title": "オズボーンのチェックリスト・SCAMPER",
-    "section": "質問：どの文字から生まれた？",
-    "text": "質問：どの文字から生まれた？\n\n\n身の回りの「当たり前」も、SCAMPER で読み解ける — それぞれどの文字？\n\n紙ストロー\nカメラ付きスマホ\nセルフレジ\n飲食店のQRコード注文\n\n\n\n\n\n\n\n\n\n答え\n\n\n紙ストロー = S（素材を代用） ／ カメラ付きスマホ = C（結合） ／ セルフレジ = R（店員と客の逆転） ／ QRコード注文 = E（紙メニューと注文係を省く）"
+    "section": "質問：どの視点で説明できるか",
+    "text": "質問：どの視点で説明できるか\n\n\n次の製品・サービスの変更点は、SCAMPERのどの視点に当たるか\n\n紙ストロー\nカメラ付きスマホ\nセルフレジ\n飲食店のQRコード注文\n\n\n\n\n\n\n\n\n\n答えの例\n\n\n\n紙ストロー：S（素材を代用）\nカメラ付きスマホ：C（機能を結合）\nセルフレジ：R（会計操作を店員から客へ変更）\nQRコード注文：E（紙メニューや注文を聞き取る工程を省く）\n\n実際にSCAMPERで開発されたという意味ではなく、変更点の分類例"
   },
   {
-    "objectID": "scamper.html#演習-scamper-7連発",
-    "href": "scamper.html#演習-scamper-7連発",
+    "objectID": "scamper.html#演習-scamperで7案",
+    "href": "scamper.html#演習-scamperで7案",
     "title": "オズボーンのチェックリスト・SCAMPER",
-    "section": "演習 SCAMPER 7連発",
-    "text": "演習 SCAMPER 7連発\n\n\n身近な文房具・持ち物（ペン・消しゴム・水筒・傘など）を1つ選び、SCAMPER の7視点で1案ずつ、計7案を書き出せ（実現性は問わない）。\n\n\n対象を1つ決める（迷ったら「傘」）\nS→C→A→M→P→E→R の順に、各視点で1案（1案1行）\n7案の中から「意外と売れそう」な1案に星印\n班内で星つきの案だけ共有\n\n\n\n\n\n\n\n質問が発想を引っ張る\n\n\n「思いつかない」は起きない — 質問に答えられないだけ。答えにくい文字（P や R）ほど、出たときの飛距離が大きい"
+    "section": "演習 SCAMPERで7案",
+    "text": "演習 SCAMPERで7案\n\n\n身近な文房具・持ち物（ペン・消しゴム・水筒・傘など）を1つ選び、SCAMPER の7視点で1案ずつ、計7案を書き出せ（実現性は問わない）。\n\n\n対象を1つ選択（迷ったら「傘」）\nS→C→A→M→P→E→R の順に、各視点で1案（1案1行）\n7案の中から「意外と売れそう」な1案に星印\n班内で星つきの案だけ共有\n\n\n\n\n\n\n\n案が出ないとき\n\n\n「何を代えるか」「どの工程を省くか」のように、部品・使う人・手順を具体的にして考える"
   },
   {
     "objectID": "scamper.html#まとめ発想法との使い分け",
     "href": "scamper.html#まとめ発想法との使い分け",
     "title": "オズボーンのチェックリスト・SCAMPER",
     "section": "まとめ：発想法との使い分け",
-    "text": "まとめ：発想法との使い分け\n\n\n\n\n場面\n道具\n\n\n\n\nゼロからテーマを広げたい\nブレスト・クレイジー8・635法（自由連想）\n\n\n既存の物・サービスを改良したい\nチェックリスト・SCAMPER（強制連想）\n\n\nブレストで手が止まった\nSCAMPER の質問を投げ込んで再点火\n\n\n\n\n質問リストは 手が止まらない のが最大の強み\n出した案の整理・評価は次の 収束技法 と ペイオフマトリクス へ"
+    "text": "まとめ：発想法との使い分け\n\n\n\n\n場面\n道具\n\n\n\n\nゼロからテーマを広げたい\nブレスト・クレイジー8・635法（自由連想）\n\n\n既存の物・サービスを改良したい\nチェックリスト・SCAMPER（強制連想）\n\n\nブレストで案が出なくなった\nSCAMPER の質問で視点を変える\n\n\n\n\n\n\n\n\n\n案を出したあと\n\n\n出した案を 収束技法 で整理し、ペイオフマトリクス で評価する"
   },
   {
     "objectID": "plotly.html#section",
@@ -935,7 +942,7 @@
     "href": "plotly.html#散布図のコード",
     "title": "Plotly入門",
     "section": "散布図のコード",
-    "text": "散布図のコード\n\n\nx と y に数値列を指定する\nhover_name= に指定した列が、ホバーしたときの 見出し になる\n\nfig = px.scatter(\n    df_scores,\n    x=\"数学I\",\n    y=\"英会話\",\n    color=\"学科\",\n    hover_name=\"名前\",\n    title=\"数学Iと英会話の点数\",\n)\nfig.show()\n\n\n\n\n\n\n\n\n\n外れた点、誰？\n\n\n\n離れた点にマウスを乗せると 誰なのか その場で分かる\n静止画の散布図では、外れた点の正体はすぐには分からなかった"
+    "text": "散布図のコード\n\n\nx と y に数値列を指定する\nhover_name= に指定した列が、ホバーしたときの 見出し になる\n\nfig = px.scatter(\n    df_scores,\n    x=\"数学I\",\n    y=\"英会話\",\n    color=\"学科\",\n    hover_name=\"名前\",\n    title=\"数学Iと英会話の点数\",\n)\nfig.show()\n\n\n\n\n\n\n\n\n\n外れた点、誰？\n\n\n\n離れた点にマウスを乗せると 誰なのか その場で分かる\n静止画の散布図では、外れた点が誰なのかは分からなかった"
   },
   {
     "objectID": "plotly.html#点の大きさで3つ目の量を見せる",
@@ -1082,7 +1089,7 @@
     "href": "plotly.html#まとめ",
     "title": "Plotly入門",
     "section": "まとめ",
-    "text": "まとめ\n\n\nPlotlyは インタラクティブな可視化：ズーム・ホバー・凡例クリック・回転\n基本形は px.グラフの種類(df, x=\"列名\", y=\"列名\")\n色分けは color=、点の大きさは size=、ホバーの見出しは hover_name=\nアニメーションは animation_frame=\nPandasの集計結果は DataFrame + 列名 にしてから渡す（as_index=False か reset_index()）\nwrite_html() でHTMLとして保存して、動くまま共有できる\n\n\n\n\n\n\n\n道具は揃った\n\n\n\n表を扱う道具（Pandas）と描く道具（matplotlib / Plotly）が揃った\n次回は 材料 の調達：世界中の人がいま何を見ているかをAPIで取得"
+    "text": "まとめ\n\n\nPlotlyは インタラクティブな可視化：ズーム・ホバー・凡例クリック・回転\n基本形は px.グラフの種類(df, x=\"列名\", y=\"列名\")\n色分けは color=、点の大きさは size=、ホバーの見出しは hover_name=\nアニメーションは animation_frame=\nPandasの集計結果は DataFrame + 列名 にしてから渡す（as_index=False か reset_index()）\nwrite_html() でHTMLとして保存して、動くまま共有できる"
   },
   {
     "objectID": "pandas.html#section",
@@ -1376,154 +1383,210 @@
     "href": "nicegui.html#section",
     "title": "NiceGUIで作るSPAモック",
     "section": "",
-    "text": "ワイヤーフレームを「動くもの」にする"
+    "text": "NiceGUI"
   },
   {
-    "objectID": "nicegui.html#絵は動かない",
-    "href": "nicegui.html#絵は動かない",
+    "objectID": "nicegui.html#画面設計から実装へ",
+    "href": "nicegui.html#画面設計から実装へ",
     "title": "NiceGUIで作るSPAモック",
-    "section": "絵は動かない",
-    "text": "絵は動かない\n\n\nFigmaのワイヤーフレーム は設計図としては優秀だが、動きがない\n\nボタンは押せない・データは増えない・本当の使い勝手は分からない\n\n次の段階は、Webブラウザで 実際に動くモック（mock、試作品）\n\n見た目は簡素でよい。押したら反応する ことが価値\n\n\n\n\n\n\n\n\n作る順番が大事\n\n\n紙 → ワイヤーフレーム → 動くモック → 本実装。 1段ずつ「捨てても痛くないもの」で確かめるから、手戻りが小さい"
+    "section": "画面設計から実装へ",
+    "text": "画面設計から実装へ\n\n\nFigma では画面の配置や遷移を試せる\nPythonで処理を実装すると、入力値の計算やファイルからのデータ取得も試せる\nまずは見た目を簡略化した モック（mock、試作品）を作る\n\n\n\n\n\n\n\n最初に確かめること\n\n\n必要な部品を置き、入力・ボタン操作・結果表示を確認する。色や細かな配置は、そのあとで調整する"
   },
   {
     "objectID": "nicegui.html#spasingle-page-application",
     "href": "nicegui.html#spasingle-page-application",
     "title": "NiceGUIで作るSPAモック",
     "section": "SPA（Single Page Application）",
-    "text": "SPA（Single Page Application）\n\n\nSPA = 1枚のページの中で動的に画面を切り替える 方式のWebアプリ\n\nページ全体をリロードせずに画面を更新 → 動きがなめらか\n\n実は、スマホアプリの多くも内部ではSPAが動いている\n\nアプリの中に WebKit などのブラウザエンジンが入っていて、その上でSPAが動く\nつまりSPAが作れる = スマホアプリの中身が作れる\n\nプロの現場では Next.js や Vue などの フレームワーク（framework、開発の土台になるプログラム群）+ TypeScript で作ることが多い"
+    "text": "SPA（Single Page Application）\n\n\nSPA = 1枚のページの中で動的に画面を切り替える 方式のWebアプリ\n\nページ全体を読み込み直さず、表示内容を更新する\n\nスマホの ハイブリッドアプリ（hybrid app）にも、アプリ内のブラウザ表示機能でSPAを動かすものがある\nWebアプリの開発には フレームワーク（framework、開発の土台になるプログラム群）を使える"
   },
   {
     "objectID": "nicegui.html#niceguipythonだけで-spa",
     "href": "nicegui.html#niceguipythonだけで-spa",
     "title": "NiceGUIで作るSPAモック",
     "section": "NiceGUI：Pythonだけで SPA",
-    "text": "NiceGUI：Pythonだけで SPA\n\n\nNiceGUI（nicegui.io）= Pythonだけ でSPAを作れるフレームワーク\n\nフロントエンド（ブラウザ側）には Vue が使われている\nバックエンドには FastAPI（Pythonの定番APIフレームワーク）を内包 — のちほど自作API+SPAでも活躍する\n\nインストールは1行\n\npip install nicegui"
+    "text": "NiceGUI：Pythonだけで SPA\n\n\nNiceGUI（nicegui.io）= Pythonだけ でSPAを作れるフレームワーク\n\nフロントエンド（frontend、ブラウザ側）は Vue\nバックエンド（backend、サーバー側）は FastAPI\n\n\nインストール\npip install nicegui==3.16.0"
   },
   {
     "objectID": "nicegui.html#ボタンを押すと何が起きているか",
     "href": "nicegui.html#ボタンを押すと何が起きているか",
     "title": "NiceGUIで作るSPAモック",
     "section": "ボタンを押すと何が起きているか",
-    "text": "ボタンを押すと何が起きているか\n\n\n\nブラウザとサーバは WebSocket で常時つながっていて、ボタン1回ごとにPythonの関数が動く\n\n「画面はブラウザ、頭脳はPython」という分業"
+    "text": "ボタンを押すと何が起きているか\n\n\n\nブラウザから WebSocket で操作を伝え、Pythonのコールバック関数で処理する"
   },
   {
     "objectID": "nicegui.html#保存するだけで反映オートリロード",
     "href": "nicegui.html#保存するだけで反映オートリロード",
     "title": "NiceGUIで作るSPAモック",
     "section": "保存するだけで反映：オートリロード",
-    "text": "保存するだけで反映：オートリロード\n\n\nNiceGUIは、ファイルを保存すると サーバーが自動再起動し、ブラウザも自動更新 される\n\n最初に1回実行したら、あとは 編集 → 保存 → すぐ確認 の繰り返し\nCtrl+c で止めて実行し直す必要がない\n\n\n\n\n\n\n\n\n\n用語\n意味\n\n\n\n\nオートリロード／ライブリロード\nファイル変更を検知してブラウザを自動リロード\n\n\nホットリロード\nプログラムを再起動せずに変更を反映（Python/FastAPI側）"
+    "text": "保存するだけで反映：オートリロード\n\n\nNiceGUIの オートリロード（auto-reload）は、既定では .py の変更を監視する\n.py を保存すると サーバーを自動再起動し、ブラウザも更新 する\n\n実行中の変数や画面の状態も初期化される\n\n.json の保存だけでは再起動しない\n\n\n監視対象は ui.run() の設定で変更できる（NiceGUI公式ドキュメント）"
   },
   {
-    "objectID": "nicegui.html#最初の一歩hello-world",
-    "href": "nicegui.html#最初の一歩hello-world",
+    "objectID": "nicegui.html#hello-world",
+    "href": "nicegui.html#hello-world",
     "title": "NiceGUIで作るSPAモック",
-    "section": "最初の一歩：Hello World",
-    "text": "最初の一歩：Hello World\n\nfrom nicegui import ui\n\nui.label(\"Hello, NiceGUI!\")\nui.run()\n\n実行すると ブラウザが自動で開く（開かないときはターミナルのURLをCtrl+クリック）\n\nNiceGUI ready to go on http://localhost:8080\n\n\n\n\n\n\n\n\n関数\n機能\n補足\n\n\n\n\nui.label(text)\n文字列を表示\n\n\n\nui.run()\nNiceGUIを起動（裏でFastAPIが立ち上がり画面を組み立てる）\n部品をすべて書いた いちばん最後に1回だけ 書く"
+    "section": "Hello World",
+    "text": "Hello World\n\nfrom nicegui import ui\n\nui.label(\"Hello, NiceGUI!\")\nui.run()\n\n実行するとブラウザが開く。開かないときは、ターミナルに表示されたURLをCtrl+クリック\n\nNiceGUI ready to go on http://localhost:8080\n\n\n\n\n\n\n\n\n関数\n機能\n補足\n\n\n\n\nui.label(text)\n文字列を表示\n\n\n\nui.run()\nNiceGUIを起動（裏でFastAPIが立ち上がり画面を組み立てる）\n部品をすべて書いた いちばん最後に1回だけ 書く"
   },
   {
     "objectID": "nicegui.html#ボタンとコールバック関数",
     "href": "nicegui.html#ボタンとコールバック関数",
     "title": "NiceGUIで作るSPAモック",
     "section": "ボタンとコールバック関数",
-    "text": "ボタンとコールバック関数\n\nfrom nicegui import ui\n\ndef say_hi():\n    ui.notify(\"Hi!\")\n\nui.button(\"Click me\", on_click=say_hi)\nui.run()\n\nui.button() でボタンを作り、on_click に関数を渡す（「登録する」と言う）\n\nボタンが押された ときに 呼ばれる関数を コールバック関数（callback function）と呼ぶ\n\nui.notify() は画面下にポップアップ通知を出す\n\n\n\n\n\n\n\nsay_hi() と書いてはいけない\n\n\non_click=say_hi — カッコを付けない。say_hi() と書くと その場で実行した結果 を渡してしまう。渡したいのは「関数そのもの」"
+    "text": "ボタンとコールバック関数\n\n\nボタン操作に応じて呼ばれる関数を コールバック関数（callback function）と呼ぶ\nui.button() の on_click に関数を渡して登録する\n\nfrom nicegui import ui\n\ndef say_hi():\n    ui.notify(\"Hi!\")\n\nui.button(\"Click me\", on_click=say_hi)\nui.run()\n\nボタンを押すと say_hi が呼ばれ、ui.notify() が画面下に通知を出す"
   },
   {
-    "objectID": "nicegui.html#部品は上から順に並ぶだけ",
-    "href": "nicegui.html#部品は上から順に並ぶだけ",
+    "objectID": "nicegui.html#on_click-に渡す値",
+    "href": "nicegui.html#on_click-に渡す値",
     "title": "NiceGUIで作るSPAモック",
-    "section": "部品は「上から順に」並ぶだけ",
-    "text": "部品は「上から順に」並ぶだけ\n\nfrom nicegui import ui\n\nui.label(\"A\")\nui.label(\"B\")\nui.button(\"ボタン\")\nui.run()\n\n何も指定しなければ、部品は 書いた順に上から縦に 並ぶだけ\n「横に並べたい」「カードでまとめたい」——そのためには部品を入れる 箱 が要る\n\nこの箱を コンテナ（container）と呼ぶ\nコンテナの使い方が、NiceGUIで いちばんつまずきやすい ところ"
+    "section": "on_click に渡す値",
+    "text": "on_click に渡す値\n\n\n\n\n書き方\n渡されるもの\n\n\n\n\non_click=say_hi\n関数そのもの\n\n\non_click=say_hi()\nその場で関数を実行した戻り値\n\n\n\n\n\n\n\n\n\nsay_hi() と書いてはいけない\n\n\non_click=say_hi と、カッコを付けずに 渡す。say_hi() と書くと、その場で関数が実行され、戻り値が渡される"
   },
   {
-    "objectID": "nicegui.html#with-いまからこの箱に入れる",
-    "href": "nicegui.html#with-いまからこの箱に入れる",
+    "objectID": "nicegui.html#部品の並び方",
+    "href": "nicegui.html#部品の並び方",
     "title": "NiceGUIで作るSPAモック",
-    "section": "with = 「いまからこの箱に入れる」",
-    "text": "with = 「いまからこの箱に入れる」\n\nfrom nicegui import ui\n\nbox = ui.column()      # 箱を作る（この時点では空）\n\nwith box:              # ここから「箱に入れる」宣言\n    ui.label(\"A\")      # → 箱の中\n    ui.label(\"B\")      # → 箱の中\n\nui.label(\"C\")          # withの外 → 箱の外（ページに直接）\nui.run()\n\nwith box: の インデントの中 で作った部品が、その箱に入る\nインデントを抜けたら、置き場所はページ直下に戻る — だから「C」は箱の外\n\n\n\n\n\n\n\nwith は「ファイルを開く」専用ではない\n\n\nwith open(...) と同じ文法だが、意味は「この範囲のあいだ、◯◯しておく」という汎用の道具。 NiceGUIでは「この範囲のあいだ、部品はこの箱行き」という意味になる"
+    "section": "部品の並び方",
+    "text": "部品の並び方\n\nfrom nicegui import ui\n\nui.label(\"A\")\nui.label(\"B\")\nui.button(\"ボタン\")\nui.run()\n\n何も指定しなければ、部品は書いた順に上から縦に並ぶ\n\n\n\n\n\n\n\nコンテナ（container）\n\n\n複数の部品をまとめる入れ物。横に並べたり、カードの枠で囲んだりするときに使う"
   },
   {
-    "objectID": "nicegui.html#同じ箱にあとから何度でも",
-    "href": "nicegui.html#同じ箱にあとから何度でも",
+    "objectID": "nicegui.html#with-でコンテナに部品を入れる",
+    "href": "nicegui.html#with-でコンテナに部品を入れる",
     "title": "NiceGUIで作るSPAモック",
-    "section": "同じ箱に、あとから何度でも",
-    "text": "同じ箱に、あとから何度でも\n\nfrom nicegui import ui\n\nbox = ui.column()\n\nwith box:\n    ui.label(\"最初の1個\")\n\nwith box:                      # 同じ箱にもう一度\n    for i in range(1, 11):\n        ui.label(f\"{i}番目\")   # for文で大量に追加\nui.run()\n\n同じ箱への with は 何度でも 書ける — 空の箱を先に置いておき、あとから中身を足す ことができる\n\n「ボタンが押されたら箱に追加」— この後の入力フォームがまさにこの形"
+    "section": "with でコンテナに部品を入れる",
+    "text": "with でコンテナに部品を入れる\n\nfrom nicegui import ui\n\nbox = ui.column()      # Create an empty container.\n\nwith box:              # Add elements to this container.\n    ui.label(\"A\")      # Inside the container.\n    ui.label(\"B\")      # Inside the container.\n\nui.label(\"C\")          # Outside the container, on the page.\nui.run()\n\nwith box: のインデント内で作った A・B は box の中。C はインデントの外なのでページ直下に置かれる"
   },
   {
-    "objectID": "nicegui.html#箱の中に箱入れ子",
-    "href": "nicegui.html#箱の中に箱入れ子",
+    "objectID": "nicegui.html#with-の役割",
+    "href": "nicegui.html#with-の役割",
     "title": "NiceGUIで作るSPAモック",
-    "section": "箱の中に箱：入れ子",
-    "text": "箱の中に箱：入れ子\n\nfrom nicegui import ui\n\nwith ui.row():             # 横に並べる箱\n    with ui.card():        # 1枚目のカード\n        ui.label(\"タイトル\")\n        ui.label(\"説明文\")\n    with ui.card():        # 2枚目のカード\n        ui.label(\"タイトル2\")\nui.run()\n\n\nコンテナの中にコンテナを入れて、画面の構造 を作る\n\n変数に代入せず with ui.row(): と その場で作ってそのまま入れる 書き方もできる\nFigmaのワイヤーフレームの「枠の入れ子」が、そのまま with の入れ子になる"
+    "section": "with の役割",
+    "text": "with の役割\n\n\n\n\n対象\nインデントの範囲で行うこと\n\n\n\n\nwith open(...) as f:\n開いたファイルを使い、範囲を出たら閉じる\n\n\nwith box:\nbox の中に部品を置く\n\n\n\n\n\n\n\n\n\nwith は「ファイルを開く」専用ではない\n\n\nwith open(...) と同じ文法だが、意味は「この範囲のあいだ、◯◯しておく」という汎用の道具。 NiceGUIでは「この範囲のあいだ、部品はこの箱行き」という意味になる"
+  },
+  {
+    "objectID": "nicegui.html#コンテナに部品を追加する",
+    "href": "nicegui.html#コンテナに部品を追加する",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "コンテナに部品を追加する",
+    "text": "コンテナに部品を追加する\n\nfrom nicegui import ui\n\nbox = ui.column()\n\nwith box:\n    ui.label(\"最初の1個\")\n\nwith box:                      # Add to the same container again.\n    for i in range(1, 11):\n        ui.label(f\"{i}番目\")   # Add labels in a loop.\nui.run()\n\n同じコンテナに対して with を再び使うと、既存の部品を残して追加できる"
+  },
+  {
+    "objectID": "nicegui.html#コンテナの入れ子",
+    "href": "nicegui.html#コンテナの入れ子",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "コンテナの入れ子",
+    "text": "コンテナの入れ子\n\n\nコンテナの中にコンテナを入れて、画面の構造を作る\nwith ui.row(): は、コンテナを作り、その中に部品を置く書き方\n\nfrom nicegui import ui\n\nwith ui.row():             # Horizontal container.\n    with ui.card():        # First card.\n        ui.label(\"タイトル\")\n        ui.label(\"説明文\")\n    with ui.card():        # Second card.\n        ui.label(\"タイトル2\")\nui.run()"
+  },
+  {
+    "objectID": "nicegui.html#コンテナの入れ子と配置",
+    "href": "nicegui.html#コンテナの入れ子と配置",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "コンテナの入れ子と配置",
+    "text": "コンテナの入れ子と配置\n\n\n\n横並びの ui.row() の中に2つのカードを置き、各カードにラベルを入れている"
   },
   {
     "objectID": "nicegui.html#コンテナの種類",
     "href": "nicegui.html#コンテナの種類",
     "title": "NiceGUIで作るSPAモック",
     "section": "コンテナの種類",
-    "text": "コンテナの種類\n\n\n\n\nレイアウト系\nインタラクティブ系\n\n\n\n\nui.column() — 縦に並べる\nui.expansion() — 開閉できる折りたたみ\n\n\nui.row() — 横に並べる\nui.dialog() — ポップアップ\n\n\nui.grid() — 格子状に配置\nui.menu() — メニュー\n\n\nui.card() — カード型の枠"
+    "text": "コンテナの種類\n\n\n\n\nレイアウト系\nインタラクティブ系\n\n\n\n\nui.column()：縦に並べる\nui.expansion()：開閉できる折りたたみ\n\n\nui.row()：横に並べる\nui.dialog()：ポップアップ\n\n\nui.grid()：格子状に配置\nui.menu()：メニュー\n\n\nui.card()：カード型の枠"
   },
   {
-    "objectID": "nicegui.html#tweak-with-で実験",
-    "href": "nicegui.html#tweak-with-で実験",
+    "objectID": "nicegui.html#with-の確認用コード",
+    "href": "nicegui.html#with-の確認用コード",
     "title": "NiceGUIで作るSPAモック",
-    "section": "Tweak with で実験",
-    "text": "Tweak with で実験\n\n\nこの土台を保存して、下の表を 1つずつ 試す\n\nfrom nicegui import ui\n\nbox = ui.column()\n\nwith box:\n    ui.label(\"A\")\n    ui.label(\"B\")\n\nui.label(\"C\")\nui.run()\n\n\n\n\n\n\n\n\nやってみる\n予想すること\n\n\n\n\nui.label(\"C\") を with box: の中へ移動\nCはどこに出る？\n\n\nui.column() を ui.row() に変更\n並ぶ向きは？ Cの位置は？\n\n\nwith box: をもう1つ書き足して ui.label(\"D\")\nDは箱に入る？\n\n\nwith box: の中に with ui.card(): を作って ui.label(\"E\")\nEはどんな見た目で出る？\n\n\n\n\n\n\n\n\n\n\n声に出して予想してから保存\n\n\n「Cは箱の中だから…Bの下」と言ってから保存する。外れたときに with の理解が一段深くなる"
+    "section": "with の確認用コード",
+    "text": "with の確認用コード\n\n\n次のコードを保存し、A・B・Cの表示を確認する\n\nfrom nicegui import ui\n\nbox = ui.column()\n\nwith box:\n    ui.label(\"A\")\n    ui.label(\"B\")\n\nui.label(\"C\")\nui.run()"
+  },
+  {
+    "objectID": "nicegui.html#tweak-with-と配置",
+    "href": "nicegui.html#tweak-with-と配置",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "Tweak with と配置",
+    "text": "Tweak with と配置\n\n\n\n\n\nやってみる\n予想すること\n\n\n\n\nui.label(\"C\") を with box: の中へ移動せよ\nCはどこに出る？\n\n\nui.column() を ui.row() に変更せよ\n並ぶ向きは？ Cの位置は？\n\n\n\n\n\n\n結果を確認\n\nCを移動するとBの下に入る。元のコードの column を row に変えるとA・Bが横に並び、Cはコンテナの外に残る"
+  },
+  {
+    "objectID": "nicegui.html#tweak-with-と追加",
+    "href": "nicegui.html#tweak-with-と追加",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "Tweak with と追加",
+    "text": "Tweak with と追加\n\n\n\n\n\n\n\n\n\nやってみる\n予想すること\n\n\n\n\nwith box: をもう1つ追加し、ui.label(\"D\") を置け\nDは箱に入る？\n\n\nwith box: 内に with ui.card(): を作り、ui.label(\"E\") を置け\nEはどんな見た目で出る？\n\n\n\n\n\n\n\n\n\n\n配置を確認する\n\n\n保存前にラベルの位置を予想し、表示と比較する。違っていたら、コンテナの種類とインデントを確認する"
   },
   {
     "objectID": "nicegui.html#コンテナを操作するメソッド",
     "href": "nicegui.html#コンテナを操作するメソッド",
     "title": "NiceGUIで作るSPAモック",
     "section": "コンテナを操作するメソッド",
-    "text": "コンテナを操作するメソッド\n\n\n\n\n\n\n\n\n\n分類\nメソッド\n効果\n\n\n\n\n見た目\n.classes(\"クラス名\")\nスタイル用クラスを付ける（次ページ）\n\n\n見た目\n.style(\"CSSコード\")\nCSSを直接書く\n\n\n内容\n.clear()\n中身を全部消す\n\n\n内容\n.delete()\nコンテナ自体を削除\n\n\n内容\n.update()\n表示を更新\n\n\n表示\n.set_visibility(True/False)\n表示・非表示の切り替え\n\n\n\n\nこの後の演習では .clear() と .delete() が主役になる"
+    "text": "コンテナを操作するメソッド\n\n\n\n\n\n\n\n\n\n分類\nメソッド\n効果\n\n\n\n\n見た目\n.classes(\"クラス名\")\nスタイル用クラスを付ける（次ページ）\n\n\n見た目\n.style(\"CSSコード\")\nCSSを直接書く\n\n\n内容\n.clear()\n中身を全部消す\n\n\n内容\n.delete()\nコンテナ自体を削除\n\n\n内容\n.update()\n表示を更新\n\n\n表示\n.set_visibility(True/False)\n表示・非表示の切り替え\n\n\n\n\n.clear() は中身を削除し、コンテナは残す。.delete() はコンテナごと削除する"
   },
   {
     "objectID": "nicegui.html#見た目を変える.classes",
     "href": "nicegui.html#見た目を変える.classes",
     "title": "NiceGUIで作るSPAモック",
     "section": "見た目を変える：.classes()",
-    "text": "見た目を変える：.classes()\n\nfrom nicegui import ui\n\nwith ui.column():\n    ui.label(\"赤い文字\").classes(\"text-red-500\")\n    ui.label(\"青い文字\").classes(\"text-blue-500\")\n    ui.label(\"背景色付き\").classes(\"bg-yellow-200 p-2\")\n\nui.label(\"目立つラベル\").classes(\"text-2xl font-bold text-blue-500\")\nui.button(\"ボタン\").classes(\"bg-green-500 text-white rounded-lg p-4\")\nui.run()\n\nクラス名の正体は Tailwind CSS（HTMLの見た目を整えるフレームワーク — またフレームワーク！）\n\n複数のクラスは 半角スペースで区切って 並べる"
+    "text": "見た目を変える：.classes()\n\n\nTailwind CSS は、クラス名で色・余白・配置などを指定するCSSフレームワーク\n.classes() にクラス名を渡す。複数指定するときは半角スペースで区切る"
+  },
+  {
+    "objectID": "nicegui.html#クラスを指定する例",
+    "href": "nicegui.html#クラスを指定する例",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "クラスを指定する例",
+    "text": "クラスを指定する例\n\nfrom nicegui import ui\n\nwith ui.column():\n    ui.label(\"赤い文字\").classes(\"text-red-500\")\n    ui.label(\"青い文字\").classes(\"text-blue-500\")\n    ui.label(\"背景色付き\").classes(\"bg-yellow-200 p-2\")\n\nui.label(\"目立つラベル\").classes(\"text-2xl font-bold text-blue-500\")\nui.button(\"ボタン\").classes(\"bg-green-500 text-white rounded-lg p-4\")\nui.run()\n\ntext-2xl font-bold text-blue-500 は、大きい文字・太字・青色をまとめて指定"
   },
   {
     "objectID": "nicegui.html#スタイル早見表",
     "href": "nicegui.html#スタイル早見表",
     "title": "NiceGUIで作るSPAモック",
     "section": "スタイル早見表",
-    "text": "スタイル早見表\n\n\n\n\n\n\n\n\n分類\nクラス\n\n\n\n\n間隔・余白\ngap-2/4/8（要素間） ／ p-2/4/8（内側余白） ／ m-2/4/8（外側余白）\n\n\n文字色\ntext-red-500 ／ text-blue-500 ／ text-green-500 ／ text-gray-500 ／ text-white\n\n\n背景色\nbg-red-500 ／ bg-blue-500 ／ bg-gray-200 ／ bg-white\n\n\n文字サイズ\ntext-xs → text-sm → text-base → text-lg → text-xl → text-2xl\n\n\n太字・配置\nfont-bold ／ text-center ／ text-right\n\n\n角丸・枠線\nrounded ／ rounded-lg ／ border ／ border-2\n\n\n\n\n数字は強さ・大きさ（大きいほど強い）。この表は改造課題の 武器庫 — ブックマーク推奨"
+    "text": "スタイル早見表\n\n\n\n\n\n\n\n\n分類\nクラス\n\n\n\n\n間隔・余白\ngap-2/4/8（要素間） ／ p-2/4/8（内側余白） ／ m-2/4/8（外側余白）\n\n\n文字色\ntext-red-500 ／ text-blue-500 ／ text-green-500 ／ text-gray-500 ／ text-white\n\n\n背景色\nbg-red-500 ／ bg-blue-500 ／ bg-gray-200 ／ bg-white\n\n\n文字サイズ\ntext-xs → text-sm → text-base → text-lg → text-xl → text-2xl → text-3xl → text-4xl\n\n\n太字・配置\nfont-bold ／ text-center ／ text-right\n\n\n角丸・枠線\nrounded ／ rounded-lg ／ border ／ border-2\n\n\n\n\ngap-2/4/8 は gap-2・gap-4・gap-8 の略記。余白の数字は大きさ、色の数字は色調を表す"
+  },
+  {
+    "objectID": "nicegui.html#幅高さ配置のクラス",
+    "href": "nicegui.html#幅高さ配置のクラス",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "幅・高さ・配置のクラス",
+    "text": "幅・高さ・配置のクラス\n\n\n\n\n\n\n\n\n分類\nクラスと意味\n\n\n\n\n幅\nw-full：親要素の幅いっぱい\n\n\n高さ\nh-screen：表示領域と同じ高さ ／ min-h-screen：最低でも表示領域と同じ高さ\n\n\n中央配置\nitems-center：並ぶ方向と直角に中央揃え ／ justify-center：並ぶ方向に中央揃え\n\n\n方向つき余白\nmt-4：上 ／ mb-4：下 ／ ml-4：左 ／ mr-4：右の外側余白\n\n\n\n\nui.column() なら、items-center は左右の中央、justify-center は上下の中央に揃える"
   },
   {
     "objectID": "nicegui.html#入力フォーム",
     "href": "nicegui.html#入力フォーム",
     "title": "NiceGUIで作るSPAモック",
     "section": "入力フォーム",
-    "text": "入力フォーム\n\nfrom nicegui import ui\n\ndef add_item():\n    name = name_input.value\n    items.append(name)\n    with list_view:        # withでくくると、その場でコンテナに追加される\n        ui.label(name)\n\nitems = []\nname_input = ui.input(\"name\")\nui.button(\"add\", on_click=add_item)\n\nlist_view = ui.column()\nui.run()\n\nui.input() の入力値は .value で取り出す\n「入力 → ボタン → 一覧に追加」— ほぼすべてのアプリの基本形"
+    "text": "入力フォーム\n\nfrom nicegui import ui\n\ndef add_item():\n    name = name_input.value\n    with list_view:        # Add the label to list_view.\n        ui.label(name)\n\nname_input = ui.input(\"name\")\nui.button(\"add\", on_click=add_item)\n\nlist_view = ui.column()\nui.run()\n\nui.input() の入力値を .value で取り出し、ボタン操作で一覧に追加する"
   },
   {
     "objectID": "nicegui.html#演習-土台コードを動かす",
     "href": "nicegui.html#演習-土台コードを動かす",
     "title": "NiceGUIで作るSPAモック",
     "section": "演習 土台コードを動かす",
-    "text": "演習 土台コードを動かす\n\n\n次の土台コードを main.py として保存・実行し、名前を追加できることを確かめよ。\n\nfrom nicegui import ui\n\ndef add_item():\n    name = name_input.value\n    if not name:\n        return\n    items.append(name)\n\n    with list_view:\n        ui.label(name)\n\nitems = []\nname_input = ui.input(\"名前\")\nui.button(\"追加\", on_click=add_item)\n\nlist_view = ui.column().classes(\"gap-2\")\n\nui.run()\n\n土台コードの新顔は if not name: return — 空文字のまま押されたら 何も追加せずに抜ける（入力チェックの定番）\nここからの Tweak は、すべてこのコードの改造"
+    "text": "演習 土台コードを動かす\n\n\n次の土台コードを main.py として保存・実行し、名前を追加できることを確かめよ。\n\n\n\n\n\n\n\n入力チェック\n\n\nif not name: return は、入力が空文字なら追加せず関数を終了する処理\n\n\n\nfrom nicegui import ui\n\ndef add_item():\n    name = name_input.value\n    if not name:\n        return\n\n    with list_view:\n        ui.label(name)\n\nname_input = ui.input(\"名前\")\nui.button(\"追加\", on_click=add_item)\n\nlist_view = ui.column().classes(\"gap-2\")\n\nui.run()"
   },
   {
-    "objectID": "nicegui.html#tweak-見た目を改造する",
-    "href": "nicegui.html#tweak-見た目を改造する",
+    "objectID": "nicegui.html#tweak-一覧の配置を変える",
+    "href": "nicegui.html#tweak-一覧の配置を変える",
     "title": "NiceGUIで作るSPAモック",
-    "section": "Tweak 見た目を改造する",
-    "text": "Tweak 見た目を改造する\n\n\n土台コードを 1か所ずつ変えて保存 — オートリロードが即座に見せてくれる\n\n\n\n\n\n\n\n\n\nやりたいこと\nヒント\n\n\n\n\n項目を横に並べる\nlist_view を ui.row() に\n\n\n各項目をカードにする\nadd_item の中で card = ui.card() を作り、with card: に ui.label\n\n\nカードの間隔を広げる\nlist_view に .classes(\"gap-4\")\n\n\nカードの背景を薄いグレーに\nカードに .classes(\"bg-gray-100\")\n\n\nカードの角を丸くする\nカードに .classes(\"bg-gray-100 rounded-lg\")（スペース区切りで追加）\n\n\n\n\n\n\n\n\n\n\n予想してから保存する\n\n\n変える前に「どう変わるはず」と言ってから保存する。予想と違ったら、それが一番の学び"
+    "section": "Tweak 一覧の配置を変える",
+    "text": "Tweak 一覧の配置を変える\n\n\n名前を追加する土台コードを1か所ずつ変更し、保存して表示を確認する\n\n\n\n\n\n\n\n\n\nやりたいこと\nヒント\n\n\n\n\n項目を横に並べよ\nlist_view を ui.row() に\n\n\n各項目をカードにせよ\nadd_item の中で card = ui.card() を作り、with card: に ui.label"
+  },
+  {
+    "objectID": "nicegui.html#tweak-カードの見た目を変える",
+    "href": "nicegui.html#tweak-カードの見た目を変える",
+    "title": "NiceGUIで作るSPAモック",
+    "section": "Tweak カードの見た目を変える",
+    "text": "Tweak カードの見た目を変える\n\n\n\n\n\n\n\n\n\nやりたいこと\nヒント\n\n\n\n\nカードの間隔を広げよ\nlist_view に .classes(\"gap-4\")\n\n\nカードの背景を薄いグレーにせよ\nカードに .classes(\"bg-gray-100\")\n\n\nカードの角を丸くせよ\nカードに .classes(\"bg-gray-100 rounded-lg\")（スペース区切りで追加）"
   },
   {
     "objectID": "nicegui.html#tweak-削除機能を付ける",
     "href": "nicegui.html#tweak-削除機能を付ける",
     "title": "NiceGUIで作るSPAモック",
     "section": "Tweak 削除機能を付ける",
-    "text": "Tweak 削除機能を付ける\n\n\n\n\n\n\n\n\n\nやりたいこと\nヒント\n\n\n\n\n「全部削除」ボタンを追加\nコールバックの中で list_view.clear()\n\n\nカードごとの×ボタン\nwith card: の中に ui.button(\"×\", on_click=card.delete) — メソッドもコールバックとして渡せる\n\n\n\n\n\n\n解答例を表示\nfrom nicegui import ui\n\n\ndef add_item():\n    name = name_input.value\n    if not name:\n        return\n    items.append(name)\n\n    with list_view:\n        card = ui.card().classes(\"bg-gray-100 rounded-lg\")\n        with card:\n            with ui.row():\n                ui.label(name)\n                ui.button(\"×\", on_click=card.delete).classes(\"text-red-500\")\n\n\ndef clear_all():\n    list_view.clear()\n    ui.notify(\"全部削除しました\")\n\n\nitems = []\nname_input = ui.input(\"名前\")\nui.button(\"追加\", on_click=add_item)\nui.button(\"全部削除\", on_click=clear_all)\n\nlist_view = ui.row().classes(\"gap-4\")\n\nui.run()"
+    "text": "Tweak 削除機能を付ける\n\n\n\n\n\n\n\n\n\nやりたいこと\nヒント\n\n\n\n\n「全部削除」ボタンを追加せよ\nコールバックの中で list_view.clear()\n\n\nカードごとに削除する×ボタンを付けよ\nwith card: の中に ui.button(\"×\", on_click=card.delete)（メソッドもコールバックにできる）\n\n\n\n\n\n\n解答例を表示\nfrom nicegui import ui\n\n\ndef add_item():\n    name = name_input.value\n    if not name:\n        return\n\n    with list_view:\n        card = ui.card().classes(\"bg-gray-100 rounded-lg\")\n        with card:\n            with ui.row():\n                ui.label(name)\n                ui.button(\"×\", on_click=card.delete).classes(\"text-red-500\")\n\n\ndef clear_all():\n    list_view.clear()\n    ui.notify(\"全部削除しました\")\n\n\nname_input = ui.input(\"名前\")\nui.button(\"追加\", on_click=add_item)\nui.button(\"全部削除\", on_click=clear_all)\n\nlist_view = ui.row().classes(\"gap-4\")\n\nui.run()"
   },
   {
     "objectID": "nicegui.html#まとめ",
     "href": "nicegui.html#まとめ",
     "title": "NiceGUIで作るSPAモック",
     "section": "まとめ",
-    "text": "まとめ\n\n\nSPA — 1枚のページの中で画面を切り替えるWebアプリ。スマホアプリの中身でもある\nNiceGUI — Pythonだけで SPA。中身は Vue（画面）+ FastAPI（サーバ）\n基本パターンは4つだけ\n\n部品を置く（ui.label / ui.button / ui.input）\n箱に入れる（コンテナ + with）\n反応させる（on_click にコールバック登録）\n見た目を整える（.classes(\"...\")）\n\n次は、このアプリに データを出し入れする口 を付ける — 自作API+SPA"
+    "text": "まとめ\n\n\nSPA：1枚のページの中で画面を切り替えるWebアプリ\nNiceGUI：PythonでWeb画面を作る。内部ではVueとFastAPIが動く\n画面を作る基本操作\n\n部品を置く（ui.label / ui.button / ui.input）\n箱に入れる（コンテナ + with）\n反応させる（on_click にコールバック登録）\n見た目を整える（.classes(\"...\")）\n\nデータをファイルから取得する方法：自作API+SPA"
   },
   {
     "objectID": "list.html#復習listとは",
@@ -1586,7 +1649,7 @@
     "href": "list.html#範囲外のインデックスはエラー",
     "title": "リストをあらためて",
     "section": "範囲外のインデックスはエラー",
-    "text": "範囲外のインデックスはエラー\n\n以下のインデックスは指定できない（エラーになる）。\n\n要素数（list の長さ）以上\nマイナス要素数＋1 以下\n\ntest = [0, 1, 2, 3]\nprint(len(test))   # 4\n# print(test[4])   # IndexError\n# print(test[-5])  # IndexError\n\n\n\n\n\n\nIndexError: list index out of range\n\n\nlen(test) は 4 なので有効なインデックスは -4 ～ 3 まで。 test[4] や test[-5] はその範囲外なのでエラー。"
+    "text": "範囲外のインデックスはエラー\n\n以下のインデックスは指定できない（エラーになる）。\n\n要素数（list の長さ）以上\n−(要素数＋1) 以下（要素数4なら -5 以下）\n\ntest = [0, 1, 2, 3]\nprint(len(test))   # 4\n# print(test[4])   # IndexError\n# print(test[-5])  # IndexError\n\n\n\n\n\n\nIndexError: list index out of range\n\n\nlen(test) は 4 なので有効なインデックスは -4 ～ 3 まで。 test[4] や test[-5] はその範囲外なのでエラー。"
   },
   {
     "objectID": "list.html#リストの長さと-range-による走査",
@@ -1635,7 +1698,7 @@
     "href": "list.html#リスト内包表記",
     "title": "リストをあらためて",
     "section": "リスト内包表記",
-    "text": "リスト内包表記\n\nfor 文を1行に圧縮してリストを作る書き方\n例えば、[0, 1, 4, 9, 16]のリストを作りたい時、\n\nfor文内包表記\n\n\nsquares = []\nfor x in range(5):\n    squares.append(x * x)\nprint(squares)  # [0, 1, 4, 9, 16]\nと書けるけど、長い\n\n\n同じリストが一撃で書ける。それがリスト内包表記\n# 基本形：[式 for 変数 in イテラブル]\nsquares = [x ** 2 for x in range(5)]\nprint(squares)  # [0, 1, 4, 9, 16]"
+    "text": "リスト内包表記\n\nfor 文を1行に圧縮してリストを作る書き方\n例えば、[0, 1, 4, 9, 16]のリストを作りたい時、\n\nfor文内包表記\n\n\nsquares = []\nfor x in range(5):\n    squares.append(x * x)\nprint(squares)  # [0, 1, 4, 9, 16]\nと書けるけど、長い\n\n\n同じリストを1行で書ける。これがリスト内包表記\n# 基本形：[式 for 変数 in イテラブル]\nsquares = [x ** 2 for x in range(5)]\nprint(squares)  # [0, 1, 4, 9, 16]"
   },
   {
     "objectID": "list.html#リスト内包表記条件式付き",
@@ -1649,7 +1712,7 @@
     "href": "list.html#リスト内包表記の使いどころ",
     "title": "リストをあらためて",
     "section": "リスト内包表記の使いどころ",
-    "text": "リスト内包表記の使いどころ\n\nAtCoder演習の参考コードに出てきた謎の構文：\nAs = [int(x) for x in input().split()]\nこれはリスト内包表記だった。input().split() で [\"1\", \"2\", \"3\"] という文字列のリストを作り、 各要素を int(x) で整数に変換しながら新しいリストを作っている。\nfor 文で書くと以下と同じ意味：\ninput_str = input().split() # split(\" \")と同じ。つまり、空白区切りで分けてlist化\nAs = []\nfor x in input_str:\n    As.append(int(x))"
+    "text": "リスト内包表記の使いどころ\n\nAtCoder演習の参考コードに出てきた次の行：\nAs = [int(x) for x in input().split()]\nこれはリスト内包表記だった。input().split() で [\"1\", \"2\", \"3\"] という文字列のリストを作り、 各要素を int(x) で整数に変換しながら新しいリストを作っている。\nfor 文で書くと以下と同じ意味：\ninput_str = input().split() # split(\" \")と同じ。つまり、空白区切りで分けてlist化\nAs = []\nfor x in input_str:\n    As.append(int(x))"
   },
   {
     "objectID": "list.html#参考異なる型の混在",
@@ -1670,7 +1733,7 @@
     "href": "list.html#演習問題",
     "title": "リストをあらためて",
     "section": "演習問題",
-    "text": "演習問題\n\nscores = [85, 90, 92, 78, 92, 88, 65, 100, 73, 80]\n\n上記のリストをコピペして、以下の操作を実装せよ。\n\n\nrange(len(...)) で 出席番号（1始まり）と点数を表示\nスライスで上位5名分（先頭5つ）と下位5名分（末尾5つ）をそれぞれ別のリストに分けて表示\nsorted で 元のリストを変えずに降順に並び替えた新しいリストを作り、上位3名の点数を表示\n\n\n\n解答例を見る\n# 1\nfor i in range(len(scores)):\n    print(f\"出席番号{i + 1}は{scores[i]}点\")\n\n# 2\ntop5 = scores[:5]\nbottom5 = scores[-5:]\nprint(top5)\nprint(bottom5)\n\n# 3\nranked = sorted(scores, reverse=True)\nprint(ranked[:3])\nprint(scores)  # 元のリストは変わっていない"
+    "text": "演習問題\n\nscores = [85, 90, 92, 78, 92, 88, 65, 100, 73, 80]\n\n上記のリストをコピペして、以下の操作を実装せよ。\n\n\nrange(len(...)) で 出席番号（1始まり）と点数を表示\nスライスで先頭5つと末尾5つをそれぞれ別のリストに分けて表示\nsorted で 元のリストを変えずに降順に並び替えた新しいリストを作り、上位3名の点数を表示\n\n\n\n解答例を見る\n# 1\nfor i in range(len(scores)):\n    print(f\"出席番号{i + 1}は{scores[i]}点\")\n\n# 2\nfirst5 = scores[:5]\nlast5 = scores[-5:]\nprint(first5)\nprint(last5)\n\n# 3\nranked = sorted(scores, reverse=True)\nprint(ranked[:3])\nprint(scores)  # 元のリストは変わっていない"
   },
   {
     "objectID": "list.html#演習問題リスト内包表記",
@@ -1705,133 +1768,140 @@
     "href": "figma.html#section",
     "title": "Figmaでワイヤーフレーム",
     "section": "",
-    "text": "アプリの「設計図」を作る"
+    "text": "ワイヤーフレーム"
   },
   {
-    "objectID": "figma.html#いきなりコードを書いてはいけない",
-    "href": "figma.html#いきなりコードを書いてはいけない",
+    "objectID": "figma.html#画面の構成を決める",
+    "href": "figma.html#画面の構成を決める",
     "title": "Figmaでワイヤーフレーム",
-    "section": "いきなりコードを書いてはいけない",
-    "text": "いきなりコードを書いてはいけない\n\n\n優先順位が決まった（ペイオフマトリクス）——次にやるのは実装ではなく 画面の設計\n建築と同じ：家をいきなり建て始める大工はいない。まず設計図\n\n画面の設計図のことを ワイヤーフレーム（wireframe）と呼ぶ\n「針金（wire）の枠（frame）」— 線と枠だけの、飾りのない骨組み図\n\n\n\n\n\n\n\n\nなぜ白黒の骨組みだけ？\n\n\n色やアイコンを作り込むと「きれいかどうか」の話になってしまう。 骨組みだけなら、何をどこに置くか という 構造の議論 に集中できる"
+    "section": "画面の構成を決める",
+    "text": "画面の構成を決める\n\n\nペイオフマトリクス で選んだ案について、必要な画面と部品を決める\nワイヤーフレーム（wireframe）：線や枠で、画面の構成・情報の配置を表す図\n\n\n\n\n\n\n\n最初に決めること\n\n\n必要な情報、ボタンの位置、画面間の移動を確認する。色やアイコンの細部はあとで調整する"
   },
   {
     "objectID": "figma.html#ワイヤーフレームは紙でも描ける",
     "href": "figma.html#ワイヤーフレームは紙でも描ける",
     "title": "Figmaでワイヤーフレーム",
     "section": "ワイヤーフレームは紙でも描ける",
-    "text": "ワイヤーフレームは紙でも描ける\n\n\n写真: Intel Free Press, CC BY-SA 2.0, via Wikimedia Commons\n\n\n\n最初の1枚は 紙とペンで十分。プロも紙のスケッチから始める\nただし紙には弱点がある — 修正・共有・使い回しがしにくい\n\nそこで登場するのが専用ツール"
+    "text": "ワイヤーフレームは紙でも描ける\n\n\n写真: Intel Free Press, CC BY-SA 2.0, via Wikimedia Commons\n\n\n\n紙とペンで画面を描いた例。デジタルのツールでは、複製・修正・共有がしやすい"
   },
   {
-    "objectID": "figma.html#figma画面設計の定番ツール",
-    "href": "figma.html#figma画面設計の定番ツール",
+    "objectID": "figma.html#figma画面設計のツール",
+    "href": "figma.html#figma画面設計のツール",
     "title": "Figmaでワイヤーフレーム",
-    "section": "Figma：画面設計の定番ツール",
-    "text": "Figma：画面設計の定番ツール\n\n\nFigma（フィグマ）= アプリ・Webサイトの画面を 設計 → 共有 → 改善 → 試作 まで一気にできるデザインツール\n\nブラウザで動く（インストール不要）・個人利用は無料枠で十分\nGoogle Docs のように 複数人で同時編集できる のが最大の特徴\n\n実際の開発現場での使われ方\n\n一般に使われるサービスの 画面設計（メッセージアプリの新機能、フリマアプリの出品フロー…）\n企画段階の アイデア検証 — コードを書かずに画面遷移まで試せる\nエンジニア・デザイナー・企画が 1つのFigmaファイルを見ながら会話する"
+    "section": "Figma：画面設計のツール",
+    "text": "Figma：画面設計のツール\n\n\nFigma（フィグマ）は、アプリ・Webサイトの画面を設計するツール\n\nブラウザで編集できる\n複数人で同じファイルを同時編集できる\n\n実際の開発現場での使われ方\n\n一般に使われるサービスの 画面設計（メッセージアプリの新機能、フリマアプリの出品フロー…）\n企画段階の アイデア検証（コードを書かずに画面遷移を試す）\nエンジニア・デザイナー・企画が 1つのFigmaファイルを見ながら会話する"
   },
   {
     "objectID": "figma.html#figmaを使う職種",
     "href": "figma.html#figmaを使う職種",
     "title": "Figmaでワイヤーフレーム",
     "section": "Figmaを使う職種",
-    "text": "Figmaを使う職種\n\n\n\n\n職種\nFigmaで何をする？\n\n\n\n\nUI/UXデザイナー\n画面レイアウト・色・動きの設計\n\n\nエンジニア（フロント／モバイル）\nFigmaを見て実装。仕様の確認\n\n\nPM（プロダクトマネージャー）\n画面を使って仕様を説明\n\n\n企画・マーケティング\n新サービス案のプロトタイプ作成\n\n\nデータ・研究開発\n実験ツールの画面や説明資料の作成\n\n\n\n\n「デザイナー専用」ではない — 画面で会話するすべての職種 の共通言語"
+    "text": "Figmaを使う職種\n\n\n\n\n職種\nFigmaで何をする？\n\n\n\n\nUI/UXデザイナー\n画面レイアウト・色・動きの設計\n\n\nエンジニア（フロント／モバイル）\nFigmaを見て実装。仕様の確認\n\n\nPM（プロダクトマネージャー）\n画面を使って仕様を説明\n\n\n企画・マーケティング\n新サービス案のプロトタイプ作成\n\n\nデータ・研究開発\n実験ツールの画面や説明資料の作成\n\n\n\n\n画面を見ながら、実装する機能や使い方を共有する"
   },
   {
-    "objectID": "figma.html#今日使う基本操作は5つだけ",
-    "href": "figma.html#今日使う基本操作は5つだけ",
+    "objectID": "figma.html#基本操作",
+    "href": "figma.html#基本操作",
     "title": "Figmaでワイヤーフレーム",
-    "section": "今日使う基本操作は5つだけ",
-    "text": "今日使う基本操作は5つだけ\n\n\n\n\nキー\n操作\n\n\n\n\nF\nFrame（画面の枠）を置く\n\n\nR\n四角形（ボタンやカード）\n\n\nT\nテキスト（タイトルやラベル）\n\n\nShift + a\nAuto Layout（自動整列）\n\n\nAlt + ドラッグ\nコピー\n\n\n\n\n\n\n\n\n\n迷ったら左上のツールバー\n\n\nキーを忘れてもツールバーから選べる。まずは F・R・T の3つで大半の画面が作れる"
+    "section": "基本操作",
+    "text": "基本操作\n\n\n\n\nキー\n操作\n\n\n\n\nF\nFrame（画面の枠）を置く\n\n\nR\n四角形（ボタンやカード）\n\n\nT\nテキスト（タイトルやラベル）\n\n\nShift + A\nAuto Layout（自動整列）\n\n\nAlt + ドラッグ\nコピー\n\n\n\n\n\n\n\n\n\nツールバーから選ぶ\n\n\nFrame・四角形・テキストは 画面下のツールバー からも選べる。Auto Layout は対象を選択して右サイドバーから追加できる"
   },
   {
     "objectID": "figma.html#演習-まず1画面作る",
     "href": "figma.html#演習-まず1画面作る",
     "title": "Figmaでワイヤーフレーム",
     "section": "演習 まず1画面作る",
-    "text": "演習 まず1画面作る\n\n\n「今日の予定を見る画面（Home）」を Figma で1画面作れ。\n\n\nfigma.com にログインして新規デザインファイルを作成\nF キー → 右パネルから iPhone サイズの Frame を置く\n左上に T で「Home」とタイトルを置く\nR の四角形でカード（Today’s Tasks）\n四角を3つ並べてクイックメニュー（Quick Actions）\n\n\n\n\n\n\n\nきれいさは要らない\n\n\nグレーの四角と黒い文字だけでよい。置く・並べる・名前を付ける が今日の全部"
+    "text": "演習 まず1画面作る\n\n\n「今日の予定を見る画面（Home）」を Figma で1画面作れ。\n\n\nfigma.com にログインして新規デザインファイルを作成\nF キーで、右パネルから iPhone サイズの Frame を配置\nT で「Home」のタイトルを画面左上に配置\nR の四角形でカード（Today’s Tasks）\n四角を3つ並べてクイックメニュー（Quick Actions）\n\n\n\n\n\n\n\n部品の用途を示す\n\n\nグレーの四角と黒い文字でよい。カードやメニューには、何を表示する場所か分かるラベルを付ける"
+  },
+  {
+    "objectID": "figma.html#例3画面のワイヤーフレーム",
+    "href": "figma.html#例3画面のワイヤーフレーム",
+    "title": "Figmaでワイヤーフレーム",
+    "section": "例：3画面のワイヤーフレーム",
+    "text": "例：3画面のワイヤーフレーム"
   },
   {
     "objectID": "figma.html#演習-3画面のワイヤーフレーム",
     "href": "figma.html#演習-3画面のワイヤーフレーム",
     "title": "Figmaでワイヤーフレーム",
     "section": "演習 3画面のワイヤーフレーム",
-    "text": "演習 3画面のワイヤーフレーム\n\n\n\n\n\n\n\nホーム → タスク一覧 → 追加フォーム の3画面ワイヤーフレームを作れ（上図がゴールの目安）。\n\n\nキャンバスに iPhone Frame を横並びで3つ置く\nホーム — タイトル・カード・クイックメニュー・下タブ（◯3つ）\nタスク一覧 — タイトル・リストアイテム5つ・右下に「＋」ボタン\n追加フォーム — Title・Detail・Category の入力欄と Save ボタン"
+    "text": "演習 3画面のワイヤーフレーム\n\n\nホーム → タスク一覧 → 追加フォーム の3画面ワイヤーフレームを作れ（前ページの図を目安にすること）。\n\n\nキャンバスに iPhone Frame を横並びで3つ配置\nホーム：タイトル・カード・クイックメニュー・下タブ（◯3つ）を配置\nタスク一覧：タイトル・リストアイテム5つ・右下の「＋」ボタンを配置\n追加フォーム：Title・Detail・Category の入力欄と Save ボタンを配置"
   },
   {
     "objectID": "figma.html#よくある画面パターン",
     "href": "figma.html#よくある画面パターン",
     "title": "Figmaでワイヤーフレーム",
     "section": "よくある画面パターン",
-    "text": "よくある画面パターン\n\n\n\n\n\n\n\n\n系統\n定番の部品\n\n\n\n\nホーム系\nカード表示・サマリー情報・クイックリンク\n\n\n一覧系（List）\nタイトル + サブ情報、「＞」で詳細へ\n\n\n詳細系（Detail）\nタイトル・説明、編集／削除ボタン\n\n\n入力系（Form）\nテキスト欄・日付選択・Save / Cancel\n\n\nナビゲーション系\n下タブ（Tab bar）・ハンバーガーメニュー・「＋」の丸ボタン（FAB）\n\n\n\n\n世の中のアプリは、ほぼこのパターンの 組み合わせ でできている\n\n手元のスマホのアプリを開いて、どのパターンか 分解して見る クセをつける"
+    "text": "よくある画面パターン\n\n\n\n\n\n\n\n\n系統\n定番の部品\n\n\n\n\nホーム系\nカード表示・サマリー情報・クイックリンク\n\n\n一覧系（List）\nタイトル + サブ情報、「＞」で詳細へ\n\n\n詳細系（Detail）\nタイトル・説明、編集／削除ボタン\n\n\n入力系（Form）\nテキスト欄・日付選択・Save / Cancel\n\n\nナビゲーション系\n下タブ（Tab bar）・ハンバーガーメニュー・操作用の丸ボタン（FAB: Floating Action Button）\n\n\n\n\n\n\n\n\n\n手元のアプリと比較する\n\n\nスマホのアプリを1つ開き、ホーム・一覧・詳細・入力のどの画面があるか確認する"
   },
   {
     "objectID": "figma.html#演習-自分のアプリの画面を作る",
     "href": "figma.html#演習-自分のアプリの画面を作る",
     "title": "Figmaでワイヤーフレーム",
     "section": "演習 自分のアプリの画面を作る",
-    "text": "演習 自分のアプリの画面を作る\n\n\nペイオフマトリクスで「すぐやるべき」に選んだ自分のアプリ案について、3画面以上のワイヤーフレームを作り、Prototype機能で画面をつなげ。\n\n\n必要な画面を 3つだけ 決める（欲張らない — 増やすのはいつでもできる）\n前ページのUIパターンから部品を選ぶ\n各画面に配置\nPrototype タブでボタンと画面を矢印でつなぐ → 再生ボタンで 動くアプリのように試す\n\n\n\n\n\n\n\nここで作った3画面が実装の設計図になる\n\n\nこの後の NiceGUI では、このワイヤーフレームを 本物のコード にしていく"
+    "text": "演習 自分のアプリの画面を作る\n\n\nペイオフマトリクスで「すぐやるべき」に選んだ自分のアプリ案について、3画面以上のワイヤーフレームを作り、Prototype機能で画面をつなげ。\n\n\n最初に作る画面を 3つ 選定\n前ページのUIパターンから部品を選択\n各画面に配置\nPrototype タブでボタンと遷移先の画面を接続し、再生ボタンで動作確認\n\n\n\n\n\n\n\n設計と実装\n\n\nこのワイヤーフレームを 最終課題 の設計に使う。NiceGUI の部品で配置を作り、データの取得や入力処理を追加する"
   },
   {
     "objectID": "convergence.html#section",
     "href": "convergence.html#section",
     "title": "収束技法（KJ法・アイデアマップ）",
     "section": "",
-    "text": "出したアイデアを、意味に変える"
+    "text": "収束技法"
   },
   {
     "objectID": "convergence.html#発散のあとに残るもの",
     "href": "convergence.html#発散のあとに残るもの",
     "title": "収束技法（KJ法・アイデアマップ）",
     "section": "発散のあとに残るもの",
-    "text": "発散のあとに残るもの\n\n\n\n\n\n写真: SEI, Public domain, via Wikimedia Commons\n\n\n\n\nブレスト・635法のあと、壁はこうなる\n108案は そのままでは使えない\n\n重複がある・粒度がバラバラ・全体像が見えない\n\n出したものを整理して 本質を取り出す 技法を 収束技法（convergent techniques）と呼ぶ\n\n今日の道具は KJ法 と アイデアマップ の2つ"
+    "text": "発散のあとに残るもの\n\n\n\n\n\n写真: SEI, Public domain, via Wikimedia Commons\n\n\n\n\n案が増えると、重複や内容の細かさの違いが見えてくる\n収束技法（convergent techniques）：案を整理し、実行する案へ絞る方法\nKJ法 と アイデアマップ で、案のまとまりや関係を整理する"
   },
   {
     "objectID": "convergence.html#kj法kawakita-jiro-method",
     "href": "convergence.html#kj法kawakita-jiro-method",
     "title": "収束技法（KJ法・アイデアマップ）",
     "section": "KJ法（Kawakita Jiro Method）",
-    "text": "KJ法（Kawakita Jiro Method）\n\n\n\n\n\n写真: Parul Vora, CC BY-SA 3.0, via Wikimedia Commons\n\n\n\n\n日本の文化人類学者 川喜田二郎（1920–2009）が考案した 発想整理の方法\n\n「KJ」は本人のイニシャル。著書『発想法』（1967）で広まった\n\nもとは、ネパール山岳地帯などのフィールドワークで得た 大量の観察メモを構造化して洞察を得る ための研究手法\n\nのちにビジネス・教育の場で、アイデア整理の定番になった\n\n写真は、まさにKJ法の最中の壁 — かたまりが生まれ始めている"
+    "text": "KJ法（Kawakita Jiro Method）\n\n\n\n\n\n写真: Parul Vora, CC BY-SA 3.0, via Wikimedia Commons\n\n\n\n\n日本の文化人類学者 川喜田二郎（1920–2009）が考案した 発想整理の方法\n\n「KJ」は本人のイニシャル。著書『発想法』（1967）で広まった\n\nもとは、ネパール山岳地帯などのフィールドワークで得た 大量の観察メモを構造化して洞察を得る ための研究手法\n\nのちにビジネス・教育の場で、アイデア整理の定番になった\n\n\n\n付箋を内容の近さでまとめている例"
   },
   {
-    "objectID": "convergence.html#kj法のいろいろな呼び名",
-    "href": "convergence.html#kj法のいろいろな呼び名",
+    "objectID": "convergence.html#kj法と関連する方法",
+    "href": "convergence.html#kj法と関連する方法",
     "title": "収束技法（KJ法・アイデアマップ）",
-    "section": "KJ法のいろいろな呼び名",
-    "text": "KJ法のいろいろな呼び名\n\n\n\n\n\n\n\n\n名称\n意味・出典\n\n\n\n\nKJ法\n川喜田二郎の『発想法』による正式名称\n\n\n親和図法（Affinity Diagram）\n海外での一般的な呼び方 — 「親和性」でまとめる図\n\n\nカード法\nアイデアをカード・付箋に書いて動かす形式から\n\n\n\n\n呼び名は違っても中身は同じ — 海外のUXの現場でも「affinity diagramming」として日常的に使われている"
+    "section": "KJ法と関連する方法",
+    "text": "KJ法と関連する方法\n\n\n\n\n\n\n\n\n名称\n意味・出典\n\n\n\n\nKJ法\nカードの内容からグループを作り、関係を図解・文章化する方法\n\n\n親和図法（affinity diagram）\n言語データを親和性でまとめる、KJ法に由来する方法\n\n\nカード法\n情報をカードに書いて並べ替える方法の総称\n\n\n\n\n手順と範囲の説明：川喜田研究所のKJ法 ／ ASQの親和図法"
   },
   {
     "objectID": "convergence.html#kj法の手順",
     "href": "convergence.html#kj法の手順",
     "title": "収束技法（KJ法・アイデアマップ）",
     "section": "KJ法の手順",
-    "text": "KJ法の手順\n\n\nカード化 — 意見・事実・観察を 1枚1件 でカード（付箋）に書く\nグルーピング — 意味の近さ（親和性）でカードを寄せる\n中見出しづけ — 各グループの意味を表す短いフレーズを付ける\n構造化 — グループ同士の上位・下位、因果を矢印で結ぶ\n総合化 — 全体の構造を図や文章にする（→ レポート・企画書へ）"
+    "text": "KJ法の手順\n\n\nカード化：意見・事実・観察を 1枚1件 で記入\nグルーピング：意味の近さ（親和性）で分類\n中見出しづけ：各グループの内容を短いフレーズで表現\n図解：グループの配置と線で相互の関係を表現\n文章化：図を読み取り、全体の関係を文章で説明"
   },
   {
     "objectID": "convergence.html#完成したkj図のかたち",
     "href": "convergence.html#完成したkj図のかたち",
     "title": "収束技法（KJ法・アイデアマップ）",
     "section": "完成した「KJ図」のかたち",
-    "text": "完成した「KJ図」のかたち\n\n\n図: Jpz, CC BY-SA 3.0, via Wikimedia Commons（品質管理学者・司馬正次が描くKJ図の複製）\n\n\n\nグループに 中見出し、グループ間に 矢印（因果・流れ）\nバラバラの付箋の山が「1枚の構造」になる のがゴール"
+    "text": "完成した「KJ図」のかたち\n\n\n図: Jpz, CC BY-SA 3.0, via Wikimedia Commons（品質管理学者・司馬正次が描くKJ図の複製）\n\n\n\nグループには中見出しを付け、グループ間の関係を線や矢印で示す"
   },
   {
-    "objectID": "convergence.html#カードに名前は書かない",
-    "href": "convergence.html#カードに名前は書かない",
+    "objectID": "convergence.html#書いた人より内容を見る",
+    "href": "convergence.html#書いた人より内容を見る",
     "title": "収束技法（KJ法・アイデアマップ）",
-    "section": "カードに名前は書かない",
-    "text": "カードに名前は書かない\n\n\nKJ法の特徴的なルール：個別のカードに書いた人の名前を入れない\n\n「誰の意見か」が見えると、内容ではなく人 で判断してしまう\n主観を外し、データそのものに語らせるのが狙い\n\n\n\n己れを空しくして、データをして語らしめる\n── 川喜田二郎『発想法』\n\n\n\n\n\n\n\n参画意識という副作用\n\n\n全員の付箋が同じ資格で1枚の図になるため、「参加した」ではなく 「一緒に作った」 という意識が生まれる — KJ法の隠れた効果"
+    "section": "書いた人より内容を見る",
+    "text": "書いた人より内容を見る\n\n\n演習では、個別のカードに書いた人の名前を入れない\n誰の意見かより、カードに書かれた内容をもとにまとめる\n\n\n己れを空しくして、データをして語らしめる\n── 川喜田二郎『発想法』\n\n\n\n\n\n\n\n分類の理由を共有する\n\n\n付箋を動かすときは、どの記述が近いと考えたかを説明する。意味が分からないカードは、書いた人に内容を確認する"
   },
   {
     "objectID": "convergence.html#kj法を使う場面と道具",
     "href": "convergence.html#kj法を使う場面と道具",
     "title": "収束技法（KJ法・アイデアマップ）",
     "section": "KJ法を使う場面と道具",
-    "text": "KJ法を使う場面と道具\n\n\n使う場面\n\n実験・プロジェクトテーマの 問題構造の分析\nアイデアソンやチーム開発の 要件整理\nフィールド調査のまとめ（観察 → 洞察）\n\n\n\n\n\n\n\n\n\nツール\n活用法\n\n\n\n\n付箋 + 模造紙\nアナログKJ法の基本スタイル。物理的に動かせる強さ\n\n\nMiro などのオンラインホワイトボード\nデジタル親和図。離れていても同時にグループ化できる"
+    "text": "KJ法を使う場面と道具\n\n\n使う場面\n\n実験・プロジェクトテーマの 問題構造の分析\nアイデアソンやチーム開発の 要件整理\nフィールド調査のまとめ（観察 → 洞察）\n\n\n\n\n\n\n\n\n\nツール\n活用法\n\n\n\n\n付箋 + 模造紙\n付箋を動かして配置やグループを変更\n\n\nMiro などのオンラインホワイトボード\nデジタル親和図。離れていても同時にグループ化できる"
   },
   {
     "objectID": "convergence.html#演習-kj法",
     "href": "convergence.html#演習-kj法",
     "title": "収束技法（KJ法・アイデアマップ）",
     "section": "演習 KJ法",
-    "text": "演習 KJ法\n\n\n発想法の演習で出した付箋（ブレスト・635法の全案）をKJ法で整理し、模造紙1枚の「KJ図」に仕上げよ。\n\n\n付箋を全部テーブルに広げる（名前は書かない・消す）\n近い意味の付箋を寄せてグループ化（3〜7枚 目安、無理に全部入れない）\n各グループに中見出し（短いフレーズ）\nグループ間の関係を矢印で記入（原因→結果、手段→目的）\n図全体を1文で要約して余白に記入\n\n\n\n\n\n\n\n先に見出しを作らない\n\n\n「勉強系」「生活系」のような 箱を先に決めて仕分ける のはKJ法ではない。 カードを読んで、寄ってきたかたまりに後から名前を付ける"
+    "text": "演習 KJ法\n\n\n発想法の演習で出した付箋（ブレスト・635法の全案）をKJ法で整理し、模造紙1枚の「KJ図」に仕上げよ。\n\n\n付箋をテーブルに並べて内容を確認（記名があれば削除）\n近い意味の付箋を寄せてグループ化（3〜7枚 目安、無理に全部入れない）\n各グループに中見出し（短いフレーズ）\nグループ間の関係を矢印で記入（原因→結果、手段→目的）\n図全体を1文で要約して余白に記入\n\n\n\n\n\n\n\n先に見出しを作らない\n\n\n「勉強系」「生活系」のような 箱を先に決めて仕分ける のはKJ法ではない。 カードを読み、内容の近いものをまとめてから名前を付ける"
   },
   {
     "objectID": "convergence.html#section-1",
@@ -1845,42 +1915,49 @@
     "href": "convergence.html#アイデアマップ放射状に整理する",
     "title": "収束技法（KJ法・アイデアマップ）",
     "section": "アイデアマップ：放射状に整理する",
-    "text": "アイデアマップ：放射状に整理する\n\n\n図: Danny Stevens, CC BY 2.5, via Wikimedia Commons\n\n\n\nイギリスの教育家 トニー・ブザン（Tony Buzan、1942–2019）が1970年代に考案\n中心から枝を伸ばす 放射思考（Radiant Thinking）のノート法\n\n「脳は線形ではなく放射的に考える」がブザンの主張"
+    "text": "アイデアマップ：放射状に整理する\n\nイギリスの教育家 トニー・ブザン（Tony Buzan、1942–2019）が1970年代に考案\n中心から枝を伸ばす 放射思考（Radiant Thinking）のノート法\n\n「脳は線形ではなく放射的に考える」がブザンの主張\n\n\n\n\n図: Danny Stevens, CC BY 2.5, via Wikimedia Commons"
   },
   {
     "objectID": "convergence.html#アイデアマップの描き方",
     "href": "convergence.html#アイデアマップの描き方",
     "title": "収束技法（KJ法・アイデアマップ）",
     "section": "アイデアマップの描き方",
-    "text": "アイデアマップの描き方\n\n\n中心にテーマを 文字 + イメージ で描く（例：「文化祭」）\n第一枝（主要要素）を放射状に伸ばす — 「企画」「準備」「装飾」「宣伝」\n第二枝・第三枝で詳細化 — 「宣伝」→「ポスター」「SNS」「動画」\n色・絵・記号で分類と強調\n全体を俯瞰して、枝どうしの意外なつながり を探す"
+    "text": "アイデアマップの描き方\n\n\n中心にテーマを 文字 + イメージ で記入（例：「文化祭」）\n第一枝（主要要素）を放射状に追加（「企画」「準備」「装飾」「宣伝」）\n第二枝・第三枝で詳細化（「宣伝」の下に「ポスター」「SNS」「動画」）\n色・絵・記号で分類と強調\n全体を見直し、枝どうしのつながり を確認"
   },
   {
-    "objectID": "convergence.html#名前と商標の注意",
-    "href": "convergence.html#名前と商標の注意",
+    "objectID": "convergence.html#例文化祭のアイデアマップ",
+    "href": "convergence.html#例文化祭のアイデアマップ",
     "title": "収束技法（KJ法・アイデアマップ）",
-    "section": "名前と商標の注意",
-    "text": "名前と商標の注意\n\n\n\n\n\n\n\n\n名称\n内容\n\n\n\n\nMind Map®（マインドマップ）\nブザン側の 登録商標。商用利用（講座名・商品名）では表記に注意\n\n\nアイデアマップ／思考マップ\n商標を避けた代替名称。多くのアプリがこちらを採用\n\n\n概念マップ（Concept Map）\n研究・教育心理学の近縁技法。枝の関係にラベルを付けて厳密に定義する点が違う\n\n\n\n\n授業・ノートなど非商用の範囲では「マインドマップ」と呼んで問題ない"
+    "section": "例：文化祭のアイデアマップ",
+    "text": "例：文化祭のアイデアマップ"
+  },
+  {
+    "objectID": "convergence.html#アイデアマップと概念マップ",
+    "href": "convergence.html#アイデアマップと概念マップ",
+    "title": "収束技法（KJ法・アイデアマップ）",
+    "section": "アイデアマップと概念マップ",
+    "text": "アイデアマップと概念マップ\n\n\n\n\n\n\n\n\n名称\n内容\n\n\n\n\nマインドマップ（mind map）\n中心のテーマから枝を広げ、言葉やイメージで整理する方法\n\n\nアイデアマップ／思考マップ\n考えや関連を図にする呼び方。この資料では放射状の図を指す\n\n\n概念マップ（Concept Map）\n研究・教育心理学の近縁技法。枝の関係にラベルを付けて厳密に定義する点が違う"
   },
   {
     "objectID": "convergence.html#マインドマップ-vs-kj法",
     "href": "convergence.html#マインドマップ-vs-kj法",
     "title": "収束技法（KJ法・アイデアマップ）",
     "section": "マインドマップ vs KJ法",
-    "text": "マインドマップ vs KJ法\n\n\n\n\n\nマインドマップ\nKJ法\n\n\n\n\n発案者\nトニー・ブザン（英国）\n川喜田二郎（日本）\n\n\n目的\n個人 の思考整理・発想\nチーム のアイデア統合・構造化\n\n\n構造\n放射型（中心 → 枝）\n集合型（カード → グループ）\n\n\n思考タイプ\n発散 + 整理の中間\n収束（意味づけ）\n\n\n使う場面\nノート・構想・自己分析\nチーム発表・レポート構造\n\n\n\n\n\n\n\n\n\n使い分けの目安\n\n\n1人なら マインドマップ、チームなら KJ法。個人で枝を広げてから、チームで付箋にして持ち寄る合わせ技も定番"
+    "text": "マインドマップ vs KJ法\n\n\n\n\n\n\n\n\n\n\nマインドマップ\nKJ法\n\n\n\n\n発案者\nトニー・ブザン（英国）\n川喜田二郎（日本）\n\n\n目的\n中心のテーマから思考を広げて整理\n集めたカードの内容から関係を整理\n\n\n構造\n放射型（中心 → 枝）\n集合型（カード → グループ）\n\n\n思考タイプ\n発散 + 整理の中間\n収束（意味づけ）\n\n\n使う場面\nノート・構想・自己分析\nチーム発表・レポート構造\n\n\n\n\n\n\n\n\n\n使い分けの目安\n\n\nテーマから連想を広げるならマインドマップ、集めた情報からまとまりを見つけるならKJ法。どちらも個人・チームで使える"
   },
   {
     "objectID": "convergence.html#演習-アイデアマップ",
     "href": "convergence.html#演習-アイデアマップ",
     "title": "収束技法（KJ法・アイデアマップ）",
     "section": "演習 アイデアマップ",
-    "text": "演習 アイデアマップ\n\n\n「自分のアプリのアイデア」を中心に置き、第一枝4本以上・第二枝まで含めて20ノード以上のアイデアマップを紙1枚に描け（色は3色以上）。\n\n\nA4を横置きにして中心にテーマを描く（絵があるとよい）\n第一枝：「誰が使う」「何ができる」「画面」「データ」など4本以上\n各枝に第二枝を2本以上\n描き終えたら俯瞰し、離れた枝同士のつながり を点線で1本以上引く\n\n\n\n\n\n\n\nこの地図は最終課題まで使う\n\n\nここで描いたマップが、ワイヤーフレーム（Figma）と実装（NiceGUI）の設計図の種になる"
+    "text": "演習 アイデアマップ\n\n\n「自分のアプリのアイデア」を中心に置き、第一枝4本以上・第二枝まで含めて20ノード以上のアイデアマップを紙1枚に描け（色は3色以上）。\n\n\nA4を横置きにして中心にテーマを記入（絵も可）\n第一枝：「誰が使う」「何ができる」「画面」「データ」など4本以上\n各枝に第二枝を2本以上\n全体を見直し、離れた枝同士のつながり を点線で1本以上記入\n\n\n\n\n\n\n\n画面設計に使う\n\n\n「誰が使う」「何ができる」「画面」「データ」の枝を、Figma で画面を設計するときに参照する"
   },
   {
     "objectID": "convergence.html#発散から収束へ全体の流れ",
     "href": "convergence.html#発散から収束へ全体の流れ",
     "title": "収束技法（KJ法・アイデアマップ）",
     "section": "発散から収束へ：全体の流れ",
-    "text": "発散から収束へ：全体の流れ\n\n\n\n量を出す（発散）→ 見える化（マップ）→ 構造化（KJ法）ときて、最後は どれをやるか決める\n\n次は ペイオフマトリクス で 優先順位 を付ける"
+    "text": "発散から収束へ：全体の流れ\n\n\n\n整理の進め方の一例。案の関係を整理したあと、ペイオフマトリクス で優先順位を検討する"
   },
   {
     "objectID": "api.html#webブラウザで受け取っている情報",
@@ -2125,105 +2202,147 @@
     "href": "api-spa.html#section",
     "title": "自作API+SPA",
     "section": "",
-    "text": "使う側から、作る側へ"
+    "text": "自作APIとSPA"
   },
   {
-    "objectID": "api-spa.html#apiを作る側になる",
-    "href": "api-spa.html#apiを作る側になる",
+    "objectID": "api-spa.html#自分のアプリにapiを付ける",
+    "href": "api-spa.html#自分のアプリにapiを付ける",
     "title": "自作API+SPA",
-    "section": "APIを「作る」側になる",
-    "text": "APIを「作る」側になる\n\n\n前期の APIでデータ取得 では、Wikipedia や東京都の 他人が作ったAPI を使った\n今回はその反対 — 自分のアプリに 自分のAPI を付ける\n\nNiceGUI のSPAは画面にデータを直接書き込むこともできるが、実際のWebサービスでは 画面とデータのやり取りはAPI経由 が一般的\n\n道具は追加不要：NiceGUIが内包する FastAPI をそのまま使う"
+    "section": "自分のアプリにAPIを付ける",
+    "text": "自分のアプリにAPIを付ける\n\n\nAPIを公開すると、他のプログラムからURLを指定してデータを取得できる\nNiceGUI が使う FastAPI に、JSONを返すエンドポイントを追加する"
   },
   {
     "objectID": "api-spa.html#rest-api-と-httpメソッド",
     "href": "api-spa.html#rest-api-と-httpメソッド",
     "title": "自作API+SPA",
     "section": "REST API と HTTPメソッド",
-    "text": "REST API と HTTPメソッド\n\n\n今回作るのは REST API — もっとも一般的な形式。HTTPメソッド でやり取りの種類を表す\n\n\n\n\nHTTPメソッド\n用途\n例\n\n\n\n\nGET\nデータを取得する\n質問リストを取得\n\n\nPOST\nデータを送信する\n診断結果を保存\n\n\nPUT\nデータを更新する\nプロフィールを更新\n\n\nDELETE\nデータを削除する\nアカウントを削除\n\n\n\n\n取得だけなら GET で足りる — まずはGETをマスターする"
+    "text": "REST API と HTTPメソッド\n\n\nREST（Representational State Transfer）はWebサービスの設計様式\nREST APIでは、URLで対象を表し、HTTPメソッド（HTTP method）で操作を表す\n\n\n\n\nHTTPメソッド\n用途\n例\n\n\n\n\nGET\nデータを取得する\n質問リストを取得\n\n\nPOST\nデータを送信する\n診断結果を保存\n\n\nPUT\nデータを置き換える\nプロフィール全体を更新\n\n\nDELETE\nデータを削除する\nアカウントを削除\n\n\n\n\n質問リストや結果の取得には GET を使う"
   },
   {
     "objectID": "api-spa.html#最もシンプルなapi",
     "href": "api-spa.html#最もシンプルなapi",
     "title": "自作API+SPA",
     "section": "最もシンプルなAPI",
-    "text": "最もシンプルなAPI\n\nfrom nicegui import ui, app\n\n@app.get(\"/api/hello\")\ndef hello():\n    return {\"message\": \"Hello, API!\"}\n\nui.label(\"APIテスト\")\nui.run()\n\n実行して http://localhost:8080/api/hello を開くと、JSONが返ってくる\n\n{\"message\": \"Hello, API!\"}\n\n\n\n\n\n\n\nコード\n機能\n\n\n\n\nfrom nicegui import app\nNiceGUI内部のFastAPIアプリを取り出す\n\n\n@app.get(\"/api/hello\")\nGETの /api/hello エンドポイントを作る\n\n\nreturn {\"message\": \"...\"}\n辞書を返すと自動でJSONに変換 される"
+    "text": "最もシンプルなAPI\n\nfrom nicegui import ui, app\n\n@app.get(\"/api/hello\")\ndef hello():\n    return {\"message\": \"Hello, API!\"}\n\nui.label(\"APIテスト\")\nui.run()"
+  },
+  {
+    "objectID": "api-spa.html#apiの応答を確認する",
+    "href": "api-spa.html#apiの応答を確認する",
+    "title": "自作API+SPA",
+    "section": "APIの応答を確認する",
+    "text": "APIの応答を確認する\n\nブラウザで http://localhost:8080/api/hello を開く\n{\"message\": \"Hello, API!\"}\n\n\n\n\n\n\n\nコード\n機能\n\n\n\n\nfrom nicegui import app\nNiceGUI内部のFastAPIアプリを取り出す\n\n\n@app.get(\"/api/hello\")\nGETの /api/hello エンドポイントを作る\n\n\nreturn {\"message\": \"...\"}\n辞書を返すと自動でJSONに変換 される"
   },
   {
     "objectID": "api-spa.html#の行の正体デコレータ",
     "href": "api-spa.html#の行の正体デコレータ",
     "title": "自作API+SPA",
     "section": "@ の行の正体：デコレータ",
-    "text": "@ の行の正体：デコレータ\n\n\n@app.get(...) のような @ で始まる行を デコレータ（decorator）と呼ぶ\n\nすぐ下の関数に特別な機能を追加する 記法\nここでは「この関数をAPIエンドポイントとして登録する」という意味\n\n関数名は自由。URLと結びつくのは デコレータの引数 のほう\n\n\n\n\n\n\n\nどこかで見た形\n\n\non_click=say_hi のコールバック登録と同じ発想 — 関数を部品として渡す・登録する のはPythonの常套手段"
+    "text": "@ の行の正体：デコレータ\n\n\n@app.get(...) のような @ で始まる行を デコレータ（decorator）と呼ぶ\n\nすぐ下の関数に特別な機能を追加する 記法\nここでは「この関数をAPIエンドポイントとして登録する」という意味\n\n関数名は自由。URLと結びつくのは デコレータの引数 のほう\n\n\n\n\n\n\n\n関数を登録する\n\n\non_click=say_hi はボタン操作に関数を登録する。@app.get(...) は指定したURLへのGETに関数を登録する"
   },
   {
     "objectID": "api-spa.html#データファイルを用意する",
     "href": "api-spa.html#データファイルを用意する",
     "title": "自作API+SPA",
     "section": "データファイルを用意する",
-    "text": "データファイルを用意する\n\n\n実際のアプリは、データをファイルやデータベースから取得する — まずはJSONファイルから\nquestions.json をダウンロードして main.py と同じフォルダに置く（中身は自作してもよい）\n\n{\n  \"title\": \"あなたにぴったりの職業診断\",\n  \"questions\": [\n    {\"id\": 1, \"text\": \"休日は何をしたい？\",\n     \"choices\": [\"外で遊ぶ\", \"家でゆっくり\", \"友達と集まる\"]},\n    {\"id\": 2, \"text\": \"得意なことは？\",\n     \"choices\": [\"計算\", \"絵を描く\", \"話すこと\"]},\n    ...\n  ],\n  \"results\": {\n    \"A\": \"あなたは営業職タイプ！人と話すのが得意です。\",\n    \"B\": \"あなたはデザイナータイプ！創造力が豊かです。\",\n    ...\n  }\n}\n\n抜粋 — 実物は質問3問（id: 1〜3）、結果A〜C"
+    "text": "データファイルを用意する\n\n\n質問文と選択肢をJSONファイルに保存する\nquestions.json をダウンロードして main.py と同じフォルダに置く（中身は自作してもよい）\n\n\nダウンロード用ファイルは質問3問（id: 1〜3）、結果A〜C。次のコードは一部を省略した表示例\n\n{\n  \"title\": \"あなたにぴったりの職業診断\",\n  \"questions\": [\n    {\"id\": 1, \"text\": \"休日は何をしたい？\",\n     \"choices\": [\"外で遊ぶ\", \"家でゆっくり\", \"友達と集まる\"]},\n    {\"id\": 2, \"text\": \"得意なことは？\",\n     \"choices\": [\"計算\", \"絵を描く\", \"話すこと\"]},\n    ...\n  ],\n  \"results\": {\n    \"A\": \"あなたは営業職タイプ！人と話すのが得意です。\",\n    \"B\": \"あなたはデザイナータイプ！創造力が豊かです。\",\n    ...\n  }\n}"
   },
   {
     "objectID": "api-spa.html#エンドポイントでファイルを読む",
     "href": "api-spa.html#エンドポイントでファイルを読む",
     "title": "自作API+SPA",
     "section": "エンドポイントでファイルを読む",
-    "text": "エンドポイントでファイルを読む\n\nfrom nicegui import ui, app\nimport json\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        data = json.load(f)\n    return data\n\nui.label(\"診断アプリ\")\nui.run()\n\nhttp://localhost:8080/api/questions でJSONファイルの中身がそのまま返る\n\n\n\n\n\n\n\n\nコード\n機能\n\n\n\n\nimport json\nJSONを扱うPython標準ライブラリ\n\n\nopen(\"questions.json\", \"r\", encoding=\"utf-8\")\n読み込みモードで開く（encoding で日本語対応）\n\n\njson.load(f)\nJSONファイル → Pythonの辞書"
+    "text": "エンドポイントでファイルを読む\n\nfrom nicegui import ui, app\nimport json\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        data = json.load(f)\n    return data\n\nui.label(\"診断アプリ\")\nui.run()\n\nhttp://localhost:8080/api/questions を開くと、JSONファイルの内容が返る"
+  },
+  {
+    "objectID": "api-spa.html#ファイルの読み込み処理",
+    "href": "api-spa.html#ファイルの読み込み処理",
+    "title": "自作API+SPA",
+    "section": "ファイルの読み込み処理",
+    "text": "ファイルの読み込み処理\n\n\n\n\n\n\n\n\nコード\n機能\n\n\n\n\nimport json\nJSONを扱うPython標準ライブラリ\n\n\nopen(\"questions.json\", \"r\", encoding=\"utf-8\")\n読み込みモードで開く（encoding で日本語対応）\n\n\njson.load(f)\nJSONファイル → Pythonの辞書"
   },
   {
     "objectID": "api-spa.html#画面からapiのデータを表示する",
     "href": "api-spa.html#画面からapiのデータを表示する",
     "title": "自作API+SPA",
     "section": "画面からAPIのデータを表示する",
-    "text": "画面からAPIのデータを表示する\n\nfrom nicegui import ui, app\nimport json\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        data = json.load(f)\n    return data\n\ndef load_questions():\n    data = get_questions()          # API関数を直接呼び出す\n    ui.label(data[\"title\"]).classes(\"text-2xl font-bold\")\n    for question in data[\"questions\"]:\n        with ui.card().classes(\"w-full\"):\n            ui.label(f\"Q{question['id']}: {question['text']}\").classes(\"font-bold\")\n            for choice in question[\"choices\"]:\n                ui.label(f\"・{choice}\").classes(\"ml-4\")\n\nui.button(\"質問を読み込む\", on_click=load_questions).classes(\"bg-blue-500 text-white p-2 rounded\")\n\nui.run()"
+    "text": "画面からAPIのデータを表示する\n\nfrom nicegui import ui, app\nimport json\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        data = json.load(f)\n    return data\n\ndef load_questions():\n    data = get_questions()          # Call the API function directly.\n    ui.label(data[\"title\"]).classes(\"text-2xl font-bold\")\n    for question in data[\"questions\"]:\n        with ui.card().classes(\"w-full\"):\n            ui.label(f\"Q{question['id']}: {question['text']}\").classes(\"font-bold\")\n            for choice in question[\"choices\"]:\n                ui.label(f\"・{choice}\").classes(\"ml-4\")\n\nui.button(\"質問を読み込む\", on_click=load_questions).classes(\"bg-blue-500 text-white p-2 rounded\")\n\nui.run()"
   },
   {
     "objectID": "api-spa.html#なぜ関数を直接呼べるのか",
     "href": "api-spa.html#なぜ関数を直接呼べるのか",
     "title": "自作API+SPA",
     "section": "なぜ関数を直接呼べるのか",
-    "text": "なぜ関数を直接呼べるのか\n\n\nNiceGUIでは、フロントエンド（ブラウザ側）とバックエンド（Pythonサーバー側）が 同じプロセス で動いている\n\nだからAPI用の関数 get_questions() を 普通のPython関数として 呼び出せる — HTTPリクエストを書く必要がない\n\n一方で、ブラウザから直接 http://localhost:8080/api/questions にもアクセスできる\n\n将来、別のアプリ（スマホアプリ・他人のプログラム）からも同じデータを取れる — 口をAPIにしておく価値 はここにある\n\n\n\n\n\n\n\n\n1つの関数が2つの顔を持つ\n\n\n画面から見れば「データ取得関数」、外から見れば「APIエンドポイント」。この二刀流がNiceGUIの手軽さ"
+    "text": "なぜ関数を直接呼べるのか\n\n\n画面操作を処理する load_questions() と、API用の get_questions() は、どちらも Pythonサーバー側の関数\n\nget_questions() を普通の関数として直接呼べる\nこの呼び出しではHTTP通信は発生しない\n\nブラウザはPythonサーバーとは別に動く\n\nブラウザから /api/questions を開いた場合は、HTTP通信でJSONを受け取る\n\n\n\n\n\n\n\n\n戻り値の違い\n\n\n直接呼ぶとPythonの辞書が返る。HTTPで呼ぶと、FastAPIが辞書をJSONに変換して応答する"
   },
   {
-    "objectID": "api-spa.html#本当にhttpで取りに行く",
-    "href": "api-spa.html#本当にhttpで取りに行く",
+    "objectID": "api-spa.html#httpでデータを取得する",
+    "href": "api-spa.html#httpでデータを取得する",
     "title": "自作API+SPA",
-    "section": "本当にHTTPで取りに行く",
-    "text": "本当にHTTPで取りに行く\n\n\n直接呼び出しは手軽だが、データは HTTPを通っていない（API利用の練習としてはショートカット）\nhttpx（NiceGUIが同梱するHTTPクライアント）を使うと、自分のAPIに 本物のリクエスト を送れる\n\nfrom nicegui import ui, app\nimport json\nimport httpx\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\nasync def load_questions():\n    async with httpx.AsyncClient() as client:\n        response = await client.get(\"http://localhost:8080/api/questions\")\n    data = response.json()\n    ui.label(data[\"title\"]).classes(\"text-2xl font-bold\")\n\nui.button(\"HTTPで読み込む\", on_click=load_questions)\nui.run()\n\nasync def + await は「通信を 待つ間、画面を止めない」ための書き方\n\nコールバックは async な関数でもそのまま登録できる\n\n\n\n\n\n\n\n\nここで requests を使ってはいけない\n\n\nrequests.get() は応答を 待つ間プログラム全体を止める。相手が自分自身のサーバーだと、止まっている本人は応答を返せない — アプリごとフリーズする。自分のAPIを呼ぶときは httpx + await 一択"
+    "section": "HTTPでデータを取得する",
+    "text": "HTTPでデータを取得する\n\n\nhttpx は、NiceGUIと一緒にインストールされるHTTPクライアント\n非同期処理（asynchronous processing）では、通信の応答を待つ間に他の処理を進められる\n\n\n\n\n\n\n\n\n書き方\n意味\n\n\n\n\nasync def\nawait を使える関数を定義\n\n\nasync with httpx.AsyncClient() as client:\n非同期のHTTPクライアントを作り、使用後に閉じる\n\n\nawait client.get(...)\n応答を待つ間、他の処理に実行を譲る"
+  },
+  {
+    "objectID": "api-spa.html#非同期のコールバックで取得する",
+    "href": "api-spa.html#非同期のコールバックで取得する",
+    "title": "自作API+SPA",
+    "section": "非同期のコールバックで取得する",
+    "text": "非同期のコールバックで取得する\n\n\nasync def の関数も on_click に登録できる。raise_for_status() はHTTPエラーを例外として通知する\n\nfrom nicegui import ui, app\nimport json\nimport httpx\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\nasync def load_questions():\n    async with httpx.AsyncClient() as client:\n        response = await client.get(\"http://localhost:8080/api/questions\")\n        response.raise_for_status()\n    data = response.json()\n    ui.label(data[\"title\"]).classes(\"text-2xl font-bold\")\n\nui.button(\"HTTPで読み込む\", on_click=load_questions)\nui.run()"
+  },
+  {
+    "objectID": "api-spa.html#同期通信で処理が止まる理由",
+    "href": "api-spa.html#同期通信で処理が止まる理由",
+    "title": "自作API+SPA",
+    "section": "同期通信で処理が止まる理由",
+    "text": "同期通信で処理が止まる理由\n\n\n\n\n\n\n\nコールバック内の同期通信\n\n\nrequests.get() をここに直接書くと、応答待ちでNiceGUIのイベントループが止まる。自分のサーバーも応答を処理できなくなるため、この例では httpx + await を使う。外部APIが相手でも、コールバック内の通信は非同期にする"
   },
   {
     "objectID": "api-spa.html#演習-土台コードを動かす",
     "href": "api-spa.html#演習-土台コードを動かす",
     "title": "自作API+SPA",
     "section": "演習 土台コードを動かす",
-    "text": "演習 土台コードを動かす\n\n\n土台コードと questions.json を同じフォルダに置いて実行し、ボタンで質問一覧が表示されることを確かめよ。\n\nfrom nicegui import ui, app\nimport json\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        data = json.load(f)\n    return data\n\ncontainer = ui.column().classes(\"w-full gap-4 p-4\")\n\ndef load_data():\n    container.clear()               # 前の表示を消してから\n    data = get_questions()          # 取り直して\n    with container:                 # 表示し直す\n        ui.label(data[\"title\"]).classes(\"text-3xl font-bold mb-4\")\n        for question in data[\"questions\"]:\n            with ui.card().classes(\"w-full\"):\n                ui.label(f\"Q{question['id']}: {question['text']}\").classes(\"font-bold text-lg\")\n                for choice in question[\"choices\"]:\n                    ui.label(f\"・{choice}\").classes(\"ml-4\")\n\nui.button(\"質問を読み込む\", on_click=load_data).classes(\"bg-blue-500 text-white p-3 rounded-lg\")\n\nui.run()"
+    "text": "演習 土台コードを動かす\n\n\n土台コードと questions.json を同じフォルダに置いて実行し、ボタンで質問一覧が表示されることを確かめよ。\n\nfrom nicegui import ui, app\nimport json\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        data = json.load(f)\n    return data\n\ncontainer = ui.column().classes(\"w-full gap-4 p-4\")\n\ndef load_data():\n    container.clear()               # Clear the previous display.\n    data = get_questions()          # Read the file again.\n    with container:                 # Rebuild the display.\n        ui.label(data[\"title\"]).classes(\"text-3xl font-bold mb-4\")\n        for question in data[\"questions\"]:\n            with ui.card().classes(\"w-full\"):\n                ui.label(f\"Q{question['id']}: {question['text']}\").classes(\"font-bold text-lg\")\n                for choice in question[\"choices\"]:\n                    ui.label(f\"・{choice}\").classes(\"ml-4\")\n\nui.button(\"質問を読み込む\", on_click=load_data).classes(\"bg-blue-500 text-white p-3 rounded-lg\")\n\nui.run()"
+  },
+  {
+    "objectID": "api-spa.html#urlの一部を引数で受け取る",
+    "href": "api-spa.html#urlの一部を引数で受け取る",
+    "title": "自作API+SPA",
+    "section": "URLの一部を引数で受け取る",
+    "text": "URLの一部を引数で受け取る\n\n\n/api/questions/1 のようにIDを指定する場合、URLの一部を変数として受け取る\n\nエンドポイントの定義部分\n@app.get(\"/api/questions/{question_id}\")\ndef get_question(question_id: int):\n    ...\n\n: int は 型ヒント（type hint）。FastAPIはこれをもとにURL内の値を整数へ変換する。... の箇所に処理を書く"
   },
   {
     "objectID": "api-spa.html#演習-エンドポイントを増やす",
     "href": "api-spa.html#演習-エンドポイントを増やす",
     "title": "自作API+SPA",
     "section": "演習 エンドポイントを増やす",
-    "text": "演習 エンドポイントを増やす\n\n\n土台コードに次の3つの機能を追加せよ（上から順に。各問、ブラウザでURLを直接開いて動作確認すること）。\n\n\n/api/results エンドポイントを追加し、results 部分だけを返す\n/api/questions/1 のように IDを指定した質問だけ 返す — URLの一部は変数として受け取れる：\n\n@app.get(\"/api/questions/{question_id}\")\ndef get_question(question_id: int):\n    ...\n\nquestion_id: int の : int は 型ヒント — FastAPIはこれを見て、URL内の文字を自動で数値に変換してくれる\n\n\n存在しないIDが指定されたら {\"error\": \"Not found\"} を返す（if で判定）\n\n\n\n\n\n\n\n動作確認もGETなら簡単\n\n\nGETのAPIは URLをブラウザで開くだけ でテストできる。/api/questions/1 と /api/questions/999 の両方を開いて比べる"
+    "text": "演習 エンドポイントを増やす\n\n\n土台コードに次の3つの機能を追加し、ブラウザで各URLの応答を確認せよ。\n\n\n/api/results を追加し、results 部分だけを返す処理を実装\n/api/questions/1 のように、IDを指定した質問だけを返す処理を実装\n存在しないIDには {\"error\": \"Not found\"} を返す分岐を追加\n\n\n\n\n\n\n\n動作確認\n\n\n/api/results・/api/questions/1・/api/questions/999 をブラウザで開いて応答を確認する。この演習のエラー辞書は通常の戻り値なので、HTTPステータスは200のまま\n\n\n\n\n\nエンドポイント追加の解答例を表示\nfrom nicegui import ui, app\nimport json\n\ndef read_data():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    return read_data()\n\n@app.get(\"/api/results\")\ndef get_results():\n    return read_data()[\"results\"]\n\n@app.get(\"/api/questions/{question_id}\")\ndef get_question(question_id: int):\n    for question in read_data()[\"questions\"]:\n        if question[\"id\"] == question_id:\n            return question\n    return {\"error\": \"Not found\"}\n\ncontainer = ui.column().classes(\"w-full gap-4 p-4\")\n\ndef load_data():\n    container.clear()\n    data = get_questions()\n    with container:\n        ui.label(data[\"title\"]).classes(\"text-3xl font-bold mb-4\")\n        for question in data[\"questions\"]:\n            with ui.card().classes(\"w-full\"):\n                ui.label(f\"Q{question['id']}: {question['text']}\").classes(\"font-bold text-lg\")\n                for choice in question[\"choices\"]:\n                    ui.label(f\"・{choice}\").classes(\"ml-4\")\n\nui.button(\"質問を読み込む\", on_click=load_data).classes(\"bg-blue-500 text-white p-3 rounded-lg\")\nui.run()"
+  },
+  {
+    "objectID": "api-spa.html#jsonの読み込みと表示の更新",
+    "href": "api-spa.html#jsonの読み込みと表示の更新",
+    "title": "自作API+SPA",
+    "section": "JSONの読み込みと表示の更新",
+    "text": "JSONの読み込みと表示の更新\n\n\n\n\n\n\n\nJSONを読むタイミング\n\n\n既定のオートリロードは .py が対象なので、JSONの保存ではサーバーは再起動しない。ボタンを押すたびにファイルを読み、container.clear() で古い表示を消してから表示し直す"
   },
   {
     "objectID": "api-spa.html#演習-データが変わったら",
     "href": "api-spa.html#演習-データが変わったら",
     "title": "自作API+SPA",
     "section": "演習 データが変わったら",
-    "text": "演習 データが変わったら\n\n\nアプリを起動したまま questions.json に質問を1問書き足して保存し、「質問を読み込む」ボタンだけで新しい質問が表示されることを確かめよ。\n\n\nアプリを起動して質問を表示しておく\nquestions.json に id: 4 の質問を追加して保存\nブラウザの再読み込みは せず、ボタンだけ押す（container.clear() → 再取得の効果）\n\n\n\nエンドポイント追加の解答例を表示\nfrom nicegui import ui, app\nimport json\n\ndef read_data():\n    with open(\"questions.json\", \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\n@app.get(\"/api/questions\")\ndef get_questions():\n    return read_data()\n\n@app.get(\"/api/results\")\ndef get_results():\n    return read_data()[\"results\"]\n\n@app.get(\"/api/questions/{question_id}\")\ndef get_question(question_id: int):\n    for question in read_data()[\"questions\"]:\n        if question[\"id\"] == question_id:\n            return question\n    return {\"error\": \"Not found\"}\n\nui.label(\"診断アプリAPI\")\nui.run()"
+    "text": "演習 データが変わったら\n\n\nアプリを起動したまま questions.json に質問を1問書き足して保存し、「質問を読み込む」ボタンだけで新しい質問が表示されることを確かめよ。\n\n\nアプリを起動し、質問を表示\nquestions.json の questions 配列に id: 4 の質問を追加して保存\n「質問を読み込む」ボタンをクリックし、4問の表示を確認\n\n\n\n解答例を表示\n\nquestions 配列の末尾に、カンマで区切って次の1件を追加する。Pythonコードの変更は不要\n{\"id\": 4, \"text\": \"取り組んでみたいことは？\", \"choices\": [\"企画\", \"制作\", \"調査\"]}"
   },
   {
     "objectID": "api-spa.html#まとめ",
     "href": "api-spa.html#まとめ",
     "title": "自作API+SPA",
     "section": "まとめ",
-    "text": "まとめ\n\n\nAPI — プログラム同士が情報をやり取りする仕組み。天気アプリもメッセージアプリも、裏ではAPIでデータを取っている\n@app.get() デコレータ — 関数1つがそのままエンドポイントになる\njson.load() — JSONファイルをPythonの辞書として読む\n画面とデータの分離 — 表示は container.clear() → 再取得 → 再表示のサイクル\nhttpx + await — 自分のAPIに本物のHTTPリクエストを送る形。最終課題 のテンプレートはこの形で書かれている\nここまでで部品はそろった\n\nアイデア（発想→収束→評価）、設計図（Figma）、動く画面（NiceGUI）、データの口（API）\n全部つなげるのが 最終課題"
+    "text": "まとめ\n\n\n@app.get()：URLへのGETを処理する関数を登録\njson.load()：JSONファイルをPythonの値として読み込む\n表示の更新：container.clear() で削除し、データを再取得して表示\nhttpx + await：応答を待つ間、他の処理を進められるHTTP通信\n\n\n\n\n\n\n\n3画面のアプリ\n\n\n最終課題 に、画面切り替えとHTTP通信を組み合わせたテンプレートを掲載"
   },
   {
     "objectID": "api-viz.html#section",
     "href": "api-viz.html#section",
     "title": "APIからのデータを可視化する",
     "section": "",
-    "text": "前回のあらすじ"
+    "text": "前回のおさらい"
   },
   {
     "objectID": "api-viz.html#大きな山を見つけた",
@@ -2237,7 +2356,7 @@
     "href": "api-viz.html#前回の最後に描いたグラフ",
     "title": "APIからのデータを可視化する",
     "section": "前回の最後に描いたグラフ",
-    "text": "前回の最後に描いたグラフ\n\n\n数値だけでは見落とすので まず描く — データの可視化の大原則\nAPIから取得した views を、そのまま plt.plot() に渡した結果\n\n\n\n\n\n\n\n\n\n\n\n\nコードを見る\nimport requests\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia.org/all-access/all-agents/\"\n       \"七夕/daily/20250101/20251231\")\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\nresponse = requests.get(url, headers=headers)\ndata = response.json()\n\nviews = np.array([item[\"views\"] for item in data[\"items\"]])\n\nplt.plot(views)\nplt.title(\"「七夕」の閲覧数（2025年）\")\nplt.xlabel(\"日数\")\nplt.ylabel(\"閲覧数\")\nplt.show()\n\n\n\n\n\n\n\n\n\n1日だけ突出している\n\n\n\nほぼ平坦な中、1日だけ大きな山（ピーク）\n\n数値だけ見ていると気づけない（アンスコムの教訓と同じ）\n\nそして見覚えがあるはず：データの可視化の冒頭で見せた 謎の図は、実はこのデータ"
+    "text": "前回の最後に描いたグラフ\n\n\n数値だけでは見落とすので まず描く — データの可視化の大原則\nAPIから取得した views を、そのまま plt.plot() に渡した結果\n\n\n\n\n\n\n\n\n\n\n\n\nコードを見る\nimport requests\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia.org/all-access/all-agents/\"\n       \"七夕/daily/20250101/20251231\")\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\nresponse = requests.get(url, headers=headers)\ndata = response.json()\n\nviews = np.array([item[\"views\"] for item in data[\"items\"]])\n\nplt.plot(views)\nplt.title(\"「七夕」の閲覧数（2025年）\")\nplt.xlabel(\"日数\")\nplt.ylabel(\"閲覧数\")\nplt.show()\n\n\n\n\n\n\n\n\n\n1日だけ突出している\n\n\n\nほぼ平坦な中、1日だけ大きな山（ピーク）\n\n数値だけ見ていると気づけない（アンスコムの教訓と同じ）\n\nデータの可視化の最初に見せた図も、このデータを描いたもの"
   },
   {
     "objectID": "api-viz.html#ピークのいつを特定する",
@@ -2272,7 +2391,7 @@
     "href": "api-viz.html#まとめ",
     "title": "APIからのデータを可視化する",
     "section": "まとめ",
-    "text": "まとめ\n\n\n\n\nやりたいこと\nコード\n\n\n\n\nまず描く\nplt.plot(views)\n\n\n最大値の位置\nmax_i = np.argmax(views)\n\n\n位置から日付\ndates[max_i]（同じindexの配列をリンク）\n\n\n表にして動くグラフ\npd.DataFrame(data[\"items\"]) → px.line()\n\n\n\n\n統計量で「おかしい」と気づき、図で正体を突き止める\n大原則 Always plot your data first. は API由来のデータ にもそのまま効く"
+    "text": "まとめ\n\n\n\n\nやりたいこと\nコード\n\n\n\n\nまず描く\nplt.plot(views)\n\n\n最大値の位置\nmax_i = np.argmax(views)\n\n\n位置から日付\ndates[max_i]（同じindexの配列をリンク）\n\n\n表にして動くグラフ\npd.DataFrame(data[\"items\"]) → px.line()\n\n\n\n\n統計量で「おかしい」と気づき、図でどの日が突出しているかを確かめる\n大原則 Always plot your data first. は API由来のデータ にもそのまま効く"
   },
   {
     "objectID": "api-viz.html#section-1",
@@ -2286,7 +2405,7 @@
     "href": "api-viz.html#演習a1枚のグラフに2本の折れ線",
     "title": "APIからのデータを可視化する",
     "section": "演習A：1枚のグラフに2本の折れ線",
-    "text": "演習A：1枚のグラフに2本の折れ線\n\n\n「七夕」の2025年1年分を、人間の閲覧（user）に絞って desktop と mobile-web で取得し、日付をx軸にして同じグラフに重ねて比較せよ。\n\n\nURLの all-agents を user に変更\naccess を切り替えて、2つの応答を取得\nそれぞれ pd.DataFrame(data[\"items\"]) で表にし、timestamp から日付列を作成\nplt.plot(日付, views) を2回呼び、凡例つきで重ね描き\nグラフのタイトルに max / min / mean を表示\n\n\n\n\n\n\n\nURLの all-agents の意味\n\n\nこの部分は誰の閲覧を数えるかの指定。all-agents はbot・クローラー込み、user は人間だけ。「人がどの端末で読んだか」を聞くなら user が正しい。\n\n\n\n\n\n\n\n\n\n禁止事項\n\n\n\n軸を揃えず2枚並べる → 比較しづらい\n軸の範囲を片方だけ狭める → 印象操作（matplotlib入門「軸の範囲で印象を操る」の罠）\n2本を配列の位置で重ねる → このAPIは閲覧数0の日を応答から省くことがあり、2つの応答の日数と並びが一致する保証はない。時系列は日付で対応づける\n\n\n\n\n\n\n解答例を見る\nimport requests\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\n\ndef fetch_df(access):\n    url = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n           f\"ja.wikipedia.org/{access}/user/七夕/daily/20250101/20251231\")\n    response = requests.get(url, headers=headers)\n    df = pd.DataFrame(response.json()[\"items\"])\n    df[\"date\"] = pd.to_datetime(df[\"timestamp\"], format=\"%Y%m%d%H\")\n    return df\n\ndf_desktop = fetch_df(\"desktop\")\ndf_mobile  = fetch_df(\"mobile-web\")\n\nplt.plot(df_desktop[\"date\"], df_desktop[\"views\"], label=\"desktop\")\nplt.plot(df_mobile[\"date\"],  df_mobile[\"views\"],  label=\"mobile-web\")\nplt.legend()\n\ntitle = (f\"desktop: max={df_desktop['views'].max()} min={df_desktop['views'].min()} mean={df_desktop['views'].mean():.1f}\\n\"\n         f\"mobile-web: max={df_mobile['views'].max()} min={df_mobile['views'].min()} mean={df_mobile['views'].mean():.1f}\")\nplt.title(title)\nplt.xlabel(\"日付\")\nplt.ylabel(\"閲覧数\")\nplt.show()"
+    "text": "演習A：1枚のグラフに2本の折れ線\n\n\n「七夕」の2025年1年分を、人間の閲覧（user）に絞って desktop と mobile-web で取得し、日付をx軸にして同じグラフに重ねて比較せよ。\n\n\nURLの all-agents を user に変更\naccess を切り替えて、2つの応答を取得\nそれぞれ pd.DataFrame(data[\"items\"]) で表にし、timestamp から日付列を作成\nplt.plot(日付, views) を2回呼び、凡例つきで重ね描き\nグラフのタイトルに max / min / mean を表示\n\n\n\n\n\n\n\nURLの all-agents の意味\n\n\nこの部分は誰の閲覧を数えるかの指定。all-agents はbot・クローラー込み、user は人間だけ。「人がどの端末で読んだか」を聞くなら user が正しい。\n\n\n\n\n\n\n\n\n\n禁止事項\n\n\n\n軸を揃えず2枚並べる → 比較しづらい\n軸の範囲を片方だけ狭める → 印象操作（matplotlib入門の「軸の範囲で印象を操る」）\n2本を配列の位置で重ねる → このAPIは閲覧数0の日を応答から省くことがあり、2つの応答の日数と並びが一致する保証はない。時系列は日付で対応づける\n\n\n\n\n\n\n解答例を見る\nimport requests\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\n\ndef fetch_df(access):\n    url = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n           f\"ja.wikipedia.org/{access}/user/七夕/daily/20250101/20251231\")\n    response = requests.get(url, headers=headers)\n    df = pd.DataFrame(response.json()[\"items\"])\n    df[\"date\"] = pd.to_datetime(df[\"timestamp\"], format=\"%Y%m%d%H\")\n    return df\n\ndf_desktop = fetch_df(\"desktop\")\ndf_mobile  = fetch_df(\"mobile-web\")\n\nplt.plot(df_desktop[\"date\"], df_desktop[\"views\"], label=\"desktop\")\nplt.plot(df_mobile[\"date\"],  df_mobile[\"views\"],  label=\"mobile-web\")\nplt.legend()\n\ntitle = (f\"desktop: max={df_desktop['views'].max()} min={df_desktop['views'].min()} mean={df_desktop['views'].mean():.1f}\\n\"\n         f\"mobile-web: max={df_mobile['views'].max()} min={df_mobile['views'].min()} mean={df_mobile['views'].mean():.1f}\")\nplt.title(title)\nplt.xlabel(\"日付\")\nplt.ylabel(\"閲覧数\")\nplt.show()"
   },
   {
     "objectID": "api-viz.html#演習b富士山には山があるか",
@@ -2485,11 +2604,11 @@
     "text": "演習問題（tuple）\n\ndef get_min_max(scores):\n    return min(scores), max(scores)  # カッコなしでも tuple になる！\n\nscores = [85, 90, 78, 92, 88]\n\n上記の関数とリストをコピペして、以下の操作を実装せよ。\n\n\n関数を引数 scores でコールして、戻り値を変数 result で受け取る\ntype(result) と値を表示\nlow, high の2変数でアンパックして「最低: ○点, 最高: ○点」と表示\nresult[0] = 100 と改ざんを試す（何が起きるか確認）\n\n\n\n解答を見る\nresult = get_min_max(scores)\nprint(type(result), result)       # &lt;class 'tuple'&gt; (78, 92)\n\nlow, high = get_min_max(scores)\nprint(f\"最低: {low}点, 最高: {high}点\")\n\nresult[0] = 100  # TypeError: 'tuple' object does not support item assignment"
   },
   {
-    "objectID": "collections.html#冒頭の成績表いまなら持てる",
-    "href": "collections.html#冒頭の成績表いまなら持てる",
+    "objectID": "collections.html#成績表を-list-と-dict-で表す",
+    "href": "collections.html#成績表を-list-と-dict-で表す",
     "title": "速習 コレクション",
-    "section": "冒頭の成績表、いまなら持てる",
-    "text": "冒頭の成績表、いまなら持てる\n\n\nlist と dict を組み合わせると、最初に見た成績表がそのままコードになる\n\nstudents = [\n    {\"番号\": 1, \"名前\": \"佐藤 太郎\", \"国語\": 85, \"数学\": 90, \"英語\": 85},\n    {\"番号\": 2, \"名前\": \"鈴木 花子\", \"国語\": 90, \"数学\": 85, \"英語\": 80},\n    {\"番号\": 3, \"名前\": \"高橋 一郎\", \"国語\": 78, \"数学\": 95, \"英語\": 92},\n]\n\n# 全員の3教科平均を一気に計算（30人でも300人でも同じコード）\nfor s in students:\n    avg = (s[\"国語\"] + s[\"数学\"] + s[\"英語\"]) / 3\n    print(f\"{s['名前']}: 平均 {avg:.1f}点\")\n# 佐藤 太郎: 平均 86.7点\n# 鈴木 花子: 平均 85.0点\n# 高橋 一郎: 平均 88.3点\n\n「変数を1人ずつ作る」世界には、もう戻らなくていい"
+    "section": "成績表を list と dict で表す",
+    "text": "成績表を list と dict で表す\n\n\nlist と dict を組み合わせると、最初に見た成績表がそのままコードになる\n\nstudents = [\n    {\"番号\": 1, \"名前\": \"佐藤 太郎\", \"国語\": 85, \"数学\": 90, \"英語\": 85},\n    {\"番号\": 2, \"名前\": \"鈴木 花子\", \"国語\": 90, \"数学\": 85, \"英語\": 80},\n    {\"番号\": 3, \"名前\": \"高橋 一郎\", \"国語\": 78, \"数学\": 95, \"英語\": 92},\n]\n\n# 全員の3教科平均を一気に計算（30人でも300人でも同じコード）\nfor s in students:\n    avg = (s[\"国語\"] + s[\"数学\"] + s[\"英語\"]) / 3\n    print(f\"{s['名前']}: 平均 {avg:.1f}点\")\n# 佐藤 太郎: 平均 86.7点\n# 鈴木 花子: 平均 85.0点\n# 高橋 一郎: 平均 88.3点"
   },
   {
     "objectID": "collections.html#まとめ",
@@ -2517,7 +2636,7 @@
     "href": "dict.html#宣言",
     "title": "辞書をあらためて",
     "section": "宣言",
-    "text": "宣言\n\n{} の中に キー: 値 をカンマ区切りで書くと辞書になる。\n\nキーは重複不可\n値は何でもよい\n\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}\n\n\n\n\n\n\nお作法\n\n\n: の前は詰めて、: と , の後には必ずスペースを空けるのが綺麗に書くコツ。"
+    "text": "宣言\n\n{} の中に キー: 値 をカンマ区切りで書くと辞書になる。\n\n同じキーは1つしか持てない（重複して書くと、後に書いた値が残る）\n値は何でもよい\n\nname2score = {\"Yamada\": 95, \"Suzuki\": 75, \"Takahashi\": 80}\nprint(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}\n\n\n\n\n\n\nお作法\n\n\n: の前は詰めて、: と , の後には必ずスペースを空けるのが綺麗に書くコツ。"
   },
   {
     "objectID": "dict.html#アクセスキー",
@@ -2622,112 +2741,133 @@
     "href": "final-project.html#section",
     "title": "最終課題",
     "section": "",
-    "text": "半年分の道具を、ぜんぶつなげる"
+    "text": "最終課題"
   },
   {
     "objectID": "final-project.html#最終課題オリジナルアプリ",
     "href": "final-project.html#最終課題オリジナルアプリ",
     "title": "最終課題",
     "section": "最終課題：オリジナルアプリ",
-    "text": "最終課題：オリジナルアプリ\n\n\nNiceGUIで API+SPA のオリジナルアプリ を1本作って提出する\nここまでの道具を全部使う、総合演習\n\n\n\nページ下部にある 3画面テンプレート を土台にする\n\nまず動かす → 中身を理解する → 自分の企画に改造する、の順"
+    "text": "最終課題：オリジナルアプリ\n\n\nNiceGUIで API+SPA のオリジナルアプリ を1本作って提出する\n企画案・ワイヤーフレーム・ソースコード・紹介スライドを提出する\n\n\n\nこの資料の 3画面テンプレート を動かし、自分の企画に合わせて変更する"
   },
   {
     "objectID": "final-project.html#テーマ例診断ゲーム系",
     "href": "final-project.html#テーマ例診断ゲーム系",
     "title": "最終課題",
     "section": "テーマ例：診断・ゲーム系",
-    "text": "テーマ例：診断・ゲーム系\n\n\n\n\n\n\n\n\n系統\n例\n\n\n\n\n診断系\n推し診断「あなたに合う推しのタイプは？」 ／ 勉強法診断 ／ 進路適性診断「理系？文系？」 ／ 部活診断\n\n\nゲーム系\n三択クイズ（雑学・都道府県） ／ 心理テスト ／ 運試し（今日の運勢・おみくじ） ／ 2択選択ゲーム「あなたはどっち派？」\n\n\n\n\n「質問を出す → 選ばせる → 結果を出す」の構造は テンプレートの3画面とそのまま対応 する\n\nこの系統は questions / results をJSONに書くだけで骨格が完成する"
+    "text": "テーマ例：診断・ゲーム系\n\n\n\n\n\n\n\n\n系統\n例\n\n\n\n\n診断系\n推し診断「あなたに合う推しのタイプは？」 ／ 勉強法診断 ／ 進路適性診断「理系？文系？」 ／ 部活診断\n\n\nゲーム系\n三択クイズ（雑学・都道府県） ／ 心理テスト ／ 運試し（今日の運勢・おみくじ） ／ 2択選択ゲーム「あなたはどっち派？」\n\n\n\n\nトップ・質問・結果の3画面に対応させられる。質問と結果をJSONに用意し、回答の記録や結果を決める処理をPythonで追加する"
   },
   {
     "objectID": "final-project.html#テーマ例実用創作系",
     "href": "final-project.html#テーマ例実用創作系",
     "title": "最終課題",
     "section": "テーマ例：実用・創作系",
-    "text": "テーマ例：実用・創作系\n\n\n\n\n\n\n\n\n系統\n例\n\n\n\n\n実用ツール系\nテスト点数計算機（平均・合計） ／ 偏差値計算 ／ BMI計算+アドバイス ／ バイト時給計算機\n\n\n創作・エンタメ系\nランダム決め（今日の昼飯・掃除当番） ／ 2つ名ジェネレーター（名前 → 面白い2つ名）\n\n\n\n\nもちろん この表にないテーマでもよい\n\n迷ったら ペイオフマトリクス — 「作る手間」と「ウケ・実用性」の2軸で選ぶ"
+    "text": "テーマ例：実用・創作系\n\n\n\n\n\n\n\n\n系統\n例\n\n\n\n\n実用ツール系\nテスト点数計算機（平均・合計） ／ 偏差値計算 ／ BMI計算+アドバイス ／ バイト時給計算機\n\n\n創作・エンタメ系\nランダム決め（今日の昼飯・掃除当番） ／ 2つ名ジェネレーター（名前 → 面白い2つ名）\n\n\n\n\n\n\n\n\n\nテーマは自由\n\n\nこの表にないテーマでもよい。ペイオフマトリクス の「作る手間」と「利用者にとっての効果」で検討する"
+  },
+  {
+    "objectID": "final-project.html#企画に合わせて3画面を変える",
+    "href": "final-project.html#企画に合わせて3画面を変える",
+    "title": "最終課題",
+    "section": "企画に合わせて3画面を変える",
+    "text": "企画に合わせて3画面を変える\n\n\nテンプレートは 表示するコンテナを切り替える仕組み\nトップ・メイン・結果という名前や、画面の中身は変更してよい\n\n\n\n\n企画\n画面の例\n\n\n\n\n診断アプリ\nトップ → 質問 → 結果\n\n\n時間割アプリ\n曜日選択 → 授業一覧 → 授業詳細\n\n\n課題管理アプリ\nホーム → 課題一覧 → 追加フォーム\n\n\n\n\nFigmaで考えた企画をもとに、必要な画面へ変更する。入力の保存や計算など、企画に必要な処理は自分で追加する"
   },
   {
     "objectID": "final-project.html#提出物zipに4点",
     "href": "final-project.html#提出物zipに4点",
     "title": "最終課題",
     "section": "提出物：zipに4点",
-    "text": "提出物：zipに4点\n\n\nファイル名は 「学籍番号_名前.zip」\n\n\n\n\n\n\n\n\n\n\n内容\n形式\n\n\n\n\n1\n635法などのカードで考えた 企画案 の画面（グループで発想したもの）\nPDF\n\n\n2\nFigmaで作った ワイヤーフレーム のスクショ\nPDF\n\n\n3\nテンプレートを元にNiceGUIで実装した ソースコード（.py 1ファイル + .json）\nzip\n\n\n4\nアプリを紹介する スライド1枚（タイトル・特徴・スクショ程度でOK）\nPDF\n\n\n\n\n\n\n\n\n\n3のzipは「入れ子」構造\n\n\n.py と .json をまとめたzipを、提出zipの中に入れる。解凍して .py を実行するだけで動く ことを提出前に必ず確認する"
+    "text": "提出物：zipに4点\n\n\nファイル名は 「学籍番号_名前.zip」\n\n\n\n\n\n\n\n\n\n\n内容\n形式\n\n\n\n\n1\n635法などのカードで考えた 企画案 の写真（グループで発想したもの）\nPDF\n\n\n2\nFigmaで作った ワイヤーフレーム のスクショ\nPDF\n\n\n3\nテンプレートを元にNiceGUIで実装した ソースコード（.py 1ファイル + .json）\nzip\n\n\n4\nアプリを紹介する スライド1枚（タイトル・特徴・スクショ程度でOK）\nPDF\n\n\n\n\n\n\n\n\n\n3のzipは「入れ子」構造\n\n\n.py と .json をまとめたzipを、提出zipの中に入れる。解凍して .py を実行するだけで動く ことを提出前に必ず確認する"
   },
   {
     "objectID": "final-project.html#ルール",
     "href": "final-project.html#ルール",
     "title": "最終課題",
     "section": "ルール",
-    "text": "ルール\n\n\nテンプレートに付け足す形 で実装する\n\n文字・レイアウト変更、ボタン追加、遷移画面追加はOK\n構造を大きく変える／ライブラリを増やすのはNG\n生成AIの出力の丸写しはNG\n\n遷移画面は3画面以上\nライブラリは NiceGUI以外を追加しない\n\n授業で使ったもの（NumPy・Requestsなど）と、pip install不要の標準ライブラリ（mathなど）はOK\n\nFigmaのモックと実装は、方向性が合っていれば同一でなくてよい（見た目に過度にこだわらない）\n人に聞くのはOK・助けるのは推奨 — 助けてもらったら紹介スライドに スペシャルサンクス を書く"
+    "text": "ルール\n\n\nテンプレートに付け足す形 で実装する\n\n文字・レイアウト変更、ボタン追加、遷移画面追加はOK\n構造を大きく変える／ライブラリを増やすのはNG\n生成AIの出力の丸写しはNG\n\n遷移画面は3画面以上\n使用できるライブラリは NiceGUIとその依存ライブラリ（httpxなど）・授業で使ったもの・Python標準ライブラリ\n\nRequestsは外部APIの取得に使用可。NiceGUIのコールバック内では、通信先にかかわらず httpx.AsyncClient と await を使う\n\nFigmaのモックと実装は、方向性が合っていれば同一でなくてよい（見た目に過度にこだわらない）\n質問や助け合いは可。助けてもらったら、紹介スライドに協力者の名前と協力内容を書く"
   },
   {
-    "objectID": "final-project.html#いちばん大事なルールデータはjsonに",
-    "href": "final-project.html#いちばん大事なルールデータはjsonに",
+    "objectID": "final-project.html#データはjsonに保存する",
+    "href": "final-project.html#データはjsonに保存する",
     "title": "最終課題",
-    "section": "いちばん大事なルール：データはJSONに",
-    "text": "いちばん大事なルール：データはJSONに\n\n\n表示するコンテンツは JSONに書き、APIから取得 する（テンプレートどおり HTTP経由 で）\n\nJSONを編集するだけでアプリを変更・拡張できる 状態にする\n質問文や結果文を ui.label(\"...\") に直接書かない（ハードコード禁止）\nボタンの「スタート」などコンテンツ以外のラベルはハードコードOK\n\n（テンプレートは読み込みだけだが）JSONへの 書き込みもOK\n\n\n\n\n\n\n\nなぜこのルールがあるのか\n\n\n「データと画面の分離」は実務の鉄則。クイズを10問→100問にするのに コードを1行も触らない 設計が、良いアプリの証拠"
+    "section": "データはJSONに保存する",
+    "text": "データはJSONに保存する\n\n\n表示するコンテンツは JSONに書き、APIから取得 する（テンプレートどおり HTTP経由 で）\n\nJSONを編集するだけでアプリを変更・拡張できる 状態にする\n質問文や結果文を ui.label(\"...\") に直接書かない（ハードコード、hard-coding）\nボタンの「スタート」などコンテンツ以外のラベルはハードコードOK\n\nJSONへの 書き込みも可\n\n\n\n\n\n\n\nデータと画面の分離\n\n\n質問を1問追加する場合はJSONを変更する。質問を順に表示する処理は、リストを読み取る形にしておけば共通で使える"
   },
   {
     "objectID": "final-project.html#評価基準",
     "href": "final-project.html#評価基準",
     "title": "最終課題",
     "section": "評価基準",
-    "text": "評価基準\n\n\n提出物の内容とフォーマットが 指定通り\n公序良俗 に反していない\n生成AIの丸写しではなく、テンプレートに沿って 実装されている\nエラーなく実行できる\n\n\n\n\n\n\n\n減点されない技術\n\n\n凝った機能より「指示通り・動く・分かる」が先。実行確認は zipを解凍し直した状態 でもう一度 — 「自分のPCでは動いた」の大半はファイルパスとファイル名の問題"
+    "text": "評価基準\n\n\n提出物の内容とフォーマットが 指定通り\n公序良俗 に反していない\n生成AIの丸写しではなく、テンプレートに沿って 実装されている\nエラーなく実行できる\n\n\n\n\n\n\n\n提出前の確認\n\n\nzipを別のフォルダに解凍し直し、Pythonファイルを実行する。JSONファイルの同梱、画面遷移、データ読み込みを確認する"
   },
   {
     "objectID": "final-project.html#テンプレートの構造",
     "href": "final-project.html#テンプレートの構造",
     "title": "最終課題",
     "section": "テンプレートの構造",
-    "text": "テンプレートの構造\n\n\n3画面 = 3つの ui.column()。set_visibility() で1つだけ表示 して画面遷移に見せる\n\n\n\nデータファイルは data.json。この2つだけから始める\n\n{\n  \"title\": \"サンプルタイトル\",\n  \"message\": \"ここにメッセージが入ります\"\n}"
+    "text": "テンプレートの構造\n\n\n3画面 = 3つの ui.column()。set_visibility() で1つだけ表示 して画面遷移に見せる\n\n\n\nwith ui.column() as top_screen: は、コンテナを作って top_screen に代入し、その中に部品を置く書き方"
   },
   {
-    "objectID": "final-project.html#画面切り替えの核心",
-    "href": "final-project.html#画面切り替えの核心",
+    "objectID": "final-project.html#データファイルを用意する",
+    "href": "final-project.html#データファイルを用意する",
     "title": "最終課題",
-    "section": "画面切り替えの核心",
-    "text": "画面切り替えの核心\n\ndef show_screen(screen_name):\n    top_screen.set_visibility(screen_name == \"top\")\n    main_screen.set_visibility(screen_name == \"main\")\n    result_screen.set_visibility(screen_name == \"result\")\n\nui.button(\"スタート\", on_click=lambda: show_screen(\"main\"))\n\nscreen_name == \"top\" は True / False になる — 指定した画面だけ表示、他は非表示 が1行×3で書ける\n\n\n\n\n\n\n\nlambda = その場で作る小さな関数\n\n\non_click には関数を渡す必要がある（show_screen(\"main\") と書くと即実行されてしまう）。 lambda: show_screen(\"main\") は「押されたら show_screen(\"main\") を実行する 無名の関数」を作る書き方。 lambdaを避けたい人は、def show_main(): ... を画面の数だけ書く簡単版テンプレートを使えばよい"
+    "section": "データファイルを用意する",
+    "text": "データファイルを用意する\n\n\ndata.json をダウンロードし、テンプレートを保存した main.py と同じフォルダに置く\n初期データには title と message の2項目がある\n\n{\n  \"title\": \"サンプルタイトル\",\n  \"message\": \"ここにメッセージが入ります\"\n}"
+  },
+  {
+    "objectID": "final-project.html#画面の表示非表示を切り替える",
+    "href": "final-project.html#画面の表示非表示を切り替える",
+    "title": "最終課題",
+    "section": "画面の表示・非表示を切り替える",
+    "text": "画面の表示・非表示を切り替える\n\nテンプレートから抜粋\ndef show_screen(screen_name):\n    top_screen.set_visibility(screen_name == \"top\")\n    main_screen.set_visibility(screen_name == \"main\")\n    result_screen.set_visibility(screen_name == \"result\")\n\nui.button(\"スタート\", on_click=lambda: show_screen(\"main\"))\n\nscreen_name == \"top\" は True / False になる。指定した画面だけ表示し、他の画面は非表示にする\n\n\n\n\n\n\n\nlambda = その場で作る小さな関数\n\n\non_click には関数を渡す必要がある（show_screen(\"main\") と書くと即実行されてしまう）。 lambda: show_screen(\"main\") は「押されたら show_screen(\"main\") を実行する 無名関数（anonymous function）」を作る書き方。 lambdaを避けたい人は、def show_main(): ... を画面の数だけ書く簡単版テンプレートを使えばよい"
   },
   {
     "objectID": "final-project.html#テンプレート全文",
     "href": "final-project.html#テンプレート全文",
     "title": "最終課題",
     "section": "テンプレート全文",
-    "text": "テンプレート全文\n\n\nテンプレートと data.json を同じフォルダに置いて実行し、3画面が遷移すること・「データ読み込み」でJSONのタイトルが出ることを確かめてから改造を始めよ。\n\n\nテンプレートの Path(__file__).parent は「この .py があるフォルダ」の意味 — どこから実行しても隣の data.json を見つけられる（「自分のPCでは動いたのに」事故の予防）\n\n\n\n\n\n\n\nasync / await は「待つ間、画面を止めない」書き方\n\n\nテンプレートでは、HTTP通信をする load_data だけが async def（自作API+SPA で扱った形）。 改造で自分の関数を足すときは、通信しない関数なら普通の def でよい\n\n\n\n\n\nテンプレート（API版）を表示\n\"\"\"\nNiceGUI SPA テンプレート（API版）\n\n3画面構成：トップ → メイン → 結果\nJSONデータを自作APIからHTTP経由で取得して表示します。\n\"\"\"\n\nfrom nicegui import ui, app\nfrom pathlib import Path\nimport json\nimport httpx\n\nDATA_FILE = Path(__file__).parent / \"data.json\"   # この .py と同じフォルダの data.json\n\n# ========================================\n# APIエンドポイント\n# ========================================\n@app.get(\"/api/data\")\ndef get_data():\n    with open(DATA_FILE, \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\n# ========================================\n# 画面切り替え\n# ========================================\ndef show_screen(screen_name):\n    top_screen.set_visibility(screen_name == \"top\")\n    main_screen.set_visibility(screen_name == \"main\")\n    result_screen.set_visibility(screen_name == \"result\")\n\n# ========================================\n# 1. トップ画面\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as top_screen:\n    ui.label(\"アプリタイトル\").classes(\"text-4xl font-bold\")\n    ui.button(\"スタート\", on_click=lambda: show_screen(\"main\")).classes(\"bg-blue-500 text-white p-4 rounded-lg\")\n\n# ========================================\n# 2. メイン画面\n# ========================================\nwith ui.column().classes(\"w-full min-h-screen items-center p-8 gap-4\") as main_screen:\n    ui.label(\"メイン画面\").classes(\"text-3xl font-bold\")\n\n    # JSONデータを表示するコンテナ\n    content = ui.column().classes(\"gap-2\")\n\n    async def load_data():\n        content.clear()\n        # 自作APIにHTTPリクエストを送ってデータを取得\n        async with httpx.AsyncClient() as client:\n            response = await client.get(\"http://localhost:8080/api/data\")\n        data = response.json()\n\n        # TODO: ここでdataの内容を表示する\n        with content:\n            ui.label(f\"タイトル: {data['title']}\")\n\n    ui.button(\"データ読み込み\", on_click=load_data).classes(\"bg-green-500 text-white p-2 rounded\")\n    ui.button(\"結果へ\", on_click=lambda: show_screen(\"result\")).classes(\"bg-purple-500 text-white p-4 rounded-lg mt-4\")\n\n# ========================================\n# 3. 結果画面\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as result_screen:\n    ui.label(\"結果画面\").classes(\"text-3xl font-bold\")\n    ui.label(\"ここに結果を表示\")\n    ui.button(\"もう一度\", on_click=lambda: show_screen(\"top\")).classes(\"bg-blue-500 text-white p-4 rounded-lg\")\n\n# ========================================\n# 初期表示\n# ========================================\nshow_screen(\"top\")\n\nui.run()\n\n\n\n\nテンプレート（簡単版・lambdaなし）を表示\n\"\"\"\nNiceGUI SPA テンプレート（少し簡単版）\n\n3画面構成：トップ → メイン → 結果\nlambdaを使わず、画面ごとの関数で切り替えます。\n\"\"\"\n\nfrom nicegui import ui, app\nfrom pathlib import Path\nimport json\nimport httpx\n\nDATA_FILE = Path(__file__).parent / \"data.json\"   # この .py と同じフォルダの data.json\n\n# ========================================\n# APIエンドポイント\n# ========================================\n@app.get(\"/api/data\")\ndef get_data():\n    with open(DATA_FILE, \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\ndef show_top():\n    top_screen.set_visibility(True)\n    main_screen.set_visibility(False)\n    result_screen.set_visibility(False)\n\ndef show_main():\n    top_screen.set_visibility(False)\n    main_screen.set_visibility(True)\n    result_screen.set_visibility(False)\n\ndef show_result():\n    top_screen.set_visibility(False)\n    main_screen.set_visibility(False)\n    result_screen.set_visibility(True)\n\n# ========================================\n# 1. トップ画面\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as top_screen:\n    ui.label(\"アプリタイトル\").classes(\"text-4xl font-bold\")\n    ui.button(\"スタート\", on_click=show_main)\n\n# ========================================\n# 2. メイン画面\n# ========================================\nwith ui.column().classes(\"w-full min-h-screen items-center p-8 gap-4\") as main_screen:\n    ui.label(\"メイン画面\").classes(\"text-3xl font-bold\")\n\n    # JSONデータを表示するコンテナ\n    content = ui.column().classes(\"gap-2\")\n\n    async def load_data():\n        content.clear()\n        # 自作APIにHTTPリクエストを送ってデータを取得\n        async with httpx.AsyncClient() as client:\n            response = await client.get(\"http://localhost:8080/api/data\")\n        data = response.json()\n\n        # TODO: ここでdataの内容を表示する\n        with content:\n            ui.label(f\"タイトル: {data['title']}\")\n\n    ui.button(\"データ読み込み\", on_click=load_data).classes(\"bg-green-500 text-white p-2 rounded\")\n    ui.button(\"結果へ\", on_click=show_result)\n\n# ========================================\n# 3. 結果画面\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as result_screen:\n    ui.label(\"結果画面\").classes(\"text-3xl font-bold\")\n    ui.label(\"ここに結果を表示\")\n    ui.button(\"もう一度\", on_click=show_top)\n\n# ========================================\n# 初期表示\n# ========================================\nshow_top()\n\nui.run()"
+    "text": "テンプレート全文\n\n\nテンプレートを main.py として data.json と同じフォルダに保存・実行し、3画面が遷移すること・「データ読み込み」でJSONのタイトルが出ることを確かめてから改造を始めよ。\n\n\nPath(__file__).parent は このPythonファイルがあるフォルダ。実行時の作業フォルダによらず、隣の data.json を読み込む\n\n\n\n\n\n\n\nasync / await は「待つ間、画面を止めない」書き方\n\n\nテンプレートでは、HTTP通信をする load_data だけが async def（自作API+SPA で扱った形）。 改造で自分の関数を足すときは、通信しない関数なら普通の def でよい\n\n\n\n\n\nテンプレート（API版）を表示\n\"\"\"\nNiceGUI SPA template with three screens and an HTTP API.\n\"\"\"\n\nfrom nicegui import ui, app\nfrom pathlib import Path\nimport json\nimport httpx\n\nDATA_FILE = Path(__file__).parent / \"data.json\"   # Resolve data.json beside this script.\n\n# ========================================\n# API endpoint\n# ========================================\n@app.get(\"/api/data\")\ndef get_data():\n    with open(DATA_FILE, \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\n# ========================================\n# Screen switching\n# ========================================\ndef show_screen(screen_name):\n    top_screen.set_visibility(screen_name == \"top\")\n    main_screen.set_visibility(screen_name == \"main\")\n    result_screen.set_visibility(screen_name == \"result\")\n\n# ========================================\n# Top screen\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as top_screen:\n    ui.label(\"アプリタイトル\").classes(\"text-4xl font-bold\")\n    ui.button(\"スタート\", on_click=lambda: show_screen(\"main\")).classes(\"bg-blue-500 text-white p-4 rounded-lg\")\n\n# ========================================\n# Main screen\n# ========================================\nwith ui.column().classes(\"w-full min-h-screen items-center p-8 gap-4\") as main_screen:\n    ui.label(\"メイン画面\").classes(\"text-3xl font-bold\")\n\n    # Container for JSON content.\n    content = ui.column().classes(\"gap-2\")\n\n    async def load_data():\n        content.clear()\n        # Fetch data over HTTP.\n        async with httpx.AsyncClient() as client:\n            response = await client.get(\"http://localhost:8080/api/data\")\n            response.raise_for_status()\n        data = response.json()\n\n        # Display content from data here.\n        with content:\n            ui.label(f\"タイトル: {data['title']}\")\n\n    ui.button(\"データ読み込み\", on_click=load_data).classes(\"bg-green-500 text-white p-2 rounded\")\n    ui.button(\"結果へ\", on_click=lambda: show_screen(\"result\")).classes(\"bg-purple-500 text-white p-4 rounded-lg mt-4\")\n\n# ========================================\n# Result screen\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as result_screen:\n    ui.label(\"結果画面\").classes(\"text-3xl font-bold\")\n    ui.label(\"ここに結果を表示\")\n    ui.button(\"もう一度\", on_click=lambda: show_screen(\"top\")).classes(\"bg-blue-500 text-white p-4 rounded-lg\")\n\n# ========================================\n# Initial screen\n# ========================================\nshow_screen(\"top\")\n\nui.run()\n\n\n\n\nテンプレート（簡単版・lambdaなし）を表示\n\"\"\"\nNiceGUI SPA template using named callbacks for screen switching.\n\"\"\"\n\nfrom nicegui import ui, app\nfrom pathlib import Path\nimport json\nimport httpx\n\nDATA_FILE = Path(__file__).parent / \"data.json\"   # Resolve data.json beside this script.\n\n# ========================================\n# API endpoint\n# ========================================\n@app.get(\"/api/data\")\ndef get_data():\n    with open(DATA_FILE, \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\ndef show_top():\n    top_screen.set_visibility(True)\n    main_screen.set_visibility(False)\n    result_screen.set_visibility(False)\n\ndef show_main():\n    top_screen.set_visibility(False)\n    main_screen.set_visibility(True)\n    result_screen.set_visibility(False)\n\ndef show_result():\n    top_screen.set_visibility(False)\n    main_screen.set_visibility(False)\n    result_screen.set_visibility(True)\n\n# ========================================\n# Top screen\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as top_screen:\n    ui.label(\"アプリタイトル\").classes(\"text-4xl font-bold\")\n    ui.button(\"スタート\", on_click=show_main)\n\n# ========================================\n# Main screen\n# ========================================\nwith ui.column().classes(\"w-full min-h-screen items-center p-8 gap-4\") as main_screen:\n    ui.label(\"メイン画面\").classes(\"text-3xl font-bold\")\n\n    # Container for JSON content.\n    content = ui.column().classes(\"gap-2\")\n\n    async def load_data():\n        content.clear()\n        # Fetch data over HTTP.\n        async with httpx.AsyncClient() as client:\n            response = await client.get(\"http://localhost:8080/api/data\")\n            response.raise_for_status()\n        data = response.json()\n\n        # Display content from data here.\n        with content:\n            ui.label(f\"タイトル: {data['title']}\")\n\n    ui.button(\"データ読み込み\", on_click=load_data).classes(\"bg-green-500 text-white p-2 rounded\")\n    ui.button(\"結果へ\", on_click=show_result)\n\n# ========================================\n# Result screen\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as result_screen:\n    ui.label(\"結果画面\").classes(\"text-3xl font-bold\")\n    ui.label(\"ここに結果を表示\")\n    ui.button(\"もう一度\", on_click=show_top)\n\n# ========================================\n# Initial screen\n# ========================================\nshow_top()\n\nui.run()"
   },
   {
-    "objectID": "final-project.html#進め方のおすすめ",
-    "href": "final-project.html#進め方のおすすめ",
+    "objectID": "final-project.html#実装の進め方",
+    "href": "final-project.html#実装の進め方",
     "title": "最終課題",
-    "section": "進め方のおすすめ",
-    "text": "進め方のおすすめ\n\n\nテンプレートを そのまま動かす（3画面の遷移と「データ読み込み」を確認）\ndata.json を自分のテーマの内容に差し替える — コードは触らない\nメイン画面の TODO 部分を、自分のデータ構造に合わせて表示に変える\n画面・ボタンを増やす（NiceGUI のスタイル早見表が武器庫）\nzipにして解凍し直し、まっさらな状態で動作確認 → 提出\n\n\n\n\n\n\n\n詰まったら戻る場所\n\n\n画面の部品 → NiceGUI ／ APIとJSON → 自作API+SPA ／ 画面構成に迷う → Figma のワイヤーフレーム"
+    "section": "実装の進め方",
+    "text": "実装の進め方\n\n\nテンプレートを実行（3画面の遷移と「データ読み込み」を確認）\ndata.json の title と message を変更し、読み込みを確認\n企画に必要なデータ項目と、それを表示・処理するコードを追加\nFigmaの設計をもとに、画面・ボタン・配置を変更\nzipにして別のフォルダに解凍し、動作確認後に提出\n\n\n\n\n\n\n\n参照先\n\n\n\n画面の部品・スタイル：NiceGUI\nAPIとJSON：自作API+SPA\n画面構成：Figma のワイヤーフレーム"
   },
   {
     "objectID": "ideation.html#後期のゴールこれを自分で作る",
     "href": "ideation.html#後期のゴールこれを自分で作る",
     "title": "発想法（発散思考）",
     "section": "後期のゴール：これを自分で作る",
-    "text": "後期のゴール：これを自分で作る\n\n\n\n質問に答えると結果が出る、Webブラウザで動く診断アプリ\n\n画面はPython（NiceGUI）、データは自作API、そして 企画は自分\n\n最終課題で、これを 企画 → 設計 → 実装 まで全部自分の手で作る\n\nそのための道具を、ここから1つずつ集めていく\n最初の道具が今日の 発想法 — 「何を作るか」は才能ではなく テクニックで出せる"
+    "text": "後期のゴール：これを自分で作る\n\n\n\n\n\n質問に答えると結果が出る、Webブラウザで動く診断アプリの例"
+  },
+  {
+    "objectID": "ideation.html#アプリの企画設計実装",
+    "href": "ideation.html#アプリの企画設計実装",
+    "title": "発想法（発散思考）",
+    "section": "アプリの企画・設計・実装",
+    "text": "アプリの企画・設計・実装\n\n\n最終課題は Webアプリの企画・設計・実装\n\n画面はPython（NiceGUI）で作成\nデータは自作APIから取得\n\n発想法で案を出し、作るものを選ぶ"
   },
   {
     "objectID": "ideation.html#section",
     "href": "ideation.html#section",
     "title": "発想法（発散思考）",
     "section": "",
-    "text": "アイデアを広げる3つの発想法"
+    "text": "発想法"
   },
   {
     "objectID": "ideation.html#発散と収束アイデアづくりの2段階",
     "href": "ideation.html#発散と収束アイデアづくりの2段階",
     "title": "発想法（発散思考）",
     "section": "発散と収束：アイデアづくりの2段階",
-    "text": "発散と収束：アイデアづくりの2段階\n\n\nアイデアづくりは 2つのモード を行き来する\n\n発散思考（divergent thinking）— 考えを 広げる。思いつくまま出して、まだ形にしない\n収束思考（convergent thinking）— 出したものを 整理して絞る。まとめて実行案にする\n\n\n\n\n\n\n\n\n\n鉄則：出すときは出すだけ\n\n\n発散の最中に 評価・批判をしない。「広げる」と「絞る」を 同時にやると両方失敗する"
+    "text": "発散と収束：アイデアづくりの2段階\n\n\nアイデアづくりは 2つのモード を行き来する\n\n発散思考（divergent thinking）：考えを 広げる\n収束思考（convergent thinking）：出したものを 整理して絞る\n\n\n\n\n\n\n\n\n\n評価は案を出してから\n\n\n発散の最中は 評価・批判を保留 し、出た案を記録する。実現できるかどうかは、案が集まってから検討する"
   },
   {
     "objectID": "ideation.html#なぜ量なのか",
     "href": "ideation.html#なぜ量なのか",
     "title": "発想法（発散思考）",
     "section": "なぜ「量」なのか",
-    "text": "なぜ「量」なのか\n\n\n「いいアイデアを1個出そう」とすると、手が止まる\n\n頭の中で出す→自分で却下、の無限ループ\n\n発想法はどれも、とにかく数を出させる ための 仕掛け\n\n量の中から、あとで質を 選べばいい\n\n今日の3つの発想法は「数を出す仕掛け」がそれぞれ違う\n\n\n\n\n方法\n仕掛け\n\n\n\n\nブレインストーミング\n会話 の連鎖反応\n\n\nクレイジー8\n時間制限 で追い込む\n\n\n635法\n強制ローテーション で全員から集める"
+    "text": "なぜ「量」なのか\n\n\n最初から良い案だけを出そうとすると、思いついても書く前に却下してしまう\nまず複数の案を出し、あとで比較して選ぶ\n\n\n\n\n方法\n案の出し方\n\n\n\n\nブレインストーミング\n会話の中で他の人の案から連想\n\n\nクレイジー8\n時間を区切って複数のスケッチを作成\n\n\n635法\nシートを回し、前の人の案を発展"
   },
   {
     "objectID": "ideation.html#section-1",
@@ -2741,28 +2881,28 @@
     "href": "ideation.html#ブレインストーミングbrainstorming",
     "title": "発想法（発散思考）",
     "section": "ブレインストーミング（Brainstorming）",
-    "text": "ブレインストーミング（Brainstorming）\n\n\n写真: Jan Dittrich (WMDE), CC BY 4.0, via Wikimedia Commons\n\n\n\nみんなで集まって、テーマについて 自由にアイデアを出し合う 方法\n1950年代、アメリカの広告会社の重役 アレックス・F・オズボーン（Alex F. Osborn、1888–1966）が考案\n\nオズボーンは チェックリスト法 の生みの親でもある\n\n日本では略して ブレスト と呼ばれる"
+    "text": "ブレインストーミング（Brainstorming）\n\nみんなで集まって、テーマについて 自由にアイデアを出し合う 方法\nアメリカの広告会社の アレックス・F・オズボーン（Alex F. Osborn、1888–1966）が考案\n\n1953年の著書『Applied Imagination』などを通じて普及（Buffalo State大学の解説）\nオズボーンは チェックリスト法 の生みの親でもある\n\n日本では略して ブレスト と呼ばれる\n\n\n\n写真: Jan Dittrich (WMDE), CC BY 4.0, via Wikimedia Commons"
   },
   {
     "objectID": "ideation.html#ブレストの4つのルール",
     "href": "ideation.html#ブレストの4つのルール",
     "title": "発想法（発散思考）",
     "section": "ブレストの4つのルール",
-    "text": "ブレストの4つのルール\n\n\n批判厳禁 — どんな意見でも受け入れる\n自由奔放 — ふざけたアイデアも歓迎\n質より量 — たくさん出すことがいちばん大事\n便乗歓迎 — 人の意見に乗っかって新しい案を作る\n\n\n\n\n\n\n\nなぜ「批判厳禁」が最初のルールか\n\n\n一度でも批判されると、全員が 「安全な案」しか言わなくなる。 場の心理的安全性が発想の量を決める"
+    "text": "ブレストの4つのルール\n\n\n批判厳禁：出た案の評価は保留\n自由奔放：常識にとらわれない案も歓迎\n質より量：まず多くの案を記録\n便乗歓迎：他の人の案を組み合わせ、発展\n\n\n\n\n\n\n\nなぜ「批判厳禁」が最初のルールか\n\n\nすぐに否定されると、案を口に出しにくくなる。実現が難しそうな案も、まずは記録する"
   },
   {
     "objectID": "ideation.html#ブレストの進め方",
     "href": "ideation.html#ブレストの進め方",
     "title": "発想法（発散思考）",
     "section": "ブレストの進め方",
-    "text": "ブレストの進め方\n\n\n司会（ファシリテーター、facilitator）がテーマを発表\n思いついた人からどんどん口に出す\n出た案は すべて書き留める（ホワイトボード・付箋）\nある程度出たら、整理・分類へ（→ 収束技法）\n\n\n得意・不得意がはっきりある方法でもある\n\n会話で盛り上がると発想が 連鎖する\n話すのが苦手な人は参加しにくい — その弱点を消すのが後述の 635法"
+    "text": "ブレストの進め方\n\n\n司会（ファシリテーター、facilitator）がテーマを発表\n思いついた人から発言\n出た案を すべて記録（ホワイトボード・付箋）\nある程度出たら、整理・分類へ（→ 収束技法）\n\n\n他の人の発言から、新しい案を連想できる\n発言が一部の人に偏らないよう、司会が参加を促す"
   },
   {
     "objectID": "ideation.html#演習-ブレスト",
     "href": "ideation.html#演習-ブレスト",
     "title": "発想法（発散思考）",
     "section": "演習 ブレスト",
-    "text": "演習 ブレスト\n\n\n4〜5人組でテーマを1つ選び、10分間ブレストせよ。出た案はすべて付箋に書き残すこと（1枚1案）。\n\n\n\n\n\nテーマ\n\n\n\n\nA\n学校の新しいマスコットキャラ\n\n\nB\n新しい未来の靴\n\n\nC\n新しい宇宙人の形\n\n\nD\n教室をもっと快適にする方法\n\n\n\n\n\n\n\n\n\n4つのルールを貼り出しておく\n\n\n批判厳禁・自由奔放・質より量・便乗歓迎 — 途中で誰かが批判を始めたら、指差して止めてよい"
+    "text": "演習 ブレスト\n\n\n4〜5人組でテーマを1つ選び、10分間ブレストせよ。出た案はすべて付箋に書き残すこと（1枚1案）。\n\n\n\n\n\nテーマ\n\n\n\n\nA\n学校の新しいマスコットキャラ\n\n\nB\n新しい未来の靴\n\n\nC\n新しい宇宙人の形\n\n\nD\n教室をもっと快適にする方法\n\n\n\n\n\n\n\n\n\n4つのルールを貼り出しておく\n\n\n批判厳禁・自由奔放・質より量・便乗歓迎。案の評価が始まったら、ルールを確認する"
   },
   {
     "objectID": "ideation.html#section-2",
@@ -2776,21 +2916,21 @@
     "href": "ideation.html#クレイジー8crazy-8s",
     "title": "発想法（発散思考）",
     "section": "クレイジー8（Crazy 8s）",
-    "text": "クレイジー8（Crazy 8s）\n\n\n1枚の紙を8つに折り、8分で8個のアイデアをスケッチする 発想法\n\n「短時間 × 数量 × 視覚化」で一気に広げる\n\nGoogle の デザインスプリント（Design Sprint）で使われることで有名\n\n\n\nA4を3回折ると8枠 — 1枠1分・1アイデア"
+    "text": "クレイジー8（Crazy 8s）\n\n\n1枚の紙を8つに折り、8分で8個のアイデアをスケッチする 発想法\n\n1枠につき1案。時間が来たら次の枠へ移る\n\nGoogle の デザインスプリント（Design Sprint）で使われることで有名\n\n\n\nA4を3回折ると8枠。1枠1分・1アイデア"
   },
   {
     "objectID": "ideation.html#クレイジー8の進め方",
     "href": "ideation.html#クレイジー8の進め方",
     "title": "発想法（発散思考）",
     "section": "クレイジー8の進め方",
-    "text": "クレイジー8の進め方\n\n\nA4用紙を3回折って8つの枠を作る\nテーマを決める（例：「未来の教室の机」）\nタイマーを 8分 にセット（1枠 = 1分）\n各枠に1アイデアずつスケッチ — 絵・図・文字なんでもOK\n8分後、全員で共有して気になる案をピックアップ\n\n\n\n\n\n\n\n「8個」は追い詰めるための数\n\n\n最初の4つは誰でも思いつく普通の案。後半4つを絞り出すとき に飛躍が出る。 うまく描こうとしない — 線と矢印だけで十分伝わる"
+    "text": "クレイジー8の進め方\n\n\nA4用紙を3回折って8つの枠を作成\nテーマを決定（例：「未来の教室の机」）\nタイマーを 8分 にセット（1枠 = 1分）\n各枠に1アイデアずつスケッチ（絵・図・文字いずれも可）\n8分後、全員で共有して気になる案をピックアップ\n\n\n\n\n\n\n\n1案を描き込みすぎない\n\n\n1分経ったら次の案へ移る。絵の完成度より、案の違いが分かることを優先する。線・矢印・短い説明だけでもよい"
   },
   {
     "objectID": "ideation.html#演習-クレイジー4",
     "href": "ideation.html#演習-クレイジー4",
     "title": "発想法（発散思考）",
     "section": "演習 クレイジー4",
-    "text": "演習 クレイジー4\n\n\nブレストで使ったテーマのまま、紙を2回折って 4枠・4分 のクレイジー4を実施せよ（1枠1分、絵でも文字でも可）。\n\n\nA4用紙を2回折って4枠を作る\nタイマーを4分にセット\n1枠1分でスケッチ\n終わったら班内で見せ合い、「これは化けそう」な1枚 に星印\n\n\n\n\n\n\n\n予想してから試す\n\n\n自分の「4枚目」が1枚目より面白くなっているか、あとで見比べてみる"
+    "text": "演習 クレイジー4\n\n\nブレストで使ったテーマのまま、紙を2回折って 4枠・4分 のクレイジー4を実施せよ（1枠1分、絵でも文字でも可）。\n\n\nA4用紙を2回折って4枠を作成\nタイマーを4分にセット\n1枠1分でスケッチ\n班内で共有し、さらに具体化したい1案 に星印\n\n\n\n\n\n\n\n案を比較する\n\n\n1案目と4案目を見比べ、形・使い方・対象者など、どこが変わったかを確認する"
   },
   {
     "objectID": "ideation.html#section-3",
@@ -2804,35 +2944,35 @@
     "href": "ideation.html#法ブレインライティング",
     "title": "発想法（発散思考）",
     "section": "635法（ブレインライティング）",
-    "text": "635法（ブレインライティング）\n\n\nブレストのように話し合わず、無言で紙に書いて回す 発想法\n\n6人 × 3アイデア × 5分 で1ラウンド → 「635法」（6-3-5 Method）\nブレインライティング（Brainwriting）とも呼ばれる\n\n前の人のアイデアを見て書くので、量が出るだけでなく 人の案を発展させ、育てる ことができる"
+    "text": "635法（ブレインライティング）\n\n\nブレストのように話し合わず、無言で紙に書いて回す 発想法\n\n「635」（6-3-5 Method）は 6人・3案・5回の発展\n書いて案を出す ブレインライティング（brainwriting）の一種\n\n最初に各自3案を書き、シートを回して他の5人が順に発展させる\n時間の目安は 1巡5分。最初の記入を含めて6巡"
   },
   {
     "objectID": "ideation.html#法のワークシート",
     "href": "ideation.html#法のワークシート",
     "title": "発想法（発散思考）",
     "section": "635法のワークシート",
-    "text": "635法のワークシート\n\n\n\n\n\n案1\n案2\n案3\n\n\n\n\n1巡目（自分）\n通学かばんを軽くする\n…\n…\n\n\n2巡目（隣の人）\n↑を発展：教科書は学校置き\n…\n…\n\n\n3巡目\n…\n…\n…\n\n\n4巡目\n…\n…\n…\n\n\n5巡目\n…\n…\n…\n\n\n6巡目\n…\n…\n…\n\n\n\n\n上の行の案を見て、発展させても、まったく別の案でもよい"
+    "text": "635法のワークシート\n\n\n\n\n\n案1\n案2\n案3\n\n\n\n\n1巡目（自分）\n通学かばんを軽くする\n…\n…\n\n\n2巡目（隣の人）\n↑を発展：教科書は学校置き\n…\n…\n\n\n3巡目\n…\n…\n…\n\n\n4巡目\n…\n…\n…\n\n\n5巡目\n…\n…\n…\n\n\n6巡目\n…\n…\n…\n\n\n\n\n上の行の案を読み、使い方を変えたり、条件や具体例を加えたりして発展させる"
   },
   {
     "objectID": "ideation.html#質問30分で何案出る",
     "href": "ideation.html#質問30分で何案出る",
     "title": "発想法（発散思考）",
     "section": "質問：30分で何案出る？",
-    "text": "質問：30分で何案出る？\n\n\n6人 × 3案 × 5分を6巡すると——\n\n\n\n\n\n\n\n\n答え：108案\n\n\n6人 × 3案 × 6巡 = 108案（約30分）。 ブレストで108案は、まず出ない\n\n\n\n\n\n\n話す必要がないので 全員が平等に 出せる\n発言が苦手でも紙の上なら書ける\n「静かに集中して考えたい」チームに向く\n\n\n\n\n\n\n\n\n\n「5分」は実は誤解から広まった\n\n\n考案者 Bernd Rohrbach の原案は「3案 × 5回 発展させる」だったが、のちに「5分」と混同されて広まった（川路 2024）"
+    "text": "質問：30分で何案出る？\n\n\n6人が1巡に3案ずつ記入し、1巡5分で6巡すると、記入欄は何件埋まるか\n\n\n\n\n\n\n\n\n答え：108案\n\n\n6人 × 3案 × 6巡 = 108件（30分）。最初の18案と、それを発展させた90件を含む\n\n\n\n\n\n\n全員に同じ数の記入欄がある\n発言の順番を待たずに書ける\n\n\n\n\n\n\n\n\n\n「5分」は実は誤解から広まった\n\n\n考案者 Bernd Rohrbach の原案は「3案 × 5回 発展させる」だったが、のちに「5分」と混同されて広まった（川路 2024）"
   },
   {
     "objectID": "ideation.html#演習-635法",
     "href": "ideation.html#演習-635法",
     "title": "発想法（発散思考）",
     "section": "演習 635法",
-    "text": "演習 635法\n\n\n6人組（足りなければ4〜5人）でテーマを1つ選び、635法を3巡実施せよ。1巡5分、1巡につき3案。\n\n\n\n\n\nテーマ\n\nテーマ\n\n\n\n\nE\n学校をもっと楽しくするには\nK\nスマホで勉強を楽しくするには\n\n\nF\n教室の暑さ・寒さを解決する方法\nL\n未来の授業スタイル\n\n\nG\n昼休みをもっと充実させる方法\nM\n学校の新しいロゴデザイン\n\n\nH\n勉強の「やる気が出る」工夫\nN\n新しい部活動\n\n\nI\n楽しくテスト勉強をする方法\nO\n「未来のノート」のデザイン\n\n\nJ\n授業中に眠くならない方法\nP\n1日をもっと便利にするアプリ\n\n\n\n\n\n\n\n\n\n上の行を読んでから書く\n\n\n白紙に書くのは1巡目だけ。2巡目からは 前の人の案を育てる のが635法の本体"
+    "text": "演習 635法\n\n\n6人組（足りなければ4〜5人）でテーマを1つ選び、635法を3巡実施せよ（1巡5分・3案。2巡目からは前の人の案を発展）。\n\n\n\n\n\nテーマ\n\nテーマ\n\n\n\n\nE\n学校をもっと楽しくするには\nK\nスマホで勉強を楽しくするには\n\n\nF\n教室の暑さ・寒さを解決する方法\nL\n未来の授業スタイル\n\n\nG\n昼休みをもっと充実させる方法\nM\n学校の新しいロゴデザイン\n\n\nH\n勉強の「やる気が出る」工夫\nN\n新しい部活動\n\n\nI\n楽しくテスト勉強をする方法\nO\n「未来のノート」のデザイン\n\n\nJ\n授業中に眠くならない方法\nP\n1日をもっと便利にするアプリ"
   },
   {
     "objectID": "ideation.html#まとめ3つの発想法",
     "href": "ideation.html#まとめ3つの発想法",
     "title": "発想法（発散思考）",
     "section": "まとめ：3つの発想法",
-    "text": "まとめ：3つの発想法\n\n\n\n\n\n\n\n\n\n方法\n発想のしかた\n向いている人・場面\n\n\n\n\nブレインストーミング\n話しながら 出す\n話すのが得意／その場のノリで広げたい\n\n\nクレイジー8\nスケッチ で連想する\n直感・ビジュアル派／1人でもできる\n\n\n635法\n無言で書いて 回す\n発言が苦手な人がいる／全員から集めたい\n\n\n\n\nどれも狙いは同じ：評価を後回しにして、量を出す\n出した108案は、そのままでは使えない\n\n次は 収束技法（KJ法・アイデアマップ） で 整理する"
+    "text": "まとめ：3つの発想法\n\n\n\n\n\n\n\n\n\n方法\n発想のしかた\n向いている人・場面\n\n\n\n\nブレインストーミング\n話しながら 出す\n会話から連想を広げたい\n\n\nクレイジー8\nスケッチ で連想する\n形や配置を考えたい／1人でもできる\n\n\n635法\n無言で書いて 回す\n発言が苦手な人がいる／全員から集めたい\n\n\n\n\n\n\n\n\n\n案を出したあと\n\n\n評価を保留して案を出し、収束技法（KJ法・アイデアマップ） で整理する"
   },
   {
     "objectID": "key-typing.html#キータイピングを速めよう",
@@ -2916,7 +3056,7 @@
     "href": "matplotlib.html#前回のおさらい",
     "title": "matplotlib入門",
     "section": "前回のおさらい",
-    "text": "前回のおさらい\n\n\n\n\n\n\n\nまず可視化せよ\n\n\n\n\n\n\n\n見ればわかる。見なければ見逃す — アンスコム、Datasaurus\nグラフは ウソをつく — y軸切断、期間チェリーピック\nここまでは 読む側 の話。今日から 描く側 へ\n\n道具は matplotlib。1枚のグラフを「資料に載せられるレベル」まで育てる"
+    "text": "前回のおさらい\n\n\nまず描く（Always plot your data first.）\n\n統計量だけでは、データの形は分からない（アンスコム、Datasaurus）\n\n描き方で印象が変わる（y軸の切断、期間のチェリーピック）\n前回はグラフを 読む側、今回は 描く側\n\n道具は matplotlib。1枚のグラフを、資料に載せられる形まで仕上げる"
   },
   {
     "objectID": "matplotlib.html#matplotlib-とは",
@@ -2944,7 +3084,7 @@
     "href": "matplotlib.html#東京の気温変化を図示する",
     "title": "matplotlib入門",
     "section": "東京の気温変化を図示する",
-    "text": "東京の気温変化を図示する\n\n\n気象庁の実測データ：東京の月別平均気温\n\n1900年 と 2024年、124年離れた2つの年\n\n材料データ（以下をコピペ）：\n\nimport numpy as np\n\nmonths = np.arange(1, 13)    # 1〜12月\ntemp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\n\n\n\n\n\n出典\n\n\n気象庁「過去の気象データ検索」東京（月平均気温）\n\n\n\n\nここから グラフを育てていく"
+    "text": "東京の気温変化を図示する\n\n\n気象庁の実測データ：東京の月別平均気温\n\n1900年 と 2024年、124年離れた2つの年\n\n材料データ（以下をコピペ）：\n\nimport numpy as np\n\nmonths = np.arange(1, 13)    # 1〜12月\ntemp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\n\n\n\n\n\n出典\n\n\n気象庁「過去の気象データ検索」東京（月平均気温）\n\n\n\n\nここから、このグラフに 1つずつ手を加えていく"
   },
   {
     "objectID": "matplotlib.html#まずは点のプロット",
@@ -3000,7 +3140,7 @@
     "href": "matplotlib.html#peek-axis-code",
     "title": "matplotlib入門",
     "section": "表示範囲の指定（xlim / ylim）",
-    "text": "表示範囲の指定（xlim / ylim）\n\n\nplt.xlim(a, b) / plt.ylim(a, b) で軸の範囲を固定\n何も指定しないと データの範囲＋少し余白 が自動で選ばれる\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nmonths = np.arange(1, 13)\ntemp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\nplt.plot(months, temp_1900, \"o-\", label=\"1900年\")\nplt.plot(months, temp_2024, \"o-\", label=\"2024年\")\nplt.legend()\nplt.xlim(1, 12)        # x軸: 1〜12月\nplt.ylim(0, 35)        # y軸: あえて0から見せる\nplt.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ny軸の罠（描く側の責任）\n\n\n\n範囲をデータに合わせると 小さな変化が大きく見える\n比較するグラフは y軸を揃える か 0から見せる のが原則"
+    "text": "表示範囲の指定（xlim / ylim）\n\n\nplt.xlim(a, b) / plt.ylim(a, b) で軸の範囲を固定\n何も指定しないと データの範囲＋少し余白 が自動で選ばれる\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nmonths = np.arange(1, 13)\ntemp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\nplt.plot(months, temp_1900, \"o-\", label=\"1900年\")\nplt.plot(months, temp_2024, \"o-\", label=\"2024年\")\nplt.legend()\nplt.xlim(1, 12)        # x軸: 1〜12月\nplt.ylim(0, 35)        # y軸: あえて0から見せる\nplt.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ny軸の範囲は描く側の責任\n\n\n\n範囲をデータに合わせると 小さな変化が大きく見える\n比較するグラフは y軸を揃える か 0から見せる のが原則"
   },
   {
     "objectID": "matplotlib.html#tweak-軸の範囲で印象を操る",
@@ -3017,11 +3157,11 @@
     "text": "複数のグラフを並べる（subplot）\n\n\nplt.subplot(行数, 列数, 場所番号) で碁盤の目状に並べる\n場所番号は 1始まり、左上から右へ\n例：plt.subplot(2, 2, 3) は2×2の3番目（左下）\n\n\n1 │ 2 ─┼─ 3 │ 4\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nmonths = np.arange(1, 13)\ntemp_1900 = np.array([1.6, 3.1, 5.7, 11.4, 17.3, 19.3, 22.8, 26.1, 22.6, 16.5, 11.0, 5.5])\ntemp_2024 = np.array([7.1, 8.0, 9.6, 17.1, 20.0, 23.1, 28.7, 29.0, 26.6, 20.6, 13.7, 8.1])\n\nplt.subplot(1, 2, 1)        # 1行2列の左\nplt.plot(months, temp_1900, \"o-\")\nplt.ylim(0, 35)             # 並べて比較するなら軸を揃える\nplt.title(\"1900年\")\n\nplt.subplot(1, 2, 2)        # 1行2列の右\nplt.plot(months, temp_2024, \"o-\")\nplt.ylim(0, 35)\nplt.title(\"2024年\")\n\nplt.tight_layout()          # 余白を自動調整\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n重ねる vs 並べる\n\n\n\n直接比較したい → 重ねる（さっきの凡例つき1枚）\n形をそれぞれ見たい・線が多すぎる → 並べる（subplot）"
   },
   {
-    "objectID": "matplotlib.html#ここまでの成果図は育てる",
-    "href": "matplotlib.html#ここまでの成果図は育てる",
+    "objectID": "matplotlib.html#ここまでで仕上げたグラフ",
+    "href": "matplotlib.html#ここまでで仕上げたグラフ",
     "title": "matplotlib入門",
-    "section": "ここまでの成果：図は「育てる」",
-    "text": "ここまでの成果：図は「育てる」\n\n\n\n\n\n\n\n\n\n\n\n同じデータ。でも伝わり方は別物\n育てた手順：点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲"
+    "section": "ここまでで仕上げたグラフ",
+    "text": "ここまでで仕上げたグラフ\n\n\n\n\n\n\n\n\n\n\n\n同じデータ。でも伝わり方は別物\n手を加えた順：点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲"
   },
   {
     "objectID": "matplotlib.html#散布図で150年を一気に見る",
@@ -3059,11 +3199,11 @@
     "text": "plt早見表\n\n\n\n\n操作\nコード\n\n\n\n\n点だけ\nplt.plot(x, y, \"o\")\n\n\n折れ線\nplt.plot(x, y)\n\n\n棒グラフ\nplt.bar(x, y)\n\n\n散布図\nplt.scatter(x, y)\n\n\nヒストグラム\nplt.hist(x)\n\n\n縦線\nplt.axvline(x)\n\n\n軸の範囲\nplt.xlim(a, b) / plt.ylim(a, b)\n\n\n軸ラベル\nplt.xlabel(\"...\") / plt.ylabel(\"...\")\n\n\nタイトル\nplt.title(\"...\")\n\n\n凡例\nplt.legend()（要 label=...）\n\n\nグリッド\nplt.grid(True)\n\n\n並べる\nplt.subplot(行, 列, 番号)\n\n\nCSV読み込み\nnp.loadtxt(\"file.csv\", delimiter=\",\", skiprows=1)"
   },
   {
-    "objectID": "matplotlib.html#演習謎のデータをプロットせよ",
-    "href": "matplotlib.html#演習謎のデータをプロットせよ",
+    "objectID": "matplotlib.html#演習datasaurus-のデータを散布図にする",
+    "href": "matplotlib.html#演習datasaurus-のデータを散布図にする",
     "title": "matplotlib入門",
-    "section": "演習：謎のデータをプロットせよ",
-    "text": "演習：謎のデータをプロットせよ\n\n\n前回見た Datasaurus Dozen 13個のうちの1つ（恐竜ではない）を散布図にして、統計量（\\(\\bar{x} = 54.27\\)、\\(\\bar{y} = 47.84\\)、\\(r = -0.06\\)）からは見えない正体を確かめよ。\n\n\ndatasaurus_star.csv をダウンロードして data/ フォルダに置く\nnp.loadtxt で読み込む（1行目はヘッダなので skiprows=1）\ndata[:, 0] と data[:, 1] で x, y を取り出す\nplt.scatter でプロットし、軸ラベル・タイトルをつける\n\n\n\n解答例を見る\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\ndata = np.loadtxt(\"data/datasaurus_star.csv\", delimiter=\",\", skiprows=1)\nx = data[:, 0]\ny = data[:, 1]\n\nplt.scatter(x, y)\nplt.xlabel(\"x\")\nplt.ylabel(\"y\")\nplt.title(\"statistics are not enough\")\nplt.grid(True)\nplt.show()"
+    "section": "演習：Datasaurus のデータを散布図にする",
+    "text": "演習：Datasaurus のデータを散布図にする\n\n\n前回見た Datasaurus Dozen 13個のうちの1つ（恐竜ではない）を散布図にして、統計量（\\(\\bar{x} = 54.27\\)、\\(\\bar{y} = 47.84\\)、\\(r = -0.06\\)）からは分からないデータの形を確かめよ。\n\n\ndatasaurus_star.csv をダウンロードして data/ フォルダに置く\nnp.loadtxt で読み込む（1行目はヘッダなので skiprows=1）\ndata[:, 0] と data[:, 1] で x, y を取り出す\nplt.scatter でプロットし、軸ラベル・タイトルをつける\n\n\n\n解答例を見る\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\ndata = np.loadtxt(\"data/datasaurus_star.csv\", delimiter=\",\", skiprows=1)\nx = data[:, 0]\ny = data[:, 1]\n\nplt.scatter(x, y)\nplt.xlabel(\"x\")\nplt.ylabel(\"y\")\nplt.title(\"statistics are not enough\")\nplt.grid(True)\nplt.show()"
   },
   {
     "objectID": "matplotlib.html#演習アンスコムの四重奏を再現",
@@ -3084,7 +3224,7 @@
     "href": "matplotlib.html#まとめ",
     "title": "matplotlib入門",
     "section": "まとめ",
-    "text": "まとめ\n\n\nmatplotlib：「東京は暑くなったのか」を1枚のグラフに育てた\n\n点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲\n散布図で150年、ヒストグラムで分布\n\n装飾の優先順位：軸ラベル・凡例・タイトル — 揃っていない図は資料に載せない\nデータの可視化の冒頭の謎（1日だけの大きな山）の正体は、APIデータを可視化するで明かされる"
+    "text": "まとめ\n\n\nmatplotlib：「東京は暑くなったのか」を1枚のグラフにまとめた\n\n点 → 線 → 重ねる＋凡例 → ラベル・タイトル → 軸の範囲\n散布図で150年、ヒストグラムで分布\n\n装飾の優先順位：軸ラベル・凡例・タイトル — 揃っていない図は資料に載せない"
   },
   {
     "objectID": "matplotlib.html#参考リンク",
@@ -3126,21 +3266,21 @@
     "href": "numpy.html#基本的な初期化",
     "title": "NumPy入門",
     "section": "基本的な初期化",
-    "text": "基本的な初期化\n\n\nリストを np.array() に渡すと、NumPy配列になる\n\nimport numpy as np\n\nli = [1, 2, 3, 4]\narr = np.array(li)\n\narr = np.array([1, 2, 3, 4])    # 同じ\narr = np.array(range(1, 5))     # 同じ。実際には後述のarangeがよく使われる\n\n\n\n\n\n\n変数名を list にしない\n\n\nlist = [1, 2, 3] と書くと組み込みの list 型が上書きされ、 以降 list(range(5)) などが謎のエラーになります。li や numbers を使いましょう。"
+    "text": "基本的な初期化\n\n\nリストを np.array() に渡すと、NumPy配列になる\n\nimport numpy as np\n\nli = [1, 2, 3, 4]\narr = np.array(li)\n\narr = np.array([1, 2, 3, 4])    # 同じ\narr = np.array(range(1, 5))     # 同じ。実際には後述のarangeがよく使われる\n\n\n\n\n\n\n変数名を list にしない\n\n\nlist = [1, 2, 3] と書くと組み込みの list 型が上書きされ、 以降 list(range(5)) などが TypeError: 'list' object is not callable になります。li や numbers を使いましょう。"
   },
   {
     "objectID": "numpy.html#初期化ヘルパー関数",
     "href": "numpy.html#初期化ヘルパー関数",
     "title": "NumPy入門",
     "section": "初期化（ヘルパー関数）",
-    "text": "初期化（ヘルパー関数）\n\n\n下記のよく使う数列は、ヘルパー関数で一撃生成\n特にrandom 系は強力\n\nテスト用データを作るときに非常によく使われる\n\n\nimport numpy as np\n\nnp.zeros(3)          # 0.0が3つの要素で初期化。 [0. 0. 0. ] \nnp.ones(5)           # 1.0が5つの要素で初期化。 [1. 1. 1. 1. 1.]\nnp.full(4, 7)        # 7が4つの要素で初期化。 [7 7 7 7]\n\n# arrangeではなくarange（\"a range\" = ある範囲）\nnp.arange(4)         # [0 1 2 3]\nnp.arange(1, 5)      # [1 2 3 4]\nnp.arange(1, 10, 2)  # [1 3 5 7 9]\n\nnp.random.rand(3)           # [0.0, 1.0) の一様乱数 3要素\nnp.random.randint(10)       # 0〜9のランダムな整数\nnp.random.randint(1, 7, 3)  # 1〜6のランダムな整数 3要素\n\narr = np.arange(10)\nnp.random.shuffle(arr)      # 配列をランダムに並べ替え（破壊的）"
+    "text": "初期化（ヘルパー関数）\n\n\n下記のよく使う数列は、ヘルパー関数1つで作れる\n特にrandom 系は強力\n\nテスト用データを作るときに非常によく使われる\n\n\nimport numpy as np\n\nnp.zeros(3)          # 0.0が3つの要素で初期化。 [0. 0. 0. ] \nnp.ones(5)           # 1.0が5つの要素で初期化。 [1. 1. 1. 1. 1.]\nnp.full(4, 7)        # 7が4つの要素で初期化。 [7 7 7 7]\n\n# arrangeではなくarange（\"a range\" = ある範囲）\nnp.arange(4)         # [0 1 2 3]\nnp.arange(1, 5)      # [1 2 3 4]\nnp.arange(1, 10, 2)  # [1 3 5 7 9]\n\nnp.random.rand(3)           # [0.0, 1.0) の一様乱数 3要素\nnp.random.randint(10)       # 0〜9のランダムな整数\nnp.random.randint(1, 7, 3)  # 1〜6のランダムな整数 3要素\n\narr = np.arange(10)\nnp.random.shuffle(arr)      # 配列をランダムに並べ替え（破壊的）"
   },
   {
     "objectID": "numpy.html#要素へのアクセス",
     "href": "numpy.html#要素へのアクセス",
     "title": "NumPy入門",
     "section": "要素へのアクセス",
-    "text": "要素へのアクセス\n\n\nアクセス方法はlistと同じ\nスライスにも対応\n\nimport numpy as np\n\narr = np.array([1, 2, 3, 4])\n\nprint(arr[0])    # 先頭の要素（1）\nprint(arr[1])    # 2番目の要素（2）\nprint(arr[-1])   # 最後の要素（4）\narr[0] = 10      # 1番目の要素を10に変更\n\n# スライス\nprint(arr[1:3])  # 2番目から3番目まで（[2, 3]）\nprint(arr[:2])   # 先頭から2番目まで（[1, 2]）\nprint(arr[2:])   # 3番目から最後まで（[3, 4]）"
+    "text": "要素へのアクセス\n\n\nアクセス方法はlistと同じ\nスライスにも対応\n\nimport numpy as np\n\narr = np.array([1, 2, 3, 4])\n\nprint(arr[0])    # 先頭の要素（1）\nprint(arr[1])    # 2番目の要素（2）\nprint(arr[-1])   # 最後の要素（4）\narr[0] = 10      # 1番目の要素を10に変更\n\n# スライス\nprint(arr[1:3])  # 2番目から3番目まで（[2 3]）\nprint(arr[:2])   # 先頭から2番目まで（[10  2]。先頭は直前に10へ変更済み）\nprint(arr[2:])   # 3番目から最後まで（[3 4]）"
   },
   {
     "objectID": "numpy.html#型",
@@ -3161,7 +3301,7 @@
     "href": "numpy.html#本当に速いの-100万要素で実測",
     "title": "NumPy入門",
     "section": "本当に速いの？ — 100万要素で実測",
-    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 33.1 ミリ秒\nndarray:          0.65 ミリ秒\n→ 約 51 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
+    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 23.0 ミリ秒\nndarray:          0.29 ミリ秒\n→ 約 79 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
   },
   {
     "objectID": "numpy.html#その他長さやアクセス方法",
@@ -3217,147 +3357,161 @@
     "href": "payoff-matrix.html#section",
     "title": "ペイオフマトリクス",
     "section": "",
-    "text": "アイデアを評価して、優先順位を決める"
+    "text": "ペイオフマトリクス"
   },
   {
-    "objectID": "payoff-matrix.html#あるある",
-    "href": "payoff-matrix.html#あるある",
+    "objectID": "payoff-matrix.html#実装する案を選ぶ",
+    "href": "payoff-matrix.html#実装する案を選ぶ",
     "title": "ペイオフマトリクス",
-    "section": "あるある",
-    "text": "あるある\n\n\n研究テーマを決めるとき、どれも面白そうで 決められない\n「あれもこれも実装したい」と欲張って、結局完成しない\nチームで作るとき、メンバーの 意見がバラバラ\n時間をかけて作ったのに「誰も使わない機能」だった\n\n\n\n\n\n\n\nアイデアは出すほど良い。でも全部は作れない\n\n\n発散（ブレスト）→ 整理（KJ法）ときて、最後に必要なのは 「何から手をつけるか」を決める技術"
+    "section": "実装する案を選ぶ",
+    "text": "実装する案を選ぶ\n\n\n研究テーマを決めるとき、どれも面白そうで 決められない\n「あれもこれも実装したい」と欲張って、結局完成しない\nチームで作るとき、メンバーの 意見がバラバラ\n時間をかけて作ったのに「誰も使わない機能」だった\n\n\n\n\n\n\n\n優先順位\n\n\n使える時間と、実現したときの効果を比べて、何から着手するかを決める"
   },
   {
     "objectID": "payoff-matrix.html#payoff-見返り",
     "href": "payoff-matrix.html#payoff-見返り",
     "title": "ペイオフマトリクス",
     "section": "Payoff = 見返り",
-    "text": "Payoff = 見返り\n\n\nペイオフ（payoff）= 努力や投資に対して得られる 成果・見返り\n\npay（支払う・報いる）+ off（完了・結果）\n毎日勉強した payoff = 試験でいい点 ／ 投資した payoff = 利益\n\nペイオフマトリクス（Payoff Matrix）は、案を2軸で評価する表\n\n横軸：どれくらい 手間（effort）がかかるか\n縦軸：どれくらい 効果（payoff）があるか\n要するに 「コスパが良いのはどれか」を見える化する図\n\n無理やり日本語にすると「費用対効果マトリクス」「コスパ分析図」\n\n\n\n\n\n\n\n実際の開発現場でも\n\n\nIT企業では新機能・バグ修正・改善案が毎日生まれるが、エンジニアの時間は有限。 「直感」ではなくこの種の アイデア評価手法 で開発順を決めている"
+    "text": "Payoff = 見返り\n\n\nペイオフ（payoff）= 努力や投資に対して得られる 成果・見返り\nこの資料の ペイオフマトリクス（payoff matrix）は、案を2軸で評価する図\n\n横軸：どれくらい 手間（effort）がかかるか\n縦軸：どれくらい 効果（payoff）があるか\n効果と手間のマトリクス（impact–effort matrix）とも呼ばれる\n\n\n\n\n\n\n\n\n用語の使い分け\n\n\nゲーム理論の payoff matrix は、各参加者の選択に対する利得を並べた表を指す。ここでは開発案の優先順位を考える図として使う"
   },
   {
     "objectID": "payoff-matrix.html#題材学校生活をよくするスマホアプリ",
     "href": "payoff-matrix.html#題材学校生活をよくするスマホアプリ",
     "title": "ペイオフマトリクス",
     "section": "題材：学校生活をよくするスマホアプリ",
-    "text": "題材：学校生活をよくするスマホアプリ\n\n\nここからの題材 — 「学校生活をより良くするスマホアプリ」のアイデアたち\n\nこの題材はこのままワイヤーフレーム・実装・最終課題まで 使い続ける\n\n\n\n\n\n\nアイデア\n\nアイデア\n\n\n\n\n1\n時間割アプリ\n5\n図書館の蔵書検索\n\n\n2\n課題管理アプリ\n6\nサークル連絡ツール\n\n\n3\n食堂の混雑状況確認\n7\nテスト範囲共有\n\n\n4\n教室の空き状況確認\n8\n落とし物掲示板\n\n\n\n\nさて、どれを優先すべきか？ — 直感ではなく、図で決める"
+    "text": "題材：学校生活をよくするスマホアプリ\n\n\n学校生活をよくするアプリの案について、手間と効果を比較する\n\n\n\n\n\nアイデア\n\nアイデア\n\n\n\n\n1\n時間割アプリ\n5\n図書館の蔵書検索\n\n\n2\n課題管理アプリ\n6\nサークル連絡ツール\n\n\n3\n食堂の混雑状況確認\n7\nテスト範囲共有\n\n\n4\n教室の空き状況確認\n8\n落とし物掲示板\n\n\n\n\n同じ案でも、必要な機能や入手できるデータによって手間が変わる"
   },
   {
     "objectID": "payoff-matrix.html#マトリクスの構造2軸-4象限",
     "href": "payoff-matrix.html#マトリクスの構造2軸-4象限",
     "title": "ペイオフマトリクス",
     "section": "マトリクスの構造：2軸 → 4象限",
-    "text": "マトリクスの構造：2軸 → 4象限\n\n\n\n\n\n\n\n\n\n\n\n各アイデアを「手間」と「効果」で見て、4つの部屋のどれか に置くだけ\n英語では左上から時計回りに Quick Wins / Big Projects / Time Sinks / Fill-ins"
+    "text": "マトリクスの構造：2軸 → 4象限\n\n\n\n\n\n\n\n\n\n\n\n左上から時計回りに Quick Wins・Big Projects・Time Sinks・Fill-ins。軸の向きを確認してから配置する"
   },
   {
     "objectID": "payoff-matrix.html#つの象限優先度が高い側",
     "href": "payoff-matrix.html#つの象限優先度が高い側",
     "title": "ペイオフマトリクス",
     "section": "4つの象限（優先度が高い側）",
-    "text": "4つの象限（優先度が高い側）\n\n\n\n\n\n\n\n\n\n\nすぐやるべき ⭐⭐⭐\n時間かかるけど重要 ⭐⭐\n\n\n\n\n条件\n手間 小 × 効果 大\n手間 大 × 効果 大\n\n\n目安\n1週間以内で作れて、多くの人が使う\n1ヶ月以上かかるが、成功すれば画期的\n\n\n方針\n即着手\n計画を立てて 段階的に\n\n\n例\n時間割表示（カレンダー連携なら数日・全員が毎日使う）\n課題管理 + 通知の統合（2〜3ヶ月・課題忘れが消える）\n\n\n例\n食堂メニュー表示（献立表を出すだけ・毎日見る）\n食堂混雑予測AI（センサー + 機械学習で数ヶ月）"
+    "text": "4つの象限（優先度が高い側）\n\n\n\n\n\n\n\n\n\n\n優先して着手\n計画して進める\n\n\n\n\n条件\n手間 小 × 効果 大\n手間 大 × 効果 大\n\n\n目安\n既存の技術・データで作れ、利用者の役に立つ\n効果は大きいが、技術の習得やデータ収集が必要\n\n\n方針\n即着手\n計画を立てて 段階的に\n\n\n例\n時間割表示（時間割データがあり、表示だけを作る場合）\n課題管理 + 自動通知（通知の仕組みも作る場合）\n\n\n例\n食堂メニュー表示（献立表が入手できる場合）\n食堂混雑予測AI（混雑データの収集から必要な場合）"
   },
   {
     "objectID": "payoff-matrix.html#つの象限優先度が低い側",
     "href": "payoff-matrix.html#つの象限優先度が低い側",
     "title": "ペイオフマトリクス",
     "section": "4つの象限（優先度が低い側）",
-    "text": "4つの象限（優先度が低い側）\n\n\n\n\n\n\n\n\n\n\n余裕があれば ⭐\n後回し ❌\n\n\n\n\n条件\n手間 小 × 効果 小\n手間 大 × 効果 小\n\n\n目安\n数時間で作れるが、あると嬉しい程度\n1ヶ月以上かかるのにニッチ・代替がある\n\n\n方針\n時間が余ったら／練習用\n基本的に作らない。仕様を見直す\n\n\n例\nテーマカラー変更（色選択を足すだけ）\n3Dバーチャル校舎ツアー（数ヶ月かけて一度見たら終わり）\n\n\n例\n誕生日通知（使う人が限られる）\nAI自動レポート作成（学習にならない・倫理的問題）"
+    "text": "4つの象限（優先度が低い側）\n\n\n\n\n\n\n\n\n\n\n余裕があれば\n後回し\n\n\n\n\n条件\n手間 小 × 効果 小\n手間 大 × 効果 小\n\n\n目安\n簡単に作れるが、解決できる問題は小さい\n手間が大きく、利用者への効果は小さい\n\n\n方針\n時間が余ったら／練習用\n基本的に作らない。仕様を見直す\n\n\n例\nテーマカラー変更（利用者からの要望が少ない場合）\n3D校舎ツアー（既存の案内図で十分な場合）\n\n\n例\n誕生日表示（利用目的との関連が薄い場合）\n独自の画面アニメーション（制作に時間がかかり、操作性も変わらない場合）"
   },
   {
     "objectID": "payoff-matrix.html#使い方の手順",
     "href": "payoff-matrix.html#使い方の手順",
     "title": "ペイオフマトリクス",
     "section": "使い方の手順",
-    "text": "使い方の手順\n\n\nリストアップ — ブレスト・KJ法で残ったアイデアを全部書き出す\n評価軸を確認 — 手間 =（開発時間・技術難易度）、効果 =（使う人数 × 頻度 × 解決の大きさ）\n議論しながら配置 — 付箋をホワイトボードの4象限に貼っていく\n優先順位を決定 — 「すぐやるべき」から着手、「後回し」はカット\n\n\n\n\n\n\n\n議論のコツ\n\n\n\n「自分が使いたい」ではなく 「多くの人が使うか」 で判断\n技術的難易度は正直に（できそうな気がする ≠ 簡単）\n似たものが世の中に既にないか確認（車輪の再発明を避ける）"
+    "text": "使い方の手順\n\n\nリストアップ：候補の案を記入\n評価軸の確認：手間は開発時間・技術難易度、効果は利用人数・頻度・困りごとの改善度で検討\n配置：理由を話し合いながら、付箋を4象限に配置\n優先順位の決定：効果が大きく手間が小さい案を優先し、他の案は実施時期や仕様を検討\n\n\n\n\n\n\n\n議論のコツ\n\n\n\n誰の、どの困りごとを解決するかを確認\n技術的難易度は正直に（できそうな気がする ≠ 簡単）\n似たものが世の中に既にないか確認（車輪の再発明を避ける）"
   },
   {
     "objectID": "payoff-matrix.html#よくある失敗",
     "href": "payoff-matrix.html#よくある失敗",
     "title": "ペイオフマトリクス",
     "section": "よくある失敗",
-    "text": "よくある失敗\n\n\n\n\n\n\n\n\n\n失敗\n何が起きるか\n教訓\n\n\n\n\n「かっこいい」機能に飛びつく（AR・AIチャットボット）\n難しすぎて完成しない\nまず基本機能、拡張は後\n\n\n「自分が欲しい」を優先（自分だけの特殊ツール）\nユーザーが自分しかいない\n多数の共通の困りごとを解く\n\n\n全部やろうとする（10機能を同時進行）\n全部が中途半端\n「すぐやるべき」に集中、1個ずつ完成\n\n\n\n\n\n\n\n\n\n完成しない最大の原因は「欲張り」\n\n\n機能を増やす判断は簡単で、減らす判断は難しい。マトリクスは 減らす勇気を出すための道具"
+    "text": "よくある失敗\n\n\n\n\n\n\n\n\n\n失敗\n何が起きるか\n教訓\n\n\n\n\n「かっこいい」機能に飛びつく（AR・AIチャットボット）\n難しすぎて完成しない\nまず基本機能、拡張は後\n\n\n利用者の困りごとを未確認\n想定した機能が必要とされない\n利用者に使う場面を確認\n\n\n全部やろうとする（10機能を同時進行）\n全部が中途半端\n「すぐやるべき」に集中、1個ずつ完成\n\n\n\n\n\n\n\n\n\n機能を絞る\n\n\n期限内に完成させるため、最初に必要な機能と、あとから追加する機能を分ける"
   },
   {
-    "objectID": "payoff-matrix.html#実践例アプリ案10個を配置すると",
-    "href": "payoff-matrix.html#実践例アプリ案10個を配置すると",
+    "objectID": "payoff-matrix.html#配置例の条件",
+    "href": "payoff-matrix.html#配置例の条件",
     "title": "ペイオフマトリクス",
-    "section": "実践例：アプリ案10個を配置すると",
-    "text": "実践例：アプリ案10個を配置すると\n\n\n\n\n\n\n\n\n\n\n\n4人チームで作る想定で配置した例\n\n左上の4つ（時間割・課題リスト・食堂メニュー・教室空き）から着手\n右上は 2番手として計画 ／ 右下（3D校舎ツアー）は カット"
+    "section": "配置例の条件",
+    "text": "配置例の条件\n\n\n4人チームで、時間割などの表示用データは入手済みと仮定\n混雑予測AIはデータ収集から、3D校舎ツアーはモデル制作から必要と仮定\n\n\n\n\n\n\n\n効果の見積もり\n\n\n日常的に使う表示機能の効果は大きく、既存の案内図で足りる校舎ツアーの効果は小さいと仮定する"
+  },
+  {
+    "objectID": "payoff-matrix.html#例アプリ案10個の配置",
+    "href": "payoff-matrix.html#例アプリ案10個の配置",
+    "title": "ペイオフマトリクス",
+    "section": "例：アプリ案10個の配置",
+    "text": "例：アプリ案10個の配置\n\n\n\n\n\n\n\n\n\n\n\n前ページの条件での配置例（実測値ではない）。左上の4案から着手し、右上は計画、右下は仕様や必要性を見直す"
   },
   {
     "objectID": "payoff-matrix.html#演習-ペイオフマトリクス",
     "href": "payoff-matrix.html#演習-ペイオフマトリクス",
     "title": "ペイオフマトリクス",
     "section": "演習 ペイオフマトリクス",
-    "text": "演習 ペイオフマトリクス\n\n\n次の12案を4象限に分類せよ（模造紙に2軸を描き、付箋1枚1案で配置。チームで議論して動かすこと）。\n\n\n\n\n\nアイデア\n\nアイデア\n\n\n\n\n1\n時間割表示（手動入力）\n7\nサークル活動の連絡ツール\n\n\n2\n課題管理 + 締切通知\n8\nテスト範囲の共有掲示板\n\n\n3\n食堂の今日のメニュー表示\n9\n落とし物掲示板\n\n\n4\n食堂の混雑予測AI\n10\n出席管理システム\n\n\n5\n教室の空き状況確認（手動入力）\n11\nAR校内ナビゲーション\n\n\n6\n図書館の蔵書検索\n12\n学校の歴史紹介ページ\n\n\n\n\n模造紙に「手間 →」「効果 ↑」の2軸と十字線\n12案を付箋にして、議論しながら配置（1案30秒 で仮置き → あとで動かす）\n「すぐやるべき」に入った案から 上位3つ に順位を付ける\n「後回し」に入った案について、カットの理由を1行 ずつ書く\n\n\n\n\n\n\n\nKJ法の付箋がそのまま使える\n\n\n前回KJ法でグループ化した付箋の「中見出し」を12案の代わりに置けば、自分たちのアイデアの優先順位が決まる"
+    "text": "演習 ペイオフマトリクス\n\n\n次の12案を4象限に分類せよ（付箋1枚1案で配置し、チームで理由を議論すること）。\n\n\n\n\n\nアイデア\n\nアイデア\n\n\n\n\n1\n時間割表示（手動入力）\n7\nサークル活動の連絡ツール\n\n\n2\n課題管理 + 締切通知\n8\nテスト範囲の共有掲示板\n\n\n3\n食堂の今日のメニュー表示\n9\n落とし物掲示板\n\n\n4\n食堂の混雑予測AI\n10\n出席管理システム\n\n\n5\n教室の空き状況確認（手動入力）\n11\nAR校内ナビゲーション\n\n\n6\n図書館の蔵書検索\n12\n学校の歴史紹介ページ"
   },
   {
-    "objectID": "payoff-matrix.html#まとめ評価は厳密さより速さ",
-    "href": "payoff-matrix.html#まとめ評価は厳密さより速さ",
+    "objectID": "payoff-matrix.html#ペイオフマトリクス演習の手順",
+    "href": "payoff-matrix.html#ペイオフマトリクス演習の手順",
     "title": "ペイオフマトリクス",
-    "section": "まとめ：評価は「厳密さ」より「速さ」",
-    "text": "まとめ：評価は「厳密さ」より「速さ」\n\n\n視覚的 — 付箋と2軸だけ。チーム全員で同じ図を見て話せる\n速い — 10〜30分で大まかな優先順位が出る。詳細な数値計算は不要\n合意を作る — 一人で決めない。配置をめぐる議論そのものに価値がある\n完璧を目指さない — 最初の絞り込み用。状況が変われば貼り直す\n\n\n\n\n\n\n\nもっと厳密にやりたくなったら\n\n\n案が多い・利害が複雑な場面では、ICEスコア（Impact / Confidence / Ease の3軸を数値化）など定量的な手法もある\n\n\n\n\n優先順位が決まったら、次は画面の設計 — Figmaでワイヤーフレーム へ"
+    "section": "ペイオフマトリクス演習の手順",
+    "text": "ペイオフマトリクス演習の手順\n\n\n模造紙に「手間 →」「効果 ↑」の2軸と十字線\n12案を付箋にして、議論しながら配置（1案30秒 で仮置き → あとで動かす）\n「すぐやるべき」に入った案の 上位3つ を選定\n「後回し」に入った案について、理由を各1行 で記入\n\n\n\n\n\n\n\nKJ法の付箋がそのまま使える\n\n\n前回KJ法でグループ化した付箋の「中見出し」を12案の代わりに置けば、自分たちのアイデアの優先順位が決まる"
+  },
+  {
+    "objectID": "payoff-matrix.html#まとめ評価の前提を共有する",
+    "href": "payoff-matrix.html#まとめ評価の前提を共有する",
+    "title": "ペイオフマトリクス",
+    "section": "まとめ：評価の前提を共有する",
+    "text": "まとめ：評価の前提を共有する\n\n\n手間と効果の2軸で、候補を比較する\n配置の理由と、技術・データ・利用者についての前提を共有する\n条件が変わったら、配置と優先順位を見直す\n\n\n\n\n\n\n\nもっと厳密にやりたくなったら\n\n\n案が多い・利害が複雑な場面では、ICEスコア（Impact / Confidence / Ease の3軸を数値化）など定量的な手法もある\n\n\n\n\n選んだ案の画面設計：Figmaでワイヤーフレーム"
   },
   {
     "objectID": "presentation.html#section",
     "href": "presentation.html#section",
     "title": "発表",
     "section": "",
-    "text": "ワイヤーフレームを発表する"
+    "text": "アプリ案の発表"
   },
   {
     "objectID": "presentation.html#何を発表するか",
     "href": "presentation.html#何を発表するか",
     "title": "発表",
     "section": "何を発表するか",
-    "text": "何を発表するか\n\n\nチームで作ってきたアプリ案を、6枚のスライド で発表する\nこの構成は思いつきではない — スタートアップが投資家に行うピッチ（pitch）の定番構成そのもの\n\n前半3枚で「作る価値」を、後半3枚で「どう動くか」を順番に説得する\n\n\n\n\n\n\n\n\n\n作品ではなく「提案」を発表する\n\n\n聞き手に伝えるのは「がんばって作った」ではなく、このアプリは作る価値がある という主張と根拠"
+    "text": "何を発表するか\n\n\nチームで作ってきたアプリ案を、6枚のスライド で発表する\n前半3枚で課題・目的・機能を説明する\n後半3枚で画面の流れ・工夫・今後の方針を説明する"
   },
   {
     "objectID": "presentation.html#ルールスライドの形式",
     "href": "presentation.html#ルールスライドの形式",
     "title": "発表",
     "section": "ルール：スライドの形式",
-    "text": "ルール：スライドの形式\n\n\nタイトルスライドに チーム名と全員の名前（6枚には数えない）\n内容は次ページからの「6枚スライド内容」に従う\n\n1枚に収まらないときは、2枚以上に渡ってもよい\n\n各スライドの右下に 担当者名\n16:9 横、文字は 最低 18pt\n各スライドに 図画を最低1つ（イラスト・図・スクリーンショット）\n最終的に PDF化して提出（チーム名.pdf）\n\n\n\n\n\n\n\n文字だけのスライドは禁止\n\n\n18pt未満の文字も図ゼロのスライドも、聞き手には「読めない・伝わらない」。ルールというより 伝わるための最低条件"
+    "text": "ルール：スライドの形式\n\n\nタイトルスライドに チーム名と全員の名前（6枚には数えない）\n内容は次ページからの「6枚スライド内容」に従う\n\n1枚に収まらないときは、2枚以上に渡ってもよい\n\n各スライドの右下に 担当者名\n16:9 横、文字は 最低 18pt\n各スライドに 図画を最低1つ（イラスト・図・スクリーンショット）\n最終的に PDF化して提出（チーム名.pdf）\n\n\n\n\n\n\n\n提出前に確認\n\n\nPDFにしてから、文字の大きさ・図の有無・担当者名を確認する"
   },
   {
     "objectID": "presentation.html#ルール役割分担と時間",
     "href": "presentation.html#ルール役割分担と時間",
     "title": "発表",
     "section": "ルール：役割分担と時間",
-    "text": "ルール：役割分担と時間\n\n\n役割分担\n\n各自が担当スライドに オーナーシップ を持つ — 作成も発表も担当者\n6人チーム：1人1枚 ／ それ以外：1人最低1枚 + 残りは分担を決める\n\n発表時間\n\n最大 6分\n1人あたり 最低20秒 は話す\n\nスライドめくりは発表者のPCではなく 進行側のPC で行う\n\n「次のスライドをお願いします」と 自分のタイミングで指示する のも発表技術のうち"
+    "text": "ルール：役割分担と時間\n\n\n役割分担\n\n各自が担当スライドの作成と発表を行う\n6人チーム：1人1枚 ／ それ以外：1人最低1枚 + 残りは分担を決める\n\n発表時間\n\n最大 6分\n1人あたり 最低20秒 は話す\n\nスライドめくりは発表者のPCではなく 進行側のPC で行う\n\n切り替えるタイミングで「次のスライドをお願いします」と伝える"
   },
   {
     "objectID": "presentation.html#枚の内容前半",
     "href": "presentation.html#枚の内容前半",
     "title": "発表",
     "section": "6枚の内容（前半）",
-    "text": "6枚の内容（前半）\n\n\n\n\n\n\n\n\n\n\nスライド\n入れる内容\n\n\n\n\n①\n課題（Problem）\n学生生活で不便なこと ／ このアプリを作ろうと思った理由 ／ ユーザーの声（仮・身内でOK）\n\n\n②\n目的・コンセプト（Goal / Concept）\nこのアプリで何が良くなるか ／ コンセプトを 一言で ／ ユーザーストーリー（どんな場面でどう使うか）\n\n\n③\n機能概要（Feature Overview）\nメイン機能を箇条書きで ／ その機能がどう役立つか\n\n\n\n\n\n\n\n\n\n①が勝負\n\n\n「たしかにそれは困る」と思わせられれば、あとのスライドは全部聞いてもらえる。①には いちばん共感を呼ぶ実例 を置く"
+    "text": "6枚の内容（前半）\n\n\n\n\n\n\n\n\n\n\nスライド\n入れる内容\n\n\n\n\n①\n課題（Problem）\n学生生活で不便なこと ／ このアプリを作ろうと思った理由 ／ ユーザーの声（身近な人でも可。仮の例は仮と明記）\n\n\n②\n目的・コンセプト（Goal / Concept）\nこのアプリで何が良くなるか ／ コンセプトを 一言で ／ ユーザーストーリー（どんな場面でどう使うか）\n\n\n③\n機能概要（Feature Overview）\nメイン機能を箇条書きで ／ その機能がどう役立つか\n\n\n\n\n\n\n\n\n\n課題を具体的にする\n\n\n①には、誰が・いつ・何に困っているかが分かる例を置く。②・③では、その困りごとと目的・機能を対応させる"
   },
   {
     "objectID": "presentation.html#枚の内容後半",
     "href": "presentation.html#枚の内容後半",
     "title": "発表",
     "section": "6枚の内容（後半）",
-    "text": "6枚の内容（後半）\n\n\n\n\n\n\n\n\n\n\nスライド\n入れる内容\n\n\n\n\n④\n画面フロー（User Flow）\nFigmaの画面をフローで並べる ／ 起動 → ホーム → 詳細 のようなUI上の流れ\n\n\n⑤\n画面紹介（Main Screens）\nFigmaの画面を大きく表示 ／ デザイン・UIの工夫点（色・アイコン・レイアウトの理由）\n\n\n⑥\nまとめ・今後（Summary / Next Steps）\nアプリの価値のまとめ ／ 今後追加したい機能 ／ チームの学び\n\n\n\n\n⑤の「工夫」の言い方の例\n\n「迷わないようにUIの情報量を減らした」\n「疲れていても読める文字サイズにした」\n「テーマが◯◯なのでブルーを基調にした」"
+    "text": "6枚の内容（後半）\n\n\n\n\n\n\n\n\n\n\nスライド\n入れる内容\n\n\n\n\n④\n画面フロー（User Flow）\nFigmaの画面をフローで並べる ／ 起動 → ホーム → 詳細 のようなUI上の流れ\n\n\n⑤\n画面紹介（Main Screens）\nFigmaの画面を大きく表示 ／ デザイン・UIの工夫点（色・アイコン・レイアウトの理由）\n\n\n⑥\nまとめ・今後（Summary / Next Steps）\nアプリの価値のまとめ ／ 今後追加したい機能 ／ チームの学び\n\n\n\n\n\n\n\n\n\n⑤の説明例\n\n\n「次の操作が分かるように、登録ボタンを入力欄の下にまとめた」のように、配置とその理由を対応させる"
   },
   {
     "objectID": "presentation.html#評価基準",
     "href": "presentation.html#評価基準",
     "title": "発表",
     "section": "評価基準",
-    "text": "評価基準\n\n\n\n\n\n\n\n\n対象\nチェックされる観点\n\n\n\n\n① 課題\n課題設定が妥当か — 説得できているか\n\n\n② コンセプト\n課題に対して妥当か。実装可能か\n\n\n③ 機能\nコンセプトを実現できているか。実現可能か\n\n\n④ 画面フロー\n流れは妥当か。明らかな抜け はないか（例：ログインが必須の設計なのにログイン画面がない）\n\n\n⑤ 画面紹介\n工夫がなされているか。その工夫は妥当と思わせられるか\n\n\n⑥ まとめ\n価値のまとめと今後の方向は妥当か\n\n\n\n\nどの観点も「凄いか」ではなく 筋が通っているか を見ている"
+    "text": "評価基準\n\n\n\n\n\n\n\n\n対象\nチェックされる観点\n\n\n\n\n① 課題\n課題設定が妥当か。根拠を示しているか\n\n\n② コンセプト\n課題に対して妥当か。実装可能か\n\n\n③ 機能\nコンセプトを実現できているか。実現可能か\n\n\n④ 画面フロー\n流れは妥当か。明らかな抜け はないか（例：ログインが必須の設計なのにログイン画面がない）\n\n\n⑤ 画面紹介\n工夫がなされているか。その工夫は妥当と思わせられるか\n\n\n⑥ まとめ\n価値のまとめと今後の方向は妥当か\n\n\n\n\n課題・目的・機能・画面の説明がつながっているかを確認する"
   },
   {
     "objectID": "presentation.html#発表のコツ",
     "href": "presentation.html#発表のコツ",
     "title": "発表",
     "section": "発表のコツ",
-    "text": "発表のコツ\n\n\n20秒で言えるのは1つだけ — 担当スライドの「一番言いたいこと」を先に決め、それ以外を削る\n図を指して話す — 「この画面のこのボタンが」と指せば、原稿を暗記しなくても話せる\n接続を決めておく — 前の担当者の最後の一言を受けて始めると、チーム発表がひとつの物語になる\n1回は通し練習 — 6分は思ったより短い。めくり指示の練習もここで\n\n\n\n\n\n\n\n発表もプロトタイプ\n\n\n一度発表して質問された点が、そのまま 実装 と 最終課題 の改善リストになる"
+    "text": "発表のコツ\n\n\n各スライドで最も伝えたいことを先に述べる\n説明している画面やボタンを図で示す\n担当者が交代する箇所のつなぎ方を決める\n通し練習で、6分以内に収まるか、各自20秒以上話しているかを確認する\n\n\n\n\n\n\n\n発表後の見直し\n\n\n受けた質問を記録し、説明が不足していた点と、設計・実装を変える必要がある点を整理する"
   },
   {
     "objectID": "shortcuts.html#ショートカットキーを知るべき理由",
     "href": "shortcuts.html#ショートカットキーを知るべき理由",
     "title": "ショートカット",
     "section": "ショートカットキーを知るべき理由",
-    "text": "ショートカットキーを知るべき理由\n\n最強の知的生産ツールであるPCを効率的に使ってタイパをあげよう。\nマウス操作に対して、ショートカットキーで操作すると作業時間の大幅な短縮につながる。"
+    "text": "ショートカットキーを知るべき理由\n\nマウス操作に対して、ショートカットキーで操作すると作業時間の大幅な短縮につながる。"
   },
   {
     "objectID": "shortcuts.html#例文言を別の場所にコピーしたいとき",
@@ -3444,25 +3598,32 @@
     "text": "まとめ\n\n\nショートカットキーは手順を半分にし、生涯の作業時間を大幅に削減できる\nCtrl+c/v/z/a などの基本ショートカットはほぼ全アプリで共通\nWin+v（クリップボード履歴）・Win+Shift+s（スクリーンショット）も覚えておくと便利\nVS Code では Alt+↑↓（行移動）・Ctrl+/（コメントアウト）・F5（実行）が特に役立つ"
   },
   {
-    "objectID": "variables.html#事件関数に渡しただけなのに",
-    "href": "variables.html#事件関数に渡しただけなのに",
+    "objectID": "variables.html#関数に渡しただけで元のリストが変わる",
+    "href": "variables.html#関数に渡しただけで元のリストが変わる",
     "title": "変数と代入",
-    "section": "事件：関数に渡しただけなのに",
-    "text": "事件：関数に渡しただけなのに\n\n成績データの「2倍にしたコピー」を作ろうとした。\ndef double_all(data):\n    for i in range(len(data)):\n        data[i] = data[i] * 2\n    return data\n\nscores = [10, 20, 30]\nresult = double_all(scores)\nprint(result)  # [20, 40, 60] ← 期待どおり\nprint(scores)  # [20, 40, 60] ← ！？ 元データまで壊れた\n\nscores には一度も代入していないのに、元の成績が消えた\n\n\n\n\n\n\n\n今回のゴール\n\n\nこの回が終わる頃には、この事故を図1枚で説明でき、1行で防げるようになる。"
+    "section": "関数に渡しただけで元のリストが変わる",
+    "text": "関数に渡しただけで元のリストが変わる\n\n成績データの「2倍にしたコピー」を作ろうとした。\ndef double_all(data):\n    for i in range(len(data)):\n        data[i] = data[i] * 2\n    return data\n\nscores = [10, 20, 30]\nresult = double_all(scores)\nprint(result)  # [20, 40, 60] ← 期待どおり\nprint(scores)  # [20, 40, 60] ← 元データまで変わっている\n\nscores には一度も代入していないのに、元の成績が書き換わった\n\n\n\n\n\n\n\n今回の主題\n\n\n関数に渡したリストが書き換わる仕組みを、メモリ上のアドレスで説明する。"
   },
   {
     "objectID": "variables.html#リテラル値",
     "href": "variables.html#リテラル値",
     "title": "変数と代入",
     "section": "リテラル（値）",
-    "text": "リテラル（値）\n\n\n事故の正体を突き止めるために、敢えて「変数と代入」をメモリモデルからおさらいする\nPythonでは値を直接コードに書ける\n\n値はそれだけで評価できる（エラーにならない）\n変数や関数なしで、その行に書くだけで意味を持つ\n\n\n1\n\"1\"\n[1, 2, 3]\nTrue\n1.0\n\n\n\n\n\n\nメモリ上での記述\n\n\n上記の値はその行が実行された時に、メモリ上に値として記述される（000001001 のようにメモリ上のスペースを使って記録される）。これらをリテラルと呼ぶ — 直接コード中に記述できる値の表現方法。"
+    "text": "リテラル（値）\n\n\nPythonでは値を直接コードに書ける。これをリテラル（literal）と呼ぶ\n\n値は記述された瞬間に評価可能\n\n必ずしも代入しなくていい\nlistなどでも同じ\n\n\n\n1\n\"1\"\n[1, 2, 3]\nTrue\n1.0"
   },
   {
-    "objectID": "variables.html#変数とは",
-    "href": "variables.html#変数とは",
+    "objectID": "variables.html#リテラルはメモリに確保される",
+    "href": "variables.html#リテラルはメモリに確保される",
     "title": "変数と代入",
-    "section": "変数とは",
-    "text": "変数とは\n\n一方、このように書くとエラーになる。なぜ？\na # NameError: name 'a' is not defined\n\n1 や \"1\" はリテラル（直接記述できる値）\na は値ではなく変数として認識される\n\n\n\n\n\n\n\n\n\n\n\n変数とは、値をつかんで離さないための「名前」 — 看板が立っている限り値は消えない\na はまだどこにも立てていない看板なので、エラーになる"
+    "section": "リテラルはメモリに確保される",
+    "text": "リテラルはメモリに確保される\n\n\nリテラルを書いた行が実行されると、\n\nメモリのどこかに、そのリテラルを記述可能な領域を確保\nその領域に値が記述される\n\nメモリの場所には番号が振られている。\n\nこれはアドレス（address） と呼ばれる"
+  },
+  {
+    "objectID": "variables.html#変数",
+    "href": "variables.html#変数",
+    "title": "変数と代入",
+    "section": "変数",
+    "text": "変数\n\n一方、以下はエラーになる。なぜ？\na # NameError: name 'a' is not defined\n\n1 や \"1\" はリテラル（直接記述できる値）\na は値ではなく変数として認識される\n\n\n\n\n\n\n\n\n\n\n\n変数とは、値のアドレスを指して、その値を使い続けるための名前\n\n変数が指している限り、値は消えない\n\na はまだどの値も指していないので、エラーになる"
   },
   {
     "objectID": "variables.html#変数の命名規則",
@@ -3476,91 +3637,91 @@
     "href": "variables.html#代入",
     "title": "変数と代入",
     "section": "代入",
-    "text": "代入\n\n\n変数 = リテラル と記述すると「代入」という操作がおこなわれる\n\n左辺は変数\n右辺はリテラルかオブジェクト\n\n\na = 1234\ntest_2 = \"test2\"\n\n\n\n\n\n\n箱ではなく「看板」\n\n\n\na = 1234 は「a という箱に 1234 が入る」ではない\na は 1234 が格納された住所（アドレス）を指す看板になる\nただし、アクセス時はその看板自体ではなく住所が指す先にあるリテラルやオブジェクトが返る"
+    "text": "代入\n\n\n変数 = 値 と書くと「代入」がおこなわれる\n\nまず右辺の値が評価され、メモリ上のどこかにその値が記述される\n\n実際は0と1の並び（2進数）で記録される\n\n左辺の変数は、その値が記述された先頭のアドレスを保持する\n\nこれが代入\n\n\n\na = 1234\ntest_2 = \"test2\"\n\n\n\n\n\n\n変数は箱ではない\n\n\n\na = 1234 は「a という箱に 1234 が入る」ではない\na は 1234 が確保されたアドレスを指す\na を使うと、指している先の値が返る"
   },
   {
     "objectID": "variables.html#変数-変数-の代入",
     "href": "variables.html#変数-変数-の代入",
     "title": "変数と代入",
     "section": "変数 = 変数 の代入",
-    "text": "変数 = 変数 の代入\n\n\n変数同士の代入は、左辺に右辺のアドレスを代入する\n\nつまり、同じアドレスを指すようになる\n\n\na11 = 11\na12 = 12\na11 = a12 # a11とa12は同じアドレスを指す\nprint(a12) # 12\n\na11 = 13 # 別の値に変更\nprint(a11) # 当然13\nprint(a12) # ??? （同じアドレスを指しているはずだが？）\n\n\n結果： 12\na11 = 13 は「11 だった場所に 13 を書き込む」ではない — 看板の掛け替え\n代入 x = ... は常に掛け替え。共有していたのは3行目から5行目までの一瞬だけ\n5行目以降、共有していた場所を指すのは a12 だけになる"
+    "text": "変数 = 変数 の代入\n\n\n変数同士の代入でも同じ。左辺は、右辺が指しているアドレスを指すようになる\n\nつまり、2つの変数が同じアドレスを指す\n\n\na11 = 11\na12 = 12\na11 = a12 # a11とa12は同じアドレスを指す\nprint(a12) # 12\n\na11 = 13 # 13 を代入\nprint(a11) # 13\nprint(a12) # ??? （同じアドレスを指しているはずだが？）\n\n\n結果： 12\na11 = 13 は「a12 と共有している 12 を 13 に書き換える」ではない\n13 が新しい場所に確保され、a11 がそのアドレスを指す。a12 が指す 12 はそのまま"
   },
   {
     "objectID": "variables.html#リストの代入罠",
     "href": "variables.html#リストの代入罠",
     "title": "変数と代入",
     "section": "リストの代入（罠）",
-    "text": "リストの代入（罠）\n\n数値でやった操作をリストでやると…\nodd1 = [1, 3]\nodd2 = [5, 7]\nodd1 = odd2\nodd1[0] = 9\nprint(odd2) # ???\n\n\n結果： [9, 7]\nodd1[0] = 9 は看板の掛け替えではない — 指している先の中身の変更\n看板は2枚とも同じリストを指したまま → odd2 から見ても変わる"
+    "text": "リストの代入（罠）\n\n数値でやった操作をリストでやると…\nodd1 = [1, 3]\nodd2 = [5, 7]\nodd1 = odd2\nodd1[0] = 9\nprint(odd2) # ???\n\n\n結果： [9, 7]\nodd1 = odd2 で、odd1 は odd2 と同じリストを指す\nodd1[0] = 9 は、そのリストの0番目を 9 にする。odd2 も同じリストを指しているので、odd2 から見ても変わる"
   },
   {
     "objectID": "variables.html#質問どっちなら-odd2-は無事",
     "href": "variables.html#質問どっちなら-odd2-は無事",
     "title": "変数と代入",
     "section": "質問：どっちなら odd2 は無事？",
-    "text": "質問：どっちなら odd2 は無事？\n\nほぼ同じに見える2つのコード。print(odd2) は何と出る？\n\n\n# A\nodd1 = [1, 3]\nodd2 = odd1\nodd1 = [9, 7]\nprint(odd2)  # ???\n\n# B\nodd1 = [1, 3]\nodd2 = odd1\nodd1[0] = 9\nprint(odd2)  # ???\n\n\n\nA： [1, 3] — odd1 = [9, 7] は看板の掛け替え。odd2 は無傷\nB： [9, 7] — odd1[0] = 9 は中身の変更。odd2 も巻き込まれる"
+    "text": "質問：どっちなら odd2 は無事？\n\nほぼ同じに見える2つのコード。print(odd2) は何と出る？\n\n\n# A\nodd1 = [1, 3]\nodd2 = odd1\nodd1 = [9, 7]\nprint(odd2)  # ???\n\n# B\nodd1 = [1, 3]\nodd2 = odd1\nodd1[0] = 9\nprint(odd2)  # ???\n\n\n\nA： [1, 3]。odd1 = [9, 7] で新しいリストが確保され、odd1 はそちらを指す。odd2 は元のリストを指したまま\nB： [9, 7]。odd1[0] = 9 は、odd1 と odd2 が指している1つのリストの0番目を変える"
   },
   {
-    "objectID": "variables.html#ルールは2本だけ",
-    "href": "variables.html#ルールは2本だけ",
+    "objectID": "variables.html#リストの要素もアドレスを指している",
+    "href": "variables.html#リストの要素もアドレスを指している",
     "title": "変数と代入",
-    "section": "ルールは2本だけ",
-    "text": "ルールは2本だけ\n\n\n\n\n\n\n\n\n\n\n操作\n何が起きる\n\n\n\n\nルール1\nx = ...（代入）\n看板の掛け替え。型に関係なく常に。コピーは起きない\n\n\nルール2\nx[0] = ... や .append()\n指している先の中身を変更。できるのはミュータブルだけ\n\n\n\n\n「リストだけ変な動きをする」のではない — リストは起こせる操作（ルール2）が1つ多いだけ\n迷ったら「これは掛け替え？　中身の変更？」と聞けば、すべての問いに答えられる\n\n\n\n\n\n\n\nヒント\n\n\nこの2本で、冒頭の事件も説明できる。あと少し道具（id()）を足してから戻ろう。"
+    "section": "リストの要素もアドレスを指している",
+    "text": "リストの要素もアドレスを指している\n\n\n[1, 3] を書くと、リスト本体と 1、3 がそれぞれ確保され、リスト本体には要素のアドレスが並ぶ\nodd1[0] = 9 は、リストの0番目が 9 のアドレスを指すようにする代入。リスト本体のアドレスは変わらない\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n要するに\n\n\n左辺が変数でもリストの要素でも、代入は「左辺が右辺のアドレスを指すようにする」操作"
   },
   {
-    "objectID": "variables.html#id-で住所を確認数値",
-    "href": "variables.html#id-で住所を確認数値",
+    "objectID": "variables.html#id-でアドレスを確認数値",
+    "href": "variables.html#id-でアドレスを確認数値",
     "title": "変数と代入",
-    "section": "id() で住所を確認（数値）",
-    "text": "id() で住所を確認（数値）\n\nid() 関数で、変数が指しているアドレスを調べられる。\na11 = 11\na12 = 12\nprint(id(a11)) # 2083050422832\nprint(id(a12)) # 2083050422864\na11 = a12\nprint(id(a11)) # 2083050422864。a12と同じ場所\na11 = 13\nprint(id(a11)) # 2083050422896。違う場所を指している。\n\n代入のたびに指す先（アドレス）が変わっている — ルール1（掛け替え）を id() で目撃できる\na11 = 13 をしても、11 や 12 の場所は書き換わっていない\n\n\n\n\n\n\n\n豆知識：小さい整数は使い回される\n\n\n\nCPython は -5〜256 の int をあらかじめ作って使い回す\nだから x = 11; y = 11 とすると id(x) == id(y) は True になる\n「同じ値なら同じ場所を指すことがある」だけで、看板モデル自体は変わらない（高速化のための最適化）"
+    "section": "id() でアドレスを確認（数値）",
+    "text": "id() でアドレスを確認（数値）\n\nid() 関数で、変数が指しているアドレスを調べられる。\na11 = 11\na12 = 12\nprint(id(a11)) # 2083050422832\nprint(id(a12)) # 2083050422864\na11 = a12\nprint(id(a11)) # 2083050422864。a12と同じ場所\na11 = 13\nprint(id(a11)) # 2083050422896。違う場所を指している\nprint(id(a12)) # 2083050422864。a12は元の場所のまま\nprint(a12)     # 12\n\n代入のたびに、a11 の指すアドレスが変わっている\na11 = 13 の後も、a12 は同じ場所の 12 を指したまま\n\n\n\n\n\n\n\n豆知識：小さい整数は使い回される\n\n\n\nCPython は -5〜256 の int をあらかじめ作って使い回す\nだから x = 11; y = 11 とすると id(x) == id(y) は True になる\n同じ値なら同じ場所を指すことがある、というだけで、代入の仕組みは変わらない（高速化のための最適化）"
   },
   {
-    "objectID": "variables.html#id-で住所を確認リスト",
-    "href": "variables.html#id-で住所を確認リスト",
+    "objectID": "variables.html#id-でアドレスを確認リスト",
+    "href": "variables.html#id-でアドレスを確認リスト",
     "title": "変数と代入",
-    "section": "id() で住所を確認（リスト）",
-    "text": "id() で住所を確認（リスト）\n\nリストでは、要素に代入してもアドレスが変わらない。\nodd1 = [1, 3]\nodd2 = [5, 7]\nprint(id(odd1)) # 2738928019264\nprint(id(odd2)) # 2738927989120\nodd1 = odd2\nprint(id(odd1)) # 2738927989120\nprint(id(odd2)) # 2738927989120\nodd1[0] = 9    # odd2ではなくodd1を変更\nprint(odd1)    # [9, 7]\n\nodd1 = odd2 後、両者が同じアドレスを指している\nだから odd1[0] = 9 が odd2 にも影響する"
+    "section": "id() でアドレスを確認（リスト）",
+    "text": "id() でアドレスを確認（リスト）\n\nodd1[0] = 9 の前後で、リスト本体のアドレスは変わらない。\nodd1 = [1, 3]\nodd2 = [5, 7]\nprint(id(odd1)) # 2738928019264\nprint(id(odd2)) # 2738927989120\nodd1 = odd2\nprint(id(odd1)) # 2738927989120。odd2 と同じ場所\nodd1[0] = 9     # odd2ではなくodd1を変更\nprint(id(odd1)) # 2738927989120。変わらない\nprint(odd2)     # [9, 7]。同じ場所なので odd2 からも見える\nodd1 = [1, 3]   # 別のリテラルを代入\nprint(id(odd1)) # 2738928019328。別の場所\nprint(odd2)     # [9, 7]。odd2 はそのまま\n\nodd1 = odd2 の後は、両者が同じアドレスを指している。だから odd1[0] = 9 が odd2 からも見える\nodd1 = [1, 3] では新しいリストが確保され、odd1 はそのアドレスを指す。int のときと同じ"
   },
   {
     "objectID": "variables.html#同じ場所を直接聞くis-演算子",
     "href": "variables.html#同じ場所を直接聞くis-演算子",
     "title": "変数と代入",
     "section": "「同じ場所？」を直接聞く：is 演算子",
-    "text": "「同じ場所？」を直接聞く：is 演算子\n\n\nid() == id() を毎回書くのは回りくどい — is で直接聞ける\n\nodd1 = [9, 7]\nodd2 = odd1\n\nprint(odd1 is odd2)      # True  （同じ場所を指している）\nprint(odd1 == [9, 7])    # True  （中身が同じ）\nprint(odd1 is [9, 7])    # False （中身は同じでも別の場所）\n\n== は中身の比較、is は場所の比較\n「この2枚の看板、同じ実体を指してる？」と聞きたいときは is"
+    "text": "「同じ場所？」を直接聞く：is 演算子\n\n\nid(odd1) == id(odd2) と書く代わりに、is で直接確かめられる\n\nodd1 = [9, 7]\nodd2 = odd1\n\nprint(odd1 is odd2)      # True  （同じ場所を指している）\nprint(odd1 == [9, 7])    # True  （中身が同じ）\nprint(odd1 is [9, 7])    # False （中身は同じでも別の場所）\n\n== は中身の比較、is は場所の比較\n2つの変数が同じアドレスを指しているかを知りたいときは is"
   },
   {
     "objectID": "variables.html#ミュータブル-イミュータブル",
     "href": "variables.html#ミュータブル-イミュータブル",
     "title": "変数と代入",
     "section": "ミュータブル / イミュータブル",
-    "text": "ミュータブル / イミュータブル\n\n\n\n\n\n\n\n\n分類\n型の例\n\n\n\n\nイミュータブル（immutable）\nint / float / complex / bool / str / tuple / frozenset / bytes\n\n\nミュータブル（mutable）\nlist / dict / set"
+    "text": "ミュータブル / イミュータブル\n\n\n\n\n\n\n\n\n\n分類\n確保済みの領域の中身を変える操作\n型の例\n\n\n\n\nイミュータブル（immutable）\nない\nint / float / complex / bool / str / tuple / frozenset / bytes\n\n\nミュータブル（mutable）\nあるx[0] = ....append() など\nlist / dict / set\n\n\n\n\nstr や tuple は x[0] で要素を読めるが、x[0] = ... はエラーになる"
   },
   {
-    "objectID": "variables.html#事件の解決冒頭のコードに戻る",
-    "href": "variables.html#事件の解決冒頭のコードに戻る",
+    "objectID": "variables.html#冒頭のコードで起きていたこと",
+    "href": "variables.html#冒頭のコードで起きていたこと",
     "title": "変数と代入",
-    "section": "事件の解決：冒頭のコードに戻る",
-    "text": "事件の解決：冒頭のコードに戻る\n\ndef double_all(data):\n    for i in range(len(data)):\n        data[i] = data[i] * 2   # ← ルール2：中身の変更！\n    return data\n\nscores = [10, 20, 30]\nresult = double_all(scores)     # ← 関数に渡す＝ data という看板を立てる（ルール1）\nprint(result)  # [20, 40, 60]\nprint(scores)  # [20, 40, 60]\n\n関数に渡してもコピーは起きない。引数 data は scores と同じリストを指す看板（ルール1）\n中で data[i] = ... と中身を変更したので（ルール2）、scores から見ても壊れていた\n約束どおり、図1枚で説明できる："
+    "section": "冒頭のコードで起きていたこと",
+    "text": "冒頭のコードで起きていたこと\n\ndef double_all(data):\n    for i in range(len(data)):\n        data[i] = data[i] * 2   # ← リストの i 番目が新しい値を指す\n    return data\n\nscores = [10, 20, 30]\nresult = double_all(scores)     # ← data は scores と同じリストを指す\nprint(result)  # [20, 40, 60]\nprint(scores)  # [20, 40, 60]\n\n関数に渡してもコピーは起きない。data = scores と代入したのと同じで、引数 data は scores と同じリストを指す\n関数の中の data[i] = ... で、そのリストの各要素が2倍の値を指すようになった。だから scores から見ても変わっていた\n図で表すと："
   },
   {
-    "objectID": "variables.html#ミュータブルの罠を回避するコピー",
-    "href": "variables.html#ミュータブルの罠を回避するコピー",
+    "objectID": "variables.html#コピーで罠を回避",
+    "href": "variables.html#コピーで罠を回避",
     "title": "変数と代入",
-    "section": "ミュータブルの罠を回避する：コピー",
-    "text": "ミュータブルの罠を回避する：コピー\n\n\nリストを別のアドレスに新たに複製したいときは .copy() を使う\n\n「この場面を残したい」ときにセーブデータを別スロットへコピーするイメージ\n単に = で代入しても複製されない（看板が増えるだけ）\n\n冒頭の事故も、渡す側の1行で防げる：\n\nresult = double_all(scores.copy())   # 複製を渡す → scores は無傷\nodd1 = [1, 3]\n\n# NG: 同じアドレスを共有 → 両方が変わる\nodd2 = odd1\nodd2[0] = 9\nprint(odd1)  # [9, 3] ← 意図せず変わってしまう\n\n# OK: .copy() で別アドレスの複製を作る\nodd3 = odd1.copy()\nodd3[0] = 99\nprint(odd1)  # [9, 3] ← 変わらない\nprint(odd3)  # [99, 3]\n\n# （参考）全スライス [:] でも同じ結果\nodd4 = odd1[:]\nprint(id(odd1) == id(odd4))  # False（別アドレス）"
+    "section": "コピーで罠を回避",
+    "text": "コピーで罠を回避\n\n\nリストを別のアドレスに新たに複製したいときは .copy() を使う\n\n「この場面を残したい」ときにセーブデータを別スロットへコピーするイメージ\n単に = で代入しても複製されない（同じリストを指す変数が増えるだけ）\n\n冒頭の事故も、渡す側の1行で防げる：\n\nresult = double_all(scores.copy())   # 複製を渡す → scores は無傷\nodd1 = [1, 3]\n\n# NG: 同じアドレスを共有 → 両方が変わる\nodd2 = odd1\nodd2[0] = 9\nprint(odd1)  # [9, 3] ← 意図せず変わってしまう\n\n# OK: .copy() で別アドレスの複製を作る\nodd3 = odd1.copy()\nodd3[0] = 99\nprint(odd1)  # [9, 3] ← 変わらない\nprint(odd3)  # [99, 3]\n\n# （参考）全スライス [:] でも同じ結果\nodd4 = odd1[:]\nprint(id(odd1) == id(odd4))  # False（別アドレス）"
   },
   {
     "objectID": "variables.html#演習",
     "href": "variables.html#演習",
     "title": "変数と代入",
     "section": "演習",
-    "text": "演習\n\n\n「箱ではなく看板」の変数モデルを、次の4つの実験で確かめよ。\n\n\n紙に看板図を描く：次のコードを1行ずつ、看板と矢印で描きながら追い、最後の出力を予想してから実行して答え合わせ\na = [1, 2]\nb = a\na.append(3)   # 掛け替え？ 中身の変更？\na = [9]       # 掛け替え？ 中身の変更？\nprint(b)      # ???\ndict がミュータブルであることを id()（または is）で確認（dict の書き方は次回詳しく — ここでは次の2行だけ使う）\nd = {\"名前\": \"田中\"}   # dict を作る\nd[\"点数\"] = 80         # キーを指定して中身を変更する\nlist と同じようにアクセスできる str は、ミュータブルかイミュータブルかを確認\n上記の例で odd1[0] のアドレスがどうなるかを確認（list はミュータブルだが、list の要素は int なのでイミュータブルのはず）\n\n\n\n解答例を見る\na = [1, 2]\nb = a\na.append(3)     # 中身の変更（ルール2）→ b からも見える\na = [9]         # 掛け替え（ルール1）→ b は無傷\nprint(b)        # (1) [1, 2, 3]\n\nd = {\"名前\": \"田中\"}\ne = d\nd[\"点数\"] = 80\nprint(e)        # (2) 点数が増えて見える → dict はミュータブル\nprint(d is e)   #     True（同じ場所を指したまま）\n\ns = \"abc\"\n# s[0] = \"x\"    # (3) Item assignment raises TypeError\n\nodd1 = [9, 3]\nprint(id(odd1[0]))   # (4) 要素が指す int のアドレス\nodd1[0] = 99         #     The list element now refers to a different int\nprint(id(odd1[0]))   #     アドレスが変わっている\n\n\n\n\n\n\n\n\n矢印が動くのを見たいとき\n\n\nPython Tutor にコードを貼ると、看板（名前）と矢印が 1行ごとに動く様子をステップ実行で確認できます。今日の図と同じ世界観です。"
+    "text": "演習\n\n\n変数がアドレスを指すという仕組みを、次の4つの実験で確かめよ。\n\n\n紙に図を描く：次のコードを1行ずつ、変数から値への矢印で描きながら追い、最後の出力を予想してから実行して答え合わせ\na = [1, 2]\nb = a\na.append(3)   # a と b はどのリストを指している？\na = [9]       # a と b はどのリストを指している？\nprint(b)      # ???\ndict がミュータブルであることを id()（または is）で確認（dict の書き方は次回詳しく — ここでは次の2行だけ使う）\nd = {\"名前\": \"田中\"}   # dict を作る\nd[\"点数\"] = 80         # キー \"点数\" に 80 を代入する\nlist と同じようにアクセスできる str は、ミュータブルかイミュータブルかを確認\n上記の例で odd1[0] のアドレスがどうなるかを確認（list はミュータブルだが、list の要素は int なのでイミュータブルのはず）\n\n\n\n解答例を見る\na = [1, 2]\nb = a\na.append(3)     # a と b が指すリストの末尾に 3 → b からも見える\na = [9]         # 新しいリストが確保され a がそこを指す → b は元のリストのまま\nprint(b)        # (1) [1, 2, 3]\n\nd = {\"名前\": \"田中\"}\ne = d\nd[\"点数\"] = 80\nprint(e)        # (2) 点数が増えて見える → dict はミュータブル\nprint(d is e)   #     True（同じ場所を指したまま）\n\ns = \"abc\"\n# s[0] = \"x\"    # (3) Item assignment raises TypeError\n\nodd1 = [9, 3]\nprint(id(odd1[0]))   # (4) 要素が指す int のアドレス\nodd1[0] = 99         #     The list element now refers to a different int\nprint(id(odd1[0]))   #     アドレスが変わっている\n\n\n\n\n\n\n\n\n矢印が動くのを見たいとき\n\n\nPython Tutor にコードを貼ると、変数から値への矢印が 1行ごとに動く様子をステップ実行で確認できる。今日の図と同じ描き方。"
   },
   {
     "objectID": "variables.html#まとめ",
     "href": "variables.html#まとめ",
     "title": "変数と代入",
     "section": "まとめ",
-    "text": "まとめ\n\n\n変数は値そのものではなく、値が置かれたアドレスを指す看板\nルール1：代入 x = ... は型に関係なく常に看板の掛け替え。コピーは起きない\nルール2：ミュータブル（list / dict 等）だけが中身をその場で変更できる — 共有中の変更は全員に見える\n事故を防ぐには .copy() で別の実体を渡す。確認の道具は id()（住所）と is（同じ場所か）"
+    "text": "まとめ\n\n\nリテラルを書くと、その値がメモリのどこかに確保される\n代入は、左辺が右辺のアドレスを指すようにする操作。コピーは起きない\n変数同士の代入では、2つの変数が同じアドレスを指す\nリストの要素も値のアドレスを指している。x[0] = ... はその要素の指す先を変える代入\n共有しているリストの要素を変えると、そのリストを指すどの変数から見ても変わる\nイミュータブルな値は、関数に渡しても呼び出し元から見える値が変わらない\n事故を防ぐには .copy() で別の実体を渡す。確認の道具は id()（アドレス）と is（同じ場所か）"
   },
   {
     "objectID": "visualize.html#section",
@@ -3574,14 +3735,14 @@
     "href": "visualize.html#情報可視化とは",
     "title": "データの可視化",
     "section": "情報可視化とは？",
-    "text": "情報可視化とは？\n\n\nデータや情報がもつ 関係性 や 特徴 を、視覚的に見て理解できるようにすること\n\n見えないものを 「見える」化\n人間の 視覚・直感・経験 で共通に扱えるようにする\n\n情報視覚化ともいう\n\nInformation Visualization\nData Visualization\n\n\n\n\n\n\n\n\nなぜ「見る」のか\n\n\n\n数字の表を眺めても気づけないパターン（外れ値、相関、周期性、クラスタ）が見える\n図示は最強の前処理"
+    "text": "情報可視化とは？\n\n\nデータや情報がもつ 関係性 や 特徴 を、視覚的に見て理解できるようにすること\n\n見えないものを 「見える」化\n人間の 視覚・直感・経験 で共通に扱えるようにする\n\n情報視覚化ともいう\n\nInformation Visualization\nData Visualization\n\n\n\n\n\n\n\n\nなぜ「見る」のか\n\n\n\n数字の表を眺めても気づけないパターン（外れ値、相関、周期性、クラスタ）が見える"
   },
   {
     "objectID": "visualize.html#peek-mystery",
     "href": "visualize.html#peek-mystery",
     "title": "データの可視化",
-    "section": "この授業のゴール",
-    "text": "この授業のゴール\n\n\nあるWikipediaページの 2025年・1年分の閲覧数 を可視化\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nノート\n\n\n\nほぼ平坦なのに 1日だけ大きな山（最大52,168回、ふだんの約280倍）\nこの日、何があった？"
+    "section": "1年分の閲覧数を折れ線にする",
+    "text": "1年分の閲覧数を折れ線にする\n\n\nあるWikipediaページの 2025年・1年分の閲覧数 を可視化\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nノート\n\n\n\nほぼ平坦なのに 1日だけ大きな山（最大52,168回、ふだんの約280倍）\nこの日、何があった？"
   },
   {
     "objectID": "visualize.html#可視化の古典ジョンスノウのコレラ地図",
@@ -3644,7 +3805,7 @@
     "href": "visualize.html#always-plot-your-data-first.",
     "title": "データの可視化",
     "section": "“Always plot your data first.”",
-    "text": "“Always plot your data first.”\n\n\nあらゆるデータは、まず最初に「見て」みる\n\n\n平均や分散などの 統計量だけでは騙される\n図にしてはじめて気づける構造がある\nデータ分析の最初の一手は 常にプロット"
+    "text": "“Always plot your data first.”\n\n\nあらゆるデータは、まず最初に「見て」みる\n\n\n平均や分散などの 統計量だけでは、データの形は分からない\n図にしてはじめて気づける構造がある\nデータ分析の最初の一手は 常にプロット"
   },
   {
     "objectID": "visualize.html#質問平均所得-524万円",
@@ -3665,7 +3826,7 @@
     "href": "visualize.html#例アンスコムの四重奏",
     "title": "データの可視化",
     "section": "例：アンスコムの四重奏",
-    "text": "例：アンスコムの四重奏\n\n\nF. J. Anscombe（1973） が作った 4つのデータセット\n4つとも、以下の統計量が ほぼ完全に一致 する\n\n\n\n\n統計量\n値\n\n\n\n\n\\(x\\) の平均\n9 （完全に一致）\n\n\n\\(x\\) の標本分散\n11 （完全に一致）\n\n\n\\(y\\) の平均\n7.50 （小数第2位まで一致）\n\n\n\\(y\\) の標本分散\n4.122 or 4.127 （小数第3位まで一致）\n\n\n\\(x\\) と \\(y\\) の相関係数\n0.816 （小数第3位まで一致）\n\n\n回帰直線\n\\(y = 3.00 + 0.500x\\) （小数第2〜3位まで一致）\n\n\n\n\n\n\n\n\n\n\n問題：散布図にしたら、どんな形？\n\n\n\n統計量がここまで揃っているなら、4つとも似た形になるはず…だよね？\nめくる前に 予想して手で描いてみる"
+    "text": "例：アンスコムの四重奏\n\n\nF. J. Anscombe（1973） が作った 4つのデータセット\n4つとも、以下の統計量が ほぼ完全に一致 する\n\n\n\n\n統計量\n値\n\n\n\n\n\\(x\\) の平均\n9 （完全に一致）\n\n\n\\(x\\) の標本分散\n11 （完全に一致）\n\n\n\\(y\\) の平均\n7.50 （小数第2位まで一致）\n\n\n\\(y\\) の標本分散\n4.122 or 4.127 （小数第3位まで一致）\n\n\n\\(x\\) と \\(y\\) の相関係数\n0.816 （小数第3位まで一致）\n\n\n回帰直線\n\\(y = 3.00 + 0.500x\\) （小数第2〜3位まで一致）\n\n\n\n\n\n\n\n\n\n\n問題：散布図にしたら、どんな形？\n\n\n\n統計量がここまで揃っていると、4つとも似た形に思える\n散布図を見る前に、予想して手で描いてみる"
   },
   {
     "objectID": "visualize.html#アンスコムの四重奏普通のデータ",
@@ -3721,14 +3882,14 @@
     "href": "visualize.html#section-2",
     "title": "データの可視化",
     "section": "",
-    "text": "グラフはウソをつく"
+    "text": "誤解を招くグラフ"
   },
   {
-    "objectID": "visualize.html#ここまでは正直なグラフの話",
-    "href": "visualize.html#ここまでは正直なグラフの話",
+    "objectID": "visualize.html#描き方で印象が変わる",
+    "href": "visualize.html#描き方で印象が変わる",
     "title": "データの可視化",
-    "section": "ここまでは「正直なグラフ」の話",
-    "text": "ここまでは「正直なグラフ」の話\n\n\nアンスコムの教訓：描かないと、騙される\nもう一つの現実：描き方しだいで、人を騙せる\n\nニュース・広告・プレゼンで毎日使われているテクニック\n\nここからは 騙されない 練習"
+    "section": "描き方で印象が変わる",
+    "text": "描き方で印象が変わる\n\n\nアンスコムの例：統計量だけでは、データの形は分からない\n一方、同じデータでも 描き方しだいで違う印象 のグラフになる\n\nニュース・広告・プレゼンでよく見られる"
   },
   {
     "objectID": "visualize.html#商品bはaより圧倒的に売れている",
@@ -3741,8 +3902,8 @@
     "objectID": "visualize.html#peek-ycut",
     "href": "visualize.html#peek-ycut",
     "title": "データの可視化",
-    "section": "トリック：y軸の切断",
-    "text": "トリック：y軸の切断\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n棒グラフは「長さ」で比較するグラフ\n\n\n\n実際の差は 約2%。軸を切ると何倍にも見える\n棒グラフは 0から描く のが原則\n軸の数字を確認するクセをつける"
+    "section": "y軸の切断",
+    "text": "y軸の切断\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n棒グラフは「長さ」で比較するグラフ\n\n\n\n実際の差は 約2%。軸を切ると何倍にも見える\n棒グラフは 0から描く のが原則\n軸の数字を確認するクセをつける"
   },
   {
     "objectID": "visualize.html#東京は寒冷化している",
@@ -3755,8 +3916,8 @@
     "objectID": "visualize.html#peek-cherry",
     "href": "visualize.html#peek-cherry",
     "title": "データの可視化",
-    "section": "トリック：期間のチェリーピック",
-    "text": "トリック：期間のチェリーピック\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nデータが本物でも、切り取りでウソがつける\n\n\n\n150年で見れば気温は 約4℃上昇（都市化の影響も大きい）\n揺らぎのある時系列は、都合のいい12年 を選べば逆向きに見せられる\n「どの範囲を見せるか」も作為のうち — 全体を確認するクセをつける"
+    "section": "期間のチェリーピック",
+    "text": "期間のチェリーピック\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nデータが本物でも、切り取り方で印象が変わる\n\n\n\n150年で見れば気温は 約4℃上昇（都市化の影響も大きい）\n揺らぎのある時系列は、都合のいい12年 を選べば逆向きに見せられる\n「どの範囲を見せるか」も作為のうち\n全体を確認するクセをつける"
   },
   {
     "objectID": "visualize.html#探索的データ解析eda",
@@ -3777,14 +3938,7 @@
     "href": "visualize.html#まとめ",
     "title": "データの可視化",
     "section": "まとめ",
-    "text": "まとめ\n\n\n可視化の歴史：\n\nプレイフェア — 棒・折れ線・円グラフを発明\nスノウ — コレラ地図で因果関係を視覚的に立証\n\n大原則：Always plot your data first.\n\n平均所得524万円 ≠ 真ん中（中央値405万円）\nアンスコム・Datasaurus — 統計量は形を捨てている\n\nグラフはウソをつく：y軸切断・期間チェリーピック — 騙されない側になる\n冒頭の謎（1日だけの大きな山）の正体は、APIデータを可視化するで明かされる"
-  },
-  {
-    "objectID": "visualize.html#次回予告",
-    "href": "visualize.html#次回予告",
-    "title": "データの可視化",
-    "section": "次回予告",
-    "text": "次回予告\n\n\n今日は「見る」「見抜く」 — 読む側 の話だけだった\n次回は 描く側 へ：matplotlib を使う\n\n質問に出た 東京の気温 を、自分の手で描いて確かめる\n1枚のグラフを「資料に載せられるレベル」まで 育てる"
+    "text": "まとめ\n\n\n可視化の歴史：\n\nプレイフェア — 棒・折れ線・円グラフを発明\nスノウ — コレラ地図で因果関係を視覚的に立証\n\n大原則：Always plot your data first.\n\n平均所得524万円 ≠ 真ん中（中央値405万円）\nアンスコム・Datasaurus — 統計量は形を捨てている\n\n描き方で印象が変わる：y軸の切断、期間のチェリーピック"
   },
   {
     "objectID": "visualize.html#参考リンク",

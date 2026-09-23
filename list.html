@@ -406,7 +406,7 @@ rkskmt
 <p>以下のインデックスは指定できない（エラーになる）。</p>
 <ul>
 <li><strong>要素数（list の長さ）以上</strong></li>
-<li><strong>マイナス要素数＋1 以下</strong></li>
+<li><strong>−(要素数＋1) 以下</strong>（要素数4なら <code>-5</code> 以下）</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>test <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb10-2"><a></a><span class="bu">print</span>(<span class="bu">len</span>(test))   <span class="co"># 4</span></span>
@@ -586,7 +586,7 @@ rkskmt
 <p>と書けるけど、長い</p>
 </div>
 <div id="tabset-1-2">
-<p>同じリストが一撃で書ける。それがリスト内包表記</p>
+<p>同じリストを1行で書ける。これがリスト内包表記</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="co"># 基本形：[式 for 変数 in イテラブル]</span></span>
 <span id="cb22-2"><a></a>squares <span class="op">=</span> [x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)]</span>
 <span id="cb22-3"><a></a><span class="bu">print</span>(squares)  <span class="co"># [0, 1, 4, 9, 16]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
@@ -638,7 +638,7 @@ rkskmt
 <section id="リスト内包表記の使いどころ" class="slide level2">
 <h2>リスト内包表記の使いどころ</h2>
 <div class="slide-body">
-<p>AtCoder演習の参考コードに出てきた謎の構文：</p>
+<p>AtCoder演習の参考コードに出てきた次の行：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a>As <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>().split()]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p>これはリスト内包表記だった。<code>input().split()</code> で <code>["1", "2", "3"]</code> という文字列のリストを作り、 各要素を <code>int(x)</code> で整数に変換しながら新しいリストを作っている。</p>
 <p><code>for</code> 文で書くと以下と同じ意味：</p>
@@ -694,10 +694,10 @@ rkskmt
 </div>
 <ol type="1">
 <li><code>range(len(...))</code> で <strong>出席番号（1始まり）と点数</strong>を表示</li>
-<li><strong>スライス</strong>で上位5名分（先頭5つ）と下位5名分（末尾5つ）をそれぞれ別のリストに分けて表示</li>
+<li><strong>スライス</strong>で先頭5つと末尾5つをそれぞれ別のリストに分けて表示</li>
 <li><code>sorted</code> で <strong>元のリストを変えずに</strong>降順に並び替えた新しいリストを作り、<strong>上位3名の点数</strong>を表示</li>
 </ol>
-<div id="922493dc" class="cell" data-execution_count="1">
+<div id="46c35e3f" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="co"># 1</span></span>
@@ -705,10 +705,10 @@ rkskmt
 <span id="cb29-3"><a></a>    <span class="bu">print</span>(<span class="ss">f"出席番号</span><span class="sc">{</span>i <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">は</span><span class="sc">{</span>scores[i]<span class="sc">}</span><span class="ss">点"</span>)</span>
 <span id="cb29-4"><a></a></span>
 <span id="cb29-5"><a></a><span class="co"># 2</span></span>
-<span id="cb29-6"><a></a>top5 <span class="op">=</span> scores[:<span class="dv">5</span>]</span>
-<span id="cb29-7"><a></a>bottom5 <span class="op">=</span> scores[<span class="op">-</span><span class="dv">5</span>:]</span>
-<span id="cb29-8"><a></a><span class="bu">print</span>(top5)</span>
-<span id="cb29-9"><a></a><span class="bu">print</span>(bottom5)</span>
+<span id="cb29-6"><a></a>first5 <span class="op">=</span> scores[:<span class="dv">5</span>]</span>
+<span id="cb29-7"><a></a>last5 <span class="op">=</span> scores[<span class="op">-</span><span class="dv">5</span>:]</span>
+<span id="cb29-8"><a></a><span class="bu">print</span>(first5)</span>
+<span id="cb29-9"><a></a><span class="bu">print</span>(last5)</span>
 <span id="cb29-10"><a></a></span>
 <span id="cb29-11"><a></a><span class="co"># 3</span></span>
 <span id="cb29-12"><a></a>ranked <span class="op">=</span> <span class="bu">sorted</span>(scores, reverse<span class="op">=</span><span class="va">True</span>)</span>
@@ -730,7 +730,7 @@ rkskmt
 <li><code>scores</code> から <strong>80点以上の点数だけ</strong>を取り出した新しいリストを作る</li>
 <li>標準入力で受け取った空白区切りの整数列を <strong>list of int</strong> に変換（AtCoder 頻出パターン）</li>
 </ol>
-<div id="6153e389" class="cell" data-execution_count="2">
+<div id="e8bbaa2f" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="co"># 1</span></span>
@@ -766,7 +766,7 @@ rkskmt
 <li><strong>C さんの3科目合計</strong>を表示</li>
 <li><strong>各学生の平均点</strong>を <code>for</code> 文で順に表示</li>
 </ol>
-<div id="646f96ea" class="cell" data-execution_count="3">
+<div id="448f3c16" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a><span class="co"># 1</span></span>
