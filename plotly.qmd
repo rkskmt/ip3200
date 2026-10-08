@@ -60,7 +60,7 @@ import pandas as pd
 
 df = pd.DataFrame({
     "名前": ["田中", "佐藤", "鈴木", "高橋", "伊藤"],
-    "学科": ["情報", "機械", "情報", "電気", "情報"],
+    "クラス": ["A", "B", "A", "C", "A"],
     "点数": [82, 75, 91, 68, 57],
 })
 
@@ -163,8 +163,8 @@ fig = px.bar(
     df,
     x="名前",
     y="点数",
-    color="学科",
-    title="学科で色分けした点数",
+    color="クラス",
+    title="クラスで色分けした点数",
 )
 fig.show()
 ```
@@ -176,8 +176,8 @@ fig = px.bar(
     df,
     x="名前",
     y="点数",
-    color="学科",
-    title="学科で色分けした点数",
+    color="クラス",
+    title="クラスで色分けした点数",
 )
 fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=60, b=20))
 fig.write_html("iframes/plotly_bar_color.html", include_plotlyjs="directory")
@@ -188,7 +188,7 @@ fig.write_html("iframes/plotly_bar_color.html", include_plotlyjs="directory")
 
 ::: {.callout-tip}
 ## 何が便利？
-- 凡例をクリックすると、特定の学科だけ表示・非表示にできる
+- 凡例をクリックすると、特定のクラスだけ表示・非表示にできる
 - 棒にマウスを乗せると、値が表示される
 :::
 
@@ -225,7 +225,7 @@ fig = px.scatter(
     df_scores,
     x="数学I",
     y="英会話",
-    color="学科",
+    color="クラス",
     hover_name="名前",
     title="数学Iと英会話の点数",
 )
@@ -239,7 +239,7 @@ fig = px.scatter(
     df_scores,
     x="数学I",
     y="英会話",
-    color="学科",
+    color="クラス",
     hover_name="名前",
     title="数学Iと英会話の点数",
 )
@@ -253,7 +253,7 @@ fig.write_html("iframes/plotly_scatter.html", include_plotlyjs="directory")
 ::: {.callout-tip}
 ## 外れた点、誰？
 - 離れた点にマウスを乗せると **誰なのか** その場で分かる
-- 静止画の散布図では、外れた点の正体はすぐには分からなかった
+- 静止画の散布図では、外れた点が誰なのかは分からなかった
 :::
 
 
@@ -268,7 +268,7 @@ fig = px.scatter(
     df_scores,
     x="数学I",
     y="英会話",
-    color="学科",
+    color="クラス",
     size="欠席日数",
     size_max=40,
     hover_name="名前",
@@ -284,7 +284,7 @@ fig = px.scatter(
     df_scores,
     x="数学I",
     y="英会話",
-    color="学科",
+    color="クラス",
     size="欠席日数",
     size_max=40,
     hover_name="名前",
@@ -412,10 +412,10 @@ fig.write_html("iframes/plotly_histogram.html", include_plotlyjs="directory")
 Pandasの集計結果をPlotlyへ
 :::
 
-## 学科ごとの平均点を計算
+## クラスごとの平均点を計算
 
-- [Pandas入門](pandas.qmd)の `groupby()` の復習 — [students.csv](data/students.csv) で学科ごとの平均点を出す
-- `groupby()` の結果は `Series`（`index` が学科、`values` が平均点）
+- [Pandas入門](pandas.qmd)の `groupby()` の復習 — [students.csv](data/students.csv) でクラスごとの平均点を出す
+- `groupby()` の結果は `Series`（`index` がクラス、`values` が平均点）
 
 ```{python}
 #| echo: true
@@ -425,7 +425,7 @@ df_students = pd.read_csv("data/students.csv")
 subjects = ["現代文", "数学I", "英会話", "物理"]
 
 df_students["平均点"] = df_students[subjects].mean(axis=1)
-avg = df_students.groupby("学科")["平均点"].mean()
+avg = df_students.groupby("クラス")["平均点"].mean()
 print(avg)
 ```
 
@@ -444,13 +444,13 @@ import plotly.express as px
 df_students = pd.read_csv("data/students.csv")
 subjects = ["現代文", "数学I", "英会話", "物理"]
 df_students["平均点"] = df_students[subjects].mean(axis=1)
-avg = df_students.groupby("学科")["平均点"].mean()
+avg = df_students.groupby("クラス")["平均点"].mean()
 
 avg_df = avg.reset_index()
 print(avg_df)
 ```
 
-- `学科` と `平均点` の **2列のDataFrame** になった — これで `x=`、`y=` に列名で渡せる
+- `クラス` と `平均点` の **2列のDataFrame** になった — これで `x=`、`y=` に列名で渡せる
 
 
 ## 集計結果をPlotlyで可視化
@@ -459,7 +459,7 @@ print(avg_df)
 - matplotlibでは `plt.ylim(0, 100)` と書いた、それのPlotly版
 
 ```python
-fig = px.bar(avg_df, x="学科", y="平均点")
+fig = px.bar(avg_df, x="クラス", y="平均点")
 fig.update_yaxes(range=[0, 100])  # 棒グラフは0から見せる
 fig.show()
 ```
@@ -467,7 +467,7 @@ fig.show()
 ```{python}
 #| echo: false
 #| output: false
-fig = px.bar(avg_df, x="学科", y="平均点")
+fig = px.bar(avg_df, x="クラス", y="平均点")
 fig.update_yaxes(range=[0, 100])
 fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=40, b=20))
 fig.write_html("iframes/plotly_groupby_bar.html", include_plotlyjs="directory")
@@ -490,21 +490,21 @@ df_students = pd.read_csv("data/students.csv")
 subjects = ["現代文", "数学I", "英会話", "物理"]
 df_students["平均点"] = df_students[subjects].mean(axis=1)
 
-avg_df = df_students.groupby("学科", as_index=False)["平均点"].mean()
+avg_df = df_students.groupby("クラス", as_index=False)["平均点"].mean()
 print(avg_df)
 ```
 
 
-## 演習：学科ごとの平均点をPlotlyで描く {.badge-practice}
+## 演習：クラスごとの平均点をPlotlyで描く {.badge-practice}
 
 ::: {.prompt}
-Pandas入門でmatplotlibを使って描いた「学科ごとの平均点」の棒グラフを、Plotlyで描き直せ。
+Pandas入門でmatplotlibを使って描いた「クラスごとの平均点」の棒グラフを、Plotlyで描き直せ。
 :::
 
 0. [students.csv](data/students.csv) をダウンロードして `data` フォルダに置く（配置済みならそのまま）
 1. `pd.read_csv()` で読み込み、4科目の平均点の列を追加
-2. `groupby("学科", as_index=False)` で学科ごとの平均点を集計
-3. `px.bar()` で棒グラフを描く（`color="学科"` で色分け、y軸は `0`〜`100` に固定）
+2. `groupby("クラス", as_index=False)` でクラスごとの平均点を集計
+3. `px.bar()` で棒グラフを描く（`color="クラス"` で色分け、y軸は `0`〜`100` に固定）
 
 ```{python}
 #| echo: true
@@ -518,14 +518,14 @@ df = pd.read_csv("data/students.csv")
 subjects = ["現代文", "数学I", "英会話", "物理"]
 
 df["平均点"] = df[subjects].mean(axis=1)
-avg_df = df.groupby("学科", as_index=False)["平均点"].mean()
+avg_df = df.groupby("クラス", as_index=False)["平均点"].mean()
 
 fig = px.bar(
     avg_df,
-    x="学科",
+    x="クラス",
     y="平均点",
-    color="学科",
-    title="学科ごとの平均点",
+    color="クラス",
+    title="クラスごとの平均点",
 )
 fig.update_yaxes(range=[0, 100])
 fig.show()
@@ -554,7 +554,7 @@ fig = px.scatter_3d(
     x="数学I",
     y="英会話",
     z="物理",
-    color="学科",
+    color="クラス",
     hover_name="名前",
 )
 fig.show()
@@ -570,7 +570,7 @@ fig = px.scatter_3d(
     x="数学I",
     y="英会話",
     z="物理",
-    color="学科",
+    color="クラス",
     hover_name="名前",
 )
 fig.update_layout(width=900, height=520, margin=dict(l=0, r=0, t=40, b=0))
@@ -770,8 +770,3 @@ fig.write_html("iframes/plotly_gapminder.html", include_plotlyjs="directory")
 - Pandasの集計結果は **DataFrame + 列名** にしてから渡す（`as_index=False` か `reset_index()`）
 - `write_html()` でHTMLとして保存して、動くまま共有できる
 
-::: {.callout-note}
-## 道具は揃った
-- 表を扱う道具（Pandas）と描く道具（matplotlib / Plotly）が揃った
-- 次回は **材料** の調達：世界中の人がいま何を見ているかをAPIで取得
-:::

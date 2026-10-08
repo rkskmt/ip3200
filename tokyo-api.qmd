@@ -88,7 +88,7 @@ subtitle: "自治体データを活用する"
 - カギは **非競合性**（[non-rivalry]{.en}）— パンは食べればなくなるが、コードは **コピーしても減らない**
    - 使う人・直す人が増えるほど改良が戻ってきて、==鍋の中身はむしろ増える==
 - 売り物は別に作れる：サポート、ハードウェア、ブランド、コンテンツ
-- **データも非競合** — 配っても都のデータは減らず、使われた分だけ価値が生まれる
+- **データも非競合**：配っても都のデータは減らず、使われた分だけ価値が生まれる
 :::
 :::
 
@@ -130,7 +130,7 @@ subtitle: "自治体データを活用する"
 ## 概要
 
 - **東京都オープンデータカタログサイト** の一部データをAPI提供
-- **ユーザ登録不要** — 誰でもすぐに利用可能
+- **ユーザ登録不要**：誰でもすぐに利用可能
 - 掲載データ約54,000件のうち、CSV約35,000件がAPI対応
 
 | 項目 | 内容 |
@@ -146,6 +146,7 @@ subtitle: "自治体データを活用する"
 | | Wikipedia API | 東京都API |
 |---|---|---|
 | HTTPメソッド | **GET** | **POST** |
+| `User-Agent` | 必須 | 不要 |
 | データ内容 | 百科事典・統計 | 行政・地理・施設 |
 | 更新頻度 | リアルタイム〜日次 | 不定期（年次も多い） |
 
@@ -169,8 +170,8 @@ subtitle: "自治体データを活用する"
 https://service.api.metro.tokyo.lg.jp/api/{apiId}/{format}
 ```
 
-- `{apiId}` — データセットごとに異なるID
-- `{format}` — `json` または `xml`
+- `{apiId}`：データセットごとに異なるID
+- `{format}`：`json` または `xml`
 
 例：東京都人口の推移（JSON）
 
@@ -189,22 +190,8 @@ https://service.api.metro.tokyo.lg.jp/api/t000003d2000000236-c054eb26d9e9721642b
 - 「避難所」「駐輪場」「人口」などキーワードで検索
 - 区市町村名で絞り込み可能
 - 詳細ページで apiId と列名を確認
+- リンク切れや、中身が空のデータも多い。使う前に確認する
 :::
-
-
-#### ただし、リンク切れや内容がないことも多いため確認が必要
-
-## パラメータ
-
-| パラメータ | 説明 | 例 |
-|---|---|---|
-| `limit` | 取得レコード数の上限 | `params = {"limit": 200}` |
-| `offset` | 取得開始位置 | `params = {"offset": 50}` |
-
-- デフォルトは **100件**
-   - 全件欲しいときは `limit` を大きく設定
-      - 後で自分でフィルタリングすればよい
-- 取得する **列の絞り込み** は、URLではなく **POSTのbody** で指定する（後述）
 
 
 ## {background-color="white" .center .break-slide}
@@ -214,7 +201,10 @@ https://service.api.metro.tokyo.lg.jp/api/t000003d2000000236-c054eb26d9e9721642b
 :::
 
 
-## 最小テンプレート {#peek-tokyo-template}
+## まず、何もなしで呼ぶ {#peek-tokyo-template}
+
+- パラメータも条件も付けず、**空のオブジェクト 「{}」** を **POST**する
+   - **GETではない** 
 
 ```python
 import requests
@@ -222,153 +212,277 @@ import requests
 api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
-params = {"limit": 200}
-headers = {
-    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
-}
-body = {}
-
-response = requests.post(url, params=params, headers=headers, json=body)
+response = requests.post(url, json={})
 data = response.json()
 
-print(data["hits"])
+print(data)
+```
+
+```text
+{'total': 152, 'subtotal': 100, 'limit': None, 'offset': None, 'metadata': {'apiId': 't000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0', 'title': '人口の動き（令和５年中） 参考表４　人口の推移（東京都、全国）(明治５～令和５年)', 'datasetId': 't000003d2000000236', ...（2万文字以上つづく）
 ```
 
 ::: {.callout-note}
-## `json={}` の意味
-- 空のJSONボディを送信している（東京都APIの仕様上、省略不可）
-- 省略すると **415**（Unsupported Media Type）が返ってくる
-   - 400番台＝リクエスト側のミス、の実例
+## `json={}` は必須
+- 空のJSONボディ送信が必須（東京都APIの仕様）
+- 仮に省略すると **415**（Unsupported Media Type）が返ってくる
 :::
 
 
-## レスポンス構造
+## 長いレスポンスデータの解析方法 I
 
-```json
-{
-  "total": 152,
-  "subtotal": 152,
-  "limit": 200,
-  "offset": null,
-  "metadata": {
-    "apiId": "API識別子",
-    "title": "データタイトル",
-    "version": "1.0.7"
-  },
-  "hits": [
-    {"row": 1, "和暦（年次）": "明治5", "西暦（年次）": 1872, "東京都／人口": 859345},
-    {"row": 2, "和暦（年次）": "明治6", "西暦（年次）": 1873, "東京都／人口": 887322},
-    ...
-  ]
-}
-```
+#### 手順１： まずkeysをみて全体の構造を確認
 
-- `total` — 全件数
-- `metadata` — データセットの情報
-- `hits` — **実際のデータ本体**（list of dict）
-
-
-## {background-color="white" .center .break-slide}
-
-::: {.break-title}
-検索条件を指定する
-:::
-
-
-## 列を絞る・行を絞る
-
-- **列** の限定は、POSTのbodyに `column` を入れる
-- **行** の絞り込み（期間指定など）は、取得後に **Pythonでフィルタ** するのが確実
-   - 内包表記の `if` — [Pandas入門](pandas.qmd)の条件抽出と同じ発想
+- レスポンスはマシン用なので人間はパッと見ではわかりにくい
+   - そこで、一旦 レスポンスのdictのキーを表示してみる
 
 ```python
-# 列を限定して取得
-body = {
-    "column": ["西暦（年次）", "東京都／人口"]
-}
-
-# 取得後に Python でフィルタリング
-filtered = [r for r in data["hits"]
-            if 1950 <= r["西暦（年次）"] <= 2023]
+print(data.keys())
 ```
+
+```text
+dict_keys(['total', 'subtotal', 'limit', 'offset', 'metadata', 'hits'])
+```
+
+#### 手順２： キーの下を深堀り
+
+- 大分見通しがよくなった
+- 意外にもルートのキーは6個だけ
+   - 各キーの下に情報が連なっている構造 
+- では、各キーの下をみていって何があるのかを理解しよう
+
+```python
+
+for key, datum in data.items():
+	print(key, type(datum), datum)
+	print("")
+	print("---------------------")
+	print("")
+```
+
+## 長いレスポンスデータの解析方法 II
+
+#### 手順3： 重要キーの同定
+
+```text
+total <class 'int'> 152
+
+---------------------
+
+subtotal <class 'int'> 100
+
+---------------------
+
+limit <class 'NoneType'> None
+
+---------------------
+
+offset <class 'NoneType'> None
+
+---------------------
+
+metadata <class 'dict'> {'apiId': 't000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0', 'title': '人口の動き（令和５...（略）
+
+---------------------
+
+hits <class 'list'> [{'row': 1, '和暦（年次）': '明治5', '西暦（年次）': 1872, '東京都／人口補足': ' ', '東京都／人口': 859345, ...（略）
+
+---------------------
+```
+- キー`metadata` はデータセットの情報っぽい
+  - メタデータは**データのデータ** 
+- キー`total` はデータの総件数っぽい
+- どうも重要そうなのは`hits`っぽい
+  - 正解：東京都APIの仕様では、`hits` にデータ本体があることになっている
+
+#### 手順4： 重要キーの深堀り
+
+- `hits`には大量のデータがlistで格納されていることがわかった
+- よって、最初の１件目を出力して実データをみることができそう
+
+```python
+print(data["hits"][0])
+```
+```text
+{'row': 1, '和暦（年次）': '明治5', '西暦（年次）': 1872, '東京都／人口補足': ' ', '東京都／人口': 859345, '東京都／増減': '…', '東京都／増減率(%)': '…', '東京都／対全国比(%)': '2.47', '全国／人口補足': '', '全国／人口(千人)': '34806', '全国／増減(千人)': '…', '全国／増減率(%)': '…'}
+```
+- 1件目＝**明治5年（1872年）**、人口 **859,345人**
+
+
+## 届いたのは100件だけ
+
+- `hits` の件数を数えて、`total` と比べる
+
+```python
+print(data["total"])       # 152
+print(data["subtotal"])    # 100
+print(len(data["hits"]))   # 100
+```
+
+- 152件のうち、届いたのは**先頭の100件だけ**
+   - `subtotal` は、実際に届いた件数
+- 東京都APIは、件数を指定しないと1回に**100件まで**しか返さない
+
+
+## `limit` で全件を受け取る
+
+- 1回に受け取る件数は、パラメータ `limit` で指定する（最大1000件）
+- [Wikipedia API](wiki-api.qmd) と同じく `params=` で渡す
+
+```python
+import requests
+
+api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
+url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
+
+response = requests.post(url, params={"limit": 200}, json={})
+data = response.json()
+
+print(data["subtotal"])    # 152
+print(len(data["hits"]))   # 152
+```
+
+- 以降は、この呼び方で152件すべてを使う
 
 
 ## {background-color="white" .center .break-slide}
 
 ::: {.break-title}
-人口152年分を取り寄せる
+hits を DataFrame にする
+:::
+
+
+## hits は DataFrame にそのまま入る
+
+- `hits` は **list of dict**
+- `pd.DataFrame()` に ==そのまま渡せる==（キーが列名になる）
+- 全件を受け取った `data` に続けて：
+
+```python
+import pandas as pd
+
+df = pd.DataFrame(data["hits"])
+print(df.columns)
+```
+
+```text
+Index(['row', '和暦（年次）', '西暦（年次）', '東京都／人口補足', '東京都／人口', '東京都／増減', '東京都／増減率(%)',
+       '東京都／対全国比(%)', '全国／人口補足', '全国／人口(千人)', '全国／増減(千人)', '全国／増減率(%)'],
+      dtype='object')
+```
+
+- 知らないデータは、==まず列名を確認する==（[Pandas入門](pandas.qmd)）
+   - 人口のほかに、増減率・対全国比・全国の人口まで **12列** ある
+   - `row` はAPIが付ける行番号
+- 使う列は、この中から選ぶ
+
+
+## 列と行を絞り込む
+
+- **列** の絞り込み（西暦（年次）など）
+  - 使う列だけを選ぶ
+- **行** の絞り込み（期間指定など）
+  - 条件にあう行だけを残す
+
+
+```python
+# 列：使う列だけ選ぶ
+pop = df[["西暦（年次）", "東京都／人口"]]
+
+# 行：受け取ってから、条件抽出で絞る
+recent = df[df["西暦（年次）"] >= 1950]
+```
+
+::: {.callout-tip}
+## （参考）jsonでPOSTすれば列の絞り込みがAPI上で可能
+- bodyに `column` というキーで列名を渡すと、その列だけが返ってくる
+
+```python
+body = {"column": ["西暦（年次）", "東京都／人口"]}
+response = requests.post(url, json=body)
+```
+:::
+
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+東京都の人口の推移を分析
 :::
 
 
 ## 東京都人口（期間指定） {#peek-population}
 
+- 1960年以降に絞って、高度経済成長期からの東京を見る
+- 列を選んでから、条件抽出で行を絞る
+
 ```python
 import requests
+import pandas as pd
 
-headers = {
-    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
-}
 api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
-params = {"limit": 200}
-body = {"column": ["西暦（年次）", "東京都／人口"]}
-
-response = requests.post(url, params=params, headers=headers, json=body)
+response = requests.post(url, params={"limit": 200}, json={})
 data = response.json()
 
-# Python でフィルタリング
-filtered = [r for r in data["hits"]
-            if 1950 <= r["西暦（年次）"] <= 2023]
+df = pd.DataFrame(data["hits"])
+pop = df[["西暦（年次）", "東京都／人口"]]
+sixties = pop[pop["西暦（年次）"] >= 1960]
 
-print(f"総件数: {len(filtered)}")
-for record in filtered[:5]:
-    print(f"{record['西暦（年次）']}年: {record['東京都／人口']:,}人")
+print(sixties.head(10))
 ```
 
 ```text
-総件数: 74
-1950年: 6,277,500人
-1951年: 6,712,494人
-1952年: 7,108,749人
-1953年: 7,468,907人
-1954年: 7,773,648人
+    西暦（年次）    東京都／人口
+88    1960   9683802
+89    1961   9936970
+90    1962  10180203
+91    1963  10432526
+92    1964  10639361
+93    1965  10869244
+94    1966  10973070
+95    1967  11104969
+96    1968  11251775
+97    1969  11340417
 ```
+
+#### 1000万人を超えたのはいつ？
+
+- 出力を眺めると、**1962年** に1000万人を超えている
 
 
 ## 統計分析の例
 
-- `hits` は **list of dict**
-   - 内包表記で列を取り出して `np.array` にすれば、いつもの統計がそのまま使える
+- 列を取り出すと **Series** になる
+   - `.mean()` と同じ形で `.max()` `.std()` `.median()` も使える
 
 ```python
 import requests
-import numpy as np
+import pandas as pd
 
-headers = {
-    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
-}
 api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
-params = {"limit": 200}
-response = requests.post(url, params=params, headers=headers, json={})
+response = requests.post(url, params={"limit": 200}, json={})
 data = response.json()
 
-population = np.array([r["東京都／人口"] for r in data["hits"]])
+df = pd.DataFrame(data["hits"])
+population = df["東京都／人口"]
 
-print(f"平均: {np.mean(population):,.0f}人")
-print(f"最大: {np.max(population):,}人")
-print(f"最小: {np.min(population):,}人")
-print(f"標準偏差: {np.std(population):,.0f}")
-print(f"中央値: {np.median(population):,.0f}人")
+print(f"平均: {population.mean():,.0f}人")
+print(f"最大: {population.max():,}人")
+print(f"最小: {population.min():,}人")
+print(f"標準偏差: {population.std():,.0f}")
+print(f"中央値: {population.median():,.0f}人")
 ```
 
 ```text
 平均: 7,294,170人
 最大: 14,099,993人
 最小: 859,345人
-標準偏差: 4,567,885
+標準偏差: 4,582,985
 中央値: 7,189,875人
 ```
 
@@ -376,11 +490,11 @@ print(f"中央値: {np.median(population):,.0f}人")
 ## どんな形で増えた？
 
 - 最小 **859,345人**（1872年）から最大 **14,099,993人**（2023年）まで、152個の値が並んでいる
-- [データの可視化](visualize.qmd)の大原則 — *Always plot your data first.*
+- [データの可視化](visualize.qmd)の大原則：*Always plot your data first.*
 
 ::: {.callout-important}
-## ここで質問
-150年分の折れ線は、どんな形？ まっすぐ右肩上がり？ 途中に事件はある？ — 手で描いてみてから、めくる
+## 質問
+152年分の折れ線は、どんな形？ まっすぐ右肩上がりか、途中で減った時期があるか、手で描いて予想してみよう
 :::
 
 ::: {.fragment}
@@ -405,8 +519,9 @@ plt.tight_layout()
 plt.show()
 ```
 
-- 右肩上がり — ただし **一直線ではない**
-   - 1960年代までの急増、1970〜90年代の横ばい、2000年代の再増加
+- 右肩上がりだが、**一直線ではない**
+   - 明治・大正はゆるやかに伸び、昭和で加速する
+   - 1970年代から1990年代は、ほぼ横ばい
 - **深い谷が1つ**
 :::
 
@@ -416,27 +531,19 @@ plt.show()
 #| code-fold: true
 #| code-summary: "コードを見る"
 import requests
-import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-headers = {
-    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
-}
 api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
-params = {"limit": 200}
-body = {"column": ["西暦（年次）", "東京都／人口"]}
-
-response = requests.post(url, params=params, headers=headers, json=body)
-response.raise_for_status()
+response = requests.post(url, params={"limit": 200}, json={})
 data = response.json()
 
-years      = np.array([r["西暦（年次）"] for r in data["hits"]])
-population = np.array([r["東京都／人口"] for r in data["hits"]])
+df = pd.DataFrame(data["hits"])
 
-plt.plot(years, population / 1e6)
+plt.plot(df["西暦（年次）"], df["東京都／人口"] / 1e6)
 plt.title("Tokyo Population 1872-2023")
 plt.xlabel("Year")
 plt.ylabel("Population (million)")
@@ -451,84 +558,56 @@ plt.show()
    - 1年で **378万人減、ほぼ半減**
 
 ::: {.callout-important}
-## ここで質問
+## 質問
 1945年の東京で何が起きた？ いなくなった人は、いつ戻った？
 :::
 
 ::: {.fragment}
-- **空襲と疎開** — 戦争末期、東京から人が離れた
+- **空襲と疎開**：戦争末期、東京から人が離れた
 - 戻りも速い：1946年に **+69万人**、1947年に **+82万人**。5年後の1950年には600万人台まで回復
-- 歴史の教科書の出来事が、==数列にそのまま刻まれている==
-:::
-
-
-## 足元を拡大する
-
-- 全体の図では、直近10年は「なだらかな右肩上がり」にしか見えない
-- [「七夕」の8月29日を見つけたとき](api-viz.qmd)と同じ手 — **軸の範囲を絞って足元を拡大** する
-- さっきのグラフに `plt.xlim(2018, 2024)` と `plt.ylim(13.85, 14.15)` を足すだけ
-
-```{python}
-#| echo: false
-#| fig-align: center
-import numpy as np
-import matplotlib.pyplot as plt
-import japanize_matplotlib
-
-pop = np.loadtxt("data/tokyo_population.csv", delimiter=",", skiprows=1)
-years, population = pop[:, 0], pop[:, 1]
-
-fig, ax = plt.subplots(figsize=(7, 2.9))
-ax.plot(years, population / 1e6, color="#2266CC", linewidth=1.2, marker="o", markersize=4)
-ax.set_xlim(2018, 2024)
-ax.set_ylim(13.85, 14.15)
-ax.annotate("2021", xy=(2021, 14011487 / 1e6), xytext=(2021.6, 13.96),
-            color="#CC4444", arrowprops={"arrowstyle": "->", "color": "#CC4444"})
-ax.set_title("Tokyo Population 2018-2023")
-ax.set_xlabel("Year")
-ax.set_ylabel("Population (million)")
-ax.grid(True, linestyle="--", alpha=0.5)
-plt.tight_layout()
-plt.show()
-```
-
-::: {.callout-important}
-## ここで質問
-2021年だけ人口が減っている（**−36,107人**）。何があった年？
-:::
-
-::: {.fragment}
-- **コロナ禍** — テレワークと転出で、人口が **1995年以来26年ぶり** に減った
-- ==ズームしないと見えない発見がある==（伝統的七夕のときと同じ）
 :::
 
 
 ## 実データは汚れている
 
-- 人口の列は綺麗だったが、同じ表の **増減率(%)** の列を見ると…
+- 人口の列は綺麗だったが、統計分析のときの `df` で、同じ表の **増減率(%)** の列を見ると…
 
 ```python
-rates_raw = [r["東京都／増減率(%)"] for r in data["hits"]]
-print(rates_raw[:4])
+print(df["東京都／増減率(%)"])
 ```
 
 ```text
-['…', '3.26', '5.09', '5.75']
+0          …
+1       3.26
+2       5.09
+3       5.75
+4        4.2
+       ...
+147     0.83
+148     0.31
+149    -0.26
+150     0.21
+151     0.42
+Name: 東京都／増減率(%), Length: 152, dtype: object
 ```
 
-- 数値が **文字列**（`"3.26"`）で入っていて、データがない年は `"…"`
-- 使うには、`"…"` を除いてから `float()` で数値に変換する
+- 末尾の `dtype: object` に注目する。数値の列なら `int64` / `float64` になるはず
+   - 数値が **文字列**（`"3.26"`）で入っていて、データがない1872年は `"…"`
+- 条件抽出で `"…"` の行を除き、`.astype(float)` で **列ごと数値に変換**（`float()` の列版）
 
 ```python
-rates = np.array([float(v) for v in rates_raw if v != "…"])
+clean = df[df["東京都／増減率(%)"] != "…"]
+rates = clean["東京都／増減率(%)"].astype(float)
+
 print(f"増減率の平均: {rates.mean():.2f}%")   # 増減率の平均: 2.10%
 ```
 
 ::: {.callout-tip}
-## 型を確かめてから使う
+## dtype を確かめてから使う
 - 外部APIのデータは **型が揃っているとは限らない**
    - 数値のつもりが文字列、欠損が `"…"` などの記号
-- 集計の前に `print(type(値))` や `isinstance(値, int)` で確認するクセをつける
+- Series を `print` すると末尾に `dtype` が出る
+- 集計の前に見るクセをつける
 :::
 
 
@@ -542,39 +621,34 @@ print(f"増減率の平均: {rates.mean():.2f}%")   # 増減率の平均: 2.10%
 ## 別の窓口、同じテンプレート {#peek-shinagawa}
 
 - `api_id` を差し替えるだけで、届くデータが変わる（通信部分のコードはそのまま）
-- 列名が分からないデータは、`for key, value in row.items():` で **全列を覗く** のが最初の一歩
+- 知らないデータでも手順は同じ：==DataFrameにして、まず列名を確認==
 
 ```python
 import requests
+import pandas as pd
 
-headers = {
-    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
-}
 api_id = "t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0"  # 品川区の避難所
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
-params = {"limit": 5}
-body = {}
-
-response = requests.post(url, params=params, headers=headers, json=body)
+response = requests.post(url, json={})
 data = response.json()
 
-print(f"品川区の避難所情報（総件数: {data['total']}件）")
+df = pd.DataFrame(data["hits"])
 
-for facility in data["hits"]:
-    print("---")
-    for key, value in facility.items():
-        if key != "row":
-            print(f"{key}: {value}")
+print(f"品川区の避難所（総件数: {data['total']}件）")
+print(df.columns)
+print(df)
 ```
 
 ```text
-品川区の避難所情報（総件数: 25件）
----
-名称: 南大井シルバーセンター
-緯度: 35.5916187
-経度: 139.7342376
----
+品川区の避難所（総件数: 25件）
+Index(['row', '名称', '緯度', '経度'], dtype='object')
+    row                        名称         緯度          経度
+0     1               南大井シルバーセンター  35.591619  139.734238
+1     2  春光福祉会　特別養護老人ホーム「ロイヤルサニー」  35.599962  139.722470
+2     3     さくら会老人保健施設「ケアセンター南大井」  35.594534  139.733675
+3     4               西大井シルバーセンター  35.600898  139.723070
+4     5                  八潮児童センター  35.599807  139.751633
 ...
 ```
 
@@ -592,7 +666,7 @@ for facility in data["hits"]:
 
 ::: {.callout-tip}
 ## 予想してから試す
-`total` はそれぞれ何件くらいだと思う？（品川区の避難所は25件だった）— 桁を予想してから実行
+`total` はそれぞれ何件くらいだと思う？ 品川区の避難所は25件だった。桁を予想してから実行しよう
 :::
 
 
@@ -600,17 +674,20 @@ for facility in data["hits"]:
 
 | やりたいこと | コード |
 |---|---|
-| 基本アクセス | `requests.post(url, params=..., headers=..., json={})` |
-| 取得件数指定 | `params = {"limit": 200}` |
-| 列の絞り込み | `body = {"column": ["列名1", "列名2"]}` |
-| 行の絞り込み | 取得後にPythonでフィルタ（内包表記 + `if`） |
-| 全件数確認 | `data["total"]` |
-| 全列を覗く | `for key, value in row.items():` |
+| 基本アクセス | `requests.post(url, json={})` |
+| 件数の指定 | `requests.post(url, params={"limit": 200}, json={})` |
+| 列の絞り込み（API側） | `body = {"column": ["列名1", "列名2"]}` |
+| DataFrame化 | `df = pd.DataFrame(data["hits"])` |
+| 列名の確認 | `print(df.columns)` |
+| 行の絞り込み | 条件抽出 `df[df["列名"] >= 値]` |
+| 全件数の確認 | `data["total"]` |
+| 届いた件数の確認 | `len(data["hits"])` |
 
 ::: {.callout-warning}
 ## Wikipedia API との違い
 - **GET** ではなく **POST**
 - 空でも `json={}` が必要
+- `User-Agent` は不要
 :::
 
 
@@ -639,16 +716,13 @@ for facility in data["hits"]:
 #| echo: true
 #| eval: false
 #| code-fold: true
-#| code-summary: "解答例を見る（品川区の例 — apiIdは検索ページで差し替え）"
+#| code-summary: "解答例を見る（品川区の例。apiIdは検索ページで差し替え）"
 import requests
 
-headers = {
-    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
-}
 api_id = "t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0"  # 品川区の避難所
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
-response = requests.post(url, headers=headers, json={})
+response = requests.post(url, json={})
 data = response.json()
 
 print(f"避難所の件数: {data['total']}件")
@@ -658,11 +732,11 @@ print(f"避難所の件数: {data['total']}件")
 ## 演習：東京一極集中はいつから？ {.badge-practice}
 
 ::: {.prompt}
-人口データの **「東京都／対全国比(%)」** を全期間ぶん取得して折れ線グラフに描き、日本の人口の **1割** を最初に超えた年を答えよ。
+人口データの **「東京都／対全国比(%)」** を折れ線グラフに描き、日本の人口の **1割** を最初に超えた年を答えよ。
 :::
 
-1. `body` の `column` で「西暦（年次）」と「東京都／対全国比(%)」の2列を取得
-2. 値は文字列で、全国値が未公表の年は `""`（空文字）が入っている。`"…"` と `""` の行を除いてから `float()` で変換 — 増減率のときと同じ下ごしらえ
+1. 人口データを取得し、DataFrameにして列名を確認
+2. 対全国比の値は文字列。数値でない値の行を除いてから `.astype(float)` で数値化（増減率のときと同じ下ごしらえ）
 3. 折れ線グラフに描き、10%を最初に超えた年を確認
 
 ```{python}
@@ -671,31 +745,24 @@ print(f"避難所の件数: {data['total']}件")
 #| code-fold: true
 #| code-summary: "解答例を見る"
 import requests
+import pandas as pd
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
-headers = {
-    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
-}
 api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
-params = {"limit": 200}
-body = {"column": ["西暦（年次）", "東京都／対全国比(%)"]}
-
-response = requests.post(url, params=params, headers=headers, json=body)
-response.raise_for_status()
+response = requests.post(url, params={"limit": 200}, json={})
 data = response.json()
 
-# 全国値が未公表の年（""）と欠損（"…"）を除いて数値化
-rows = [r for r in data["hits"] if r["東京都／対全国比(%)"] not in ("…", "")]
-years  = [r["西暦（年次）"] for r in rows]
-shares = [float(r["東京都／対全国比(%)"]) for r in rows]
+df = pd.DataFrame(data["hits"])
+clean = df[df["東京都／対全国比(%)"] != ""]   # 2023年は値が空
+shares = clean["東京都／対全国比(%)"].astype(float)
 
-over10 = [y for y, s in zip(years, shares) if s >= 10]
-print(f"最初に10%を超えた年: {over10[0]}年")
+over10 = clean[shares >= 10]
+print(f"最初に10%を超えた年: {over10['西暦（年次）'].min()}年")
 
-plt.plot(years, shares)
+plt.plot(clean["西暦（年次）"], shares)
 plt.title("Tokyo Share of Japan Population")
 plt.xlabel("Year")
 plt.ylabel("Share (%)")
@@ -734,8 +801,6 @@ plt.show()
 - 最初に10%を超えたのは **1940年**
    - 戦前にすでに「1割が東京」だった
 - 1945年に **4.8%** へ急落（人口の谷と同じ理由）し、1959年に再び10%へ
-- 2022年は **11.2%**
-   - 日本人の **約9人に1人** が東京都民
 :::
 :::
 
@@ -754,22 +819,20 @@ plt.show()
 #| code-fold: true
 #| code-summary: "解答例を見る（戦前と戦後の人口を比較する例）"
 import requests
-import numpy as np
+import pandas as pd
 
-headers = {
-    "User-Agent": "IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)"
-}
 api_id = "t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"
 url = f"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json"
 
-response = requests.post(url, params={"limit": 200}, headers=headers, json={})
-hits = response.json()["hits"]
+response = requests.post(url, params={"limit": 200}, json={})
+data = response.json()
 
-prewar  = np.array([r["東京都／人口"] for r in hits if r["西暦（年次）"] <= 1944])
-postwar = np.array([r["東京都／人口"] for r in hits if r["西暦（年次）"] >= 1946])
+df = pd.DataFrame(data["hits"])
+prewar = df[df["西暦（年次）"] <= 1944]
+postwar = df[df["西暦（年次）"] >= 1946]
 
-print(f"戦前（〜1944）: {len(prewar)}年分 平均 {prewar.mean():,.0f}人")
-print(f"戦後（1946〜）: {len(postwar)}年分 平均 {postwar.mean():,.0f}人")
+print(f"戦前（〜1944）: {len(prewar)}年分 平均 {prewar['東京都／人口'].mean():,.0f}人")
+print(f"戦後（1946〜）: {len(postwar)}年分 平均 {postwar['東京都／人口'].mean():,.0f}人")
 ```
 
 
@@ -792,6 +855,69 @@ print(f"戦後（1946〜）: {len(postwar)}年分 平均 {postwar.mean():,.0f}�
 #### 探してみる
 
 [API検索ページ](https://spec.api.metro.tokyo.lg.jp/spec/search)で自分の住む区市町村を検索し、見つけたデータを1つ、隣の人に30秒で紹介する（何のデータ？ 何件？ どの列が面白そう？）
+
+
+## {background-color="white" .center .break-slide}
+
+::: {.break-title}
+（参考）ページングと拡大表示
+:::
+
+
+## （参考）1,000件を超えるデータはページングで取る
+
+- 1,000件を超えるデータは、`limit` を最大にしても1回では取り切れない
+- このとき、東京都APIでは取得開始位置 `offset` をずらしながら、同じリクエストを繰り返すことになっている
+   - このようなデータの応答や表示の分割を **ページング**（[paging]{.en}）という
+- たとえば `total: 2500` のデータなら3回に分ければとれる：
+
+| 呼び出し | `params=` に渡す値 | 届く範囲 |
+|---|---|---|
+| 1回目 | `{"limit": 1000, "offset": 0}` | 1〜1000件目 |
+| 2回目 | `{"limit": 1000, "offset": 1000}` | 1001〜2000件目 |
+| 3回目 | `{"limit": 1000, "offset": 2000}` | 2001〜2500件目 |
+
+- 毎回の `hits` をつなげば全件そろう
+- Webサービスの「次のページ」「もっと見る」も、裏側はこの仕組み
+
+
+## （参考）2018年以降を拡大する
+
+- [「七夕」の8月29日を見つけたとき](api-viz.qmd)と同じく、**軸の範囲を絞って** 一部を拡大する
+   - 人口のグラフのコードに `plt.xlim(2018, 2024)` と `plt.ylim(13.85, 14.15)` を足す
+
+```{python}
+#| echo: false
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+pop = np.loadtxt("data/tokyo_population.csv", delimiter=",", skiprows=1)
+years, population = pop[:, 0], pop[:, 1]
+
+fig, ax = plt.subplots(figsize=(7, 2.9))
+ax.plot(years, population / 1e6, color="#2266CC", linewidth=1.2, marker="o", markersize=4)
+ax.set_xlim(2018, 2024)
+ax.set_ylim(13.85, 14.15)
+ax.annotate("2021", xy=(2021, 14011487 / 1e6), xytext=(2021.6, 13.96),
+            color="#CC4444", arrowprops={"arrowstyle": "->", "color": "#CC4444"})
+ax.set_title("Tokyo Population 2018-2023")
+ax.set_xlabel("Year")
+ax.set_ylabel("Population (million)")
+ax.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+::: {.callout-important}
+## 質問
+2021年だけ人口が減っている（**−36,107人**）。何があった年？
+:::
+
+::: {.fragment}
+- **コロナ禍**：テレワークと転出で、人口が **1995年以来26年ぶり** に減った
+:::
 
 
 ## 関連リソース

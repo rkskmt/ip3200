@@ -6,7 +6,7 @@ subtitle: "APIからとったjsonを可視化"
 ## {background-color="white" .center .break-slide}
 
 ::: {.break-title}
-前回のあらすじ
+前回のおさらい
 :::
 
 ## 大きな山を見つけた
@@ -98,7 +98,7 @@ plt.show()
 ## 1日だけ突出している
 - ほぼ平坦な中、**1日だけ大きな山（ピーク）**
    - **数値だけ見ていると気づけない**（アンスコムの教訓と同じ）
-- そして見覚えがあるはず：[データの可視化の冒頭で見せた **謎の図**](visualize.qmd#peek-mystery){.peek}は、実はこのデータ
+- [データの可視化の最初に見せた図](visualize.qmd#peek-mystery){.peek}も、このデータを描いたもの
 :::
 
 
@@ -213,7 +213,7 @@ fig.write_html("iframes/plotly_tanabata.html", include_plotlyjs="directory")
 | 位置から日付 | `dates[max_i]`（同じindexの配列をリンク） |
 | 表にして動くグラフ | `pd.DataFrame(data["items"])` → `px.line()` |
 
-- 統計量で「おかしい」と気づき、**図で正体を突き止める**
+- 統計量で「おかしい」と気づき、**図でどの日が突出しているかを確かめる**
 - 大原則 *Always plot your data first.* は **API由来のデータ** にもそのまま効く
 
 
@@ -244,7 +244,7 @@ fig.write_html("iframes/plotly_tanabata.html", include_plotlyjs="directory")
 ::: {.callout-warning}
 ## 禁止事項
 - 軸を揃えず2枚並べる → 比較しづらい
-- 軸の範囲を片方だけ狭める → 印象操作（[matplotlib入門](matplotlib.qmd)「軸の範囲で印象を操る」の罠）
+- 軸の範囲を片方だけ狭める → 印象操作（[matplotlib入門](matplotlib.qmd)の「軸の範囲で印象を操る」）
 - 2本を**配列の位置**で重ねる → このAPIは閲覧数0の日を応答から省くことがあり、2つの応答の日数と並びが一致する保証はない。**時系列は日付で対応づける**
 :::
 

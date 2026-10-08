@@ -6,14 +6,14 @@ subtitle: "オリジナルのAPI+SPAアプリを作る"
 ## {background-color="white" .center .break-slide}
 
 ::: {.break-title}
-半年分の道具を、ぜんぶつなげる
+最終課題
 :::
 
 
 ## 最終課題：オリジナルアプリ
 
 - **NiceGUIで API+SPA のオリジナルアプリ** を1本作って提出する
-- ここまでの道具を全部使う、総合演習
+- 企画案・ワイヤーフレーム・ソースコード・紹介スライドを提出する
 
 ```{.d2 sketch="true" width="86%"}
 direction: right
@@ -24,8 +24,9 @@ D: 紹介\nスライド1枚 {style.fill: "#fce4ec"}
 A -> B -> C -> D
 ```
 
-- ページ下部にある **3画面テンプレート** を土台にする
-   - まず動かす → 中身を理解する → 自分の企画に改造する、の順
+::: {.caption-note}
+この資料の **3画面テンプレート** を動かし、自分の企画に合わせて変更する
+:::
 
 
 ## テーマ例：診断・ゲーム系
@@ -35,8 +36,9 @@ A -> B -> C -> D
 | **診断系** | 推し診断「あなたに合う推しのタイプは？」 ／ 勉強法診断 ／ 進路適性診断「理系？文系？」 ／ 部活診断 |
 | **ゲーム系** | 三択クイズ（雑学・都道府県） ／ 心理テスト ／ 運試し（今日の運勢・おみくじ） ／ 2択選択ゲーム「あなたはどっち派？」 |
 
-- 「質問を出す → 選ばせる → 結果を出す」の構造は ==テンプレートの3画面とそのまま対応== する
-   - この系統は questions / results をJSONに書くだけで骨格が完成する
+::: {.caption-note}
+トップ・質問・結果の3画面に対応させられる。質問と結果をJSONに用意し、回答の記録や結果を決める処理をPythonで追加する
+:::
 
 
 ## テーマ例：実用・創作系
@@ -46,8 +48,26 @@ A -> B -> C -> D
 | **実用ツール系** | テスト点数計算機（平均・合計） ／ 偏差値計算 ／ BMI計算+アドバイス ／ バイト時給計算機 |
 | **創作・エンタメ系** | ランダム決め（今日の昼飯・掃除当番） ／ 2つ名ジェネレーター（名前 → 面白い2つ名） |
 
-- もちろん ==この表にないテーマでもよい==
-   - 迷ったら [ペイオフマトリクス](payoff-matrix.qmd) — 「作る手間」と「ウケ・実用性」の2軸で選ぶ
+::: {.callout-note}
+## テーマは自由
+この表にないテーマでもよい。[ペイオフマトリクス](payoff-matrix.qmd) の「作る手間」と「利用者にとっての効果」で検討する
+:::
+
+
+## 企画に合わせて3画面を変える
+
+- テンプレートは **表示するコンテナを切り替える仕組み**
+- トップ・メイン・結果という名前や、画面の中身は変更してよい
+
+| 企画 | 画面の例 |
+|---|---|
+| 診断アプリ | トップ → 質問 → 結果 |
+| 時間割アプリ | 曜日選択 → 授業一覧 → 授業詳細 |
+| 課題管理アプリ | ホーム → 課題一覧 → 追加フォーム |
+
+::: {.caption-note}
+Figmaで考えた企画をもとに、必要な画面へ変更する。入力の保存や計算など、企画に必要な処理は自分で追加する
+:::
 
 
 ## 提出物：zipに4点
@@ -56,7 +76,7 @@ A -> B -> C -> D
 
 | | 内容 | 形式 |
 |-|--------------|---|
-| 1 | 635法などのカードで考えた **企画案** の画面（グループで発想したもの） | PDF |
+| 1 | 635法などのカードで考えた **企画案** の写真（グループで発想したもの） | PDF |
 | 2 | Figmaで作った **ワイヤーフレーム** のスクショ | PDF |
 | 3 | テンプレートを元にNiceGUIで実装した **ソースコード**（.py 1ファイル + .json） | zip |
 | 4 | アプリを紹介する **スライド1枚**（タイトル・特徴・スクショ程度でOK） | PDF |
@@ -74,23 +94,23 @@ A -> B -> C -> D
    - 構造を大きく変える／ライブラリを増やすのはNG
    - 生成AIの出力の丸写しはNG
 - **遷移画面は3画面以上**
-- ライブラリは **NiceGUI以外を追加しない**
-   - 授業で使ったもの（NumPy・Requestsなど）と、pip install不要の標準ライブラリ（mathなど）はOK
+- 使用できるライブラリは **NiceGUIとその依存ライブラリ（httpxなど）・授業で使ったもの・Python標準ライブラリ**
+   - Requestsは外部APIの取得に使用可。NiceGUIのコールバック内では、通信先にかかわらず `httpx.AsyncClient` と `await` を使う
 - Figmaのモックと実装は、==方向性が合っていれば同一でなくてよい==（見た目に過度にこだわらない）
-- 人に聞くのはOK・助けるのは推奨 — 助けてもらったら紹介スライドに **スペシャルサンクス** を書く
+- 質問や助け合いは可。助けてもらったら、紹介スライドに協力者の名前と協力内容を書く
 
 
-## いちばん大事なルール：データはJSONに
+## データはJSONに保存する
 
 - 表示するコンテンツは **JSONに書き、APIから取得** する（テンプレートどおり ==HTTP経由== で）
    - ==JSONを編集するだけでアプリを変更・拡張できる== 状態にする
-   - 質問文や結果文を `ui.label("...")` に直接書かない（**ハードコード禁止**）
+   - 質問文や結果文を `ui.label("...")` に直接書かない（**ハードコード**、[hard-coding]{.en}）
    - ボタンの「スタート」などコンテンツ以外のラベルはハードコードOK
-- （テンプレートは読み込みだけだが）JSONへの **書き込みもOK**
+- JSONへの **書き込みも可**
 
 ::: {.callout-important}
-## なぜこのルールがあるのか
-「データと画面の分離」は実務の鉄則。クイズを10問→100問にするのに ==コードを1行も触らない== 設計が、良いアプリの証拠
+## データと画面の分離
+質問を1問追加する場合はJSONを変更する。質問を順に表示する処理は、リストを読み取る形にしておけば共通で使える
 :::
 
 
@@ -102,8 +122,8 @@ A -> B -> C -> D
 - **エラーなく実行できる**
 
 ::: {.callout-tip}
-## 減点されない技術
-凝った機能より「指示通り・動く・分かる」が先。実行確認は **zipを解凍し直した状態** でもう一度 — 「自分のPCでは動いた」の大半はファイルパスとファイル名の問題
+## 提出前の確認
+zipを別のフォルダに解凍し直し、Pythonファイルを実行する。JSONファイルの同梱、画面遷移、データ読み込みを確認する
 :::
 
 
@@ -121,7 +141,15 @@ M -> R: 結果へ
 R -> T: もう一度
 ```
 
-- データファイルは `data.json`。この2つだけから始める
+::: {.caption-note}
+`with ui.column() as top_screen:` は、コンテナを作って `top_screen` に代入し、その中に部品を置く書き方
+:::
+
+
+## データファイルを用意する
+
+- [data.json](data/data.json) をダウンロードし、テンプレートを保存した `main.py` と同じフォルダに置く
+- 初期データには `title` と `message` の2項目がある
 
 ```json
 {
@@ -131,7 +159,9 @@ R -> T: もう一度
 ```
 
 
-## 画面切り替えの核心
+## 画面の表示・非表示を切り替える
+
+#### テンプレートから抜粋
 
 ```python
 def show_screen(screen_name):
@@ -142,12 +172,14 @@ def show_screen(screen_name):
 ui.button("スタート", on_click=lambda: show_screen("main"))
 ```
 
-- `screen_name == "top"` は `True` / `False` になる — ==指定した画面だけ表示、他は非表示== が1行×3で書ける
+::: {.caption-note}
+`screen_name == "top"` は `True` / `False` になる。指定した画面だけ表示し、他の画面は非表示にする
+:::
 
 ::: {.callout-note}
 ## `lambda` = その場で作る小さな関数
 `on_click` には関数を渡す必要がある（`show_screen("main")` と書くと即実行されてしまう）。
-`lambda: show_screen("main")` は「押されたら `show_screen("main")` を実行する **無名の関数**」を作る書き方。
+`lambda: show_screen("main")` は「押されたら `show_screen("main")` を実行する **無名関数**（[anonymous function]{.en}）」を作る書き方。
 lambdaを避けたい人は、`def show_main(): ...` を画面の数だけ書く簡単版テンプレートを使えばよい
 :::
 
@@ -155,10 +187,10 @@ lambdaを避けたい人は、`def show_main(): ...` を画面の数だけ書く
 ## テンプレート全文
 
 ::: {.prompt}
-テンプレートと `data.json` を同じフォルダに置いて実行し、3画面が遷移すること・「データ読み込み」でJSONのタイトルが出ることを確かめてから改造を始めよ。
+テンプレートを `main.py` として [data.json](data/data.json) と同じフォルダに保存・実行し、3画面が遷移すること・「データ読み込み」でJSONのタイトルが出ることを確かめてから改造を始めよ。
 :::
 
-- テンプレートの `Path(__file__).parent` は「**この .py があるフォルダ**」の意味 — どこから実行しても隣の `data.json` を見つけられる（「自分のPCでは動いたのに」事故の予防）
+- `Path(__file__).parent` は **このPythonファイルがあるフォルダ**。実行時の作業フォルダによらず、隣の `data.json` を読み込む
 
 ::: {.callout-note}
 ## `async` / `await` は「待つ間、画面を止めない」書き方
@@ -172,10 +204,7 @@ lambdaを避けたい人は、`def show_main(): ...` を画面の数だけ書く
 #| code-fold: true
 #| code-summary: "テンプレート（API版）を表示"
 """
-NiceGUI SPA テンプレート（API版）
-
-3画面構成：トップ → メイン → 結果
-JSONデータを自作APIからHTTP経由で取得して表示します。
+NiceGUI SPA template with three screens and an HTTP API.
 """
 
 from nicegui import ui, app
@@ -183,10 +212,10 @@ from pathlib import Path
 import json
 import httpx
 
-DATA_FILE = Path(__file__).parent / "data.json"   # この .py と同じフォルダの data.json
+DATA_FILE = Path(__file__).parent / "data.json"   # Resolve data.json beside this script.
 
 # ========================================
-# APIエンドポイント
+# API endpoint
 # ========================================
 @app.get("/api/data")
 def get_data():
@@ -194,7 +223,7 @@ def get_data():
         return json.load(f)
 
 # ========================================
-# 画面切り替え
+# Screen switching
 # ========================================
 def show_screen(screen_name):
     top_screen.set_visibility(screen_name == "top")
@@ -202,29 +231,30 @@ def show_screen(screen_name):
     result_screen.set_visibility(screen_name == "result")
 
 # ========================================
-# 1. トップ画面
+# Top screen
 # ========================================
 with ui.column().classes("w-full h-screen items-center justify-center gap-4") as top_screen:
     ui.label("アプリタイトル").classes("text-4xl font-bold")
     ui.button("スタート", on_click=lambda: show_screen("main")).classes("bg-blue-500 text-white p-4 rounded-lg")
 
 # ========================================
-# 2. メイン画面
+# Main screen
 # ========================================
 with ui.column().classes("w-full min-h-screen items-center p-8 gap-4") as main_screen:
     ui.label("メイン画面").classes("text-3xl font-bold")
 
-    # JSONデータを表示するコンテナ
+    # Container for JSON content.
     content = ui.column().classes("gap-2")
 
     async def load_data():
         content.clear()
-        # 自作APIにHTTPリクエストを送ってデータを取得
+        # Fetch data over HTTP.
         async with httpx.AsyncClient() as client:
             response = await client.get("http://localhost:8080/api/data")
+            response.raise_for_status()
         data = response.json()
 
-        # TODO: ここでdataの内容を表示する
+        # Display content from data here.
         with content:
             ui.label(f"タイトル: {data['title']}")
 
@@ -232,7 +262,7 @@ with ui.column().classes("w-full min-h-screen items-center p-8 gap-4") as main_s
     ui.button("結果へ", on_click=lambda: show_screen("result")).classes("bg-purple-500 text-white p-4 rounded-lg mt-4")
 
 # ========================================
-# 3. 結果画面
+# Result screen
 # ========================================
 with ui.column().classes("w-full h-screen items-center justify-center gap-4") as result_screen:
     ui.label("結果画面").classes("text-3xl font-bold")
@@ -240,7 +270,7 @@ with ui.column().classes("w-full h-screen items-center justify-center gap-4") as
     ui.button("もう一度", on_click=lambda: show_screen("top")).classes("bg-blue-500 text-white p-4 rounded-lg")
 
 # ========================================
-# 初期表示
+# Initial screen
 # ========================================
 show_screen("top")
 
@@ -253,10 +283,7 @@ ui.run()
 #| code-fold: true
 #| code-summary: "テンプレート（簡単版・lambdaなし）を表示"
 """
-NiceGUI SPA テンプレート（少し簡単版）
-
-3画面構成：トップ → メイン → 結果
-lambdaを使わず、画面ごとの関数で切り替えます。
+NiceGUI SPA template using named callbacks for screen switching.
 """
 
 from nicegui import ui, app
@@ -264,10 +291,10 @@ from pathlib import Path
 import json
 import httpx
 
-DATA_FILE = Path(__file__).parent / "data.json"   # この .py と同じフォルダの data.json
+DATA_FILE = Path(__file__).parent / "data.json"   # Resolve data.json beside this script.
 
 # ========================================
-# APIエンドポイント
+# API endpoint
 # ========================================
 @app.get("/api/data")
 def get_data():
@@ -290,29 +317,30 @@ def show_result():
     result_screen.set_visibility(True)
 
 # ========================================
-# 1. トップ画面
+# Top screen
 # ========================================
 with ui.column().classes("w-full h-screen items-center justify-center gap-4") as top_screen:
     ui.label("アプリタイトル").classes("text-4xl font-bold")
     ui.button("スタート", on_click=show_main)
 
 # ========================================
-# 2. メイン画面
+# Main screen
 # ========================================
 with ui.column().classes("w-full min-h-screen items-center p-8 gap-4") as main_screen:
     ui.label("メイン画面").classes("text-3xl font-bold")
 
-    # JSONデータを表示するコンテナ
+    # Container for JSON content.
     content = ui.column().classes("gap-2")
 
     async def load_data():
         content.clear()
-        # 自作APIにHTTPリクエストを送ってデータを取得
+        # Fetch data over HTTP.
         async with httpx.AsyncClient() as client:
             response = await client.get("http://localhost:8080/api/data")
+            response.raise_for_status()
         data = response.json()
 
-        # TODO: ここでdataの内容を表示する
+        # Display content from data here.
         with content:
             ui.label(f"タイトル: {data['title']}")
 
@@ -320,7 +348,7 @@ with ui.column().classes("w-full min-h-screen items-center p-8 gap-4") as main_s
     ui.button("結果へ", on_click=show_result)
 
 # ========================================
-# 3. 結果画面
+# Result screen
 # ========================================
 with ui.column().classes("w-full h-screen items-center justify-center gap-4") as result_screen:
     ui.label("結果画面").classes("text-3xl font-bold")
@@ -328,7 +356,7 @@ with ui.column().classes("w-full h-screen items-center justify-center gap-4") as
     ui.button("もう一度", on_click=show_top)
 
 # ========================================
-# 初期表示
+# Initial screen
 # ========================================
 show_top()
 
@@ -336,15 +364,17 @@ ui.run()
 ```
 
 
-## 進め方のおすすめ
+## 実装の進め方
 
-0. テンプレートを **そのまま動かす**（3画面の遷移と「データ読み込み」を確認）
-1. `data.json` を自分のテーマの内容に差し替える — コードは触らない
-2. メイン画面の `TODO` 部分を、自分のデータ構造に合わせて表示に変える
-3. 画面・ボタンを増やす（[NiceGUI](nicegui.qmd) のスタイル早見表が武器庫）
-4. zipにして解凍し直し、**まっさらな状態で動作確認** → 提出
+0. テンプレートを実行（3画面の遷移と「データ読み込み」を確認）
+1. `data.json` の `title` と `message` を変更し、読み込みを確認
+2. 企画に必要なデータ項目と、それを表示・処理するコードを追加
+3. Figmaの設計をもとに、画面・ボタン・配置を変更
+4. zipにして別のフォルダに解凍し、動作確認後に提出
 
 ::: {.callout-tip}
-## 詰まったら戻る場所
-画面の部品 → [NiceGUI](nicegui.qmd) ／ APIとJSON → [自作API+SPA](api-spa.qmd) ／ 画面構成に迷う → [Figma](figma.qmd) のワイヤーフレーム
+## 参照先
+- 画面の部品・スタイル：[NiceGUI](nicegui.qmd)
+- APIとJSON：[自作API+SPA](api-spa.qmd)
+- 画面構成：[Figma](figma.qmd) のワイヤーフレーム
 :::

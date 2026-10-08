@@ -6,43 +6,40 @@ subtitle: "PythonだけでWebアプリを動かす"
 ## {background-color="white" .center .break-slide}
 
 ::: {.break-title}
-ワイヤーフレームを「動くもの」にする
+NiceGUI
 :::
 
 
-## 絵は動かない
+## 画面設計から実装へ
 
-- [Figmaのワイヤーフレーム](figma.qmd) は設計図としては優秀だが、**動きがない**
-   - ボタンは押せない・データは増えない・本当の使い勝手は分からない
-- 次の段階は、Webブラウザで ==実際に動くモック==（[mock]{.en}、試作品）
-   - 見た目は簡素でよい。**押したら反応する** ことが価値
+- [Figma](figma.qmd) では画面の配置や遷移を試せる
+- Pythonで処理を実装すると、入力値の計算やファイルからのデータ取得も試せる
+- まずは見た目を簡略化した **モック**（[mock]{.en}、試作品）を作る
 
 ::: {.callout-tip}
-## 作る順番が大事
-紙 → ワイヤーフレーム → 動くモック → 本実装。
-1段ずつ「捨てても痛くないもの」で確かめるから、手戻りが小さい
+## 最初に確かめること
+必要な部品を置き、入力・ボタン操作・結果表示を確認する。色や細かな配置は、そのあとで調整する
 :::
 
 
 ## SPA（Single Page Application）
 
 - **SPA** = ==1枚のページの中で動的に画面を切り替える== 方式のWebアプリ
-   - ページ全体をリロードせずに画面を更新 → 動きがなめらか
-- 実は、スマホアプリの多くも内部ではSPAが動いている
-   - アプリの中に **WebKit** などのブラウザエンジンが入っていて、その上でSPAが動く
-   - つまりSPAが作れる = ==スマホアプリの中身が作れる==
-- プロの現場では **Next.js** や **Vue** などの **フレームワーク**（[framework]{.en}、開発の土台になるプログラム群）+ **TypeScript** で作ることが多い
+   - ページ全体を読み込み直さず、表示内容を更新する
+- スマホの **ハイブリッドアプリ**（[hybrid app]{.en}）にも、アプリ内のブラウザ表示機能でSPAを動かすものがある
+- Webアプリの開発には **フレームワーク**（[framework]{.en}、開発の土台になるプログラム群）を使える
 
 
 ## NiceGUI：Pythonだけで SPA
 
 - **NiceGUI**（[nicegui.io](https://nicegui.io/)）= ==Pythonだけ== でSPAを作れるフレームワーク
-   - フロントエンド（ブラウザ側）には **Vue** が使われている
-   - バックエンドには **FastAPI**（Pythonの定番APIフレームワーク）を内包 — のちほど[自作API+SPA](api-spa.qmd)でも活躍する
-- インストールは1行
+   - フロントエンド（[frontend]{.en}、ブラウザ側）は **Vue**
+   - バックエンド（[backend]{.en}、サーバー側）は **FastAPI**
+
+#### インストール
 
 ```bash
-pip install nicegui
+pip install nicegui==3.16.0
 ```
 
 ```{.d2 sketch="true" width="88%"}
@@ -78,23 +75,24 @@ S -> B: 画面の差分を送信
 B -> U: 画面が更新されて見える
 ```
 
-- ブラウザとサーバは **WebSocket** で常時つながっていて、==ボタン1回ごとにPythonの関数が動く==
-   - 「画面はブラウザ、頭脳はPython」という分業
+::: {.caption-note}
+ブラウザから **WebSocket** で操作を伝え、Pythonのコールバック関数で処理する
+:::
 
 
 ## 保存するだけで反映：オートリロード
 
-- NiceGUIは、ファイルを保存すると **サーバーが自動再起動し、ブラウザも自動更新** される
-   - 最初に1回実行したら、あとは ==編集 → 保存 → すぐ確認== の繰り返し
-   - Ctrl+C で止めて実行し直す必要がない
+- NiceGUIの **オートリロード**（[auto-reload]{.en}）は、既定では `.py` の変更を監視する
+- `.py` を保存すると **サーバーを自動再起動し、ブラウザも更新** する
+   - 実行中の変数や画面の状態も初期化される
+- `.json` の保存だけでは再起動しない
 
-| 用語 | 意味 |
-|----|----|
-| **オートリロード／ライブリロード** | ファイル変更を検知してブラウザを自動リロード |
-| **ホットリロード** | プログラムを再起動せずに変更を反映（Python/FastAPI側） |
+::: {.caption-note}
+監視対象は `ui.run()` の設定で変更できる（[NiceGUI公式ドキュメント](https://nicegui.io/documentation/section_configuration_deployment)）
+:::
 
 
-## 最初の一歩：Hello World
+## Hello World
 
 ```python
 from nicegui import ui
@@ -103,7 +101,9 @@ ui.label("Hello, NiceGUI!")
 ui.run()
 ```
 
-- 実行すると **ブラウザが自動で開く**（開かないときはターミナルのURLをCtrl+クリック）
+::: {.caption-note}
+実行するとブラウザが開く。開かないときは、ターミナルに表示されたURLをCtrl+クリック
+:::
 
 ```
 NiceGUI ready to go on http://localhost:8080
@@ -117,6 +117,9 @@ NiceGUI ready to go on http://localhost:8080
 
 ## ボタンとコールバック関数
 
+- ボタン操作に応じて呼ばれる関数を **コールバック関数**（[callback function]{.en}）と呼ぶ
+- `ui.button()` の `on_click` に関数を渡して登録する
+
 ```python
 from nicegui import ui
 
@@ -127,17 +130,25 @@ ui.button("Click me", on_click=say_hi)
 ui.run()
 ```
 
-- `ui.button()` でボタンを作り、`on_click` に関数を渡す（「**登録する**」と言う）
-   - ボタンが押された ==ときに== 呼ばれる関数を **コールバック関数**（[callback function]{.en}）と呼ぶ
-- `ui.notify()` は画面下にポップアップ通知を出す
-
-::: {.callout-warning}
-## `say_hi()` と書いてはいけない
-`on_click=say_hi` — ==カッコを付けない==。`say_hi()` と書くと **その場で実行した結果** を渡してしまう。渡したいのは「関数そのもの」
+::: {.caption-note}
+ボタンを押すと `say_hi` が呼ばれ、`ui.notify()` が画面下に通知を出す
 :::
 
 
-## 部品は「上から順に」並ぶだけ
+## `on_click` に渡す値
+
+| 書き方 | 渡されるもの |
+|---|---|
+| `on_click=say_hi` | 関数そのもの |
+| `on_click=say_hi()` | その場で関数を実行した戻り値 |
+
+::: {.callout-warning}
+## `say_hi()` と書いてはいけない
+`on_click=say_hi` と、==カッコを付けずに== 渡す。`say_hi()` と書くと、その場で関数が実行され、戻り値が渡される
+:::
+
+
+## 部品の並び方
 
 ```python
 from nicegui import ui
@@ -148,29 +159,42 @@ ui.button("ボタン")
 ui.run()
 ```
 
-- 何も指定しなければ、部品は ==書いた順に上から縦に== 並ぶだけ
-- 「横に並べたい」「カードでまとめたい」——そのためには部品を入れる **箱** が要る
-   - この箱を **コンテナ**（[container]{.en}）と呼ぶ
-   - コンテナの使い方が、NiceGUIで ==いちばんつまずきやすい== ところ
+::: {.caption-note}
+何も指定しなければ、部品は書いた順に上から縦に並ぶ
+:::
+
+::: {.callout-note}
+## コンテナ（container）
+複数の部品をまとめる入れ物。横に並べたり、カードの枠で囲んだりするときに使う
+:::
 
 
-## `with` = 「いまからこの箱に入れる」
+## `with` でコンテナに部品を入れる
 
 ```python
 from nicegui import ui
 
-box = ui.column()      # 箱を作る（この時点では空）
+box = ui.column()      # Create an empty container.
 
-with box:              # ここから「箱に入れる」宣言
-    ui.label("A")      # → 箱の中
-    ui.label("B")      # → 箱の中
+with box:              # Add elements to this container.
+    ui.label("A")      # Inside the container.
+    ui.label("B")      # Inside the container.
 
-ui.label("C")          # withの外 → 箱の外（ページに直接）
+ui.label("C")          # Outside the container, on the page.
 ui.run()
 ```
 
-- `with box:` の ==インデントの中== で作った部品が、その箱に入る
-- インデントを抜けたら、置き場所はページ直下に戻る — だから「C」は箱の外
+::: {.caption-note}
+`with box:` のインデント内で作った A・B は `box` の中。C はインデントの外なのでページ直下に置かれる
+:::
+
+
+## `with` の役割
+
+| 対象 | インデントの範囲で行うこと |
+|---|---|
+| `with open(...) as f:` | 開いたファイルを使い、範囲を出たら閉じる |
+| `with box:` | `box` の中に部品を置く |
 
 ::: {.callout-note}
 ## `with` は「ファイルを開く」専用ではない
@@ -179,7 +203,7 @@ NiceGUIでは「この範囲のあいだ、部品はこの箱行き」という�
 :::
 
 
-## 同じ箱に、あとから何度でも
+## コンテナに部品を追加する
 
 ```python
 from nicegui import ui
@@ -189,29 +213,35 @@ box = ui.column()
 with box:
     ui.label("最初の1個")
 
-with box:                      # 同じ箱にもう一度
+with box:                      # Add to the same container again.
     for i in range(1, 11):
-        ui.label(f"{i}番目")   # for文で大量に追加
+        ui.label(f"{i}番目")   # Add labels in a loop.
 ui.run()
 ```
 
-- 同じ箱への `with` は **何度でも** 書ける — 空の箱を先に置いておき、==あとから中身を足す== ことができる
-   - 「ボタンが押されたら箱に追加」— この後の入力フォームがまさにこの形
+::: {.caption-note}
+同じコンテナに対して `with` を再び使うと、既存の部品を残して追加できる
+:::
 
 
-## 箱の中に箱：入れ子
+## コンテナの入れ子
+
+- コンテナの中にコンテナを入れて、画面の構造を作る
+- `with ui.row():` は、コンテナを作り、その中に部品を置く書き方
 
 ```python
 from nicegui import ui
 
-with ui.row():             # 横に並べる箱
-    with ui.card():        # 1枚目のカード
+with ui.row():             # Horizontal container.
+    with ui.card():        # First card.
         ui.label("タイトル")
         ui.label("説明文")
-    with ui.card():        # 2枚目のカード
+    with ui.card():        # Second card.
         ui.label("タイトル2")
 ui.run()
 ```
+
+## コンテナの入れ子と配置
 
 ```{.d2 sketch="true" width="52%"}
 R: ui.row {
@@ -226,24 +256,24 @@ R: ui.row {
 }
 ```
 
-- コンテナの中にコンテナを入れて、**画面の構造** を作る
-   - 変数に代入せず `with ui.row():` と ==その場で作ってそのまま入れる== 書き方もできる
-   - Figmaのワイヤーフレームの「枠の入れ子」が、そのまま `with` の入れ子になる
+::: {.caption-note}
+横並びの `ui.row()` の中に2つのカードを置き、各カードにラベルを入れている
+:::
 
 
 ## コンテナの種類
 
 | レイアウト系 | インタラクティブ系 |
 |----|----|
-| `ui.column()` — 縦に並べる | `ui.expansion()` — 開閉できる折りたたみ |
-| `ui.row()` — 横に並べる | `ui.dialog()` — ポップアップ |
-| `ui.grid()` — 格子状に配置 | `ui.menu()` — メニュー |
-| `ui.card()` — カード型の枠 | |
+| `ui.column()`：縦に並べる | `ui.expansion()`：開閉できる折りたたみ |
+| `ui.row()`：横に並べる | `ui.dialog()`：ポップアップ |
+| `ui.grid()`：格子状に配置 | `ui.menu()`：メニュー |
+| `ui.card()`：カード型の枠 | |
 
 
-## **Tweak** `with` で実験 {.badge-practice}
+## `with` の確認用コード
 
-- この土台を保存して、下の表を **1つずつ** 試す
+- 次のコードを保存し、A・B・Cの表示を確認する
 
 ```python
 from nicegui import ui
@@ -258,18 +288,36 @@ ui.label("C")
 ui.run()
 ```
 
+
+## **Tweak** `with` と配置 {.badge-practice}
+
 ::: {.tweak}
 | やってみる | 予想すること |
 |--|--|
-| `ui.label("C")` を `with box:` の中へ移動 | Cはどこに出る？ |
-| `ui.column()` を `ui.row()` に変更 | 並ぶ向きは？ Cの位置は？ |
-| `with box:` をもう1つ書き足して `ui.label("D")` | Dは箱に入る？ |
-| `with box:` の中に `with ui.card():` を作って `ui.label("E")` | Eはどんな見た目で出る？ |
+| `ui.label("C")` を `with box:` の中へ移動せよ | Cはどこに出る？ |
+| `ui.column()` を `ui.row()` に変更せよ | 並ぶ向きは？ Cの位置は？ |
+:::
+
+<details class="code-fold">
+<summary>結果を確認</summary>
+
+Cを移動するとBの下に入る。元のコードの `column` を `row` に変えるとA・Bが横に並び、Cはコンテナの外に残る
+
+</details>
+
+
+## **Tweak** `with` と追加 {.badge-practice}
+
+::: {.tweak}
+| やってみる | 予想すること |
+|--|--|
+| `with box:` をもう1つ追加し、`ui.label("D")` を置け | Dは箱に入る？ |
+| `with box:` 内に `with ui.card():` を作り、`ui.label("E")` を置け | Eはどんな見た目で出る？ |
 :::
 
 ::: {.callout-tip}
-## 声に出して予想してから保存
-「Cは箱の中だから…Bの下」と言ってから保存する。外れたときに `with` の理解が一段深くなる
+## 配置を確認する
+保存前にラベルの位置を予想し、表示と比較する。違っていたら、コンテナの種類とインデントを確認する
 :::
 
 
@@ -284,10 +332,18 @@ ui.run()
 | 内容 | `.update()` | 表示を更新 |
 | 表示 | `.set_visibility(True/False)` | 表示・非表示の切り替え |
 
-- この後の演習では `.clear()` と `.delete()` が主役になる
+::: {.caption-note}
+`.clear()` は中身を削除し、コンテナは残す。`.delete()` はコンテナごと削除する
+:::
 
 
 ## 見た目を変える：`.classes()`
+
+- **Tailwind CSS** は、クラス名で色・余白・配置などを指定するCSSフレームワーク
+- `.classes()` にクラス名を渡す。複数指定するときは半角スペースで区切る
+
+
+## クラスを指定する例
 
 ```python
 from nicegui import ui
@@ -302,8 +358,9 @@ ui.button("ボタン").classes("bg-green-500 text-white rounded-lg p-4")
 ui.run()
 ```
 
-- クラス名の正体は **Tailwind CSS**（HTMLの見た目を整えるフレームワーク — またフレームワーク！）
-   - 複数のクラスは ==半角スペースで区切って== 並べる
+::: {.caption-note}
+`text-2xl font-bold text-blue-500` は、大きい文字・太字・青色をまとめて指定
+:::
 
 
 ## スタイル早見表
@@ -313,12 +370,26 @@ ui.run()
 | 間隔・余白 | `gap-2/4/8`（要素間） ／ `p-2/4/8`（内側余白） ／ `m-2/4/8`（外側余白） |
 | 文字色 | `text-red-500` ／ `text-blue-500` ／ `text-green-500` ／ `text-gray-500` ／ `text-white` |
 | 背景色 | `bg-red-500` ／ `bg-blue-500` ／ `bg-gray-200` ／ `bg-white` |
-| 文字サイズ | `text-xs` → `text-sm` → `text-base` → `text-lg` → `text-xl` → `text-2xl` |
+| 文字サイズ | `text-xs` → `text-sm` → `text-base` → `text-lg` → `text-xl` → `text-2xl` → `text-3xl` → `text-4xl` |
 | 太字・配置 | `font-bold` ／ `text-center` ／ `text-right` |
 | 角丸・枠線 | `rounded` ／ `rounded-lg` ／ `border` ／ `border-2` |
 
 ::: {.caption-note}
-数字は強さ・大きさ（大きいほど強い）。この表は改造課題の **武器庫** — ブックマーク推奨
+`gap-2/4/8` は `gap-2`・`gap-4`・`gap-8` の略記。余白の数字は大きさ、色の数字は色調を表す
+:::
+
+
+## 幅・高さ・配置のクラス
+
+| 分類 | クラスと意味 |
+|---|---|
+| 幅 | `w-full`：親要素の幅いっぱい |
+| 高さ | `h-screen`：表示領域と同じ高さ ／ `min-h-screen`：最低でも表示領域と同じ高さ |
+| 中央配置 | `items-center`：並ぶ方向と直角に中央揃え ／ `justify-center`：並ぶ方向に中央揃え |
+| 方向つき余白 | `mt-4`：上 ／ `mb-4`：下 ／ `ml-4`：左 ／ `mr-4`：右の外側余白 |
+
+::: {.caption-note}
+`ui.column()` なら、`items-center` は左右の中央、`justify-center` は上下の中央に揃える
 :::
 
 
@@ -329,11 +400,9 @@ from nicegui import ui
 
 def add_item():
     name = name_input.value
-    items.append(name)
-    with list_view:        # withでくくると、その場でコンテナに追加される
+    with list_view:        # Add the label to list_view.
         ui.label(name)
 
-items = []
 name_input = ui.input("name")
 ui.button("add", on_click=add_item)
 
@@ -341,14 +410,20 @@ list_view = ui.column()
 ui.run()
 ```
 
-- `ui.input()` の入力値は `.value` で取り出す
-- 「入力 → ボタン → 一覧に追加」— ==ほぼすべてのアプリの基本形==
+::: {.caption-note}
+`ui.input()` の入力値を `.value` で取り出し、ボタン操作で一覧に追加する
+:::
 
 
 ## **演習** 土台コードを動かす {.badge-practice}
 
 ::: {.prompt}
 次の土台コードを `main.py` として保存・実行し、名前を追加できることを確かめよ。
+:::
+
+::: {.callout-note}
+## 入力チェック
+`if not name: return` は、入力が空文字なら追加せず関数を終了する処理
 :::
 
 ```python
@@ -358,12 +433,10 @@ def add_item():
     name = name_input.value
     if not name:
         return
-    items.append(name)
 
     with list_view:
         ui.label(name)
 
-items = []
 name_input = ui.input("名前")
 ui.button("追加", on_click=add_item)
 
@@ -372,37 +445,35 @@ list_view = ui.column().classes("gap-2")
 ui.run()
 ```
 
-- 土台コードの新顔は `if not name: return` — 空文字のまま押されたら **何も追加せずに抜ける**（入力チェックの定番）
-- ここからの **Tweak** は、すべてこのコードの改造
+## **Tweak** 一覧の配置を変える {.badge-practice}
 
-
-## **Tweak** 見た目を改造する {.badge-practice}
-
-- 土台コードを **1か所ずつ変えて保存** — オートリロードが即座に見せてくれる
+- 名前を追加する土台コードを1か所ずつ変更し、保存して表示を確認する
 
 ::: {.tweak}
 | やりたいこと | ヒント |
 |--|--|
-| 項目を横に並べる | `list_view` を `ui.row()` に |
-| 各項目をカードにする | `add_item` の中で `card = ui.card()` を作り、`with card:` に `ui.label` |
-| カードの間隔を広げる | `list_view` に `.classes("gap-4")` |
-| カードの背景を薄いグレーに | カードに `.classes("bg-gray-100")` |
-| カードの角を丸くする | カードに `.classes("bg-gray-100 rounded-lg")`（スペース区切りで追加） |
+| 項目を横に並べよ | `list_view` を `ui.row()` に |
+| 各項目をカードにせよ | `add_item` の中で `card = ui.card()` を作り、`with card:` に `ui.label` |
 :::
 
-::: {.callout-tip}
-## 予想してから保存する
-変える前に「どう変わるはず」と言ってから保存する。予想と違ったら、それが一番の学び
-:::
 
+## **Tweak** カードの見た目を変える {.badge-practice}
+
+::: {.tweak}
+| やりたいこと | ヒント |
+|--|--|
+| カードの間隔を広げよ | `list_view` に `.classes("gap-4")` |
+| カードの背景を薄いグレーにせよ | カードに `.classes("bg-gray-100")` |
+| カードの角を丸くせよ | カードに `.classes("bg-gray-100 rounded-lg")`（スペース区切りで追加） |
+:::
 
 ## **Tweak** 削除機能を付ける {.badge-practice}
 
 ::: {.tweak}
 | やりたいこと | ヒント |
 |--|--|
-| 「全部削除」ボタンを追加 | コールバックの中で `list_view.clear()` |
-| カードごとの×ボタン | `with card:` の中に `ui.button("×", on_click=card.delete)` — メソッドもコールバックとして渡せる |
+| 「全部削除」ボタンを追加せよ | コールバックの中で `list_view.clear()` |
+| カードごとに削除する×ボタンを付けよ | `with card:` の中に `ui.button("×", on_click=card.delete)`（メソッドもコールバックにできる） |
 :::
 
 ```{python}
@@ -417,7 +488,6 @@ def add_item():
     name = name_input.value
     if not name:
         return
-    items.append(name)
 
     with list_view:
         card = ui.card().classes("bg-gray-100 rounded-lg")
@@ -432,7 +502,6 @@ def clear_all():
     ui.notify("全部削除しました")
 
 
-items = []
 name_input = ui.input("名前")
 ui.button("追加", on_click=add_item)
 ui.button("全部削除", on_click=clear_all)
@@ -445,11 +514,11 @@ ui.run()
 
 ## まとめ
 
-- **SPA** — 1枚のページの中で画面を切り替えるWebアプリ。スマホアプリの中身でもある
-- **NiceGUI** — Pythonだけで SPA。中身は Vue（画面）+ FastAPI（サーバ）
-- 基本パターンは4つだけ
+- **SPA**：1枚のページの中で画面を切り替えるWebアプリ
+- **NiceGUI**：PythonでWeb画面を作る。内部ではVueとFastAPIが動く
+- 画面を作る基本操作
    - 部品を置く（`ui.label` / `ui.button` / `ui.input`）
    - 箱に入れる（コンテナ + `with`）
    - 反応させる（`on_click` にコールバック登録）
    - 見た目を整える（`.classes("...")`）
-- 次は、このアプリに ==データを出し入れする口== を付ける — [自作API+SPA](api-spa.qmd)
+- データをファイルから取得する方法：[自作API+SPA](api-spa.qmd)

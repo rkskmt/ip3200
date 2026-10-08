@@ -573,7 +573,7 @@ result[0] = 100  # TypeError: 'tuple' object does not support item assignment
 ```
 
 
-## 冒頭の成績表、いまなら持てる
+## 成績表を list と dict で表す
 
 - `list` と `dict` を組み合わせると、最初に見た成績表がそのままコードになる
 
@@ -593,7 +593,6 @@ for s in students:
 # 高橋 一郎: 平均 88.3点
 ```
 
-- 「変数を1人ずつ作る」世界には、もう戻らなくていい
 
 
 ## まとめ

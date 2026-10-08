@@ -352,10 +352,10 @@ CSVを読み込む
 - ExcelやGoogleスプレッドシートからも書き出せる
 
 ```text
-名前,学科,学年,現代文,数学I,英会話,物理,欠席日数
-田中,情報,1,80,70,90,85,2
-佐藤,機械,1,65,75,85,72,4
-鈴木,情報,2,88,91,84,90,1
+名前,クラス,学年,現代文,数学I,英会話,物理,欠席日数
+田中,A,1,80,70,90,85,2
+佐藤,B,1,65,75,85,72,4
+鈴木,A,2,88,91,84,90,1
 ```
 
 - 1行目は列名として扱われることが多い
@@ -461,7 +461,7 @@ print(math.head())  # 20人分あるので先頭5行だけ
 import pandas as pd
 
 df = pd.read_csv("data/students.csv")
-cols = df[["名前", "学科", "数学I", "英会話"]]
+cols = df[["名前", "クラス", "数学I", "英会話"]]
 
 print(cols.head())
 ```
@@ -513,11 +513,11 @@ import pandas as pd
 
 df = pd.read_csv("data/students.csv")
 
-print(df[df["学科"] == "情報"])
+print(df[df["クラス"] == "A"])
 ```
 
 ::: {.caption-note}
-`学科` が `"情報"` の行だけが残る（名簿・アンケートでよく使う）
+`クラス` が `"A"` の行だけが残る（名簿・アンケートでよく使う）
 :::
 
 
@@ -533,7 +533,7 @@ import pandas as pd
 df = pd.read_csv("data/students.csv")
 
 print(df[
-    (df["学科"] == "情報")
+    (df["クラス"] == "A")
     & (df["数学I"] >= 80)
 ])
 ```
@@ -621,9 +621,9 @@ CSVを読む → 必要な列を作る → 集計する → 可視化する
 :::
 
 
-## 学科ごとに人数を数える
+## クラスごとに人数を数える
 
-- `groupby("学科")` で、学科ごとに行をグループへ分ける
+- `groupby("クラス")` で、クラスごとに行をグループへ分ける
 - グループの中身を見るには `.size()` などを続ける必要がある
 
 ```{python}
@@ -632,18 +632,18 @@ import pandas as pd
 
 df = pd.read_csv("data/students.csv")
 
-print(df.groupby("学科").size())
+print(df.groupby("クラス").size())
 ```
 
 ::: {.caption-note}
-情報8人・機械6人・電気6人で合計20人 — 全員がどこかのグループに分けられている
+Aが8人・Bが6人・Cが6人で合計20人 — 全員がどこかのグループに分けられている
 :::
 
 
-## 学科ごとに平均点を出す {#peek-groupby-code}
+## クラスごとに平均点を出す {#peek-groupby-code}
 
-- `groupby("学科")` に、集計する列と方法を続ける
-- `["平均点"]` で列を選び、`.mean()` で学科ごとの平均を出す
+- `groupby("クラス")` に、集計する列と方法を続ける
+- `["平均点"]` で列を選び、`.mean()` でクラスごとの平均を出す
 
 ```{python}
 #| echo: true
@@ -653,19 +653,19 @@ df = pd.read_csv("data/students.csv")
 subjects = ["現代文", "数学I", "英会話", "物理"]
 df["平均点"] = df[subjects].mean(axis=1)
 
-avg = df.groupby("学科")["平均点"].mean()
+avg = df.groupby("クラス")["平均点"].mean()
 print(avg)
 ```
 
 ::: {.caption-note}
-CSVの `学科` 列と、追加した `平均点` 列を使う。結果は `DataFrame` ではなく `Series`
+CSVの `クラス` 列と、追加した `平均点` 列を使う。結果は `DataFrame` ではなく `Series`
 :::
 
 
 ## groupbyの結果を確認
 
 - groupbyの結果も `Series`
-- `index` が学科名
+- `index` がクラス名
 - `values` が平均点
 
 ```{python}
@@ -675,7 +675,7 @@ import pandas as pd
 df = pd.read_csv("data/students.csv")
 subjects = ["現代文", "数学I", "英会話", "物理"]
 df["平均点"] = df[subjects].mean(axis=1)
-avg = df.groupby("学科")["平均点"].mean()
+avg = df.groupby("クラス")["平均点"].mean()
 
 print(type(avg))
 print(avg.index)
@@ -686,7 +686,7 @@ print(avg.values)
 ## groupbyの結果
 ```text
 groupby の結果も Series
-index  が「学科」
+index  が「クラス」
 values が「平均点」
 ```
 :::
@@ -718,12 +718,12 @@ import japanize_matplotlib
 df = pd.read_csv("data/students.csv")
 subjects = ["現代文", "数学I", "英会話", "物理"]
 df["平均点"] = df[subjects].mean(axis=1)
-avg = df.groupby("学科")["平均点"].mean()
+avg = df.groupby("クラス")["平均点"].mean()
 
 plt.bar(avg.index, avg.values)
-plt.xlabel("学科")
+plt.xlabel("クラス")
 plt.ylabel("平均点")
-plt.title("学科ごとの平均点")
+plt.title("クラスごとの平均点")
 plt.ylim(0, 100)
 plt.show()
 ```
@@ -750,12 +750,12 @@ import japanize_matplotlib
 df = pd.read_csv("data/students.csv")
 subjects = ["現代文", "数学I", "英会話", "物理"]
 df["平均点"] = df[subjects].mean(axis=1)
-avg = df.groupby("学科")["平均点"].mean()
+avg = df.groupby("クラス")["平均点"].mean()
 
 plt.bar(avg.index, avg.values, color="#2266CC")
-plt.xlabel("学科")
+plt.xlabel("クラス")
 plt.ylabel("平均点")
-plt.title("学科ごとの平均点")
+plt.title("クラスごとの平均点")
 plt.ylim(0, 100)
 plt.grid(axis="y", linestyle="--", alpha=0.5)
 plt.show()

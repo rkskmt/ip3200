@@ -24,7 +24,7 @@ CC0: <https://en.wikipedia.org/wiki/Fictionary#/media/File:Focus_definition_(Uns
 
 `{}` の中に `キー: 値` をカンマ区切りで書くと辞書になる。
 
-- キーは重複不可
+- 同じキーは1つしか持てない（重複して書くと、後に書いた値が残る）
 - 値は何でもよい
 
 ```python
