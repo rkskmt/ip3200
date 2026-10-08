@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Brainwriting (Method 635) sheet, A4 portrait: a theme box and 3 idea boxes x 6 rounds.
+     Units are millimetres, so it prints at full size on A4. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 210 297"
+     font-family="system-ui, 'Hiragino Sans', 'Yu Gothic UI', 'Meiryo', sans-serif" fill="#131516">
+  <title>ブレインライティングシート</title>
+
+  <!-- the sheet of paper: its edge is drawn so the sheet shows on a white slide.
+       The print PDF (bw_sheet.pdf) is this file without #paper-edge. -->
+  <rect id="paper-edge" x="0.4" y="0.4" width="209.2" height="296.2" fill="#ffffff" stroke="#9aa3ad" stroke-width="0.8"/>
+
+  <text x="105" y="13" font-size="7" text-anchor="middle">ブレインライティングシート</text>
+
+  <text x="20" y="27.4" font-size="6.5">テーマ</text>
+  <rect x="44" y="18" width="142" height="14" fill="#ffffff" stroke="#131516" stroke-width="0.5"/>
+
+  <!-- 3 ideas per row, one row per round -->
+  <g fill="#ffffff" stroke="#131516" stroke-width="0.6">
+    <rect x="6" y="38" width="64" height="39.5"/>
+    <rect x="73" y="38" width="64" height="39.5"/>
+    <rect x="140" y="38" width="64" height="39.5"/>
+
+    <rect x="6" y="80.7" width="64" height="39.5"/>
+    <rect x="73" y="80.7" width="64" height="39.5"/>
+    <rect x="140" y="80.7" width="64" height="39.5"/>
+
+    <rect x="6" y="123.4" width="64" height="39.5"/>
+    <rect x="73" y="123.4" width="64" height="39.5"/>
+    <rect x="140" y="123.4" width="64" height="39.5"/>
+
+    <rect x="6" y="166.1" width="64" height="39.5"/>
+    <rect x="73" y="166.1" width="64" height="39.5"/>
+    <rect x="140" y="166.1" width="64" height="39.5"/>
+
+    <rect x="6" y="208.8" width="64" height="39.5"/>
+    <rect x="73" y="208.8" width="64" height="39.5"/>
+    <rect x="140" y="208.8" width="64" height="39.5"/>
+
+    <rect x="6" y="251.5" width="64" height="39.5"/>
+    <rect x="73" y="251.5" width="64" height="39.5"/>
+    <rect x="140" y="251.5" width="64" height="39.5"/>
+  </g>
+</svg>

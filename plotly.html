@@ -322,23 +322,23 @@ rkskmt
 <li>「どの列をx軸に、どの列をy軸にするか」を <strong>列名で指定するだけ</strong></li>
 <li>まずは以下をVS Codeにコピペして実行</li>
 </ul>
-<div id="d52643a3" class="cell" data-execution_count="1">
+<div id="6e213ccd" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a></a></span>
 <span id="cb3-3"><a></a>df <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb3-4"><a></a>    <span class="st">"名前"</span>: [<span class="st">"田中"</span>, <span class="st">"佐藤"</span>, <span class="st">"鈴木"</span>, <span class="st">"高橋"</span>, <span class="st">"伊藤"</span>],</span>
-<span id="cb3-5"><a></a>    <span class="st">"学科"</span>: [<span class="st">"情報"</span>, <span class="st">"機械"</span>, <span class="st">"情報"</span>, <span class="st">"電気"</span>, <span class="st">"情報"</span>],</span>
+<span id="cb3-5"><a></a>    <span class="st">"クラス"</span>: [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"A"</span>, <span class="st">"C"</span>, <span class="st">"A"</span>],</span>
 <span id="cb3-6"><a></a>    <span class="st">"点数"</span>: [<span class="dv">82</span>, <span class="dv">75</span>, <span class="dv">91</span>, <span class="dv">68</span>, <span class="dv">57</span>],</span>
 <span id="cb3-7"><a></a>})</span>
 <span id="cb3-8"><a></a></span>
 <span id="cb3-9"><a></a><span class="bu">print</span>(df)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   名前  学科  点数
-0  田中  情報  82
-1  佐藤  機械  75
-2  鈴木  情報  91
-3  高橋  電気  68
-4  伊藤  情報  57</code></pre>
+<pre><code>   名前 クラス  点数
+0  田中   A  82
+1  佐藤   B  75
+2  鈴木   A  91
+3  高橋   C  68
+4  伊藤   A  57</code></pre>
 </div>
 </div>
 </div>
@@ -440,8 +440,8 @@ rkskmt
 <span id="cb8-2"><a></a>    df,</span>
 <span id="cb8-3"><a></a>    x<span class="op">=</span><span class="st">"名前"</span>,</span>
 <span id="cb8-4"><a></a>    y<span class="op">=</span><span class="st">"点数"</span>,</span>
-<span id="cb8-5"><a></a>    color<span class="op">=</span><span class="st">"学科"</span>,</span>
-<span id="cb8-6"><a></a>    title<span class="op">=</span><span class="st">"学科で色分けした点数"</span>,</span>
+<span id="cb8-5"><a></a>    color<span class="op">=</span><span class="st">"クラス"</span>,</span>
+<span id="cb8-6"><a></a>    title<span class="op">=</span><span class="st">"クラスで色分けした点数"</span>,</span>
 <span id="cb8-7"><a></a>)</span>
 <span id="cb8-8"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div style="display:flex; justify-content:center;">
@@ -457,7 +457,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <ul>
-<li>凡例をクリックすると、特定の学科だけ表示・非表示にできる</li>
+<li>凡例をクリックすると、特定のクラスだけ表示・非表示にできる</li>
 <li>棒にマウスを乗せると、値が表示される</li>
 </ul>
 </div>
@@ -481,19 +481,19 @@ rkskmt
 <li>CSVを <code>data</code> フォルダに置いて以下で読み込み</li>
 </ul></li>
 </ul>
-<div id="346f5644" class="cell" data-execution_count="5">
+<div id="74a44216" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb9-2"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb9-3"><a></a></span>
 <span id="cb9-4"><a></a>df_scores <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
 <span id="cb9-5"><a></a><span class="bu">print</span>(df_scores.head())</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   名前  学科  学年  現代文  数学I  英会話  物理  欠席日数
-0  田中  情報   1   80   70   90  85     2
-1  佐藤  機械   1   65   75   85  72     4
-2  鈴木  情報   2   88   91   84  90     1
-3  高橋  電気   2   72   68   76  80     3
-4  伊藤  情報   1   58   57   62  65     6</code></pre>
+<pre><code>   名前 クラス  学年  現代文  数学I  英会話  物理  欠席日数
+0  田中   A   1   80   70   90  85     2
+1  佐藤   B   1   65   75   85  72     4
+2  鈴木   A   2   88   91   84  90     1
+3  高橋   C   2   72   68   76  80     3
+4  伊藤   A   1   58   57   62  65     6</code></pre>
 </div>
 </div>
 </div>
@@ -509,7 +509,7 @@ rkskmt
 <span id="cb11-2"><a></a>    df_scores,</span>
 <span id="cb11-3"><a></a>    x<span class="op">=</span><span class="st">"数学I"</span>,</span>
 <span id="cb11-4"><a></a>    y<span class="op">=</span><span class="st">"英会話"</span>,</span>
-<span id="cb11-5"><a></a>    color<span class="op">=</span><span class="st">"学科"</span>,</span>
+<span id="cb11-5"><a></a>    color<span class="op">=</span><span class="st">"クラス"</span>,</span>
 <span id="cb11-6"><a></a>    hover_name<span class="op">=</span><span class="st">"名前"</span>,</span>
 <span id="cb11-7"><a></a>    title<span class="op">=</span><span class="st">"数学Iと英会話の点数"</span>,</span>
 <span id="cb11-8"><a></a>)</span>
@@ -549,7 +549,7 @@ rkskmt
 <span id="cb12-2"><a></a>    df_scores,</span>
 <span id="cb12-3"><a></a>    x<span class="op">=</span><span class="st">"数学I"</span>,</span>
 <span id="cb12-4"><a></a>    y<span class="op">=</span><span class="st">"英会話"</span>,</span>
-<span id="cb12-5"><a></a>    color<span class="op">=</span><span class="st">"学科"</span>,</span>
+<span id="cb12-5"><a></a>    color<span class="op">=</span><span class="st">"クラス"</span>,</span>
 <span id="cb12-6"><a></a>    size<span class="op">=</span><span class="st">"欠席日数"</span>,</span>
 <span id="cb12-7"><a></a>    size_max<span class="op">=</span><span class="dv">40</span>,</span>
 <span id="cb12-8"><a></a>    hover_name<span class="op">=</span><span class="st">"名前"</span>,</span>
@@ -575,7 +575,7 @@ rkskmt
 <li><a href="data/tokyo_temp_annual.csv">tokyo_temp_annual.csv</a> を <code>data</code> フォルダに置く</li>
 </ul></li>
 </ul>
-<div id="726a7686" class="cell" data-execution_count="8">
+<div id="28f41b53" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb13-2"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb13-3"><a></a></span>
@@ -671,27 +671,27 @@ rkskmt
 <p>Pandasの集計結果をPlotlyへ</p>
 </div>
 </section>
-<section id="学科ごとの平均点を計算" class="slide level2">
-<h2>学科ごとの平均点を計算</h2>
+<section id="クラスごとの平均点を計算" class="slide level2">
+<h2>クラスごとの平均点を計算</h2>
 <div class="slide-body">
 <ul>
-<li><a href="./pandas.html">Pandas入門</a>の <code>groupby()</code> の復習 — <a href="data/students.csv">students.csv</a> で学科ごとの平均点を出す</li>
-<li><code>groupby()</code> の結果は <code>Series</code>（<code>index</code> が学科、<code>values</code> が平均点）</li>
+<li><a href="./pandas.html">Pandas入門</a>の <code>groupby()</code> の復習 — <a href="data/students.csv">students.csv</a> でクラスごとの平均点を出す</li>
+<li><code>groupby()</code> の結果は <code>Series</code>（<code>index</code> がクラス、<code>values</code> が平均点）</li>
 </ul>
-<div id="01919509" class="cell" data-execution_count="12">
+<div id="75bc200a" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb18-2"><a></a></span>
 <span id="cb18-3"><a></a>df_students <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
 <span id="cb18-4"><a></a>subjects <span class="op">=</span> [<span class="st">"現代文"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>, <span class="st">"物理"</span>]</span>
 <span id="cb18-5"><a></a></span>
 <span id="cb18-6"><a></a>df_students[<span class="st">"平均点"</span>] <span class="op">=</span> df_students[subjects].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb18-7"><a></a>avg <span class="op">=</span> df_students.groupby(<span class="st">"学科"</span>)[<span class="st">"平均点"</span>].mean()</span>
+<span id="cb18-7"><a></a>avg <span class="op">=</span> df_students.groupby(<span class="st">"クラス"</span>)[<span class="st">"平均点"</span>].mean()</span>
 <span id="cb18-8"><a></a><span class="bu">print</span>(avg)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>学科
-情報    80.062500
-機械    71.625000
-電気    77.583333
+<pre><code>クラス
+A    80.062500
+B    71.625000
+C    77.583333
 Name: 平均点, dtype: float64</code></pre>
 </div>
 </div>
@@ -706,26 +706,26 @@ Name: 平均点, dtype: float64</code></pre>
 <ul>
 <li><code>reset_index()</code> で、<code>index</code> を普通の列に戻した <strong>DataFrame</strong> が得られる</li>
 </ul>
-<div id="cbac4d90" class="cell" data-execution_count="13">
+<div id="112acb31" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb20-2"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb20-3"><a></a></span>
 <span id="cb20-4"><a></a>df_students <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
 <span id="cb20-5"><a></a>subjects <span class="op">=</span> [<span class="st">"現代文"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>, <span class="st">"物理"</span>]</span>
 <span id="cb20-6"><a></a>df_students[<span class="st">"平均点"</span>] <span class="op">=</span> df_students[subjects].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb20-7"><a></a>avg <span class="op">=</span> df_students.groupby(<span class="st">"学科"</span>)[<span class="st">"平均点"</span>].mean()</span>
+<span id="cb20-7"><a></a>avg <span class="op">=</span> df_students.groupby(<span class="st">"クラス"</span>)[<span class="st">"平均点"</span>].mean()</span>
 <span id="cb20-8"><a></a></span>
 <span id="cb20-9"><a></a>avg_df <span class="op">=</span> avg.reset_index()</span>
 <span id="cb20-10"><a></a><span class="bu">print</span>(avg_df)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   学科        平均点
-0  情報  80.062500
-1  機械  71.625000
-2  電気  77.583333</code></pre>
+<pre><code>  クラス        平均点
+0   A  80.062500
+1   B  71.625000
+2   C  77.583333</code></pre>
 </div>
 </div>
 <ul>
-<li><code>学科</code> と <code>平均点</code> の <strong>2列のDataFrame</strong> になった — これで <code>x=</code>、<code>y=</code> に列名で渡せる</li>
+<li><code>クラス</code> と <code>平均点</code> の <strong>2列のDataFrame</strong> になった — これで <code>x=</code>、<code>y=</code> に列名で渡せる</li>
 </ul>
 </div>
 </section>
@@ -736,7 +736,7 @@ Name: 平均点, dtype: float64</code></pre>
 <li>y軸は <code>update_yaxes(range=[最小, 最大])</code> で固定できる — 平均点なら <strong>0点〜満点</strong> で正直に見せる</li>
 <li>matplotlibでは <code>plt.ylim(0, 100)</code> と書いた、それのPlotly版</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>fig <span class="op">=</span> px.bar(avg_df, x<span class="op">=</span><span class="st">"学科"</span>, y<span class="op">=</span><span class="st">"平均点"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>fig <span class="op">=</span> px.bar(avg_df, x<span class="op">=</span><span class="st">"クラス"</span>, y<span class="op">=</span><span class="st">"平均点"</span>)</span>
 <span id="cb22-2"><a></a>fig.update_yaxes(<span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, <span class="dv">100</span>])  <span class="co"># 棒グラフは0から見せる</span></span>
 <span id="cb22-3"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div style="display:flex; justify-content:center;">
@@ -751,37 +751,37 @@ Name: 平均点, dtype: float64</code></pre>
 <li><code>groupby(..., as_index=False)</code> とすると、最初から <strong>DataFrame</strong> で結果を受け取れる</li>
 <li>Plotlyに渡す前提なら、<code>reset_index()</code> が要らないこちらが1行短い</li>
 </ul>
-<div id="dc34b710" class="cell" data-execution_count="15">
+<div id="fc953d3f" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb23-2"><a></a></span>
 <span id="cb23-3"><a></a>df_students <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
 <span id="cb23-4"><a></a>subjects <span class="op">=</span> [<span class="st">"現代文"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>, <span class="st">"物理"</span>]</span>
 <span id="cb23-5"><a></a>df_students[<span class="st">"平均点"</span>] <span class="op">=</span> df_students[subjects].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb23-6"><a></a></span>
-<span id="cb23-7"><a></a>avg_df <span class="op">=</span> df_students.groupby(<span class="st">"学科"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"平均点"</span>].mean()</span>
+<span id="cb23-7"><a></a>avg_df <span class="op">=</span> df_students.groupby(<span class="st">"クラス"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"平均点"</span>].mean()</span>
 <span id="cb23-8"><a></a><span class="bu">print</span>(avg_df)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   学科        平均点
-0  情報  80.062500
-1  機械  71.625000
-2  電気  77.583333</code></pre>
+<pre><code>  クラス        平均点
+0   A  80.062500
+1   B  71.625000
+2   C  77.583333</code></pre>
 </div>
 </div>
 </div>
 </section>
-<section id="演習学科ごとの平均点をplotlyで描く" class="slide level2 badge-practice scrollable">
-<h2>演習：学科ごとの平均点をPlotlyで描く</h2>
+<section id="演習クラスごとの平均点をplotlyで描く" class="slide level2 badge-practice scrollable">
+<h2>演習：クラスごとの平均点をPlotlyで描く</h2>
 <div class="slide-body">
 <div class="prompt">
-<p>Pandas入門でmatplotlibを使って描いた「学科ごとの平均点」の棒グラフを、Plotlyで描き直せ。</p>
+<p>Pandas入門でmatplotlibを使って描いた「クラスごとの平均点」の棒グラフを、Plotlyで描き直せ。</p>
 </div>
 <ol start="0" type="1">
 <li><a href="data/students.csv">students.csv</a> をダウンロードして <code>data</code> フォルダに置く（配置済みならそのまま）</li>
 <li><code>pd.read_csv()</code> で読み込み、4科目の平均点の列を追加</li>
-<li><code>groupby("学科", as_index=False)</code> で学科ごとの平均点を集計</li>
-<li><code>px.bar()</code> で棒グラフを描く（<code>color="学科"</code> で色分け、y軸は <code>0</code>〜<code>100</code> に固定）</li>
+<li><code>groupby("クラス", as_index=False)</code> でクラスごとの平均点を集計</li>
+<li><code>px.bar()</code> で棒グラフを描く（<code>color="クラス"</code> で色分け、y軸は <code>0</code>〜<code>100</code> に固定）</li>
 </ol>
-<div id="856aded2" class="cell" data-execution_count="16">
+<div id="e33e2023" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -791,14 +791,14 @@ Name: 平均点, dtype: float64</code></pre>
 <span id="cb25-5"><a></a>subjects <span class="op">=</span> [<span class="st">"現代文"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>, <span class="st">"物理"</span>]</span>
 <span id="cb25-6"><a></a></span>
 <span id="cb25-7"><a></a>df[<span class="st">"平均点"</span>] <span class="op">=</span> df[subjects].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb25-8"><a></a>avg_df <span class="op">=</span> df.groupby(<span class="st">"学科"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"平均点"</span>].mean()</span>
+<span id="cb25-8"><a></a>avg_df <span class="op">=</span> df.groupby(<span class="st">"クラス"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"平均点"</span>].mean()</span>
 <span id="cb25-9"><a></a></span>
 <span id="cb25-10"><a></a>fig <span class="op">=</span> px.bar(</span>
 <span id="cb25-11"><a></a>    avg_df,</span>
-<span id="cb25-12"><a></a>    x<span class="op">=</span><span class="st">"学科"</span>,</span>
+<span id="cb25-12"><a></a>    x<span class="op">=</span><span class="st">"クラス"</span>,</span>
 <span id="cb25-13"><a></a>    y<span class="op">=</span><span class="st">"平均点"</span>,</span>
-<span id="cb25-14"><a></a>    color<span class="op">=</span><span class="st">"学科"</span>,</span>
-<span id="cb25-15"><a></a>    title<span class="op">=</span><span class="st">"学科ごとの平均点"</span>,</span>
+<span id="cb25-14"><a></a>    color<span class="op">=</span><span class="st">"クラス"</span>,</span>
+<span id="cb25-15"><a></a>    title<span class="op">=</span><span class="st">"クラスごとの平均点"</span>,</span>
 <span id="cb25-16"><a></a>)</span>
 <span id="cb25-17"><a></a>fig.update_yaxes(<span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, <span class="dv">100</span>])</span>
 <span id="cb25-18"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
@@ -829,7 +829,7 @@ Name: 平均点, dtype: float64</code></pre>
 <span id="cb26-8"><a></a>    x<span class="op">=</span><span class="st">"数学I"</span>,</span>
 <span id="cb26-9"><a></a>    y<span class="op">=</span><span class="st">"英会話"</span>,</span>
 <span id="cb26-10"><a></a>    z<span class="op">=</span><span class="st">"物理"</span>,</span>
-<span id="cb26-11"><a></a>    color<span class="op">=</span><span class="st">"学科"</span>,</span>
+<span id="cb26-11"><a></a>    color<span class="op">=</span><span class="st">"クラス"</span>,</span>
 <span id="cb26-12"><a></a>    hover_name<span class="op">=</span><span class="st">"名前"</span>,</span>
 <span id="cb26-13"><a></a>)</span>
 <span id="cb26-14"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
@@ -974,7 +974,7 @@ Name: 平均点, dtype: float64</code></pre>
 </ul></li>
 <li>Plotlyには <strong>このデータが同梱</strong> されている — ダウンロード不要</li>
 </ul>
-<div id="ce238ff5" class="cell" data-execution_count="18">
+<div id="571d70cd" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb28-2"><a></a></span>
 <span id="cb28-3"><a></a>gap <span class="op">=</span> px.data.gapminder()</span>

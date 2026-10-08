@@ -893,7 +893,7 @@
     "href": "plotly.html#まずdataframeを用意する",
     "title": "Plotly入門",
     "section": "まずDataFrameを用意する",
-    "text": "まずDataFrameを用意する\n\n\nPlotlyはPandasの DataFrame と相性がよい\n「どの列をx軸に、どの列をy軸にするか」を 列名で指定するだけ\nまずは以下をVS Codeにコピペして実行\n\n\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"名前\": [\"田中\", \"佐藤\", \"鈴木\", \"高橋\", \"伊藤\"],\n    \"学科\": [\"情報\", \"機械\", \"情報\", \"電気\", \"情報\"],\n    \"点数\": [82, 75, 91, 68, 57],\n})\n\nprint(df)\n\n   名前  学科  点数\n0  田中  情報  82\n1  佐藤  機械  75\n2  鈴木  情報  91\n3  高橋  電気  68\n4  伊藤  情報  57"
+    "text": "まずDataFrameを用意する\n\n\nPlotlyはPandasの DataFrame と相性がよい\n「どの列をx軸に、どの列をy軸にするか」を 列名で指定するだけ\nまずは以下をVS Codeにコピペして実行\n\n\nimport pandas as pd\n\ndf = pd.DataFrame({\n    \"名前\": [\"田中\", \"佐藤\", \"鈴木\", \"高橋\", \"伊藤\"],\n    \"クラス\": [\"A\", \"B\", \"A\", \"C\", \"A\"],\n    \"点数\": [82, 75, 91, 68, 57],\n})\n\nprint(df)\n\n   名前 クラス  点数\n0  田中   A  82\n1  佐藤   B  75\n2  鈴木   A  91\n3  高橋   C  68\n4  伊藤   A  57"
   },
   {
     "objectID": "plotly.html#棒グラフを作る",
@@ -921,7 +921,7 @@
     "href": "plotly.html#色分けする",
     "title": "Plotly入門",
     "section": "色分けする",
-    "text": "色分けする\n\n\ncolor= に列名を指定すると、その列の値で色分けできる\nカテゴリの違いを見せたいときに便利\n\nfig = px.bar(\n    df,\n    x=\"名前\",\n    y=\"点数\",\n    color=\"学科\",\n    title=\"学科で色分けした点数\",\n)\nfig.show()\n\n\n\n\n\n\n\n\n\n何が便利？\n\n\n\n凡例をクリックすると、特定の学科だけ表示・非表示にできる\n棒にマウスを乗せると、値が表示される"
+    "text": "色分けする\n\n\ncolor= に列名を指定すると、その列の値で色分けできる\nカテゴリの違いを見せたいときに便利\n\nfig = px.bar(\n    df,\n    x=\"名前\",\n    y=\"点数\",\n    color=\"クラス\",\n    title=\"クラスで色分けした点数\",\n)\nfig.show()\n\n\n\n\n\n\n\n\n\n何が便利？\n\n\n\n凡例をクリックすると、特定のクラスだけ表示・非表示にできる\n棒にマウスを乗せると、値が表示される"
   },
   {
     "objectID": "plotly.html#section-1",
@@ -935,21 +935,21 @@
     "href": "plotly.html#散布図",
     "title": "Plotly入門",
     "section": "散布図",
-    "text": "散布図\n\n\npx.scatter() で散布図を作る\nデータはPandas入門で使った students.csv（20人×8列）\n\nCSVを data フォルダに置いて以下で読み込み\n\n\n\nimport pandas as pd\nimport plotly.express as px\n\ndf_scores = pd.read_csv(\"data/students.csv\")\nprint(df_scores.head())\n\n   名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n0  田中  情報   1   80   70   90  85     2\n1  佐藤  機械   1   65   75   85  72     4\n2  鈴木  情報   2   88   91   84  90     1\n3  高橋  電気   2   72   68   76  80     3\n4  伊藤  情報   1   58   57   62  65     6"
+    "text": "散布図\n\n\npx.scatter() で散布図を作る\nデータはPandas入門で使った students.csv（20人×8列）\n\nCSVを data フォルダに置いて以下で読み込み\n\n\n\nimport pandas as pd\nimport plotly.express as px\n\ndf_scores = pd.read_csv(\"data/students.csv\")\nprint(df_scores.head())\n\n   名前 クラス  学年  現代文  数学I  英会話  物理  欠席日数\n0  田中   A   1   80   70   90  85     2\n1  佐藤   B   1   65   75   85  72     4\n2  鈴木   A   2   88   91   84  90     1\n3  高橋   C   2   72   68   76  80     3\n4  伊藤   A   1   58   57   62  65     6"
   },
   {
     "objectID": "plotly.html#散布図のコード",
     "href": "plotly.html#散布図のコード",
     "title": "Plotly入門",
     "section": "散布図のコード",
-    "text": "散布図のコード\n\n\nx と y に数値列を指定する\nhover_name= に指定した列が、ホバーしたときの 見出し になる\n\nfig = px.scatter(\n    df_scores,\n    x=\"数学I\",\n    y=\"英会話\",\n    color=\"学科\",\n    hover_name=\"名前\",\n    title=\"数学Iと英会話の点数\",\n)\nfig.show()\n\n\n\n\n\n\n\n\n\n外れた点、誰？\n\n\n\n離れた点にマウスを乗せると 誰なのか その場で分かる\n静止画の散布図では、外れた点が誰なのかは分からなかった"
+    "text": "散布図のコード\n\n\nx と y に数値列を指定する\nhover_name= に指定した列が、ホバーしたときの 見出し になる\n\nfig = px.scatter(\n    df_scores,\n    x=\"数学I\",\n    y=\"英会話\",\n    color=\"クラス\",\n    hover_name=\"名前\",\n    title=\"数学Iと英会話の点数\",\n)\nfig.show()\n\n\n\n\n\n\n\n\n\n外れた点、誰？\n\n\n\n離れた点にマウスを乗せると 誰なのか その場で分かる\n静止画の散布図では、外れた点が誰なのかは分からなかった"
   },
   {
     "objectID": "plotly.html#点の大きさで3つ目の量を見せる",
     "href": "plotly.html#点の大きさで3つ目の量を見せる",
     "title": "Plotly入門",
     "section": "点の大きさで3つ目の量を見せる",
-    "text": "点の大きさで3つ目の量を見せる\n\n\nsize= に数値列を指定すると、点の大きさが 3つ目の量 になる（今回は欠席日数）\n\nsize_max= は一番大きい点のサイズ\n\n欠席 0日 の点は大きさ0で消えてしまう — できた fig は fig.update_〜() 系のメソッドで微調整できるので、sizemin で最小の大きさを決めておく\n\nfig = px.scatter(\n    df_scores,\n    x=\"数学I\",\n    y=\"英会話\",\n    color=\"学科\",\n    size=\"欠席日数\",\n    size_max=40,\n    hover_name=\"名前\",\n)\nfig.update_traces(marker=dict(sizemin=4))  # 欠席0日の点も見えるように\nfig.show()\n\n\n\n\n大きい点ほど欠席が多い — 成績との関係が見えるか？"
+    "text": "点の大きさで3つ目の量を見せる\n\n\nsize= に数値列を指定すると、点の大きさが 3つ目の量 になる（今回は欠席日数）\n\nsize_max= は一番大きい点のサイズ\n\n欠席 0日 の点は大きさ0で消えてしまう — できた fig は fig.update_〜() 系のメソッドで微調整できるので、sizemin で最小の大きさを決めておく\n\nfig = px.scatter(\n    df_scores,\n    x=\"数学I\",\n    y=\"英会話\",\n    color=\"クラス\",\n    size=\"欠席日数\",\n    size_max=40,\n    hover_name=\"名前\",\n)\nfig.update_traces(marker=dict(sizemin=4))  # 欠席0日の点も見えるように\nfig.show()\n\n\n\n\n大きい点ほど欠席が多い — 成績との関係が見えるか？"
   },
   {
     "objectID": "plotly.html#折れ線グラフ",
@@ -987,39 +987,39 @@
     "text": "Pandasの集計結果をPlotlyへ"
   },
   {
-    "objectID": "plotly.html#学科ごとの平均点を計算",
-    "href": "plotly.html#学科ごとの平均点を計算",
+    "objectID": "plotly.html#クラスごとの平均点を計算",
+    "href": "plotly.html#クラスごとの平均点を計算",
     "title": "Plotly入門",
-    "section": "学科ごとの平均点を計算",
-    "text": "学科ごとの平均点を計算\n\n\nPandas入門の groupby() の復習 — students.csv で学科ごとの平均点を出す\ngroupby() の結果は Series（index が学科、values が平均点）\n\n\nimport pandas as pd\n\ndf_students = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\n\ndf_students[\"平均点\"] = df_students[subjects].mean(axis=1)\navg = df_students.groupby(\"学科\")[\"平均点\"].mean()\nprint(avg)\n\n学科\n情報    80.062500\n機械    71.625000\n電気    77.583333\nName: 平均点, dtype: float64\n\n\n\nただしPlotly Expressの基本形は DataFrame + 列名 — Series のままでは渡しにくい"
+    "section": "クラスごとの平均点を計算",
+    "text": "クラスごとの平均点を計算\n\n\nPandas入門の groupby() の復習 — students.csv でクラスごとの平均点を出す\ngroupby() の結果は Series（index がクラス、values が平均点）\n\n\nimport pandas as pd\n\ndf_students = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\n\ndf_students[\"平均点\"] = df_students[subjects].mean(axis=1)\navg = df_students.groupby(\"クラス\")[\"平均点\"].mean()\nprint(avg)\n\nクラス\nA    80.062500\nB    71.625000\nC    77.583333\nName: 平均点, dtype: float64\n\n\n\nただしPlotly Expressの基本形は DataFrame + 列名 — Series のままでは渡しにくい"
   },
   {
     "objectID": "plotly.html#seriesをdataframeに戻す",
     "href": "plotly.html#seriesをdataframeに戻す",
     "title": "Plotly入門",
     "section": "SeriesをDataFrameに戻す",
-    "text": "SeriesをDataFrameに戻す\n\n\nreset_index() で、index を普通の列に戻した DataFrame が得られる\n\n\nimport pandas as pd\nimport plotly.express as px\n\ndf_students = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf_students[\"平均点\"] = df_students[subjects].mean(axis=1)\navg = df_students.groupby(\"学科\")[\"平均点\"].mean()\n\navg_df = avg.reset_index()\nprint(avg_df)\n\n   学科        平均点\n0  情報  80.062500\n1  機械  71.625000\n2  電気  77.583333\n\n\n\n学科 と 平均点 の 2列のDataFrame になった — これで x=、y= に列名で渡せる"
+    "text": "SeriesをDataFrameに戻す\n\n\nreset_index() で、index を普通の列に戻した DataFrame が得られる\n\n\nimport pandas as pd\nimport plotly.express as px\n\ndf_students = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf_students[\"平均点\"] = df_students[subjects].mean(axis=1)\navg = df_students.groupby(\"クラス\")[\"平均点\"].mean()\n\navg_df = avg.reset_index()\nprint(avg_df)\n\n  クラス        平均点\n0   A  80.062500\n1   B  71.625000\n2   C  77.583333\n\n\n\nクラス と 平均点 の 2列のDataFrame になった — これで x=、y= に列名で渡せる"
   },
   {
     "objectID": "plotly.html#集計結果をplotlyで可視化",
     "href": "plotly.html#集計結果をplotlyで可視化",
     "title": "Plotly入門",
     "section": "集計結果をPlotlyで可視化",
-    "text": "集計結果をPlotlyで可視化\n\n\ny軸は update_yaxes(range=[最小, 最大]) で固定できる — 平均点なら 0点〜満点 で正直に見せる\nmatplotlibでは plt.ylim(0, 100) と書いた、それのPlotly版\n\nfig = px.bar(avg_df, x=\"学科\", y=\"平均点\")\nfig.update_yaxes(range=[0, 100])  # 棒グラフは0から見せる\nfig.show()"
+    "text": "集計結果をPlotlyで可視化\n\n\ny軸は update_yaxes(range=[最小, 最大]) で固定できる — 平均点なら 0点〜満点 で正直に見せる\nmatplotlibでは plt.ylim(0, 100) と書いた、それのPlotly版\n\nfig = px.bar(avg_df, x=\"クラス\", y=\"平均点\")\nfig.update_yaxes(range=[0, 100])  # 棒グラフは0から見せる\nfig.show()"
   },
   {
     "objectID": "plotly.html#そのままdataframeで受け取る",
     "href": "plotly.html#そのままdataframeで受け取る",
     "title": "Plotly入門",
     "section": "そのままDataFrameで受け取る",
-    "text": "そのままDataFrameで受け取る\n\n\ngroupby(..., as_index=False) とすると、最初から DataFrame で結果を受け取れる\nPlotlyに渡す前提なら、reset_index() が要らないこちらが1行短い\n\n\nimport pandas as pd\n\ndf_students = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf_students[\"平均点\"] = df_students[subjects].mean(axis=1)\n\navg_df = df_students.groupby(\"学科\", as_index=False)[\"平均点\"].mean()\nprint(avg_df)\n\n   学科        平均点\n0  情報  80.062500\n1  機械  71.625000\n2  電気  77.583333"
+    "text": "そのままDataFrameで受け取る\n\n\ngroupby(..., as_index=False) とすると、最初から DataFrame で結果を受け取れる\nPlotlyに渡す前提なら、reset_index() が要らないこちらが1行短い\n\n\nimport pandas as pd\n\ndf_students = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf_students[\"平均点\"] = df_students[subjects].mean(axis=1)\n\navg_df = df_students.groupby(\"クラス\", as_index=False)[\"平均点\"].mean()\nprint(avg_df)\n\n  クラス        平均点\n0   A  80.062500\n1   B  71.625000\n2   C  77.583333"
   },
   {
-    "objectID": "plotly.html#演習学科ごとの平均点をplotlyで描く",
-    "href": "plotly.html#演習学科ごとの平均点をplotlyで描く",
+    "objectID": "plotly.html#演習クラスごとの平均点をplotlyで描く",
+    "href": "plotly.html#演習クラスごとの平均点をplotlyで描く",
     "title": "Plotly入門",
-    "section": "演習：学科ごとの平均点をPlotlyで描く",
-    "text": "演習：学科ごとの平均点をPlotlyで描く\n\n\nPandas入門でmatplotlibを使って描いた「学科ごとの平均点」の棒グラフを、Plotlyで描き直せ。\n\n\nstudents.csv をダウンロードして data フォルダに置く（配置済みならそのまま）\npd.read_csv() で読み込み、4科目の平均点の列を追加\ngroupby(\"学科\", as_index=False) で学科ごとの平均点を集計\npx.bar() で棒グラフを描く（color=\"学科\" で色分け、y軸は 0〜100 に固定）\n\n\n\n解答例を見る\nimport pandas as pd\nimport plotly.express as px\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\n\ndf[\"平均点\"] = df[subjects].mean(axis=1)\navg_df = df.groupby(\"学科\", as_index=False)[\"平均点\"].mean()\n\nfig = px.bar(\n    avg_df,\n    x=\"学科\",\n    y=\"平均点\",\n    color=\"学科\",\n    title=\"学科ごとの平均点\",\n)\nfig.update_yaxes(range=[0, 100])\nfig.show()"
+    "section": "演習：クラスごとの平均点をPlotlyで描く",
+    "text": "演習：クラスごとの平均点をPlotlyで描く\n\n\nPandas入門でmatplotlibを使って描いた「クラスごとの平均点」の棒グラフを、Plotlyで描き直せ。\n\n\nstudents.csv をダウンロードして data フォルダに置く（配置済みならそのまま）\npd.read_csv() で読み込み、4科目の平均点の列を追加\ngroupby(\"クラス\", as_index=False) でクラスごとの平均点を集計\npx.bar() で棒グラフを描く（color=\"クラス\" で色分け、y軸は 0〜100 に固定）\n\n\n\n解答例を見る\nimport pandas as pd\nimport plotly.express as px\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\n\ndf[\"平均点\"] = df[subjects].mean(axis=1)\navg_df = df.groupby(\"クラス\", as_index=False)[\"平均点\"].mean()\n\nfig = px.bar(\n    avg_df,\n    x=\"クラス\",\n    y=\"平均点\",\n    color=\"クラス\",\n    title=\"クラスごとの平均点\",\n)\nfig.update_yaxes(range=[0, 100])\nfig.show()"
   },
   {
     "objectID": "plotly.html#section-3",
@@ -1033,7 +1033,7 @@
     "href": "plotly.html#d散布図",
     "title": "Plotly入門",
     "section": "3D散布図",
-    "text": "3D散布図\n\n\npx.scatter_3d() に x・y・z の 3つの数値列 を渡す\nドラッグで回転、ホバーで名前 — 3科目（数学I・英会話・物理）の関係を探索できる\n\nimport pandas as pd\nimport plotly.express as px\n\ndf_3d = pd.read_csv(\"data/students.csv\")\n\nfig = px.scatter_3d(\n    df_3d,\n    x=\"数学I\",\n    y=\"英会話\",\n    z=\"物理\",\n    color=\"学科\",\n    hover_name=\"名前\",\n)\nfig.show()\n\n\n\n\n\n\n\n\n\n3Dは「回せる道具」で\n\n\n\nmatplotlibでも3D図は作れるが、視点を動かせない3Dは読みにくい\n回転・ズーム・ホバーで探索できるPlotlyは、3D散布図と相性がよい"
+    "text": "3D散布図\n\n\npx.scatter_3d() に x・y・z の 3つの数値列 を渡す\nドラッグで回転、ホバーで名前 — 3科目（数学I・英会話・物理）の関係を探索できる\n\nimport pandas as pd\nimport plotly.express as px\n\ndf_3d = pd.read_csv(\"data/students.csv\")\n\nfig = px.scatter_3d(\n    df_3d,\n    x=\"数学I\",\n    y=\"英会話\",\n    z=\"物理\",\n    color=\"クラス\",\n    hover_name=\"名前\",\n)\nfig.show()\n\n\n\n\n\n\n\n\n\n3Dは「回せる道具」で\n\n\n\nmatplotlibでも3D図は作れるが、視点を動かせない3Dは読みにくい\n回転・ズーム・ホバーで探索できるPlotlyは、3D散布図と相性がよい"
   },
   {
     "objectID": "plotly.html#htmlとして保存する",
@@ -1215,28 +1215,28 @@
     "href": "pandas.html#csvとは",
     "title": "Pandas入門",
     "section": "CSVとは",
-    "text": "CSVとは\n\n\nCSVは表をテキストで保存する形式\n\nComma Separated Values\nカンマで値を区切る\n\nExcelやGoogleスプレッドシートからも書き出せる\n\n名前,学科,学年,現代文,数学I,英会話,物理,欠席日数\n田中,情報,1,80,70,90,85,2\n佐藤,機械,1,65,75,85,72,4\n鈴木,情報,2,88,91,84,90,1\n\n1行目は列名として扱われることが多い\n列が増えるほど、Pandasで扱う意味が出てくる\nPandasでは pd.read_csv() で読み込む"
+    "text": "CSVとは\n\n\nCSVは表をテキストで保存する形式\n\nComma Separated Values\nカンマで値を区切る\n\nExcelやGoogleスプレッドシートからも書き出せる\n\n名前,クラス,学年,現代文,数学I,英会話,物理,欠席日数\n田中,A,1,80,70,90,85,2\n佐藤,B,1,65,75,85,72,4\n鈴木,A,2,88,91,84,90,1\n\n1行目は列名として扱われることが多い\n列が増えるほど、Pandasで扱う意味が出てくる\nPandasでは pd.read_csv() で読み込む"
   },
   {
     "objectID": "pandas.html#csvを読み込む",
     "href": "pandas.html#csvを読み込む",
     "title": "Pandas入門",
     "section": "CSVを読み込む",
-    "text": "CSVを読み込む\n\n\ndata/students.csv をダウンロード\n作業フォルダに data フォルダを作る\nその中に students.csv を置く\nPythonから data/students.csv で読み込む\n\n\n※ students.csv は授業用の架空データ（実在の個人ではない）\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nprint(df.head())\n\n   名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n0  田中  情報   1   80   70   90  85     2\n1  佐藤  機械   1   65   75   85  72     4\n2  鈴木  情報   2   88   91   84  90     1\n3  高橋  電気   2   72   68   76  80     3\n4  伊藤  情報   1   58   57   62  65     6\n\n\n\nCSVの1行目が columns になり、index は指定しなければ自動で番号が振られる\n\n\n\n\n\n\n\nここから df は students.csv に変わる\n\n\n\nここまでの田中・佐藤（2人×3科目）は 練習用の小さな表\n以降の df は students.csv（20人×8列） — 集計・可視化はこのデータで進める"
+    "text": "CSVを読み込む\n\n\ndata/students.csv をダウンロード\n作業フォルダに data フォルダを作る\nその中に students.csv を置く\nPythonから data/students.csv で読み込む\n\n\n※ students.csv は授業用の架空データ（実在の個人ではない）\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nprint(df.head())\n\n   名前 クラス  学年  現代文  数学I  英会話  物理  欠席日数\n0  田中   A   1   80   70   90  85     2\n1  佐藤   B   1   65   75   85  72     4\n2  鈴木   A   2   88   91   84  90     1\n3  高橋   C   2   72   68   76  80     3\n4  伊藤   A   1   58   57   62  65     6\n\n\n\nCSVの1行目が columns になり、index は指定しなければ自動で番号が振られる\n\n\n\n\n\n\n\nここから df は students.csv に変わる\n\n\n\nここまでの田中・佐藤（2人×3科目）は 練習用の小さな表\n以降の df は students.csv（20人×8列） — 集計・可視化はこのデータで進める"
   },
   {
     "objectID": "pandas.html#読み込んだ表の形を確認",
     "href": "pandas.html#読み込んだ表の形を確認",
     "title": "Pandas入門",
     "section": "読み込んだ表の形を確認",
-    "text": "読み込んだ表の形を確認\n\n\nデータを読み込んだら、まず 中身と形 を確認する\nhead() は先頭数行を表示する\nshape は (行数, 列数)\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df.head())   # 先頭5行（中身）\nprint(df.shape)    # (行数, 列数)\nprint(df.columns)  # 列名\nprint(df.index)    # 行のラベル\n\n   名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n0  田中  情報   1   80   70   90  85     2\n1  佐藤  機械   1   65   75   85  72     4\n2  鈴木  情報   2   88   91   84  90     1\n3  高橋  電気   2   72   68   76  80     3\n4  伊藤  情報   1   58   57   62  65     6\n(20, 8)\nIndex(['名前', '学科', '学年', '現代文', '数学I', '英会話', '物理', '欠席日数'], dtype='object')\nRangeIndex(start=0, stop=20, step=1)"
+    "text": "読み込んだ表の形を確認\n\n\nデータを読み込んだら、まず 中身と形 を確認する\nhead() は先頭数行を表示する\nshape は (行数, 列数)\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df.head())   # 先頭5行（中身）\nprint(df.shape)    # (行数, 列数)\nprint(df.columns)  # 列名\nprint(df.index)    # 行のラベル\n\n   名前 クラス  学年  現代文  数学I  英会話  物理  欠席日数\n0  田中   A   1   80   70   90  85     2\n1  佐藤   B   1   65   75   85  72     4\n2  鈴木   A   2   88   91   84  90     1\n3  高橋   C   2   72   68   76  80     3\n4  伊藤   A   1   58   57   62  65     6\n(20, 8)\nIndex(['名前', 'クラス', '学年', '現代文', '数学I', '英会話', '物理', '欠席日数'], dtype='object')\nRangeIndex(start=0, stop=20, step=1)"
   },
   {
     "objectID": "pandas.html#名前をindexにする読み込み",
     "href": "pandas.html#名前をindexにする読み込み",
     "title": "Pandas入門",
     "section": "名前をindexにする読み込み",
-    "text": "名前をindexにする読み込み\n\n\nindex_col=\"名前\" とすると、名前列をindexにできる\n「行名として使いたい列」があるときに使う\n\n\nimport pandas as pd\n\ndf_name = pd.read_csv(\"data/students.csv\", index_col=\"名前\")\nprint(df_name.head())\n\n    学科  学年  現代文  数学I  英会話  物理  欠席日数\n名前                                 \n田中  情報   1   80   70   90  85     2\n佐藤  機械   1   65   75   85  72     4\n鈴木  情報   2   88   91   84  90     1\n高橋  電気   2   72   68   76  80     3\n伊藤  情報   1   58   57   62  65     6\n\n\n\n\n\n\n\n\nまずはここだけ分かれば十分\n\n\n\n最初は自動番号のindexのままで問題ない\nindexとは行名 — それが分かればOK"
+    "text": "名前をindexにする読み込み\n\n\nindex_col=\"名前\" とすると、名前列をindexにできる\n「行名として使いたい列」があるときに使う\n\n\nimport pandas as pd\n\ndf_name = pd.read_csv(\"data/students.csv\", index_col=\"名前\")\nprint(df_name.head())\n\n   クラス  学年  現代文  数学I  英会話  物理  欠席日数\n名前                                 \n田中   A   1   80   70   90  85     2\n佐藤   B   1   65   75   85  72     4\n鈴木   A   2   88   91   84  90     1\n高橋   C   2   72   68   76  80     3\n伊藤   A   1   58   57   62  65     6\n\n\n\n\n\n\n\n\nまずはここだけ分かれば十分\n\n\n\n最初は自動番号のindexのままで問題ない\nindexとは行名 — それが分かればOK"
   },
   {
     "objectID": "pandas.html#section-3",
@@ -1257,7 +1257,7 @@
     "href": "pandas.html#複数列を選択する",
     "title": "Pandas入門",
     "section": "複数列を選択する",
-    "text": "複数列を選択する\n\n\ndf[[\"列名1\", \"列名2\"]] のように列名の リスト を渡す（角括弧が2重）\n返ってくるのは Series ではなく DataFrame\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\ncols = df[[\"名前\", \"学科\", \"数学I\", \"英会話\"]]\n\nprint(cols.head())\n\n   名前  学科  数学I  英会話\n0  田中  情報   70   90\n1  佐藤  機械   75   85\n2  鈴木  情報   91   84\n3  高橋  電気   68   76\n4  伊藤  情報   57   62"
+    "text": "複数列を選択する\n\n\ndf[[\"列名1\", \"列名2\"]] のように列名の リスト を渡す（角括弧が2重）\n返ってくるのは Series ではなく DataFrame\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\ncols = df[[\"名前\", \"クラス\", \"数学I\", \"英会話\"]]\n\nprint(cols.head())\n\n   名前 クラス  数学I  英会話\n0  田中   A   70   90\n1  佐藤   B   75   85\n2  鈴木   A   91   84\n3  高橋   C   68   76\n4  伊藤   A   57   62"
   },
   {
     "objectID": "pandas.html#条件式は残す行の印を作る",
@@ -1271,21 +1271,21 @@
     "href": "pandas.html#条件抽出filtering",
     "title": "Pandas入門",
     "section": "条件抽出（filtering）",
-    "text": "条件抽出（filtering）\n\n\n条件式を df[...] に入れると、True の行だけが残る\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df[df[\"数学I\"] &gt;= 80].head())  # 先頭5行\n\n     名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n2    鈴木  情報   2   88   91   84  90     1\n5    渡辺  機械   3   84   88   78  86     2\n9    加藤  電気   3   90   95   88  92     0\n10   吉田  情報   3   83   86   91  89     1\n12  佐々木  電気   1   74   80   69  83     2\n\n\n\n数学I が80点以上の行だけが残る（20人中9人が該当）"
+    "text": "条件抽出（filtering）\n\n\n条件式を df[...] に入れると、True の行だけが残る\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df[df[\"数学I\"] &gt;= 80].head())  # 先頭5行\n\n     名前 クラス  学年  現代文  数学I  英会話  物理  欠席日数\n2    鈴木   A   2   88   91   84  90     1\n5    渡辺   B   3   84   88   78  86     2\n9    加藤   C   3   90   95   88  92     0\n10   吉田   A   3   83   86   91  89     1\n12  佐々木   C   1   74   80   69  83     2\n\n\n\n数学I が80点以上の行だけが残る（20人中9人が該当）"
   },
   {
     "objectID": "pandas.html#文字列の条件抽出",
     "href": "pandas.html#文字列の条件抽出",
     "title": "Pandas入門",
     "section": "文字列の条件抽出",
-    "text": "文字列の条件抽出\n\n\n数値だけでなく、文字列でも条件を作れる（== は「等しい」）\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df[df[\"学科\"] == \"情報\"])\n\n    名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n0   田中  情報   1   80   70   90  85     2\n2   鈴木  情報   2   88   91   84  90     1\n4   伊藤  情報   1   58   57   62  65     6\n7   中村  情報   2   76   65   82  74     3\n10  吉田  情報   3   83   86   91  89     1\n13  山口  情報   2   62   78   75  70     5\n16  木村  情報   1   92   89   94  91     0\n19  斎藤  情報   3   77   93   85  90     1\n\n\n\n学科 が \"情報\" の行だけが残る（名簿・アンケートでよく使う）"
+    "text": "文字列の条件抽出\n\n\n数値だけでなく、文字列でも条件を作れる（== は「等しい」）\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df[df[\"クラス\"] == \"A\"])\n\n    名前 クラス  学年  現代文  数学I  英会話  物理  欠席日数\n0   田中   A   1   80   70   90  85     2\n2   鈴木   A   2   88   91   84  90     1\n4   伊藤   A   1   58   57   62  65     6\n7   中村   A   2   76   65   82  74     3\n10  吉田   A   3   83   86   91  89     1\n13  山口   A   2   62   78   75  70     5\n16  木村   A   1   92   89   94  91     0\n19  斎藤   A   3   77   93   85  90     1\n\n\n\nクラス が \"A\" の行だけが残る（名簿・アンケートでよく使う）"
   },
   {
     "objectID": "pandas.html#peek-and-or-code",
     "href": "pandas.html#peek-and-or-code",
     "title": "Pandas入門",
     "section": "複数条件で抽出する",
-    "text": "複数条件で抽出する\n\n\n複数条件は & でつなぐ\nそれぞれの条件を丸括弧で囲む\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df[\n    (df[\"学科\"] == \"情報\")\n    & (df[\"数学I\"] &gt;= 80)\n])\n\n    名前  学科  学年  現代文  数学I  英会話  物理  欠席日数\n2   鈴木  情報   2   88   91   84  90     1\n10  吉田  情報   3   83   86   91  89     1\n16  木村  情報   1   92   89   94  91     0\n19  斎藤  情報   3   77   93   85  90     1\n\n\n\n\n\n\n\n\nand ではなく &\n\n\n\nPandasの条件抽出では and ではなく &\n条件ごとに丸括弧をつける\nこの書き方は最初だけ少し変だが、よく使う"
+    "text": "複数条件で抽出する\n\n\n複数条件は & でつなぐ\nそれぞれの条件を丸括弧で囲む\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df[\n    (df[\"クラス\"] == \"A\")\n    & (df[\"数学I\"] &gt;= 80)\n])\n\n    名前 クラス  学年  現代文  数学I  英会話  物理  欠席日数\n2   鈴木   A   2   88   91   84  90     1\n10  吉田   A   3   83   86   91  89     1\n16  木村   A   1   92   89   94  91     0\n19  斎藤   A   3   77   93   85  90     1\n\n\n\n\n\n\n\n\nand ではなく &\n\n\n\nPandasの条件抽出では and ではなく &\n条件ごとに丸括弧をつける\nこの書き方は最初だけ少し変だが、よく使う"
   },
   {
     "objectID": "pandas.html#tweak-and-と-or-で絞ると広がる",
@@ -1299,7 +1299,7 @@
     "href": "pandas.html#列を追加する",
     "title": "Pandas入門",
     "section": "列を追加する",
-    "text": "列を追加する\n\n\ndf[\"新しい列名\"] = ... で列を追加できる\n既存の列を使って、新しい列を計算することが多い\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\n\ndf[\"平均点\"] = df[subjects].mean(axis=1)\n\nprint(df.head())\n\n   名前  学科  学年  現代文  数学I  英会話  物理  欠席日数    平均点\n0  田中  情報   1   80   70   90  85     2  81.25\n1  佐藤  機械   1   65   75   85  72     4  74.25\n2  鈴木  情報   2   88   91   84  90     1  88.25\n3  高橋  電気   2   72   68   76  80     3  74.00\n4  伊藤  情報   1   58   57   62  65     6  60.50\n\n\n\n平均点 は4科目（現代文・数学I・英会話・物理）の平均\n\n\n\n\n\n\n\nNumPyと同じ感覚\n\n\n\nmean(axis=1) は、行ごとに平均を計算する（いま作った 平均点）\ndf[\"数学I\"] * 1.1 のように、列全体へまとめて計算もできる\nfor文を書かなくても列全体に計算がかかる"
+    "text": "列を追加する\n\n\ndf[\"新しい列名\"] = ... で列を追加できる\n既存の列を使って、新しい列を計算することが多い\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\n\ndf[\"平均点\"] = df[subjects].mean(axis=1)\n\nprint(df.head())\n\n   名前 クラス  学年  現代文  数学I  英会話  物理  欠席日数    平均点\n0  田中   A   1   80   70   90  85     2  81.25\n1  佐藤   B   1   65   75   85  72     4  74.25\n2  鈴木   A   2   88   91   84  90     1  88.25\n3  高橋   C   2   72   68   76  80     3  74.00\n4  伊藤   A   1   58   57   62  65     6  60.50\n\n\n\n平均点 は4科目（現代文・数学I・英会話・物理）の平均\n\n\n\n\n\n\n\nNumPyと同じ感覚\n\n\n\nmean(axis=1) は、行ごとに平均を計算する（いま作った 平均点）\ndf[\"数学I\"] * 1.1 のように、列全体へまとめて計算もできる\nfor文を書かなくても列全体に計算がかかる"
   },
   {
     "objectID": "pandas.html#section-4",
@@ -1316,25 +1316,25 @@
     "text": "平均点列を集計する\n\n\n4科目から作った 平均点 列を Series として取り出す\nSeriesには平均・最大・最小など 集計（aggregation） のメソッドがある\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\nscores = df[\"平均点\"]\n\nprint(scores.mean())\nprint(scores.max())\nprint(scores.min())\n\n76.7875\n91.5\n56.75\n\n\n\n\n\n\n\n\nCSVを読んだあとの典型的な流れ\n\n\nCSVを読む → 必要な列を作る → 集計する → 可視化する"
   },
   {
-    "objectID": "pandas.html#学科ごとに人数を数える",
-    "href": "pandas.html#学科ごとに人数を数える",
+    "objectID": "pandas.html#クラスごとに人数を数える",
+    "href": "pandas.html#クラスごとに人数を数える",
     "title": "Pandas入門",
-    "section": "学科ごとに人数を数える",
-    "text": "学科ごとに人数を数える\n\n\ngroupby(\"学科\") で、学科ごとに行をグループへ分ける\nグループの中身を見るには .size() などを続ける必要がある\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df.groupby(\"学科\").size())\n\n学科\n情報    8\n機械    6\n電気    6\ndtype: int64\n\n\n\n情報8人・機械6人・電気6人で合計20人 — 全員がどこかのグループに分けられている"
+    "section": "クラスごとに人数を数える",
+    "text": "クラスごとに人数を数える\n\n\ngroupby(\"クラス\") で、クラスごとに行をグループへ分ける\nグループの中身を見るには .size() などを続ける必要がある\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df.groupby(\"クラス\").size())\n\nクラス\nA    8\nB    6\nC    6\ndtype: int64\n\n\n\nAが8人・Bが6人・Cが6人で合計20人 — 全員がどこかのグループに分けられている"
   },
   {
     "objectID": "pandas.html#peek-groupby-code",
     "href": "pandas.html#peek-groupby-code",
     "title": "Pandas入門",
-    "section": "学科ごとに平均点を出す",
-    "text": "学科ごとに平均点を出す\n\n\ngroupby(\"学科\") に、集計する列と方法を続ける\n[\"平均点\"] で列を選び、.mean() で学科ごとの平均を出す\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\n\navg = df.groupby(\"学科\")[\"平均点\"].mean()\nprint(avg)\n\n学科\n情報    80.062500\n機械    71.625000\n電気    77.583333\nName: 平均点, dtype: float64\n\n\n\nCSVの 学科 列と、追加した 平均点 列を使う。結果は DataFrame ではなく Series"
+    "section": "クラスごとに平均点を出す",
+    "text": "クラスごとに平均点を出す\n\n\ngroupby(\"クラス\") に、集計する列と方法を続ける\n[\"平均点\"] で列を選び、.mean() でクラスごとの平均を出す\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\n\navg = df.groupby(\"クラス\")[\"平均点\"].mean()\nprint(avg)\n\nクラス\nA    80.062500\nB    71.625000\nC    77.583333\nName: 平均点, dtype: float64\n\n\n\nCSVの クラス 列と、追加した 平均点 列を使う。結果は DataFrame ではなく Series"
   },
   {
     "objectID": "pandas.html#groupbyの結果を確認",
     "href": "pandas.html#groupbyの結果を確認",
     "title": "Pandas入門",
     "section": "groupbyの結果を確認",
-    "text": "groupbyの結果を確認\n\n\ngroupbyの結果も Series\nindex が学科名\nvalues が平均点\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\navg = df.groupby(\"学科\")[\"平均点\"].mean()\n\nprint(type(avg))\nprint(avg.index)\nprint(avg.values)\n\n&lt;class 'pandas.core.series.Series'&gt;\nIndex(['情報', '機械', '電気'], dtype='object', name='学科')\n[80.0625     71.625      77.58333333]\n\n\n\n\n\n\n\n\ngroupbyの結果\n\n\ngroupby の結果も Series\nindex  が「学科」\nvalues が「平均点」"
+    "text": "groupbyの結果を確認\n\n\ngroupbyの結果も Series\nindex がクラス名\nvalues が平均点\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\navg = df.groupby(\"クラス\")[\"平均点\"].mean()\n\nprint(type(avg))\nprint(avg.index)\nprint(avg.values)\n\n&lt;class 'pandas.core.series.Series'&gt;\nIndex(['A', 'B', 'C'], dtype='object', name='クラス')\n[80.0625     71.625      77.58333333]\n\n\n\n\n\n\n\n\ngroupbyの結果\n\n\ngroupby の結果も Series\nindex  が「クラス」\nvalues が「平均点」"
   },
   {
     "objectID": "pandas.html#tweak-groupby-は分ける-集計する列-集計方法",
@@ -1348,14 +1348,14 @@
     "href": "pandas.html#matplotlibで棒グラフにする",
     "title": "Pandas入門",
     "section": "matplotlibで棒グラフにする",
-    "text": "matplotlibで棒グラフにする\n\n\ngroupby() で作った avg（Series）を棒グラフにする\nSeries を index と values に分けて matplotlib に渡す\n縦軸は ylim(0, 100) で0点〜満点に固定（棒グラフは0から見せる）\n\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\navg = df.groupby(\"学科\")[\"平均点\"].mean()\n\nplt.bar(avg.index, avg.values)\nplt.xlabel(\"学科\")\nplt.ylabel(\"平均点\")\nplt.title(\"学科ごとの平均点\")\nplt.ylim(0, 100)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPandasからmatplotlibへ\n\n\nSeries → index / values → matplotlib"
+    "text": "matplotlibで棒グラフにする\n\n\ngroupby() で作った avg（Series）を棒グラフにする\nSeries を index と values に分けて matplotlib に渡す\n縦軸は ylim(0, 100) で0点〜満点に固定（棒グラフは0から見せる）\n\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\navg = df.groupby(\"クラス\")[\"平均点\"].mean()\n\nplt.bar(avg.index, avg.values)\nplt.xlabel(\"クラス\")\nplt.ylabel(\"平均点\")\nplt.title(\"クラスごとの平均点\")\nplt.ylim(0, 100)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPandasからmatplotlibへ\n\n\nSeries → index / values → matplotlib"
   },
   {
     "objectID": "pandas.html#少し整える",
     "href": "pandas.html#少し整える",
     "title": "Pandas入門",
     "section": "少し整える",
-    "text": "少し整える\n\n\n色（color=）とグリッド（grid()）を足すと、比較しやすくなる\ngrid(axis=\"y\", ...) は横線だけを薄く引く\n\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\navg = df.groupby(\"学科\")[\"平均点\"].mean()\n\nplt.bar(avg.index, avg.values, color=\"#2266CC\")\nplt.xlabel(\"学科\")\nplt.ylabel(\"平均点\")\nplt.title(\"学科ごとの平均点\")\nplt.ylim(0, 100)\nplt.grid(axis=\"y\", linestyle=\"--\", alpha=0.5)\nplt.show()"
+    "text": "少し整える\n\n\n色（color=）とグリッド（grid()）を足すと、比較しやすくなる\ngrid(axis=\"y\", ...) は横線だけを薄く引く\n\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\ndf = pd.read_csv(\"data/students.csv\")\nsubjects = [\"現代文\", \"数学I\", \"英会話\", \"物理\"]\ndf[\"平均点\"] = df[subjects].mean(axis=1)\navg = df.groupby(\"クラス\")[\"平均点\"].mean()\n\nplt.bar(avg.index, avg.values, color=\"#2266CC\")\nplt.xlabel(\"クラス\")\nplt.ylabel(\"平均点\")\nplt.title(\"クラスごとの平均点\")\nplt.ylim(0, 100)\nplt.grid(axis=\"y\", linestyle=\"--\", alpha=0.5)\nplt.show()"
   },
   {
     "objectID": "pandas.html#演習高得点者を可視化",
@@ -2853,6 +2853,41 @@
     "href": "ideation.html#section",
     "title": "発想法（発散思考）",
     "section": "",
+    "text": "一人で発想"
+  },
+  {
+    "objectID": "ideation.html#演習-ペットボトルの新しい使い方",
+    "href": "ideation.html#演習-ペットボトルの新しい使い方",
+    "title": "発想法（発散思考）",
+    "section": "演習 ペットボトルの新しい使い方",
+    "text": "演習 ペットボトルの新しい使い方\n\n\nペットボトルの新しい使い方 を、10分間でできるだけ多く書き出せ（実現できるかは問わない）。\n\n\n紙の上端に名前と「ペットボトル」を記入\n相談なしで、1行に1案ずつ記入（10分）\n終了の合図で、案の個数を数えて紙の右上に記入"
+  },
+  {
+    "objectID": "ideation.html#演習-ペーパークリップの新しい使い方",
+    "href": "ideation.html#演習-ペーパークリップの新しい使い方",
+    "title": "発想法（発散思考）",
+    "section": "演習 ペーパークリップの新しい使い方",
+    "text": "演習 ペーパークリップの新しい使い方\n\n\nペーパークリップの新しい使い方 を、10分間でできるだけ多く書き出せ（実現できるかは問わない）。\n\n\n新しい紙の上端に名前と「ペーパークリップ」を記入\n相談なしで、1行に1案ずつ記入（10分）\n終了の合図で、案の個数を数えて紙の右上に記入"
+  },
+  {
+    "objectID": "ideation.html#アイデアには量と幅がある",
+    "href": "ideation.html#アイデアには量と幅がある",
+    "title": "発想法（発散思考）",
+    "section": "アイデアには量と幅がある",
+    "text": "アイデアには量と幅がある\n\n\n出した案は、個数だけでなく種類の数でも数えられる\n\n\n\n\n\n数えるもの\n創造性の研究での呼び名\n\n\n\n\n量\n案の個数\n流暢性（fluency）\n\n\n幅\n案の種類の数\n柔軟性（flexibility）\n\n\n\n例：ペットボトルの使い方を3案\n\n\n\n3案\n量\n幅\n\n\n\n\n花瓶・ペン立て・貯金箱\n3\n1（3案とも入れ物）\n\n\n花瓶・ダンベル・マラカス\n3\n3（入れ物・おもり・楽器）\n\n\n\n\n似た使い方は同じ種類として数える（用語の定義：Grajzel ほか 2023）"
+  },
+  {
+    "objectID": "ideation.html#演習-幅を数える",
+    "href": "ideation.html#演習-幅を数える",
+    "title": "発想法（発散思考）",
+    "section": "演習 幅を数える",
+    "text": "演習 幅を数える\n\n\nペットボトルとペーパークリップの2枚について、案の幅を数えよ（5分）。\n\n\n似た使い方の案に同じ記号（A、B、C…）を記入\n使った記号の数（幅）を、紙の右上の個数（量）の隣に記入"
+  },
+  {
+    "objectID": "ideation.html#section-1",
+    "href": "ideation.html#section-1",
+    "title": "発想法（発散思考）",
+    "section": "",
     "text": "発想法"
   },
   {
@@ -2867,11 +2902,11 @@
     "href": "ideation.html#なぜ量なのか",
     "title": "発想法（発散思考）",
     "section": "なぜ「量」なのか",
-    "text": "なぜ「量」なのか\n\n\n最初から良い案だけを出そうとすると、思いついても書く前に却下してしまう\nまず複数の案を出し、あとで比較して選ぶ\n\n\n\n\n方法\n案の出し方\n\n\n\n\nブレインストーミング\n会話の中で他の人の案から連想\n\n\nクレイジー8\n時間を区切って複数のスケッチを作成\n\n\n635法\nシートを回し、前の人の案を発展"
+    "text": "なぜ「量」なのか\n\n\n最初から良い案だけを出そうとすると、思いついても書く前に却下してしまう\nまず複数の案を出し、あとで比較して選ぶ\n\n\n\n\n方法\n案の出し方\n\n\n\n\nブレインストーミング\n会話の中で他の人の案から連想\n\n\nクレイジー8\n時間を区切り、1分に1案ずつ記入\n\n\n635法\nシートを回し、前の人の案を発展\n\n\n\n\n「石を拾うことはあっても玉を捨てることなかれ」"
   },
   {
-    "objectID": "ideation.html#section-1",
-    "href": "ideation.html#section-1",
+    "objectID": "ideation.html#section-2",
+    "href": "ideation.html#section-2",
     "title": "発想法（発散思考）",
     "section": "",
     "text": "ブレインストーミング"
@@ -2902,11 +2937,11 @@
     "href": "ideation.html#演習-ブレスト",
     "title": "発想法（発散思考）",
     "section": "演習 ブレスト",
-    "text": "演習 ブレスト\n\n\n4〜5人組でテーマを1つ選び、10分間ブレストせよ。出た案はすべて付箋に書き残すこと（1枚1案）。\n\n\n\n\n\nテーマ\n\n\n\n\nA\n学校の新しいマスコットキャラ\n\n\nB\n新しい未来の靴\n\n\nC\n新しい宇宙人の形\n\n\nD\n教室をもっと快適にする方法\n\n\n\n\n\n\n\n\n\n4つのルールを貼り出しておく\n\n\n批判厳禁・自由奔放・質より量・便乗歓迎。案の評価が始まったら、ルールを確認する"
+    "text": "演習 ブレスト\n\n\nお題：新聞紙の新しい使い方\n\n\n司会を決め、4つのルールを確認（2分）\n案を付箋に書き、読み上げて机に貼る（10分）\n\n\n\n\n\n\n\n4つのルールを貼り出しておく\n\n\n批判厳禁・自由奔放・質より量・便乗歓迎。案の評価が始まったら、ルールを確認する"
   },
   {
-    "objectID": "ideation.html#section-2",
-    "href": "ideation.html#section-2",
+    "objectID": "ideation.html#section-3",
+    "href": "ideation.html#section-3",
     "title": "発想法（発散思考）",
     "section": "",
     "text": "クレイジー8"
@@ -2916,25 +2951,32 @@
     "href": "ideation.html#クレイジー8crazy-8s",
     "title": "発想法（発散思考）",
     "section": "クレイジー8（Crazy 8s）",
-    "text": "クレイジー8（Crazy 8s）\n\n\n1枚の紙を8つに折り、8分で8個のアイデアをスケッチする 発想法\n\n1枠につき1案。時間が来たら次の枠へ移る\n\nGoogle の デザインスプリント（Design Sprint）で使われることで有名\n\n\n\nA4を3回折ると8枠。1枠1分・1アイデア"
+    "text": "クレイジー8（Crazy 8s）\n\n\n1分で1案 を強制的に考え、それを 8回 くり返す発想法\n\n「クレイジー」は、この速さのこと\n最初に浮かんだ案で止まらず、その先の案まで出させるのがねらい（Design Sprint Kit）\n\n話し合わず、一人ずつ紙に書く\nGoogle Ventures の Jake Knapp らがまとめた デザインスプリント（Design Sprint）の一手法\n\n書籍『Sprint』（2016）に手順が載っている"
+  },
+  {
+    "objectID": "ideation.html#クレイジー8の用紙",
+    "href": "ideation.html#クレイジー8の用紙",
+    "title": "発想法（発散思考）",
+    "section": "クレイジー8の用紙",
+    "text": "クレイジー8の用紙\n\n\n\nA4を3回折ると8枠。1枠1分・1アイデア"
   },
   {
     "objectID": "ideation.html#クレイジー8の進め方",
     "href": "ideation.html#クレイジー8の進め方",
     "title": "発想法（発散思考）",
     "section": "クレイジー8の進め方",
-    "text": "クレイジー8の進め方\n\n\nA4用紙を3回折って8つの枠を作成\nテーマを決定（例：「未来の教室の机」）\nタイマーを 8分 にセット（1枠 = 1分）\n各枠に1アイデアずつスケッチ（絵・図・文字いずれも可）\n8分後、全員で共有して気になる案をピックアップ\n\n\n\n\n\n\n\n1案を描き込みすぎない\n\n\n1分経ったら次の案へ移る。絵の完成度より、案の違いが分かることを優先する。線・矢印・短い説明だけでもよい"
+    "text": "クレイジー8の進め方\n\n\nA4用紙を3回折って8つの枠を作成\nテーマを決定（例：「輪ゴムの新しい使い方」）\n1分 で1案を考え、1つの枠に記入（絵や図を添えてもよい）\n1分経ったら次の枠へ移り、これを 8回 くり返す\n\n\n\n\n\n\n\n1案を書き込みすぎない\n\n\n1分経ったら次の案へ移る。説明の詳しさより、案の違いが分かることを優先する。短い語句だけでもよい"
   },
   {
-    "objectID": "ideation.html#演習-クレイジー4",
-    "href": "ideation.html#演習-クレイジー4",
+    "objectID": "ideation.html#演習-クレイジー8",
+    "href": "ideation.html#演習-クレイジー8",
     "title": "発想法（発散思考）",
-    "section": "演習 クレイジー4",
-    "text": "演習 クレイジー4\n\n\nブレストで使ったテーマのまま、紙を2回折って 4枠・4分 のクレイジー4を実施せよ（1枠1分、絵でも文字でも可）。\n\n\nA4用紙を2回折って4枠を作成\nタイマーを4分にセット\n1枠1分でスケッチ\n班内で共有し、さらに具体化したい1案 に星印\n\n\n\n\n\n\n\n案を比較する\n\n\n1案目と4案目を見比べ、形・使い方・対象者など、どこが変わったかを確認する"
+    "section": "演習 クレイジー8",
+    "text": "演習 クレイジー8\n\n\nお題：割り箸の新しい使い方\n\n\nA4用紙を3回折って8枠を作成（1分）\n1分で1案を考えて1枠に記入。合図で次の枠へ移る（1分 × 8回）"
   },
   {
-    "objectID": "ideation.html#section-3",
-    "href": "ideation.html#section-3",
+    "objectID": "ideation.html#section-4",
+    "href": "ideation.html#section-4",
     "title": "発想法（発散思考）",
     "section": "",
     "text": "635法・ブレインライティング"
@@ -2944,35 +2986,49 @@
     "href": "ideation.html#法ブレインライティング",
     "title": "発想法（発散思考）",
     "section": "635法（ブレインライティング）",
-    "text": "635法（ブレインライティング）\n\n\nブレストのように話し合わず、無言で紙に書いて回す 発想法\n\n「635」（6-3-5 Method）は 6人・3案・5回の発展\n書いて案を出す ブレインライティング（brainwriting）の一種\n\n最初に各自3案を書き、シートを回して他の5人が順に発展させる\n時間の目安は 1巡5分。最初の記入を含めて6巡"
+    "text": "635法（ブレインライティング）\n\n\nブレストのように話し合わず、無言で紙に書いて回す 発想法\n\n前の人の案を読み、そこから 連想（association）した案を書き足す\n\nBernd Rohrbach が1969年、ドイツの雑誌に「Methode 635」として発表（川路 2024）\n\n「635」（6-3-5 Method）は 6人・3案・5回の発展\n\nのちに ブレインライティング（brainwriting）と呼ばれるようになった\n\n日本には 高橋誠 が紹介\n別名「沈黙のブレインストーミング」"
+  },
+  {
+    "objectID": "ideation.html#法の進め方",
+    "href": "ideation.html#法の進め方",
+    "title": "発想法（発散思考）",
+    "section": "635法の進め方",
+    "text": "635法の進め方\n\n\n最初に各自3案を書き、シートを回して他の5人が順に発展させる\n時間の目安は 1巡5分。最初の記入を含めて6巡"
   },
   {
     "objectID": "ideation.html#法のワークシート",
     "href": "ideation.html#法のワークシート",
     "title": "発想法（発散思考）",
     "section": "635法のワークシート",
-    "text": "635法のワークシート\n\n\n\n\n\n案1\n案2\n案3\n\n\n\n\n1巡目（自分）\n通学かばんを軽くする\n…\n…\n\n\n2巡目（隣の人）\n↑を発展：教科書は学校置き\n…\n…\n\n\n3巡目\n…\n…\n…\n\n\n4巡目\n…\n…\n…\n\n\n5巡目\n…\n…\n…\n\n\n6巡目\n…\n…\n…\n\n\n\n\n上の行の案を読み、使い方を変えたり、条件や具体例を加えたりして発展させる"
+    "text": "635法のワークシート\n\n\n\n\n\n\n1人が1枚持ち、3列 × 6行の枠に書く\n\n1行が1人ぶん（3案）\n\n回ってきたシートには、上の行の下に書き足す\n\n\n印刷用：ブレインライティングシート（PDF）"
   },
   {
-    "objectID": "ideation.html#質問30分で何案出る",
-    "href": "ideation.html#質問30分で何案出る",
+    "objectID": "ideation.html#ワークシートの記入例",
+    "href": "ideation.html#ワークシートの記入例",
     "title": "発想法（発散思考）",
-    "section": "質問：30分で何案出る？",
-    "text": "質問：30分で何案出る？\n\n\n6人が1巡に3案ずつ記入し、1巡5分で6巡すると、記入欄は何件埋まるか\n\n\n\n\n\n\n\n\n答え：108案\n\n\n6人 × 3案 × 6巡 = 108件（30分）。最初の18案と、それを発展させた90件を含む\n\n\n\n\n\n\n全員に同じ数の記入欄がある\n発言の順番を待たずに書ける\n\n\n\n\n\n\n\n\n\n「5分」は実は誤解から広まった\n\n\n考案者 Bernd Rohrbach の原案は「3案 × 5回 発展させる」だったが、のちに「5分」と混同されて広まった（川路 2024）"
+    "section": "ワークシートの記入例",
+    "text": "ワークシートの記入例\n\n\nお題は「ペットボトルの新しい使い方」。Aさんから回り始めたシート\n\n\n\n\n\n\n\n\n\n\n\n案1\n案2\n案3\n\n\n\n\n1巡目（Aさん）\n水を入れてダンベル\n切って植木鉢\n米を入れてマラカス\n\n\n2巡目（Bさん）\n砂に替えて重さを調節\n底に穴をあけて水はけ\n中身を替えて音を変える\n\n\n3巡目（Cさん）\n2本つないでバーベル\nつるして空中の花壇\n大小そろえて合奏\n\n\n4〜6巡目\n…\n…\n…\n\n\n\n\n上にある他人の案を参考に、使い方を変えたり、条件や具体例を加えたりして発展させる"
+  },
+  {
+    "objectID": "ideation.html#理論上30分で何案出せるか",
+    "href": "ideation.html#理論上30分で何案出せるか",
+    "title": "発想法（発散思考）",
+    "section": "理論上、30分で何案出せるか",
+    "text": "理論上、30分で何案出せるか\n\n\n最初に書く案：6人 × 3案 = 18案\n5回の発展：18案 × 5回 = 90案\n合計 108案（1回5分で30分）\n\n\n\n\n\n\n\n635法の5は「5分」が通説だが誤解\n\n\n考案者 Bernd Rohrbach の原案は「3案 × 5回 発展させる」だったが、のちに「5分」と混同されて広まった（川路 2024）"
   },
   {
     "objectID": "ideation.html#演習-635法",
     "href": "ideation.html#演習-635法",
     "title": "発想法（発散思考）",
     "section": "演習 635法",
-    "text": "演習 635法\n\n\n6人組（足りなければ4〜5人）でテーマを1つ選び、635法を3巡実施せよ（1巡5分・3案。2巡目からは前の人の案を発展）。\n\n\n\n\n\nテーマ\n\nテーマ\n\n\n\n\nE\n学校をもっと楽しくするには\nK\nスマホで勉強を楽しくするには\n\n\nF\n教室の暑さ・寒さを解決する方法\nL\n未来の授業スタイル\n\n\nG\n昼休みをもっと充実させる方法\nM\n学校の新しいロゴデザイン\n\n\nH\n勉強の「やる気が出る」工夫\nN\n新しい部活動\n\n\nI\n楽しくテスト勉強をする方法\nO\n「未来のノート」のデザイン\n\n\nJ\n授業中に眠くならない方法\nP\n1日をもっと便利にするアプリ"
+    "text": "演習 635法\n\n\nお題：タオルの新しい使い方\n\n\nシートをチーム人数分ずつ準備\n1巡目の行に3案を記入（5分）\n合図でシートを左隣へ回し、上の行を読んで3案を追記。チームの全員が書くまでくり返す（6人なら 5分 × 5回）"
   },
   {
     "objectID": "ideation.html#まとめ3つの発想法",
     "href": "ideation.html#まとめ3つの発想法",
     "title": "発想法（発散思考）",
     "section": "まとめ：3つの発想法",
-    "text": "まとめ：3つの発想法\n\n\n\n\n\n\n\n\n\n方法\n発想のしかた\n向いている人・場面\n\n\n\n\nブレインストーミング\n話しながら 出す\n会話から連想を広げたい\n\n\nクレイジー8\nスケッチ で連想する\n形や配置を考えたい／1人でもできる\n\n\n635法\n無言で書いて 回す\n発言が苦手な人がいる／全員から集めたい\n\n\n\n\n\n\n\n\n\n案を出したあと\n\n\n評価を保留して案を出し、収束技法（KJ法・アイデアマップ） で整理する"
+    "text": "まとめ：3つの発想法\n\n\n\n\n\n\n\n\n\n方法\n発想のしかた\n向いている人・場面\n\n\n\n\nブレインストーミング\n話しながら 出す\n会話から連想を広げたい\n\n\nクレイジー8\n1分ずつ区切って 書く\n短い時間で数を出したい／1人でもできる\n\n\n635法\n無言で書いて 回す\n発言が苦手な人がいる／全員から集めたい\n\n\n\n\n\n\n\n\n\n案を出したあと\n\n\n評価を保留して案を出し、収束技法（KJ法・アイデアマップ） で整理する"
   },
   {
     "objectID": "key-typing.html#キータイピングを速めよう",
@@ -3301,7 +3357,7 @@
     "href": "numpy.html#本当に速いの-100万要素で実測",
     "title": "NumPy入門",
     "section": "本当に速いの？ — 100万要素で実測",
-    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 23.0 ミリ秒\nndarray:          0.29 ミリ秒\n→ 約 79 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
+    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 24.0 ミリ秒\nndarray:          0.25 ミリ秒\n→ 約 95 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
   },
   {
     "objectID": "numpy.html#その他長さやアクセス方法",
