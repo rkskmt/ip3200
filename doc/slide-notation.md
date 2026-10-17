@@ -321,7 +321,7 @@ print(df.columns)
 ```
 プロジェクト/
 ├── _extensions/rkskmt/cleanslidekit/   # テーマ拡張（cite-image.lua / plotly-iframe.lua / CSS を同梱）
-├── _metadata.yaml      # cleanslidekit-revealjs 形式 + d2/lightbox フィルタ
+├── _metadata.yaml      # cleanslidekit-revealjs 形式 + d2 フィルタ + 組み込み lightbox
 ├── _quarto.yml         # resources: ["imgs/**", "iframes/**"] で_siteへコピー
 ├── imgs/               # 画像置き場
 └── iframes/            # Plotly 等の埋め込み用 HTML

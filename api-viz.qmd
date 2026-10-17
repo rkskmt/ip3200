@@ -152,6 +152,7 @@ fig.show()
 ```{python}
 #| echo: false
 #| output: false
+import os
 import pandas as pd
 import plotly.express as px
 
@@ -160,6 +161,7 @@ df_pv["date"] = pd.to_datetime(df_pv["date"], format="%Y%m%d")
 
 fig = px.line(df_pv, x="date", y="views")
 fig.update_layout(width=900, height=340, margin=dict(l=20, r=20, t=30, b=20))
+os.makedirs("iframes", exist_ok=True)
 fig.write_html("iframes/plotly_tanabata_intro.html", include_plotlyjs="directory")
 ```
 

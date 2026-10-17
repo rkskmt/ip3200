@@ -83,10 +83,12 @@ fig.show()
 ```{python}
 #| echo: false
 #| output: false
+import os
 import plotly.express as px
 
 fig = px.bar(df, x="名前", y="点数")
 fig.update_layout(width=900, height=500, margin=dict(l=20, r=20, t=40, b=20))
+os.makedirs("iframes", exist_ok=True)
 fig.write_html("iframes/plotly_bar.html", include_plotlyjs="directory")
 ```
 
