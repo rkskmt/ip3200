@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5c1318cf63eba56dbef7ba16bc7d56f5.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="rkskmt">
   <title>情報処理 – 辞書をあらためて</title>
@@ -17,10 +17,16 @@
   <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -95,7 +101,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-d3a26a7442888a116b43ccec6150e9c5.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-e69bca93ec9d1486cefcf16a785f5ce6.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -251,7 +257,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-rkskmt 
+rkskmt
 </div>
 </div>
 </div>
@@ -280,8 +286,8 @@ rkskmt
 <li>同じキーは1つしか持てない（重複して書くと、後に書いた値が残る）</li>
 <li>値は何でもよい</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>, <span class="st">"Takahashi"</span>: <span class="dv">80</span>}</span>
-<span id="cb1-2"><a></a><span class="bu">print</span>(name2score)  <span class="co"># {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>, <span class="st">"Takahashi"</span>: <span class="dv">80</span>}</span>
+<span id="cb1-2"><a aria-label="2"></a><span class="bu">print</span>(name2score)  <span class="co"># {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -301,9 +307,9 @@ rkskmt
 <h2>アクセス（キー）</h2>
 <div class="slide-body">
 <p>要素にアクセスするには<strong>キー</strong>を使う（list の <code>[0]</code> に相当）。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>, <span class="st">"Takahashi"</span>: <span class="dv">80</span>}</span>
-<span id="cb2-2"><a></a><span class="bu">print</span>(name2score[<span class="st">"Yamada"</span>])     <span class="co"># 95</span></span>
-<span id="cb2-3"><a></a><span class="bu">print</span>(name2score[<span class="st">"Takahashi"</span>])  <span class="co"># 80</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>, <span class="st">"Takahashi"</span>: <span class="dv">80</span>}</span>
+<span id="cb2-2"><a aria-label="2"></a><span class="bu">print</span>(name2score[<span class="st">"Yamada"</span>])     <span class="co"># 95</span></span>
+<span id="cb2-3"><a aria-label="3"></a><span class="bu">print</span>(name2score[<span class="st">"Takahashi"</span>])  <span class="co"># 80</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="要素の追加上書き" class="slide level2">
@@ -314,15 +320,15 @@ rkskmt
 <li>存在しないキー → <strong>追加</strong></li>
 <li>存在するキー → <strong>上書き</strong></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>}</span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a><span class="co"># 追加</span></span>
-<span id="cb3-4"><a></a>name2score[<span class="st">"Takahashi"</span>] <span class="op">=</span> <span class="dv">80</span></span>
-<span id="cb3-5"><a></a><span class="bu">print</span>(name2score)  <span class="co"># {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}</span></span>
-<span id="cb3-6"><a></a></span>
-<span id="cb3-7"><a></a><span class="co"># 上書き</span></span>
-<span id="cb3-8"><a></a>name2score[<span class="st">"Suzuki"</span>] <span class="op">=</span> <span class="dv">70</span></span>
-<span id="cb3-9"><a></a><span class="bu">print</span>(name2score)  <span class="co"># {'Yamada': 95, 'Suzuki': 70, 'Takahashi': 80}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>}</span>
+<span id="cb3-2"><a aria-label="2"></a></span>
+<span id="cb3-3"><a aria-label="3"></a><span class="co"># 追加</span></span>
+<span id="cb3-4"><a aria-label="4"></a>name2score[<span class="st">"Takahashi"</span>] <span class="op">=</span> <span class="dv">80</span></span>
+<span id="cb3-5"><a aria-label="5"></a><span class="bu">print</span>(name2score)  <span class="co"># {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}</span></span>
+<span id="cb3-6"><a aria-label="6"></a></span>
+<span id="cb3-7"><a aria-label="7"></a><span class="co"># 上書き</span></span>
+<span id="cb3-8"><a aria-label="8"></a>name2score[<span class="st">"Suzuki"</span>] <span class="op">=</span> <span class="dv">70</span></span>
+<span id="cb3-9"><a aria-label="9"></a><span class="bu">print</span>(name2score)  <span class="co"># {'Yamada': 95, 'Suzuki': 70, 'Takahashi': 80}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -333,7 +339,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>追加と上書きが同じ書き方なので、<strong>typo でキーを間違えると新しいキーが勝手に追加</strong>される。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>name2score[<span class="st">"Suzki"</span>] <span class="op">=</span> <span class="dv">60</span>  <span class="co"># 上書きのつもりが新規追加！</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a>name2score[<span class="st">"Suzki"</span>] <span class="op">=</span> <span class="dv">60</span>  <span class="co"># 上書きのつもりが新規追加！</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -343,17 +349,17 @@ rkskmt
 <h2>走査（全要素へのアクセス）</h2>
 <div class="slide-body">
 <p>dict には3種類の走査方法がある。<code>for</code> 文で書ける。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># キーだけ</span></span>
-<span id="cb5-2"><a></a><span class="cf">for</span> key <span class="kw">in</span> name2score.keys():</span>
-<span id="cb5-3"><a></a>    <span class="bu">print</span>(key)</span>
-<span id="cb5-4"><a></a></span>
-<span id="cb5-5"><a></a><span class="co"># 値だけ</span></span>
-<span id="cb5-6"><a></a><span class="cf">for</span> value <span class="kw">in</span> name2score.values():</span>
-<span id="cb5-7"><a></a>    <span class="bu">print</span>(value)</span>
-<span id="cb5-8"><a></a></span>
-<span id="cb5-9"><a></a><span class="co"># キーと値を同時に（最頻出）</span></span>
-<span id="cb5-10"><a></a><span class="cf">for</span> key, value <span class="kw">in</span> name2score.items():</span>
-<span id="cb5-11"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">さんは</span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">点です"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="co"># キーだけ</span></span>
+<span id="cb5-2"><a aria-label="2"></a><span class="cf">for</span> key <span class="kw">in</span> name2score.keys():</span>
+<span id="cb5-3"><a aria-label="3"></a>    <span class="bu">print</span>(key)</span>
+<span id="cb5-4"><a aria-label="4"></a></span>
+<span id="cb5-5"><a aria-label="5"></a><span class="co"># 値だけ</span></span>
+<span id="cb5-6"><a aria-label="6"></a><span class="cf">for</span> value <span class="kw">in</span> name2score.values():</span>
+<span id="cb5-7"><a aria-label="7"></a>    <span class="bu">print</span>(value)</span>
+<span id="cb5-8"><a aria-label="8"></a></span>
+<span id="cb5-9"><a aria-label="9"></a><span class="co"># キーと値を同時に（最頻出）</span></span>
+<span id="cb5-10"><a aria-label="10"></a><span class="cf">for</span> key, value <span class="kw">in</span> name2score.items():</span>
+<span id="cb5-11"><a aria-label="11"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">さんは</span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">点です"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <pre><code>Yamadaさんは95点です
 Suzukiさんは70点です
 Takahashiさんは80点です</code></pre>
@@ -395,13 +401,13 @@ Takahashiさんは80点です</code></pre>
 <h2><code>in</code> 演算子で存在確認</h2>
 <div class="slide-body">
 <p><code>in</code> 演算子で<strong>キー</strong>が存在するか確認できる。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>}</span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a><span class="cf">if</span> <span class="st">"Yamada"</span> <span class="kw">in</span> name2score:</span>
-<span id="cb7-4"><a></a>    <span class="bu">print</span>(<span class="st">"Yamada さんは登録済み"</span>)</span>
-<span id="cb7-5"><a></a></span>
-<span id="cb7-6"><a></a><span class="cf">if</span> <span class="st">"Tanaka"</span> <span class="kw">not</span> <span class="kw">in</span> name2score:</span>
-<span id="cb7-7"><a></a>    <span class="bu">print</span>(<span class="st">"Tanaka さんは未登録"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>}</span>
+<span id="cb7-2"><a aria-label="2"></a></span>
+<span id="cb7-3"><a aria-label="3"></a><span class="cf">if</span> <span class="st">"Yamada"</span> <span class="kw">in</span> name2score:</span>
+<span id="cb7-4"><a aria-label="4"></a>    <span class="bu">print</span>(<span class="st">"Yamada さんは登録済み"</span>)</span>
+<span id="cb7-5"><a aria-label="5"></a></span>
+<span id="cb7-6"><a aria-label="6"></a><span class="cf">if</span> <span class="st">"Tanaka"</span> <span class="kw">not</span> <span class="kw">in</span> name2score:</span>
+<span id="cb7-7"><a aria-label="7"></a>    <span class="bu">print</span>(<span class="st">"Tanaka さんは未登録"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -411,8 +417,8 @@ Takahashiさんは80点です</code></pre>
 <p><strong><code>in</code> はキーを見る（値ではない）</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="cf">if</span> <span class="dv">95</span> <span class="kw">in</span> name2score:            <span class="co"># False</span></span>
-<span id="cb8-2"><a></a><span class="cf">if</span> <span class="dv">95</span> <span class="kw">in</span> name2score.values():   <span class="co"># True ← 値を見たいときはこう</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="cf">if</span> <span class="dv">95</span> <span class="kw">in</span> name2score:            <span class="co"># False</span></span>
+<span id="cb8-2"><a aria-label="2"></a><span class="cf">if</span> <span class="dv">95</span> <span class="kw">in</span> name2score.values():   <span class="co"># True ← 値を見たいときはこう</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -422,14 +428,14 @@ Takahashiさんは80点です</code></pre>
 <h2><code>.get()</code> で安全にアクセス</h2>
 <div class="slide-body">
 <p><code>dict[キー]</code> は存在しないキーで落ちるが、<code>.get(キー)</code> は<strong>存在しなければ <code>None</code> を返す</strong>ので落ちない。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>}</span>
-<span id="cb9-2"><a></a></span>
-<span id="cb9-3"><a></a><span class="bu">print</span>(name2score.get(<span class="st">"Yamada"</span>))    <span class="co"># 95</span></span>
-<span id="cb9-4"><a></a><span class="bu">print</span>(name2score.get(<span class="st">"Tanaka"</span>))    <span class="co"># None ← エラーにならない</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>}</span>
+<span id="cb9-2"><a aria-label="2"></a></span>
+<span id="cb9-3"><a aria-label="3"></a><span class="bu">print</span>(name2score.get(<span class="st">"Yamada"</span>))    <span class="co"># 95</span></span>
+<span id="cb9-4"><a aria-label="4"></a><span class="bu">print</span>(name2score.get(<span class="st">"Tanaka"</span>))    <span class="co"># None ← エラーにならない</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p>第2引数で<strong>デフォルト値</strong>を指定できる。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="bu">print</span>(name2score.get(<span class="st">"Tanaka"</span>))      <span class="co"># None ← 第2引数なし</span></span>
-<span id="cb10-2"><a></a><span class="bu">print</span>(name2score.get(<span class="st">"Tanaka"</span>, <span class="dv">0</span>))   <span class="co"># 0    ← 第2引数あり（未登録なら 0 点扱い）</span></span>
-<span id="cb10-3"><a></a><span class="bu">print</span>(name2score.get(<span class="st">"Yamada"</span>, <span class="dv">0</span>))   <span class="co"># 95   ← 登録済みならその値</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="bu">print</span>(name2score.get(<span class="st">"Tanaka"</span>))      <span class="co"># None ← 第2引数なし</span></span>
+<span id="cb10-2"><a aria-label="2"></a><span class="bu">print</span>(name2score.get(<span class="st">"Tanaka"</span>, <span class="dv">0</span>))   <span class="co"># 0    ← 第2引数あり（未登録なら 0 点扱い）</span></span>
+<span id="cb10-3"><a aria-label="3"></a><span class="bu">print</span>(name2score.get(<span class="st">"Yamada"</span>, <span class="dv">0</span>))   <span class="co"># 95   ← 登録済みならその値</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -452,50 +458,50 @@ Takahashiさんは80点です</code></pre>
 <h2>要素の削除と長さ（<code>del</code> / <code>pop</code> / <code>len</code>）</h2>
 <div class="slide-body">
 <p><code>del</code> または <code>.pop()</code> で削除、<code>len()</code> でキーの数を確認できる。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>, <span class="st">"Takahashi"</span>: <span class="dv">80</span>}</span>
-<span id="cb11-2"><a></a><span class="bu">print</span>(<span class="bu">len</span>(name2score))  <span class="co"># 3</span></span>
-<span id="cb11-3"><a></a></span>
-<span id="cb11-4"><a></a><span class="co"># del：削除するだけ</span></span>
-<span id="cb11-5"><a></a><span class="kw">del</span> name2score[<span class="st">"Suzuki"</span>]</span>
-<span id="cb11-6"><a></a><span class="bu">print</span>(name2score)       <span class="co"># {'Yamada': 95, 'Takahashi': 80}</span></span>
-<span id="cb11-7"><a></a><span class="bu">print</span>(<span class="bu">len</span>(name2score))  <span class="co"># 2</span></span>
-<span id="cb11-8"><a></a></span>
-<span id="cb11-9"><a></a><span class="co"># pop：削除して値を取り出す</span></span>
-<span id="cb11-10"><a></a>score <span class="op">=</span> name2score.pop(<span class="st">"Yamada"</span>)</span>
-<span id="cb11-11"><a></a><span class="bu">print</span>(score)        <span class="co"># 95</span></span>
-<span id="cb11-12"><a></a><span class="bu">print</span>(name2score)   <span class="co"># {'Takahashi': 80}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>, <span class="st">"Takahashi"</span>: <span class="dv">80</span>}</span>
+<span id="cb11-2"><a aria-label="2"></a><span class="bu">print</span>(<span class="bu">len</span>(name2score))  <span class="co"># 3</span></span>
+<span id="cb11-3"><a aria-label="3"></a></span>
+<span id="cb11-4"><a aria-label="4"></a><span class="co"># del：削除するだけ</span></span>
+<span id="cb11-5"><a aria-label="5"></a><span class="kw">del</span> name2score[<span class="st">"Suzuki"</span>]</span>
+<span id="cb11-6"><a aria-label="6"></a><span class="bu">print</span>(name2score)       <span class="co"># {'Yamada': 95, 'Takahashi': 80}</span></span>
+<span id="cb11-7"><a aria-label="7"></a><span class="bu">print</span>(<span class="bu">len</span>(name2score))  <span class="co"># 2</span></span>
+<span id="cb11-8"><a aria-label="8"></a></span>
+<span id="cb11-9"><a aria-label="9"></a><span class="co"># pop：削除して値を取り出す</span></span>
+<span id="cb11-10"><a aria-label="10"></a>score <span class="op">=</span> name2score.pop(<span class="st">"Yamada"</span>)</span>
+<span id="cb11-11"><a aria-label="11"></a><span class="bu">print</span>(score)        <span class="co"># 95</span></span>
+<span id="cb11-12"><a aria-label="12"></a><span class="bu">print</span>(name2score)   <span class="co"># {'Takahashi': 80}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="ネストした-dict" class="slide level2">
 <h2>ネストした dict</h2>
 <div class="slide-body">
 <p>値の中にさらに dict を入れると<strong>入れ子（ネスト）</strong>になる。 学生ごとに複数教科の点数など、複数の属性を持つデータを表現できる。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>students <span class="op">=</span> {</span>
-<span id="cb12-2"><a></a>    <span class="st">"Yamada"</span>:    {<span class="st">"国語"</span>: <span class="dv">80</span>, <span class="st">"数学"</span>: <span class="dv">90</span>, <span class="st">"英語"</span>: <span class="dv">70</span>},</span>
-<span id="cb12-3"><a></a>    <span class="st">"Suzuki"</span>:    {<span class="st">"国語"</span>: <span class="dv">60</span>, <span class="st">"数学"</span>: <span class="dv">85</span>, <span class="st">"英語"</span>: <span class="dv">95</span>},</span>
-<span id="cb12-4"><a></a>    <span class="st">"Takahashi"</span>: {<span class="st">"国語"</span>: <span class="dv">75</span>, <span class="st">"数学"</span>: <span class="dv">70</span>, <span class="st">"英語"</span>: <span class="dv">80</span>},</span>
-<span id="cb12-5"><a></a>}</span>
-<span id="cb12-6"><a></a></span>
-<span id="cb12-7"><a></a><span class="co"># Yamada さんの数学</span></span>
-<span id="cb12-8"><a></a><span class="bu">print</span>(students[<span class="st">"Yamada"</span>][<span class="st">"数学"</span>])  <span class="co"># 90</span></span>
-<span id="cb12-9"><a></a></span>
-<span id="cb12-10"><a></a><span class="co"># 全員の英語</span></span>
-<span id="cb12-11"><a></a><span class="cf">for</span> name, scores <span class="kw">in</span> students.items():</span>
-<span id="cb12-12"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">さんの英語：</span><span class="sc">{</span>scores[<span class="st">'英語'</span>]<span class="sc">}</span><span class="ss">点"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a>students <span class="op">=</span> {</span>
+<span id="cb12-2"><a aria-label="2"></a>    <span class="st">"Yamada"</span>:    {<span class="st">"国語"</span>: <span class="dv">80</span>, <span class="st">"数学"</span>: <span class="dv">90</span>, <span class="st">"英語"</span>: <span class="dv">70</span>},</span>
+<span id="cb12-3"><a aria-label="3"></a>    <span class="st">"Suzuki"</span>:    {<span class="st">"国語"</span>: <span class="dv">60</span>, <span class="st">"数学"</span>: <span class="dv">85</span>, <span class="st">"英語"</span>: <span class="dv">95</span>},</span>
+<span id="cb12-4"><a aria-label="4"></a>    <span class="st">"Takahashi"</span>: {<span class="st">"国語"</span>: <span class="dv">75</span>, <span class="st">"数学"</span>: <span class="dv">70</span>, <span class="st">"英語"</span>: <span class="dv">80</span>},</span>
+<span id="cb12-5"><a aria-label="5"></a>}</span>
+<span id="cb12-6"><a aria-label="6"></a></span>
+<span id="cb12-7"><a aria-label="7"></a><span class="co"># Yamada さんの数学</span></span>
+<span id="cb12-8"><a aria-label="8"></a><span class="bu">print</span>(students[<span class="st">"Yamada"</span>][<span class="st">"数学"</span>])  <span class="co"># 90</span></span>
+<span id="cb12-9"><a aria-label="9"></a></span>
+<span id="cb12-10"><a aria-label="10"></a><span class="co"># 全員の英語</span></span>
+<span id="cb12-11"><a aria-label="11"></a><span class="cf">for</span> name, scores <span class="kw">in</span> students.items():</span>
+<span id="cb12-12"><a aria-label="12"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">さんの英語：</span><span class="sc">{</span>scores[<span class="st">'英語'</span>]<span class="sc">}</span><span class="ss">点"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="dict-と-list-の組み合わせ" class="slide level2">
 <h2>dict と list の組み合わせ</h2>
 <div class="slide-body">
 <p><strong>list の中に dict</strong> を入れる形は、表形式のデータを表すときの定番。 （JSON や DB の1レコードのイメージ）</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>students <span class="op">=</span> [</span>
-<span id="cb13-2"><a></a>    {<span class="st">"name"</span>: <span class="st">"Yamada"</span>,    <span class="st">"score"</span>: <span class="dv">95</span>},</span>
-<span id="cb13-3"><a></a>    {<span class="st">"name"</span>: <span class="st">"Suzuki"</span>,    <span class="st">"score"</span>: <span class="dv">75</span>},</span>
-<span id="cb13-4"><a></a>    {<span class="st">"name"</span>: <span class="st">"Takahashi"</span>, <span class="st">"score"</span>: <span class="dv">80</span>},</span>
-<span id="cb13-5"><a></a>]</span>
-<span id="cb13-6"><a></a></span>
-<span id="cb13-7"><a></a><span class="cf">for</span> s <span class="kw">in</span> students:</span>
-<span id="cb13-8"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>s[<span class="st">'name'</span>]<span class="sc">}</span><span class="ss">さんは</span><span class="sc">{</span>s[<span class="st">'score'</span>]<span class="sc">}</span><span class="ss">点"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a>students <span class="op">=</span> [</span>
+<span id="cb13-2"><a aria-label="2"></a>    {<span class="st">"name"</span>: <span class="st">"Yamada"</span>,    <span class="st">"score"</span>: <span class="dv">95</span>},</span>
+<span id="cb13-3"><a aria-label="3"></a>    {<span class="st">"name"</span>: <span class="st">"Suzuki"</span>,    <span class="st">"score"</span>: <span class="dv">75</span>},</span>
+<span id="cb13-4"><a aria-label="4"></a>    {<span class="st">"name"</span>: <span class="st">"Takahashi"</span>, <span class="st">"score"</span>: <span class="dv">80</span>},</span>
+<span id="cb13-5"><a aria-label="5"></a>]</span>
+<span id="cb13-6"><a aria-label="6"></a></span>
+<span id="cb13-7"><a aria-label="7"></a><span class="cf">for</span> s <span class="kw">in</span> students:</span>
+<span id="cb13-8"><a aria-label="8"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>s[<span class="st">'name'</span>]<span class="sc">}</span><span class="ss">さんは</span><span class="sc">{</span>s[<span class="st">'score'</span>]<span class="sc">}</span><span class="ss">点"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -519,17 +525,17 @@ Takahashiさんは80点です</code></pre>
 <h2>辞書内包表記</h2>
 <div class="slide-body">
 <p>リスト内包表記の dict 版。<code>{キー: 値 for ... in ...}</code> の形。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co"># 数 → その2乗 の dict を作る</span></span>
-<span id="cb14-2"><a></a>squares <span class="op">=</span> {x: x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)}</span>
-<span id="cb14-3"><a></a><span class="bu">print</span>(squares)  <span class="co"># {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a><span class="co"># 数 → その2乗 の dict を作る</span></span>
+<span id="cb14-2"><a aria-label="2"></a>squares <span class="op">=</span> {x: x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)}</span>
+<span id="cb14-3"><a aria-label="3"></a><span class="bu">print</span>(squares)  <span class="co"># {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p>条件付きも書ける。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co"># 80点以上だけ取り出す</span></span>
-<span id="cb15-2"><a></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>, <span class="st">"Takahashi"</span>: <span class="dv">80</span>}</span>
-<span id="cb15-3"><a></a>passed <span class="op">=</span> {k: v <span class="cf">for</span> k, v <span class="kw">in</span> name2score.items() <span class="cf">if</span> v <span class="op">&gt;=</span> <span class="dv">80</span>}</span>
-<span id="cb15-4"><a></a><span class="bu">print</span>(passed)  <span class="co"># {'Yamada': 95, 'Takahashi': 80}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="co"># 80点以上だけ取り出す</span></span>
+<span id="cb15-2"><a aria-label="2"></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>, <span class="st">"Takahashi"</span>: <span class="dv">80</span>}</span>
+<span id="cb15-3"><a aria-label="3"></a>passed <span class="op">=</span> {k: v <span class="cf">for</span> k, v <span class="kw">in</span> name2score.items() <span class="cf">if</span> v <span class="op">&gt;=</span> <span class="dv">80</span>}</span>
+<span id="cb15-4"><a aria-label="4"></a><span class="bu">print</span>(passed)  <span class="co"># {'Yamada': 95, 'Takahashi': 80}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p>キーと値を入れ替えるのも一行で書ける。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>score2name <span class="op">=</span> {v: k <span class="cf">for</span> k, v <span class="kw">in</span> name2score.items()}</span>
-<span id="cb16-2"><a></a><span class="bu">print</span>(score2name)  <span class="co"># {95: 'Yamada', 75: 'Suzuki', 80: 'Takahashi'}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a>score2name <span class="op">=</span> {v: k <span class="cf">for</span> k, v <span class="kw">in</span> name2score.items()}</span>
+<span id="cb16-2"><a aria-label="2"></a><span class="bu">print</span>(score2name)  <span class="co"># {95: 'Yamada', 75: 'Suzuki', 80: 'Takahashi'}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="まとめ" class="slide level2">
@@ -547,7 +553,7 @@ Takahashiさんは80点です</code></pre>
 <section id="演習問題" class="slide level2 badge-practice scrollable">
 <h2>演習問題</h2>
 <div class="slide-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>, <span class="st">"Takahashi"</span>: <span class="dv">80</span>, <span class="st">"Tanaka"</span>: <span class="dv">60</span>}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>, <span class="st">"Takahashi"</span>: <span class="dv">80</span>, <span class="st">"Tanaka"</span>: <span class="dv">60</span>}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="prompt">
 <p>上記の dict をコピペして、以下の操作を実装せよ。</p>
 </div>
@@ -556,18 +562,18 @@ Takahashiさんは80点です</code></pre>
 <li><strong>Tanaka</strong> さんを <code>del</code> で削除</li>
 <li><code>.values()</code> と <code>sum</code> / <code>len</code> で、全員の <strong>平均点</strong> を表示</li>
 </ol>
-<div id="b42c3da8" class="cell" data-execution_count="1">
+<div id="ad2a84af" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="co"># 1</span></span>
-<span id="cb18-2"><a></a><span class="bu">print</span>(name2score.get(<span class="st">"Sato"</span>, <span class="dv">0</span>))  <span class="co"># 0</span></span>
-<span id="cb18-3"><a></a></span>
-<span id="cb18-4"><a></a><span class="co"># 2</span></span>
-<span id="cb18-5"><a></a><span class="kw">del</span> name2score[<span class="st">"Tanaka"</span>]</span>
-<span id="cb18-6"><a></a><span class="bu">print</span>(name2score)</span>
-<span id="cb18-7"><a></a></span>
-<span id="cb18-8"><a></a><span class="co"># 3</span></span>
-<span id="cb18-9"><a></a><span class="bu">print</span>(<span class="bu">sum</span>(name2score.values()) <span class="op">/</span> <span class="bu">len</span>(name2score))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a><span class="co"># 1</span></span>
+<span id="cb18-2"><a aria-label="2"></a><span class="bu">print</span>(name2score.get(<span class="st">"Sato"</span>, <span class="dv">0</span>))  <span class="co"># 0</span></span>
+<span id="cb18-3"><a aria-label="3"></a></span>
+<span id="cb18-4"><a aria-label="4"></a><span class="co"># 2</span></span>
+<span id="cb18-5"><a aria-label="5"></a><span class="kw">del</span> name2score[<span class="st">"Tanaka"</span>]</span>
+<span id="cb18-6"><a aria-label="6"></a><span class="bu">print</span>(name2score)</span>
+<span id="cb18-7"><a aria-label="7"></a></span>
+<span id="cb18-8"><a aria-label="8"></a><span class="co"># 3</span></span>
+<span id="cb18-9"><a aria-label="9"></a><span class="bu">print</span>(<span class="bu">sum</span>(name2score.values()) <span class="op">/</span> <span class="bu">len</span>(name2score))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -597,20 +603,20 @@ Takahashiさんは80点です</code></pre>
 </div>
 </div>
 </div>
-<div id="70b8cc81" class="cell" data-execution_count="2">
+<div id="d6c84256" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="co"># 1</span></span>
-<span id="cb19-2"><a></a>squares <span class="op">=</span> {x: x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>)}</span>
-<span id="cb19-3"><a></a><span class="bu">print</span>(squares)</span>
-<span id="cb19-4"><a></a></span>
-<span id="cb19-5"><a></a><span class="co"># 2</span></span>
-<span id="cb19-6"><a></a>passed <span class="op">=</span> {k: v <span class="cf">for</span> k, v <span class="kw">in</span> name2score.items() <span class="cf">if</span> v <span class="op">&gt;=</span> <span class="dv">80</span>}</span>
-<span id="cb19-7"><a></a><span class="bu">print</span>(passed)</span>
-<span id="cb19-8"><a></a></span>
-<span id="cb19-9"><a></a><span class="co"># 3</span></span>
-<span id="cb19-10"><a></a>score2name <span class="op">=</span> {v: k <span class="cf">for</span> k, v <span class="kw">in</span> name2score.items()}</span>
-<span id="cb19-11"><a></a><span class="bu">print</span>(score2name)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="co"># 1</span></span>
+<span id="cb19-2"><a aria-label="2"></a>squares <span class="op">=</span> {x: x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>)}</span>
+<span id="cb19-3"><a aria-label="3"></a><span class="bu">print</span>(squares)</span>
+<span id="cb19-4"><a aria-label="4"></a></span>
+<span id="cb19-5"><a aria-label="5"></a><span class="co"># 2</span></span>
+<span id="cb19-6"><a aria-label="6"></a>passed <span class="op">=</span> {k: v <span class="cf">for</span> k, v <span class="kw">in</span> name2score.items() <span class="cf">if</span> v <span class="op">&gt;=</span> <span class="dv">80</span>}</span>
+<span id="cb19-7"><a aria-label="7"></a><span class="bu">print</span>(passed)</span>
+<span id="cb19-8"><a aria-label="8"></a></span>
+<span id="cb19-9"><a aria-label="9"></a><span class="co"># 3</span></span>
+<span id="cb19-10"><a aria-label="10"></a>score2name <span class="op">=</span> {v: k <span class="cf">for</span> k, v <span class="kw">in</span> name2score.items()}</span>
+<span id="cb19-11"><a aria-label="11"></a><span class="bu">print</span>(score2name)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -618,13 +624,13 @@ Takahashiさんは80点です</code></pre>
 <section id="演習問題list-of-dict" class="slide level2 badge-practice scrollable">
 <h2>演習問題（list of dict）</h2>
 <div class="slide-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="co"># 要素：学生（0: A さん, 1: B さん, 2: C さん）</span></span>
-<span id="cb20-2"><a></a><span class="co"># キー：科目（"国語", "数学", "英語"）</span></span>
-<span id="cb20-3"><a></a>students <span class="op">=</span> [</span>
-<span id="cb20-4"><a></a>    {<span class="st">"name"</span>: <span class="st">"A"</span>, <span class="st">"国語"</span>: <span class="dv">80</span>, <span class="st">"数学"</span>: <span class="dv">90</span>, <span class="st">"英語"</span>: <span class="dv">70</span>},</span>
-<span id="cb20-5"><a></a>    {<span class="st">"name"</span>: <span class="st">"B"</span>, <span class="st">"国語"</span>: <span class="dv">60</span>, <span class="st">"数学"</span>: <span class="dv">85</span>, <span class="st">"英語"</span>: <span class="dv">95</span>},</span>
-<span id="cb20-6"><a></a>    {<span class="st">"name"</span>: <span class="st">"C"</span>, <span class="st">"国語"</span>: <span class="dv">75</span>, <span class="st">"数学"</span>: <span class="dv">70</span>, <span class="st">"英語"</span>: <span class="dv">80</span>},</span>
-<span id="cb20-7"><a></a>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a aria-label="1"></a><span class="co"># 要素：学生（0: A さん, 1: B さん, 2: C さん）</span></span>
+<span id="cb20-2"><a aria-label="2"></a><span class="co"># キー：科目（"国語", "数学", "英語"）</span></span>
+<span id="cb20-3"><a aria-label="3"></a>students <span class="op">=</span> [</span>
+<span id="cb20-4"><a aria-label="4"></a>    {<span class="st">"name"</span>: <span class="st">"A"</span>, <span class="st">"国語"</span>: <span class="dv">80</span>, <span class="st">"数学"</span>: <span class="dv">90</span>, <span class="st">"英語"</span>: <span class="dv">70</span>},</span>
+<span id="cb20-5"><a aria-label="5"></a>    {<span class="st">"name"</span>: <span class="st">"B"</span>, <span class="st">"国語"</span>: <span class="dv">60</span>, <span class="st">"数学"</span>: <span class="dv">85</span>, <span class="st">"英語"</span>: <span class="dv">95</span>},</span>
+<span id="cb20-6"><a aria-label="6"></a>    {<span class="st">"name"</span>: <span class="st">"C"</span>, <span class="st">"国語"</span>: <span class="dv">75</span>, <span class="st">"数学"</span>: <span class="dv">70</span>, <span class="st">"英語"</span>: <span class="dv">80</span>},</span>
+<span id="cb20-7"><a aria-label="7"></a>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="prompt">
 <p>上記の学生の国語・数学・英語の点数をもつ list of dict をコピペして、以下の操作を実装せよ。</p>
 </div>
@@ -633,19 +639,19 @@ Takahashiさんは80点です</code></pre>
 <li><strong>C さんの3科目合計</strong>を表示</li>
 <li><strong>各学生の平均点</strong>を <code>for</code> 文で順に表示</li>
 </ol>
-<div id="d85ed005" class="cell" data-execution_count="3">
+<div id="9ec3cfdb" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="co"># 1</span></span>
-<span id="cb21-2"><a></a><span class="bu">print</span>(students[<span class="dv">1</span>][<span class="st">"数学"</span>])  <span class="co"># 85</span></span>
-<span id="cb21-3"><a></a></span>
-<span id="cb21-4"><a></a><span class="co"># 2</span></span>
-<span id="cb21-5"><a></a><span class="bu">print</span>(students[<span class="dv">2</span>][<span class="st">"国語"</span>] <span class="op">+</span> students[<span class="dv">2</span>][<span class="st">"数学"</span>] <span class="op">+</span> students[<span class="dv">2</span>][<span class="st">"英語"</span>])  <span class="co"># 225</span></span>
-<span id="cb21-6"><a></a></span>
-<span id="cb21-7"><a></a><span class="co"># 3</span></span>
-<span id="cb21-8"><a></a><span class="cf">for</span> s <span class="kw">in</span> students:</span>
-<span id="cb21-9"><a></a>    avg <span class="op">=</span> (s[<span class="st">"国語"</span>] <span class="op">+</span> s[<span class="st">"数学"</span>] <span class="op">+</span> s[<span class="st">"英語"</span>]) <span class="op">/</span> <span class="dv">3</span></span>
-<span id="cb21-10"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>s[<span class="st">'name'</span>]<span class="sc">}</span><span class="ss">さんの平均点：</span><span class="sc">{</span>avg<span class="sc">:.1f}</span><span class="ss">点"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a><span class="co"># 1</span></span>
+<span id="cb21-2"><a aria-label="2"></a><span class="bu">print</span>(students[<span class="dv">1</span>][<span class="st">"数学"</span>])  <span class="co"># 85</span></span>
+<span id="cb21-3"><a aria-label="3"></a></span>
+<span id="cb21-4"><a aria-label="4"></a><span class="co"># 2</span></span>
+<span id="cb21-5"><a aria-label="5"></a><span class="bu">print</span>(students[<span class="dv">2</span>][<span class="st">"国語"</span>] <span class="op">+</span> students[<span class="dv">2</span>][<span class="st">"数学"</span>] <span class="op">+</span> students[<span class="dv">2</span>][<span class="st">"英語"</span>])  <span class="co"># 225</span></span>
+<span id="cb21-6"><a aria-label="6"></a></span>
+<span id="cb21-7"><a aria-label="7"></a><span class="co"># 3</span></span>
+<span id="cb21-8"><a aria-label="8"></a><span class="cf">for</span> s <span class="kw">in</span> students:</span>
+<span id="cb21-9"><a aria-label="9"></a>    avg <span class="op">=</span> (s[<span class="st">"国語"</span>] <span class="op">+</span> s[<span class="st">"数学"</span>] <span class="op">+</span> s[<span class="st">"英語"</span>]) <span class="op">/</span> <span class="dv">3</span></span>
+<span id="cb21-10"><a aria-label="10"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>s[<span class="st">'name'</span>]<span class="sc">}</span><span class="ss">さんの平均点：</span><span class="sc">{</span>avg<span class="sc">:.1f}</span><span class="ss">点"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 

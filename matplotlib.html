@@ -6,11 +6,11 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5c1318cf63eba56dbef7ba16bc7d56f5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+  <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="rkskmt">
   <title>情報処理 – matplotlib入門</title>
@@ -20,10 +20,16 @@
   <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -98,7 +104,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-d3a26a7442888a116b43ccec6150e9c5.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-e69bca93ec9d1486cefcf16a785f5ce6.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -254,7 +260,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-rkskmt 
+rkskmt
 </div>
 </div>
 </div>
@@ -296,10 +302,10 @@ rkskmt
 </ul></li>
 </ul>
 <p>ターミナルからインストール：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>pip install matplotlib japanize-matplotlib</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a aria-label="1"></a>pip install matplotlib japanize-matplotlib</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p>冒頭で import（<code>plt</code> としてインポートするのが一般的）：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-2"><a></a><span class="im">import</span> japanize_matplotlib</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-2"><a aria-label="2"></a><span class="im">import</span> japanize_matplotlib</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="文字化け対応" class="slide level2">
@@ -308,7 +314,7 @@ rkskmt
 <ul>
 <li>matplotlib は多くの環境で <strong>日本語が文字化け</strong> する</li>
 </ul>
-<div id="ac60a34a" class="cell" data-execution_count="1">
+<div id="6c3e232a" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -377,11 +383,11 @@ rkskmt
 </ul></li>
 <li>材料データ（以下をコピペ）：</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)    <span class="co"># 1〜12月</span></span>
-<span id="cb3-4"><a></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
-<span id="cb3-5"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a aria-label="2"></a></span>
+<span id="cb3-3"><a aria-label="3"></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)    <span class="co"># 1〜12月</span></span>
+<span id="cb3-4"><a aria-label="4"></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
+<span id="cb3-5"><a aria-label="5"></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -403,16 +409,16 @@ rkskmt
 <section id="まずは点のプロット" class="slide level2">
 <h2>まずは点のプロット</h2>
 <div class="slide-body">
-<div id="d823988f" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb4-4"><a></a></span>
-<span id="cb4-5"><a></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
-<span id="cb4-6"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
-<span id="cb4-7"><a></a></span>
-<span id="cb4-8"><a></a>plt.plot(months, temp_2024, <span class="st">"o"</span>)    <span class="co"># "o" で点だけプロット</span></span>
-<span id="cb4-9"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="7cd69636" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb4-4"><a aria-label="4"></a></span>
+<span id="cb4-5"><a aria-label="5"></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
+<span id="cb4-6"><a aria-label="6"></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
+<span id="cb4-7"><a aria-label="7"></a></span>
+<span id="cb4-8"><a aria-label="8"></a>plt.plot(months, temp_2024, <span class="st">"o"</span>)    <span class="co"># "o" で点だけプロット</span></span>
+<span id="cb4-9"><a aria-label="9"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -433,16 +439,16 @@ rkskmt
 <section id="peek-line-code" class="slide level2">
 <h2>点に線を付け足す</h2>
 <div class="slide-body">
-<div id="cd922c1a" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb5-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb5-4"><a></a></span>
-<span id="cb5-5"><a></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
-<span id="cb5-6"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
-<span id="cb5-7"><a></a></span>
-<span id="cb5-8"><a></a>plt.plot(months, temp_2024, <span class="st">"o-"</span>)   <span class="co"># 点＋線</span></span>
-<span id="cb5-9"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="a1634469" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb5-4"><a aria-label="4"></a></span>
+<span id="cb5-5"><a aria-label="5"></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
+<span id="cb5-6"><a aria-label="6"></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
+<span id="cb5-7"><a aria-label="7"></a></span>
+<span id="cb5-8"><a aria-label="8"></a>plt.plot(months, temp_2024, <span class="st">"o-"</span>)   <span class="co"># 点＋線</span></span>
+<span id="cb5-9"><a aria-label="9"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -535,19 +541,19 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="7e7b0db2" class="cell" data-execution_count="4">
+<div id="112eb82d" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb6-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb6-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb6-4"><a></a></span>
-<span id="cb6-5"><a></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">200</span>)</span>
-<span id="cb6-6"><a></a>y <span class="op">=</span> x <span class="op">**</span> <span class="dv">2</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> x <span class="op">+</span> <span class="dv">3</span></span>
-<span id="cb6-7"><a></a></span>
-<span id="cb6-8"><a></a>plt.plot(x, y)</span>
-<span id="cb6-9"><a></a>plt.plot([<span class="dv">1</span>], [<span class="dv">2</span>], <span class="st">"o"</span>, color<span class="op">=</span><span class="st">"red"</span>)   <span class="co"># 頂点に印をつけて検算</span></span>
-<span id="cb6-10"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb6-4"><a aria-label="4"></a></span>
+<span id="cb6-5"><a aria-label="5"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">200</span>)</span>
+<span id="cb6-6"><a aria-label="6"></a>y <span class="op">=</span> x <span class="op">**</span> <span class="dv">2</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> x <span class="op">+</span> <span class="dv">3</span></span>
+<span id="cb6-7"><a aria-label="7"></a></span>
+<span id="cb6-8"><a aria-label="8"></a>plt.plot(x, y)</span>
+<span id="cb6-9"><a aria-label="9"></a>plt.plot([<span class="dv">1</span>], [<span class="dv">2</span>], <span class="st">"o"</span>, color<span class="op">=</span><span class="st">"red"</span>)   <span class="co"># 頂点に印をつけて検算</span></span>
+<span id="cb6-10"><a aria-label="10"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -563,19 +569,19 @@ rkskmt
 <li>その後<code>plt.legend()</code>を呼ぶ</li>
 </ul></li>
 </ul>
-<div id="265de4f4" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb7-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb7-4"><a></a></span>
-<span id="cb7-5"><a></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
-<span id="cb7-6"><a></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
-<span id="cb7-7"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
-<span id="cb7-8"><a></a></span>
-<span id="cb7-9"><a></a>plt.plot(months, temp_1900, <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">"1900年"</span>)   <span class="co"># 凡例ラベル</span></span>
-<span id="cb7-10"><a></a>plt.plot(months, temp_2024, <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">"2024年"</span>)</span>
-<span id="cb7-11"><a></a>plt.legend()                                         <span class="co"># 凡例を表示</span></span>
-<span id="cb7-12"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="061051ff" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb7-4"><a aria-label="4"></a></span>
+<span id="cb7-5"><a aria-label="5"></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
+<span id="cb7-6"><a aria-label="6"></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
+<span id="cb7-7"><a aria-label="7"></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
+<span id="cb7-8"><a aria-label="8"></a></span>
+<span id="cb7-9"><a aria-label="9"></a>plt.plot(months, temp_1900, <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">"1900年"</span>)   <span class="co"># 凡例ラベル</span></span>
+<span id="cb7-10"><a aria-label="10"></a>plt.plot(months, temp_2024, <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">"2024年"</span>)</span>
+<span id="cb7-11"><a aria-label="11"></a>plt.legend()                                         <span class="co"># 凡例を表示</span></span>
+<span id="cb7-12"><a aria-label="12"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -631,23 +637,23 @@ rkskmt
 <li><code>plt.title()</code> で <strong>グラフタイトル</strong></li>
 <li><code>plt.grid(True)</code> で <strong>グリッド線</strong></li>
 </ul>
-<div id="438b4585" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb8-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb8-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb8-4"><a></a></span>
-<span id="cb8-5"><a></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
-<span id="cb8-6"><a></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
-<span id="cb8-7"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
-<span id="cb8-8"><a></a></span>
-<span id="cb8-9"><a></a>plt.plot(months, temp_1900, <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">"1900年"</span>)</span>
-<span id="cb8-10"><a></a>plt.plot(months, temp_2024, <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">"2024年"</span>)</span>
-<span id="cb8-11"><a></a>plt.legend()</span>
-<span id="cb8-12"><a></a>plt.title(<span class="st">"東京の月別平均気温"</span>)        <span class="co"># タイトル</span></span>
-<span id="cb8-13"><a></a>plt.xlabel(<span class="st">"月"</span>)                       <span class="co"># x軸ラベル</span></span>
-<span id="cb8-14"><a></a>plt.ylabel(<span class="st">"平均気温（℃）"</span>)           <span class="co"># y軸ラベル</span></span>
-<span id="cb8-15"><a></a>plt.grid(<span class="va">True</span>)                         <span class="co"># グリッド線</span></span>
-<span id="cb8-16"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d222d80f" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb8-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb8-4"><a aria-label="4"></a></span>
+<span id="cb8-5"><a aria-label="5"></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
+<span id="cb8-6"><a aria-label="6"></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
+<span id="cb8-7"><a aria-label="7"></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
+<span id="cb8-8"><a aria-label="8"></a></span>
+<span id="cb8-9"><a aria-label="9"></a>plt.plot(months, temp_1900, <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">"1900年"</span>)</span>
+<span id="cb8-10"><a aria-label="10"></a>plt.plot(months, temp_2024, <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">"2024年"</span>)</span>
+<span id="cb8-11"><a aria-label="11"></a>plt.legend()</span>
+<span id="cb8-12"><a aria-label="12"></a>plt.title(<span class="st">"東京の月別平均気温"</span>)        <span class="co"># タイトル</span></span>
+<span id="cb8-13"><a aria-label="13"></a>plt.xlabel(<span class="st">"月"</span>)                       <span class="co"># x軸ラベル</span></span>
+<span id="cb8-14"><a aria-label="14"></a>plt.ylabel(<span class="st">"平均気温（℃）"</span>)           <span class="co"># y軸ラベル</span></span>
+<span id="cb8-15"><a aria-label="15"></a>plt.grid(<span class="va">True</span>)                         <span class="co"># グリッド線</span></span>
+<span id="cb8-16"><a aria-label="16"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -683,22 +689,22 @@ rkskmt
 <li><code>plt.xlim(a, b)</code> / <code>plt.ylim(a, b)</code> で軸の範囲を固定</li>
 <li>何も指定しないと <strong>データの範囲＋少し余白</strong> が自動で選ばれる</li>
 </ul>
-<div id="9edee935" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb9-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb9-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb9-4"><a></a></span>
-<span id="cb9-5"><a></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
-<span id="cb9-6"><a></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
-<span id="cb9-7"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
-<span id="cb9-8"><a></a></span>
-<span id="cb9-9"><a></a>plt.plot(months, temp_1900, <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">"1900年"</span>)</span>
-<span id="cb9-10"><a></a>plt.plot(months, temp_2024, <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">"2024年"</span>)</span>
-<span id="cb9-11"><a></a>plt.legend()</span>
-<span id="cb9-12"><a></a>plt.xlim(<span class="dv">1</span>, <span class="dv">12</span>)        <span class="co"># x軸: 1〜12月</span></span>
-<span id="cb9-13"><a></a>plt.ylim(<span class="dv">0</span>, <span class="dv">35</span>)        <span class="co"># y軸: あえて0から見せる</span></span>
-<span id="cb9-14"><a></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb9-15"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="fb917481" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb9-4"><a aria-label="4"></a></span>
+<span id="cb9-5"><a aria-label="5"></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
+<span id="cb9-6"><a aria-label="6"></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
+<span id="cb9-7"><a aria-label="7"></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
+<span id="cb9-8"><a aria-label="8"></a></span>
+<span id="cb9-9"><a aria-label="9"></a>plt.plot(months, temp_1900, <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">"1900年"</span>)</span>
+<span id="cb9-10"><a aria-label="10"></a>plt.plot(months, temp_2024, <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">"2024年"</span>)</span>
+<span id="cb9-11"><a aria-label="11"></a>plt.legend()</span>
+<span id="cb9-12"><a aria-label="12"></a>plt.xlim(<span class="dv">1</span>, <span class="dv">12</span>)        <span class="co"># x軸: 1〜12月</span></span>
+<span id="cb9-13"><a aria-label="13"></a>plt.ylim(<span class="dv">0</span>, <span class="dv">35</span>)        <span class="co"># y軸: あえて0から見せる</span></span>
+<span id="cb9-14"><a aria-label="14"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb9-15"><a aria-label="15"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -779,27 +785,27 @@ rkskmt
 <div style="text-align:center; font-family:monospace;">
 <p>1 │ 2<br> ─┼─<br> 3 │ 4</p>
 </div>
-<div id="77e82333" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb10-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb10-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb10-4"><a></a></span>
-<span id="cb10-5"><a></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
-<span id="cb10-6"><a></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
-<span id="cb10-7"><a></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
-<span id="cb10-8"><a></a></span>
-<span id="cb10-9"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)        <span class="co"># 1行2列の左</span></span>
-<span id="cb10-10"><a></a>plt.plot(months, temp_1900, <span class="st">"o-"</span>)</span>
-<span id="cb10-11"><a></a>plt.ylim(<span class="dv">0</span>, <span class="dv">35</span>)             <span class="co"># 並べて比較するなら軸を揃える</span></span>
-<span id="cb10-12"><a></a>plt.title(<span class="st">"1900年"</span>)</span>
-<span id="cb10-13"><a></a></span>
-<span id="cb10-14"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)        <span class="co"># 1行2列の右</span></span>
-<span id="cb10-15"><a></a>plt.plot(months, temp_2024, <span class="st">"o-"</span>)</span>
-<span id="cb10-16"><a></a>plt.ylim(<span class="dv">0</span>, <span class="dv">35</span>)</span>
-<span id="cb10-17"><a></a>plt.title(<span class="st">"2024年"</span>)</span>
-<span id="cb10-18"><a></a></span>
-<span id="cb10-19"><a></a>plt.tight_layout()          <span class="co"># 余白を自動調整</span></span>
-<span id="cb10-20"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="32e29006" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb10-4"><a aria-label="4"></a></span>
+<span id="cb10-5"><a aria-label="5"></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)</span>
+<span id="cb10-6"><a aria-label="6"></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
+<span id="cb10-7"><a aria-label="7"></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span>
+<span id="cb10-8"><a aria-label="8"></a></span>
+<span id="cb10-9"><a aria-label="9"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)        <span class="co"># 1行2列の左</span></span>
+<span id="cb10-10"><a aria-label="10"></a>plt.plot(months, temp_1900, <span class="st">"o-"</span>)</span>
+<span id="cb10-11"><a aria-label="11"></a>plt.ylim(<span class="dv">0</span>, <span class="dv">35</span>)             <span class="co"># 並べて比較するなら軸を揃える</span></span>
+<span id="cb10-12"><a aria-label="12"></a>plt.title(<span class="st">"1900年"</span>)</span>
+<span id="cb10-13"><a aria-label="13"></a></span>
+<span id="cb10-14"><a aria-label="14"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)        <span class="co"># 1行2列の右</span></span>
+<span id="cb10-15"><a aria-label="15"></a>plt.plot(months, temp_2024, <span class="st">"o-"</span>)</span>
+<span id="cb10-16"><a aria-label="16"></a>plt.ylim(<span class="dv">0</span>, <span class="dv">35</span>)</span>
+<span id="cb10-17"><a aria-label="17"></a>plt.title(<span class="st">"2024年"</span>)</span>
+<span id="cb10-18"><a aria-label="18"></a></span>
+<span id="cb10-19"><a aria-label="19"></a>plt.tight_layout()          <span class="co"># 余白を自動調整</span></span>
+<span id="cb10-20"><a aria-label="20"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -829,7 +835,7 @@ rkskmt
 <section id="ここまでで仕上げたグラフ" class="slide level2">
 <h2>ここまでで仕上げたグラフ</h2>
 <div class="slide-body">
-<div id="89c07bd5" class="cell" data-execution_count="9">
+<div id="803ee9eb" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -857,23 +863,23 @@ rkskmt
 <li><code>alpha</code> で <strong>透明度</strong> を指定すると重なりが見やすい</li>
 </ul></li>
 </ul>
-<div id="ab48d6bf" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb11-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb11-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb11-4"><a></a></span>
-<span id="cb11-5"><a></a>data <span class="op">=</span> np.loadtxt(<span class="st">"data/tokyo_temp_annual.csv"</span>, delimiter<span class="op">=</span><span class="st">","</span>, skiprows<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb11-6"><a></a>year <span class="op">=</span> data[:, <span class="dv">0</span>]      <span class="co"># 1列目：年</span></span>
-<span id="cb11-7"><a></a>temp <span class="op">=</span> data[:, <span class="dv">1</span>]      <span class="co"># 2列目：年平均気温</span></span>
-<span id="cb11-8"><a></a></span>
-<span id="cb11-9"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">3.2</span>))   <span class="co"># 横長・低めにしてスライドに収める</span></span>
-<span id="cb11-10"><a></a>plt.scatter(year, temp, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb11-11"><a></a>plt.xlabel(<span class="st">"年"</span>)</span>
-<span id="cb11-12"><a></a>plt.ylabel(<span class="st">"年平均気温（℃）"</span>)</span>
-<span id="cb11-13"><a></a>plt.title(<span class="st">"東京の年平均気温（1876〜2025）"</span>)</span>
-<span id="cb11-14"><a></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb11-15"><a></a>plt.tight_layout()</span>
-<span id="cb11-16"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="027aec29" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb11-4"><a aria-label="4"></a></span>
+<span id="cb11-5"><a aria-label="5"></a>data <span class="op">=</span> np.loadtxt(<span class="st">"data/tokyo_temp_annual.csv"</span>, delimiter<span class="op">=</span><span class="st">","</span>, skiprows<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb11-6"><a aria-label="6"></a>year <span class="op">=</span> data[:, <span class="dv">0</span>]      <span class="co"># 1列目：年</span></span>
+<span id="cb11-7"><a aria-label="7"></a>temp <span class="op">=</span> data[:, <span class="dv">1</span>]      <span class="co"># 2列目：年平均気温</span></span>
+<span id="cb11-8"><a aria-label="8"></a></span>
+<span id="cb11-9"><a aria-label="9"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">3.2</span>))   <span class="co"># 横長・低めにしてスライドに収める</span></span>
+<span id="cb11-10"><a aria-label="10"></a>plt.scatter(year, temp, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb11-11"><a aria-label="11"></a>plt.xlabel(<span class="st">"年"</span>)</span>
+<span id="cb11-12"><a aria-label="12"></a>plt.ylabel(<span class="st">"年平均気温（℃）"</span>)</span>
+<span id="cb11-13"><a aria-label="13"></a>plt.title(<span class="st">"東京の年平均気温（1876〜2025）"</span>)</span>
+<span id="cb11-14"><a aria-label="14"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb11-15"><a aria-label="15"></a>plt.tight_layout()</span>
+<span id="cb11-16"><a aria-label="16"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -906,26 +912,26 @@ rkskmt
 </ul></li>
 </ul>
 <div class="fig">
-<div id="fed90293" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb12-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb12-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb12-4"><a></a></span>
-<span id="cb12-5"><a></a>income <span class="op">=</span> np.array([</span>
-<span id="cb12-6"><a></a>    <span class="dv">280</span>, <span class="dv">310</span>, <span class="dv">330</span>, <span class="dv">350</span>, <span class="dv">360</span>, <span class="dv">380</span>, <span class="dv">400</span>, <span class="dv">410</span>, <span class="dv">430</span>, <span class="dv">450</span>, <span class="dv">470</span>, <span class="dv">500</span>, <span class="dv">520</span>, <span class="dv">450</span>, <span class="dv">470</span>, <span class="dv">500</span>, <span class="dv">520</span>, <span class="dv">550</span>, <span class="dv">600</span>, <span class="dv">650</span>, <span class="dv">700</span>, <span class="dv">760</span>, <span class="dv">900</span>, <span class="dv">950</span>, <span class="dv">1100</span>, <span class="dv">1260</span>, <span class="dv">3100</span>, <span class="dv">3000</span>, <span class="dv">3200</span></span>
-<span id="cb12-7"><a></a>])</span>
-<span id="cb12-8"><a></a></span>
-<span id="cb12-9"><a></a>mean_income <span class="op">=</span> income.mean()</span>
-<span id="cb12-10"><a></a>median_income <span class="op">=</span> np.median(income)</span>
-<span id="cb12-11"><a></a></span>
-<span id="cb12-12"><a></a>plt.hist(income, bins<span class="op">=</span><span class="dv">20</span>, edgecolor<span class="op">=</span><span class="st">"white"</span>)</span>
-<span id="cb12-13"><a></a>plt.axvline(mean_income, color<span class="op">=</span><span class="st">"red"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="ss">f"平均 (</span><span class="sc">{</span>mean_income<span class="sc">:,.0f}</span><span class="ss">)"</span>)</span>
-<span id="cb12-14"><a></a>plt.axvline(median_income, color<span class="op">=</span><span class="st">"blue"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="ss">f"中央値 (</span><span class="sc">{</span>median_income<span class="sc">:,.0f}</span><span class="ss">)"</span>)</span>
-<span id="cb12-15"><a></a>plt.xlabel(<span class="st">"年収（万円）"</span>)</span>
-<span id="cb12-16"><a></a>plt.ylabel(<span class="st">"人数"</span>)</span>
-<span id="cb12-17"><a></a>plt.title(<span class="st">"年収のような右に長い分布"</span>)</span>
-<span id="cb12-18"><a></a>plt.legend()</span>
-<span id="cb12-19"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="051822a9" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb12-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb12-4"><a aria-label="4"></a></span>
+<span id="cb12-5"><a aria-label="5"></a>income <span class="op">=</span> np.array([</span>
+<span id="cb12-6"><a aria-label="6"></a>    <span class="dv">280</span>, <span class="dv">310</span>, <span class="dv">330</span>, <span class="dv">350</span>, <span class="dv">360</span>, <span class="dv">380</span>, <span class="dv">400</span>, <span class="dv">410</span>, <span class="dv">430</span>, <span class="dv">450</span>, <span class="dv">470</span>, <span class="dv">500</span>, <span class="dv">520</span>, <span class="dv">450</span>, <span class="dv">470</span>, <span class="dv">500</span>, <span class="dv">520</span>, <span class="dv">550</span>, <span class="dv">600</span>, <span class="dv">650</span>, <span class="dv">700</span>, <span class="dv">760</span>, <span class="dv">900</span>, <span class="dv">950</span>, <span class="dv">1100</span>, <span class="dv">1260</span>, <span class="dv">3100</span>, <span class="dv">3000</span>, <span class="dv">3200</span></span>
+<span id="cb12-7"><a aria-label="7"></a>])</span>
+<span id="cb12-8"><a aria-label="8"></a></span>
+<span id="cb12-9"><a aria-label="9"></a>mean_income <span class="op">=</span> income.mean()</span>
+<span id="cb12-10"><a aria-label="10"></a>median_income <span class="op">=</span> np.median(income)</span>
+<span id="cb12-11"><a aria-label="11"></a></span>
+<span id="cb12-12"><a aria-label="12"></a>plt.hist(income, bins<span class="op">=</span><span class="dv">20</span>, edgecolor<span class="op">=</span><span class="st">"white"</span>)</span>
+<span id="cb12-13"><a aria-label="13"></a>plt.axvline(mean_income, color<span class="op">=</span><span class="st">"red"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="ss">f"平均 (</span><span class="sc">{</span>mean_income<span class="sc">:,.0f}</span><span class="ss">)"</span>)</span>
+<span id="cb12-14"><a aria-label="14"></a>plt.axvline(median_income, color<span class="op">=</span><span class="st">"blue"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="ss">f"中央値 (</span><span class="sc">{</span>median_income<span class="sc">:,.0f}</span><span class="ss">)"</span>)</span>
+<span id="cb12-15"><a aria-label="15"></a>plt.xlabel(<span class="st">"年収（万円）"</span>)</span>
+<span id="cb12-16"><a aria-label="16"></a>plt.ylabel(<span class="st">"人数"</span>)</span>
+<span id="cb12-17"><a aria-label="17"></a>plt.title(<span class="st">"年収のような右に長い分布"</span>)</span>
+<span id="cb12-18"><a aria-label="18"></a>plt.legend()</span>
+<span id="cb12-19"><a aria-label="19"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1077,23 +1083,23 @@ rkskmt
 <li><code>data[:, 0]</code> と <code>data[:, 1]</code> で <code>x</code>, <code>y</code> を取り出す</li>
 <li><code>plt.scatter</code> でプロットし、軸ラベル・タイトルをつける</li>
 </ol>
-<div id="6caa3062" class="cell" data-execution_count="12">
+<div id="e29744b2" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb13-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb13-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb13-4"><a></a></span>
-<span id="cb13-5"><a></a>data <span class="op">=</span> np.loadtxt(<span class="st">"data/datasaurus_star.csv"</span>, delimiter<span class="op">=</span><span class="st">","</span>, skiprows<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb13-6"><a></a>x <span class="op">=</span> data[:, <span class="dv">0</span>]</span>
-<span id="cb13-7"><a></a>y <span class="op">=</span> data[:, <span class="dv">1</span>]</span>
-<span id="cb13-8"><a></a></span>
-<span id="cb13-9"><a></a>plt.scatter(x, y)</span>
-<span id="cb13-10"><a></a>plt.xlabel(<span class="st">"x"</span>)</span>
-<span id="cb13-11"><a></a>plt.ylabel(<span class="st">"y"</span>)</span>
-<span id="cb13-12"><a></a>plt.title(<span class="st">"statistics are not enough"</span>)</span>
-<span id="cb13-13"><a></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb13-14"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb13-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb13-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb13-4"><a aria-label="4"></a></span>
+<span id="cb13-5"><a aria-label="5"></a>data <span class="op">=</span> np.loadtxt(<span class="st">"data/datasaurus_star.csv"</span>, delimiter<span class="op">=</span><span class="st">","</span>, skiprows<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb13-6"><a aria-label="6"></a>x <span class="op">=</span> data[:, <span class="dv">0</span>]</span>
+<span id="cb13-7"><a aria-label="7"></a>y <span class="op">=</span> data[:, <span class="dv">1</span>]</span>
+<span id="cb13-8"><a aria-label="8"></a></span>
+<span id="cb13-9"><a aria-label="9"></a>plt.scatter(x, y)</span>
+<span id="cb13-10"><a aria-label="10"></a>plt.xlabel(<span class="st">"x"</span>)</span>
+<span id="cb13-11"><a aria-label="11"></a>plt.ylabel(<span class="st">"y"</span>)</span>
+<span id="cb13-12"><a aria-label="12"></a>plt.title(<span class="st">"statistics are not enough"</span>)</span>
+<span id="cb13-13"><a aria-label="13"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb13-14"><a aria-label="14"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -1111,17 +1117,17 @@ rkskmt
 <li><code>np.polyfit(x, y, 1)</code> で1次回帰直線を求め、<code>plot</code> で重ねる</li>
 <li>すべてのサブプロットで <code>xlim</code> / <code>ylim</code> を <strong>揃える</strong></li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb14-2"><a></a></span>
-<span id="cb14-3"><a></a><span class="co"># データセット I, II, III（x は共通）</span></span>
-<span id="cb14-4"><a></a>x1 <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span>
-<span id="cb14-5"><a></a>y1 <span class="op">=</span> np.array([<span class="fl">8.04</span>, <span class="fl">6.95</span>, <span class="fl">7.58</span>, <span class="fl">8.81</span>, <span class="fl">8.33</span>, <span class="fl">9.96</span>, <span class="fl">7.24</span>, <span class="fl">4.26</span>, <span class="fl">10.84</span>, <span class="fl">4.82</span>, <span class="fl">5.68</span>])</span>
-<span id="cb14-6"><a></a>y2 <span class="op">=</span> np.array([<span class="fl">9.14</span>, <span class="fl">8.14</span>, <span class="fl">8.74</span>, <span class="fl">8.77</span>, <span class="fl">9.26</span>, <span class="fl">8.10</span>, <span class="fl">6.13</span>, <span class="fl">3.10</span>, <span class="fl">9.13</span>, <span class="fl">7.26</span>, <span class="fl">4.74</span>])</span>
-<span id="cb14-7"><a></a>y3 <span class="op">=</span> np.array([<span class="fl">7.46</span>, <span class="fl">6.77</span>, <span class="fl">12.74</span>, <span class="fl">7.11</span>, <span class="fl">7.81</span>, <span class="fl">8.84</span>, <span class="fl">6.08</span>, <span class="fl">5.39</span>, <span class="fl">8.15</span>, <span class="fl">6.42</span>, <span class="fl">5.73</span>])</span>
-<span id="cb14-8"><a></a></span>
-<span id="cb14-9"><a></a><span class="co"># データセット IV（x が異なる）</span></span>
-<span id="cb14-10"><a></a>x4 <span class="op">=</span> np.array([<span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">19</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>])</span>
-<span id="cb14-11"><a></a>y4 <span class="op">=</span> np.array([<span class="fl">6.58</span>, <span class="fl">5.76</span>, <span class="fl">7.71</span>, <span class="fl">8.84</span>, <span class="fl">8.47</span>, <span class="fl">7.04</span>, <span class="fl">5.25</span>, <span class="fl">12.50</span>, <span class="fl">5.56</span>, <span class="fl">7.91</span>, <span class="fl">6.89</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb14-2"><a aria-label="2"></a></span>
+<span id="cb14-3"><a aria-label="3"></a><span class="co"># データセット I, II, III（x は共通）</span></span>
+<span id="cb14-4"><a aria-label="4"></a>x1 <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span>
+<span id="cb14-5"><a aria-label="5"></a>y1 <span class="op">=</span> np.array([<span class="fl">8.04</span>, <span class="fl">6.95</span>, <span class="fl">7.58</span>, <span class="fl">8.81</span>, <span class="fl">8.33</span>, <span class="fl">9.96</span>, <span class="fl">7.24</span>, <span class="fl">4.26</span>, <span class="fl">10.84</span>, <span class="fl">4.82</span>, <span class="fl">5.68</span>])</span>
+<span id="cb14-6"><a aria-label="6"></a>y2 <span class="op">=</span> np.array([<span class="fl">9.14</span>, <span class="fl">8.14</span>, <span class="fl">8.74</span>, <span class="fl">8.77</span>, <span class="fl">9.26</span>, <span class="fl">8.10</span>, <span class="fl">6.13</span>, <span class="fl">3.10</span>, <span class="fl">9.13</span>, <span class="fl">7.26</span>, <span class="fl">4.74</span>])</span>
+<span id="cb14-7"><a aria-label="7"></a>y3 <span class="op">=</span> np.array([<span class="fl">7.46</span>, <span class="fl">6.77</span>, <span class="fl">12.74</span>, <span class="fl">7.11</span>, <span class="fl">7.81</span>, <span class="fl">8.84</span>, <span class="fl">6.08</span>, <span class="fl">5.39</span>, <span class="fl">8.15</span>, <span class="fl">6.42</span>, <span class="fl">5.73</span>])</span>
+<span id="cb14-8"><a aria-label="8"></a></span>
+<span id="cb14-9"><a aria-label="9"></a><span class="co"># データセット IV（x が異なる）</span></span>
+<span id="cb14-10"><a aria-label="10"></a>x4 <span class="op">=</span> np.array([<span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">19</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>])</span>
+<span id="cb14-11"><a aria-label="11"></a>y4 <span class="op">=</span> np.array([<span class="fl">6.58</span>, <span class="fl">5.76</span>, <span class="fl">7.71</span>, <span class="fl">8.84</span>, <span class="fl">8.47</span>, <span class="fl">7.04</span>, <span class="fl">5.25</span>, <span class="fl">12.50</span>, <span class="fl">5.56</span>, <span class="fl">7.91</span>, <span class="fl">6.89</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1138,34 +1144,34 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="f45b4b7c" class="cell" data-execution_count="13">
+<div id="65f90683" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb15-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb15-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb15-4"><a></a></span>
-<span id="cb15-5"><a></a>x1 <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span>
-<span id="cb15-6"><a></a>y1 <span class="op">=</span> np.array([<span class="fl">8.04</span>, <span class="fl">6.95</span>, <span class="fl">7.58</span>, <span class="fl">8.81</span>, <span class="fl">8.33</span>, <span class="fl">9.96</span>, <span class="fl">7.24</span>, <span class="fl">4.26</span>, <span class="fl">10.84</span>, <span class="fl">4.82</span>, <span class="fl">5.68</span>])</span>
-<span id="cb15-7"><a></a>y2 <span class="op">=</span> np.array([<span class="fl">9.14</span>, <span class="fl">8.14</span>, <span class="fl">8.74</span>, <span class="fl">8.77</span>, <span class="fl">9.26</span>, <span class="fl">8.10</span>, <span class="fl">6.13</span>, <span class="fl">3.10</span>, <span class="fl">9.13</span>, <span class="fl">7.26</span>, <span class="fl">4.74</span>])</span>
-<span id="cb15-8"><a></a>y3 <span class="op">=</span> np.array([<span class="fl">7.46</span>, <span class="fl">6.77</span>, <span class="fl">12.74</span>, <span class="fl">7.11</span>, <span class="fl">7.81</span>, <span class="fl">8.84</span>, <span class="fl">6.08</span>, <span class="fl">5.39</span>, <span class="fl">8.15</span>, <span class="fl">6.42</span>, <span class="fl">5.73</span>])</span>
-<span id="cb15-9"><a></a>x4 <span class="op">=</span> np.array([<span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">19</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>])</span>
-<span id="cb15-10"><a></a>y4 <span class="op">=</span> np.array([<span class="fl">6.58</span>, <span class="fl">5.76</span>, <span class="fl">7.71</span>, <span class="fl">8.84</span>, <span class="fl">8.47</span>, <span class="fl">7.04</span>, <span class="fl">5.25</span>, <span class="fl">12.50</span>, <span class="fl">5.56</span>, <span class="fl">7.91</span>, <span class="fl">6.89</span>])</span>
-<span id="cb15-11"><a></a></span>
-<span id="cb15-12"><a></a>datasets <span class="op">=</span> [(x1, y1, <span class="st">"I"</span>), (x1, y2, <span class="st">"II"</span>), (x1, y3, <span class="st">"III"</span>), (x4, y4, <span class="st">"IV"</span>)]</span>
-<span id="cb15-13"><a></a></span>
-<span id="cb15-14"><a></a><span class="cf">for</span> i, (x, y, title) <span class="kw">in</span> <span class="bu">enumerate</span>(datasets, <span class="dv">1</span>):</span>
-<span id="cb15-15"><a></a>    plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, i)</span>
-<span id="cb15-16"><a></a>    plt.scatter(x, y)</span>
-<span id="cb15-17"><a></a>    m, b <span class="op">=</span> np.polyfit(x, y, <span class="dv">1</span>)</span>
-<span id="cb15-18"><a></a>    xs <span class="op">=</span> np.linspace(<span class="dv">2</span>, <span class="dv">20</span>, <span class="dv">50</span>)</span>
-<span id="cb15-19"><a></a>    plt.plot(xs, m <span class="op">*</span> xs <span class="op">+</span> b, color<span class="op">=</span><span class="st">"red"</span>)</span>
-<span id="cb15-20"><a></a>    plt.xlim(<span class="dv">2</span>, <span class="dv">20</span>)</span>
-<span id="cb15-21"><a></a>    plt.ylim(<span class="dv">2</span>, <span class="dv">14</span>)</span>
-<span id="cb15-22"><a></a>    plt.title(<span class="ss">f"Dataset </span><span class="sc">{</span>title<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb15-23"><a></a></span>
-<span id="cb15-24"><a></a>plt.tight_layout()</span>
-<span id="cb15-25"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb15-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb15-4"><a aria-label="4"></a></span>
+<span id="cb15-5"><a aria-label="5"></a>x1 <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span>
+<span id="cb15-6"><a aria-label="6"></a>y1 <span class="op">=</span> np.array([<span class="fl">8.04</span>, <span class="fl">6.95</span>, <span class="fl">7.58</span>, <span class="fl">8.81</span>, <span class="fl">8.33</span>, <span class="fl">9.96</span>, <span class="fl">7.24</span>, <span class="fl">4.26</span>, <span class="fl">10.84</span>, <span class="fl">4.82</span>, <span class="fl">5.68</span>])</span>
+<span id="cb15-7"><a aria-label="7"></a>y2 <span class="op">=</span> np.array([<span class="fl">9.14</span>, <span class="fl">8.14</span>, <span class="fl">8.74</span>, <span class="fl">8.77</span>, <span class="fl">9.26</span>, <span class="fl">8.10</span>, <span class="fl">6.13</span>, <span class="fl">3.10</span>, <span class="fl">9.13</span>, <span class="fl">7.26</span>, <span class="fl">4.74</span>])</span>
+<span id="cb15-8"><a aria-label="8"></a>y3 <span class="op">=</span> np.array([<span class="fl">7.46</span>, <span class="fl">6.77</span>, <span class="fl">12.74</span>, <span class="fl">7.11</span>, <span class="fl">7.81</span>, <span class="fl">8.84</span>, <span class="fl">6.08</span>, <span class="fl">5.39</span>, <span class="fl">8.15</span>, <span class="fl">6.42</span>, <span class="fl">5.73</span>])</span>
+<span id="cb15-9"><a aria-label="9"></a>x4 <span class="op">=</span> np.array([<span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">19</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>])</span>
+<span id="cb15-10"><a aria-label="10"></a>y4 <span class="op">=</span> np.array([<span class="fl">6.58</span>, <span class="fl">5.76</span>, <span class="fl">7.71</span>, <span class="fl">8.84</span>, <span class="fl">8.47</span>, <span class="fl">7.04</span>, <span class="fl">5.25</span>, <span class="fl">12.50</span>, <span class="fl">5.56</span>, <span class="fl">7.91</span>, <span class="fl">6.89</span>])</span>
+<span id="cb15-11"><a aria-label="11"></a></span>
+<span id="cb15-12"><a aria-label="12"></a>datasets <span class="op">=</span> [(x1, y1, <span class="st">"I"</span>), (x1, y2, <span class="st">"II"</span>), (x1, y3, <span class="st">"III"</span>), (x4, y4, <span class="st">"IV"</span>)]</span>
+<span id="cb15-13"><a aria-label="13"></a></span>
+<span id="cb15-14"><a aria-label="14"></a><span class="cf">for</span> i, (x, y, title) <span class="kw">in</span> <span class="bu">enumerate</span>(datasets, <span class="dv">1</span>):</span>
+<span id="cb15-15"><a aria-label="15"></a>    plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, i)</span>
+<span id="cb15-16"><a aria-label="16"></a>    plt.scatter(x, y)</span>
+<span id="cb15-17"><a aria-label="17"></a>    m, b <span class="op">=</span> np.polyfit(x, y, <span class="dv">1</span>)</span>
+<span id="cb15-18"><a aria-label="18"></a>    xs <span class="op">=</span> np.linspace(<span class="dv">2</span>, <span class="dv">20</span>, <span class="dv">50</span>)</span>
+<span id="cb15-19"><a aria-label="19"></a>    plt.plot(xs, m <span class="op">*</span> xs <span class="op">+</span> b, color<span class="op">=</span><span class="st">"red"</span>)</span>
+<span id="cb15-20"><a aria-label="20"></a>    plt.xlim(<span class="dv">2</span>, <span class="dv">20</span>)</span>
+<span id="cb15-21"><a aria-label="21"></a>    plt.ylim(<span class="dv">2</span>, <span class="dv">14</span>)</span>
+<span id="cb15-22"><a aria-label="22"></a>    plt.title(<span class="ss">f"Dataset </span><span class="sc">{</span>title<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb15-23"><a aria-label="23"></a></span>
+<span id="cb15-24"><a aria-label="24"></a>plt.tight_layout()</span>
+<span id="cb15-25"><a aria-label="25"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -1179,14 +1185,14 @@ rkskmt
 <div class="prompt">
 <p>下のコードを参考に、手元の好きな画像を表示せよ。</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb16-2"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb16-3"><a></a><span class="im">import</span> matplotlib.image <span class="im">as</span> mpimg</span>
-<span id="cb16-4"><a></a></span>
-<span id="cb16-5"><a></a>img <span class="op">=</span> mpimg.imread(<span class="st">"something.jpg"</span>) <span class="co"># 画像名。フォルダの場合はpathを指定</span></span>
-<span id="cb16-6"><a></a>plt.imshow(img)</span>
-<span id="cb16-7"><a></a>plt.axis(<span class="st">"off"</span>)        <span class="co"># 軸を消す</span></span>
-<span id="cb16-8"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb16-2"><a aria-label="2"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb16-3"><a aria-label="3"></a><span class="im">import</span> matplotlib.image <span class="im">as</span> mpimg</span>
+<span id="cb16-4"><a aria-label="4"></a></span>
+<span id="cb16-5"><a aria-label="5"></a>img <span class="op">=</span> mpimg.imread(<span class="st">"something.jpg"</span>) <span class="co"># 画像名。フォルダの場合はpathを指定</span></span>
+<span id="cb16-6"><a aria-label="6"></a>plt.imshow(img)</span>
+<span id="cb16-7"><a aria-label="7"></a>plt.axis(<span class="st">"off"</span>)        <span class="co"># 軸を消す</span></span>
+<span id="cb16-8"><a aria-label="8"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="まとめ" class="slide level2">

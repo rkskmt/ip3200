@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5c1318cf63eba56dbef7ba16bc7d56f5.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="rkskmt">
   <title>情報処理 – キータイピング</title>
@@ -17,10 +17,16 @@
   <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -95,7 +101,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-d3a26a7442888a116b43ccec6150e9c5.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-e69bca93ec9d1486cefcf16a785f5ce6.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -251,7 +257,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-rkskmt 
+rkskmt
 </div>
 </div>
 </div>
@@ -504,12 +510,12 @@ rkskmt
 <p><strong>ABC400の解答例（Python）</strong></p>
 </div>
 <div class="callout-content">
-<div id="a2b28d68" class="cell" data-execution_count="1">
+<div id="dc07ed4a" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>A <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
-<span id="cb1-2"><a></a>res <span class="op">=</span> <span class="op">-</span><span class="dv">1</span> <span class="cf">if</span> <span class="dv">400</span> <span class="op">%</span> A <span class="op">!=</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">400</span> <span class="op">//</span> A</span>
-<span id="cb1-3"><a></a><span class="bu">print</span>(res)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a>A <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb1-2"><a aria-label="2"></a>res <span class="op">=</span> <span class="op">-</span><span class="dv">1</span> <span class="cf">if</span> <span class="dv">400</span> <span class="op">%</span> A <span class="op">!=</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">400</span> <span class="op">//</span> A</span>
+<span id="cb1-3"><a aria-label="3"></a><span class="bu">print</span>(res)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -520,23 +526,23 @@ rkskmt
 <section id="参考atcoderでよく使う入力パターン" class="slide level2">
 <h2>（参考）AtCoderでよく使う入力パターン</h2>
 <div class="slide-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># 入力をそのまま文字列として取得</span></span>
-<span id="cb2-2"><a></a>s <span class="op">=</span> <span class="bu">input</span>()</span>
-<span id="cb2-3"><a></a></span>
-<span id="cb2-4"><a></a><span class="co"># 入力をintとして取得</span></span>
-<span id="cb2-5"><a></a>i <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
-<span id="cb2-6"><a></a></span>
-<span id="cb2-7"><a></a><span class="co"># スペース区切りの文字列（[foo bar baz]）をリストとして取得する場合</span></span>
-<span id="cb2-8"><a></a>ss <span class="op">=</span> <span class="bu">input</span>().split()</span>
-<span id="cb2-9"><a></a></span>
-<span id="cb2-10"><a></a><span class="co"># スペース区切りの2文字を別の変数で受けたい場合（アンパック）</span></span>
-<span id="cb2-11"><a></a>A, B <span class="op">=</span> <span class="bu">input</span>().split()</span>
-<span id="cb2-12"><a></a></span>
-<span id="cb2-13"><a></a><span class="co"># 「Aを1 2 3 4からなる数列とする」のような場合</span></span>
-<span id="cb2-14"><a></a>As <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>().split()]</span>
-<span id="cb2-15"><a></a></span>
-<span id="cb2-16"><a></a><span class="co"># intでA Bという数字が与えられるパターン</span></span>
-<span id="cb2-17"><a></a>A, B <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>().split()]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="co"># 入力をそのまま文字列として取得</span></span>
+<span id="cb2-2"><a aria-label="2"></a>s <span class="op">=</span> <span class="bu">input</span>()</span>
+<span id="cb2-3"><a aria-label="3"></a></span>
+<span id="cb2-4"><a aria-label="4"></a><span class="co"># 入力をintとして取得</span></span>
+<span id="cb2-5"><a aria-label="5"></a>i <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb2-6"><a aria-label="6"></a></span>
+<span id="cb2-7"><a aria-label="7"></a><span class="co"># スペース区切りの文字列（[foo bar baz]）をリストとして取得する場合</span></span>
+<span id="cb2-8"><a aria-label="8"></a>ss <span class="op">=</span> <span class="bu">input</span>().split()</span>
+<span id="cb2-9"><a aria-label="9"></a></span>
+<span id="cb2-10"><a aria-label="10"></a><span class="co"># スペース区切りの2文字を別の変数で受けたい場合（アンパック）</span></span>
+<span id="cb2-11"><a aria-label="11"></a>A, B <span class="op">=</span> <span class="bu">input</span>().split()</span>
+<span id="cb2-12"><a aria-label="12"></a></span>
+<span id="cb2-13"><a aria-label="13"></a><span class="co"># 「Aを1 2 3 4からなる数列とする」のような場合</span></span>
+<span id="cb2-14"><a aria-label="14"></a>As <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>().split()]</span>
+<span id="cb2-15"><a aria-label="15"></a></span>
+<span id="cb2-16"><a aria-label="16"></a><span class="co"># intでA Bという数字が与えられるパターン</span></span>
+<span id="cb2-17"><a aria-label="17"></a>A, B <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">input</span>().split()]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="まとめ" class="slide level2">

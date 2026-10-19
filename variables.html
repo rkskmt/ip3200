@@ -6,11 +6,11 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5c1318cf63eba56dbef7ba16bc7d56f5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+  <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="rkskmt">
   <title>情報処理 – 変数と代入</title>
@@ -20,10 +20,16 @@
   <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -98,7 +104,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-d3a26a7442888a116b43ccec6150e9c5.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-e69bca93ec9d1486cefcf16a785f5ce6.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -254,7 +260,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-rkskmt 
+rkskmt
 </div>
 </div>
 </div>
@@ -264,15 +270,15 @@ rkskmt
 <h2>関数に渡しただけで元のリストが変わる</h2>
 <div class="slide-body">
 <p>成績データの「2倍にしたコピー」を作ろうとした。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="kw">def</span> double_all(data):</span>
-<span id="cb1-2"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(data)):</span>
-<span id="cb1-3"><a></a>        data[i] <span class="op">=</span> data[i] <span class="op">*</span> <span class="dv">2</span></span>
-<span id="cb1-4"><a></a>    <span class="cf">return</span> data</span>
-<span id="cb1-5"><a></a></span>
-<span id="cb1-6"><a></a>scores <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
-<span id="cb1-7"><a></a>result <span class="op">=</span> double_all(scores)</span>
-<span id="cb1-8"><a></a><span class="bu">print</span>(result)  <span class="co"># [20, 40, 60] ← 期待どおり</span></span>
-<span id="cb1-9"><a></a><span class="bu">print</span>(scores)  <span class="co"># [20, 40, 60] ← 元データまで変わっている</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="kw">def</span> double_all(data):</span>
+<span id="cb1-2"><a aria-label="2"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(data)):</span>
+<span id="cb1-3"><a aria-label="3"></a>        data[i] <span class="op">=</span> data[i] <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb1-4"><a aria-label="4"></a>    <span class="cf">return</span> data</span>
+<span id="cb1-5"><a aria-label="5"></a></span>
+<span id="cb1-6"><a aria-label="6"></a>scores <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
+<span id="cb1-7"><a aria-label="7"></a>result <span class="op">=</span> double_all(scores)</span>
+<span id="cb1-8"><a aria-label="8"></a><span class="bu">print</span>(result)  <span class="co"># [20, 40, 60] ← 期待どおり</span></span>
+<span id="cb1-9"><a aria-label="9"></a><span class="bu">print</span>(scores)  <span class="co"># [20, 40, 60] ← 元データまで変わっている</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><code>scores</code> には一度も代入していないのに、<strong>元の成績が書き換わった</strong></li>
 </ul>
@@ -304,11 +310,11 @@ rkskmt
 </ul></li>
 </ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="dv">1</span></span>
-<span id="cb2-2"><a></a><span class="co">"1"</span></span>
-<span id="cb2-3"><a></a>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb2-4"><a></a><span class="va">True</span></span>
-<span id="cb2-5"><a></a><span class="fl">1.0</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="dv">1</span></span>
+<span id="cb2-2"><a aria-label="2"></a><span class="co">"1"</span></span>
+<span id="cb2-3"><a aria-label="3"></a>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb2-4"><a aria-label="4"></a><span class="va">True</span></span>
+<span id="cb2-5"><a aria-label="5"></a><span class="fl">1.0</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="リテラルはメモリに確保される" class="slide level2">
@@ -325,7 +331,7 @@ rkskmt
 <li>これは<strong>アドレス（<span class="en">address</span>）</strong> と呼ばれる</li>
 </ul></li>
 </ul>
-<div id="36654ff2" class="cell" data-execution_count="1">
+<div id="3e33b1b9" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -340,12 +346,12 @@ rkskmt
 <h2>変数</h2>
 <div class="slide-body">
 <p>一方、以下はエラーになる。なぜ？</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>a <span class="co"># NameError: name 'a' is not defined</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a>a <span class="co"># NameError: name 'a' is not defined</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><code>1</code> や <code>"1"</code> は<strong>リテラル（直接記述できる値）</strong></li>
 <li><code>a</code> は値ではなく<strong>変数</strong>として認識される</li>
 </ul>
-<div id="aeedf0e5" class="cell" data-execution_count="2">
+<div id="bb13b3f9" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -377,10 +383,10 @@ rkskmt
 <li>2文字目以降が文字、数字（0-9）、アンダースコアであること</li>
 <li>予約語（<strong><code>if</code> / <code>for</code> / <code>while</code></strong> など）ではないこと</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>a01    <span class="co"># OK。変数</span></span>
-<span id="cb4-2"><a></a>_aa_aa <span class="co"># OK。変数</span></span>
-<span id="cb4-3"><a></a><span class="dv">1</span><span class="er">a</span>     <span class="co"># NG。最初が数字</span></span>
-<span id="cb4-4"><a></a><span class="cf">continue</span> <span class="co"># NG。予約語</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a>a01    <span class="co"># OK。変数</span></span>
+<span id="cb4-2"><a aria-label="2"></a>_aa_aa <span class="co"># OK。変数</span></span>
+<span id="cb4-3"><a aria-label="3"></a><span class="dv">1</span><span class="er">a</span>     <span class="co"># NG。最初が数字</span></span>
+<span id="cb4-4"><a aria-label="4"></a><span class="cf">continue</span> <span class="co"># NG。予約語</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="代入" class="slide level2">
@@ -399,8 +405,8 @@ rkskmt
 </ul></li>
 </ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>a <span class="op">=</span> <span class="dv">1234</span></span>
-<span id="cb5-2"><a></a>test_2 <span class="op">=</span> <span class="st">"test2"</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a>a <span class="op">=</span> <span class="dv">1234</span></span>
+<span id="cb5-2"><a aria-label="2"></a>test_2 <span class="op">=</span> <span class="st">"test2"</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -418,7 +424,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="fcf08ceb" class="cell" data-execution_count="3">
+<div id="3d61ede6" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -438,21 +444,21 @@ rkskmt
 <li>つまり、2つの変数が<strong>同じアドレス</strong>を指す</li>
 </ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>a11 <span class="op">=</span> <span class="dv">11</span></span>
-<span id="cb6-2"><a></a>a12 <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb6-3"><a></a>a11 <span class="op">=</span> a12 <span class="co"># a11とa12は同じアドレスを指す</span></span>
-<span id="cb6-4"><a></a><span class="bu">print</span>(a12) <span class="co"># 12</span></span>
-<span id="cb6-5"><a></a></span>
-<span id="cb6-6"><a></a>a11 <span class="op">=</span> <span class="dv">13</span> <span class="co"># 13 を代入</span></span>
-<span id="cb6-7"><a></a><span class="bu">print</span>(a11) <span class="co"># 13</span></span>
-<span id="cb6-8"><a></a><span class="bu">print</span>(a12) <span class="co"># ??? （同じアドレスを指しているはずだが？）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a>a11 <span class="op">=</span> <span class="dv">11</span></span>
+<span id="cb6-2"><a aria-label="2"></a>a12 <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb6-3"><a aria-label="3"></a>a11 <span class="op">=</span> a12 <span class="co"># a11とa12は同じアドレスを指す</span></span>
+<span id="cb6-4"><a aria-label="4"></a><span class="bu">print</span>(a12) <span class="co"># 12</span></span>
+<span id="cb6-5"><a aria-label="5"></a></span>
+<span id="cb6-6"><a aria-label="6"></a>a11 <span class="op">=</span> <span class="dv">13</span> <span class="co"># 13 を代入</span></span>
+<span id="cb6-7"><a aria-label="7"></a><span class="bu">print</span>(a11) <span class="co"># 13</span></span>
+<span id="cb6-8"><a aria-label="8"></a><span class="bu">print</span>(a12) <span class="co"># ??? （同じアドレスを指しているはずだが？）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <ul>
 <li>結果： <strong>12</strong></li>
 <li><code>a11 = 13</code> は「<code>a12</code> と共有している <code>12</code> を <code>13</code> に書き換える」<strong>ではない</strong></li>
 <li><code>13</code> が新しい場所に確保され、<code>a11</code> がそのアドレスを指す。<code>a12</code> が指す <code>12</code> はそのまま</li>
 </ul>
-<div id="d3333f42" class="cell" data-execution_count="4">
+<div id="3b84530e" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -468,18 +474,18 @@ rkskmt
 <h2>リストの代入（罠）</h2>
 <div class="slide-body">
 <p>数値でやった操作をリストでやると…</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>odd1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>]</span>
-<span id="cb7-2"><a></a>odd2 <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">7</span>]</span>
-<span id="cb7-3"><a></a>odd1 <span class="op">=</span> odd2</span>
-<span id="cb7-4"><a></a>odd1[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">9</span></span>
-<span id="cb7-5"><a></a><span class="bu">print</span>(odd2) <span class="co"># ???</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a>odd1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>]</span>
+<span id="cb7-2"><a aria-label="2"></a>odd2 <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">7</span>]</span>
+<span id="cb7-3"><a aria-label="3"></a>odd1 <span class="op">=</span> odd2</span>
+<span id="cb7-4"><a aria-label="4"></a>odd1[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">9</span></span>
+<span id="cb7-5"><a aria-label="5"></a><span class="bu">print</span>(odd2) <span class="co"># ???</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <ul>
 <li>結果： <strong>[9, 7]</strong></li>
 <li><code>odd1 = odd2</code> で、<code>odd1</code> は <code>odd2</code> と同じリストを指す</li>
 <li><code>odd1[0] = 9</code> は、そのリストの0番目を <code>9</code> にする。<code>odd2</code> も同じリストを指しているので、<code>odd2</code> から見ても変わる</li>
 </ul>
-<div id="1ff42010" class="cell" data-execution_count="5">
+<div id="a768eddb" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -497,24 +503,24 @@ rkskmt
 <p>ほぼ同じに見える2つのコード。<code>print(odd2)</code> は何と出る？</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># A</span></span>
-<span id="cb8-2"><a></a>odd1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>]</span>
-<span id="cb8-3"><a></a>odd2 <span class="op">=</span> odd1</span>
-<span id="cb8-4"><a></a>odd1 <span class="op">=</span> [<span class="dv">9</span>, <span class="dv">7</span>]</span>
-<span id="cb8-5"><a></a><span class="bu">print</span>(odd2)  <span class="co"># ???</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="co"># A</span></span>
+<span id="cb8-2"><a aria-label="2"></a>odd1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>]</span>
+<span id="cb8-3"><a aria-label="3"></a>odd2 <span class="op">=</span> odd1</span>
+<span id="cb8-4"><a aria-label="4"></a>odd1 <span class="op">=</span> [<span class="dv">9</span>, <span class="dv">7</span>]</span>
+<span id="cb8-5"><a aria-label="5"></a><span class="bu">print</span>(odd2)  <span class="co"># ???</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co"># B</span></span>
-<span id="cb9-2"><a></a>odd1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>]</span>
-<span id="cb9-3"><a></a>odd2 <span class="op">=</span> odd1</span>
-<span id="cb9-4"><a></a>odd1[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">9</span></span>
-<span id="cb9-5"><a></a><span class="bu">print</span>(odd2)  <span class="co"># ???</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="co"># B</span></span>
+<span id="cb9-2"><a aria-label="2"></a>odd1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>]</span>
+<span id="cb9-3"><a aria-label="3"></a>odd2 <span class="op">=</span> odd1</span>
+<span id="cb9-4"><a aria-label="4"></a>odd1[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">9</span></span>
+<span id="cb9-5"><a aria-label="5"></a><span class="bu">print</span>(odd2)  <span class="co"># ???</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 <div class="fragment">
 <ul>
 <li>A： <strong>[1, 3]</strong>。<code>odd1 = [9, 7]</code> で新しいリストが確保され、<code>odd1</code> はそちらを指す。<code>odd2</code> は元のリストを指したまま</li>
 <li>B： <strong>[9, 7]</strong>。<code>odd1[0] = 9</code> は、<code>odd1</code> と <code>odd2</code> が指している1つのリストの0番目を変える</li>
 </ul>
-<div id="c803a19f" class="cell" data-execution_count="6">
+<div id="f38151a9" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -533,7 +539,7 @@ rkskmt
 <li><code>[1, 3]</code> を書くと、リスト本体と <code>1</code>、<code>3</code> がそれぞれ確保され、リスト本体には要素のアドレスが並ぶ</li>
 <li><code>odd1[0] = 9</code> は、リストの0番目が <code>9</code> のアドレスを指すようにする代入。リスト本体のアドレスは変わらない</li>
 </ul>
-<div id="f0fdf34b" class="cell" data-execution_count="7">
+<div id="8eb11925" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -561,16 +567,16 @@ rkskmt
 <h2><code>id()</code> でアドレスを確認（数値）</h2>
 <div class="slide-body">
 <p><code>id()</code> 関数で、変数が指しているアドレスを調べられる。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>a11 <span class="op">=</span> <span class="dv">11</span></span>
-<span id="cb10-2"><a></a>a12 <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb10-3"><a></a><span class="bu">print</span>(<span class="bu">id</span>(a11)) <span class="co"># 2083050422832</span></span>
-<span id="cb10-4"><a></a><span class="bu">print</span>(<span class="bu">id</span>(a12)) <span class="co"># 2083050422864</span></span>
-<span id="cb10-5"><a></a>a11 <span class="op">=</span> a12</span>
-<span id="cb10-6"><a></a><span class="bu">print</span>(<span class="bu">id</span>(a11)) <span class="co"># 2083050422864。a12と同じ場所</span></span>
-<span id="cb10-7"><a></a>a11 <span class="op">=</span> <span class="dv">13</span></span>
-<span id="cb10-8"><a></a><span class="bu">print</span>(<span class="bu">id</span>(a11)) <span class="co"># 2083050422896。違う場所を指している</span></span>
-<span id="cb10-9"><a></a><span class="bu">print</span>(<span class="bu">id</span>(a12)) <span class="co"># 2083050422864。a12は元の場所のまま</span></span>
-<span id="cb10-10"><a></a><span class="bu">print</span>(a12)     <span class="co"># 12</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a>a11 <span class="op">=</span> <span class="dv">11</span></span>
+<span id="cb10-2"><a aria-label="2"></a>a12 <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb10-3"><a aria-label="3"></a><span class="bu">print</span>(<span class="bu">id</span>(a11)) <span class="co"># 2083050422832</span></span>
+<span id="cb10-4"><a aria-label="4"></a><span class="bu">print</span>(<span class="bu">id</span>(a12)) <span class="co"># 2083050422864</span></span>
+<span id="cb10-5"><a aria-label="5"></a>a11 <span class="op">=</span> a12</span>
+<span id="cb10-6"><a aria-label="6"></a><span class="bu">print</span>(<span class="bu">id</span>(a11)) <span class="co"># 2083050422864。a12と同じ場所</span></span>
+<span id="cb10-7"><a aria-label="7"></a>a11 <span class="op">=</span> <span class="dv">13</span></span>
+<span id="cb10-8"><a aria-label="8"></a><span class="bu">print</span>(<span class="bu">id</span>(a11)) <span class="co"># 2083050422896。違う場所を指している</span></span>
+<span id="cb10-9"><a aria-label="9"></a><span class="bu">print</span>(<span class="bu">id</span>(a12)) <span class="co"># 2083050422864。a12は元の場所のまま</span></span>
+<span id="cb10-10"><a aria-label="10"></a><span class="bu">print</span>(a12)     <span class="co"># 12</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>代入のたびに、<code>a11</code> の<strong>指すアドレスが変わっている</strong></li>
 <li><code>a11 = 13</code> の後も、<code>a12</code> は同じ場所の <code>12</code> を指したまま</li>
@@ -598,18 +604,18 @@ rkskmt
 <h2><code>id()</code> でアドレスを確認（リスト）</h2>
 <div class="slide-body">
 <p><code>odd1[0] = 9</code> の前後で、リスト本体のアドレスは変わらない。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>odd1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>]</span>
-<span id="cb11-2"><a></a>odd2 <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">7</span>]</span>
-<span id="cb11-3"><a></a><span class="bu">print</span>(<span class="bu">id</span>(odd1)) <span class="co"># 2738928019264</span></span>
-<span id="cb11-4"><a></a><span class="bu">print</span>(<span class="bu">id</span>(odd2)) <span class="co"># 2738927989120</span></span>
-<span id="cb11-5"><a></a>odd1 <span class="op">=</span> odd2</span>
-<span id="cb11-6"><a></a><span class="bu">print</span>(<span class="bu">id</span>(odd1)) <span class="co"># 2738927989120。odd2 と同じ場所</span></span>
-<span id="cb11-7"><a></a>odd1[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">9</span>     <span class="co"># odd2ではなくodd1を変更</span></span>
-<span id="cb11-8"><a></a><span class="bu">print</span>(<span class="bu">id</span>(odd1)) <span class="co"># 2738927989120。変わらない</span></span>
-<span id="cb11-9"><a></a><span class="bu">print</span>(odd2)     <span class="co"># [9, 7]。同じ場所なので odd2 からも見える</span></span>
-<span id="cb11-10"><a></a>odd1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>]   <span class="co"># 別のリテラルを代入</span></span>
-<span id="cb11-11"><a></a><span class="bu">print</span>(<span class="bu">id</span>(odd1)) <span class="co"># 2738928019328。別の場所</span></span>
-<span id="cb11-12"><a></a><span class="bu">print</span>(odd2)     <span class="co"># [9, 7]。odd2 はそのまま</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a>odd1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>]</span>
+<span id="cb11-2"><a aria-label="2"></a>odd2 <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">7</span>]</span>
+<span id="cb11-3"><a aria-label="3"></a><span class="bu">print</span>(<span class="bu">id</span>(odd1)) <span class="co"># 2738928019264</span></span>
+<span id="cb11-4"><a aria-label="4"></a><span class="bu">print</span>(<span class="bu">id</span>(odd2)) <span class="co"># 2738927989120</span></span>
+<span id="cb11-5"><a aria-label="5"></a>odd1 <span class="op">=</span> odd2</span>
+<span id="cb11-6"><a aria-label="6"></a><span class="bu">print</span>(<span class="bu">id</span>(odd1)) <span class="co"># 2738927989120。odd2 と同じ場所</span></span>
+<span id="cb11-7"><a aria-label="7"></a>odd1[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">9</span>     <span class="co"># odd2ではなくodd1を変更</span></span>
+<span id="cb11-8"><a aria-label="8"></a><span class="bu">print</span>(<span class="bu">id</span>(odd1)) <span class="co"># 2738927989120。変わらない</span></span>
+<span id="cb11-9"><a aria-label="9"></a><span class="bu">print</span>(odd2)     <span class="co"># [9, 7]。同じ場所なので odd2 からも見える</span></span>
+<span id="cb11-10"><a aria-label="10"></a>odd1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>]   <span class="co"># 別のリテラルを代入</span></span>
+<span id="cb11-11"><a aria-label="11"></a><span class="bu">print</span>(<span class="bu">id</span>(odd1)) <span class="co"># 2738928019328。別の場所</span></span>
+<span id="cb11-12"><a aria-label="12"></a><span class="bu">print</span>(odd2)     <span class="co"># [9, 7]。odd2 はそのまま</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><code>odd1 = odd2</code> の後は、両者が<strong>同じアドレスを指している</strong>。だから <code>odd1[0] = 9</code> が <code>odd2</code> からも見える</li>
 <li><code>odd1 = [1, 3]</code> では新しいリストが確保され、<code>odd1</code> はそのアドレスを指す。int のときと同じ</li>
@@ -622,12 +628,12 @@ rkskmt
 <ul>
 <li><code>id(odd1) == id(odd2)</code> と書く代わりに、<strong><code>is</code></strong> で直接確かめられる</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>odd1 <span class="op">=</span> [<span class="dv">9</span>, <span class="dv">7</span>]</span>
-<span id="cb12-2"><a></a>odd2 <span class="op">=</span> odd1</span>
-<span id="cb12-3"><a></a></span>
-<span id="cb12-4"><a></a><span class="bu">print</span>(odd1 <span class="kw">is</span> odd2)      <span class="co"># True  （同じ場所を指している）</span></span>
-<span id="cb12-5"><a></a><span class="bu">print</span>(odd1 <span class="op">==</span> [<span class="dv">9</span>, <span class="dv">7</span>])    <span class="co"># True  （中身が同じ）</span></span>
-<span id="cb12-6"><a></a><span class="bu">print</span>(odd1 <span class="kw">is</span> [<span class="dv">9</span>, <span class="dv">7</span>])    <span class="co"># False （中身は同じでも別の場所）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a>odd1 <span class="op">=</span> [<span class="dv">9</span>, <span class="dv">7</span>]</span>
+<span id="cb12-2"><a aria-label="2"></a>odd2 <span class="op">=</span> odd1</span>
+<span id="cb12-3"><a aria-label="3"></a></span>
+<span id="cb12-4"><a aria-label="4"></a><span class="bu">print</span>(odd1 <span class="kw">is</span> odd2)      <span class="co"># True  （同じ場所を指している）</span></span>
+<span id="cb12-5"><a aria-label="5"></a><span class="bu">print</span>(odd1 <span class="op">==</span> [<span class="dv">9</span>, <span class="dv">7</span>])    <span class="co"># True  （中身が同じ）</span></span>
+<span id="cb12-6"><a aria-label="6"></a><span class="bu">print</span>(odd1 <span class="kw">is</span> [<span class="dv">9</span>, <span class="dv">7</span>])    <span class="co"># False （中身は同じでも別の場所）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong><code>==</code> は中身の比較、<code>is</code> は場所の比較</strong></li>
 <li>2つの変数が同じアドレスを指しているかを知りたいときは <code>is</code></li>
@@ -671,21 +677,21 @@ rkskmt
 <section id="冒頭のコードで起きていたこと" class="slide level2">
 <h2>冒頭のコードで起きていたこと</h2>
 <div class="slide-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="kw">def</span> double_all(data):</span>
-<span id="cb13-2"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(data)):</span>
-<span id="cb13-3"><a></a>        data[i] <span class="op">=</span> data[i] <span class="op">*</span> <span class="dv">2</span>   <span class="co"># ← リストの i 番目が新しい値を指す</span></span>
-<span id="cb13-4"><a></a>    <span class="cf">return</span> data</span>
-<span id="cb13-5"><a></a></span>
-<span id="cb13-6"><a></a>scores <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
-<span id="cb13-7"><a></a>result <span class="op">=</span> double_all(scores)     <span class="co"># ← data は scores と同じリストを指す</span></span>
-<span id="cb13-8"><a></a><span class="bu">print</span>(result)  <span class="co"># [20, 40, 60]</span></span>
-<span id="cb13-9"><a></a><span class="bu">print</span>(scores)  <span class="co"># [20, 40, 60]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="kw">def</span> double_all(data):</span>
+<span id="cb13-2"><a aria-label="2"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(data)):</span>
+<span id="cb13-3"><a aria-label="3"></a>        data[i] <span class="op">=</span> data[i] <span class="op">*</span> <span class="dv">2</span>   <span class="co"># ← リストの i 番目が新しい値を指す</span></span>
+<span id="cb13-4"><a aria-label="4"></a>    <span class="cf">return</span> data</span>
+<span id="cb13-5"><a aria-label="5"></a></span>
+<span id="cb13-6"><a aria-label="6"></a>scores <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
+<span id="cb13-7"><a aria-label="7"></a>result <span class="op">=</span> double_all(scores)     <span class="co"># ← data は scores と同じリストを指す</span></span>
+<span id="cb13-8"><a aria-label="8"></a><span class="bu">print</span>(result)  <span class="co"># [20, 40, 60]</span></span>
+<span id="cb13-9"><a aria-label="9"></a><span class="bu">print</span>(scores)  <span class="co"># [20, 40, 60]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>関数に渡しても<strong>コピーは起きない</strong>。<code>data = scores</code> と代入したのと同じで、引数 <code>data</code> は <code>scores</code> と同じリストを指す</li>
 <li>関数の中の <code>data[i] = ...</code> で、そのリストの各要素が2倍の値を指すようになった。だから <code>scores</code> から見ても変わっていた</li>
 <li>図で表すと：</li>
 </ul>
-<div id="d71bcc91" class="cell" data-execution_count="8">
+<div id="549e9390" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -707,24 +713,24 @@ rkskmt
 </ul></li>
 <li>冒頭の事故も、<strong>渡す側の1行</strong>で防げる：</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>result <span class="op">=</span> double_all(scores.copy())   <span class="co"># 複製を渡す → scores は無傷</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>odd1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>]</span>
-<span id="cb15-2"><a></a></span>
-<span id="cb15-3"><a></a><span class="co"># NG: 同じアドレスを共有 → 両方が変わる</span></span>
-<span id="cb15-4"><a></a>odd2 <span class="op">=</span> odd1</span>
-<span id="cb15-5"><a></a>odd2[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">9</span></span>
-<span id="cb15-6"><a></a><span class="bu">print</span>(odd1)  <span class="co"># [9, 3] ← 意図せず変わってしまう</span></span>
-<span id="cb15-7"><a></a></span>
-<span id="cb15-8"><a></a><span class="co"># OK: .copy() で別アドレスの複製を作る</span></span>
-<span id="cb15-9"><a></a>odd3 <span class="op">=</span> odd1.copy()</span>
-<span id="cb15-10"><a></a>odd3[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">99</span></span>
-<span id="cb15-11"><a></a><span class="bu">print</span>(odd1)  <span class="co"># [9, 3] ← 変わらない</span></span>
-<span id="cb15-12"><a></a><span class="bu">print</span>(odd3)  <span class="co"># [99, 3]</span></span>
-<span id="cb15-13"><a></a></span>
-<span id="cb15-14"><a></a><span class="co"># （参考）全スライス [:] でも同じ結果</span></span>
-<span id="cb15-15"><a></a>odd4 <span class="op">=</span> odd1[:]</span>
-<span id="cb15-16"><a></a><span class="bu">print</span>(<span class="bu">id</span>(odd1) <span class="op">==</span> <span class="bu">id</span>(odd4))  <span class="co"># False（別アドレス）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="a88846e8" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a>result <span class="op">=</span> double_all(scores.copy())   <span class="co"># 複製を渡す → scores は無傷</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a>odd1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>]</span>
+<span id="cb15-2"><a aria-label="2"></a></span>
+<span id="cb15-3"><a aria-label="3"></a><span class="co"># NG: 同じアドレスを共有 → 両方が変わる</span></span>
+<span id="cb15-4"><a aria-label="4"></a>odd2 <span class="op">=</span> odd1</span>
+<span id="cb15-5"><a aria-label="5"></a>odd2[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">9</span></span>
+<span id="cb15-6"><a aria-label="6"></a><span class="bu">print</span>(odd1)  <span class="co"># [9, 3] ← 意図せず変わってしまう</span></span>
+<span id="cb15-7"><a aria-label="7"></a></span>
+<span id="cb15-8"><a aria-label="8"></a><span class="co"># OK: .copy() で別アドレスの複製を作る</span></span>
+<span id="cb15-9"><a aria-label="9"></a>odd3 <span class="op">=</span> odd1.copy()</span>
+<span id="cb15-10"><a aria-label="10"></a>odd3[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">99</span></span>
+<span id="cb15-11"><a aria-label="11"></a><span class="bu">print</span>(odd1)  <span class="co"># [9, 3] ← 変わらない</span></span>
+<span id="cb15-12"><a aria-label="12"></a><span class="bu">print</span>(odd3)  <span class="co"># [99, 3]</span></span>
+<span id="cb15-13"><a aria-label="13"></a></span>
+<span id="cb15-14"><a aria-label="14"></a><span class="co"># （参考）全スライス [:] でも同じ結果</span></span>
+<span id="cb15-15"><a aria-label="15"></a>odd4 <span class="op">=</span> odd1[:]</span>
+<span id="cb15-16"><a aria-label="16"></a><span class="bu">print</span>(<span class="bu">id</span>(odd1) <span class="op">==</span> <span class="bu">id</span>(odd4))  <span class="co"># False（別アドレス）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="fcd0627c" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -743,39 +749,39 @@ rkskmt
 </div>
 <ol type="1">
 <li><p><strong>紙に図を描く</strong>：次のコードを1行ずつ、変数から値への矢印で描きながら追い、最後の出力を<strong>予想してから</strong>実行して答え合わせ</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>]</span>
-<span id="cb16-2"><a></a>b <span class="op">=</span> a</span>
-<span id="cb16-3"><a></a>a.append(<span class="dv">3</span>)   <span class="co"># a と b はどのリストを指している？</span></span>
-<span id="cb16-4"><a></a>a <span class="op">=</span> [<span class="dv">9</span>]       <span class="co"># a と b はどのリストを指している？</span></span>
-<span id="cb16-5"><a></a><span class="bu">print</span>(b)      <span class="co"># ???</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>]</span>
+<span id="cb16-2"><a aria-label="2"></a>b <span class="op">=</span> a</span>
+<span id="cb16-3"><a aria-label="3"></a>a.append(<span class="dv">3</span>)   <span class="co"># a と b はどのリストを指している？</span></span>
+<span id="cb16-4"><a aria-label="4"></a>a <span class="op">=</span> [<span class="dv">9</span>]       <span class="co"># a と b はどのリストを指している？</span></span>
+<span id="cb16-5"><a aria-label="5"></a><span class="bu">print</span>(b)      <span class="co"># ???</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p><code>dict</code> がミュータブルであることを <code>id()</code>（または <code>is</code>）で確認（<code>dict</code> の書き方は次回詳しく — ここでは次の2行だけ使う）</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>d <span class="op">=</span> {<span class="st">"名前"</span>: <span class="st">"田中"</span>}   <span class="co"># dict を作る</span></span>
-<span id="cb17-2"><a></a>d[<span class="st">"点数"</span>] <span class="op">=</span> <span class="dv">80</span>         <span class="co"># キー "点数" に 80 を代入する</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a>d <span class="op">=</span> {<span class="st">"名前"</span>: <span class="st">"田中"</span>}   <span class="co"># dict を作る</span></span>
+<span id="cb17-2"><a aria-label="2"></a>d[<span class="st">"点数"</span>] <span class="op">=</span> <span class="dv">80</span>         <span class="co"># キー "点数" に 80 を代入する</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p><code>list</code> と同じようにアクセスできる <code>str</code> は、ミュータブルかイミュータブルかを確認</p></li>
 <li><p>上記の例で <code>odd1[0]</code> のアドレスがどうなるかを確認（<code>list</code> はミュータブルだが、<code>list</code> の要素は <code>int</code> なのでイミュータブルのはず）</p></li>
 </ol>
-<div id="ffc8ea31" class="cell" data-execution_count="10">
+<div id="2910f713" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>]</span>
-<span id="cb18-2"><a></a>b <span class="op">=</span> a</span>
-<span id="cb18-3"><a></a>a.append(<span class="dv">3</span>)     <span class="co"># a と b が指すリストの末尾に 3 → b からも見える</span></span>
-<span id="cb18-4"><a></a>a <span class="op">=</span> [<span class="dv">9</span>]         <span class="co"># 新しいリストが確保され a がそこを指す → b は元のリストのまま</span></span>
-<span id="cb18-5"><a></a><span class="bu">print</span>(b)        <span class="co"># (1) [1, 2, 3]</span></span>
-<span id="cb18-6"><a></a></span>
-<span id="cb18-7"><a></a>d <span class="op">=</span> {<span class="st">"名前"</span>: <span class="st">"田中"</span>}</span>
-<span id="cb18-8"><a></a>e <span class="op">=</span> d</span>
-<span id="cb18-9"><a></a>d[<span class="st">"点数"</span>] <span class="op">=</span> <span class="dv">80</span></span>
-<span id="cb18-10"><a></a><span class="bu">print</span>(e)        <span class="co"># (2) 点数が増えて見える → dict はミュータブル</span></span>
-<span id="cb18-11"><a></a><span class="bu">print</span>(d <span class="kw">is</span> e)   <span class="co">#     True（同じ場所を指したまま）</span></span>
-<span id="cb18-12"><a></a></span>
-<span id="cb18-13"><a></a>s <span class="op">=</span> <span class="st">"abc"</span></span>
-<span id="cb18-14"><a></a><span class="co"># s[0] = "x"    # (3) Item assignment raises TypeError</span></span>
-<span id="cb18-15"><a></a></span>
-<span id="cb18-16"><a></a>odd1 <span class="op">=</span> [<span class="dv">9</span>, <span class="dv">3</span>]</span>
-<span id="cb18-17"><a></a><span class="bu">print</span>(<span class="bu">id</span>(odd1[<span class="dv">0</span>]))   <span class="co"># (4) 要素が指す int のアドレス</span></span>
-<span id="cb18-18"><a></a>odd1[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">99</span>         <span class="co">#     The list element now refers to a different int</span></span>
-<span id="cb18-19"><a></a><span class="bu">print</span>(<span class="bu">id</span>(odd1[<span class="dv">0</span>]))   <span class="co">#     アドレスが変わっている</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>]</span>
+<span id="cb18-2"><a aria-label="2"></a>b <span class="op">=</span> a</span>
+<span id="cb18-3"><a aria-label="3"></a>a.append(<span class="dv">3</span>)     <span class="co"># a と b が指すリストの末尾に 3 → b からも見える</span></span>
+<span id="cb18-4"><a aria-label="4"></a>a <span class="op">=</span> [<span class="dv">9</span>]         <span class="co"># 新しいリストが確保され a がそこを指す → b は元のリストのまま</span></span>
+<span id="cb18-5"><a aria-label="5"></a><span class="bu">print</span>(b)        <span class="co"># (1) [1, 2, 3]</span></span>
+<span id="cb18-6"><a aria-label="6"></a></span>
+<span id="cb18-7"><a aria-label="7"></a>d <span class="op">=</span> {<span class="st">"名前"</span>: <span class="st">"田中"</span>}</span>
+<span id="cb18-8"><a aria-label="8"></a>e <span class="op">=</span> d</span>
+<span id="cb18-9"><a aria-label="9"></a>d[<span class="st">"点数"</span>] <span class="op">=</span> <span class="dv">80</span></span>
+<span id="cb18-10"><a aria-label="10"></a><span class="bu">print</span>(e)        <span class="co"># (2) 点数が増えて見える → dict はミュータブル</span></span>
+<span id="cb18-11"><a aria-label="11"></a><span class="bu">print</span>(d <span class="kw">is</span> e)   <span class="co">#     True（同じ場所を指したまま）</span></span>
+<span id="cb18-12"><a aria-label="12"></a></span>
+<span id="cb18-13"><a aria-label="13"></a>s <span class="op">=</span> <span class="st">"abc"</span></span>
+<span id="cb18-14"><a aria-label="14"></a><span class="co"># s[0] = "x"    # (3) Item assignment raises TypeError</span></span>
+<span id="cb18-15"><a aria-label="15"></a></span>
+<span id="cb18-16"><a aria-label="16"></a>odd1 <span class="op">=</span> [<span class="dv">9</span>, <span class="dv">3</span>]</span>
+<span id="cb18-17"><a aria-label="17"></a><span class="bu">print</span>(<span class="bu">id</span>(odd1[<span class="dv">0</span>]))   <span class="co"># (4) 要素が指す int のアドレス</span></span>
+<span id="cb18-18"><a aria-label="18"></a>odd1[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">99</span>         <span class="co">#     The list element now refers to a different int</span></span>
+<span id="cb18-19"><a aria-label="19"></a><span class="bu">print</span>(<span class="bu">id</span>(odd1[<span class="dv">0</span>]))   <span class="co">#     アドレスが変わっている</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="callout callout-tip callout-titled callout-style-default">

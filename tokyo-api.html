@@ -6,11 +6,11 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5c1318cf63eba56dbef7ba16bc7d56f5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+  <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="rkskmt">
   <title>情報処理 – 東京都オープンデータAPI</title>
@@ -20,10 +20,16 @@
   <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -98,7 +104,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-d3a26a7442888a116b43ccec6150e9c5.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-e69bca93ec9d1486cefcf16a785f5ce6.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -254,7 +260,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-rkskmt 
+rkskmt
 </div>
 </div>
 </div>
@@ -535,13 +541,13 @@ rkskmt
 <section id="基本url" class="slide level2">
 <h2>基本URL</h2>
 <div class="slide-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>https://service.api.metro.tokyo.lg.jp/api/{apiId}/{format}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a aria-label="1"></a>https://service.api.metro.tokyo.lg.jp/api/{apiId}/{format}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><code>{apiId}</code>：データセットごとに異なるID</li>
 <li><code>{format}</code>：<code>json</code> または <code>xml</code></li>
 </ul>
 <p>例：東京都人口の推移（JSON）</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a></a>https://service.api.metro.tokyo.lg.jp/api/t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0/json</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a aria-label="1"></a>https://service.api.metro.tokyo.lg.jp/api/t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0/json</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="apiのidを探す" class="slide level2">
@@ -586,16 +592,16 @@ rkskmt
 <li><strong>GETではない</strong></li>
 </ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
-<span id="cb3-4"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
-<span id="cb3-5"><a></a></span>
-<span id="cb3-6"><a></a>response <span class="op">=</span> requests.post(url, json<span class="op">=</span>{})</span>
-<span id="cb3-7"><a></a>data <span class="op">=</span> response.json()</span>
-<span id="cb3-8"><a></a></span>
-<span id="cb3-9"><a></a><span class="bu">print</span>(data)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a></a>{'total': 152, 'subtotal': 100, 'limit': None, 'offset': None, 'metadata': {'apiId': 't000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0', 'title': '人口の動き（令和５年中） 参考表４　人口の推移（東京都、全国）(明治５～令和５年)', 'datasetId': 't000003d2000000236', ...（2万文字以上つづく）</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
+<span id="cb3-2"><a aria-label="2"></a></span>
+<span id="cb3-3"><a aria-label="3"></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
+<span id="cb3-4"><a aria-label="4"></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb3-5"><a aria-label="5"></a></span>
+<span id="cb3-6"><a aria-label="6"></a>response <span class="op">=</span> requests.post(url, json<span class="op">=</span>{})</span>
+<span id="cb3-7"><a aria-label="7"></a>data <span class="op">=</span> response.json()</span>
+<span id="cb3-8"><a aria-label="8"></a></span>
+<span id="cb3-9"><a aria-label="9"></a><span class="bu">print</span>(data)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a aria-label="1"></a>{'total': 152, 'subtotal': 100, 'limit': None, 'offset': None, 'metadata': {'apiId': 't000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0', 'title': '人口の動き（令和５年中） 参考表４　人口の推移（東京都、全国）(明治５～令和５年)', 'datasetId': 't000003d2000000236', ...（2万文字以上つづく）</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -624,8 +630,8 @@ rkskmt
 <li>そこで、一旦 レスポンスのdictのキーを表示してみる</li>
 </ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="bu">print</span>(data.keys())</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a></a>dict_keys(['total', 'subtotal', 'limit', 'offset', 'metadata', 'hits'])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="bu">print</span>(data.keys())</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a aria-label="1"></a>dict_keys(['total', 'subtotal', 'limit', 'offset', 'metadata', 'hits'])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <h4 id="手順２-キーの下を深堀り">手順２： キーの下を深堀り</h4>
 <ul>
 <li>大分見通しがよくなった</li>
@@ -635,41 +641,41 @@ rkskmt
 </ul></li>
 <li>では、各キーの下をみていって何があるのかを理解しよう</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a></span>
-<span id="cb7-2"><a></a><span class="cf">for</span> key, datum <span class="kw">in</span> data.items():</span>
-<span id="cb7-3"><a></a>    <span class="bu">print</span>(key, <span class="bu">type</span>(datum), datum)</span>
-<span id="cb7-4"><a></a>    <span class="bu">print</span>(<span class="st">""</span>)</span>
-<span id="cb7-5"><a></a>    <span class="bu">print</span>(<span class="st">"---------------------"</span>)</span>
-<span id="cb7-6"><a></a>    <span class="bu">print</span>(<span class="st">""</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a></span>
+<span id="cb7-2"><a aria-label="2"></a><span class="cf">for</span> key, datum <span class="kw">in</span> data.items():</span>
+<span id="cb7-3"><a aria-label="3"></a>    <span class="bu">print</span>(key, <span class="bu">type</span>(datum), datum)</span>
+<span id="cb7-4"><a aria-label="4"></a>    <span class="bu">print</span>(<span class="st">""</span>)</span>
+<span id="cb7-5"><a aria-label="5"></a>    <span class="bu">print</span>(<span class="st">"---------------------"</span>)</span>
+<span id="cb7-6"><a aria-label="6"></a>    <span class="bu">print</span>(<span class="st">""</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="長いレスポンスデータの解析方法-ii" class="slide level2">
 <h2>長いレスポンスデータの解析方法 II</h2>
 <div class="slide-body">
 <h4 id="手順3-重要キーの同定">手順3： 重要キーの同定</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a></a>total &lt;class 'int'&gt; 152</span>
-<span id="cb8-2"><a></a></span>
-<span id="cb8-3"><a></a>---------------------</span>
-<span id="cb8-4"><a></a></span>
-<span id="cb8-5"><a></a>subtotal &lt;class 'int'&gt; 100</span>
-<span id="cb8-6"><a></a></span>
-<span id="cb8-7"><a></a>---------------------</span>
-<span id="cb8-8"><a></a></span>
-<span id="cb8-9"><a></a>limit &lt;class 'NoneType'&gt; None</span>
-<span id="cb8-10"><a></a></span>
-<span id="cb8-11"><a></a>---------------------</span>
-<span id="cb8-12"><a></a></span>
-<span id="cb8-13"><a></a>offset &lt;class 'NoneType'&gt; None</span>
-<span id="cb8-14"><a></a></span>
-<span id="cb8-15"><a></a>---------------------</span>
-<span id="cb8-16"><a></a></span>
-<span id="cb8-17"><a></a>metadata &lt;class 'dict'&gt; {'apiId': 't000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0', 'title': '人口の動き（令和５...（略）</span>
-<span id="cb8-18"><a></a></span>
-<span id="cb8-19"><a></a>---------------------</span>
-<span id="cb8-20"><a></a></span>
-<span id="cb8-21"><a></a>hits &lt;class 'list'&gt; [{'row': 1, '和暦（年次）': '明治5', '西暦（年次）': 1872, '東京都／人口補足': ' ', '東京都／人口': 859345, ...（略）</span>
-<span id="cb8-22"><a></a></span>
-<span id="cb8-23"><a></a>---------------------</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a aria-label="1"></a>total &lt;class 'int'&gt; 152</span>
+<span id="cb8-2"><a aria-label="2"></a></span>
+<span id="cb8-3"><a aria-label="3"></a>---------------------</span>
+<span id="cb8-4"><a aria-label="4"></a></span>
+<span id="cb8-5"><a aria-label="5"></a>subtotal &lt;class 'int'&gt; 100</span>
+<span id="cb8-6"><a aria-label="6"></a></span>
+<span id="cb8-7"><a aria-label="7"></a>---------------------</span>
+<span id="cb8-8"><a aria-label="8"></a></span>
+<span id="cb8-9"><a aria-label="9"></a>limit &lt;class 'NoneType'&gt; None</span>
+<span id="cb8-10"><a aria-label="10"></a></span>
+<span id="cb8-11"><a aria-label="11"></a>---------------------</span>
+<span id="cb8-12"><a aria-label="12"></a></span>
+<span id="cb8-13"><a aria-label="13"></a>offset &lt;class 'NoneType'&gt; None</span>
+<span id="cb8-14"><a aria-label="14"></a></span>
+<span id="cb8-15"><a aria-label="15"></a>---------------------</span>
+<span id="cb8-16"><a aria-label="16"></a></span>
+<span id="cb8-17"><a aria-label="17"></a>metadata &lt;class 'dict'&gt; {'apiId': 't000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0', 'title': '人口の動き（令和５...（略）</span>
+<span id="cb8-18"><a aria-label="18"></a></span>
+<span id="cb8-19"><a aria-label="19"></a>---------------------</span>
+<span id="cb8-20"><a aria-label="20"></a></span>
+<span id="cb8-21"><a aria-label="21"></a>hits &lt;class 'list'&gt; [{'row': 1, '和暦（年次）': '明治5', '西暦（年次）': 1872, '東京都／人口補足': ' ', '東京都／人口': 859345, ...（略）</span>
+<span id="cb8-22"><a aria-label="22"></a></span>
+<span id="cb8-23"><a aria-label="23"></a>---------------------</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>キー<code>metadata</code> はデータセットの情報っぽい
 <ul>
@@ -686,8 +692,8 @@ rkskmt
 <li><code>hits</code>には大量のデータがlistで格納されていることがわかった</li>
 <li>よって、最初の１件目を出力して実データをみることができそう</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="bu">print</span>(data[<span class="st">"hits"</span>][<span class="dv">0</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a></a>{'row': 1, '和暦（年次）': '明治5', '西暦（年次）': 1872, '東京都／人口補足': ' ', '東京都／人口': 859345, '東京都／増減': '…', '東京都／増減率(%)': '…', '東京都／対全国比(%)': '2.47', '全国／人口補足': '', '全国／人口(千人)': '34806', '全国／増減(千人)': '…', '全国／増減率(%)': '…'}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="bu">print</span>(data[<span class="st">"hits"</span>][<span class="dv">0</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a aria-label="1"></a>{'row': 1, '和暦（年次）': '明治5', '西暦（年次）': 1872, '東京都／人口補足': ' ', '東京都／人口': 859345, '東京都／増減': '…', '東京都／増減率(%)': '…', '東京都／対全国比(%)': '2.47', '全国／人口補足': '', '全国／人口(千人)': '34806', '全国／増減(千人)': '…', '全国／増減率(%)': '…'}</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>1件目＝<strong>明治5年（1872年）</strong>、人口 <strong>859,345人</strong></li>
 </ul>
@@ -699,9 +705,9 @@ rkskmt
 <ul>
 <li><code>hits</code> の件数を数えて、<code>total</code> と比べる</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="bu">print</span>(data[<span class="st">"total"</span>])       <span class="co"># 152</span></span>
-<span id="cb11-2"><a></a><span class="bu">print</span>(data[<span class="st">"subtotal"</span>])    <span class="co"># 100</span></span>
-<span id="cb11-3"><a></a><span class="bu">print</span>(<span class="bu">len</span>(data[<span class="st">"hits"</span>]))   <span class="co"># 100</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a><span class="bu">print</span>(data[<span class="st">"total"</span>])       <span class="co"># 152</span></span>
+<span id="cb11-2"><a aria-label="2"></a><span class="bu">print</span>(data[<span class="st">"subtotal"</span>])    <span class="co"># 100</span></span>
+<span id="cb11-3"><a aria-label="3"></a><span class="bu">print</span>(<span class="bu">len</span>(data[<span class="st">"hits"</span>]))   <span class="co"># 100</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>152件のうち、届いたのは<strong>先頭の100件だけ</strong>
 <ul>
@@ -718,16 +724,16 @@ rkskmt
 <li>1回に受け取る件数は、パラメータ <code>limit</code> で指定する（最大1000件）</li>
 <li><a href="./wiki-api.html">Wikipedia API</a> と同じく <code>params=</code> で渡す</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb12-2"><a></a></span>
-<span id="cb12-3"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
-<span id="cb12-4"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
-<span id="cb12-5"><a></a></span>
-<span id="cb12-6"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>{<span class="st">"limit"</span>: <span class="dv">200</span>}, json<span class="op">=</span>{})</span>
-<span id="cb12-7"><a></a>data <span class="op">=</span> response.json()</span>
-<span id="cb12-8"><a></a></span>
-<span id="cb12-9"><a></a><span class="bu">print</span>(data[<span class="st">"subtotal"</span>])    <span class="co"># 152</span></span>
-<span id="cb12-10"><a></a><span class="bu">print</span>(<span class="bu">len</span>(data[<span class="st">"hits"</span>]))   <span class="co"># 152</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
+<span id="cb12-2"><a aria-label="2"></a></span>
+<span id="cb12-3"><a aria-label="3"></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
+<span id="cb12-4"><a aria-label="4"></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb12-5"><a aria-label="5"></a></span>
+<span id="cb12-6"><a aria-label="6"></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>{<span class="st">"limit"</span>: <span class="dv">200</span>}, json<span class="op">=</span>{})</span>
+<span id="cb12-7"><a aria-label="7"></a>data <span class="op">=</span> response.json()</span>
+<span id="cb12-8"><a aria-label="8"></a></span>
+<span id="cb12-9"><a aria-label="9"></a><span class="bu">print</span>(data[<span class="st">"subtotal"</span>])    <span class="co"># 152</span></span>
+<span id="cb12-10"><a aria-label="10"></a><span class="bu">print</span>(<span class="bu">len</span>(data[<span class="st">"hits"</span>]))   <span class="co"># 152</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>以降は、この呼び方で152件すべてを使う</li>
 </ul>
@@ -747,13 +753,13 @@ rkskmt
 <li><code>pd.DataFrame()</code> に <span class="hl">そのまま渡せる</span>（キーが列名になる）</li>
 <li>全件を受け取った <code>data</code> に続けて：</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb13-2"><a></a></span>
-<span id="cb13-3"><a></a>df <span class="op">=</span> pd.DataFrame(data[<span class="st">"hits"</span>])</span>
-<span id="cb13-4"><a></a><span class="bu">print</span>(df.columns)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a></a>Index(['row', '和暦（年次）', '西暦（年次）', '東京都／人口補足', '東京都／人口', '東京都／増減', '東京都／増減率(%)',</span>
-<span id="cb14-2"><a></a>       '東京都／対全国比(%)', '全国／人口補足', '全国／人口(千人)', '全国／増減(千人)', '全国／増減率(%)'],</span>
-<span id="cb14-3"><a></a>      dtype='object')</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb13-2"><a aria-label="2"></a></span>
+<span id="cb13-3"><a aria-label="3"></a>df <span class="op">=</span> pd.DataFrame(data[<span class="st">"hits"</span>])</span>
+<span id="cb13-4"><a aria-label="4"></a><span class="bu">print</span>(df.columns)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a aria-label="1"></a>Index(['row', '和暦（年次）', '西暦（年次）', '東京都／人口補足', '東京都／人口', '東京都／増減', '東京都／増減率(%)',</span>
+<span id="cb14-2"><a aria-label="2"></a>       '東京都／対全国比(%)', '全国／人口補足', '全国／人口(千人)', '全国／増減(千人)', '全国／増減率(%)'],</span>
+<span id="cb14-3"><a aria-label="3"></a>      dtype='object')</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>知らないデータは、<span class="hl">まず列名を確認する</span>（<a href="./pandas.html">Pandas入門</a>）
 <ul>
@@ -777,11 +783,11 @@ rkskmt
 <li>条件にあう行だけを残す</li>
 </ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co"># 列：使う列だけ選ぶ</span></span>
-<span id="cb15-2"><a></a>pop <span class="op">=</span> df[[<span class="st">"西暦（年次）"</span>, <span class="st">"東京都／人口"</span>]]</span>
-<span id="cb15-3"><a></a></span>
-<span id="cb15-4"><a></a><span class="co"># 行：受け取ってから、条件抽出で絞る</span></span>
-<span id="cb15-5"><a></a>recent <span class="op">=</span> df[df[<span class="st">"西暦（年次）"</span>] <span class="op">&gt;=</span> <span class="dv">1950</span>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="co"># 列：使う列だけ選ぶ</span></span>
+<span id="cb15-2"><a aria-label="2"></a>pop <span class="op">=</span> df[[<span class="st">"西暦（年次）"</span>, <span class="st">"東京都／人口"</span>]]</span>
+<span id="cb15-3"><a aria-label="3"></a></span>
+<span id="cb15-4"><a aria-label="4"></a><span class="co"># 行：受け取ってから、条件抽出で絞る</span></span>
+<span id="cb15-5"><a aria-label="5"></a>recent <span class="op">=</span> df[df[<span class="st">"西暦（年次）"</span>] <span class="op">&gt;=</span> <span class="dv">1950</span>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -794,8 +800,8 @@ rkskmt
 <ul>
 <li>bodyに <code>column</code> というキーで列名を渡すと、その列だけが返ってくる</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>body <span class="op">=</span> {<span class="st">"column"</span>: [<span class="st">"西暦（年次）"</span>, <span class="st">"東京都／人口"</span>]}</span>
-<span id="cb16-2"><a></a>response <span class="op">=</span> requests.post(url, json<span class="op">=</span>body)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a>body <span class="op">=</span> {<span class="st">"column"</span>: [<span class="st">"西暦（年次）"</span>, <span class="st">"東京都／人口"</span>]}</span>
+<span id="cb16-2"><a aria-label="2"></a>response <span class="op">=</span> requests.post(url, json<span class="op">=</span>body)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -814,31 +820,31 @@ rkskmt
 <li>1960年以降に絞って、高度経済成長期からの東京を見る</li>
 <li>列を選んでから、条件抽出で行を絞る</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb17-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb17-3"><a></a></span>
-<span id="cb17-4"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
-<span id="cb17-5"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
-<span id="cb17-6"><a></a></span>
-<span id="cb17-7"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>{<span class="st">"limit"</span>: <span class="dv">200</span>}, json<span class="op">=</span>{})</span>
-<span id="cb17-8"><a></a>data <span class="op">=</span> response.json()</span>
-<span id="cb17-9"><a></a></span>
-<span id="cb17-10"><a></a>df <span class="op">=</span> pd.DataFrame(data[<span class="st">"hits"</span>])</span>
-<span id="cb17-11"><a></a>pop <span class="op">=</span> df[[<span class="st">"西暦（年次）"</span>, <span class="st">"東京都／人口"</span>]]</span>
-<span id="cb17-12"><a></a>sixties <span class="op">=</span> pop[pop[<span class="st">"西暦（年次）"</span>] <span class="op">&gt;=</span> <span class="dv">1960</span>]</span>
-<span id="cb17-13"><a></a></span>
-<span id="cb17-14"><a></a><span class="bu">print</span>(sixties.head(<span class="dv">10</span>))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a></a>    西暦（年次）    東京都／人口</span>
-<span id="cb18-2"><a></a>88    1960   9683802</span>
-<span id="cb18-3"><a></a>89    1961   9936970</span>
-<span id="cb18-4"><a></a>90    1962  10180203</span>
-<span id="cb18-5"><a></a>91    1963  10432526</span>
-<span id="cb18-6"><a></a>92    1964  10639361</span>
-<span id="cb18-7"><a></a>93    1965  10869244</span>
-<span id="cb18-8"><a></a>94    1966  10973070</span>
-<span id="cb18-9"><a></a>95    1967  11104969</span>
-<span id="cb18-10"><a></a>96    1968  11251775</span>
-<span id="cb18-11"><a></a>97    1969  11340417</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
+<span id="cb17-2"><a aria-label="2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb17-3"><a aria-label="3"></a></span>
+<span id="cb17-4"><a aria-label="4"></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
+<span id="cb17-5"><a aria-label="5"></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb17-6"><a aria-label="6"></a></span>
+<span id="cb17-7"><a aria-label="7"></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>{<span class="st">"limit"</span>: <span class="dv">200</span>}, json<span class="op">=</span>{})</span>
+<span id="cb17-8"><a aria-label="8"></a>data <span class="op">=</span> response.json()</span>
+<span id="cb17-9"><a aria-label="9"></a></span>
+<span id="cb17-10"><a aria-label="10"></a>df <span class="op">=</span> pd.DataFrame(data[<span class="st">"hits"</span>])</span>
+<span id="cb17-11"><a aria-label="11"></a>pop <span class="op">=</span> df[[<span class="st">"西暦（年次）"</span>, <span class="st">"東京都／人口"</span>]]</span>
+<span id="cb17-12"><a aria-label="12"></a>sixties <span class="op">=</span> pop[pop[<span class="st">"西暦（年次）"</span>] <span class="op">&gt;=</span> <span class="dv">1960</span>]</span>
+<span id="cb17-13"><a aria-label="13"></a></span>
+<span id="cb17-14"><a aria-label="14"></a><span class="bu">print</span>(sixties.head(<span class="dv">10</span>))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a aria-label="1"></a>    西暦（年次）    東京都／人口</span>
+<span id="cb18-2"><a aria-label="2"></a>88    1960   9683802</span>
+<span id="cb18-3"><a aria-label="3"></a>89    1961   9936970</span>
+<span id="cb18-4"><a aria-label="4"></a>90    1962  10180203</span>
+<span id="cb18-5"><a aria-label="5"></a>91    1963  10432526</span>
+<span id="cb18-6"><a aria-label="6"></a>92    1964  10639361</span>
+<span id="cb18-7"><a aria-label="7"></a>93    1965  10869244</span>
+<span id="cb18-8"><a aria-label="8"></a>94    1966  10973070</span>
+<span id="cb18-9"><a aria-label="9"></a>95    1967  11104969</span>
+<span id="cb18-10"><a aria-label="10"></a>96    1968  11251775</span>
+<span id="cb18-11"><a aria-label="11"></a>97    1969  11340417</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <h4 id="万人を超えたのはいつ">1000万人を超えたのはいつ？</h4>
 <ul>
 <li>出力を眺めると、<strong>1962年</strong> に1000万人を超えている</li>
@@ -854,28 +860,28 @@ rkskmt
 <li><code>.mean()</code> と同じ形で <code>.max()</code> <code>.std()</code> <code>.median()</code> も使える</li>
 </ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb19-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb19-3"><a></a></span>
-<span id="cb19-4"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
-<span id="cb19-5"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
-<span id="cb19-6"><a></a></span>
-<span id="cb19-7"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>{<span class="st">"limit"</span>: <span class="dv">200</span>}, json<span class="op">=</span>{})</span>
-<span id="cb19-8"><a></a>data <span class="op">=</span> response.json()</span>
-<span id="cb19-9"><a></a></span>
-<span id="cb19-10"><a></a>df <span class="op">=</span> pd.DataFrame(data[<span class="st">"hits"</span>])</span>
-<span id="cb19-11"><a></a>population <span class="op">=</span> df[<span class="st">"東京都／人口"</span>]</span>
-<span id="cb19-12"><a></a></span>
-<span id="cb19-13"><a></a><span class="bu">print</span>(<span class="ss">f"平均: </span><span class="sc">{</span>population<span class="sc">.</span>mean()<span class="sc">:,.0f}</span><span class="ss">人"</span>)</span>
-<span id="cb19-14"><a></a><span class="bu">print</span>(<span class="ss">f"最大: </span><span class="sc">{</span>population<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:,}</span><span class="ss">人"</span>)</span>
-<span id="cb19-15"><a></a><span class="bu">print</span>(<span class="ss">f"最小: </span><span class="sc">{</span>population<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:,}</span><span class="ss">人"</span>)</span>
-<span id="cb19-16"><a></a><span class="bu">print</span>(<span class="ss">f"標準偏差: </span><span class="sc">{</span>population<span class="sc">.</span>std()<span class="sc">:,.0f}</span><span class="ss">"</span>)</span>
-<span id="cb19-17"><a></a><span class="bu">print</span>(<span class="ss">f"中央値: </span><span class="sc">{</span>population<span class="sc">.</span>median()<span class="sc">:,.0f}</span><span class="ss">人"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb20-1"><a></a>平均: 7,294,170人</span>
-<span id="cb20-2"><a></a>最大: 14,099,993人</span>
-<span id="cb20-3"><a></a>最小: 859,345人</span>
-<span id="cb20-4"><a></a>標準偏差: 4,582,985</span>
-<span id="cb20-5"><a></a>中央値: 7,189,875人</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
+<span id="cb19-2"><a aria-label="2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb19-3"><a aria-label="3"></a></span>
+<span id="cb19-4"><a aria-label="4"></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
+<span id="cb19-5"><a aria-label="5"></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb19-6"><a aria-label="6"></a></span>
+<span id="cb19-7"><a aria-label="7"></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>{<span class="st">"limit"</span>: <span class="dv">200</span>}, json<span class="op">=</span>{})</span>
+<span id="cb19-8"><a aria-label="8"></a>data <span class="op">=</span> response.json()</span>
+<span id="cb19-9"><a aria-label="9"></a></span>
+<span id="cb19-10"><a aria-label="10"></a>df <span class="op">=</span> pd.DataFrame(data[<span class="st">"hits"</span>])</span>
+<span id="cb19-11"><a aria-label="11"></a>population <span class="op">=</span> df[<span class="st">"東京都／人口"</span>]</span>
+<span id="cb19-12"><a aria-label="12"></a></span>
+<span id="cb19-13"><a aria-label="13"></a><span class="bu">print</span>(<span class="ss">f"平均: </span><span class="sc">{</span>population<span class="sc">.</span>mean()<span class="sc">:,.0f}</span><span class="ss">人"</span>)</span>
+<span id="cb19-14"><a aria-label="14"></a><span class="bu">print</span>(<span class="ss">f"最大: </span><span class="sc">{</span>population<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:,}</span><span class="ss">人"</span>)</span>
+<span id="cb19-15"><a aria-label="15"></a><span class="bu">print</span>(<span class="ss">f"最小: </span><span class="sc">{</span>population<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:,}</span><span class="ss">人"</span>)</span>
+<span id="cb19-16"><a aria-label="16"></a><span class="bu">print</span>(<span class="ss">f"標準偏差: </span><span class="sc">{</span>population<span class="sc">.</span>std()<span class="sc">:,.0f}</span><span class="ss">"</span>)</span>
+<span id="cb19-17"><a aria-label="17"></a><span class="bu">print</span>(<span class="ss">f"中央値: </span><span class="sc">{</span>population<span class="sc">.</span>median()<span class="sc">:,.0f}</span><span class="ss">人"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb20-1"><a aria-label="1"></a>平均: 7,294,170人</span>
+<span id="cb20-2"><a aria-label="2"></a>最大: 14,099,993人</span>
+<span id="cb20-3"><a aria-label="3"></a>最小: 859,345人</span>
+<span id="cb20-4"><a aria-label="4"></a>標準偏差: 4,582,985</span>
+<span id="cb20-5"><a aria-label="5"></a>中央値: 7,189,875人</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="どんな形で増えた" class="slide level2">
@@ -899,7 +905,7 @@ rkskmt
 </div>
 </div>
 <div class="fragment">
-<div id="e83d207b" class="cell" data-execution_count="1">
+<div id="0ad7791b" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -917,28 +923,28 @@ rkskmt
 <li><strong>深い谷が1つ</strong></li>
 </ul>
 </div>
-<div id="3d0be629" class="cell" data-execution_count="2">
+<div id="9a7af192" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>コードを見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb21-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb21-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb21-4"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb21-5"><a></a></span>
-<span id="cb21-6"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
-<span id="cb21-7"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
-<span id="cb21-8"><a></a></span>
-<span id="cb21-9"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>{<span class="st">"limit"</span>: <span class="dv">200</span>}, json<span class="op">=</span>{})</span>
-<span id="cb21-10"><a></a>data <span class="op">=</span> response.json()</span>
-<span id="cb21-11"><a></a></span>
-<span id="cb21-12"><a></a>df <span class="op">=</span> pd.DataFrame(data[<span class="st">"hits"</span>])</span>
-<span id="cb21-13"><a></a></span>
-<span id="cb21-14"><a></a>plt.plot(df[<span class="st">"西暦（年次）"</span>], df[<span class="st">"東京都／人口"</span>] <span class="op">/</span> <span class="fl">1e6</span>)</span>
-<span id="cb21-15"><a></a>plt.title(<span class="st">"Tokyo Population 1872-2023"</span>)</span>
-<span id="cb21-16"><a></a>plt.xlabel(<span class="st">"Year"</span>)</span>
-<span id="cb21-17"><a></a>plt.ylabel(<span class="st">"Population (million)"</span>)</span>
-<span id="cb21-18"><a></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb21-19"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
+<span id="cb21-2"><a aria-label="2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb21-3"><a aria-label="3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb21-4"><a aria-label="4"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb21-5"><a aria-label="5"></a></span>
+<span id="cb21-6"><a aria-label="6"></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
+<span id="cb21-7"><a aria-label="7"></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb21-8"><a aria-label="8"></a></span>
+<span id="cb21-9"><a aria-label="9"></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>{<span class="st">"limit"</span>: <span class="dv">200</span>}, json<span class="op">=</span>{})</span>
+<span id="cb21-10"><a aria-label="10"></a>data <span class="op">=</span> response.json()</span>
+<span id="cb21-11"><a aria-label="11"></a></span>
+<span id="cb21-12"><a aria-label="12"></a>df <span class="op">=</span> pd.DataFrame(data[<span class="st">"hits"</span>])</span>
+<span id="cb21-13"><a aria-label="13"></a></span>
+<span id="cb21-14"><a aria-label="14"></a>plt.plot(df[<span class="st">"西暦（年次）"</span>], df[<span class="st">"東京都／人口"</span>] <span class="op">/</span> <span class="fl">1e6</span>)</span>
+<span id="cb21-15"><a aria-label="15"></a>plt.title(<span class="st">"Tokyo Population 1872-2023"</span>)</span>
+<span id="cb21-16"><a aria-label="16"></a>plt.xlabel(<span class="st">"Year"</span>)</span>
+<span id="cb21-17"><a aria-label="17"></a>plt.ylabel(<span class="st">"Population (million)"</span>)</span>
+<span id="cb21-18"><a aria-label="18"></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb21-19"><a aria-label="19"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -979,19 +985,19 @@ rkskmt
 <ul>
 <li>人口の列は綺麗だったが、統計分析のときの <code>df</code> で、同じ表の <strong>増減率(%)</strong> の列を見ると…</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="bu">print</span>(df[<span class="st">"東京都／増減率(%)"</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb23-1"><a></a>0          …</span>
-<span id="cb23-2"><a></a>1       3.26</span>
-<span id="cb23-3"><a></a>2       5.09</span>
-<span id="cb23-4"><a></a>3       5.75</span>
-<span id="cb23-5"><a></a>4        4.2</span>
-<span id="cb23-6"><a></a>       ...</span>
-<span id="cb23-7"><a></a>147     0.83</span>
-<span id="cb23-8"><a></a>148     0.31</span>
-<span id="cb23-9"><a></a>149    -0.26</span>
-<span id="cb23-10"><a></a>150     0.21</span>
-<span id="cb23-11"><a></a>151     0.42</span>
-<span id="cb23-12"><a></a>Name: 東京都／増減率(%), Length: 152, dtype: object</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a><span class="bu">print</span>(df[<span class="st">"東京都／増減率(%)"</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb23-1"><a aria-label="1"></a>0          …</span>
+<span id="cb23-2"><a aria-label="2"></a>1       3.26</span>
+<span id="cb23-3"><a aria-label="3"></a>2       5.09</span>
+<span id="cb23-4"><a aria-label="4"></a>3       5.75</span>
+<span id="cb23-5"><a aria-label="5"></a>4        4.2</span>
+<span id="cb23-6"><a aria-label="6"></a>       ...</span>
+<span id="cb23-7"><a aria-label="7"></a>147     0.83</span>
+<span id="cb23-8"><a aria-label="8"></a>148     0.31</span>
+<span id="cb23-9"><a aria-label="9"></a>149    -0.26</span>
+<span id="cb23-10"><a aria-label="10"></a>150     0.21</span>
+<span id="cb23-11"><a aria-label="11"></a>151     0.42</span>
+<span id="cb23-12"><a aria-label="12"></a>Name: 東京都／増減率(%), Length: 152, dtype: object</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>末尾の <code>dtype: object</code> に注目する。数値の列なら <code>int64</code> / <code>float64</code> になるはず
 <ul>
@@ -999,10 +1005,10 @@ rkskmt
 </ul></li>
 <li>条件抽出で <code>"…"</code> の行を除き、<code>.astype(float)</code> で <strong>列ごと数値に変換</strong>（<code>float()</code> の列版）</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a>clean <span class="op">=</span> df[df[<span class="st">"東京都／増減率(%)"</span>] <span class="op">!=</span> <span class="st">"…"</span>]</span>
-<span id="cb24-2"><a></a>rates <span class="op">=</span> clean[<span class="st">"東京都／増減率(%)"</span>].astype(<span class="bu">float</span>)</span>
-<span id="cb24-3"><a></a></span>
-<span id="cb24-4"><a></a><span class="bu">print</span>(<span class="ss">f"増減率の平均: </span><span class="sc">{</span>rates<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">%"</span>)   <span class="co"># 増減率の平均: 2.10%</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a>clean <span class="op">=</span> df[df[<span class="st">"東京都／増減率(%)"</span>] <span class="op">!=</span> <span class="st">"…"</span>]</span>
+<span id="cb24-2"><a aria-label="2"></a>rates <span class="op">=</span> clean[<span class="st">"東京都／増減率(%)"</span>].astype(<span class="bu">float</span>)</span>
+<span id="cb24-3"><a aria-label="3"></a></span>
+<span id="cb24-4"><a aria-label="4"></a><span class="bu">print</span>(<span class="ss">f"増減率の平均: </span><span class="sc">{</span>rates<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">%"</span>)   <span class="co"># 増減率の平均: 2.10%</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1038,29 +1044,29 @@ rkskmt
 <li><code>api_id</code> を差し替えるだけで、届くデータが変わる（通信部分のコードはそのまま）</li>
 <li>知らないデータでも手順は同じ：<span class="hl">DataFrameにして、まず列名を確認</span></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb25-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb25-3"><a></a></span>
-<span id="cb25-4"><a></a>api_id <span class="op">=</span> <span class="st">"t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0"</span>  <span class="co"># 品川区の避難所</span></span>
-<span id="cb25-5"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
-<span id="cb25-6"><a></a></span>
-<span id="cb25-7"><a></a>response <span class="op">=</span> requests.post(url, json<span class="op">=</span>{})</span>
-<span id="cb25-8"><a></a>data <span class="op">=</span> response.json()</span>
-<span id="cb25-9"><a></a></span>
-<span id="cb25-10"><a></a>df <span class="op">=</span> pd.DataFrame(data[<span class="st">"hits"</span>])</span>
-<span id="cb25-11"><a></a></span>
-<span id="cb25-12"><a></a><span class="bu">print</span>(<span class="ss">f"品川区の避難所（総件数: </span><span class="sc">{</span>data[<span class="st">'total'</span>]<span class="sc">}</span><span class="ss">件）"</span>)</span>
-<span id="cb25-13"><a></a><span class="bu">print</span>(df.columns)</span>
-<span id="cb25-14"><a></a><span class="bu">print</span>(df)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb26-1"><a></a>品川区の避難所（総件数: 25件）</span>
-<span id="cb26-2"><a></a>Index(['row', '名称', '緯度', '経度'], dtype='object')</span>
-<span id="cb26-3"><a></a>    row                        名称         緯度          経度</span>
-<span id="cb26-4"><a></a>0     1               南大井シルバーセンター  35.591619  139.734238</span>
-<span id="cb26-5"><a></a>1     2  春光福祉会　特別養護老人ホーム「ロイヤルサニー」  35.599962  139.722470</span>
-<span id="cb26-6"><a></a>2     3     さくら会老人保健施設「ケアセンター南大井」  35.594534  139.733675</span>
-<span id="cb26-7"><a></a>3     4               西大井シルバーセンター  35.600898  139.723070</span>
-<span id="cb26-8"><a></a>4     5                  八潮児童センター  35.599807  139.751633</span>
-<span id="cb26-9"><a></a>...</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
+<span id="cb25-2"><a aria-label="2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb25-3"><a aria-label="3"></a></span>
+<span id="cb25-4"><a aria-label="4"></a>api_id <span class="op">=</span> <span class="st">"t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0"</span>  <span class="co"># 品川区の避難所</span></span>
+<span id="cb25-5"><a aria-label="5"></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb25-6"><a aria-label="6"></a></span>
+<span id="cb25-7"><a aria-label="7"></a>response <span class="op">=</span> requests.post(url, json<span class="op">=</span>{})</span>
+<span id="cb25-8"><a aria-label="8"></a>data <span class="op">=</span> response.json()</span>
+<span id="cb25-9"><a aria-label="9"></a></span>
+<span id="cb25-10"><a aria-label="10"></a>df <span class="op">=</span> pd.DataFrame(data[<span class="st">"hits"</span>])</span>
+<span id="cb25-11"><a aria-label="11"></a></span>
+<span id="cb25-12"><a aria-label="12"></a><span class="bu">print</span>(<span class="ss">f"品川区の避難所（総件数: </span><span class="sc">{</span>data[<span class="st">'total'</span>]<span class="sc">}</span><span class="ss">件）"</span>)</span>
+<span id="cb25-13"><a aria-label="13"></a><span class="bu">print</span>(df.columns)</span>
+<span id="cb25-14"><a aria-label="14"></a><span class="bu">print</span>(df)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb26-1"><a aria-label="1"></a>品川区の避難所（総件数: 25件）</span>
+<span id="cb26-2"><a aria-label="2"></a>Index(['row', '名称', '緯度', '経度'], dtype='object')</span>
+<span id="cb26-3"><a aria-label="3"></a>    row                        名称         緯度          経度</span>
+<span id="cb26-4"><a aria-label="4"></a>0     1               南大井シルバーセンター  35.591619  139.734238</span>
+<span id="cb26-5"><a aria-label="5"></a>1     2  春光福祉会　特別養護老人ホーム「ロイヤルサニー」  35.599962  139.722470</span>
+<span id="cb26-6"><a aria-label="6"></a>2     3     さくら会老人保健施設「ケアセンター南大井」  35.594534  139.733675</span>
+<span id="cb26-7"><a aria-label="7"></a>3     4               西大井シルバーセンター  35.600898  139.723070</span>
+<span id="cb26-8"><a aria-label="8"></a>4     5                  八潮児童センター  35.599807  139.751633</span>
+<span id="cb26-9"><a aria-label="9"></a>...</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="tweak-api_idを差し替える" class="slide level2 badge-practice">
@@ -1201,18 +1207,18 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="d58c2170" class="cell" data-execution_count="3">
+<div id="b9cf692a" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る（品川区の例。apiIdは検索ページで差し替え）</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb27-2"><a></a></span>
-<span id="cb27-3"><a></a>api_id <span class="op">=</span> <span class="st">"t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0"</span>  <span class="co"># 品川区の避難所</span></span>
-<span id="cb27-4"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
-<span id="cb27-5"><a></a></span>
-<span id="cb27-6"><a></a>response <span class="op">=</span> requests.post(url, json<span class="op">=</span>{})</span>
-<span id="cb27-7"><a></a>data <span class="op">=</span> response.json()</span>
-<span id="cb27-8"><a></a></span>
-<span id="cb27-9"><a></a><span class="bu">print</span>(<span class="ss">f"避難所の件数: </span><span class="sc">{</span>data[<span class="st">'total'</span>]<span class="sc">}</span><span class="ss">件"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
+<span id="cb27-2"><a aria-label="2"></a></span>
+<span id="cb27-3"><a aria-label="3"></a>api_id <span class="op">=</span> <span class="st">"t131091d0000000001-3f9091b43cf1caa550e7152b5c2ba34c-0"</span>  <span class="co"># 品川区の避難所</span></span>
+<span id="cb27-4"><a aria-label="4"></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb27-5"><a aria-label="5"></a></span>
+<span id="cb27-6"><a aria-label="6"></a>response <span class="op">=</span> requests.post(url, json<span class="op">=</span>{})</span>
+<span id="cb27-7"><a aria-label="7"></a>data <span class="op">=</span> response.json()</span>
+<span id="cb27-8"><a aria-label="8"></a></span>
+<span id="cb27-9"><a aria-label="9"></a><span class="bu">print</span>(<span class="ss">f"避難所の件数: </span><span class="sc">{</span>data[<span class="st">'total'</span>]<span class="sc">}</span><span class="ss">件"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -1228,37 +1234,37 @@ rkskmt
 <li>対全国比の値は文字列。数値でない値の行を除いてから <code>.astype(float)</code> で数値化（増減率のときと同じ下ごしらえ）</li>
 <li>折れ線グラフに描き、10%を最初に超えた年を確認</li>
 </ol>
-<div id="1f59d42a" class="cell" data-execution_count="4">
+<div id="fd6cc275" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb28-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb28-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb28-4"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb28-5"><a></a></span>
-<span id="cb28-6"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
-<span id="cb28-7"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
-<span id="cb28-8"><a></a></span>
-<span id="cb28-9"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>{<span class="st">"limit"</span>: <span class="dv">200</span>}, json<span class="op">=</span>{})</span>
-<span id="cb28-10"><a></a>data <span class="op">=</span> response.json()</span>
-<span id="cb28-11"><a></a></span>
-<span id="cb28-12"><a></a>df <span class="op">=</span> pd.DataFrame(data[<span class="st">"hits"</span>])</span>
-<span id="cb28-13"><a></a>clean <span class="op">=</span> df[df[<span class="st">"東京都／対全国比(%)"</span>] <span class="op">!=</span> <span class="st">""</span>]   <span class="co"># 2023年は値が空</span></span>
-<span id="cb28-14"><a></a>shares <span class="op">=</span> clean[<span class="st">"東京都／対全国比(%)"</span>].astype(<span class="bu">float</span>)</span>
-<span id="cb28-15"><a></a></span>
-<span id="cb28-16"><a></a>over10 <span class="op">=</span> clean[shares <span class="op">&gt;=</span> <span class="dv">10</span>]</span>
-<span id="cb28-17"><a></a><span class="bu">print</span>(<span class="ss">f"最初に10%を超えた年: </span><span class="sc">{</span>over10[<span class="st">'西暦（年次）'</span>]<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss">年"</span>)</span>
-<span id="cb28-18"><a></a></span>
-<span id="cb28-19"><a></a>plt.plot(clean[<span class="st">"西暦（年次）"</span>], shares)</span>
-<span id="cb28-20"><a></a>plt.title(<span class="st">"Tokyo Share of Japan Population"</span>)</span>
-<span id="cb28-21"><a></a>plt.xlabel(<span class="st">"Year"</span>)</span>
-<span id="cb28-22"><a></a>plt.ylabel(<span class="st">"Share (%)"</span>)</span>
-<span id="cb28-23"><a></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb28-24"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
+<span id="cb28-2"><a aria-label="2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb28-3"><a aria-label="3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb28-4"><a aria-label="4"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb28-5"><a aria-label="5"></a></span>
+<span id="cb28-6"><a aria-label="6"></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
+<span id="cb28-7"><a aria-label="7"></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb28-8"><a aria-label="8"></a></span>
+<span id="cb28-9"><a aria-label="9"></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>{<span class="st">"limit"</span>: <span class="dv">200</span>}, json<span class="op">=</span>{})</span>
+<span id="cb28-10"><a aria-label="10"></a>data <span class="op">=</span> response.json()</span>
+<span id="cb28-11"><a aria-label="11"></a></span>
+<span id="cb28-12"><a aria-label="12"></a>df <span class="op">=</span> pd.DataFrame(data[<span class="st">"hits"</span>])</span>
+<span id="cb28-13"><a aria-label="13"></a>clean <span class="op">=</span> df[df[<span class="st">"東京都／対全国比(%)"</span>] <span class="op">!=</span> <span class="st">""</span>]   <span class="co"># 2023年は値が空</span></span>
+<span id="cb28-14"><a aria-label="14"></a>shares <span class="op">=</span> clean[<span class="st">"東京都／対全国比(%)"</span>].astype(<span class="bu">float</span>)</span>
+<span id="cb28-15"><a aria-label="15"></a></span>
+<span id="cb28-16"><a aria-label="16"></a>over10 <span class="op">=</span> clean[shares <span class="op">&gt;=</span> <span class="dv">10</span>]</span>
+<span id="cb28-17"><a aria-label="17"></a><span class="bu">print</span>(<span class="ss">f"最初に10%を超えた年: </span><span class="sc">{</span>over10[<span class="st">'西暦（年次）'</span>]<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss">年"</span>)</span>
+<span id="cb28-18"><a aria-label="18"></a></span>
+<span id="cb28-19"><a aria-label="19"></a>plt.plot(clean[<span class="st">"西暦（年次）"</span>], shares)</span>
+<span id="cb28-20"><a aria-label="20"></a>plt.title(<span class="st">"Tokyo Share of Japan Population"</span>)</span>
+<span id="cb28-21"><a aria-label="21"></a>plt.xlabel(<span class="st">"Year"</span>)</span>
+<span id="cb28-22"><a aria-label="22"></a>plt.ylabel(<span class="st">"Share (%)"</span>)</span>
+<span id="cb28-23"><a aria-label="23"></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb28-24"><a aria-label="24"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="fragment">
-<div id="1aa21775" class="cell" data-execution_count="5">
+<div id="28f72980" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1299,24 +1305,24 @@ rkskmt
 <ul>
 <li>（発展）同じグラフに重ねて描画</li>
 </ul>
-<div id="cf9aa9a5" class="cell" data-execution_count="6">
+<div id="f6a9c7a5" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>解答例を見る（戦前と戦後の人口を比較する例）</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb29-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb29-3"><a></a></span>
-<span id="cb29-4"><a></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
-<span id="cb29-5"><a></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
-<span id="cb29-6"><a></a></span>
-<span id="cb29-7"><a></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>{<span class="st">"limit"</span>: <span class="dv">200</span>}, json<span class="op">=</span>{})</span>
-<span id="cb29-8"><a></a>data <span class="op">=</span> response.json()</span>
-<span id="cb29-9"><a></a></span>
-<span id="cb29-10"><a></a>df <span class="op">=</span> pd.DataFrame(data[<span class="st">"hits"</span>])</span>
-<span id="cb29-11"><a></a>prewar <span class="op">=</span> df[df[<span class="st">"西暦（年次）"</span>] <span class="op">&lt;=</span> <span class="dv">1944</span>]</span>
-<span id="cb29-12"><a></a>postwar <span class="op">=</span> df[df[<span class="st">"西暦（年次）"</span>] <span class="op">&gt;=</span> <span class="dv">1946</span>]</span>
-<span id="cb29-13"><a></a></span>
-<span id="cb29-14"><a></a><span class="bu">print</span>(<span class="ss">f"戦前（〜1944）: </span><span class="sc">{</span><span class="bu">len</span>(prewar)<span class="sc">}</span><span class="ss">年分 平均 </span><span class="sc">{</span>prewar[<span class="st">'東京都／人口'</span>]<span class="sc">.</span>mean()<span class="sc">:,.0f}</span><span class="ss">人"</span>)</span>
-<span id="cb29-15"><a></a><span class="bu">print</span>(<span class="ss">f"戦後（1946〜）: </span><span class="sc">{</span><span class="bu">len</span>(postwar)<span class="sc">}</span><span class="ss">年分 平均 </span><span class="sc">{</span>postwar[<span class="st">'東京都／人口'</span>]<span class="sc">.</span>mean()<span class="sc">:,.0f}</span><span class="ss">人"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
+<span id="cb29-2"><a aria-label="2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb29-3"><a aria-label="3"></a></span>
+<span id="cb29-4"><a aria-label="4"></a>api_id <span class="op">=</span> <span class="st">"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0"</span></span>
+<span id="cb29-5"><a aria-label="5"></a>url <span class="op">=</span> <span class="ss">f"https://service.api.metro.tokyo.lg.jp/api/</span><span class="sc">{</span>api_id<span class="sc">}</span><span class="ss">/json"</span></span>
+<span id="cb29-6"><a aria-label="6"></a></span>
+<span id="cb29-7"><a aria-label="7"></a>response <span class="op">=</span> requests.post(url, params<span class="op">=</span>{<span class="st">"limit"</span>: <span class="dv">200</span>}, json<span class="op">=</span>{})</span>
+<span id="cb29-8"><a aria-label="8"></a>data <span class="op">=</span> response.json()</span>
+<span id="cb29-9"><a aria-label="9"></a></span>
+<span id="cb29-10"><a aria-label="10"></a>df <span class="op">=</span> pd.DataFrame(data[<span class="st">"hits"</span>])</span>
+<span id="cb29-11"><a aria-label="11"></a>prewar <span class="op">=</span> df[df[<span class="st">"西暦（年次）"</span>] <span class="op">&lt;=</span> <span class="dv">1944</span>]</span>
+<span id="cb29-12"><a aria-label="12"></a>postwar <span class="op">=</span> df[df[<span class="st">"西暦（年次）"</span>] <span class="op">&gt;=</span> <span class="dv">1946</span>]</span>
+<span id="cb29-13"><a aria-label="13"></a></span>
+<span id="cb29-14"><a aria-label="14"></a><span class="bu">print</span>(<span class="ss">f"戦前（〜1944）: </span><span class="sc">{</span><span class="bu">len</span>(prewar)<span class="sc">}</span><span class="ss">年分 平均 </span><span class="sc">{</span>prewar[<span class="st">'東京都／人口'</span>]<span class="sc">.</span>mean()<span class="sc">:,.0f}</span><span class="ss">人"</span>)</span>
+<span id="cb29-15"><a aria-label="15"></a><span class="bu">print</span>(<span class="ss">f"戦後（1946〜）: </span><span class="sc">{</span><span class="bu">len</span>(postwar)<span class="sc">}</span><span class="ss">年分 平均 </span><span class="sc">{</span>postwar[<span class="st">'東京都／人口'</span>]<span class="sc">.</span>mean()<span class="sc">:,.0f}</span><span class="ss">人"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -1418,7 +1424,7 @@ rkskmt
 <li>人口のグラフのコードに <code>plt.xlim(2018, 2024)</code> と <code>plt.ylim(13.85, 14.15)</code> を足す</li>
 </ul></li>
 </ul>
-<div id="407abafd" class="cell" data-execution_count="7">
+<div id="7edef8ec" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>

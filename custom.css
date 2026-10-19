@@ -596,7 +596,8 @@ table td:first-child {
     background: rgba(19, 21, 22, 0.07);
   }
 }
-#slide-nav button:active {
+#slide-nav button:active,
+#slide-nav button.nav-pressed {
   background: rgba(19, 21, 22, 0.12);
 }
 #slide-nav button.nav-disabled {

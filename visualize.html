@@ -6,11 +6,11 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5c1318cf63eba56dbef7ba16bc7d56f5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+  <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="rkskmt">
   <title>情報処理 – データの可視化</title>
@@ -20,10 +20,16 @@
   <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -98,7 +104,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-d3a26a7442888a116b43ccec6150e9c5.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-e69bca93ec9d1486cefcf16a785f5ce6.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -254,7 +260,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-rkskmt 
+rkskmt
 </div>
 </div>
 </div>
@@ -304,7 +310,7 @@ rkskmt
 <ul>
 <li>あるWikipediaページの <strong>2025年・1年分の閲覧数</strong> を可視化</li>
 </ul>
-<div id="481b5164" class="cell" data-execution_count="1">
+<div id="83d2d1b3" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -543,7 +549,7 @@ rkskmt
 <section id="peek-income" class="slide level2">
 <h2>平均以下の世帯は 62.2%</h2>
 <div class="slide-body">
-<div id="3fffdfc9" class="cell" data-execution_count="3">
+<div id="20aa30b4" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -647,25 +653,25 @@ rkskmt
 <li>典型的な普通のデータ</li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="e0ce4f18" class="cell" data-execution_count="4">
+<div id="fe9beadd" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>コードを見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb1-4"><a></a></span>
-<span id="cb1-5"><a></a>x <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span>
-<span id="cb1-6"><a></a>y <span class="op">=</span> np.array([<span class="fl">8.04</span>, <span class="fl">6.95</span>, <span class="fl">7.58</span>, <span class="fl">8.81</span>, <span class="fl">8.33</span>, <span class="fl">9.96</span>, <span class="fl">7.24</span>, <span class="fl">4.26</span>, <span class="fl">10.84</span>, <span class="fl">4.82</span>, <span class="fl">5.68</span>])</span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>))</span>
-<span id="cb1-9"><a></a>plt.scatter(x, y, color<span class="op">=</span><span class="st">"#2266CC"</span>)</span>
-<span id="cb1-10"><a></a>m, b <span class="op">=</span> np.polyfit(x, y, <span class="dv">1</span>)</span>
-<span id="cb1-11"><a></a>xs <span class="op">=</span> np.linspace(<span class="dv">2</span>, <span class="dv">20</span>, <span class="dv">50</span>)</span>
-<span id="cb1-12"><a></a>plt.plot(xs, m <span class="op">*</span> xs <span class="op">+</span> b, color<span class="op">=</span><span class="st">"#CC4444"</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb1-13"><a></a>plt.xlim(<span class="dv">2</span>, <span class="dv">20</span>)<span class="op">;</span> plt.ylim(<span class="dv">2</span>, <span class="dv">14</span>)</span>
-<span id="cb1-14"><a></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb1-15"><a></a>plt.tight_layout()</span>
-<span id="cb1-16"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb1-4"><a aria-label="4"></a></span>
+<span id="cb1-5"><a aria-label="5"></a>x <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span>
+<span id="cb1-6"><a aria-label="6"></a>y <span class="op">=</span> np.array([<span class="fl">8.04</span>, <span class="fl">6.95</span>, <span class="fl">7.58</span>, <span class="fl">8.81</span>, <span class="fl">8.33</span>, <span class="fl">9.96</span>, <span class="fl">7.24</span>, <span class="fl">4.26</span>, <span class="fl">10.84</span>, <span class="fl">4.82</span>, <span class="fl">5.68</span>])</span>
+<span id="cb1-7"><a aria-label="7"></a></span>
+<span id="cb1-8"><a aria-label="8"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>))</span>
+<span id="cb1-9"><a aria-label="9"></a>plt.scatter(x, y, color<span class="op">=</span><span class="st">"#2266CC"</span>)</span>
+<span id="cb1-10"><a aria-label="10"></a>m, b <span class="op">=</span> np.polyfit(x, y, <span class="dv">1</span>)</span>
+<span id="cb1-11"><a aria-label="11"></a>xs <span class="op">=</span> np.linspace(<span class="dv">2</span>, <span class="dv">20</span>, <span class="dv">50</span>)</span>
+<span id="cb1-12"><a aria-label="12"></a>plt.plot(xs, m <span class="op">*</span> xs <span class="op">+</span> b, color<span class="op">=</span><span class="st">"#CC4444"</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-13"><a aria-label="13"></a>plt.xlim(<span class="dv">2</span>, <span class="dv">20</span>)<span class="op">;</span> plt.ylim(<span class="dv">2</span>, <span class="dv">14</span>)</span>
+<span id="cb1-14"><a aria-label="14"></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb1-15"><a aria-label="15"></a>plt.tight_layout()</span>
+<span id="cb1-16"><a aria-label="16"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -705,25 +711,25 @@ rkskmt
 <li>統計量だけ見ていると「直線で説明できた」と思い込みやすい</li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="e3e25410" class="cell" data-execution_count="5">
+<div id="c413688b" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>コードを見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb2-4"><a></a></span>
-<span id="cb2-5"><a></a>x <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span>
-<span id="cb2-6"><a></a>y <span class="op">=</span> np.array([<span class="fl">9.14</span>, <span class="fl">8.14</span>, <span class="fl">8.74</span>, <span class="fl">8.77</span>, <span class="fl">9.26</span>, <span class="fl">8.10</span>, <span class="fl">6.13</span>, <span class="fl">3.10</span>, <span class="fl">9.13</span>, <span class="fl">7.26</span>, <span class="fl">4.74</span>])</span>
-<span id="cb2-7"><a></a></span>
-<span id="cb2-8"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>))</span>
-<span id="cb2-9"><a></a>plt.scatter(x, y, color<span class="op">=</span><span class="st">"#2266CC"</span>)</span>
-<span id="cb2-10"><a></a>m, b <span class="op">=</span> np.polyfit(x, y, <span class="dv">1</span>)</span>
-<span id="cb2-11"><a></a>xs <span class="op">=</span> np.linspace(<span class="dv">2</span>, <span class="dv">20</span>, <span class="dv">50</span>)</span>
-<span id="cb2-12"><a></a>plt.plot(xs, m <span class="op">*</span> xs <span class="op">+</span> b, color<span class="op">=</span><span class="st">"#CC4444"</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb2-13"><a></a>plt.xlim(<span class="dv">2</span>, <span class="dv">20</span>)<span class="op">;</span> plt.ylim(<span class="dv">2</span>, <span class="dv">14</span>)</span>
-<span id="cb2-14"><a></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb2-15"><a></a>plt.tight_layout()</span>
-<span id="cb2-16"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb2-4"><a aria-label="4"></a></span>
+<span id="cb2-5"><a aria-label="5"></a>x <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span>
+<span id="cb2-6"><a aria-label="6"></a>y <span class="op">=</span> np.array([<span class="fl">9.14</span>, <span class="fl">8.14</span>, <span class="fl">8.74</span>, <span class="fl">8.77</span>, <span class="fl">9.26</span>, <span class="fl">8.10</span>, <span class="fl">6.13</span>, <span class="fl">3.10</span>, <span class="fl">9.13</span>, <span class="fl">7.26</span>, <span class="fl">4.74</span>])</span>
+<span id="cb2-7"><a aria-label="7"></a></span>
+<span id="cb2-8"><a aria-label="8"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>))</span>
+<span id="cb2-9"><a aria-label="9"></a>plt.scatter(x, y, color<span class="op">=</span><span class="st">"#2266CC"</span>)</span>
+<span id="cb2-10"><a aria-label="10"></a>m, b <span class="op">=</span> np.polyfit(x, y, <span class="dv">1</span>)</span>
+<span id="cb2-11"><a aria-label="11"></a>xs <span class="op">=</span> np.linspace(<span class="dv">2</span>, <span class="dv">20</span>, <span class="dv">50</span>)</span>
+<span id="cb2-12"><a aria-label="12"></a>plt.plot(xs, m <span class="op">*</span> xs <span class="op">+</span> b, color<span class="op">=</span><span class="st">"#CC4444"</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-13"><a aria-label="13"></a>plt.xlim(<span class="dv">2</span>, <span class="dv">20</span>)<span class="op">;</span> plt.ylim(<span class="dv">2</span>, <span class="dv">14</span>)</span>
+<span id="cb2-14"><a aria-label="14"></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb2-15"><a aria-label="15"></a>plt.tight_layout()</span>
+<span id="cb2-16"><a aria-label="16"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -764,25 +770,25 @@ rkskmt
 <li>その1点に <strong>回帰直線が引っ張られている</strong></li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="1263c807" class="cell" data-execution_count="6">
+<div id="fd36303b" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>コードを見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb3-4"><a></a></span>
-<span id="cb3-5"><a></a>x <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span>
-<span id="cb3-6"><a></a>y <span class="op">=</span> np.array([<span class="fl">7.46</span>, <span class="fl">6.77</span>, <span class="fl">12.74</span>, <span class="fl">7.11</span>, <span class="fl">7.81</span>, <span class="fl">8.84</span>, <span class="fl">6.08</span>, <span class="fl">5.39</span>, <span class="fl">8.15</span>, <span class="fl">6.42</span>, <span class="fl">5.73</span>])</span>
-<span id="cb3-7"><a></a></span>
-<span id="cb3-8"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>))</span>
-<span id="cb3-9"><a></a>plt.scatter(x, y, color<span class="op">=</span><span class="st">"#2266CC"</span>)</span>
-<span id="cb3-10"><a></a>m, b <span class="op">=</span> np.polyfit(x, y, <span class="dv">1</span>)</span>
-<span id="cb3-11"><a></a>xs <span class="op">=</span> np.linspace(<span class="dv">2</span>, <span class="dv">20</span>, <span class="dv">50</span>)</span>
-<span id="cb3-12"><a></a>plt.plot(xs, m <span class="op">*</span> xs <span class="op">+</span> b, color<span class="op">=</span><span class="st">"#CC4444"</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-13"><a></a>plt.xlim(<span class="dv">2</span>, <span class="dv">20</span>)<span class="op">;</span> plt.ylim(<span class="dv">2</span>, <span class="dv">14</span>)</span>
-<span id="cb3-14"><a></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb3-15"><a></a>plt.tight_layout()</span>
-<span id="cb3-16"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb3-4"><a aria-label="4"></a></span>
+<span id="cb3-5"><a aria-label="5"></a>x <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>])</span>
+<span id="cb3-6"><a aria-label="6"></a>y <span class="op">=</span> np.array([<span class="fl">7.46</span>, <span class="fl">6.77</span>, <span class="fl">12.74</span>, <span class="fl">7.11</span>, <span class="fl">7.81</span>, <span class="fl">8.84</span>, <span class="fl">6.08</span>, <span class="fl">5.39</span>, <span class="fl">8.15</span>, <span class="fl">6.42</span>, <span class="fl">5.73</span>])</span>
+<span id="cb3-7"><a aria-label="7"></a></span>
+<span id="cb3-8"><a aria-label="8"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>))</span>
+<span id="cb3-9"><a aria-label="9"></a>plt.scatter(x, y, color<span class="op">=</span><span class="st">"#2266CC"</span>)</span>
+<span id="cb3-10"><a aria-label="10"></a>m, b <span class="op">=</span> np.polyfit(x, y, <span class="dv">1</span>)</span>
+<span id="cb3-11"><a aria-label="11"></a>xs <span class="op">=</span> np.linspace(<span class="dv">2</span>, <span class="dv">20</span>, <span class="dv">50</span>)</span>
+<span id="cb3-12"><a aria-label="12"></a>plt.plot(xs, m <span class="op">*</span> xs <span class="op">+</span> b, color<span class="op">=</span><span class="st">"#CC4444"</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-13"><a aria-label="13"></a>plt.xlim(<span class="dv">2</span>, <span class="dv">20</span>)<span class="op">;</span> plt.ylim(<span class="dv">2</span>, <span class="dv">14</span>)</span>
+<span id="cb3-14"><a aria-label="14"></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb3-15"><a aria-label="15"></a>plt.tight_layout()</span>
+<span id="cb3-16"><a aria-label="16"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -823,25 +829,25 @@ rkskmt
 <li>同じ条件で測定しすぎていて、<code>x</code> が振れていない</li>
 </ul>
 </div><div class="column" style="width:45%;">
-<div id="96d5de51" class="cell" data-execution_count="7">
+<div id="294a0ad6" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>コードを見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-3"><a></a><span class="im">import</span> japanize_matplotlib</span>
-<span id="cb4-4"><a></a></span>
-<span id="cb4-5"><a></a>x <span class="op">=</span> np.array([<span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">19</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>])</span>
-<span id="cb4-6"><a></a>y <span class="op">=</span> np.array([<span class="fl">6.58</span>, <span class="fl">5.76</span>, <span class="fl">7.71</span>, <span class="fl">8.84</span>, <span class="fl">8.47</span>, <span class="fl">7.04</span>, <span class="fl">5.25</span>, <span class="fl">12.50</span>, <span class="fl">5.56</span>, <span class="fl">7.91</span>, <span class="fl">6.89</span>])</span>
-<span id="cb4-7"><a></a></span>
-<span id="cb4-8"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>))</span>
-<span id="cb4-9"><a></a>plt.scatter(x, y, color<span class="op">=</span><span class="st">"#2266CC"</span>)</span>
-<span id="cb4-10"><a></a>m, b <span class="op">=</span> np.polyfit(x, y, <span class="dv">1</span>)</span>
-<span id="cb4-11"><a></a>xs <span class="op">=</span> np.linspace(<span class="dv">2</span>, <span class="dv">20</span>, <span class="dv">50</span>)</span>
-<span id="cb4-12"><a></a>plt.plot(xs, m <span class="op">*</span> xs <span class="op">+</span> b, color<span class="op">=</span><span class="st">"#CC4444"</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb4-13"><a></a>plt.xlim(<span class="dv">2</span>, <span class="dv">20</span>)<span class="op">;</span> plt.ylim(<span class="dv">2</span>, <span class="dv">14</span>)</span>
-<span id="cb4-14"><a></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb4-15"><a></a>plt.tight_layout()</span>
-<span id="cb4-16"><a></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb4-4"><a aria-label="4"></a></span>
+<span id="cb4-5"><a aria-label="5"></a>x <span class="op">=</span> np.array([<span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">19</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>])</span>
+<span id="cb4-6"><a aria-label="6"></a>y <span class="op">=</span> np.array([<span class="fl">6.58</span>, <span class="fl">5.76</span>, <span class="fl">7.71</span>, <span class="fl">8.84</span>, <span class="fl">8.47</span>, <span class="fl">7.04</span>, <span class="fl">5.25</span>, <span class="fl">12.50</span>, <span class="fl">5.56</span>, <span class="fl">7.91</span>, <span class="fl">6.89</span>])</span>
+<span id="cb4-7"><a aria-label="7"></a></span>
+<span id="cb4-8"><a aria-label="8"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>))</span>
+<span id="cb4-9"><a aria-label="9"></a>plt.scatter(x, y, color<span class="op">=</span><span class="st">"#2266CC"</span>)</span>
+<span id="cb4-10"><a aria-label="10"></a>m, b <span class="op">=</span> np.polyfit(x, y, <span class="dv">1</span>)</span>
+<span id="cb4-11"><a aria-label="11"></a>xs <span class="op">=</span> np.linspace(<span class="dv">2</span>, <span class="dv">20</span>, <span class="dv">50</span>)</span>
+<span id="cb4-12"><a aria-label="12"></a>plt.plot(xs, m <span class="op">*</span> xs <span class="op">+</span> b, color<span class="op">=</span><span class="st">"#CC4444"</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-13"><a aria-label="13"></a>plt.xlim(<span class="dv">2</span>, <span class="dv">20</span>)<span class="op">;</span> plt.ylim(<span class="dv">2</span>, <span class="dv">14</span>)</span>
+<span id="cb4-14"><a aria-label="14"></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb4-15"><a aria-label="15"></a>plt.tight_layout()</span>
+<span id="cb4-16"><a aria-label="16"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -876,7 +882,7 @@ rkskmt
 <div class="slide-body">
 <div class="columns">
 <div class="column" style="width:45%;">
-<div id="6ce4f859" class="cell" data-execution_count="8">
+<div id="0543386d" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -979,7 +985,7 @@ rkskmt
 <p>そのうちの1つを散布図にすると…</p>
 </div><div class="column" style="width:50%;">
 <div class="fragment">
-<div id="34f65844" class="cell" data-execution_count="9">
+<div id="ab0bfa63" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -995,7 +1001,7 @@ rkskmt
 <section id="peek-datasaurus" class="slide level2">
 <h2>Datasaurus Dozen：全13個</h2>
 <div class="slide-body">
-<div id="4d968eb1" class="cell" data-execution_count="10">
+<div id="0f4eef86" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1048,7 +1054,7 @@ rkskmt
 <section id="商品bはaより圧倒的に売れている" class="slide level2">
 <h2>商品BはAより圧倒的に売れている？</h2>
 <div class="slide-body">
-<div id="8a569d0d" class="cell" data-execution_count="11">
+<div id="391a2837" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1065,7 +1071,7 @@ rkskmt
 <section id="peek-ycut" class="slide level2">
 <h2>y軸の切断</h2>
 <div class="slide-body">
-<div id="3ccf1440" class="cell" data-execution_count="12">
+<div id="7f01ce97" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1096,7 +1102,7 @@ rkskmt
 <section id="東京は寒冷化している" class="slide level2">
 <h2>東京は寒冷化している？</h2>
 <div class="slide-body">
-<div id="61be2024" class="cell" data-execution_count="13">
+<div id="25a39d76" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1114,7 +1120,7 @@ rkskmt
 <section id="peek-cherry" class="slide level2">
 <h2>期間のチェリーピック</h2>
 <div class="slide-body">
-<div id="b07664a6" class="cell" data-execution_count="14">
+<div id="e5291ff1" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>

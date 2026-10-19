@@ -6,11 +6,11 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5c1318cf63eba56dbef7ba16bc7d56f5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+  <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="rkskmt">
   <title>情報処理 – 最終課題</title>
@@ -20,10 +20,16 @@
   <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -98,7 +104,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-d3a26a7442888a116b43ccec6150e9c5.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-e69bca93ec9d1486cefcf16a785f5ce6.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -254,7 +260,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-rkskmt 
+rkskmt
 </div>
 </div>
 </div>
@@ -530,22 +536,22 @@ rkskmt
 <li><a href="data/data.json">data.json</a> をダウンロードし、テンプレートを保存した <code>main.py</code> と同じフォルダに置く</li>
 <li>初期データには <code>title</code> と <code>message</code> の2項目がある</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a></a><span class="fu">{</span></span>
-<span id="cb1-2"><a></a>  <span class="dt">"title"</span><span class="fu">:</span> <span class="st">"サンプルタイトル"</span><span class="fu">,</span></span>
-<span id="cb1-3"><a></a>  <span class="dt">"message"</span><span class="fu">:</span> <span class="st">"ここにメッセージが入ります"</span></span>
-<span id="cb1-4"><a></a><span class="fu">}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a aria-label="1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a aria-label="2"></a>  <span class="dt">"title"</span><span class="fu">:</span> <span class="st">"サンプルタイトル"</span><span class="fu">,</span></span>
+<span id="cb1-3"><a aria-label="3"></a>  <span class="dt">"message"</span><span class="fu">:</span> <span class="st">"ここにメッセージが入ります"</span></span>
+<span id="cb1-4"><a aria-label="4"></a><span class="fu">}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="画面の表示非表示を切り替える" class="slide level2">
 <h2>画面の表示・非表示を切り替える</h2>
 <section id="テンプレートから抜粋" class="slide-body">
 <h4>テンプレートから抜粋</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="kw">def</span> show_screen(screen_name):</span>
-<span id="cb2-2"><a></a>    top_screen.set_visibility(screen_name <span class="op">==</span> <span class="st">"top"</span>)</span>
-<span id="cb2-3"><a></a>    main_screen.set_visibility(screen_name <span class="op">==</span> <span class="st">"main"</span>)</span>
-<span id="cb2-4"><a></a>    result_screen.set_visibility(screen_name <span class="op">==</span> <span class="st">"result"</span>)</span>
-<span id="cb2-5"><a></a></span>
-<span id="cb2-6"><a></a>ui.button(<span class="st">"スタート"</span>, on_click<span class="op">=</span><span class="kw">lambda</span>: show_screen(<span class="st">"main"</span>))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="kw">def</span> show_screen(screen_name):</span>
+<span id="cb2-2"><a aria-label="2"></a>    top_screen.set_visibility(screen_name <span class="op">==</span> <span class="st">"top"</span>)</span>
+<span id="cb2-3"><a aria-label="3"></a>    main_screen.set_visibility(screen_name <span class="op">==</span> <span class="st">"main"</span>)</span>
+<span id="cb2-4"><a aria-label="4"></a>    result_screen.set_visibility(screen_name <span class="op">==</span> <span class="st">"result"</span>)</span>
+<span id="cb2-5"><a aria-label="5"></a></span>
+<span id="cb2-6"><a aria-label="6"></a>ui.button(<span class="st">"スタート"</span>, on_click<span class="op">=</span><span class="kw">lambda</span>: show_screen(<span class="st">"main"</span>))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="caption-note">
 <p><code>screen_name == "top"</code> は <code>True</code> / <code>False</code> になる。指定した画面だけ表示し、他の画面は非表示にする</p>
 </div>
@@ -586,165 +592,165 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="ebae0a83" class="cell" data-execution_count="1">
+<div id="71c4d286" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>テンプレート（API版）を表示</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co">"""</span></span>
-<span id="cb3-2"><a></a><span class="co">NiceGUI SPA template with three screens and an HTTP API.</span></span>
-<span id="cb3-3"><a></a><span class="co">"""</span></span>
-<span id="cb3-4"><a></a></span>
-<span id="cb3-5"><a></a><span class="im">from</span> nicegui <span class="im">import</span> ui, app</span>
-<span id="cb3-6"><a></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
-<span id="cb3-7"><a></a><span class="im">import</span> json</span>
-<span id="cb3-8"><a></a><span class="im">import</span> httpx</span>
-<span id="cb3-9"><a></a></span>
-<span id="cb3-10"><a></a>DATA_FILE <span class="op">=</span> Path(<span class="va">__file__</span>).parent <span class="op">/</span> <span class="st">"data.json"</span>   <span class="co"># Resolve data.json beside this script.</span></span>
-<span id="cb3-11"><a></a></span>
-<span id="cb3-12"><a></a><span class="co"># ========================================</span></span>
-<span id="cb3-13"><a></a><span class="co"># API endpoint</span></span>
-<span id="cb3-14"><a></a><span class="co"># ========================================</span></span>
-<span id="cb3-15"><a></a><span class="at">@app.get</span>(<span class="st">"/api/data"</span>)</span>
-<span id="cb3-16"><a></a><span class="kw">def</span> get_data():</span>
-<span id="cb3-17"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(DATA_FILE, <span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
-<span id="cb3-18"><a></a>        <span class="cf">return</span> json.load(f)</span>
-<span id="cb3-19"><a></a></span>
-<span id="cb3-20"><a></a><span class="co"># ========================================</span></span>
-<span id="cb3-21"><a></a><span class="co"># Screen switching</span></span>
-<span id="cb3-22"><a></a><span class="co"># ========================================</span></span>
-<span id="cb3-23"><a></a><span class="kw">def</span> show_screen(screen_name):</span>
-<span id="cb3-24"><a></a>    top_screen.set_visibility(screen_name <span class="op">==</span> <span class="st">"top"</span>)</span>
-<span id="cb3-25"><a></a>    main_screen.set_visibility(screen_name <span class="op">==</span> <span class="st">"main"</span>)</span>
-<span id="cb3-26"><a></a>    result_screen.set_visibility(screen_name <span class="op">==</span> <span class="st">"result"</span>)</span>
-<span id="cb3-27"><a></a></span>
-<span id="cb3-28"><a></a><span class="co"># ========================================</span></span>
-<span id="cb3-29"><a></a><span class="co"># Top screen</span></span>
-<span id="cb3-30"><a></a><span class="co"># ========================================</span></span>
-<span id="cb3-31"><a></a><span class="cf">with</span> ui.column().classes(<span class="st">"w-full h-screen items-center justify-center gap-4"</span>) <span class="im">as</span> top_screen:</span>
-<span id="cb3-32"><a></a>    ui.label(<span class="st">"アプリタイトル"</span>).classes(<span class="st">"text-4xl font-bold"</span>)</span>
-<span id="cb3-33"><a></a>    ui.button(<span class="st">"スタート"</span>, on_click<span class="op">=</span><span class="kw">lambda</span>: show_screen(<span class="st">"main"</span>)).classes(<span class="st">"bg-blue-500 text-white p-4 rounded-lg"</span>)</span>
-<span id="cb3-34"><a></a></span>
-<span id="cb3-35"><a></a><span class="co"># ========================================</span></span>
-<span id="cb3-36"><a></a><span class="co"># Main screen</span></span>
-<span id="cb3-37"><a></a><span class="co"># ========================================</span></span>
-<span id="cb3-38"><a></a><span class="cf">with</span> ui.column().classes(<span class="st">"w-full min-h-screen items-center p-8 gap-4"</span>) <span class="im">as</span> main_screen:</span>
-<span id="cb3-39"><a></a>    ui.label(<span class="st">"メイン画面"</span>).classes(<span class="st">"text-3xl font-bold"</span>)</span>
-<span id="cb3-40"><a></a></span>
-<span id="cb3-41"><a></a>    <span class="co"># Container for JSON content.</span></span>
-<span id="cb3-42"><a></a>    content <span class="op">=</span> ui.column().classes(<span class="st">"gap-2"</span>)</span>
-<span id="cb3-43"><a></a></span>
-<span id="cb3-44"><a></a>    <span class="cf">async</span> <span class="kw">def</span> load_data():</span>
-<span id="cb3-45"><a></a>        content.clear()</span>
-<span id="cb3-46"><a></a>        <span class="co"># Fetch data over HTTP.</span></span>
-<span id="cb3-47"><a></a>        <span class="cf">async</span> <span class="cf">with</span> httpx.AsyncClient() <span class="im">as</span> client:</span>
-<span id="cb3-48"><a></a>            response <span class="op">=</span> <span class="cf">await</span> client.get(<span class="st">"http://localhost:8080/api/data"</span>)</span>
-<span id="cb3-49"><a></a>            response.raise_for_status()</span>
-<span id="cb3-50"><a></a>        data <span class="op">=</span> response.json()</span>
-<span id="cb3-51"><a></a></span>
-<span id="cb3-52"><a></a>        <span class="co"># Display content from data here.</span></span>
-<span id="cb3-53"><a></a>        <span class="cf">with</span> content:</span>
-<span id="cb3-54"><a></a>            ui.label(<span class="ss">f"タイトル: </span><span class="sc">{</span>data[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-55"><a></a></span>
-<span id="cb3-56"><a></a>    ui.button(<span class="st">"データ読み込み"</span>, on_click<span class="op">=</span>load_data).classes(<span class="st">"bg-green-500 text-white p-2 rounded"</span>)</span>
-<span id="cb3-57"><a></a>    ui.button(<span class="st">"結果へ"</span>, on_click<span class="op">=</span><span class="kw">lambda</span>: show_screen(<span class="st">"result"</span>)).classes(<span class="st">"bg-purple-500 text-white p-4 rounded-lg mt-4"</span>)</span>
-<span id="cb3-58"><a></a></span>
-<span id="cb3-59"><a></a><span class="co"># ========================================</span></span>
-<span id="cb3-60"><a></a><span class="co"># Result screen</span></span>
-<span id="cb3-61"><a></a><span class="co"># ========================================</span></span>
-<span id="cb3-62"><a></a><span class="cf">with</span> ui.column().classes(<span class="st">"w-full h-screen items-center justify-center gap-4"</span>) <span class="im">as</span> result_screen:</span>
-<span id="cb3-63"><a></a>    ui.label(<span class="st">"結果画面"</span>).classes(<span class="st">"text-3xl font-bold"</span>)</span>
-<span id="cb3-64"><a></a>    ui.label(<span class="st">"ここに結果を表示"</span>)</span>
-<span id="cb3-65"><a></a>    ui.button(<span class="st">"もう一度"</span>, on_click<span class="op">=</span><span class="kw">lambda</span>: show_screen(<span class="st">"top"</span>)).classes(<span class="st">"bg-blue-500 text-white p-4 rounded-lg"</span>)</span>
-<span id="cb3-66"><a></a></span>
-<span id="cb3-67"><a></a><span class="co"># ========================================</span></span>
-<span id="cb3-68"><a></a><span class="co"># Initial screen</span></span>
-<span id="cb3-69"><a></a><span class="co"># ========================================</span></span>
-<span id="cb3-70"><a></a>show_screen(<span class="st">"top"</span>)</span>
-<span id="cb3-71"><a></a></span>
-<span id="cb3-72"><a></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="co">"""</span></span>
+<span id="cb3-2"><a aria-label="2"></a><span class="co">NiceGUI SPA template with three screens and an HTTP API.</span></span>
+<span id="cb3-3"><a aria-label="3"></a><span class="co">"""</span></span>
+<span id="cb3-4"><a aria-label="4"></a></span>
+<span id="cb3-5"><a aria-label="5"></a><span class="im">from</span> nicegui <span class="im">import</span> ui, app</span>
+<span id="cb3-6"><a aria-label="6"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb3-7"><a aria-label="7"></a><span class="im">import</span> json</span>
+<span id="cb3-8"><a aria-label="8"></a><span class="im">import</span> httpx</span>
+<span id="cb3-9"><a aria-label="9"></a></span>
+<span id="cb3-10"><a aria-label="10"></a>DATA_FILE <span class="op">=</span> Path(<span class="va">__file__</span>).parent <span class="op">/</span> <span class="st">"data.json"</span>   <span class="co"># Resolve data.json beside this script.</span></span>
+<span id="cb3-11"><a aria-label="11"></a></span>
+<span id="cb3-12"><a aria-label="12"></a><span class="co"># ========================================</span></span>
+<span id="cb3-13"><a aria-label="13"></a><span class="co"># API endpoint</span></span>
+<span id="cb3-14"><a aria-label="14"></a><span class="co"># ========================================</span></span>
+<span id="cb3-15"><a aria-label="15"></a><span class="at">@app.get</span>(<span class="st">"/api/data"</span>)</span>
+<span id="cb3-16"><a aria-label="16"></a><span class="kw">def</span> get_data():</span>
+<span id="cb3-17"><a aria-label="17"></a>    <span class="cf">with</span> <span class="bu">open</span>(DATA_FILE, <span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb3-18"><a aria-label="18"></a>        <span class="cf">return</span> json.load(f)</span>
+<span id="cb3-19"><a aria-label="19"></a></span>
+<span id="cb3-20"><a aria-label="20"></a><span class="co"># ========================================</span></span>
+<span id="cb3-21"><a aria-label="21"></a><span class="co"># Screen switching</span></span>
+<span id="cb3-22"><a aria-label="22"></a><span class="co"># ========================================</span></span>
+<span id="cb3-23"><a aria-label="23"></a><span class="kw">def</span> show_screen(screen_name):</span>
+<span id="cb3-24"><a aria-label="24"></a>    top_screen.set_visibility(screen_name <span class="op">==</span> <span class="st">"top"</span>)</span>
+<span id="cb3-25"><a aria-label="25"></a>    main_screen.set_visibility(screen_name <span class="op">==</span> <span class="st">"main"</span>)</span>
+<span id="cb3-26"><a aria-label="26"></a>    result_screen.set_visibility(screen_name <span class="op">==</span> <span class="st">"result"</span>)</span>
+<span id="cb3-27"><a aria-label="27"></a></span>
+<span id="cb3-28"><a aria-label="28"></a><span class="co"># ========================================</span></span>
+<span id="cb3-29"><a aria-label="29"></a><span class="co"># Top screen</span></span>
+<span id="cb3-30"><a aria-label="30"></a><span class="co"># ========================================</span></span>
+<span id="cb3-31"><a aria-label="31"></a><span class="cf">with</span> ui.column().classes(<span class="st">"w-full h-screen items-center justify-center gap-4"</span>) <span class="im">as</span> top_screen:</span>
+<span id="cb3-32"><a aria-label="32"></a>    ui.label(<span class="st">"アプリタイトル"</span>).classes(<span class="st">"text-4xl font-bold"</span>)</span>
+<span id="cb3-33"><a aria-label="33"></a>    ui.button(<span class="st">"スタート"</span>, on_click<span class="op">=</span><span class="kw">lambda</span>: show_screen(<span class="st">"main"</span>)).classes(<span class="st">"bg-blue-500 text-white p-4 rounded-lg"</span>)</span>
+<span id="cb3-34"><a aria-label="34"></a></span>
+<span id="cb3-35"><a aria-label="35"></a><span class="co"># ========================================</span></span>
+<span id="cb3-36"><a aria-label="36"></a><span class="co"># Main screen</span></span>
+<span id="cb3-37"><a aria-label="37"></a><span class="co"># ========================================</span></span>
+<span id="cb3-38"><a aria-label="38"></a><span class="cf">with</span> ui.column().classes(<span class="st">"w-full min-h-screen items-center p-8 gap-4"</span>) <span class="im">as</span> main_screen:</span>
+<span id="cb3-39"><a aria-label="39"></a>    ui.label(<span class="st">"メイン画面"</span>).classes(<span class="st">"text-3xl font-bold"</span>)</span>
+<span id="cb3-40"><a aria-label="40"></a></span>
+<span id="cb3-41"><a aria-label="41"></a>    <span class="co"># Container for JSON content.</span></span>
+<span id="cb3-42"><a aria-label="42"></a>    content <span class="op">=</span> ui.column().classes(<span class="st">"gap-2"</span>)</span>
+<span id="cb3-43"><a aria-label="43"></a></span>
+<span id="cb3-44"><a aria-label="44"></a>    <span class="cf">async</span> <span class="kw">def</span> load_data():</span>
+<span id="cb3-45"><a aria-label="45"></a>        content.clear()</span>
+<span id="cb3-46"><a aria-label="46"></a>        <span class="co"># Fetch data over HTTP.</span></span>
+<span id="cb3-47"><a aria-label="47"></a>        <span class="cf">async</span> <span class="cf">with</span> httpx.AsyncClient() <span class="im">as</span> client:</span>
+<span id="cb3-48"><a aria-label="48"></a>            response <span class="op">=</span> <span class="cf">await</span> client.get(<span class="st">"http://localhost:8080/api/data"</span>)</span>
+<span id="cb3-49"><a aria-label="49"></a>            response.raise_for_status()</span>
+<span id="cb3-50"><a aria-label="50"></a>        data <span class="op">=</span> response.json()</span>
+<span id="cb3-51"><a aria-label="51"></a></span>
+<span id="cb3-52"><a aria-label="52"></a>        <span class="co"># Display content from data here.</span></span>
+<span id="cb3-53"><a aria-label="53"></a>        <span class="cf">with</span> content:</span>
+<span id="cb3-54"><a aria-label="54"></a>            ui.label(<span class="ss">f"タイトル: </span><span class="sc">{</span>data[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-55"><a aria-label="55"></a></span>
+<span id="cb3-56"><a aria-label="56"></a>    ui.button(<span class="st">"データ読み込み"</span>, on_click<span class="op">=</span>load_data).classes(<span class="st">"bg-green-500 text-white p-2 rounded"</span>)</span>
+<span id="cb3-57"><a aria-label="57"></a>    ui.button(<span class="st">"結果へ"</span>, on_click<span class="op">=</span><span class="kw">lambda</span>: show_screen(<span class="st">"result"</span>)).classes(<span class="st">"bg-purple-500 text-white p-4 rounded-lg mt-4"</span>)</span>
+<span id="cb3-58"><a aria-label="58"></a></span>
+<span id="cb3-59"><a aria-label="59"></a><span class="co"># ========================================</span></span>
+<span id="cb3-60"><a aria-label="60"></a><span class="co"># Result screen</span></span>
+<span id="cb3-61"><a aria-label="61"></a><span class="co"># ========================================</span></span>
+<span id="cb3-62"><a aria-label="62"></a><span class="cf">with</span> ui.column().classes(<span class="st">"w-full h-screen items-center justify-center gap-4"</span>) <span class="im">as</span> result_screen:</span>
+<span id="cb3-63"><a aria-label="63"></a>    ui.label(<span class="st">"結果画面"</span>).classes(<span class="st">"text-3xl font-bold"</span>)</span>
+<span id="cb3-64"><a aria-label="64"></a>    ui.label(<span class="st">"ここに結果を表示"</span>)</span>
+<span id="cb3-65"><a aria-label="65"></a>    ui.button(<span class="st">"もう一度"</span>, on_click<span class="op">=</span><span class="kw">lambda</span>: show_screen(<span class="st">"top"</span>)).classes(<span class="st">"bg-blue-500 text-white p-4 rounded-lg"</span>)</span>
+<span id="cb3-66"><a aria-label="66"></a></span>
+<span id="cb3-67"><a aria-label="67"></a><span class="co"># ========================================</span></span>
+<span id="cb3-68"><a aria-label="68"></a><span class="co"># Initial screen</span></span>
+<span id="cb3-69"><a aria-label="69"></a><span class="co"># ========================================</span></span>
+<span id="cb3-70"><a aria-label="70"></a>show_screen(<span class="st">"top"</span>)</span>
+<span id="cb3-71"><a aria-label="71"></a></span>
+<span id="cb3-72"><a aria-label="72"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="7bc89e1e" class="cell" data-execution_count="2">
+<div id="602954da" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>テンプレート（簡単版・lambdaなし）を表示</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co">"""</span></span>
-<span id="cb4-2"><a></a><span class="co">NiceGUI SPA template using named callbacks for screen switching.</span></span>
-<span id="cb4-3"><a></a><span class="co">"""</span></span>
-<span id="cb4-4"><a></a></span>
-<span id="cb4-5"><a></a><span class="im">from</span> nicegui <span class="im">import</span> ui, app</span>
-<span id="cb4-6"><a></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
-<span id="cb4-7"><a></a><span class="im">import</span> json</span>
-<span id="cb4-8"><a></a><span class="im">import</span> httpx</span>
-<span id="cb4-9"><a></a></span>
-<span id="cb4-10"><a></a>DATA_FILE <span class="op">=</span> Path(<span class="va">__file__</span>).parent <span class="op">/</span> <span class="st">"data.json"</span>   <span class="co"># Resolve data.json beside this script.</span></span>
-<span id="cb4-11"><a></a></span>
-<span id="cb4-12"><a></a><span class="co"># ========================================</span></span>
-<span id="cb4-13"><a></a><span class="co"># API endpoint</span></span>
-<span id="cb4-14"><a></a><span class="co"># ========================================</span></span>
-<span id="cb4-15"><a></a><span class="at">@app.get</span>(<span class="st">"/api/data"</span>)</span>
-<span id="cb4-16"><a></a><span class="kw">def</span> get_data():</span>
-<span id="cb4-17"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(DATA_FILE, <span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
-<span id="cb4-18"><a></a>        <span class="cf">return</span> json.load(f)</span>
-<span id="cb4-19"><a></a></span>
-<span id="cb4-20"><a></a><span class="kw">def</span> show_top():</span>
-<span id="cb4-21"><a></a>    top_screen.set_visibility(<span class="va">True</span>)</span>
-<span id="cb4-22"><a></a>    main_screen.set_visibility(<span class="va">False</span>)</span>
-<span id="cb4-23"><a></a>    result_screen.set_visibility(<span class="va">False</span>)</span>
-<span id="cb4-24"><a></a></span>
-<span id="cb4-25"><a></a><span class="kw">def</span> show_main():</span>
-<span id="cb4-26"><a></a>    top_screen.set_visibility(<span class="va">False</span>)</span>
-<span id="cb4-27"><a></a>    main_screen.set_visibility(<span class="va">True</span>)</span>
-<span id="cb4-28"><a></a>    result_screen.set_visibility(<span class="va">False</span>)</span>
-<span id="cb4-29"><a></a></span>
-<span id="cb4-30"><a></a><span class="kw">def</span> show_result():</span>
-<span id="cb4-31"><a></a>    top_screen.set_visibility(<span class="va">False</span>)</span>
-<span id="cb4-32"><a></a>    main_screen.set_visibility(<span class="va">False</span>)</span>
-<span id="cb4-33"><a></a>    result_screen.set_visibility(<span class="va">True</span>)</span>
-<span id="cb4-34"><a></a></span>
-<span id="cb4-35"><a></a><span class="co"># ========================================</span></span>
-<span id="cb4-36"><a></a><span class="co"># Top screen</span></span>
-<span id="cb4-37"><a></a><span class="co"># ========================================</span></span>
-<span id="cb4-38"><a></a><span class="cf">with</span> ui.column().classes(<span class="st">"w-full h-screen items-center justify-center gap-4"</span>) <span class="im">as</span> top_screen:</span>
-<span id="cb4-39"><a></a>    ui.label(<span class="st">"アプリタイトル"</span>).classes(<span class="st">"text-4xl font-bold"</span>)</span>
-<span id="cb4-40"><a></a>    ui.button(<span class="st">"スタート"</span>, on_click<span class="op">=</span>show_main)</span>
-<span id="cb4-41"><a></a></span>
-<span id="cb4-42"><a></a><span class="co"># ========================================</span></span>
-<span id="cb4-43"><a></a><span class="co"># Main screen</span></span>
-<span id="cb4-44"><a></a><span class="co"># ========================================</span></span>
-<span id="cb4-45"><a></a><span class="cf">with</span> ui.column().classes(<span class="st">"w-full min-h-screen items-center p-8 gap-4"</span>) <span class="im">as</span> main_screen:</span>
-<span id="cb4-46"><a></a>    ui.label(<span class="st">"メイン画面"</span>).classes(<span class="st">"text-3xl font-bold"</span>)</span>
-<span id="cb4-47"><a></a></span>
-<span id="cb4-48"><a></a>    <span class="co"># Container for JSON content.</span></span>
-<span id="cb4-49"><a></a>    content <span class="op">=</span> ui.column().classes(<span class="st">"gap-2"</span>)</span>
-<span id="cb4-50"><a></a></span>
-<span id="cb4-51"><a></a>    <span class="cf">async</span> <span class="kw">def</span> load_data():</span>
-<span id="cb4-52"><a></a>        content.clear()</span>
-<span id="cb4-53"><a></a>        <span class="co"># Fetch data over HTTP.</span></span>
-<span id="cb4-54"><a></a>        <span class="cf">async</span> <span class="cf">with</span> httpx.AsyncClient() <span class="im">as</span> client:</span>
-<span id="cb4-55"><a></a>            response <span class="op">=</span> <span class="cf">await</span> client.get(<span class="st">"http://localhost:8080/api/data"</span>)</span>
-<span id="cb4-56"><a></a>            response.raise_for_status()</span>
-<span id="cb4-57"><a></a>        data <span class="op">=</span> response.json()</span>
-<span id="cb4-58"><a></a></span>
-<span id="cb4-59"><a></a>        <span class="co"># Display content from data here.</span></span>
-<span id="cb4-60"><a></a>        <span class="cf">with</span> content:</span>
-<span id="cb4-61"><a></a>            ui.label(<span class="ss">f"タイトル: </span><span class="sc">{</span>data[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb4-62"><a></a></span>
-<span id="cb4-63"><a></a>    ui.button(<span class="st">"データ読み込み"</span>, on_click<span class="op">=</span>load_data).classes(<span class="st">"bg-green-500 text-white p-2 rounded"</span>)</span>
-<span id="cb4-64"><a></a>    ui.button(<span class="st">"結果へ"</span>, on_click<span class="op">=</span>show_result)</span>
-<span id="cb4-65"><a></a></span>
-<span id="cb4-66"><a></a><span class="co"># ========================================</span></span>
-<span id="cb4-67"><a></a><span class="co"># Result screen</span></span>
-<span id="cb4-68"><a></a><span class="co"># ========================================</span></span>
-<span id="cb4-69"><a></a><span class="cf">with</span> ui.column().classes(<span class="st">"w-full h-screen items-center justify-center gap-4"</span>) <span class="im">as</span> result_screen:</span>
-<span id="cb4-70"><a></a>    ui.label(<span class="st">"結果画面"</span>).classes(<span class="st">"text-3xl font-bold"</span>)</span>
-<span id="cb4-71"><a></a>    ui.label(<span class="st">"ここに結果を表示"</span>)</span>
-<span id="cb4-72"><a></a>    ui.button(<span class="st">"もう一度"</span>, on_click<span class="op">=</span>show_top)</span>
-<span id="cb4-73"><a></a></span>
-<span id="cb4-74"><a></a><span class="co"># ========================================</span></span>
-<span id="cb4-75"><a></a><span class="co"># Initial screen</span></span>
-<span id="cb4-76"><a></a><span class="co"># ========================================</span></span>
-<span id="cb4-77"><a></a>show_top()</span>
-<span id="cb4-78"><a></a></span>
-<span id="cb4-79"><a></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="co">"""</span></span>
+<span id="cb4-2"><a aria-label="2"></a><span class="co">NiceGUI SPA template using named callbacks for screen switching.</span></span>
+<span id="cb4-3"><a aria-label="3"></a><span class="co">"""</span></span>
+<span id="cb4-4"><a aria-label="4"></a></span>
+<span id="cb4-5"><a aria-label="5"></a><span class="im">from</span> nicegui <span class="im">import</span> ui, app</span>
+<span id="cb4-6"><a aria-label="6"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb4-7"><a aria-label="7"></a><span class="im">import</span> json</span>
+<span id="cb4-8"><a aria-label="8"></a><span class="im">import</span> httpx</span>
+<span id="cb4-9"><a aria-label="9"></a></span>
+<span id="cb4-10"><a aria-label="10"></a>DATA_FILE <span class="op">=</span> Path(<span class="va">__file__</span>).parent <span class="op">/</span> <span class="st">"data.json"</span>   <span class="co"># Resolve data.json beside this script.</span></span>
+<span id="cb4-11"><a aria-label="11"></a></span>
+<span id="cb4-12"><a aria-label="12"></a><span class="co"># ========================================</span></span>
+<span id="cb4-13"><a aria-label="13"></a><span class="co"># API endpoint</span></span>
+<span id="cb4-14"><a aria-label="14"></a><span class="co"># ========================================</span></span>
+<span id="cb4-15"><a aria-label="15"></a><span class="at">@app.get</span>(<span class="st">"/api/data"</span>)</span>
+<span id="cb4-16"><a aria-label="16"></a><span class="kw">def</span> get_data():</span>
+<span id="cb4-17"><a aria-label="17"></a>    <span class="cf">with</span> <span class="bu">open</span>(DATA_FILE, <span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb4-18"><a aria-label="18"></a>        <span class="cf">return</span> json.load(f)</span>
+<span id="cb4-19"><a aria-label="19"></a></span>
+<span id="cb4-20"><a aria-label="20"></a><span class="kw">def</span> show_top():</span>
+<span id="cb4-21"><a aria-label="21"></a>    top_screen.set_visibility(<span class="va">True</span>)</span>
+<span id="cb4-22"><a aria-label="22"></a>    main_screen.set_visibility(<span class="va">False</span>)</span>
+<span id="cb4-23"><a aria-label="23"></a>    result_screen.set_visibility(<span class="va">False</span>)</span>
+<span id="cb4-24"><a aria-label="24"></a></span>
+<span id="cb4-25"><a aria-label="25"></a><span class="kw">def</span> show_main():</span>
+<span id="cb4-26"><a aria-label="26"></a>    top_screen.set_visibility(<span class="va">False</span>)</span>
+<span id="cb4-27"><a aria-label="27"></a>    main_screen.set_visibility(<span class="va">True</span>)</span>
+<span id="cb4-28"><a aria-label="28"></a>    result_screen.set_visibility(<span class="va">False</span>)</span>
+<span id="cb4-29"><a aria-label="29"></a></span>
+<span id="cb4-30"><a aria-label="30"></a><span class="kw">def</span> show_result():</span>
+<span id="cb4-31"><a aria-label="31"></a>    top_screen.set_visibility(<span class="va">False</span>)</span>
+<span id="cb4-32"><a aria-label="32"></a>    main_screen.set_visibility(<span class="va">False</span>)</span>
+<span id="cb4-33"><a aria-label="33"></a>    result_screen.set_visibility(<span class="va">True</span>)</span>
+<span id="cb4-34"><a aria-label="34"></a></span>
+<span id="cb4-35"><a aria-label="35"></a><span class="co"># ========================================</span></span>
+<span id="cb4-36"><a aria-label="36"></a><span class="co"># Top screen</span></span>
+<span id="cb4-37"><a aria-label="37"></a><span class="co"># ========================================</span></span>
+<span id="cb4-38"><a aria-label="38"></a><span class="cf">with</span> ui.column().classes(<span class="st">"w-full h-screen items-center justify-center gap-4"</span>) <span class="im">as</span> top_screen:</span>
+<span id="cb4-39"><a aria-label="39"></a>    ui.label(<span class="st">"アプリタイトル"</span>).classes(<span class="st">"text-4xl font-bold"</span>)</span>
+<span id="cb4-40"><a aria-label="40"></a>    ui.button(<span class="st">"スタート"</span>, on_click<span class="op">=</span>show_main)</span>
+<span id="cb4-41"><a aria-label="41"></a></span>
+<span id="cb4-42"><a aria-label="42"></a><span class="co"># ========================================</span></span>
+<span id="cb4-43"><a aria-label="43"></a><span class="co"># Main screen</span></span>
+<span id="cb4-44"><a aria-label="44"></a><span class="co"># ========================================</span></span>
+<span id="cb4-45"><a aria-label="45"></a><span class="cf">with</span> ui.column().classes(<span class="st">"w-full min-h-screen items-center p-8 gap-4"</span>) <span class="im">as</span> main_screen:</span>
+<span id="cb4-46"><a aria-label="46"></a>    ui.label(<span class="st">"メイン画面"</span>).classes(<span class="st">"text-3xl font-bold"</span>)</span>
+<span id="cb4-47"><a aria-label="47"></a></span>
+<span id="cb4-48"><a aria-label="48"></a>    <span class="co"># Container for JSON content.</span></span>
+<span id="cb4-49"><a aria-label="49"></a>    content <span class="op">=</span> ui.column().classes(<span class="st">"gap-2"</span>)</span>
+<span id="cb4-50"><a aria-label="50"></a></span>
+<span id="cb4-51"><a aria-label="51"></a>    <span class="cf">async</span> <span class="kw">def</span> load_data():</span>
+<span id="cb4-52"><a aria-label="52"></a>        content.clear()</span>
+<span id="cb4-53"><a aria-label="53"></a>        <span class="co"># Fetch data over HTTP.</span></span>
+<span id="cb4-54"><a aria-label="54"></a>        <span class="cf">async</span> <span class="cf">with</span> httpx.AsyncClient() <span class="im">as</span> client:</span>
+<span id="cb4-55"><a aria-label="55"></a>            response <span class="op">=</span> <span class="cf">await</span> client.get(<span class="st">"http://localhost:8080/api/data"</span>)</span>
+<span id="cb4-56"><a aria-label="56"></a>            response.raise_for_status()</span>
+<span id="cb4-57"><a aria-label="57"></a>        data <span class="op">=</span> response.json()</span>
+<span id="cb4-58"><a aria-label="58"></a></span>
+<span id="cb4-59"><a aria-label="59"></a>        <span class="co"># Display content from data here.</span></span>
+<span id="cb4-60"><a aria-label="60"></a>        <span class="cf">with</span> content:</span>
+<span id="cb4-61"><a aria-label="61"></a>            ui.label(<span class="ss">f"タイトル: </span><span class="sc">{</span>data[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-62"><a aria-label="62"></a></span>
+<span id="cb4-63"><a aria-label="63"></a>    ui.button(<span class="st">"データ読み込み"</span>, on_click<span class="op">=</span>load_data).classes(<span class="st">"bg-green-500 text-white p-2 rounded"</span>)</span>
+<span id="cb4-64"><a aria-label="64"></a>    ui.button(<span class="st">"結果へ"</span>, on_click<span class="op">=</span>show_result)</span>
+<span id="cb4-65"><a aria-label="65"></a></span>
+<span id="cb4-66"><a aria-label="66"></a><span class="co"># ========================================</span></span>
+<span id="cb4-67"><a aria-label="67"></a><span class="co"># Result screen</span></span>
+<span id="cb4-68"><a aria-label="68"></a><span class="co"># ========================================</span></span>
+<span id="cb4-69"><a aria-label="69"></a><span class="cf">with</span> ui.column().classes(<span class="st">"w-full h-screen items-center justify-center gap-4"</span>) <span class="im">as</span> result_screen:</span>
+<span id="cb4-70"><a aria-label="70"></a>    ui.label(<span class="st">"結果画面"</span>).classes(<span class="st">"text-3xl font-bold"</span>)</span>
+<span id="cb4-71"><a aria-label="71"></a>    ui.label(<span class="st">"ここに結果を表示"</span>)</span>
+<span id="cb4-72"><a aria-label="72"></a>    ui.button(<span class="st">"もう一度"</span>, on_click<span class="op">=</span>show_top)</span>
+<span id="cb4-73"><a aria-label="73"></a></span>
+<span id="cb4-74"><a aria-label="74"></a><span class="co"># ========================================</span></span>
+<span id="cb4-75"><a aria-label="75"></a><span class="co"># Initial screen</span></span>
+<span id="cb4-76"><a aria-label="76"></a><span class="co"># ========================================</span></span>
+<span id="cb4-77"><a aria-label="77"></a>show_top()</span>
+<span id="cb4-78"><a aria-label="78"></a></span>
+<span id="cb4-79"><a aria-label="79"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>

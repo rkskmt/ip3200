@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5c1318cf63eba56dbef7ba16bc7d56f5.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="rkskmt">
   <title>情報処理 – ショートカット</title>
@@ -17,10 +17,16 @@
   <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -95,7 +101,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-d3a26a7442888a116b43ccec6150e9c5.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-e69bca93ec9d1486cefcf16a785f5ce6.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -251,7 +257,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-rkskmt 
+rkskmt
 </div>
 </div>
 </div>
@@ -629,8 +635,8 @@ rkskmt
 <div class="prompt">
 <p><strong>日本語入力モード（IMEオン）</strong> のままVS Codeを開き、次の2行のコメントをそのまま入力せよ。</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Alt（オルタナティブ）キーで行を移動できる</span></span>
-<span id="cb2-2"><a></a><span class="co"># Ctrl+/でコメントアウト、F5で実行</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="co"># Alt（オルタナティブ）キーで行を移動できる</span></span>
+<span id="cb2-2"><a aria-label="2"></a><span class="co"># Ctrl+/でコメントアウト、F5で実行</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -659,17 +665,17 @@ rkskmt
 <p>順序と字下げが崩れた次のコードを、<strong>ショートカットだけで</strong>ゴールの形に直せ。</p>
 </div>
 <p><strong>初期状態</strong>：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>score <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
-<span id="cb3-2"><a></a>    <span class="cf">if</span> score <span class="op">&gt;=</span> <span class="dv">60</span>:</span>
-<span id="cb3-3"><a></a><span class="bu">print</span>(<span class="st">"不合格"</span>)</span>
-<span id="cb3-4"><a></a>        <span class="bu">print</span>(<span class="st">"合格"</span>)</span>
-<span id="cb3-5"><a></a>    <span class="cf">else</span>:</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a>score <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb3-2"><a aria-label="2"></a>    <span class="cf">if</span> score <span class="op">&gt;=</span> <span class="dv">60</span>:</span>
+<span id="cb3-3"><a aria-label="3"></a><span class="bu">print</span>(<span class="st">"不合格"</span>)</span>
+<span id="cb3-4"><a aria-label="4"></a>        <span class="bu">print</span>(<span class="st">"合格"</span>)</span>
+<span id="cb3-5"><a aria-label="5"></a>    <span class="cf">else</span>:</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>ゴール</strong>：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>score <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
-<span id="cb4-2"><a></a><span class="cf">if</span> score <span class="op">&gt;=</span> <span class="dv">60</span>:</span>
-<span id="cb4-3"><a></a>    <span class="bu">print</span>(<span class="st">"合格"</span>)</span>
-<span id="cb4-4"><a></a><span class="cf">else</span>:</span>
-<span id="cb4-5"><a></a>    <span class="bu">print</span>(<span class="st">"不合格"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a>score <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb4-2"><a aria-label="2"></a><span class="cf">if</span> score <span class="op">&gt;=</span> <span class="dv">60</span>:</span>
+<span id="cb4-3"><a aria-label="3"></a>    <span class="bu">print</span>(<span class="st">"合格"</span>)</span>
+<span id="cb4-4"><a aria-label="4"></a><span class="cf">else</span>:</span>
+<span id="cb4-5"><a aria-label="5"></a>    <span class="bu">print</span>(<span class="st">"不合格"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>ヒント</strong>：</p>
 <ul>
 <li>行の移動は <strong>Alt + ↑↓</strong> または <strong>Ctrl+x → Ctrl+v</strong></li>
@@ -684,39 +690,39 @@ rkskmt
 <p>実行すると結果がおかしい次のプログラムで、<strong>どのブロックが原因か</strong>をコメントアウトで突き止めよ。</p>
 </div>
 <p><strong>コード（VS Codeに貼り付けて実行）</strong>：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">55</span>, <span class="dv">65</span>]</span>
-<span id="cb5-2"><a></a>names <span class="op">=</span> [<span class="st">"田中"</span>, <span class="st">"鈴木"</span>, <span class="st">"佐藤"</span>, <span class="st">"山田"</span>, <span class="st">"高橋"</span>]</span>
-<span id="cb5-3"><a></a></span>
-<span id="cb5-4"><a></a><span class="kw">def</span> normalize(data, threshold<span class="op">=</span><span class="dv">60</span>):</span>
-<span id="cb5-5"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(data)):</span>
-<span id="cb5-6"><a></a>        <span class="cf">if</span> data[i] <span class="op">&lt;</span> threshold:</span>
-<span id="cb5-7"><a></a>            data[i] <span class="op">=</span> threshold</span>
-<span id="cb5-8"><a></a>    <span class="cf">return</span> data</span>
-<span id="cb5-9"><a></a></span>
-<span id="cb5-10"><a></a><span class="co"># ブロック①：受験者一覧</span></span>
-<span id="cb5-11"><a></a><span class="bu">print</span>(<span class="st">"=== 受験者一覧 ==="</span>)</span>
-<span id="cb5-12"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(names)):</span>
-<span id="cb5-13"><a></a>    <span class="bu">print</span>(names[i], <span class="st">":"</span>, scores[i], <span class="st">"点"</span>)</span>
-<span id="cb5-14"><a></a></span>
-<span id="cb5-15"><a></a><span class="co"># ブロック②：補正後の平均点</span></span>
-<span id="cb5-16"><a></a><span class="bu">print</span>(<span class="st">"=== 補正後の平均点 ==="</span>)</span>
-<span id="cb5-17"><a></a>corrected <span class="op">=</span> normalize(scores)</span>
-<span id="cb5-18"><a></a>average <span class="op">=</span> <span class="bu">sum</span>(corrected) <span class="op">/</span> <span class="bu">len</span>(corrected)</span>
-<span id="cb5-19"><a></a><span class="bu">print</span>(<span class="st">"平均："</span>, <span class="bu">round</span>(average, <span class="dv">1</span>), <span class="st">"点"</span>)</span>
-<span id="cb5-20"><a></a></span>
-<span id="cb5-21"><a></a><span class="co"># ブロック③：合否判定</span></span>
-<span id="cb5-22"><a></a><span class="bu">print</span>(<span class="st">"=== 合否判定 ==="</span>)</span>
-<span id="cb5-23"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(names)):</span>
-<span id="cb5-24"><a></a>    <span class="cf">if</span> scores[i] <span class="op">&gt;=</span> <span class="dv">60</span>:</span>
-<span id="cb5-25"><a></a>        <span class="bu">print</span>(names[i], <span class="st">"：合格"</span>)</span>
-<span id="cb5-26"><a></a>    <span class="cf">else</span>:</span>
-<span id="cb5-27"><a></a>        <span class="bu">print</span>(names[i], <span class="st">"：不合格"</span>)</span>
-<span id="cb5-28"><a></a></span>
-<span id="cb5-29"><a></a><span class="co"># ブロック④：不合格者集計</span></span>
-<span id="cb5-30"><a></a><span class="bu">print</span>(<span class="st">"=== 集計 ==="</span>)</span>
-<span id="cb5-31"><a></a>failed <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> scores <span class="cf">if</span> s <span class="op">&lt;</span> <span class="dv">60</span>]</span>
-<span id="cb5-32"><a></a><span class="bu">print</span>(<span class="st">"不合格者数："</span>, <span class="bu">len</span>(failed), <span class="st">"人"</span>)</span>
-<span id="cb5-33"><a></a><span class="bu">print</span>(<span class="st">"合格者数："</span>, <span class="bu">len</span>(scores) <span class="op">-</span> <span class="bu">len</span>(failed), <span class="st">"人"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">55</span>, <span class="dv">65</span>]</span>
+<span id="cb5-2"><a aria-label="2"></a>names <span class="op">=</span> [<span class="st">"田中"</span>, <span class="st">"鈴木"</span>, <span class="st">"佐藤"</span>, <span class="st">"山田"</span>, <span class="st">"高橋"</span>]</span>
+<span id="cb5-3"><a aria-label="3"></a></span>
+<span id="cb5-4"><a aria-label="4"></a><span class="kw">def</span> normalize(data, threshold<span class="op">=</span><span class="dv">60</span>):</span>
+<span id="cb5-5"><a aria-label="5"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(data)):</span>
+<span id="cb5-6"><a aria-label="6"></a>        <span class="cf">if</span> data[i] <span class="op">&lt;</span> threshold:</span>
+<span id="cb5-7"><a aria-label="7"></a>            data[i] <span class="op">=</span> threshold</span>
+<span id="cb5-8"><a aria-label="8"></a>    <span class="cf">return</span> data</span>
+<span id="cb5-9"><a aria-label="9"></a></span>
+<span id="cb5-10"><a aria-label="10"></a><span class="co"># ブロック①：受験者一覧</span></span>
+<span id="cb5-11"><a aria-label="11"></a><span class="bu">print</span>(<span class="st">"=== 受験者一覧 ==="</span>)</span>
+<span id="cb5-12"><a aria-label="12"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(names)):</span>
+<span id="cb5-13"><a aria-label="13"></a>    <span class="bu">print</span>(names[i], <span class="st">":"</span>, scores[i], <span class="st">"点"</span>)</span>
+<span id="cb5-14"><a aria-label="14"></a></span>
+<span id="cb5-15"><a aria-label="15"></a><span class="co"># ブロック②：補正後の平均点</span></span>
+<span id="cb5-16"><a aria-label="16"></a><span class="bu">print</span>(<span class="st">"=== 補正後の平均点 ==="</span>)</span>
+<span id="cb5-17"><a aria-label="17"></a>corrected <span class="op">=</span> normalize(scores)</span>
+<span id="cb5-18"><a aria-label="18"></a>average <span class="op">=</span> <span class="bu">sum</span>(corrected) <span class="op">/</span> <span class="bu">len</span>(corrected)</span>
+<span id="cb5-19"><a aria-label="19"></a><span class="bu">print</span>(<span class="st">"平均："</span>, <span class="bu">round</span>(average, <span class="dv">1</span>), <span class="st">"点"</span>)</span>
+<span id="cb5-20"><a aria-label="20"></a></span>
+<span id="cb5-21"><a aria-label="21"></a><span class="co"># ブロック③：合否判定</span></span>
+<span id="cb5-22"><a aria-label="22"></a><span class="bu">print</span>(<span class="st">"=== 合否判定 ==="</span>)</span>
+<span id="cb5-23"><a aria-label="23"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(names)):</span>
+<span id="cb5-24"><a aria-label="24"></a>    <span class="cf">if</span> scores[i] <span class="op">&gt;=</span> <span class="dv">60</span>:</span>
+<span id="cb5-25"><a aria-label="25"></a>        <span class="bu">print</span>(names[i], <span class="st">"：合格"</span>)</span>
+<span id="cb5-26"><a aria-label="26"></a>    <span class="cf">else</span>:</span>
+<span id="cb5-27"><a aria-label="27"></a>        <span class="bu">print</span>(names[i], <span class="st">"：不合格"</span>)</span>
+<span id="cb5-28"><a aria-label="28"></a></span>
+<span id="cb5-29"><a aria-label="29"></a><span class="co"># ブロック④：不合格者集計</span></span>
+<span id="cb5-30"><a aria-label="30"></a><span class="bu">print</span>(<span class="st">"=== 集計 ==="</span>)</span>
+<span id="cb5-31"><a aria-label="31"></a>failed <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> scores <span class="cf">if</span> s <span class="op">&lt;</span> <span class="dv">60</span>]</span>
+<span id="cb5-32"><a aria-label="32"></a><span class="bu">print</span>(<span class="st">"不合格者数："</span>, <span class="bu">len</span>(failed), <span class="st">"人"</span>)</span>
+<span id="cb5-33"><a aria-label="33"></a><span class="bu">print</span>(<span class="st">"合格者数："</span>, <span class="bu">len</span>(scores) <span class="op">-</span> <span class="bu">len</span>(failed), <span class="st">"人"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>おかしい点</strong>：①で山田は55点と表示されるのに、③では山田が合格、④では不合格者0人になっている。</p>
 <ol type="1">
 <li>まず全体を実行して、おかしい箇所を確認</li>

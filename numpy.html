@@ -6,11 +6,11 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5c1318cf63eba56dbef7ba16bc7d56f5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+  <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="rkskmt">
   <title>情報処理 – NumPy入門</title>
@@ -20,10 +20,16 @@
   <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -98,7 +104,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-d3a26a7442888a116b43ccec6150e9c5.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-e69bca93ec9d1486cefcf16a785f5ce6.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -254,7 +260,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-rkskmt 
+rkskmt
 </div>
 </div>
 </div>
@@ -279,9 +285,9 @@ rkskmt
 <h2>インストールと使用</h2>
 <div class="slide-body">
 <p>ターミナルからインストール</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>pip install numpy</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a aria-label="1"></a>pip install numpy</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p>冒頭でimportして使用（ただしnpというエイリアス指定が一般的）</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -292,8 +298,8 @@ rkskmt
 </div>
 <div class="callout-content">
 <p><code>import numpy as np</code> の <code>as np</code> は<strong>別名（エイリアス）</strong>をつける構文</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy         <span class="co"># 使用時にnumpy.array(...) と書く</span></span>
-<span id="cb3-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np   <span class="co"># np.array(...) でよいので短い</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">import</span> numpy         <span class="co"># 使用時にnumpy.array(...) と書く</span></span>
+<span id="cb3-2"><a aria-label="2"></a><span class="im">import</span> numpy <span class="im">as</span> np   <span class="co"># np.array(...) でよいので短い</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong>注</strong>：<code>np</code> の部分は何でもよく別の名前も使用可能
 <ul>
@@ -316,11 +322,11 @@ rkskmt
 </ul></li>
 <li>NumPyはndarrayを効率よく処理するためのライブラリ</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]) <span class="co"># 1-4のndarray</span></span>
-<span id="cb4-4"><a></a></span>
-<span id="cb4-5"><a></a><span class="co"># 以下でarrを数値計算（例：平均・分散 etc.）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a aria-label="2"></a></span>
+<span id="cb4-3"><a aria-label="3"></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]) <span class="co"># 1-4のndarray</span></span>
+<span id="cb4-4"><a aria-label="4"></a></span>
+<span id="cb4-5"><a aria-label="5"></a><span class="co"># 以下でarrを数値計算（例：平均・分散 etc.）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -342,13 +348,13 @@ rkskmt
 <ul>
 <li>リストを <code>np.array()</code> に渡すと、NumPy配列になる</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a>li <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
-<span id="cb5-4"><a></a>arr <span class="op">=</span> np.array(li)</span>
-<span id="cb5-5"><a></a></span>
-<span id="cb5-6"><a></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])    <span class="co"># 同じ</span></span>
-<span id="cb5-7"><a></a>arr <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>))     <span class="co"># 同じ。実際には後述のarangeがよく使われる</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a aria-label="2"></a></span>
+<span id="cb5-3"><a aria-label="3"></a>li <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb5-4"><a aria-label="4"></a>arr <span class="op">=</span> np.array(li)</span>
+<span id="cb5-5"><a aria-label="5"></a></span>
+<span id="cb5-6"><a aria-label="6"></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])    <span class="co"># 同じ</span></span>
+<span id="cb5-7"><a aria-label="7"></a>arr <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>))     <span class="co"># 同じ。実際には後述のarangeがよく使われる</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -374,23 +380,23 @@ rkskmt
 <li>テスト用データを作るときに非常によく使われる</li>
 </ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a>np.zeros(<span class="dv">3</span>)          <span class="co"># 0.0が3つの要素で初期化。 [0. 0. 0. ] </span></span>
-<span id="cb6-4"><a></a>np.ones(<span class="dv">5</span>)           <span class="co"># 1.0が5つの要素で初期化。 [1. 1. 1. 1. 1.]</span></span>
-<span id="cb6-5"><a></a>np.full(<span class="dv">4</span>, <span class="dv">7</span>)        <span class="co"># 7が4つの要素で初期化。 [7 7 7 7]</span></span>
-<span id="cb6-6"><a></a></span>
-<span id="cb6-7"><a></a><span class="co"># arrangeではなくarange（"a range" = ある範囲）</span></span>
-<span id="cb6-8"><a></a>np.arange(<span class="dv">4</span>)         <span class="co"># [0 1 2 3]</span></span>
-<span id="cb6-9"><a></a>np.arange(<span class="dv">1</span>, <span class="dv">5</span>)      <span class="co"># [1 2 3 4]</span></span>
-<span id="cb6-10"><a></a>np.arange(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">2</span>)  <span class="co"># [1 3 5 7 9]</span></span>
-<span id="cb6-11"><a></a></span>
-<span id="cb6-12"><a></a>np.random.rand(<span class="dv">3</span>)           <span class="co"># [0.0, 1.0) の一様乱数 3要素</span></span>
-<span id="cb6-13"><a></a>np.random.randint(<span class="dv">10</span>)       <span class="co"># 0〜9のランダムな整数</span></span>
-<span id="cb6-14"><a></a>np.random.randint(<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">3</span>)  <span class="co"># 1〜6のランダムな整数 3要素</span></span>
-<span id="cb6-15"><a></a></span>
-<span id="cb6-16"><a></a>arr <span class="op">=</span> np.arange(<span class="dv">10</span>)</span>
-<span id="cb6-17"><a></a>np.random.shuffle(arr)      <span class="co"># 配列をランダムに並べ替え（破壊的）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-2"><a aria-label="2"></a></span>
+<span id="cb6-3"><a aria-label="3"></a>np.zeros(<span class="dv">3</span>)          <span class="co"># 0.0が3つの要素で初期化。 [0. 0. 0. ] </span></span>
+<span id="cb6-4"><a aria-label="4"></a>np.ones(<span class="dv">5</span>)           <span class="co"># 1.0が5つの要素で初期化。 [1. 1. 1. 1. 1.]</span></span>
+<span id="cb6-5"><a aria-label="5"></a>np.full(<span class="dv">4</span>, <span class="dv">7</span>)        <span class="co"># 7が4つの要素で初期化。 [7 7 7 7]</span></span>
+<span id="cb6-6"><a aria-label="6"></a></span>
+<span id="cb6-7"><a aria-label="7"></a><span class="co"># arrangeではなくarange（"a range" = ある範囲）</span></span>
+<span id="cb6-8"><a aria-label="8"></a>np.arange(<span class="dv">4</span>)         <span class="co"># [0 1 2 3]</span></span>
+<span id="cb6-9"><a aria-label="9"></a>np.arange(<span class="dv">1</span>, <span class="dv">5</span>)      <span class="co"># [1 2 3 4]</span></span>
+<span id="cb6-10"><a aria-label="10"></a>np.arange(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">2</span>)  <span class="co"># [1 3 5 7 9]</span></span>
+<span id="cb6-11"><a aria-label="11"></a></span>
+<span id="cb6-12"><a aria-label="12"></a>np.random.rand(<span class="dv">3</span>)           <span class="co"># [0.0, 1.0) の一様乱数 3要素</span></span>
+<span id="cb6-13"><a aria-label="13"></a>np.random.randint(<span class="dv">10</span>)       <span class="co"># 0〜9のランダムな整数</span></span>
+<span id="cb6-14"><a aria-label="14"></a>np.random.randint(<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">3</span>)  <span class="co"># 1〜6のランダムな整数 3要素</span></span>
+<span id="cb6-15"><a aria-label="15"></a></span>
+<span id="cb6-16"><a aria-label="16"></a>arr <span class="op">=</span> np.arange(<span class="dv">10</span>)</span>
+<span id="cb6-17"><a aria-label="17"></a>np.random.shuffle(arr)      <span class="co"># 配列をランダムに並べ替え（破壊的）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="要素へのアクセス" class="slide level2">
@@ -400,19 +406,19 @@ rkskmt
 <li>アクセス方法はlistと同じ</li>
 <li>スライスにも対応</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
-<span id="cb7-4"><a></a></span>
-<span id="cb7-5"><a></a><span class="bu">print</span>(arr[<span class="dv">0</span>])    <span class="co"># 先頭の要素（1）</span></span>
-<span id="cb7-6"><a></a><span class="bu">print</span>(arr[<span class="dv">1</span>])    <span class="co"># 2番目の要素（2）</span></span>
-<span id="cb7-7"><a></a><span class="bu">print</span>(arr[<span class="op">-</span><span class="dv">1</span>])   <span class="co"># 最後の要素（4）</span></span>
-<span id="cb7-8"><a></a>arr[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">10</span>      <span class="co"># 1番目の要素を10に変更</span></span>
-<span id="cb7-9"><a></a></span>
-<span id="cb7-10"><a></a><span class="co"># スライス</span></span>
-<span id="cb7-11"><a></a><span class="bu">print</span>(arr[<span class="dv">1</span>:<span class="dv">3</span>])  <span class="co"># 2番目から3番目まで（[2 3]）</span></span>
-<span id="cb7-12"><a></a><span class="bu">print</span>(arr[:<span class="dv">2</span>])   <span class="co"># 先頭から2番目まで（[10  2]。先頭は直前に10へ変更済み）</span></span>
-<span id="cb7-13"><a></a><span class="bu">print</span>(arr[<span class="dv">2</span>:])   <span class="co"># 3番目から最後まで（[3 4]）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a aria-label="2"></a></span>
+<span id="cb7-3"><a aria-label="3"></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
+<span id="cb7-4"><a aria-label="4"></a></span>
+<span id="cb7-5"><a aria-label="5"></a><span class="bu">print</span>(arr[<span class="dv">0</span>])    <span class="co"># 先頭の要素（1）</span></span>
+<span id="cb7-6"><a aria-label="6"></a><span class="bu">print</span>(arr[<span class="dv">1</span>])    <span class="co"># 2番目の要素（2）</span></span>
+<span id="cb7-7"><a aria-label="7"></a><span class="bu">print</span>(arr[<span class="op">-</span><span class="dv">1</span>])   <span class="co"># 最後の要素（4）</span></span>
+<span id="cb7-8"><a aria-label="8"></a>arr[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">10</span>      <span class="co"># 1番目の要素を10に変更</span></span>
+<span id="cb7-9"><a aria-label="9"></a></span>
+<span id="cb7-10"><a aria-label="10"></a><span class="co"># スライス</span></span>
+<span id="cb7-11"><a aria-label="11"></a><span class="bu">print</span>(arr[<span class="dv">1</span>:<span class="dv">3</span>])  <span class="co"># 2番目から3番目まで（[2 3]）</span></span>
+<span id="cb7-12"><a aria-label="12"></a><span class="bu">print</span>(arr[:<span class="dv">2</span>])   <span class="co"># 先頭から2番目まで（[10  2]。先頭は直前に10へ変更済み）</span></span>
+<span id="cb7-13"><a aria-label="13"></a><span class="bu">print</span>(arr[<span class="dv">2</span>:])   <span class="co"># 3番目から最後まで（[3 4]）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="型" class="slide level2">
@@ -427,15 +433,15 @@ rkskmt
 </ul></li>
 <li>異なる型は混ぜられない（intとfloatを混ぜると <strong>全部floatに統一</strong> される）</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb8-2"><a></a></span>
-<span id="cb8-3"><a></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
-<span id="cb8-4"><a></a><span class="bu">print</span>(<span class="bu">type</span>(arr))    <span class="co"># &lt;class 'numpy.ndarray'&gt;</span></span>
-<span id="cb8-5"><a></a><span class="bu">print</span>(<span class="bu">type</span>(arr[<span class="dv">0</span>])) <span class="co"># &lt;class 'numpy.int64'&gt;</span></span>
-<span id="cb8-6"><a></a></span>
-<span id="cb8-7"><a></a>arr2 <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>, <span class="fl">4.0</span>])</span>
-<span id="cb8-8"><a></a><span class="bu">print</span>(<span class="bu">type</span>(arr2))    <span class="co"># &lt;class 'numpy.ndarray'&gt;</span></span>
-<span id="cb8-9"><a></a><span class="bu">print</span>(<span class="bu">type</span>(arr2[<span class="dv">0</span>])) <span class="co"># &lt;class 'numpy.float64'&gt;</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-2"><a aria-label="2"></a></span>
+<span id="cb8-3"><a aria-label="3"></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
+<span id="cb8-4"><a aria-label="4"></a><span class="bu">print</span>(<span class="bu">type</span>(arr))    <span class="co"># &lt;class 'numpy.ndarray'&gt;</span></span>
+<span id="cb8-5"><a aria-label="5"></a><span class="bu">print</span>(<span class="bu">type</span>(arr[<span class="dv">0</span>])) <span class="co"># &lt;class 'numpy.int64'&gt;</span></span>
+<span id="cb8-6"><a aria-label="6"></a></span>
+<span id="cb8-7"><a aria-label="7"></a>arr2 <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>, <span class="fl">4.0</span>])</span>
+<span id="cb8-8"><a aria-label="8"></a><span class="bu">print</span>(<span class="bu">type</span>(arr2))    <span class="co"># &lt;class 'numpy.ndarray'&gt;</span></span>
+<span id="cb8-9"><a aria-label="9"></a><span class="bu">print</span>(<span class="bu">type</span>(arr2[<span class="dv">0</span>])) <span class="co"># &lt;class 'numpy.float64'&gt;</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="強力な演算" class="slide level2">
@@ -447,17 +453,17 @@ rkskmt
 <li>for文が不要なため非常に高速</li>
 </ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb9-2"><a></a></span>
-<span id="cb9-3"><a></a>my_array <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
-<span id="cb9-4"><a></a><span class="bu">print</span>(my_array <span class="op">*</span> <span class="dv">2</span>)  <span class="co"># [2 4 6]  ← 要素ごとの計算</span></span>
-<span id="cb9-5"><a></a></span>
-<span id="cb9-6"><a></a><span class="co"># listに * 2 を使うと...</span></span>
-<span id="cb9-7"><a></a>my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb9-8"><a></a><span class="bu">print</span>(my_list <span class="op">*</span> <span class="dv">2</span>)   <span class="co"># [1, 2, 3, 1, 2, 3]  ← 演算ではなく、２つのリストのconcat</span></span>
-<span id="cb9-9"><a></a></span>
-<span id="cb9-10"><a></a><span class="co"># listで同じことをするにはfor文や内包表記が必要</span></span>
-<span id="cb9-11"><a></a><span class="bu">print</span>([x <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> my_list])  <span class="co"># [2, 4, 6]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a aria-label="2"></a></span>
+<span id="cb9-3"><a aria-label="3"></a>my_array <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb9-4"><a aria-label="4"></a><span class="bu">print</span>(my_array <span class="op">*</span> <span class="dv">2</span>)  <span class="co"># [2 4 6]  ← 要素ごとの計算</span></span>
+<span id="cb9-5"><a aria-label="5"></a></span>
+<span id="cb9-6"><a aria-label="6"></a><span class="co"># listに * 2 を使うと...</span></span>
+<span id="cb9-7"><a aria-label="7"></a>my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb9-8"><a aria-label="8"></a><span class="bu">print</span>(my_list <span class="op">*</span> <span class="dv">2</span>)   <span class="co"># [1, 2, 3, 1, 2, 3]  ← 演算ではなく、２つのリストのconcat</span></span>
+<span id="cb9-9"><a aria-label="9"></a></span>
+<span id="cb9-10"><a aria-label="10"></a><span class="co"># listで同じことをするにはfor文や内包表記が必要</span></span>
+<span id="cb9-11"><a aria-label="11"></a><span class="bu">print</span>([x <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> my_list])  <span class="co"># [2, 4, 6]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="本当に速いの-100万要素で実測" class="slide level2">
@@ -467,39 +473,39 @@ rkskmt
 <li>「for文が不要なため非常に高速」— 何倍くらい違うと思う？</li>
 </ul>
 <div class="fragment">
-<div id="562179a3" class="cell" data-execution_count="1">
+<div id="f1ae031a" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>計測コードを表示</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> time</span>
-<span id="cb10-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb10-3"><a></a></span>
-<span id="cb10-4"><a></a>n <span class="op">=</span> <span class="dv">1_000_000</span></span>
-<span id="cb10-5"><a></a>li <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(n))</span>
-<span id="cb10-6"><a></a>arr <span class="op">=</span> np.arange(n)</span>
-<span id="cb10-7"><a></a></span>
-<span id="cb10-8"><a></a><span class="kw">def</span> best_time(f, repeat<span class="op">=</span><span class="dv">5</span>):</span>
-<span id="cb10-9"><a></a>    <span class="co">"""repeat回実行して最速を返す（タイマーの揺れ対策の定石）"""</span></span>
-<span id="cb10-10"><a></a>    times <span class="op">=</span> []</span>
-<span id="cb10-11"><a></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(repeat):</span>
-<span id="cb10-12"><a></a>        t0 <span class="op">=</span> time.perf_counter()</span>
-<span id="cb10-13"><a></a>        f()</span>
-<span id="cb10-14"><a></a>        times.append(time.perf_counter() <span class="op">-</span> t0)</span>
-<span id="cb10-15"><a></a>    <span class="cf">return</span> <span class="bu">min</span>(times)</span>
-<span id="cb10-16"><a></a></span>
-<span id="cb10-17"><a></a>t_list <span class="op">=</span> best_time(<span class="kw">lambda</span>: [x <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> li])   <span class="co"># list：内包表記で全要素を2倍</span></span>
-<span id="cb10-18"><a></a>t_arr  <span class="op">=</span> best_time(<span class="kw">lambda</span>: arr <span class="op">*</span> <span class="dv">2</span>)               <span class="co"># ndarray：そのまま2倍</span></span>
-<span id="cb10-19"><a></a></span>
-<span id="cb10-20"><a></a><span class="bu">print</span>(<span class="ss">f"list（内包表記）: </span><span class="sc">{</span>t_list <span class="op">*</span> <span class="dv">1000</span><span class="sc">:.1f}</span><span class="ss"> ミリ秒"</span>)</span>
-<span id="cb10-21"><a></a><span class="bu">print</span>(<span class="ss">f"ndarray:          </span><span class="sc">{</span>t_arr <span class="op">*</span> <span class="dv">1000</span><span class="sc">:.2f}</span><span class="ss"> ミリ秒"</span>)</span>
-<span id="cb10-22"><a></a><span class="bu">print</span>(<span class="ss">f"→ 約 </span><span class="sc">{</span>t_list <span class="op">/</span> t_arr<span class="sc">:.0f}</span><span class="ss"> 倍速い"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="im">import</span> time</span>
+<span id="cb10-2"><a aria-label="2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-3"><a aria-label="3"></a></span>
+<span id="cb10-4"><a aria-label="4"></a>n <span class="op">=</span> <span class="dv">1_000_000</span></span>
+<span id="cb10-5"><a aria-label="5"></a>li <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(n))</span>
+<span id="cb10-6"><a aria-label="6"></a>arr <span class="op">=</span> np.arange(n)</span>
+<span id="cb10-7"><a aria-label="7"></a></span>
+<span id="cb10-8"><a aria-label="8"></a><span class="kw">def</span> best_time(f, repeat<span class="op">=</span><span class="dv">5</span>):</span>
+<span id="cb10-9"><a aria-label="9"></a>    <span class="co">"""repeat回実行して最速を返す（タイマーの揺れ対策の定石）"""</span></span>
+<span id="cb10-10"><a aria-label="10"></a>    times <span class="op">=</span> []</span>
+<span id="cb10-11"><a aria-label="11"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(repeat):</span>
+<span id="cb10-12"><a aria-label="12"></a>        t0 <span class="op">=</span> time.perf_counter()</span>
+<span id="cb10-13"><a aria-label="13"></a>        f()</span>
+<span id="cb10-14"><a aria-label="14"></a>        times.append(time.perf_counter() <span class="op">-</span> t0)</span>
+<span id="cb10-15"><a aria-label="15"></a>    <span class="cf">return</span> <span class="bu">min</span>(times)</span>
+<span id="cb10-16"><a aria-label="16"></a></span>
+<span id="cb10-17"><a aria-label="17"></a>t_list <span class="op">=</span> best_time(<span class="kw">lambda</span>: [x <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> li])   <span class="co"># list：内包表記で全要素を2倍</span></span>
+<span id="cb10-18"><a aria-label="18"></a>t_arr  <span class="op">=</span> best_time(<span class="kw">lambda</span>: arr <span class="op">*</span> <span class="dv">2</span>)               <span class="co"># ndarray：そのまま2倍</span></span>
+<span id="cb10-19"><a aria-label="19"></a></span>
+<span id="cb10-20"><a aria-label="20"></a><span class="bu">print</span>(<span class="ss">f"list（内包表記）: </span><span class="sc">{</span>t_list <span class="op">*</span> <span class="dv">1000</span><span class="sc">:.1f}</span><span class="ss"> ミリ秒"</span>)</span>
+<span id="cb10-21"><a aria-label="21"></a><span class="bu">print</span>(<span class="ss">f"ndarray:          </span><span class="sc">{</span>t_arr <span class="op">*</span> <span class="dv">1000</span><span class="sc">:.2f}</span><span class="ss"> ミリ秒"</span>)</span>
+<span id="cb10-22"><a aria-label="22"></a><span class="bu">print</span>(<span class="ss">f"→ 約 </span><span class="sc">{</span>t_list <span class="op">/</span> t_arr<span class="sc">:.0f}</span><span class="ss"> 倍速い"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>list（内包表記）: 24.1 ミリ秒
-ndarray:          0.28 ミリ秒
-→ 約 85 倍速い</code></pre>
+<pre><code>list（内包表記）: 23.3 ミリ秒
+ndarray:          0.24 ミリ秒
+→ 約 97 倍速い</code></pre>
 </div>
 </div>
-<div id="4072cf14" class="cell" data-execution_count="2">
+<div id="fe126132" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -525,26 +531,26 @@ ndarray:          0.28 ミリ秒
 </ul></li>
 <li>for文はlistと同じように記述可能</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb12-2"><a></a></span>
-<span id="cb12-3"><a></a>arr <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
-<span id="cb12-4"><a></a></span>
-<span id="cb12-5"><a></a><span class="bu">print</span>(<span class="bu">len</span>(arr))  <span class="co"># 長さ（listと同じ）</span></span>
-<span id="cb12-6"><a></a><span class="bu">print</span>(arr.size)  <span class="co"># 普通はこちらを使う</span></span>
-<span id="cb12-7"><a></a></span>
-<span id="cb12-8"><a></a><span class="co"># for文もlistと同じように使える</span></span>
-<span id="cb12-9"><a></a><span class="cf">for</span> v <span class="kw">in</span> arr:</span>
-<span id="cb12-10"><a></a>    <span class="bu">print</span>(v)</span>
-<span id="cb12-11"><a></a></span>
-<span id="cb12-12"><a></a><span class="co"># 差分（数値微分）</span></span>
-<span id="cb12-13"><a></a>arr <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>]) <span class="co"># 時系列の信号を想定</span></span>
-<span id="cb12-14"><a></a>diff <span class="op">=</span> np.zeros(<span class="bu">len</span>(arr) <span class="op">-</span> <span class="dv">1</span>) <span class="co"># 結果格納用のndarray</span></span>
-<span id="cb12-15"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(arr) <span class="op">-</span> <span class="dv">1</span>):</span>
-<span id="cb12-16"><a></a>    diff[i] <span class="op">=</span> arr[i<span class="op">+</span><span class="dv">1</span>] <span class="op">-</span> arr[i] <span class="co"># 微分</span></span>
-<span id="cb12-17"><a></a><span class="bu">print</span>(diff)  <span class="co"># [ 2.  3. -2. -2.  3.]</span></span>
-<span id="cb12-18"><a></a></span>
-<span id="cb12-19"><a></a><span class="co"># 実はNumPyなら1行（こういう「定番処理の組み込み」が大量にある）</span></span>
-<span id="cb12-20"><a></a><span class="bu">print</span>(np.diff(arr))  <span class="co"># [ 2  3 -2 -2  3]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a aria-label="2"></a></span>
+<span id="cb12-3"><a aria-label="3"></a>arr <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
+<span id="cb12-4"><a aria-label="4"></a></span>
+<span id="cb12-5"><a aria-label="5"></a><span class="bu">print</span>(<span class="bu">len</span>(arr))  <span class="co"># 長さ（listと同じ）</span></span>
+<span id="cb12-6"><a aria-label="6"></a><span class="bu">print</span>(arr.size)  <span class="co"># 普通はこちらを使う</span></span>
+<span id="cb12-7"><a aria-label="7"></a></span>
+<span id="cb12-8"><a aria-label="8"></a><span class="co"># for文もlistと同じように使える</span></span>
+<span id="cb12-9"><a aria-label="9"></a><span class="cf">for</span> v <span class="kw">in</span> arr:</span>
+<span id="cb12-10"><a aria-label="10"></a>    <span class="bu">print</span>(v)</span>
+<span id="cb12-11"><a aria-label="11"></a></span>
+<span id="cb12-12"><a aria-label="12"></a><span class="co"># 差分（数値微分）</span></span>
+<span id="cb12-13"><a aria-label="13"></a>arr <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>]) <span class="co"># 時系列の信号を想定</span></span>
+<span id="cb12-14"><a aria-label="14"></a>diff <span class="op">=</span> np.zeros(<span class="bu">len</span>(arr) <span class="op">-</span> <span class="dv">1</span>) <span class="co"># 結果格納用のndarray</span></span>
+<span id="cb12-15"><a aria-label="15"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(arr) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb12-16"><a aria-label="16"></a>    diff[i] <span class="op">=</span> arr[i<span class="op">+</span><span class="dv">1</span>] <span class="op">-</span> arr[i] <span class="co"># 微分</span></span>
+<span id="cb12-17"><a aria-label="17"></a><span class="bu">print</span>(diff)  <span class="co"># [ 2.  3. -2. -2.  3.]</span></span>
+<span id="cb12-18"><a aria-label="18"></a></span>
+<span id="cb12-19"><a aria-label="19"></a><span class="co"># 実はNumPyなら1行（こういう「定番処理の組み込み」が大量にある）</span></span>
+<span id="cb12-20"><a aria-label="20"></a><span class="bu">print</span>(np.diff(arr))  <span class="co"># [ 2  3 -2 -2  3]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="多次元array" class="slide level2">
@@ -556,23 +562,23 @@ ndarray:          0.28 ミリ秒
 <li>特に行列演算が強力</li>
 </ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb13-2"><a></a></span>
-<span id="cb13-3"><a></a><span class="co"># 2次元配列（行列）</span></span>
-<span id="cb13-4"><a></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
-<span id="cb13-5"><a></a></span>
-<span id="cb13-6"><a></a>B <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">0</span>],</span>
-<span id="cb13-7"><a></a>              [<span class="dv">0</span>, <span class="dv">5</span>]])</span>
-<span id="cb13-8"><a></a></span>
-<span id="cb13-9"><a></a><span class="co"># 要素へのアクセス</span></span>
-<span id="cb13-10"><a></a><span class="bu">print</span>(A[<span class="dv">0</span>, <span class="dv">1</span>])  <span class="co"># 1行目2列目</span></span>
-<span id="cb13-11"><a></a><span class="bu">print</span>(A[<span class="dv">1</span>, :])  <span class="co"># 2行目全体</span></span>
-<span id="cb13-12"><a></a><span class="bu">print</span>(A[:, <span class="dv">0</span>])  <span class="co"># 1列目全体</span></span>
-<span id="cb13-13"><a></a></span>
-<span id="cb13-14"><a></a><span class="co"># 転置（transpose）</span></span>
-<span id="cb13-15"><a></a><span class="bu">print</span>(A.T)</span>
-<span id="cb13-16"><a></a><span class="bu">print</span>(B.T)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="e38ac462" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb13-2"><a aria-label="2"></a></span>
+<span id="cb13-3"><a aria-label="3"></a><span class="co"># 2次元配列（行列）</span></span>
+<span id="cb13-4"><a aria-label="4"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
+<span id="cb13-5"><a aria-label="5"></a></span>
+<span id="cb13-6"><a aria-label="6"></a>B <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">0</span>],</span>
+<span id="cb13-7"><a aria-label="7"></a>              [<span class="dv">0</span>, <span class="dv">5</span>]])</span>
+<span id="cb13-8"><a aria-label="8"></a></span>
+<span id="cb13-9"><a aria-label="9"></a><span class="co"># 要素へのアクセス</span></span>
+<span id="cb13-10"><a aria-label="10"></a><span class="bu">print</span>(A[<span class="dv">0</span>, <span class="dv">1</span>])  <span class="co"># 1行目2列目</span></span>
+<span id="cb13-11"><a aria-label="11"></a><span class="bu">print</span>(A[<span class="dv">1</span>, :])  <span class="co"># 2行目全体</span></span>
+<span id="cb13-12"><a aria-label="12"></a><span class="bu">print</span>(A[:, <span class="dv">0</span>])  <span class="co"># 1列目全体</span></span>
+<span id="cb13-13"><a aria-label="13"></a></span>
+<span id="cb13-14"><a aria-label="14"></a><span class="co"># 転置（transpose）</span></span>
+<span id="cb13-15"><a aria-label="15"></a><span class="bu">print</span>(A.T)</span>
+<span id="cb13-16"><a aria-label="16"></a><span class="bu">print</span>(B.T)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="797de2df" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -592,16 +598,16 @@ ndarray:          0.28 ミリ秒
 <ul>
 <li>統計処理の組み込み関数も多数提供されている</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb14-2"><a></a></span>
-<span id="cb14-3"><a></a>scores <span class="op">=</span> np.array([<span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">75</span>, <span class="dv">88</span>, <span class="dv">92</span>, <span class="dv">82</span>, <span class="dv">79</span>, <span class="dv">87</span>])</span>
-<span id="cb14-4"><a></a></span>
-<span id="cb14-5"><a></a><span class="bu">print</span>(np.<span class="bu">max</span>(scores))    <span class="co"># 最大値</span></span>
-<span id="cb14-6"><a></a><span class="bu">print</span>(np.<span class="bu">min</span>(scores))    <span class="co"># 最小値</span></span>
-<span id="cb14-7"><a></a><span class="bu">print</span>(np.mean(scores))   <span class="co"># 平均値</span></span>
-<span id="cb14-8"><a></a><span class="bu">print</span>(np.median(scores)) <span class="co"># 中央値</span></span>
-<span id="cb14-9"><a></a><span class="bu">print</span>(np.var(scores))    <span class="co"># 分散</span></span>
-<span id="cb14-10"><a></a><span class="bu">print</span>(np.std(scores))    <span class="co"># 標準偏差</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb14-2"><a aria-label="2"></a></span>
+<span id="cb14-3"><a aria-label="3"></a>scores <span class="op">=</span> np.array([<span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">75</span>, <span class="dv">88</span>, <span class="dv">92</span>, <span class="dv">82</span>, <span class="dv">79</span>, <span class="dv">87</span>])</span>
+<span id="cb14-4"><a aria-label="4"></a></span>
+<span id="cb14-5"><a aria-label="5"></a><span class="bu">print</span>(np.<span class="bu">max</span>(scores))    <span class="co"># 最大値</span></span>
+<span id="cb14-6"><a aria-label="6"></a><span class="bu">print</span>(np.<span class="bu">min</span>(scores))    <span class="co"># 最小値</span></span>
+<span id="cb14-7"><a aria-label="7"></a><span class="bu">print</span>(np.mean(scores))   <span class="co"># 平均値</span></span>
+<span id="cb14-8"><a aria-label="8"></a><span class="bu">print</span>(np.median(scores)) <span class="co"># 中央値</span></span>
+<span id="cb14-9"><a aria-label="9"></a><span class="bu">print</span>(np.var(scores))    <span class="co"># 分散</span></span>
+<span id="cb14-10"><a aria-label="10"></a><span class="bu">print</span>(np.std(scores))    <span class="co"># 標準偏差</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="多次元は-axis-で潰す向きを指定" class="slide level2">
@@ -610,14 +616,14 @@ ndarray:          0.28 ミリ秒
 <ul>
 <li>2次元以上の集計は <code>axis=</code> で向きを指定する</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb15-2"><a></a></span>
-<span id="cb15-3"><a></a><span class="co"># 3人の生徒の英語・数学・国語の成績</span></span>
-<span id="cb15-4"><a></a>data <span class="op">=</span> np.array([[<span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">90</span>], [<span class="dv">75</span>, <span class="dv">88</span>, <span class="dv">92</span>], [<span class="dv">82</span>, <span class="dv">79</span>, <span class="dv">87</span>]])</span>
-<span id="cb15-5"><a></a></span>
-<span id="cb15-6"><a></a><span class="bu">print</span>(np.mean(data, axis<span class="op">=</span><span class="dv">0</span>))  <span class="co"># 列ごと（各科目の平均）</span></span>
-<span id="cb15-7"><a></a><span class="bu">print</span>(np.mean(data, axis<span class="op">=</span><span class="dv">1</span>))  <span class="co"># 行ごと（各生徒の平均）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="9bb15aba" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-2"><a aria-label="2"></a></span>
+<span id="cb15-3"><a aria-label="3"></a><span class="co"># 3人の生徒の英語・数学・国語の成績</span></span>
+<span id="cb15-4"><a aria-label="4"></a>data <span class="op">=</span> np.array([[<span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">90</span>], [<span class="dv">75</span>, <span class="dv">88</span>, <span class="dv">92</span>], [<span class="dv">82</span>, <span class="dv">79</span>, <span class="dv">87</span>]])</span>
+<span id="cb15-5"><a aria-label="5"></a></span>
+<span id="cb15-6"><a aria-label="6"></a><span class="bu">print</span>(np.mean(data, axis<span class="op">=</span><span class="dv">0</span>))  <span class="co"># 列ごと（各科目の平均）</span></span>
+<span id="cb15-7"><a aria-label="7"></a><span class="bu">print</span>(np.mean(data, axis<span class="op">=</span><span class="dv">1</span>))  <span class="co"># 行ごと（各生徒の平均）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="884381f9" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -635,13 +641,13 @@ ndarray:          0.28 ミリ秒
 <li>比較演算も「全要素いっせい」に効く</li>
 <li>その <code>True</code> / <code>False</code> を添字に渡すと <strong>フィルタ</strong> になる</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb16-2"><a></a></span>
-<span id="cb16-3"><a></a>scores <span class="op">=</span> np.array([<span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">75</span>, <span class="dv">88</span>, <span class="dv">92</span>, <span class="dv">82</span>, <span class="dv">79</span>, <span class="dv">87</span>])</span>
-<span id="cb16-4"><a></a></span>
-<span id="cb16-5"><a></a><span class="bu">print</span>(scores <span class="op">&gt;=</span> <span class="dv">85</span>)           <span class="co"># True/False</span></span>
-<span id="cb16-6"><a></a><span class="bu">print</span>(scores[scores <span class="op">&gt;=</span> <span class="dv">85</span>])   <span class="co"># 85点以上のデータ</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="50adc44f" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb16-2"><a aria-label="2"></a></span>
+<span id="cb16-3"><a aria-label="3"></a>scores <span class="op">=</span> np.array([<span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">75</span>, <span class="dv">88</span>, <span class="dv">92</span>, <span class="dv">82</span>, <span class="dv">79</span>, <span class="dv">87</span>])</span>
+<span id="cb16-4"><a aria-label="4"></a></span>
+<span id="cb16-5"><a aria-label="5"></a><span class="bu">print</span>(scores <span class="op">&gt;=</span> <span class="dv">85</span>)           <span class="co"># True/False</span></span>
+<span id="cb16-6"><a aria-label="6"></a><span class="bu">print</span>(scores[scores <span class="op">&gt;=</span> <span class="dv">85</span>])   <span class="co"># 85点以上のデータ</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f38625b3" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -668,22 +674,22 @@ ndarray:          0.28 ミリ秒
 <li>100以上400以下のランダムな整数１つ</li>
 <li>0以上1未満のランダムな数１つ</li>
 </ol>
-<div id="551f06eb" class="cell" data-execution_count="6">
+<div id="bee86fa4" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb17-2"><a></a></span>
-<span id="cb17-3"><a></a>arr <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">11</span>)</span>
-<span id="cb17-4"><a></a><span class="bu">print</span>(arr)                        <span class="co"># (1)</span></span>
-<span id="cb17-5"><a></a></span>
-<span id="cb17-6"><a></a><span class="bu">print</span>(arr <span class="op">*</span> <span class="dv">2</span>)                    <span class="co"># (2)</span></span>
-<span id="cb17-7"><a></a></span>
-<span id="cb17-8"><a></a>shuffled <span class="op">=</span> arr.copy()             <span class="co"># (3) 並べ替えは破壊的なのでコピーしてから</span></span>
-<span id="cb17-9"><a></a>np.random.shuffle(shuffled)</span>
-<span id="cb17-10"><a></a><span class="bu">print</span>(shuffled)</span>
-<span id="cb17-11"><a></a></span>
-<span id="cb17-12"><a></a><span class="bu">print</span>(np.random.randint(<span class="dv">100</span>, <span class="dv">401</span>))  <span class="co"># (4) 上限は含まないので401</span></span>
-<span id="cb17-13"><a></a><span class="bu">print</span>(np.random.rand())             <span class="co"># (5)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb17-2"><a aria-label="2"></a></span>
+<span id="cb17-3"><a aria-label="3"></a>arr <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">11</span>)</span>
+<span id="cb17-4"><a aria-label="4"></a><span class="bu">print</span>(arr)                        <span class="co"># (1)</span></span>
+<span id="cb17-5"><a aria-label="5"></a></span>
+<span id="cb17-6"><a aria-label="6"></a><span class="bu">print</span>(arr <span class="op">*</span> <span class="dv">2</span>)                    <span class="co"># (2)</span></span>
+<span id="cb17-7"><a aria-label="7"></a></span>
+<span id="cb17-8"><a aria-label="8"></a>shuffled <span class="op">=</span> arr.copy()             <span class="co"># (3) 並べ替えは破壊的なのでコピーしてから</span></span>
+<span id="cb17-9"><a aria-label="9"></a>np.random.shuffle(shuffled)</span>
+<span id="cb17-10"><a aria-label="10"></a><span class="bu">print</span>(shuffled)</span>
+<span id="cb17-11"><a aria-label="11"></a></span>
+<span id="cb17-12"><a aria-label="12"></a><span class="bu">print</span>(np.random.randint(<span class="dv">100</span>, <span class="dv">401</span>))  <span class="co"># (4) 上限は含まないので401</span></span>
+<span id="cb17-13"><a aria-label="13"></a><span class="bu">print</span>(np.random.rand())             <span class="co"># (5)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -700,24 +706,24 @@ ndarray:          0.28 ミリ秒
 <li><code>li = [0.1, 0.2, 0.3]</code> でも同様に全要素の型を表示</li>
 <li>これもNumPyの配列 <code>arr2</code> に変換し、要素の型を表示</li>
 </ol>
-<div id="0dafb9ac" class="cell" data-execution_count="7">
+<div id="e22a396a" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb18-2"><a></a></span>
-<span id="cb18-3"><a></a>li <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
-<span id="cb18-4"><a></a><span class="cf">for</span> v <span class="kw">in</span> li:                <span class="co"># (1)</span></span>
-<span id="cb18-5"><a></a>    <span class="bu">print</span>(<span class="bu">type</span>(v))          <span class="co"># int</span></span>
-<span id="cb18-6"><a></a></span>
-<span id="cb18-7"><a></a>arr <span class="op">=</span> np.array(li)          <span class="co"># (2)</span></span>
-<span id="cb18-8"><a></a><span class="bu">print</span>(<span class="bu">type</span>(arr[<span class="dv">0</span>]))         <span class="co"># numpy.int64</span></span>
-<span id="cb18-9"><a></a></span>
-<span id="cb18-10"><a></a>li <span class="op">=</span> [<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>]</span>
-<span id="cb18-11"><a></a><span class="cf">for</span> v <span class="kw">in</span> li:                <span class="co"># (3)</span></span>
-<span id="cb18-12"><a></a>    <span class="bu">print</span>(<span class="bu">type</span>(v))          <span class="co"># float</span></span>
-<span id="cb18-13"><a></a></span>
-<span id="cb18-14"><a></a>arr2 <span class="op">=</span> np.array(li)         <span class="co"># (4)</span></span>
-<span id="cb18-15"><a></a><span class="bu">print</span>(<span class="bu">type</span>(arr2[<span class="dv">0</span>]))        <span class="co"># numpy.float64</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb18-2"><a aria-label="2"></a></span>
+<span id="cb18-3"><a aria-label="3"></a>li <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
+<span id="cb18-4"><a aria-label="4"></a><span class="cf">for</span> v <span class="kw">in</span> li:                <span class="co"># (1)</span></span>
+<span id="cb18-5"><a aria-label="5"></a>    <span class="bu">print</span>(<span class="bu">type</span>(v))          <span class="co"># int</span></span>
+<span id="cb18-6"><a aria-label="6"></a></span>
+<span id="cb18-7"><a aria-label="7"></a>arr <span class="op">=</span> np.array(li)          <span class="co"># (2)</span></span>
+<span id="cb18-8"><a aria-label="8"></a><span class="bu">print</span>(<span class="bu">type</span>(arr[<span class="dv">0</span>]))         <span class="co"># numpy.int64</span></span>
+<span id="cb18-9"><a aria-label="9"></a></span>
+<span id="cb18-10"><a aria-label="10"></a>li <span class="op">=</span> [<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>]</span>
+<span id="cb18-11"><a aria-label="11"></a><span class="cf">for</span> v <span class="kw">in</span> li:                <span class="co"># (3)</span></span>
+<span id="cb18-12"><a aria-label="12"></a>    <span class="bu">print</span>(<span class="bu">type</span>(v))          <span class="co"># float</span></span>
+<span id="cb18-13"><a aria-label="13"></a></span>
+<span id="cb18-14"><a aria-label="14"></a>arr2 <span class="op">=</span> np.array(li)         <span class="co"># (4)</span></span>
+<span id="cb18-15"><a aria-label="15"></a><span class="bu">print</span>(<span class="bu">type</span>(arr2[<span class="dv">0</span>]))        <span class="co"># numpy.float64</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 

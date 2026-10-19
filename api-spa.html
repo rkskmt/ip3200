@@ -6,11 +6,11 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5c1318cf63eba56dbef7ba16bc7d56f5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+  <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="rkskmt">
   <title>情報処理 – 自作API+SPA</title>
@@ -20,10 +20,16 @@
   <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -98,7 +104,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-d3a26a7442888a116b43ccec6150e9c5.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-e69bca93ec9d1486cefcf16a785f5ce6.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -254,7 +260,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-rkskmt 
+rkskmt
 </div>
 </div>
 </div>
@@ -322,21 +328,21 @@ rkskmt
 <section id="最もシンプルなapi" class="slide level2">
 <h2>最もシンプルなAPI</h2>
 <div class="slide-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">from</span> nicegui <span class="im">import</span> ui, app</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a><span class="at">@app.get</span>(<span class="st">"/api/hello"</span>)</span>
-<span id="cb1-4"><a></a><span class="kw">def</span> hello():</span>
-<span id="cb1-5"><a></a>    <span class="cf">return</span> {<span class="st">"message"</span>: <span class="st">"Hello, API!"</span>}</span>
-<span id="cb1-6"><a></a></span>
-<span id="cb1-7"><a></a>ui.label(<span class="st">"APIテスト"</span>)</span>
-<span id="cb1-8"><a></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">from</span> nicegui <span class="im">import</span> ui, app</span>
+<span id="cb1-2"><a aria-label="2"></a></span>
+<span id="cb1-3"><a aria-label="3"></a><span class="at">@app.get</span>(<span class="st">"/api/hello"</span>)</span>
+<span id="cb1-4"><a aria-label="4"></a><span class="kw">def</span> hello():</span>
+<span id="cb1-5"><a aria-label="5"></a>    <span class="cf">return</span> {<span class="st">"message"</span>: <span class="st">"Hello, API!"</span>}</span>
+<span id="cb1-6"><a aria-label="6"></a></span>
+<span id="cb1-7"><a aria-label="7"></a>ui.label(<span class="st">"APIテスト"</span>)</span>
+<span id="cb1-8"><a aria-label="8"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="apiの応答を確認する" class="slide level2">
 <h2>APIの応答を確認する</h2>
 <section id="ブラウザで-httplocalhost8080apihello-を開く" class="slide-body">
 <h4>ブラウザで <code>http://localhost:8080/api/hello</code> を開く</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a></a><span class="fu">{</span><span class="dt">"message"</span><span class="fu">:</span> <span class="st">"Hello, API!"</span><span class="fu">}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a aria-label="1"></a><span class="fu">{</span><span class="dt">"message"</span><span class="fu">:</span> <span class="st">"Hello, API!"</span><span class="fu">}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="caption-top">
 <colgroup>
 <col style="width: 50%">
@@ -401,37 +407,37 @@ rkskmt
 <div class="caption-note">
 <p>ダウンロード用ファイルは質問3問（id: 1〜3）、結果A〜C。次のコードは一部を省略した表示例</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a></a><span class="fu">{</span></span>
-<span id="cb3-2"><a></a>  <span class="dt">"title"</span><span class="fu">:</span> <span class="st">"あなたにぴったりの職業診断"</span><span class="fu">,</span></span>
-<span id="cb3-3"><a></a>  <span class="dt">"questions"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb3-4"><a></a>    <span class="fu">{</span><span class="dt">"id"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span> <span class="dt">"text"</span><span class="fu">:</span> <span class="st">"休日は何をしたい？"</span><span class="fu">,</span></span>
-<span id="cb3-5"><a></a>     <span class="dt">"choices"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"外で遊ぶ"</span><span class="ot">,</span> <span class="st">"家でゆっくり"</span><span class="ot">,</span> <span class="st">"友達と集まる"</span><span class="ot">]</span><span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb3-6"><a></a>    <span class="fu">{</span><span class="dt">"id"</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">,</span> <span class="dt">"text"</span><span class="fu">:</span> <span class="st">"得意なことは？"</span><span class="fu">,</span></span>
-<span id="cb3-7"><a></a>     <span class="dt">"choices"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"計算"</span><span class="ot">,</span> <span class="st">"絵を描く"</span><span class="ot">,</span> <span class="st">"話すこと"</span><span class="ot">]</span><span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb3-8"><a></a>    <span class="er">...</span></span>
-<span id="cb3-9"><a></a>  <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb3-10"><a></a>  <span class="dt">"results"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb3-11"><a></a>    <span class="dt">"A"</span><span class="fu">:</span> <span class="st">"あなたは営業職タイプ！人と話すのが得意です。"</span><span class="fu">,</span></span>
-<span id="cb3-12"><a></a>    <span class="dt">"B"</span><span class="fu">:</span> <span class="st">"あなたはデザイナータイプ！創造力が豊かです。"</span><span class="fu">,</span></span>
-<span id="cb3-13"><a></a>    <span class="er">...</span></span>
-<span id="cb3-14"><a></a>  <span class="fu">}</span></span>
-<span id="cb3-15"><a></a><span class="fu">}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a aria-label="1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a aria-label="2"></a>  <span class="dt">"title"</span><span class="fu">:</span> <span class="st">"あなたにぴったりの職業診断"</span><span class="fu">,</span></span>
+<span id="cb3-3"><a aria-label="3"></a>  <span class="dt">"questions"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-4"><a aria-label="4"></a>    <span class="fu">{</span><span class="dt">"id"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span> <span class="dt">"text"</span><span class="fu">:</span> <span class="st">"休日は何をしたい？"</span><span class="fu">,</span></span>
+<span id="cb3-5"><a aria-label="5"></a>     <span class="dt">"choices"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"外で遊ぶ"</span><span class="ot">,</span> <span class="st">"家でゆっくり"</span><span class="ot">,</span> <span class="st">"友達と集まる"</span><span class="ot">]</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-6"><a aria-label="6"></a>    <span class="fu">{</span><span class="dt">"id"</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">,</span> <span class="dt">"text"</span><span class="fu">:</span> <span class="st">"得意なことは？"</span><span class="fu">,</span></span>
+<span id="cb3-7"><a aria-label="7"></a>     <span class="dt">"choices"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"計算"</span><span class="ot">,</span> <span class="st">"絵を描く"</span><span class="ot">,</span> <span class="st">"話すこと"</span><span class="ot">]</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-8"><a aria-label="8"></a>    <span class="er">...</span></span>
+<span id="cb3-9"><a aria-label="9"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-10"><a aria-label="10"></a>  <span class="dt">"results"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-11"><a aria-label="11"></a>    <span class="dt">"A"</span><span class="fu">:</span> <span class="st">"あなたは営業職タイプ！人と話すのが得意です。"</span><span class="fu">,</span></span>
+<span id="cb3-12"><a aria-label="12"></a>    <span class="dt">"B"</span><span class="fu">:</span> <span class="st">"あなたはデザイナータイプ！創造力が豊かです。"</span><span class="fu">,</span></span>
+<span id="cb3-13"><a aria-label="13"></a>    <span class="er">...</span></span>
+<span id="cb3-14"><a aria-label="14"></a>  <span class="fu">}</span></span>
+<span id="cb3-15"><a aria-label="15"></a><span class="fu">}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="エンドポイントでファイルを読む" class="slide level2">
 <h2>エンドポイントでファイルを読む</h2>
 <div class="slide-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">from</span> nicegui <span class="im">import</span> ui, app</span>
-<span id="cb4-2"><a></a><span class="im">import</span> json</span>
-<span id="cb4-3"><a></a></span>
-<span id="cb4-4"><a></a><span class="at">@app.get</span>(<span class="st">"/api/questions"</span>)</span>
-<span id="cb4-5"><a></a><span class="kw">def</span> get_questions():</span>
-<span id="cb4-6"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"questions.json"</span>, <span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
-<span id="cb4-7"><a></a>        data <span class="op">=</span> json.load(f)</span>
-<span id="cb4-8"><a></a>    <span class="cf">return</span> data</span>
-<span id="cb4-9"><a></a></span>
-<span id="cb4-10"><a></a>ui.label(<span class="st">"診断アプリ"</span>)</span>
-<span id="cb4-11"><a></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="im">from</span> nicegui <span class="im">import</span> ui, app</span>
+<span id="cb4-2"><a aria-label="2"></a><span class="im">import</span> json</span>
+<span id="cb4-3"><a aria-label="3"></a></span>
+<span id="cb4-4"><a aria-label="4"></a><span class="at">@app.get</span>(<span class="st">"/api/questions"</span>)</span>
+<span id="cb4-5"><a aria-label="5"></a><span class="kw">def</span> get_questions():</span>
+<span id="cb4-6"><a aria-label="6"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"questions.json"</span>, <span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb4-7"><a aria-label="7"></a>        data <span class="op">=</span> json.load(f)</span>
+<span id="cb4-8"><a aria-label="8"></a>    <span class="cf">return</span> data</span>
+<span id="cb4-9"><a aria-label="9"></a></span>
+<span id="cb4-10"><a aria-label="10"></a>ui.label(<span class="st">"診断アプリ"</span>)</span>
+<span id="cb4-11"><a aria-label="11"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="caption-note">
 <p><code>http://localhost:8080/api/questions</code> を開くと、JSONファイルの内容が返る</p>
 </div>
@@ -471,27 +477,27 @@ rkskmt
 <section id="画面からapiのデータを表示する" class="slide level2">
 <h2>画面からAPIのデータを表示する</h2>
 <div class="slide-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">from</span> nicegui <span class="im">import</span> ui, app</span>
-<span id="cb5-2"><a></a><span class="im">import</span> json</span>
-<span id="cb5-3"><a></a></span>
-<span id="cb5-4"><a></a><span class="at">@app.get</span>(<span class="st">"/api/questions"</span>)</span>
-<span id="cb5-5"><a></a><span class="kw">def</span> get_questions():</span>
-<span id="cb5-6"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"questions.json"</span>, <span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
-<span id="cb5-7"><a></a>        data <span class="op">=</span> json.load(f)</span>
-<span id="cb5-8"><a></a>    <span class="cf">return</span> data</span>
-<span id="cb5-9"><a></a></span>
-<span id="cb5-10"><a></a><span class="kw">def</span> load_questions():</span>
-<span id="cb5-11"><a></a>    data <span class="op">=</span> get_questions()          <span class="co"># Call the API function directly.</span></span>
-<span id="cb5-12"><a></a>    ui.label(data[<span class="st">"title"</span>]).classes(<span class="st">"text-2xl font-bold"</span>)</span>
-<span id="cb5-13"><a></a>    <span class="cf">for</span> question <span class="kw">in</span> data[<span class="st">"questions"</span>]:</span>
-<span id="cb5-14"><a></a>        <span class="cf">with</span> ui.card().classes(<span class="st">"w-full"</span>):</span>
-<span id="cb5-15"><a></a>            ui.label(<span class="ss">f"Q</span><span class="sc">{</span>question[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>question[<span class="st">'text'</span>]<span class="sc">}</span><span class="ss">"</span>).classes(<span class="st">"font-bold"</span>)</span>
-<span id="cb5-16"><a></a>            <span class="cf">for</span> choice <span class="kw">in</span> question[<span class="st">"choices"</span>]:</span>
-<span id="cb5-17"><a></a>                ui.label(<span class="ss">f"・</span><span class="sc">{</span>choice<span class="sc">}</span><span class="ss">"</span>).classes(<span class="st">"ml-4"</span>)</span>
-<span id="cb5-18"><a></a></span>
-<span id="cb5-19"><a></a>ui.button(<span class="st">"質問を読み込む"</span>, on_click<span class="op">=</span>load_questions).classes(<span class="st">"bg-blue-500 text-white p-2 rounded"</span>)</span>
-<span id="cb5-20"><a></a></span>
-<span id="cb5-21"><a></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">from</span> nicegui <span class="im">import</span> ui, app</span>
+<span id="cb5-2"><a aria-label="2"></a><span class="im">import</span> json</span>
+<span id="cb5-3"><a aria-label="3"></a></span>
+<span id="cb5-4"><a aria-label="4"></a><span class="at">@app.get</span>(<span class="st">"/api/questions"</span>)</span>
+<span id="cb5-5"><a aria-label="5"></a><span class="kw">def</span> get_questions():</span>
+<span id="cb5-6"><a aria-label="6"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"questions.json"</span>, <span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb5-7"><a aria-label="7"></a>        data <span class="op">=</span> json.load(f)</span>
+<span id="cb5-8"><a aria-label="8"></a>    <span class="cf">return</span> data</span>
+<span id="cb5-9"><a aria-label="9"></a></span>
+<span id="cb5-10"><a aria-label="10"></a><span class="kw">def</span> load_questions():</span>
+<span id="cb5-11"><a aria-label="11"></a>    data <span class="op">=</span> get_questions()          <span class="co"># Call the API function directly.</span></span>
+<span id="cb5-12"><a aria-label="12"></a>    ui.label(data[<span class="st">"title"</span>]).classes(<span class="st">"text-2xl font-bold"</span>)</span>
+<span id="cb5-13"><a aria-label="13"></a>    <span class="cf">for</span> question <span class="kw">in</span> data[<span class="st">"questions"</span>]:</span>
+<span id="cb5-14"><a aria-label="14"></a>        <span class="cf">with</span> ui.card().classes(<span class="st">"w-full"</span>):</span>
+<span id="cb5-15"><a aria-label="15"></a>            ui.label(<span class="ss">f"Q</span><span class="sc">{</span>question[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>question[<span class="st">'text'</span>]<span class="sc">}</span><span class="ss">"</span>).classes(<span class="st">"font-bold"</span>)</span>
+<span id="cb5-16"><a aria-label="16"></a>            <span class="cf">for</span> choice <span class="kw">in</span> question[<span class="st">"choices"</span>]:</span>
+<span id="cb5-17"><a aria-label="17"></a>                ui.label(<span class="ss">f"・</span><span class="sc">{</span>choice<span class="sc">}</span><span class="ss">"</span>).classes(<span class="st">"ml-4"</span>)</span>
+<span id="cb5-18"><a aria-label="18"></a></span>
+<span id="cb5-19"><a aria-label="19"></a>ui.button(<span class="st">"質問を読み込む"</span>, on_click<span class="op">=</span>load_questions).classes(<span class="st">"bg-blue-500 text-white p-2 rounded"</span>)</span>
+<span id="cb5-20"><a aria-label="20"></a></span>
+<span id="cb5-21"><a aria-label="21"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="なぜ関数を直接呼べるのか" class="slide level2">
@@ -564,24 +570,24 @@ rkskmt
 <div class="caption-note">
 <p><code>async def</code> の関数も <code>on_click</code> に登録できる。<code>raise_for_status()</code> はHTTPエラーを例外として通知する</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">from</span> nicegui <span class="im">import</span> ui, app</span>
-<span id="cb6-2"><a></a><span class="im">import</span> json</span>
-<span id="cb6-3"><a></a><span class="im">import</span> httpx</span>
-<span id="cb6-4"><a></a></span>
-<span id="cb6-5"><a></a><span class="at">@app.get</span>(<span class="st">"/api/questions"</span>)</span>
-<span id="cb6-6"><a></a><span class="kw">def</span> get_questions():</span>
-<span id="cb6-7"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"questions.json"</span>, <span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
-<span id="cb6-8"><a></a>        <span class="cf">return</span> json.load(f)</span>
-<span id="cb6-9"><a></a></span>
-<span id="cb6-10"><a></a><span class="cf">async</span> <span class="kw">def</span> load_questions():</span>
-<span id="cb6-11"><a></a>    <span class="cf">async</span> <span class="cf">with</span> httpx.AsyncClient() <span class="im">as</span> client:</span>
-<span id="cb6-12"><a></a>        response <span class="op">=</span> <span class="cf">await</span> client.get(<span class="st">"http://localhost:8080/api/questions"</span>)</span>
-<span id="cb6-13"><a></a>        response.raise_for_status()</span>
-<span id="cb6-14"><a></a>    data <span class="op">=</span> response.json()</span>
-<span id="cb6-15"><a></a>    ui.label(data[<span class="st">"title"</span>]).classes(<span class="st">"text-2xl font-bold"</span>)</span>
-<span id="cb6-16"><a></a></span>
-<span id="cb6-17"><a></a>ui.button(<span class="st">"HTTPで読み込む"</span>, on_click<span class="op">=</span>load_questions)</span>
-<span id="cb6-18"><a></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="im">from</span> nicegui <span class="im">import</span> ui, app</span>
+<span id="cb6-2"><a aria-label="2"></a><span class="im">import</span> json</span>
+<span id="cb6-3"><a aria-label="3"></a><span class="im">import</span> httpx</span>
+<span id="cb6-4"><a aria-label="4"></a></span>
+<span id="cb6-5"><a aria-label="5"></a><span class="at">@app.get</span>(<span class="st">"/api/questions"</span>)</span>
+<span id="cb6-6"><a aria-label="6"></a><span class="kw">def</span> get_questions():</span>
+<span id="cb6-7"><a aria-label="7"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"questions.json"</span>, <span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb6-8"><a aria-label="8"></a>        <span class="cf">return</span> json.load(f)</span>
+<span id="cb6-9"><a aria-label="9"></a></span>
+<span id="cb6-10"><a aria-label="10"></a><span class="cf">async</span> <span class="kw">def</span> load_questions():</span>
+<span id="cb6-11"><a aria-label="11"></a>    <span class="cf">async</span> <span class="cf">with</span> httpx.AsyncClient() <span class="im">as</span> client:</span>
+<span id="cb6-12"><a aria-label="12"></a>        response <span class="op">=</span> <span class="cf">await</span> client.get(<span class="st">"http://localhost:8080/api/questions"</span>)</span>
+<span id="cb6-13"><a aria-label="13"></a>        response.raise_for_status()</span>
+<span id="cb6-14"><a aria-label="14"></a>    data <span class="op">=</span> response.json()</span>
+<span id="cb6-15"><a aria-label="15"></a>    ui.label(data[<span class="st">"title"</span>]).classes(<span class="st">"text-2xl font-bold"</span>)</span>
+<span id="cb6-16"><a aria-label="16"></a></span>
+<span id="cb6-17"><a aria-label="17"></a>ui.button(<span class="st">"HTTPで読み込む"</span>, on_click<span class="op">=</span>load_questions)</span>
+<span id="cb6-18"><a aria-label="18"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="同期通信で処理が止まる理由" class="slide level2">
@@ -608,31 +614,31 @@ rkskmt
 <div class="prompt">
 <p>土台コードと <a href="data/questions.json">questions.json</a> を同じフォルダに置いて実行し、ボタンで質問一覧が表示されることを確かめよ。</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> nicegui <span class="im">import</span> ui, app</span>
-<span id="cb7-2"><a></a><span class="im">import</span> json</span>
-<span id="cb7-3"><a></a></span>
-<span id="cb7-4"><a></a><span class="at">@app.get</span>(<span class="st">"/api/questions"</span>)</span>
-<span id="cb7-5"><a></a><span class="kw">def</span> get_questions():</span>
-<span id="cb7-6"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"questions.json"</span>, <span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
-<span id="cb7-7"><a></a>        data <span class="op">=</span> json.load(f)</span>
-<span id="cb7-8"><a></a>    <span class="cf">return</span> data</span>
-<span id="cb7-9"><a></a></span>
-<span id="cb7-10"><a></a>container <span class="op">=</span> ui.column().classes(<span class="st">"w-full gap-4 p-4"</span>)</span>
-<span id="cb7-11"><a></a></span>
-<span id="cb7-12"><a></a><span class="kw">def</span> load_data():</span>
-<span id="cb7-13"><a></a>    container.clear()               <span class="co"># Clear the previous display.</span></span>
-<span id="cb7-14"><a></a>    data <span class="op">=</span> get_questions()          <span class="co"># Read the file again.</span></span>
-<span id="cb7-15"><a></a>    <span class="cf">with</span> container:                 <span class="co"># Rebuild the display.</span></span>
-<span id="cb7-16"><a></a>        ui.label(data[<span class="st">"title"</span>]).classes(<span class="st">"text-3xl font-bold mb-4"</span>)</span>
-<span id="cb7-17"><a></a>        <span class="cf">for</span> question <span class="kw">in</span> data[<span class="st">"questions"</span>]:</span>
-<span id="cb7-18"><a></a>            <span class="cf">with</span> ui.card().classes(<span class="st">"w-full"</span>):</span>
-<span id="cb7-19"><a></a>                ui.label(<span class="ss">f"Q</span><span class="sc">{</span>question[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>question[<span class="st">'text'</span>]<span class="sc">}</span><span class="ss">"</span>).classes(<span class="st">"font-bold text-lg"</span>)</span>
-<span id="cb7-20"><a></a>                <span class="cf">for</span> choice <span class="kw">in</span> question[<span class="st">"choices"</span>]:</span>
-<span id="cb7-21"><a></a>                    ui.label(<span class="ss">f"・</span><span class="sc">{</span>choice<span class="sc">}</span><span class="ss">"</span>).classes(<span class="st">"ml-4"</span>)</span>
-<span id="cb7-22"><a></a></span>
-<span id="cb7-23"><a></a>ui.button(<span class="st">"質問を読み込む"</span>, on_click<span class="op">=</span>load_data).classes(<span class="st">"bg-blue-500 text-white p-3 rounded-lg"</span>)</span>
-<span id="cb7-24"><a></a></span>
-<span id="cb7-25"><a></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="im">from</span> nicegui <span class="im">import</span> ui, app</span>
+<span id="cb7-2"><a aria-label="2"></a><span class="im">import</span> json</span>
+<span id="cb7-3"><a aria-label="3"></a></span>
+<span id="cb7-4"><a aria-label="4"></a><span class="at">@app.get</span>(<span class="st">"/api/questions"</span>)</span>
+<span id="cb7-5"><a aria-label="5"></a><span class="kw">def</span> get_questions():</span>
+<span id="cb7-6"><a aria-label="6"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"questions.json"</span>, <span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb7-7"><a aria-label="7"></a>        data <span class="op">=</span> json.load(f)</span>
+<span id="cb7-8"><a aria-label="8"></a>    <span class="cf">return</span> data</span>
+<span id="cb7-9"><a aria-label="9"></a></span>
+<span id="cb7-10"><a aria-label="10"></a>container <span class="op">=</span> ui.column().classes(<span class="st">"w-full gap-4 p-4"</span>)</span>
+<span id="cb7-11"><a aria-label="11"></a></span>
+<span id="cb7-12"><a aria-label="12"></a><span class="kw">def</span> load_data():</span>
+<span id="cb7-13"><a aria-label="13"></a>    container.clear()               <span class="co"># Clear the previous display.</span></span>
+<span id="cb7-14"><a aria-label="14"></a>    data <span class="op">=</span> get_questions()          <span class="co"># Read the file again.</span></span>
+<span id="cb7-15"><a aria-label="15"></a>    <span class="cf">with</span> container:                 <span class="co"># Rebuild the display.</span></span>
+<span id="cb7-16"><a aria-label="16"></a>        ui.label(data[<span class="st">"title"</span>]).classes(<span class="st">"text-3xl font-bold mb-4"</span>)</span>
+<span id="cb7-17"><a aria-label="17"></a>        <span class="cf">for</span> question <span class="kw">in</span> data[<span class="st">"questions"</span>]:</span>
+<span id="cb7-18"><a aria-label="18"></a>            <span class="cf">with</span> ui.card().classes(<span class="st">"w-full"</span>):</span>
+<span id="cb7-19"><a aria-label="19"></a>                ui.label(<span class="ss">f"Q</span><span class="sc">{</span>question[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>question[<span class="st">'text'</span>]<span class="sc">}</span><span class="ss">"</span>).classes(<span class="st">"font-bold text-lg"</span>)</span>
+<span id="cb7-20"><a aria-label="20"></a>                <span class="cf">for</span> choice <span class="kw">in</span> question[<span class="st">"choices"</span>]:</span>
+<span id="cb7-21"><a aria-label="21"></a>                    ui.label(<span class="ss">f"・</span><span class="sc">{</span>choice<span class="sc">}</span><span class="ss">"</span>).classes(<span class="st">"ml-4"</span>)</span>
+<span id="cb7-22"><a aria-label="22"></a></span>
+<span id="cb7-23"><a aria-label="23"></a>ui.button(<span class="st">"質問を読み込む"</span>, on_click<span class="op">=</span>load_data).classes(<span class="st">"bg-blue-500 text-white p-3 rounded-lg"</span>)</span>
+<span id="cb7-24"><a aria-label="24"></a></span>
+<span id="cb7-25"><a aria-label="25"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="urlの一部を引数で受け取る" class="slide level2">
@@ -642,9 +648,9 @@ rkskmt
 <li><code>/api/questions/1</code> のようにIDを指定する場合、URLの一部を変数として受け取る</li>
 </ul>
 <h4 id="エンドポイントの定義部分">エンドポイントの定義部分</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="at">@app.get</span>(<span class="st">"/api/questions/</span><span class="sc">{question_id}</span><span class="st">"</span>)</span>
-<span id="cb8-2"><a></a><span class="kw">def</span> get_question(question_id: <span class="bu">int</span>):</span>
-<span id="cb8-3"><a></a>    ...</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="at">@app.get</span>(<span class="st">"/api/questions/</span><span class="sc">{question_id}</span><span class="st">"</span>)</span>
+<span id="cb8-2"><a aria-label="2"></a><span class="kw">def</span> get_question(question_id: <span class="bu">int</span>):</span>
+<span id="cb8-3"><a aria-label="3"></a>    ...</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="caption-note">
 <p><code>: int</code> は <strong>型ヒント</strong>（<span class="en">type hint</span>）。FastAPIはこれをもとにURL内の値を整数へ変換する。<code>...</code> の箇所に処理を書く</p>
 </div>
@@ -674,46 +680,46 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="17a6c336" class="cell" data-execution_count="1">
+<div id="4d233c69" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>エンドポイント追加の解答例を表示</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">from</span> nicegui <span class="im">import</span> ui, app</span>
-<span id="cb9-2"><a></a><span class="im">import</span> json</span>
-<span id="cb9-3"><a></a></span>
-<span id="cb9-4"><a></a><span class="kw">def</span> read_data():</span>
-<span id="cb9-5"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"questions.json"</span>, <span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
-<span id="cb9-6"><a></a>        <span class="cf">return</span> json.load(f)</span>
-<span id="cb9-7"><a></a></span>
-<span id="cb9-8"><a></a><span class="at">@app.get</span>(<span class="st">"/api/questions"</span>)</span>
-<span id="cb9-9"><a></a><span class="kw">def</span> get_questions():</span>
-<span id="cb9-10"><a></a>    <span class="cf">return</span> read_data()</span>
-<span id="cb9-11"><a></a></span>
-<span id="cb9-12"><a></a><span class="at">@app.get</span>(<span class="st">"/api/results"</span>)</span>
-<span id="cb9-13"><a></a><span class="kw">def</span> get_results():</span>
-<span id="cb9-14"><a></a>    <span class="cf">return</span> read_data()[<span class="st">"results"</span>]</span>
-<span id="cb9-15"><a></a></span>
-<span id="cb9-16"><a></a><span class="at">@app.get</span>(<span class="st">"/api/questions/</span><span class="sc">{question_id}</span><span class="st">"</span>)</span>
-<span id="cb9-17"><a></a><span class="kw">def</span> get_question(question_id: <span class="bu">int</span>):</span>
-<span id="cb9-18"><a></a>    <span class="cf">for</span> question <span class="kw">in</span> read_data()[<span class="st">"questions"</span>]:</span>
-<span id="cb9-19"><a></a>        <span class="cf">if</span> question[<span class="st">"id"</span>] <span class="op">==</span> question_id:</span>
-<span id="cb9-20"><a></a>            <span class="cf">return</span> question</span>
-<span id="cb9-21"><a></a>    <span class="cf">return</span> {<span class="st">"error"</span>: <span class="st">"Not found"</span>}</span>
-<span id="cb9-22"><a></a></span>
-<span id="cb9-23"><a></a>container <span class="op">=</span> ui.column().classes(<span class="st">"w-full gap-4 p-4"</span>)</span>
-<span id="cb9-24"><a></a></span>
-<span id="cb9-25"><a></a><span class="kw">def</span> load_data():</span>
-<span id="cb9-26"><a></a>    container.clear()</span>
-<span id="cb9-27"><a></a>    data <span class="op">=</span> get_questions()</span>
-<span id="cb9-28"><a></a>    <span class="cf">with</span> container:</span>
-<span id="cb9-29"><a></a>        ui.label(data[<span class="st">"title"</span>]).classes(<span class="st">"text-3xl font-bold mb-4"</span>)</span>
-<span id="cb9-30"><a></a>        <span class="cf">for</span> question <span class="kw">in</span> data[<span class="st">"questions"</span>]:</span>
-<span id="cb9-31"><a></a>            <span class="cf">with</span> ui.card().classes(<span class="st">"w-full"</span>):</span>
-<span id="cb9-32"><a></a>                ui.label(<span class="ss">f"Q</span><span class="sc">{</span>question[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>question[<span class="st">'text'</span>]<span class="sc">}</span><span class="ss">"</span>).classes(<span class="st">"font-bold text-lg"</span>)</span>
-<span id="cb9-33"><a></a>                <span class="cf">for</span> choice <span class="kw">in</span> question[<span class="st">"choices"</span>]:</span>
-<span id="cb9-34"><a></a>                    ui.label(<span class="ss">f"・</span><span class="sc">{</span>choice<span class="sc">}</span><span class="ss">"</span>).classes(<span class="st">"ml-4"</span>)</span>
-<span id="cb9-35"><a></a></span>
-<span id="cb9-36"><a></a>ui.button(<span class="st">"質問を読み込む"</span>, on_click<span class="op">=</span>load_data).classes(<span class="st">"bg-blue-500 text-white p-3 rounded-lg"</span>)</span>
-<span id="cb9-37"><a></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="im">from</span> nicegui <span class="im">import</span> ui, app</span>
+<span id="cb9-2"><a aria-label="2"></a><span class="im">import</span> json</span>
+<span id="cb9-3"><a aria-label="3"></a></span>
+<span id="cb9-4"><a aria-label="4"></a><span class="kw">def</span> read_data():</span>
+<span id="cb9-5"><a aria-label="5"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"questions.json"</span>, <span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb9-6"><a aria-label="6"></a>        <span class="cf">return</span> json.load(f)</span>
+<span id="cb9-7"><a aria-label="7"></a></span>
+<span id="cb9-8"><a aria-label="8"></a><span class="at">@app.get</span>(<span class="st">"/api/questions"</span>)</span>
+<span id="cb9-9"><a aria-label="9"></a><span class="kw">def</span> get_questions():</span>
+<span id="cb9-10"><a aria-label="10"></a>    <span class="cf">return</span> read_data()</span>
+<span id="cb9-11"><a aria-label="11"></a></span>
+<span id="cb9-12"><a aria-label="12"></a><span class="at">@app.get</span>(<span class="st">"/api/results"</span>)</span>
+<span id="cb9-13"><a aria-label="13"></a><span class="kw">def</span> get_results():</span>
+<span id="cb9-14"><a aria-label="14"></a>    <span class="cf">return</span> read_data()[<span class="st">"results"</span>]</span>
+<span id="cb9-15"><a aria-label="15"></a></span>
+<span id="cb9-16"><a aria-label="16"></a><span class="at">@app.get</span>(<span class="st">"/api/questions/</span><span class="sc">{question_id}</span><span class="st">"</span>)</span>
+<span id="cb9-17"><a aria-label="17"></a><span class="kw">def</span> get_question(question_id: <span class="bu">int</span>):</span>
+<span id="cb9-18"><a aria-label="18"></a>    <span class="cf">for</span> question <span class="kw">in</span> read_data()[<span class="st">"questions"</span>]:</span>
+<span id="cb9-19"><a aria-label="19"></a>        <span class="cf">if</span> question[<span class="st">"id"</span>] <span class="op">==</span> question_id:</span>
+<span id="cb9-20"><a aria-label="20"></a>            <span class="cf">return</span> question</span>
+<span id="cb9-21"><a aria-label="21"></a>    <span class="cf">return</span> {<span class="st">"error"</span>: <span class="st">"Not found"</span>}</span>
+<span id="cb9-22"><a aria-label="22"></a></span>
+<span id="cb9-23"><a aria-label="23"></a>container <span class="op">=</span> ui.column().classes(<span class="st">"w-full gap-4 p-4"</span>)</span>
+<span id="cb9-24"><a aria-label="24"></a></span>
+<span id="cb9-25"><a aria-label="25"></a><span class="kw">def</span> load_data():</span>
+<span id="cb9-26"><a aria-label="26"></a>    container.clear()</span>
+<span id="cb9-27"><a aria-label="27"></a>    data <span class="op">=</span> get_questions()</span>
+<span id="cb9-28"><a aria-label="28"></a>    <span class="cf">with</span> container:</span>
+<span id="cb9-29"><a aria-label="29"></a>        ui.label(data[<span class="st">"title"</span>]).classes(<span class="st">"text-3xl font-bold mb-4"</span>)</span>
+<span id="cb9-30"><a aria-label="30"></a>        <span class="cf">for</span> question <span class="kw">in</span> data[<span class="st">"questions"</span>]:</span>
+<span id="cb9-31"><a aria-label="31"></a>            <span class="cf">with</span> ui.card().classes(<span class="st">"w-full"</span>):</span>
+<span id="cb9-32"><a aria-label="32"></a>                ui.label(<span class="ss">f"Q</span><span class="sc">{</span>question[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>question[<span class="st">'text'</span>]<span class="sc">}</span><span class="ss">"</span>).classes(<span class="st">"font-bold text-lg"</span>)</span>
+<span id="cb9-33"><a aria-label="33"></a>                <span class="cf">for</span> choice <span class="kw">in</span> question[<span class="st">"choices"</span>]:</span>
+<span id="cb9-34"><a aria-label="34"></a>                    ui.label(<span class="ss">f"・</span><span class="sc">{</span>choice<span class="sc">}</span><span class="ss">"</span>).classes(<span class="st">"ml-4"</span>)</span>
+<span id="cb9-35"><a aria-label="35"></a></span>
+<span id="cb9-36"><a aria-label="36"></a>ui.button(<span class="st">"質問を読み込む"</span>, on_click<span class="op">=</span>load_data).classes(<span class="st">"bg-blue-500 text-white p-3 rounded-lg"</span>)</span>
+<span id="cb9-37"><a aria-label="37"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -752,7 +758,7 @@ rkskmt
 解答例を表示
 </summary>
 <p><code>questions</code> 配列の末尾に、カンマで区切って次の1件を追加する。Pythonコードの変更は不要</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a></a><span class="fu">{</span><span class="dt">"id"</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">,</span> <span class="dt">"text"</span><span class="fu">:</span> <span class="st">"取り組んでみたいことは？"</span><span class="fu">,</span> <span class="dt">"choices"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"企画"</span><span class="ot">,</span> <span class="st">"制作"</span><span class="ot">,</span> <span class="st">"調査"</span><span class="ot">]</span><span class="fu">}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a aria-label="1"></a><span class="fu">{</span><span class="dt">"id"</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">,</span> <span class="dt">"text"</span><span class="fu">:</span> <span class="st">"取り組んでみたいことは？"</span><span class="fu">,</span> <span class="dt">"choices"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"企画"</span><span class="ot">,</span> <span class="st">"制作"</span><span class="ot">,</span> <span class="st">"調査"</span><span class="ot">]</span><span class="fu">}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>

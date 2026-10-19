@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5c1318cf63eba56dbef7ba16bc7d56f5.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="rkskmt">
   <title>情報処理 – Plotly入門</title>
@@ -17,10 +17,16 @@
   <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -95,7 +101,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-d3a26a7442888a116b43ccec6150e9c5.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-e69bca93ec9d1486cefcf16a785f5ce6.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -251,7 +257,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-rkskmt 
+rkskmt
 </div>
 </div>
 </div>
@@ -309,9 +315,9 @@ rkskmt
 <h2>インストール ＆ import</h2>
 <div class="slide-body">
 <p>ターミナルからインストール：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>pip install plotly</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a aria-label="1"></a>pip install plotly</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p>冒頭で import（可視化ツールを集めた <code>plotly.express</code> を <code>px</code> としてインポートするのが一般的）：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="まずdataframeを用意する" class="slide level2">
@@ -322,16 +328,16 @@ rkskmt
 <li>「どの列をx軸に、どの列をy軸にするか」を <strong>列名で指定するだけ</strong></li>
 <li>まずは以下をVS Codeにコピペして実行</li>
 </ul>
-<div id="c46fe012" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a>df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb3-4"><a></a>    <span class="st">"名前"</span>: [<span class="st">"田中"</span>, <span class="st">"佐藤"</span>, <span class="st">"鈴木"</span>, <span class="st">"高橋"</span>, <span class="st">"伊藤"</span>],</span>
-<span id="cb3-5"><a></a>    <span class="st">"クラス"</span>: [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"A"</span>, <span class="st">"C"</span>, <span class="st">"A"</span>],</span>
-<span id="cb3-6"><a></a>    <span class="st">"点数"</span>: [<span class="dv">82</span>, <span class="dv">75</span>, <span class="dv">91</span>, <span class="dv">68</span>, <span class="dv">57</span>],</span>
-<span id="cb3-7"><a></a>})</span>
-<span id="cb3-8"><a></a></span>
-<span id="cb3-9"><a></a><span class="bu">print</span>(df)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="1525c56a" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a aria-label="2"></a></span>
+<span id="cb3-3"><a aria-label="3"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb3-4"><a aria-label="4"></a>    <span class="st">"名前"</span>: [<span class="st">"田中"</span>, <span class="st">"佐藤"</span>, <span class="st">"鈴木"</span>, <span class="st">"高橋"</span>, <span class="st">"伊藤"</span>],</span>
+<span id="cb3-5"><a aria-label="5"></a>    <span class="st">"クラス"</span>: [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"A"</span>, <span class="st">"C"</span>, <span class="st">"A"</span>],</span>
+<span id="cb3-6"><a aria-label="6"></a>    <span class="st">"点数"</span>: [<span class="dv">82</span>, <span class="dv">75</span>, <span class="dv">91</span>, <span class="dv">68</span>, <span class="dv">57</span>],</span>
+<span id="cb3-7"><a aria-label="7"></a>})</span>
+<span id="cb3-8"><a aria-label="8"></a></span>
+<span id="cb3-9"><a aria-label="9"></a><span class="bu">print</span>(df)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   名前 クラス  点数
 0  田中   A  82
@@ -350,10 +356,10 @@ rkskmt
 <li><code>px.bar()</code> に <strong>DataFrameと列名</strong> を渡す</li>
 <li><code>fig.show()</code> を実行すると、<strong>ブラウザが開いて</strong> 図が表示される</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a>fig <span class="op">=</span> px.bar(df, x<span class="op">=</span><span class="st">"名前"</span>, y<span class="op">=</span><span class="st">"点数"</span>)</span>
-<span id="cb5-4"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb5-2"><a aria-label="2"></a></span>
+<span id="cb5-3"><a aria-label="3"></a>fig <span class="op">=</span> px.bar(df, x<span class="op">=</span><span class="st">"名前"</span>, y<span class="op">=</span><span class="st">"点数"</span>)</span>
+<span id="cb5-4"><a aria-label="4"></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div style="display:flex; justify-content:center;">
 <iframe src="iframes/plotly_bar.html" width="900" height="520" style="border:none;" onload="try{var d=this.contentDocument;if(d){d.documentElement.style.margin='0';d.documentElement.style.padding='0';d.body.style.margin='0';d.body.style.padding='0';}}catch(e){}"></iframe>
 </div>
@@ -369,11 +375,11 @@ rkskmt
 <li><code>plotly.express</code> は、短く書くための高レベルAPI</li>
 <li>基本形はどのグラフでも似ている</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>fig <span class="op">=</span> px.グラフの種類(</span>
-<span id="cb6-2"><a></a>    データフレーム,</span>
-<span id="cb6-3"><a></a>    x<span class="op">=</span><span class="st">"x軸に使う列名"</span>,</span>
-<span id="cb6-4"><a></a>    y<span class="op">=</span><span class="st">"y軸に使う列名"</span>,</span>
-<span id="cb6-5"><a></a>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a>fig <span class="op">=</span> px.グラフの種類(</span>
+<span id="cb6-2"><a aria-label="2"></a>    データフレーム,</span>
+<span id="cb6-3"><a aria-label="3"></a>    x<span class="op">=</span><span class="st">"x軸に使う列名"</span>,</span>
+<span id="cb6-4"><a aria-label="4"></a>    y<span class="op">=</span><span class="st">"y軸に使う列名"</span>,</span>
+<span id="cb6-5"><a aria-label="5"></a>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -416,14 +422,14 @@ rkskmt
 <li>列名はそのまま、<strong>表示だけ</strong> 変えられる</li>
 </ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>fig <span class="op">=</span> px.bar(</span>
-<span id="cb7-2"><a></a>    df,</span>
-<span id="cb7-3"><a></a>    x<span class="op">=</span><span class="st">"名前"</span>,</span>
-<span id="cb7-4"><a></a>    y<span class="op">=</span><span class="st">"点数"</span>,</span>
-<span id="cb7-5"><a></a>    title<span class="op">=</span><span class="st">"期末試験の結果"</span>,</span>
-<span id="cb7-6"><a></a>    labels<span class="op">=</span>{<span class="st">"名前"</span>: <span class="st">"生徒名"</span>, <span class="st">"点数"</span>: <span class="st">"点数（100点満点）"</span>},</span>
-<span id="cb7-7"><a></a>)</span>
-<span id="cb7-8"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a>fig <span class="op">=</span> px.bar(</span>
+<span id="cb7-2"><a aria-label="2"></a>    df,</span>
+<span id="cb7-3"><a aria-label="3"></a>    x<span class="op">=</span><span class="st">"名前"</span>,</span>
+<span id="cb7-4"><a aria-label="4"></a>    y<span class="op">=</span><span class="st">"点数"</span>,</span>
+<span id="cb7-5"><a aria-label="5"></a>    title<span class="op">=</span><span class="st">"期末試験の結果"</span>,</span>
+<span id="cb7-6"><a aria-label="6"></a>    labels<span class="op">=</span>{<span class="st">"名前"</span>: <span class="st">"生徒名"</span>, <span class="st">"点数"</span>: <span class="st">"点数（100点満点）"</span>},</span>
+<span id="cb7-7"><a aria-label="7"></a>)</span>
+<span id="cb7-8"><a aria-label="8"></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div style="display:flex; justify-content:center;">
 <iframe src="iframes/plotly_bar_labels.html" width="900" height="520" style="border:none;" onload="try{var d=this.contentDocument;if(d){d.documentElement.style.margin='0';d.documentElement.style.padding='0';d.body.style.margin='0';d.body.style.padding='0';}}catch(e){}"></iframe>
 </div>
@@ -436,14 +442,14 @@ rkskmt
 <li><code>color=</code> に列名を指定すると、その列の値で色分けできる</li>
 <li>カテゴリの違いを見せたいときに便利</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>fig <span class="op">=</span> px.bar(</span>
-<span id="cb8-2"><a></a>    df,</span>
-<span id="cb8-3"><a></a>    x<span class="op">=</span><span class="st">"名前"</span>,</span>
-<span id="cb8-4"><a></a>    y<span class="op">=</span><span class="st">"点数"</span>,</span>
-<span id="cb8-5"><a></a>    color<span class="op">=</span><span class="st">"クラス"</span>,</span>
-<span id="cb8-6"><a></a>    title<span class="op">=</span><span class="st">"クラスで色分けした点数"</span>,</span>
-<span id="cb8-7"><a></a>)</span>
-<span id="cb8-8"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a>fig <span class="op">=</span> px.bar(</span>
+<span id="cb8-2"><a aria-label="2"></a>    df,</span>
+<span id="cb8-3"><a aria-label="3"></a>    x<span class="op">=</span><span class="st">"名前"</span>,</span>
+<span id="cb8-4"><a aria-label="4"></a>    y<span class="op">=</span><span class="st">"点数"</span>,</span>
+<span id="cb8-5"><a aria-label="5"></a>    color<span class="op">=</span><span class="st">"クラス"</span>,</span>
+<span id="cb8-6"><a aria-label="6"></a>    title<span class="op">=</span><span class="st">"クラスで色分けした点数"</span>,</span>
+<span id="cb8-7"><a aria-label="7"></a>)</span>
+<span id="cb8-8"><a aria-label="8"></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div style="display:flex; justify-content:center;">
 <iframe src="iframes/plotly_bar_color.html" width="900" height="520" style="border:none;" onload="try{var d=this.contentDocument;if(d){d.documentElement.style.margin='0';d.documentElement.style.padding='0';d.body.style.margin='0';d.body.style.padding='0';}}catch(e){}"></iframe>
 </div>
@@ -481,12 +487,12 @@ rkskmt
 <li>CSVを <code>data</code> フォルダに置いて以下で読み込み</li>
 </ul></li>
 </ul>
-<div id="0785b427" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb9-2"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb9-3"><a></a></span>
-<span id="cb9-4"><a></a>df_scores <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
-<span id="cb9-5"><a></a><span class="bu">print</span>(df_scores.head())</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="331ea859" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-2"><a aria-label="2"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb9-3"><a aria-label="3"></a></span>
+<span id="cb9-4"><a aria-label="4"></a>df_scores <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
+<span id="cb9-5"><a aria-label="5"></a><span class="bu">print</span>(df_scores.head())</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   名前 クラス  学年  現代文  数学I  英会話  物理  欠席日数
 0  田中   A   1   80   70   90  85     2
@@ -505,15 +511,15 @@ rkskmt
 <li><code>x</code> と <code>y</code> に数値列を指定する</li>
 <li><code>hover_name=</code> に指定した列が、ホバーしたときの <strong>見出し</strong> になる</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>fig <span class="op">=</span> px.scatter(</span>
-<span id="cb11-2"><a></a>    df_scores,</span>
-<span id="cb11-3"><a></a>    x<span class="op">=</span><span class="st">"数学I"</span>,</span>
-<span id="cb11-4"><a></a>    y<span class="op">=</span><span class="st">"英会話"</span>,</span>
-<span id="cb11-5"><a></a>    color<span class="op">=</span><span class="st">"クラス"</span>,</span>
-<span id="cb11-6"><a></a>    hover_name<span class="op">=</span><span class="st">"名前"</span>,</span>
-<span id="cb11-7"><a></a>    title<span class="op">=</span><span class="st">"数学Iと英会話の点数"</span>,</span>
-<span id="cb11-8"><a></a>)</span>
-<span id="cb11-9"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a>fig <span class="op">=</span> px.scatter(</span>
+<span id="cb11-2"><a aria-label="2"></a>    df_scores,</span>
+<span id="cb11-3"><a aria-label="3"></a>    x<span class="op">=</span><span class="st">"数学I"</span>,</span>
+<span id="cb11-4"><a aria-label="4"></a>    y<span class="op">=</span><span class="st">"英会話"</span>,</span>
+<span id="cb11-5"><a aria-label="5"></a>    color<span class="op">=</span><span class="st">"クラス"</span>,</span>
+<span id="cb11-6"><a aria-label="6"></a>    hover_name<span class="op">=</span><span class="st">"名前"</span>,</span>
+<span id="cb11-7"><a aria-label="7"></a>    title<span class="op">=</span><span class="st">"数学Iと英会話の点数"</span>,</span>
+<span id="cb11-8"><a aria-label="8"></a>)</span>
+<span id="cb11-9"><a aria-label="9"></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div style="display:flex; justify-content:center;">
 <iframe src="iframes/plotly_scatter.html" width="900" height="520" style="border:none;" onload="try{var d=this.contentDocument;if(d){d.documentElement.style.margin='0';d.documentElement.style.padding='0';d.body.style.margin='0';d.body.style.padding='0';}}catch(e){}"></iframe>
 </div>
@@ -545,17 +551,17 @@ rkskmt
 </ul></li>
 <li>欠席 <strong>0日</strong> の点は大きさ0で消えてしまう — できた <code>fig</code> は <code>fig.update_〜()</code> 系のメソッドで微調整できるので、<code>sizemin</code> で最小の大きさを決めておく</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>fig <span class="op">=</span> px.scatter(</span>
-<span id="cb12-2"><a></a>    df_scores,</span>
-<span id="cb12-3"><a></a>    x<span class="op">=</span><span class="st">"数学I"</span>,</span>
-<span id="cb12-4"><a></a>    y<span class="op">=</span><span class="st">"英会話"</span>,</span>
-<span id="cb12-5"><a></a>    color<span class="op">=</span><span class="st">"クラス"</span>,</span>
-<span id="cb12-6"><a></a>    size<span class="op">=</span><span class="st">"欠席日数"</span>,</span>
-<span id="cb12-7"><a></a>    size_max<span class="op">=</span><span class="dv">40</span>,</span>
-<span id="cb12-8"><a></a>    hover_name<span class="op">=</span><span class="st">"名前"</span>,</span>
-<span id="cb12-9"><a></a>)</span>
-<span id="cb12-10"><a></a>fig.update_traces(marker<span class="op">=</span><span class="bu">dict</span>(sizemin<span class="op">=</span><span class="dv">4</span>))  <span class="co"># 欠席0日の点も見えるように</span></span>
-<span id="cb12-11"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a>fig <span class="op">=</span> px.scatter(</span>
+<span id="cb12-2"><a aria-label="2"></a>    df_scores,</span>
+<span id="cb12-3"><a aria-label="3"></a>    x<span class="op">=</span><span class="st">"数学I"</span>,</span>
+<span id="cb12-4"><a aria-label="4"></a>    y<span class="op">=</span><span class="st">"英会話"</span>,</span>
+<span id="cb12-5"><a aria-label="5"></a>    color<span class="op">=</span><span class="st">"クラス"</span>,</span>
+<span id="cb12-6"><a aria-label="6"></a>    size<span class="op">=</span><span class="st">"欠席日数"</span>,</span>
+<span id="cb12-7"><a aria-label="7"></a>    size_max<span class="op">=</span><span class="dv">40</span>,</span>
+<span id="cb12-8"><a aria-label="8"></a>    hover_name<span class="op">=</span><span class="st">"名前"</span>,</span>
+<span id="cb12-9"><a aria-label="9"></a>)</span>
+<span id="cb12-10"><a aria-label="10"></a>fig.update_traces(marker<span class="op">=</span><span class="bu">dict</span>(sizemin<span class="op">=</span><span class="dv">4</span>))  <span class="co"># 欠席0日の点も見えるように</span></span>
+<span id="cb12-11"><a aria-label="11"></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div style="display:flex; justify-content:center;">
 <iframe src="iframes/plotly_scatter_size.html" width="900" height="520" style="border:none;" onload="try{var d=this.contentDocument;if(d){d.documentElement.style.margin='0';d.documentElement.style.padding='0';d.body.style.margin='0';d.body.style.padding='0';}}catch(e){}"></iframe>
 </div>
@@ -575,12 +581,12 @@ rkskmt
 <li><a href="data/tokyo_temp_annual.csv">tokyo_temp_annual.csv</a> を <code>data</code> フォルダに置く</li>
 </ul></li>
 </ul>
-<div id="a17136d5" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb13-2"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb13-3"><a></a></span>
-<span id="cb13-4"><a></a>df_temp <span class="op">=</span> pd.read_csv(<span class="st">"data/tokyo_temp_annual.csv"</span>)</span>
-<span id="cb13-5"><a></a><span class="bu">print</span>(df_temp.head())</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="e8e2f202" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb13-2"><a aria-label="2"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb13-3"><a aria-label="3"></a></span>
+<span id="cb13-4"><a aria-label="4"></a>df_temp <span class="op">=</span> pd.read_csv(<span class="st">"data/tokyo_temp_annual.csv"</span>)</span>
+<span id="cb13-5"><a aria-label="5"></a><span class="bu">print</span>(df_temp.head())</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   year  temp
 0  1876  13.6
@@ -599,8 +605,8 @@ rkskmt
 <li><code>markers=True</code> で点＋線（matplotlibの <code>"o-"</code> と同じ役目）</li>
 <li>軸ラベルには <strong>列名がそのまま</strong> 入る（変えたければ <code>labels=</code>）</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>fig <span class="op">=</span> px.line(df_temp, x<span class="op">=</span><span class="st">"year"</span>, y<span class="op">=</span><span class="st">"temp"</span>, markers<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb15-2"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a>fig <span class="op">=</span> px.line(df_temp, x<span class="op">=</span><span class="st">"year"</span>, y<span class="op">=</span><span class="st">"temp"</span>, markers<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb15-2"><a aria-label="2"></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div style="display:flex; justify-content:center;">
 <iframe src="iframes/plotly_line.html" width="900" height="520" style="border:none;" onload="try{var d=this.contentDocument;if(d){d.documentElement.style.margin='0';d.documentElement.style.padding='0';d.body.style.margin='0';d.body.style.padding='0';}}catch(e){}"></iframe>
 </div>
@@ -631,12 +637,12 @@ rkskmt
 <li>縦軸は現在との気温差：<strong>0℃＝現在の水準</strong>（直近1000年の平均）、マイナスほど寒い</li>
 <li><a href="data/epica_temp.csv">epica_temp.csv</a> を <code>data</code> フォルダに置く</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>df_ice <span class="op">=</span> pd.read_csv(<span class="st">"data/epica_temp.csv"</span>)</span>
-<span id="cb16-2"><a></a>df_ice[<span class="st">"万年前"</span>] <span class="op">=</span> df_ice[<span class="st">"age_kyr_bp"</span>] <span class="op">/</span> <span class="dv">10</span>  <span class="co"># 千年前 → 万年前</span></span>
-<span id="cb16-3"><a></a></span>
-<span id="cb16-4"><a></a>fig <span class="op">=</span> px.line(df_ice, x<span class="op">=</span><span class="st">"万年前"</span>, y<span class="op">=</span><span class="st">"temp_anomaly_c"</span>)</span>
-<span id="cb16-5"><a></a>fig.update_xaxes(autorange<span class="op">=</span><span class="st">"reversed"</span>)  <span class="co"># 昔を左、現在を右に</span></span>
-<span id="cb16-6"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a>df_ice <span class="op">=</span> pd.read_csv(<span class="st">"data/epica_temp.csv"</span>)</span>
+<span id="cb16-2"><a aria-label="2"></a>df_ice[<span class="st">"万年前"</span>] <span class="op">=</span> df_ice[<span class="st">"age_kyr_bp"</span>] <span class="op">/</span> <span class="dv">10</span>  <span class="co"># 千年前 → 万年前</span></span>
+<span id="cb16-3"><a aria-label="3"></a></span>
+<span id="cb16-4"><a aria-label="4"></a>fig <span class="op">=</span> px.line(df_ice, x<span class="op">=</span><span class="st">"万年前"</span>, y<span class="op">=</span><span class="st">"temp_anomaly_c"</span>)</span>
+<span id="cb16-5"><a aria-label="5"></a>fig.update_xaxes(autorange<span class="op">=</span><span class="st">"reversed"</span>)  <span class="co"># 昔を左、現在を右に</span></span>
+<span id="cb16-6"><a aria-label="6"></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div style="display:flex; justify-content:center;">
 <iframe src="iframes/plotly_icecore.html" width="900" height="480" style="border:none;" onload="try{var d=this.contentDocument;if(d){d.documentElement.style.margin='0';d.documentElement.style.padding='0';d.body.style.margin='0';d.body.style.padding='0';}}catch(e){}"></iframe>
 </div>
@@ -655,8 +661,8 @@ rkskmt
 <li><code>nbins=</code> は区間（ビン）の数 — ビンの数で分布の見え方が化けるのは、matplotlibのときと同じ</li>
 <li>同じ150年の気温データ — 折れ線は <strong>変化</strong>、ヒストグラムは <strong>分布</strong> を見せる</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>fig <span class="op">=</span> px.histogram(df_temp, x<span class="op">=</span><span class="st">"temp"</span>, nbins<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb17-2"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a>fig <span class="op">=</span> px.histogram(df_temp, x<span class="op">=</span><span class="st">"temp"</span>, nbins<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb17-2"><a aria-label="2"></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div style="display:flex; justify-content:center;">
 <iframe src="iframes/plotly_histogram.html" width="900" height="520" style="border:none;" onload="try{var d=this.contentDocument;if(d){d.documentElement.style.margin='0';d.documentElement.style.padding='0';d.body.style.margin='0';d.body.style.padding='0';}}catch(e){}"></iframe>
 </div>
@@ -678,15 +684,15 @@ rkskmt
 <li><a href="./pandas.html">Pandas入門</a>の <code>groupby()</code> の復習 — <a href="data/students.csv">students.csv</a> でクラスごとの平均点を出す</li>
 <li><code>groupby()</code> の結果は <code>Series</code>（<code>index</code> がクラス、<code>values</code> が平均点）</li>
 </ul>
-<div id="57af5ed3" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb18-2"><a></a></span>
-<span id="cb18-3"><a></a>df_students <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
-<span id="cb18-4"><a></a>subjects <span class="op">=</span> [<span class="st">"現代文"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>, <span class="st">"物理"</span>]</span>
-<span id="cb18-5"><a></a></span>
-<span id="cb18-6"><a></a>df_students[<span class="st">"平均点"</span>] <span class="op">=</span> df_students[subjects].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb18-7"><a></a>avg <span class="op">=</span> df_students.groupby(<span class="st">"クラス"</span>)[<span class="st">"平均点"</span>].mean()</span>
-<span id="cb18-8"><a></a><span class="bu">print</span>(avg)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="700e691f" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb18-2"><a aria-label="2"></a></span>
+<span id="cb18-3"><a aria-label="3"></a>df_students <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
+<span id="cb18-4"><a aria-label="4"></a>subjects <span class="op">=</span> [<span class="st">"現代文"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>, <span class="st">"物理"</span>]</span>
+<span id="cb18-5"><a aria-label="5"></a></span>
+<span id="cb18-6"><a aria-label="6"></a>df_students[<span class="st">"平均点"</span>] <span class="op">=</span> df_students[subjects].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb18-7"><a aria-label="7"></a>avg <span class="op">=</span> df_students.groupby(<span class="st">"クラス"</span>)[<span class="st">"平均点"</span>].mean()</span>
+<span id="cb18-8"><a aria-label="8"></a><span class="bu">print</span>(avg)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>クラス
 A    80.062500
@@ -706,17 +712,17 @@ Name: 平均点, dtype: float64</code></pre>
 <ul>
 <li><code>reset_index()</code> で、<code>index</code> を普通の列に戻した <strong>DataFrame</strong> が得られる</li>
 </ul>
-<div id="a10e3f75" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb20-2"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb20-3"><a></a></span>
-<span id="cb20-4"><a></a>df_students <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
-<span id="cb20-5"><a></a>subjects <span class="op">=</span> [<span class="st">"現代文"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>, <span class="st">"物理"</span>]</span>
-<span id="cb20-6"><a></a>df_students[<span class="st">"平均点"</span>] <span class="op">=</span> df_students[subjects].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb20-7"><a></a>avg <span class="op">=</span> df_students.groupby(<span class="st">"クラス"</span>)[<span class="st">"平均点"</span>].mean()</span>
-<span id="cb20-8"><a></a></span>
-<span id="cb20-9"><a></a>avg_df <span class="op">=</span> avg.reset_index()</span>
-<span id="cb20-10"><a></a><span class="bu">print</span>(avg_df)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f5a1ab04" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb20-2"><a aria-label="2"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb20-3"><a aria-label="3"></a></span>
+<span id="cb20-4"><a aria-label="4"></a>df_students <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
+<span id="cb20-5"><a aria-label="5"></a>subjects <span class="op">=</span> [<span class="st">"現代文"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>, <span class="st">"物理"</span>]</span>
+<span id="cb20-6"><a aria-label="6"></a>df_students[<span class="st">"平均点"</span>] <span class="op">=</span> df_students[subjects].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb20-7"><a aria-label="7"></a>avg <span class="op">=</span> df_students.groupby(<span class="st">"クラス"</span>)[<span class="st">"平均点"</span>].mean()</span>
+<span id="cb20-8"><a aria-label="8"></a></span>
+<span id="cb20-9"><a aria-label="9"></a>avg_df <span class="op">=</span> avg.reset_index()</span>
+<span id="cb20-10"><a aria-label="10"></a><span class="bu">print</span>(avg_df)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  クラス        平均点
 0   A  80.062500
@@ -736,9 +742,9 @@ Name: 平均点, dtype: float64</code></pre>
 <li>y軸は <code>update_yaxes(range=[最小, 最大])</code> で固定できる — 平均点なら <strong>0点〜満点</strong> で正直に見せる</li>
 <li>matplotlibでは <code>plt.ylim(0, 100)</code> と書いた、それのPlotly版</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>fig <span class="op">=</span> px.bar(avg_df, x<span class="op">=</span><span class="st">"クラス"</span>, y<span class="op">=</span><span class="st">"平均点"</span>)</span>
-<span id="cb22-2"><a></a>fig.update_yaxes(<span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, <span class="dv">100</span>])  <span class="co"># 棒グラフは0から見せる</span></span>
-<span id="cb22-3"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a>fig <span class="op">=</span> px.bar(avg_df, x<span class="op">=</span><span class="st">"クラス"</span>, y<span class="op">=</span><span class="st">"平均点"</span>)</span>
+<span id="cb22-2"><a aria-label="2"></a>fig.update_yaxes(<span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, <span class="dv">100</span>])  <span class="co"># 棒グラフは0から見せる</span></span>
+<span id="cb22-3"><a aria-label="3"></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div style="display:flex; justify-content:center;">
 <iframe src="iframes/plotly_groupby_bar.html" width="900" height="520" style="border:none;" onload="try{var d=this.contentDocument;if(d){d.documentElement.style.margin='0';d.documentElement.style.padding='0';d.body.style.margin='0';d.body.style.padding='0';}}catch(e){}"></iframe>
 </div>
@@ -751,15 +757,15 @@ Name: 平均点, dtype: float64</code></pre>
 <li><code>groupby(..., as_index=False)</code> とすると、最初から <strong>DataFrame</strong> で結果を受け取れる</li>
 <li>Plotlyに渡す前提なら、<code>reset_index()</code> が要らないこちらが1行短い</li>
 </ul>
-<div id="445e426a" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb23-2"><a></a></span>
-<span id="cb23-3"><a></a>df_students <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
-<span id="cb23-4"><a></a>subjects <span class="op">=</span> [<span class="st">"現代文"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>, <span class="st">"物理"</span>]</span>
-<span id="cb23-5"><a></a>df_students[<span class="st">"平均点"</span>] <span class="op">=</span> df_students[subjects].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb23-6"><a></a></span>
-<span id="cb23-7"><a></a>avg_df <span class="op">=</span> df_students.groupby(<span class="st">"クラス"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"平均点"</span>].mean()</span>
-<span id="cb23-8"><a></a><span class="bu">print</span>(avg_df)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="2f84e6a4" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb23-2"><a aria-label="2"></a></span>
+<span id="cb23-3"><a aria-label="3"></a>df_students <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
+<span id="cb23-4"><a aria-label="4"></a>subjects <span class="op">=</span> [<span class="st">"現代文"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>, <span class="st">"物理"</span>]</span>
+<span id="cb23-5"><a aria-label="5"></a>df_students[<span class="st">"平均点"</span>] <span class="op">=</span> df_students[subjects].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb23-6"><a aria-label="6"></a></span>
+<span id="cb23-7"><a aria-label="7"></a>avg_df <span class="op">=</span> df_students.groupby(<span class="st">"クラス"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"平均点"</span>].mean()</span>
+<span id="cb23-8"><a aria-label="8"></a><span class="bu">print</span>(avg_df)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  クラス        平均点
 0   A  80.062500
@@ -781,27 +787,27 @@ Name: 平均点, dtype: float64</code></pre>
 <li><code>groupby("クラス", as_index=False)</code> でクラスごとの平均点を集計</li>
 <li><code>px.bar()</code> で棒グラフを描く（<code>color="クラス"</code> で色分け、y軸は <code>0</code>〜<code>100</code> に固定）</li>
 </ol>
-<div id="31228e44" class="cell" data-execution_count="16">
+<div id="d3cf2d00" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>解答例を見る</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb25-2"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb25-3"><a></a></span>
-<span id="cb25-4"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
-<span id="cb25-5"><a></a>subjects <span class="op">=</span> [<span class="st">"現代文"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>, <span class="st">"物理"</span>]</span>
-<span id="cb25-6"><a></a></span>
-<span id="cb25-7"><a></a>df[<span class="st">"平均点"</span>] <span class="op">=</span> df[subjects].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb25-8"><a></a>avg_df <span class="op">=</span> df.groupby(<span class="st">"クラス"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"平均点"</span>].mean()</span>
-<span id="cb25-9"><a></a></span>
-<span id="cb25-10"><a></a>fig <span class="op">=</span> px.bar(</span>
-<span id="cb25-11"><a></a>    avg_df,</span>
-<span id="cb25-12"><a></a>    x<span class="op">=</span><span class="st">"クラス"</span>,</span>
-<span id="cb25-13"><a></a>    y<span class="op">=</span><span class="st">"平均点"</span>,</span>
-<span id="cb25-14"><a></a>    color<span class="op">=</span><span class="st">"クラス"</span>,</span>
-<span id="cb25-15"><a></a>    title<span class="op">=</span><span class="st">"クラスごとの平均点"</span>,</span>
-<span id="cb25-16"><a></a>)</span>
-<span id="cb25-17"><a></a>fig.update_yaxes(<span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, <span class="dv">100</span>])</span>
-<span id="cb25-18"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb25-2"><a aria-label="2"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb25-3"><a aria-label="3"></a></span>
+<span id="cb25-4"><a aria-label="4"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
+<span id="cb25-5"><a aria-label="5"></a>subjects <span class="op">=</span> [<span class="st">"現代文"</span>, <span class="st">"数学I"</span>, <span class="st">"英会話"</span>, <span class="st">"物理"</span>]</span>
+<span id="cb25-6"><a aria-label="6"></a></span>
+<span id="cb25-7"><a aria-label="7"></a>df[<span class="st">"平均点"</span>] <span class="op">=</span> df[subjects].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb25-8"><a aria-label="8"></a>avg_df <span class="op">=</span> df.groupby(<span class="st">"クラス"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"平均点"</span>].mean()</span>
+<span id="cb25-9"><a aria-label="9"></a></span>
+<span id="cb25-10"><a aria-label="10"></a>fig <span class="op">=</span> px.bar(</span>
+<span id="cb25-11"><a aria-label="11"></a>    avg_df,</span>
+<span id="cb25-12"><a aria-label="12"></a>    x<span class="op">=</span><span class="st">"クラス"</span>,</span>
+<span id="cb25-13"><a aria-label="13"></a>    y<span class="op">=</span><span class="st">"平均点"</span>,</span>
+<span id="cb25-14"><a aria-label="14"></a>    color<span class="op">=</span><span class="st">"クラス"</span>,</span>
+<span id="cb25-15"><a aria-label="15"></a>    title<span class="op">=</span><span class="st">"クラスごとの平均点"</span>,</span>
+<span id="cb25-16"><a aria-label="16"></a>)</span>
+<span id="cb25-17"><a aria-label="17"></a>fig.update_yaxes(<span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, <span class="dv">100</span>])</span>
+<span id="cb25-18"><a aria-label="18"></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -819,20 +825,20 @@ Name: 平均点, dtype: float64</code></pre>
 <li><code>px.scatter_3d()</code> に <code>x</code>・<code>y</code>・<code>z</code> の <strong>3つの数値列</strong> を渡す</li>
 <li><strong>ドラッグで回転</strong>、ホバーで名前 — 3科目（数学I・英会話・物理）の関係を探索できる</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb26-2"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb26-3"><a></a></span>
-<span id="cb26-4"><a></a>df_3d <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
-<span id="cb26-5"><a></a></span>
-<span id="cb26-6"><a></a>fig <span class="op">=</span> px.scatter_3d(</span>
-<span id="cb26-7"><a></a>    df_3d,</span>
-<span id="cb26-8"><a></a>    x<span class="op">=</span><span class="st">"数学I"</span>,</span>
-<span id="cb26-9"><a></a>    y<span class="op">=</span><span class="st">"英会話"</span>,</span>
-<span id="cb26-10"><a></a>    z<span class="op">=</span><span class="st">"物理"</span>,</span>
-<span id="cb26-11"><a></a>    color<span class="op">=</span><span class="st">"クラス"</span>,</span>
-<span id="cb26-12"><a></a>    hover_name<span class="op">=</span><span class="st">"名前"</span>,</span>
-<span id="cb26-13"><a></a>)</span>
-<span id="cb26-14"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb26-2"><a aria-label="2"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb26-3"><a aria-label="3"></a></span>
+<span id="cb26-4"><a aria-label="4"></a>df_3d <span class="op">=</span> pd.read_csv(<span class="st">"data/students.csv"</span>)</span>
+<span id="cb26-5"><a aria-label="5"></a></span>
+<span id="cb26-6"><a aria-label="6"></a>fig <span class="op">=</span> px.scatter_3d(</span>
+<span id="cb26-7"><a aria-label="7"></a>    df_3d,</span>
+<span id="cb26-8"><a aria-label="8"></a>    x<span class="op">=</span><span class="st">"数学I"</span>,</span>
+<span id="cb26-9"><a aria-label="9"></a>    y<span class="op">=</span><span class="st">"英会話"</span>,</span>
+<span id="cb26-10"><a aria-label="10"></a>    z<span class="op">=</span><span class="st">"物理"</span>,</span>
+<span id="cb26-11"><a aria-label="11"></a>    color<span class="op">=</span><span class="st">"クラス"</span>,</span>
+<span id="cb26-12"><a aria-label="12"></a>    hover_name<span class="op">=</span><span class="st">"名前"</span>,</span>
+<span id="cb26-13"><a aria-label="13"></a>)</span>
+<span id="cb26-14"><a aria-label="14"></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div style="display:flex; justify-content:center;">
 <iframe src="iframes/plotly_scatter_3d.html" width="900" height="540" style="border:none;" onload="try{var d=this.contentDocument;if(d){d.documentElement.style.margin='0';d.documentElement.style.padding='0';d.body.style.margin='0';d.body.style.padding='0';}}catch(e){}"></iframe>
 </div>
@@ -861,7 +867,7 @@ Name: 平均点, dtype: float64</code></pre>
 <li>Plotlyの図は <code>write_html()</code> でHTMLとして保存できる</li>
 <li>ブラウザさえあれば誰でも開ける — <strong>動くまま</strong> 共有できる</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a>fig.write_html(<span class="st">"graph.html"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a aria-label="1"></a>fig.write_html(<span class="st">"graph.html"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>何も指定しないと <strong>Plotly本体ごと</strong> HTMLに埋め込まれる（約4MB）
 <ul>
@@ -974,12 +980,12 @@ Name: 平均点, dtype: float64</code></pre>
 </ul></li>
 <li>Plotlyには <strong>このデータが同梱</strong> されている — ダウンロード不要</li>
 </ul>
-<div id="dce4d01c" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb28-2"><a></a></span>
-<span id="cb28-3"><a></a>gap <span class="op">=</span> px.data.gapminder()</span>
-<span id="cb28-4"><a></a><span class="bu">print</span>(gap.head())</span>
-<span id="cb28-5"><a></a><span class="bu">print</span>(gap.shape)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="2825b8f3" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-label="1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb28-2"><a aria-label="2"></a></span>
+<span id="cb28-3"><a aria-label="3"></a>gap <span class="op">=</span> px.data.gapminder()</span>
+<span id="cb28-4"><a aria-label="4"></a><span class="bu">print</span>(gap.head())</span>
+<span id="cb28-5"><a aria-label="5"></a><span class="bu">print</span>(gap.shape)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       country continent  year  lifeExp       pop   gdpPercap iso_alpha  \
 0  Afghanistan      Asia  1952   28.801   8425333  779.445314       AFG   
@@ -1009,18 +1015,18 @@ Name: 平均点, dtype: float64</code></pre>
 <li><code>gap[gap["year"] == 1952]</code> で1952年の行だけに絞る（Pandasの条件抽出）</li>
 <li>あとは <strong>ここまでと同じ</strong> <code>x, y, size, color, hover_name</code></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a>gap_1952 <span class="op">=</span> gap[gap[<span class="st">"year"</span>] <span class="op">==</span> <span class="dv">1952</span>]</span>
-<span id="cb30-2"><a></a></span>
-<span id="cb30-3"><a></a>fig <span class="op">=</span> px.scatter(</span>
-<span id="cb30-4"><a></a>    gap_1952,</span>
-<span id="cb30-5"><a></a>    x<span class="op">=</span><span class="st">"gdpPercap"</span>,</span>
-<span id="cb30-6"><a></a>    y<span class="op">=</span><span class="st">"lifeExp"</span>,</span>
-<span id="cb30-7"><a></a>    size<span class="op">=</span><span class="st">"pop"</span>,</span>
-<span id="cb30-8"><a></a>    size_max<span class="op">=</span><span class="dv">55</span>,</span>
-<span id="cb30-9"><a></a>    color<span class="op">=</span><span class="st">"continent"</span>,</span>
-<span id="cb30-10"><a></a>    hover_name<span class="op">=</span><span class="st">"country"</span>,</span>
-<span id="cb30-11"><a></a>)</span>
-<span id="cb30-12"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a aria-label="1"></a>gap_1952 <span class="op">=</span> gap[gap[<span class="st">"year"</span>] <span class="op">==</span> <span class="dv">1952</span>]</span>
+<span id="cb30-2"><a aria-label="2"></a></span>
+<span id="cb30-3"><a aria-label="3"></a>fig <span class="op">=</span> px.scatter(</span>
+<span id="cb30-4"><a aria-label="4"></a>    gap_1952,</span>
+<span id="cb30-5"><a aria-label="5"></a>    x<span class="op">=</span><span class="st">"gdpPercap"</span>,</span>
+<span id="cb30-6"><a aria-label="6"></a>    y<span class="op">=</span><span class="st">"lifeExp"</span>,</span>
+<span id="cb30-7"><a aria-label="7"></a>    size<span class="op">=</span><span class="st">"pop"</span>,</span>
+<span id="cb30-8"><a aria-label="8"></a>    size_max<span class="op">=</span><span class="dv">55</span>,</span>
+<span id="cb30-9"><a aria-label="9"></a>    color<span class="op">=</span><span class="st">"continent"</span>,</span>
+<span id="cb30-10"><a aria-label="10"></a>    hover_name<span class="op">=</span><span class="st">"country"</span>,</span>
+<span id="cb30-11"><a aria-label="11"></a>)</span>
+<span id="cb30-12"><a aria-label="12"></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div style="display:flex; justify-content:center;">
 <iframe src="iframes/plotly_gapminder_1952.html" width="900" height="540" style="border:none;" onload="try{var d=this.contentDocument;if(d){d.documentElement.style.margin='0';d.documentElement.style.padding='0';d.body.style.margin='0';d.body.style.padding='0';}}catch(e){}"></iframe>
 </div>
@@ -1040,18 +1046,18 @@ Name: 平均点, dtype: float64</code></pre>
 <li><code>log_x=True</code> — 横軸を対数軸（<span class="en">log scale</span>）にして、左端の団子を解消</li>
 </ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a>fig <span class="op">=</span> px.scatter(</span>
-<span id="cb31-2"><a></a>    gap,</span>
-<span id="cb31-3"><a></a>    x<span class="op">=</span><span class="st">"gdpPercap"</span>,</span>
-<span id="cb31-4"><a></a>    y<span class="op">=</span><span class="st">"lifeExp"</span>,</span>
-<span id="cb31-5"><a></a>    size<span class="op">=</span><span class="st">"pop"</span>,</span>
-<span id="cb31-6"><a></a>    size_max<span class="op">=</span><span class="dv">55</span>,</span>
-<span id="cb31-7"><a></a>    color<span class="op">=</span><span class="st">"continent"</span>,</span>
-<span id="cb31-8"><a></a>    hover_name<span class="op">=</span><span class="st">"country"</span>,</span>
-<span id="cb31-9"><a></a>    log_x<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb31-10"><a></a>    animation_frame<span class="op">=</span><span class="st">"year"</span>,</span>
-<span id="cb31-11"><a></a>)</span>
-<span id="cb31-12"><a></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a aria-label="1"></a>fig <span class="op">=</span> px.scatter(</span>
+<span id="cb31-2"><a aria-label="2"></a>    gap,</span>
+<span id="cb31-3"><a aria-label="3"></a>    x<span class="op">=</span><span class="st">"gdpPercap"</span>,</span>
+<span id="cb31-4"><a aria-label="4"></a>    y<span class="op">=</span><span class="st">"lifeExp"</span>,</span>
+<span id="cb31-5"><a aria-label="5"></a>    size<span class="op">=</span><span class="st">"pop"</span>,</span>
+<span id="cb31-6"><a aria-label="6"></a>    size_max<span class="op">=</span><span class="dv">55</span>,</span>
+<span id="cb31-7"><a aria-label="7"></a>    color<span class="op">=</span><span class="st">"continent"</span>,</span>
+<span id="cb31-8"><a aria-label="8"></a>    hover_name<span class="op">=</span><span class="st">"country"</span>,</span>
+<span id="cb31-9"><a aria-label="9"></a>    log_x<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb31-10"><a aria-label="10"></a>    animation_frame<span class="op">=</span><span class="st">"year"</span>,</span>
+<span id="cb31-11"><a aria-label="11"></a>)</span>
+<span id="cb31-12"><a aria-label="12"></a>fig.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div style="display:flex; justify-content:center;">
 <iframe src="iframes/plotly_gapminder.html" width="900" height="540" style="border:none;" onload="try{var d=this.contentDocument;if(d){d.documentElement.style.margin='0';d.documentElement.style.padding='0';d.body.style.margin='0';d.body.style.padding='0';}}catch(e){}"></iframe>
 </div>
