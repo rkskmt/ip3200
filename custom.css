@@ -1052,6 +1052,17 @@ a.lightbox[href]::after {
   margin-left: 1.6em;
   font-size: 1.2rem;
 }
+/* Code-fold whose output is a centered figure: center the button under the
+   figure instead of hugging the left edge. Text/code outputs keep the default
+   left placement. The summary must be block-level (flex) for auto margins to
+   center it; the opened code block below stays full-width and left-aligned. */
+.cell:has(details.code-fold):has(.quarto-figure-center) details.code-fold {
+  margin-left: 0;
+}
+.cell:has(details.code-fold):has(.quarto-figure-center) details.code-fold > summary {
+  display: flex;
+  margin-inline: auto;
+}
 /* Code-fold summary ("解答例を見る" / "コードを表示"): render as a light rounded
    button so the clickable area is visible. The native disclosure marker is
    replaced with a custom triangle (inside the button, rotates when open) —

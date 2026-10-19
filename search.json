@@ -784,74 +784,67 @@
     "text": "オズボーンのチェックリスト・SCAMPER"
   },
   {
-    "objectID": "scamper.html#質問回転寿司はどこから来た",
-    "href": "scamper.html#質問回転寿司はどこから来た",
+    "objectID": "scamper.html#q回転寿司は何からの着想",
+    "href": "scamper.html#q回転寿司は何からの着想",
     "title": "オズボーンのチェックリスト・SCAMPER",
-    "section": "質問：回転寿司はどこから来た？",
-    "text": "質問：回転寿司はどこから来た？\n\n白石義明 が開発し、1958年に大阪で回転寿司店を開業\nきっかけは工場の見学。何を作る工場だったか\n\n\n\n写真: Alberto Carrasco Casado, CC BY 2.0, via Wikimedia Commons\n\n\n\n\n\n\n\n\n\n答え：ビール工場\n\n\n瓶ビールを運ぶ ベルトコンベア から着想を得た。 他分野の仕組みを取り入れる 応用（Adapt） の例として考えられる（日本機械学会の解説）"
+    "section": "Q：回転寿司は何からの着想？",
+    "text": "Q：回転寿司は何からの着想？\n\n白石義明 が開発し、1958年に大阪で回転寿司店を開業\nきっかけは工場の見学\n\n何を作る工場だったでしょうか？\n\n\n\n\n写真: Alberto Carrasco Casado, CC BY 2.0, via Wikimedia Commons\n\n\n\n\n\n\n\n\n\n正解：ビール工場\n\n\n\n瓶ビールを運ぶ ベルトコンベア から着想を得た\n他分野の仕組みを取り入れる 応用（Adapt） の例として考えられる（日本機械学会）"
   },
   {
-    "objectID": "scamper.html#質問から改良案を考える",
-    "href": "scamper.html#質問から改良案を考える",
+    "objectID": "scamper.html#ズラし質問から改良案を考える",
+    "href": "scamper.html#ズラし質問から改良案を考える",
     "title": "オズボーンのチェックリスト・SCAMPER",
-    "section": "質問から改良案を考える",
-    "text": "質問から改良案を考える\n\n\n既存の製品やサービスを1つ選び、質問リスト（チェックリスト）に沿って改良案を出す\n\n「小さくできないか」「逆にしたらどうなるか」\n変える箇所や条件を指定して考える\n\n\n\n\n\n\n\n\n強制連想法\n\n\n自由連想（ブレストなど）に対して、発想の視点や条件を与える方法を 強制連想法（forced association）と呼ぶ"
+    "section": "ズラし：質問から改良案を考える",
+    "text": "ズラし：質問から改良案を考える\n\n\n既存の製品やサービスを1つ選び、質問リスト（チェックリスト）に沿って改良案を出す\n\n「小さくできないか」「逆にしたらどうなるか」\n変える箇所や条件を指定して考える\n\n\n\n\n\n\n\n\n強制連想法\n\n\n自由連想（ブレストなど）に対して、発想の視点や条件を与える方法を 強制連想法（forced association）と呼ぶ"
   },
   {
     "objectID": "scamper.html#オズボーンのチェックリスト",
     "href": "scamper.html#オズボーンのチェックリスト",
     "title": "オズボーンのチェックリスト・SCAMPER",
     "section": "オズボーンのチェックリスト",
-    "text": "オズボーンのチェックリスト\n\n\nブレインストーミング考案者の アレックス・F・オズボーン が作った、発想を広げるための 9つの質問\n\n改善・改良・転用のアイデアを 体系的に 生み出せる\n\n対象（製品・サービス・研究テーマ）を1つ決めて、9つの質問を順に検討する"
+    "text": "オズボーンのチェックリスト\n\n\n発想を広げるための 9つの質問\n\n改善・改良・転用のアイデアを 体系的に 生み出せる\nブレインストーミング考案者の アレックス・F・オズボーン 考案\n\n対象（製品・サービス・研究テーマ）を1つ決めて、9つの質問を順に検討する"
   },
   {
-    "objectID": "scamper.html#チェックリスト9項目前半",
-    "href": "scamper.html#チェックリスト9項目前半",
+    "objectID": "scamper.html#チェックリスト9項目",
+    "href": "scamper.html#チェックリスト9項目",
     "title": "オズボーンのチェックリスト・SCAMPER",
-    "section": "チェックリスト9項目（前半）",
-    "text": "チェックリスト9項目（前半）\n\n\n\n\n\n\n\n\n\n\nNo\n視点\n質問\n例\n\n\n\n\n1\n転用（Put to other uses）\n別の使い方はできないか？\nドローンを農薬散布・測量に転用\n\n\n2\n応用（Adapt）\n他分野の仕組みを取り入れられないか？\nビール工場のコンベア → 回転寿司\n\n\n3\n変更（Modify）\n色・形・意味を変えたら？\n信号ランプをLED化して省電力・長寿命に\n\n\n4\n拡大（Magnify）\n数・範囲・強度・時間を増やせないか？\n電動自転車のバッテリーを大容量化\n\n\n5\n縮小（Minify）\n小さく・軽く・短くできないか？\nモーターを小型化して装置を軽くする"
+    "section": "チェックリスト9項目",
+    "text": "チェックリスト9項目\n\n\n\n\n\n\n\n\n\n\n\nNo\n視点\n質問\n例\n\n\n\n\n1\n転用（Put to other uses）\n別の使い方はできないか？\nドローンを農薬散布・測量に転用\n\n\n2\n応用（Adapt）\n他分野の仕組みを取り入れられないか？\nビール工場のコンベア → 回転寿司\n\n\n3\n変更（Modify）\n色・形・意味を変えたら？\n信号ランプをLED化して省電力・長寿命に\n\n\n4\n拡大（Magnify）\n数・範囲・強度・時間を増やせないか？\n電動自転車のバッテリーを大容量化\n\n\n5\n縮小（Minify）\n小さく・軽く・短くできないか？\nモーターを小型化して装置を軽くする\n\n\n6\n代用（Substitute）\n別の素材・手段で代えられないか？\nプラスチックの代わりに紙ストロー\n\n\n7\n再配置（Rearrange）\n並び・順番・配置を変えたら？\n工場ラインの配置換えで効率アップ\n\n\n8\n逆転（Reverse）\n逆にしたらどうなる？\n「買う」→「借りる」のサブスク\n\n\n9\n結合（Combine）\n組み合わせたら新しくならないか？\n時計 + スマホ = スマートウォッチ"
   },
   {
-    "objectID": "scamper.html#チェックリスト9項目後半",
-    "href": "scamper.html#チェックリスト9項目後半",
+    "objectID": "scamper.html#ウォークマンの例",
+    "href": "scamper.html#ウォークマンの例",
     "title": "オズボーンのチェックリスト・SCAMPER",
-    "section": "チェックリスト9項目（後半）",
-    "text": "チェックリスト9項目（後半）\n\n\n\n\n\n\n\n\n\n\nNo\n視点\n質問\n例\n\n\n\n\n6\n代用（Substitute）\n別の素材・手段で代えられないか？\nプラスチックの代わりに紙ストロー\n\n\n7\n再配置（Rearrange）\n並び・順番・配置を変えたら？\n工場ラインの配置換えで効率アップ\n\n\n8\n逆転（Reverse）\n逆にしたらどうなる？\n「買う」→「借りる」のサブスク\n\n\n9\n結合（Combine）\n組み合わせたら新しくならないか？\n時計 + スマホ = スマートウォッチ"
-  },
-  {
-    "objectID": "scamper.html#質問ウォークマンはどの視点",
-    "href": "scamper.html#質問ウォークマンはどの視点",
-    "title": "オズボーンのチェックリスト・SCAMPER",
-    "section": "質問：ウォークマンはどの視点？",
-    "text": "質問：ウォークマンはどの視点？\n\n1979年、ソニーの初代ウォークマン TPS-L2\nベースは記者用の録音機「プレスマン」。どの視点から変更点を説明できるか\n\n\n\n写真: Anna Gerdén, CC BY-SA 3.0, via Wikimedia Commons\n\n\n\n\n\n\n\n\n\n答えの例：機能を省く\n\n\n録音機から 録音機能とスピーカーを削除、再生とヘッドホンだけ残した。 SCAMPERでは、このように機能を省く視点を Eliminate として整理する（開発経緯：ソニー）"
+    "section": "ウォークマンの例",
+    "text": "ウォークマンの例\n\nウォークマンのベースとなった機材は何でしょう？\n\n\n\n写真: Anna Gerdén, CC BY-SA 3.0, via Wikimedia Commons\n\n\n\n\n\n\n\n\n\n答え：録音機（ブレスマン）\n\n\n\n録音機から 録音機能とスピーカーを削除\n機能を省く\nSCAMPERではEliminate（削除）といわれる （開発経緯：ソニー）"
   },
   {
     "objectID": "scamper.html#scamper法",
     "href": "scamper.html#scamper法",
     "title": "オズボーンのチェックリスト・SCAMPER",
     "section": "SCAMPER法",
-    "text": "SCAMPER法\n\n\nオズボーンの9項目を、教育学者 ボブ・エバール（Bob Eberle）が 7項目に再編成 した実践版\n7つの視点の頭文字で SCAMPER（スキャンパー）\n\n\n\n\n\n\n\n\n\n\n視点\n質問\n\n\n\n\nS\nSubstitute（代える）\n材料・部品・工程・人を代えられないか？\n\n\nC\nCombine（組み合わせる）\n他のものと組み合わせられないか？\n\n\nA\nAdapt（応用する）\n他分野の考えを取り入れられないか？\n\n\nM\nModify / Magnify / Minify（変更・拡大・縮小する）\n機能や形、大きさを変えられないか？\n\n\nP\nPut to other uses（転用する）\n別の使い方はできないか？\n\n\nE\nEliminate（省く）\n不要な要素・工程・機能をなくせないか？\n\n\nR\nReverse / Rearrange（逆転・再配置する）\n逆にしたら？ 順番を変えたら？"
+    "text": "SCAMPER法\n\n\nオズボーンの9項目を、教育学者 ボブ・エバール（Bob Eberle）が 7項目に再編成\n7つの頭文字で SCAMPER（スキャンパー）\n\n\n\n\n\n\n\n\n\n\n視点\n質問\n\n\n\n\nS\nSubstitute（代える）\n材料・部品・工程・人を代えられないか？\n\n\nC\nCombine（組み合わせる）\n他のものと組み合わせられないか？\n\n\nA\nAdapt（応用する）\n他分野の考えを取り入れられないか？\n\n\nM\nModify / Magnify / Minify（変更・拡大・縮小する）\n機能や形、大きさを変えられないか？\n\n\nP\nPut to other uses（転用する）\n別の使い方はできないか？\n\n\nE\nEliminate（省く）\n不要な要素・工程・機能をなくせないか？\n\n\nR\nReverse / Rearrange（逆転・再配置する）\n逆にしたら？ 順番を変えたら？"
   },
   {
     "objectID": "scamper.html#項目からどう変わったか",
     "href": "scamper.html#項目からどう変わったか",
     "title": "オズボーンのチェックリスト・SCAMPER",
     "section": "9項目からどう変わったか",
-    "text": "9項目からどう変わったか\n\n\n\n\n変更\n内容\n\n\n\n\n統合\n変更・拡大・縮小 を「M」にまとめる\n\n\n統合\n逆転 と 再配置 → 「R（Reverse / Rearrange）」に一本化\n\n\n独立\n省く（Eliminate） を1項目として扱う\n\n\n\n\n7つの視点を頭文字でまとめたものが SCAMPER（項目の説明：IxDF）"
+    "text": "9項目からどう変わったか\n\n\n\n\n変更\n内容\n\n\n\n\n統合\n変更・拡大・縮小 を「M」にまとめる\n\n\n統合\n逆転 と 再配置 → 「R（Reverse / Rearrange）」に一本化\n\n\n独立\n省く（Eliminate） を1項目として扱う\n\n\n\n（項目の説明：IxDF）"
   },
   {
-    "objectID": "scamper.html#質問どの視点で説明できるか",
-    "href": "scamper.html#質問どの視点で説明できるか",
+    "objectID": "scamper.html#質問以下をscamperで説明できるか",
+    "href": "scamper.html#質問以下をscamperで説明できるか",
     "title": "オズボーンのチェックリスト・SCAMPER",
-    "section": "質問：どの視点で説明できるか",
-    "text": "質問：どの視点で説明できるか\n\n\n次の製品・サービスの変更点は、SCAMPERのどの視点に当たるか\n\n紙ストロー\nカメラ付きスマホ\nセルフレジ\n飲食店のQRコード注文\n\n\n\n\n\n\n\n\n\n答えの例\n\n\n\n紙ストロー：S（素材を代用）\nカメラ付きスマホ：C（機能を結合）\nセルフレジ：R（会計操作を店員から客へ変更）\nQRコード注文：E（紙メニューや注文を聞き取る工程を省く）\n\n実際にSCAMPERで開発されたという意味ではなく、変更点の分類例"
+    "section": "質問：以下をSCAMPERで説明できるか",
+    "text": "質問：以下をSCAMPERで説明できるか\n\n\n次の製品・サービスの変更点はSCAMPERの何といえるか\n\n紙ストロー\nカメラ付きスマホ\nセルフレジ\n飲食店のQRコード注文\n\n\n\n\n\n\n\n\n\n回答例\n\n\n\n紙ストロー：S（素材を代用）\nカメラ付きスマホ：C（機能を結合）\nセルフレジ：R（会計操作を店員から客へ変更）\nQRコード注文：E（紙メニューや注文を聞き取る工程を省く）\n\n実際にSCAMPERで開発されたという意味ではなく、変更点の分類例"
   },
   {
-    "objectID": "scamper.html#演習-scamperで7案",
-    "href": "scamper.html#演習-scamperで7案",
+    "objectID": "scamper.html#演習-scamperで7案だせ",
+    "href": "scamper.html#演習-scamperで7案だせ",
     "title": "オズボーンのチェックリスト・SCAMPER",
-    "section": "演習 SCAMPERで7案",
-    "text": "演習 SCAMPERで7案\n\n\n身近な文房具・持ち物（ペン・消しゴム・水筒・傘など）を1つ選び、SCAMPER の7視点で1案ずつ、計7案を書き出せ（実現性は問わない）。\n\n\n対象を1つ選択（迷ったら「傘」）\nS→C→A→M→P→E→R の順に、各視点で1案（1案1行）\n7案の中から「意外と売れそう」な1案に星印\n班内で星つきの案だけ共有\n\n\n\n\n\n\n\n案が出ないとき\n\n\n「何を代えるか」「どの工程を省くか」のように、部品・使う人・手順を具体的にして考える"
+    "section": "演習 SCAMPERで7案だせ",
+    "text": "演習 SCAMPERで7案だせ\n\n\n身近な文房具・持ち物（ペン・消しゴム・水筒・傘など）を1つ選び、SCAMPER の7視点で1案ずつ、計7案を書き出せ（実現性は問わない）。\n\n\n対象を1つ選択（迷ったら「傘」）\nS→C→A→M→P→E→R の順に、各視点で1案（1案1行）\n7案の中から「意外と売れそう」な1案に星印\n班内で星つきの案だけ共有\n\n\n\n\n\n\n\n案が出ないとき\n\n\n「何を代えるか」「どの工程を省くか」のように、部品・使う人・手順を具体的にして考える"
   },
   {
     "objectID": "scamper.html#まとめ発想法との使い分け",
@@ -3357,7 +3350,7 @@
     "href": "numpy.html#本当に速いの-100万要素で実測",
     "title": "NumPy入門",
     "section": "本当に速いの？ — 100万要素で実測",
-    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 23.3 ミリ秒\nndarray:          0.24 ミリ秒\n→ 約 97 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
+    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 23.3 ミリ秒\nndarray:          0.30 ミリ秒\n→ 約 79 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
   },
   {
     "objectID": "numpy.html#その他長さやアクセス方法",
