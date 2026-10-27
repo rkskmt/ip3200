@@ -1747,7 +1747,7 @@
     "href": "index.html#情報処理",
     "title": "情報処理",
     "section": "情報処理",
-    "text": "情報処理\n\nPDF\n\nhttps://rkskmt.github.io/ip3200/\n\n\n\n\n\n\n\n\n前期後期\n\n\n\n\nPCの使い方アップデート\n\n\n\nキータイピング\nショートカット\n\n\n\n速習Python基礎\n\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\n\nデータ処理基礎\n\n\n\nNumPy入門\n（参考）ベクトルと行列\nデータの可視化\nmatplotlib入門\nPandas入門\nPlotly入門\n\n\n\nAPI\n\n\n\nAPIでデータ取得\nAPIデータを可視化する\nWikipedia APIリファレンス\n東京都オープンデータAPI\n\n\n\n\n\n\n\n課題解決・アイデア創出\n\n\n\n発想法（発散思考）\nオズボーンのチェックリスト・SCAMPER\n収束技法（KJ法・アイデアマップ）\nペイオフマトリクス\n\n\n\nワイヤーフレーム・発表\n\n\n\nFigmaでワイヤーフレーム\n発表\n\n\n\n実装\n\n\n\nNiceGUIで作るSPAモック\n自作API+SPA\n最終課題"
+    "text": "情報処理\n\nPDF\n\nhttps://rkskmt.github.io/ip3200/\n\n\n\n\n\n\n\n\n前期後期\n\n\n\n\nPCの使い方アップデート\n\n\n\nキータイピング\nショートカット\n\n\n\n速習Python基礎\n\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\n\nデータ処理基礎\n\n\n\nNumPy入門\n（参考）ベクトルと行列\nデータの可視化\nmatplotlib入門\nPandas入門\nPlotly入門\n\n\n\nAPI\n\n\n\nAPIでデータ取得\nAPIデータを可視化する\nWikipedia APIリファレンス\n東京都オープンデータAPI\n\n\n\n\n\n\n\n課題解決・アイデア創出\n\n\n\n発想法（発散思考）\nオズボーンのチェックリスト・SCAMPER\n収束技法とアイデアマップ\nペイオフマトリクス\n\n\n\nワイヤーフレーム・発表\n\n\n\nFigmaでワイヤーフレーム\n発表\n\n\n\n実装\n\n\n\nNiceGUIで作るSPAモック\n自作API+SPA\n最終課題"
   },
   {
     "objectID": "handouts.html#handouts",
@@ -1836,121 +1836,107 @@
   {
     "objectID": "convergence.html#section",
     "href": "convergence.html#section",
-    "title": "収束技法（KJ法・アイデアマップ）",
+    "title": "収束技法とアイデアマップ",
     "section": "",
     "text": "収束技法"
   },
   {
     "objectID": "convergence.html#発散のあとに残るもの",
     "href": "convergence.html#発散のあとに残るもの",
-    "title": "収束技法（KJ法・アイデアマップ）",
+    "title": "収束技法とアイデアマップ",
     "section": "発散のあとに残るもの",
-    "text": "発散のあとに残るもの\n\n\n\n\n\n写真: SEI, Public domain, via Wikimedia Commons\n\n\n\n\n案が増えると、重複や内容の細かさの違いが見えてくる\n収束技法（convergent techniques）：案を整理し、実行する案へ絞る方法\nKJ法 と アイデアマップ で、案のまとまりや関係を整理する"
+    "text": "発散のあとに残るもの\n\n\n\n\n\n写真: SEI, Public domain, via Wikimedia Commons\n\n\n\n\n案が増えると、重複や内容の細かさの違いが見えてくる\n収束技法（convergent techniques）：案を整理し、実行する案へ絞る方法\nKJ法 で、案のまとまりや関係を整理する"
   },
   {
     "objectID": "convergence.html#kj法kawakita-jiro-method",
     "href": "convergence.html#kj法kawakita-jiro-method",
-    "title": "収束技法（KJ法・アイデアマップ）",
+    "title": "収束技法とアイデアマップ",
     "section": "KJ法（Kawakita Jiro Method）",
     "text": "KJ法（Kawakita Jiro Method）\n\n\n\n\n\n写真: Parul Vora, CC BY-SA 3.0, via Wikimedia Commons\n\n\n\n\n日本の文化人類学者 川喜田二郎（1920–2009）が考案した 発想整理の方法\n\n「KJ」は本人のイニシャル。著書『発想法』（1967）で広まった\n\nもとは、ネパール山岳地帯などのフィールドワークで得た 大量の観察メモを構造化して洞察を得る ための研究手法\n\nのちにビジネス・教育の場で、アイデア整理の定番になった\n\n\n\n付箋を内容の近さでまとめている例"
   },
   {
     "objectID": "convergence.html#kj法と関連する方法",
     "href": "convergence.html#kj法と関連する方法",
-    "title": "収束技法（KJ法・アイデアマップ）",
+    "title": "収束技法とアイデアマップ",
     "section": "KJ法と関連する方法",
     "text": "KJ法と関連する方法\n\n\n\n\n\n\n\n\n名称\n意味・出典\n\n\n\n\nKJ法\nカードの内容からグループを作り、関係を図解・文章化する方法\n\n\n親和図法（affinity diagram）\n言語データを親和性でまとめる、KJ法に由来する方法\n\n\nカード法\n情報をカードに書いて並べ替える方法の総称\n\n\n\n\n手順と範囲の説明：川喜田研究所のKJ法 ／ ASQの親和図法"
   },
   {
     "objectID": "convergence.html#kj法の手順",
     "href": "convergence.html#kj法の手順",
-    "title": "収束技法（KJ法・アイデアマップ）",
+    "title": "収束技法とアイデアマップ",
     "section": "KJ法の手順",
     "text": "KJ法の手順\n\n\nカード化：意見・事実・観察を 1枚1件 で記入\nグルーピング：意味の近さ（親和性）で分類\n中見出しづけ：各グループの内容を短いフレーズで表現\n図解：グループの配置と線で相互の関係を表現\n文章化：図を読み取り、全体の関係を文章で説明"
   },
   {
     "objectID": "convergence.html#完成したkj図のかたち",
     "href": "convergence.html#完成したkj図のかたち",
-    "title": "収束技法（KJ法・アイデアマップ）",
+    "title": "収束技法とアイデアマップ",
     "section": "完成した「KJ図」のかたち",
     "text": "完成した「KJ図」のかたち\n\n\n図: Jpz, CC BY-SA 3.0, via Wikimedia Commons（品質管理学者・司馬正次が描くKJ図の複製）\n\n\n\nグループには中見出しを付け、グループ間の関係を線や矢印で示す"
   },
   {
-    "objectID": "convergence.html#書いた人より内容を見る",
-    "href": "convergence.html#書いた人より内容を見る",
-    "title": "収束技法（KJ法・アイデアマップ）",
-    "section": "書いた人より内容を見る",
-    "text": "書いた人より内容を見る\n\n\n演習では、個別のカードに書いた人の名前を入れない\n誰の意見かより、カードに書かれた内容をもとにまとめる\n\n\n己れを空しくして、データをして語らしめる\n── 川喜田二郎『発想法』\n\n\n\n\n\n\n\n分類の理由を共有する\n\n\n付箋を動かすときは、どの記述が近いと考えたかを説明する。意味が分からないカードは、書いた人に内容を確認する"
+    "objectID": "convergence.html#先入観私見の排除",
+    "href": "convergence.html#先入観私見の排除",
+    "title": "収束技法とアイデアマップ",
+    "section": "先入観・私見の排除",
+    "text": "先入観・私見の排除\n\n\nカードには個人名を書かない\n\n誰の意見かはアイデアの質に関係ない\n\n\n\n己れを空しくして、データをして語らしめる\n── 川喜田二郎『発想法』\n\n\n\n\n\n\n\n分類の理由を共有する\n\n\n付箋を動かすときは、どの記述が近いと考えたかを説明する。意味が分からないカードは、書いた人に内容を確認する"
   },
   {
     "objectID": "convergence.html#kj法を使う場面と道具",
     "href": "convergence.html#kj法を使う場面と道具",
-    "title": "収束技法（KJ法・アイデアマップ）",
+    "title": "収束技法とアイデアマップ",
     "section": "KJ法を使う場面と道具",
     "text": "KJ法を使う場面と道具\n\n\n使う場面\n\n実験・プロジェクトテーマの 問題構造の分析\nアイデアソンやチーム開発の 要件整理\nフィールド調査のまとめ（観察 → 洞察）\n\n\n\n\n\n\n\n\n\nツール\n活用法\n\n\n\n\n付箋 + 模造紙\n付箋を動かして配置やグループを変更\n\n\nMiro などのオンラインホワイトボード\nデジタル親和図。離れていても同時にグループ化できる"
   },
   {
     "objectID": "convergence.html#演習-kj法",
     "href": "convergence.html#演習-kj法",
-    "title": "収束技法（KJ法・アイデアマップ）",
+    "title": "収束技法とアイデアマップ",
     "section": "演習 KJ法",
-    "text": "演習 KJ法\n\n\n発想法の演習で出した付箋（ブレスト・635法の全案）をKJ法で整理し、模造紙1枚の「KJ図」に仕上げよ。\n\n\n付箋をテーブルに並べて内容を確認（記名があれば削除）\n近い意味の付箋を寄せてグループ化（3〜7枚 目安、無理に全部入れない）\n各グループに中見出し（短いフレーズ）\nグループ間の関係を矢印で記入（原因→結果、手段→目的）\n図全体を1文で要約して余白に記入\n\n\n\n\n\n\n\n先に見出しを作らない\n\n\n「勉強系」「生活系」のような 箱を先に決めて仕分ける のはKJ法ではない。 カードを読み、内容の近いものをまとめてから名前を付ける"
+    "text": "演習 KJ法\n\n\n発想法の演習で出したカード（ブレスト・635法の全案）をKJ法で整理し、模造紙1枚の「KJ図」に仕上げよ。\n\n\n付箋をテーブルに並べて内容を確認（記名があれば削除）\n近い意味の付箋を寄せてグループ化（3〜7枚 目安、無理に全部入れない）\n各グループに中見出し（短いフレーズ）\nグループ間の関係を矢印で記入（原因→結果、手段→目的）\n図全体を1文で要約して余白に記入\n\n\n\n\n\n\n\n先に見出しを作らない\n\n\n「勉強系」「生活系」のような 箱を先に決めて仕分ける のはKJ法ではない。 カードを読み、内容の近いものをまとめてから名前を付ける"
   },
   {
     "objectID": "convergence.html#section-1",
     "href": "convergence.html#section-1",
-    "title": "収束技法（KJ法・アイデアマップ）",
+    "title": "収束技法とアイデアマップ",
     "section": "",
-    "text": "アイデアマップ（マインドマップ）"
+    "text": "もう一つの発散収束技法\n\n\nアイデアマップ（マインドマップ）"
   },
   {
-    "objectID": "convergence.html#アイデアマップ放射状に整理する",
-    "href": "convergence.html#アイデアマップ放射状に整理する",
-    "title": "収束技法（KJ法・アイデアマップ）",
-    "section": "アイデアマップ：放射状に整理する",
-    "text": "アイデアマップ：放射状に整理する\n\nイギリスの教育家 トニー・ブザン（Tony Buzan、1942–2019）が1970年代に考案\n中心から枝を伸ばす 放射思考（Radiant Thinking）のノート法\n\n「脳は線形ではなく放射的に考える」がブザンの主張\n\n\n\n\n図: Danny Stevens, CC BY 2.5, via Wikimedia Commons"
+    "objectID": "convergence.html#アイデアマップ放射状に広げながら整理する",
+    "href": "convergence.html#アイデアマップ放射状に広げながら整理する",
+    "title": "収束技法とアイデアマップ",
+    "section": "アイデアマップ：放射状に広げながら整理する",
+    "text": "アイデアマップ：放射状に広げながら整理する\n\nマインドマップ（mind map）とも呼ぶ\nイギリスの教育家 トニー・ブザン（Tony Buzan、1942–2019）が1970年代に考案\n中心から枝を伸ばす 放射思考（Radiant Thinking）のノート法\n\n「脳は線形ではなく放射的に考える」がブザンの主張\n\n\n\n\n図: Danny Stevens, CC BY 2.5, via Wikimedia Commons"
   },
   {
     "objectID": "convergence.html#アイデアマップの描き方",
     "href": "convergence.html#アイデアマップの描き方",
-    "title": "収束技法（KJ法・アイデアマップ）",
+    "title": "収束技法とアイデアマップ",
     "section": "アイデアマップの描き方",
     "text": "アイデアマップの描き方\n\n\n中心にテーマを 文字 + イメージ で記入（例：「文化祭」）\n第一枝（主要要素）を放射状に追加（「企画」「準備」「装飾」「宣伝」）\n第二枝・第三枝で詳細化（「宣伝」の下に「ポスター」「SNS」「動画」）\n色・絵・記号で分類と強調\n全体を見直し、枝どうしのつながり を確認"
   },
   {
     "objectID": "convergence.html#例文化祭のアイデアマップ",
     "href": "convergence.html#例文化祭のアイデアマップ",
-    "title": "収束技法（KJ法・アイデアマップ）",
+    "title": "収束技法とアイデアマップ",
     "section": "例：文化祭のアイデアマップ",
     "text": "例：文化祭のアイデアマップ"
   },
   {
-    "objectID": "convergence.html#アイデアマップと概念マップ",
-    "href": "convergence.html#アイデアマップと概念マップ",
-    "title": "収束技法（KJ法・アイデアマップ）",
-    "section": "アイデアマップと概念マップ",
-    "text": "アイデアマップと概念マップ\n\n\n\n\n\n\n\n\n名称\n内容\n\n\n\n\nマインドマップ（mind map）\n中心のテーマから枝を広げ、言葉やイメージで整理する方法\n\n\nアイデアマップ／思考マップ\n考えや関連を図にする呼び方。この資料では放射状の図を指す\n\n\n概念マップ（Concept Map）\n研究・教育心理学の近縁技法。枝の関係にラベルを付けて厳密に定義する点が違う"
-  },
-  {
     "objectID": "convergence.html#マインドマップ-vs-kj法",
     "href": "convergence.html#マインドマップ-vs-kj法",
-    "title": "収束技法（KJ法・アイデアマップ）",
+    "title": "収束技法とアイデアマップ",
     "section": "マインドマップ vs KJ法",
-    "text": "マインドマップ vs KJ法\n\n\n\n\n\n\n\n\n\n\nマインドマップ\nKJ法\n\n\n\n\n発案者\nトニー・ブザン（英国）\n川喜田二郎（日本）\n\n\n目的\n中心のテーマから思考を広げて整理\n集めたカードの内容から関係を整理\n\n\n構造\n放射型（中心 → 枝）\n集合型（カード → グループ）\n\n\n思考タイプ\n発散 + 整理の中間\n収束（意味づけ）\n\n\n使う場面\nノート・構想・自己分析\nチーム発表・レポート構造\n\n\n\n\n\n\n\n\n\n使い分けの目安\n\n\nテーマから連想を広げるならマインドマップ、集めた情報からまとまりを見つけるならKJ法。どちらも個人・チームで使える"
+    "text": "マインドマップ vs KJ法\n\n\n\n\n\n\n\n\n\n\nマインドマップ\nKJ法\n\n\n\n\n発案者\nトニー・ブザン（英国）\n川喜田二郎（日本）\n\n\n目的\n中心のテーマから思考を広げて整理\n集めたカードの内容から関係を整理\n\n\n構造\n放射型（中心 → 枝）\n集合型（カード → グループ）\n\n\n人数\n主に1人\n主にチーム\n\n\n段階\n分けない（1枚の上で広げながら整理）\n分ける（発散のあとの収束で使う）\n\n\n使う場面\nノート・構想・自己分析\nチーム発表・レポート構造\n\n\n\n\n\n\n\n\n\n使い分けの目安\n\n\n\n1人でテーマを広げながら整理するなら、マインドマップ\nチームで出した案からまとまりを見つけるなら、KJ法"
   },
   {
     "objectID": "convergence.html#演習-アイデアマップ",
     "href": "convergence.html#演習-アイデアマップ",
-    "title": "収束技法（KJ法・アイデアマップ）",
+    "title": "収束技法とアイデアマップ",
     "section": "演習 アイデアマップ",
-    "text": "演習 アイデアマップ\n\n\n「自分のアプリのアイデア」を中心に置き、第一枝4本以上・第二枝まで含めて20ノード以上のアイデアマップを紙1枚に描け（色は3色以上）。\n\n\nA4を横置きにして中心にテーマを記入（絵も可）\n第一枝：「誰が使う」「何ができる」「画面」「データ」など4本以上\n各枝に第二枝を2本以上\n全体を見直し、離れた枝同士のつながり を点線で1本以上記入\n\n\n\n\n\n\n\n画面設計に使う\n\n\n「誰が使う」「何ができる」「画面」「データ」の枝を、Figma で画面を設計するときに参照する"
-  },
-  {
-    "objectID": "convergence.html#発散から収束へ全体の流れ",
-    "href": "convergence.html#発散から収束へ全体の流れ",
-    "title": "収束技法（KJ法・アイデアマップ）",
-    "section": "発散から収束へ：全体の流れ",
-    "text": "発散から収束へ：全体の流れ\n\n\n\n整理の進め方の一例。案の関係を整理したあと、ペイオフマトリクス で優先順位を検討する"
+    "text": "演習 アイデアマップ\n\n\n「自分のアプリのアイデア」を中心に置き、第一枝4本以上・第二枝まで含めて20ノード以上のアイデアマップを紙1枚に描け。\n\n\nA4を横置きにして中心にテーマを記入（絵も可）\n第一枝：「誰が使う」「何ができる」「画面」「データ」など4本以上\n各枝に第二枝を2本以上\n全体を見直し、離れた枝同士のつながり を点線で1本以上記入\n\n\n\n\n\n\n\n画面設計に使う\n\n\n「誰が使う」「何ができる」「画面」「データ」の枝を、Figma で画面を設計するときに参照する"
   },
   {
     "objectID": "api.html#webブラウザで受け取っている情報",
@@ -3021,7 +3007,7 @@
     "href": "ideation.html#まとめ3つの発想法",
     "title": "発想法（発散思考）",
     "section": "まとめ：3つの発想法",
-    "text": "まとめ：3つの発想法\n\n\n\n\n\n\n\n\n\n方法\n発想のしかた\n向いている人・場面\n\n\n\n\nブレインストーミング\n話しながら 出す\n会話から連想を広げたい\n\n\nクレイジー8\n1分ずつ区切って 書く\n短い時間で数を出したい／1人でもできる\n\n\n635法\n無言で書いて 回す\n発言が苦手な人がいる／全員から集めたい\n\n\n\n\n\n\n\n\n\n案を出したあと\n\n\n評価を保留して案を出し、収束技法（KJ法・アイデアマップ） で整理する"
+    "text": "まとめ：3つの発想法\n\n\n\n\n\n\n\n\n\n方法\n発想のしかた\n向いている人・場面\n\n\n\n\nブレインストーミング\n話しながら 出す\n会話から連想を広げたい\n\n\nクレイジー8\n1分ずつ区切って 書く\n短い時間で数を出したい／1人でもできる\n\n\n635法\n無言で書いて 回す\n発言が苦手な人がいる／全員から集めたい\n\n\n\n\n\n\n\n\n\n案を出したあと\n\n\n評価を保留して案を出し、収束技法（KJ法） で整理する"
   },
   {
     "objectID": "key-typing.html#キータイピングを速めよう",
@@ -3350,7 +3336,7 @@
     "href": "numpy.html#本当に速いの-100万要素で実測",
     "title": "NumPy入門",
     "section": "本当に速いの？ — 100万要素で実測",
-    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 23.3 ミリ秒\nndarray:          0.30 ミリ秒\n→ 約 79 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
+    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 24.3 ミリ秒\nndarray:          0.24 ミリ秒\n→ 約 99 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
   },
   {
     "objectID": "numpy.html#その他長さやアクセス方法",
