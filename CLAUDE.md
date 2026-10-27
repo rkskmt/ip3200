@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+This repository is public. Keep this file and `doc/` to rules and their technical reasons; leave out dates, history, who decided, and anything specific to one author's machine or tools.
+
 ## Project Overview
 
 Quarto-based website for an information processing course. Written in Japanese.
@@ -23,7 +25,7 @@ Quarto-based website for an information processing course. Written in Japanese.
 ## Language
 
 - Content is written in **Japanese**
-- Code comments, commit messages, and Claude's reasoning should be in **English**
+- Code comments and commit messages are in **English**
 - **English/Japanese mix in slides — intentional, not a defect:**
   - Explanatory prose, annotations, and callouts: **Japanese**. Japanese data/column names stay Japanese where natural.
   - **Key technical terms get English alongside Japanese at first appearance** (e.g. 内積（inner product）, 正規化（normalization）). This is a feature — students must learn the English. When auditing, **add the English where a term first appears without it** (this is worth a dedicated inspection pass).
@@ -46,7 +48,7 @@ Use Python as the vehicle, but frame concepts as broadly as possible. Where a co
 - **Do not add frontmatter to `index.qmd`.**  Quarto **merges** (not overwrites) `format` from `_metadata.yaml` and the file, so adding `format: html` causes it to render in both formats and trigger a `rename` error. Raw HTML (e.g. `<details>/<summary>`) is fine — it needs no frontmatter.
 - **Do not use `listing:` in `index.qmd` either.** Same reason — it requires `format: html`, which conflicts.
 - `render: ["*.qmd"]` in `_quarto.yml` prevents `.md` files (e.g. CLAUDE.md) from being rendered
-- **When adding a new `.qmd`, add it to `index.qmd`.** It is the site's only navigation: every page renders as revealjs slides, so the Quarto website navbar is never displayed — do not maintain a `navbar` in `_quarto.yml` (verified 2026-06: no navbar element appears in any built page).
+- **When adding a new `.qmd`, add it to `index.qmd`.** It is the site's only navigation: every page renders as revealjs slides, so the Quarto website navbar is never displayed — do not maintain a `navbar` in `_quarto.yml`.
 - **`search-ui.js` provides site-wide full-text search**: a 検索 button + modal on every deck (shipped by the cleanslidekit extension) and the inline box on `index.qmd` (`#search-input`/`#search-results`). It reads Quarto's generated `search.json` and deep-links to slides via `#/slide-id` — no per-lecture maintenance.
 - **Never add numbers to slide section headers or `index.qmd` link text.** Numbered slides (e.g. `## １. ...`) and numbered links (e.g. `第N回`) break on reorder — every insert or swap requires renaming every entry after it. Use plain titles only (e.g. `## \`in\` 演算子で存在確認`, `[dict改めて](dict.qmd)`).
 - Use Quarto callouts for key concepts
@@ -55,7 +57,7 @@ Use Python as the vehicle, but frame concepts as broadly as possible. Where a co
    - **Steps**: a numbered list in **体言止め** — drop trailing する/出す (`columns で列名を確認`, `平均を比較`). Setup (data download) is **step 0** so the whole list aligns.
    - **Required outputs are explicit**: state them in parentheses (`（差分値も表示）`) instead of leaving what to print implicit.
    - Do NOT cram instructions into bullets or arrow chains (`まず予想 → 何度ちがう？ → 自分で書く`), and don't spoon-feed what students can discover with a taught tool (make checking `columns` a step instead of printing the column names in the text).
-- **Every sentence on a slide must be written for the student — author-side circumstances are never slide content.** Litmus test: *does the student gain anything from reading this line?* Banned categories (each has been found and scrubbed in a real audit):
+- **Every sentence on a slide must be written for the student — author-side circumstances are never slide content.** Litmus test: *does the student gain anything from reading this line?* Banned categories:
    - **Authoring/build decisions**: 「（この節だけでも実行できるよう、読み込みから用意）」「本スライドは `"directory"` を使っている — 教室のWi-Fiが切れても動くように」
    - **Curriculum decisions** — especially naming untaught material only to exclude it: 「`.plot.bar()` は今回は使わない」「だから3Dはこの回で扱った」
    - **Lecture-structure narration / pedagogical-effect claims**: 「今回は「◯◯」の回」「〜が体感できる」 "this builds intuition for △△"
@@ -70,7 +72,7 @@ Use Python as the vehicle, but frame concepts as broadly as possible. Where a co
 - **Do not use notebook-only display style** such as a bare `df`, `df.head()`, `df.shape`, `series`, or expression as the final line when the goal is to show output. Use `print(...)` for textual/tabular output (e.g. `print(df.head())`, `print(df.shape)`). Use plotting calls like `plt.show()` when the goal is a figure.
 - For large tables or arrays, show only a small, intentional preview such as `print(df.head())`; do not dump all rows unless the full output is pedagogically necessary (a 20-row dump pushes captions/callouts below the fold).
 - **One slide = one idea.** If bullets + code + output + note don't fit the 720px slide, split the slide at the conceptual seam (e.g. 条件抽出 became "mask を作る" and "行を残す") rather than shrinking the content. Some scroll on code+figure slides is idiomatic in this course; a caption or callout stranded far below the fold is not.
-- **Figure/image sizing: `#| out-width` and pixel `width` attributes do NOT work.** The theme's `.reveal img { width: auto; height: auto }` (custom.css) overrides HTML width/height attributes, so Quarto's `out-width` silently renders at natural size (verified 2026-08-15 in the `ai` repo; the vendored theme here is identical). Shrink figures with `#| classes: fig-small` (max-height 300px) / `fig-medium` (400px) on the cell, or wrap in `::: {.fig width="60%"}` — figscale.lua moves a *percentage* width onto the img as an inline style, which does win over the theme CSS. After resizing, check the rendered slide: a callout pushed below the fold by an oversized figure is the usual symptom.
+- **Figure/image sizing: `#| out-width` and pixel `width` attributes do NOT work.** The theme's `.reveal img { width: auto; height: auto }` (custom.css) overrides HTML width/height attributes, so Quarto's `out-width` silently renders at natural size. Shrink figures with `#| classes: fig-small` (max-height 300px) / `fig-medium` (400px) on the cell, or wrap in `::: {.fig width="60%"}` — figscale.lua moves a *percentage* width onto the img as an inline style, which does win over the theme CSS. After resizing, check the rendered slide: a callout pushed below the fold by an oversized figure is the usual symptom.
 - **String literals in student-visible code use double quotes** (`"数学I"`, `{"User-Agent": "..."}`). Inside f-string braces keep single quotes for Python <3.12 compatibility (`f"{d['title']}"`); genuine Python repr output shows singles — leave real output as-is.
 - **Highlight marker (`==text==`):** `hl.lua` filter turns `==text==` into a highlighted span (white text + cyan outline). Since cleanslidekit v1.4.0 phrases with spaces work too (`==a b==`); a literal `a == b` or an unclosed `==` stays untouched. `[a b]{.hl}` also still works.
 - **`**bold**` in a slide title (`##`) becomes a solid label chip** (white on the title's near-black, rounded — a content color like blue would compete with code/links in the body), not bold (the title is already bold, so plain bold is invisible). `## **Tweak** 線の見た目` renders `Tweak` as a blue chip. Write the chip directly followed by the title with **no colon after it** — the chip's own margin separates it (`## **Tweak** …`, `## **重要** …`, `## **例** …`). This is generic and universal — any `**word**` directly in a title becomes a chip showing that word, so it is not Tweak-specific. In *body* text `**bold**` is still ordinary bold. Exception: `**…**` inside `{.en}` (abbreviation spell-out, e.g. `## LUT（[**Look-Up Table**]{.en}）`) is nested, not a direct child, so it stays plain bold. Styled via `.reveal h2 > strong` in `custom.css`.
@@ -90,11 +92,9 @@ quarto preview --port 4321   # local dev server (fixed port)
 quarto render                # build to _site/
 ```
 
-**After editing any `.qmd`, render the changed files before finishing** (`quarto render <file>.qmd`, with the `IP3200` conda env active) so `_site/` matches the source — the user reviews changes through qmd_editor, whose preview shows the rendered output; a stale `_site/` hides the edits. Do not run `quarto preview` or publish yourself — the user owns those. (Rule revised 2026-08-15; previously "never render".)
-
 ## Self-contained, reproducible builds
 
-Each repo must build from a **fresh clone** on any machine — students build it locally, and the author restores it on a new laptop — with nothing more than `conda env create -f environment.yml` + `quarto render` (on Windows, `python setup.py` in place of `conda env create`: conda cannot extract the conda-forge `d2` package there without symlink privilege, so `setup.py` installs `d2` from its release). Do **not** rely on globally-installed tools or on running `quarto add` after cloning.
+Each repo must build from a **fresh clone** on any machine with nothing more than `conda env create -f environment.yml` + `quarto render` (on Windows, `python setup.py` in place of `conda env create`: conda cannot extract the conda-forge `d2` package there without symlink privilege, so `setup.py` installs `d2` from its release). Do **not** rely on globally-installed tools or on running `quarto add` after cloning.
 
 - **Commit `_extensions/`** — Quarto extensions are vendored, not regenerated. Never gitignore `_extensions/`, or a fresh clone fails to build.
 - **Declare every build-time tool in `environment.yml`** — e.g. the `d2` CLI (used by the quarto-d2 diagram filter) is a `conda-forge` dependency, not a global install.
