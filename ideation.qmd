@@ -102,7 +102,7 @@ D: 発散\n広げる\n量を出す {style.fill: "#e3f2fd"}
 C: 収束\n整理する\n絞る {style.fill: "#e8f5e9"}
 A: 実行案 {style.fill: "#fce4ec"}
 T -> D: ブレスト\n635法
-D -> C: KJ法\nマップ
+D -> C: KJ法
 C -> A: ペイオフ\nマトリクス
 ```
 
@@ -367,5 +367,5 @@ B -> D
 
 ::: {.callout-tip}
 ## 案を出したあと
-評価を保留して案を出し、[収束技法（KJ法・アイデアマップ）](convergence.qmd) で整理する
+評価を保留して案を出し、[収束技法（KJ法）](convergence.qmd) で整理する
 :::

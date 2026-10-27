@@ -1,5 +1,5 @@
 ---
-title: "収束技法（KJ法・アイデアマップ）"
+title: "収束技法とアイデアマップ"
 subtitle: "アイデアをまとめ、関係を整理する"
 ---
 
@@ -29,7 +29,7 @@ subtitle: "アイデアをまとめ、関係を整理する"
 ::: {.column width="58%"}
 - 案が増えると、重複や内容の細かさの違いが見えてくる
 - **収束技法**（[convergent techniques]{.en}）：案を整理し、実行する案へ絞る方法
-- **KJ法** と **アイデアマップ** で、案のまとまりや関係を整理する
+- **KJ法** で、案のまとまりや関係を整理する
 :::
 
 ::::
@@ -113,12 +113,12 @@ A -> B -> C -> D -> E
 :::
 
 
-## 書いた人より内容を見る
+## 先入観・私見の排除
 
-- 演習では、個別のカードに書いた人の名前を入れない
-- 誰の意見かより、カードに書かれた内容をもとにまとめる
+- カードには個人名を書かない
+   - 誰の意見かはアイデアの質に関係ない
 
-> 己れを空しくして、データをして語らしめる
+> **己れを空しくして、データをして語らしめる**
 >
 > ── 川喜田二郎『発想法』
 
@@ -144,7 +144,7 @@ A -> B -> C -> D -> E
 ## **演習** KJ法 {.badge-practice}
 
 ::: {.prompt}
-発想法の演習で出した付箋（ブレスト・635法の全案）をKJ法で整理し、模造紙1枚の「KJ図」に仕上げよ。
+発想法の演習で出したカード（ブレスト・635法の全案）をKJ法で整理し、模造紙1枚の「KJ図」に仕上げよ。
 :::
 
 0. 付箋をテーブルに並べて内容を確認（記名があれば削除）
@@ -163,12 +163,41 @@ A -> B -> C -> D -> E
 ## {background-color="white" .center .break-slide}
 
 ::: {.break-title}
+もう一つの発散収束技法
+:::
+
+::: {.break-subtitle}
 アイデアマップ（マインドマップ）
 :::
 
+<style>
+/* Trial: subtitle under a section-divider title. Same box as .break-title
+   (cleanslidekit custom.css), indented a little from its left edge. */
+.break-slide .break-subtitle {
+  display: block;
+  width: 860px;
+  max-width: calc(100% - 310px);
+  margin-left: 190px !important;
+  margin-right: auto !important;
+  padding-top: 0.4em;
+  padding-left: 1.5em;
+  font-size: 1.15em;
+  color: #444;
+  text-align: left;
+}
+/* theme.scss sets `.reveal p { font-weight: lighter }`, which drops this
+   normal-weight div's paragraph to 100; .break-title's p ends at 400 only
+   because its div is bold. */
+.break-slide .break-subtitle p {
+  font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  font-weight: 300;
+}
+</style>
 
-## アイデアマップ：放射状に整理する
 
+## アイデアマップ：放射状に広げながら整理する
+
+- **マインドマップ**（[mind map]{.en}）とも呼ぶ
 - イギリスの教育家 **トニー・ブザン**（Tony Buzan、1942–2019）が1970年代に考案
 - 中心から枝を伸ばす **放射思考**（[Radiant Thinking]{.en}）のノート法
    - 「脳は線形ではなく放射的に考える」がブザンの主張
@@ -196,13 +225,23 @@ A -> B -> C -> D -> E
 ## 例：文化祭のアイデアマップ
 
 ```{.d2 sketch="true" width="72%"}
-C: 文化祭 {style.fill: "#fce4ec"}
+# Bundled layouts (dagre/ELK) are layered and cannot put the theme in the
+# center; a 3x4 grid with invisible spacers gives the radial arrangement.
+grid-rows: 3
+grid-columns: 4
+horizontal-gap: 60
+vertical-gap: 30
+e1: "" {width: 10; height: 10; style.opacity: 0}
 K: 企画 {style.fill: "#e3f2fd"}
-J: 準備 {style.fill: "#e8f5e9"}
-S: 装飾 {style.fill: "#fff3e0"}
-P: 宣伝 {style.fill: "#ede7f6"}
+e2: "" {width: 10; height: 10; style.opacity: 0}
 P1: ポスター
+J: 準備 {style.fill: "#e8f5e9"}
+C: 文化祭 {shape: oval; style.fill: "#fce4ec"; style.font-size: 22}
+P: 宣伝 {style.fill: "#ede7f6"}
 P2: SNS
+e3: "" {width: 10; height: 10; style.opacity: 0}
+S: 装飾 {style.fill: "#fff3e0"}
+e4: "" {width: 10; height: 10; style.opacity: 0}
 P3: 動画
 C -- K
 C -- J
@@ -214,14 +253,6 @@ P -- P3
 ```
 
 
-## アイデアマップと概念マップ
-
-| 名称 | 内容 |
-|----|------|
-| **マインドマップ**（[mind map]{.en}） | 中心のテーマから枝を広げ、言葉やイメージで整理する方法 |
-| **アイデアマップ／思考マップ** | 考えや関連を図にする呼び方。この資料では放射状の図を指す |
-| **概念マップ**（[Concept Map]{.en}） | 研究・教育心理学の近縁技法。枝の関係に**ラベルを付けて厳密に**定義する点が違う |
-
 ## マインドマップ vs KJ法
 
 | | マインドマップ | KJ法 |
@@ -229,19 +260,21 @@ P -- P3
 | 発案者 | トニー・ブザン（英国） | 川喜田二郎（日本） |
 | 目的 | 中心のテーマから思考を広げて整理 | 集めたカードの内容から関係を整理 |
 | 構造 | 放射型（中心 → 枝） | 集合型（カード → グループ） |
-| 思考タイプ | 発散 + 整理の中間 | 収束（意味づけ） |
+| 人数 | 主に1人 | 主にチーム |
+| 段階 | 分けない（1枚の上で広げながら整理） | 分ける（発散のあとの収束で使う） |
 | 使う場面 | ノート・構想・自己分析 | チーム発表・レポート構造 |
 
 ::: {.callout-tip}
 ## 使い分けの目安
-テーマから連想を広げるならマインドマップ、集めた情報からまとまりを見つけるならKJ法。どちらも個人・チームで使える
+- 1人でテーマを広げながら整理するなら、マインドマップ
+- チームで出した案からまとまりを見つけるなら、KJ法
 :::
 
 
 ## **演習** アイデアマップ {.badge-practice}
 
 ::: {.prompt}
-「自分のアプリのアイデア」を中心に置き、第一枝4本以上・第二枝まで含めて20ノード以上のアイデアマップを紙1枚に描け（色は3色以上）。
+「自分のアプリのアイデア」を中心に置き、第一枝4本以上・第二枝まで含めて20ノード以上のアイデアマップを紙1枚に描け。
 :::
 
 0. A4を横置きにして中心にテーマを記入（絵も可）
@@ -255,19 +288,3 @@ P -- P3
 :::
 
 
-## 発散から収束へ：全体の流れ
-
-```{.d2 sketch="true" width="92%"}
-direction: right
-A: 発散\nブレスト\n635法 {style.fill: "#e3f2fd"}
-B: 個人整理\nマインド\nマップ {style.fill: "#fff3e0"}
-C: チーム統合\nKJ法 {style.fill: "#e8f5e9"}
-D: 評価・選択\nペイオフ\nマトリクス {style.fill: "#fce4ec"}
-A -> B: 各自
-B -> C: 持ち寄る
-C -> D: 絞る
-```
-
-::: {.caption-note}
-整理の進め方の一例。案の関係を整理したあと、[ペイオフマトリクス](payoff-matrix.qmd) で優先順位を検討する
-:::

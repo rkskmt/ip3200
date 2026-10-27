@@ -59,7 +59,7 @@
 ::: {.grid .cat1}
 - [発想法（発散思考）](ideation.qmd)
 - [オズボーンのチェックリスト・SCAMPER](scamper.qmd)
-- [収束技法（KJ法・アイデアマップ）](convergence.qmd)
+- [収束技法とアイデアマップ](convergence.qmd)
 - [ペイオフマトリクス](payoff-matrix.qmd)
 :::
 
