@@ -94,8 +94,7 @@ plt.ylabel("閲覧数")
 plt.show()
 ```
 
-::: {.callout-note .fragment}
-## 1日だけ突出している
+::: {.callout-note .fragment title="1日だけ突出している"}
 - ほぼ平坦な中、**1日だけ大きな山（ピーク）**
    - **数値だけ見ていると気づけない**（アンスコムの教訓と同じ）
 - [データの可視化の最初に見せた図](visualize.qmd#peek-mystery){.peek}も、このデータを描いたもの
@@ -115,8 +114,7 @@ max_i = np.argmax(views)
 print(f"{dates[max_i]} に {views[max_i]} 回")
 ```
 
-::: {.callout-important}
-## ここで質問
+::: {.callout-important title="ここで質問"}
 記事は「七夕」。52,168回も読まれた**その1日**は、何月何日だと思う？
 :::
 
@@ -238,13 +236,11 @@ fig.write_html("iframes/plotly_tanabata.html", include_plotlyjs="directory")
 3. `plt.plot(日付, views)` を2回呼び、凡例つきで重ね描き
 4. グラフのタイトルに **max / min / mean** を表示
 
-::: {.callout-note}
-## URLの `all-agents` の意味
+::: {.callout-note title="URLの `all-agents` の意味"}
 この部分は**誰の閲覧を数えるか**の指定。`all-agents` はbot・クローラー込み、`user` は**人間だけ**。「人がどの端末で読んだか」を聞くなら `user` が正しい。
 :::
 
-::: {.callout-warning}
-## 禁止事項
+::: {.callout-warning title="禁止事項"}
 - 軸を揃えず2枚並べる → 比較しづらい
 - 軸の範囲を片方だけ狭める → 印象操作（[matplotlib入門](matplotlib.qmd)の「軸の範囲で印象を操る」）
 - 2本を**配列の位置**で重ねる → このAPIは閲覧数0の日を応答から省くことがあり、2つの応答の日数と並びが一致する保証はない。**時系列は日付で対応づける**
@@ -346,8 +342,7 @@ plt.show()
 ```
 :::
 
-::: {.callout-note .fragment}
-## 針はない。でも「波」がある
+::: {.callout-note .fragment title="針はない。でも「波」がある"}
 - 七夕のような数百倍のスパイクは **ない**（最大でも中央値の約3倍）
 - 代わりに **8月（登山シーズン）と1〜2月** が高い、ゆるやかな波
    - 夏が高いのは分かる。**冬はなぜ高い？**

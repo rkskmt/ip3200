@@ -50,8 +50,7 @@ arr = np.array([
 
 - **「田中さんの数学Iの点」を取り出すコードを書け**
 
-::: {.callout-important .fragment}
-## 答え：`arr[0, 1]` …… で合ってる？自信ある？
+::: {.callout-important .fragment title="答え：`arr[0, 1]` …… で合ってる？自信ある？"}
 - 田中さんが0行目、数学Iが1列目という情報は **配列のどこにも書いていない**
 - 取り出した `70` も、画面に出るのはただの数字 — **何の70点か分からない**
 - 計算はNumPyで十分。困るのは **意味（名前）の管理**
@@ -74,8 +73,7 @@ arr = np.array([
 上端の見出し（現代文・数学I・英会話）が **columns**、左端の見出し（田中・佐藤）が **index**
 :::
 
-::: {.callout-tip}
-## pandasの基本はDataFrameなので用語を覚えよう
+::: {.callout-tip title="pandasの基本はDataFrameなので用語を覚えよう"}
 DataFrame ＝ データ ＋ index（行の名前）＋ columns（列の名前）
 :::
 
@@ -122,8 +120,7 @@ print(df.index)
 print(df.columns)
 ```
 
-::: {.callout-note}
-## 自動でつく番号
+::: {.callout-note title="自動でつく番号"}
 - `RangeIndex(start=0, stop=2, step=1)` は「0から1までの行番号」
 - `RangeIndex(start=0, stop=3, step=1)` は「0から2までの列番号」
 - Pythonの `range()` と同じく、`stop` の値は含まない
@@ -189,8 +186,7 @@ df = pd.DataFrame(arr, columns=["現代文", "数学I", "英会話"], index=["�
 print(df.mean())
 ```
 
-::: {.callout-tip}
-## 名前つきの表が強い
+::: {.callout-tip title="名前つきの表が強い"}
 - `axis=0` のような番号指定より読みやすい場面が多い
 - データ分析では **名前つきの表（DataFrame）** が効く
 :::
@@ -296,8 +292,7 @@ print(japanese.mean())
 print(english.mean())
 ```
 
-::: {.callout-tip}
-## まずは列単位で考える
+::: {.callout-tip title="まずは列単位で考える"}
 - Pandasでは「列を取り出す → 計算する」が基本
 - 1列を取り出すと `Series`
 - 複数列を取り出すと `DataFrame`
@@ -331,8 +326,7 @@ print(type(df["数学I"].values))  # ndarray
 print(type(df["数学I"].mean()))  # 数値（numpy.float64）
 ```
 
-::: {.callout-tip}
-## 操作のたびに自問する
+::: {.callout-tip title="操作のたびに自問する"}
 - いま手元は `DataFrame` か `Series` か（あるいは値か）
 - その `index` / `columns` は何か
 :::
@@ -384,8 +378,7 @@ print(df.head())
 CSVの1行目が `columns` になり、`index` は指定しなければ自動で番号が振られる
 :::
 
-::: {.callout-important}
-## ここから `df` は students.csv に変わる
+::: {.callout-important title="ここから `df` は students.csv に変わる"}
 - ここまでの田中・佐藤（2人×3科目）は **練習用の小さな表**
 - 以降の `df` は **students.csv（20人×8列）** — 集計・可視化はこのデータで進める
 :::
@@ -423,8 +416,7 @@ df_name = pd.read_csv("data/students.csv", index_col="名前")
 print(df_name.head())
 ```
 
-::: {.callout-tip}
-## まずはここだけ分かれば十分
+::: {.callout-tip title="まずはここだけ分かれば十分"}
 - 最初は自動番号のindexのままで問題ない
 - **indexとは行名** — それが分かればOK
 :::
@@ -538,8 +530,7 @@ print(df[
 ])
 ```
 
-::: {.callout-warning}
-## `and` ではなく `&`
+::: {.callout-warning title="`and` ではなく `&`"}
 - Pandasの条件抽出では `and` ではなく `&`
 - 条件ごとに丸括弧をつける
 - この書き方は最初だけ少し変だが、よく使う
@@ -579,8 +570,7 @@ print(df.head())
 `平均点` は4科目（現代文・数学I・英会話・物理）の平均
 :::
 
-::: {.callout-note}
-## NumPyと同じ感覚
+::: {.callout-note title="NumPyと同じ感覚"}
 - `mean(axis=1)` は、行ごとに平均を計算する（いま作った `平均点`）
 - `df["数学I"] * 1.1` のように、列全体へまとめて計算もできる
 - for文を書かなくても列全体に計算がかかる
@@ -613,8 +603,7 @@ print(scores.max())
 print(scores.min())
 ```
 
-::: {.callout-note}
-## CSVを読んだあとの典型的な流れ
+::: {.callout-note title="CSVを読んだあとの典型的な流れ"}
 ```text
 CSVを読む → 必要な列を作る → 集計する → 可視化する
 ```
@@ -682,8 +671,7 @@ print(avg.index)
 print(avg.values)
 ```
 
-::: {.callout-tip}
-## groupbyの結果
+::: {.callout-tip title="groupbyの結果"}
 ```text
 groupby の結果も Series
 index  が「クラス」
@@ -728,8 +716,7 @@ plt.ylim(0, 100)
 plt.show()
 ```
 
-::: {.callout-tip}
-## Pandasからmatplotlibへ
+::: {.callout-tip title="Pandasからmatplotlibへ"}
 ```text
 Series → index / values → matplotlib
 ```
@@ -840,8 +827,7 @@ print(f"21世紀の東京 : {recent_avg:.1f} ℃")
 print(f"差           : {recent_avg - meiji_avg:.1f} ℃")
 ```
 
-::: {.callout-tip}
-## 列名で読み書きできる強さ
+::: {.callout-tip title="列名で読み書きできる強さ"}
 - 150行のデータでも、**絞り込み1行＋平均1行**で答えが出る
 - NumPyの「何列目が年だっけ？」が、Pandasでは **列名** で済む
 :::

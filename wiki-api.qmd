@@ -10,8 +10,7 @@ lightbox: auto
    - 全部覚える必要はない。**必要なときに引く**
 - 前提知識は[APIでデータ取得](api.qmd)（requests、エンドポイント、User-Agent）
 
-::: {.callout-tip}
-## 使い方
+::: {.callout-tip title="使い方"}
 1. 「こういうデータ欲しいな」と思う
 2. このスライドで **どのAPIか** を探す
 3. エンドポイントとパラメータをコピーして使う
@@ -78,8 +77,7 @@ Wikipedia API の全体像
 | データ形式 | JSON / XML / HTML |
 | CORS | サポート済み |
 
-::: {.callout-tip}
-## 授業での利用
+::: {.callout-tip title="授業での利用"}
 - 読み取り専用なら認証不要
 - `User-Agent` ヘッダーは必須
 :::
@@ -307,8 +305,7 @@ https://www.wikidata.org/w/rest.php/wikibase/v1/entities/items/Q1490
 | `entities/items/{item_id}/labels` | ラベル管理 | CRUD |
 | `entities/items/{item_id}/descriptions` | 説明管理 | CRUD |
 
-::: {.callout-note}
-## CRUDとは
+::: {.callout-note title="CRUDとは"}
 **C**reate（作成）・**R**ead（読取）・**U**pdate（更新）・**D**elete（削除）の略
 :::
 
@@ -540,8 +537,7 @@ for item in r.json()["items"][0]["results"]:
 **好きなWikipedia記事**の過去1年間の日別ページビューを取得し、折れ線グラフで描け（**最大アクセス日とその値**も表示）。
 :::
 
-::: {.callout-tip}
-## ヒント
+::: {.callout-tip title="ヒント"}
 - AQS の `pageviews/per-article` を使う
 - 記事名は日本語のままURLに入れてOK（requestsが自動エンコード）
 - [APIでデータ取得の「七夕」のコード](api.qmd#peek-tanabata){.peek}をベースに改造

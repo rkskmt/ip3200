@@ -29,9 +29,7 @@ scores = [85, 90, 92, 78, 92, 88]
 print(scores)  # [85, 90, 92, 78, 92, 88]
 ```
 
-::: {.callout-tip}
-## お作法
-
+::: {.callout-tip title="お作法"}
 カンマ `,` の後は**必ずスペースを空ける**のが綺麗に書くコツ。
 :::
 
@@ -72,9 +70,7 @@ scores.append(95)
 print(scores)  # [85, 90, 92, 78, 92, 88, 95]
 ```
 
-::: {.callout-warning}
-## 戻り値は None
-
+::: {.callout-warning title="戻り値は None"}
 `append` は末尾に追加するだけで、**新しいリストを返さない**。
 
 ```python
@@ -119,9 +115,7 @@ if 100 not in scores:
     print("満点はいない")  # 満点はいない
 ```
 
-::: {.callout-tip}
-## `in` vs インデックス検索
-
+::: {.callout-tip title="`in` vs インデックス検索"}
 「含まれているか知りたいだけ」なら `in` が最もシンプル。
 位置（インデックス）も必要なときは `.index()` を使う。
 
@@ -162,9 +156,7 @@ print(len(test))   # 4
 # print(test[-5])  # IndexError
 ```
 
-::: {.callout-note}
-## IndexError: list index out of range
-
+::: {.callout-note title="IndexError: list index out of range"}
 `len(test)` は `4` なので有効なインデックスは `-4` ～ `3` まで。
 `test[4]` や `test[-5]` はその範囲外なのでエラー。
 :::
@@ -209,9 +201,7 @@ sliced_list = org_test[2:5]
 print(sliced_list)  # [2, 3, 4]
 ```
 
-::: {.callout-tip}
-## ポイント
-
+::: {.callout-tip title="ポイント"}
 末尾インデックスは「取りたい最後の要素のインデックス＋1」を指定する。
 `org_test[2:5]` → インデックス 2, 3, 4 の要素を取得。
 :::
@@ -269,9 +259,7 @@ list1 += list2
 print(list1)          # ['banana', 'apple', 'orange', 'peach']
 ```
 
-::: {.callout-note}
-## 重複はそのまま追加される
-
+::: {.callout-note title="重複はそのまま追加される"}
 同じ要素があっても重複して追加される（重複排除はされない）。
 
 ```python
@@ -304,9 +292,7 @@ scores.sort(reverse=True)
 print(scores)  # [92, 92, 90, 88, 85, 78]
 ```
 
-::: {.callout-tip}
-## sort vs sorted の使い分け
-
+::: {.callout-tip title="sort vs sorted の使い分け"}
 - 元のリストを壊してよい → `sort()`（速い）
 - 元のリストを保持したい → `sorted()`（安全）
 
@@ -420,9 +406,7 @@ print(test[2])     # text
 print(test[1][2])  # 3
 ```
 
-::: {.callout-tip}
-## 実際には使わない
-
+::: {.callout-tip title="実際には使わない"}
 管理しにくいため実務では使わない。
 ただし**多次元配列**はこの仕組みを応用している。
 :::

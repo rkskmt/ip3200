@@ -15,8 +15,7 @@ subtitle: "コードを書く前に、画面を設計する"
 - [ペイオフマトリクス](payoff-matrix.qmd) で選んだ案について、必要な画面と部品を決める
 - **ワイヤーフレーム**（[wireframe]{.en}）：線や枠で、画面の構成・情報の配置を表す図
 
-::: {.callout-tip}
-## 最初に決めること
+::: {.callout-tip title="最初に決めること"}
 必要な情報、ボタンの位置、画面間の移動を確認する。色やアイコンの細部はあとで調整する
 :::
 
@@ -72,8 +71,7 @@ subtitle: "コードを書く前に、画面を設計する"
 | **Shift + A** | [Auto Layout]{.en}（自動整列） |
 | **Alt + ドラッグ** | コピー |
 
-::: {.callout-note}
-## ツールバーから選ぶ
+::: {.callout-note title="ツールバーから選ぶ"}
 Frame・四角形・テキストは [画面下のツールバー](https://help.figma.com/hc/en-us/articles/360041064174-Access-design-tools-from-the-toolbar) からも選べる。[Auto Layout](https://help.figma.com/hc/en-us/articles/360040451373-Guide-to-auto-layout) は対象を選択して右サイドバーから追加できる
 :::
 
@@ -90,8 +88,7 @@ Frame・四角形・テキストは [画面下のツールバー](https://help.f
 3. **R** の四角形でカード（Today's Tasks）
 4. 四角を3つ並べてクイックメニュー（Quick Actions）
 
-::: {.callout-tip}
-## 部品の用途を示す
+::: {.callout-tip title="部品の用途を示す"}
 グレーの四角と黒い文字でよい。カードやメニューには、何を表示する場所か分かるラベルを付ける
 :::
 
@@ -125,8 +122,7 @@ Frame・四角形・テキストは [画面下のツールバー](https://help.f
 | **入力系**（[Form]{.en}） | テキスト欄・日付選択・Save / Cancel |
 | **ナビゲーション系** | 下タブ（[Tab bar]{.en}）・ハンバーガーメニュー・操作用の丸ボタン（[FAB: Floating Action Button]{.en}） |
 
-::: {.callout-tip}
-## 手元のアプリと比較する
+::: {.callout-tip title="手元のアプリと比較する"}
 スマホのアプリを1つ開き、ホーム・一覧・詳細・入力のどの画面があるか確認する
 :::
 
@@ -142,7 +138,6 @@ Frame・四角形・テキストは [画面下のツールバー](https://help.f
 2. 各画面に配置
 3. Prototype タブでボタンと遷移先の画面を接続し、再生ボタンで動作確認
 
-::: {.callout-important}
-## 設計と実装
+::: {.callout-important title="設計と実装"}
 このワイヤーフレームを [最終課題](final-project.qmd) の設計に使う。[NiceGUI](nicegui.qmd) の部品で配置を作り、データの取得や入力処理を追加する
 :::

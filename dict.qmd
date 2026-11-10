@@ -32,9 +32,7 @@ name2score = {"Yamada": 95, "Suzuki": 75, "Takahashi": 80}
 print(name2score)  # {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}
 ```
 
-::: {.callout-tip}
-## お作法
-
+::: {.callout-tip title="お作法"}
 `:` の前は詰めて、`:` と `,` の後には**必ずスペースを空ける**のが綺麗に書くコツ。
 :::
 
@@ -69,9 +67,7 @@ name2score["Suzuki"] = 70
 print(name2score)  # {'Yamada': 95, 'Suzuki': 70, 'Takahashi': 80}
 ```
 
-::: {.callout-warning}
-## typo に注意
-
+::: {.callout-warning title="typo に注意"}
 追加と上書きが同じ書き方なので、**typo でキーを間違えると新しいキーが勝手に追加**される。
 
 ```python
@@ -104,9 +100,7 @@ Suzukiさんは70点です
 Takahashiさんは80点です
 ```
 
-::: {.callout-tip}
-## どれを使う？
-
+::: {.callout-tip title="どれを使う？"}
 - 両方必要 → `.items()`（実務ではこれが一番多い）
 - キーだけ → `.keys()`（`for key in name2score:` でも同じ）
 - 値だけ → `.values()`
@@ -143,9 +137,7 @@ if "Tanaka" not in name2score:
     print("Tanaka さんは未登録")
 ```
 
-::: {.callout-tip}
-## `in` はキーを見る（値ではない）
-
+::: {.callout-tip title="`in` はキーを見る（値ではない）"}
 ```python
 if 95 in name2score:            # False
 if 95 in name2score.values():   # True ← 値を見たいときはこう
@@ -172,9 +164,7 @@ print(name2score.get("Tanaka", 0))   # 0    ← 第2引数あり（未登録な�
 print(name2score.get("Yamada", 0))   # 95   ← 登録済みならその値
 ```
 
-::: {.callout-tip}
-## `in` でガード vs `.get()`
-
+::: {.callout-tip title="`in` でガード vs `.get()`"}
 - 「ない場合は処理を分けたい」 → `if key in dict:` でガード
 - 「ない場合のデフォルト値が決まっている」 → `.get(key, default)` がスッキリ
 :::
@@ -237,9 +227,7 @@ for s in students:
     print(f"{s['name']}さんは{s['score']}点")
 ```
 
-::: {.callout-tip}
-## ネスト dict vs list of dict
-
+::: {.callout-tip title="ネスト dict vs list of dict"}
 - 名前から直接引きたい → **ネスト dict**（`students["Yamada"]`）
 - 順序が意味を持つ・全員を順に処理 → **list of dict**（`students[0]`）
 
@@ -325,9 +313,7 @@ print(sum(name2score.values()) / len(name2score))
 2. `name2score` から **80点以上の学生だけ** を取り出した新しい dict を作る
 3. `name2score` の **キーと値を入れ替えた** dict（`score2name`）を作る
 
-::: {.callout-note}
-## LUT（[**Look-Up Table**]{.en}）
-
+::: {.callout-note title="LUT（[**Look-Up Table**]{.en}）"}
 問題１のように **「入力 → 計算結果」を事前に dict に入れて引けるようにしたもの** を **LUT（[**Look-Up Table**]{.en}、参照テーブル）** と呼ぶ。毎回計算する代わりに `lut[x]` で引けるため、重い計算を**事前計算してキャッシュする**用途でよく使われる。
 
 古典的な例として、ゲーム機や組み込み機器では `sin` / `cos` の値を角度ごとに事前計算した LUT がよく使われる（毎フレームの三角関数計算は重いため）。

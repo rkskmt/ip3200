@@ -45,9 +45,7 @@ subtitle: "すべての基礎力"
 
 初心者と上級者の間では **3倍以上** の速度差がある。
 
-::: {.callout-note}
-## 例：1000文字のレポートを書く場合
-
+::: {.callout-note title="例：1000文字のレポートを書く場合"}
 - **90 WPM** → 約 **11分**
 - **20 WPM** → 約 **50分**
 
@@ -90,9 +88,7 @@ subtitle: "すべての基礎力"
 
 以下の文には拗音・促音がたくさん含まれている。タイピングしてみよう。
 
-::: {.callout-note}
-## サンプル文
-
+::: {.callout-note title="サンプル文"}
 にゃんこが　すーぱーで　ちっっっちゃな　きゃべつを　ひょいっと　くわえて　ぴょんぴょん　はねている。
 
 ちゅうしゃじょうの　よこで　うっかり　すべって　こけちゃった。
@@ -120,9 +116,7 @@ subtitle: "すべての基礎力"
 
 [寿司打](https://sushida.net/play.html?soundless)
 
-::: {.callout-note}
-## KPMの計算方法
-
+::: {.callout-note title="KPMの計算方法"}
 「平均キータイプ数」× 60 = KPM
 
 **140 KPM 以上** を目指そう！
@@ -143,9 +137,7 @@ subtitle: "すべての基礎力"
    - **RE（[**Runtime Error**]{.en}）** ：実行中にエラー
    - **TLE（[**Time Limit Exceeded**]{.en}）** ：時間超過
 
-::: {.callout-tip}
-## ABC400の解答例（Python）
-
+::: {.callout-tip title="ABC400の解答例（Python）"}
 ```{python}
 #| echo: true
 #| eval: false

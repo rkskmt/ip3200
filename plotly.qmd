@@ -26,8 +26,7 @@ subtitle: "インタラクティブな可視化"
 - 図をHTMLとして保存して共有する
 - 最後に、[世界一有名な「動くグラフ」](visualize.qmd#peek-gapminder){.peek} を自分の手で再現する
 
-::: {.callout-note}
-## matplotlibとの「描き比べ」
+::: {.callout-note title="matplotlibとの「描き比べ」"}
 - 散布図・折れ線・ヒストグラムは、matplotlibでも作った **同じ種類の図**
 - 同じ図を別の道具で作りながら、**道具ごとの得意・不得意の違い** に注目
 :::
@@ -188,8 +187,7 @@ fig.write_html("iframes/plotly_bar_color.html", include_plotlyjs="directory")
 ::: {.plotly-iframe src="iframes/plotly_bar_color.html"}
 :::
 
-::: {.callout-tip}
-## 何が便利？
+::: {.callout-tip title="何が便利？"}
 - 凡例をクリックすると、特定のクラスだけ表示・非表示にできる
 - 棒にマウスを乗せると、値が表示される
 :::
@@ -252,8 +250,7 @@ fig.write_html("iframes/plotly_scatter.html", include_plotlyjs="directory")
 ::: {.plotly-iframe src="iframes/plotly_scatter.html"}
 :::
 
-::: {.callout-tip}
-## 外れた点、誰？
+::: {.callout-tip title="外れた点、誰？"}
 - 離れた点にマウスを乗せると **誰なのか** その場で分かる
 - 静止画の散布図では、外れた点が誰なのかは分からなかった
 :::
@@ -340,8 +337,7 @@ fig.write_html("iframes/plotly_line.html", include_plotlyjs="directory")
 ::: {.plotly-iframe src="iframes/plotly_line.html"}
 :::
 
-::: {.callout-tip}
-## 自分の指でチェリーピックしてみる
+::: {.callout-tip title="自分の指でチェリーピックしてみる"}
 - **ドラッグで2006〜2017年あたりを選択** してズーム →「寒冷化」に見える
 - [「期間のチェリーピック」](visualize.qmd#peek-cherry){.peek}で見た **切り取り** が、指一本でできてしまう
 - **ダブルクリックで全体に戻る** — 全体を確認するクセをつける
@@ -582,8 +578,7 @@ fig.write_html("iframes/plotly_scatter_3d.html", include_plotlyjs="directory")
 ::: {.plotly-iframe src="iframes/plotly_scatter_3d.html" height="540"}
 :::
 
-::: {.callout-note}
-## 3Dは「回せる道具」で
+::: {.callout-note title="3Dは「回せる道具」で"}
 - matplotlibでも3D図は作れるが、**視点を動かせない3Dは読みにくい**
 - 回転・ズーム・ホバーで探索できるPlotlyは、3D散布図と相性がよい
 :::
@@ -602,8 +597,7 @@ fig.write_html("graph.html")
    - ファイルは重いが、**ネットがなくても動く**
 - ここまで触ってきた動くグラフも、こうして保存したHTMLの埋め込み
 
-::: {.callout-note}
-## `include_plotlyjs` で本体の置き場所を選べる
+::: {.callout-note title="`include_plotlyjs` で本体の置き場所を選べる"}
 | 指定 | HTMLのサイズ | 閲覧時のネット |
 |---|---|---|
 | （指定なし） | 重い（約4MB） | 不要 |
@@ -757,8 +751,7 @@ fig.write_html("iframes/plotly_gapminder.html", include_plotlyjs="directory")
 | 大陸ごとに分ける | `facet_col="continent"` を足す |
 :::
 
-::: {.callout-tip}
-## 予想してから試す
+::: {.callout-tip title="予想してから試す"}
 - `log_x=True` を消すと、ほとんどの国はどこに固まる？（1952年の図がヒント）
 :::
 

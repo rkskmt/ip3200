@@ -28,9 +28,7 @@ import numpy as np
 
 
 
-::: {.callout-note}
-## importの `as` とは？
-
+::: {.callout-note title="importの `as` とは？"}
 `import numpy as np` の `as np` は**別名（エイリアス）**をつける構文
 
 ```python
@@ -80,8 +78,7 @@ arr = np.array([1, 2, 3, 4])    # 同じ
 arr = np.array(range(1, 5))     # 同じ。実際には後述のarangeがよく使われる
 ```
 
-::: {.callout-warning}
-## 変数名を `list` にしない
+::: {.callout-warning title="変数名を `list` にしない"}
 `list = [1, 2, 3]` と書くと**組み込みの `list` 型が上書き**され、
 以降 `list(range(5))` などが `TypeError: 'list' object is not callable` になります。`li` や `numbers` を使いましょう。
 :::

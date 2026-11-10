@@ -44,8 +44,7 @@ Webブラウザにサーバから送信されるのは、以下のどちら？
 Life誌掲載版の扉絵。額の小型カメラで見たものをそのまま記録する「未来の科学者」——考える仕事を機械に手伝わせる、という特集の顔
 :::
 
-::: {.callout-note}
-## ハイパーリンクと名付けられたのは1960年代
+::: {.callout-note title="ハイパーリンクと名付けられたのは1960年代"}
 テッド・ネルソン（[Ted Nelson]{.en}）が、memexの構想を発展させて名づけた。
 :::
 ## ハイパーリンクは疎結合
@@ -132,8 +131,7 @@ plt.show()
 `href`・`src` に書いたURLがハイパーリンク。`<a>` は読者がたどる参照、`<img>` は画像をその場に埋め込む参照
 :::
 
-::: {.callout-tip}
-## Hypertext ≠ HTML
+::: {.callout-tip title="Hypertext ≠ HTML"}
 - 例えば、PDFの中のリンクも、Markdownの `[表示テキスト](URL)` も、[Hypertext]{.en}の別実装
 - もっと便利な実装を作ることは可能
 :::
@@ -149,8 +147,7 @@ plt.show()
 2. 読み込んだHTMLを解釈して、その命令通りに画面に描画する
    - 画面に描画することを**レンダリング**（[rendering]{.en}）という
 
-::: {.callout-note}
-## 「Webブラウザ＝インターネット」ではない
+::: {.callout-note title="「Webブラウザ＝インターネット」ではない"}
 - ローカルに保存した `.html` ファイルは、ネットにつながなくても開ける
 - メモ帳で前のページの3行を `page.html` と保存し、ダブルクリックすれば確かめられる
 :::
@@ -418,8 +415,7 @@ print(response.text) # 本文。bodyのこと
 | タブのアイコン | `"https://www.python.org/favicon.ico"` |
 :::
 
-::: {.callout-tip}
-## status codeは同じ、Content-Typeだけ違う
+::: {.callout-tip title="status codeは同じ、Content-Typeだけ違う"}
 - どちらも成功なのでstatus codeは `200`
 - 一方、`Content-Type`はWebページが `text/html`、アイコンが `image/x-icon`
 - ブラウザは別々のURLへGETし、受け取った部品を組み合わせて画面を作る
@@ -445,8 +441,7 @@ print(response.text) # 本文。bodyのこと
 ヘッダーの名前は**大文字小文字を区別しない**。`content-type` と `Content-Type` は同じヘッダー
 :::
 
-::: {.callout-note}
-## リクエスト側にもヘッダーがある
+::: {.callout-note title="リクエスト側にもヘッダーがある"}
 さっき `response.request.headers` に出てきた `User-Agent: python-requests/...` がその例。「誰が頼んでいるか」の名乗りで、このあとAPIを使うときに自分で設定する場面が出てくる。
 :::
 
@@ -482,8 +477,7 @@ Wikimedia Foundationが公開している、ページビュー統計のAPI
 
 2025年6月27日の記事ランキングが、画面ではなく **JSONテキスト** で表示される。
 
-::: {.callout-tip}
-## 通信の仕組みは同じ
+::: {.callout-tip title="通信の仕組みは同じ"}
 Python.orgもWikipedia APIも、URLへGETしてresponseを受け取る。違うのは、response bodyが **HTMLかJSONか**。
 :::
 
@@ -630,8 +624,7 @@ https://wikimedia.org/api/rest_v1/metrics/pageviews/top/
 | アクセス方法 | all-access | 全アクセス | desktop, mobile-app, mobile-web |
 | 日付 | 2025/06/27 | 指定日 | YYYY/MM/DD の任意の日付 |
 
-::: {.callout-note}
-## URL構造はAPIごとに異なる
+::: {.callout-note title="URL構造はAPIごとに異なる"}
 利用時は[公式ドキュメント](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/)で、エンドポイントとパラメータを確認
 :::
 
@@ -648,8 +641,7 @@ https://wikimedia.org/api/rest_v1/metrics/pageviews/top/
 | 上位10件を表示 | `articles[:5]` → `articles[:10]` |
 :::
 
-::: {.callout-tip}
-## 予想してから試す
+::: {.callout-tip title="予想してから試す"}
 誕生日当日の1位は、事件・行事・人物のどれだと思う？
 :::
 
@@ -717,8 +709,7 @@ print(f"平均:   {views.mean():.1f}回")
 print(f"中央値: {np.median(views):.0f}回")
 ```
 
-::: {.callout-important}
-## 最大は中央値の約280倍
+::: {.callout-important title="最大は中央値の約280倍"}
 突出した1日に平均が引っ張られ、中央値との差が大きく開いた。
 :::
 
@@ -734,13 +725,11 @@ print(f"中央値: {np.median(views):.0f}回")
 | スマホのブラウザで読んだ人 | `mobile-web` / `user` |
 :::
 
-::: {.callout-tip}
-## 予想してから試す
+::: {.callout-tip title="予想してから試す"}
 PCとスマホ、人はどちらで多く読んでいる？ 平均をとって比べると、差は何倍くらい？
 :::
 
-::: {.callout-note}
-## `mobile-web`（スマホのブラウザ）を試すと404が返ることがある
+::: {.callout-note title="`mobile-web`（スマホのブラウザ）を試すと404が返ることがある"}
 このAPIは、**該当データが0件（または未収録）の場合も404で返す**（[公式のトラブルシューティング](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/documentation/troubleshooting.html)）。しかも同じURLでも通ったり404になったりする。404が返ってきたら `response.status_code` を確認する——**応答が成功時と違うことを自分の目で確かめる**のが、エラーへの第一歩。
 :::
 

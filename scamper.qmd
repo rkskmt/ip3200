@@ -26,8 +26,7 @@ subtitle: "質問に沿って改良案を考える"
 
 
 
-::: {.callout-important .fragment}
-## 正解：ビール工場
+::: {.callout-important .fragment title="正解：ビール工場"}
 - 瓶ビールを運ぶ **ベルトコンベア** から着想を得た
 - 他分野の仕組みを取り入れる **応用（Adapt）** の例として考えられる（[日本機械学会](https://www.jsme.or.jp/kaisiPDF/JsmeMag_Aug_2021_kikaiisan2021.pdf)）
 :::
@@ -39,8 +38,7 @@ subtitle: "質問に沿って改良案を考える"
    - 「小さくできないか」「逆にしたらどうなるか」
    - 変える箇所や条件を指定して考える
 
-::: {.callout-tip}
-## 強制連想法
+::: {.callout-tip title="強制連想法"}
 自由連想（ブレストなど）に対して、発想の視点や条件を与える方法を **強制連想法**（[forced association]{.en}）と呼ぶ
 :::
 
@@ -89,8 +87,7 @@ subtitle: "質問に沿って改良案を考える"
 
 
 
-::: {.callout-important .fragment}
-## 答え：録音機（ブレスマン）
+::: {.callout-important .fragment title="答え：録音機（ブレスマン）"}
 - 録音機から **録音機能とスピーカーを削除**
 - 機能を省く
 - SCAMPERでは**Eliminate**（削除）といわれる 
@@ -133,8 +130,7 @@ subtitle: "質問に沿って改良案を考える"
    - セルフレジ
    - 飲食店のQRコード注文
 
-::: {.callout-important .fragment}
-## 回答例
+::: {.callout-important .fragment title="回答例"}
 - 紙ストロー：**S**（素材を代用）
 - カメラ付きスマホ：**C**（機能を結合）
 - セルフレジ：**R**（会計操作を店員から客へ変更）
@@ -155,8 +151,7 @@ subtitle: "質問に沿って改良案を考える"
 2. 7案の中から「意外と売れそう」な1案に星印
 3. 班内で星つきの案だけ共有
 
-::: {.callout-tip}
-## 案が出ないとき
+::: {.callout-tip title="案が出ないとき"}
 「何を代えるか」「どの工程を省くか」のように、部品・使う人・手順を具体的にして考える
 :::
 
@@ -169,7 +164,6 @@ subtitle: "質問に沿って改良案を考える"
 | 既存の物・サービスを改良したい | チェックリスト・SCAMPER（強制連想） |
 | ブレストで案が出なくなった | SCAMPER の質問で視点を変える |
 
-::: {.callout-tip}
-## 案を出したあと
+::: {.callout-tip title="案を出したあと"}
 出した案を [収束技法](convergence.qmd) で整理し、[ペイオフマトリクス](payoff-matrix.qmd) で評価する
 :::

@@ -99,9 +99,7 @@ if R06_0002 >= 90:
 # 以下、R06_0003以降も同様にしていく？？？（非効率すぎる）
 ```
 
-::: {.callout-note}
-## コレクション型を使えば…
-
+::: {.callout-note title="コレクション型を使えば…"}
 `for` 文で一気に処理できる。学生が30人いても同じコードで対応可能。
 :::
 
@@ -215,9 +213,7 @@ for i, score in enumerate(scores):
     print(f"学生{i + 1}は{score}点")
 ```
 
-::: {.callout-tip}
-## どれを使う？
-
+::: {.callout-tip title="どれを使う？"}
 - 要素だけ必要 → ①
 - 番号も必要 → ③（`enumerate` が一番スッキリ）
 - スライスなど index 操作が必要 → ②
@@ -417,9 +413,7 @@ PD: <https://en.wikipedia.org/wiki/Coordinate_system#/media/File:3D_Spherical.sv
 | 定義 | デカルト積（n個の集合の直積） | 要素の集まり |
 | 用途 | 座標・関数の引数・関係 | 包含・和・積 |
 
-::: {.callout-tip}
-## Pythonでの`tuple`と`set`
-
+::: {.callout-tip title="Pythonでの`tuple`と`set`"}
 - `tuple` → 順序あり・重複あり・変更不可
 - `set` → 順序なし・重複なし（数学の集合に近い）
 :::
@@ -472,9 +466,7 @@ score = tuple(score_list)
 print(score_list)         # [90, 85, 72, 100]
 ```
 
-::: {.callout-tip}
-## なぜ `tuple` を使う？
-
+::: {.callout-tip title="なぜ `tuple` を使う？"}
 変更させたくないデータを保護できる。`list` よりメモリ効率もよい。
 :::
 
@@ -494,9 +486,7 @@ print(answer)  # (78, 92)
 min_val, max_val = get_min_max_value(scores)
 ```
 
-::: {.callout-tip}
-## アンパック（[unpacking]{.en}）
-
+::: {.callout-tip title="アンパック（[unpacking]{.en}）"}
 `tuple`などの`イテラブル`なクラスの各要素を複数の変数に一度に代入することを**アンパック**という。
 
 ```python
@@ -507,9 +497,7 @@ x, y = point      # x=3, y=7
 変数の数と要素数が一致しないとエラーになる。
 :::
 
-::: {.callout-note}
-## イテラブル（[iterable]{.en}）とは
-
+::: {.callout-note title="イテラブル（[iterable]{.en}）とは"}
 イテレーション（[iteration]{.en}）は「コンテナから要素を1つずつ順番に取り出す操作」のこと。どの言語でも `for` 文の基本動作はこれ。イテラブルとは、イテレーションができるもの＝順番に要素を取り出せるもの。
 
 | 型 | イテラブル？ |

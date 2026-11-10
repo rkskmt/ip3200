@@ -702,9 +702,7 @@ x = np.linalg.inv(A) @ b
 print(x)  # [2. 1.] ← x=2, y=1
 ```
 
-::: {.callout-tip}
-## 実は連立方程式用の関数が存在
-
+::: {.callout-tip title="実は連立方程式用の関数が存在"}
 $Ax = b$ の解は `np.linalg.solve(A, b)` 
 :::
 
@@ -732,8 +730,7 @@ a = np.array([3, 4])
 print(np.linalg.norm(a))  # 5.0
 ```
 
-::: {.callout-tip}
-## 他にも色々あるノルム
+::: {.callout-tip title="他にも色々あるノルム"}
 - **L1ノルム**（マンハッタン距離）：$\sum |a_i|$
 - **L2ノルム**（ユークリッド距離）：$\sqrt{\sum a_i^2}$ ← 最もよく使う
 - **フロベニウスノルム**：行列版のL2ノルム
@@ -959,9 +956,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-::: {.callout-note}
-## 覚えること
-
+::: {.callout-note title="覚えること"}
 内積 = 0 ⟺ 直交（垂直）
 :::
 
@@ -1137,8 +1132,7 @@ $$
 \mathbf{a} \times \mathbf{b} \quad \longrightarrow \quad [\mathbf{a}]_\times \cdot \mathbf{b}
 $$
 
-::: {.callout-tip}
-## 何が嬉しいか
+::: {.callout-tip title="何が嬉しいか"}
 - 行列積なら `@` で統一的に扱える
 - 複数の変換を**行列の連鎖**として一括計算できる
 :::

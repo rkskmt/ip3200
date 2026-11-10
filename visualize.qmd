@@ -18,8 +18,7 @@ subtitle: "「見る」原則と、誤解を招くグラフの見分け方"
    - Information Visualization
    - Data Visualization
 
-::: {.callout-tip}
-## なぜ「見る」のか
+::: {.callout-tip title="なぜ「見る」のか"}
 - 数字の表を眺めても気づけないパターン（外れ値、相関、周期性、クラスタ）が見える
 :::
 
@@ -123,8 +122,7 @@ fig.write_html("iframes/cholera_map.html", include_plotlyjs="directory")
    - 1786年：*Commercial and Political Atlas* で折れ線・棒グラフを初めて使用
    - 1801年：*Statistical Breviary* で円グラフ（パイチャート）を発明
 
-::: {.callout-note}
-## スノウとプレイフェア
+::: {.callout-note title="スノウとプレイフェア"}
 - **スノウ** — 視覚化で ==因果関係を発見== し、社会を変えた
 - **プレイフェア** — 視覚化の ==形式そのもの== を発明した
 :::
@@ -160,8 +158,7 @@ fig.write_html("iframes/cholera_map.html", include_plotlyjs="directory")
 - 数字の羅列を眺める **苦労を省く** ためにグラフを描く
     - 200年以上前に「視覚化の本質」を言い当てていた
 
-::: {.callout-note}
-## 可視化の本質
+::: {.callout-note title="可視化の本質"}
 「データに **適切な空間（軸）** を与えること」
 :::
 
@@ -179,8 +176,7 @@ fig.write_html("iframes/cholera_map.html", include_plotlyjs="directory")
 | 地理 + 時系列 | [earth :: 地球の風・気象](https://earth.nullschool.net/) |
 | 3D点群 | [Cesium "3D Tiles Point"](https://sandcastle.cesium.com/) |
 
-::: {.callout-tip}
-## ミニアクティビティ
+::: {.callout-tip title="ミニアクティビティ"}
 - どれか1つ開いて、**隣の人に30秒で説明** する
    - 何のデータ？ 軸は何？ 何が見えた？
 - 動的なものほど **データ量と表現力の関係** がよく分かる
@@ -242,8 +238,7 @@ plt.show()
    - 一部の高所得世帯が、平均を ==右に引っ張る==
 - 分布を **見ないと**、「平均」という言葉の意味すら誤解する
 
-::: {.callout-note}
-## 出典
+::: {.callout-note title="出典"}
 厚生労働省「2023（令和5）年 国民生活基礎調査の概況」図9
 :::
 
@@ -262,8 +257,7 @@ plt.show()
 | $x$ と $y$ の相関係数 | 0.816 **（小数第3位まで一致）** |
 | 回帰直線 | $y = 3.00 + 0.500x$ **（小数第2〜3位まで一致）** |
 
-::: {.callout-important .fragment}
-## 問題：散布図にしたら、どんな形？
+::: {.callout-important .fragment title="問題：散布図にしたら、どんな形？"}
 - 統計量がここまで揃っていると、**4つとも似た形に思える**
 - 散布図を見る前に、**予想して手で描いてみる**
 :::
@@ -306,8 +300,7 @@ plt.show()
 :::
 
 
-::: {.callout-tip}
-## 教訓
+::: {.callout-tip title="教訓"}
 - 回帰直線が **データの要約として正しく機能**
 - 4つの中で線形モデルが成立する **唯一の例**
 :::
@@ -349,8 +342,7 @@ plt.show()
 :::
 :::
 
-::: {.callout-warning}
-## 教訓
+::: {.callout-warning title="教訓"}
 - そもそも **直線で表現すべきでない** データ
 - 多項式回帰や対数変換などモデルを変える必要あり
 - 統計量だけだと **モデル選択ミス** に気づけない
@@ -393,8 +385,7 @@ plt.show()
 :::
 :::
 
-::: {.callout-warning}
-## 教訓
+::: {.callout-warning title="教訓"}
 - **外れ値（[outlier]{.en}）** に統計量が支配される
 - 入力ミスとして除外するか、本物の現象として尊重するか
 - **図を見ないと判断できない**
@@ -437,8 +428,7 @@ plt.show()
 :::
 :::
 
-::: {.callout-warning}
-## 教訓
+::: {.callout-warning title="教訓"}
 - **サンプリングが偏っている**
 - 1点だけで「相関がある」と言っているのと同じ
 - **実験計画（データの取り方）そのもの** を疑うべきケース
@@ -495,8 +485,7 @@ plt.show()
 :::
 :::
 
-::: {.callout-note}
-## だからデータ処理=まず視覚化
+::: {.callout-note title="だからデータ処理=まず視覚化"}
 **見ればわかる。見なければ見逃す。**
 :::
 
@@ -582,8 +571,7 @@ plt.show()
 - 教訓はアンスコムと同じ — ただし ==より強烈に==
 - 出典：[Same Stats, Different Graphs (Autodesk Research)](https://www.research.autodesk.com/publications/same-stats-different-graphs/)
 
-::: {.callout-tip}
-## 作り方も面白い
+::: {.callout-tip title="作り方も面白い"}
 - 恐竜の形を保ったまま、統計量が変わらないように点を少しずつ動かして生成
 - 「統計量は強い要約だが、**形の情報はほぼ捨てている**」ことの証明
 :::
@@ -641,8 +629,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-::: {.callout-warning}
-## 棒グラフは「長さ」で比較するグラフ
+::: {.callout-warning title="棒グラフは「長さ」で比較するグラフ"}
 - 実際の差は **約2%**。軸を切ると何倍にも見える
 - 棒グラフは **0から描く** のが原則
 - 軸の数字を確認するクセをつける
@@ -701,8 +688,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-::: {.callout-warning}
-## データが本物でも、切り取り方で印象が変わる
+::: {.callout-warning title="データが本物でも、切り取り方で印象が変わる"}
 - 150年で見れば気温は **約4℃上昇**（都市化の影響も大きい）
 - 揺らぎのある時系列は、**都合のいい12年** を選べば逆向きに見せられる
 - 「**どの範囲を見せるか**」も作為のうち
@@ -718,8 +704,7 @@ plt.show()
    - 統計学の前段として現在も基本中の基本
 - 箱ひげ図・幹葉図など、Tukeyが広めた可視化手法は多数
 
-::: {.callout-note}
-## Tukey 
+::: {.callout-note title="Tukey"}
 **"bit"**（**bi**nary digi**t** の短縮形）や **"software"** の生みの親
 :::
 

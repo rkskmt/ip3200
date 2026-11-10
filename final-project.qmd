@@ -48,8 +48,7 @@ A -> B -> C -> D
 | **実用ツール系** | テスト点数計算機（平均・合計） ／ 偏差値計算 ／ BMI計算+アドバイス ／ バイト時給計算機 |
 | **創作・エンタメ系** | ランダム決め（今日の昼飯・掃除当番） ／ 2つ名ジェネレーター（名前 → 面白い2つ名） |
 
-::: {.callout-note}
-## テーマは自由
+::: {.callout-note title="テーマは自由"}
 この表にないテーマでもよい。[ペイオフマトリクス](payoff-matrix.qmd) の「作る手間」と「利用者にとっての効果」で検討する
 :::
 
@@ -81,8 +80,7 @@ Figmaで考えた企画をもとに、必要な画面へ変更する。入力の
 | 3 | テンプレートを元にNiceGUIで実装した **ソースコード**（.py 1ファイル + .json） | zip |
 | 4 | アプリを紹介する **スライド1枚**（タイトル・特徴・スクショ程度でOK） | PDF |
 
-::: {.callout-warning}
-## 3のzipは「入れ子」構造
+::: {.callout-warning title="3のzipは「入れ子」構造"}
 .py と .json をまとめたzipを、提出zipの中に入れる。==解凍して .py を実行するだけで動く== ことを提出前に必ず確認する
 :::
 
@@ -108,8 +106,7 @@ Figmaで考えた企画をもとに、必要な画面へ変更する。入力の
    - ボタンの「スタート」などコンテンツ以外のラベルはハードコードOK
 - JSONへの **書き込みも可**
 
-::: {.callout-important}
-## データと画面の分離
+::: {.callout-important title="データと画面の分離"}
 質問を1問追加する場合はJSONを変更する。質問を順に表示する処理は、リストを読み取る形にしておけば共通で使える
 :::
 
@@ -121,8 +118,7 @@ Figmaで考えた企画をもとに、必要な画面へ変更する。入力の
 - 生成AIの丸写しではなく、**テンプレートに沿って** 実装されている
 - **エラーなく実行できる**
 
-::: {.callout-tip}
-## 提出前の確認
+::: {.callout-tip title="提出前の確認"}
 zipを別のフォルダに解凍し直し、Pythonファイルを実行する。JSONファイルの同梱、画面遷移、データ読み込みを確認する
 :::
 
@@ -176,8 +172,7 @@ ui.button("スタート", on_click=lambda: show_screen("main"))
 `screen_name == "top"` は `True` / `False` になる。指定した画面だけ表示し、他の画面は非表示にする
 :::
 
-::: {.callout-note}
-## `lambda` = その場で作る小さな関数
+::: {.callout-note title="`lambda` = その場で作る小さな関数"}
 `on_click` には関数を渡す必要がある（`show_screen("main")` と書くと即実行されてしまう）。
 `lambda: show_screen("main")` は「押されたら `show_screen("main")` を実行する **無名関数**（[anonymous function]{.en}）」を作る書き方。
 lambdaを避けたい人は、`def show_main(): ...` を画面の数だけ書く簡単版テンプレートを使えばよい
@@ -192,8 +187,7 @@ lambdaを避けたい人は、`def show_main(): ...` を画面の数だけ書く
 
 - `Path(__file__).parent` は **このPythonファイルがあるフォルダ**。実行時の作業フォルダによらず、隣の `data.json` を読み込む
 
-::: {.callout-note}
-## `async` / `await` は「待つ間、画面を止めない」書き方
+::: {.callout-note title="`async` / `await` は「待つ間、画面を止めない」書き方"}
 テンプレートでは、HTTP通信をする `load_data` だけが `async def`（[自作API+SPA](api-spa.qmd) で扱った形）。
 改造で自分の関数を足すときは、通信しない関数なら普通の `def` でよい
 :::
@@ -372,8 +366,7 @@ ui.run()
 3. Figmaの設計をもとに、画面・ボタン・配置を変更
 4. zipにして別のフォルダに解凍し、動作確認後に提出
 
-::: {.callout-tip}
-## 参照先
+::: {.callout-tip title="参照先"}
 - 画面の部品・スタイル：[NiceGUI](nicegui.qmd)
 - APIとJSON：[自作API+SPA](api-spa.qmd)
 - 画面構成：[Figma](figma.qmd) のワイヤーフレーム

@@ -81,8 +81,7 @@ ui.run()
    - ここでは「この関数をAPIエンドポイントとして登録する」という意味
 - 関数名は自由。URLと結びつくのは ==デコレータの引数== のほう
 
-::: {.callout-note}
-## 関数を登録する
+::: {.callout-note title="関数を登録する"}
 `on_click=say_hi` はボタン操作に関数を登録する。`@app.get(...)` は指定したURLへのGETに関数を登録する
 :::
 
@@ -178,8 +177,7 @@ ui.run()
 - ブラウザはPythonサーバーとは別に動く
    - ブラウザから `/api/questions` を開いた場合は、HTTP通信でJSONを受け取る
 
-::: {.callout-tip}
-## 戻り値の違い
+::: {.callout-tip title="戻り値の違い"}
 直接呼ぶとPythonの辞書が返る。HTTPで呼ぶと、FastAPIが辞書をJSONに変換して応答する
 :::
 
@@ -225,8 +223,7 @@ ui.run()
 
 ## 同期通信で処理が止まる理由
 
-::: {.callout-warning}
-## コールバック内の同期通信
+::: {.callout-warning title="コールバック内の同期通信"}
 `requests.get()` をここに直接書くと、応答待ちでNiceGUIのイベントループが止まる。自分のサーバーも応答を処理できなくなるため、この例では **httpx + `await`** を使う。外部APIが相手でも、コールバック内の通信は非同期にする
 :::
 
@@ -293,8 +290,7 @@ def get_question(question_id: int):
 2. `/api/questions/1` のように、IDを指定した質問だけを返す処理を実装
 3. 存在しないIDには `{"error": "Not found"}` を返す分岐を追加
 
-::: {.callout-tip}
-## 動作確認
+::: {.callout-tip title="動作確認"}
 `/api/results`・`/api/questions/1`・`/api/questions/999` をブラウザで開いて応答を確認する。この演習のエラー辞書は通常の戻り値なので、HTTPステータスは200のまま
 :::
 
@@ -346,8 +342,7 @@ ui.run()
 
 ## JSONの読み込みと表示の更新
 
-::: {.callout-note}
-## JSONを読むタイミング
+::: {.callout-note title="JSONを読むタイミング"}
 既定のオートリロードは `.py` が対象なので、JSONの保存ではサーバーは再起動しない。ボタンを押すたびにファイルを読み、`container.clear()` で古い表示を消してから表示し直す
 :::
 
@@ -381,7 +376,6 @@ ui.run()
 - **表示の更新**：`container.clear()` で削除し、データを再取得して表示
 - **httpx + `await`**：応答を待つ間、他の処理を進められるHTTP通信
 
-::: {.callout-note}
-## 3画面のアプリ
+::: {.callout-note title="3画面のアプリ"}
 [最終課題](final-project.qmd) に、画面切り替えとHTTP通信を組み合わせたテンプレートを掲載
 :::
