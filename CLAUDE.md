@@ -92,6 +92,8 @@ quarto preview --port 4321   # local dev server (fixed port)
 quarto render                # build to _site/
 ```
 
+**Recommend a full render before the next deploy when one is due.** The deploy publishes `_site/` as is (`--no-render`), and rendering single decks never removes files from `_site/`, so decks or images that were deleted or renamed stay on the public site under their old URLs (details in [doc/deploy.md](doc/deploy.md)). When a task deletes or renames a `.qmd`, an image or another resource, or a render was interrupted, close your report by recommending `quarto render && quarto publish gh-pages --id gh-pages --no-render --no-prompt`; a bare `quarto render` empties `_site/` before rendering every deck. After ordinary edits, do not recommend it.
+
 ## Self-contained, reproducible builds
 
 Each repo must build from a **fresh clone** on any machine with nothing more than `conda env create -f environment.yml` + `quarto render` (on Windows, `python setup.py` in place of `conda env create`: conda cannot extract the conda-forge `d2` package there without symlink privilege, so `setup.py` installs `d2` from its release). Do **not** rely on globally-installed tools or on running `quarto add` after cloning.
