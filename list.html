@@ -286,6 +286,7 @@ rkskmt
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>]</span>
 <span id="cb1-2"><a aria-label="2"></a><span class="bu">print</span>(scores)  <span class="co"># [85, 90, 92, 78, 92, 88]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="お作法">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -296,6 +297,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>カンマ <code>,</code> の後は<strong>必ずスペースを空ける</strong>のが綺麗に書くコツ。</p>
+</div>
 </div>
 </div>
 </div>
@@ -332,6 +334,7 @@ rkskmt
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">88</span>]</span>
 <span id="cb4-2"><a aria-label="2"></a>scores.append(<span class="dv">95</span>)</span>
 <span id="cb4-3"><a aria-label="3"></a><span class="bu">print</span>(scores)  <span class="co"># [85, 90, 92, 78, 92, 88, 95]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="戻り値は None">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -345,6 +348,7 @@ rkskmt
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a>result <span class="op">=</span> scores.append(<span class="dv">95</span>)</span>
 <span id="cb5-2"><a aria-label="2"></a><span class="bu">print</span>(result)  <span class="co"># None ← リストではない！</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>result = scores.append(95)</code> のように書くと <code>result</code> が <code>None</code> になってしまう。</p>
+</div>
 </div>
 </div>
 </div>
@@ -375,6 +379,7 @@ rkskmt
 <span id="cb8-5"><a aria-label="5"></a></span>
 <span id="cb8-6"><a aria-label="6"></a><span class="cf">if</span> <span class="dv">100</span> <span class="kw">not</span> <span class="kw">in</span> scores:</span>
 <span id="cb8-7"><a aria-label="7"></a>    <span class="bu">print</span>(<span class="st">"満点はいない"</span>)  <span class="co"># 満点はいない</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="`in` vs インデックス検索">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -386,6 +391,7 @@ rkskmt
 <div class="callout-content">
 <p>「含まれているか知りたいだけ」なら <code>in</code> が最もシンプル。 位置（インデックス）も必要なときは <code>.index()</code> を使う。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="bu">print</span>(scores.index(<span class="dv">90</span>))  <span class="co"># 1</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 </div>
 </div>
@@ -418,6 +424,7 @@ rkskmt
 <span id="cb10-2"><a aria-label="2"></a><span class="bu">print</span>(<span class="bu">len</span>(test))   <span class="co"># 4</span></span>
 <span id="cb10-3"><a aria-label="3"></a><span class="co"># print(test[4])   # IndexError</span></span>
 <span id="cb10-4"><a aria-label="4"></a><span class="co"># print(test[-5])  # IndexError</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="IndexError: list index out of range">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -428,6 +435,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p><code>len(test)</code> は <code>4</code> なので有効なインデックスは <code>-4</code> ～ <code>3</code> まで。 <code>test[4]</code> や <code>test[-5]</code> はその範囲外なのでエラー。</p>
+</div>
 </div>
 </div>
 </div>
@@ -464,6 +472,7 @@ rkskmt
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a>org_test <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
 <span id="cb14-2"><a aria-label="2"></a>sliced_list <span class="op">=</span> org_test[<span class="dv">2</span>:<span class="dv">5</span>]</span>
 <span id="cb14-3"><a aria-label="3"></a><span class="bu">print</span>(sliced_list)  <span class="co"># [2, 3, 4]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="ポイント">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -474,6 +483,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>末尾インデックスは「取りたい最後の要素のインデックス＋1」を指定する。 <code>org_test[2:5]</code> → インデックス 2, 3, 4 の要素を取得。</p>
+</div>
 </div>
 </div>
 </div>
@@ -520,6 +530,7 @@ rkskmt
 <span id="cb18-6"><a aria-label="6"></a><span class="co"># += 演算も可能</span></span>
 <span id="cb18-7"><a aria-label="7"></a>list1 <span class="op">+=</span> list2</span>
 <span id="cb18-8"><a aria-label="8"></a><span class="bu">print</span>(list1)          <span class="co"># ['banana', 'apple', 'orange', 'peach']</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="重複はそのまま追加される">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -533,6 +544,7 @@ rkskmt
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a>list3 <span class="op">=</span> [<span class="st">"banana"</span>, <span class="st">"grape"</span>]</span>
 <span id="cb19-2"><a aria-label="2"></a><span class="bu">print</span>(list1 <span class="op">+</span> list3)</span>
 <span id="cb19-3"><a aria-label="3"></a><span class="co"># ['banana', 'apple', 'orange', 'peach', 'banana', 'grape']</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 </div>
 </div>
@@ -557,6 +569,7 @@ rkskmt
 <span id="cb20-13"><a aria-label="13"></a><span class="co"># 降順は reverse=True</span></span>
 <span id="cb20-14"><a aria-label="14"></a>scores.sort(reverse<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb20-15"><a aria-label="15"></a><span class="bu">print</span>(scores)  <span class="co"># [92, 92, 90, 88, 85, 78]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="sort vs sorted の使い分け">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -571,6 +584,7 @@ rkskmt
 <li>元のリストを保持したい → <code>sorted()</code>（安全）</li>
 </ul>
 <p><code>sort()</code> が in-place で変更する点は、<a href="./variables.html">変数と代入</a>で学んだミュータブルの性質そのもの。</p>
+</div>
 </div>
 </div>
 </div>
@@ -664,6 +678,7 @@ rkskmt
 <span id="cb27-4"><a aria-label="4"></a>test <span class="op">=</span> [<span class="dv">10</span>, [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">"text"</span>]</span>
 <span id="cb27-5"><a aria-label="5"></a><span class="bu">print</span>(test[<span class="dv">2</span>])     <span class="co"># text</span></span>
 <span id="cb27-6"><a aria-label="6"></a><span class="bu">print</span>(test[<span class="dv">1</span>][<span class="dv">2</span>])  <span class="co"># 3</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="実際には使わない">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -674,6 +689,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>管理しにくいため実務では使わない。 ただし<strong>多次元配列</strong>はこの仕組みを応用している。</p>
+</div>
 </div>
 </div>
 </div>
@@ -703,7 +719,7 @@ rkskmt
 <li><strong>スライス</strong>で先頭5つと末尾5つをそれぞれ別のリストに分けて表示</li>
 <li><code>sorted</code> で <strong>元のリストを変えずに</strong>降順に並び替えた新しいリストを作り、<strong>上位3名の点数</strong>を表示</li>
 </ol>
-<div id="e112ad72" class="cell" data-execution_count="1">
+<div id="521bd162" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a aria-label="1"></a><span class="co"># 1</span></span>
@@ -736,7 +752,7 @@ rkskmt
 <li><code>scores</code> から <strong>80点以上の点数だけ</strong>を取り出した新しいリストを作る</li>
 <li>標準入力で受け取った空白区切りの整数列を <strong>list of int</strong> に変換（AtCoder 頻出パターン）</li>
 </ol>
-<div id="0046aefa" class="cell" data-execution_count="2">
+<div id="375f4076" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a aria-label="1"></a><span class="co"># 1</span></span>
@@ -772,7 +788,7 @@ rkskmt
 <li><strong>C さんの3科目合計</strong>を表示</li>
 <li><strong>各学生の平均点</strong>を <code>for</code> 文で順に表示</li>
 </ol>
-<div id="0ada1f78" class="cell" data-execution_count="3">
+<div id="f7d5bf5f" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a aria-label="1"></a><span class="co"># 1</span></span>

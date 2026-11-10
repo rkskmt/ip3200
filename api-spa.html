@@ -382,6 +382,7 @@ rkskmt
 </ul></li>
 <li>関数名は自由。URLと結びつくのは <span class="hl">デコレータの引数</span> のほう</li>
 </ul>
+<div title="関数を登録する">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -392,6 +393,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p><code>on_click=say_hi</code> はボタン操作に関数を登録する。<code>@app.get(...)</code> は指定したURLへのGETに関数を登録する</p>
+</div>
 </div>
 </div>
 </div>
@@ -514,6 +516,7 @@ rkskmt
 <li>ブラウザから <code>/api/questions</code> を開いた場合は、HTTP通信でJSONを受け取る</li>
 </ul></li>
 </ul>
+<div title="戻り値の違い">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -524,6 +527,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>直接呼ぶとPythonの辞書が返る。HTTPで呼ぶと、FastAPIが辞書をJSONに変換して応答する</p>
+</div>
 </div>
 </div>
 </div>
@@ -593,6 +597,7 @@ rkskmt
 <section id="同期通信で処理が止まる理由" class="slide level2">
 <h2>同期通信で処理が止まる理由</h2>
 <div class="slide-body">
+<div title="コールバック内の同期通信">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -603,6 +608,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p><code>requests.get()</code> をここに直接書くと、応答待ちでNiceGUIのイベントループが止まる。自分のサーバーも応答を処理できなくなるため、この例では <strong>httpx + <code>await</code></strong> を使う。外部APIが相手でも、コールバック内の通信は非同期にする</p>
+</div>
 </div>
 </div>
 </div>
@@ -667,6 +673,7 @@ rkskmt
 <li><code>/api/questions/1</code> のように、IDを指定した質問だけを返す処理を実装</li>
 <li>存在しないIDには <code>{"error": "Not found"}</code> を返す分岐を追加</li>
 </ol>
+<div title="動作確認">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -680,7 +687,8 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="b8bc0a9a" class="cell" data-execution_count="1">
+</div>
+<div id="9a710eb2" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>エンドポイント追加の解答例を表示</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="im">from</span> nicegui <span class="im">import</span> ui, app</span>
@@ -727,6 +735,7 @@ rkskmt
 <section id="jsonの読み込みと表示の更新" class="slide level2">
 <h2>JSONの読み込みと表示の更新</h2>
 <div class="slide-body">
+<div title="JSONを読むタイミング">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -737,6 +746,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>既定のオートリロードは <code>.py</code> が対象なので、JSONの保存ではサーバーは再起動しない。ボタンを押すたびにファイルを読み、<code>container.clear()</code> で古い表示を消してから表示し直す</p>
+</div>
 </div>
 </div>
 </div>
@@ -771,6 +781,7 @@ rkskmt
 <li><strong>表示の更新</strong>：<code>container.clear()</code> で削除し、データを再取得して表示</li>
 <li><strong>httpx + <code>await</code></strong>：応答を待つ間、他の処理を進められるHTTP通信</li>
 </ul>
+<div title="3画面のアプリ">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -781,6 +792,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p><a href="./final-project.html">最終課題</a> に、画面切り替えとHTTP通信を組み合わせたテンプレートを掲載</p>
+</div>
 </div>
 </div>
 </div>

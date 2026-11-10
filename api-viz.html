@@ -332,7 +332,7 @@ rkskmt
 <li>数値だけでは見落とすので <strong>まず描く</strong> — <a href="./visualize.html">データの可視化</a>の大原則</li>
 <li>APIから取得した <code>views</code> を、そのまま <code>plt.plot()</code> に渡した結果</li>
 </ul>
-<div id="b2af28ff" class="cell" data-execution_count="1">
+<div id="78808efa" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -341,7 +341,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="64b1908b" class="cell" data-execution_count="2">
+<div id="06bb45b3" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
@@ -367,7 +367,7 @@ rkskmt
 <span id="cb2-21"><a aria-label="21"></a>plt.show()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div class="fragment">
+<div class="fragment" title="1日だけ突出している">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -402,6 +402,7 @@ rkskmt
 <span id="cb3-2"><a aria-label="2"></a></span>
 <span id="cb3-3"><a aria-label="3"></a>max_i <span class="op">=</span> np.argmax(views)</span>
 <span id="cb3-4"><a aria-label="4"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>dates[max_i]<span class="sc">}</span><span class="ss"> に </span><span class="sc">{</span>views[max_i]<span class="sc">}</span><span class="ss"> 回"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="ここで質問">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -412,6 +413,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>記事は「七夕」。52,168回も読まれた<strong>その1日</strong>は、何月何日だと思う？</p>
+</div>
 </div>
 </div>
 </div>
@@ -537,6 +539,7 @@ rkskmt
 <li><code>plt.plot(日付, views)</code> を2回呼び、凡例つきで重ね描き</li>
 <li>グラフのタイトルに <strong>max / min / mean</strong> を表示</li>
 </ol>
+<div title="URLの `all-agents` の意味">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -550,6 +553,8 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
+<div title="禁止事項">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -567,7 +572,8 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="c825221c" class="cell" data-execution_count="5">
+</div>
+<div id="ed497bb5" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
@@ -614,7 +620,7 @@ rkskmt
 <li>問い：七夕のような <strong>鋭い山（スパイク）</strong> はあるか？</li>
 <li>問い：スパイクがないなら、<strong>何が見えるか</strong>？ 自分の言葉で説明せよ</li>
 </ul>
-<div id="4c00fd24" class="cell" data-execution_count="6">
+<div id="e763c5a9" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
@@ -641,7 +647,7 @@ rkskmt
 </details>
 </div>
 <div class="fragment">
-<div id="a0c7c771" class="cell" data-execution_count="7">
+<div id="88f10508" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -651,7 +657,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div class="fragment">
+<div class="fragment" title="針はない。でも「波」がある">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">

@@ -189,7 +189,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">ペイオフマトリクス</h1>
-  <p class="subtitle">どれからやるかを「2軸」で決める</p>
+  <p class="subtitle">どれからやるかを決める</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -210,7 +210,7 @@ rkskmt
 <h2>実装する案を選ぶ</h2>
 <div class="slide-body">
 <ul>
-<li>研究テーマを決めるとき、どれも面白そうで <strong>決められない</strong></li>
+<li>作りたいアプリの案がいくつもあり、どれも面白そうで <strong>決められない</strong></li>
 <li>「あれもこれも実装したい」と欲張って、<strong>結局完成しない</strong></li>
 <li>チームで作るとき、メンバーの <strong>意見がバラバラ</strong></li>
 <li>時間をかけて作ったのに「<strong>誰も使わない機能</strong>」だった</li>
@@ -221,7 +221,7 @@ rkskmt
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>優先順位</strong></p>
+<p><strong>重要</strong></p>
 </div>
 <div class="callout-content">
 <p>使える時間と、実現したときの効果を比べて、何から着手するかを決める</p>
@@ -242,6 +242,7 @@ rkskmt
 <li><strong>効果と手間のマトリクス</strong>（<span class="en">impact–effort matrix</span>）とも呼ばれる</li>
 </ul></li>
 </ul>
+<div title="用語の使い分け">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -256,18 +257,17 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
-<section id="題材学校生活をよくするスマホアプリ" class="slide level2">
-<h2>題材：学校生活をよくするスマホアプリ</h2>
+<section id="題材学校生活をよくするスマホアプリの手間と効果を比較する" class="slide level2">
+<h2>題材：学校生活をよくするスマホアプリの手間と効果を比較する</h2>
 <div class="slide-body">
-<ul>
-<li>学校生活をよくするアプリの案について、手間と効果を比較する</li>
-</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="table-compact">
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th></th>
-<th>アイデア</th>
 <th></th>
 <th>アイデア</th>
 </tr>
@@ -275,39 +275,67 @@ rkskmt
 <tbody>
 <tr class="odd">
 <td>1</td>
-<td>時間割アプリ</td>
-<td>5</td>
-<td>図書館の蔵書検索</td>
+<td>時間割表示</td>
 </tr>
 <tr class="even">
 <td>2</td>
-<td>課題管理アプリ</td>
-<td>6</td>
-<td>サークル連絡ツール</td>
+<td>課題リスト</td>
 </tr>
 <tr class="odd">
 <td>3</td>
-<td>食堂の混雑状況確認</td>
-<td>7</td>
-<td>テスト範囲共有</td>
+<td>食堂メニュー表示</td>
 </tr>
 <tr class="even">
 <td>4</td>
-<td>教室の空き状況確認</td>
-<td>8</td>
-<td>落とし物掲示板</td>
+<td>教室の空き確認</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>課題の自動通知</td>
 </tr>
 </tbody>
 </table>
-<div class="caption-note">
-<p>同じ案でも、必要な機能や入手できるデータによって手間が変わる</p>
 </div>
+</div><div class="column" style="width:50%;">
+<div class="table-compact">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>アイデア</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>6</td>
+<td>サークル連絡</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>食堂の混雑予測AI</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>テーマカラー変更</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>学校紹介ページ</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>3D校舎ツアー</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
 </div>
 </section>
 <section id="マトリクスの構造2軸-4象限" class="slide level2">
 <h2>マトリクスの構造：2軸 → 4象限</h2>
 <div class="slide-body">
-<div id="6704f174" class="cell fig-medium" data-execution_count="1">
+<div id="b9b28b35" class="cell fig-medium" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -316,8 +344,25 @@ rkskmt
 </div>
 </div>
 </div>
-<div class="caption-note">
-<p>左上から時計回りに Quick Wins・Big Projects・Time Sinks・Fill-ins。軸の向きを確認してから配置する</p>
+<div title="左上から時計回りに">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>左上から時計回りに</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Quick Wins</li>
+<li>Big Projects</li>
+<li>Time Sinks</li>
+<li>Fill-ins</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -333,8 +378,8 @@ rkskmt
 <thead>
 <tr class="header">
 <th></th>
-<th>優先して着手</th>
-<th>計画して進める</th>
+<th>すぐやるべき</th>
+<th>時間かかるけど重要</th>
 </tr>
 </thead>
 <tbody>
@@ -356,12 +401,12 @@ rkskmt
 <tr class="even">
 <td>例</td>
 <td>時間割表示（時間割データがあり、表示だけを作る場合）</td>
-<td>課題管理 + 自動通知（通知の仕組みも作る場合）</td>
+<td>課題の自動通知（通知の仕組みも作る場合）</td>
 </tr>
 <tr class="odd">
 <td>例</td>
 <td>食堂メニュー表示（献立表が入手できる場合）</td>
-<td>食堂混雑予測AI（混雑データの収集から必要な場合）</td>
+<td>食堂の混雑予測AI（混雑データの収集から必要な場合）</td>
 </tr>
 </tbody>
 </table>
@@ -404,11 +449,6 @@ rkskmt
 <td>テーマカラー変更（利用者からの要望が少ない場合）</td>
 <td>3D校舎ツアー（既存の案内図で十分な場合）</td>
 </tr>
-<tr class="odd">
-<td>例</td>
-<td>誕生日表示（利用目的との関連が薄い場合）</td>
-<td>独自の画面アニメーション（制作に時間がかかり、操作性も変わらない場合）</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -417,11 +457,16 @@ rkskmt
 <h2>使い方の手順</h2>
 <div class="slide-body">
 <ol start="0" type="1">
-<li><strong>リストアップ</strong>：候補の案を記入</li>
-<li><strong>評価軸の確認</strong>：手間は開発時間・技術難易度、効果は利用人数・頻度・困りごとの改善度で検討</li>
+<li><strong>リストアップ</strong>：候補の案を付箋に記入</li>
+<li><strong>評価軸の確認</strong>：手間と効果を何で見積もるかを決定
+<ul>
+<li>手間：開発時間・技術難易度</li>
+<li>効果：利用人数・頻度・困りごとの改善度</li>
+</ul></li>
 <li><strong>配置</strong>：理由を話し合いながら、付箋を4象限に配置</li>
 <li><strong>優先順位の決定</strong>：効果が大きく手間が小さい案を優先し、他の案は実施時期や仕様を検討</li>
 </ol>
+<div title="議論のコツ">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -436,6 +481,199 @@ rkskmt
 <li>技術的難易度は正直に（できそうな気がする ≠ 簡単）</li>
 <li>似たものが世の中に既にないか確認（車輪の再発明を避ける）</li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="例アプリ案10個の配置" class="slide level2">
+<h2>例：アプリ案10個の配置</h2>
+<div class="slide-body">
+<div class="columns">
+<div class="column" style="width:62%;">
+<div id="dd38416b" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="payoff-matrix_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="payoff-matrix_files/figure-revealjs/cell-3-output-1.png" width="758" height="490"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:38%;">
+<div title="配置から決まる方針">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>配置から決まる方針</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>左上の4案：すぐ着手</li>
+<li>右上の3案：計画を立てて段階的に</li>
+<li>左下の2案：余裕があれば</li>
+<li>右下の1案：仕様や必要性を見直す</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+<section id="配置の理由" class="slide level2">
+<h2>配置の理由</h2>
+<div class="slide-body">
+<div class="table-compact table-style">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>案</th>
+<th>位置</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>時間割表示</td>
+<td>手間 小・効果 大</td>
+<td>時間割データは入手済みで、毎日使う</td>
+</tr>
+<tr class="even">
+<td>混雑予測AI</td>
+<td>手間 大・効果 大</td>
+<td>混雑データの収集から必要</td>
+</tr>
+<tr class="odd">
+<td>テーマカラー</td>
+<td>手間 小・効果 小</td>
+<td>すぐ作れるが、要望が少ない</td>
+</tr>
+<tr class="even">
+<td>3D校舎ツアー</td>
+<td>手間 大・効果 小</td>
+<td>モデル制作が必要で、既存の案内図で足りる</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="caption-note center">
+<p>時間割データが手に入らなければ、時間割表示の手間は大きくなる</p>
+</div>
+<div class="takeaway dark">
+<p><strong>同じ案でも、必要な機能や入手できるデータによって手間が変わる</strong></p>
+</div>
+</div>
+</section>
+<section id="演習-ペイオフマトリクス" class="slide level2 badge-practice">
+<h2><strong>演習</strong> ペイオフマトリクス</h2>
+<div class="slide-body">
+<div class="prompt">
+<p>次の12案を4象限に分類せよ（付箋1枚1案で配置し、チームで理由を議論すること）。</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="table-compact">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>アイデア</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>時間割表示（手動入力）</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>課題管理 + 締切通知</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>食堂の今日のメニュー表示</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>食堂の混雑予測AI</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>教室の空き状況確認（手動入力）</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>図書館の蔵書検索</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="table-compact">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>アイデア</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>7</td>
+<td>サークル活動の連絡ツール</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>テスト範囲の共有掲示板</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>落とし物掲示板</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>出席管理システム</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>AR校内ナビゲーション</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>学校の歴史紹介ページ</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+</section>
+<section id="ペイオフマトリクス演習の手順" class="slide level2 scrollable">
+<h2>ペイオフマトリクス演習の手順</h2>
+<div class="slide-body">
+<ol start="0" type="1">
+<li>ホワイトボードに「手間 →」「効果 ↑」の2軸と十字線を記入</li>
+<li>12案を付箋にして、議論しながら配置（<strong>1案30秒</strong> で仮置き → あとで動かす）</li>
+<li>「すぐやるべき」に入った案の <strong>上位3つ</strong> を選定</li>
+<li>「後回し」に入った案について、<strong>理由を各1行</strong> で記入</li>
+</ol>
+<div title="KJ法の付箋がそのまま使える">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>KJ法の付箋がそのまま使える</strong></p>
+</div>
+<div class="callout-content">
+<p>前回KJ法でグループ化した付箋の「中見出し」を12案の代わりに置けば、自分たちのアイデアの優先順位が決まる</p>
+</div>
 </div>
 </div>
 </div>
@@ -475,6 +713,7 @@ rkskmt
 </tr>
 </tbody>
 </table>
+<div title="機能を絞る">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -489,123 +728,212 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
-<section id="配置例の条件" class="slide level2">
-<h2>配置例の条件</h2>
+<section id="section-1" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>ICEスコア</p>
+</div>
+</section>
+<section id="ペイオフマトリクスの弱点" class="slide level2">
+<h2>ペイオフマトリクスの弱点</h2>
 <div class="slide-body">
 <ul>
-<li>4人チームで、時間割などの表示用データは入手済みと仮定</li>
-<li>混雑予測AIはデータ収集から、3D校舎ツアーはモデル制作から必要と仮定</li>
+<li>「すぐやるべき」から上位3つを選ぶとき迷う
+<ul>
+<li>同じ象限に入った案の中で、どれから着手するかを決めにくい</li>
+</ul></li>
+<li>見積もりの確信度が表れない
+<ul>
+<li>利用者に確かめた効果も、思いつきで見積もった効果も、同じ「効果&nbsp;大」に置かれる</li>
+</ul></li>
 </ul>
+<div class="takeaway dark">
+<p>そこでICEスコアで順位を決める</p>
+</div>
+</div>
+</section>
+<section id="iceスコア" class="slide level2">
+<h2>ICEスコア</h2>
+<div class="slide-body">
+<ul>
+<li>ショーン・エリス（Sean Ellis）らが著書で広めた採点法（2017年）
+<ul>
+<li>もとは、製品の改善案をどれから試すかを決める方法</li>
+</ul></li>
+<li>案ごとに、3つの観点を 1〜10 点で採点</li>
+</ul>
+<div class="table-compact">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>観点</th>
+<th>意味</th>
+<th>高い点がつく例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>効果（<span class="en"><strong>I</strong>mpact</span>）</td>
+<td>利用者の役に立つ度合い</td>
+<td>多くの人が毎日使う</td>
+</tr>
+<tr class="even">
+<td>確信度（<span class="en"><strong>C</strong>onfidence</span>）</td>
+<td>I と E の見積もりの確かさ</td>
+<td>利用者に聞いて確かめた</td>
+</tr>
+<tr class="odd">
+<td>容易さ（<span class="en"><strong>E</strong>ase</span>）</td>
+<td>作りやすさ</td>
+<td>既存の技術・データで作れる</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div title="マトリクスとの対応">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>効果の見積もり</strong></p>
+<p><strong>マトリクスとの対応</strong></p>
 </div>
 <div class="callout-content">
-<p>日常的に使う表示機能の効果は大きく、既存の案内図で足りる校舎ツアーの効果は小さいと仮定する</p>
+<ul>
+<li>I：縦軸の「効果」と同じ</li>
+<li>E：横軸の「手間」と逆向き（手間が小さいほど高い）</li>
+<li>C：マトリクスにはない観点</li>
+</ul>
 </div>
 </div>
 </div>
-</div>
-</section>
-<section id="例アプリ案10個の配置" class="slide level2">
-<h2>例：アプリ案10個の配置</h2>
-<div class="slide-body">
-<div id="4051d05b" class="cell fig-medium" data-execution_count="2">
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="payoff-matrix_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="payoff-matrix_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="758" height="490"></a></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="caption-note">
-<p>前ページの条件での配置例（実測値ではない）。左上の4案から着手し、右上は計画、右下は仕様や必要性を見直す</p>
 </div>
 </div>
 </section>
-<section id="演習-ペイオフマトリクス" class="slide level2 badge-practice">
-<h2><strong>演習</strong> ペイオフマトリクス</h2>
+<section id="例すぐやるべき4案のiceスコア" class="slide level2">
+<h2>例：「すぐやるべき」4案のICEスコア</h2>
 <div class="slide-body">
-<div class="prompt">
-<p>次の12案を4象限に分類せよ（付箋1枚1案で配置し、チームで理由を議論すること）。</p>
-</div>
+<div class="table-compact table-style">
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th></th>
-<th>アイデア</th>
-<th></th>
-<th>アイデア</th>
+<th>案</th>
+<th style="text-align: center;">I</th>
+<th style="text-align: center;">C</th>
+<th style="text-align: center;">E</th>
+<th>C の根拠</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>1</td>
-<td>時間割表示（手動入力）</td>
-<td>7</td>
-<td>サークル活動の連絡ツール</td>
+<td>時間割表示</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">8</td>
+<td>使いたい人が多いと確認済み</td>
 </tr>
 <tr class="even">
-<td>2</td>
-<td>課題管理 + 締切通知</td>
-<td>8</td>
-<td>テスト範囲の共有掲示板</td>
+<td>課題リスト</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">7</td>
+<td>締切を忘れて困った人が多いと確認済み</td>
 </tr>
 <tr class="odd">
-<td>3</td>
-<td>食堂の今日のメニュー表示</td>
-<td>9</td>
-<td>落とし物掲示板</td>
+<td>食堂メニュー</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">8</td>
+<td>献立は食堂の前に貼ってあり、アプリで見る人がいるか未確認</td>
 </tr>
 <tr class="even">
-<td>4</td>
-<td>食堂の混雑予測AI</td>
-<td>10</td>
-<td>出席管理システム</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>教室の空き状況確認（手動入力）</td>
-<td>11</td>
-<td>AR校内ナビゲーション</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>図書館の蔵書検索</td>
-<td>12</td>
-<td>学校の歴史紹介ページ</td>
+<td>教室空き確認</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">7</td>
+<td>空き教室を探す人がいると確認済み</td>
 </tr>
 </tbody>
 </table>
 </div>
-</section>
-<section id="ペイオフマトリクス演習の手順" class="slide level2 scrollable">
-<h2>ペイオフマトリクス演習の手順</h2>
-<div class="slide-body">
-<ol start="0" type="1">
-<li>模造紙に「手間 →」「効果 ↑」の2軸と十字線</li>
-<li>12案を付箋にして、議論しながら配置（<strong>1案30秒</strong> で仮置き → あとで動かす）</li>
-<li>「すぐやるべき」に入った案の <strong>上位3つ</strong> を選定</li>
-<li>「後回し」に入った案について、<strong>理由を各1行</strong> で記入</li>
-</ol>
+<div class="caption-note center">
+<p>I と E は、アプリ案の配置例での位置から読み取った値</p>
+</div>
+<div class="takeaway dark">
+<p><strong>食堂メニューは位置では上位3つに入るが、効果の根拠がない</strong></p>
+</div>
+<div title="確信度を上げるには">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>KJ法の付箋がそのまま使える</strong></p>
+<p><strong>確信度を上げるには</strong></p>
 </div>
 <div class="callout-content">
-<p>前回KJ法でグループ化した付箋の「中見出し」を12案の代わりに置けば、自分たちのアイデアの優先順位が決まる</p>
+<p>作る前に、使う人に聞いて確かめる</p>
 </div>
 </div>
+</div>
+</div>
+</div>
+</section>
+<section id="演習-iceスコア" class="slide level2 badge-practice scrollable">
+<h2><strong>演習</strong> ICEスコア</h2>
+<div class="slide-body">
+<div class="prompt">
+<p>「すぐやるべき」の案をICEで採点し、上位3つを選び直せ。</p>
+</div>
+<ol start="0" type="1">
+<li>マトリクスで選んだ上位3つに ★ を記入</li>
+<li>マトリクスの横に「案・I・C・E・C の根拠」の表を作成</li>
+<li>I と E を案の位置から読み取って記入（上端が I 10、左端が E 10）</li>
+<li>C を採点し、根拠とともに記入（<strong>1案1分</strong>、チームで合意）</li>
+<li>3つの点数を見て上位3つを選び直し、<strong>順位</strong> を記入</li>
+<li>★ の3つと入れ替わった案の <strong>理由を各1行</strong> で記入</li>
+</ol>
+<div title="確信度で迷ったら">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>確信度で迷ったら</strong></p>
+</div>
+<div class="callout-content">
+<p>根拠を言える案ほど高くする（利用者に聞いた、似たアプリが使われている など）</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ice演習の完成イメージ" class="slide level2">
+<h2>ICE演習の完成イメージ</h2>
+<div class="slide-body">
+<div class="fig">
+<div id="2e47173d" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="payoff-matrix_files/figure-revealjs/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="payoff-matrix_files/figure-revealjs/cell-4-output-1.png" style="width:94.0%"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="caption-note center">
+<p>アプリ案の配置例を採点した場合（C の点数は仮の値）</p>
 </div>
 </div>
 </section>
@@ -617,22 +945,9 @@ rkskmt
 <li>配置の理由と、技術・データ・利用者についての前提を共有する</li>
 <li>条件が変わったら、配置と優先順位を見直す</li>
 </ul>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="takeaway">
+<p>まずペイオフマトリクスで大まかに分け<br>同じ象限の中の順位は ICEスコアで決めるとよい</p>
 </div>
-<p><strong>もっと厳密にやりたくなったら</strong></p>
-</div>
-<div class="callout-content">
-<p>案が多い・利害が複雑な場面では、<strong>ICEスコア</strong>（<span class="en">Impact / Confidence / Ease</span> の3軸を数値化）など定量的な手法もある</p>
-</div>
-</div>
-</div>
-<ul>
-<li>選んだ案の画面設計：<a href="./figma.html">Figmaでワイヤーフレーム</a></li>
-</ul>
 
 
 <div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">

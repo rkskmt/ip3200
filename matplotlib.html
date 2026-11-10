@@ -314,7 +314,7 @@ rkskmt
 <ul>
 <li>matplotlib は多くの環境で <strong>日本語が文字化け</strong> する</li>
 </ul>
-<div id="1871b9b5" class="cell" data-execution_count="1">
+<div id="7dd0673d" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -329,6 +329,7 @@ rkskmt
 <li>これだけで解決</li>
 </ul></li>
 </ul>
+<div title="`rcParams` でフォント指定しない">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -346,6 +347,7 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="まずはドキュメントをチラ見" class="slide level2">
 <h2>まずはドキュメントをチラ見</h2>
@@ -354,6 +356,7 @@ rkskmt
 <li>公式の <strong>Plot types</strong> ページに、描けるグラフの一覧がある</li>
 <li><a href="https://matplotlib.org/stable/plot_types/index.html" class="uri">https://matplotlib.org/stable/plot_types/index.html</a></li>
 </ul>
+<div title="ライブラリとの接し方">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -368,6 +371,7 @@ rkskmt
 <li>sandbox的な環境にインストールする</li>
 <li>sampleを動かしてTweak</li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -388,6 +392,7 @@ rkskmt
 <span id="cb3-3"><a aria-label="3"></a>months <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">13</span>)    <span class="co"># 1〜12月</span></span>
 <span id="cb3-4"><a aria-label="4"></a>temp_1900 <span class="op">=</span> np.array([<span class="fl">1.6</span>, <span class="fl">3.1</span>, <span class="fl">5.7</span>, <span class="fl">11.4</span>, <span class="fl">17.3</span>, <span class="fl">19.3</span>, <span class="fl">22.8</span>, <span class="fl">26.1</span>, <span class="fl">22.6</span>, <span class="fl">16.5</span>, <span class="fl">11.0</span>, <span class="fl">5.5</span>])</span>
 <span id="cb3-5"><a aria-label="5"></a>temp_2024 <span class="op">=</span> np.array([<span class="fl">7.1</span>, <span class="fl">8.0</span>, <span class="fl">9.6</span>, <span class="fl">17.1</span>, <span class="fl">20.0</span>, <span class="fl">23.1</span>, <span class="fl">28.7</span>, <span class="fl">29.0</span>, <span class="fl">26.6</span>, <span class="fl">20.6</span>, <span class="fl">13.7</span>, <span class="fl">8.1</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="出典">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -401,6 +406,7 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 <ul>
 <li>ここから、このグラフに <strong>1つずつ手を加えていく</strong></li>
 </ul>
@@ -409,7 +415,7 @@ rkskmt
 <section id="まずは点のプロット" class="slide level2">
 <h2>まずは点のプロット</h2>
 <div class="slide-body">
-<div id="d43adaeb" class="cell" data-execution_count="2">
+<div id="aa94719d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
@@ -439,7 +445,7 @@ rkskmt
 <section id="peek-line-code" class="slide level2">
 <h2>点に線を付け足す</h2>
 <div class="slide-body">
-<div id="be86acfe" class="cell" data-execution_count="3">
+<div id="46b8439d" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
@@ -494,6 +500,7 @@ rkskmt
 </tbody>
 </table>
 </div>
+<div title="ここで質問">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -513,6 +520,7 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="演習二次関数を描く" class="slide level2 badge-practice scrollable">
 <h2>演習：二次関数を描く</h2>
@@ -525,6 +533,7 @@ rkskmt
 <li><code>y</code> を計算（<code>ndarray</code> はそのまま式に入れられる — NumPy回の復習）</li>
 <li><code>plt.plot(x, y)</code> で折れ線として描く</li>
 </ol>
+<div title="平方完成で検算">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -541,7 +550,8 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="dd75ab62" class="cell" data-execution_count="4">
+</div>
+<div id="b18b7d00" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -569,7 +579,7 @@ rkskmt
 <li>その後<code>plt.legend()</code>を呼ぶ</li>
 </ul></li>
 </ul>
-<div id="b940ffdc" class="cell" data-execution_count="5">
+<div id="ab87394b" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
@@ -611,6 +621,7 @@ rkskmt
 <li>凡例ごと消す</li>
 </ul>
 </div>
+<div title="予想してから試す">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -628,6 +639,7 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="ラベルグリッドタイトル" class="slide level2">
 <h2>ラベル・グリッド・タイトル</h2>
@@ -637,7 +649,7 @@ rkskmt
 <li><code>plt.title()</code> で <strong>グラフタイトル</strong></li>
 <li><code>plt.grid(True)</code> で <strong>グリッド線</strong></li>
 </ul>
-<div id="324fe406" class="cell" data-execution_count="6">
+<div id="f3c4a34a" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
@@ -662,6 +674,7 @@ rkskmt
 </div>
 </div>
 </div>
+<div title="装飾の優先順位">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -681,6 +694,7 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="peek-axis-code" class="slide level2">
 <h2>表示範囲の指定（xlim / ylim）</h2>
@@ -689,7 +703,7 @@ rkskmt
 <li><code>plt.xlim(a, b)</code> / <code>plt.ylim(a, b)</code> で軸の範囲を固定</li>
 <li>何も指定しないと <strong>データの範囲＋少し余白</strong> が自動で選ばれる</li>
 </ul>
-<div id="c4f4b045" class="cell" data-execution_count="7">
+<div id="2f327848" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
@@ -713,6 +727,7 @@ rkskmt
 </div>
 </div>
 </div>
+<div title="y軸の範囲は描く側の責任">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -726,6 +741,7 @@ rkskmt
 <li>範囲をデータに合わせると <strong><a href="./visualize.html#peek-ycut" class="peek">小さな変化が大きく見える</a></strong></li>
 <li>比較するグラフは <strong>y軸を揃える</strong> か <strong>0から見せる</strong> のが原則</li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -757,6 +773,7 @@ rkskmt
 </tbody>
 </table>
 </div>
+<div title="予想してから試す">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -773,6 +790,7 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="複数のグラフを並べるsubplot" class="slide level2">
 <h2>複数のグラフを並べる（subplot）</h2>
@@ -785,7 +803,7 @@ rkskmt
 <div style="text-align:center; font-family:monospace;">
 <p>1 │ 2<br> ─┼─<br> 3 │ 4</p>
 </div>
-<div id="56bca506" class="cell" data-execution_count="8">
+<div id="4ae0f99e" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb10-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
@@ -814,6 +832,7 @@ rkskmt
 </div>
 </div>
 </div>
+<div title="重ねる vs 並べる">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -831,11 +850,12 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="ここまでで仕上げたグラフ" class="slide level2">
 <h2>ここまでで仕上げたグラフ</h2>
 <div class="slide-body">
-<div id="06f1d6e2" class="cell" data-execution_count="9">
+<div id="6587f79b" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -863,7 +883,7 @@ rkskmt
 <li><code>alpha</code> で <strong>透明度</strong> を指定すると重なりが見やすい</li>
 </ul></li>
 </ul>
-<div id="393e0eda" class="cell" data-execution_count="10">
+<div id="6109787a" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb11-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
@@ -912,7 +932,7 @@ rkskmt
 </ul></li>
 </ul>
 <div class="fig">
-<div id="2e0d37e2" class="cell" data-execution_count="11">
+<div id="34a5edeb" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-3"><a aria-label="3"></a><span class="im">import</span> japanize_matplotlib</span>
@@ -941,6 +961,7 @@ rkskmt
 </div>
 </div>
 </div>
+<div title="「平均年収824万円の会社」">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -955,6 +976,7 @@ rkskmt
 <li>でも中央値は <strong>500万円</strong> — 半分の人は500万以下</li>
 <li>描けば誰でも分かる</li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -986,6 +1008,7 @@ rkskmt
 </tbody>
 </table>
 </div>
+<div title="予想してから試す">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -999,6 +1022,7 @@ rkskmt
 <li><code>bins=5</code> にすると、右に長く伸びる <strong>高年収の外れ値</strong> の山は見える？消える？</li>
 <li>まず予想 → 実行して確かめる（軸の範囲と同じで、ビンの切り方も印象を動かす）</li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -1083,7 +1107,7 @@ rkskmt
 <li><code>data[:, 0]</code> と <code>data[:, 1]</code> で <code>x</code>, <code>y</code> を取り出す</li>
 <li><code>plt.scatter</code> でプロットし、軸ラベル・タイトルをつける</li>
 </ol>
-<div id="c5bafd59" class="cell" data-execution_count="12">
+<div id="a9897eae" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1128,6 +1152,7 @@ rkskmt
 <span id="cb14-9"><a aria-label="9"></a><span class="co"># データセット IV（x が異なる）</span></span>
 <span id="cb14-10"><a aria-label="10"></a>x4 <span class="op">=</span> np.array([<span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">19</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>])</span>
 <span id="cb14-11"><a aria-label="11"></a>y4 <span class="op">=</span> np.array([<span class="fl">6.58</span>, <span class="fl">5.76</span>, <span class="fl">7.71</span>, <span class="fl">8.84</span>, <span class="fl">8.47</span>, <span class="fl">7.04</span>, <span class="fl">5.25</span>, <span class="fl">12.50</span>, <span class="fl">5.56</span>, <span class="fl">7.91</span>, <span class="fl">6.89</span>])</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="なぜ軸を揃える？">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1144,7 +1169,8 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="5278c169" class="cell" data-execution_count="13">
+</div>
+<div id="21a6731d" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>

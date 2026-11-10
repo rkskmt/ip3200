@@ -288,6 +288,7 @@ rkskmt
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a>name2score <span class="op">=</span> {<span class="st">"Yamada"</span>: <span class="dv">95</span>, <span class="st">"Suzuki"</span>: <span class="dv">75</span>, <span class="st">"Takahashi"</span>: <span class="dv">80</span>}</span>
 <span id="cb1-2"><a aria-label="2"></a><span class="bu">print</span>(name2score)  <span class="co"># {'Yamada': 95, 'Suzuki': 75, 'Takahashi': 80}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="お作法">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -298,6 +299,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p><code>:</code> の前は詰めて、<code>:</code> と <code>,</code> の後には<strong>必ずスペースを空ける</strong>のが綺麗に書くコツ。</p>
+</div>
 </div>
 </div>
 </div>
@@ -329,6 +331,7 @@ rkskmt
 <span id="cb3-7"><a aria-label="7"></a><span class="co"># 上書き</span></span>
 <span id="cb3-8"><a aria-label="8"></a>name2score[<span class="st">"Suzuki"</span>] <span class="op">=</span> <span class="dv">70</span></span>
 <span id="cb3-9"><a aria-label="9"></a><span class="bu">print</span>(name2score)  <span class="co"># {'Yamada': 95, 'Suzuki': 70, 'Takahashi': 80}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="typo に注意">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -340,6 +343,7 @@ rkskmt
 <div class="callout-content">
 <p>追加と上書きが同じ書き方なので、<strong>typo でキーを間違えると新しいキーが勝手に追加</strong>される。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a>name2score[<span class="st">"Suzki"</span>] <span class="op">=</span> <span class="dv">60</span>  <span class="co"># 上書きのつもりが新規追加！</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 </div>
 </div>
@@ -363,6 +367,7 @@ rkskmt
 <pre><code>Yamadaさんは95点です
 Suzukiさんは70点です
 Takahashiさんは80点です</code></pre>
+<div title="どれを使う？">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -377,6 +382,7 @@ Takahashiさんは80点です</code></pre>
 <li>キーだけ → <code>.keys()</code>（<code>for key in name2score:</code> でも同じ）</li>
 <li>値だけ → <code>.values()</code></li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -408,6 +414,7 @@ Takahashiさんは80点です</code></pre>
 <span id="cb7-5"><a aria-label="5"></a></span>
 <span id="cb7-6"><a aria-label="6"></a><span class="cf">if</span> <span class="st">"Tanaka"</span> <span class="kw">not</span> <span class="kw">in</span> name2score:</span>
 <span id="cb7-7"><a aria-label="7"></a>    <span class="bu">print</span>(<span class="st">"Tanaka さんは未登録"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="`in` はキーを見る（値ではない）">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -419,6 +426,7 @@ Takahashiさんは80点です</code></pre>
 <div class="callout-content">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="cf">if</span> <span class="dv">95</span> <span class="kw">in</span> name2score:            <span class="co"># False</span></span>
 <span id="cb8-2"><a aria-label="2"></a><span class="cf">if</span> <span class="dv">95</span> <span class="kw">in</span> name2score.values():   <span class="co"># True ← 値を見たいときはこう</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 </div>
 </div>
@@ -436,6 +444,7 @@ Takahashiさんは80点です</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="bu">print</span>(name2score.get(<span class="st">"Tanaka"</span>))      <span class="co"># None ← 第2引数なし</span></span>
 <span id="cb10-2"><a aria-label="2"></a><span class="bu">print</span>(name2score.get(<span class="st">"Tanaka"</span>, <span class="dv">0</span>))   <span class="co"># 0    ← 第2引数あり（未登録なら 0 点扱い）</span></span>
 <span id="cb10-3"><a aria-label="3"></a><span class="bu">print</span>(name2score.get(<span class="st">"Yamada"</span>, <span class="dv">0</span>))   <span class="co"># 95   ← 登録済みならその値</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="`in` でガード vs `.get()`">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -449,6 +458,7 @@ Takahashiさんは80点です</code></pre>
 <li>「ない場合は処理を分けたい」 → <code>if key in dict:</code> でガード</li>
 <li>「ない場合のデフォルト値が決まっている」 → <code>.get(key, default)</code> がスッキリ</li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -502,6 +512,7 @@ Takahashiさんは80点です</code></pre>
 <span id="cb13-6"><a aria-label="6"></a></span>
 <span id="cb13-7"><a aria-label="7"></a><span class="cf">for</span> s <span class="kw">in</span> students:</span>
 <span id="cb13-8"><a aria-label="8"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>s[<span class="st">'name'</span>]<span class="sc">}</span><span class="ss">さんは</span><span class="sc">{</span>s[<span class="st">'score'</span>]<span class="sc">}</span><span class="ss">点"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="ネスト dict vs list of dict">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -516,6 +527,7 @@ Takahashiさんは80点です</code></pre>
 <li>順序が意味を持つ・全員を順に処理 → <strong>list of dict</strong>（<code>students[0]</code>）</li>
 </ul>
 <p>両方とも実務でよく使う。</p>
+</div>
 </div>
 </div>
 </div>
@@ -562,7 +574,7 @@ Takahashiさんは80点です</code></pre>
 <li><strong>Tanaka</strong> さんを <code>del</code> で削除</li>
 <li><code>.values()</code> と <code>sum</code> / <code>len</code> で、全員の <strong>平均点</strong> を表示</li>
 </ol>
-<div id="9a336438" class="cell" data-execution_count="1">
+<div id="be050429" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a><span class="co"># 1</span></span>
@@ -589,6 +601,7 @@ Takahashiさんは80点です</code></pre>
 <li><code>name2score</code> から <strong>80点以上の学生だけ</strong> を取り出した新しい dict を作る</li>
 <li><code>name2score</code> の <strong>キーと値を入れ替えた</strong> dict（<code>score2name</code>）を作る</li>
 </ol>
+<div title="LUT（[**Look-Up Table**]{.en}）">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -603,7 +616,8 @@ Takahashiさんは80点です</code></pre>
 </div>
 </div>
 </div>
-<div id="28f9cd5a" class="cell" data-execution_count="2">
+</div>
+<div id="e195bcdd" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="co"># 1</span></span>
@@ -639,7 +653,7 @@ Takahashiさんは80点です</code></pre>
 <li><strong>C さんの3科目合計</strong>を表示</li>
 <li><strong>各学生の平均点</strong>を <code>for</code> 文で順に表示</li>
 </ol>
-<div id="56144b57" class="cell" data-execution_count="3">
+<div id="f1aeb666" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a><span class="co"># 1</span></span>

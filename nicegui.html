@@ -280,6 +280,7 @@ rkskmt
 <li>Pythonで処理を実装すると、入力値の計算やファイルからのデータ取得も試せる</li>
 <li>まずは見た目を簡略化した <strong>モック</strong>（<span class="en">mock</span>、試作品）を作る</li>
 </ul>
+<div title="最初に確かめること">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -290,6 +291,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>必要な部品を置き、入力・ボタン操作・結果表示を確認する。色や細かな配置は、そのあとで調整する</p>
+</div>
 </div>
 </div>
 </div>
@@ -427,6 +429,7 @@ rkskmt
 </tr>
 </tbody>
 </table>
+<div title="`say_hi()` と書いてはいけない">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -437,6 +440,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p><code>on_click=say_hi</code> と、<span class="hl">カッコを付けずに</span> 渡す。<code>say_hi()</code> と書くと、その場で関数が実行され、戻り値が渡される</p>
+</div>
 </div>
 </div>
 </div>
@@ -454,6 +458,7 @@ rkskmt
 <div class="caption-note">
 <p>何も指定しなければ、部品は書いた順に上から縦に並ぶ</p>
 </div>
+<div title="コンテナ（container）">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -464,6 +469,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>複数の部品をまとめる入れ物。横に並べたり、カードの枠で囲んだりするときに使う</p>
+</div>
 </div>
 </div>
 </div>
@@ -508,6 +514,7 @@ rkskmt
 </tr>
 </tbody>
 </table>
+<div title="`with` は「ファイルを開く」専用ではない">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -518,6 +525,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p><code>with open(...)</code> と同じ文法だが、意味は「<strong>この範囲のあいだ、◯◯しておく</strong>」という汎用の道具。 NiceGUIでは「この範囲のあいだ、部品はこの箱行き」という意味になる</p>
+</div>
 </div>
 </div>
 </div>
@@ -676,6 +684,7 @@ rkskmt
 </tbody>
 </table>
 </div>
+<div title="配置を確認する">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -686,6 +695,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>保存前にラベルの位置を予想し、表示と比較する。違っていたら、コンテナの種類とインデントを確認する</p>
+</div>
 </div>
 </div>
 </div>
@@ -882,6 +892,7 @@ rkskmt
 <div class="prompt">
 <p>次の土台コードを <code>main.py</code> として保存・実行し、名前を追加できることを確かめよ。</p>
 </div>
+<div title="入力チェック">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -892,6 +903,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p><code>if not name: return</code> は、入力が空文字なら追加せず関数を終了する処理</p>
+</div>
 </div>
 </div>
 </div>
@@ -1005,7 +1017,7 @@ rkskmt
 </tbody>
 </table>
 </div>
-<div id="c1f4bd8e" class="cell" data-execution_count="1">
+<div id="1ac085b5" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>解答例を表示</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="im">from</span> nicegui <span class="im">import</span> ui</span>

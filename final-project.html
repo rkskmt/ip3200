@@ -340,6 +340,7 @@ rkskmt
 </tr>
 </tbody>
 </table>
+<div title="テーマは自由">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -350,6 +351,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>この表にないテーマでもよい。<a href="./payoff-matrix.html">ペイオフマトリクス</a> の「作る手間」と「利用者にとっての効果」で検討する</p>
+</div>
 </div>
 </div>
 </div>
@@ -431,6 +433,7 @@ rkskmt
 </tr>
 </tbody>
 </table>
+<div title="3のzipは「入れ子」構造">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -441,6 +444,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>.py と .json をまとめたzipを、提出zipの中に入れる。<span class="hl">解凍して .py を実行するだけで動く</span> ことを提出前に必ず確認する</p>
+</div>
 </div>
 </div>
 </div>
@@ -478,6 +482,7 @@ rkskmt
 </ul></li>
 <li>JSONへの <strong>書き込みも可</strong></li>
 </ul>
+<div title="データと画面の分離">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -492,6 +497,7 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="評価基準" class="slide level2">
 <h2>評価基準</h2>
@@ -502,6 +508,7 @@ rkskmt
 <li>生成AIの丸写しではなく、<strong>テンプレートに沿って</strong> 実装されている</li>
 <li><strong>エラーなく実行できる</strong></li>
 </ul>
+<div title="提出前の確認">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -512,6 +519,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>zipを別のフォルダに解凍し直し、Pythonファイルを実行する。JSONファイルの同梱、画面遷移、データ読み込みを確認する</p>
+</div>
 </div>
 </div>
 </div>
@@ -555,6 +563,7 @@ rkskmt
 <div class="caption-note">
 <p><code>screen_name == "top"</code> は <code>True</code> / <code>False</code> になる。指定した画面だけ表示し、他の画面は非表示にする</p>
 </div>
+<div title="`lambda` = その場で作る小さな関数">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -565,6 +574,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p><code>on_click</code> には関数を渡す必要がある（<code>show_screen("main")</code> と書くと即実行されてしまう）。 <code>lambda: show_screen("main")</code> は「押されたら <code>show_screen("main")</code> を実行する <strong>無名関数</strong>（<span class="en">anonymous function</span>）」を作る書き方。 lambdaを避けたい人は、<code>def show_main(): ...</code> を画面の数だけ書く簡単版テンプレートを使えばよい</p>
+</div>
 </div>
 </div>
 </div>
@@ -579,6 +589,7 @@ rkskmt
 <ul>
 <li><code>Path(__file__).parent</code> は <strong>このPythonファイルがあるフォルダ</strong>。実行時の作業フォルダによらず、隣の <code>data.json</code> を読み込む</li>
 </ul>
+<div title="`async` / `await` は「待つ間、画面を止めない」書き方">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -592,7 +603,8 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="1375aab8" class="cell" data-execution_count="1">
+</div>
+<div id="9a1afe50" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>テンプレート（API版）を表示</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="co">"""</span></span>
@@ -669,7 +681,7 @@ rkskmt
 <span id="cb3-72"><a aria-label="72"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="0819923a" class="cell" data-execution_count="2">
+<div id="d91a994f" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>テンプレート（簡単版・lambdaなし）を表示</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="co">"""</span></span>
@@ -765,6 +777,7 @@ rkskmt
 <li>Figmaの設計をもとに、画面・ボタン・配置を変更</li>
 <li>zipにして別のフォルダに解凍し、動作確認後に提出</li>
 </ol>
+<div title="参照先">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -779,6 +792,7 @@ rkskmt
 <li>APIとJSON：<a href="./api-spa.html">自作API+SPA</a></li>
 <li>画面構成：<a href="./figma.html">Figma</a> のワイヤーフレーム</li>
 </ul>
+</div>
 </div>
 </div>
 </div>

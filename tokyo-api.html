@@ -272,6 +272,7 @@ rkskmt
 <ul>
 <li>2023年の東京都の人口は <strong>14,099,993人</strong>（約1410万人）</li>
 </ul>
+<div title="問題：**明治5年（1872年）**、東京には何人いた？">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -282,6 +283,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>今の半分？ 3分の1？ 10分の1？</p>
+</div>
 </div>
 </div>
 </div>
@@ -313,6 +315,7 @@ rkskmt
 <li>商用・非商用問わず <strong>二次利用可能</strong></li>
 <li>機械可読（CSV, JSON, API）で提供</li>
 </ul>
+<div title="意義">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -327,6 +330,7 @@ rkskmt
 <li><strong>イノベーション</strong>：民間がデータを活用してサービス開発</li>
 <li><strong>効率化</strong>：データに基づく政策立案（<strong>EBPM</strong>: <span class="en"><strong>E</strong>vidence-<strong>B</strong>ased <strong>P</strong>olicy <strong>M</strong>aking</span>）</li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -368,6 +372,7 @@ rkskmt
 <ul>
 <li>「<strong>魔法のおなべ</strong>」（<span class="en"><em>The Magic Cauldron</em></span>、<a href="https://cruel.org/freeware/magicpot.html">全文</a>）は、オープンソースの <strong>経済学</strong></li>
 </ul>
+<div title="問い">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -378,6 +383,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>コードを <strong>タダで配ったら</strong>、作った人はどうやって食べていく？</p>
+</div>
 </div>
 </div>
 </div>
@@ -514,6 +520,7 @@ rkskmt
 </tr>
 </tbody>
 </table>
+<div title="重要：今回はGETではなくPOST">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -527,6 +534,7 @@ rkskmt
 <li>Wikipedia API は <code>requests.get()</code></li>
 <li>東京都API は <code>requests.post()</code></li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -557,6 +565,7 @@ rkskmt
 <li><a href="https://spec.api.metro.tokyo.lg.jp/spec/search">API検索ページ</a> でキーワード検索</li>
 <li>欲しいデータの apiId をコピーして使う</li>
 </ul>
+<div title="探し方のコツ">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -572,6 +581,7 @@ rkskmt
 <li>詳細ページで apiId と列名を確認</li>
 <li>リンク切れや、中身が空のデータも多い。使う前に確認する</li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -602,6 +612,7 @@ rkskmt
 <span id="cb3-8"><a aria-label="8"></a></span>
 <span id="cb3-9"><a aria-label="9"></a><span class="bu">print</span>(data)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a aria-label="1"></a>{'total': 152, 'subtotal': 100, 'limit': None, 'offset': None, 'metadata': {'apiId': 't000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0', 'title': '人口の動き（令和５年中） 参考表４　人口の推移（東京都、全国）(明治５～令和５年)', 'datasetId': 't000003d2000000236', ...（2万文字以上つづく）</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="`json={}` は必須">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -615,6 +626,7 @@ rkskmt
 <li>空のJSONボディ送信が必須（東京都APIの仕様）</li>
 <li>仮に省略すると <strong>415</strong>（Unsupported Media Type）が返ってくる</li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -788,6 +800,7 @@ rkskmt
 <span id="cb15-3"><a aria-label="3"></a></span>
 <span id="cb15-4"><a aria-label="4"></a><span class="co"># 行：受け取ってから、条件抽出で絞る</span></span>
 <span id="cb15-5"><a aria-label="5"></a>recent <span class="op">=</span> df[df[<span class="st">"西暦（年次）"</span>] <span class="op">&gt;=</span> <span class="dv">1950</span>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="（参考）jsonでPOSTすれば列の絞り込みがAPI上で可能">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -802,6 +815,7 @@ rkskmt
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a>body <span class="op">=</span> {<span class="st">"column"</span>: [<span class="st">"西暦（年次）"</span>, <span class="st">"東京都／人口"</span>]}</span>
 <span id="cb16-2"><a aria-label="2"></a>response <span class="op">=</span> requests.post(url, json<span class="op">=</span>body)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 </div>
 </div>
@@ -891,6 +905,7 @@ rkskmt
 <li>最小 <strong>859,345人</strong>（1872年）から最大 <strong>14,099,993人</strong>（2023年）まで、152個の値が並んでいる</li>
 <li><a href="./visualize.html">データの可視化</a>の大原則：<em>Always plot your data first.</em></li>
 </ul>
+<div title="質問">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -904,8 +919,9 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 <div class="fragment">
-<div id="481ad575" class="cell" data-execution_count="1">
+<div id="7bc2ee25" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -923,7 +939,7 @@ rkskmt
 <li><strong>深い谷が1つ</strong></li>
 </ul>
 </div>
-<div id="52721e03" class="cell" data-execution_count="2">
+<div id="192341fd" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
@@ -958,6 +974,7 @@ rkskmt
 <li>1年で <strong>378万人減、ほぼ半減</strong></li>
 </ul></li>
 </ul>
+<div title="質問">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -968,6 +985,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>1945年の東京で何が起きた？ いなくなった人は、いつ戻った？</p>
+</div>
 </div>
 </div>
 </div>
@@ -1009,6 +1027,7 @@ rkskmt
 <span id="cb24-2"><a aria-label="2"></a>rates <span class="op">=</span> clean[<span class="st">"東京都／増減率(%)"</span>].astype(<span class="bu">float</span>)</span>
 <span id="cb24-3"><a aria-label="3"></a></span>
 <span id="cb24-4"><a aria-label="4"></a><span class="bu">print</span>(<span class="ss">f"増減率の平均: </span><span class="sc">{</span>rates<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">%"</span>)   <span class="co"># 増減率の平均: 2.10%</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div title="dtype を確かめてから使う">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1026,6 +1045,7 @@ rkskmt
 <li>Series を <code>print</code> すると末尾に <code>dtype</code> が出る</li>
 <li>集計の前に見るクセをつける</li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -1097,6 +1117,7 @@ rkskmt
 </tbody>
 </table>
 </div>
+<div title="予想してから試す">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1107,6 +1128,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p><code>total</code> はそれぞれ何件くらいだと思う？ 品川区の避難所は25件だった。桁を予想してから実行しよう</p>
+</div>
 </div>
 </div>
 </div>
@@ -1157,6 +1179,7 @@ rkskmt
 </tr>
 </tbody>
 </table>
+<div title="Wikipedia API との違い">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1171,6 +1194,7 @@ rkskmt
 <li>空でも <code>json={}</code> が必要</li>
 <li><code>User-Agent</code> は不要</li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -1191,6 +1215,7 @@ rkskmt
 <ul>
 <li>（発展）緯度・経度があれば散布図で地図風にプロット</li>
 </ul>
+<div title="ヒント">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1207,7 +1232,8 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="47517047" class="cell" data-execution_count="3">
+</div>
+<div id="7b7fa979" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>解答例を見る（品川区の例。apiIdは検索ページで差し替え）</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
@@ -1234,7 +1260,7 @@ rkskmt
 <li>対全国比の値は文字列。数値でない値の行を除いてから <code>.astype(float)</code> で数値化（増減率のときと同じ下ごしらえ）</li>
 <li>折れ線グラフに描き、10%を最初に超えた年を確認</li>
 </ol>
-<div id="af0a1e60" class="cell" data-execution_count="4">
+<div id="7d25ffdd" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
@@ -1264,7 +1290,7 @@ rkskmt
 </details>
 </div>
 <div class="fragment">
-<div id="cbbfc33b" class="cell" data-execution_count="5">
+<div id="4b9eadb2" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1273,6 +1299,7 @@ rkskmt
 </div>
 </div>
 </div>
+<div title="一極集中は戦前に始まっていた">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1295,6 +1322,7 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="演習2つのデータセットを比較" class="slide level2 badge-practice">
 <h2>演習：2つのデータセットを比較</h2>
@@ -1305,7 +1333,7 @@ rkskmt
 <ul>
 <li>（発展）同じグラフに重ねて描画</li>
 </ul>
-<div id="0fd8bbbb" class="cell" data-execution_count="6">
+<div id="a15f606e" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>解答例を見る（戦前と戦後の人口を比較する例）</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
@@ -1424,7 +1452,7 @@ rkskmt
 <li>人口のグラフのコードに <code>plt.xlim(2018, 2024)</code> と <code>plt.ylim(13.85, 14.15)</code> を足す</li>
 </ul></li>
 </ul>
-<div id="ac81ee37" class="cell" data-execution_count="7">
+<div id="b46a6c32" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1433,6 +1461,7 @@ rkskmt
 </div>
 </div>
 </div>
+<div title="質問">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1443,6 +1472,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>2021年だけ人口が減っている（<strong>−36,107人</strong>）。何があった年？</p>
+</div>
 </div>
 </div>
 </div>

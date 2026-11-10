@@ -304,6 +304,7 @@ rkskmt
 <div class="caption-note">
 <p>Life誌掲載版の扉絵。額の小型カメラで見たものをそのまま記録する「未来の科学者」——考える仕事を機械に手伝わせる、という特集の顔</p>
 </div>
+<div title="ハイパーリンクと名付けられたのは1960年代">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -314,6 +315,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>テッド・ネルソン（<span class="en">Ted Nelson</span>）が、memexの構想を発展させて名づけた。</p>
+</div>
 </div>
 </div>
 </div>
@@ -330,7 +332,7 @@ rkskmt
 <li>このゆるいつなぎ方を<strong>疎結合</strong>（<span class="en">loose coupling</span>）と呼ぶ</li>
 <li>壊れにくく、誰にも断らずに広げられるため、後日<span class="en">World Wide Web</span>として爆発的に普及</li>
 </ul>
-<div id="dfe94fb6" class="cell" data-execution_count="1">
+<div id="53d04029" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -358,6 +360,7 @@ rkskmt
 <div class="caption-note">
 <p><code>href</code>・<code>src</code> に書いたURLがハイパーリンク。<code>&lt;a&gt;</code> は読者がたどる参照、<code>&lt;img&gt;</code> は画像をその場に埋め込む参照</p>
 </div>
+<div title="Hypertext ≠ HTML">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -371,6 +374,7 @@ rkskmt
 <li>例えば、PDFの中のリンクも、Markdownの <code>[表示テキスト](URL)</code> も、<span class="en">Hypertext</span>の別実装</li>
 <li>もっと便利な実装を作ることは可能</li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -391,6 +395,7 @@ rkskmt
 <li>画面に描画することを<strong>レンダリング</strong>（<span class="en">rendering</span>）という</li>
 </ul></li>
 </ol>
+<div title="「Webブラウザ＝インターネット」ではない">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -404,6 +409,7 @@ rkskmt
 <li>ローカルに保存した <code>.html</code> ファイルは、ネットにつながなくても開ける</li>
 <li>メモ帳で前のページの3行を <code>page.html</code> と保存し、ダブルクリックすれば確かめられる</li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -505,7 +511,7 @@ rkskmt
 <li>リクエスト：サーバに返信を要求すること</li>
 <li>レスポンス：リクエストに対するサーバの返信</li>
 </ul>
-<div id="da78bfea" class="cell" data-execution_count="2">
+<div id="a4f7e22b" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -529,7 +535,7 @@ rkskmt
 <li>テキストとは限らない。例えば、画像だったらバイナリファイル</li>
 </ul></li>
 </ul>
-<div id="edde5447" class="cell" data-execution_count="3">
+<div id="fdcd8f56" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -703,6 +709,7 @@ rkskmt
 </tbody>
 </table>
 </div>
+<div title="status codeは同じ、Content-Typeだけ違う">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -717,6 +724,7 @@ rkskmt
 <li>一方、<code>Content-Type</code>はWebページが <code>text/html</code>、アイコンが <code>image/x-icon</code></li>
 <li>ブラウザは別々のURLへGETし、受け取った部品を組み合わせて画面を作る</li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -783,6 +791,7 @@ rkskmt
 <div class="caption-note">
 <p>ヘッダーの名前は<strong>大文字小文字を区別しない</strong>。<code>content-type</code> と <code>Content-Type</code> は同じヘッダー</p>
 </div>
+<div title="リクエスト側にもヘッダーがある">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -793,6 +802,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>さっき <code>response.request.headers</code> に出てきた <code>User-Agent: python-requests/...</code> がその例。「誰が頼んでいるか」の名乗りで、このあとAPIを使うときに自分で設定する場面が出てくる。</p>
+</div>
 </div>
 </div>
 </div>
@@ -829,6 +839,7 @@ rkskmt
 <h4 id="一旦以下のurlをブラウザで開いてみよう">一旦、以下のURLをブラウザで開いてみよう</h4>
 <p><a href="https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia.org/all-access/2025/06/27" class="uri">https://wikimedia.org/api/rest_v1/metrics/pageviews/top/ja.wikipedia.org/all-access/2025/06/27</a></p>
 <p>2025年6月27日の記事ランキングが、画面ではなく <strong>JSONテキスト</strong> で表示される。</p>
+<div title="通信の仕組みは同じ">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -839,6 +850,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>Python.orgもWikipedia APIも、URLへGETしてresponseを受け取る。違うのは、response bodyが <strong>HTMLかJSONか</strong>。</p>
+</div>
 </div>
 </div>
 </div>
@@ -894,7 +906,7 @@ rkskmt
 <span id="cb13-3"><a aria-label="3"></a></span>
 <span id="cb13-4"><a aria-label="4"></a>res_dict <span class="op">=</span> json.loads(response.text) <span class="co"># これでdictになる</span></span>
 <span id="cb13-5"><a aria-label="5"></a><span class="bu">print</span>(<span class="bu">type</span>(res_dict), res_dict)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="b599cddc" class="cell" data-execution_count="4">
+<div id="7949c2d1" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -986,6 +998,7 @@ rkskmt
 </tr>
 </tbody>
 </table>
+<div title="URL構造はAPIごとに異なる">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -996,6 +1009,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>利用時は<a href="https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/">公式ドキュメント</a>で、エンドポイントとパラメータを確認</p>
+</div>
 </div>
 </div>
 </div>
@@ -1033,6 +1047,7 @@ rkskmt
 </tbody>
 </table>
 </div>
+<div title="予想してから試す">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1043,6 +1058,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>誕生日当日の1位は、事件・行事・人物のどれだと思う？</p>
+</div>
 </div>
 </div>
 </div>
@@ -1115,7 +1131,7 @@ rkskmt
 <span id="cb17-19"><a aria-label="19"></a><span class="bu">print</span>(<span class="ss">f"最小:   </span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss">回"</span>)</span>
 <span id="cb17-20"><a aria-label="20"></a><span class="bu">print</span>(<span class="ss">f"平均:   </span><span class="sc">{</span>views<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">回"</span>)</span>
 <span id="cb17-21"><a aria-label="21"></a><span class="bu">print</span>(<span class="ss">f"中央値: </span><span class="sc">{</span>np<span class="sc">.</span>median(views)<span class="sc">:.0f}</span><span class="ss">回"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="c3c44aa3" class="cell" data-execution_count="5">
+<div id="508d3dc1" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>日数:   365
 最大:   52168回
@@ -1124,6 +1140,7 @@ rkskmt
 中央値: 187回</code></pre>
 </div>
 </div>
+<div title="最大は中央値の約280倍">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1134,6 +1151,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>突出した1日に平均が引っ張られ、中央値との差が大きく開いた。</p>
+</div>
 </div>
 </div>
 </div>
@@ -1163,6 +1181,7 @@ rkskmt
 </tbody>
 </table>
 </div>
+<div title="予想してから試す">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1176,6 +1195,8 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
+<div title="`mobile-web`（スマホのブラウザ）を試すと404が返ることがある">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1186,6 +1207,7 @@ rkskmt
 </div>
 <div class="callout-content">
 <p>このAPIは、<strong>該当データが0件（または未収録）の場合も404で返す</strong>（<a href="https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/documentation/troubleshooting.html">公式のトラブルシューティング</a>）。しかも同じURLでも通ったり404になったりする。404が返ってきたら <code>response.status_code</code> を確認する——<strong>応答が成功時と違うことを自分の目で確かめる</strong>のが、エラーへの第一歩。</p>
+</div>
 </div>
 </div>
 </div>
