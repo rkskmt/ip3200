@@ -332,7 +332,7 @@ rkskmt
 <li>このゆるいつなぎ方を<strong>疎結合</strong>（<span class="en">loose coupling</span>）と呼ぶ</li>
 <li>壊れにくく、誰にも断らずに広げられるため、後日<span class="en">World Wide Web</span>として爆発的に普及</li>
 </ul>
-<div id="53d04029" class="cell" data-execution_count="1">
+<div id="913eb193" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -380,10 +380,11 @@ rkskmt
 </div>
 </div>
 </section>
-<section id="webブラウザ-htmlを閲覧するためのアプリ" class="slide level2">
+<section id="webブラウザ-htmlを閲覧するためのアプリ" class="slide level2 scrollable">
 <h2>Webブラウザ – HTMLを閲覧するためのアプリ</h2>
-<section id="webブラウザの仕事大きく２つ" class="slide-body scrollable">
-<h4>Webブラウザの仕事（大きく２つ）</h4>
+<div class="slide-body">
+
+<h4 id="webブラウザの仕事大きく２つ">Webブラウザの仕事（大きく２つ）</h4>
 <ol type="1">
 <li>HTMLを取得する
 <ol type="a">
@@ -413,7 +414,7 @@ rkskmt
 </div>
 </div>
 </div>
-</section>
+</div>
 </section>
 <section id="http-htmlを通信で取り寄せる取り決め" class="slide level2">
 <h2>HTTP – HTMLを通信で取り寄せる取り決め</h2>
@@ -467,6 +468,7 @@ rkskmt
 <section id="requestsを使ってhttpで要求する" class="slide level2">
 <h2>requestsを使ってHTTPで要求する</h2>
 <div class="slide-body">
+
 <h4 id="webブラウザを使わずにhttpで生のhtmlを要求">Webブラウザを使わずにHTTPで生のHTMLを要求</h4>
 <ul>
 <li>requestsはHTTP・HTTPS専用のライブラリ</li>
@@ -505,13 +507,14 @@ rkskmt
 </section>
 <section id="webサーバとrequests間で行われたやりとり" class="slide level2">
 <h2>Webサーバとrequests間で行われたやりとり</h2>
-<section id="リクエストrequestとレスポンスresponse" class="slide-body">
-<h4>リクエスト（<span class="en">request</span>）とレスポンス（<span class="en">response</span>）</h4>
+<div class="slide-body">
+
+<h4 id="リクエストrequestとレスポンスresponse">リクエスト（<span class="en">request</span>）とレスポンス（<span class="en">response</span>）</h4>
 <ul>
 <li>リクエスト：サーバに返信を要求すること</li>
 <li>レスポンス：リクエストに対するサーバの返信</li>
 </ul>
-<div id="a4f7e22b" class="cell" data-execution_count="2">
+<div id="83992fb9" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -520,7 +523,7 @@ rkskmt
 </div>
 </div>
 </div>
-</section>
+</div>
 </section>
 <section id="リクエストとレスポンスは1往復" class="slide level2">
 <h2>リクエストとレスポンスは1往復</h2>
@@ -535,7 +538,7 @@ rkskmt
 <li>テキストとは限らない。例えば、画像だったらバイナリファイル</li>
 </ul></li>
 </ul>
-<div id="fdcd8f56" class="cell" data-execution_count="3">
+<div id="660a8150" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -834,6 +837,7 @@ rkskmt
 <section id="今回利用するapi" class="slide level2">
 <h2>今回利用するAPI</h2>
 <div class="slide-body">
+
 <h4 id="wikimedia-analytics-api">Wikimedia Analytics API</h4>
 <p>Wikimedia Foundationが公開している、ページビュー統計のAPI</p>
 <h4 id="一旦以下のurlをブラウザで開いてみよう">一旦、以下のURLをブラウザで開いてみよう</h4>
@@ -906,7 +910,7 @@ rkskmt
 <span id="cb13-3"><a aria-label="3"></a></span>
 <span id="cb13-4"><a aria-label="4"></a>res_dict <span class="op">=</span> json.loads(response.text) <span class="co"># これでdictになる</span></span>
 <span id="cb13-5"><a aria-label="5"></a><span class="bu">print</span>(<span class="bu">type</span>(res_dict), res_dict)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="7949c2d1" class="cell" data-execution_count="4">
+<div id="1dea9a31" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1131,7 +1135,7 @@ rkskmt
 <span id="cb17-19"><a aria-label="19"></a><span class="bu">print</span>(<span class="ss">f"最小:   </span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss">回"</span>)</span>
 <span id="cb17-20"><a aria-label="20"></a><span class="bu">print</span>(<span class="ss">f"平均:   </span><span class="sc">{</span>views<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">回"</span>)</span>
 <span id="cb17-21"><a aria-label="21"></a><span class="bu">print</span>(<span class="ss">f"中央値: </span><span class="sc">{</span>np<span class="sc">.</span>median(views)<span class="sc">:.0f}</span><span class="ss">回"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="508d3dc1" class="cell" data-execution_count="5">
+<div id="1408b456" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>日数:   365
 最大:   52168回
@@ -1298,7 +1302,7 @@ rkskmt
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-
+<!-- -->
 </div>
 </div></div>
 
