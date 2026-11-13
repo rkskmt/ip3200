@@ -11,7 +11,7 @@ Quarto-based website for an information processing course. Written in Japanese.
 - **Quarto** website project; slides use the vendored **cleanslidekit-revealjs** extension (theme.scss + custom.css + UI JS + Lua filters, in `_extensions/rkskmt/cleanslidekit/`)
 - **MathJax** for math rendering
 - **D2** (quarto-d2) for diagrams
-- Extensions: `cleanslidekit`, `d2` (both vendored). Click-to-zoom images use Quarto's built-in lightbox (`lightbox: auto`; built in since Quarto 1.4, so the old `quarto-ext/lightbox` extension is not needed)
+- Extensions: `cleanslidekit`, `d2`, `qmd-web` (all vendored; `qmd-web` lets the qmd web editor follow and live-update the published decks). Click-to-zoom images use Quarto's built-in lightbox (`lightbox: auto`; built in since Quarto 1.4, so the old `quarto-ext/lightbox` extension is not needed)
 
 ## Structure
 
