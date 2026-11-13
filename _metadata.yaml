@@ -1,6 +1,10 @@
 author: "rkskmt"
 format:
   cleanslidekit-revealjs: default
+# Lets the qmd web editor follow the deck shown in its preview; does nothing
+# unless the deck is shown inside a frame (_extensions/rkskmt/qmd-web).
+revealjs-plugins:
+  - qmd-web
 # Extension-external filters (separate Quarto extensions, kept local):
 filters:
   - d2
