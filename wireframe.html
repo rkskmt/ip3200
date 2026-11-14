@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="rkskmt">
-  <title>情報処理 – Figmaでワイヤーフレーム</title>
+  <title>情報処理 – Miroでワイヤーフレーム</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -182,14 +182,14 @@
   <script src="peek-ui.js" defer=""></script>
   <script src="badge-ui.js" defer=""></script>
   <script src="toc-ui.js" defer=""></script>
-  <meta name="qmd-web-source" content="5a53b95df65e476044351b133d0e869ed7a09091">
+  <meta name="qmd-web-source" content="01cb700e6d366382b55305769f32f230cde965fe">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Figmaでワイヤーフレーム</h1>
+  <h1 class="title">Miroでワイヤーフレーム</h1>
   <p class="subtitle">コードを書く前に、画面を設計する</p>
 
 <div class="quarto-title-authors">
@@ -207,24 +207,82 @@ rkskmt
 <p>ワイヤーフレーム</p>
 </div>
 </section>
-<section id="画面の構成を決める" class="slide level2">
-<h2>画面の構成を決める</h2>
+<section id="演習-説明だけで画面を描く" class="slide level2 badge-practice scrollable">
+<h2><strong>演習</strong> 説明だけで画面を描く</h2>
 <div class="slide-body">
-<ul>
-<li><a href="./payoff-matrix.html">ペイオフマトリクス</a> で選んだ案について、必要な画面と部品を決める</li>
-<li><strong>ワイヤーフレーム</strong>（<span class="en">wireframe</span>）：線や枠で、画面の構成・情報の配置を表す図</li>
-</ul>
-<div title="最初に決めること">
+<div class="prompt">
+<p>「今日の予定と、締め切りが近い課題を確認できるホーム画面」を、この説明だけを手がかりに紙に描け（30秒）。</p>
+</div>
+<ol start="0" type="1">
+<li>紙とペンを用意</li>
+<li>スマホの画面の枠を描き、その中に部品を配置</li>
+<li>隣の人の絵と比較（同じところ・違うところ）</li>
+</ol>
+<div title="四角と文字で描く">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>最初に決めること</strong></p>
+<p><strong>四角と文字で描く</strong></p>
 </div>
 <div class="callout-content">
-<p>必要な情報、ボタンの位置、画面間の移動を確認する。色やアイコンの細部はあとで調整する</p>
+<p>絵のうまさは関係ない。部品は四角で描き、何の部品かを文字で書き添える</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="同じ説明でも描く画面は人によって違う" class="slide level2">
+<h2>同じ説明でも、描く画面は人によって違う</h2>
+<div class="slide-body">
+<p>隣の人の絵と、次の点を比べてみましょう。</p>
+<ul>
+<li>予定と課題の並べ方（上下に並べた？ タブで切り替えた？）</li>
+<li>表示した課題の件数</li>
+<li>締め切りの書き方（日付？ 「あと2日」のような残り日数？）</li>
+<li>課題を追加するボタンの位置</li>
+</ul>
+<div title="要するに">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>要するに</strong></p>
+</div>
+<div class="callout-content">
+<p>文章で伝えた仕様は、読む人によって違う画面になる</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ワイヤーフレームとは" class="slide level2 scrollable">
+<h2>ワイヤーフレームとは</h2>
+<div class="slide-body">
+<p><strong>ワイヤーフレーム</strong>（<span class="en">wireframe</span>）は、線と箱だけで画面の構成を表した図。針金（wire）で組んだ骨組み（frame）のように、画面の構造を示す。</p>
+<h4 id="ワイヤーフレームで決めること">ワイヤーフレームで決めること</h4>
+<ol type="1">
+<li><strong>何を</strong>置くか：表示する情報・ボタン・入力欄</li>
+<li><strong>どこに</strong>置くか：配置と、目立たせる順番</li>
+<li><strong>どこへ</strong>移るか：ボタンを押したあとの画面</li>
+</ol>
+<div title="あとで決めること">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>あとで決めること</strong></p>
+</div>
+<div class="callout-content">
+<p>色・フォント・写真・アイコンの細部</p>
 </div>
 </div>
 </div>
@@ -233,7 +291,7 @@ rkskmt
 </section>
 <section id="ワイヤーフレームは紙でも描ける" class="slide level2">
 <h2>ワイヤーフレームは紙でも描ける</h2>
-<div class="fig-cite" style="background-image: url('imgs/figma/paper_wireframe.jpg'); height: 380px;">
+<div class="fig-cite" style="background-image: url('imgs/wireframe/paper_wireframe.jpg'); height: 380px;">
 <div class="cite">
 <p>写真: Intel Free Press, CC BY-SA 2.0, via Wikimedia Commons</p>
 </div>
@@ -242,60 +300,270 @@ rkskmt
 <p>紙とペンで画面を描いた例。デジタルのツールでは、複製・修正・共有がしやすい</p>
 </div>
 </section>
-<section id="figma画面設計のツール" class="slide level2">
-<h2>Figma：画面設計のツール</h2>
+<section id="灰色の箱で描く理由" class="slide level2">
+<h2>灰色の箱で描く理由</h2>
 <div class="slide-body">
 <ul>
-<li><strong>Figma</strong>（フィグマ）は、アプリ・Webサイトの画面を設計するツール
+<li>見た目の好みの話に流れない
 <ul>
-<li>ブラウザで編集できる</li>
-<li>複数人で同じファイルを同時編集できる</li>
+<li>色や写真があると、「この青、ちょっと暗くない？」のような話が始まる</li>
 </ul></li>
-<li>実際の開発現場での使われ方
-<ul>
-<li>一般に使われるサービスの <strong>画面設計</strong>（メッセージアプリの新機能、フリマアプリの出品フロー…）</li>
-<li>企画段階の <strong>アイデア検証</strong>（コードを書かずに画面遷移を試す）</li>
-<li>エンジニア・デザイナー・企画が <strong>1つのFigmaファイルを見ながら会話する</strong></li>
-</ul></li>
+<li>何を・どこに置くかの議論に集中できる</li>
+<li>箱を動かすだけなので、描き直しが速い</li>
 </ul>
+<div title="要するに">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>要するに</strong></p>
+</div>
+<div class="callout-content">
+<p>構成を先に決め、見た目はそのあとで決める</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
-<section id="figmaを使う職種" class="slide level2">
-<h2>Figmaを使う職種</h2>
+<section id="変更は早い段階ほど手間が少ない" class="slide level2">
+<h2>変更は、早い段階ほど手間が少ない</h2>
+<div class="slide-body">
+
+<h4 id="ボタンの位置を変えたいときの作業">「ボタンの位置を変えたい」ときの作業</h4>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>段階</th>
+<th>必要な作業</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>ワイヤーフレーム</strong></td>
+<td>箱を動かす</td>
+</tr>
+<tr class="even">
+<td><strong>見た目まで作り込んだデザイン</strong></td>
+<td>色・余白・周りの部品との位置関係を直す</td>
+</tr>
+<tr class="odd">
+<td><strong>実装したアプリ</strong></td>
+<td>コードを書き換え、動作を確かめ直す</td>
+</tr>
+<tr class="even">
+<td><strong>公開したアプリ</strong></td>
+<td>修正版を配布し、利用者に変更を知らせる</td>
+</tr>
+</tbody>
+</table>
+<div class="caption-note">
+<p>あとの段階ほど、1つの変更で直す場所が増える</p>
+</div>
+<div title="要するに">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>要するに</strong></p>
+</div>
+<div class="callout-content">
+<p>迷っている点は、ワイヤーフレームの段階で決めておく</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="描くと抜けに気づく" class="slide level2">
+<h2>描くと、抜けに気づく</h2>
+<div class="slide-body">
+
+<h4 id="課題を追加できるを画面にすると出てくる問い">「課題を追加できる」を画面にすると出てくる問い</h4>
+<ul>
+<li>追加したあと、どの画面に戻る？</li>
+<li>タイトルを空のまま保存したら、どうなる？</li>
+<li>課題が1件もないとき、一覧には何を表示する？</li>
+<li>追加をやめたいときは、どこを押す？</li>
+</ul>
+<div title="要するに">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>要するに</strong></p>
+</div>
+<div class="callout-content">
+<p>画面を描くと、文章では決めていなかった動きに気づく</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="立場が違っても同じ図で話せる" class="slide level2">
+<h2>立場が違っても、同じ図で話せる</h2>
 <div class="slide-body">
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>職種</th>
-<th>Figmaで何をする？</th>
+<th>立場</th>
+<th>ワイヤーフレームで確かめること</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>UI/UXデザイナー</strong></td>
-<td>画面レイアウト・色・動きの設計</td>
+<td>情報の優先度、操作の流れ</td>
 </tr>
 <tr class="even">
-<td><strong>エンジニア</strong>（フロント／モバイル）</td>
-<td>Figmaを見て実装。仕様の確認</td>
+<td><strong>エンジニア</strong></td>
+<td>必要な部品、画面ごとに必要なデータ</td>
 </tr>
 <tr class="odd">
 <td><strong>PM</strong>（プロダクトマネージャー）</td>
-<td>画面を使って仕様を説明</td>
+<td>機能の範囲、仕様の抜け</td>
 </tr>
 <tr class="even">
-<td><strong>企画・マーケティング</strong></td>
-<td>新サービス案のプロトタイプ作成</td>
-</tr>
-<tr class="odd">
-<td><strong>データ・研究開発</strong></td>
-<td>実験ツールの画面や説明資料の作成</td>
+<td><strong>利用者</strong></td>
+<td>使い方が分かるか</td>
 </tr>
 </tbody>
 </table>
 <div class="caption-note">
-<p>画面を見ながら、実装する機能や使い方を共有する</p>
+<p>言葉だけで話すより、同じ図を指さしながら話すほうが、認識のずれに早く気づく</p>
 </div>
+</div>
+</section>
+<section id="部品はコードの部品に対応する" class="slide level2">
+<h2>部品は、コードの部品に対応する</h2>
+<div class="slide-body">
+<p>ワイヤーフレームの部品は、<a href="./nicegui.html">NiceGUI</a>（Pythonだけで画面を作れるフレームワーク）の部品にほぼそのまま対応する。</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>ワイヤーフレームの部品</th>
+<th>NiceGUIの部品</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>見出し・文字</td>
+<td><code>ui.label</code></td>
+</tr>
+<tr class="even">
+<td>ボタン</td>
+<td><code>ui.button</code></td>
+</tr>
+<tr class="odd">
+<td>入力欄</td>
+<td><code>ui.input</code></td>
+</tr>
+<tr class="even">
+<td>カード（枠で囲んだまとまり）</td>
+<td><code>ui.card</code></td>
+</tr>
+<tr class="odd">
+<td>縦に並べる／横に並べる</td>
+<td><code>ui.column</code> ／ <code>ui.row</code></td>
+</tr>
+</tbody>
+</table>
+<div title="要するに">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>要するに</strong></p>
+</div>
+<div class="callout-content">
+<p>画面ごとに部品を書き出しておくと、実装で書くコードの見通しが立つ</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-1" class="slide level2 center break-slide" data-background-color="white">
+<h2></h2>
+<div class="break-title">
+<p>Miro</p>
+</div>
+</section>
+<section id="miroオンラインホワイトボード" class="slide level2">
+<h2>Miro：オンラインホワイトボード</h2>
+<div class="slide-body">
+<ul>
+<li><strong>Miro</strong>（ミロ）は、ブラウザで使えるオンラインホワイトボード
+<ul>
+<li>複数人で同じボードを同時に編集できる</li>
+</ul></li>
+<li>ワイヤーフレーム用の部品集 <strong>ワイヤーフレーム ライブラリー</strong> がある
+<ul>
+<li>スマホ・タブレット・PCの画面の枠</li>
+<li>ボタン・入力欄・ナビゲーションバーなどの部品</li>
+</ul></li>
+</ul>
+<div title="無料プランのボード">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>無料プランのボード</strong></p>
+</div>
+<div class="callout-content">
+<p>編集できるのは直近の3枚まで。それより前のボードは、見ることはできるが編集できない</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="スマホの画面を置く" class="slide level2 scrollable">
+<h2>スマホの画面を置く</h2>
+<div class="slide-body">
+<div class="columns">
+<div class="column" style="width:40%;">
+<ol type="1">
+<li>ボード左のツールバーの <strong>＋</strong> をクリック</li>
+<li>検索欄に「Wireframing」と入力し、<strong>ワイヤーフレーム ライブラリー</strong> を開く</li>
+<li><strong>モバイル</strong> の画面をボードにドラッグ</li>
+</ol>
+</div><div class="column" style="width:60%;">
+<div class="fig">
+<p><a href="imgs/wireframe/miro_library.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="imgs/wireframe/miro_library.png" style="width:100.0%"></a></p>
+</div>
+</div></div>
+</div>
+</section>
+<section id="部品を画面に置く" class="slide level2 scrollable">
+<h2>部品を画面に置く</h2>
+<div class="slide-body">
+<div class="columns">
+<div class="column" style="width:40%;">
+<ol type="1">
+<li>ワイヤーフレーム ライブラリーの部品（ボタン・入力欄など）を、スマホの画面の上にドラッグ</li>
+<li>部品の文字を、自分のアプリの内容に書き換え</li>
+</ol>
+</div><div class="column" style="width:60%;">
+<div class="fig">
+<p><a href="imgs/wireframe/miro_components.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="imgs/wireframe/miro_components.png" style="width:100.0%"></a></p>
+</div>
+</div></div>
 </div>
 </section>
 <section id="基本操作" class="slide level2">
@@ -310,41 +578,29 @@ rkskmt
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>F</strong></td>
-<td><span class="en">Frame</span>（画面の枠）を置く</td>
-</tr>
-<tr class="even">
-<td><strong>R</strong></td>
-<td>四角形（ボタンやカード）</td>
-</tr>
-<tr class="odd">
 <td><strong>T</strong></td>
 <td>テキスト（タイトルやラベル）</td>
 </tr>
 <tr class="even">
-<td><strong>Shift + A</strong></td>
-<td><span class="en">Auto Layout</span>（自動整列）</td>
+<td><strong>R</strong></td>
+<td>四角形（カードや仮のボタン）</td>
 </tr>
 <tr class="odd">
 <td><strong>Alt + ドラッグ</strong></td>
-<td>コピー</td>
+<td>ドラッグした先に複製</td>
+</tr>
+<tr class="even">
+<td><strong>Ctrl + D</strong></td>
+<td>選択した部品を複製</td>
+</tr>
+<tr class="odd">
+<td><strong>Space + ドラッグ</strong></td>
+<td>ボードの表示位置を動かす</td>
 </tr>
 </tbody>
 </table>
-<div title="ツールバーから選ぶ">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>ツールバーから選ぶ</strong></p>
-</div>
-<div class="callout-content">
-<p>Frame・四角形・テキストは <a href="https://help.figma.com/hc/en-us/articles/360041064174-Access-design-tools-from-the-toolbar">画面下のツールバー</a> からも選べる。<a href="https://help.figma.com/hc/en-us/articles/360040451373-Guide-to-auto-layout">Auto Layout</a> は対象を選択して右サイドバーから追加できる</p>
-</div>
-</div>
-</div>
+<div class="caption-note">
+<p>Mac では Ctrl を ⌘ Command、Alt を ⌥ Option に読み替える</p>
 </div>
 </div>
 </section>
@@ -352,11 +608,11 @@ rkskmt
 <h2><strong>演習</strong> まず1画面作る</h2>
 <div class="slide-body">
 <div class="prompt">
-<p>「今日の予定を見る画面（Home）」を Figma で1画面作れ。</p>
+<p>「今日の予定を見る画面（Home）」を Miro で1画面作れ。</p>
 </div>
 <ol start="0" type="1">
-<li><a href="https://www.figma.com/">figma.com</a> にログインして新規デザインファイルを作成</li>
-<li><strong>F</strong> キーで、右パネルから iPhone サイズの Frame を配置</li>
+<li>Miro にログインし、新しいボードを作成</li>
+<li>ワイヤーフレーム ライブラリーから <strong>モバイル</strong> の画面を配置</li>
 <li><strong>T</strong> で「Home」のタイトルを画面左上に配置</li>
 <li><strong>R</strong> の四角形でカード（Today’s Tasks）</li>
 <li>四角を3つ並べてクイックメニュー（Quick Actions）</li>
@@ -382,21 +638,41 @@ rkskmt
 <h2>例：3画面のワイヤーフレーム</h2>
 <div class="slide-body">
 <div class="fig">
-<p><a href="imgs/figma/three_screen_example.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="imgs/figma/three_screen_example.png" style="width:78.0%"></a></p>
+<p><a href="imgs/wireframe/three_screen_example.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="imgs/wireframe/three_screen_example.png" style="width:78.0%"></a></p>
 </div>
+<div class="caption-note center">
+<p>矢印は、ボタンを押したときの画面の移動を表す</p>
+</div>
+</div>
+</section>
+<section id="画面の移動を矢印で示す" class="slide level2 scrollable">
+<h2>画面の移動を矢印で示す</h2>
+<div class="slide-body">
+<div class="columns">
+<div class="column" style="width:40%;">
+<ol type="1">
+<li><strong>L</strong> キーで線（矢印）を選ぶ</li>
+<li>移動のきっかけになるボタンから、移動先の画面までドラッグ</li>
+</ol>
+</div><div class="column" style="width:60%;">
+<div class="fig">
+<p><a href="imgs/wireframe/miro_arrows.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="imgs/wireframe/miro_arrows.png" style="width:100.0%"></a></p>
+</div>
+</div></div>
 </div>
 </section>
 <section id="演習-3画面のワイヤーフレーム" class="slide level2 badge-practice scrollable">
 <h2><strong>演習</strong> 3画面のワイヤーフレーム</h2>
 <div class="slide-body">
 <div class="prompt">
-<p>ホーム → タスク一覧 → 追加フォーム の3画面ワイヤーフレームを作れ（前ページの図を目安にすること）。</p>
+<p>ホーム → タスク一覧 → 追加フォーム の3画面ワイヤーフレームを作り、画面の移動を矢印で示せ（さっきの例の図を目安にすること）。</p>
 </div>
 <ol start="0" type="1">
-<li>キャンバスに iPhone Frame を横並びで3つ配置</li>
+<li>モバイルの画面を横並びで3つ配置</li>
 <li><strong>ホーム</strong>：タイトル・カード・クイックメニュー・下タブ（◯3つ）を配置</li>
 <li><strong>タスク一覧</strong>：タイトル・リストアイテム5つ・右下の「＋」ボタンを配置</li>
 <li><strong>追加フォーム</strong>：Title・Detail・Category の入力欄と Save ボタンを配置</li>
+<li><strong>L</strong> の矢印で、ボタンと移動先の画面を接続</li>
 </ol>
 </div>
 </section>
@@ -458,13 +734,14 @@ rkskmt
 <h2><strong>演習</strong> 自分のアプリの画面を作る</h2>
 <div class="slide-body">
 <div class="prompt">
-<p>ペイオフマトリクスで「すぐやるべき」に選んだ自分のアプリ案について、3画面以上のワイヤーフレームを作り、Prototype機能で画面をつなげ。</p>
+<p>ペイオフマトリクスで「すぐやるべき」に選んだ自分のアプリ案について、3画面以上のワイヤーフレームを作り、画面の移動を矢印で示せ。</p>
 </div>
 <ol start="0" type="1">
 <li>最初に作る画面を <strong>3つ</strong> 選定</li>
 <li>前ページのUIパターンから部品を選択</li>
 <li>各画面に配置</li>
-<li>Prototype タブでボタンと遷移先の画面を接続し、再生ボタンで動作確認</li>
+<li><strong>L</strong> の矢印で、ボタンと移動先の画面を接続</li>
+<li>矢印をたどり、戻る手段のない画面がないか確認</li>
 </ol>
 <div title="設計と実装">
 <div class="callout callout-important callout-titled callout-style-default">
@@ -481,6 +758,21 @@ rkskmt
 </div>
 </div>
 </div>
+</div>
+</section>
+<section id="参考開発現場の画面設計ツール" class="slide level2">
+<h2>（参考）開発現場の画面設計ツール</h2>
+<div class="slide-body">
+<ul>
+<li>開発の現場では、<strong>Figma</strong>（フィグマ）などの画面設計専用のツールも広く使われる
+<ul>
+<li>部品の使い回し、実装に必要な寸法の確認、クリックで動く試作までを1つのツールで扱える</li>
+</ul></li>
+<li>Figma を個人で使えるのは、日本では18歳以上
+<ul>
+<li>18歳未満は、学校が Figma と契約している場合に限り使える（2026年11月時点の規約）</li>
+</ul></li>
+</ul>
 
 
 <div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
