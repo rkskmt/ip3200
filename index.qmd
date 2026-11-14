@@ -65,7 +65,7 @@
 
 ### ワイヤーフレーム・発表 {.sec .cat2}
 ::: {.grid .cat2}
-- [Figmaでワイヤーフレーム](figma.qmd)
+- [Miroでワイヤーフレーム](wireframe.qmd)
 - [発表](presentation.qmd)
 :::
 
