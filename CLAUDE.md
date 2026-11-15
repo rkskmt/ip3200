@@ -57,6 +57,11 @@ Use Python as the vehicle, but frame concepts as broadly as possible. Where a co
    - **Steps**: a numbered list in **体言止め** — drop trailing する/出す (`columns で列名を確認`, `平均を比較`). Setup (data download) is **step 0** so the whole list aligns.
    - **Required outputs are explicit**: state them in parentheses (`（差分値も表示）`) instead of leaving what to print implicit.
    - Do NOT cram instructions into bullets or arrow chains (`まず予想 → 何度ちがう？ → 自分で書く`), and don't spoon-feed what students can discover with a taught tool (make checking `columns` a step instead of printing the column names in the text).
+- **Decide each slide from its purpose; never apply a pattern uniformly.** Every convention in this file exists for a purpose, and so does every form that works on one slide. Before writing a slide, name what its reader cannot yet read or do and what the slide must add; each title, code line, comment and note is there for that. When a form fits one slide, do not copy it to the others: ask, slide by slide, whether the same reason holds there.
+   - A supplement (an equivalent written with syntax the student already knows, a preview of the intermediate value, an extra variant) goes only on the slides where the main code cannot be read without it, and it follows the main code, because the main code is what the slide teaches.
+   - Setup lines exist only when the slide uses them. Do not define data in a roundabout form because another slide needed that form.
+   - A title says what the student wants to do. It does not restate the syntax.
+   - Symptoms of the failure: the same supplement on every slide; a line that exists only to force a pattern; a title that reads like a code comment.
 - **Every sentence on a slide must be written for the student — author-side circumstances are never slide content.** Litmus test: *does the student gain anything from reading this line?* Banned categories:
    - **Authoring/build decisions**: 「（この節だけでも実行できるよう、読み込みから用意）」「本スライドは `"directory"` を使っている — 教室のWi-Fiが切れても動くように」
    - **Curriculum decisions** — especially naming untaught material only to exclude it: 「`.plot.bar()` は今回は使わない」「だから3Dはこの回で扱った」
