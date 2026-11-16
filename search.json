@@ -28,18 +28,18 @@
     "text": "ワイヤーフレームとは\n\nワイヤーフレーム（wireframe）は、線と四角だけで画面の構成を表した図。針金（wire）で組んだ骨組み（frame）のように、画面の構造を示す。\nワイヤーフレームで決めること\n\n何を置くか：表示する情報・ボタン・入力欄\nどこに置くか：配置と、どれを目立たせるか\nどこへ移るか：ボタンを押したあとの画面\n\nボタンなどの操作で別の画面へ移ることを 画面遷移（screen transition）という\n\n\n\n\n\n\n\n\n\nあとで決めること\n\n\n色・フォント・写真・アイコンの細部"
   },
   {
-    "objectID": "wireframe.html#ワイヤーフレームは紙でも描ける",
-    "href": "wireframe.html#ワイヤーフレームは紙でも描ける",
+    "objectID": "wireframe.html#紙のワイヤーフレームは今も現役",
+    "href": "wireframe.html#紙のワイヤーフレームは今も現役",
     "title": "Miroでワイヤーフレーム",
-    "section": "ワイヤーフレームは紙でも描ける",
-    "text": "ワイヤーフレームは紙でも描ける\n\n\n写真: Intel Free Press, CC BY-SA 2.0, via Wikimedia Commons\n\n\n\n紙とペンで画面を描いた例。デジタルのツールでは、複製・修正・共有がしやすい"
+    "section": "紙のワイヤーフレームは今も現役",
+    "text": "紙のワイヤーフレームは今も現役\n\n\n写真: Intel Free Press, CC BY-SA 2.0, via Wikimedia Commons\n\n\n\nデジタルのツールでは、複製・修正・離れた相手との共有がしやすいが、いまでも紙で描いているデザイナーやプランナーは一定数いる。紙は取り掛かりが速く、表現や修正の自由度と一覧性が高い。"
   },
   {
-    "objectID": "wireframe.html#灰色の箱で描く理由",
-    "href": "wireframe.html#灰色の箱で描く理由",
+    "objectID": "wireframe.html#線と四角だけで描く理由",
+    "href": "wireframe.html#線と四角だけで描く理由",
     "title": "Miroでワイヤーフレーム",
-    "section": "灰色の箱で描く理由",
-    "text": "灰色の箱で描く理由\n\n\n見た目の好みの話に流れない\n\n色や写真があると、「この青、ちょっと暗くない？」のような話が始まる\n\n何を・どこに置くかの議論に集中できる\n箱を動かすだけなので、描き直しが速い\n\n\n\n\n\n\n\n\n要するに\n\n\n構成を先に決め、見た目はそのあとで決める"
+    "section": "線と四角だけで描く理由",
+    "text": "線と四角だけで描く理由\n\n\n見た目の好みの話に流れない\n\n色や写真があると、「この青、ちょっと暗くない？」のような話が始まる\n\n何を・どこに置くかの議論に集中できる\n四角を動かすだけなので、描き直しが速い\n\n\n\n\n\n\n\n\n要するに\n\n\n構成を先に決め、見た目はそのあとで決める"
   },
   {
     "objectID": "wireframe.html#変更は早い段階ほど手間が少ない",
@@ -63,25 +63,11 @@
     "text": "立場が違っても、同じ図で話せる\n\n\n\n\n\n\n\n\n立場\nワイヤーフレームで確かめること\n\n\n\n\nUI/UXデザイナー（User Interface / User Experience）\n情報の優先度、操作の流れ\n\n\nエンジニア\n必要な部品、画面ごとに必要なデータ\n\n\nPM（Product Manager）\n機能の範囲、仕様の抜け\n\n\n利用者\n使い方が分かるか\n\n\n\n\n言葉だけで話すより、同じ図を指さしながら話すほうが、認識のずれに早く気づく"
   },
   {
-    "objectID": "wireframe.html#部品はコードの部品に対応する",
-    "href": "wireframe.html#部品はコードの部品に対応する",
-    "title": "Miroでワイヤーフレーム",
-    "section": "部品は、コードの部品に対応する",
-    "text": "部品は、コードの部品に対応する\n\nワイヤーフレームの部品は、NiceGUI（Pythonだけで画面を作れるフレームワーク）の部品にほぼそのまま対応する。\n\n\n\nワイヤーフレームの部品\nNiceGUIの部品\n\n\n\n\n見出し・文字\nui.label\n\n\nボタン\nui.button\n\n\n入力欄\nui.input\n\n\nカード（枠で囲んだまとまり）\nui.card\n\n\n縦に並べる／横に並べる\nui.column ／ ui.row\n\n\n\n\n\n\n\n\n\n\n要するに\n\n\n画面ごとに部品を書き出しておくと、実装で書くコードの見通しが立つ"
-  },
-  {
     "objectID": "wireframe.html#section-1",
     "href": "wireframe.html#section-1",
     "title": "Miroでワイヤーフレーム",
     "section": "",
     "text": "Miro"
-  },
-  {
-    "objectID": "wireframe.html#miroオンラインホワイトボード",
-    "href": "wireframe.html#miroオンラインホワイトボード",
-    "title": "Miroでワイヤーフレーム",
-    "section": "Miro：オンラインホワイトボード",
-    "text": "Miro：オンラインホワイトボード\n\n\nMiro（ミロ）は、ブラウザで使えるオンラインホワイトボード\n\n複数人で同じボードを同時に編集できる\n\nワイヤーフレーム用の部品集 ワイヤーフレーム ライブラリー がある\n\nスマホ・タブレット・PCの画面の枠\nボタン・入力欄・ナビゲーションバーなどの部品\n\n\n\n\n\n\n\n\n\n無料プランのボード\n\n\n編集できるのは直近の3枚まで。それより前のボードは、見ることはできるが編集できない"
   },
   {
     "objectID": "wireframe.html#スマホの画面を置く",
@@ -98,18 +84,11 @@
     "text": "部品を画面に置く\n\n\n\n\nワイヤーフレーム ライブラリーの部品（ボタン・入力欄など）を、スマホの画面の上にドラッグ\n部品の文字を、チームのアプリの内容に書き換え"
   },
   {
-    "objectID": "wireframe.html#基本操作",
-    "href": "wireframe.html#基本操作",
+    "objectID": "wireframe.html#画面づくりで使う操作",
+    "href": "wireframe.html#画面づくりで使う操作",
     "title": "Miroでワイヤーフレーム",
-    "section": "基本操作",
-    "text": "基本操作\n\n\n\n\nキー\n操作\n\n\n\n\nT\nテキスト（タイトルやラベル）\n\n\nR\n四角形（カードや仮のボタン）\n\n\nAlt + ドラッグ\nドラッグした先に複製\n\n\nCtrl + D\n選択した部品を複製\n\n\nSpace + ドラッグ\nボードの表示位置を動かす\n\n\n\n\nMac では Ctrl を ⌘ Command、Alt を ⌥ Option に読み替える"
-  },
-  {
-    "objectID": "wireframe.html#演習-まず1画面作る",
-    "href": "wireframe.html#演習-まず1画面作る",
-    "title": "Miroでワイヤーフレーム",
-    "section": "演習 まず1画面作る",
-    "text": "演習 まず1画面作る\n\n\n「今日の予定を見る画面（Home）」を Miro で1画面作れ。\n\n\nMiro にログインし、新しいボードを作成\nワイヤーフレーム ライブラリーから モバイル の画面を配置\nT で「Home」のタイトルを画面左上に配置\nR の四角形でカード（Today’s Tasks）\n四角を3つ並べてクイックメニュー（Quick Actions）\n\n\n\n\n\n\n\n\n部品の用途を示す\n\n\nグレーの四角と黒い文字でよい。カードやメニューには、何を表示する場所か分かるラベルを付ける"
+    "section": "画面づくりで使う操作",
+    "text": "画面づくりで使う操作\n\n\n\n\nキー\n操作\n\n\n\n\nT\nテキスト（タイトルやラベル）\n\n\nR\n四角形（カードや仮のボタン）\n\n\nAlt + ドラッグ\nドラッグした先に複製\n\n\nCtrl + D\n選択した部品を複製\n\n\n\n\nMac では Ctrl を ⌘ Command、Alt を ⌥ Option に読み替える"
   },
   {
     "objectID": "wireframe.html#例3画面のワイヤーフレーム",
@@ -119,18 +98,11 @@
     "text": "例：3画面のワイヤーフレーム\n\n\n\n\n\n矢印は、ボタンを押したときの画面遷移を表す"
   },
   {
-    "objectID": "wireframe.html#画面の移動を矢印で示す",
-    "href": "wireframe.html#画面の移動を矢印で示す",
+    "objectID": "wireframe.html#画面遷移を矢印で示す",
+    "href": "wireframe.html#画面遷移を矢印で示す",
     "title": "Miroでワイヤーフレーム",
-    "section": "画面の移動を矢印で示す",
-    "text": "画面の移動を矢印で示す\n\n\n\n\nL キーで線（矢印）を選ぶ\n移動のきっかけになるボタンから、移動先の画面までドラッグ"
-  },
-  {
-    "objectID": "wireframe.html#演習-3画面のワイヤーフレーム",
-    "href": "wireframe.html#演習-3画面のワイヤーフレーム",
-    "title": "Miroでワイヤーフレーム",
-    "section": "演習 3画面のワイヤーフレーム",
-    "text": "演習 3画面のワイヤーフレーム\n\n\nホーム → タスク一覧 → 追加フォーム の3画面ワイヤーフレームを作り、画面の移動を矢印で示せ（さっきの例の図を目安にすること）。\n\n\nモバイルの画面を横並びで3つ配置\nホーム：タイトル・カード・クイックメニュー・下タブ（◯3つ）を配置\nタスク一覧：タイトル・リストアイテム5つ・右下の「＋」ボタンを配置\n追加フォーム：Title・Detail・Category の入力欄と Save ボタンを配置\nL の矢印で、ボタンと移動先の画面を接続"
+    "section": "画面遷移を矢印で示す",
+    "text": "画面遷移を矢印で示す\n\n\n\n\nL キーで線（矢印）を選ぶ\n遷移のきっかけになるボタンから、遷移先の画面までドラッグ"
   },
   {
     "objectID": "wireframe.html#よくある画面パターン",
@@ -140,11 +112,11 @@
     "text": "よくある画面パターン\n\n\n\n\n\n\n\n\n系統\n定番の部品\n\n\n\n\nホーム系\nカード・件数や合計・よく使う画面へのボタン\n\n\n一覧系（List）\nタイトルと補足（日付など）、「＞」で詳細へ\n\n\n詳細系（Detail）\nタイトル・説明、編集／削除ボタン\n\n\n入力系（Form）\n入力欄・日付選択・Save / Cancel\n\n\nナビゲーション系\n下タブ（Tab bar）・ハンバーガーメニュー・操作用の丸ボタン（FAB: Floating Action Button）\n\n\n\n\n\n\n\n\n\n\n手元のアプリで確かめる\n\n\nスマホのアプリを1つ開き、ホーム・一覧・詳細・入力のどの画面があるか確認する"
   },
   {
-    "objectID": "wireframe.html#演習-自分のアプリの画面を作る",
-    "href": "wireframe.html#演習-自分のアプリの画面を作る",
+    "objectID": "wireframe.html#演習-チームのアプリの画面を作る",
+    "href": "wireframe.html#演習-チームのアプリの画面を作る",
     "title": "Miroでワイヤーフレーム",
-    "section": "演習 自分のアプリの画面を作る",
-    "text": "演習 自分のアプリの画面を作る\n\n\nペイオフマトリクスで「すぐやるべき」に選んだ自分のアプリ案について、3画面以上のワイヤーフレームを作り、画面の移動を矢印で示せ。\n\n\n最初に作る画面を 3つ 選定\n前ページのUIパターンから部品を選択\n各画面に配置\nL の矢印で、ボタンと移動先の画面を接続\n矢印をたどり、戻る手段のない画面がないか確認\n\n\n\n\n\n\n\n\n設計と実装\n\n\nこのワイヤーフレームを 最終課題 の設計に使う。NiceGUI の部品で配置を作り、データの取得や入力処理を追加する"
+    "section": "演習 チームのアプリの画面を作る",
+    "text": "演習 チームのアプリの画面を作る\n\n\nICEスコアで1位になったチームのアプリ案について、3画面以上のワイヤーフレームをチームで作り、画面遷移を矢印で示せ。\n\n\nこれまで使ってきたチームのボードの、空いている場所を作業場所に決定\n最初に作る画面を 3つ 決め、画面ごとに担当を決定\nモバイルの画面を横並びで3つ配置\n担当の画面に、前ページの画面パターンから選んだ部品を配置\nL の矢印で、ボタンと遷移先の画面を接続\n矢印をチーム全員でたどり、戻る手段のない画面がないか確認\n\n\n\n\n\n\n\n\nどの画面にも出る部品\n\n\n下タブのように、どの画面にも出る部品は、1人が作り、ほかの画面へ複製する\n\n\n\n\n\n\n\n\n\n\n\n設計と実装\n\n\nこのワイヤーフレームをもとに、最終課題 でアプリを実装する"
   },
   {
     "objectID": "wireframe.html#参考開発現場の画面設計ツール",
@@ -851,7 +823,7 @@
     "href": "numpy.html#本当に速いの-100万要素で実測",
     "title": "NumPy入門",
     "section": "本当に速いの？ — 100万要素で実測",
-    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 24.5 ミリ秒\nndarray:          0.30 ミリ秒\n→ 約 81 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
+    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 81.5 ミリ秒\nndarray:          3.09 ミリ秒\n→ 約 26 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
   },
   {
     "objectID": "numpy.html#その他長さやアクセス方法",
@@ -2356,7 +2328,7 @@
     "href": "index.html#情報処理",
     "title": "情報処理",
     "section": "情報処理",
-    "text": "情報処理\n\nPDF\n\nhttps://rkskmt.github.io/ip3200/\n\n\n\n\n\n\n\n\n前期後期\n\n\n\n\nPCの使い方アップデート\n\n\n\nキータイピング\nショートカット\n\n\n\n速習Python基礎\n\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\n\nデータ処理基礎\n\n\n\nNumPy入門\n（参考）ベクトルと行列\nデータの可視化\nmatplotlib入門\nPandas入門\nPlotly入門\n\n\n\nAPI\n\n\n\nAPIでデータ取得\nAPIデータを可視化する\nWikipedia APIリファレンス\n東京都オープンデータAPI\n\n\n\n\n\n\n\n課題解決・アイデア創出\n\n\n\n発想法（発散思考）\nオズボーンのチェックリスト・SCAMPER\n収束技法とアイデアマップ\nペイオフマトリクス\n\n\n\nワイヤーフレーム・発表\n\n\n\nMiroでワイヤーフレーム\n発表\n\n\n\n実装\n\n\n\nNiceGUIで作るSPAモック\n自作API+SPA\n最終課題"
+    "text": "情報処理\n\n\nhttps://rkskmt.github.io/ip3200/\n\n\n\n\n\n\n\n\n前期後期\n\n\n\n\nPCの使い方アップデート\n\n\n\nキータイピング\nショートカット\n\n\n\n速習Python基礎\n\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\n\nデータ処理基礎\n\n\n\nNumPy入門\n（参考）ベクトルと行列\nデータの可視化\nmatplotlib入門\nPandas入門\nPlotly入門\n\n\n\nAPI\n\n\n\nAPIでデータ取得\nAPIデータを可視化する\nWikipedia APIリファレンス\n東京都オープンデータAPI\n\n\n\n\n\n\n\n課題解決・アイデア創出\n\n\n\n発想法（発散思考）\nオズボーンのチェックリスト・SCAMPER\n収束技法とアイデアマップ\nペイオフマトリクス\n\n\n\nワイヤーフレーム・発表\n\n\n\nMiroでワイヤーフレーム\n発表\n\n\n\n実装\n\n\n\nNiceGUIで作るSPAモック\n自作API+SPA\n最終課題"
   },
   {
     "objectID": "list.html#復習listとは",
@@ -4100,47 +4072,5 @@
     "title": "Wikipedia API リファレンス",
     "section": "関連リソース",
     "text": "関連リソース\n\n\n\n\nリソース\nURL\n\n\n\n\nMediaWiki Action API\nmediawiki.org/wiki/API:Main_page\n\n\nWikimedia REST API v1\nen.wikipedia.org/api/rest_v1/\n\n\nAnalytics Query Service\nwikitech.wikimedia.org\n\n\nWikidata REST API\nwikidata.org/wiki/Wikidata:REST_API\n\n\nUser-Agent ポリシー\nmeta.wikimedia.org"
-  },
-  {
-    "objectID": "wireframe.html#画面づくりで使う操作",
-    "href": "wireframe.html#画面づくりで使う操作",
-    "title": "Miroでワイヤーフレーム",
-    "section": "画面づくりで使う操作",
-    "text": "画面づくりで使う操作\n\n\n\n\nキー\n操作\n\n\n\n\nT\nテキスト（タイトルやラベル）\n\n\nR\n四角形（カードや仮のボタン）\n\n\nAlt + ドラッグ\nドラッグした先に複製\n\n\nCtrl + D\n選択した部品を複製\n\n\n\n\nMac では Ctrl を ⌘ Command、Alt を ⌥ Option に読み替える"
-  },
-  {
-    "objectID": "wireframe.html#画面遷移を矢印で示す",
-    "href": "wireframe.html#画面遷移を矢印で示す",
-    "title": "Miroでワイヤーフレーム",
-    "section": "画面遷移を矢印で示す",
-    "text": "画面遷移を矢印で示す\n\n\n\n\nL キーで線（矢印）を選ぶ\n遷移のきっかけになるボタンから、遷移先の画面までドラッグ"
-  },
-  {
-    "objectID": "wireframe.html#演習-チームのアプリの画面を作る",
-    "href": "wireframe.html#演習-チームのアプリの画面を作る",
-    "title": "Miroでワイヤーフレーム",
-    "section": "演習 チームのアプリの画面を作る",
-    "text": "演習 チームのアプリの画面を作る\n\n\nICEスコアで1位になったチームのアプリ案について、3画面以上のワイヤーフレームをチームで作り、画面遷移を矢印で示せ。\n\n\nこれまで使ってきたチームのボードの、空いている場所を作業場所に決定\n最初に作る画面を 3つ 決め、画面ごとに担当を決定\nモバイルの画面を横並びで3つ配置\n担当の画面に、前ページの画面パターンから選んだ部品を配置\nL の矢印で、ボタンと遷移先の画面を接続\n矢印をチーム全員でたどり、戻る手段のない画面がないか確認\n\n\n\n\n\n\n\n\nどの画面にも出る部品\n\n\n下タブのように、どの画面にも出る部品は、1人が作り、ほかの画面へ複製する\n\n\n\n\n\n\n\n\n\n\n\n設計と実装\n\n\nこのワイヤーフレームをもとに、最終課題 でアプリを実装する"
-  },
-  {
-    "objectID": "wireframe.html#ワイヤーフレームは元々は紙でやっていた",
-    "href": "wireframe.html#ワイヤーフレームは元々は紙でやっていた",
-    "title": "Miroでワイヤーフレーム",
-    "section": "ワイヤーフレームは元々は紙でやっていた",
-    "text": "ワイヤーフレームは元々は紙でやっていた\n\n\n写真: Intel Free Press, CC BY-SA 2.0, via Wikimedia Commons\n\n\n\nデジタルのツールでは、複製・修正・遠隔への共有がしやすいが、いまでも紙で書いているデザイナーやプランナーは一定数要る。取り掛かりの速さや表現や修正の自由度と一覧性が高い。"
-  },
-  {
-    "objectID": "wireframe.html#線と四角だけで描く理由",
-    "href": "wireframe.html#線と四角だけで描く理由",
-    "title": "Miroでワイヤーフレーム",
-    "section": "線と四角だけで描く理由",
-    "text": "線と四角だけで描く理由\n\n\n見た目の好みの話に流れない\n\n色や写真があると、「この青、ちょっと暗くない？」のような話が始まる\n\n何を・どこに置くかの議論に集中できる\n四角を動かすだけなので、描き直しが速い\n\n\n\n\n\n\n\n\n要するに\n\n\n構成を先に決め、見た目はそのあとで決める"
-  },
-  {
-    "objectID": "wireframe.html#紙のワイヤーフレームは今も現役",
-    "href": "wireframe.html#紙のワイヤーフレームは今も現役",
-    "title": "Miroでワイヤーフレーム",
-    "section": "紙のワイヤーフレームは今も現役",
-    "text": "紙のワイヤーフレームは今も現役\n\n\n写真: Intel Free Press, CC BY-SA 2.0, via Wikimedia Commons\n\n\n\nデジタルのツールでは、複製・修正・離れた相手との共有がしやすいが、いまでも紙で描いているデザイナーやプランナーは一定数いる。紙は取り掛かりが速く、表現や修正の自由度と一覧性が高い。"
   }
 ]

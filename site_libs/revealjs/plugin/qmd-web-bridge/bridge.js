@@ -14,6 +14,9 @@
    - A double click on text sends that slide's text runs, which the published
      deck shows anyway. The run becomes editable only when the editor answers,
      and what is typed into it goes back to the editor as plain text.
+   - Ctrl+S (Cmd+S) pressed in the deck is passed on to the editor as a save,
+     after the run being edited is kept; the editor takes it only during a
+     user gesture.
    - The live preview replaces slides with HTML the editor sends, so that is
      taken only from the editor's own address: http://127.0.0.1 and
      http://localhost (any port), plus the addresses a site lists in
@@ -22,7 +25,7 @@
      this one then stands aside. So does a deck inside a peek window.
 
    Same messages as qmd_editor's static/js/preview-bridge.js (channel
-   qmd-preview-v1): its navigation, text-edit and live-preview parts. Enable
+   qmd-preview-v1): its navigation, text-edit, save and live-preview parts. Enable
    it in a project with `revealjs-plugins: [qmd-web]` and `filters: [qmd-web]`
    in _quarto.yml or _metadata.yml. */
 window.QmdWebBridge = function(){
@@ -322,8 +325,46 @@ window.QmdWebBridge = function(){
         send('live-synced', {id, ok: false, error: String(e && e.message || e)});
       }
     }
-    // The editor's focus-mode keys work while the preview has the focus
+    /* A short note under (or above) the run being edited, gone in two seconds */
+    const HINT_STYLE = 'position:fixed;z-index:2147483647;padding:2px 8px;border-radius:4px;'
+      + 'background:#24292f;color:#fff;font:12px/1.6 system-ui,sans-serif;white-space:nowrap;'
+      + 'pointer-events:none';
+    const HINT_MS = 2000;
+    let hint = null;
+    function showHint(text, near){
+      hint?.remove();
+      const el = document.createElement('div');
+      el.style.cssText = HINT_STYLE;
+      el.textContent = text;
+      document.body.appendChild(el);
+      const box = near.getBoundingClientRect();
+      const below = box.bottom + 6;
+      el.style.top = (below + el.offsetHeight <= innerHeight ? below : Math.max(0, box.top - 6 - el.offsetHeight)) + 'px';
+      el.style.left = Math.max(0, Math.min(box.left, innerWidth - el.offsetWidth)) + 'px';
+      hint = el;
+      setTimeout(() => { if(hint === el){ el.remove(); hint = null; } }, HINT_MS);
+    }
+
+    // The editor's save and focus-mode keys work while the preview has the focus
     window.addEventListener('keydown', event => {
+      // The deck is a window of its own: the editor never sees keys typed
+      // while it has the focus, so Ctrl+S is passed on, after keeping the run
+      // being edited, so that the save includes it.
+      if((event.ctrlKey || event.metaKey) && !event.altKey && event.key === 's'){
+        event.preventDefault();
+        event.stopPropagation();
+        if(editing){
+          // The run cannot be kept halfway through an IME conversion; say so
+          // where the user is looking, since nothing else would happen.
+          if(event.isComposing || event.keyCode === 229){
+            showHint('Not saved: finish the conversion first', editing.span);
+            return;
+          }
+          finishEdit(true);
+        }
+        send('shortcut', {action: 'save'});
+        return;
+      }
       if(editing){
         // Typing belongs to the run being edited: keep it away from the
         // deck's shortcuts. Enter keeps the edit and Escape drops it, unless
