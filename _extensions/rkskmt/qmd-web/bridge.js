@@ -11,9 +11,10 @@
      the qmd it was rendered from, or two separated by a space, written by
      source.lua), and takes "go to slide n" and "go back" from any page that
      frames the deck.
-   - A double click on text sends that slide's text runs, which the published
-     deck shows anyway. The run becomes editable only when the editor answers,
-     and what is typed into it goes back to the editor as plain text.
+   - A double click on text (a long press on a touch screen) sends that
+     slide's text runs, which the published deck shows anyway. The run
+     becomes editable only when the editor answers, and what is typed into it
+     goes back to the editor as plain text.
    - Ctrl+S (Cmd+S) pressed in the deck is passed on to the editor as a save,
      after the run being edited is kept; the editor takes it only during a
      user gesture.
@@ -138,15 +139,15 @@ window.QmdWebBridge = function(){
       return [...range.getClientRects()].some(box =>
         x >= box.left - 2 && x <= box.right + 2 && y >= box.top - 2 && y <= box.bottom + 2);
     }
-    window.addEventListener('dblclick', event => {
+    function requestEdit(x, y, target){
       // While a run is open, a double click inside it just selects a word (one
       // outside has already closed it: the first click moved the focus away).
       // Right after a slide change the click that caused it is still landing.
-      if(editing || event.button !== 0 || Date.now() - slideChangedAt < 600) return;
-      if(event.target.closest?.('a[href], summary, label')) return;   // these act on the click itself
-      const hit = textAt(event.clientX, event.clientY);
+      if(editing || Date.now() - slideChangedAt < 600) return;
+      if(target?.closest?.('a[href], summary, label')) return;   // these act on the click itself
+      const hit = textAt(x, y);
       const node = hit?.node;
-      if(node?.nodeType !== Node.TEXT_NODE || !covers(node, event.clientX, event.clientY)) return;
+      if(node?.nodeType !== Node.TEXT_NODE || !covers(node, x, y)) return;
       const sections = slideSections();
       const slide = sections.findIndex(section => section.contains(node));
       if(slide < 0) return;
@@ -155,6 +156,37 @@ window.QmdWebBridge = function(){
       if(index < 0) return;
       asked = {id: ++editSeq, node, data: node.data, caret: hit.offset};
       send('edit-request', {id: asked.id, slide, index, runs: nodes.map(run => tidy(run.data))});
+    }
+    window.addEventListener('dblclick', event => {
+      if(event.button === 0) requestEdit(event.clientX, event.clientY, event.target);
+    }, true);
+
+    /* Touch screens send no dblclick for a double tap (iPad), so there a
+       long press asks for the edit. It is taken when the finger lifts: the
+       editor takes the request only during a user gesture, and a touch
+       counts as one from its pointerup. The system's own long press (word
+       selection, callout menu) is off in the framed deck, so the press is
+       ours; the run being edited keeps its text selectable. */
+    const PRESS_MS = 450, PRESS_SLOP = 10;
+    let press = null;
+    const touchStyle = document.createElement('style');
+    touchStyle.textContent = '@media (pointer: coarse){.reveal .slides{-webkit-touch-callout:none;'
+      + '-webkit-user-select:none;user-select:none}}';
+    document.head.appendChild(touchStyle);
+    window.addEventListener('pointerdown', event => {
+      press = event.pointerType === 'touch' && event.isPrimary
+        ? {id: event.pointerId, x: event.clientX, y: event.clientY, at: Date.now(), target: event.target}
+        : null;
+    }, true);
+    window.addEventListener('pointermove', event => {
+      if(press?.id === event.pointerId
+         && Math.hypot(event.clientX - press.x, event.clientY - press.y) > PRESS_SLOP) press = null;
+    }, true);
+    window.addEventListener('pointercancel', () => { press = null; }, true);
+    window.addEventListener('pointerup', event => {
+      const held = press?.id === event.pointerId && Date.now() - press.at >= PRESS_MS ? press : null;
+      press = null;
+      if(held) requestEdit(held.x, held.y, held.target);
     }, true);
 
     function beginEdit(){
