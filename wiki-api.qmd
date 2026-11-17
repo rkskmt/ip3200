@@ -2,6 +2,10 @@
 title: "Wikipedia API リファレンス"
 subtitle: "エンドポイント一覧と使用例"
 lightbox: auto
+# Every Python cell is eval: false: without this, Quarto still starts a kernel (several seconds).
+# Remove it before adding a cell that must run.
+execute:
+  enabled: false
 ---
 
 ## このスライドの位置づけ
