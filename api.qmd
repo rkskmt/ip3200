@@ -709,7 +709,7 @@ print(f"平均:   {views.mean():.1f}回")
 print(f"中央値: {np.median(views):.0f}回")
 ```
 
-::: {.callout-important title="最大は中央値の約280倍"}
+::: {.callout-important title="最大が中央値とけた違い"}
 突出した1日に平均が引っ張られ、中央値との差が大きく開いた。
 :::
 

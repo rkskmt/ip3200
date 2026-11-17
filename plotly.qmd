@@ -374,7 +374,7 @@ fig.write_html("iframes/plotly_icecore.html", include_plotlyjs="directory")
 ::: {.plotly-iframe src="iframes/plotly_icecore.html" height="480"}
 :::
 
-- ドラッグでズーム：氷期と間氷期のあいだを **10℃以上** も往復している
+- ドラッグでズーム：氷期と間氷期のあいだを **大きな振れ幅で** 往復している（縦軸で何℃か読んでみよう）
 - 東京150年の変化は、この巨大なリズムの **右端のごく一部**
 - 同じ「気温」でも、**見せるスパンで物語が変わる**
 
@@ -689,7 +689,7 @@ fig.write_html("iframes/plotly_gapminder_1952.html", include_plotlyjs="directory
 :::
 
 ::: {.caption-note}
-GDPは数百〜10万ドル超まで桁違いに広がり、ほとんどの国が左端に固まって見える
+GDPは国によって桁違いに広がり、ほとんどの国が左端に固まって見える
 :::
 
 

@@ -192,7 +192,7 @@ fig.write_html("iframes/plotly_tanabata.html", include_plotlyjs="directory")
 ```
 
 ::: {.fragment}
-- **8月29日にも小さな山**（2,603回）— 七夕でもないのに、なぜ？
+- **足元にもう一つ小さな山** — 七夕でもないのに、なぜ？（ホバーで日付を確認）
 :::
 
 
