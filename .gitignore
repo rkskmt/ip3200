@@ -10,9 +10,6 @@ iframes/
 # Deployed via gh-pages from the local working dir; not committed.
 pdf/
 
-# Local dependencies (installed by setup.py)
-libs/
-
 # OS
 .DS_Store
 Thumbs.db
