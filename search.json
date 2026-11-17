@@ -144,7 +144,7 @@
     "href": "visualize.html#peek-mystery",
     "title": "データの可視化",
     "section": "1年分の閲覧数を折れ線にする",
-    "text": "1年分の閲覧数を折れ線にする\n\n\nあるWikipediaページの 2025年・1年分の閲覧数 を可視化\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nノート\n\n\n\nほぼ平坦なのに 1日だけ大きな山（最大52,168回、ふだんの約280倍）\nこの日、何があった？"
+    "text": "1年分の閲覧数を折れ線にする\n\n\nあるWikipediaページの 2025年・1年分の閲覧数 を可視化\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nノート\n\n\n\nほぼ平坦なのに 1日だけ大きな山（ふだんとは桁違いの閲覧数）\nこの日、何があった？"
   },
   {
     "objectID": "visualize.html#可視化の古典ジョンスノウのコレラ地図",
@@ -221,7 +221,7 @@
     "href": "visualize.html#peek-income",
     "title": "データの可視化",
     "section": "平均以下の世帯は 62.2%",
-    "text": "平均以下の世帯は 62.2%\n\n\n\n\n\n\n\n\n\n\n\n平均以下の世帯は 62.2% — 「平均」は真ん中ではない\n真ん中の値（中央値）は 405万円。平均より 119万円 も低い\n\n一部の高所得世帯が、平均を 右に引っ張る\n\n分布を 見ないと、「平均」という言葉の意味すら誤解する\n\n\n\n\n\n\n\n\n出典\n\n\n厚生労働省「2023（令和5）年 国民生活基礎調査の概況」図9"
+    "text": "平均以下の世帯は 62.2%\n\n\n\n\n\n\n\n\n\n\n\n平均以下の世帯は 62.2% — 「平均」は真ん中ではない\n真ん中の値（中央値）は、平均より ずっと低い\n\n一部の高所得世帯が、平均を 右に引っ張る\n\n分布を 見ないと、「平均」という言葉の意味すら誤解する\n\n\n\n\n\n\n\n\n出典\n\n\n厚生労働省「2023（令和5）年 国民生活基礎調査の概況」図9"
   },
   {
     "objectID": "visualize.html#例アンスコムの四重奏",
@@ -305,7 +305,7 @@
     "href": "visualize.html#peek-ycut",
     "title": "データの可視化",
     "section": "y軸の切断",
-    "text": "y軸の切断\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n棒グラフは「長さ」で比較するグラフ\n\n\n\n実際の差は 約2%。軸を切ると何倍にも見える\n棒グラフは 0から描く のが原則\n軸の数字を確認するクセをつける"
+    "text": "y軸の切断\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n棒グラフは「長さ」で比較するグラフ\n\n\n\n実際の差は わずか。軸を切ると何倍にも見える\n棒グラフは 0から描く のが原則\n軸の数字を確認するクセをつける"
   },
   {
     "objectID": "visualize.html#東京は寒冷化している",
@@ -319,7 +319,7 @@
     "href": "visualize.html#peek-cherry",
     "title": "データの可視化",
     "section": "期間のチェリーピック",
-    "text": "期間のチェリーピック\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nデータが本物でも、切り取り方で印象が変わる\n\n\n\n150年で見れば気温は 約4℃上昇（都市化の影響も大きい）\n揺らぎのある時系列は、都合のいい12年 を選べば逆向きに見せられる\n「どの範囲を見せるか」も作為のうち\n全体を確認するクセをつける"
+    "text": "期間のチェリーピック\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nデータが本物でも、切り取り方で印象が変わる\n\n\n\n150年で見れば気温は はっきり上昇（都市化の影響も大きい）\n揺らぎのある時系列は、都合のいい12年 を選べば逆向きに見せられる\n「どの範囲を見せるか」も作為のうち\n全体を確認するクセをつける"
   },
   {
     "objectID": "visualize.html#探索的データ解析eda",
@@ -340,7 +340,7 @@
     "href": "visualize.html#まとめ",
     "title": "データの可視化",
     "section": "まとめ",
-    "text": "まとめ\n\n\n可視化の歴史：\n\nプレイフェア — 棒・折れ線・円グラフを発明\nスノウ — コレラ地図で因果関係を視覚的に立証\n\n大原則：Always plot your data first.\n\n平均所得524万円 ≠ 真ん中（中央値405万円）\nアンスコム・Datasaurus — 統計量は形を捨てている\n\n描き方で印象が変わる：y軸の切断、期間のチェリーピック"
+    "text": "まとめ\n\n\n可視化の歴史：\n\nプレイフェア — 棒・折れ線・円グラフを発明\nスノウ — コレラ地図で因果関係を視覚的に立証\n\n大原則：Always plot your data first.\n\n平均所得 ≠ 真ん中（中央値は平均よりずっと低い）\nアンスコム・Datasaurus — 統計量は形を捨てている\n\n描き方で印象が変わる：y軸の切断、期間のチェリーピック"
   },
   {
     "objectID": "visualize.html#参考リンク",
@@ -823,7 +823,7 @@
     "href": "numpy.html#本当に速いの-100万要素で実測",
     "title": "NumPy入門",
     "section": "本当に速いの？ — 100万要素で実測",
-    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 71.5 ミリ秒\nndarray:          1.84 ミリ秒\n→ 約 39 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
+    "text": "本当に速いの？ — 100万要素で実測\n\n\n「for文が不要なため非常に高速」— 何倍くらい違うと思う？\n\n\n\n\n計測コードを表示\nimport time\nimport numpy as np\n\nn = 1_000_000\nli = list(range(n))\narr = np.arange(n)\n\ndef best_time(f, repeat=5):\n    \"\"\"repeat回実行して最速を返す（タイマーの揺れ対策の定石）\"\"\"\n    times = []\n    for _ in range(repeat):\n        t0 = time.perf_counter()\n        f()\n        times.append(time.perf_counter() - t0)\n    return min(times)\n\nt_list = best_time(lambda: [x * 2 for x in li])   # list：内包表記で全要素を2倍\nt_arr  = best_time(lambda: arr * 2)               # ndarray：そのまま2倍\n\nprint(f\"list（内包表記）: {t_list * 1000:.1f} ミリ秒\")\nprint(f\"ndarray:          {t_arr * 1000:.2f} ミリ秒\")\nprint(f\"→ 約 {t_list / t_arr:.0f} 倍速い\")\n\n\nlist（内包表記）: 66.8 ミリ秒\nndarray:          2.71 ミリ秒\n→ 約 25 倍速い\n\n\n\n\n\n\n\n\n\n\n\n\nC言語で実装されたループが中で回るため、桁違いに速い\nデータが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由"
   },
   {
     "objectID": "numpy.html#その他長さやアクセス方法",
@@ -1005,14 +1005,14 @@
     "href": "matplotlib.html#結論東京は暑くなったただし",
     "title": "matplotlib入門",
     "section": "結論：東京は暑くなった。ただし",
-    "text": "結論：東京は暑くなった。ただし\n\n\n150年で 約4℃上昇\nこの上昇には 都市化（ヒートアイランド） の影響も大きく含まれる\n図は答えをくれるが、解釈には背景知識が要る"
+    "text": "結論：東京は暑くなった。ただし\n\n\n150年で 年平均気温は右肩上がり\nこの上昇には 都市化（ヒートアイランド） の影響も大きく含まれる\n図は答えをくれるが、解釈には背景知識が要る"
   },
   {
     "objectID": "matplotlib.html#peek-hist-code",
     "href": "matplotlib.html#peek-hist-code",
     "title": "matplotlib入門",
     "section": "ヒストグラム：所得分布の可視化",
-    "text": "ヒストグラム：所得分布の可視化\n\n\n前回の厚労省の所得分布は ヒストグラム（区間ごとに数えるグラフ）だった\n同じような構造の図を、ある会社の社員29人の年収で再現したとする\n\nplt.hist(x, bins=区間の数) で描ける\nplt.axvline(値) で 縦線、np.median(x) で 中央値\n\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nincome = np.array([\n    280, 310, 330, 350, 360, 380, 400, 410, 430, 450, 470, 500, 520, 450, 470, 500, 520, 550, 600, 650, 700, 760, 900, 950, 1100, 1260, 3100, 3000, 3200\n])\n\nmean_income = income.mean()\nmedian_income = np.median(income)\n\nplt.hist(income, bins=20, edgecolor=\"white\")\nplt.axvline(mean_income, color=\"red\", linewidth=2, label=f\"平均 ({mean_income:,.0f})\")\nplt.axvline(median_income, color=\"blue\", linewidth=2, label=f\"中央値 ({median_income:,.0f})\")\nplt.xlabel(\"年収（万円）\")\nplt.ylabel(\"人数\")\nplt.title(\"年収のような右に長い分布\")\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n「平均年収824万円の会社」\n\n\n\nこの会社は求人票に「平均年収824万円」と 正直に 書ける — 読んだ人はそのくらいもらえると錯覚する\nでも中央値は 500万円 — 半分の人は500万以下\n描けば誰でも分かる"
+    "text": "ヒストグラム：所得分布の可視化\n\n\n前回の厚労省の所得分布は ヒストグラム（区間ごとに数えるグラフ）だった\n同じような構造の図を、ある会社の社員29人の年収で再現したとする\n\nplt.hist(x, bins=区間の数) で描ける\nplt.axvline(値) で 縦線、np.median(x) で 中央値\n\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\nincome = np.array([\n    280, 310, 330, 350, 360, 380, 400, 410, 430, 450, 470, 500, 520, 450, 470, 500, 520, 550, 600, 650, 700, 760, 900, 950, 1100, 1260, 3100, 3000, 3200\n])\n\nmean_income = income.mean()\nmedian_income = np.median(income)\n\nplt.hist(income, bins=20, edgecolor=\"white\")\nplt.axvline(mean_income, color=\"red\", linewidth=2, label=f\"平均 ({mean_income:,.0f})\")\nplt.axvline(median_income, color=\"blue\", linewidth=2, label=f\"中央値 ({median_income:,.0f})\")\nplt.xlabel(\"年収（万円）\")\nplt.ylabel(\"人数\")\nplt.title(\"年収のような右に長い分布\")\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n求人票の「平均年収」\n\n\n\nこの会社は求人票に凡例の平均年収を 正直に 書ける — 読んだ人はそのくらいもらえると錯覚する\nでも中央値は 平均よりずっと低い — 半分の人は中央値以下\n描けば誰でも分かる"
   },
   {
     "objectID": "matplotlib.html#tweak-ビンの数で分布が化ける",
@@ -1740,7 +1740,7 @@
     "href": "api.html#peek-tanabata",
     "title": "はじめてのAPI",
     "section": "「七夕」のページビューを取得",
-    "text": "「七夕」のページビューを取得\n\n「七夕」というWikipediaの記事に対する 1年分（2025年） の日別アクセス数を取得し、統計量を出す例\nimport requests\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia.org/all-access/all-agents/\"\n       \"七夕/daily/20250101/20251231\")\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\n\nresponse = requests.get(url, headers=headers)\ndata = response.json()\n\n# data[\"items\"] は list of dict\nviews = np.array([item[\"views\"] for item in data[\"items\"]])\n\nprint(f\"日数:   {len(views)}\")\nprint(f\"最大:   {views.max()}回\")\nprint(f\"最小:   {views.min()}回\")\nprint(f\"平均:   {views.mean():.1f}回\")\nprint(f\"中央値: {np.median(views):.0f}回\")\n\n\n日数:   365\n最大:   52168回\n最小:   88回\n平均:   539.1回\n中央値: 187回\n\n\n\n\n\n\n\n\n\n最大は中央値の約280倍\n\n\n突出した1日に平均が引っ張られ、中央値との差が大きく開いた。"
+    "text": "「七夕」のページビューを取得\n\n「七夕」というWikipediaの記事に対する 1年分（2025年） の日別アクセス数を取得し、統計量を出す例\nimport requests\nimport numpy as np\n\nurl = (\"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/\"\n       \"ja.wikipedia.org/all-access/all-agents/\"\n       \"七夕/daily/20250101/20251231\")\nheaders = {\n    \"User-Agent\": \"IP3200-lecture/1.0 (https://rkskmt.github.io/ip3200/)\"\n}\n\nresponse = requests.get(url, headers=headers)\ndata = response.json()\n\n# data[\"items\"] は list of dict\nviews = np.array([item[\"views\"] for item in data[\"items\"]])\n\nprint(f\"日数:   {len(views)}\")\nprint(f\"最大:   {views.max()}回\")\nprint(f\"最小:   {views.min()}回\")\nprint(f\"平均:   {views.mean():.1f}回\")\nprint(f\"中央値: {np.median(views):.0f}回\")\n\n\n日数:   365\n最大:   52168回\n最小:   88回\n平均:   539.1回\n中央値: 187回\n\n\n\n\n\n\n\n\n\n最大が中央値とけた違い\n\n\n突出した1日に平均が引っ張られ、中央値との差が大きく開いた。"
   },
   {
     "objectID": "api.html#tweak-どの端末で読まれた",
@@ -1957,7 +1957,7 @@
     "href": "api-viz.html#よく見るともう一つ山がある",
     "title": "APIからのデータを可視化する",
     "section": "よく見ると、もう一つ山がある",
-    "text": "よく見ると、もう一つ山がある\n\n\n7/7の山が大きすぎて、ほかの日は足元で平らに見える\n動くグラフなら確かめられる：山の足元をドラッグで拡大（ダブルクリックで全体に戻る）\n\n\n\n\n\n\n8月29日にも小さな山（2,603回）— 七夕でもないのに、なぜ？"
+    "text": "よく見ると、もう一つ山がある\n\n\n7/7の山が大きすぎて、ほかの日は足元で平らに見える\n動くグラフなら確かめられる：山の足元をドラッグで拡大（ダブルクリックで全体に戻る）\n\n\n\n\n\n\n足元にもう一つ小さな山 — 七夕でもないのに、なぜ？（ホバーで日付を確認）"
   },
   {
     "objectID": "api-viz.html#月29日の山の原因",
@@ -2930,7 +2930,7 @@
     "href": "pandas.html#クラスごとに人数を数える",
     "title": "Pandas入門",
     "section": "クラスごとに人数を数える",
-    "text": "クラスごとに人数を数える\n\n\ngroupby(\"クラス\") で、クラスごとに行をグループへ分ける\nグループの中身を見るには .size() などを続ける必要がある\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df.groupby(\"クラス\").size())\n\nクラス\nA    8\nB    6\nC    6\ndtype: int64\n\n\n\nAが8人・Bが6人・Cが6人で合計20人 — 全員がどこかのグループに分けられている"
+    "text": "クラスごとに人数を数える\n\n\ngroupby(\"クラス\") で、クラスごとに行をグループへ分ける\nグループの中身を見るには .size() などを続ける必要がある\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"data/students.csv\")\n\nprint(df.groupby(\"クラス\").size())\n\nクラス\nA    8\nB    6\nC    6\ndtype: int64\n\n\n\nクラスごとの人数を足すと全体の人数になる — 全員がどこかのグループに分けられている"
   },
   {
     "objectID": "pandas.html#peek-groupby-code",
@@ -3098,7 +3098,7 @@
     "href": "plotly.html#ズームアウト80万年の気温",
     "title": "Plotly入門",
     "section": "ズームアウト：80万年の気温",
-    "text": "ズームアウト：80万年の気温\n\n\n南極の氷から復元した気温（EPICA Dome C）— 80万年前 まで遡れる\n縦軸は現在との気温差：0℃＝現在の水準（直近1000年の平均）、マイナスほど寒い\nepica_temp.csv を data フォルダに置く\n\ndf_ice = pd.read_csv(\"data/epica_temp.csv\")\ndf_ice[\"万年前\"] = df_ice[\"age_kyr_bp\"] / 10  # 千年前 → 万年前\n\nfig = px.line(df_ice, x=\"万年前\", y=\"temp_anomaly_c\")\nfig.update_xaxes(autorange=\"reversed\")  # 昔を左、現在を右に\nfig.show()\n\n\n\n\nドラッグでズーム：氷期と間氷期のあいだを 10℃以上 も往復している\n東京150年の変化は、この巨大なリズムの 右端のごく一部\n同じ「気温」でも、見せるスパンで物語が変わる"
+    "text": "ズームアウト：80万年の気温\n\n\n南極の氷から復元した気温（EPICA Dome C）— 80万年前 まで遡れる\n縦軸は現在との気温差：0℃＝現在の水準（直近1000年の平均）、マイナスほど寒い\nepica_temp.csv を data フォルダに置く\n\ndf_ice = pd.read_csv(\"data/epica_temp.csv\")\ndf_ice[\"万年前\"] = df_ice[\"age_kyr_bp\"] / 10  # 千年前 → 万年前\n\nfig = px.line(df_ice, x=\"万年前\", y=\"temp_anomaly_c\")\nfig.update_xaxes(autorange=\"reversed\")  # 昔を左、現在を右に\nfig.show()\n\n\n\n\nドラッグでズーム：氷期と間氷期のあいだを 大きな振れ幅で 往復している（縦軸で何℃か読んでみよう）\n東京150年の変化は、この巨大なリズムの 右端のごく一部\n同じ「気温」でも、見せるスパンで物語が変わる"
   },
   {
     "objectID": "plotly.html#ヒストグラム",
@@ -3196,7 +3196,7 @@
     "href": "plotly.html#まず1年分だけ描いてみる",
     "title": "Plotly入門",
     "section": "まず1年分だけ描いてみる",
-    "text": "まず1年分だけ描いてみる\n\n\ngap[gap[\"year\"] == 1952] で1952年の行だけに絞る（Pandasの条件抽出）\nあとは ここまでと同じ x, y, size, color, hover_name\n\ngap_1952 = gap[gap[\"year\"] == 1952]\n\nfig = px.scatter(\n    gap_1952,\n    x=\"gdpPercap\",\n    y=\"lifeExp\",\n    size=\"pop\",\n    size_max=55,\n    color=\"continent\",\n    hover_name=\"country\",\n)\nfig.show()\n\n\n\n\nGDPは数百〜10万ドル超まで桁違いに広がり、ほとんどの国が左端に固まって見える"
+    "text": "まず1年分だけ描いてみる\n\n\ngap[gap[\"year\"] == 1952] で1952年の行だけに絞る（Pandasの条件抽出）\nあとは ここまでと同じ x, y, size, color, hover_name\n\ngap_1952 = gap[gap[\"year\"] == 1952]\n\nfig = px.scatter(\n    gap_1952,\n    x=\"gdpPercap\",\n    y=\"lifeExp\",\n    size=\"pop\",\n    size_max=55,\n    color=\"continent\",\n    hover_name=\"country\",\n)\nfig.show()\n\n\n\n\nGDPは国によって桁違いに広がり、ほとんどの国が左端に固まって見える"
   },
   {
     "objectID": "plotly.html#peek-gapminder-code",
@@ -3532,7 +3532,7 @@
     "href": "tokyo-api.html#演習東京一極集中はいつから",
     "title": "東京都オープンデータAPI",
     "section": "演習：東京一極集中はいつから？",
-    "text": "演習：東京一極集中はいつから？\n\n\n人口データの 「東京都／対全国比(%)」 を折れ線グラフに描き、日本の人口の 1割 を最初に超えた年を答えよ。\n\n\n人口データを取得し、DataFrameにして列名を確認\n対全国比の値は文字列。数値でない値の行を除いてから .astype(float) で数値化（増減率のときと同じ下ごしらえ）\n折れ線グラフに描き、10%を最初に超えた年を確認\n\n\n\n解答例を見る\nimport requests\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, params={\"limit\": 200}, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\nclean = df[df[\"東京都／対全国比(%)\"] != \"\"]   # 2023年は値が空\nshares = clean[\"東京都／対全国比(%)\"].astype(float)\n\nover10 = clean[shares &gt;= 10]\nprint(f\"最初に10%を超えた年: {over10['西暦（年次）'].min()}年\")\n\nplt.plot(clean[\"西暦（年次）\"], shares)\nplt.title(\"Tokyo Share of Japan Population\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Share (%)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n一極集中は戦前に始まっていた\n\n\n\n1872年は 2.5%（40人に1人）\n最初に10%を超えたのは 1940年\n\n戦前にすでに「1割が東京」だった\n\n1945年に 4.8% へ急落（人口の谷と同じ理由）し、1959年に再び10%へ"
+    "text": "演習：東京一極集中はいつから？\n\n\n人口データの 「東京都／対全国比(%)」 を折れ線グラフに描き、日本の人口の 1割 を最初に超えた年を答えよ。\n\n\n人口データを取得し、DataFrameにして列名を確認\n対全国比の値は文字列。数値でない値の行を除いてから .astype(float) で数値化（増減率のときと同じ下ごしらえ）\n折れ線グラフに描き、10%を最初に超えた年を確認\n\n\n\n解答例を見る\nimport requests\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport japanize_matplotlib\n\napi_id = \"t000003d2000000236-c054eb26d9e9721642bef78c7c717e76-0\"\nurl = f\"https://service.api.metro.tokyo.lg.jp/api/{api_id}/json\"\n\nresponse = requests.post(url, params={\"limit\": 200}, json={})\ndata = response.json()\n\ndf = pd.DataFrame(data[\"hits\"])\nclean = df[df[\"東京都／対全国比(%)\"] != \"\"]   # 2023年は値が空\nshares = clean[\"東京都／対全国比(%)\"].astype(float)\n\nover10 = clean[shares &gt;= 10]\nprint(f\"最初に10%を超えた年: {over10['西暦（年次）'].min()}年\")\n\nplt.plot(clean[\"西暦（年次）\"], shares)\nplt.title(\"Tokyo Share of Japan Population\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Share (%)\")\nplt.grid(True, linestyle=\"--\", alpha=0.5)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n一極集中は戦前に始まっていた\n\n\n\n1872年の時点では全国の ごく一部\n最初に10%を超えたのは 1940年\n\n戦前にすでに「1割が東京」だった\n\n1945年に 急落（人口の谷と同じ理由）し、戦後に再び10%へ"
   },
   {
     "objectID": "tokyo-api.html#演習2つのデータセットを比較",
@@ -3574,7 +3574,7 @@
     "href": "tokyo-api.html#参考2018年以降を拡大する",
     "title": "東京都オープンデータAPI",
     "section": "（参考）2018年以降を拡大する",
-    "text": "（参考）2018年以降を拡大する\n\n\n「七夕」の8月29日を見つけたときと同じく、軸の範囲を絞って 一部を拡大する\n\n人口のグラフのコードに plt.xlim(2018, 2024) と plt.ylim(13.85, 14.15) を足す\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n質問\n\n\n2021年だけ人口が減っている（−36,107人）。何があった年？\n\n\n\n\n\n\nコロナ禍：テレワークと転出で、人口が 1995年以来26年ぶり に減った"
+    "text": "（参考）2018年以降を拡大する\n\n\n「七夕」の8月29日を見つけたときと同じく、軸の範囲を絞って 一部を拡大する\n\n人口のグラフのコードに plt.xlim(2018, 2024) と plt.ylim(13.85, 14.15) を足す\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n質問\n\n\n矢印の年だけ人口が減っている（−36,107人）。何があった年？\n\n\n\n\n\n\nコロナ禍：テレワークと転出で、人口が 1995年以来26年ぶり に減った"
   },
   {
     "objectID": "tokyo-api.html#関連リソース",
