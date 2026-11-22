@@ -21,3 +21,5 @@ lightbox: auto
 # strokes.
 d2:
   pad: 16
+# Layout of the lecture index and handouts pages: cards, ruled or network.
+lecture-index: ruled
