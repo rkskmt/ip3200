@@ -168,6 +168,15 @@
             config.math.config = config.math.config.replace("_HTML", "_CHTML");
             config.math.CommonHTML = { scale: 127, matchFontHeight: false };
           }
+          // A ruled or network lecture index lays itself out at the
+          // window's width (custom.css). reveal.js's slide view
+          // fixes every slide at 1280x720 and scales it, and reveal.js
+          // switches to the scroll view only below 435px, so open such
+          // a page in the scroll view at every width. Quarto calls
+          // initialize at the end of <body>, so the page is parsed.
+          if (config && document.querySelector(".lectures.ruled, .lectures.network")) {
+            config.view = "scroll";
+          }
           return initialize.call(this, config);
         };
       }
@@ -179,7 +188,8 @@
   <script src="peek-ui.js" defer=""></script>
   <script src="badge-ui.js" defer=""></script>
   <script src="toc-ui.js" defer=""></script>
-  <meta name="qmd-web-source" content="33f253480574e207cb0d5971b62952b35f3237c8 cc46911ff3cd3379ca5b6da4a31e544cf3dd7ead">
+  <script src="network-ui.js" defer=""></script>
+  <meta name="qmd-web-source" content="33f253480574e207cb0d5971b62952b35f3237c8">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -193,7 +203,8 @@
 <div class="idx-lead">
 <p>各回スライドの配布用 PDF。クリックで開く。番号は講義一覧と対応。</p>
 </div>
-<div class="lectures">
+<div class="lectures ruled">
+<div class="lec-group">
 <div id="pcの使い方アップデート" class="sec cat1">
 PCの使い方アップデート
 </div>
@@ -203,6 +214,8 @@ PCの使い方アップデート
 <li><a href="pdf/shortcuts.pdf" target="_blank">ショートカット</a></li>
 </ul>
 </div>
+</div>
+<div class="lec-group">
 <div id="速習python基礎" class="sec cat2">
 速習Python基礎
 </div>
@@ -214,6 +227,8 @@ PCの使い方アップデート
 <li><a href="pdf/dict.pdf" target="_blank">dictあらためて</a></li>
 </ul>
 </div>
+</div>
+<div class="lec-group">
 <div id="データ処理基礎" class="sec cat3">
 データ処理基礎
 </div>
@@ -227,6 +242,8 @@ PCの使い方アップデート
 <li><a href="pdf/plotly.pdf" target="_blank">Plotly入門</a></li>
 </ul>
 </div>
+</div>
+<div class="lec-group">
 <div id="api" class="sec cat4">
 API
 </div>
@@ -237,6 +254,7 @@ API
 <li><a href="pdf/wiki-api.pdf" target="_blank">Wikipedia APIリファレンス</a></li>
 <li><a href="pdf/tokyo-api.pdf" target="_blank">東京都オープンデータAPI</a></li>
 </ul>
+</div>
 </div>
 </div>
 

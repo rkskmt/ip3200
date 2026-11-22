@@ -168,6 +168,15 @@
             config.math.config = config.math.config.replace("_HTML", "_CHTML");
             config.math.CommonHTML = { scale: 127, matchFontHeight: false };
           }
+          // A ruled or network lecture index lays itself out at the
+          // window's width (custom.css). reveal.js's slide view
+          // fixes every slide at 1280x720 and scales it, and reveal.js
+          // switches to the scroll view only below 435px, so open such
+          // a page in the scroll view at every width. Quarto calls
+          // initialize at the end of <body>, so the page is parsed.
+          if (config && document.querySelector(".lectures.ruled, .lectures.network")) {
+            config.view = "scroll";
+          }
           return initialize.call(this, config);
         };
       }
@@ -179,7 +188,8 @@
   <script src="peek-ui.js" defer=""></script>
   <script src="badge-ui.js" defer=""></script>
   <script src="toc-ui.js" defer=""></script>
-  <meta name="qmd-web-source" content="44dcebaac0ff5a495eaf6b7f3e9b53d45a1c3268 5ee789129f16606528f8231592f4702dc2d688fa">
+  <script src="network-ui.js" defer=""></script>
+  <meta name="qmd-web-source" content="44dcebaac0ff5a495eaf6b7f3e9b53d45a1c3268">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -203,7 +213,8 @@
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">前期</a></li><li><a href="#tabset-1-2">後期</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<div class="lectures">
+<div class="lectures ruled">
+<div class="lec-group">
 <div id="pcの使い方アップデート" class="sec cat1">
 PCの使い方アップデート
 </div>
@@ -213,6 +224,8 @@ PCの使い方アップデート
 <li><a href="./shortcuts.html">ショートカット</a></li>
 </ul>
 </div>
+</div>
+<div class="lec-group">
 <div id="速習python基礎" class="sec cat2">
 速習Python基礎
 </div>
@@ -224,6 +237,8 @@ PCの使い方アップデート
 <li><a href="./dict.html">dictあらためて</a></li>
 </ul>
 </div>
+</div>
+<div class="lec-group">
 <div id="データ処理基礎" class="sec cat3">
 データ処理基礎
 </div>
@@ -237,6 +252,8 @@ PCの使い方アップデート
 <li><a href="./plotly.html">Plotly入門</a></li>
 </ul>
 </div>
+</div>
+<div class="lec-group">
 <div id="api" class="sec cat4">
 API
 </div>
@@ -250,8 +267,10 @@ API
 </div>
 </div>
 </div>
+</div>
 <div id="tabset-1-2">
-<div class="lectures">
+<div class="lectures ruled">
+<div class="lec-group">
 <div id="課題解決アイデア創出" class="sec cat1">
 課題解決・アイデア創出
 </div>
@@ -263,6 +282,8 @@ API
 <li><a href="./payoff-matrix.html">ペイオフマトリクス</a></li>
 </ul>
 </div>
+</div>
+<div class="lec-group">
 <div id="ワイヤーフレーム発表" class="sec cat2">
 ワイヤーフレーム・発表
 </div>
@@ -272,6 +293,8 @@ API
 <li><a href="./presentation.html">発表</a></li>
 </ul>
 </div>
+</div>
+<div class="lec-group">
 <div id="実装" class="sec cat3">
 実装
 </div>
@@ -281,6 +304,7 @@ API
 <li><a href="./api-spa.html">自作API+SPA</a></li>
 <li><a href="./final-project.html">最終課題</a></li>
 </ul>
+</div>
 </div>
 </div>
 </div>
