@@ -120,7 +120,7 @@ NiceGUI ready to go on http://localhost:8080
 
 ## ボタンとコールバック関数
 
-- ボタン操作に応じて呼ばれる関数を **コールバック関数**（[callback function]{.en}）と呼ぶ
+- **コールバック関数**（[callback function]{.en}）：ボタン操作に応じて呼ばれる関数
 - `ui.button()` の `on_click` に関数を渡して登録する
 
 ```python
