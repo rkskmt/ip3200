@@ -1404,14 +1404,14 @@
     "href": "nicegui.html#hello-world",
     "title": "NiceGUIで作るSPAモック",
     "section": "Hello World",
-    "text": "Hello World\n\nfrom nicegui import ui\n\nui.label(\"Hello, NiceGUI!\")\nui.run()\n\n実行するとブラウザが開く。開かないときは、ターミナルに表示されたURLをCtrl+クリック\n\nNiceGUI ready to go on http://localhost:8080\n\n\n\n\n\n\n\n\n関数\n機能\n補足\n\n\n\n\nui.label(text)\n文字列を表示\n\n\n\nui.run()\nNiceGUIを起動（裏でFastAPIが立ち上がり画面を組み立てる）\n部品をすべて書いた いちばん最後に1回だけ 書く"
+    "text": "Hello World\n\nfrom nicegui import ui\n\nui.label(\"Hello, NiceGUI!\")\nui.run(host=\"127.0.0.1\")\n\n実行するとブラウザが開く。開かないときは、ターミナルに表示されたURLをCtrl+クリック\n\nNiceGUI ready to go on http://127.0.0.1:8080\n\n\n\n\n\n\n\n\n関数\n機能\n補足\n\n\n\n\nui.label(text)\n文字列を表示\n\n\n\nui.run(host=\"127.0.0.1\")\nNiceGUIを起動（裏でFastAPIが立ち上がり画面を組み立てる）\n部品をすべて書いた いちばん最後に1回だけ 書く。host は自分のPCだけで動かす指定"
   },
   {
     "objectID": "nicegui.html#ボタンとコールバック関数",
     "href": "nicegui.html#ボタンとコールバック関数",
     "title": "NiceGUIで作るSPAモック",
     "section": "ボタンとコールバック関数",
-    "text": "ボタンとコールバック関数\n\n\nコールバック関数（callback function）：ボタン操作に応じて呼ばれる関数\nui.button() の on_click に関数を渡して登録する\n\nfrom nicegui import ui\n\ndef say_hi():\n    ui.notify(\"Hi!\")\n\nui.button(\"Click me\", on_click=say_hi)\nui.run()\n\nボタンを押すと say_hi が呼ばれ、ui.notify() が画面下に通知を出す"
+    "text": "ボタンとコールバック関数\n\n\nコールバック関数（callback function）：ボタン操作に応じて呼ばれる関数\nui.button() の on_click に関数を渡して登録する\n\nfrom nicegui import ui\n\ndef say_hi():\n    ui.notify(\"Hi!\")\n\nui.button(\"Click me\", on_click=say_hi)\nui.run(host=\"127.0.0.1\")\n\nボタンを押すと say_hi が呼ばれ、ui.notify() が画面下に通知を出す"
   },
   {
     "objectID": "nicegui.html#on_click-に渡す値",
@@ -1425,14 +1425,14 @@
     "href": "nicegui.html#部品の並び方",
     "title": "NiceGUIで作るSPAモック",
     "section": "部品の並び方",
-    "text": "部品の並び方\n\nfrom nicegui import ui\n\nui.label(\"A\")\nui.label(\"B\")\nui.button(\"ボタン\")\nui.run()\n\n何も指定しなければ、部品は書いた順に上から縦に並ぶ\n\n\n\n\n\n\n\n\nコンテナ（container）\n\n\n複数の部品をまとめる入れ物。横に並べたり、カードの枠で囲んだりするときに使う"
+    "text": "部品の並び方\n\nfrom nicegui import ui\n\nui.label(\"A\")\nui.label(\"B\")\nui.button(\"ボタン\")\nui.run(host=\"127.0.0.1\")\n\n何も指定しなければ、部品は書いた順に上から縦に並ぶ\n\n\n\n\n\n\n\n\nコンテナ（container）\n\n\n複数の部品をまとめる入れ物。横に並べたり、カードの枠で囲んだりするときに使う"
   },
   {
     "objectID": "nicegui.html#with-でコンテナに部品を入れる",
     "href": "nicegui.html#with-でコンテナに部品を入れる",
     "title": "NiceGUIで作るSPAモック",
     "section": "with でコンテナに部品を入れる",
-    "text": "with でコンテナに部品を入れる\n\nfrom nicegui import ui\n\nbox = ui.column()      # Create an empty container.\n\nwith box:              # Add elements to this container.\n    ui.label(\"A\")      # Inside the container.\n    ui.label(\"B\")      # Inside the container.\n\nui.label(\"C\")          # Outside the container, on the page.\nui.run()\n\nwith box: のインデント内で作った A・B は box の中。C はインデントの外なのでページ直下に置かれる"
+    "text": "with でコンテナに部品を入れる\n\nfrom nicegui import ui\n\nbox = ui.column()      # Create an empty container.\n\nwith box:              # Add elements to this container.\n    ui.label(\"A\")      # Inside the container.\n    ui.label(\"B\")      # Inside the container.\n\nui.label(\"C\")          # Outside the container, on the page.\nui.run(host=\"127.0.0.1\")\n\nwith box: のインデント内で作った A・B は box の中。C はインデントの外なのでページ直下に置かれる"
   },
   {
     "objectID": "nicegui.html#with-の役割",
@@ -1446,14 +1446,14 @@
     "href": "nicegui.html#コンテナに部品を追加する",
     "title": "NiceGUIで作るSPAモック",
     "section": "コンテナに部品を追加する",
-    "text": "コンテナに部品を追加する\n\nfrom nicegui import ui\n\nbox = ui.column()\n\nwith box:\n    ui.label(\"最初の1個\")\n\nwith box:                      # Add to the same container again.\n    for i in range(1, 11):\n        ui.label(f\"{i}番目\")   # Add labels in a loop.\nui.run()\n\n同じコンテナに対して with を再び使うと、既存の部品を残して追加できる"
+    "text": "コンテナに部品を追加する\n\nfrom nicegui import ui\n\nbox = ui.column()\n\nwith box:\n    ui.label(\"最初の1個\")\n\nwith box:                      # Add to the same container again.\n    for i in range(1, 11):\n        ui.label(f\"{i}番目\")   # Add labels in a loop.\nui.run(host=\"127.0.0.1\")\n\n同じコンテナに対して with を再び使うと、既存の部品を残して追加できる"
   },
   {
     "objectID": "nicegui.html#コンテナの入れ子",
     "href": "nicegui.html#コンテナの入れ子",
     "title": "NiceGUIで作るSPAモック",
     "section": "コンテナの入れ子",
-    "text": "コンテナの入れ子\n\n\nコンテナの中にコンテナを入れて、画面の構造を作る\nwith ui.row(): は、コンテナを作り、その中に部品を置く書き方\n\nfrom nicegui import ui\n\nwith ui.row():             # Horizontal container.\n    with ui.card():        # First card.\n        ui.label(\"タイトル\")\n        ui.label(\"説明文\")\n    with ui.card():        # Second card.\n        ui.label(\"タイトル2\")\nui.run()"
+    "text": "コンテナの入れ子\n\n\nコンテナの中にコンテナを入れて、画面の構造を作る\nwith ui.row(): は、コンテナを作り、その中に部品を置く書き方\n\nfrom nicegui import ui\n\nwith ui.row():             # Horizontal container.\n    with ui.card():        # First card.\n        ui.label(\"タイトル\")\n        ui.label(\"説明文\")\n    with ui.card():        # Second card.\n        ui.label(\"タイトル2\")\nui.run(host=\"127.0.0.1\")"
   },
   {
     "objectID": "nicegui.html#コンテナの入れ子と配置",
@@ -1474,7 +1474,7 @@
     "href": "nicegui.html#with-の確認用コード",
     "title": "NiceGUIで作るSPAモック",
     "section": "with の確認用コード",
-    "text": "with の確認用コード\n\n\n次のコードを保存し、A・B・Cの表示を確認する\n\nfrom nicegui import ui\n\nbox = ui.column()\n\nwith box:\n    ui.label(\"A\")\n    ui.label(\"B\")\n\nui.label(\"C\")\nui.run()"
+    "text": "with の確認用コード\n\n\n次のコードを保存し、A・B・Cの表示を確認する\n\nfrom nicegui import ui\n\nbox = ui.column()\n\nwith box:\n    ui.label(\"A\")\n    ui.label(\"B\")\n\nui.label(\"C\")\nui.run(host=\"127.0.0.1\")"
   },
   {
     "objectID": "nicegui.html#tweak-with-と配置",
@@ -1509,7 +1509,7 @@
     "href": "nicegui.html#クラスを指定する例",
     "title": "NiceGUIで作るSPAモック",
     "section": "クラスを指定する例",
-    "text": "クラスを指定する例\n\nfrom nicegui import ui\n\nwith ui.column():\n    ui.label(\"赤い文字\").classes(\"text-red-500\")\n    ui.label(\"青い文字\").classes(\"text-blue-500\")\n    ui.label(\"背景色付き\").classes(\"bg-yellow-200 p-2\")\n\nui.label(\"目立つラベル\").classes(\"text-2xl font-bold text-blue-500\")\nui.button(\"ボタン\").classes(\"bg-green-500 text-white rounded-lg p-4\")\nui.run()\n\ntext-2xl font-bold text-blue-500 は、大きい文字・太字・青色をまとめて指定"
+    "text": "クラスを指定する例\n\nfrom nicegui import ui\n\nwith ui.column():\n    ui.label(\"赤い文字\").classes(\"text-red-500\")\n    ui.label(\"青い文字\").classes(\"text-blue-500\")\n    ui.label(\"背景色付き\").classes(\"bg-yellow-200 p-2\")\n\nui.label(\"目立つラベル\").classes(\"text-2xl font-bold text-blue-500\")\nui.button(\"ボタン\").classes(\"bg-green-500 text-white rounded-lg p-4\")\nui.run(host=\"127.0.0.1\")\n\ntext-2xl font-bold text-blue-500 は、大きい文字・太字・青色をまとめて指定"
   },
   {
     "objectID": "nicegui.html#スタイル早見表",
@@ -1530,14 +1530,14 @@
     "href": "nicegui.html#入力フォーム",
     "title": "NiceGUIで作るSPAモック",
     "section": "入力フォーム",
-    "text": "入力フォーム\n\nfrom nicegui import ui\n\ndef add_item():\n    name = name_input.value\n    with list_view:        # Add the label to list_view.\n        ui.label(name)\n\nname_input = ui.input(\"name\")\nui.button(\"add\", on_click=add_item)\n\nlist_view = ui.column()\nui.run()\n\nui.input() の入力値を .value で取り出し、ボタン操作で一覧に追加する"
+    "text": "入力フォーム\n\nfrom nicegui import ui\n\ndef add_item():\n    name = name_input.value\n    with list_view:        # Add the label to list_view.\n        ui.label(name)\n\nname_input = ui.input(\"name\")\nui.button(\"add\", on_click=add_item)\n\nlist_view = ui.column()\nui.run(host=\"127.0.0.1\")\n\nui.input() の入力値を .value で取り出し、ボタン操作で一覧に追加する"
   },
   {
     "objectID": "nicegui.html#演習-土台コードを動かす",
     "href": "nicegui.html#演習-土台コードを動かす",
     "title": "NiceGUIで作るSPAモック",
     "section": "演習 土台コードを動かす",
-    "text": "演習 土台コードを動かす\n\n\n次の土台コードを main.py として保存・実行し、名前を追加できることを確かめよ。\n\n\n\n\n\n\n\n\n入力チェック\n\n\nif not name: return は、入力が空文字なら追加せず関数を終了する処理\n\n\n\n\nfrom nicegui import ui\n\ndef add_item():\n    name = name_input.value\n    if not name:\n        return\n\n    with list_view:\n        ui.label(name)\n\nname_input = ui.input(\"名前\")\nui.button(\"追加\", on_click=add_item)\n\nlist_view = ui.column().classes(\"gap-2\")\n\nui.run()"
+    "text": "演習 土台コードを動かす\n\n\n次の土台コードを main.py として保存・実行し、名前を追加できることを確かめよ。\n\n\n\n\n\n\n\n\n入力チェック\n\n\nif not name: return は、入力が空文字なら追加せず関数を終了する処理\n\n\n\n\nfrom nicegui import ui\n\ndef add_item():\n    name = name_input.value\n    if not name:\n        return\n\n    with list_view:\n        ui.label(name)\n\nname_input = ui.input(\"名前\")\nui.button(\"追加\", on_click=add_item)\n\nlist_view = ui.column().classes(\"gap-2\")\n\nui.run(host=\"127.0.0.1\")"
   },
   {
     "objectID": "nicegui.html#tweak-一覧の配置を変える",
@@ -1558,7 +1558,7 @@
     "href": "nicegui.html#tweak-削除機能を付ける",
     "title": "NiceGUIで作るSPAモック",
     "section": "Tweak 削除機能を付ける",
-    "text": "Tweak 削除機能を付ける\n\n\n\n\n\n\n\n\n\nやりたいこと\nヒント\n\n\n\n\n「全部削除」ボタンを追加せよ\nコールバックの中で list_view.clear()\n\n\nカードごとに削除する×ボタンを付けよ\nwith card: の中に ui.button(\"×\", on_click=card.delete)（メソッドもコールバックにできる）\n\n\n\n\n\n\n解答例を表示\nfrom nicegui import ui\n\n\ndef add_item():\n    name = name_input.value\n    if not name:\n        return\n\n    with list_view:\n        card = ui.card().classes(\"bg-gray-100 rounded-lg\")\n        with card:\n            with ui.row():\n                ui.label(name)\n                ui.button(\"×\", on_click=card.delete).classes(\"text-red-500\")\n\n\ndef clear_all():\n    list_view.clear()\n    ui.notify(\"全部削除しました\")\n\n\nname_input = ui.input(\"名前\")\nui.button(\"追加\", on_click=add_item)\nui.button(\"全部削除\", on_click=clear_all)\n\nlist_view = ui.row().classes(\"gap-4\")\n\nui.run()"
+    "text": "Tweak 削除機能を付ける\n\n\n\n\n\n\n\n\n\nやりたいこと\nヒント\n\n\n\n\n「全部削除」ボタンを追加せよ\nコールバックの中で list_view.clear()\n\n\nカードごとに削除する×ボタンを付けよ\nwith card: の中に ui.button(\"×\", on_click=card.delete)（メソッドもコールバックにできる）\n\n\n\n\n\n\n解答例を表示\nfrom nicegui import ui\n\n\ndef add_item():\n    name = name_input.value\n    if not name:\n        return\n\n    with list_view:\n        card = ui.card().classes(\"bg-gray-100 rounded-lg\")\n        with card:\n            with ui.row():\n                ui.label(name)\n                ui.button(\"×\", on_click=card.delete).classes(\"text-red-500\")\n\n\ndef clear_all():\n    list_view.clear()\n    ui.notify(\"全部削除しました\")\n\n\nname_input = ui.input(\"名前\")\nui.button(\"追加\", on_click=add_item)\nui.button(\"全部削除\", on_click=clear_all)\n\nlist_view = ui.row().classes(\"gap-4\")\n\nui.run(host=\"127.0.0.1\")"
   },
   {
     "objectID": "nicegui.html#まとめ",
@@ -2160,7 +2160,7 @@
     "href": "api-spa.html#rest-api-と-httpメソッド",
     "title": "自作API+SPA",
     "section": "REST API と HTTPメソッド",
-    "text": "REST API と HTTPメソッド\n\n\nREST（Representational State Transfer）はWebサービスの設計様式\nREST APIでは、URLで対象を表し、HTTPメソッド（HTTP method）で操作を表す\n\n\n\n\nHTTPメソッド\n用途\n例\n\n\n\n\nGET\nデータを取得する\n質問リストを取得\n\n\nPOST\nデータを送信する\n診断結果を保存\n\n\nPUT\nデータを置き換える\nプロフィール全体を更新\n\n\nDELETE\nデータを削除する\nアカウントを削除\n\n\n\n\n質問リストや結果の取得には GET を使う"
+    "text": "REST API と HTTPメソッド\n\n\nREST（Representational State Transfer）：Webサービスの設計様式\nREST APIでは、URLで対象を表し、HTTPメソッド（HTTP method）で操作を表す\n\n\n\n\nHTTPメソッド\n用途\n例\n\n\n\n\nGET\nデータを取得する\n質問リストを取得\n\n\nPOST\nデータを送信する\n診断結果を保存\n\n\nPUT\nデータを置き換える\nプロフィール全体を更新\n\n\nDELETE\nデータを削除する\nアカウントを削除\n\n\n\n\n質問リストや結果の取得には GET を使う"
   },
   {
     "objectID": "api-spa.html#最もシンプルなapi",
@@ -2174,21 +2174,21 @@
     "href": "api-spa.html#apiの応答を確認する",
     "title": "自作API+SPA",
     "section": "APIの応答を確認する",
-    "text": "APIの応答を確認する\n\n\nブラウザで http://localhost:8080/api/hello を開く\n{\"message\": \"Hello, API!\"}\n\n\n\n\n\n\n\nコード\n機能\n\n\n\n\nfrom nicegui import app\nNiceGUI内部のFastAPIアプリを取り出す\n\n\napp.add_api_route(\"/api/hello\", hello)\nGETの /api/hello に関数 hello を登録する\n\n\nreturn {\"message\": \"...\"}\n辞書を返すと自動でJSONに変換 される"
+    "text": "APIの応答を確認する\n\n\nブラウザで http://127.0.0.1:8000/api/hello を開く\n{\"message\": \"Hello, API!\"}\n\n\n\n\n\n\n\nコード\n機能\n\n\n\n\napi = FastAPI()\nAPIのアプリを作る\n\n\napi.add_api_route(\"/api/hello\", hello)\nGETの /api/hello に関数 hello を登録する\n\n\nreturn {\"message\": \"...\"}\n辞書を返すと自動でJSONに変換 される\n\n\nuvicorn.run(api, port=8000)\n8000番ポートでサーバーを起動する\n\n\n\n\n127.0.0.1 は自分のPCを指すアドレス。Windows では localhost と書くと応答が遅くなることがある"
   },
   {
     "objectID": "api-spa.html#urlに関数を登録する",
     "href": "api-spa.html#urlに関数を登録する",
     "title": "自作API+SPA",
     "section": "URLに関数を登録する",
-    "text": "URLに関数を登録する\n\n\nボタンの on_click と同じ形で、URLにも関数を登録できる\n\n\n\n\n登録\n関数が実行されるとき\n\n\n\n\nui.button(\"Hi\", on_click=say_hi)\nボタンが押されたとき\n\n\napp.add_api_route(\"/api/hello\", hello)\nこのURLにGETが届いたとき\n\n\n\n\n\n\n\n\n\n\n関数はカッコを付けずに渡す\n\n\nhello() と書くと、その場で関数が実行される。関数名は自由で、URLと結びつくのは第1引数"
+    "text": "URLに関数を登録する\n\n\nURLにも on_click と同じ形で関数を登録できる\n\n\n\n\n登録\n関数が実行されるとき\n\n\n\n\nui.button(\"Hi\", on_click=say_hi)\nボタンが押されたとき\n\n\napi.add_api_route(\"/api/hello\", hello)\nこのURLにGETが届いたとき\n\n\n\n\n\n\n\n\n\n\n関数はカッコを付けずに渡す\n\n\nhello() と書くと、その場で関数が実行される。関数名は自由で、URLと結びつくのは第1引数"
   },
   {
     "objectID": "api-spa.html#データファイルを用意する",
     "href": "api-spa.html#データファイルを用意する",
     "title": "自作API+SPA",
     "section": "データファイルを用意する",
-    "text": "データファイルを用意する\n\n\n質問文と選択肢をJSONファイルに保存する\nquestions.json をダウンロードして main.py と同じフォルダに置く（中身は自作してもよい）\n\n\nダウンロード用ファイルは質問3問（id: 1〜3）、結果A〜C。次のコードは一部を省略した表示例\n\n{\n  \"title\": \"あなたにぴったりの職業診断\",\n  \"questions\": [\n    {\"id\": 1, \"text\": \"休日は何をしたい？\",\n     \"choices\": [\"外で遊ぶ\", \"家でゆっくり\", \"友達と集まる\"]},\n    {\"id\": 2, \"text\": \"得意なことは？\",\n     \"choices\": [\"計算\", \"絵を描く\", \"話すこと\"]},\n    ...\n  ],\n  \"results\": {\n    \"A\": \"あなたは営業職タイプ！人と話すのが得意です。\",\n    \"B\": \"あなたはデザイナータイプ！創造力が豊かです。\",\n    ...\n  }\n}"
+    "text": "データファイルを用意する\n\n\n質問文と選択肢をJSONファイルに保存する\nquestions.json をダウンロードして api.py と同じフォルダに置く\n\n{\n  \"title\": \"あなたにぴったりの職業診断\",\n  \"questions\": [\n    {\"id\": 1, \"text\": \"休日は何をしたい？\",\n     \"choices\": [\"外で遊ぶ\", \"家でゆっくり\", \"友達と集まる\"]},\n    {\"id\": 2, \"text\": \"得意なことは？\",\n     \"choices\": [\"計算\", \"絵を描く\", \"話すこと\"]},\n    ...\n  ],\n  \"results\": {\n    \"A\": \"あなたは営業職タイプ！人と話すのが得意です。\",\n    \"B\": \"あなたはデザイナータイプ！創造力が豊かです。\",\n    ...\n  }\n}"
   },
   {
     "objectID": "api-spa.html#エンドポイントでファイルを読む",
@@ -2286,7 +2286,7 @@
     "href": "api-spa.html#まとめ",
     "title": "自作API+SPA",
     "section": "まとめ",
-    "text": "まとめ\n\n\napp.add_api_route()：URLへのGETを処理する関数を登録\njson.load()：JSONファイルをPythonの値として読み込む\n表示の更新：container.clear() で削除し、データを再取得して表示\nrequests.get()：別のプログラムからAPIを呼ぶ\n\n\n\n\n\n\n\n\n3画面のアプリ\n\n\n最終課題 に、画面切り替えとAPIを組み合わせたテンプレートを掲載"
+    "text": "まとめ\n\n\napi.add_api_route()：URLへのGETを処理する関数を登録\nURLパラメータ：?id=1 の値が関数の引数に入る\nrequests.get()：画面のプログラムからAPIを呼ぶ\n表示の更新：container.clear() で消して、取得し直して表示\n\n\n\n\n\n\n\n\n3画面のアプリ\n\n\n最終課題 に、画面切り替えとAPIを組み合わせたテンプレートを掲載"
   },
   {
     "objectID": "api.html#webブラウザで受け取っている情報",
@@ -2643,7 +2643,7 @@
     "href": "final-project.html#最終課題オリジナルアプリ",
     "title": "最終課題",
     "section": "最終課題：オリジナルアプリ",
-    "text": "最終課題：オリジナルアプリ\n\n\nNiceGUIで API+SPA のオリジナルアプリ を1本作って提出する\n企画案・ワイヤーフレーム・ソースコード・紹介スライドを提出する\n\n\n\nこの資料の 3画面テンプレート を動かし、自分の企画に合わせて変更する"
+    "text": "最終課題：オリジナルアプリ\n\n\nNiceGUIで API+SPA のオリジナルアプリ を作って提出する\n企画案・ワイヤーフレーム・ソースコード・紹介スライドを提出する\n\n\n\nこの資料の 3画面テンプレート を動かし、自分の企画に合わせて変更する"
   },
   {
     "objectID": "final-project.html#テーマ例診断ゲーム系",
@@ -2671,49 +2671,49 @@
     "href": "final-project.html#提出物zipに4点",
     "title": "最終課題",
     "section": "提出物：zipに4点",
-    "text": "提出物：zipに4点\n\n\nファイル名は 「学籍番号_名前.zip」\n\n\n\n\n\n\n\n\n\n\n内容\n形式\n\n\n\n\n1\n635法などのカードで考えた 企画案 の写真（グループで発想したもの）\nPDF\n\n\n2\nMiroで作った ワイヤーフレーム のスクショ\nPDF\n\n\n3\nテンプレートを元にNiceGUIで実装した ソースコード（.py 1ファイル + .json）\nzip\n\n\n4\nアプリを紹介する スライド1枚（タイトル・特徴・スクショ程度でOK）\nPDF\n\n\n\n\n\n\n\n\n\n\n3のzipは「入れ子」構造\n\n\n.py と .json をまとめたzipを、提出zipの中に入れる。解凍して .py を実行するだけで動く ことを提出前に必ず確認する"
+    "text": "提出物：zipに4点\n\n\nファイル名は 「学籍番号_名前.zip」\n\n\n\n\n\n\n\n\n\n\n内容\n形式\n\n\n\n\n1\n635法などのカードで考えた 企画案 の写真（グループで発想したもの）\nPDF\n\n\n2\nMiroで作った ワイヤーフレーム のスクショ\nPDF\n\n\n3\nテンプレートを元に実装した ソースコード（api.py、main.py、.json）\nzip\n\n\n4\nアプリを紹介する スライド1枚（タイトル・特徴・スクショ程度でOK）\nPDF\n\n\n\n\n\n\n\n\n\n\n3のzipは「入れ子」構造\n\n\napi.py、main.py、.json をまとめたzipを、提出zipの中に入れる。==解凍して api.py、main.py の順に実行するだけで動く== ことを提出前に必ず確認する"
   },
   {
     "objectID": "final-project.html#ルール",
     "href": "final-project.html#ルール",
     "title": "最終課題",
     "section": "ルール",
-    "text": "ルール\n\n\nテンプレートに付け足す形 で実装する\n\n文字・レイアウト変更、ボタン追加、遷移画面追加はOK\n構造を大きく変える／ライブラリを増やすのはNG\n生成AIの出力の丸写しはNG\n\n遷移画面は3画面以上\n使用できるライブラリは NiceGUIとその依存ライブラリ・授業で使ったもの・Python標準ライブラリ\n\nrequests は外部APIの取得に使用可（timeout=5 を付ける）\n自分のAPIは requests で呼ばず、get_data() を直接呼ぶ\n\nワイヤーフレームと実装は、方向性が合っていれば同一でなくてよい（見た目に過度にこだわらない）\n質問や助け合いは可。助けてもらったら、紹介スライドに協力者の名前と協力内容を書く"
+    "text": "ルール\n\n\nテンプレートに付け足す形 で実装する\n\n文字・レイアウト変更、ボタン追加、遷移画面追加はOK\n構造を大きく変える／ライブラリを増やすのはNG\n生成AIの出力の丸写しはNG\n\n遷移画面は3画面以上\n使用できるライブラリは、NumPy や Requests など 授業で使ったもの と、math など pip install が不要なもの\nワイヤーフレームと実装は、方向性が合っていれば同一でなくてよい（見た目に過度にこだわらない）\n質問や助け合いは可。助けてもらったら、紹介スライドに協力者の名前と協力内容を書く"
   },
   {
     "objectID": "final-project.html#データはjsonに保存する",
     "href": "final-project.html#データはjsonに保存する",
     "title": "最終課題",
     "section": "データはJSONに保存する",
-    "text": "データはJSONに保存する\n\n\n表示するコンテンツは JSONに書き、テンプレートの get_data() で読み込む\n\nJSONを編集するだけでアプリを変更・拡張できる 状態にする\n質問文や結果文を ui.label(\"...\") に直接書かない（ハードコード、hard-coding）\nボタンの「スタート」などコンテンツ以外のラベルはハードコードOK\n\nJSONへの 書き込みも可\n\n\n\n\n\n\n\n\nデータと画面の分離\n\n\n質問を1問追加する場合はJSONを変更する。質問を順に表示する処理は、リストを読み取る形にしておけば共通で使える"
+    "text": "データはJSONに保存する\n\n\n表示するコンテンツは JSONに書き、APIから取得 する\n\nJSONを編集するだけでアプリを変更・拡張できる 状態にする\n質問文や結果文を ui.label(\"...\") に直接書かない（ハードコード、hard-coding）\nボタンの「スタート」などコンテンツ以外のラベルはハードコードOK\n\nJSONへの 書き込みも可\n\n\n\n\n\n\n\n\nデータと画面の分離\n\n\n質問を1問追加する場合はJSONを変更する。質問を順に表示する処理は、リストを読み取る形にしておけば共通で使える"
   },
   {
     "objectID": "final-project.html#評価基準",
     "href": "final-project.html#評価基準",
     "title": "最終課題",
     "section": "評価基準",
-    "text": "評価基準\n\n\n提出物の内容とフォーマットが 指定通り\n公序良俗 に反していない\n生成AIの丸写しではなく、テンプレートに沿って 実装されている\nエラーなく実行できる\n\n\n\n\n\n\n\n\n提出前の確認\n\n\nzipを別のフォルダに解凍し直し、Pythonファイルを実行する。JSONファイルの同梱、画面遷移、データ読み込みを確認する"
+    "text": "評価基準\n\n\n提出物の内容とフォーマットが 指定通り\n公序良俗 に反していない\n生成AIの丸写しではなく、テンプレートに沿って 実装されている\nエラーなく実行できる\n\n\n\n\n\n\n\n\n提出前の確認\n\n\nzipを別のフォルダに解凍し直し、api.py と main.py を実行する。JSONファイルの同梱、画面遷移、データ読み込みを確認する"
   },
   {
     "objectID": "final-project.html#テンプレートの構造",
     "href": "final-project.html#テンプレートの構造",
     "title": "最終課題",
     "section": "テンプレートの構造",
-    "text": "テンプレートの構造\n\n\n3画面 = 3つの ui.column()。set_visibility() で1つだけ表示 して画面遷移に見せる\n\n\n\nwith ui.column() as top_screen: は、コンテナを作って top_screen に代入し、その中に部品を置く書き方"
+    "text": "テンプレートの構造\n\n\napi.py：JSONを読み、URLごとにデータを返す\nmain.py：3画面を表示し、requests でAPIからデータを取得する"
   },
   {
     "objectID": "final-project.html#データファイルを用意する",
     "href": "final-project.html#データファイルを用意する",
     "title": "最終課題",
     "section": "データファイルを用意する",
-    "text": "データファイルを用意する\n\n\ndata.json をダウンロードし、テンプレートを保存した main.py と同じフォルダに置く\n初期データには title と message の2項目がある\n\n{\n  \"title\": \"サンプルタイトル\",\n  \"message\": \"ここにメッセージが入ります\"\n}"
+    "text": "データファイルを用意する\n\n\ndata.json をダウンロードし、api.py と同じフォルダに置く\nitems の各要素が、画面に表示するデータ\n\n{\n  \"items\": [\n    {\"id\": 1, \"name\": \"サンプル1\", \"message\": \"1件目のメッセージ\"},\n    {\"id\": 2, \"name\": \"サンプル2\", \"message\": \"2件目のメッセージ\"},\n    {\"id\": 3, \"name\": \"サンプル3\", \"message\": \"3件目のメッセージ\"}\n  ]\n}"
   },
   {
     "objectID": "final-project.html#画面の表示非表示を切り替える",
     "href": "final-project.html#画面の表示非表示を切り替える",
     "title": "最終課題",
     "section": "画面の表示・非表示を切り替える",
-    "text": "画面の表示・非表示を切り替える\n\n\nテンプレートから抜粋\ndef show_screen(screen_name):\n    top_screen.set_visibility(screen_name == \"top\")\n    main_screen.set_visibility(screen_name == \"main\")\n    result_screen.set_visibility(screen_name == \"result\")\n\ndef show_main():\n    show_screen(\"main\")\n\nui.button(\"スタート\", on_click=show_main)\n\nscreen_name == \"top\" は True / False になる。指定した画面だけ表示し、他の画面は非表示にする\n\n\n\n\n\n\n\n\n移動先ごとに関数を1つ作る\n\n\non_click には関数を カッコを付けずに 渡す。on_click=show_screen(\"main\") と書くと、ボタンを作る時点で実行される"
+    "text": "画面の表示・非表示を切り替える\n\n\n3画面 = 3つの ui.column()。set_visibility() で1つだけ表示 して画面遷移に見せる\n\ndef show_screen(screen_name):\n    top_screen.set_visibility(screen_name == \"top\")\n    main_screen.set_visibility(screen_name == \"main\")\n    result_screen.set_visibility(screen_name == \"result\")\n\ndef show_main():\n    show_screen(\"main\")\n\nui.button(\"スタート\", on_click=show_main)\n\nscreen_name == \"top\" は True / False になる。指定した画面だけ表示し、他の画面は非表示にする\n\n\n\n\n\n\n\n\n移動先ごとに関数を作る\n\n\non_click には関数を カッコを付けずに 渡す。on_click=show_screen(\"main\") と書くと、ボタンを作る時点で実行される"
   },
   {
     "objectID": "final-project.html#テンプレート全文",
@@ -2727,7 +2727,7 @@
     "href": "final-project.html#実装の進め方",
     "title": "最終課題",
     "section": "実装の進め方",
-    "text": "実装の進め方\n\n\nテンプレートを実行（3画面の遷移と「データ読み込み」を確認）\ndata.json の title と message を変更し、読み込みを確認\n企画に必要なデータ項目と、それを表示・処理するコードを追加\nワイヤーフレームをもとに、画面・ボタン・配置を変更\nアプリを起動したまま、別のプログラムから /api/data を呼び、JSONの取得を確認\nzipにして別のフォルダに解凍し、動作確認後に提出\n\n\n\n\n\n\n\n\n参照先\n\n\n\n画面の部品・スタイル：NiceGUI\nAPIとJSON：自作API+SPA\n画面構成：ワイヤーフレーム"
+    "text": "実装の進め方\n\n\napi.py を起動し、ブラウザで http://127.0.0.1:8000/api/item?id=1 を確認\nmain.py を起動し、3画面の遷移と「データ読み込み」を確認\ndata.json に企画に必要なデータを記述\nデータを表示・処理するコードを追加\nワイヤーフレームをもとに、画面・ボタン・配置を変更\nzipにして別のフォルダに解凍し、動作確認後に提出\n\n\n\n\n\n\n\n\n動かないとき\n\n\n\napi.py を変更したら、Ctrl + C で止めて起動し直す（main.py と違い自動では再起動しない）\n「データ読み込み」で何も表示されないときは、api.py の起動を確認する（エラーは main.py のターミナルに出る）\ndata.json は保存すれば、次の読み込みから反映される\n\n\n\n\n\n\n\n\n\n\n\n\n参照先\n\n\n\n画面の部品・スタイル：NiceGUI\nAPIとJSON：自作API+SPA\n画面構成：ワイヤーフレーム"
   },
   {
     "objectID": "ideation.html#後期のゴールこれを自分で作る",
@@ -4191,5 +4191,89 @@
     "title": "Wikipedia API リファレンス",
     "section": "関連リソース",
     "text": "関連リソース\n\n\n\n\nリソース\nURL\n\n\n\n\nMediaWiki Action API\nmediawiki.org/wiki/API:Main_page\n\n\nWikimedia REST API v1\nen.wikipedia.org/api/rest_v1/\n\n\nAnalytics Query Service\nwikitech.wikimedia.org\n\n\nWikidata REST API\nwikidata.org/wiki/Wikidata:REST_API\n\n\nUser-Agent ポリシー\nmeta.wikimedia.org"
+  },
+  {
+    "objectID": "api-spa.html#画面とデータを別のプログラムにする",
+    "href": "api-spa.html#画面とデータを別のプログラムにする",
+    "title": "自作API+SPA",
+    "section": "画面とデータを別のプログラムにする",
+    "text": "画面とデータを別のプログラムにする\n\n\nAPI（Application Programming Interface）：プログラム同士がデータをやり取りする窓口\nAPIでデータ取得 では他のサービスのAPIを呼んだ。ここでは APIを自分で作り、自分の画面から呼ぶ\n\n\n\nmain.py と api.py は別々に起動するプログラム"
+  },
+  {
+    "objectID": "api-spa.html#最小のapiを作る",
+    "href": "api-spa.html#最小のapiを作る",
+    "title": "自作API+SPA",
+    "section": "最小のAPIを作る",
+    "text": "最小のAPIを作る\n\n\nFastAPI：PythonでAPIを作るライブラリ（NiceGUIと一緒にインストールされる）\n次のコードを api.py として保存して実行する\n\nfrom fastapi import FastAPI\nimport uvicorn\n\napi = FastAPI()\n\ndef hello():\n    return {\"message\": \"Hello, API!\"}\n\napi.add_api_route(\"/api/hello\", hello)\n\nuvicorn.run(api, port=8000)"
+  },
+  {
+    "objectID": "api-spa.html#jsonファイルを読んで返す",
+    "href": "api-spa.html#jsonファイルを読んで返す",
+    "title": "自作API+SPA",
+    "section": "JSONファイルを読んで返す",
+    "text": "JSONファイルを読んで返す\n\nfrom fastapi import FastAPI\nfrom pathlib import Path\nimport json\nimport uvicorn\n\nDATA_FILE = Path(__file__).parent / \"questions.json\"\n\napi = FastAPI()\n\ndef get_questions():\n    with open(DATA_FILE, \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\napi.add_api_route(\"/api/questions\", get_questions)\n\nuvicorn.run(api, port=8000)\n\n\n\n\n\n\n\nコード\n機能\n\n\n\n\nPath(__file__).parent\nこのPythonファイルがあるフォルダ\n\n\nopen(DATA_FILE, \"r\", encoding=\"utf-8\")\n読み込みモードで開く（encoding で日本語対応）\n\n\njson.load(f)\nJSONファイル → Pythonの辞書\n\n\n\n\nhttp://127.0.0.1:8000/api/questions を開くと、JSONファイルの内容が返る"
+  },
+  {
+    "objectID": "api-spa.html#urlパラメータで指定した質問を返す",
+    "href": "api-spa.html#urlパラメータで指定した質問を返す",
+    "title": "自作API+SPA",
+    "section": "URLパラメータで指定した質問を返す",
+    "text": "URLパラメータで指定した質問を返す\n\n\nURLパラメータ（query parameter）：URLの ? の後ろに書く 名前=値\nWikipedia API の params= で渡していたもの\n\ndef get_question(id: int):\n    for question in get_questions()[\"questions\"]:\n        if question[\"id\"] == id:\n            return question\n    return {\"error\": \"Not found\"}\n\napi.add_api_route(\"/api/question\", get_question)\n\n\n\nアクセスするURL\n実行される処理\n\n\n\n\n/api/question?id=1\nget_question(id=1)\n\n\n/api/question?id=2\nget_question(id=2)\n\n\n/api/question?id=999\n{\"error\": \"Not found\"} を返す\n\n\n\n\nURLの id=1 が、同じ名前の引数 id に入る。: int は 型ヒント（type hint）で、URLの文字列を整数に変換する"
+  },
+  {
+    "objectID": "api-spa.html#api.py-の完成形",
+    "href": "api-spa.html#api.py-の完成形",
+    "title": "自作API+SPA",
+    "section": "api.py の完成形",
+    "text": "api.py の完成形\n\nfrom fastapi import FastAPI\nfrom pathlib import Path\nimport json\nimport uvicorn\n\nDATA_FILE = Path(__file__).parent / \"questions.json\"\n\napi = FastAPI()\n\ndef get_questions():\n    with open(DATA_FILE, \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\ndef get_question(id: int):\n    for question in get_questions()[\"questions\"]:\n        if question[\"id\"] == id:\n            return question\n    return {\"error\": \"Not found\"}\n\napi.add_api_route(\"/api/questions\", get_questions)\napi.add_api_route(\"/api/question\", get_question)\n\nuvicorn.run(api, port=8000)"
+  },
+  {
+    "objectID": "api-spa.html#画面からapiを呼ぶ",
+    "href": "api-spa.html#画面からapiを呼ぶ",
+    "title": "自作API+SPA",
+    "section": "画面からAPIを呼ぶ",
+    "text": "画面からAPIを呼ぶ\n\n\n次のコードを main.py として、api.py と同じフォルダに保存する\n\nfrom nicegui import ui\nimport requests\n\nAPI_URL = \"http://127.0.0.1:8000/api\"\n\ncontainer = ui.column().classes(\"w-full gap-4 p-4\")\n\ndef load_questions():\n    container.clear()\n    response = requests.get(f\"{API_URL}/questions\", timeout=5)\n    response.raise_for_status()\n    data = response.json()\n    with container:\n        ui.label(data[\"title\"]).classes(\"text-3xl font-bold\")\n        for question in data[\"questions\"]:\n            with ui.card().classes(\"w-full\"):\n                ui.label(f\"Q{question['id']}: {question['text']}\").classes(\"font-bold\")\n                for choice in question[\"choices\"]:\n                    ui.label(f\"・{choice}\").classes(\"ml-4\")\n\nui.button(\"質問を読み込む\", on_click=load_questions)\n\nui.run(host=\"127.0.0.1\")"
+  },
+  {
+    "objectID": "api-spa.html#api.py-と-main.py-を起動する",
+    "href": "api-spa.html#api.py-と-main.py-を起動する",
+    "title": "自作API+SPA",
+    "section": "api.py と main.py を起動する",
+    "text": "api.py と main.py を起動する\n\n\nターミナルで python api.py を実行する\n別のターミナル で python main.py を実行する\n開いた画面で「質問を読み込む」を押す\n\n\n\n\n\n\n\n\nコード\n機能\n\n\n\n\nrequests.get(url, timeout=5)\nAPIを呼ぶ。5秒応答がなければエラーにする\n\n\nresponse.raise_for_status()\nHTTPエラーを例外として通知する\n\n\nresponse.json()\nJSONをPythonの値に変換する\n\n\n\n\n\n\n\n\n\n\n動かないとき\n\n\n\n画面に何も表示されないときは、api.py の起動を確認する（エラーは main.py のターミナルに出る）\napi.py を変更したら、Ctrl + C で止めて起動し直す（main.py と違い自動では再起動しない）"
+  },
+  {
+    "objectID": "api-spa.html#番号を指定して質問を取得する",
+    "href": "api-spa.html#番号を指定して質問を取得する",
+    "title": "自作API+SPA",
+    "section": "番号を指定して質問を取得する",
+    "text": "番号を指定して質問を取得する\n\n\nURLパラメータは requests.get() の params= に渡す\n\nfrom nicegui import ui\nimport requests\n\nAPI_URL = \"http://127.0.0.1:8000/api\"\n\nid_input = ui.number(\"質問の番号\", value=1, min=1, precision=0)\ncontainer = ui.column().classes(\"w-full gap-4 p-4\")\n\ndef load_question():\n    container.clear()\n    params = {\"id\": int(id_input.value)}\n    response = requests.get(f\"{API_URL}/question\", params=params, timeout=5)\n    response.raise_for_status()\n    question = response.json()\n    with container:\n        if \"error\" in question:\n            ui.label(\"その番号の質問はありません\")\n        else:\n            ui.label(question[\"text\"]).classes(\"text-xl font-bold\")\n            for choice in question[\"choices\"]:\n                ui.label(f\"・{choice}\").classes(\"ml-4\")\n\nui.button(\"質問を読み込む\", on_click=load_question)\n\nui.run(host=\"127.0.0.1\")"
+  },
+  {
+    "objectID": "api-spa.html#ボタンを押すたびに取得し直す",
+    "href": "api-spa.html#ボタンを押すたびに取得し直す",
+    "title": "自作API+SPA",
+    "section": "ボタンを押すたびに取得し直す",
+    "text": "ボタンを押すたびに取得し直す\n\n\ncontainer.clear()：前回の表示を消す\nrequests.get()：APIからデータを取得し直す\nwith container:：新しい内容を表示する\n\n\n\n\n\n\n\n\nJSONを変更すると\n\n\nAPIは呼ばれるたびにファイルを読むので、questions.json を保存すると、次にボタンを押したときに新しい内容が表示される"
+  },
+  {
+    "objectID": "api-spa.html#参考-で登録するコード",
+    "href": "api-spa.html#参考-で登録するコード",
+    "title": "自作API+SPA",
+    "section": "（参考）@ で登録するコード",
+    "text": "（参考）@ で登録するコード\n\n\nFastAPI の公式ドキュメントや多くのサンプルは、次の書き方を使っている\nデコレータ（decorator）：@ で始まる行。すぐ下の関数に機能を追加する記法\n\n@api.get(\"/api/hello\")\ndef hello():\n    return {\"message\": \"Hello, API!\"}\n\napi.add_api_route(\"/api/hello\", hello) と同じ登録をする"
+  },
+  {
+    "objectID": "final-project.html#テンプレートapi.py",
+    "href": "final-project.html#テンプレートapi.py",
+    "title": "最終課題",
+    "section": "テンプレート：api.py",
+    "text": "テンプレート：api.py\n\n\n\n\nURL\n返すデータ\n\n\n\n\n/api/data\nJSON全体\n\n\n/api/item?id=1\nid が1のデータ\n\n\n\n\n\napi.py を表示\n\"\"\"\nAPI server for the final project. Start this file first.\n\"\"\"\n\nfrom fastapi import FastAPI\nfrom pathlib import Path\nimport json\nimport uvicorn\n\nDATA_FILE = Path(__file__).parent / \"data.json\"   # Resolve data.json beside this script.\n\napi = FastAPI()\n\n# ========================================\n# API endpoints\n# ========================================\ndef get_data():\n    with open(DATA_FILE, \"r\", encoding=\"utf-8\") as f:\n        return json.load(f)\n\ndef get_item(id: int):\n    for item in get_data()[\"items\"]:\n        if item[\"id\"] == id:\n            return item\n    return {\"error\": \"Not found\"}\n\napi.add_api_route(\"/api/data\", get_data)\napi.add_api_route(\"/api/item\", get_item)\n\nuvicorn.run(api, port=8000)"
+  },
+  {
+    "objectID": "final-project.html#テンプレートmain.py",
+    "href": "final-project.html#テンプレートmain.py",
+    "title": "最終課題",
+    "section": "テンプレート：main.py",
+    "text": "テンプレート：main.py\n\n\napi.py、main.py、data.json を同じフォルダに保存し、api.py、main.py の順に別々のターミナルで起動して、3画面の遷移と「データ読み込み」を確かめてから改造を始めよ。\n\n\n\nmain.py を表示\n\"\"\"\nNiceGUI SPA template with three screens. Start api.py first.\n\"\"\"\n\nfrom nicegui import ui\nimport requests\n\nAPI_URL = \"http://127.0.0.1:8000/api\"\n\n# ========================================\n# Screen switching\n# ========================================\ndef show_screen(screen_name):\n    top_screen.set_visibility(screen_name == \"top\")\n    main_screen.set_visibility(screen_name == \"main\")\n    result_screen.set_visibility(screen_name == \"result\")\n\ndef show_top():\n    show_screen(\"top\")\n\ndef show_main():\n    show_screen(\"main\")\n\ndef show_result():\n    show_screen(\"result\")\n\n# ========================================\n# Top screen\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as top_screen:\n    ui.label(\"アプリタイトル\").classes(\"text-4xl font-bold\")\n    ui.button(\"スタート\", on_click=show_main).classes(\"bg-blue-500 text-white p-4 rounded-lg\")\n\n# ========================================\n# Main screen\n# ========================================\nwith ui.column().classes(\"w-full min-h-screen items-center p-8 gap-4\") as main_screen:\n    ui.label(\"メイン画面\").classes(\"text-3xl font-bold\")\n    id_input = ui.number(\"番号\", value=1, min=1, precision=0)\n\n    # Container for JSON content.\n    content = ui.column().classes(\"gap-2\")\n\n    def load_data():\n        content.clear()\n        params = {\"id\": int(id_input.value)}\n        response = requests.get(f\"{API_URL}/item\", params=params, timeout=5)\n        response.raise_for_status()\n        item = response.json()\n\n        # Display content from data here.\n        with content:\n            if \"error\" in item:\n                ui.label(\"見つかりません\")\n            else:\n                ui.label(f\"名前: {item['name']}\")\n                ui.label(item[\"message\"])\n\n    ui.button(\"データ読み込み\", on_click=load_data).classes(\"bg-green-500 text-white p-2 rounded\")\n    ui.button(\"結果へ\", on_click=show_result).classes(\"bg-purple-500 text-white p-4 rounded-lg mt-4\")\n\n# ========================================\n# Result screen\n# ========================================\nwith ui.column().classes(\"w-full h-screen items-center justify-center gap-4\") as result_screen:\n    ui.label(\"結果画面\").classes(\"text-3xl font-bold\")\n    ui.label(\"ここに結果を表示\")\n    ui.button(\"もう一度\", on_click=show_top).classes(\"bg-blue-500 text-white p-4 rounded-lg\")\n\n# ========================================\n# Initial screen\n# ========================================\nshow_top()\n\nui.run(host=\"127.0.0.1\")"
   }
 ]

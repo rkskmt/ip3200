@@ -258,7 +258,7 @@
   <script src="badge-ui.js" defer=""></script>
   <script src="toc-ui.js" defer=""></script>
   <script src="network-ui.js" defer=""></script>
-  <meta name="qmd-web-source" content="99e184191f639c33c8b750c7fde69700f1122094">
+  <meta name="qmd-web-source" content="01b7595a34a8be2eceaa90545cfb0c0769d8cf0f">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -367,11 +367,11 @@ rkskmt
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="im">from</span> nicegui <span class="im">import</span> ui</span>
 <span id="cb2-2"><a aria-label="2"></a></span>
 <span id="cb2-3"><a aria-label="3"></a>ui.label(<span class="st">"Hello, NiceGUI!"</span>)</span>
-<span id="cb2-4"><a aria-label="4"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-4"><a aria-label="4"></a>ui.run(host<span class="op">=</span><span class="st">"127.0.0.1"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="caption-note">
 <p>実行するとブラウザが開く。開かないときは、ターミナルに表示されたURLをCtrl+クリック</p>
 </div>
-<pre><code>NiceGUI ready to go on http://localhost:8080</code></pre>
+<pre><code>NiceGUI ready to go on http://127.0.0.1:8080</code></pre>
 <table class="caption-top">
 <colgroup>
 <col style="width: 20%">
@@ -392,9 +392,9 @@ rkskmt
 <td></td>
 </tr>
 <tr class="even">
-<td><code>ui.run()</code></td>
+<td><code>ui.run(host="127.0.0.1")</code></td>
 <td>NiceGUIを起動（裏でFastAPIが立ち上がり画面を組み立てる）</td>
-<td>部品をすべて書いた <span class="hl">いちばん最後に1回だけ</span> 書く</td>
+<td>部品をすべて書いた <span class="hl">いちばん最後に1回だけ</span> 書く。<code>host</code> は自分のPCだけで動かす指定</td>
 </tr>
 </tbody>
 </table>
@@ -413,7 +413,7 @@ rkskmt
 <span id="cb4-4"><a aria-label="4"></a>    ui.notify(<span class="st">"Hi!"</span>)</span>
 <span id="cb4-5"><a aria-label="5"></a></span>
 <span id="cb4-6"><a aria-label="6"></a>ui.button(<span class="st">"Click me"</span>, on_click<span class="op">=</span>say_hi)</span>
-<span id="cb4-7"><a aria-label="7"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-7"><a aria-label="7"></a>ui.run(host<span class="op">=</span><span class="st">"127.0.0.1"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="caption-note">
 <p>ボタンを押すと <code>say_hi</code> が呼ばれ、<code>ui.notify()</code> が画面下に通知を出す</p>
 </div>
@@ -465,7 +465,7 @@ rkskmt
 <span id="cb5-3"><a aria-label="3"></a>ui.label(<span class="st">"A"</span>)</span>
 <span id="cb5-4"><a aria-label="4"></a>ui.label(<span class="st">"B"</span>)</span>
 <span id="cb5-5"><a aria-label="5"></a>ui.button(<span class="st">"ボタン"</span>)</span>
-<span id="cb5-6"><a aria-label="6"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-6"><a aria-label="6"></a>ui.run(host<span class="op">=</span><span class="st">"127.0.0.1"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="caption-note">
 <p>何も指定しなければ、部品は書いた順に上から縦に並ぶ</p>
 </div>
@@ -498,7 +498,7 @@ rkskmt
 <span id="cb6-7"><a aria-label="7"></a>    ui.label(<span class="st">"B"</span>)      <span class="co"># Inside the container.</span></span>
 <span id="cb6-8"><a aria-label="8"></a></span>
 <span id="cb6-9"><a aria-label="9"></a>ui.label(<span class="st">"C"</span>)          <span class="co"># Outside the container, on the page.</span></span>
-<span id="cb6-10"><a aria-label="10"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-10"><a aria-label="10"></a>ui.run(host<span class="op">=</span><span class="st">"127.0.0.1"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="caption-note">
 <p><code>with box:</code> のインデント内で作った A・B は <code>box</code> の中。C はインデントの外なのでページ直下に置かれる</p>
 </div>
@@ -555,7 +555,7 @@ rkskmt
 <span id="cb7-8"><a aria-label="8"></a><span class="cf">with</span> box:                      <span class="co"># Add to the same container again.</span></span>
 <span id="cb7-9"><a aria-label="9"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
 <span id="cb7-10"><a aria-label="10"></a>        ui.label(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">番目"</span>)   <span class="co"># Add labels in a loop.</span></span>
-<span id="cb7-11"><a aria-label="11"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-11"><a aria-label="11"></a>ui.run(host<span class="op">=</span><span class="st">"127.0.0.1"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="caption-note">
 <p>同じコンテナに対して <code>with</code> を再び使うと、既存の部品を残して追加できる</p>
 </div>
@@ -576,7 +576,7 @@ rkskmt
 <span id="cb8-6"><a aria-label="6"></a>        ui.label(<span class="st">"説明文"</span>)</span>
 <span id="cb8-7"><a aria-label="7"></a>    <span class="cf">with</span> ui.card():        <span class="co"># Second card.</span></span>
 <span id="cb8-8"><a aria-label="8"></a>        ui.label(<span class="st">"タイトル2"</span>)</span>
-<span id="cb8-9"><a aria-label="9"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-9"><a aria-label="9"></a>ui.run(host<span class="op">=</span><span class="st">"127.0.0.1"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="コンテナの入れ子と配置" class="slide level2">
@@ -634,7 +634,7 @@ rkskmt
 <span id="cb9-7"><a aria-label="7"></a>    ui.label(<span class="st">"B"</span>)</span>
 <span id="cb9-8"><a aria-label="8"></a></span>
 <span id="cb9-9"><a aria-label="9"></a>ui.label(<span class="st">"C"</span>)</span>
-<span id="cb9-10"><a aria-label="10"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-10"><a aria-label="10"></a>ui.run(host<span class="op">=</span><span class="st">"127.0.0.1"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="tweak-with-と配置" class="slide level2 badge-practice">
@@ -787,7 +787,7 @@ rkskmt
 <span id="cb10-7"><a aria-label="7"></a></span>
 <span id="cb10-8"><a aria-label="8"></a>ui.label(<span class="st">"目立つラベル"</span>).classes(<span class="st">"text-2xl font-bold text-blue-500"</span>)</span>
 <span id="cb10-9"><a aria-label="9"></a>ui.button(<span class="st">"ボタン"</span>).classes(<span class="st">"bg-green-500 text-white rounded-lg p-4"</span>)</span>
-<span id="cb10-10"><a aria-label="10"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-10"><a aria-label="10"></a>ui.run(host<span class="op">=</span><span class="st">"127.0.0.1"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="caption-note">
 <p><code>text-2xl font-bold text-blue-500</code> は、大きい文字・太字・青色をまとめて指定</p>
 </div>
@@ -891,7 +891,7 @@ rkskmt
 <span id="cb11-9"><a aria-label="9"></a>ui.button(<span class="st">"add"</span>, on_click<span class="op">=</span>add_item)</span>
 <span id="cb11-10"><a aria-label="10"></a></span>
 <span id="cb11-11"><a aria-label="11"></a>list_view <span class="op">=</span> ui.column()</span>
-<span id="cb11-12"><a aria-label="12"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-12"><a aria-label="12"></a>ui.run(host<span class="op">=</span><span class="st">"127.0.0.1"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="caption-note">
 <p><code>ui.input()</code> の入力値を <code>.value</code> で取り出し、ボタン操作で一覧に追加する</p>
 </div>
@@ -933,7 +933,7 @@ rkskmt
 <span id="cb12-13"><a aria-label="13"></a></span>
 <span id="cb12-14"><a aria-label="14"></a>list_view <span class="op">=</span> ui.column().classes(<span class="st">"gap-2"</span>)</span>
 <span id="cb12-15"><a aria-label="15"></a></span>
-<span id="cb12-16"><a aria-label="16"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-16"><a aria-label="16"></a>ui.run(host<span class="op">=</span><span class="st">"127.0.0.1"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="tweak-一覧の配置を変える" class="slide level2 badge-practice">
@@ -1028,7 +1028,7 @@ rkskmt
 </tbody>
 </table>
 </div>
-<div id="63094358" class="cell">
+<div id="ee1a25f3" class="cell">
 <details class="code-fold">
 <summary>解答例を表示</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="im">from</span> nicegui <span class="im">import</span> ui</span>
@@ -1058,7 +1058,7 @@ rkskmt
 <span id="cb13-25"><a aria-label="25"></a></span>
 <span id="cb13-26"><a aria-label="26"></a>list_view <span class="op">=</span> ui.row().classes(<span class="st">"gap-4"</span>)</span>
 <span id="cb13-27"><a aria-label="27"></a></span>
-<span id="cb13-28"><a aria-label="28"></a>ui.run()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-28"><a aria-label="28"></a>ui.run(host<span class="op">=</span><span class="st">"127.0.0.1"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
