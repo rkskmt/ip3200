@@ -1740,7 +1740,7 @@
     "href": "handouts.html#handouts",
     "title": "情報処理",
     "section": "Handouts",
-    "text": "Handouts\n\n← Lectures\n\n各回スライドの配布用 PDF。クリックで開く。番号は講義一覧と対応。\n\n\n\n\nPCの使い方アップデート\n\n\n\nキータイピング\nショートカット\n\n\n\n\n\n速習Python基礎\n\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\n\n\n\nデータ処理基礎\n\n\n\nNumPy入門\n（参考）ベクトルと行列\nデータの可視化\nmatplotlib入門\nPandas入門\nPlotly入門\n\n\n\n\n\nAPI\n\n\n\nAPIでデータ取得\nAPIデータを可視化する\nWikipedia APIリファレンス\n東京都オープンデータAPI"
+    "text": "Handouts\n\n← Lectures\n\n各回スライドの配布用 PDF。クリックで開く。番号は講義一覧と対応。\n\n\n前期後期\n\n\n\n\n\nPCの使い方アップデート\n\n\n\nキータイピング\nショートカット\n\n\n\n\n\n速習Python基礎\n\n\n\n変数と代入\n速習：コレクション\nlistあらためて\ndictあらためて\n\n\n\n\n\nデータ処理基礎\n\n\n\nNumPy入門\n（参考）ベクトルと行列\nデータの可視化\nmatplotlib入門\nPandas入門\nPlotly入門\n\n\n\n\n\nAPI\n\n\n\nAPIでデータ取得\nAPIデータを可視化する\nWikipedia APIリファレンス\n東京都オープンデータAPI\n\n\n\n\n\n\n\n\n\n課題解決・アイデア創出\n\n\n\n発想法（発散思考）\nオズボーンのチェックリスト・SCAMPER\n収束技法とアイデアマップ\nペイオフマトリクス\n\n\n\n\n\nワイヤーフレーム・発表\n\n\n\nMiroでワイヤーフレーム\nUI・UX\n発表\n\n\n\n\n\n実装\n\n\n\nNiceGUIで作るSPAモック\n自作API+SPA\n最終課題"
   },
   {
     "objectID": "dict.html#復習dict-とは",
