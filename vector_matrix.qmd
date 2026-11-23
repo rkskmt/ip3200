@@ -1140,7 +1140,7 @@ $$
 
 ## 歪対称行列（[skew-symmetric matrix]{.en}）
 
-- ベクトル $\mathbf{a} = (a_1, a_2, a_3)$ に対応する歪対称行列
+- ベクトル $\mathbf{a} = (a_1, a_2, a_3)$ に対応する歪対称行列：
 
 $$
 [\mathbf{a}]_\times = \begin{pmatrix} 0 & -a_3 & a_2 \\ a_3 & 0 & -a_1 \\ -a_2 & a_1 & 0 \end{pmatrix}
