@@ -452,14 +452,14 @@
     "href": "variables.html#冒頭のコードで起きていたこと",
     "title": "変数と代入",
     "section": "冒頭のコードで起きていたこと",
-    "text": "冒頭のコードで起きていたこと\n\ndef double_all(data):\n    for i in range(len(data)):\n        data[i] = data[i] * 2   # ← リストの i 番目が新しい値を指す\n    return data\n\nscores = [10, 20, 30]\nresult = double_all(scores)     # ← data は scores と同じリストを指す\nprint(result)  # [20, 40, 60]\nprint(scores)  # [20, 40, 60]\n\n関数に渡してもコピーは起きない。data = scores と代入したのと同じで、引数 data は scores と同じリストを指す\n関数の中の data[i] = ... で、そのリストの各要素が2倍の値を指すようになった。だから scores から見ても変わっていた\n図で表すと："
+    "text": "冒頭のコードで起きていたこと\n\ndef double_all(data):\n    for i in range(len(data)):\n        data[i] = data[i] * 2   # ← リストの i 番目が新しい値を指す\n    return data\n\nscores = [10, 20, 30]\nresult = double_all(scores)     # ← data は scores と同じリストを指す\nprint(result)  # [20, 40, 60]\nprint(scores)  # [20, 40, 60]\n\n関数に渡してもコピーは起きない。data = scores と代入したのと同じで、引数 data は scores と同じリストを指す\n関数の中の data[i] = ... で、そのリストの各要素が2倍の値を指すようになった。だから scores から見ても変わっていた\n図で表すと"
   },
   {
     "objectID": "variables.html#コピーで罠を回避",
     "href": "variables.html#コピーで罠を回避",
     "title": "変数と代入",
     "section": "コピーで罠を回避",
-    "text": "コピーで罠を回避\n\n\nリストを別のアドレスに新たに複製したいときは .copy() を使う\n\n「この場面を残したい」ときにセーブデータを別スロットへコピーするイメージ\n単に = で代入しても複製されない（同じリストを指す変数が増えるだけ）\n\n冒頭の事故も、渡す側の1行で防げる：\n\nresult = double_all(scores.copy())   # 複製を渡す → scores は無傷\nodd1 = [1, 3]\n\n# NG: 同じアドレスを共有 → 両方が変わる\nodd2 = odd1\nodd2[0] = 9\nprint(odd1)  # [9, 3] ← 意図せず変わってしまう\n\n# OK: .copy() で別アドレスの複製を作る\nodd3 = odd1.copy()\nodd3[0] = 99\nprint(odd1)  # [9, 3] ← 変わらない\nprint(odd3)  # [99, 3]\n\n# （参考）全スライス [:] でも同じ結果\nodd4 = odd1[:]\nprint(id(odd1) == id(odd4))  # False（別アドレス）"
+    "text": "コピーで罠を回避\n\n\nリストを別のアドレスに新たに複製したいときは .copy() を使う\n\n「この場面を残したい」ときにセーブデータを別スロットへコピーするイメージ\n単に = で代入しても複製されない（同じリストを指す変数が増えるだけ）\n\n冒頭の事故も、渡す側の1行で防げる\n\nresult = double_all(scores.copy())   # 複製を渡す → scores は無傷\nodd1 = [1, 3]\n\n# NG: 同じアドレスを共有 → 両方が変わる\nodd2 = odd1\nodd2[0] = 9\nprint(odd1)  # [9, 3] ← 意図せず変わってしまう\n\n# OK: .copy() で別アドレスの複製を作る\nodd3 = odd1.copy()\nodd3[0] = 99\nprint(odd1)  # [9, 3] ← 変わらない\nprint(odd3)  # [99, 3]\n\n# （参考）全スライス [:] でも同じ結果\nodd4 = odd1[:]\nprint(id(odd1) == id(odd4))  # False（別アドレス）"
   },
   {
     "objectID": "variables.html#演習",
@@ -613,7 +613,7 @@
     "href": "tokyo-api.html#hits-は-dataframe-にそのまま入る",
     "title": "東京都オープンデータAPI",
     "section": "hits は DataFrame にそのまま入る",
-    "text": "hits は DataFrame にそのまま入る\n\n\nhits は list of dict\npd.DataFrame() に そのまま渡せる（キーが列名になる）\n全件を受け取った data に続けて：\n\nimport pandas as pd\n\ndf = pd.DataFrame(data[\"hits\"])\nprint(df.columns)\nIndex(['row', '和暦（年次）', '西暦（年次）', '東京都／人口補足', '東京都／人口', '東京都／増減', '東京都／増減率(%)',\n       '東京都／対全国比(%)', '全国／人口補足', '全国／人口(千人)', '全国／増減(千人)', '全国／増減率(%)'],\n      dtype='object')\n\n知らないデータは、まず列名を確認する（Pandas入門）\n\n人口のほかに、増減率・対全国比・全国の人口まで 12列 ある\nrow はAPIが付ける行番号\n\n使う列は、この中から選ぶ"
+    "text": "hits は DataFrame にそのまま入る\n\n\nhits は list of dict\npd.DataFrame() に そのまま渡せる（キーが列名になる）\n全件を受け取った data に続けて書く\n\nimport pandas as pd\n\ndf = pd.DataFrame(data[\"hits\"])\nprint(df.columns)\nIndex(['row', '和暦（年次）', '西暦（年次）', '東京都／人口補足', '東京都／人口', '東京都／増減', '東京都／増減率(%)',\n       '東京都／対全国比(%)', '全国／人口補足', '全国／人口(千人)', '全国／増減(千人)', '全国／増減率(%)'],\n      dtype='object')\n\n知らないデータは、まず列名を確認する（Pandas入門）\n\n人口のほかに、増減率・対全国比・全国の人口まで 12列 ある\nrow はAPIが付ける行番号\n\n使う列は、この中から選ぶ"
   },
   {
     "objectID": "tokyo-api.html#列と行を絞り込む",
@@ -746,7 +746,7 @@
     "href": "tokyo-api.html#参考1000件を超えるデータはページングで取る",
     "title": "東京都オープンデータAPI",
     "section": "（参考）1,000件を超えるデータはページングで取る",
-    "text": "（参考）1,000件を超えるデータはページングで取る\n\n\n1,000件を超えるデータは、limit を最大にしても1回では取り切れない\nこのとき、東京都APIでは取得開始位置 offset をずらしながら、同じリクエストを繰り返すことになっている\n\nこのようなデータの応答や表示の分割を ページング（paging）という\n\nたとえば total: 2500 のデータなら3回に分ければとれる：\n\n\n\n\n呼び出し\nparams= に渡す値\n届く範囲\n\n\n\n\n1回目\n{\"limit\": 1000, \"offset\": 0}\n1〜1000件目\n\n\n2回目\n{\"limit\": 1000, \"offset\": 1000}\n1001〜2000件目\n\n\n3回目\n{\"limit\": 1000, \"offset\": 2000}\n2001〜2500件目\n\n\n\n\n毎回の hits をつなげば全件そろう\nWebサービスの「次のページ」「もっと見る」も、裏側はこの仕組み"
+    "text": "（参考）1,000件を超えるデータはページングで取る\n\n\n1,000件を超えるデータは、limit を最大にしても1回では取り切れない\nこのとき、東京都APIでは取得開始位置 offset をずらしながら、同じリクエストを繰り返すことになっている\n\nこのようなデータの応答や表示の分割を ページング（paging）という\n\nたとえば total: 2500 のデータなら3回に分ければとれる\n\n\n\n\n呼び出し\nparams= に渡す値\n届く範囲\n\n\n\n\n1回目\n{\"limit\": 1000, \"offset\": 0}\n1〜1000件目\n\n\n2回目\n{\"limit\": 1000, \"offset\": 1000}\n1001〜2000件目\n\n\n3回目\n{\"limit\": 1000, \"offset\": 2000}\n2001〜2500件目\n\n\n\n\n毎回の hits をつなげば全件そろう\nWebサービスの「次のページ」「もっと見る」も、裏側はこの仕組み"
   },
   {
     "objectID": "tokyo-api.html#参考2018年以降を拡大する",
@@ -1054,7 +1054,7 @@
     "href": "plotly.html#peek-gapminder-code",
     "title": "Plotly入門",
     "section": "動くバブルチャートにする",
-    "text": "動くバブルチャートにする\n\n\nさっきのコードから変えるのは 3か所 だけ：\n\n絞り込みをやめて gap 全体 を渡す\nanimation_frame=\"year\" — year の値ごとにコマを作って動かす\nlog_x=True — 横軸を対数軸（log scale）にして、左端の団子を解消\n\n\nfig = px.scatter(\n    gap,\n    x=\"gdpPercap\",\n    y=\"lifeExp\",\n    size=\"pop\",\n    size_max=55,\n    color=\"continent\",\n    hover_name=\"country\",\n    log_x=True,\n    animation_frame=\"year\",\n)\nfig.show()\n\n\n\n\n▶ を押す と55年分の世界が動く。気になるバブルにマウスを乗せると国名が出る"
+    "text": "動くバブルチャートにする\n\n\nさっきのコードから変えるのは 3か所 だけ\n\n絞り込みをやめて gap 全体 を渡す\nanimation_frame=\"year\" — year の値ごとにコマを作って動かす\nlog_x=True — 横軸を対数軸（log scale）にして、左端の団子を解消\n\n\nfig = px.scatter(\n    gap,\n    x=\"gdpPercap\",\n    y=\"lifeExp\",\n    size=\"pop\",\n    size_max=55,\n    color=\"continent\",\n    hover_name=\"country\",\n    log_x=True,\n    animation_frame=\"year\",\n)\nfig.show()\n\n\n\n\n▶ を押す と55年分の世界が動く。気になるバブルにマウスを乗せると国名が出る"
   },
   {
     "objectID": "plotly.html#tweak-世界の55年を操る",
@@ -1691,7 +1691,7 @@
     "href": "list.html#リスト内包表記の使いどころ",
     "title": "リストをあらためて",
     "section": "リスト内包表記の使いどころ",
-    "text": "リスト内包表記の使いどころ\n\nAtCoder演習の参考コードに出てきた次の行：\nAs = [int(x) for x in input().split()]\nこれはリスト内包表記だった。input().split() で [\"1\", \"2\", \"3\"] という文字列のリストを作り、 各要素を int(x) で整数に変換しながら新しいリストを作っている。\nfor 文で書くと以下と同じ意味：\ninput_str = input().split() # split(\" \")と同じ。つまり、空白区切りで分けてlist化\nAs = []\nfor x in input_str:\n    As.append(int(x))"
+    "text": "リスト内包表記の使いどころ\n\nAtCoder演習の参考コードに出てきた次の行：\nAs = [int(x) for x in input().split()]\nこれはリスト内包表記だった。input().split() で [\"1\", \"2\", \"3\"] という文字列のリストを作り、 各要素を int(x) で整数に変換しながら新しいリストを作っている。\nfor 文で書くと以下と同じ意味\ninput_str = input().split() # split(\" \")と同じ。つまり、空白区切りで分けてlist化\nAs = []\nfor x in input_str:\n    As.append(int(x))"
   },
   {
     "objectID": "list.html#参考異なる型の混在",
@@ -3798,7 +3798,7 @@
     "href": "vector_matrix.html#なぜ回転行列は-cos-と-sin-なのか",
     "title": "ベクトルと行列",
     "section": "なぜ回転行列は cos と sin なのか",
-    "text": "なぜ回転行列は cos と sin なのか\n\n\n行列の列には、深い意味がある：\\((1,0)\\) と \\((0,1)\\) の行き先を並べただけ\n\n\n\n\n\n\n\n\n\n\n\n\\((1,0)\\) を \\(\\theta\\) 回すと \\((\\cos\\theta, \\sin\\theta)\\)、\\((0,1)\\) を回すと \\((-\\sin\\theta, \\cos\\theta)\\)\nこれを列に並べると、みんな知っている回転行列：\n\n\\[R(\\theta) = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}\\]\n\n\n\n\n\n\nヒント\n\n\n「行列の列＝基底ベクトルの行き先」と知っていれば、変換を見れば行列を、行列を見れば変換を書ける。 拡大は対角行列 \\(\\begin{pmatrix} s_x & 0 \\\\ 0 & s_y \\end{pmatrix}\\)、回転は上の \\(R(\\theta)\\) — この2つの組み合わせが変換の基本。"
+    "text": "なぜ回転行列は cos と sin なのか\n\n\n行列の列には、深い意味がある：\\((1,0)\\) と \\((0,1)\\) の行き先を並べただけ\n\n\n\n\n\n\n\n\n\n\n\n\\((1,0)\\) を \\(\\theta\\) 回すと \\((\\cos\\theta, \\sin\\theta)\\)、\\((0,1)\\) を回すと \\((-\\sin\\theta, \\cos\\theta)\\)\nこれを列に並べると、みんな知っている回転行列になる\n\n\\[R(\\theta) = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}\\]\n\n\n\n\n\n\nヒント\n\n\n「行列の列＝基底ベクトルの行き先」と知っていれば、変換を見れば行列を、行列を見れば変換を書ける。 拡大は対角行列 \\(\\begin{pmatrix} s_x & 0 \\\\ 0 & s_y \\end{pmatrix}\\)、回転は上の \\(R(\\theta)\\) — この2つの組み合わせが変換の基本。"
   },
   {
     "objectID": "vector_matrix.html#行列と行列の積",

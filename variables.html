@@ -104,7 +104,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-e69bca93ec9d1486cefcf16a785f5ce6.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-f73900642b947ff7c946332e8eb6f3e3.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -258,7 +258,7 @@
   <script src="badge-ui.js" defer=""></script>
   <script src="toc-ui.js" defer=""></script>
   <script src="network-ui.js" defer=""></script>
-  <meta name="qmd-web-source" content="6a9eee75f43743f1cff645e96f3bc3f411095448">
+  <meta name="qmd-web-source" content="75bd1c532d3b3438f0381acbc2a38144c07bbe0b">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -344,7 +344,7 @@ rkskmt
 <li>これは<strong>アドレス（<span class="en">address</span>）</strong> と呼ばれる</li>
 </ul></li>
 </ul>
-<div id="106ae352" class="cell" data-execution_count="1">
+<div id="1c0ae737" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -364,7 +364,7 @@ rkskmt
 <li><code>1</code> や <code>"1"</code> は<strong>リテラル（直接記述できる値）</strong></li>
 <li><code>a</code> は値ではなく<strong>変数</strong>として認識される</li>
 </ul>
-<div id="f07c8151" class="cell" data-execution_count="2">
+<div id="8511109f" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -439,7 +439,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="b1a39215" class="cell" data-execution_count="3">
+<div id="1a11ed3c" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -473,7 +473,7 @@ rkskmt
 <li><code>a11 = 13</code> は「<code>a12</code> と共有している <code>12</code> を <code>13</code> に書き換える」<strong>ではない</strong></li>
 <li><code>13</code> が新しい場所に確保され、<code>a11</code> がそのアドレスを指す。<code>a12</code> が指す <code>12</code> はそのまま</li>
 </ul>
-<div id="5f2d7e56" class="cell" data-execution_count="4">
+<div id="7ee615de" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -500,7 +500,7 @@ rkskmt
 <li><code>odd1 = odd2</code> で、<code>odd1</code> は <code>odd2</code> と同じリストを指す</li>
 <li><code>odd1[0] = 9</code> は、そのリストの0番目を <code>9</code> にする。<code>odd2</code> も同じリストを指しているので、<code>odd2</code> から見ても変わる</li>
 </ul>
-<div id="413c50a8" class="cell" data-execution_count="5">
+<div id="bec50b06" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -535,7 +535,7 @@ rkskmt
 <li>A： <strong>[1, 3]</strong>。<code>odd1 = [9, 7]</code> で新しいリストが確保され、<code>odd1</code> はそちらを指す。<code>odd2</code> は元のリストを指したまま</li>
 <li>B： <strong>[9, 7]</strong>。<code>odd1[0] = 9</code> は、<code>odd1</code> と <code>odd2</code> が指している1つのリストの0番目を変える</li>
 </ul>
-<div id="7cc302d8" class="cell" data-execution_count="6">
+<div id="cd153da8" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -554,7 +554,7 @@ rkskmt
 <li><code>[1, 3]</code> を書くと、リスト本体と <code>1</code>、<code>3</code> がそれぞれ確保され、リスト本体には要素のアドレスが並ぶ</li>
 <li><code>odd1[0] = 9</code> は、リストの0番目が <code>9</code> のアドレスを指すようにする代入。リスト本体のアドレスは変わらない</li>
 </ul>
-<div id="e0637363" class="cell" data-execution_count="7">
+<div id="e24f38db" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -708,9 +708,9 @@ rkskmt
 <ul>
 <li>関数に渡しても<strong>コピーは起きない</strong>。<code>data = scores</code> と代入したのと同じで、引数 <code>data</code> は <code>scores</code> と同じリストを指す</li>
 <li>関数の中の <code>data[i] = ...</code> で、そのリストの各要素が2倍の値を指すようになった。だから <code>scores</code> から見ても変わっていた</li>
-<li>図で表すと：</li>
+<li>図で表すと</li>
 </ul>
-<div id="21f31829" class="cell" data-execution_count="8">
+<div id="59859941" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -730,7 +730,7 @@ rkskmt
 <li>「この場面を残したい」ときにセーブデータを別スロットへコピーするイメージ</li>
 <li>単に <code>=</code> で代入しても複製されない（同じリストを指す変数が増えるだけ）</li>
 </ul></li>
-<li>冒頭の事故も、<strong>渡す側の1行</strong>で防げる：</li>
+<li>冒頭の事故も、<strong>渡す側の1行</strong>で防げる</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a>result <span class="op">=</span> double_all(scores.copy())   <span class="co"># 複製を渡す → scores は無傷</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a>odd1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>]</span>
@@ -749,7 +749,7 @@ rkskmt
 <span id="cb15-14"><a aria-label="14"></a><span class="co"># （参考）全スライス [:] でも同じ結果</span></span>
 <span id="cb15-15"><a aria-label="15"></a>odd4 <span class="op">=</span> odd1[:]</span>
 <span id="cb15-16"><a aria-label="16"></a><span class="bu">print</span>(<span class="bu">id</span>(odd1) <span class="op">==</span> <span class="bu">id</span>(odd4))  <span class="co"># False（別アドレス）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="b342ad6f" class="cell" data-execution_count="9">
+<div id="b77b0fca" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -779,7 +779,7 @@ rkskmt
 <li><p><code>list</code> と同じようにアクセスできる <code>str</code> は、ミュータブルかイミュータブルかを確認</p></li>
 <li><p>上記の例で <code>odd1[0]</code> のアドレスがどうなるかを確認（<code>list</code> はミュータブルだが、<code>list</code> の要素は <code>int</code> なのでイミュータブルのはず）</p></li>
 </ol>
-<div id="660d8e29" class="cell" data-execution_count="10">
+<div id="473d1628" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>]</span>
