@@ -16,7 +16,7 @@ execute:
 
 ## 最終課題：オリジナルアプリ
 
-- **NiceGUIで API+SPA のオリジナルアプリ** を1本作って提出する
+- **NiceGUIで API+SPA のオリジナルアプリ** を作って提出する
 - 企画案・ワイヤーフレーム・ソースコード・紹介スライドを提出する
 
 ```{.d2 sketch="true" width="86%"}
@@ -81,11 +81,11 @@ A -> B -> C -> D
 |-|--------------|---|
 | 1 | 635法などのカードで考えた **企画案** の写真（グループで発想したもの） | PDF |
 | 2 | Miroで作った **ワイヤーフレーム** のスクショ | PDF |
-| 3 | テンプレートを元にNiceGUIで実装した **ソースコード**（.py 1ファイル + .json） | zip |
+| 3 | テンプレートを元に実装した **ソースコード**（`api.py`、`main.py`、`.json`） | zip |
 | 4 | アプリを紹介する **スライド1枚**（タイトル・特徴・スクショ程度でOK） | PDF |
 
 ::: {.callout-warning title="3のzipは「入れ子」構造"}
-.py と .json をまとめたzipを、提出zipの中に入れる。==解凍して .py を実行するだけで動く== ことを提出前に必ず確認する
+`api.py`、`main.py`、`.json` をまとめたzipを、提出zipの中に入れる。==解凍して `api.py`、`main.py` の順に実行するだけで動く== ことを提出前に必ず確認する
 :::
 
 
@@ -96,16 +96,14 @@ A -> B -> C -> D
    - 構造を大きく変える／ライブラリを増やすのはNG
    - 生成AIの出力の丸写しはNG
 - **遷移画面は3画面以上**
-- 使用できるライブラリは **NiceGUIとその依存ライブラリ・授業で使ったもの・Python標準ライブラリ**
-   - `requests` は外部APIの取得に使用可（`timeout=5` を付ける）
-   - 自分のAPIは `requests` で呼ばず、`get_data()` を直接呼ぶ
+- 使用できるライブラリは、NumPy や Requests など **授業で使ったもの** と、`math` など **pip install が不要なもの**
 - ワイヤーフレームと実装は、==方向性が合っていれば同一でなくてよい==（見た目に過度にこだわらない）
 - 質問や助け合いは可。助けてもらったら、紹介スライドに協力者の名前と協力内容を書く
 
 
 ## データはJSONに保存する
 
-- 表示するコンテンツは **JSONに書き**、テンプレートの `get_data()` で読み込む
+- 表示するコンテンツは **JSONに書き、APIから取得** する
    - ==JSONを編集するだけでアプリを変更・拡張できる== 状態にする
    - 質問文や結果文を `ui.label("...")` に直接書かない（**ハードコード**、[hard-coding]{.en}）
    - ボタンの「スタート」などコンテンツ以外のラベルはハードコードOK
@@ -124,45 +122,29 @@ A -> B -> C -> D
 - **エラーなく実行できる**
 
 ::: {.callout-tip title="提出前の確認"}
-zipを別のフォルダに解凍し直し、Pythonファイルを実行する。JSONファイルの同梱、画面遷移、データ読み込みを確認する
+zipを別のフォルダに解凍し直し、`api.py` と `main.py` を実行する。JSONファイルの同梱、画面遷移、データ読み込みを確認する
 :::
 
 
 ## テンプレートの構造
 
-- 3画面 = 3つの `ui.column()`。**`set_visibility()` で1つだけ表示** して画面遷移に見せる
+- `api.py`：JSONを読み、URLごとにデータを返す
+- `main.py`：3画面を表示し、`requests` でAPIからデータを取得する
 
-```{.d2 sketch="true" width="72%"}
+```{.d2 sketch="true" width="86%"}
 direction: right
-T: トップ画面\ntop_screen {style.fill: "#e3f2fd"}
-M: メイン画面\nmain_screen {style.fill: "#fff3e0"}
-R: 結果画面\nresult_screen {style.fill: "#e8f5e9"}
-T -> M: スタート
-M -> R: 結果へ
-R -> T: もう一度
-```
-
-::: {.caption-note}
-`with ui.column() as top_screen:` は、コンテナを作って `top_screen` に代入し、その中に部品を置く書き方
-:::
-
-
-## データファイルを用意する
-
-- [data.json](data/data.json) をダウンロードし、テンプレートを保存した `main.py` と同じフォルダに置く
-- 初期データには `title` と `message` の2項目がある
-
-```json
-{
-  "title": "サンプルタイトル",
-  "message": "ここにメッセージが入ります"
-}
+M: main.py\n3画面 {style.fill: "#e8f5e9"}
+A: api.py\nAPI {style.fill: "#fff3e0"}
+J: data.json {style.fill: "#fce4ec"}
+M -> A: /api/item?id=1
+A -> M: JSON
+A -> J: 読み込み
 ```
 
 
 ## 画面の表示・非表示を切り替える
 
-#### テンプレートから抜粋
+- 3画面 = 3つの `ui.column()`。**`set_visibility()` で1つだけ表示** して画面遷移に見せる
 
 ```python
 def show_screen(screen_name):
@@ -180,42 +162,91 @@ ui.button("スタート", on_click=show_main)
 `screen_name == "top"` は `True` / `False` になる。指定した画面だけ表示し、他の画面は非表示にする
 :::
 
-::: {.callout-note title="移動先ごとに関数を1つ作る"}
+::: {.callout-note title="移動先ごとに関数を作る"}
 `on_click` には関数を ==カッコを付けずに== 渡す。`on_click=show_screen("main")` と書くと、ボタンを作る時点で実行される
 :::
 
 
-## テンプレート全文
+## データファイルを用意する
 
-::: {.prompt}
-テンプレートを `main.py` として [data.json](data/data.json) と同じフォルダに保存・実行し、3画面が遷移すること・「データ読み込み」でJSONのタイトルが出ることを確かめてから改造を始めよ。
-:::
+- [data.json](data/data.json) をダウンロードし、`api.py` と同じフォルダに置く
+- `items` の各要素が、画面に表示するデータ
 
-- `Path(__file__).parent` は **このPythonファイルがあるフォルダ**。実行時の作業フォルダによらず、隣の `data.json` を読み込む
+```json
+{
+  "items": [
+    {"id": 1, "name": "サンプル1", "message": "1件目のメッセージ"},
+    {"id": 2, "name": "サンプル2", "message": "2件目のメッセージ"},
+    {"id": 3, "name": "サンプル3", "message": "3件目のメッセージ"}
+  ]
+}
+```
+
+
+## テンプレート：`api.py`
+
+| URL | 返すデータ |
+|---|---|
+| `/api/data` | JSON全体 |
+| `/api/item?id=1` | `id` が1のデータ |
 
 ```{python}
 #| echo: true
 #| eval: false
 #| code-fold: true
-#| code-summary: "テンプレートを表示"
+#| code-summary: "api.py を表示"
 """
-NiceGUI SPA template with three screens and an HTTP API.
+API server for the final project. Start this file first.
 """
 
-from nicegui import ui, app
+from fastapi import FastAPI
 from pathlib import Path
 import json
+import uvicorn
 
 DATA_FILE = Path(__file__).parent / "data.json"   # Resolve data.json beside this script.
 
+api = FastAPI()
+
 # ========================================
-# API endpoint
+# API endpoints
 # ========================================
 def get_data():
     with open(DATA_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
 
-app.add_api_route("/api/data", get_data)
+def get_item(id: int):
+    for item in get_data()["items"]:
+        if item["id"] == id:
+            return item
+    return {"error": "Not found"}
+
+api.add_api_route("/api/data", get_data)
+api.add_api_route("/api/item", get_item)
+
+uvicorn.run(api, port=8000)
+```
+
+
+## テンプレート：`main.py`
+
+::: {.prompt}
+`api.py`、`main.py`、[data.json](data/data.json) を同じフォルダに保存し、`api.py`、`main.py` の順に別々のターミナルで起動して、3画面の遷移と「データ読み込み」を確かめてから改造を始めよ。
+:::
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "main.py を表示"
+"""
+NiceGUI SPA template with three screens. Start api.py first.
+"""
+
+from nicegui import ui
+import requests
+
+API_URL = "http://127.0.0.1:8000/api"
 
 # ========================================
 # Screen switching
@@ -246,17 +277,25 @@ with ui.column().classes("w-full h-screen items-center justify-center gap-4") as
 # ========================================
 with ui.column().classes("w-full min-h-screen items-center p-8 gap-4") as main_screen:
     ui.label("メイン画面").classes("text-3xl font-bold")
+    id_input = ui.number("番号", value=1, min=1, precision=0)
 
     # Container for JSON content.
     content = ui.column().classes("gap-2")
 
     def load_data():
         content.clear()
-        data = get_data()   # The screen runs on the same server, so call the function directly.
+        params = {"id": int(id_input.value)}
+        response = requests.get(f"{API_URL}/item", params=params, timeout=5)
+        response.raise_for_status()
+        item = response.json()
 
         # Display content from data here.
         with content:
-            ui.label(f"タイトル: {data['title']}")
+            if "error" in item:
+                ui.label("見つかりません")
+            else:
+                ui.label(f"名前: {item['name']}")
+                ui.label(item["message"])
 
     ui.button("データ読み込み", on_click=load_data).classes("bg-green-500 text-white p-2 rounded")
     ui.button("結果へ", on_click=show_result).classes("bg-purple-500 text-white p-4 rounded-lg mt-4")
@@ -272,20 +311,26 @@ with ui.column().classes("w-full h-screen items-center justify-center gap-4") as
 # ========================================
 # Initial screen
 # ========================================
-show_screen("top")
+show_top()
 
-ui.run()
+ui.run(host="127.0.0.1")
 ```
 
 
 ## 実装の進め方
 
-0. テンプレートを実行（3画面の遷移と「データ読み込み」を確認）
-1. `data.json` の `title` と `message` を変更し、読み込みを確認
-2. 企画に必要なデータ項目と、それを表示・処理するコードを追加
-3. ワイヤーフレームをもとに、画面・ボタン・配置を変更
-4. アプリを起動したまま、[別のプログラム](api-spa.qmd#peek-api-client)から `/api/data` を呼び、JSONの取得を確認
+0. `api.py` を起動し、ブラウザで `http://127.0.0.1:8000/api/item?id=1` を確認
+1. `main.py` を起動し、3画面の遷移と「データ読み込み」を確認
+2. `data.json` に企画に必要なデータを記述
+3. データを表示・処理するコードを追加
+4. ワイヤーフレームをもとに、画面・ボタン・配置を変更
 5. zipにして別のフォルダに解凍し、動作確認後に提出
+
+::: {.callout-warning title="動かないとき"}
+- `api.py` を変更したら、`Ctrl + C` で止めて起動し直す（`main.py` と違い自動では再起動しない）
+- 「データ読み込み」で何も表示されないときは、`api.py` の起動を確認する（エラーは `main.py` のターミナルに出る）
+- `data.json` は保存すれば、次の読み込みから反映される
+:::
 
 ::: {.callout-tip title="参照先"}
 - 画面の部品・スタイル：[NiceGUI](nicegui.qmd)

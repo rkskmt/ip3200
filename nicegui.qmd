@@ -101,7 +101,7 @@ B -> U: 画面が更新されて見える
 from nicegui import ui
 
 ui.label("Hello, NiceGUI!")
-ui.run()
+ui.run(host="127.0.0.1")
 ```
 
 ::: {.caption-note}
@@ -109,13 +109,13 @@ ui.run()
 :::
 
 ```
-NiceGUI ready to go on http://localhost:8080
+NiceGUI ready to go on http://127.0.0.1:8080
 ```
 
 | 関数 | 機能 | 補足 |
 |---|------|------|
 | `ui.label(text)` | 文字列を表示 | |
-| `ui.run()` | NiceGUIを起動（裏でFastAPIが立ち上がり画面を組み立てる） | 部品をすべて書いた ==いちばん最後に1回だけ== 書く |
+| `ui.run(host="127.0.0.1")` | NiceGUIを起動（裏でFastAPIが立ち上がり画面を組み立てる） | 部品をすべて書いた ==いちばん最後に1回だけ== 書く。`host` は自分のPCだけで動かす指定 |
 
 
 ## ボタンとコールバック関数
@@ -130,7 +130,7 @@ def say_hi():
     ui.notify("Hi!")
 
 ui.button("Click me", on_click=say_hi)
-ui.run()
+ui.run(host="127.0.0.1")
 ```
 
 ::: {.caption-note}
@@ -158,7 +158,7 @@ from nicegui import ui
 ui.label("A")
 ui.label("B")
 ui.button("ボタン")
-ui.run()
+ui.run(host="127.0.0.1")
 ```
 
 ::: {.caption-note}
@@ -182,7 +182,7 @@ with box:              # Add elements to this container.
     ui.label("B")      # Inside the container.
 
 ui.label("C")          # Outside the container, on the page.
-ui.run()
+ui.run(host="127.0.0.1")
 ```
 
 ::: {.caption-note}
@@ -216,7 +216,7 @@ with box:
 with box:                      # Add to the same container again.
     for i in range(1, 11):
         ui.label(f"{i}番目")   # Add labels in a loop.
-ui.run()
+ui.run(host="127.0.0.1")
 ```
 
 ::: {.caption-note}
@@ -238,7 +238,7 @@ with ui.row():             # Horizontal container.
         ui.label("説明文")
     with ui.card():        # Second card.
         ui.label("タイトル2")
-ui.run()
+ui.run(host="127.0.0.1")
 ```
 
 ## コンテナの入れ子と配置
@@ -285,7 +285,7 @@ with box:
     ui.label("B")
 
 ui.label("C")
-ui.run()
+ui.run(host="127.0.0.1")
 ```
 
 
@@ -354,7 +354,7 @@ with ui.column():
 
 ui.label("目立つラベル").classes("text-2xl font-bold text-blue-500")
 ui.button("ボタン").classes("bg-green-500 text-white rounded-lg p-4")
-ui.run()
+ui.run(host="127.0.0.1")
 ```
 
 ::: {.caption-note}
@@ -406,7 +406,7 @@ name_input = ui.input("name")
 ui.button("add", on_click=add_item)
 
 list_view = ui.column()
-ui.run()
+ui.run(host="127.0.0.1")
 ```
 
 ::: {.caption-note}
@@ -440,7 +440,7 @@ ui.button("追加", on_click=add_item)
 
 list_view = ui.column().classes("gap-2")
 
-ui.run()
+ui.run(host="127.0.0.1")
 ```
 
 ## **Tweak** 一覧の配置を変える {.badge-practice}
@@ -506,7 +506,7 @@ ui.button("全部削除", on_click=clear_all)
 
 list_view = ui.row().classes("gap-4")
 
-ui.run()
+ui.run(host="127.0.0.1")
 ```
 
 

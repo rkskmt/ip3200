@@ -14,28 +14,31 @@ execute:
 :::
 
 
-## 自分のアプリにAPIを付ける
+## 画面とデータを別のプログラムにする
 
-- APIを公開すると、他のプログラムからURLを指定してデータを取得できる
-- [NiceGUI](nicegui.qmd) が使う **FastAPI** に、JSONを返すエンドポイントを追加する
+- **API**（[Application Programming Interface]{.en}）：プログラム同士がデータをやり取りする窓口
+- [APIでデータ取得](api.qmd) では他のサービスのAPIを呼んだ。ここでは ==APIを自分で作り、自分の画面から呼ぶ==
 
-```{.d2 sketch="true" width="88%"}
+```{.d2 sketch="true" width="92%"}
 direction: right
-B: APIを呼ぶプログラム\nまたはブラウザ {style.fill: "#e3f2fd"}
-S: Pythonサーバー {
-  style.fill: "#e8f5e9"
-  A: APIエンドポイント\n/api/questions
-  J: questions.json {style.fill: "#fff3e0"}
-  A -> J: 読み込み
-}
-B -> S.A: HTTP GET
-S.A -> B: JSONデータ
+B: ブラウザ {style.fill: "#e3f2fd"}
+M: main.py\n画面（NiceGUI） {style.fill: "#e8f5e9"}
+A: api.py\nAPI（FastAPI） {style.fill: "#fff3e0"}
+J: questions.json {style.fill: "#fce4ec"}
+B -> M: ボタン操作
+M -> A: HTTP GET
+A -> M: JSON
+A -> J: 読み込み
 ```
+
+::: {.caption-note}
+`main.py` と `api.py` は別々に起動するプログラム
+:::
 
 
 ## REST API と HTTPメソッド
 
-- **REST**（[Representational State Transfer]{.en}）はWebサービスの設計様式
+- **REST**（[Representational State Transfer]{.en}）：Webサービスの設計様式
 - REST APIでは、URLで対象を表し、**HTTPメソッド**（[HTTP method]{.en}）で操作を表す
 
 | HTTPメソッド | 用途 | 例 |
@@ -50,23 +53,29 @@ S.A -> B: JSONデータ
 :::
 
 
-## 最もシンプルなAPI
+## 最小のAPIを作る
+
+- **FastAPI**：PythonでAPIを作るライブラリ（NiceGUIと一緒にインストールされる）
+- 次のコードを `api.py` として保存して実行する
 
 ```python
-from nicegui import ui, app
+from fastapi import FastAPI
+import uvicorn
+
+api = FastAPI()
 
 def hello():
     return {"message": "Hello, API!"}
 
-app.add_api_route("/api/hello", hello)
+api.add_api_route("/api/hello", hello)
 
-ui.label("APIテスト")
-ui.run()
+uvicorn.run(api, port=8000)
 ```
+
 
 ## APIの応答を確認する
 
-#### ブラウザで `http://localhost:8080/api/hello` を開く
+#### ブラウザで `http://127.0.0.1:8000/api/hello` を開く
 
 ```json
 {"message": "Hello, API!"}
@@ -74,19 +83,24 @@ ui.run()
 
 | コード | 機能 |
 |----|----|
-| `from nicegui import app` | NiceGUI内部のFastAPIアプリを取り出す |
-| `app.add_api_route("/api/hello", hello)` | GETの `/api/hello` に関数 `hello` を登録する |
+| `api = FastAPI()` | APIのアプリを作る |
+| `api.add_api_route("/api/hello", hello)` | GETの `/api/hello` に関数 `hello` を登録する |
 | `return {"message": "..."}` | ==辞書を返すと自動でJSONに変換== される |
+| `uvicorn.run(api, port=8000)` | 8000番ポートでサーバーを起動する |
+
+::: {.caption-note}
+`127.0.0.1` は自分のPCを指すアドレス。Windows では `localhost` と書くと応答が遅くなることがある
+:::
 
 
 ## URLに関数を登録する
 
-- ボタンの `on_click` と同じ形で、URLにも関数を登録できる
+- URLにも `on_click` と同じ形で関数を登録できる
 
 | 登録 | 関数が実行されるとき |
 |---|---|
 | `ui.button("Hi", on_click=say_hi)` | ボタンが押されたとき |
-| `app.add_api_route("/api/hello", hello)` | このURLにGETが届いたとき |
+| `api.add_api_route("/api/hello", hello)` | このURLにGETが届いたとき |
 
 ::: {.callout-note title="関数はカッコを付けずに渡す"}
 `hello()` と書くと、その場で関数が実行される。関数名は自由で、URLと結びつくのは第1引数
@@ -96,11 +110,7 @@ ui.run()
 ## データファイルを用意する
 
 - 質問文と選択肢をJSONファイルに保存する
-- [questions.json](data/questions.json) をダウンロードして `main.py` と同じフォルダに置く（中身は自作してもよい）
-
-::: {.caption-note}
-ダウンロード用ファイルは質問3問（id: 1〜3）、結果A〜C。次のコードは一部を省略した表示例
-:::
+- [questions.json](data/questions.json) をダウンロードして `api.py` と同じフォルダに置く
 
 ```json
 {
@@ -120,295 +130,209 @@ ui.run()
 }
 ```
 
-## エンドポイントでファイルを読む
+
+## JSONファイルを読んで返す
 
 ```python
-from nicegui import ui, app
+from fastapi import FastAPI
+from pathlib import Path
 import json
+import uvicorn
+
+DATA_FILE = Path(__file__).parent / "questions.json"
+
+api = FastAPI()
 
 def get_questions():
-    with open("questions.json", "r", encoding="utf-8") as f:
-        data = json.load(f)
-    return data
+    with open(DATA_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
 
-app.add_api_route("/api/questions", get_questions)
+api.add_api_route("/api/questions", get_questions)
 
-ui.label("診断アプリ")
-ui.run()
+uvicorn.run(api, port=8000)
 ```
-
-::: {.caption-note}
-`http://localhost:8080/api/questions` を開くと、JSONファイルの内容が返る
-:::
-
-## ファイルの読み込み処理
 
 | コード | 機能 |
 |----|----|
-| `import json` | JSONを扱うPython標準ライブラリ |
-| `open("questions.json", "r", encoding="utf-8")` | 読み込みモードで開く（`encoding` で日本語対応） |
+| `Path(__file__).parent` | このPythonファイルがあるフォルダ |
+| `open(DATA_FILE, "r", encoding="utf-8")` | 読み込みモードで開く（`encoding` で日本語対応） |
 | `json.load(f)` | JSONファイル → Pythonの辞書 |
 
-
-## 画面にデータを表示する
-
-```python
-from nicegui import ui, app
-import json
-
-def get_questions():
-    with open("questions.json", "r", encoding="utf-8") as f:
-        data = json.load(f)
-    return data
-
-app.add_api_route("/api/questions", get_questions)
-
-def load_questions():
-    data = get_questions()          # Call the API function directly.
-    ui.label(data["title"]).classes("text-2xl font-bold")
-    for question in data["questions"]:
-        with ui.card().classes("w-full"):
-            ui.label(f"Q{question['id']}: {question['text']}").classes("font-bold")
-            for choice in question["choices"]:
-                ui.label(f"・{choice}").classes("ml-4")
-
-ui.button("質問を読み込む", on_click=load_questions).classes("bg-blue-500 text-white p-2 rounded")
-
-ui.run()
-```
-
-
-## なぜ関数を直接呼べるのか
-
-- 画面操作を処理する `load_questions()` と、API用の `get_questions()` は、どちらも **Pythonサーバー側の関数**
-   - `get_questions()` を普通の関数として直接呼べる
-   - この呼び出しではHTTP通信は発生しない
-- ブラウザはPythonサーバーとは別に動く
-   - ブラウザから `/api/questions` を開いた場合は、HTTP通信でJSONを受け取る
-
-::: {.callout-tip title="戻り値の違い"}
-直接呼ぶとPythonの辞書が返る。HTTPで呼ぶと、FastAPIが辞書をJSONに変換して応答する
-:::
-
-
-## 別のプログラムからAPIを呼ぶ {#peek-api-client}
-
-- APIを使う相手は、`main.py` とは **別のプログラム**
-- `main.py` を起動したまま `client.py` を作り、==別のターミナル== で実行する
-
-```python
-import requests
-
-url = "http://localhost:8080/api/questions"
-response = requests.get(url)
-response.raise_for_status()
-data = response.json()
-print(data["title"])
-```
-
 ::: {.caption-note}
-`raise_for_status()` はHTTPエラーを例外として通知する。`response.json()` はJSONをPythonの値に変換する
+`http://127.0.0.1:8000/api/questions` を開くと、JSONファイルの内容が返る
 :::
 
 
-## 画面の関数から自分のAPIを呼ばない
+## URLパラメータで指定した質問を返す
 
-::: {.callout-warning title="サーバーが自分を待って止まる"}
-画面の関数の中で `requests.get()` を使って自分のAPIを呼ぶと、応答待ちでサーバーが止まり、自分に応答できなくなる。画面からは `get_questions()` を直接呼ぶ
-:::
-
-
-## **演習** 土台コードを動かす {.badge-practice}
-
-::: {.prompt}
-土台コードと [questions.json](data/questions.json) を同じフォルダに置いて実行し、ボタンで質問一覧が表示されることを確かめよ。
-:::
+- **URLパラメータ**（[query parameter]{.en}）：URLの `?` の後ろに書く `名前=値`
+- [Wikipedia API](wiki-api.qmd) の `params=` で渡していたもの
 
 ```python
-from nicegui import ui, app
-import json
-
-def get_questions():
-    with open("questions.json", "r", encoding="utf-8") as f:
-        data = json.load(f)
-    return data
-
-app.add_api_route("/api/questions", get_questions)
-
-container = ui.column().classes("w-full gap-4 p-4")
-
-def load_data():
-    container.clear()               # Clear the previous display.
-    data = get_questions()          # Read the file again.
-    with container:                 # Rebuild the display.
-        ui.label(data["title"]).classes("text-3xl font-bold mb-4")
-        for question in data["questions"]:
-            with ui.card().classes("w-full"):
-                ui.label(f"Q{question['id']}: {question['text']}").classes("font-bold text-lg")
-                for choice in question["choices"]:
-                    ui.label(f"・{choice}").classes("ml-4")
-
-ui.button("質問を読み込む", on_click=load_data).classes("bg-blue-500 text-white p-3 rounded-lg")
-
-ui.run()
-```
-
-
-## URLの一部を引数で受け取る
-
-- `/api/questions/1` のようにIDを指定する場合、URLの一部を変数として受け取る
-
-#### エンドポイントの定義部分
-
-```python
-def get_question(question_id: int):
-    ...
-
-app.add_api_route("/api/questions/{question_id}", get_question)
-```
-
-::: {.caption-note}
-`: int` は **型ヒント**（[type hint]{.en}）。FastAPIはこれをもとにURL内の値を整数へ変換する。`...` の箇所に処理を書く
-:::
-
-
-## **演習** エンドポイントを増やす {.badge-practice}
-
-::: {.prompt}
-土台コードに次の3つの機能を追加し、ブラウザで各URLの応答を確認せよ。
-:::
-
-1. `/api/results` を追加し、`results` 部分だけを返す処理を実装
-2. `/api/questions/1` のように、IDを指定した質問だけを返す処理を実装
-3. 存在しないIDには `{"error": "Not found"}` を返す分岐を追加
-
-::: {.callout-tip title="動作確認"}
-`/api/results`・`/api/questions/1`・`/api/questions/999` をブラウザで開いて応答を確認する。この演習のエラー辞書は通常の戻り値なので、HTTPステータスは200のまま
-:::
-
-
-```{python}
-#| echo: true
-#| eval: false
-#| code-fold: true
-#| code-summary: "エンドポイント追加の解答例を表示"
-from nicegui import ui, app
-import json
-
-def read_data():
-    with open("questions.json", "r", encoding="utf-8") as f:
-        return json.load(f)
-
-def get_questions():
-    return read_data()
-
-def get_results():
-    return read_data()["results"]
-
-def get_question(question_id: int):
-    for question in read_data()["questions"]:
-        if question["id"] == question_id:
+def get_question(id: int):
+    for question in get_questions()["questions"]:
+        if question["id"] == id:
             return question
     return {"error": "Not found"}
 
-app.add_api_route("/api/questions", get_questions)
-app.add_api_route("/api/results", get_results)
-app.add_api_route("/api/questions/{question_id}", get_question)
+api.add_api_route("/api/question", get_question)
+```
+
+| アクセスするURL | 実行される処理 |
+|---|---|
+| `/api/question?id=1` | `get_question(id=1)` |
+| `/api/question?id=2` | `get_question(id=2)` |
+| `/api/question?id=999` | `{"error": "Not found"}` を返す |
+
+::: {.caption-note}
+URLの `id=1` が、同じ名前の引数 `id` に入る。`: int` は **型ヒント**（[type hint]{.en}）で、URLの文字列を整数に変換する
+:::
+
+
+## `api.py` の完成形
+
+```python
+from fastapi import FastAPI
+from pathlib import Path
+import json
+import uvicorn
+
+DATA_FILE = Path(__file__).parent / "questions.json"
+
+api = FastAPI()
+
+def get_questions():
+    with open(DATA_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def get_question(id: int):
+    for question in get_questions()["questions"]:
+        if question["id"] == id:
+            return question
+    return {"error": "Not found"}
+
+api.add_api_route("/api/questions", get_questions)
+api.add_api_route("/api/question", get_question)
+
+uvicorn.run(api, port=8000)
+```
+
+
+## 画面からAPIを呼ぶ
+
+- 次のコードを `main.py` として、`api.py` と同じフォルダに保存する
+
+```python
+from nicegui import ui
+import requests
+
+API_URL = "http://127.0.0.1:8000/api"
 
 container = ui.column().classes("w-full gap-4 p-4")
 
-def load_data():
+def load_questions():
     container.clear()
-    data = get_questions()
+    response = requests.get(f"{API_URL}/questions", timeout=5)
+    response.raise_for_status()
+    data = response.json()
     with container:
-        ui.label(data["title"]).classes("text-3xl font-bold mb-4")
+        ui.label(data["title"]).classes("text-3xl font-bold")
         for question in data["questions"]:
             with ui.card().classes("w-full"):
-                ui.label(f"Q{question['id']}: {question['text']}").classes("font-bold text-lg")
+                ui.label(f"Q{question['id']}: {question['text']}").classes("font-bold")
                 for choice in question["choices"]:
                     ui.label(f"・{choice}").classes("ml-4")
 
-ui.button("質問を読み込む", on_click=load_data).classes("bg-blue-500 text-white p-3 rounded-lg")
-ui.run()
+ui.button("質問を読み込む", on_click=load_questions)
+
+ui.run(host="127.0.0.1")
 ```
 
 
-## **演習** 別のプログラムから呼ぶ {.badge-practice}
+## `api.py` と `main.py` を起動する
 
-::: {.prompt}
-アプリを起動したまま `client.py` を作り、`/api/questions/1` の質問文を取得して表示せよ。
+1. ターミナルで `python api.py` を実行する
+2. ==別のターミナル== で `python main.py` を実行する
+3. 開いた画面で「質問を読み込む」を押す
+
+| コード | 機能 |
+|---|---|
+| `requests.get(url, timeout=5)` | APIを呼ぶ。5秒応答がなければエラーにする |
+| `response.raise_for_status()` | HTTPエラーを例外として通知する |
+| `response.json()` | JSONをPythonの値に変換する |
+
+::: {.callout-warning title="動かないとき"}
+- 画面に何も表示されないときは、`api.py` の起動を確認する（エラーは `main.py` のターミナルに出る）
+- `api.py` を変更したら、`Ctrl + C` で止めて起動し直す（`main.py` と違い自動では再起動しない）
 :::
 
-0. エンドポイントを追加したアプリを起動
-1. `client.py` に `requests.get()` で `/api/questions/1` を取得する処理を実装
-2. 別のターミナルで `client.py` を実行し、質問文を表示
 
-```{python}
-#| echo: true
-#| eval: false
-#| code-fold: true
-#| code-summary: "client.py の解答例を表示"
+## 番号を指定して質問を取得する
+
+- URLパラメータは `requests.get()` の `params=` に渡す
+
+```python
+from nicegui import ui
 import requests
 
-url = "http://localhost:8080/api/questions/1"
-response = requests.get(url)
-response.raise_for_status()
-question = response.json()
-print(question["text"])
+API_URL = "http://127.0.0.1:8000/api"
+
+id_input = ui.number("質問の番号", value=1, min=1, precision=0)
+container = ui.column().classes("w-full gap-4 p-4")
+
+def load_question():
+    container.clear()
+    params = {"id": int(id_input.value)}
+    response = requests.get(f"{API_URL}/question", params=params, timeout=5)
+    response.raise_for_status()
+    question = response.json()
+    with container:
+        if "error" in question:
+            ui.label("その番号の質問はありません")
+        else:
+            ui.label(question["text"]).classes("text-xl font-bold")
+            for choice in question["choices"]:
+                ui.label(f"・{choice}").classes("ml-4")
+
+ui.button("質問を読み込む", on_click=load_question)
+
+ui.run(host="127.0.0.1")
 ```
 
 
-## JSONの読み込みと表示の更新
+## ボタンを押すたびに取得し直す
 
-::: {.callout-note title="JSONを読むタイミング"}
-既定のオートリロードは `.py` が対象なので、JSONの保存ではサーバーは再起動しない。ボタンを押すたびにファイルを読み、`container.clear()` で古い表示を消してから表示し直す
+- `container.clear()`：前回の表示を消す
+- `requests.get()`：APIからデータを取得し直す
+- `with container:`：新しい内容を表示する
+
+::: {.callout-note title="JSONを変更すると"}
+APIは呼ばれるたびにファイルを読むので、`questions.json` を保存すると、次にボタンを押したときに新しい内容が表示される
 :::
 
 
-## **演習** データが変わったら {.badge-practice}
-
-::: {.prompt}
-アプリを起動したまま `questions.json` に質問を1問書き足して保存し、「質問を読み込む」ボタンだけで新しい質問が表示されることを確かめよ。
-:::
-
-0. アプリを起動し、質問を表示
-1. `questions.json` の `questions` 配列に `id: 4` の質問を追加して保存
-2. 「質問を読み込む」ボタンをクリックし、4問の表示を確認
-
-<details class="code-fold">
-<summary>解答例を表示</summary>
-
-`questions` 配列の末尾に、カンマで区切って次の1件を追加する。Pythonコードの変更は不要
-
-```json
-{"id": 4, "text": "取り組んでみたいことは？", "choices": ["企画", "制作", "調査"]}
-```
-
-</details>
-
-
-## （参考）`@app.get` と書かれたコード
+## （参考）`@` で登録するコード
 
 - FastAPI の公式ドキュメントや多くのサンプルは、次の書き方を使っている
 - **デコレータ**（[decorator]{.en}）：`@` で始まる行。すぐ下の関数に機能を追加する記法
 
 ```python
-@app.get("/api/hello")
+@api.get("/api/hello")
 def hello():
     return {"message": "Hello, API!"}
 ```
 
 ::: {.caption-note}
-`app.add_api_route("/api/hello", hello)` と同じ登録をする
+`api.add_api_route("/api/hello", hello)` と同じ登録をする
 :::
 
 
 ## まとめ
 
-- **`app.add_api_route()`**：URLへのGETを処理する関数を登録
-- **`json.load()`**：JSONファイルをPythonの値として読み込む
-- **表示の更新**：`container.clear()` で削除し、データを再取得して表示
-- **`requests.get()`**：別のプログラムからAPIを呼ぶ
+- **`api.add_api_route()`**：URLへのGETを処理する関数を登録
+- **URLパラメータ**：`?id=1` の値が関数の引数に入る
+- **`requests.get()`**：画面のプログラムからAPIを呼ぶ
+- **表示の更新**：`container.clear()` で消して、取得し直して表示
 
 ::: {.callout-note title="3画面のアプリ"}
 [最終課題](final-project.qmd) に、画面切り替えとAPIを組み合わせたテンプレートを掲載

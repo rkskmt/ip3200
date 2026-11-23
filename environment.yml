@@ -19,3 +19,5 @@ dependencies:
   - pip:
       - japanize-matplotlib
       - nicegui==3.16.0
+      - fastapi  # imported directly by the API decks; also a NiceGUI dependency
+      - uvicorn  # imported directly by the API decks; also a NiceGUI dependency
