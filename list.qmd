@@ -385,7 +385,7 @@ As = [int(x) for x in input().split()]
 これはリスト内包表記だった。`input().split()` で `["1", "2", "3"]` という文字列のリストを作り、
 各要素を `int(x)` で整数に変換しながら新しいリストを作っている。
 
-`for` 文で書くと以下と同じ意味：
+`for` 文で書くと以下と同じ意味
 
 ```python
 input_str = input().split() # split(" ")と同じ。つまり、空白区切りで分けてlist化
