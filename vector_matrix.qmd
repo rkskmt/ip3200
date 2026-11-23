@@ -449,7 +449,7 @@ plt.show()
 ```
 
 - $(1,0)$ を $\theta$ 回すと $(\cos\theta, \sin\theta)$、$(0,1)$ を回すと $(-\sin\theta, \cos\theta)$
-- これを**列に並べる**と、みんな知っている回転行列：
+- これを**列に並べる**と、みんな知っている回転行列になる
 
 $$R(\theta) = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$$
 
@@ -1140,7 +1140,7 @@ $$
 
 ## 歪対称行列（[skew-symmetric matrix]{.en}）
 
-- ベクトル $\mathbf{a} = (a_1, a_2, a_3)$ に対応する歪対称行列：
+- ベクトル $\mathbf{a} = (a_1, a_2, a_3)$ に対応する歪対称行列
 
 $$
 [\mathbf{a}]_\times = \begin{pmatrix} 0 & -a_3 & a_2 \\ a_3 & 0 & -a_1 \\ -a_2 & a_1 & 0 \end{pmatrix}
