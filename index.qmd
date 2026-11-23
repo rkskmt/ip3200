@@ -66,6 +66,7 @@
 ### ワイヤーフレーム・発表 {.sec .cat2}
 ::: {.grid .cat2}
 - [Miroでワイヤーフレーム](wireframe.qmd)
+- [UI・UX](ui-ux.qmd)
 - [発表](presentation.qmd)
 :::
 
