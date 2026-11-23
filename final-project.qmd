@@ -96,15 +96,16 @@ A -> B -> C -> D
    - 構造を大きく変える／ライブラリを増やすのはNG
    - 生成AIの出力の丸写しはNG
 - **遷移画面は3画面以上**
-- 使用できるライブラリは **NiceGUIとその依存ライブラリ（httpxなど）・授業で使ったもの・Python標準ライブラリ**
-   - Requestsは外部APIの取得に使用可。NiceGUIのコールバック内では、通信先にかかわらず `httpx.AsyncClient` と `await` を使う
+- 使用できるライブラリは **NiceGUIとその依存ライブラリ・授業で使ったもの・Python標準ライブラリ**
+   - `requests` は外部APIの取得に使用可（`timeout=5` を付ける）
+   - 自分のAPIは `requests` で呼ばず、`get_data()` を直接呼ぶ
 - ワイヤーフレームと実装は、==方向性が合っていれば同一でなくてよい==（見た目に過度にこだわらない）
 - 質問や助け合いは可。助けてもらったら、紹介スライドに協力者の名前と協力内容を書く
 
 
 ## データはJSONに保存する
 
-- 表示するコンテンツは **JSONに書き、APIから取得** する（テンプレートどおり ==HTTP経由== で）
+- 表示するコンテンツは **JSONに書き**、テンプレートの `get_data()` で読み込む
    - ==JSONを編集するだけでアプリを変更・拡張できる== 状態にする
    - 質問文や結果文を `ui.label("...")` に直接書かない（**ハードコード**、[hard-coding]{.en}）
    - ボタンの「スタート」などコンテンツ以外のラベルはハードコードOK
@@ -169,17 +170,18 @@ def show_screen(screen_name):
     main_screen.set_visibility(screen_name == "main")
     result_screen.set_visibility(screen_name == "result")
 
-ui.button("スタート", on_click=lambda: show_screen("main"))
+def show_main():
+    show_screen("main")
+
+ui.button("スタート", on_click=show_main)
 ```
 
 ::: {.caption-note}
 `screen_name == "top"` は `True` / `False` になる。指定した画面だけ表示し、他の画面は非表示にする
 :::
 
-::: {.callout-note title="`lambda` = その場で作る小さな関数"}
-`on_click` には関数を渡す必要がある（`show_screen("main")` と書くと即実行されてしまう）。
-`lambda: show_screen("main")` は「押されたら `show_screen("main")` を実行する **無名関数**（[anonymous function]{.en}）」を作る書き方。
-lambdaを避けたい人は、`def show_main(): ...` を画面の数だけ書く簡単版テンプレートを使えばよい
+::: {.callout-note title="移動先ごとに関数を1つ作る"}
+`on_click` には関数を ==カッコを付けずに== 渡す。`on_click=show_screen("main")` と書くと、ボタンを作る時点で実行される
 :::
 
 
@@ -191,16 +193,11 @@ lambdaを避けたい人は、`def show_main(): ...` を画面の数だけ書く
 
 - `Path(__file__).parent` は **このPythonファイルがあるフォルダ**。実行時の作業フォルダによらず、隣の `data.json` を読み込む
 
-::: {.callout-note title="`async` / `await` は「待つ間、画面を止めない」書き方"}
-テンプレートでは、HTTP通信をする `load_data` だけが `async def`（[自作API+SPA](api-spa.qmd) で扱った形）。
-改造で自分の関数を足すときは、通信しない関数なら普通の `def` でよい
-:::
-
 ```{python}
 #| echo: true
 #| eval: false
 #| code-fold: true
-#| code-summary: "テンプレート（API版）を表示"
+#| code-summary: "テンプレートを表示"
 """
 NiceGUI SPA template with three screens and an HTTP API.
 """
@@ -208,17 +205,17 @@ NiceGUI SPA template with three screens and an HTTP API.
 from nicegui import ui, app
 from pathlib import Path
 import json
-import httpx
 
 DATA_FILE = Path(__file__).parent / "data.json"   # Resolve data.json beside this script.
 
 # ========================================
 # API endpoint
 # ========================================
-@app.get("/api/data")
 def get_data():
     with open(DATA_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
+
+app.add_api_route("/api/data", get_data)
 
 # ========================================
 # Screen switching
@@ -228,12 +225,21 @@ def show_screen(screen_name):
     main_screen.set_visibility(screen_name == "main")
     result_screen.set_visibility(screen_name == "result")
 
+def show_top():
+    show_screen("top")
+
+def show_main():
+    show_screen("main")
+
+def show_result():
+    show_screen("result")
+
 # ========================================
 # Top screen
 # ========================================
 with ui.column().classes("w-full h-screen items-center justify-center gap-4") as top_screen:
     ui.label("アプリタイトル").classes("text-4xl font-bold")
-    ui.button("スタート", on_click=lambda: show_screen("main")).classes("bg-blue-500 text-white p-4 rounded-lg")
+    ui.button("スタート", on_click=show_main).classes("bg-blue-500 text-white p-4 rounded-lg")
 
 # ========================================
 # Main screen
@@ -244,20 +250,16 @@ with ui.column().classes("w-full min-h-screen items-center p-8 gap-4") as main_s
     # Container for JSON content.
     content = ui.column().classes("gap-2")
 
-    async def load_data():
+    def load_data():
         content.clear()
-        # Fetch data over HTTP.
-        async with httpx.AsyncClient() as client:
-            response = await client.get("http://localhost:8080/api/data")
-            response.raise_for_status()
-        data = response.json()
+        data = get_data()   # The screen runs on the same server, so call the function directly.
 
         # Display content from data here.
         with content:
             ui.label(f"タイトル: {data['title']}")
 
     ui.button("データ読み込み", on_click=load_data).classes("bg-green-500 text-white p-2 rounded")
-    ui.button("結果へ", on_click=lambda: show_screen("result")).classes("bg-purple-500 text-white p-4 rounded-lg mt-4")
+    ui.button("結果へ", on_click=show_result).classes("bg-purple-500 text-white p-4 rounded-lg mt-4")
 
 # ========================================
 # Result screen
@@ -265,98 +267,12 @@ with ui.column().classes("w-full min-h-screen items-center p-8 gap-4") as main_s
 with ui.column().classes("w-full h-screen items-center justify-center gap-4") as result_screen:
     ui.label("結果画面").classes("text-3xl font-bold")
     ui.label("ここに結果を表示")
-    ui.button("もう一度", on_click=lambda: show_screen("top")).classes("bg-blue-500 text-white p-4 rounded-lg")
+    ui.button("もう一度", on_click=show_top).classes("bg-blue-500 text-white p-4 rounded-lg")
 
 # ========================================
 # Initial screen
 # ========================================
 show_screen("top")
-
-ui.run()
-```
-
-```{python}
-#| echo: true
-#| eval: false
-#| code-fold: true
-#| code-summary: "テンプレート（簡単版・lambdaなし）を表示"
-"""
-NiceGUI SPA template using named callbacks for screen switching.
-"""
-
-from nicegui import ui, app
-from pathlib import Path
-import json
-import httpx
-
-DATA_FILE = Path(__file__).parent / "data.json"   # Resolve data.json beside this script.
-
-# ========================================
-# API endpoint
-# ========================================
-@app.get("/api/data")
-def get_data():
-    with open(DATA_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-def show_top():
-    top_screen.set_visibility(True)
-    main_screen.set_visibility(False)
-    result_screen.set_visibility(False)
-
-def show_main():
-    top_screen.set_visibility(False)
-    main_screen.set_visibility(True)
-    result_screen.set_visibility(False)
-
-def show_result():
-    top_screen.set_visibility(False)
-    main_screen.set_visibility(False)
-    result_screen.set_visibility(True)
-
-# ========================================
-# Top screen
-# ========================================
-with ui.column().classes("w-full h-screen items-center justify-center gap-4") as top_screen:
-    ui.label("アプリタイトル").classes("text-4xl font-bold")
-    ui.button("スタート", on_click=show_main)
-
-# ========================================
-# Main screen
-# ========================================
-with ui.column().classes("w-full min-h-screen items-center p-8 gap-4") as main_screen:
-    ui.label("メイン画面").classes("text-3xl font-bold")
-
-    # Container for JSON content.
-    content = ui.column().classes("gap-2")
-
-    async def load_data():
-        content.clear()
-        # Fetch data over HTTP.
-        async with httpx.AsyncClient() as client:
-            response = await client.get("http://localhost:8080/api/data")
-            response.raise_for_status()
-        data = response.json()
-
-        # Display content from data here.
-        with content:
-            ui.label(f"タイトル: {data['title']}")
-
-    ui.button("データ読み込み", on_click=load_data).classes("bg-green-500 text-white p-2 rounded")
-    ui.button("結果へ", on_click=show_result)
-
-# ========================================
-# Result screen
-# ========================================
-with ui.column().classes("w-full h-screen items-center justify-center gap-4") as result_screen:
-    ui.label("結果画面").classes("text-3xl font-bold")
-    ui.label("ここに結果を表示")
-    ui.button("もう一度", on_click=show_top)
-
-# ========================================
-# Initial screen
-# ========================================
-show_top()
 
 ui.run()
 ```
@@ -368,7 +284,8 @@ ui.run()
 1. `data.json` の `title` と `message` を変更し、読み込みを確認
 2. 企画に必要なデータ項目と、それを表示・処理するコードを追加
 3. ワイヤーフレームをもとに、画面・ボタン・配置を変更
-4. zipにして別のフォルダに解凍し、動作確認後に提出
+4. アプリを起動したまま、[別のプログラム](api-spa.qmd#peek-api-client)から `/api/data` を呼び、JSONの取得を確認
+5. zipにして別のフォルダに解凍し、動作確認後に提出
 
 ::: {.callout-tip title="参照先"}
 - 画面の部品・スタイル：[NiceGUI](nicegui.qmd)

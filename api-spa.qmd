@@ -55,9 +55,10 @@ S.A -> B: JSONデータ
 ```python
 from nicegui import ui, app
 
-@app.get("/api/hello")
 def hello():
     return {"message": "Hello, API!"}
+
+app.add_api_route("/api/hello", hello)
 
 ui.label("APIテスト")
 ui.run()
@@ -74,19 +75,21 @@ ui.run()
 | コード | 機能 |
 |----|----|
 | `from nicegui import app` | NiceGUI内部のFastAPIアプリを取り出す |
-| `@app.get("/api/hello")` | GETの `/api/hello` エンドポイントを作る |
+| `app.add_api_route("/api/hello", hello)` | GETの `/api/hello` に関数 `hello` を登録する |
 | `return {"message": "..."}` | ==辞書を返すと自動でJSONに変換== される |
 
 
-## `@` の行の正体：デコレータ
+## URLに関数を登録する
 
-- **デコレータ**（[decorator]{.en}）：`@app.get(...)` のような `@` で始まる行
-   - ==すぐ下の関数に特別な機能を追加する== 記法
-   - ここでは「この関数をAPIエンドポイントとして登録する」という意味
-- 関数名は自由。URLと結びつくのは ==デコレータの引数== のほう
+- ボタンの `on_click` と同じ形で、URLにも関数を登録できる
 
-::: {.callout-note title="関数を登録する"}
-`on_click=say_hi` はボタン操作に関数を登録する。`@app.get(...)` は指定したURLへのGETに関数を登録する
+| 登録 | 関数が実行されるとき |
+|---|---|
+| `ui.button("Hi", on_click=say_hi)` | ボタンが押されたとき |
+| `app.add_api_route("/api/hello", hello)` | このURLにGETが届いたとき |
+
+::: {.callout-note title="関数はカッコを付けずに渡す"}
+`hello()` と書くと、その場で関数が実行される。関数名は自由で、URLと結びつくのは第1引数
 :::
 
 
@@ -123,11 +126,12 @@ ui.run()
 from nicegui import ui, app
 import json
 
-@app.get("/api/questions")
 def get_questions():
     with open("questions.json", "r", encoding="utf-8") as f:
         data = json.load(f)
     return data
+
+app.add_api_route("/api/questions", get_questions)
 
 ui.label("診断アプリ")
 ui.run()
@@ -146,17 +150,18 @@ ui.run()
 | `json.load(f)` | JSONファイル → Pythonの辞書 |
 
 
-## 画面からAPIのデータを表示する
+## 画面にデータを表示する
 
 ```python
 from nicegui import ui, app
 import json
 
-@app.get("/api/questions")
 def get_questions():
     with open("questions.json", "r", encoding="utf-8") as f:
         data = json.load(f)
     return data
+
+app.add_api_route("/api/questions", get_questions)
 
 def load_questions():
     data = get_questions()          # Call the API function directly.
@@ -186,49 +191,30 @@ ui.run()
 :::
 
 
-## HTTPでデータを取得する
+## 別のプログラムからAPIを呼ぶ {#peek-api-client}
 
-- **httpx** は、NiceGUIと一緒にインストールされるHTTPクライアント
-- **非同期処理**（[asynchronous processing]{.en}）では、通信の応答を待つ間に他の処理を進められる
-
-| 書き方 | 意味 |
-|---|---|
-| `async def` | `await` を使える関数を定義 |
-| `async with httpx.AsyncClient() as client:` | 非同期のHTTPクライアントを作り、使用後に閉じる |
-| `await client.get(...)` | 応答を待つ間、他の処理に実行を譲る |
-
-
-## 非同期のコールバックで取得する
-
-::: {.caption-note}
-`async def` の関数も `on_click` に登録できる。`raise_for_status()` はHTTPエラーを例外として通知する
-:::
+- APIを使う相手は、`main.py` とは **別のプログラム**
+- `main.py` を起動したまま `client.py` を作り、==別のターミナル== で実行する
 
 ```python
-from nicegui import ui, app
-import json
-import httpx
+import requests
 
-@app.get("/api/questions")
-def get_questions():
-    with open("questions.json", "r", encoding="utf-8") as f:
-        return json.load(f)
-
-async def load_questions():
-    async with httpx.AsyncClient() as client:
-        response = await client.get("http://localhost:8080/api/questions")
-        response.raise_for_status()
-    data = response.json()
-    ui.label(data["title"]).classes("text-2xl font-bold")
-
-ui.button("HTTPで読み込む", on_click=load_questions)
-ui.run()
+url = "http://localhost:8080/api/questions"
+response = requests.get(url)
+response.raise_for_status()
+data = response.json()
+print(data["title"])
 ```
 
-## 同期通信で処理が止まる理由
+::: {.caption-note}
+`raise_for_status()` はHTTPエラーを例外として通知する。`response.json()` はJSONをPythonの値に変換する
+:::
 
-::: {.callout-warning title="コールバック内の同期通信"}
-`requests.get()` をここに直接書くと、応答待ちでNiceGUIのイベントループが止まる。自分のサーバーも応答を処理できなくなるため、この例では **httpx + `await`** を使う。外部APIが相手でも、コールバック内の通信は非同期にする
+
+## 画面の関数から自分のAPIを呼ばない
+
+::: {.callout-warning title="サーバーが自分を待って止まる"}
+画面の関数の中で `requests.get()` を使って自分のAPIを呼ぶと、応答待ちでサーバーが止まり、自分に応答できなくなる。画面からは `get_questions()` を直接呼ぶ
 :::
 
 
@@ -242,11 +228,12 @@ ui.run()
 from nicegui import ui, app
 import json
 
-@app.get("/api/questions")
 def get_questions():
     with open("questions.json", "r", encoding="utf-8") as f:
         data = json.load(f)
     return data
+
+app.add_api_route("/api/questions", get_questions)
 
 container = ui.column().classes("w-full gap-4 p-4")
 
@@ -274,9 +261,10 @@ ui.run()
 #### エンドポイントの定義部分
 
 ```python
-@app.get("/api/questions/{question_id}")
 def get_question(question_id: int):
     ...
+
+app.add_api_route("/api/questions/{question_id}", get_question)
 ```
 
 ::: {.caption-note}
@@ -311,20 +299,21 @@ def read_data():
     with open("questions.json", "r", encoding="utf-8") as f:
         return json.load(f)
 
-@app.get("/api/questions")
 def get_questions():
     return read_data()
 
-@app.get("/api/results")
 def get_results():
     return read_data()["results"]
 
-@app.get("/api/questions/{question_id}")
 def get_question(question_id: int):
     for question in read_data()["questions"]:
         if question["id"] == question_id:
             return question
     return {"error": "Not found"}
+
+app.add_api_route("/api/questions", get_questions)
+app.add_api_route("/api/results", get_results)
+app.add_api_route("/api/questions/{question_id}", get_question)
 
 container = ui.column().classes("w-full gap-4 p-4")
 
@@ -341,6 +330,31 @@ def load_data():
 
 ui.button("質問を読み込む", on_click=load_data).classes("bg-blue-500 text-white p-3 rounded-lg")
 ui.run()
+```
+
+
+## **演習** 別のプログラムから呼ぶ {.badge-practice}
+
+::: {.prompt}
+アプリを起動したまま `client.py` を作り、`/api/questions/1` の質問文を取得して表示せよ。
+:::
+
+0. エンドポイントを追加したアプリを起動
+1. `client.py` に `requests.get()` で `/api/questions/1` を取得する処理を実装
+2. 別のターミナルで `client.py` を実行し、質問文を表示
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: true
+#| code-summary: "client.py の解答例を表示"
+import requests
+
+url = "http://localhost:8080/api/questions/1"
+response = requests.get(url)
+response.raise_for_status()
+question = response.json()
+print(question["text"])
 ```
 
 
@@ -373,13 +387,29 @@ ui.run()
 </details>
 
 
+## （参考）`@app.get` と書かれたコード
+
+- FastAPI の公式ドキュメントや多くのサンプルは、次の書き方を使っている
+- **デコレータ**（[decorator]{.en}）：`@` で始まる行。すぐ下の関数に機能を追加する記法
+
+```python
+@app.get("/api/hello")
+def hello():
+    return {"message": "Hello, API!"}
+```
+
+::: {.caption-note}
+`app.add_api_route("/api/hello", hello)` と同じ登録をする
+:::
+
+
 ## まとめ
 
-- **`@app.get()`**：URLへのGETを処理する関数を登録
+- **`app.add_api_route()`**：URLへのGETを処理する関数を登録
 - **`json.load()`**：JSONファイルをPythonの値として読み込む
 - **表示の更新**：`container.clear()` で削除し、データを再取得して表示
-- **httpx + `await`**：応答を待つ間、他の処理を進められるHTTP通信
+- **`requests.get()`**：別のプログラムからAPIを呼ぶ
 
 ::: {.callout-note title="3画面のアプリ"}
-[最終課題](final-project.qmd) に、画面切り替えとHTTP通信を組み合わせたテンプレートを掲載
+[最終課題](final-project.qmd) に、画面切り替えとAPIを組み合わせたテンプレートを掲載
 :::
