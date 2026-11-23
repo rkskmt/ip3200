@@ -6,6 +6,10 @@
 各回スライドの配布用 PDF。クリックで開く。番号は講義一覧と対応。
 :::
 
+::::: {.panel-tabset}
+
+### 前期
+
 :::: {.lectures}
 
 ### PCの使い方アップデート {.sec .cat1}
@@ -41,3 +45,33 @@
 :::
 
 ::::
+
+### 後期
+
+:::: {.lectures}
+
+### 課題解決・アイデア創出 {.sec .cat1}
+::: {.grid .cat1 .dl}
+- [発想法（発散思考）](pdf/ideation.pdf){target="_blank"}
+- [オズボーンのチェックリスト・SCAMPER](pdf/scamper.pdf){target="_blank"}
+- [収束技法とアイデアマップ](pdf/convergence.pdf){target="_blank"}
+- [ペイオフマトリクス](pdf/payoff-matrix.pdf){target="_blank"}
+:::
+
+### ワイヤーフレーム・発表 {.sec .cat2}
+::: {.grid .cat2 .dl}
+- [Miroでワイヤーフレーム](pdf/wireframe.pdf){target="_blank"}
+- [UI・UX](pdf/ui-ux.pdf){target="_blank"}
+- [発表](pdf/presentation.pdf){target="_blank"}
+:::
+
+### 実装 {.sec .cat3}
+::: {.grid .cat3 .dl}
+- [NiceGUIで作るSPAモック](pdf/nicegui.pdf){target="_blank"}
+- [自作API+SPA](pdf/api-spa.pdf){target="_blank"}
+- [最終課題](pdf/final-project.pdf){target="_blank"}
+:::
+
+::::
+
+:::::
