@@ -168,6 +168,15 @@
             config.math.config = config.math.config.replace("_HTML", "_CHTML");
             config.math.CommonHTML = { scale: 127, matchFontHeight: false };
           }
+          // A ruled or network lecture index lays itself out at the
+          // window's width (custom.css). reveal.js's slide view
+          // fixes every slide at 1280x720 and scales it, and reveal.js
+          // switches to the scroll view only below 435px, so open such
+          // a page in the scroll view at every width. Quarto calls
+          // initialize at the end of <body>, so the page is parsed.
+          if (config && document.querySelector(".lectures.ruled, .lectures.network")) {
+            config.view = "scroll";
+          }
           return initialize.call(this, config);
         };
       }
@@ -179,7 +188,8 @@
   <script src="peek-ui.js" defer=""></script>
   <script src="badge-ui.js" defer=""></script>
   <script src="toc-ui.js" defer=""></script>
-  <meta name="qmd-web-source" content="f9bdd6bcbd797556c017160d49422e77613ae97e 16a85ce62787650e6ddf6778b61880f9dc157509">
+  <script src="network-ui.js" defer=""></script>
+  <meta name="qmd-web-source" content="2f5d3fbb1fbb0ac1afd4c220939da0b597c567bd">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -257,7 +267,7 @@ rkskmt
 <p><strong>強制連想法</strong></p>
 </div>
 <div class="callout-content">
-<p>自由連想（ブレストなど）に対して、発想の視点や条件を与える方法を <strong>強制連想法</strong>（<span class="en">forced association</span>）と呼ぶ</p>
+<p><strong>強制連想法</strong>（<span class="en">forced association</span>）：発想の視点や条件を与える方法。ブレストなどの自由連想と対になる</p>
 </div>
 </div>
 </div>

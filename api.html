@@ -237,6 +237,15 @@
             config.math.config = config.math.config.replace("_HTML", "_CHTML");
             config.math.CommonHTML = { scale: 127, matchFontHeight: false };
           }
+          // A ruled or network lecture index lays itself out at the
+          // window's width (custom.css). reveal.js's slide view
+          // fixes every slide at 1280x720 and scales it, and reveal.js
+          // switches to the scroll view only below 435px, so open such
+          // a page in the scroll view at every width. Quarto calls
+          // initialize at the end of <body>, so the page is parsed.
+          if (config && document.querySelector(".lectures.ruled, .lectures.network")) {
+            config.view = "scroll";
+          }
           return initialize.call(this, config);
         };
       }
@@ -248,7 +257,8 @@
   <script src="peek-ui.js" defer=""></script>
   <script src="badge-ui.js" defer=""></script>
   <script src="toc-ui.js" defer=""></script>
-  <meta name="qmd-web-source" content="d6f1f2aa94b0d2f6e1c1b635b1abd7c4d744a816 c639d3acd87c2b50620924a835b762a64116882a">
+  <script src="network-ui.js" defer=""></script>
+  <meta name="qmd-web-source" content="8644fb9daf18c72d879ee5ecfa5a09788a3fc921">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -330,10 +340,10 @@ rkskmt
 <ul>
 <li>有向グラフ（<span class="en">directed graph</span>）を作るだけ</li>
 </ul></li>
-<li>このゆるいつなぎ方を<strong>疎結合</strong>（<span class="en">loose coupling</span>）と呼ぶ</li>
+<li><strong>疎結合</strong>（<span class="en">loose coupling</span>）：相手を取り込まず、許可も要らない、ゆるいつなぎ方</li>
 <li>壊れにくく、誰にも断らずに広げられるため、後日<span class="en">World Wide Web</span>として爆発的に普及</li>
 </ul>
-<div id="ce9e55e0" class="cell" data-execution_count="1">
+<div id="d1cd910b" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -515,7 +525,7 @@ rkskmt
 <li>リクエスト：サーバに返信を要求すること</li>
 <li>レスポンス：リクエストに対するサーバの返信</li>
 </ul>
-<div id="dbe4adf2" class="cell" data-execution_count="2">
+<div id="06d71b06" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -539,7 +549,7 @@ rkskmt
 <li>テキストとは限らない。例えば、画像だったらバイナリファイル</li>
 </ul></li>
 </ul>
-<div id="3b326eed" class="cell" data-execution_count="3">
+<div id="e556a863" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -911,7 +921,7 @@ rkskmt
 <span id="cb13-3"><a aria-label="3"></a></span>
 <span id="cb13-4"><a aria-label="4"></a>res_dict <span class="op">=</span> json.loads(response.text) <span class="co"># これでdictになる</span></span>
 <span id="cb13-5"><a aria-label="5"></a><span class="bu">print</span>(<span class="bu">type</span>(res_dict), res_dict)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="45c57349" class="cell" data-execution_count="4">
+<div id="2304e49f" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1136,7 +1146,7 @@ rkskmt
 <span id="cb17-19"><a aria-label="19"></a><span class="bu">print</span>(<span class="ss">f"最小:   </span><span class="sc">{</span>views<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss">回"</span>)</span>
 <span id="cb17-20"><a aria-label="20"></a><span class="bu">print</span>(<span class="ss">f"平均:   </span><span class="sc">{</span>views<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">回"</span>)</span>
 <span id="cb17-21"><a aria-label="21"></a><span class="bu">print</span>(<span class="ss">f"中央値: </span><span class="sc">{</span>np<span class="sc">.</span>median(views)<span class="sc">:.0f}</span><span class="ss">回"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="d6c7025c" class="cell" data-execution_count="5">
+<div id="325dfa35" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>日数:   365
 最大:   52168回

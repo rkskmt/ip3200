@@ -237,6 +237,15 @@
             config.math.config = config.math.config.replace("_HTML", "_CHTML");
             config.math.CommonHTML = { scale: 127, matchFontHeight: false };
           }
+          // A ruled or network lecture index lays itself out at the
+          // window's width (custom.css). reveal.js's slide view
+          // fixes every slide at 1280x720 and scales it, and reveal.js
+          // switches to the scroll view only below 435px, so open such
+          // a page in the scroll view at every width. Quarto calls
+          // initialize at the end of <body>, so the page is parsed.
+          if (config && document.querySelector(".lectures.ruled, .lectures.network")) {
+            config.view = "scroll";
+          }
           return initialize.call(this, config);
         };
       }
@@ -248,7 +257,8 @@
   <script src="peek-ui.js" defer=""></script>
   <script src="badge-ui.js" defer=""></script>
   <script src="toc-ui.js" defer=""></script>
-  <meta name="qmd-web-source" content="612c02afa0c810ab10c30bf87085a8753170c024 d31e64dbafa72996df8d1ccc0cb6bfd7b7fb57b4">
+  <script src="network-ui.js" defer=""></script>
+  <meta name="qmd-web-source" content="612c02afa0c810ab10c30bf87085a8753170c024">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -333,16 +343,16 @@ rkskmt
 <li>数値だけでは見落とすので <strong>まず描く</strong> — <a href="./visualize.html">データの可視化</a>の大原則</li>
 <li>APIから取得した <code>views</code> を、そのまま <code>plt.plot()</code> に渡した結果</li>
 </ul>
-<div id="e25ff15c" class="cell" data-execution_count="1">
+<div id="1c4abb51" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="api-viz_files/figure-revealjs/cell-2-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="api-viz_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="566" height="276"></a></p>
+<p><a href="api-viz_files/figure-revealjs/cell-2-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="api-viz_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="565" height="276"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="b6e77f93" class="cell" data-execution_count="2">
+<div id="79cc2f3c" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>コードを見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
@@ -574,7 +584,7 @@ rkskmt
 </div>
 </div>
 </div>
-<div id="aa8a72be" class="cell" data-execution_count="5">
+<div id="1faee2a4" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
@@ -621,7 +631,7 @@ rkskmt
 <li>問い：七夕のような <strong>鋭い山（スパイク）</strong> はあるか？</li>
 <li>問い：スパイクがないなら、<strong>何が見えるか</strong>？ 自分の言葉で説明せよ</li>
 </ul>
-<div id="c6c1f358" class="cell" data-execution_count="6">
+<div id="7426b688" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="im">import</span> requests</span>
@@ -648,11 +658,11 @@ rkskmt
 </details>
 </div>
 <div class="fragment">
-<div id="47841a77" class="cell" data-execution_count="7">
+<div id="dc70b81a" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="api-viz_files/figure-revealjs/cell-8-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="api-viz_files/figure-revealjs/cell-8-output-1.png" class="quarto-figure quarto-figure-center" width="662" height="257"></a></p>
+<p><a href="api-viz_files/figure-revealjs/cell-8-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="api-viz_files/figure-revealjs/cell-8-output-1.png" class="quarto-figure quarto-figure-center" width="661" height="257"></a></p>
 </figure>
 </div>
 </div>

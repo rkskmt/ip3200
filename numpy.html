@@ -237,6 +237,15 @@
             config.math.config = config.math.config.replace("_HTML", "_CHTML");
             config.math.CommonHTML = { scale: 127, matchFontHeight: false };
           }
+          // A ruled or network lecture index lays itself out at the
+          // window's width (custom.css). reveal.js's slide view
+          // fixes every slide at 1280x720 and scales it, and reveal.js
+          // switches to the scroll view only below 435px, so open such
+          // a page in the scroll view at every width. Quarto calls
+          // initialize at the end of <body>, so the page is parsed.
+          if (config && document.querySelector(".lectures.ruled, .lectures.network")) {
+            config.view = "scroll";
+          }
           return initialize.call(this, config);
         };
       }
@@ -248,7 +257,8 @@
   <script src="peek-ui.js" defer=""></script>
   <script src="badge-ui.js" defer=""></script>
   <script src="toc-ui.js" defer=""></script>
-  <meta name="qmd-web-source" content="868d7203a08b09968f229343a7c17ba5cf907229 e5199ac0b4c31836260f4ecd9590485e0da3b3cb">
+  <script src="network-ui.js" defer=""></script>
+  <meta name="qmd-web-source" content="868d7203a08b09968f229343a7c17ba5cf907229">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -478,7 +488,7 @@ rkskmt
 <li>「for文が不要なため非常に高速」— 何倍くらい違うと思う？</li>
 </ul>
 <div class="fragment">
-<div id="8782cb1f" class="cell" data-execution_count="1">
+<div id="554140e2" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>計測コードを表示</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="im">import</span> time</span>
@@ -505,12 +515,12 @@ rkskmt
 <span id="cb10-22"><a aria-label="22"></a><span class="bu">print</span>(<span class="ss">f"→ 約 </span><span class="sc">{</span>t_list <span class="op">/</span> t_arr<span class="sc">:.0f}</span><span class="ss"> 倍速い"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>list（内包表記）: 66.8 ミリ秒
-ndarray:          2.71 ミリ秒
-→ 約 25 倍速い</code></pre>
+<pre><code>list（内包表記）: 23.7 ミリ秒
+ndarray:          0.33 ミリ秒
+→ 約 72 倍速い</code></pre>
 </div>
 </div>
-<div id="ae419d82" class="cell" data-execution_count="2">
+<div id="da343ef9" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -583,7 +593,7 @@ ndarray:          2.71 ミリ秒
 <span id="cb13-14"><a aria-label="14"></a><span class="co"># 転置（transpose）</span></span>
 <span id="cb13-15"><a aria-label="15"></a><span class="bu">print</span>(A.T)</span>
 <span id="cb13-16"><a aria-label="16"></a><span class="bu">print</span>(B.T)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="c9365a67" class="cell" data-execution_count="3">
+<div id="dcacd7dc" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -628,7 +638,7 @@ ndarray:          2.71 ミリ秒
 <span id="cb15-5"><a aria-label="5"></a></span>
 <span id="cb15-6"><a aria-label="6"></a><span class="bu">print</span>(np.mean(data, axis<span class="op">=</span><span class="dv">0</span>))  <span class="co"># 列ごと（各科目の平均）</span></span>
 <span id="cb15-7"><a aria-label="7"></a><span class="bu">print</span>(np.mean(data, axis<span class="op">=</span><span class="dv">1</span>))  <span class="co"># 行ごと（各生徒の平均）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="2c64fc12" class="cell" data-execution_count="4">
+<div id="90b2b214" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -652,7 +662,7 @@ ndarray:          2.71 ミリ秒
 <span id="cb16-4"><a aria-label="4"></a></span>
 <span id="cb16-5"><a aria-label="5"></a><span class="bu">print</span>(scores <span class="op">&gt;=</span> <span class="dv">85</span>)           <span class="co"># True/False</span></span>
 <span id="cb16-6"><a aria-label="6"></a><span class="bu">print</span>(scores[scores <span class="op">&gt;=</span> <span class="dv">85</span>])   <span class="co"># 85点以上のデータ</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="c1fed69e" class="cell" data-execution_count="5">
+<div id="c4ff93f0" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -679,7 +689,7 @@ ndarray:          2.71 ミリ秒
 <li>100以上400以下のランダムな整数１つ</li>
 <li>0以上1未満のランダムな数１つ</li>
 </ol>
-<div id="06037f29" class="cell" data-execution_count="6">
+<div id="e2c9e379" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -711,7 +721,7 @@ ndarray:          2.71 ミリ秒
 <li><code>li = [0.1, 0.2, 0.3]</code> でも同様に全要素の型を表示</li>
 <li>これもNumPyの配列 <code>arr2</code> に変換し、要素の型を表示</li>
 </ol>
-<div id="61798456" class="cell" data-execution_count="7">
+<div id="fe6658ef" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>

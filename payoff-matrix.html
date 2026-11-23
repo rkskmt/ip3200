@@ -171,6 +171,15 @@
             config.math.config = config.math.config.replace("_HTML", "_CHTML");
             config.math.CommonHTML = { scale: 127, matchFontHeight: false };
           }
+          // A ruled or network lecture index lays itself out at the
+          // window's width (custom.css). reveal.js's slide view
+          // fixes every slide at 1280x720 and scales it, and reveal.js
+          // switches to the scroll view only below 435px, so open such
+          // a page in the scroll view at every width. Quarto calls
+          // initialize at the end of <body>, so the page is parsed.
+          if (config && document.querySelector(".lectures.ruled, .lectures.network")) {
+            config.view = "scroll";
+          }
           return initialize.call(this, config);
         };
       }
@@ -182,7 +191,8 @@
   <script src="peek-ui.js" defer=""></script>
   <script src="badge-ui.js" defer=""></script>
   <script src="toc-ui.js" defer=""></script>
-  <meta name="qmd-web-source" content="733669b7ec47910f8e032cc5b8590744d707cf89 a8c1a289dbaa4edc4bb4b4001d167839384bc52c">
+  <script src="network-ui.js" defer=""></script>
+  <meta name="qmd-web-source" content="733669b7ec47910f8e032cc5b8590744d707cf89">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -336,7 +346,7 @@ rkskmt
 <section id="マトリクスの構造2軸-4象限" class="slide level2">
 <h2>マトリクスの構造：2軸 → 4象限</h2>
 <div class="slide-body">
-<div id="95711fb9" class="cell fig-medium" data-execution_count="1">
+<div id="041d426d" class="cell fig-medium" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -493,7 +503,7 @@ rkskmt
 <div class="slide-body">
 <div class="columns">
 <div class="column" style="width:62%;">
-<div id="52cbce30" class="cell" data-execution_count="2">
+<div id="3eb75d52" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -923,7 +933,7 @@ rkskmt
 <h2>ICE演習の完成イメージ</h2>
 <div class="slide-body">
 <div class="fig">
-<div id="121119c7" class="cell" data-execution_count="3">
+<div id="477843fd" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>

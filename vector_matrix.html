@@ -237,6 +237,15 @@
             config.math.config = config.math.config.replace("_HTML", "_CHTML");
             config.math.CommonHTML = { scale: 127, matchFontHeight: false };
           }
+          // A ruled or network lecture index lays itself out at the
+          // window's width (custom.css). reveal.js's slide view
+          // fixes every slide at 1280x720 and scales it, and reveal.js
+          // switches to the scroll view only below 435px, so open such
+          // a page in the scroll view at every width. Quarto calls
+          // initialize at the end of <body>, so the page is parsed.
+          if (config && document.querySelector(".lectures.ruled, .lectures.network")) {
+            config.view = "scroll";
+          }
           return initialize.call(this, config);
         };
       }
@@ -248,8 +257,9 @@
   <script src="peek-ui.js" defer=""></script>
   <script src="badge-ui.js" defer=""></script>
   <script src="toc-ui.js" defer=""></script>
+  <script src="network-ui.js" defer=""></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <meta name="qmd-web-source" content="d9a3e2246bf729e8b9365c9363bb787e21678be3 5d2de5fa6d711d9f39e5a80a1d67bec34341f700">
+  <meta name="qmd-web-source" content="8673676845790c9b8c98012b75ed3af96340eda8">
 </head>
 <body class="quarto-light">
 <script>
@@ -297,11 +307,11 @@ rkskmt
 </ul></li>
 </ul>
 <div style="width: 30%; margin: 0 auto;">
-<div id="83bb0f87" class="cell" data-execution_count="1">
+<div id="e1a3f78c" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><a href="vector_matrix_files/figure-revealjs/cell-2-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="vector_matrix_files/figure-revealjs/cell-2-output-1.png" width="271" height="276"></a></p>
+<p><a href="vector_matrix_files/figure-revealjs/cell-2-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="vector_matrix_files/figure-revealjs/cell-2-output-1.png" width="273" height="278"></a></p>
 </figure>
 </div>
 </div>
@@ -377,11 +387,11 @@ rkskmt
 <span id="cb2-6"><a aria-label="6"></a><span class="bu">print</span>(a <span class="op">+</span> b)   <span class="co"># [3 4]</span></span>
 <span id="cb2-7"><a aria-label="7"></a><span class="bu">print</span>(a <span class="op">-</span> b)   <span class="co"># [-1  2]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="cc151634" class="cell" data-execution_count="2">
+<div id="c856bdfe" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="vector_matrix_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="vector_matrix_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="229" height="258"></a></p>
+<p><a href="vector_matrix_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="vector_matrix_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="230" height="259"></a></p>
 </figure>
 </div>
 </div>
@@ -411,7 +421,7 @@ rkskmt
 <span id="cb3-4"><a aria-label="4"></a></span>
 <span id="cb3-5"><a aria-label="5"></a><span class="bu">print</span>(a <span class="op">*</span> <span class="dv">2</span>)   <span class="co"># [2 4]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="88da3300" class="cell" data-execution_count="3">
+<div id="5f4fa7e9" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -593,7 +603,7 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 10 \\ 4 &amp; 5 &amp; 6 &amp; 11 \\ 
 <li>さっきの掛け算は、<strong>ベクトル（点）を別の場所へ動かす変換</strong>になっている</li>
 <li>形（F）の各点にかけてみると、何をしているかが分かる</li>
 </ul>
-<div id="eb3c99b2" class="cell" data-execution_count="4">
+<div id="17374c88" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -614,11 +624,11 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 10 \\ 4 &amp; 5 &amp; 6 &amp; 11 \\ 
 <ul>
 <li>行列の<strong>列</strong>には、深い意味がある：<strong><span class="math inline">\((1,0)\)</span> と <span class="math inline">\((0,1)\)</span> の行き先</strong>を並べただけ</li>
 </ul>
-<div id="6cb91cde" class="cell" data-execution_count="5">
+<div id="d5013496" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="vector_matrix_files/figure-revealjs/cell-6-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="vector_matrix_files/figure-revealjs/cell-6-output-1.png" class="quarto-figure quarto-figure-center" width="902" height="330"></a></p>
+<p><a href="vector_matrix_files/figure-revealjs/cell-6-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="vector_matrix_files/figure-revealjs/cell-6-output-1.png" class="quarto-figure quarto-figure-center" width="902" height="329"></a></p>
 </figure>
 </div>
 </div>
@@ -657,7 +667,7 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 10 \\ 4 &amp; 5 &amp; 6 &amp; 11 \\ 
 =
 \begin{pmatrix} 19 &amp; 22 \\ 43 &amp; 50 \end{pmatrix}
 \]</span></p>
-<div id="3d6166f7" class="cell" data-execution_count="6">
+<div id="ca7f0334" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -870,7 +880,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 <h2>ベクトルの大きさ（ノルム）</h2>
 <div class="slide-body">
 <ul>
-<li>ベクトルの大きさを<strong>ノルム</strong>（norm、L2ノルム）と呼ぶ
+<li><strong>ノルム</strong>（<span class="en">norm</span>、L2ノルム）：ベクトルの大きさ
 <ul>
 <li><span class="math inline">\(|\mathbf{a}|\)</span> や <span class="math inline">\(\|\mathbf{a}\|\)</span> と書く</li>
 </ul></li>
@@ -908,7 +918,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 <h2>単位ベクトル</h2>
 <div class="slide-body">
 <ul>
-<li>ノルムが1のベクトルを<strong>単位ベクトル</strong>と呼ぶ</li>
+<li><strong>単位ベクトル</strong>（<span class="en">unit vector</span>）：ノルムが1のベクトル</li>
 <li>元のベクトルをノルムで割ると単位ベクトルになる
 <ul>
 <li><strong>正規化</strong>という</li>
@@ -927,7 +937,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 <span id="cb11-6"><a aria-label="6"></a><span class="bu">print</span>(a_hat)                  <span class="co"># [0.6 0.8]</span></span>
 <span id="cb11-7"><a aria-label="7"></a><span class="bu">print</span>(np.linalg.norm(a_hat))  <span class="co"># 1.0</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<div id="4263a31e" class="cell" data-execution_count="7">
+<div id="7b46f1e5" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -943,7 +953,7 @@ A^{-1} A \mathbf{x} &amp;= A^{-1} \mathbf{b} \\
 <h2>行列の転置</h2>
 <div class="slide-body">
 <ul>
-<li>行と列を入れ替える操作を<strong>転置</strong>（<span class="math inline">\(A^T\)</span>）と呼ぶ
+<li><strong>転置</strong>（<span class="math inline">\(A^T\)</span>）：行と列を入れ替える操作
 <ul>
 <li>ベクトルの転置も実は同じ操作</li>
 </ul></li>
@@ -966,7 +976,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <h2>ベクトルの転置</h2>
 <div class="slide-body">
 <ul>
-<li>行と列を入れ替える操作を<strong>転置</strong>（<strong>T</strong>ranspose）と呼ぶ
+<li><strong>転置</strong>（<strong>T</strong>ranspose）：行と列を入れ替える操作
 <ul>
 <li>ベクトルでは縦を横に倒す操作となる</li>
 </ul></li>
@@ -1003,7 +1013,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <li><span class="math inline">\(|\mathbf{b}|\cos\theta\)</span> ：<span class="math inline">\(\mathbf{b}\)</span> を <span class="math inline">\(\mathbf{a}\)</span> の方向に<strong>射影</strong>した長さ</li>
 <li>内積 = 「<span class="math inline">\(\mathbf{b}\)</span>の<span class="math inline">\(\mathbf{a}\)</span>方向に対する成分」× 「<span class="math inline">\(\mathbf{a}\)</span>の長さ<span class="math inline">\(|\mathbf{a}|\)</span>」</li>
 </ul>
-<div id="43aa079e" class="cell" data-execution_count="8">
+<div id="1b5e5fbc" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1024,7 +1034,7 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <li>つまり、射影の長さがゼロ → 「<span class="math inline">\(\mathbf{a}\)</span> 方向の成分がない」</li>
 </ul></li>
 </ul>
-<div id="19dc4d44" class="cell" data-execution_count="9">
+<div id="7a6ebc70" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1080,11 +1090,11 @@ A^T = \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}
 <section id="応用例多角形に対する内外判定" class="slide level2">
 <h2>応用例：多角形に対する内外判定</h2>
 <div class="slide-body">
-<div id="76656657" class="cell" data-execution_count="10">
+<div id="3cee22f3" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="vector_matrix_files/figure-revealjs/cell-11-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="vector_matrix_files/figure-revealjs/cell-11-output-1.png" class="quarto-figure quarto-figure-center" width="779" height="342"></a></p>
+<p><a href="vector_matrix_files/figure-revealjs/cell-11-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="vector_matrix_files/figure-revealjs/cell-11-output-1.png" class="quarto-figure quarto-figure-center" width="779" height="341"></a></p>
 </figure>
 </div>
 </div>
@@ -1105,7 +1115,7 @@ c_2 = (\overrightarrow{BC}) \times (\overrightarrow{BP}), \quad
 c_3 = (\overrightarrow{CA}) \times (\overrightarrow{CP})
 \]</span></p>
 <p><span class="math inline">\(c_1, c_2, c_3\)</span> が全て同符号 → 内側</p>
-<div id="2d830aad" class="cell" data-execution_count="11">
+<div id="075471fb" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb14-2"><a aria-label="2"></a></span>
 <span id="cb14-3"><a aria-label="3"></a><span class="kw">def</span> cross_2d(v1, v2):</span>
@@ -1146,7 +1156,7 @@ c_3 = (\overrightarrow{CA}) \times (\overrightarrow{CP})
 </ul></li>
 </ul>
 <div style="width: 40%; margin: 0 auto;">
-<div id="769db4f2" class="cell" data-execution_count="12">
+<div id="69c4c9c3" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1311,7 +1321,7 @@ c_3 = (\overrightarrow{CA}) \times (\overrightarrow{CP})
 \begin{cases} x + y = 4 \\ x - y = 2 \end{cases}
 \]</span></p>
 <p>（４）<span class="math inline">\(\mathbf{a} = \begin{pmatrix} 6 \\ 8 \end{pmatrix}\)</span> のノルムと単位ベクトルを求めよ。</p>
-<div id="4146c479" class="cell" data-execution_count="13">
+<div id="612bc899" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>解答例を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>

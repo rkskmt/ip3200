@@ -234,6 +234,15 @@
             config.math.config = config.math.config.replace("_HTML", "_CHTML");
             config.math.CommonHTML = { scale: 127, matchFontHeight: false };
           }
+          // A ruled or network lecture index lays itself out at the
+          // window's width (custom.css). reveal.js's slide view
+          // fixes every slide at 1280x720 and scales it, and reveal.js
+          // switches to the scroll view only below 435px, so open such
+          // a page in the scroll view at every width. Quarto calls
+          // initialize at the end of <body>, so the page is parsed.
+          if (config && document.querySelector(".lectures.ruled, .lectures.network")) {
+            config.view = "scroll";
+          }
           return initialize.call(this, config);
         };
       }
@@ -245,7 +254,8 @@
   <script src="peek-ui.js" defer=""></script>
   <script src="badge-ui.js" defer=""></script>
   <script src="toc-ui.js" defer=""></script>
-  <meta name="qmd-web-source" content="0121da602b91937f313072c763bf864088d41942 58faf1cd1740d5c0e6678b58b9887df214bbeecc">
+  <script src="network-ui.js" defer=""></script>
+  <meta name="qmd-web-source" content="0121da602b91937f313072c763bf864088d41942">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -518,7 +528,7 @@ rkskmt
 <p><strong>ABC400の解答例（Python）</strong></p>
 </div>
 <div class="callout-content">
-<div id="0efed570" class="cell">
+<div id="79ef8d67" class="cell">
 <details class="code-fold">
 <summary>解答を見る</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a>A <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
