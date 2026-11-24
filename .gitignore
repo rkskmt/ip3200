@@ -31,3 +31,14 @@ Thumbs.db
 /badge-ui.js
 /toc-ui.js
 /network-ui.js
+
+# IPython state from the project-local profile; only the startup file is tracked
+.ipython/*
+!.ipython/profile_default/
+.ipython/profile_default/*
+!.ipython/profile_default/startup/
+.ipython/profile_default/startup/*
+!.ipython/profile_default/startup/00-fig-cap.py
+
+# Python bytecode
+__pycache__/
