@@ -178,12 +178,13 @@ print([x * 2 for x in my_list])  # [2, 4, 6]
 
 ## 本当に速いの？ — 100万要素で実測
 
-- 「for文が不要なため非常に高速」— 何倍くらい違うと思う？
+- 「for文が不要なため非常に高速」— どのくらい違うと思う？
 
 ::: {.fragment}
 
 ```{python}
 #| echo: true
+#| eval: false
 #| code-fold: true
 #| code-summary: "計測コードを表示"
 import time
@@ -212,20 +213,20 @@ print(f"→ 約 {t_list / t_arr:.0f} 倍速い")
 
 ```{python}
 #| echo: false
-#| fig-align: center
+#| eval: false
+# Saved once to frozen/numpy-list-vs-ndarray.png: a measured time changes on every run.
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 
 plt.figure(figsize=(7, 2.6))
-bars = plt.barh(["ndarray", "list（内包表記）"],
-                [t_arr * 1000, t_list * 1000], color=["#2980b9", "#aab7c4"])
-for b, v in zip(bars, [t_arr * 1000, t_list * 1000]):
-    plt.text(b.get_width(), b.get_y() + b.get_height() / 2,
-             f" {v:.2f} ms", va="center", fontsize=11)
-plt.xlabel("100万要素を2倍するのにかかった時間（ミリ秒）")
+plt.barh(["ndarray", "list（内包表記）"], [t_arr, t_list], color=["#2980b9", "#aab7c4"])
+plt.xticks([])
+plt.xlabel("100万要素を2倍するのにかかった時間")
 plt.tight_layout()
 plt.show()
 ```
+
+![](frozen/numpy-list-vs-ndarray.png){fig-align="center"}
 
 - C言語で実装されたループが中で回るため、**桁違いに速い**
 - データが大きいほど差が開く — 「数値計算にlistは使わない」のはこれが理由
