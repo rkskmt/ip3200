@@ -168,30 +168,6 @@ A -> B -> C -> D -> E
 アイデアマップ（マインドマップ）
 :::
 
-<style>
-/* Trial: subtitle under a section-divider title. Same box as .break-title
-   (cleanslidekit custom.css), indented a little from its left edge. */
-.break-slide .break-subtitle {
-  display: block;
-  width: 860px;
-  max-width: calc(100% - 310px);
-  margin-left: 190px !important;
-  margin-right: auto !important;
-  padding-top: 0.4em;
-  padding-left: 1.5em;
-  font-size: 1.15em;
-  color: #444;
-  text-align: left;
-}
-/* theme.scss sets `.reveal p { font-weight: lighter }`, which drops this
-   normal-weight div's paragraph to 100; .break-title's p ends at 400 only
-   because its div is bold. */
-.break-slide .break-subtitle p {
-  font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
-  font-weight: 300;
-}
-</style>
-
 
 ## アイデアマップ：放射状に広げながら整理する
 
